@@ -54,18 +54,21 @@ def build(ctx, sources: dict) -> list[str]:
     ts_html = (f'<span class="updated">{html.escape(ts)}</span>' if ts
                else '<span class="updated">timestamp unavailable this build</span>')
 
-    # ---- all-route details
+    # ---- all-route details (per-section status chips; no misleading
+    #      route-wide tag — for I-5 the tag is the pass itself)
     cards = ""
     no_text = '<li class="note">No conditions text parsed.</li>'
     for r in [i5] + others:
         if not r:
             continue
+        card_status = r.get("pass_status") if r["slug"] == "i5" else r["status"]
         secs = "".join(f"""
-        <li><strong>{html.escape(s['region'])}:</strong> {html.escape(s['text'])}</li>"""
+        <li><span class="tag {'amber' if s['status'] != 'OPEN' else 'green'}">{s['status']}</span>
+        <strong>{html.escape(s['region'])}:</strong> {html.escape(s['text'])}</li>"""
                        for s in r.get("sections", []))
         cards += f"""
         <div class="card">
-          <span class="tag {'amber' if r['status'] != 'OPEN' else 'green'}">{r['status']}</span>
+          <span class="tag {'amber' if card_status != 'OPEN' else 'green'}">{card_status}</span>
           <h3>{html.escape(r['name'])}</h3>
           <ul class="hl">{secs or no_text}</ul>
         </div>"""
@@ -134,9 +137,10 @@ def build(ctx, sources: dict) -> list[str]:
       {log_html}
     </section>
 
-    <p class="note">Conditions are as reported by Caltrans District 7/6; we display the agency's
-    own timestamp verbatim. Our status words (OPEN / RESTRICTIONS / CLOSED) are a plain-text
-    classification of that report — always confirm on the official source before driving.</p>"""
+    <p class="note">Conditions are Caltrans&rsquo; own text, shown verbatim (typos included — it is
+    their report, not ours), with the agency&rsquo;s timestamp. Status words are per Caltrans area
+    section; for I-5 the big answer reflects the Tejon Pass (Central) section only. Always confirm
+    on the official source before driving.</p>"""
 
     page = page_mod.render(
         title="Is the Grapevine (I-5 Tejon Pass) closed right now? | Bakersfield Daily Brief",

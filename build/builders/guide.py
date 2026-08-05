@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import datetime as dt
 import html
+import json
 import re
 
 from .. import common
@@ -23,23 +24,33 @@ _VENUE_ORDER = {"fox": 0, "arena": 1, "well": 2, "condors": 3, "visit": 4}
 
 
 def build(ctx, sources: dict) -> list[str]:
-    if not getattr(ctx, "guide", False):
-        return []
     built = []
     today = common.today_pacific()
     date_label = f"{today.strftime('%B')} {today.day}, {today.year}"
-    events = _pick(sources.get("venues", {}).get("events", []), today)
 
-    # ---- email drafts (human review)
-    html_doc, txt_doc = render_guide(events, date_label, reviewed=False)
-    draft_dir = common.DRAFTS / f"weekend-guide-{today.isoformat()}"
-    draft_dir.mkdir(parents=True, exist_ok=True)
-    (draft_dir / "guide.html").write_text(html_doc, encoding="utf-8")
-    (draft_dir / "guide.txt").write_text(txt_doc, encoding="utf-8")
-    built.append(f"drafts/weekend-guide-{today.isoformat()}/guide.html")
-    built.append(f"drafts/weekend-guide-{today.isoformat()}/guide.txt")
+    # Thursday/--guide builds scrape the whitelist fresh and cache the picks;
+    # other builds render the cached picks so the footer link never 404s.
+    cache_path = common.DATA / "last_guide.json"
+    if getattr(ctx, "guide", False):
+        events = _pick(sources.get("venues", {}).get("events", []), today)
+        cache_path.write_text(json.dumps(events, default=str), encoding="utf-8")
+    else:
+        try:
+            events = _pick(json.loads(cache_path.read_text(encoding="utf-8")), today)
+        except Exception:  # noqa: BLE001
+            events = []
 
-    # ---- site page (auto-published)
+    # ---- email drafts (human review) — guide builds only
+    if getattr(ctx, "guide", False):
+        html_doc, txt_doc = render_guide(events, date_label, reviewed=False)
+        draft_dir = common.DRAFTS / f"weekend-guide-{today.isoformat()}"
+        draft_dir.mkdir(parents=True, exist_ok=True)
+        (draft_dir / "guide.html").write_text(html_doc, encoding="utf-8")
+        (draft_dir / "guide.txt").write_text(txt_doc, encoding="utf-8")
+        built.append(f"drafts/weekend-guide-{today.isoformat()}/guide.html")
+        built.append(f"drafts/weekend-guide-{today.isoformat()}/guide.txt")
+
+    # ---- site page (auto-published every build; cached picks off-Thursday)
     if events:
         lis = "".join(f"""
         <li><strong>{html.escape(e.get('name', ''))}</strong>
@@ -47,7 +58,7 @@ def build(ctx, sources: dict) -> list[str]:
         <a href="{html.escape(e.get('url', '#'))}" target="_blank" rel="noopener">Details →</a></li>""" for e in events)
         picks = f'<ol class="guide-list">{lis}</ol>'
     else:
-        picks = ('<p class="note">No dated events found for this weekend in the venue whitelist yet — '
+        picks = ('<p class="note">No dated events found in the venue whitelist yet — '
                  'the Thursday build scrapes the whitelist; check back after it runs.</p>')
         events = []  # report below
 

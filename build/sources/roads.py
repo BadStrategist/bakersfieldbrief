@@ -15,6 +15,7 @@ status flip plus material text changes, capped at 60 entries.
 from __future__ import annotations
 
 import hashlib
+import html as H
 import re
 
 from .. import common
@@ -79,8 +80,11 @@ _TS = re.compile(r"latest reported as of (.+?)(?=\.\s|\.$)", re.I)
 
 
 def _parse(html: str, route: dict) -> dict:
-    text = re.sub(r"<[^>]+>", " ", html)
-    text = re.sub(r"\s+", " ", text)
+    text = re.sub(r"<!--|-->", "", html)          # comment markers (keep inner text)
+    text = re.sub(r"<[^>]+>", " ", text)           # tags → space
+    text = H.unescape(text)                        # &#160; → \xa0, &amp; → &, …
+    text = text.replace("\xa0", " ")
+    text = re.sub(r"\s+", " ", text)               # collapse all whitespace
 
     ts = ""
     m = _TS.search(text)
@@ -89,11 +93,12 @@ def _parse(html: str, route: dict) -> dict:
 
     sections = []
     for region, body in _SECTION.findall(text):
-        body = re.sub(r"\s+", " ", body).strip().strip("&#160;").strip()
-        if body and "no traffic restrictions" not in body.lower():
-            sections.append({"region": region.strip(), "text": body})
-        elif body:
-            sections.append({"region": region.strip(), "text": "No traffic restrictions reported."})
+        body = re.sub(r"\s+", " ", body).strip(" .")
+        if not body:
+            continue
+        if "no traffic restrictions" in body.lower():
+            body = "No traffic restrictions reported."
+        sections.append({"region": region.strip(), "text": body})
 
     # per-section status so builders can headline the pass (Central CA area)
     for s in sections:

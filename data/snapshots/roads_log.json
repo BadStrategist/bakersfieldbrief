@@ -1,1 +1,18 @@
-[]
+[
+ {
+  "ts": "2026-08-05",
+  "route": "sr99",
+  "route_name": "State Route 99 \u2014 Central Valley",
+  "from": "updated",
+  "to": "RESTRICTIONS",
+  "note": "condition text changed"
+ },
+ {
+  "ts": "2026-08-05",
+  "route": "sr58",
+  "route_name": "State Route 58 \u2014 Tehachapi",
+  "from": "updated",
+  "to": "RESTRICTIONS",
+  "note": "condition text changed"
+ }
+]

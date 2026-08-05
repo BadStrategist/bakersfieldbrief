@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-04T17:24:47-07:00",
+ "built_at": "2026-08-04T20:15:03-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -29,6 +29,10 @@
    "ok": true,
    "error": ""
   },
+  "calfire": {
+   "ok": true,
+   "error": ""
+  },
   "chp": {
    "ok": true,
    "error": ""
@@ -42,6 +46,10 @@
    "error": ""
   },
   "alpr": {
+   "ok": true,
+   "error": ""
+  },
+  "venues": {
    "ok": true,
    "error": ""
   },
@@ -77,14 +85,18 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 11,
-    "bakersfield-sw": 9,
+    "bakersfield-sw": 10,
     "bakersfield-east": 12,
     "bakersfield-central": 12
    }
+  },
+  "guide": {
+   "picked": 4,
+   "draft": "drafts/weekend-guide-2026-08-04"
   },
   "static": {
    "pages": [
@@ -94,6 +106,7 @@
     "work-money/index.html",
     "sunday-read/index.html",
     "404.html",
+    "oversight/index.html",
     "ads.txt"
    ]
   },

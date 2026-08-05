@@ -1,0 +1,11 @@
+{
+  "_comment": "Hand-maintained record of sources we cannot scrape (they refuse automated visitors). Fill 'last_verified' by hand each month; pages display the date. See the do-not-scrape list in the README.",
+  "sources": [
+    {"name": "Bakersfield PD site", "last_verified": "", "note": "blocks automated visitors"},
+    {"name": "Kern County Sheriff site", "last_verified": "", "note": "blocks automated visitors"},
+    {"name": "Granicus meeting portal", "last_verified": "", "note": "403s datacenter IPs"},
+    {"name": "BoardDocs", "last_verified": "", "note": "blocks automated visitors"},
+    {"name": "kernpublichealth.com (main site)", "last_verified": "", "note": "blocks automated visitors"},
+    {"name": "County recorder", "last_verified": "", "note": "blocks automated visitors"}
+  ]
+}

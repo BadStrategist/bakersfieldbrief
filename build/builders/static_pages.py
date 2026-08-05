@@ -51,7 +51,25 @@ def build(ctx, sources: dict) -> list[str]:
       <p>Bakersfield Daily Brief is an automated publication with human editorial review.
       Automation drafts; a human reviews meeting recaps before they publish and stands behind
       the corrections policy.</p>
+      <h2>Hand-verified sources</h2>
+      <p>Some agencies refuse automated visitors. For those, coverage comes from alert
+      subscriptions and hand checks, and we publish the last time each was verified:</p>
     </div>"""
+
+    # append the hand-verified list from data/manual_checks.json (may be empty)
+    try:
+        import json as _json
+        _mc = _json.loads((common.DATA / "manual_checks.json").read_text(encoding="utf-8"))
+        _rows = "".join(
+            f"<li>{common.esc(s.get('name', ''))} — <strong>{common.esc(s.get('last_verified') or 'not yet')}</strong></li>"
+            for s in _mc.get("sources", []))
+        if _rows:
+            body = body.replace(
+                'hand checks, and we publish the last time each was verified:</p>\n    </div>',
+                'hand checks, and we publish the last time each was verified:</p>\n      <ul>'
+                f'{_rows}</ul>\n    </div>')
+    except Exception:  # noqa: BLE001
+        pass
     common.write(common.SITE / "about" / "index.html", page_mod.render(
         title="About — how the Brief works, what we publish | Bakersfield Daily Brief",
         desc="How Bakersfield Daily Brief works: an independent, automated civic news brief for Bakersfield and Kern County, built from public records, funded by labeled, consent-based ads.",
@@ -170,6 +188,29 @@ def build(ctx, sources: dict) -> list[str]:
         canonical="/404.html", content=body, current="other", rel="",
         built=built_iso, statusbar=ctx.statusbar, jsonld=[]))
     built.append("404.html")
+
+    # ---------------------------------------------------------- oversight (stub)
+    # Mount point for The Oversight File (police-accountability layer). No
+    # special casing anywhere in the build — a future builder just writes here.
+    body = """
+    <div class="pagehead"><div class="hero"><p class="kicker">The Oversight File</p>
+    <h1>Police accountability records</h1>
+    <p class="lede">This section is a reserved mount point. Oversight records — use-of-force
+    data, settlements, discipline findings, and the agencies that publish them — will be
+    tracked here as they become available from public sources.</p></div></div>
+    <div class="card"><p><strong>Status: not yet wired.</strong> The agencies that publish these
+    records (Bakersfield PD, the Sheriff&rsquo;s Office, and their meeting portals) refuse
+    automated visitors. Coverage will come from the email-ingestion review queue and
+    hand-verified checks, both of which display their own last-verified dates.</p>
+    <p class="note" style="margin-top:8px">Nothing on this page offers guidance on avoiding or
+    interfering with public-safety equipment or records. It reports what public agencies
+    publish.</p></div>"""
+    common.write(common.SITE / "oversight" / "index.html", page_mod.render(
+        title="The Oversight File — police accountability records | Bakersfield Daily Brief",
+        desc="Reserved mount point for police-accountability records in Kern County: use-of-force data, settlements, and discipline findings from public sources.",
+        canonical="/oversight/", content=body, current="other", rel="../",
+        built=built_iso, statusbar=ctx.statusbar, jsonld=[]))
+    built.append("oversight/index.html")
 
     # ---------------------------------------------------------- ads.txt
     # Placeholder until AdSense approval — replace with the real pub ID.

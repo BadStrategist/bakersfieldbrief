@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -44,6 +44,21 @@ jobs:
       - name: Build site (fetch sources → bake static HTML)
         if: steps.gate.outputs.hour == '6' || github.event_name == 'workflow_dispatch'
         run: python build/build_all.py
+
+      # Automatic pusher: commit the generated artifacts (email/, drafts/, data/)
+      # so the email renderings and review drafts are always in the repo.
+      - name: Commit generated artifacts
+        if: steps.gate.outputs.hour == '6' || github.event_name == 'workflow_dispatch'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add email drafts data
+          if ! git diff --cached --quiet; then
+            git commit -m "build: $(date -u +%Y-%m-%d) artifacts [skip ci]"
+            git push
+          else
+            echo "no artifact changes"
+          fi
 
       - name: Upload Pages artifact
         if: steps.gate.outputs.hour == '6' || github.event_name == 'workflow_dispatch'

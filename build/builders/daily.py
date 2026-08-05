@@ -44,6 +44,7 @@ def build(ctx, sources: dict) -> list[str]:
     food = sources.get("food", {})
     alpr = sources.get("alpr", {})
     airnow = sources.get("airnow", {})
+    calfire = sources.get("calfire", {})
 
     headlines = news.get("headlines", [])
     top = headlines[0] if headlines else None
@@ -51,7 +52,7 @@ def build(ctx, sources: dict) -> list[str]:
     rel = ""
     content = _page_content(ctx, today, built_iso, rel,
                             news, weather, chp, isa, escribe, board,
-                            abc, food, alpr, airnow, headlines, top)
+                            abc, food, alpr, airnow, calfire, headlines, top)
 
     jsonld = [
         page_mod.org_jsonld(),
@@ -91,8 +92,16 @@ def build(ctx, sources: dict) -> list[str]:
 
     # ---- permanent archive copy + archive page ----
     archive_built = _archive(ctx, today, built_iso, top, news, weather, chp, isa,
-                             escribe, board, abc, food, alpr, airnow, headlines)
+                             escribe, board, abc, food, alpr, airnow, calfire, headlines)
     built.extend(archive_built)
+
+    # ---- email renderings (same data → email-safe HTML + plain text)
+    try:
+        from ..emailer import render_brief
+        built.extend(render_brief(ctx, sources, today))
+        ctx.build_report.setdefault("daily", {})["email"] = "rendered"
+    except Exception as e:  # noqa: BLE001
+        common.log(f"email render failed: {type(e).__name__}: {e}")
 
     ctx.build_report["daily"] = {
         "news_headlines": len(headlines),
@@ -107,7 +116,7 @@ def build(ctx, sources: dict) -> list[str]:
 
 # ================================================================ page body
 def _page_content(ctx, today, built_iso, rel, news, weather, chp, isa,
-                  escribe, board, abc, food, alpr, airnow, headlines, top) -> str:
+                  escribe, board, abc, food, alpr, airnow, calfire, headlines, top) -> str:
     date_line = f"""
     <div class="date-line"><span>{today.strftime('%B').upper()} {today.day}, {today.year}</span><span>Bakersfield, California</span></div>"""
 
@@ -115,7 +124,7 @@ def _page_content(ctx, today, built_iso, rel, news, weather, chp, isa,
 
     digest_html, digest_meta = _news(news, built_iso)
     ctx.build_report["_digest_meta"] = digest_meta
-    conditions = _conditions(weather, chp, isa, airnow, built_iso)
+    conditions = _conditions(weather, chp, isa, airnow, calfire, built_iso)
     watch = _one_thing(escribe, board)
 
     cats = _category_grid(rel, escribe, board, abc, food, alpr)
@@ -187,7 +196,7 @@ def _hero_row(top, headlines, today, rel) -> tuple[str, str]:
 
 
 # ---------------------------------------------------------------- conditions
-def _conditions(weather, chp, isa, airnow, built_iso) -> str:
+def _conditions(weather, chp, isa, airnow, calfire, built_iso) -> str:
     fc = (weather or {}).get("forecast", {}) or {}
     cur, hi, lo = fc.get("current"), fc.get("high"), fc.get("low")
     if cur is not None and hi is not None:
@@ -214,18 +223,27 @@ def _conditions(weather, chp, isa, airnow, built_iso) -> str:
     else:
         aqi_v = 'Unavailable this build'
 
+    # Active fires chip (CAL FIRE; Kern-filtered)
+    kern_fires = [f for f in calfire.get("incidents", []) if "Kern" in str(f.get("county", ""))]
+    if calfire.get("ok"):
+        fire_v = f'{len(kern_fires)} in Kern' if kern_fires else '0 in Kern'
+        fire_link = f'<a href="https://www.fire.ca.gov/incidents/" target="_blank" rel="noopener">{fire_v}</a>' if kern_fires else fire_v
+    else:
+        fire_v, fire_link = 'Unavailable', 'Unavailable'
+
     return f"""
     <section aria-labelledby="h-conditions">
-      <p class="sec-head" id="h-conditions">Conditions <span class="unit">weather · reservoir · incidents · air</span></p>
+      <p class="sec-head" id="h-conditions">Conditions <span class="unit">weather · reservoir · incidents · air · fires</span></p>
       <div class="cond-strip">
         <div class="cond-chip"><div class="l">Bakersfield weather</div><div class="v">{weather_v}</div></div>
         <div class="cond-chip"><div class="l">Weather alerts</div><div class="v {'amber' if alerts else ''}">{html.escape(alert_v)}</div></div>
         <div class="cond-chip"><div class="l">Isabella Lake</div><div class="v">{isa_v} <span style="font-size:13px;color:#57504A">({isa_pct}% cap)</span></div></div>
         <div class="cond-chip"><div class="l">CHP overnight</div><div class="v">{chp_v}</div></div>
         <div class="cond-chip"><div class="l">Air quality (AQI)</div><div class="v">{aqi_v}</div></div>
+        <div class="cond-chip"><div class="l">Active fires</div><div class="v">{fire_link}</div></div>
       </div>
       <p class="note" style="margin-top:10px">Alerts: National Weather Service &middot; Reservoir: CA DWR/CDEC &middot; Incidents: CHP &middot;
-      Air: EPA AirNow &middot; Live temps: NWS gridpoint forecast + KBFL airport observation. Data refreshed each build.</p>
+      Air: EPA AirNow &middot; Fires: CAL FIRE &middot; Live temps: NWS gridpoint forecast + KBFL airport observation. Data refreshed each build.</p>
     </section>"""
 
 
@@ -601,13 +619,13 @@ def _load_archive() -> list:
 
 
 def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
-             escribe, board, abc, food, alpr, airnow, headlines) -> list[str]:
+             escribe, board, abc, food, alpr, airnow, calfire, headlines) -> list[str]:
     """Save a permanent copy of today's brief + refresh /briefs/ index."""
     built = []
     rel = "../../"  # briefs/<date>/index.html is 2 levels below site root
     content = _page_content(ctx, today, built_iso, rel,
                             news, weather, chp, isa, escribe, board,
-                            abc, food, alpr, airnow, headlines, top)
+                            abc, food, alpr, airnow, calfire, headlines, top)
 
     page = page_mod.render(
         title=f"Bakersfield Daily Brief — {_fmt_date(today)} (archive)",

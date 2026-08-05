@@ -98,5 +98,65 @@
   "lat": 35.267089,
   "lon": -119.221851,
   "details": ""
+ },
+ {
+  "log_id": "260804BF0368",
+  "time": "Aug  4 2026  6:50PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "910 Fox Tree Ct",
+  "area": "Bakersfield",
+  "lat": 35.366638,
+  "lon": -118.908885,
+  "details": ""
+ },
+ {
+  "log_id": "260804BF0380",
+  "time": "Aug  4 2026  7:15PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Allen Rd / Rosedale Hwy",
+  "area": "Bakersfield",
+  "lat": 35.383479,
+  "lon": -119.145483,
+  "details": ""
+ },
+ {
+  "log_id": "260804BF0383",
+  "time": "Aug  4 2026  7:19PM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 S Sr119 Con / I5 S",
+  "area": "Buttonwillow",
+  "lat": 35.270554,
+  "lon": -119.228478,
+  "details": ""
+ },
+ {
+  "log_id": "260804BF0394",
+  "time": "Aug  4 2026  7:37PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sr178 W / Oswell St Ofr",
+  "area": "Bakersfield",
+  "lat": 35.396537,
+  "lon": -118.946103,
+  "details": ""
+ },
+ {
+  "log_id": "260804BF0425",
+  "time": "Aug  4 2026  7:50PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 At Lerdo Hwy",
+  "area": "Buttonwillow",
+  "lat": 35.500278,
+  "lon": -119.534722,
+  "details": ""
+ },
+ {
+  "log_id": "260804BF0442",
+  "time": "Aug  4 2026  8:05PM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 S / Sr223 Onr",
+  "area": "Buttonwillow",
+  "lat": 35.20704,
+  "lon": -119.160898,
+  "details": ""
  }
 ]

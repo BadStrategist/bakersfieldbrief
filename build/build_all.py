@@ -27,7 +27,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from build import common  # noqa: E402
 from build.sources import SOURCES  # noqa: E402
-from build.builders import daily, cityhall, openings, trackers, static_pages, places  # noqa: E402
+from build.builders import (daily, cityhall, openings, trackers, static_pages,
+                            places, guide)  # noqa: E402
 from build.builders import page as page_mod  # noqa: E402
 
 
@@ -36,6 +37,7 @@ def main():
     ap.add_argument("--skip-sources", action="store_true", help="reuse last build report data")
     ap.add_argument("--no-llm", action="store_true", help="skip LLM calls entirely")
     ap.add_argument("--alpr-change", action="store_true", help="record ALPR weekly change log")
+    ap.add_argument("--guide", action="store_true", help="run the Thursday Weekend Guide build (scrapes venue whitelist)")
     args = ap.parse_args()
 
     if args.no_llm:
@@ -47,7 +49,8 @@ def main():
     common.SITE.mkdir(parents=True, exist_ok=True)
 
     # ---------------------------------------------------------- sources
-    ctx = types.SimpleNamespace(today=common.today_pacific(), build_report={})
+    ctx = types.SimpleNamespace(today=common.today_pacific(), build_report={},
+                                guide=args.guide)
     results = {}
     cache_file = common.DATA / "source_cache.json"
     if args.skip_sources:
@@ -69,9 +72,10 @@ def main():
 
     # ---------------------------------------------------------- builders
     ctx.statusbar = page_mod.build_statusbar(results.get("weather"), results.get("escribe"))
-    for bname, bmod in [("daily", daily), ("cityhall", cityhall),
-                        ("openings", openings), ("trackers", trackers),
-                        ("places", places), ("static", static_pages)]:
+    builders = [("daily", daily), ("cityhall", cityhall),
+                ("openings", openings), ("trackers", trackers),
+                ("places", places), ("guide", guide), ("static", static_pages)]
+    for bname, bmod in builders:
         try:
             files = bmod.build(ctx, results)
             common.log(f"builder {bname}: {len(files)} files")

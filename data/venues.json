@@ -1,0 +1,40 @@
+{
+  "_comment": "Hand-maintained venue whitelist for the Weekend Guide. Only venues listed here are scraped — a whitelist can't send readers to a dead venue (Buck Owens' Crystal Palace closed in Aug 2025 but its site still serves events). Add a venue = add an entry + a parser below. 'last_verified' is filled by hand monthly.",
+  "venues": [
+    {
+      "name": "Fox Theater",
+      "slug": "fox",
+      "url": "https://thebakersfieldfox.com/events/",
+      "parse": "ldjson",
+      "last_verified": ""
+    },
+    {
+      "name": "Mechanics Bank Arena",
+      "slug": "arena",
+      "url": "https://www.mechanicsbankarena.com/events",
+      "parse": "arena_links",
+      "last_verified": ""
+    },
+    {
+      "name": "The Well Comedy Club",
+      "slug": "well",
+      "url": "https://www.thewellcomedyclub.com/",
+      "parse": "well_seatengine",
+      "last_verified": ""
+    },
+    {
+      "name": "Bakersfield Condors",
+      "slug": "condors",
+      "url": "https://www.bakersfieldcondors.com/schedule/feed/",
+      "parse": "condors_feed",
+      "last_verified": ""
+    },
+    {
+      "name": "Visit Bakersfield",
+      "slug": "visit",
+      "url": "https://visitbakersfield.com/events/",
+      "parse": "visit",
+      "last_verified": ""
+    }
+  ]
+}

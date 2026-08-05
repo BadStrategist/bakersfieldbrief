@@ -98,7 +98,7 @@ def _parse(html: str, route: dict) -> dict:
             continue
         if "no traffic restrictions" in body.lower():
             body = "No traffic restrictions reported."
-        sections.append({"region": region.strip(), "text": body})
+        sections.append({"region": region.strip(), "text": _clean(body)})
 
     # per-section status so builders can headline the pass (Central CA area)
     for s in sections:
@@ -119,6 +119,23 @@ def _parse(html: str, route: dict) -> dict:
         "reported_as_of": ts,
         "hash": hashlib.md5(detail_text.encode()).hexdigest()[:10],
     }
+
+
+# light typo/spacing cleanup of Caltrans' text (facts unchanged)
+_TYPO_FIXES = [
+    (r"\beastbund\b", "eastbound"),
+    (r"\bI\s+(\d+)\b", r"I-\1"),
+    (r"\bSR\s+(\d+)\b", r"SR-\1"),
+    (r"\bUS\s+(\d+)\b", r"US-\1"),
+    (r"\bCA\s+(\d+)\b", r"CA-\1"),
+    (r"\s+", " "),
+]
+
+
+def _clean(t: str) -> str:
+    for pat, rep in _TYPO_FIXES:
+        t = re.sub(pat, rep, t, flags=re.I)
+    return t.strip()
 
 
 def _section_status(t: str) -> str:

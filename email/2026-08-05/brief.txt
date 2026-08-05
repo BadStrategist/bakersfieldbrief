@@ -2,22 +2,26 @@ THE BAKERSFIELD BRIEF — August 5, 2026
 Bakersfield & Kern County
 
 CONDITIONS
-Weather: 100° / 105°
+Weather: 102° / 105°
 Alerts: Heat Advisory active
 Isabella: 215,280 AF (37.9% cap)
+<<<<<<< HEAD
 CHP: 1 overnight
+=======
+CHP: 2 overnight
+>>>>>>> 8a6c1c7 (Grapevine page: red CLOSED tag + typo cleanup of Caltrans text)
 Air: AQI 119 · Unhealthy for Sensitive Groups
 Fires: 0 active in Kern
 
 THE NEWS
-• Buzzard Fire burns on Interstate 5, prompts evacuation warning (KGET 17) — https://www.kget.com/news/local-news/buzzard-fire-burns-on-interstate-5-prompts-evacuation-warning/
-• New ad targets Congressman David Valadao in connection to energy giant PG&E (KGET 17) — https://www.kget.com/news/politics/your-local-elections/new-ad-targets-congressman-david-valadao-in-connection-to-energy-giant-pge/
-• Man with sword prompts officer-involved shooting in Rosamond: KCSO (KGET 17) — https://www.kget.com/ois/man-with-sword-prompts-deputy-involved-shooting-in-rosamond-kcso/
-• Holes in California DMV point system allow dangerous drivers to keep their licenses (KGET 17) — https://www.kget.com/news/local-news/holes-in-california-dmv-point-system-allow-dangerous-drivers-to-keep-their-licenses/
-• Jury begins deliberating Tuesday in case of Long Beach man shot dead in Bakersfield (KGET 17) — https://www.kget.com/news/crime-watch/jury-to-begin-deliberating-tuesday-in-case-that-left-long-beach-man-shot-dead-in-bakersfield/
-• Bakersfield City Council to consider public safety radio tower near SW Bakersfield neighborhood, elementary school (KGET 17) — https://www.kget.com/news/local-news/bakersfield-city-council-to-consider-public-safety-radio-tower-near-sw-bakersfield-neighborhood-elementary-school/
-• Total Wine & More to open Sept. 3 in southwest Bakersfield shopping center (KGET 17) — https://www.kget.com/news/local-news/total-wine-more-to-open-sept-3-in-southwest-bakersfield-shopping-center/
 • New hearing date set in deadly Westside Parkway crash (KGET 17) — https://www.kget.com/news/crime-watch/new-hearing-date-set-in-deadly-westside-parkway-crash/
+• Buzzard Fire burns on Interstate 5, prompts evacuation warning (KGET 17) — https://www.kget.com/news/local-news/buzzard-fire-burns-on-interstate-5-prompts-evacuation-warning/
+• Total Wine & More to open Sept. 3 in southwest Bakersfield shopping center (KGET 17) — https://www.kget.com/news/local-news/total-wine-more-to-open-sept-3-in-southwest-bakersfield-shopping-center/
+• Bakersfield PD searching for 7 men accused of using stolen credit card at multiple stores (KGET 17) — https://www.kget.com/news/crime-watch/bakersfield-pd-searching-for-7-men-accused-of-using-stolen-credit-card-at-multiple-stores/
+• New ad targets Congressman David Valadao in connection to energy giant PG&E (KGET 17) — https://www.kget.com/news/politics/your-local-elections/new-ad-targets-congressman-david-valadao-in-connection-to-energy-giant-pge/
+• Jacqueline Woodson deeply linked to ‘The Day You Begin’ (KGET 17) — https://www.kget.com/community/ricks-reviews/jacqueline-woodson-deeply-linked-to-the-day-you-begin/
+• Parts of Kern River Parkway bike path to close on Aug. 10 for maintenance (KGET 17) — https://www.kget.com/news/parts-of-kern-river-parkway-bike-path-to-close-on-aug-10-for-maintenance/
+• Officers apprehend man driving recklessly after domestic dispute in Visalia: CHP (KGET 17) — https://www.kget.com/news/crime-watch/officers-apprehend-man-driving-recklessly-after-domestic-dispute-in-visalia-chp/
 
 Headlines link to the original reporting at the outlets named.
 

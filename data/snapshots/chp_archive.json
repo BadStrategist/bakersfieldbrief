@@ -220,6 +220,19 @@
   "details": ""
  },
  {
+<<<<<<< HEAD
+=======
+  "log_id": "260805BF0201",
+  "time": "Aug  5 2026  2:30PM",
+  "type": "JUMPER",
+  "location": "Nb Sr99 At Ming Ave",
+  "area": "Bakersfield",
+  "lat": 35.339989,
+  "lon": -119.037184,
+  "details": ""
+ },
+ {
+>>>>>>> 8a6c1c7 (Grapevine page: red CLOSED tag + typo cleanup of Caltrans text)
   "log_id": "260805BF0066",
   "time": "Aug  5 2026  7:51AM",
   "type": "FIRE-Report of Fire",

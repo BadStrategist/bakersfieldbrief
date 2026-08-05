@@ -22,6 +22,8 @@ _STATUS_COPY = {
     "CLOSED": ("Closed", "big-closed", "The route is reported closed — see the details below."),
 }
 
+_TAG_CLS = {"OPEN": "green", "RESTRICTIONS": "amber", "CLOSED": "red"}
+
 
 def build(ctx, sources: dict) -> list[str]:
     built = []
@@ -63,12 +65,12 @@ def build(ctx, sources: dict) -> list[str]:
             continue
         card_status = r.get("pass_status") if r["slug"] == "i5" else r["status"]
         secs = "".join(f"""
-        <li><span class="tag {'amber' if s['status'] != 'OPEN' else 'green'}">{s['status']}</span>
+        <li><span class="tag {_TAG_CLS.get(s['status'], 'amber')}">{s['status']}</span>
         <strong>{html.escape(s['region'])}:</strong> {html.escape(s['text'])}</li>"""
                        for s in r.get("sections", []))
         cards += f"""
         <div class="card">
-          <span class="tag {'amber' if card_status != 'OPEN' else 'green'}">{card_status}</span>
+          <span class="tag {_TAG_CLS.get(card_status, 'amber')}">{card_status}</span>
           <h3>{html.escape(r['name'])}</h3>
           <ul class="hl">{secs or no_text}</ul>
         </div>"""
@@ -137,8 +139,8 @@ def build(ctx, sources: dict) -> list[str]:
       {log_html}
     </section>
 
-    <p class="note">Conditions are Caltrans&rsquo; own text, shown verbatim (typos included — it is
-    their report, not ours), with the agency&rsquo;s timestamp. Status words are per Caltrans area
+    <p class="note">Conditions are Caltrans&rsquo; text, lightly cleaned for typos and spacing
+    (facts and the agency&rsquo;s timestamp are unchanged). Status words are per Caltrans area
     section; for I-5 the big answer reflects the Tejon Pass (Central) section only. Always confirm
     on the official source before driving.</p>"""
 

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-05T14:35:38-07:00",
+ "built_at": "2026-08-05T14:36:30-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,7 +68,7 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 2,
+   "chp_new": 7,
    "top_story": "New hearing date set in deadly Westside Parkway crash",
    "archive": "2026-08-05"
   },

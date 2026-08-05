@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
  "built_at": "2026-08-05T15:41:19-07:00",
+=======
+ "built_at": "2026-08-05T16:46:51-07:00",
+>>>>>>> 7870a70 (Conditions blocks are now clickable live-source links)
  "sources": {
   "escribe": {
    "ok": true,

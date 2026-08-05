@@ -124,7 +124,7 @@ def _page_content(ctx, today, built_iso, rel, news, weather, chp, isa,
 
     digest_html, digest_meta = _news(news, built_iso)
     ctx.build_report["_digest_meta"] = digest_meta
-    conditions = _conditions(weather, chp, isa, airnow, calfire, built_iso)
+    conditions = _conditions(weather, chp, isa, airnow, calfire, built_iso, rel)
     watch = _one_thing(escribe, board)
 
     cats = _category_grid(rel, escribe, board, abc, food, alpr)
@@ -196,7 +196,7 @@ def _hero_row(top, headlines, today, rel) -> tuple[str, str]:
 
 
 # ---------------------------------------------------------------- conditions
-def _conditions(weather, chp, isa, airnow, calfire, built_iso) -> str:
+def _conditions(weather, chp, isa, airnow, calfire, built_iso, rel="") -> str:
     fc = (weather or {}).get("forecast", {}) or {}
     cur, hi, lo = fc.get("current"), fc.get("high"), fc.get("low")
     if cur is not None and hi is not None:
@@ -227,23 +227,47 @@ def _conditions(weather, chp, isa, airnow, calfire, built_iso) -> str:
     kern_fires = [f for f in calfire.get("incidents", []) if "Kern" in str(f.get("county", ""))]
     if calfire.get("ok"):
         fire_v = f'{len(kern_fires)} in Kern' if kern_fires else '0 in Kern'
-        fire_link = f'<a href="https://www.fire.ca.gov/incidents/" target="_blank" rel="noopener">{fire_v}</a>' if kern_fires else fire_v
     else:
-        fire_v, fire_link = 'Unavailable', 'Unavailable'
+        fire_v = 'Unavailable'
+
+    # every chip links to the live source that updates it (external → new tab)
+    def chip(url: str, inner: str, external: bool = True) -> str:
+        tgt = ' target="_blank" rel="noopener"' if external else ""
+        return f'<a class="cond-chip" href="{url}"{tgt}>{inner}</a>'
+
+    weather_html = chip(
+        "https://forecast.weather.gov/MapClick.php?lat=35.3733&lon=-119.0187",
+        f'<div class="l">Bakersfield weather</div><div class="v">{weather_v}</div>')
+    alert_html = chip(
+        "https://www.weather.gov/hnx/",
+        f'<div class="l">Weather alerts</div><div class="v {"amber" if alerts else ""}">{html.escape(alert_v)}</div>')
+    isa_html = chip(
+        f"{rel}water/",
+        f'<div class="l">Isabella Lake</div><div class="v">{isa_v} <span style="font-size:13px;color:#57504A">({isa_pct}% cap)</span></div>',
+        external=False)
+    chp_html = chip(
+        "https://cad.chp.ca.gov/",
+        f'<div class="l">CHP overnight</div><div class="v">{chp_v}</div>')
+    aqi_html = chip(
+        "https://www.airnow.gov/?city=Bakersfield&state=CA&country=USA",
+        f'<div class="l">Air quality (AQI)</div><div class="v">{aqi_v}</div>')
+    fire_html = chip(
+        "https://www.fire.ca.gov/incidents/",
+        f'<div class="l">Active fires</div><div class="v">{fire_v}</div>')
 
     return f"""
     <section aria-labelledby="h-conditions">
       <p class="sec-head" id="h-conditions">Conditions <span class="unit">weather · reservoir · incidents · air · fires</span></p>
       <div class="cond-strip">
-        <div class="cond-chip"><div class="l">Bakersfield weather</div><div class="v">{weather_v}</div></div>
-        <div class="cond-chip"><div class="l">Weather alerts</div><div class="v {'amber' if alerts else ''}">{html.escape(alert_v)}</div></div>
-        <div class="cond-chip"><div class="l">Isabella Lake</div><div class="v">{isa_v} <span style="font-size:13px;color:#57504A">({isa_pct}% cap)</span></div></div>
-        <div class="cond-chip"><div class="l">CHP overnight</div><div class="v">{chp_v}</div></div>
-        <div class="cond-chip"><div class="l">Air quality (AQI)</div><div class="v">{aqi_v}</div></div>
-        <div class="cond-chip"><div class="l">Active fires</div><div class="v">{fire_link}</div></div>
+        {weather_html}
+        {alert_html}
+        {isa_html}
+        {chp_html}
+        {aqi_html}
+        {fire_html}
       </div>
-      <p class="note" style="margin-top:10px">Alerts: National Weather Service &middot; Reservoir: CA DWR/CDEC &middot; Incidents: CHP &middot;
-      Air: EPA AirNow &middot; Fires: CAL FIRE &middot; Live temps: NWS gridpoint forecast + KBFL airport observation. Data refreshed each build.</p>
+      <p class="note" style="margin-top:10px">Each block links to the live source: National Weather Service &middot; CA DWR/CDEC &middot; CHP &middot;
+      EPA AirNow &middot; CAL FIRE. Data refreshed each build.</p>
     </section>"""
 
 

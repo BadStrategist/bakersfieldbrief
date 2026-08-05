@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
- "built_at": "2026-08-05T16:51:18-07:00",
-=======
- "built_at": "2026-08-05T16:51:35-07:00",
->>>>>>> 7aadf77 (build: regenerate artifacts cleanly (strip rebase markers) [skip ci])
+ "built_at": "2026-08-05T16:52:16-07:00",
  "sources": {
   "escribe": {
    "ok": true,

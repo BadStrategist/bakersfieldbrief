@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-04T21:44:37-07:00",
+ "built_at": "2026-08-04T21:48:11-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -88,11 +88,15 @@
    "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 8,
+    "bakersfield-nw": 9,
     "bakersfield-sw": 10,
     "bakersfield-east": 12,
     "bakersfield-central": 12
    }
+  },
+  "guide": {
+   "picked": 4,
+   "draft": "drafts/weekend-guide-2026-08-04"
   },
   "static": {
    "pages": [

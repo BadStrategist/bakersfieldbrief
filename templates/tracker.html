@@ -1,0 +1,26 @@
+<!-- Tracker page template. Builders fill layout tokens and inline JSON into
+     the script#tracker-data placeholder (see build/builders/trackers.py). -->
+<div class="pagehead">
+  <nav class="breadcrumbs" aria-label="Breadcrumb">
+    <a href="<!--__REL__-->index.html">Daily Brief</a> &rsaquo;
+    <a href="<!--__REL__-->trackers/">Trackers</a> &rsaquo; <!--__TRACKER_NAME__-->
+  </nav>
+  <div class="hero">
+    <p class="kicker">Tracker &middot; data refreshed weekly</p>
+    <h1><!--__TRACKER_NAME__--></h1>
+    <p class="lede"><!--__TRACKER_LEDE__--></p>
+    <div class="meta"><span>Data as of <span class="updated" data-asof></span></span><span class="dot">&bull;</span><span><!--__TRACKER_UPDATE__--></span></div>
+  </div>
+</div>
+
+<div class="stats">
+<!--__STATS__-->
+</div>
+
+<div class="ad-slot" data-ad-slot="tracker-incontent" aria-hidden="true"></div>
+
+<!--__TRACKER_BODY__-->
+
+<div class="note"><strong>How this tracker works:</strong> <!--__TRACKER_METHOD__--></div>
+
+<script type="application/json" id="tracker-data">/*__DATA__*/null</script>

@@ -1,0 +1,48 @@
+name: Weekly Trackers (Mon)
+
+on:
+  schedule:
+    # Mondays ~7:30am PT (14:30 UTC; DST shifts it by an hour — acceptable for
+    # a weekly tracker run; the daily workflow is the exact-time build).
+    - cron: "30 14 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+      AIRNOW_API_KEY: ${{ secrets.AIRNOW_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -q -r requirements.txt
+
+      # Full rebuild: guarantees the ALPR weekly change-log diff appends on
+      # Mondays even if a daily run was missed, and is the natural home for
+      # moving individual source jobs to a self-hosted runner later.
+      - name: Build site
+        run: python build/build_all.py
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

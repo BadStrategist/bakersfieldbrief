@@ -1,0 +1,102 @@
+[
+ {
+  "log_id": "260804BF0199",
+  "time": "Aug  4 2026  1:58PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "18700-18765 Twisselman Rd",
+  "area": "Buttonwillow",
+  "lat": 35.73133,
+  "lon": -119.8126,
+  "details": ""
+ },
+ {
+  "log_id": "260804BF0012",
+  "time": "Aug  4 2026  2:07AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260804BF0209",
+  "time": "Aug  4 2026  2:17PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sr58 E / Fairfax Rd Ofr",
+  "area": "Bakersfield",
+  "lat": 35.352147,
+  "lon": -118.936308,
+  "details": ""
+ },
+ {
+  "log_id": "260804BF0255",
+  "time": "Aug  4 2026  3:18PM",
+  "type": "CFIRE-Car Fire",
+  "location": "Sb Sr99 At 7th Standard Rd",
+  "area": "Bakersfield",
+  "lat": 35.441294,
+  "lon": -119.084247,
+  "details": ""
+ },
+ {
+  "log_id": "260804BF0257",
+  "time": "Aug  4 2026  3:18PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr99 N / Whisler Rd Ofr",
+  "area": "Bakersfield",
+  "lat": 35.642166,
+  "lon": -119.218781,
+  "details": ""
+ },
+ {
+  "log_id": "260804BF0261",
+  "time": "Aug  4 2026  3:22PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Eb Sr58 At S H St",
+  "area": "BF",
+  "lat": 35.352222,
+  "lon": -119.021111,
+  "details": ""
+ },
+ {
+  "log_id": "260804BF0316",
+  "time": "Aug  4 2026  5:00PM",
+  "type": "CFIRE-Car Fire",
+  "location": "SR99 N / SR99 N SR58 CON",
+  "area": "BF",
+  "lat": 35.351389,
+  "lon": -119.039167,
+  "details": ""
+ },
+ {
+  "log_id": "260804BF0317",
+  "time": "Aug  4 2026  5:05PM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 N / Quail Lake Rd",
+  "area": "Newhall",
+  "lat": 34.762346,
+  "lon": -118.797126,
+  "details": ""
+ },
+ {
+  "log_id": "260804BF0335",
+  "time": "Aug  4 2026  5:10PM",
+  "type": "FIRE-Report of Fire",
+  "location": "0 I5 N",
+  "area": "Buttonwillow",
+  "lat": 35.358779,
+  "lon": -119.341119,
+  "details": ""
+ },
+ {
+  "log_id": "260804BF0021",
+  "time": "Aug  4 2026  5:24AM",
+  "type": "ESCORT for Road Conditions",
+  "location": "Sr119 / I5 N Sr119 Con",
+  "area": "Buttonwillow",
+  "lat": 35.267089,
+  "lon": -119.221851,
+  "details": ""
+ }
+]

@@ -1,0 +1,76 @@
+/* DeFlock-style dark map + overlay panel for the Flock & ALPR tracker */
+
+.mapwrap.deflock { position: relative; background: #14171A; border: 1px solid #2A2F33; border-radius: var(--radius); overflow: hidden; }
+.mapwrap.deflock #alpr-map { height: 66vh; min-height: 460px; width: 100%; background: #14171A; }
+@media (max-width: 700px) { .mapwrap.deflock #alpr-map { height: 52vh; min-height: 380px; } }
+
+.map-overlay {
+  position: absolute; top: 14px; right: 14px;
+  width: min(330px, calc(100% - 28px));
+  max-height: calc(100% - 28px); overflow: auto;
+  background: rgba(16, 19, 21, .94); color: #E8E2D0;
+  border: 1px solid #33393E; border-radius: 10px;
+  padding: 14px 16px; z-index: 900;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, .5);
+}
+.map-overlay h3 {
+  font-family: var(--display); text-transform: uppercase; letter-spacing: .08em;
+  font-size: 16px; color: var(--amber-soft); margin: 0 0 10px;
+}
+.map-overlay h3 span { color: #9AA5A0; font-weight: 500; }
+.ov-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 10px; }
+.ov-stats div { background: #1D2226; border: 1px solid #2E353A; border-radius: 6px; padding: 7px 8px; text-align: center; font-size: 11px; color: #9AA5A0; }
+.ov-stats .n { display: block; font-family: var(--mono); font-weight: 600; font-size: 19px; color: #fff; }
+.ov-btn {
+  width: 100%; background: var(--amber); color: #14171A; border: 0; border-radius: 6px;
+  padding: 9px 10px; font-family: var(--display); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .06em; font-size: 14px; cursor: pointer;
+}
+.ov-btn:hover { background: var(--amber-soft); }
+.ov-btn.on { background: var(--amber-soft); }
+.ov-note { font-size: 12.5px; color: #9AA5A0; margin: 8px 0 0; }
+.map-overlay h4 {
+  font-family: var(--display); text-transform: uppercase; letter-spacing: .1em;
+  font-size: 12.5px; color: var(--amber-soft); margin: 12px 0 6px;
+  border-top: 1px solid #2E353A; padding-top: 10px;
+}
+.ov-list { list-style: none; margin: 0; padding: 0; }
+.ov-list li { padding: 5px 0; border-bottom: 1px dashed #2E353A; font-size: 13px; }
+.ov-list li:last-child { border-bottom: 0; }
+.ov-list a { color: #fff; font-weight: 600; text-decoration: none; }
+.ov-list a:hover { color: var(--amber-soft); }
+.ov-meta { display: block; color: #9AA5A0; font-size: 12px; }
+
+.cam-dot { border-radius: 50%; }
+.cam-dot.flock { background: var(--amber); border: 2px solid #fff; box-shadow: 0 0 6px rgba(220, 154, 31, .8); }
+.cam-dot.other { background: #8FA099; border: 2px solid #fff; }
+.cam-dot.new { outline: 3px solid rgba(243, 199, 110, .75); outline-offset: 1px; }
+
+.cluster-dot {
+  background: var(--amber); color: #14171A; border: 3px solid #fff; border-radius: 50%;
+  display: grid; place-items: center; font-family: var(--display); font-weight: 700;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, .5);
+}
+
+.map-legend { border-top: 1px solid #2E353A; margin-top: 10px; padding-top: 8px; font-size: 11.5px; color: #9AA5A0; display: flex; flex-wrap: wrap; gap: 6px 12px; }
+.map-legend .sw { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; vertical-align: -1px; }
+.map-legend .sw.ring { outline: 2px solid rgba(243, 199, 110, .8); outline-offset: 1px; background: var(--amber); }
+
+.leaflet-popup-content-wrapper { background: #1D2226; color: #E8E2D0; border-radius: 8px; }
+.leaflet-popup-tip { background: #1D2226; }
+.leaflet-popup-content a { color: var(--amber-soft); }
+.leaflet-container { background: #14171A; }
+
+/* newest list below the map */
+.newest-list { list-style: none; margin: 0; padding: 0; }
+.newest-list li { padding: 8px 0; border-bottom: 1px dashed var(--line); min-width: 0; }
+.newest-list li:last-child { border-bottom: 0; }
+.newest-list .n-date { font-family: var(--mono); font-size: 13px; color: var(--sign-deep); font-weight: 600; display: block; }
+.newest-list .n-meta { font-size: 13.5px; color: var(--ink-soft); }
+.newest-list a { color: var(--sign); }
+
+table.data td.num.hot { color: #8a5d0a; font-weight: 700; }
+
+@media (max-width: 700px) {
+  .map-overlay { position: static; width: 100%; max-height: none; border-radius: 0 0 8px 8px; margin-top: -4px; }
+}

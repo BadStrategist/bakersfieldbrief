@@ -1,0 +1,57 @@
+name: Daily Brief (6am PT)
+
+on:
+  schedule:
+    # Run at 13:00 and 14:00 UTC so the 6am-Pacific gate below hits 6:00 PT
+    # year-round regardless of daylight saving. The second run exits early.
+    - cron: "0 13 * * *"
+    - cron: "0 14 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+      AIRNOW_API_KEY: ${{ secrets.AIRNOW_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Gate to 6am Pacific
+        id: gate
+        run: |
+          H=$(python -c "from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('America/Los_Angeles')).hour)")
+          echo "hour=$H" >> "$GITHUB_OUTPUT"
+          echo "Pacific hour is $H (build runs when == 6)"
+
+      - name: Install dependencies
+        if: steps.gate.outputs.hour == '6'
+        run: pip install -q -r requirements.txt
+
+      - name: Build site (fetch sources → bake static HTML)
+        if: steps.gate.outputs.hour == '6'
+        run: python build/build_all.py
+
+      - name: Upload Pages artifact
+        if: steps.gate.outputs.hour == '6'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        if: steps.gate.outputs.hour == '6'
+        id: deployment
+        uses: actions/deploy-pages@v4

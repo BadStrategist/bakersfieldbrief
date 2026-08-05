@@ -1,0 +1,54 @@
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/barlow-condensed-500-vietnamese.woff2') format('woff2');}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/barlow-condensed-500-latin-ext.woff2') format('woff2');}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/barlow-condensed-500-latin.woff2') format('woff2');}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/barlow-condensed-600-vietnamese.woff2') format('woff2');}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/barlow-condensed-600-latin-ext.woff2') format('woff2');}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/barlow-condensed-600-latin.woff2') format('woff2');}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/barlow-condensed-700-vietnamese.woff2') format('woff2');}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/barlow-condensed-700-latin-ext.woff2') format('woff2');}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/barlow-condensed-700-latin.woff2') format('woff2');}
+@font-face{font-family:'Public Sans';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/public-sans-400-vietnamese.woff2') format('woff2');}
+@font-face{font-family:'Public Sans';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/public-sans-400-latin-ext.woff2') format('woff2');}
+@font-face{font-family:'Public Sans';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/public-sans-400-latin.woff2') format('woff2');}
+@font-face{font-family:'Public Sans';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/public-sans-500-vietnamese.woff2') format('woff2');}
+@font-face{font-family:'Public Sans';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/public-sans-500-latin-ext.woff2') format('woff2');}
+@font-face{font-family:'Public Sans';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/public-sans-500-latin.woff2') format('woff2');}
+@font-face{font-family:'Public Sans';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/public-sans-700-vietnamese.woff2') format('woff2');}
+@font-face{font-family:'Public Sans';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/public-sans-700-latin-ext.woff2') format('woff2');}
+@font-face{font-family:'Public Sans';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/public-sans-700-latin.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/plex-mono-400-cyrillic-ext.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/plex-mono-400-cyrillic.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/plex-mono-400-vietnamese.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/plex-mono-400-latin-ext.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/plex-mono-400-latin.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/plex-mono-500-cyrillic-ext.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/plex-mono-500-cyrillic.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/plex-mono-500-vietnamese.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/plex-mono-500-latin-ext.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/plex-mono-500-latin.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/plex-mono-600-cyrillic-ext.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/plex-mono-600-cyrillic.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/plex-mono-600-vietnamese.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/plex-mono-600-latin-ext.woff2') format('woff2');}
+@font-face{font-family:'IBM Plex Mono';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/plex-mono-600-latin.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/lora-500-cyrillic-ext.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/lora-500-cyrillic.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/lora-500-math.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/lora-500-symbols.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/lora-500-vietnamese.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/lora-500-latin-ext.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/lora-500-latin.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/lora-600-cyrillic-ext.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/lora-600-cyrillic.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/lora-600-math.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/lora-600-symbols.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/lora-600-vietnamese.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/lora-600-latin-ext.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/lora-600-latin.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/lora-700-cyrillic-ext.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/lora-700-cyrillic.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/lora-700-math.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/lora-700-symbols.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/lora-700-vietnamese.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/lora-700-latin-ext.woff2') format('woff2');}
+@font-face{font-family:'Lora';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/lora-700-latin.woff2') format('woff2');}

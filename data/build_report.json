@@ -1,0 +1,110 @@
+{
+ "built_at": "2026-08-04T17:24:47-07:00",
+ "sources": {
+  "escribe": {
+   "ok": true,
+   "error": ""
+  },
+  "kern_board": {
+   "ok": true,
+   "error": ""
+  },
+  "abc": {
+   "ok": true,
+   "error": ""
+  },
+  "news_rss": {
+   "ok": true,
+   "error": ""
+  },
+  "gnews": {
+   "ok": true,
+   "error": ""
+  },
+  "weather": {
+   "ok": true,
+   "error": ""
+  },
+  "airnow": {
+   "ok": true,
+   "error": ""
+  },
+  "chp": {
+   "ok": true,
+   "error": ""
+  },
+  "isabella": {
+   "ok": true,
+   "error": ""
+  },
+  "food": {
+   "ok": true,
+   "error": ""
+  },
+  "alpr": {
+   "ok": true,
+   "error": ""
+  },
+  "blocked": {
+   "ok": false,
+   "error": "stubbed sources (blocked or not built) \u2014 see data/sources/blocked.py"
+  }
+ },
+ "section": {
+  "_digest_meta": "deterministic",
+  "daily": {
+   "news_headlines": 50,
+   "news_digest": "deterministic",
+   "alerts": 1,
+   "chp_new": 0,
+   "top_story": "Man with sword prompts officer-involved shooting in Rosamond: KCSO",
+   "archive": "2026-08-04"
+  },
+  "cityhall": {
+   "upcoming_meetings": 7,
+   "county_items": 116,
+   "drafts_generated": 0
+  },
+  "openings": {
+   "liquor_apps": 0,
+   "food_closures": 9
+  },
+  "places": {
+   "places": [
+    "tehachapi",
+    "bakersfield-nw",
+    "bakersfield-sw",
+    "bakersfield-east",
+    "bakersfield-central"
+   ],
+   "tehachapi_forecast": true,
+   "gnews_per_place": {
+    "tehachapi": 12,
+    "bakersfield-nw": 11,
+    "bakersfield-sw": 9,
+    "bakersfield-east": 12,
+    "bakersfield-central": 12
+   }
+  },
+  "static": {
+   "pages": [
+    "about/index.html",
+    "privacy/index.html",
+    "contact/index.html",
+    "work-money/index.html",
+    "sunday-read/index.html",
+    "404.html",
+    "ads.txt"
+   ]
+  },
+  "trackers": {
+   "alpr_total": 247,
+   "alpr_new_week": 0,
+   "pages": [
+    "surveillance",
+    "water",
+    "trackers"
+   ]
+  }
+ }
+}

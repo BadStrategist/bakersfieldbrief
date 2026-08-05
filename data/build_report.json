@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
- "built_at": "2026-08-05T14:24:38-07:00",
-=======
- "built_at": "2026-08-05T14:34:37-07:00",
->>>>>>> 8a6c1c7 (Grapevine page: red CLOSED tag + typo cleanup of Caltrans text)
+ "built_at": "2026-08-05T14:35:38-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -72,13 +68,8 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-<<<<<<< HEAD
-   "chp_new": 1,
-   "top_story": "Buzzard Fire burns on Interstate 5, prompts evacuation warning",
-=======
    "chp_new": 2,
    "top_story": "New hearing date set in deadly Westside Parkway crash",
->>>>>>> 8a6c1c7 (Grapevine page: red CLOSED tag + typo cleanup of Caltrans text)
    "archive": "2026-08-05"
   },
   "cityhall": {
@@ -114,11 +105,7 @@
   "grapevine": {
    "i5": "CLOSED",
    "i5_pass": "RESTRICTIONS",
-<<<<<<< HEAD
-   "log_entries": 2
-=======
    "log_entries": 3
->>>>>>> 8a6c1c7 (Grapevine page: red CLOSED tag + typo cleanup of Caltrans text)
   },
   "static": {
    "pages": [

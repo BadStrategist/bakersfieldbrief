@@ -50,6 +50,36 @@
   "details": ""
  },
  {
+  "log_id": "260805BF0203",
+  "time": "Aug  5 2026  2:38PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Airport Dr / W Day Ave",
+  "area": "Bakersfield",
+  "lat": 35.434078,
+  "lon": -119.039006,
+  "details": ""
+ },
+ {
+  "log_id": "260805BF0212",
+  "time": "Aug  5 2026  2:49PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 At Sr58",
+  "area": "Buttonwillow",
+  "lat": 35.398611,
+  "lon": -119.396944,
+  "details": ""
+ },
+ {
+  "log_id": "260805BF0226",
+  "time": "Aug  5 2026  3:29PM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 S / Hageman Rd",
+  "area": "Buttonwillow",
+  "lat": 35.398884,
+  "lon": -119.397587,
+  "details": ""
+ },
+ {
   "log_id": "260805BF0066",
   "time": "Aug  5 2026  7:51AM",
   "type": "FIRE-Report of Fire",

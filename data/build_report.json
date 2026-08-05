@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
  "built_at": "2026-08-05T16:47:56-07:00",
+=======
+ "built_at": "2026-08-05T16:50:24-07:00",
+>>>>>>> 5b1b9e7 (fix(calfire): case-tolerant key lookup — fires chip was always 0 in Kern)
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,7 +72,11 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
+<<<<<<< HEAD
    "chp_new": 0,
+=======
+   "chp_new": 2,
+>>>>>>> 5b1b9e7 (fix(calfire): case-tolerant key lookup — fires chip was always 0 in Kern)
    "top_story": "New hearing date set in deadly Westside Parkway crash",
    "archive": "2026-08-05"
   },

@@ -15,19 +15,29 @@ from .. import common
 URL = "https://www.fire.ca.gov/umbraco/api/IncidentApi/List?inactive=false"
 
 
+def _g(item: dict, *names):
+    """Case-tolerant key lookup — the API uses 'County', 'Name', …; be safe."""
+    for n in names:
+        v = item.get(n)
+        if v not in (None, ""):
+            return v
+    return ""
+
+
 def run(ctx):
     try:
         r = common.fetch(URL, timeout=30)
         data = r.json() if isinstance(r.json(), list) else []
         incidents = []
         for i in data:
-            county = str(i.get("county") or "")
+            county = str(_g(i, "County", "county") or "")
             incidents.append({
-                "name": i.get("name") or "Unnamed incident",
+                "name": _g(i, "Name", "name") or "Unnamed incident",
                 "county": county,
-                "acres": i.get("acresBurned"),
-                "contained": i.get("percentContained"),
-                "url": i.get("url") or f"https://www.fire.ca.gov/incidents/{i.get('slug') or ''}",
+                "acres": _g(i, "acresBurned", "AcresBurned", "Acres"),
+                "contained": _g(i, "percentContained", "PercentContained", "Containment"),
+                "url": _g(i, "url", "Url", "URL")
+                       or f"https://www.fire.ca.gov/incidents/{_g(i, 'slug', 'Slug') or ''}",
             })
         kern = [i for i in incidents if "Kern" in i["county"]]
         return {"ok": True, "incidents": incidents, "kern": kern,

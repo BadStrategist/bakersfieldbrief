@@ -80,6 +80,26 @@
   "details": ""
  },
  {
+  "log_id": "260805BF0263",
+  "time": "Aug  5 2026  4:26PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Nb I5 Jso Gorman School Rd",
+  "area": "Fort Tejon",
+  "lat": 34.79456,
+  "lon": -118.847656,
+  "details": ""
+ },
+ {
+  "log_id": "260805BF0269",
+  "time": "Aug  5 2026  4:48PM",
+  "type": "1013-Road/Weather Conditions",
+  "location": "1033 Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.825534,
+  "lon": -118.87775,
+  "details": ""
+ },
+ {
   "log_id": "260805BF0066",
   "time": "Aug  5 2026  7:51AM",
   "type": "FIRE-Report of Fire",

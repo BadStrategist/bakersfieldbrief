@@ -158,5 +158,75 @@
   "lat": 35.20704,
   "lon": -119.160898,
   "details": ""
+ },
+ {
+  "log_id": "260805BF0155",
+  "time": "Aug  5 2026  1:03PM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 I5 S",
+  "area": "Fort Tejon",
+  "lat": 34.796533,
+  "lon": -118.865433,
+  "details": ""
+ },
+ {
+  "log_id": "260805BF0166",
+  "time": "Aug  5 2026  1:30PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "NB I5 JSO Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.9375,
+  "lon": -118.928611,
+  "details": ""
+ },
+ {
+  "log_id": "260805BF0174",
+  "time": "Aug  5 2026  1:37PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr178 At Walker Pass",
+  "area": "Bakersfield",
+  "lat": 35.662834,
+  "lon": -118.026719,
+  "details": ""
+ },
+ {
+  "log_id": "260805BF0182",
+  "time": "Aug  5 2026  1:56PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr99 N / Panama Ln Onr",
+  "area": "Bakersfield",
+  "lat": 35.299456,
+  "lon": -119.031269,
+  "details": ""
+ },
+ {
+  "log_id": "260805BF0187",
+  "time": "Aug  5 2026  2:05PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr58 E / Coffee Rd",
+  "area": "Bakersfield",
+  "lat": 35.366776,
+  "lon": -119.092152,
+  "details": ""
+ },
+ {
+  "log_id": "260805BF0066",
+  "time": "Aug  5 2026  7:51AM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sb I5 Jso #4 Turn Thru",
+  "area": "Fort Tejon",
+  "lat": 34.914069,
+  "lon": -118.92362,
+  "details": ""
+ },
+ {
+  "log_id": "260805BF0007",
+  "time": "Aug  5 2026 12:38AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
  }
 ]

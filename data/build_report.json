@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-04T21:48:11-07:00",
+ "built_at": "2026-08-05T14:12:31-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -53,6 +53,10 @@
    "ok": true,
    "error": ""
   },
+  "roads": {
+   "ok": true,
+   "error": ""
+  },
   "blocked": {
    "ok": false,
    "error": "stubbed sources (blocked or not built) \u2014 see data/sources/blocked.py"
@@ -64,17 +68,17 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 0,
-   "top_story": "Man with sword prompts officer-involved shooting in Rosamond: KCSO",
-   "archive": "2026-08-04"
+   "chp_new": 7,
+   "top_story": "Buzzard Fire burns on Interstate 5, prompts evacuation warning",
+   "archive": "2026-08-05"
   },
   "cityhall": {
-   "upcoming_meetings": 7,
+   "upcoming_meetings": 6,
    "county_items": 116,
    "drafts_generated": 0
   },
   "openings": {
-   "liquor_apps": 0,
+   "liquor_apps": 1,
    "food_closures": 9
   },
   "places": {
@@ -85,18 +89,19 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 9,
-    "bakersfield-sw": 10,
+    "bakersfield-nw": 8,
+    "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
    }
   },
-  "guide": {
-   "picked": 4,
-   "draft": "drafts/weekend-guide-2026-08-04"
+  "grapevine": {
+   "i5": "CLOSED",
+   "i5_pass": "RESTRICTIONS",
+   "log_entries": 0
   },
   "static": {
    "pages": [

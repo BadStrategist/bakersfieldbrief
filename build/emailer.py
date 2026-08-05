@@ -18,8 +18,8 @@ from datetime import datetime
 
 from . import common
 
-GREEN = "#14603F"
-DEEP = "#0E4A31"
+GREEN = "#232B30"
+DEEP = "#1A2126"
 AMBER = "#DC9A1F"
 INK = "#20262C"
 PAPER = "#F5F7F6"

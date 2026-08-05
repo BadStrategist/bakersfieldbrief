@@ -51,13 +51,13 @@ def svg_line_chart(points: list[float], *, width: int = 860, height: int = 200,
     ys = [height - pad - (v - mn) * (height - 2 * pad) / span for v in points]
     path = " ".join(f"L{x:.1f},{y:.1f}" for x, y in zip(xs[1:], ys[1:]))
     area = f"M{xs[0]:.1f},{height - pad} L{xs[0]:.1f},{ys[0]:.1f} {path} L{xs[-1]:.1f},{height - pad} Z"
-    pts = "".join(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="2.6" fill="#0E4A31"/>'
+    pts = "".join(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="2.6" fill="#1A2126"/>'
                   for x, y in zip(xs, ys))
     last_label = f'<text x="{xs[-1]:.1f}" y="{ys[-1] - 8:.1f}" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="12" fill="#4A545C">{points[-1]:,.0f}</text>'
     first_label = f'<text x="{xs[0]:.1f}" y="{ys[0] + 14:.1f}" text-anchor="start" font-family="IBM Plex Mono, monospace" font-size="12" fill="#4A545C">{points[0]:,.0f}</text>'
     return f"""<svg viewBox="0 0 {width} {height}" role="img" aria-label="30-day trend chart">
       <path d="{area}" fill="#DC9A1F" opacity="0.18"/>
-      <path d="M{xs[0]:.1f},{ys[0]:.1f} {path}" fill="none" stroke="#14603F" stroke-width="2.5" stroke-linejoin="round"/>
+      <path d="M{xs[0]:.1f},{ys[0]:.1f} {path}" fill="none" stroke="#232B30" stroke-width="2.5" stroke-linejoin="round"/>
       {pts}{first_label}{last_label}
     </svg>"""
 

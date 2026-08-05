@@ -1,14 +1,14 @@
 /* ============================================================
    Bakersfield Daily Brief — highway guide-sign design system
-   Sign green #14603F · deep #0E4A31 · roadwork amber #DC9A1F
-   asphalt ink #20262C · paper #F5F7F6
+   Sign charcoal #232B30 · deep #1A2126 · roadwork amber #DC9A1F
+   asphalt ink #20262C · paper #FAF6EC
    Type: Barlow Condensed (display) · Public Sans (body) · IBM Plex Mono (data)
    ============================================================ */
 
 :root {
-  --sign: #14603F;
-  --sign-deep: #0E4A31;
-  --sign-dark: #0A3825;
+  --sign: #232B30;
+  --sign-deep: #1A2126;
+  --sign-dark: #14191D;
   --amber: #DC9A1F;
   --amber-soft: #F3C76E;
   --red: #B3472F;
@@ -53,7 +53,7 @@ a:hover { color: var(--sign-deep); }
 .container { max-width: 1080px; margin: 0 auto; padding: 0 20px; width: 100%; }
 
 /* ------------------------------------------------ status bar (Tucson-style) */
-.statusbar { background: var(--sign-deep); color: #EAF2EC; font-size: 13.5px; }
+.statusbar { background: var(--sign-deep); color: #F1F3F4; font-size: 13.5px; }
 .statusbar-inner {
   display: flex; justify-content: space-between; align-items: center;
   gap: 12px; flex-wrap: wrap; padding: 7px 20px; min-height: 32px;
@@ -84,16 +84,11 @@ a:hover { color: var(--sign-deep); }
 .route-shield {
   flex: 0 0 auto;
   width: 46px; height: 46px;
-  background: #fff;
-  border: 3.5px solid #111;
+  background: #232B30;
   border-radius: 50%;
   display: grid;
   place-items: center;
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 19px;
-  color: #111;
-  box-shadow: 0 1px 0 rgba(0,0,0,.25);
+  box-shadow: 0 2px 5px rgba(16, 48, 37, .28), inset 0 0 0 1px rgba(255, 255, 255, .14);
 }
 .mast-title {
   font-family: var(--serif); font-weight: 700;
@@ -267,7 +262,7 @@ a.card:hover .card-go::after { transform: translateX(4px); }
 }
 .card .tag.amber { background: #FBEED2; color: #8a5d0a; }
 .card .tag.red { background: #FBE3DE; color: #9c3a1d; }
-.card .tag.green { background: #DFF0E6; color: #0E4A31; }
+.card .tag.green { background: #E7E9EA; color: #232B30; }
 
 /* ------------------------------------------------ data lists */
 .dl { list-style: none; margin: 0; padding: 0; }

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-05T14:12:31-07:00",
+ "built_at": "2026-08-05T14:24:38-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,7 +68,7 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 7,
+   "chp_new": 1,
    "top_story": "Buzzard Fire burns on Interstate 5, prompts evacuation warning",
    "archive": "2026-08-05"
   },
@@ -98,10 +98,14 @@
     "bakersfield-central": 12
    }
   },
+  "guide": {
+   "picked": 4,
+   "draft": "drafts/weekend-guide-2026-08-05"
+  },
   "grapevine": {
    "i5": "CLOSED",
    "i5_pass": "RESTRICTIONS",
-   "log_entries": 0
+   "log_entries": 2
   },
   "static": {
    "pages": [

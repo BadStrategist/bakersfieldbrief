@@ -172,7 +172,7 @@
  {
   "log_id": "260805BF0166",
   "time": "Aug  5 2026  1:30PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
+  "type": "1182-Trfc Collision-No Inj",
   "location": "NB I5 JSO Grapevine Rd",
   "area": "Fort Tejon",
   "lat": 34.9375,
@@ -207,6 +207,16 @@
   "area": "Bakersfield",
   "lat": 35.366776,
   "lon": -119.092152,
+  "details": ""
+ },
+ {
+  "log_id": "260805BF0192",
+  "time": "Aug  5 2026  2:18PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Wb Sr58 Jwo Comanche Dr",
+  "area": "Bakersfield",
+  "lat": 35.339722,
+  "lon": -118.848889,
   "details": ""
  },
  {

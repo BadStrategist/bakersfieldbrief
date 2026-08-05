@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
- "built_at": "2026-08-05T15:41:19-07:00",
-=======
- "built_at": "2026-08-05T16:46:51-07:00",
->>>>>>> 7870a70 (Conditions blocks are now clickable live-source links)
+ "built_at": "2026-08-05T16:47:56-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -38,8 +34,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 910, column 2"
   },
   "isabella": {
    "ok": true,
@@ -72,7 +68,7 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 3,
+   "chp_new": 0,
    "top_story": "New hearing date set in deadly Westside Parkway crash",
    "archive": "2026-08-05"
   },
@@ -97,7 +93,7 @@
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 8,
-    "bakersfield-sw": 12,
+    "bakersfield-sw": 11,
     "bakersfield-east": 12,
     "bakersfield-central": 12
    }

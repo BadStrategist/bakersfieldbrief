@@ -428,6 +428,23 @@ table.data td.num, table.data th.num { font-family: var(--mono); text-align: rig
 .aqi-vunh { color: #6D28D9; font-weight: 700; }
 .aqi-haz  { color: #9F1239; font-weight: 700; }
 
+/* ---- big status (Grapevine page) ---- */
+.big-status {
+  border: 2px solid var(--line); border-radius: var(--radius);
+  padding: 22px 26px; margin: 10px 0 18px; background: var(--card);
+}
+.big-status .big-label { font-family: var(--display); text-transform: uppercase;
+  letter-spacing: .12em; font-size: 13px; color: var(--ink-soft); margin: 0 0 6px; }
+.big-status .big-word { font-family: var(--display); font-size: 52px; line-height: 1;
+  font-weight: 700; margin: 0 0 8px; }
+.big-status .big-note { margin: 0; color: var(--ink-soft); }
+.big-open .big-word { color: #1E7A46; }
+.big-restrict .big-word { color: var(--amber-deep, #B45309); }
+.big-closed .big-word { color: #B91C1C; }
+.big-open { border-color: #1E7A46; }
+.big-restrict { border-color: var(--amber); }
+.big-closed { border-color: #B91C1C; background: #FDF3F2; }
+
 /* ------------------------------------------------ homepage: editorial brief */
 .today-label {
   display: inline-flex; align-items: center; gap: 8px;

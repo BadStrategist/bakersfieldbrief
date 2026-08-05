@@ -670,6 +670,33 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
         built=built_iso, jsonld=[page_mod.org_jsonld()],
         statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else ""))
     built.append("briefs/index.html")
+
+    # past-day archive pages: site/ is wiped each build, so re-render the
+    # lightweight headline pages from the committed archive metadata
+    past_rel = "../../"
+    for e in entries:
+        dstr = str(e.get("date", ""))
+        if dstr == built_iso:
+            continue
+        try:
+            d = dt.date.fromisoformat(dstr)
+        except ValueError:
+            continue
+        past_body = f"""
+        <div class="pagehead"><div class="hero"><p class="kicker">Archive</p>
+        <h1>Brief for {_fmt_date(d)}</h1>
+        <p class="lede">The headline that led the Bakersfield Daily Brief that morning.</p></div></div>
+        <div class="card"><p>Headline: <strong>{html.escape(str(e.get('headline', 'Daily brief')))}</strong></p>
+        <p class="note" style="margin-top:8px">Full brief content from this date is not retained;
+        see <a href="{past_rel}index.html">today&rsquo;s brief</a> or the
+        <a href="{past_rel}briefs/">archive index</a>.</p></div>"""
+        common.write(common.SITE / "briefs" / dstr / "index.html", page_mod.render(
+            title=f"Bakersfield Daily Brief — {_fmt_date(d)} (archive)",
+            desc=f"Archived headline from the {_fmt_date(d)} Bakersfield Daily Brief.",
+            canonical=f"/briefs/{dstr}/", content=past_body, current="index", rel=past_rel,
+            built=built_iso, jsonld=[page_mod.org_jsonld()],
+            statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else ""))
+        built.append(f"briefs/{dstr}/index.html")
     return built
 
 

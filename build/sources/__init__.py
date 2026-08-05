@@ -3,7 +3,7 @@ that returns {"ok": bool, ...} and NEVER raises. build_all.py wraps each in
 its own try/except so one broken source can't stop the site.
 """
 from . import (escribe, kern_board, abc, news_rss, weather, chp, isabella, food,
-               alpr, gnews, airnow, calfire, venues, blocked)
+               alpr, gnews, airnow, calfire, venues, roads, blocked)
 
 # name -> module. Order matters only for the build report.
 SOURCES = {
@@ -20,6 +20,7 @@ SOURCES = {
     "food": food,              # Kern EH closed food facilities
     "alpr": alpr,              # ALPR cameras (Overpass/OSM)
     "venues": venues,          # Weekend Guide venue whitelist (--guide only)
+    "roads": roads,            # Caltrans highway conditions (I-5 Grapevine, 58, 99)
     # Blocked sources (datacenter IPs / not yet built) — leave stubs:
     "blocked": blocked,
 }

@@ -1,0 +1,67 @@
+name: Grapevine Conditions (3x daily)
+
+on:
+  schedule:
+    # Three times daily, year-round: 6am / 1pm / 7pm Pacific (13, 20, 2 UTC).
+    # DST shifts the exact minute by an hour twice a year — acceptable for a
+    # highway-conditions page (the timestamp shown is Caltrans', not ours).
+    - cron: "0 13,20,2 * * *"
+    # SEASONAL — hourly, November through March (snow season on Tejon Pass).
+    # To enable, uncomment the line below (and optionally comment the 3x-daily
+    # line above; the two overlap harmlessly if both are active, at the cost
+    # of ~24 extra 2-minute runs/day ≈ 1,500 Actions minutes/month — still
+    # inside the 2,000-min free tier with the other workflows, but tight).
+    # - cron: "0 * 1-31 11-3 *"   # hourly, Nov–Mar (UTC hour 0-23)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+      AIRNOW_API_KEY: ${{ secrets.AIRNOW_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -q -r requirements.txt
+
+      - name: Build site (incl. Caltrans road conditions)
+        run: python build/build_all.py
+
+      - name: Commit generated artifacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add email drafts data
+          if ! git diff --cached --quiet; then
+            git commit -m "build: $(date -u +%Y-%m-%d) road conditions [skip ci]"
+            for i in 1 2 3; do
+              git pull --rebase origin main --autostash && git push && break
+              echo "push retry $i"; sleep 5
+            done
+          else
+            echo "no artifact changes"
+          fi
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

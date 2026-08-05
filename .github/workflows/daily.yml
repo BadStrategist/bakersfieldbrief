@@ -55,7 +55,11 @@ jobs:
           git add email drafts data
           if ! git diff --cached --quiet; then
             git commit -m "build: $(date -u +%Y-%m-%d) artifacts [skip ci]"
-            git push
+            # concurrent workflows can race the push — rebase and retry
+            for i in 1 2 3; do
+              git pull --rebase origin main --autostash && git push && break
+              echo "push retry $i"; sleep 5
+            done
           else
             echo "no artifact changes"
           fi

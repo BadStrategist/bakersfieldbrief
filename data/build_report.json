@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-06T11:15:48-07:00",
+ "built_at": "2026-08-06T16:40:20-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,13 +68,13 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 0,
-   "top_story": "Oil profits hit record high as Iran war churns  cash flow",
+   "chp_new": 1,
+   "top_story": "Kern County Public Health confirms first cases of measles",
    "archive": "2026-08-06"
   },
   "cityhall": {
    "upcoming_meetings": 4,
-   "county_items": 116,
+   "county_items": 101,
    "drafts_generated": 0
   },
   "openings": {
@@ -92,8 +92,8 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 8,
-    "bakersfield-sw": 11,
+    "bakersfield-nw": 6,
+    "bakersfield-sw": 9,
     "bakersfield-east": 12,
     "bakersfield-central": 12
    }
@@ -105,7 +105,7 @@
   "grapevine": {
    "i5": "OPEN",
    "i5_pass": "OPEN",
-   "log_entries": 6
+   "log_entries": 7
   },
   "events": {
    "groups": {
@@ -123,8 +123,8 @@
    "isabella_af": 213348,
    "alpr_total": 247,
    "kern_fires": 2,
-   "aqi": 61,
-   "chp_week": 9
+   "aqi": 133,
+   "chp_week": 10
   },
   "letters": {
    "published": 0

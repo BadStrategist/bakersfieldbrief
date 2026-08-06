@@ -20,6 +20,16 @@
   "details": ""
  },
  {
+  "log_id": "260806BF0281",
+  "time": "Aug  6 2026  4:25PM",
+  "type": "1125-Traffic Hazard",
+  "location": "5610 Lake Isabella Blvd",
+  "area": "Bakersfield",
+  "lat": 35.618788,
+  "lon": -118.477094,
+  "details": ""
+ },
+ {
   "log_id": "260806BF0051",
   "time": "Aug  6 2026  6:00AM",
   "type": "MZP-Assist CT with Maintenance",

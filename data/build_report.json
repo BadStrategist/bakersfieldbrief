@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-06T06:24:23-07:00",
+ "built_at": "2026-08-06T06:46:06-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,7 +68,7 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 3,
+   "chp_new": 0,
    "top_story": "New hearing date set in deadly Westside Parkway crash",
    "archive": "2026-08-06"
   },
@@ -92,8 +92,8 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 8,
-    "bakersfield-sw": 12,
+    "bakersfield-nw": 9,
+    "bakersfield-sw": 11,
     "bakersfield-east": 12,
     "bakersfield-central": 12
    }

@@ -57,8 +57,9 @@ jobs:
             git commit -m "build: $(date -u +%Y-%m-%d) artifacts [skip ci]"
             # concurrent workflows can race the push — rebase and retry
             for i in 1 2 3; do
-              git pull --rebase origin main --autostash && git push && break
-              echo "push retry $i"; sleep 5
+              git rebase --abort 2>/dev/null
+              if git pull --rebase origin main --autostash && git push; then break; fi
+              echo "push retry $i"; sleep 8
             done
           else
             echo "no artifact changes"

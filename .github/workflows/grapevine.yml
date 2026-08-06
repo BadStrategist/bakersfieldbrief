@@ -51,7 +51,14 @@ jobs:
             git commit -m "build: $(date -u +%Y-%m-%d) road conditions [skip ci]"
             for i in 1 2 3; do
               git rebase --abort 2>/dev/null
-              if git pull --rebase origin main --autostash && git push; then break; fi
+              if git pull --rebase origin main --autostash; then
+                git push && break
+              else
+                git checkout --ours -- data email drafts 2>/dev/null || true
+                git add -A
+                git -c core.editor=true rebase --continue 2>/dev/null || git rebase --abort
+                git push && break
+              fi
               echo "push retry $i"; sleep 8
             done
           else

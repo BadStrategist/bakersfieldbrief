@@ -28,5 +28,15 @@
   "lat": 35.383388,
   "lon": -119.005655,
   "details": ""
+ },
+ {
+  "log_id": "260806BF0096",
+  "time": "Aug  6 2026  8:22AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Niles St / Crestmont Dr",
+  "area": "Bakersfield",
+  "lat": 35.375847,
+  "lon": -118.954119,
+  "details": ""
  }
 ]

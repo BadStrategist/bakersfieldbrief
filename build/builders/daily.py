@@ -184,21 +184,17 @@ def _newsletter_block() -> str:
                 f'method="post" target="_blank">'
                 f'<input type="email" name="email" placeholder="your@email.com" required aria-label="Your email"/>'
                 f'<button type="submit" class="btn">Get the brief</button></form>')
-        note = '<p class="note" style="margin-top:8px">Free, no spam, unsubscribe anytime.</p>'
     else:
         form = ('<form class="nl-form" action="mailto:hello@bakersfieldbrief.com" method="get" '
                 'enctype="text/plain">'
                 '<input type="email" name="subject" value="Subscribe me to the Daily Brief" readonly hidden/>'
                 '<input type="email" name="body" placeholder="your@email.com" required aria-label="Your email"/>'
                 '<button type="submit" class="btn">Get the brief</button></form>')
-        note = ('<p class="note" style="margin-top:8px">Delivery launches once the mailing service '
-                'is wired — this pre-signs you up. No spam, unsubscribe anytime.</p>')
     return f"""
     <section class="nl-block" aria-label="Newsletter">
       <div class="nl-text"><p class="nl-kicker">The Brief by email</p>
       <p class="nl-pitch">The day&rsquo;s news, conditions, and what&rsquo;s coming up — one clean email, every morning. <em>Free.</em></p></div>
       {form}
-      {note}
     </section>"""
 
 

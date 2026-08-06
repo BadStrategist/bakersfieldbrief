@@ -46,7 +46,7 @@ jobs:
           if ! git diff --cached --quiet; then
             git commit -m "build: $(date -u +%Y-%m-%d) guide artifacts [skip ci]"
             for i in 1 2 3; do
-              git rebase --abort 2>/dev/null
+              git rebase --abort 2>/dev/null || true
               if git pull --rebase origin main --autostash; then
                 git push && break
               else

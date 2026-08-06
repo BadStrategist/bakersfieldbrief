@@ -1,105 +1,5 @@
 [
  {
-  "log_id": "260805BF0166",
-  "time": "Aug  5 2026  1:30PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "NB I5 JSO Grapevine Rd",
-  "area": "Fort Tejon",
-  "lat": 34.9375,
-  "lon": -118.928611,
-  "details": ""
- },
- {
-  "log_id": "260805BF0174",
-  "time": "Aug  5 2026  1:37PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr178 At Walker Pass",
-  "area": "Bakersfield",
-  "lat": 35.662834,
-  "lon": -118.026719,
-  "details": ""
- },
- {
-  "log_id": "260805BF0182",
-  "time": "Aug  5 2026  1:56PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr99 N / Panama Ln Onr",
-  "area": "Bakersfield",
-  "lat": 35.299456,
-  "lon": -119.031269,
-  "details": ""
- },
- {
-  "log_id": "260805BF0187",
-  "time": "Aug  5 2026  2:05PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr58 E / Coffee Rd",
-  "area": "Bakersfield",
-  "lat": 35.366776,
-  "lon": -119.092152,
-  "details": ""
- },
- {
-  "log_id": "260805BF0201",
-  "time": "Aug  5 2026  2:30PM",
-  "type": "JUMPER",
-  "location": "Nb Sr99 At Ming Ave",
-  "area": "Bakersfield",
-  "lat": 35.339989,
-  "lon": -119.037184,
-  "details": ""
- },
- {
-  "log_id": "260805BF0203",
-  "time": "Aug  5 2026  2:38PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Airport Dr / W Day Ave",
-  "area": "Bakersfield",
-  "lat": 35.434078,
-  "lon": -119.039006,
-  "details": ""
- },
- {
-  "log_id": "260805BF0212",
-  "time": "Aug  5 2026  2:49PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Nb I5 At Sr58",
-  "area": "Buttonwillow",
-  "lat": 35.398611,
-  "lon": -119.396944,
-  "details": ""
- },
- {
-  "log_id": "260805BF0226",
-  "time": "Aug  5 2026  3:29PM",
-  "type": "1125-Traffic Hazard",
-  "location": "I5 S / Hageman Rd",
-  "area": "Buttonwillow",
-  "lat": 35.398884,
-  "lon": -119.397587,
-  "details": ""
- },
- {
-  "log_id": "260805BF0263",
-  "time": "Aug  5 2026  4:26PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Nb I5 Jso Gorman School Rd",
-  "area": "Fort Tejon",
-  "lat": 34.79456,
-  "lon": -118.847656,
-  "details": ""
- },
- {
-  "log_id": "260805BF0269",
-  "time": "Aug  5 2026  4:48PM",
-  "type": "1013-Road/Weather Conditions",
-  "location": "1033 Lebec Rd",
-  "area": "Fort Tejon",
-  "lat": 34.825534,
-  "lon": -118.87775,
-  "details": ""
- },
- {
   "log_id": "260805BF0066",
   "time": "Aug  5 2026  7:51AM",
   "type": "FIRE-Report of Fire",
@@ -107,16 +7,6 @@
   "area": "Fort Tejon",
   "lat": 34.914069,
   "lon": -118.92362,
-  "details": ""
- },
- {
-  "log_id": "260805BF0007",
-  "time": "Aug  5 2026 12:38AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
   "details": ""
  },
  {
@@ -130,25 +20,6 @@
   "details": ""
  },
  {
-<<<<<<< HEAD
-  "log_id": "260806BF0015",
-  "time": "Aug  6 2026  1:42AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "0 I5 N",
-  "area": "Buttonwillow",
-  "lat": 35.307365,
-  "lon": -119.269364,
-  "details": ""
- },
- {
-  "log_id": "260806BF0021",
-  "time": "Aug  6 2026  1:51AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "0 I5 N",
-  "area": "Fort Tejon",
-  "lat": 34.849309,
-  "lon": -118.869918,
-=======
   "log_id": "260806BF0051",
   "time": "Aug  6 2026  6:00AM",
   "type": "MZP-Assist CT with Maintenance",
@@ -156,7 +27,6 @@
   "area": "Bakersfield",
   "lat": 35.383388,
   "lon": -119.005655,
->>>>>>> 299bd0c (Events tab + daily-article Upcoming section)
   "details": ""
  }
 ]

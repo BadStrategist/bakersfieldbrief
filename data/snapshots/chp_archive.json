@@ -118,5 +118,35 @@
   "lat": 35.265234,
   "lon": -119.024794,
   "details": ""
+ },
+ {
+  "log_id": "260806BF0013",
+  "time": "Aug  6 2026  1:41AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260806BF0015",
+  "time": "Aug  6 2026  1:42AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "0 I5 N",
+  "area": "Buttonwillow",
+  "lat": 35.307365,
+  "lon": -119.269364,
+  "details": ""
+ },
+ {
+  "log_id": "260806BF0021",
+  "time": "Aug  6 2026  1:51AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "0 I5 N",
+  "area": "Fort Tejon",
+  "lat": 34.849309,
+  "lon": -118.869918,
+  "details": ""
  }
 ]

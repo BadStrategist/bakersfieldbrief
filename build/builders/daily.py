@@ -52,7 +52,8 @@ def build(ctx, sources: dict) -> list[str]:
     rel = ""
     content = _page_content(ctx, today, built_iso, rel,
                             news, weather, chp, isa, escribe, board,
-                            abc, food, alpr, airnow, calfire, headlines, top)
+                            abc, food, alpr, airnow, calfire, headlines, top,
+                            sources.get("venues", {}).get("events", []))
 
     jsonld = [
         page_mod.org_jsonld(),
@@ -117,11 +118,13 @@ def build(ctx, sources: dict) -> list[str]:
 
 # ================================================================ page body
 def _page_content(ctx, today, built_iso, rel, news, weather, chp, isa,
-                  escribe, board, abc, food, alpr, airnow, calfire, headlines, top) -> str:
+                  escribe, board, abc, food, alpr, airnow, calfire, headlines, top,
+                  events=None) -> str:
     date_line = f"""
     <div class="date-line"><span>{today.strftime('%B').upper()} {today.day}, {today.year}</span><span>Bakersfield, California</span></div>"""
 
-    hero, sidebar = _hero_row(top, headlines, today, rel)
+    hero, sidebar = _hero_row(top, headlines, today, rel, built_iso,
+                              weather, airnow, calfire, escribe, events)
 
     digest_html, digest_meta = _news(news, built_iso)
     ctx.build_report["_digest_meta"] = digest_meta
@@ -168,7 +171,9 @@ def _page_content(ctx, today, built_iso, rel, news, weather, chp, isa,
 
 
 # ---------------------------------------------------------------- hero row
-def _hero_row(top, headlines, today, rel) -> tuple[str, str]:
+def _hero_row(top, headlines, today, rel, built_iso,
+              weather=None, airnow=None, calfire=None, escribe=None,
+              events=None) -> tuple[str, str]:
     if top:
         head = f'<a href="{html.escape(top.get("url", "#"))}" rel="noopener">{html.escape(top["title"])}</a>'
         src = f'<span class="hero-src">via {html.escape(top.get("source", "local news"))}</span>'
@@ -176,11 +181,13 @@ def _hero_row(top, headlines, today, rel) -> tuple[str, str]:
         head = "The Kern County news you\u2019d otherwise miss"
         src = ""
 
+    summary = _quick_summary(top, headlines, weather, airnow, calfire,
+                             escribe, events, rel, today)
     hero = f"""
     <p class="today-label">{SUN_ICON} Today&rsquo;s Brief</p>
     <h1 class="today-h1">{head}</h1>
-    <p class="lede">Plus the rest of the day&rsquo;s news from Bakersfield, Kern County, and beyond. {src}</p>
-    <a class="read-more" href="#the-news">Read today&rsquo;s brief</a>"""
+    <p class="lede">{summary}</p>
+    <a class="read-more" href="{rel}briefs/{built_iso}/">Read today&rsquo;s full brief</a>"""
 
     # numbered sidebar (top 4)
     top4 = headlines[:4]
@@ -194,6 +201,46 @@ def _hero_row(top, headlines, today, rel) -> tuple[str, str]:
         sidebar = '<div class="side-box"><h2>This Morning in Kern County</h2><p class="note">No headlines fetched this build.</p></div>'
 
     return hero, sidebar
+
+
+def _quick_summary(top, headlines, weather, airnow, calfire,
+                   escribe, events, rel, today) -> str:
+    """2–3 sentence deterministic day-summary for the hero (keyless)."""
+    bits = []
+    if top:
+        bits.append(f'<strong>{html.escape(top["title"])}</strong> leads the day')
+    others = len(headlines) - 1 if headlines else 0
+    if others > 0:
+        bits.append(f"{others} more {'story' if others == 1 else 'stories'} across Kern County are below")
+
+    cond = []
+    alerts = (weather or {}).get("alerts", [])
+    if alerts:
+        cond.append(f'a <strong>{html.escape(alerts[0].get("event", "weather alert"))}</strong> is active')
+    if airnow and airnow.get("ok") and airnow.get("aqi") is not None:
+        cond.append(f'air quality at {airnow["aqi"]} ({html.escape((airnow.get("category") or "").lower())})')
+    kern = [f for f in (calfire or {}).get("incidents", []) if "Kern" in str(f.get("county", ""))]
+    if kern:
+        cond.append(f"{len(kern)} active {'fire' if len(kern) == 1 else 'fires'} in Kern County")
+    if cond:
+        bits.append("conditions: " + "; ".join(cond))
+
+    nxt = []
+    for m in (escribe or {}).get("upcoming", []) or []:
+        if (m.get("start_iso") or "")[:10] >= today.isoformat():
+            nxt.append(f'<a href="{html.escape(m.get("url", rel + "city-hall/"))}" rel="noopener">{html.escape(m.get("name", "a public meeting"))}</a>')
+            break
+    for e in events or []:
+        from .events import _when_date
+        d = _when_date(e, today)
+        if d and d >= today:
+            nxt.append(f'<a href="{html.escape(e.get("url", "#"))}" rel="noopener">{html.escape(e.get("name", "an event"))}</a>')
+            break
+    if nxt:
+        bits.append("coming up: " + " · ".join(nxt[:2]))
+
+    summary = ". ".join(bits) + "."
+    return summary or "The day&rsquo;s news from Bakersfield, Kern County, and beyond."
 
 
 # ---------------------------------------------------------------- conditions
@@ -649,9 +696,12 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
     """Save a permanent copy of today's brief + refresh /briefs/ index."""
     built = []
     rel = "../../"  # briefs/<date>/index.html is 2 levels below site root
-    content = _page_content(ctx, today, built_iso, rel,
-                            news, weather, chp, isa, escribe, board,
-                            abc, food, alpr, airnow, calfire, headlines, top)
+    content = _article_lead(top, headlines, weather, airnow, calfire,
+                            escribe, events or [], today, rel)
+    content += _page_content(ctx, today, built_iso, rel,
+                              news, weather, chp, isa, escribe, board,
+                              abc, food, alpr, airnow, calfire, headlines, top,
+                              events or [])
     content += _upcoming(rel, escribe, board, events or [], today)
 
     page = page_mod.render(
@@ -761,6 +811,62 @@ def _upcoming(rel, escribe, board, events, today) -> str:
       <p class="note" style="margin-top:10px">Meetings from official agendas; events from venue
       listings. See <a href="{rel}events/">all events</a>.</p>
     </section>"""
+
+
+# ---------------------------------------------------------------- article lead
+def _article_lead(top, headlines, weather, airnow, calfire,
+                  escribe, events, today, rel) -> str:
+    """Original write-up opening the daily article (keyless, factual)."""
+    from .events import _when_date
+
+    paras = []
+    if top:
+        paras.append(
+            f"<p><strong>{html.escape(top['title'])}</strong> is the big story in Kern County "
+            f"today. <em>via {html.escape(top.get('source', 'local news'))}.</em></p>")
+    others = (headlines or [])[1:4]
+    if others:
+        paras.append("<p>Also on the radar: " + "; ".join(
+            f'<a href="{html.escape(h.get("url", "#"))}" rel="noopener">{html.escape(h["title"])}</a>'
+            for h in others) + ".</p>")
+
+    cond = []
+    alerts = (weather or {}).get("alerts", [])
+    if alerts:
+        cond.append(f"a {html.escape(alerts[0].get('event', 'weather alert'))} is active")
+    fc = (weather or {}).get("forecast", {}) or {}
+    if fc.get("high") is not None:
+        cond.append(f"a high near {fc['high']}&deg;")
+    if airnow and airnow.get("ok") and airnow.get("aqi") is not None:
+        cond.append(f"air quality at {airnow['aqi']} ({html.escape((airnow.get('category') or '').lower())})")
+    kern = [f for f in (calfire or {}).get("incidents", []) if "Kern" in str(f.get("county", ""))]
+    if kern:
+        names = ", ".join(html.escape(f.get("name", "fire")) for f in kern)
+        cond.append(f"{len(kern)} active {'fire' if len(kern) == 1 else 'fires'} in Kern ({names})")
+    if cond:
+        paras.append("<p>The conditions today: " + "; ".join(cond) + ".</p>")
+
+    nxt = []
+    for m in (escribe or {}).get("upcoming", []) or []:
+        if (m.get("start_iso") or "")[:10] >= today.isoformat():
+            nxt.append(f'<a href="{html.escape(m.get("url", rel + "city-hall/"))}" rel="noopener">{html.escape(m.get("name", "a public meeting"))}</a>')
+            break
+    for e in events or []:
+        d = _when_date(e, today)
+        if d and d >= today:
+            nxt.append(f'<a href="{html.escape(e.get("url", "#"))}" rel="noopener">{html.escape(e.get("name", "an event"))}</a>')
+            break
+    if nxt:
+        paras.append(
+            "<p>Coming up: " + " · ".join(nxt[:2])
+            + f'. Browse everything on the <a href="{rel}events/">events page</a>.</p>')
+
+    paras.append('<p class="note" style="margin-top:6px">This brief is compiled automatically '
+                 'from public records and linked sources — a factual digest, not opinion.</p>')
+    return f"""
+    <article class="article-lead">
+      {"".join(paras)}
+    </article>"""
 
 
 # ---------------------------------------------------------------- misc

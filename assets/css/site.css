@@ -649,6 +649,12 @@ a.cond-chip:hover .v, a.cond-chip:focus-visible .v { text-decoration: underline;
 .cond-chip .v.amber { color: #8a5d0a; }
 @media (max-width: 700px) { .cond-strip { grid-template-columns: 1fr; } }
 
+/* ------------------------------------------------ hero summary + article lead */
+.hero .lede a, .article-lead a { color: var(--amber-deep, #8a5d0a); }
+.article-lead { border-left: 4px solid var(--amber); padding: 4px 0 4px 18px; margin: 8px 0 18px; }
+.article-lead p { margin: 0 0 10px; }
+.article-lead p:last-child { margin-bottom: 0; }
+
 /* ------------------------------------------------ events list */
 .ev-list { list-style: none; margin: 0; padding: 0; }
 .ev-row { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--line); align-items: baseline; }

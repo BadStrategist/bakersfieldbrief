@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-06T16:42:58-07:00",
+ "built_at": "2026-08-06T16:53:06-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,7 +68,7 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 0,
+   "chp_new": 1,
    "top_story": "Kern County Public Health confirms first cases of measles",
    "archive": "2026-08-06"
   },
@@ -93,7 +93,7 @@
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 6,
-    "bakersfield-sw": 10,
+    "bakersfield-sw": 9,
     "bakersfield-east": 12,
     "bakersfield-central": 12
    }
@@ -124,7 +124,7 @@
    "alpr_total": 247,
    "kern_fires": 2,
    "aqi": 133,
-   "chp_week": 10
+   "chp_week": 11
   },
   "letters": {
    "published": 0

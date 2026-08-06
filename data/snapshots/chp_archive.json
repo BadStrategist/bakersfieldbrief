@@ -30,6 +30,16 @@
   "details": ""
  },
  {
+  "log_id": "260806BF0292",
+  "time": "Aug  6 2026  4:44PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Manor St / E Roberts Ln",
+  "area": "Bakersfield",
+  "lat": 35.410722,
+  "lon": -119.012283,
+  "details": ""
+ },
+ {
   "log_id": "260806BF0051",
   "time": "Aug  6 2026  6:00AM",
   "type": "MZP-Assist CT with Maintenance",

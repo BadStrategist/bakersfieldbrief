@@ -5,7 +5,7 @@ CONDITIONS
 Weather: 102° / 105°
 Alerts: Heat Advisory active
 Isabella: 213,348 AF (37.6% cap)
-CHP: None overnight
+CHP: 1 overnight
 Air: AQI 133 · Unhealthy for Sensitive Groups
 Fires: 2 active in Kern
 
@@ -15,7 +15,7 @@ THE NEWS
 • Conversations around Bakersfield becoming a 'sanctuary city' continue sparking concern among residents (KGET 17) — https://www.kget.com/news/local-news/conversations-around-bakersfield-becoming-a-sanctuary-city-continue-sparking-concern-among-residents/
 • Oil profits hit record high as Iran war churns  cash flow (KGET 17) — https://www.kget.com/news/local-news/oil-profits-hit-record-high-as-iran-war-churns-cash-flow/
 • Man takes plea deal in 2020 deadly shooting at Central Cali Market (KGET 17) — https://www.kget.com/news/crime-watch/man-takes-plea-deal-in-2020-deadly-shooting-at-central-cali-market/
-• Juror to be replaced in trial of 3 Bakersfield men accused in fatal drug deal-turned-robbery, deliberations to start over (KGET 17) — https://www.kget.com/news/local-news/juror-to-be-replaced-in-trial-of-3-bakersfield-men-accused-in-fatal-drug-deal-turned-robbery-deliberations-to-start-over/
+• Juror to be replaced in trial of 3 Bakersfield men accused in fatal drug deal-turned-robbery, deliberations to start over (KGET 17) — https://www.kget.com/news/crime-watch/juror-to-be-replaced-in-trial-of-3-bakersfield-men-accused-in-fatal-drug-deal-turned-robbery-deliberations-to-start-over/
 • Ridgecrest City Council releases housing element staff report, amid AG lawsuit (KGET 17) — https://www.kget.com/news/local-news/ridgecrest-city-council-releases-housing-element-staff-report-amid-ag-lawsuit/
 • Californians travel with Red Cross for wildfires aid, including Kern County volunteer (KGET 17) — https://www.kget.com/news/local-news/californians-travel-with-red-cross-for-wildfires-aid-including-kern-county-volunteer/
 

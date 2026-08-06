@@ -655,6 +655,23 @@ a.cond-chip:hover .v, a.cond-chip:focus-visible .v { text-decoration: underline;
 .article-lead p { margin: 0 0 10px; }
 .article-lead p:last-child { margin-bottom: 0; }
 
+/* ------------------------------------------------ newsletter block */
+.nl-block { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px;
+  border: 1px solid var(--line); border-top: 3px solid var(--amber);
+  border-radius: var(--radius); background: var(--card); padding: 16px 20px; margin: 14px 0; }
+.nl-kicker { font-family: var(--display); text-transform: uppercase; letter-spacing: .1em;
+  font-size: 13px; color: var(--amber-deep, #8a5d0a); margin: 0 0 2px; }
+.nl-pitch { margin: 0; }
+.nl-form { display: flex; gap: 8px; flex-wrap: wrap; margin-left: auto; }
+.nl-form input[type="email"] { padding: 8px 12px; border: 1px solid var(--line-strong);
+  border-radius: var(--radius); font: inherit; min-width: 220px; }
+.nl-form .btn { background: var(--sign-deep); color: #fff; border: 0; border-radius: var(--radius);
+  padding: 9px 16px; font-family: var(--display); text-transform: uppercase; letter-spacing: .06em;
+  cursor: pointer; }
+.nl-form .btn:hover { background: var(--sign); }
+@media (max-width: 640px) { .nl-form { margin-left: 0; width: 100%; }
+  .nl-form input[type="email"] { flex: 1; min-width: 0; } }
+
 /* ------------------------------------------------ events list */
 .ev-list { list-style: none; margin: 0; padding: 0; }
 .ev-row { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--line); align-items: baseline; }

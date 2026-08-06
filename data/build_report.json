@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-06T06:58:51-07:00",
+ "built_at": "2026-08-06T09:11:00-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,8 +68,8 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 0,
-   "top_story": "New hearing date set in deadly Westside Parkway crash",
+   "chp_new": 2,
+   "top_story": "Oil profits hit record high as Iran war churns  cash flow",
    "archive": "2026-08-06"
   },
   "cityhall": {
@@ -93,7 +93,7 @@
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 9,
-    "bakersfield-sw": 11,
+    "bakersfield-sw": 10,
     "bakersfield-east": 12,
     "bakersfield-central": 12
    }
@@ -105,7 +105,7 @@
   "grapevine": {
    "i5": "OPEN",
    "i5_pass": "OPEN",
-   "log_entries": 4
+   "log_entries": 5
   },
   "events": {
    "groups": {
@@ -116,11 +116,17 @@
    },
    "meetings": 4
   },
+  "feed": {
+   "entries": 3
+  },
   "static": {
    "pages": [
     "about/index.html",
     "privacy/index.html",
     "contact/index.html",
+    "editorial-standards/index.html",
+    "corrections/index.html",
+    "ownership/index.html",
     "work-money/index.html",
     "sunday-read/index.html",
     "404.html",

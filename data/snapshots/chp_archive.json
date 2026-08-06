@@ -38,5 +38,25 @@
   "lat": 35.375847,
   "lon": -118.954119,
   "details": ""
+ },
+ {
+  "log_id": "260806BF0101",
+  "time": "Aug  6 2026  8:48AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jno Fort Tejon Rd",
+  "area": "Fort Tejon",
+  "lat": 34.882222,
+  "lon": -118.900556,
+  "details": ""
+ },
+ {
+  "log_id": "260806BF0103",
+  "time": "Aug  6 2026  8:49AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 Jno Fort Tejon Rd",
+  "area": "Fort Tejon",
+  "lat": 34.882222,
+  "lon": -118.899444,
+  "details": ""
  }
 ]

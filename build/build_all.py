@@ -28,7 +28,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from build import common  # noqa: E402
 from build.sources import SOURCES  # noqa: E402
 from build.builders import (daily, cityhall, openings, trackers, static_pages,
-                            places, guide, grapevine, events)  # noqa: E402
+                            places, guide, grapevine, events, feed)  # noqa: E402
 from build.builders import page as page_mod  # noqa: E402
 
 
@@ -76,7 +76,7 @@ def main():
                 ("openings", openings), ("trackers", trackers),
                 ("places", places), ("guide", guide),
                 ("grapevine", grapevine), ("events", events),
-                ("static", static_pages)]
+                ("feed", feed), ("static", static_pages)]
     for bname, bmod in builders:
         try:
             files = bmod.build(ctx, results)

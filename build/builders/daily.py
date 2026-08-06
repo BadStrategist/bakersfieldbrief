@@ -145,6 +145,17 @@ def _page_content(ctx, today, built_iso, rel, news, weather, chp, isa,
 
     <div class="ad-slot" data-ad-slot="home-hero" aria-hidden="true"></div>
 
+    <section class="nl-block" aria-label="Newsletter">
+      <div class="nl-text"><p class="nl-kicker">The Brief by email</p>
+      <p class="nl-pitch">The day&rsquo;s news, conditions, and what&rsquo;s coming up — one clean email, every morning. <em>Free.</em></p></div>
+      <form class="nl-form" action="mailto:hello@bakersfieldbrief.com" method="get" enctype="text/plain">
+        <input type="email" name="subject" value="Subscribe me to the Daily Brief" readonly hidden/>
+        <input type="email" name="body" placeholder="your@email.com" required aria-label="Your email"/>
+        <button type="submit" class="btn">Get the brief</button>
+      </form>
+      <p class="note" style="margin-top:8px">Delivery launches once the mailing service is wired — this pre-signs you up. No spam, unsubscribe anytime.</p>
+    </section>
+
     {conditions}
     <section aria-labelledby="h-news" id="the-news">
       <p class="sec-head" id="h-news">The News <span class="unit">headlines + links, synthesized</span></p>
@@ -862,7 +873,9 @@ def _article_lead(top, headlines, weather, airnow, calfire,
             + f'. Browse everything on the <a href="{rel}events/">events page</a>.</p>')
 
     paras.append('<p class="note" style="margin-top:6px">This brief is compiled automatically '
-                 'from public records and linked sources — a factual digest, not opinion.</p>')
+                 'from public records and linked sources — a factual digest, not opinion. '
+                 'Report an error: <a href="mailto:corrections@bakersfieldbrief.com'
+                 f'?subject=Correction&body=Page: {rel}briefs/">corrections@bakersfieldbrief.com</a>.</p>')
     return f"""
     <article class="article-lead">
       {"".join(paras)}

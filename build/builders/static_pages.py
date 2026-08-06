@@ -148,6 +148,63 @@ def build(ctx, sources: dict) -> list[str]:
         built=built_iso, statusbar=ctx.statusbar, jsonld=[page_mod.org_jsonld()]))
     built.append("contact/index.html")
 
+    # ---------------------------------------------------------- trust pages
+    for slug, name, lede, sections in [
+        ("editorial-standards", "Editorial standards",
+         "How Bakersfield Daily Brief is produced — and what we will and won't publish.",
+         [("Automated, not anonymous",
+           "<p>Every brief is assembled from public records and linked sources. Items are "
+           "summarized factually, attributed to their source, and linked to the original. "
+           "We do not write opinions, we do not republish copyrighted article text, and we "
+           "do not publish unverified claims as fact.</p>"),
+          ("Sources",
+           "<p>Primary sources include City of Bakersfield eSCRIBE meeting records, Kern County "
+           "Board of Supervisors agendas, California ABC license filings, Kern County "
+           "Environmental Health closures, CHP incidents, National Weather Service alerts, "
+           "California DWR/CDEC reservoir data, EPA AirNow, CAL FIRE, Caltrans road conditions, "
+           "and OpenStreetMap (ODbL) for camera locations. News headlines link to the original "
+           "reporter's article.</p>"),
+          ("Errors",
+           "<p>When we get something wrong, we fix it and note the correction. See the "
+           "<a href=\"../corrections/\">corrections policy</a>. If a linked source updates, the "
+           "next build reflects it automatically.</p>")]),
+        ("corrections", "Corrections policy",
+         "We fix errors promptly and note them on the record.",
+         [("How to report an error",
+           "<p>Email <strong>corrections@bakersfieldbrief.com</strong> with the page URL and the "
+           "correction. Because the brief is regenerated every morning from live sources, most "
+           "errors self-correct on the next build — we still want to know, so we can check the "
+           "pipeline, not just the page.</p>"),
+          ("On the record",
+           "<p>Material corrections are noted on the affected page and in the following day's "
+           "brief. We keep a public correction log in this page's section below when items are "
+           "reported.</p>")]),
+        ("ownership", "Ownership & funding",
+         "Who operates Bakersfield Daily Brief and how it's funded.",
+         [("Operator",
+           "<p>Bakersfield Daily Brief is an independent, automated local news publication. It "
+           "is not affiliated with any city agency, political committee, or news network. "
+           "Editorial content is generated from public records without sponsor influence.</p>"),
+          ("Funding",
+           "<p>The site is funded by contextual advertising (labels apply) and, in future, "
+           "sponsor slots in the newsletter. Advertising never shapes what we cover or how "
+           "items are framed. Infrastructure is provided by GitHub Pages at no cost.</p>"),
+          ("Contact",
+           "<p>Reach the operator through the <a href=\"../contact/\">contact page</a> or "
+           "hello@bakersfieldbrief.com.</p>")]),
+    ]:
+        secs = "".join(f'<h2>{html.escape(t)}</h2>{c}' for t, c in sections)
+        body = f"""
+        <div class="pagehead"><div class="hero"><p class="kicker">About the publication</p>
+        <h1>{html.escape(name)}</h1>
+        <p class="lede">{html.escape(lede)}</p></div></div>
+        <div class="card prose">{secs}</div>"""
+        common.write(common.SITE / slug / "index.html", page_mod.render(
+            title=f"{name} | Bakersfield Daily Brief",
+            desc=lede, canonical=f"/{slug}/", content=body, current="other", rel="../",
+            built=built_iso, statusbar=ctx.statusbar, jsonld=[page_mod.org_jsonld()]))
+        built.append(f"{slug}/index.html")
+
     # ---------------------------------------------------------- stub sections
     for slug, name, lede, copy in [
         ("work-money", "Work & Money",

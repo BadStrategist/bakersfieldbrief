@@ -672,6 +672,24 @@ a.cond-chip:hover .v, a.cond-chip:focus-visible .v { text-decoration: underline;
 @media (max-width: 640px) { .nl-form { margin-left: 0; width: 100%; }
   .nl-form input[type="email"] { flex: 1; min-width: 0; } }
 
+/* ------------------------------------------------ letters + numbers */
+.letters { display: grid; gap: 14px; }
+.letter { background: var(--card); border: 1px solid var(--line);
+  border-left: 4px solid var(--amber); border-radius: var(--radius);
+  padding: 14px 18px; }
+.letter h2 { font-family: var(--display); font-size: 19px; margin: 4px 0 8px; }
+.letter-meta { font-size: 12px; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--ink-soft); margin: 0; }
+.letter-form label { display: block; font-weight: 600; margin: 10px 0 4px; font-size: 14px; }
+.letter-form input, .letter-form textarea { width: 100%; padding: 9px 12px;
+  border: 1px solid var(--line-strong); border-radius: var(--radius); font: inherit; }
+.link-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin: 6px 0 18px; }
+.tile { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 12px 14px; text-decoration: none; color: inherit; }
+.tile strong { display: block; font-family: var(--display); color: var(--sign-deep); }
+.tile span { font-size: 13px; color: var(--ink-soft); }
+.tile:hover { border-color: var(--amber); }
+
 /* ------------------------------------------------ events list */
 .ev-list { list-style: none; margin: 0; padding: 0; }
 .ev-row { display: flex; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--line); align-items: baseline; }

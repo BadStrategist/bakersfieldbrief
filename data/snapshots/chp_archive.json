@@ -58,5 +58,35 @@
   "lat": 34.882222,
   "lon": -118.899444,
   "details": ""
+ },
+ {
+  "log_id": "260806BF0146",
+  "time": "Aug  6 2026 10:32AM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 I5 N",
+  "area": "Fort Tejon",
+  "lat": 34.88717,
+  "lon": -118.905126,
+  "details": ""
+ },
+ {
+  "log_id": "260806BF0157",
+  "time": "Aug  6 2026 10:57AM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "0 Ming Ave Onr",
+  "area": "Bakersfield",
+  "lat": 35.347228,
+  "lon": -119.039015,
+  "details": ""
+ },
+ {
+  "log_id": "260806BF0160",
+  "time": "Aug  6 2026 11:04AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "0 Sr58 E",
+  "area": "Bakersfield",
+  "lat": 35.281856,
+  "lon": -118.728615,
+  "details": ""
  }
 ]

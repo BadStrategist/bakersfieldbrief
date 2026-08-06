@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-06T09:11:00-07:00",
+ "built_at": "2026-08-06T11:15:48-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,7 +68,7 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "Oil profits hit record high as Iran war churns  cash flow",
    "archive": "2026-08-06"
   },
@@ -92,8 +92,8 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 9,
-    "bakersfield-sw": 10,
+    "bakersfield-nw": 8,
+    "bakersfield-sw": 11,
     "bakersfield-east": 12,
     "bakersfield-central": 12
    }
@@ -105,7 +105,7 @@
   "grapevine": {
    "i5": "OPEN",
    "i5_pass": "OPEN",
-   "log_entries": 5
+   "log_entries": 6
   },
   "events": {
    "groups": {
@@ -118,6 +118,16 @@
   },
   "feed": {
    "entries": 3
+  },
+  "numbers": {
+   "isabella_af": 213348,
+   "alpr_total": 247,
+   "kern_fires": 2,
+   "aqi": 61,
+   "chp_week": 9
+  },
+  "letters": {
+   "published": 0
   },
   "static": {
    "pages": [

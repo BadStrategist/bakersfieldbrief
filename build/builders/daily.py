@@ -14,6 +14,7 @@ from __future__ import annotations
 import datetime as dt
 import html
 import json
+import os
 
 from .. import common, llm
 from ..sources.airnow import css_class as _aqi_css
@@ -145,16 +146,7 @@ def _page_content(ctx, today, built_iso, rel, news, weather, chp, isa,
 
     <div class="ad-slot" data-ad-slot="home-hero" aria-hidden="true"></div>
 
-    <section class="nl-block" aria-label="Newsletter">
-      <div class="nl-text"><p class="nl-kicker">The Brief by email</p>
-      <p class="nl-pitch">The day&rsquo;s news, conditions, and what&rsquo;s coming up — one clean email, every morning. <em>Free.</em></p></div>
-      <form class="nl-form" action="mailto:hello@bakersfieldbrief.com" method="get" enctype="text/plain">
-        <input type="email" name="subject" value="Subscribe me to the Daily Brief" readonly hidden/>
-        <input type="email" name="body" placeholder="your@email.com" required aria-label="Your email"/>
-        <button type="submit" class="btn">Get the brief</button>
-      </form>
-      <p class="note" style="margin-top:8px">Delivery launches once the mailing service is wired — this pre-signs you up. No spam, unsubscribe anytime.</p>
-    </section>
+    {_newsletter_block()}
 
     {conditions}
     <section aria-labelledby="h-news" id="the-news">
@@ -179,6 +171,35 @@ def _page_content(ctx, today, built_iso, rel, news, weather, chp, isa,
     </section>
 
     {_footnote()}"""
+
+
+# ---------------------------------------------------------------- newsletter
+def _newsletter_block() -> str:
+    """Newsletter capture: real Buttondown form once a username is configured
+    (BUTTONDOWN_USERNAME in .env / GH secrets); mailto pre-signup until then."""
+    bd_user = os.environ.get("BUTTONDOWN_USERNAME", "").strip()
+    if bd_user:
+        form = (f'<form class="nl-form" '
+                f'action="https://buttondown.com/api/emails/embed-subscribe/{html.escape(bd_user)}" '
+                f'method="post" target="_blank">'
+                f'<input type="email" name="email" placeholder="your@email.com" required aria-label="Your email"/>'
+                f'<button type="submit" class="btn">Get the brief</button></form>')
+        note = '<p class="note" style="margin-top:8px">Free, no spam, unsubscribe anytime.</p>'
+    else:
+        form = ('<form class="nl-form" action="mailto:hello@bakersfieldbrief.com" method="get" '
+                'enctype="text/plain">'
+                '<input type="email" name="subject" value="Subscribe me to the Daily Brief" readonly hidden/>'
+                '<input type="email" name="body" placeholder="your@email.com" required aria-label="Your email"/>'
+                '<button type="submit" class="btn">Get the brief</button></form>')
+        note = ('<p class="note" style="margin-top:8px">Delivery launches once the mailing service '
+                'is wired — this pre-signs you up. No spam, unsubscribe anytime.</p>')
+    return f"""
+    <section class="nl-block" aria-label="Newsletter">
+      <div class="nl-text"><p class="nl-kicker">The Brief by email</p>
+      <p class="nl-pitch">The day&rsquo;s news, conditions, and what&rsquo;s coming up — one clean email, every morning. <em>Free.</em></p></div>
+      {form}
+      {note}
+    </section>"""
 
 
 # ---------------------------------------------------------------- hero row
@@ -874,7 +895,8 @@ def _article_lead(top, headlines, weather, airnow, calfire,
 
     paras.append('<p class="note" style="margin-top:6px">This brief is compiled automatically '
                  'from public records and linked sources — a factual digest, not opinion. '
-                 'Report an error: <a href="mailto:corrections@bakersfieldbrief.com'
+                 f'<a href="{rel}letters/">Write a letter</a> about anything here · '
+                 'report an error: <a href="mailto:corrections@bakersfieldbrief.com'
                  f'?subject=Correction&body=Page: {rel}briefs/">corrections@bakersfieldbrief.com</a>.</p>')
     return f"""
     <article class="article-lead">

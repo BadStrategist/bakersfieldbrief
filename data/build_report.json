@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
  "built_at": "2026-08-06T04:08:38-07:00",
+=======
+ "built_at": "2026-08-06T06:23:23-07:00",
+>>>>>>> 299bd0c (Events tab + daily-article Upcoming section)
  "sources": {
   "escribe": {
    "ok": true,
@@ -106,6 +110,18 @@
    "i5": "OPEN",
    "i5_pass": "OPEN",
    "log_entries": 4
+<<<<<<< HEAD
+=======
+  },
+  "events": {
+   "groups": {
+    "This week": 1,
+    "Next week": 6,
+    "Later": 26,
+    "Date TBD": 2
+   },
+   "meetings": 4
+>>>>>>> 299bd0c (Events tab + daily-article Upcoming section)
   },
   "static": {
    "pages": [
@@ -120,7 +136,11 @@
    ]
   },
   "trackers": {
+<<<<<<< HEAD
    "alpr_total": 0,
+=======
+   "alpr_total": 248,
+>>>>>>> 299bd0c (Events tab + daily-article Upcoming section)
    "alpr_new_week": 0,
    "pages": [
     "surveillance",

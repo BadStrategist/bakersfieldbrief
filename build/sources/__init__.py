@@ -19,7 +19,7 @@ SOURCES = {
     "isabella": isabella,      # Isabella Lake storage (CDEC)
     "food": food,              # Kern EH closed food facilities
     "alpr": alpr,              # ALPR cameras (Overpass/OSM)
-    "venues": venues,          # Weekend Guide venue whitelist (--guide only)
+    "venues": venues,          # Venue whitelist (Events page + Weekend Guide)
     "roads": roads,            # Caltrans highway conditions (I-5 Grapevine, 58, 99)
     # Blocked sources (datacenter IPs / not yet built) — leave stubs:
     "blocked": blocked,

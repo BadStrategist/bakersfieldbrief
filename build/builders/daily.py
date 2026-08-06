@@ -92,7 +92,8 @@ def build(ctx, sources: dict) -> list[str]:
 
     # ---- permanent archive copy + archive page ----
     archive_built = _archive(ctx, today, built_iso, top, news, weather, chp, isa,
-                             escribe, board, abc, food, alpr, airnow, calfire, headlines)
+                             escribe, board, abc, food, alpr, airnow, calfire,
+                             headlines, sources.get("venues", {}).get("events", []))
     built.extend(archive_built)
 
     # ---- email renderings (same data → email-safe HTML + plain text)
@@ -643,13 +644,15 @@ def _load_archive() -> list:
 
 
 def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
-             escribe, board, abc, food, alpr, airnow, calfire, headlines) -> list[str]:
+             escribe, board, abc, food, alpr, airnow, calfire, headlines,
+             events=None) -> list[str]:
     """Save a permanent copy of today's brief + refresh /briefs/ index."""
     built = []
     rel = "../../"  # briefs/<date>/index.html is 2 levels below site root
     content = _page_content(ctx, today, built_iso, rel,
                             news, weather, chp, isa, escribe, board,
                             abc, food, alpr, airnow, calfire, headlines, top)
+    content += _upcoming(rel, escribe, board, events or [], today)
 
     page = page_mod.render(
         title=f"Bakersfield Daily Brief — {_fmt_date(today)} (archive)",
@@ -722,6 +725,42 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
             statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else ""))
         built.append(f"briefs/{dstr}/index.html")
     return built
+
+
+# ---------------------------------------------------------------- upcoming
+def _upcoming(rel, escribe, board, events, today) -> str:
+    """Next 7 days: public meetings + town events (daily article page)."""
+    from .events import _when_date
+
+    rows = []
+    for m in escribe.get("upcoming", []) or []:
+        iso = str(m.get("start_iso", ""))
+        if iso[:10] < today.isoformat() or iso[:10] > (today + dt.timedelta(days=7)).isoformat():
+            continue
+        when = iso[:16].replace("T", " ")
+        rows.append(f"""
+        <li class="ev-row"><span class="ev-date">{html.escape(when)}</span>
+        <span class="ev-body"><a href="{html.escape(m.get('url', rel + 'city-hall/'))}" rel="noopener"><strong>{html.escape(m.get('name', 'Public meeting'))}</strong></a>
+        <span class="ev-venue">Public meeting</span></span></li>""")
+
+    for e in events:
+        d = _when_date(e, today)
+        if not d or not (today <= d <= today + dt.timedelta(days=7)):
+            continue
+        rows.append(f"""
+        <li class="ev-row"><span class="ev-date">{html.escape(d.strftime('%a, %b') + ' ' + str(d.day))}</span>
+        <span class="ev-body"><a href="{html.escape(e.get('url') or '#')}" target="_blank" rel="noopener"><strong>{html.escape(e.get('name', 'Untitled event'))}</strong></a>
+        <span class="ev-venue">{html.escape(e.get('venue') or '')}</span></span></li>""")
+
+    if not rows:
+        return ""
+    return f"""
+    <section class="block" style="margin-top:34px">
+      <div class="sign-head"><span class="tab">Next</span><h2>Upcoming — next 7 days</h2></div>
+      <ul class="ev-list">{"".join(rows)}</ul>
+      <p class="note" style="margin-top:10px">Meetings from official agendas; events from venue
+      listings. See <a href="{rel}events/">all events</a>.</p>
+    </section>"""
 
 
 # ---------------------------------------------------------------- misc

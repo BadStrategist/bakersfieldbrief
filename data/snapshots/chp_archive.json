@@ -130,6 +130,7 @@
   "details": ""
  },
  {
+<<<<<<< HEAD
   "log_id": "260806BF0015",
   "time": "Aug  6 2026  1:42AM",
   "type": "1179-Trfc Collision-1141 Enrt",
@@ -147,6 +148,15 @@
   "area": "Fort Tejon",
   "lat": 34.849309,
   "lon": -118.869918,
+=======
+  "log_id": "260806BF0051",
+  "time": "Aug  6 2026  6:00AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "Sr178 E / Sr204 E Sr178 Con",
+  "area": "Bakersfield",
+  "lat": 35.383388,
+  "lon": -119.005655,
+>>>>>>> 299bd0c (Events tab + daily-article Upcoming section)
   "details": ""
  }
 ]

@@ -2,11 +2,19 @@ THE BAKERSFIELD BRIEF — August 6, 2026
 Bakersfield & Kern County
 
 CONDITIONS
+<<<<<<< HEAD
 Weather: 75° / 105°
 Alerts: Heat Advisory active
 Isabella: 213,348 AF (37.6% cap)
 CHP: 3 overnight
 Air: AQI 58 · Moderate
+=======
+Weather: 79° / 105°
+Alerts: Heat Advisory active
+Isabella: 213,348 AF (37.6% cap)
+CHP: None overnight
+Air: AQI 54 · Moderate
+>>>>>>> 299bd0c (Events tab + daily-article Upcoming section)
 Fires: 2 active in Kern
 
 THE NEWS

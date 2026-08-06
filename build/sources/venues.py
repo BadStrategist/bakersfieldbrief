@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Venue event scraping for the Weekend Guide (weekly, Thursday build).
+"""Venue event scraping for the Events page + Weekend Guide.
 
-Parses the whitelist in data/venues.json. Each parser is isolated — a dead
-venue never breaks the others. Runs only when the build is invoked with
---guide (or Thursday); otherwise returns {"ok": True, "skipped": True} so
-the daily run makes zero venue requests.
+Parses the whitelist in data/venues.json every build (the Events page needs
+fresh listings; the Thursday guide build reuses the same scrape for its
+curated picks + email drafts). Each parser is isolated — a dead venue never
+breaks the others.
 
 Verified shapes (Aug 2026):
   fox:    https://thebakersfieldfox.com/events/ — schema.org ld+json Events
@@ -25,8 +25,6 @@ HEADERS = {"User-Agent": ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
 
 
 def run(ctx):
-    if not getattr(ctx, "guide", False):
-        return {"ok": True, "skipped": True}
     out = {"ok": True, "events": []}
     try:
         whitelist = json.loads((common.DATA / "venues.json").read_text(encoding="utf-8"))

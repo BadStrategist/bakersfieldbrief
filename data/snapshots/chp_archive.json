@@ -190,6 +190,16 @@
   "details": ""
  },
  {
+  "log_id": "260807BF0236",
+  "time": "Aug  7 2026  1:37PM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 N / West Escape Ramp",
+  "area": "Fort Tejon",
+  "lat": 34.918056,
+  "lon": -118.923889,
+  "details": ""
+ },
+ {
   "log_id": "260807BF0024",
   "time": "Aug  7 2026  1:56AM",
   "type": "TADV-Traffic Advisory",
@@ -197,6 +207,16 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260807BF0208",
+  "time": "Aug  7 2026 12:37PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "22434-22569 Rancheria Rd",
+  "area": "Bakersfield",
+  "lat": 35.518617,
+  "lon": -118.726789,
   "details": ""
  }
 ]

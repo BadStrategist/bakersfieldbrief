@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-07T09:11:29-07:00",
+ "built_at": "2026-08-07T13:46:16-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -76,14 +76,14 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 1,
-   "top_story": "Comedian Michael Yo to headline The Well Comedy Club Saturday",
+   "chp_new": 2,
+   "top_story": "First human case of West Nile virus reported in Kern County: Public Health",
    "archive": "2026-08-07"
   },
   "cityhall": {
    "upcoming_meetings": 3,
    "county_items": 101,
-   "drafts_generated": 1
+   "drafts_generated": 0
   },
   "openings": {
    "liquor_apps": 0,
@@ -111,9 +111,9 @@
    "draft": "drafts/weekend-guide-2026-08-07"
   },
   "grapevine": {
-   "i5": "OPEN",
+   "i5": "RESTRICTIONS",
    "i5_pass": "OPEN",
-   "log_entries": 7
+   "log_entries": 8
   },
   "events": {
    "groups": {
@@ -131,8 +131,8 @@
    "isabella_af": 211495,
    "alpr_total": 247,
    "kern_fires": 2,
-   "aqi": 72,
-   "chp_week": 20
+   "aqi": 100,
+   "chp_week": 22
   },
   "letters": {
    "published": 0

@@ -886,8 +886,8 @@ def _article_lead(top, headlines, weather, airnow, calfire,
     # ---- top stories (LLM digest when available, else original one-liners)
     stories = _stories(top, headlines, rel)
 
-    # ---- something good (LLM pick when available, else keyword filter)
-    good = _positive_block(headlines, rel)
+    # ---- something good (LLM pick, else real family event, else headline)
+    good = _positive_block(headlines, events, today, rel)
 
     # ---- upcoming events (concerts/comedians included)
     events_html = _events_block(events, escribe, today, rel)
@@ -908,8 +908,7 @@ def _article_lead(top, headlines, weather, airnow, calfire,
       </section>
 
       <section class="brief-seg" aria-labelledby="seg-good">
-        <div class="sign-head"><span class="tab amber">Good</span><h2 id="seg-good">Something good</h2></div>
-        {images.figure("fair", rel)}
+        <div class="sign-head good-head"><h2 id="seg-good">Something good</h2></div>
         {good}
       </section>
 
@@ -997,32 +996,96 @@ def _stories(top, headlines, rel) -> str:
            f'<p class="note" style="margin-top:8px">Summaries are written from the headline and link to the original outlet for details.</p></div>'
 
 
-_POSITIVE_KW = ("grand opening", "opens", "scholarship", "volunteer", "festival",
-                "fundraiser", "donation", "honor", "award", "celebrat", "milestone",
-                "food drive", "toy drive", "school supply", "back to school",
-                "free", "community", "library", "museum", "art walk", "concert")
+_POSITIVE_KW = (
+    ("Grand opening", ("grand opening", "now open", "ribbon cutting", "opens its doors", "new store")),
+    ("For students", ("scholarship", "back to school", "school supply", "student")),
+    ("Community", ("volunteer", "fundraiser", "donation", "food drive", "toy drive",
+                   "community", "collector", "health fair")),
+    ("Celebration", ("festival", "celebrat", "anniversary", "milestone", "award",
+                     "honor", "parade")),
+    ("Family fun", ("kids", "children", "family", "museum", "library", "art walk", "pet")),
+)
 
 
-def _positive_block(headlines, rel) -> str:
-    """'Something good': LLM pick when available, else keyword-filtered."""
-    if not headlines:
-        return '<p class="note">Check back tomorrow — the good-news pick returns with the next build.</p>'
+def _pos_category(title: str) -> str | None:
+    t = (title or "").lower()
+    for label, kws in _POSITIVE_KW:
+        if any(k in t for k in kws):
+            return label
+    return None
+
+
+def _family_event(events, today):
+    """A real family-friendly event in the next 7 days — name, venue, date."""
+    from .events import _when_date
+    best = None
+    for e in events or []:
+        d = _when_date(e, today)
+        if not d or not (today <= d <= today + dt.timedelta(days=7)):
+            continue
+        name = (e.get("name") or "").lower()
+        if any(k in name for k in ("kids", "children", "family", "disney", "bluey",
+                                   "musical", "jr", "jr.", "paw patrol", "magic",
+                                   "circus", "princess", "sesame", "peppa")):
+            return (d, e)
+        if best is None:
+            best = (d, e)
+    return best  # any dated event if no family pick found
+
+
+def _positive_block(headlines, events, today, rel) -> str:
+    """'Something good' — a compact news card with real content.
+
+    Priority: LLM pick (2 warm sentences) → a real dated event with venue and
+    date → a keyword-matched positive headline with a category chip. No filler
+    copy, no full-width figure, small thumbnail only.
+    """
+    # 1) LLM pick — real prose
     pick = llm.pick_positive(headlines)
     if pick:
-        return f'<div class="card pos-card"><p>{pick}</p></div>'
-    # deterministic fallback: first headline matching positive keywords
+        return f"""
+        <div class="card pos-card">
+          {images.thumb("fair", rel)}
+          <div class="pos-body">
+            <span class="cat-tag">Community</span>
+            <p>{pick}</p>
+          </div>
+        </div>"""
+
+    # 2) real event with venue + date
+    ev = _family_event(events, today)
+    if ev:
+        d, e = ev
+        name = e.get("name", "A local event")
+        venue = e.get("venue") or "local venue"
+        when = d.strftime("%a, %b %d")
+        cat = _pos_category(name) or "Family fun"
+        return f"""
+        <div class="card pos-card">
+          {images.thumb("fair", rel)}
+          <div class="pos-body">
+            <span class="cat-tag">{html.escape(cat)}</span>
+            <h3><a href="{html.escape(e.get('url') or '#')}" target="_blank" rel="noopener">{html.escape(name)}</a></h3>
+            <p>{html.escape(venue)} &middot; {html.escape(when)} — a good one to put on the calendar.</p>
+          </div>
+        </div>"""
+
+    # 3) positive headline with category chip
     for h in headlines:
-        t = (h.get("title", "") or "").lower()
-        if any(k in t for k in _POSITIVE_KW):
-            return (f'<div class="card pos-card"><p>'
-                    f'<a href="{html.escape(h.get("url", "#"))}" rel="noopener">'
-                    f'{html.escape(h["title"])}</a></p>'
-                    f'<p class="note">We look for the uplifting stuff in each day&rsquo;s '
-                    f'headlines — grand openings, milestones, and community wins.</p></div>')
-    # last resort: point to the events page as the good thing
-    return (f'<div class="card pos-card"><p>Looking for something good? '
-            f'<a href="{rel}events/">See what&rsquo;s on around town</a> — concerts, '
-            f'comedy, and community events are listed every build.</p></div>')
+        cat = _pos_category(h.get("title", ""))
+        if cat:
+            return f"""
+            <div class="card pos-card">
+              {images.thumb("fair", rel)}
+              <div class="pos-body">
+                <span class="cat-tag">{html.escape(cat)}</span>
+                <h3><a href="{html.escape(h.get('url', '#'))}" rel="noopener">{html.escape(h['title'])}</a></h3>
+                <p>From {html.escape(h.get('source', 'local news'))} &middot; <a href="{rel}events/">more good things around town</a></p>
+              </div>
+            </div>"""
+
+    # 4) nothing positive today — a quiet, honest fallback
+    return ""
 
 
 def _events_block(events, escribe, today, rel) -> str:

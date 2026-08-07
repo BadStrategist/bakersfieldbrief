@@ -188,5 +188,15 @@
   "lat": 35.281856,
   "lon": -118.728615,
   "details": ""
+ },
+ {
+  "log_id": "260807BF0024",
+  "time": "Aug  7 2026  1:56AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
  }
 ]

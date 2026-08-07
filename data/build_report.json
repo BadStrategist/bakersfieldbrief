@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-06T21:34:49-07:00",
+ "built_at": "2026-08-07T09:11:29-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -76,17 +76,17 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 6,
-   "top_story": "Kern County Public Health confirms first cases of measles",
-   "archive": "2026-08-06"
+   "chp_new": 1,
+   "top_story": "Comedian Michael Yo to headline The Well Comedy Club Saturday",
+   "archive": "2026-08-07"
   },
   "cityhall": {
-   "upcoming_meetings": 4,
+   "upcoming_meetings": 3,
    "county_items": 101,
-   "drafts_generated": 0
+   "drafts_generated": 1
   },
   "openings": {
-   "liquor_apps": 1,
+   "liquor_apps": 0,
    "food_closures": 9
   },
   "places": {
@@ -97,18 +97,18 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 9,
-    "bakersfield-sw": 9,
+    "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
    }
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-08-06"
+   "draft": "drafts/weekend-guide-2026-08-07"
   },
   "grapevine": {
    "i5": "OPEN",
@@ -122,31 +122,31 @@
     "Later": 27,
     "Date TBD": 2
    },
-   "meetings": 4
+   "meetings": 3
   },
   "feed": {
-   "entries": 3
+   "entries": 4
   },
   "numbers": {
-   "isabella_af": 213348,
+   "isabella_af": 211495,
    "alpr_total": 247,
    "kern_fires": 2,
-   "aqi": 90,
-   "chp_week": 19
+   "aqi": 72,
+   "chp_week": 20
   },
   "letters": {
    "published": 0
   },
   "gas_prices": {
    "ok": true,
-   "regular": 5.6616,
-   "asof": "2026-08-06"
+   "regular": 5.6672,
+   "asof": "2026-08-07"
   },
   "weather_page": {
    "ok": true,
    "periods": 14,
    "alerts": 1,
-   "asof": "2026-08-06"
+   "asof": "2026-08-07"
   },
   "static": {
    "pages": [

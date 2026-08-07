@@ -655,6 +655,28 @@ a.cond-chip:hover .v, a.cond-chip:focus-visible .v { text-decoration: underline;
 .article-lead p { margin: 0 0 10px; }
 .article-lead p:last-child { margin-bottom: 0; }
 
+/* ------------------------------------------------ gas prices */
+.gas-table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.gas-table th, .gas-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+.gas-table thead th { font-family: var(--display); text-transform: uppercase; letter-spacing: .06em; font-size: 12px; color: var(--ink-soft); }
+.gas-table .gas-n { font-weight: 700; font-variant-numeric: tabular-nums; }
+.gas-table .gas-y { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+.gas-delta { font-size: 13px; font-weight: 600; }
+.gas-delta.up { color: #a33; }
+.gas-delta.down { color: #1c6b3c; }
+.gas-delta.flat { color: var(--ink-soft); }
+
+/* ------------------------------------------------ weather page */
+.wx-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+.wx-day { background: var(--card); border: 1px solid var(--line); border-top: 3px solid var(--amber);
+  border-radius: var(--radius); padding: 12px 14px; display: flex; flex-direction: column; gap: 4px; }
+.wx-icon img { display: block; width: 48px; height: 48px; }
+.wx-name { font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: 13px; }
+.wx-temp { font-size: 22px; font-weight: 700; }
+.wx-low { font-size: 13px; color: var(--ink-soft); }
+.wx-short { font-size: 13.5px; color: var(--ink); }
+.wx-wind { font-size: 12px; color: var(--ink-soft); }
+
 /* ------------------------------------------------ figures + thumbnails */
 .fig { margin: 18px 0 20px; }
 .fig img { display: block; width: 100%; height: auto; border-radius: var(--radius);

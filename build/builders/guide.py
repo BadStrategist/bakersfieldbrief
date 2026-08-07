@@ -63,6 +63,7 @@ def build(ctx, sources: dict) -> list[str]:
                  'the Thursday build scrapes the whitelist; check back after it runs.</p>')
         events = []  # report below
 
+    rel = "../"
     body = f"""
     <div class="pagehead"><div class="hero"><p class="kicker">Weekend Guide</p>
     <h1>5 Things to Do This Weekend</h1>
@@ -83,7 +84,7 @@ def build(ctx, sources: dict) -> list[str]:
     page = page_mod.render(
         title="Weekend Guide — 5 things to do in Bakersfield | Bakersfield Daily Brief",
         desc="Five things to do this weekend in Bakersfield, picked weekly from a hand-maintained venue whitelist (Fox Theater, Mechanics Bank Arena, The Well, Condors, Visit Bakersfield).",
-        canonical="/guide/", content=body, current="other", rel="../",
+        canonical="/guide/", content=body, current="other", rel=rel,
         built=common.iso_today(), statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld()])
     common.write(common.SITE / "guide" / "index.html", page)

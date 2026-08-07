@@ -29,7 +29,7 @@ from build import common  # noqa: E402
 from build.sources import SOURCES  # noqa: E402
 from build.builders import (daily, cityhall, openings, trackers, static_pages,
                             places, guide, grapevine, events, feed,
-                            numbers, letters)  # noqa: E402
+                            numbers, letters, gasprices, weatherpage)  # noqa: E402
 from build.builders import page as page_mod  # noqa: E402
 
 
@@ -78,6 +78,7 @@ def main():
                 ("places", places), ("guide", guide),
                 ("grapevine", grapevine), ("events", events),
                 ("feed", feed), ("numbers", numbers), ("letters", letters),
+                ("gasprices", gasprices), ("weatherpage", weatherpage),
                 ("static", static_pages)]
     for bname, bmod in builders:
         try:

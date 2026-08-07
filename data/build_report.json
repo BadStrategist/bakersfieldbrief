@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-06T19:04:22-07:00",
+ "built_at": "2026-08-06T21:34:49-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -57,6 +57,14 @@
    "ok": true,
    "error": ""
   },
+  "gas": {
+   "ok": true,
+   "error": ""
+  },
+  "radar": {
+   "ok": true,
+   "error": ""
+  },
   "blocked": {
    "ok": false,
    "error": "stubbed sources (blocked or not built) \u2014 see data/sources/blocked.py"
@@ -68,7 +76,7 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 1,
+   "chp_new": 6,
    "top_story": "Kern County Public Health confirms first cases of measles",
    "archive": "2026-08-06"
   },
@@ -92,11 +100,15 @@
    "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 4,
-    "bakersfield-sw": 10,
+    "bakersfield-nw": 9,
+    "bakersfield-sw": 9,
     "bakersfield-east": 12,
     "bakersfield-central": 12
    }
+  },
+  "guide": {
+   "picked": 4,
+   "draft": "drafts/weekend-guide-2026-08-06"
   },
   "grapevine": {
    "i5": "OPEN",
@@ -119,11 +131,22 @@
    "isabella_af": 213348,
    "alpr_total": 247,
    "kern_fires": 2,
-   "aqi": 140,
-   "chp_week": 13
+   "aqi": 90,
+   "chp_week": 19
   },
   "letters": {
    "published": 0
+  },
+  "gas_prices": {
+   "ok": true,
+   "regular": 5.6616,
+   "asof": "2026-08-06"
+  },
+  "weather_page": {
+   "ok": true,
+   "periods": 14,
+   "alerts": 1,
+   "asof": "2026-08-06"
   },
   "static": {
    "pages": [

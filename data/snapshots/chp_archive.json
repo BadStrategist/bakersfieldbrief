@@ -50,6 +50,16 @@
   "details": ""
  },
  {
+  "log_id": "260806BF0343",
+  "time": "Aug  6 2026  6:45PM",
+  "type": "1125-Traffic Hazard",
+  "location": "White Ln / Akers Rd",
+  "area": "BF",
+  "lat": 35.317678,
+  "lon": -119.047811,
+  "details": ""
+ },
+ {
   "log_id": "260806BF0096",
   "time": "Aug  6 2026  8:22AM",
   "type": "20002-Hit and Run No Injuries",

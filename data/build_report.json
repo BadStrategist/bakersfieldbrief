@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-06T16:53:06-07:00",
+ "built_at": "2026-08-06T18:52:51-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -89,18 +89,14 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 6,
-    "bakersfield-sw": 9,
+    "bakersfield-nw": 4,
+    "bakersfield-sw": 10,
     "bakersfield-east": 12,
     "bakersfield-central": 12
    }
-  },
-  "guide": {
-   "picked": 4,
-   "draft": "drafts/weekend-guide-2026-08-06"
   },
   "grapevine": {
    "i5": "OPEN",
@@ -123,8 +119,8 @@
    "isabella_af": 213348,
    "alpr_total": 247,
    "kern_fires": 2,
-   "aqi": 133,
-   "chp_week": 11
+   "aqi": 140,
+   "chp_week": 12
   },
   "letters": {
    "published": 0

@@ -210,6 +210,26 @@
   "details": ""
  },
  {
+  "log_id": "260807BF0265",
+  "time": "Aug  7 2026  2:38PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Lebec Rd / I5 S",
+  "area": "Fort Tejon",
+  "lat": 34.865996,
+  "lon": -118.883512,
+  "details": ""
+ },
+ {
+  "log_id": "260807BF0271",
+  "time": "Aug  7 2026  2:52PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "11809 Edison Hwy",
+  "area": "Bakersfield",
+  "lat": 35.347826,
+  "lon": -118.873053,
+  "details": ""
+ },
+ {
   "log_id": "260807BF0046",
   "time": "Aug  7 2026  6:26AM",
   "type": "1125-Traffic Hazard",

@@ -1,0 +1,92 @@
+{
+  "skyline": {
+    "file": "assets/img/skyline.jpg",
+    "alt": "Bakersfield skyline panorama",
+    "credit": "Bobak Ha'Eri",
+    "license": "CC BY 3.0",
+    "source": "File:2008-0621-Bakersfield-pan.JPG",
+    "width": 1280,
+    "height": 568
+  },
+  "oil": {
+    "file": "assets/img/oil.jpg",
+    "alt": "Oil derrick in the Kern County oil field",
+    "credit": "blmcalifornia",
+    "license": "Public domain",
+    "source": "File:Bakersfield Field Office oil derrick (48080292657).jpg",
+    "width": 1280,
+    "height": 853
+  },
+  "almonds": {
+    "file": "assets/img/almonds.jpg",
+    "alt": "Almond orchard in the San Joaquin Valley",
+    "credit": "USDAgov",
+    "license": "Public domain",
+    "source": "File:20250825-USDA-NRCS-DD-4 (54762040882).jpg",
+    "width": 1024,
+    "height": 1280
+  },
+  "fair": {
+    "file": "assets/img/fair.jpg",
+    "alt": "Kern County Fair",
+    "credit": "Robert Bejil from Bakersfield, Ca, USA",
+    "license": "CC BY 2.0",
+    "source": "File:Kern County Fair 009 (3988359129).jpg",
+    "width": 1280,
+    "height": 857
+  },
+  "amtrak": {
+    "file": "assets/img/amtrak.jpg",
+    "alt": "Bakersfield Amtrak station",
+    "credit": "LHOON",
+    "license": "CC BY-SA 2.0",
+    "source": "File:Bakersfield Amtrak Station.jpg",
+    "width": 1280,
+    "height": 853
+  },
+  "wind": {
+    "file": "assets/img/wind.jpg",
+    "alt": "Wind turbines at Tehachapi Pass",
+    "credit": "Paul Gipe",
+    "license": "CC BY-SA 4.0",
+    "source": "File:20211126 Nordtank Tehachapi Pass 0044.jpg",
+    "width": 1280,
+    "height": 853
+  },
+  "chp": {
+    "file": "assets/img/chp.jpg",
+    "alt": "California Highway Patrol vehicle",
+    "credit": "Tomás Del Coro",
+    "license": "CC BY-SA 2.0",
+    "source": "File:California Highway Patrol Dodge Charger.jpg",
+    "width": 1280,
+    "height": 765
+  },
+  "cityhall": {
+    "file": "assets/img/cityhall.jpg",
+    "alt": "Bakersfield City Hall",
+    "credit": "Skyman9999",
+    "license": "CC0",
+    "source": "File:2011 Bakersfield City Hall.JPG",
+    "width": 1280,
+    "height": 851
+  },
+  "places": {
+    "file": "assets/img/places.jpg",
+    "credit": "Bobak Ha'Eri",
+    "license": "CC BY 3.0",
+    "source": "File:2009-0726-CA-Bakersfield-FoxTheater (cropped).jpg",
+    "width": 1280,
+    "height": 969,
+    "alt": "Fox Theater, downtown Bakersfield"
+  },
+  "isabella": {
+    "file": "assets/img/isabella.jpg",
+    "alt": "Isabella Dam and reservoir, Kern County",
+    "credit": "U.S. Army Corps of Engineers, Sacramento District",
+    "license": "Public domain",
+    "source": "File:Aerial view of the Isabella Dam Safety Modification Project.jpg",
+    "width": 1280,
+    "height": 960
+  }
+}

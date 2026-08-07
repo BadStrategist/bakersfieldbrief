@@ -13,6 +13,7 @@ import html
 import re
 
 from .. import common
+from . import images
 from . import page as page_mod
 
 
@@ -122,6 +123,7 @@ def build(ctx, sources: dict) -> list[str]:
       public meetings on the city calendar. Listings come from each venue's own site
       (whitelist in data/venues.json) and refresh every build.</p></div>
     </div>
+    {images.figure("fair", rel)}
     {secs}
     <p class="note">Dates are as published by each venue; always confirm on the venue's listing
     before planning around an event. Meeting items come from official agendas and can change.</p>"""

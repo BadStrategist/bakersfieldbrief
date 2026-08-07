@@ -12,6 +12,7 @@ import html
 import json
 
 from .. import common
+from . import images
 from . import page as page_mod
 
 _PHONE = "1-800-427-7623"
@@ -97,6 +98,8 @@ def build(ctx, sources: dict) -> list[str]:
       <div class="meta"><span>Caltrans report: {ts_html}</span>
       <span class="dot">&bull;</span><span>refreshes 3× daily</span></div></div>
     </div>
+
+    {images.figure("wind", rel)}
 
     {big}
 

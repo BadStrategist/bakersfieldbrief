@@ -21,6 +21,7 @@ import math
 
 from .. import common
 from ..sources.airnow import css_class as _aqi_css
+from . import images
 from . import page as page_mod
 
 # ------------------------------------------------------------------ registry
@@ -276,6 +277,7 @@ def _hub(ctx, built_iso: str, weather) -> str:
       <div class="meta"><span>Updated <span class="updated">{built_iso}</span></span>
       <span class="dot">&bull;</span><span>Google News aggregation + keyword &amp; geolocation matching</span></div></div>
     </div>
+    {images.figure("places", rel)}
     <div class="grid cols-3">{cards}</div>
 
     <section class="block">

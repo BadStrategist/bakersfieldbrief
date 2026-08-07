@@ -12,6 +12,7 @@ import json
 import re
 
 from .. import common
+from . import images
 from . import page as page_mod
 
 WEEK_DAYS = 7
@@ -164,6 +165,7 @@ def build(ctx, sources: dict) -> list[str]:
     <h1>The Numbers</h1>
     <p class="lede">Kern County, measured — one article drawn from the site&rsquo;s live trackers.</p>
     <p class="date-line" style="margin-top:4px">{week_start.strftime('%B %d').replace(' 0', ' ')}&ndash;{week_end.strftime('%B %d, %Y').replace(' 0', ' ')}</p></div></div>
+    {images.figure("oil", rel)}
     <article class="article-lead">
       {''.join(paras)}
     </article>

@@ -20,6 +20,7 @@ import html
 import json
 
 from .. import common
+from . import images
 from . import page as page_mod
 
 # ------------------------------------------------------------------ registry
@@ -198,7 +199,7 @@ def build_alpr(ctx, sources: dict):
 
     _write_tracker(ctx, "surveillance", "Flock & ALPR Tracker",
                    "Every automated license plate reader mapped in the Bakersfield metro — a weekly-updated dark map with facing direction, newest-camera highlights, and a real 13-week change log from OpenStreetMap.",
-                   stat_html, body, payload, sources, dark=True)
+                   stat_html, body, payload, sources, dark=True, img="chp")
 
 
 # ------------------------------------------------------------------ Isabella / water
@@ -240,12 +241,13 @@ def build_water(ctx, sources: dict):
 
     _write_tracker(ctx, "water", "Isabella Lake & Kern River Tracker",
                    "Lake Isabella storage levels, percent of capacity, and the 30-day trend — updated daily from California DWR/CDEC data.",
-                   stat_html, body, payload, sources)
+                   stat_html, body, payload, sources, img="isabella")
 
 
 # ------------------------------------------------------------------ writer
 def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
-                   body_html: str, payload: dict, sources: dict, dark: bool = False):
+                   body_html: str, payload: dict, sources: dict, dark: bool = False,
+                   img: str = ""):
     built_iso = common.iso_today()
     rel = "../"
     tpl = common.read_template("tracker.html")
@@ -255,6 +257,8 @@ def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
         "__TRACKER_NAME__": html.escape(name),
         "__TRACKER_LEDE__": html.escape(lede),
         "__TRACKER_UPDATE__": "Auto-updated by the weekly tracker build",
+        "__TRACKER_IMG__": img,
+        "__TRACKER_FIGURE__": images.figure(img, rel),
         "__STATS__": stat_html,
         "__TRACKER_BODY__": body_html,
         "__TRACKER_METHOD__": "Every run fetches the official public data source, diffs it against the "

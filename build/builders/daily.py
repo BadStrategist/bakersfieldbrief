@@ -18,6 +18,7 @@ import os
 
 from .. import common, llm
 from ..sources.airnow import css_class as _aqi_css
+from . import images
 from . import page as page_mod
 SUN_ICON = """<svg class="sun-sm" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
   <circle cx="12" cy="12" r="6" fill="#DC9A1F"/>
@@ -143,6 +144,8 @@ def _page_content(ctx, today, built_iso, rel, news, weather, chp, isa,
       </div>
       <aside class="sidebar-col">{sidebar}</aside>
     </div>
+
+    {images.figure("skyline")}
 
     <div class="ad-slot" data-ad-slot="home-hero" aria-hidden="true"></div>
 
@@ -535,7 +538,7 @@ def _category_grid(rel, escribe, board, abc, food, alpr) -> str:
                        '<p>Upcoming meetings with posted agendas.</p>')
         watch_href = f"{rel}city-hall/"
         watch_ext = ""
-    watch_card = f'<a class="cat-card" href="{html.escape(watch_href)}">{watch_inner}{watch_ext}<span class="card-go">View agenda</span></a>'
+    watch_card = f'<a class="cat-card" href="{html.escape(watch_href)}">{images.thumb("cityhall", rel)}{watch_inner}{watch_ext}<span class="card-go">View agenda</span></a>'
 
     # WHAT THEY DECIDED (most recent past city meeting)
     rec = escribe.get("recent", [])
@@ -551,7 +554,7 @@ def _category_grid(rel, escribe, board, abc, food, alpr) -> str:
         decided_inner = ('<span class="cat-label">What They Decided</span><h3>No recent meetings posted</h3>'
                          '<p>Recaps appear after each meeting date passes.</p>')
         decided_href = f"{rel}city-hall/"
-    decided_card = f'<a class="cat-card" href="{html.escape(decided_href)}">{decided_inner}<span class="card-go">Official agenda</span></a>'
+    decided_card = f'<a class="cat-card" href="{html.escape(decided_href)}">{images.thumb("cityhall", rel)}{decided_inner}<span class="card-go">Official agenda</span></a>'
 
     # AROUND TOWN
     abc_items = abc.get("items", []) if abc.get("ok") else []
@@ -566,6 +569,7 @@ def _category_grid(rel, escribe, board, abc, food, alpr) -> str:
     if not town_lines:
         town_lines.append("No new filings or closures listed today.")
     town_card = f"""<a class="cat-card" href="{rel}openings/">
+      {images.thumb("almonds", rel)}
       <span class="cat-label">Around Town</span>
       <h3>New licenses &amp; closures</h3>
       <p>{'; '.join(town_lines)}</p>
@@ -578,6 +582,7 @@ def _category_grid(rel, escribe, board, abc, food, alpr) -> str:
     depth_line = (f"{alpr_stats.get('total', '—')} ALPR cameras mapped"
                   f" &middot; +{alpr_last4} in 4 weeks") if alpr_stats else "License plate reader tracker"
     depth_card = f"""<a class="cat-card" href="{rel}surveillance/">
+      {images.thumb("chp", rel)}
       <span class="cat-label">In Depth</span>
       <h3>Flock &amp; ALPR tracker</h3>
       <p>{depth_line} &mdash; map, direction, and a real 13-week change log from OpenStreetMap.</p>
@@ -895,6 +900,7 @@ def _article_lead(top, headlines, weather, airnow, calfire,
                  'report an error: <a href="mailto:corrections@bakersfieldbrief.com'
                  f'?subject=Correction&body=Page: {rel}briefs/">corrections@bakersfieldbrief.com</a>.</p>')
     return f"""
+    {images.figure("skyline", rel)}
     <article class="article-lead">
       {"".join(paras)}
     </article>"""

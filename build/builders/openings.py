@@ -8,6 +8,7 @@ from __future__ import annotations
 import html
 
 from .. import common
+from . import images
 from . import page as page_mod
 
 
@@ -69,6 +70,8 @@ def build(ctx, sources: dict) -> list[str]:
       <div class="meta"><span>Updated <span class="updated">{built_iso}</span></span>
       <span class="dot">&bull;</span><span>CA ABC · Kern County Environmental Health</span></div></div>
     </div>
+
+    {images.figure("almonds", rel)}
 
     <section class="block">
       <div class="sign-head"><span class="tab amber">Open</span><h2>Liquor license applications</h2></div>

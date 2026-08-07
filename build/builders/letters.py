@@ -10,6 +10,7 @@ import html
 import json
 
 from .. import common
+from . import images
 from . import page as page_mod
 
 FORM_EMAIL = "editor@bakersfieldbrief.com"
@@ -59,6 +60,7 @@ def build(ctx, sources: dict) -> list[str]:
     <div class="pagehead"><div class="hero"><p class="kicker">Reader forum</p>
     <h1>Letters to the editor</h1>
     <p class="lede">Kern County readers, on the record. Write in about anything in the brief — the best letters get published here.</p></div></div>
+    {images.figure("skyline", rel)}
     {published}
     {form}
     <p class="note" style="margin-top:14px">Letters reflect the author&rsquo;s views, not this publication&rsquo;s. We publish civil, signed letters and note corrections to the record per our <a href="{rel}corrections/">corrections policy</a>.</p>"""

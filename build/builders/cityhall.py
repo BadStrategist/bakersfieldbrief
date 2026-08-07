@@ -16,6 +16,7 @@ import re
 
 from .. import common
 from ..sources import escribe
+from . import images
 from . import page as page_mod
 
 RECAP_LOOKBACK_DAYS = 14
@@ -201,6 +202,8 @@ def _hub(es: dict, board: dict, meeting_pages: list[dict], built_iso: str, rel: 
       <div class="meta"><span>Updated <span class="updated">{built_iso}</span></span>
       <span class="dot">&bull;</span><span>City agendas via eSCRIBE &middot; county via official PDF</span></div></div>
     </div>
+
+    {images.figure("cityhall", rel)}
 
     <section class="block">
       <div class="sign-head"><span class="tab">City</span><h2>City of Bakersfield</h2></div>

@@ -145,7 +145,7 @@ def _page_content(ctx, today, built_iso, rel, news, weather, chp, isa,
       <aside class="sidebar-col">{sidebar}</aside>
     </div>
 
-    {images.figure("skyline")}
+    {images.figure("skyline", rel)}
 
     <div class="ad-slot" data-ad-slot="home-hero" aria-hidden="true"></div>
 
@@ -616,6 +616,8 @@ def _week_grid(today, rel, weather, escribe, board, top) -> str:
     days = [monday + dt.timedelta(days=i) for i in range(5)]
     alerts = (weather or {}).get("alerts", [])
     upcoming = escribe.get("upcoming", [])
+    # past days get their brief headline so the week never looks empty
+    archive = {str(e.get("date", "")): e for e in _load_archive()}
 
     cols = []
     for d in days:
@@ -640,6 +642,14 @@ def _week_grid(today, rel, weather, escribe, board, top) -> str:
         if _board_date(board) == iso:
             items.append(f'<li><span class="tag">County</span> '
                          f'<a href="{rel}city-hall/county-board/">Board of Supervisors</a></li>')
+
+        # past day's brief headline (from the archive) — the week never shows
+        # "No items posted" for a day we actually published
+        if d < today:
+            arch = archive.get(iso)
+            if arch and arch.get("headline"):
+                items.append(f'<li><span class="tag">Brief</span> '
+                             f'<a href="{rel}briefs/{iso}/">{html.escape(arch["headline"])}</a></li>')
 
         if not items:
             items.append('<li class="day-empty">No items posted</li>')
@@ -738,16 +748,18 @@ def _load_archive() -> list:
 def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
              escribe, board, abc, food, alpr, airnow, calfire, headlines,
              events=None) -> list[str]:
-    """Save a permanent copy of today's brief + refresh /briefs/ index."""
+    """Save a permanent copy of today's brief + refresh /briefs/ index.
+
+    The brief page is the friendly all-in-one article (greeting, weather, top
+    stories, something good, upcoming events) plus a meetings-only block —
+    NOT a duplicate of the homepage. Past-day pages render the stored article
+    body so every day of the week has real content.
+    """
     built = []
     rel = "../../"  # briefs/<date>/index.html is 2 levels below site root
     content = _article_lead(top, headlines, weather, airnow, calfire,
                             escribe, events or [], today, rel)
-    content += _page_content(ctx, today, built_iso, rel,
-                              news, weather, chp, isa, escribe, board,
-                              abc, food, alpr, airnow, calfire, headlines, top,
-                              events or [])
-    content += _upcoming(rel, escribe, board, events or [], today)
+    content += _upcoming_meetings(rel, escribe, board, today)
 
     page = page_mod.render(
         title=f"Bakersfield Daily Brief — {_fmt_date(today)} (archive)",
@@ -760,11 +772,13 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
     common.write(common.SITE / "briefs" / built_iso / "index.html", page)
     built.append(f"briefs/{built_iso}/index.html")
 
-    # archive data
+    # archive data — keep the full article body so past-day pages render real
+    # content instead of a headline stub (feed.py reads headline/date only)
     entries = _load_archive()
     entry = {"date": built_iso,
              "headline": top["title"] if top else "No headlines fetched",
-             "url": f"/briefs/{built_iso}/"}
+             "url": f"/briefs/{built_iso}/",
+             "content": content}
     entries = [e for e in entries if e.get("date") != built_iso] + [entry]
     entries.sort(key=lambda e: e.get("date", ""))
     (common.DATA / "briefs_archive.json").write_text(
@@ -793,8 +807,9 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
         statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else ""))
     built.append("briefs/index.html")
 
-    # past-day archive pages: site/ is wiped each build, so re-render the
-    # lightweight headline pages from the committed archive metadata
+    # past-day archive pages: site/ is wiped each build, so re-render from the
+    # committed archive metadata — full article body when retained, else the
+    # headline stub. Past pages are 2 levels deep → rel="../../" like today's.
     past_rel = "../../"
     for e in entries:
         dstr = str(e.get("date", ""))
@@ -804,29 +819,32 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
             d = dt.date.fromisoformat(dstr)
         except ValueError:
             continue
-        past_body = f"""
+        stored = e.get("content") or ""
+        if stored:
+            past_body = stored + _upcoming_meetings(past_rel, escribe, board, d)
+        else:
+            past_body = f"""
         <div class="pagehead"><div class="hero"><p class="kicker">Archive</p>
         <h1>Brief for {_fmt_date(d)}</h1>
         <p class="lede">The headline that led the Bakersfield Daily Brief that morning.</p></div></div>
         <div class="card"><p>Headline: <strong>{html.escape(str(e.get('headline', 'Daily brief')))}</strong></p>
-        <p class="note" style="margin-top:8px">Full brief content from this date is not retained;
-        see <a href="{past_rel}index.html">today&rsquo;s brief</a> or the
+        <p class="note" style="margin-top:8px">The full article for this date was not retained; see
+        <a href="{past_rel}index.html">today&rsquo;s brief</a> or the
         <a href="{past_rel}briefs/">archive index</a>.</p></div>"""
         common.write(common.SITE / "briefs" / dstr / "index.html", page_mod.render(
             title=f"Bakersfield Daily Brief — {_fmt_date(d)} (archive)",
-            desc=f"Archived headline from the {_fmt_date(d)} Bakersfield Daily Brief.",
+            desc=f"Archived copy of the {_fmt_date(d)} Bakersfield Daily Brief.",
             canonical=f"/briefs/{dstr}/", content=past_body, current="index", rel=past_rel,
-            built=built_iso, jsonld=[page_mod.org_jsonld()],
+            built=built_iso, jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld()],
             statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else ""))
         built.append(f"briefs/{dstr}/index.html")
     return built
 
 
 # ---------------------------------------------------------------- upcoming
-def _upcoming(rel, escribe, board, events, today) -> str:
-    """Next 7 days: public meetings + town events (daily article page)."""
-    from .events import _when_date
-
+def _upcoming_meetings(rel, escribe, board, today) -> str:
+    """Meetings-only block for the daily article page (events already have
+    their own segment in the article, so no duplication here)."""
     rows = []
     for m in escribe.get("upcoming", []) or []:
         iso = str(m.get("start_iso", ""))
@@ -838,23 +856,22 @@ def _upcoming(rel, escribe, board, events, today) -> str:
         <span class="ev-body"><a href="{html.escape(m.get('url', rel + 'city-hall/'))}" rel="noopener"><strong>{html.escape(m.get('name', 'Public meeting'))}</strong></a>
         <span class="ev-venue">Public meeting</span></span></li>""")
 
-    for e in events:
-        d = _when_date(e, today)
-        if not d or not (today <= d <= today + dt.timedelta(days=7)):
-            continue
-        rows.append(f"""
-        <li class="ev-row"><span class="ev-date">{html.escape(d.strftime('%a, %b') + ' ' + str(d.day))}</span>
-        <span class="ev-body"><a href="{html.escape(e.get('url') or '#')}" target="_blank" rel="noopener"><strong>{html.escape(e.get('name', 'Untitled event'))}</strong></a>
-        <span class="ev-venue">{html.escape(e.get('venue') or '')}</span></span></li>""")
+    if _board_date(board):
+        bd = _board_date(board)
+        if today.isoformat() <= bd <= (today + dt.timedelta(days=7)).isoformat():
+            rows.append(f"""
+            <li class="ev-row"><span class="ev-date">{html.escape(bd[:10])}</span>
+            <span class="ev-body"><a href="{rel}city-hall/county-board/"><strong>Board of Supervisors</strong></a>
+            <span class="ev-venue">Kern County</span></span></li>""")
 
     if not rows:
         return ""
     return f"""
     <section class="block" style="margin-top:34px">
-      <div class="sign-head"><span class="tab">Next</span><h2>Upcoming — next 7 days</h2></div>
+      <div class="sign-head"><span class="tab">Next</span><h2>Public meetings — next 7 days</h2></div>
       <ul class="ev-list">{"".join(rows)}</ul>
-      <p class="note" style="margin-top:10px">Meetings from official agendas; events from venue
-      listings. See <a href="{rel}events/">all events</a>.</p>
+      <p class="note" style="margin-top:10px">Meetings from official agendas. See
+      <a href="{rel}city-hall/">all city &amp; county meetings</a>.</p>
     </section>"""
 
 

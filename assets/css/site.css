@@ -655,6 +655,16 @@ a.cond-chip:hover .v, a.cond-chip:focus-visible .v { text-decoration: underline;
 .article-lead p { margin: 0 0 10px; }
 .article-lead p:last-child { margin-bottom: 0; }
 
+/* ------------------------------------------------ brief read (article) */
+.brief-read .greet { font-family: var(--serif); font-size: 18px; line-height: 1.55;
+  margin: 4px 0 22px; }
+.brief-read .greet p { margin: 0 0 10px; }
+.brief-seg { margin: 26px 0 30px; }
+.brief-seg .sign-head { margin-bottom: 4px; }
+.story-list { margin: 0 0 0 18px; padding: 0; }
+.story-list li { margin-bottom: 9px; line-height: 1.45; }
+.pos-card { border-left: 4px solid var(--amber); }
+
 /* ------------------------------------------------ gas prices */
 .gas-table { width: 100%; border-collapse: collapse; font-size: 15px; }
 .gas-table th, .gas-table td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); }

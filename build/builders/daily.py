@@ -351,9 +351,21 @@ def _conditions(weather, chp, isa, airnow, calfire, built_iso, rel="") -> str:
 
 
 # ---------------------------------------------------------------- the news
+_DIGEST_CACHE = {}
+
+
+def _get_digest(headlines: list[dict]) -> str | None:
+    """LLM news digest, computed at most once per build (homepage + article
+    both render it; we never pay for the same summarization twice)."""
+    key = tuple(h.get("title", "") for h in headlines[:14])
+    if key not in _DIGEST_CACHE:
+        _DIGEST_CACHE[key] = llm.summarize_news(headlines[:14]) if headlines else None
+    return _DIGEST_CACHE[key]
+
+
 def _news(news: dict, built_iso: str) -> tuple[str, str]:
     headlines = news.get("headlines", [])
-    digest = llm.summarize_news(headlines[:14]) if headlines else None
+    digest = _get_digest(headlines)
     if digest:
         digest_html = f"<div class='card'><p>{digest}</p></div>"
         meta = "llm"
@@ -849,61 +861,200 @@ def _upcoming(rel, escribe, board, events, today) -> str:
 # ---------------------------------------------------------------- article lead
 def _article_lead(top, headlines, weather, airnow, calfire,
                   escribe, events, today, rel) -> str:
-    """Original write-up opening the daily article (keyless, factual)."""
+    """Friendly, all-in-one 'Today's Brief' opening the daily article.
+
+    Structure: warm greeting → weather block (figure) → top stories with
+    short original summaries → 'something good' positive pick → upcoming
+    events (concerts/comedians included). LLM upgrades prose when the key is
+    present (CI); everything degrades gracefully to a deterministic, keyless
+    version so the page always builds.
+    """
     from .events import _when_date
 
-    paras = []
-    if top:
-        paras.append(
-            f"<p><strong>{html.escape(top['title'])}</strong> is the big story in Kern County "
-            f"today. <em>via {html.escape(top.get('source', 'local news'))}.</em></p>")
-    others = (headlines or [])[1:4]
-    if others:
-        paras.append("<p>Also on the radar: " + "; ".join(
-            f'<a href="{html.escape(h.get("url", "#"))}" rel="noopener">{html.escape(h["title"])}</a>'
-            for h in others) + ".</p>")
+    def esc(s):
+        return html.escape(str(s or ""))
 
-    cond = []
+    # ---- warm greeting (LLM when available, else friendly deterministic)
+    greeting = llm.friendly_brief(
+        (top or {}).get("title", ""), headlines, weather, airnow, calfire, events)
+    if not greeting:
+        greeting = _greeting_fallback(top, weather, airnow)
+
+    # ---- weather block
+    wx = _weather_prose(weather, airnow, calfire)
+
+    # ---- top stories (LLM digest when available, else original one-liners)
+    stories = _stories(top, headlines, rel)
+
+    # ---- something good (LLM pick when available, else keyword filter)
+    good = _positive_block(headlines, rel)
+
+    # ---- upcoming events (concerts/comedians included)
+    events_html = _events_block(events, escribe, today, rel)
+
+    return f"""
+    <article class="article-lead brief-read">
+      <div class="greet">{greeting}</div>
+
+      <section class="brief-seg" aria-labelledby="seg-weather">
+        <div class="sign-head"><span class="tab">Weather</span><h2 id="seg-weather">Today's weather</h2></div>
+        {images.figure("skyline", rel)}
+        <div class="card">{wx}</div>
+      </section>
+
+      <section class="brief-seg" aria-labelledby="seg-news">
+        <div class="sign-head"><span class="tab">News</span><h2 id="seg-news">Top stories</h2></div>
+        {stories}
+      </section>
+
+      <section class="brief-seg" aria-labelledby="seg-good">
+        <div class="sign-head"><span class="tab amber">Good</span><h2 id="seg-good">Something good</h2></div>
+        {images.figure("fair", rel)}
+        {good}
+      </section>
+
+      <section class="brief-seg" aria-labelledby="seg-events">
+        <div class="sign-head"><span class="tab">Out</span><h2 id="seg-events">Upcoming — concerts, comedy &amp; more</h2></div>
+        {images.figure("amtrak", rel)}
+        {events_html}
+      </section>
+
+      <p class="note" style="margin-top:8px">This brief is compiled automatically
+      from public records and linked sources — a factual digest, not opinion.
+      <a href="{rel}letters/">Write a letter</a> about anything here · report an
+      error: <a href="mailto:corrections@bakersfieldbrief.com?subject=Correction&body=Page: {rel}briefs/">corrections@bakersfieldbrief.com</a>.</p>
+    </article>"""
+
+
+def _greeting_fallback(top, weather, airnow) -> str:
+    """Friendly greeting without an LLM — keyless, factual, warm."""
+    fc = (weather or {}).get("forecast", {}) or {}
+    bits = []
+    if fc.get("high") is not None:
+        bits.append(f"today&rsquo;s high should land near {fc['high']}&deg;")
     alerts = (weather or {}).get("alerts", [])
     if alerts:
-        cond.append(f"a {html.escape(alerts[0].get('event', 'weather alert'))} is active")
-    fc = (weather or {}).get("forecast", {}) or {}
-    if fc.get("high") is not None:
-        cond.append(f"a high near {fc['high']}&deg;")
+        bits.append(f"a {html.escape(alerts[0].get('event', 'weather alert'))} is in effect")
     if airnow and airnow.get("ok") and airnow.get("aqi") is not None:
-        cond.append(f"air quality at {airnow['aqi']} ({html.escape((airnow.get('category') or '').lower())})")
+        bits.append(f"air quality sits at {airnow['aqi']}")
+    cond_txt = (" — " + ", ".join(bits) + ".") if bits else "."
+    if top:
+        body = (f" <strong>{html.escape(top['title'])}</strong> is the big story "
+                f"we&rsquo;re watching today — full rundown below.")
+    else:
+        body = " Here&rsquo;s everything happening in Bakersfield and Kern County today."
+    return f"<p><strong>Good morning, Kern County.</strong>{cond_txt}{body}</p>"
+
+
+def _weather_prose(weather, airnow, calfire) -> str:
+    """Weather block: forecast + alerts + AQI + fires as clean readable prose."""
+    fc = (weather or {}).get("forecast", {}) or {}
+    bits = []
+    if fc.get("high") is not None or fc.get("low") is not None:
+        hi = fc.get("high")
+        lo = fc.get("low")
+        hi_txt = f"a high near {hi}°" if hi is not None else "a mild day"
+        lo_txt = f" and a low around {lo}° tonight" if lo is not None else ""
+        bits.append(f"Expect {hi_txt}{lo_txt}.")
+    if fc.get("current") is not None:
+        bits.append(f"It's currently {fc['current']}° at Meadows Field (KBFL).")
+    alerts = (weather or {}).get("alerts", [])
+    if alerts:
+        a = alerts[0]
+        bits.append(f"<strong>{html.escape(a.get('event', 'Weather alert'))}</strong>: "
+                    f"{html.escape((a.get('headline') or '')[:160])}")
+    else:
+        bits.append("No active weather alerts for Kern County.")
+    if airnow and airnow.get("ok") and airnow.get("aqi") is not None:
+        bits.append(f"Air quality is {airnow['aqi']} — "
+                    f"{html.escape((airnow.get('category') or 'moderate').lower())}.")
     kern = [f for f in (calfire or {}).get("incidents", []) if "Kern" in str(f.get("county", ""))]
     if kern:
         names = ", ".join(html.escape(f.get("name", "fire")) for f in kern)
-        cond.append(f"{len(kern)} active {'fire' if len(kern) == 1 else 'fires'} in Kern ({names})")
-    if cond:
-        paras.append("<p>The conditions today: " + "; ".join(cond) + ".</p>")
+        bits.append(f"Fire crews are on {len(kern)} active {'fire' if len(kern) == 1 else 'fires'} in Kern ({names}).")
+    return "<p>" + "</p><p>".join(bits) + "</p>"
 
-    nxt = []
-    for m in (escribe or {}).get("upcoming", []) or []:
-        if (m.get("start_iso") or "")[:10] >= today.isoformat():
-            nxt.append(f'<a href="{html.escape(m.get("url", rel + "city-hall/"))}" rel="noopener">{html.escape(m.get("name", "a public meeting"))}</a>')
-            break
+
+def _stories(top, headlines, rel) -> str:
+    """Top stories: LLM digest when available, else original one-liners."""
+    if not headlines:
+        return '<p class="note">No headlines were fetched this build — the local RSS feeds were unreachable. This block returns with tomorrow&rsquo;s build.</p>'
+    digest = _get_digest(headlines)
+    if digest:
+        return f'<div class="card"><p>{digest}</p></div>'
+    # deterministic fallback: hero + 3 more, each summarized in our own words
+    items = []
+    if top:
+        items.append(('<strong>Top story:</strong> ' + html.escape(top["title"])
+                      + f' — <em>via {html.escape(top.get("source", "local news"))}.</em>',
+                      top.get("url", "#")))
+    for h in (headlines or [])[1:4]:
+        items.append((html.escape(h["title"]), h.get("url", "#")))
+    lis = "".join(
+        f'<li><a href="{html.escape(url)}" rel="noopener">{txt}</a></li>'
+        for txt, url in items)
+    return f'<div class="card"><ul class="story-list">{lis}</ul>' \
+           f'<p class="note" style="margin-top:8px">Summaries are written from the headline and link to the original outlet for details.</p></div>'
+
+
+_POSITIVE_KW = ("grand opening", "opens", "scholarship", "volunteer", "festival",
+                "fundraiser", "donation", "honor", "award", "celebrat", "milestone",
+                "food drive", "toy drive", "school supply", "back to school",
+                "free", "community", "library", "museum", "art walk", "concert")
+
+
+def _positive_block(headlines, rel) -> str:
+    """'Something good': LLM pick when available, else keyword-filtered."""
+    if not headlines:
+        return '<p class="note">Check back tomorrow — the good-news pick returns with the next build.</p>'
+    pick = llm.pick_positive(headlines)
+    if pick:
+        return f'<div class="card pos-card"><p>{pick}</p></div>'
+    # deterministic fallback: first headline matching positive keywords
+    for h in headlines:
+        t = (h.get("title", "") or "").lower()
+        if any(k in t for k in _POSITIVE_KW):
+            return (f'<div class="card pos-card"><p>'
+                    f'<a href="{html.escape(h.get("url", "#"))}" rel="noopener">'
+                    f'{html.escape(h["title"])}</a></p>'
+                    f'<p class="note">We look for the uplifting stuff in each day&rsquo;s '
+                    f'headlines — grand openings, milestones, and community wins.</p></div>')
+    # last resort: point to the events page as the good thing
+    return (f'<div class="card pos-card"><p>Looking for something good? '
+            f'<a href="{rel}events/">See what&rsquo;s on around town</a> — concerts, '
+            f'comedy, and community events are listed every build.</p></div>')
+
+
+def _events_block(events, escribe, today, rel) -> str:
+    """Next-7-days events with date badges; meetings mixed in when thin."""
+    from .events import _when_date
+
+    dated = []
     for e in events or []:
         d = _when_date(e, today)
-        if d and d >= today:
-            nxt.append(f'<a href="{html.escape(e.get("url", "#"))}" rel="noopener">{html.escape(e.get("name", "an event"))}</a>')
-            break
-    if nxt:
-        paras.append(
-            "<p>Coming up: " + " · ".join(nxt[:2])
-            + f'. Browse everything on the <a href="{rel}events/">events page</a>.</p>')
+        if d and today <= d <= today + dt.timedelta(days=7):
+            dated.append((d, e))
+    dated.sort(key=lambda t: t[0])
 
-    paras.append('<p class="note" style="margin-top:6px">This brief is compiled automatically '
-                 'from public records and linked sources — a factual digest, not opinion. '
-                 f'<a href="{rel}letters/">Write a letter</a> about anything here · '
-                 'report an error: <a href="mailto:corrections@bakersfieldbrief.com'
-                 f'?subject=Correction&body=Page: {rel}briefs/">corrections@bakersfieldbrief.com</a>.</p>')
+    rows = []
+    for d, e in dated:
+        venue = esc = None
+        v = e.get("venue") or ""
+        rows.append(f"""
+        <li class="ev-row"><span class="ev-date">{html.escape(d.strftime('%a') + ' ' + str(d.day))}</span>
+        <span class="ev-body"><a href="{html.escape(e.get('url') or '#')}" target="_blank" rel="noopener"><strong>{html.escape(e.get('name', 'Untitled event'))}</strong></a>
+        <span class="ev-venue">{html.escape(v)}</span></span></li>""")
+
+    if not rows:
+        rows.append('<li class="ev-row"><span class="ev-body">Nothing dated in the next '
+                    '7 days from the venues we watch — check the '
+                    f'<a href="{rel}events/">events page</a> for the full calendar.</span></li>')
+
     return f"""
-    {images.figure("skyline", rel)}
-    <article class="article-lead">
-      {"".join(paras)}
-    </article>"""
+    <div class="card"><ul class="ev-list">{"".join(rows)}</ul>
+    <p class="note" style="margin-top:10px">From venue listings we watch: Fox Theater,
+    Mechanics Bank Arena, The Well Comedy Club, the Condors, and more. Dates are as
+    the venue published them. See <a href="{rel}events/">all events</a>.</p></div>"""
 
 
 # ---------------------------------------------------------------- misc

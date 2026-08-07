@@ -82,6 +82,63 @@ def pick_thing_to_watch(candidates: list[dict]) -> str | None:
     return _chat(prompt)
 
 
+def friendly_brief(top_title: str, headlines: list[dict], weather: dict,
+                   airnow: dict, calfire: dict, events: list[dict]) -> str | None:
+    """→ 2-3 warm, plain paragraphs opening the daily article.
+
+    Ties together the top story, conditions, and a couple of upbeat notes so
+    the brief reads like a neighbor's morning summary, not a wire feed.
+    Facts only — no invented details, no editorializing.
+    """
+    if not top_title and not headlines:
+        return None
+    ev = "; ".join(f"{e.get('name', 'an event')} at {e.get('venue', 'a local venue')}"
+                   for e in events[:3])
+    cond = []
+    fc = (weather or {}).get("forecast", {}) or {}
+    if fc.get("high") is not None:
+        cond.append(f"a high near {fc['high']}")
+    alerts = (weather or {}).get("alerts", [])
+    if alerts:
+        cond.append(f"{alerts[0].get('event', 'a weather alert')}")
+    if airnow and airnow.get("ok") and airnow.get("aqi") is not None:
+        cond.append(f"air quality around {airnow['aqi']}")
+    cond_txt = (" " + "; ".join(cond) + ".") if cond else ""
+    lines = "\n".join(
+        f"- {h['title']} ({h.get('source', 'news')})" for h in headlines[:12]
+    )
+    prompt = (
+        "Write the opening of a friendly local news brief for Bakersfield/Kern "
+        "County, addressed to readers as 'you'. Two to three short paragraphs. "
+        "Paragraph 1: greet readers warmly and name the day's top story "
+        f"('{top_title}') in your own words. Paragraph 2: summarize conditions "
+        f"('{cond_txt}') and 2-3 other notable headlines from the list. "
+        "Paragraph 3: point readers to something pleasant coming up"
+        + (f" ({ev})" if ev else "")
+        + ". Tone: warm, plain, trustworthy. Facts only; never invent details "
+        "not in the input; no markdown, no headings.\n\nHEADLINES:\n"
+        + _truncate(lines)
+    )
+    return _chat(prompt)
+
+
+def pick_positive(headlines: list[dict]) -> str | None:
+    """Choose one genuinely positive local story → 2 sentences, warm tone."""
+    if not headlines:
+        return None
+    lines = "\n".join(
+        f"- {h['title']} ({h.get('source', 'news')})" for h in headlines[:14]
+    )
+    prompt = (
+        "From the local headlines below, choose the ONE that is most positive "
+        "or uplifting for the community — something like a grand opening, a "
+        "scholarship, a volunteer drive, a festival, or a milestone. Respond "
+        "with two warm, factual sentences about it. Do not invent details not "
+        "in the headline; no markdown.\n\nHEADLINES:\n" + _truncate(lines)
+    )
+    return _chat(prompt)
+
+
 def _chat(prompt: str) -> str | None:
     key = os.environ.get("LLM_API_KEY")
     if not key:

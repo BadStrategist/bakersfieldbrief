@@ -210,6 +210,26 @@
   "details": ""
  },
  {
+  "log_id": "260807BF0046",
+  "time": "Aug  7 2026  6:26AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Eb Sr58 Jwo S Mount Vernon Ave",
+  "area": "Bakersfield",
+  "lat": 35.3525,
+  "lon": -118.970278,
+  "details": ""
+ },
+ {
+  "log_id": "260807BF0050",
+  "time": "Aug  7 2026  6:40AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sb I5 At Laval Rd",
+  "area": "Fort Tejon",
+  "lat": 34.985833,
+  "lon": -118.945278,
+  "details": ""
+ },
+ {
   "log_id": "260807BF0208",
   "time": "Aug  7 2026 12:37PM",
   "type": "1179-Trfc Collision-1141 Enrt",

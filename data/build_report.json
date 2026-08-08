@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-07T22:11:33-07:00",
+ "built_at": "2026-08-07T22:33:18-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -76,7 +76,7 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 6,
+   "chp_new": 0,
    "top_story": "First human case of West Nile virus reported in Kern County: Public Health",
    "archive": "2026-08-07"
   },
@@ -131,7 +131,7 @@
    "isabella_af": 211495,
    "alpr_total": 247,
    "kern_fires": 2,
-   "aqi": 67,
+   "aqi": 65,
    "chp_week": 31
   },
   "letters": {

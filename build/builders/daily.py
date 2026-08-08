@@ -325,7 +325,7 @@ def _conditions(weather, chp, isa, airnow, calfire, built_iso, rel="") -> str:
         f'<div class="l">Isabella Lake</div><div class="v">{isa_v} <span style="font-size:13px;color:#57504A">({isa_pct}% cap)</span></div>',
         external=False)
     chp_html = chip(
-        "https://cad.chp.ca.gov/",
+        "https://quickmap.dot.ca.gov/",
         f'<div class="l">CHP overnight</div><div class="v">{chp_v}</div>')
     aqi_html = chip(
         "https://www.airnow.gov/?city=Bakersfield&state=CA&country=USA",
@@ -345,7 +345,7 @@ def _conditions(weather, chp, isa, airnow, calfire, built_iso, rel="") -> str:
         {aqi_html}
         {fire_html}
       </div>
-      <p class="note" style="margin-top:10px">Each block links to the live source: National Weather Service &middot; CA DWR/CDEC &middot; CHP &middot;
+      <p class="note" style="margin-top:10px">Each block links to the live source: National Weather Service &middot; CA DWR/CDEC &middot; Caltrans QuickMap (CHP incidents) &middot;
       EPA AirNow &middot; CAL FIRE. Data refreshed each build.</p>
     </section>"""
 

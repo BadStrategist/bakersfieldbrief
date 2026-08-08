@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-07T15:06:45-07:00",
+ "built_at": "2026-08-07T22:11:33-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -76,7 +76,7 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 2,
+   "chp_new": 6,
    "top_story": "First human case of West Nile virus reported in Kern County: Public Health",
    "archive": "2026-08-07"
   },
@@ -97,10 +97,10 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 8,
+    "bakersfield-nw": 7,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -111,9 +111,9 @@
    "draft": "drafts/weekend-guide-2026-08-07"
   },
   "grapevine": {
-   "i5": "RESTRICTIONS",
+   "i5": "OPEN",
    "i5_pass": "OPEN",
-   "log_entries": 8
+   "log_entries": 10
   },
   "events": {
    "groups": {
@@ -131,8 +131,8 @@
    "isabella_af": 211495,
    "alpr_total": 247,
    "kern_fires": 2,
-   "aqi": 140,
-   "chp_week": 26
+   "aqi": 67,
+   "chp_week": 31
   },
   "letters": {
    "published": 0

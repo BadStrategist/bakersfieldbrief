@@ -213,10 +213,10 @@
   "log_id": "260807BF0265",
   "time": "Aug  7 2026  2:38PM",
   "type": "FIRE-Report of Fire",
-  "location": "Lebec Rd / I5 S",
+  "location": "I5 N / GORMAN OFR",
   "area": "Fort Tejon",
-  "lat": 34.865996,
-  "lon": -118.883512,
+  "lat": 34.79456,
+  "lon": -118.847656,
   "details": ""
  },
  {
@@ -227,6 +227,26 @@
   "area": "Bakersfield",
   "lat": 35.347826,
   "lon": -118.873053,
+  "details": ""
+ },
+ {
+  "log_id": "260807BF0273",
+  "time": "Aug  7 2026  2:57PM",
+  "type": "FIRE-Report of Fire",
+  "location": "I5 N / Gorman Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.79456,
+  "lon": -118.847656,
+  "details": ""
+ },
+ {
+  "log_id": "260807BF0319",
+  "time": "Aug  7 2026  4:03PM",
+  "type": "SIG Alert",
+  "location": "I5 N / Gorman Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.79456,
+  "lon": -118.847656,
   "details": ""
  },
  {
@@ -247,6 +267,36 @@
   "area": "Fort Tejon",
   "lat": 34.985833,
   "lon": -118.945278,
+  "details": ""
+ },
+ {
+  "log_id": "260807BF0455",
+  "time": "Aug  7 2026  8:36PM",
+  "type": "1180-Trfc Collision-Major Inj",
+  "location": "Wb Sr178 At Sr204",
+  "area": "Bakersfield",
+  "lat": 35.381944,
+  "lon": -119.01,
+  "details": ""
+ },
+ {
+  "log_id": "260807BF0483",
+  "time": "Aug  7 2026  9:52PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Eb Sr58 At Hart Flat Rd",
+  "area": "Bakersfield",
+  "lat": 35.240556,
+  "lon": -118.586944,
+  "details": ""
+ },
+ {
+  "log_id": "260807BF0486",
+  "time": "Aug  7 2026 10:04PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Kernville Rd / Kern River Dr",
+  "area": "Bakersfield",
+  "lat": 35.755327,
+  "lon": -118.423509,
   "details": ""
  },
  {

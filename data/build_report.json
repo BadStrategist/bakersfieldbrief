@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-08T07:53:00-07:00",
+ "built_at": "2026-08-08T14:06:06-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -34,8 +34,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 5037, column 3"
   },
   "isabella": {
    "ok": true,
@@ -46,8 +46,8 @@
    "error": ""
   },
   "alpr": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
   },
   "venues": {
    "ok": true,
@@ -76,14 +76,14 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 3,
+   "chp_new": 0,
    "top_story": "First human case of West Nile virus reported in Kern County: Public Health",
    "archive": "2026-08-08"
   },
   "cityhall": {
    "upcoming_meetings": 2,
    "county_items": 101,
-   "drafts_generated": 1
+   "drafts_generated": 0
   },
   "openings": {
    "liquor_apps": 1,
@@ -111,9 +111,9 @@
    "draft": "drafts/weekend-guide-2026-08-08"
   },
   "grapevine": {
-   "i5": "CLOSED",
+   "i5": "RESTRICTIONS",
    "i5_pass": "OPEN",
-   "log_entries": 12
+   "log_entries": 14
   },
   "events": {
    "groups": {
@@ -130,7 +130,7 @@
    "isabella_af": 209720,
    "alpr_total": 247,
    "kern_fires": 2,
-   "aqi": 62,
+   "aqi": 108,
    "chp_week": 34
   },
   "letters": {
@@ -163,8 +163,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 249,
-   "alpr_new_week": 1,
+   "alpr_total": 0,
+   "alpr_new_week": 0,
    "pages": [
     "surveillance",
     "water",

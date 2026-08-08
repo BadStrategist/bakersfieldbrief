@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-07T22:33:18-07:00",
+ "built_at": "2026-08-08T07:53:00-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -76,17 +76,17 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 0,
+   "chp_new": 3,
    "top_story": "First human case of West Nile virus reported in Kern County: Public Health",
-   "archive": "2026-08-07"
+   "archive": "2026-08-08"
   },
   "cityhall": {
-   "upcoming_meetings": 3,
+   "upcoming_meetings": 2,
    "county_items": 101,
-   "drafts_generated": 0
+   "drafts_generated": 1
   },
   "openings": {
-   "liquor_apps": 0,
+   "liquor_apps": 1,
    "food_closures": 9
   },
   "places": {
@@ -97,10 +97,10 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 7,
+    "bakersfield-nw": 8,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -108,45 +108,44 @@
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-08-07"
+   "draft": "drafts/weekend-guide-2026-08-08"
   },
   "grapevine": {
-   "i5": "OPEN",
+   "i5": "CLOSED",
    "i5_pass": "OPEN",
-   "log_entries": 10
+   "log_entries": 12
   },
   "events": {
    "groups": {
-    "This week": 1,
-    "Next week": 6,
+    "This week": 7,
     "Later": 27,
     "Date TBD": 2
    },
-   "meetings": 3
+   "meetings": 2
   },
   "feed": {
-   "entries": 4
+   "entries": 5
   },
   "numbers": {
-   "isabella_af": 211495,
+   "isabella_af": 209720,
    "alpr_total": 247,
    "kern_fires": 2,
-   "aqi": 65,
-   "chp_week": 31
+   "aqi": 62,
+   "chp_week": 34
   },
   "letters": {
    "published": 0
   },
   "gas_prices": {
    "ok": true,
-   "regular": 5.6672,
-   "asof": "2026-08-07"
+   "regular": 5.6484,
+   "asof": "2026-08-08"
   },
   "weather_page": {
    "ok": true,
    "periods": 14,
    "alerts": 1,
-   "asof": "2026-08-07"
+   "asof": "2026-08-08"
   },
   "static": {
    "pages": [
@@ -164,8 +163,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 248,
-   "alpr_new_week": 0,
+   "alpr_total": 249,
+   "alpr_new_week": 1,
    "pages": [
     "surveillance",
     "water",

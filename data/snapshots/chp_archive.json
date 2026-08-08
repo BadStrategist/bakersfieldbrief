@@ -308,5 +308,35 @@
   "lat": 35.518617,
   "lon": -118.726789,
   "details": ""
+ },
+ {
+  "log_id": "260808BF0046",
+  "time": "Aug  8 2026  5:10AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "Sb I5 Jso #2 Turn Thru",
+  "area": "Fort Tejon",
+  "lat": 34.890111,
+  "lon": -118.91124,
+  "details": ""
+ },
+ {
+  "log_id": "260808BF0088",
+  "time": "Aug  8 2026  7:24AM",
+  "type": "1125A-Animal Hazard",
+  "location": "Mt Vernon Ave Ofr / S Mount Vernon Ave",
+  "area": "Bakersfield",
+  "lat": 35.353524,
+  "lon": -118.967433,
+  "details": ""
+ },
+ {
+  "log_id": "260808BF0097",
+  "time": "Aug  8 2026  7:49AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Wb Sr58 Jeo Sr99",
+  "area": "Bakersfield",
+  "lat": 35.352778,
+  "lon": -119.0375,
+  "details": ""
  }
 ]

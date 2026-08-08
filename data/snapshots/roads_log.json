@@ -1,5 +1,19 @@
 [
  {
+  "ts": "2026-08-08",
+  "route": "sr99",
+  "route_name": "State Route 99 \u2014 Central Valley",
+  "from": "CLOSED",
+  "to": "RESTRICTIONS"
+ },
+ {
+  "ts": "2026-08-08",
+  "route": "i5",
+  "route_name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
+  "from": "OPEN",
+  "to": "CLOSED"
+ },
+ {
   "ts": "2026-08-07",
   "route": "sr99",
   "route_name": "State Route 99 \u2014 Central Valley",

@@ -390,6 +390,36 @@
   "details": ""
  },
  {
+  "log_id": "260809BF0221",
+  "time": "Aug  9 2026  1:08PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 WASCO WAY",
+  "area": "Buttonwillow",
+  "lat": 35.44243,
+  "lon": -119.458788,
+  "details": ""
+ },
+ {
+  "log_id": "260809BF0222",
+  "time": "Aug  9 2026  1:09PM",
+  "type": "1125A-Animal Hazard",
+  "location": "9000 Navajo Ave",
+  "area": "Bakersfield",
+  "lat": 35.647376,
+  "lon": -118.360668,
+  "details": ""
+ },
+ {
+  "log_id": "260809BF0228",
+  "time": "Aug  9 2026  1:17PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr65 / Sherwood Ave",
+  "area": "Bakersfield",
+  "lat": 35.659266,
+  "lon": -119.077548,
+  "details": ""
+ },
+ {
   "log_id": "260809BF0069",
   "time": "Aug  9 2026  7:10AM",
   "type": "20002-Hit and Run No Injuries",

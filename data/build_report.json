@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-08T23:35:03-07:00",
+ "built_at": "2026-08-09T07:57:09-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -76,9 +76,9 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 5,
+   "chp_new": 2,
    "top_story": "First human case of West Nile virus reported in Kern County: Public Health",
-   "archive": "2026-08-08"
+   "archive": "2026-08-09"
   },
   "cityhall": {
    "upcoming_meetings": 2,
@@ -86,7 +86,7 @@
    "drafts_generated": 0
   },
   "openings": {
-   "liquor_apps": 1,
+   "liquor_apps": 0,
    "food_closures": 9
   },
   "places": {
@@ -97,7 +97,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 7,
@@ -108,7 +108,7 @@
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-08-08"
+   "draft": "drafts/weekend-guide-2026-08-09"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -118,34 +118,35 @@
   "events": {
    "groups": {
     "This week": 6,
-    "Later": 27,
+    "Next week": 1,
+    "Later": 26,
     "Date TBD": 1
    },
    "meetings": 2
   },
   "feed": {
-   "entries": 5
+   "entries": 6
   },
   "numbers": {
-   "isabella_af": 209720,
+   "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 3,
-   "aqi": null,
-   "chp_week": 39
+   "aqi": 64,
+   "chp_week": 41
   },
   "letters": {
    "published": 0
   },
   "gas_prices": {
    "ok": true,
-   "regular": 5.6484,
-   "asof": "2026-08-08"
+   "regular": 5.666,
+   "asof": "2026-08-09"
   },
   "weather_page": {
    "ok": true,
    "periods": 14,
    "alerts": 1,
-   "asof": "2026-08-08"
+   "asof": "2026-08-09"
   },
   "static": {
    "pages": [

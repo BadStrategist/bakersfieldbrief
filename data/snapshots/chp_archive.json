@@ -388,5 +388,25 @@
   "lat": 35.59811,
   "lon": -119.64158,
   "details": ""
+ },
+ {
+  "log_id": "260809BF0069",
+  "time": "Aug  9 2026  7:10AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sr184 / Berry Rd",
+  "area": "Bakersfield",
+  "lat": 35.314397,
+  "lon": -118.914287,
+  "details": ""
+ },
+ {
+  "log_id": "260809BF0003",
+  "time": "Aug  9 2026 12:01AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
  }
 ]

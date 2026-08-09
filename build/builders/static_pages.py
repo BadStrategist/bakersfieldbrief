@@ -105,8 +105,9 @@ def build(ctx, sources: dict) -> list[str]:
       governed by their policies. We do not receive any data back from those services through
       this site.</p>
       <h2>Analytics</h2>
-      <p>We may add privacy-respecting, cookieless analytics in the future. If we do, this
-      policy will be updated and the tool will be disclosed here.</p>
+      <p>We use <a href="https://www.goatcounter.com/">GoatCounter</a>, a privacy-respecting,
+      cookieless analytics tool that counts page views without cookies, tracking scripts, or
+      personal data. We do not receive your name, email address, or identity through it.</p>
       <h2>Children</h2>
       <p>This site does not target children under 13 and does not knowingly collect any
       information from them.</p>
@@ -270,9 +271,8 @@ def build(ctx, sources: dict) -> list[str]:
     built.append("oversight/index.html")
 
     # ---------------------------------------------------------- ads.txt
-    # Placeholder until AdSense approval — replace with the real pub ID.
     (common.SITE / "ads.txt").write_text(
-        "google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0\n",
+        "google.com, pub-7618641338292119, DIRECT, f08c47fec0942fa0\n",
         encoding="utf-8")
     built.append("ads.txt")
 

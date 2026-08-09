@@ -43,7 +43,7 @@
   })();
 
   /* ---------- ads (consent-gated, inert until approved) ---------- */
-  var ADSENSE_CLIENT = ""; // set post-approval, e.g. "ca-pub-XXXXXXXXXXXXXXXX"
+  var ADSENSE_CLIENT = "ca-pub-7618641338292119"; // policeradio.org AdSense account
   var CONSENT_KEY = "bdb-consent";
 
   function consentGranted() {
@@ -75,6 +75,8 @@
 
   function renderSlot(holder) {
     if (!ADSENSE_CLIENT || !consentGranted()) return;
+    if (holder.hasAttribute("data-rendered")) return; // already filled
+    holder.setAttribute("data-rendered", "1");
     var label = document.createElement("div");
     label.className = "ad-label";
     label.textContent = "Advertisement";
@@ -93,12 +95,7 @@
   }
 
   function injectSlots() {
-    document.querySelectorAll(".ad-slot[data-ad-slot]").forEach(function (h) {
-      if (!h.hasAttribute("data-rendered")) {
-        h.setAttribute("data-rendered", "1");
-        renderSlot(h);
-      }
-    });
+    document.querySelectorAll(".ad-slot[data-ad-slot]").forEach(renderSlot);
   }
 
   // above-footer slot injected once

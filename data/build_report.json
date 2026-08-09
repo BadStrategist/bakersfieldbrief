@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-08T14:06:06-07:00",
+ "built_at": "2026-08-08T22:31:04-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -46,8 +46,8 @@
    "error": ""
   },
   "alpr": {
-   "ok": false,
-   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
+   "ok": true,
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -97,10 +97,10 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 8,
+    "bakersfield-nw": 7,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -113,13 +113,13 @@
   "grapevine": {
    "i5": "RESTRICTIONS",
    "i5_pass": "OPEN",
-   "log_entries": 14
+   "log_entries": 15
   },
   "events": {
    "groups": {
     "This week": 7,
     "Later": 27,
-    "Date TBD": 2
+    "Date TBD": 1
    },
    "meetings": 2
   },
@@ -129,8 +129,8 @@
   "numbers": {
    "isabella_af": 209720,
    "alpr_total": 247,
-   "kern_fires": 2,
-   "aqi": 108,
+   "kern_fires": 3,
+   "aqi": 58,
    "chp_week": 34
   },
   "letters": {
@@ -163,8 +163,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 0,
-   "alpr_new_week": 0,
+   "alpr_total": 249,
+   "alpr_new_week": 1,
    "pages": [
     "surveillance",
     "water",

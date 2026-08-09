@@ -420,6 +420,36 @@
   "details": ""
  },
  {
+  "log_id": "260809BF0245",
+  "time": "Aug  9 2026  1:57PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Encino Trl / Pine Canyon Rd",
+  "area": "Fort Tejon",
+  "lat": 34.819003,
+  "lon": -118.949912,
+  "details": ""
+ },
+ {
+  "log_id": "260809BF0250",
+  "time": "Aug  9 2026  2:12PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Olive Dr / Knudsen Dr",
+  "area": "Bakersfield",
+  "lat": 35.412244,
+  "lon": -119.058817,
+  "details": ""
+ },
+ {
+  "log_id": "260809BF0251",
+  "time": "Aug  9 2026  2:12PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr99 S / Ming Ave Ofr",
+  "area": "Bakersfield",
+  "lat": 35.35346,
+  "lon": -119.039616,
+  "details": ""
+ },
+ {
   "log_id": "260809BF0069",
   "time": "Aug  9 2026  7:10AM",
   "type": "20002-Hit and Run No Injuries",

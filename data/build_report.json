@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-09T13:28:18-07:00",
+ "built_at": "2026-08-09T14:18:46-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -76,7 +76,7 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 0,
+   "chp_new": 3,
    "top_story": "Links for Life offers free mammogram screenings to women without insurance",
    "archive": "2026-08-09"
   },
@@ -100,7 +100,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 7,
+    "bakersfield-nw": 6,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -132,7 +132,7 @@
    "alpr_total": 247,
    "kern_fires": 3,
    "aqi": 119,
-   "chp_week": 45
+   "chp_week": 48
   },
   "letters": {
    "published": 0

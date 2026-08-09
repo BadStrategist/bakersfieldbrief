@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-09T07:57:09-07:00",
+ "built_at": "2026-08-09T12:23:30-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -76,8 +76,8 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 2,
-   "top_story": "First human case of West Nile virus reported in Kern County: Public Health",
+   "chp_new": 1,
+   "top_story": "Links for Life offers free mammogram screenings to women without insurance",
    "archive": "2026-08-09"
   },
   "cityhall": {
@@ -131,8 +131,8 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 3,
-   "aqi": 64,
-   "chp_week": 41
+   "aqi": 97,
+   "chp_week": 42
   },
   "letters": {
    "published": 0

@@ -392,11 +392,21 @@
  {
   "log_id": "260809BF0069",
   "time": "Aug  9 2026  7:10AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
+  "type": "20002-Hit and Run No Injuries",
   "location": "Sr184 / Berry Rd",
   "area": "Bakersfield",
   "lat": 35.314397,
   "lon": -118.914287,
+  "details": ""
+ },
+ {
+  "log_id": "260809BF0152",
+  "time": "Aug  9 2026 11:39AM",
+  "type": "FIRE-Report of Fire",
+  "location": "SR99 S / MING AVE OFR",
+  "area": "Bakersfield",
+  "lat": 35.35346,
+  "lon": -119.039616,
   "details": ""
  },
  {

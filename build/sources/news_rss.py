@@ -44,7 +44,26 @@ def run(ctx):
             seen.add(k)
             dedup.append(h)
 
+    # newest first — the top story must be today's news, not whichever feed
+    # listed first. Undated items sort last (epoch 0) but stay in the list.
+    for h in dedup:
+        h["_epoch"] = _epoch(h.get("published", ""))
+    dedup.sort(key=lambda h: h["_epoch"], reverse=True)
+    for h in dedup:
+        h.pop("_epoch", None)
+
     return {"ok": True, "headlines": dedup, "errors": errors, "asof": common.iso_today()}
+
+
+def _epoch(published: str) -> float:
+    """RFC-2822 publish string → epoch seconds; 0 if unparsable."""
+    if not published:
+        return 0.0
+    try:
+        from email.utils import parsedate_to_datetime
+        return parsedate_to_datetime(published).timestamp()
+    except Exception:  # noqa: BLE001
+        return 0.0
 
 
 def _pub(e) -> str:

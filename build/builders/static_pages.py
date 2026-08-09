@@ -213,11 +213,6 @@ def build(ctx, sources: dict) -> list[str]:
          "<p>This section is on the roadmap. Planned coverage: Kern County unemployment and "
          "labor-market data from EDD, local minimum-wage and cost-of-living notes, and major "
          "employer news with links to original reporting.</p>"),
-        ("sunday-read", "The Sunday Read",
-         "A weekly newsletter-length look at one Kern County story.",
-         "<p>The Sunday Read is a planned weekly newsletter-format piece: one long, sourced "
-         "look at a Kern County topic, assembled from public records and linked reporting. "
-         "Until it launches, the daily brief is the place to be.</p>"),
     ]:
         body = f"""
         <div class="pagehead"><div class="hero"><p class="kicker">Coming soon</p>

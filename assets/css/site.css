@@ -656,6 +656,11 @@ a.cond-chip:hover .v, a.cond-chip:focus-visible .v { text-decoration: underline;
 .article-lead p:last-child { margin-bottom: 0; }
 
 /* ------------------------------------------------ brief read (article) */
+.sunday-body { font-family: var(--serif); font-size: 17px; line-height: 1.7; }
+.sunday-body p { margin: 0 0 16px; }
+.sunday-body h3.sunday-h { font-family: var(--display); font-size: 20px;
+  margin: 26px 0 8px; color: var(--sign-deep); }
+.sunday-body a { font-weight: 600; }
 .brief-read .greet { font-family: var(--serif); font-size: 18px; line-height: 1.55;
   margin: 4px 0 22px; }
 .brief-read .greet p { margin: 0 0 10px; }

@@ -29,7 +29,8 @@ from build import common  # noqa: E402
 from build.sources import SOURCES  # noqa: E402
 from build.builders import (daily, cityhall, openings, trackers, static_pages,
                             places, guide, grapevine, events, feed,
-                            numbers, letters, gasprices, weatherpage)  # noqa: E402
+                            numbers, letters, gasprices, weatherpage,
+                            sunday_read)  # noqa: E402
 from build.builders import page as page_mod  # noqa: E402
 
 
@@ -39,6 +40,7 @@ def main():
     ap.add_argument("--no-llm", action="store_true", help="skip LLM calls entirely")
     ap.add_argument("--alpr-change", action="store_true", help="record ALPR weekly change log")
     ap.add_argument("--guide", action="store_true", help="run the Thursday Weekend Guide build (scrapes venue whitelist)")
+    ap.add_argument("--sunday", action="store_true", help="run the Sunday Read long-form feature (writes fresh weekly piece)")
     args = ap.parse_args()
 
     if args.no_llm:
@@ -51,7 +53,7 @@ def main():
 
     # ---------------------------------------------------------- sources
     ctx = types.SimpleNamespace(today=common.today_pacific(), build_report={},
-                                guide=args.guide)
+                                guide=args.guide, sunday=args.sunday)
     results = {}
     cache_file = common.DATA / "source_cache.json"
     if args.skip_sources:
@@ -79,6 +81,7 @@ def main():
                 ("grapevine", grapevine), ("events", events),
                 ("feed", feed), ("numbers", numbers), ("letters", letters),
                 ("gasprices", gasprices), ("weatherpage", weatherpage),
+                ("sunday_read", sunday_read),
                 ("static", static_pages)]
     for bname, bmod in builders:
         try:

@@ -139,7 +139,43 @@ def pick_positive(headlines: list[dict]) -> str | None:
     return _chat(prompt)
 
 
-def _chat(prompt: str) -> str | None:
+SUNDAY_SYSTEM = (
+    "You are the Sunday feature writer for Bakersfield Daily Brief, a factual "
+    "local news publication for Bakersfield and Kern County, California. You "
+    "write one long-form feature each week: a warm, readable, newsletter-"
+    "length look at ONE Kern County topic, drawn ONLY from the facts provided. "
+    "Plain prose paragraphs with occasional section headings (## for headings, "
+    "plain text for body). Never invent names, numbers, dates, or quotes not "
+    "in the source material. Attribute facts to their sources where relevant. "
+    "No marketing language, no filler, no 'in today's fast-paced world' — "
+    "write like a sharp local journalist who knows the valley."
+)
+
+
+def write_sunday_read(topic: str, facts: str, max_words: int = 1100) -> str | None:
+    """Long-form weekly feature (900–1200 words) from real week data.
+
+    topic: the chosen theme (e.g. 'wildfire season', 'Lake Isabella levels').
+    facts: a plain-text dump of the week's verifiable data (headlines with
+    outlets, CHP incidents, reservoir numbers, alerts, meetings). The model
+    writes one sourced, human feature using ONLY these facts.
+    """
+    if not topic or not facts:
+        return None
+    prompt = (
+        f"Write this week's Sunday feature for Bakersfield Daily Brief. "
+        f"Theme: {topic}. Target length: {max_words} words. Use ONLY the "
+        "facts below — every number, name, and date must come from this list. "
+        "Structure: an engaging lede, 3-5 developed sections, and a short "
+        "close. If the facts are thin in one area, focus deeper on the areas "
+        "where they are rich rather than padding.\n\n"
+        f"WEEK'S FACTS:\n{_truncate(facts, limit=MAX_INPUT_CHARS)}"
+    )
+    return _chat(prompt, max_tokens=1600, system=SUNDAY_SYSTEM)
+
+
+def _chat(prompt: str, max_tokens: int | None = None,
+          system: str | None = None) -> str | None:
     key = os.environ.get("LLM_API_KEY")
     if not key:
         print("    [llm] no LLM_API_KEY set — skipping (graceful fallback)", flush=True)
@@ -152,10 +188,10 @@ def _chat(prompt: str) -> str | None:
                 json={
                     "model": MODEL,
                     "messages": [
-                        {"role": "system", "content": SYSTEM},
+                        {"role": "system", "content": system or SYSTEM},
                         {"role": "user", "content": prompt},
                     ],
-                    "max_tokens": MAX_OUTPUT_TOKENS,
+                    "max_tokens": max_tokens or MAX_OUTPUT_TOKENS,
                     "temperature": 0.3,
                 },
                 timeout=TIMEOUT,

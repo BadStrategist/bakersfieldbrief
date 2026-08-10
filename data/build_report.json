@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-10T08:47:23-07:00",
+ "built_at": "2026-08-10T09:11:53-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -77,7 +77,7 @@
    "news_digest": "deterministic",
    "alerts": 1,
    "chp_new": 0,
-   "top_story": "Lanes closed on 24th St after collision: BPD",
+   "top_story": "New treatments, vaccines: August cancer update with Dr. Patel",
    "archive": "2026-08-10"
   },
   "cityhall": {
@@ -113,7 +113,7 @@
   "grapevine": {
    "i5": "CLOSED",
    "i5_pass": "OPEN",
-   "log_entries": 18
+   "log_entries": 19
   },
   "events": {
    "groups": {

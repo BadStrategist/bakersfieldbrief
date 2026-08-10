@@ -520,6 +520,16 @@
   "details": ""
  },
  {
+  "log_id": "260810BF0247",
+  "time": "Aug 10 2026  2:49PM",
+  "type": "1125-Traffic Hazard",
+  "location": "5629 Patton Way",
+  "area": "Bakersfield",
+  "lat": 35.409633,
+  "lon": -119.083432,
+  "details": ""
+ },
+ {
   "log_id": "260810BF0045",
   "time": "Aug 10 2026  5:39AM",
   "type": "MZP-Assist CT with Maintenance",

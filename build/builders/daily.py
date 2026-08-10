@@ -152,6 +152,8 @@ def _page_content(ctx, today, built_iso, rel, news, weather, chp, isa,
     {_newsletter_block()}
 
     {conditions}
+
+    {_overnight_section(rel)}
     <section aria-labelledby="h-news" id="the-news">
       <p class="sec-head" id="h-news">The News <span class="unit">headlines + links, synthesized</span></p>
       {digest_html}
@@ -174,6 +176,25 @@ def _page_content(ctx, today, built_iso, rel, news, weather, chp, isa,
     </section>
 
     {_footnote()}"""
+
+
+# ---------------------------------------------------------------- overnight
+def _overnight_section(rel: str) -> str:
+    """Homepage section for The Kern Overnight (scanner-to-newsletter)."""
+    try:
+        from .overnight import latest_teaser
+        teaser = latest_teaser()
+    except Exception:  # noqa: BLE001
+        teaser = None
+    if teaser:
+        line = f"Latest edition: {teaser}."
+    else:
+        line = "First edition coming soon."
+    return f"""
+    <section aria-labelledby="h-overnight" class="card" style="margin:14px 0">
+      <p class="sec-head" id="h-overnight">The Kern Overnight <span class="unit">listened overnight &middot; written by sunrise</span></p>
+      <p>{line} <a href="{rel}overnight/">About the scanner-to-newsletter report</a></p>
+    </section>"""
 
 
 # ---------------------------------------------------------------- newsletter

@@ -1,0 +1,89 @@
+#!/usr/bin/env python3
+"""Stage 5 — RUN: orchestrate fetch → transcribe → extract → write → deliver.
+
+Usage:  python -m kern_overnight.run [YYYY-MM-DD]   (default: last night)
+Designed for cron at 06:15 America/Los_Angeles. Fails loudly at every stage —
+an empty or broken brief is never produced silently.
+
+Directory layout (repo root):
+  audio/DATE/  transcripts/DATE.jsonl  incidents/DATE.json  briefs/DATE.md
+"""
+from __future__ import annotations
+
+import datetime as dt
+import json
+import os
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+
+from kern_overnight import fetch as ko_fetch        # noqa: E402
+from kern_overnight import transcribe as ko_stt     # noqa: E402
+from kern_overnight import extract as ko_extract    # noqa: E402
+from kern_overnight import write as ko_write        # noqa: E402
+
+DEFAULT_TZ = dt.timezone(dt.timedelta(hours=-7), "PDT")  # Pacific (DST, Aug)
+
+
+def _nth_sunday(year: int, month: int, n: int) -> dt.date:
+    d = dt.date(year, month, 1)
+    while d.weekday() != 6:
+        d += dt.timedelta(days=1)
+    return d + dt.timedelta(weeks=n - 1)
+
+
+def pacific_tz(day: dt.date) -> dt.tzinfo:
+    """America/Los_Angeles offset for the day (PST -8 / PDT -7)."""
+    start = _nth_sunday(day.year, 3, 2)   # second Sunday of March
+    end = _nth_sunday(day.year, 11, 1)    # first Sunday of November
+    if start <= day < end:
+        return dt.timezone(dt.timedelta(hours=-7), "PDT")
+    return dt.timezone(dt.timedelta(hours=-8), "PST")
+
+
+def main(argv: list[str]) -> int:
+    date = dt.date.today()
+    if len(argv) > 1:
+        date = dt.date.fromisoformat(argv[1])
+    tz = pacific_tz(date)
+    d = date.isoformat()
+
+    audio_dir = ROOT / "audio" / d
+    transcript = ROOT / "transcripts" / f"{d}.jsonl"
+    incidents = ROOT / "incidents" / f"{d}.json"
+    brief = ROOT / "briefs" / f"{d}.md"
+
+    # ---- 1 FETCH
+    print(f"[ko] 1/5 fetch feed {ko_fetch.FEED_ID} for {d} ({tz.tzname(None)})", flush=True)
+    blocks = ko_fetch.fetch(date, audio_dir, tz)
+    print(f"[ko]     {len(blocks)} audio blocks", flush=True)
+
+    # ---- 2 TRANSCRIBE
+    print("[ko] 2/5 transcribe", flush=True)
+    transcript.parent.mkdir(parents=True, exist_ok=True)
+    vocab = ko_stt.load_vocab(ROOT / "kern_overnight" / "vocab.txt")
+    n_rows = ko_stt.transcribe(audio_dir, transcript, tz, vocab)
+    print(f"[ko]     {n_rows} transmissions", flush=True)
+
+    # ---- 3 EXTRACT
+    print("[ko] 3/5 extract incidents (LLM)", flush=True)
+    incs = ko_extract.extract(transcript, incidents)
+    print(f"[ko]     {len(incs)} incidents", flush=True)
+
+    # ---- 4 WRITE
+    print("[ko] 4/5 write brief (LLM)", flush=True)
+    text = ko_write.write_brief(incs, date)
+
+    # ---- 5 DELIVER (draft for human review — nothing auto-publishes)
+    print("[ko] 5/5 deliver draft", flush=True)
+    brief.parent.mkdir(parents=True, exist_ok=True)
+    brief.write_text(text, encoding="utf-8")
+    print(f"[ko] DONE → {brief.relative_to(ROOT)} ({len(text)} chars)", flush=True)
+    print("[ko] draft ready for human review; nothing published.", flush=True)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))

@@ -1,0 +1,111 @@
+#!/usr/bin/env python3
+"""The Kern Overnight — /overnight/ page + homepage section source.
+
+The page explains the scanner-to-newsletter product, states the privacy
+rules, and renders PUBLISHED reports dropped into data/overnight_reports/
+(operator-approved drafts, Markdown). No reports yet → honest stub."""
+from __future__ import annotations
+
+import datetime as dt
+import html
+import re
+from pathlib import Path
+
+from .. import common
+from . import page as page_mod
+
+REPORTS_DIR = common.DATA / "overnight_reports"
+
+
+# ---------------------------------------------------------------- markdown-lite
+def _md(text: str) -> str:
+    """Minimal markdown → HTML for the briefs (headings, bold, italics, lists, paras)."""
+    out = []
+    for raw in text.splitlines():
+        line = raw.strip()
+        if not line:
+            continue
+        if line.startswith("### "):
+            out.append(f"<h3>{html.escape(line[4:])}</h3>")
+        elif line.startswith("## "):
+            out.append(f"<h2>{html.escape(line[3:])}</h2>")
+        elif line.startswith("# "):
+            out.append(f"<h1>{html.escape(line[2:])}</h1>")
+        elif line.startswith("- "):
+            out.append(f"<li>{html.escape(line[2:])}</li>")
+        elif line.startswith("---"):
+            continue
+        else:
+            esc = html.escape(line)
+            esc = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", esc)
+            esc = re.sub(r"\*(.+?)\*", r"<em>\1</em>", esc)
+            out.append(f"<p>{esc}</p>")
+    return "\n".join(out)
+
+
+def _published_reports() -> list[dict]:
+    if not REPORTS_DIR.exists():
+        return []
+    out = []
+    for p in sorted(REPORTS_DIR.glob("*.md"), reverse=True):
+        text = p.read_text(encoding="utf-8")
+        m = re.match(r"#\s+(.+)", text)
+        out.append({"date": p.stem, "title": m.group(1).strip() if m else p.stem,
+                    "path": p, "body": _md(text)})
+    return out
+
+
+def latest_teaser() -> str | None:
+    """One-line teaser for the homepage section, or None when nothing is published."""
+    reps = _published_reports()
+    if not reps:
+        return None
+    r = reps[0]
+    return (f'<a href="../overnight/#{r["date"]}">{html.escape(r["title"])}</a> '
+            f'<span class="note">({r["date"]})</span>')
+
+
+def build(ctx, sources: dict) -> list[str]:
+    built = []
+    built_iso = common.iso_today()
+    rel = "../"
+    reps = _published_reports()
+
+    if reps:
+        archive = "".join(
+            f'<section class="letter" id="{html.escape(r["date"])}">'
+            f'<p class="letter-meta">{html.escape(r["date"])}</p>{r["body"]}</section>'
+            for r in reps)
+    else:
+        archive = ('<p class="note">No reports published yet. The pipeline is being '
+                   'stood up — first edition coming soon.</p>')
+
+    body = f"""
+    <div class="pagehead"><div class="hero"><p class="kicker">Scanner-to-newsletter</p>
+    <h1>The Kern Overnight</h1>
+    <p class="lede">We listen to the county&rsquo;s police, fire, and EMS radio all night so you don&rsquo;t have to. Every morning: what happened, what&rsquo;s preliminary, and where.</p></div></div>
+
+    <p class="sec-head">How it works</p>
+    <div class="link-grid">
+      <div class="tile"><strong>Listen</strong><span>Broadcastify feed 14029 archives the overnight airwaves, 9 PM &ndash; 6 AM.</span></div>
+      <div class="tile"><strong>Transcribe</strong><span>Radio audio is cleaned and turned into text with local vocabulary tuned for scanner jargon.</span></div>
+      <div class="tile"><strong>Extract</strong><span>Incidents are pulled from the transcript under strict privacy rules.</span></div>
+      <div class="tile"><strong>Write</strong><span>A human-reviewed draft becomes each morning&rsquo;s report.</span></div>
+    </div>
+
+    <p class="sec-head">What we never publish</p>
+    <div class="card"><p>No names. No license plates. No callback numbers. No patient details. No exact addresses &mdash; locations are generalized to block or cross-street level. Nothing from ambulance-to-hospital traffic. Everything is reported as preliminary dispatch information, and every edition credits the source: <em>Audio Provided by Broadcastify.</em></p></div>
+
+    <p class="sec-head">Published reports</p>
+    {archive}
+    <p class="note" style="margin-top:14px">A human reads and edits every edition before it appears here. Nothing publishes automatically.</p>"""
+
+    page = page_mod.render(
+        title="The Kern Overnight | Bakersfield Daily Brief",
+        desc="The Kern Overnight: a scanner-to-newsletter morning brief of overnight police, fire, and EMS activity across Bakersfield and Kern County.",
+        canonical="/overnight/", content=body, current="other", rel=rel,
+        built=built_iso, statusbar=ctx.statusbar, jsonld=[page_mod.org_jsonld()])
+    common.write(common.SITE / "overnight" / "index.html", page)
+    built.append("overnight/index.html")
+    ctx.build_report["overnight"] = {"published": len(reps)}
+    return built

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-10T14:37:52-07:00",
+ "built_at": "2026-08-10T14:53:03-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -54,8 +54,8 @@
    "error": ""
   },
   "roads": {
-   "ok": false,
-   "error": "no Caltrans routes parsed"
+   "ok": true,
+   "error": ""
   },
   "gas": {
    "ok": true,
@@ -76,7 +76,7 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 1,
+   "chp_new": 8,
    "top_story": "Meth addict admitted involvement in crash that killed teen pedestrian in Bakersfield: docs",
    "archive": "2026-08-10"
   },
@@ -111,9 +111,9 @@
    "draft": "drafts/weekend-guide-2026-08-10"
   },
   "grapevine": {
-   "i5": null,
-   "i5_pass": null,
-   "log_entries": 0
+   "i5": "CLOSED",
+   "i5_pass": "OPEN",
+   "log_entries": 21
   },
   "events": {
    "groups": {
@@ -130,7 +130,7 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 2,
-   "aqi": null,
+   "aqi": 119,
    "chp_week": 6
   },
   "letters": {
@@ -167,7 +167,6 @@
     "editorial-standards/index.html",
     "corrections/index.html",
     "ownership/index.html",
-    "work-money/index.html",
     "404.html",
     "oversight/index.html",
     "ads.txt"
@@ -175,7 +174,7 @@
   },
   "trackers": {
    "alpr_total": 250,
-   "alpr_new_week": 1,
+   "alpr_new_week": 0,
    "pages": [
     "surveillance",
     "water",

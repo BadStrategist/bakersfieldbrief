@@ -1,0 +1,3 @@
+# requirements-dev.txt — local test tooling only. The CI build does not
+# install this; the site runs on the main requirements.txt alone.
+pytest>=8

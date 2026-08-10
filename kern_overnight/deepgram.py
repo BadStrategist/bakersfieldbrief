@@ -13,9 +13,7 @@ Row shape matches the whisper engine exactly:
 from __future__ import annotations
 
 import datetime as dt
-import json
 import os
-import re
 from pathlib import Path
 
 import requests

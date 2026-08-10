@@ -2,14 +2,13 @@
 that returns {"ok": bool, ...} and NEVER raises. build_all.py wraps each in
 its own try/except so one broken source can't stop the site.
 """
-from . import (escribe, kern_board, abc, news_rss, weather, chp, isabella, food,
-               alpr, gnews, airnow, calfire, venues, roads, blocked, gas, radar)
+from . import (escribe, kern_board, news_rss, weather, chp, isabella,
+               alpr, gnews, airnow, calfire, venues, roads, blocked)
 
 # name -> module. Order matters only for the build report.
 SOURCES = {
     "escribe": escribe,        # City meetings + agendas (eSCRIBE JSON API)
     "kern_board": kern_board,  # Kern County Board of Supervisors agenda PDF
-    "abc": abc,                # CA ABC liquor license applications
     "news_rss": news_rss,      # KGET + 23ABC local RSS (metro digest)
     "gnews": gnews,            # Google News RSS per place (hyperlocal)
     "weather": weather,        # NWS alerts + Bakersfield forecast/KBFL observation
@@ -17,12 +16,9 @@ SOURCES = {
     "calfire": calfire,        # CAL FIRE active incidents (wildfires)
     "chp": chp,                # CHP incidents (LAHB → BFCC)
     "isabella": isabella,      # Isabella Lake storage (CDEC)
-    "food": food,              # Kern EH closed food facilities
     "alpr": alpr,              # ALPR cameras (Overpass/OSM)
     "venues": venues,          # Venue whitelist (Events page + Weekend Guide)
     "roads": roads,            # Caltrans highway conditions (I-5 Grapevine, 58, 99)
-    "gas": gas,                # AAA Bakersfield gas prices (no key)
-    "radar": radar,            # NWS 7-day forecast + KHNX radar loop (no key)
     # Blocked sources (datacenter IPs / not yet built) — leave stubs:
     "blocked": blocked,
 }

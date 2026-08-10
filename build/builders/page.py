@@ -166,7 +166,7 @@ def website_jsonld() -> dict:
         "@type": "WebSite",
         "name": SITE_NAME,
         "url": "https://bakersfieldbrief.com/",
-        "description": "Daily civic brief, meeting previews, openings & closings, and data trackers for Bakersfield and Kern County.",
+        "description": "Daily civic brief, meeting previews, and data trackers for Bakersfield and Kern County.",
         "isAccessibleForFree": True,
         "publisher": {"@type": "Organization", "name": SITE_NAME},
     }

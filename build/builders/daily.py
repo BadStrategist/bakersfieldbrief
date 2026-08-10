@@ -589,26 +589,6 @@ def _category_grid(rel, escribe, board, abc, food, alpr) -> str:
         decided_href = f"{rel}city-hall/"
     decided_card = f'<a class="cat-card" href="{html.escape(decided_href)}">{images.thumb("cityhall", rel)}{decided_inner}<span class="card-go">Official agenda</span></a>'
 
-    # AROUND TOWN
-    abc_items = abc.get("items", []) if abc.get("ok") else []
-    food_items = food.get("items", []) if food.get("ok") else []
-    town_lines = []
-    if abc_items:
-        town_lines.append(f'<span class="cat-tag">New filing</span> {html.escape(abc_items[0].get("dba", "Liquor license application"))}')
-    if food_items:
-        f0 = food_items[0]
-        fdate = f" ({_fmt_short_date(str(f0.get('closed_date', '')))})" if f0.get("closed_date") else ""
-        town_lines.append(f'<span class="cat-tag red">Closed</span> {html.escape(f0.get("facility", "Food facility closure"))}{fdate}')
-    if not town_lines:
-        town_lines.append("No new filings or closures listed today.")
-    town_card = f"""<a class="cat-card" href="{rel}openings/">
-      {images.thumb("almonds", rel)}
-      <span class="cat-label">Around Town</span>
-      <h3>New licenses &amp; closures</h3>
-      <p>{'; '.join(town_lines)}</p>
-      <span class="card-go">Openings &amp; Closings</span>
-    </a>"""
-
     # IN DEPTH
     alpr_stats = alpr.get("stats", {}) if alpr.get("ok") else {}
     alpr_last4 = sum(e.get("new_count", 0) for e in alpr.get("change_log", [])[-4:])
@@ -622,7 +602,7 @@ def _category_grid(rel, escribe, board, abc, food, alpr) -> str:
       <span class="card-go">Open the map</span>
     </a>"""
 
-    return f'<div class="cat-grid">{watch_card}{decided_card}{town_card}{depth_card}</div>'
+    return f'<div class="cat-grid">{watch_card}{decided_card}{depth_card}</div>'
 
 
 # ---------------------------------------------------------------- week grid

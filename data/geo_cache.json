@@ -1,30 +1,34 @@
 {
+ "Test Street, Bakersfield, CA": [
+  35.4,
+  -119.1
+ ],
  "williams street & eureka street, Bakersfield, CA": null,
  "500 block of francis street, Bakersfield, Kern County, CA": null,
  "francis street, Bakersfield, CA": [
   35.361817,
   -119.0305898
  ],
- "2100 block of niles street, Bakersfield, Kern County, CA": null,
- "niles street, Bakersfield, CA": [
-  35.3816592,
-  -118.9895361
- ],
  "900 block of baker street, Bakersfield, Kern County, CA": null,
  "baker street, Bakersfield, CA": [
   35.370988,
   -118.994991
  ],
- "1400 block of hops lane, Bakersfield, Kern County, CA": null,
- "hops lane, Bakersfield, CA": null,
- "providence avenue & olive drive, Bakersfield, CA": null,
  "500 block of deal avenue, Bakersfield, Kern County, CA": null,
  "deal avenue, Bakersfield, CA": null,
+ "2100 block of niles street, Bakersfield, Kern County, CA": null,
+ "niles street, Bakersfield, CA": [
+  35.3816592,
+  -118.9895361
+ ],
+ "1400 block of hops lane, Bakersfield, Kern County, CA": null,
+ "hops lane, Bakersfield, CA": null,
  "2000 block of calloway drive, Bakersfield, Kern County, CA": null,
  "calloway drive, Bakersfield, CA": [
-  35.366165,
-  -119.1132804
+  35.3964545,
+  -119.10987
  ],
+ "providence avenue & olive drive, Bakersfield, CA": null,
  "100 block of donna avenue, Bakersfield, Kern County, CA": null,
  "donna avenue, Bakersfield, CA": [
   35.3575235,

@@ -27,9 +27,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from build import common  # noqa: E402
 from build.sources import SOURCES  # noqa: E402
-from build.builders import (daily, cityhall, openings, trackers, static_pages,
+from build.builders import (daily, cityhall, trackers, static_pages,
                             places, guide, grapevine, events, feed,
-                            numbers, letters, gasprices, weatherpage,
+                            numbers, letters,
                             overnight, sunday_read, map)  # noqa: E402
 from build.builders import page as page_mod  # noqa: E402
 
@@ -76,11 +76,10 @@ def main():
     # ---------------------------------------------------------- builders
     ctx.statusbar = page_mod.build_statusbar(results.get("weather"), results.get("escribe"))
     builders = [("daily", daily), ("cityhall", cityhall),
-                ("openings", openings), ("trackers", trackers),
+                ("trackers", trackers),
                 ("places", places), ("guide", guide),
                 ("grapevine", grapevine), ("events", events),
                 ("feed", feed), ("numbers", numbers), ("letters", letters),
-                ("gasprices", gasprices), ("weatherpage", weatherpage),
                 ("overnight", overnight),
                 ("map", map),
                 ("sunday_read", sunday_read),

@@ -450,6 +450,36 @@
   "details": ""
  },
  {
+  "log_id": "260809BF0254",
+  "time": "Aug  9 2026  2:19PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr184 / Paradise Rd",
+  "area": "Bakersfield",
+  "lat": 35.265168,
+  "lon": -118.9143,
+  "details": ""
+ },
+ {
+  "log_id": "260809BF0253",
+  "time": "Aug  9 2026  2:20PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 Jso Laval Rd",
+  "area": "Fort Tejon",
+  "lat": 34.9825,
+  "lon": -118.943889,
+  "details": ""
+ },
+ {
+  "log_id": "260809BF0256",
+  "time": "Aug  9 2026  2:25PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jso Old River Rd",
+  "area": "Buttonwillow",
+  "lat": 35.158333,
+  "lon": -119.107222,
+  "details": ""
+ },
+ {
   "log_id": "260809BF0069",
   "time": "Aug  9 2026  7:10AM",
   "type": "20002-Hit and Run No Injuries",

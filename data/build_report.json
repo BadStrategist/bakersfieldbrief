@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-09T14:18:46-07:00",
+ "built_at": "2026-08-09T20:54:14-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -77,7 +77,7 @@
    "news_digest": "deterministic",
    "alerts": 1,
    "chp_new": 3,
-   "top_story": "Links for Life offers free mammogram screenings to women without insurance",
+   "top_story": "Former Bakersfield College teacher needs lung transplant",
    "archive": "2026-08-09"
   },
   "cityhall": {
@@ -97,10 +97,10 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 6,
+    "bakersfield-nw": 5,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -131,8 +131,8 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 3,
-   "aqi": 119,
-   "chp_week": 48
+   "aqi": 64,
+   "chp_week": 51
   },
   "letters": {
    "published": 0
@@ -147,6 +147,9 @@
    "periods": 14,
    "alerts": 1,
    "asof": "2026-08-09"
+  },
+  "overnight": {
+   "published": 0
   },
   "sunday_read": {
    "topic": "Public safety",

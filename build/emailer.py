@@ -42,8 +42,6 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
     news = sources.get("news_rss", {})
     escribe = sources.get("escribe", {})
     board = sources.get("kern_board", {})
-    abc = sources.get("abc", {})
-    food = sources.get("food", {})
     headlines = news.get("headlines", [])[:8]
 
     # ---- conditions
@@ -86,14 +84,18 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
     watch_html = f'<p style="font-family:Georgia,serif;font-size:15px;line-height:1.5;color:{INK}">{watch}</p>'
     watch_txt = watch
 
-    # ---- openings count
-    n_abc = len(abc.get("items", [])) if abc.get("ok") else 0
-    n_food = len(food.get("items", [])) if food.get("ok") else 0
+    # ---- Kern Overnight summary (feeds the title + a top block)
+    ko = None
+    try:
+        from .builders.daily import _overnight_summary
+        ko = _overnight_summary()
+    except Exception:  # noqa: BLE001
+        ko = None
 
     html_doc = f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bakersfield Daily Brief — {H.escape(date_label)}</title></head>
+<title>Bakersfield Daily Brief — {H.escape(date_label)}{(' — Overnight: ' + H.escape(ko['headline'])) if ko and ko.get('headline') else ''}</title></head>
 <body style="margin:0;padding:0;background:{PAPER}">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:{PAPER}"><tr><td align="center">
 <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #E3E0DA">
@@ -102,6 +104,12 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
   <p style="margin:0;font-family:Arial,sans-serif;font-size:11px;letter-spacing:2px;color:#C9E4D2">{H.escape(date_label)}</p>
   <h1 style="margin:4px 0 0;font-family:Georgia,serif;font-size:24px;color:#ffffff">The Bakersfield Brief</h1>
   <p style="margin:2px 0 0;font-family:Arial,sans-serif;font-size:12px;color:#C9E4D2">Bakersfield &amp; Kern County — {H.escape(date_label)}</p>
+</td></tr>
+
+<tr><td style="padding:16px 24px;background:#FAF7F0;border-bottom:1px solid #E3E0DA">
+  <p style="margin:0;font-family:Arial,sans-serif;font-size:11px;letter-spacing:2px;color:{DEEP}">THE KERN OVERNIGHT</p>
+  {('' if not (ko and ko.get('headline')) else f'<p style="margin:6px 0 2px;font-family:Georgia,serif;font-size:15px;color:{INK}"><a href="{BASE_URL}/overnight/" style="color:{INK};text-decoration:none">Overnight: {H.escape(ko["headline"])}</a></p>')}
+  {('' if not ko else f'<p style="margin:2px 0 0;font-family:Arial,sans-serif;font-size:12px;color:{MUTED}">{ko["count"]} incidents tracked overnight — <a href="{BASE_URL}/overnight/" style="color:{DEEP}">full report</a> · locations generalized</p>')}
 </td></tr>
 
 <tr><td style="padding:16px 24px">
@@ -122,11 +130,6 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
   {watch_html}
 </td></tr>
 
-<tr><td style="padding:0 24px 16px">
-  <h2 style="margin:0 0 8px;font-family:Georgia,serif;font-size:16px;color:{DEEP}">Openings &amp; Closings</h2>
-  <p style="margin:0;font-family:Arial,sans-serif;font-size:13px;color:{INK}">{n_abc} new license application(s), {n_food} closure(s) on file. <a href="{BASE_URL}/openings/" style="color:{GREEN}">Full list →</a></p>
-</td></tr>
-
 <tr><td style="background:{PAPER};padding:14px 24px;border-top:2px solid {AMBER}">
   <p style="margin:0;font-family:Arial,sans-serif;font-size:11px;color:{MUTED}">Read it on the web: <a href="{BASE_URL}/" style="color:{GREEN}">{BASE_URL}</a> &nbsp;·&nbsp; Ad-free newsletter, supported by clearly labeled ads on the site.</p>
   <p style="margin:4px 0 0;font-family:Arial,sans-serif;font-size:10px;color:{MUTED}">You're receiving this because you subscribed to the Bakersfield Brief. Manage your subscription anytime — unsubscribe link goes here once delivery is wired.</p>
@@ -138,6 +141,9 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
     txt_doc = f"""THE BAKERSFIELD BRIEF — {date_label}
 Bakersfield & Kern County
 
+THE KERN OVERNIGHT
+{('Overnight: ' + ko['headline'] + ' — ') if (ko and ko.get('headline')) else ''}{(str(ko['count']) + ' incidents tracked overnight — ') if ko else ''}full report: {BASE_URL}/overnight/ (locations generalized)
+
 CONDITIONS
 {chr(10).join(f"{k}: {v}" for k, v in conds)}
 
@@ -147,9 +153,6 @@ Headlines link to the original reporting at the outlets named.
 
 ONE THING TO WATCH
 {watch_txt}
-
-OPENINGS & CLOSINGS
-{n_abc} new license application(s), {n_food} closure(s) on file — {BASE_URL}/openings/
 
 Web: {BASE_URL}/
 """

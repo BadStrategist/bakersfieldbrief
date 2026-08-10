@@ -15,6 +15,8 @@ import datetime as dt
 import html
 import json
 import os
+import re
+from pathlib import Path
 
 from .. import common, llm
 from ..sources.airnow import css_class as _aqi_css
@@ -79,8 +81,14 @@ def build(ctx, sources: dict) -> list[str]:
         },
     ]
 
+    ko = _overnight_summary()
+    if ko and ko.get("headline"):
+        title = (f"Bakersfield Daily Brief — {_fmt_date(today)} — "
+                 f"Overnight: {ko['headline']} | Kern County civic news")
+    else:
+        title = f"Bakersfield Daily Brief — {_fmt_date(today)} | Kern County civic news"
     page = page_mod.render(
-        title=f"Bakersfield Daily Brief — {_fmt_date(today)} | Kern County civic news",
+        title=title,
         desc="The daily civic brief for Bakersfield and Kern County: live weather, conditions, local news headlines with links, the week at a glance, and one public-meeting item to watch. Updated every morning at 6 AM PT.",
         canonical="/",
         content=content,
@@ -179,21 +187,75 @@ def _page_content(ctx, today, built_iso, rel, news, weather, chp, isa,
 
 
 # ---------------------------------------------------------------- overnight
+def _short_area(area: str) -> str:
+    """Compress a generalized area for titles: 'the 2100 block of Niles Street'
+    → '2100 block Niles St'; 'Williams Street at Eureka Street, East Bakersfield'
+    → 'Williams St at Eureka St'."""
+    if not area:
+        return "the area"
+    a = re.sub(r"\bthe\b|\bof\b", " ", area)
+    for long, short in (("Street", "St"), ("Avenue", "Ave"), ("Road", "Rd"),
+                        ("Drive", "Dr"), ("Highway", "Hwy"), ("Lane", "Ln"),
+                        ("Boulevard", "Blvd")):
+        a = a.replace(long, short)
+    a = " ".join(a.split())
+    a = a.split(",")[0]
+    return a[:44]
+
+
+def _overnight_summary() -> dict | None:
+    """Latest Kern Overnight data → {date, title, headline, count, cats, top}.
+
+    Reads the published reports + the append-only incidents dataset; the
+    headline feeds the brief title and the section summary."""
+    try:
+        from .overnight import _published_reports
+        from .map import CATEGORY
+        reps = _published_reports()
+        if not reps:
+            return None
+        rep = reps[0]
+        incs: list[dict] = []
+        for f in sorted(Path("incidents").glob("*.json"), reverse=True):
+            try:
+                incs += json.loads(f.read_text(encoding="utf-8"))
+            except Exception:  # noqa: BLE001
+                continue
+        cats = {"fire": 0, "police": 0, "medical": 0, "traffic": 0, "other": 0}
+        for i in incs:
+            c = CATEGORY.get((i.get("type") or "").lower(), "other")
+            cats[c] = cats.get(c, 0) + 1
+        top = max(incs, key=lambda i: i.get("notability", 0)) if incs else None
+        headline = None
+        if top:
+            headline = f"{top.get('type', 'incident')}, {_short_area(top.get('area', ''))}"
+        return {"date": rep["date"], "title": rep["title"],
+                "headline": headline, "count": len(incs), "cats": cats, "top": top}
+    except Exception:  # noqa: BLE001
+        return None
+
+
 def _overnight_section(rel: str) -> str:
     """Homepage section for The Kern Overnight (scanner-to-newsletter)."""
-    try:
-        from .overnight import latest_teaser
-        teaser = latest_teaser()
-    except Exception:  # noqa: BLE001
-        teaser = None
-    if teaser:
-        line = f"Latest edition: {teaser}."
-    else:
-        line = "First edition coming soon."
-    return f"""
+    ko = _overnight_summary()
+    if not ko:
+        return """
     <section aria-labelledby="h-overnight" class="card" style="margin:14px 0">
       <p class="sec-head" id="h-overnight">The Kern Overnight <span class="unit">listened overnight &middot; written by sunrise</span></p>
-      <p>{line} <a href="{rel}overnight/">About the scanner-to-newsletter report</a></p>
+      <p>First edition coming soon. <a href="%s">About the scanner-to-newsletter report</a></p>
+    </section>""" % rel
+    cats = " &middot; ".join(f"{n} {c}" for c, n in ko["cats"].items() if n)
+    top = ko["top"]
+    top_line = ("Most significant call: " if top else "") + (
+        f"{html.escape(str(top.get('type', 'incident')))} in "
+        f"{html.escape(str(top.get('area', 'the area')))} at {top.get('time', '')}"
+        if top else "")
+    return f"""
+    <section class="card" style="margin:14px 0" aria-labelledby="h-overnight">
+      <p class="sec-head" id="h-overnight">The Kern Overnight <span class="unit">listened overnight &middot; written by sunrise</span></p>
+      <p class="ko-title"><a href="{rel}overnight/">{html.escape(ko['title'])}</a></p>
+      <p>{top_line}. {ko['count']} incidents tracked overnight: {cats}.</p>
+      <p class="note"><a href="{rel}overnight/">Read the full overnight report</a> &middot; locations generalized to block or cross streets &middot; details preliminary &middot; Audio Provided by Broadcastify.</p>
     </section>"""
 
 

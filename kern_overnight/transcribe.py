@@ -149,12 +149,30 @@ def _merge_segments(segs: list[tuple[float, float]], gap_s: float = 10.0) -> lis
     return [(a, b) for a, b in merged]
 
 
+def _in_overnight_window(epoch: int, date: dt.date, tz: dt.tzinfo) -> bool:
+    """True if `epoch` falls in the 21:00→06:00 overnight window for `date`."""
+    w_start = int(dt.datetime.combine(date - dt.timedelta(days=1), dt.time(21, 0), tz).timestamp())
+    w_end = int(dt.datetime.combine(date, dt.time(6, 0), tz).timestamp())
+    return w_start <= epoch < w_end
+
+
 def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
-               vocab_text: str) -> int:
-    """Transcribe every MP3 in audio_dir → out_jsonl. Returns row count."""
+               vocab_text: str, date: dt.date | None = None) -> int:
+    """Transcribe the overnight-window MP3s in audio_dir → out_jsonl.
+
+    When `date` is given, only blocks whose epoch falls in that night's
+    21:00→06:00 window are processed — the audio dir may hold extra
+    out-of-window archives (the fetch listings return the whole calendar
+    days). Returns row count."""
     mp3s = sorted(audio_dir.glob("*.mp3"))
+    if date is not None:
+        mp3s = [p for p in mp3s
+                if _in_overnight_window(_epoch_from_name(p.name) or 0, date, tz)]
     if not mp3s:
-        raise TranscribeError(f"no audio blocks in {audio_dir} — run fetch first")
+        raise TranscribeError(
+            f"no overnight-window audio blocks in {audio_dir} — run fetch first")
+    print(f"    [ko-stt] {len(mp3s)} blocks in window (of "
+          f"{len(list(audio_dir.glob('*.mp3')))} on disk)", flush=True)
     count = 0
     model = None
     with tempfile.TemporaryDirectory(prefix="ko-") as td:
@@ -216,5 +234,6 @@ if __name__ == "__main__":
     audio = Path("audio") / d.isoformat()
     out = Path("transcripts") / f"{d.isoformat()}.jsonl"
     out.parent.mkdir(parents=True, exist_ok=True)
-    n = transcribe(audio, out, PACIFIC, load_vocab(Path("kern_overnight/vocab.txt")))
+    n = transcribe(audio, out, PACIFIC, load_vocab(Path("kern_overnight/vocab.txt")),
+                   date=d)
     print(f"{n} transmissions → {out}")

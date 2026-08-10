@@ -184,6 +184,8 @@ def fetch(date: dt.date, audio_dir: Path, tz: dt.tzinfo) -> list[Path]:
     if not blocks:
         raise FetchError("no overnight blocks computed for {date}")
     span = sorted({dt.datetime.fromtimestamp(b[0], tz).date() for b in blocks})
+    w_start = int(dt.datetime.combine(date - dt.timedelta(days=1), dt.time(21, 0), tz).timestamp())
+    w_end = int(dt.datetime.combine(date, dt.time(6, 0), tz).timestamp())
 
     # Prefer broadcastify-cli when present (handles premium auth + retries).
     cli = shutil.which("broadcastify-cli")
@@ -197,6 +199,8 @@ def fetch(date: dt.date, audio_dir: Path, tz: dt.tzinfo) -> list[Path]:
         # Live archives API with the premium session cookie (verified Aug 2026).
         for d in span:
             for entry in _archive_entries(d):
+                if not (w_start <= entry["startTs"] < w_end):
+                    continue  # skip out-of-window archives (saves bandwidth)
                 try:
                     p = _download_archive(entry["id"], entry["startTs"], audio_dir)
                     print(f"    [ko-fetch] got {p.name}", flush=True)
@@ -205,8 +209,6 @@ def fetch(date: dt.date, audio_dir: Path, tz: dt.tzinfo) -> list[Path]:
                           f"HTTP {e.response.status_code}", flush=True)
                     continue
 
-    w_start = int(dt.datetime.combine(date - dt.timedelta(days=1), dt.time(21, 0), tz).timestamp())
-    w_end = int(dt.datetime.combine(date, dt.time(6, 0), tz).timestamp())
     got: list[Path] = []
     for p in sorted(audio_dir.glob(f"{FEED_ID}-*.mp3")):
         e = _epoch_from_name(p.name)

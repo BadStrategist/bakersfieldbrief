@@ -22,6 +22,5 @@ site/
 # Kern Overnight pipeline artifacts
 /audio/
 /transcripts/
-/incidents/
 /briefs/
 kern_overnight/.bcfy_cookie.json

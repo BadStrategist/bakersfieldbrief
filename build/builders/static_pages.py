@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static pages: about, privacy, contact, stub sections (work-money,
+"""Static pages: about, privacy, contact, and the 404 page.
 sunday-read), 404. Substantial original copy — AdSense compliance requires
 every template to carry real editorial content, never thin/scraped pages.
 """
@@ -203,26 +203,6 @@ def build(ctx, sources: dict) -> list[str]:
         common.write(common.SITE / slug / "index.html", page_mod.render(
             title=f"{name} | Bakersfield Daily Brief",
             desc=lede, canonical=f"/{slug}/", content=body, current="other", rel="../",
-            built=built_iso, statusbar=ctx.statusbar, jsonld=[page_mod.org_jsonld()]))
-        built.append(f"{slug}/index.html")
-
-    # ---------------------------------------------------------- stub sections
-    for slug, name, lede, copy in [
-        ("work-money", "Work & Money",
-         "Kern County jobs, wages, and the local economy.",
-         "<p>This section is on the roadmap. Planned coverage: Kern County unemployment and "
-         "labor-market data from EDD, local minimum-wage and cost-of-living notes, and major "
-         "employer news with links to original reporting.</p>"),
-    ]:
-        body = f"""
-        <div class="pagehead"><div class="hero"><p class="kicker">Coming soon</p>
-        <h1>{html.escape(name)}</h1>
-        <p class="lede">{html.escape(lede)}</p></div></div>
-        <div class="card">{copy}</div>"""
-        common.write(common.SITE / slug / "index.html", page_mod.render(
-            title=f"{name} — coming soon | Bakersfield Daily Brief",
-            desc=f"{lede} Coming soon on Bakersfield Daily Brief.",
-            canonical=f"/{slug}/", content=body, current=slug.replace("-", ""), rel="../",
             built=built_iso, statusbar=ctx.statusbar, jsonld=[page_mod.org_jsonld()]))
         built.append(f"{slug}/index.html")
 

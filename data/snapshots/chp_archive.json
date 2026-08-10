@@ -530,6 +530,16 @@
   "details": ""
  },
  {
+  "log_id": "260810BF0257",
+  "time": "Aug 10 2026  3:18PM",
+  "type": "1125-Traffic Hazard",
+  "location": "2nd Nor St / Mccray St",
+  "area": "Bakersfield",
+  "lat": 35.420713,
+  "lon": -119.030094,
+  "details": ""
+ },
+ {
   "log_id": "260810BF0045",
   "time": "Aug 10 2026  5:39AM",
   "type": "MZP-Assist CT with Maintenance",

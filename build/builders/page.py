@@ -18,7 +18,7 @@ def render(*, title: str, desc: str, canonical: str, content: str,
     """Render a full page from templates/layout.html.
 
     rel: relative prefix from this page's dir to site root ("" or "../…")
-    current: nav section to mark active (index|cityhall|openings|trackers|workmoney|sunday|other)
+    current: nav section to mark active (index|cityhall|trackers|sunday|other)
     statusbar: pre-built status-bar HTML (see build_statusbar) or ""
     """
     tpl = common.read_template("layout.html")
@@ -26,7 +26,7 @@ def render(*, title: str, desc: str, canonical: str, content: str,
     og_desc = og_desc or desc
 
     # nav current markers
-    cur_flags = {k: "" for k in ("index", "cityhall", "openings", "trackers", "places", "workmoney", "sunday")}
+    cur_flags = {k: "" for k in ("index", "cityhall", "trackers", "places", "sunday")}
     if current in cur_flags:
         cur_flags[current] = 'aria-current="page"'
 

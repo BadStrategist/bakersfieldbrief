@@ -81,14 +81,8 @@ def build(ctx, sources: dict) -> list[str]:
         },
     ]
 
-    ko = _overnight_summary()
-    if ko and ko.get("headline"):
-        title = (f"Bakersfield Daily Brief — {_fmt_date(today)} — "
-                 f"Overnight: {ko['headline']} | Kern County civic news")
-    else:
-        title = f"Bakersfield Daily Brief — {_fmt_date(today)} | Kern County civic news"
     page = page_mod.render(
-        title=title,
+        title=_big_title(top, today),
         desc="The daily civic brief for Bakersfield and Kern County: live weather, conditions, local news headlines with links, the week at a glance, and one public-meeting item to watch. Updated every morning at 6 AM PT.",
         canonical="/",
         content=content,
@@ -153,7 +147,7 @@ def _page_content(ctx, today, built_iso, rel, news, weather, chp, isa,
       <aside class="sidebar-col">{sidebar}</aside>
     </div>
 
-    {images.figure("skyline", rel)}
+    {images.figure("bakersfield", rel)}
 
     <div class="ad-slot" data-ad-slot="home-hero" aria-hidden="true"></div>
 
@@ -230,9 +224,98 @@ def _overnight_summary() -> dict | None:
         if top:
             headline = f"{top.get('type', 'incident')}, {_short_area(top.get('area', ''))}"
         return {"date": rep["date"], "title": rep["title"],
-                "headline": headline, "count": len(incs), "cats": cats, "top": top}
+                "headline": headline, "count": len(incs), "cats": cats,
+                "top": top, "incs": incs}
     except Exception:  # noqa: BLE001
         return None
+
+
+_HOOD_PREP = {"east side": "on the east side", "west side": "on the west side",
+              "downtown": "downtown", "north bakersfield": "in north Bakersfield",
+              "south bakersfield": "in south Bakersfield", "oildale": "in Oildale",
+              "rosedale": "in Rosedale", "on the highway": "on the highway"}
+
+
+def _hood(area: str) -> str | None:
+    """Neighborhood-level area for rundown lines — never street names."""
+    a = (area or "").lower()
+    for key, out in (("east", "east side"), ("downtown", "downtown"),
+                     ("oildale", "Oildale"), ("rosedale", "Rosedale"),
+                     ("north", "north Bakersfield"), ("south", "south Bakersfield"),
+                     ("west", "west side"), ("99", "on the highway"),
+                     ("highway", "on the highway")):
+        if key in a:
+            return out
+    return None
+
+
+_TYPE_NORM = {
+    "commercial fire": "structure fire", "structure fire report": "structure fire",
+    "reported shooting": "shooting", "vehicle collision": "traffic collision",
+    "domestic violence with injury": "domestic call", "domestic": "domestic call",
+    "attempted burglary": "burglary attempt", "mental health hold": "welfare call",
+    "welfare check": "welfare call", "suspicious person": "suspicious person report",
+    "assault report involving a child": "assault report",
+}
+
+
+def _overnight_rundown() -> str | None:
+    """One professional rundown sentence, neighborhood-level only:
+    '3 structure fires on the east side, a shooting downtown, a traffic
+    collision, and 8 more — 16 incidents total.'"""
+    ko = _overnight_summary()
+    if not ko or not ko.get("incs"):
+        return None
+    from collections import Counter
+    type_counts: Counter = Counter()
+    hood_for: dict[str, Counter] = {}
+    for i in ko["incs"]:
+        typ = _TYPE_NORM.get(str(i.get("type", "incident")).lower(),
+                             str(i.get("type", "incident")).lower())
+        type_counts[typ] += 1
+        h = _hood(i.get("area", ""))
+        if h:
+            hood_for.setdefault(typ, Counter())[h] += 1
+    top3 = type_counts.most_common(3)
+    parts = []
+    for typ, n in top3:
+        hc = hood_for.get(typ)
+        where = _HOOD_PREP.get(hc.most_common(1)[0][0]) if hc else ""
+        if n > 1:
+            parts.append(f"{n} {typ}s{(' ' + where) if where else ''}")
+        else:
+            parts.append(f"a {typ}{(' ' + where) if where else ''}")
+    s = ", ".join(parts)
+    rest = ko["count"] - sum(n for _, n in top3)
+    if rest > 0:
+        s += f", and {rest} more"
+    return f"{s} — {ko['count']} incidents total"
+
+
+def _overnight_rundown_block(rel: str) -> str:
+    """Quick professional rundown section for the daily brief article."""
+    rundown = _overnight_rundown()
+    if not rundown:
+        return ('<section class="brief-seg" aria-labelledby="seg-overnight">'
+                '<div class="sign-head"><span class="tab">Overnight</span>'
+                '<h2 id="seg-overnight">The Kern Overnight</h2></div>'
+                '<div class="card"><p>Quiet night on the scanner &mdash; a handful of '
+                f'minor incidents. <a href="{rel}overnight/">Full overnight report</a></p>'
+                '</div></section>')
+    return f"""
+    <section class="brief-seg" aria-labelledby="seg-overnight">
+      <div class="sign-head"><span class="tab">Overnight</span><h2 id="seg-overnight">The Kern Overnight</h2></div>
+      <div class="card"><p>{html.escape(rundown)}. <a href="{rel}overnight/">See the full overnight breakdown &rarr;</a></p>
+      <p class="note">Locations generalized to block or cross streets &middot; details preliminary &middot; Audio Provided by Broadcastify.</p></div>
+    </section>"""
+
+
+def _big_title(top, today) -> str:
+    """Professional brief title: the big story headline + brand + date."""
+    if top and (top.get("title") or "").strip():
+        return (f"{top['title'].strip()} — The Bakersfield Brief, "
+                f"{_fmt_date(today)}")
+    return f"Bakersfield Daily Brief — {_fmt_date(today)}"
 
 
 def _overnight_section(rel: str) -> str:
@@ -244,18 +327,14 @@ def _overnight_section(rel: str) -> str:
       <p class="sec-head" id="h-overnight">The Kern Overnight <span class="unit">listened overnight &middot; written by sunrise</span></p>
       <p>First edition coming soon. <a href="%s">About the scanner-to-newsletter report</a></p>
     </section>""" % rel
-    cats = " &middot; ".join(f"{n} {c}" for c, n in ko["cats"].items() if n)
-    top = ko["top"]
-    top_line = ("Most significant call: " if top else "") + (
-        f"{html.escape(str(top.get('type', 'incident')))} in "
-        f"{html.escape(str(top.get('area', 'the area')))} at {top.get('time', '')}"
-        if top else "")
+    rundown = _overnight_rundown() or (
+        f"{ko['count']} incidents tracked overnight")
     return f"""
     <section class="card" style="margin:14px 0" aria-labelledby="h-overnight">
       <p class="sec-head" id="h-overnight">The Kern Overnight <span class="unit">listened overnight &middot; written by sunrise</span></p>
       <p class="ko-title"><a href="{rel}overnight/">{html.escape(ko['title'])}</a></p>
-      <p>{top_line}. {ko['count']} incidents tracked overnight: {cats}.</p>
-      <p class="note"><a href="{rel}overnight/">Read the full overnight report</a> &middot; locations generalized to block or cross streets &middot; details preliminary &middot; Audio Provided by Broadcastify.</p>
+      <p>{html.escape(rundown)}. <a href="{rel}overnight/">Read the full overnight report</a></p>
+      <p class="note">Locations generalized to block or cross streets &middot; details preliminary &middot; Audio Provided by Broadcastify.</p>
     </section>"""
 
 
@@ -825,7 +904,7 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
     content += _upcoming_meetings(rel, escribe, board, today)
 
     page = page_mod.render(
-        title=f"Bakersfield Daily Brief — {_fmt_date(today)} (archive)",
+        title=_big_title(top, today) + " (archive)",
         desc="Archived copy of today's Bakersfield Daily Brief.",
         canonical=f"/briefs/{built_iso}/",
         content=content, current="index", rel=rel, built=built_iso,
@@ -976,9 +1055,11 @@ def _article_lead(top, headlines, weather, airnow, calfire,
     <article class="article-lead brief-read">
       <div class="greet">{greeting}</div>
 
+      {_overnight_rundown_block(rel)}
+
       <section class="brief-seg" aria-labelledby="seg-weather">
         <div class="sign-head"><span class="tab">Weather</span><h2 id="seg-weather">Today's weather</h2></div>
-        {images.figure("skyline", rel)}
+        {images.figure("bakersfield", rel)}
         <div class="card">{wx}</div>
       </section>
 

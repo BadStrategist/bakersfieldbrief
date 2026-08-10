@@ -1,15 +1,11 @@
 {
- "built_at": "2026-08-10T15:10:46-07:00",
+ "built_at": "2026-08-10T15:22:24-07:00",
  "sources": {
   "escribe": {
    "ok": true,
    "error": ""
   },
   "kern_board": {
-   "ok": true,
-   "error": ""
-  },
-  "abc": {
    "ok": true,
    "error": ""
   },
@@ -41,10 +37,6 @@
    "ok": true,
    "error": ""
   },
-  "food": {
-   "ok": true,
-   "error": ""
-  },
   "alpr": {
    "ok": true,
    "error": ""
@@ -54,14 +46,6 @@
    "error": ""
   },
   "roads": {
-   "ok": true,
-   "error": ""
-  },
-  "gas": {
-   "ok": true,
-   "error": ""
-  },
-  "radar": {
    "ok": true,
    "error": ""
   },
@@ -76,7 +60,7 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 4,
+   "chp_new": 8,
    "top_story": "Meth addict admitted involvement in crash that killed teen pedestrian in Bakersfield: docs",
    "archive": "2026-08-10"
   },
@@ -84,10 +68,6 @@
    "upcoming_meetings": 4,
    "county_items": 101,
    "drafts_generated": 0
-  },
-  "openings": {
-   "liquor_apps": 0,
-   "food_closures": 9
   },
   "places": {
    "places": [
@@ -99,11 +79,11 @@
    ],
    "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 0,
-    "bakersfield-nw": 0,
-    "bakersfield-sw": 0,
-    "bakersfield-east": 0,
-    "bakersfield-central": 0
+    "tehachapi": 12,
+    "bakersfield-nw": 3,
+    "bakersfield-sw": 12,
+    "bakersfield-east": 12,
+    "bakersfield-central": 12
    }
   },
   "guide": {
@@ -130,22 +110,11 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 2,
-   "aqi": 119,
+   "aqi": 97,
    "chp_week": 7
   },
   "letters": {
    "published": 0
-  },
-  "gas_prices": {
-   "ok": true,
-   "regular": 5.7037,
-   "asof": "2026-08-10"
-  },
-  "weather_page": {
-   "ok": true,
-   "periods": 14,
-   "alerts": 1,
-   "asof": "2026-08-10"
   },
   "overnight": {
    "published": 1

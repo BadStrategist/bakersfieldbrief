@@ -5,7 +5,7 @@ CONDITIONS
 Weather: 88° / 108°
 Alerts: Extreme Heat Warning active
 Isabella: 208,157 AF (36.6% cap)
-CHP: 4 overnight
+CHP: None overnight
 Air: AQI 60 · Moderate
 Fires: 3 active in Kern
 

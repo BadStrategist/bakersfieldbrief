@@ -23,9 +23,23 @@ Cron: `15 6 * * *` America/Los_Angeles (the Hermes cron job "Kern Overnight").
 
 | Stage | Needs |
 |---|---|
-| fetch | `broadcastify-cli` (preferred) OR `RR_USER` + `RR_PASS` (RadioReference premium) |
+| fetch | `RR_USER` + `RR_PASS` in `.env` (RadioReference premium). Optional: `broadcastify-cli` |
 | transcribe | `ffmpeg`, `torch` + `silero-vad`, `faster-whisper` (large-v3, CPU int8) |
 | extract / write | `LLM_API_KEY` (LLM_MODEL / LLM_BASE_URL optional) |
+
+## Broadcastify archive API (verified Aug 2026 — the CLI's endpoints are dead)
+
+The published `broadcastify-cli` targets removed endpoints (`ajax.php`,
+`downloadv2`). The live API, driven with the `bcfyuser1` session cookie from
+`POST https://www.broadcastify.com/login/` (form: username, password,
+action=auth, redirect):
+
+- Listing: `GET https://www.broadcastify.com/archives/api/archives.php?feedId=14029&date=MM%2FDD%2FYYYY`
+  → `{"archives":[{"id":"14029-<startTs>","startTs":...,"endTs":...}]}`
+- Audio URL: `GET https://www.broadcastify.com/archives/api/play.php?id=14029-<startTs>`
+  → `{"url":"https://archives.broadcastify.com/...mp3"}`
+- Archive blocks are **not** 30-min aligned (start at :12/:42 offsets) —
+  filter by epoch range, never by exact alignment.
 
 ## Privacy HARD RULEs (enforced in the extraction prompt AND reviewed by hand)
 

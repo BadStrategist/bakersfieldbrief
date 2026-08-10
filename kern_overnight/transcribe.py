@@ -50,16 +50,27 @@ def _preprocess(mp3: Path, work: Path) -> Path:
 
 
 def _vad_speech_segments(wav: Path, work: Path) -> list[tuple[float, float]]:
-    """Silero VAD → [(start_s, end_s), ...]; raise if torch/silero missing."""
+    """Silero VAD → [(start_s, end_s), ...]; raise if torch/silero missing.
+
+    Reads the 16 kHz mono PCM WAV with the stdlib `wave` module (no
+    torchaudio/torchcodec — their native DLLs don't load with this machine's
+    ffmpeg build) and feeds Silero a plain float32 tensor."""
     try:
-        import torch  # noqa: F401
-        from silero_vad import load_silero_vad, read_audio, get_speech_timestamps
+        import numpy as np
+        import torch
+        from silero_vad import load_silero_vad, get_speech_timestamps
     except ImportError as e:
         raise TranscribeError(
             f"Silero VAD unavailable ({e}). pip install torch silero-vad "
             "(CPU torch is fine for VAD).") from e
+    import wave
+    with wave.open(str(wav), "rb") as w:
+        if w.getframerate() != 16000 or w.getnchannels() != 1:
+            raise TranscribeError(f"{wav.name}: expected 16k mono PCM")
+        raw = w.readframes(w.getnframes())
+    audio = np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768.0
+    audio = torch.from_numpy(audio)
     model = load_silero_vad()
-    audio = read_audio(str(wav), sampling_rate=16000)
     stamps = get_speech_timestamps(audio, model,
                                    sampling_rate=16000,
                                    min_speech_duration_ms=300,

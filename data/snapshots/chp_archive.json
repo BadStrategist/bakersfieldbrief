@@ -540,6 +540,16 @@
   "details": ""
  },
  {
+  "log_id": "260810BF0132",
+  "time": "Aug 10 2026 10:22AM",
+  "type": "1125-Traffic Hazard",
+  "location": "State Rd / Airport Dr",
+  "area": "Bakersfield",
+  "lat": 35.403024,
+  "lon": -119.040752,
+  "details": ""
+ },
+ {
   "log_id": "260810BF0003",
   "time": "Aug 10 2026 12:09AM",
   "type": "TADV-Traffic Advisory",

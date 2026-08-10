@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-10T09:11:53-07:00",
+ "built_at": "2026-08-10T10:38:29-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -76,8 +76,8 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 0,
-   "top_story": "New treatments, vaccines: August cancer update with Dr. Patel",
+   "chp_new": 1,
+   "top_story": "Radack has write stuff for \u2018Daniel Tiger\u2019s Neighborhood\u2019",
    "archive": "2026-08-10"
   },
   "cityhall": {
@@ -113,7 +113,7 @@
   "grapevine": {
    "i5": "CLOSED",
    "i5_pass": "OPEN",
-   "log_entries": 19
+   "log_entries": 20
   },
   "events": {
    "groups": {
@@ -129,9 +129,9 @@
   "numbers": {
    "isabella_af": 208157,
    "alpr_total": 247,
-   "kern_fires": 3,
-   "aqi": 60,
-   "chp_week": 4
+   "kern_fires": 2,
+   "aqi": 61,
+   "chp_week": 5
   },
   "letters": {
    "published": 0

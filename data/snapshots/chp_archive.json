@@ -510,6 +510,16 @@
   "details": ""
  },
  {
+  "log_id": "260810BF0239",
+  "time": "Aug 10 2026  2:30PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr58 W / Mt Vernon Ave Ofr",
+  "area": "Bakersfield",
+  "lat": 35.352991,
+  "lon": -118.961758,
+  "details": ""
+ },
+ {
   "log_id": "260810BF0045",
   "time": "Aug 10 2026  5:39AM",
   "type": "MZP-Assist CT with Maintenance",

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-10T10:38:29-07:00",
+ "built_at": "2026-08-10T14:37:52-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -54,8 +54,8 @@
    "error": ""
   },
   "roads": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "no Caltrans routes parsed"
   },
   "gas": {
    "ok": true,
@@ -77,7 +77,7 @@
    "news_digest": "deterministic",
    "alerts": 1,
    "chp_new": 1,
-   "top_story": "Radack has write stuff for \u2018Daniel Tiger\u2019s Neighborhood\u2019",
+   "top_story": "Meth addict admitted involvement in crash that killed teen pedestrian in Bakersfield: docs",
    "archive": "2026-08-10"
   },
   "cityhall": {
@@ -111,9 +111,9 @@
    "draft": "drafts/weekend-guide-2026-08-10"
   },
   "grapevine": {
-   "i5": "CLOSED",
-   "i5_pass": "OPEN",
-   "log_entries": 20
+   "i5": null,
+   "i5_pass": null,
+   "log_entries": 0
   },
   "events": {
    "groups": {
@@ -130,8 +130,8 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 2,
-   "aqi": 61,
-   "chp_week": 5
+   "aqi": null,
+   "chp_week": 6
   },
   "letters": {
    "published": 0
@@ -149,6 +149,9 @@
   },
   "overnight": {
    "published": 1
+  },
+  "map": {
+   "dots": 16
   },
   "sunday_read": {
    "topic": "Public safety",
@@ -171,8 +174,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 249,
-   "alpr_new_week": 0,
+   "alpr_total": 250,
+   "alpr_new_week": 1,
    "pages": [
     "surveillance",
     "water",

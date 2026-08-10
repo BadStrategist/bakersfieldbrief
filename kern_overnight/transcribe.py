@@ -175,6 +175,7 @@ def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
           f"{len(list(audio_dir.glob('*.mp3')))} on disk)", flush=True)
     count = 0
     model = None
+    engine = ENGINE  # KO_STT_ENGINE: faster-whisper (default) | deepgram
     with tempfile.TemporaryDirectory(prefix="ko-") as td:
         work = Path(td)
         with open(out_jsonl, "w", encoding="utf-8") as out:
@@ -183,41 +184,79 @@ def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
                 segs = _merge_segments(_vad_speech_segments(wav, work))
                 if not segs:
                     continue
-                if model is None:
-                    model = _load_model()
-                # read the preprocessed array ONCE per block (the segments
-                # are slices of it — no per-segment file I/O)
-                import numpy as np
-                import wave as wave_mod
-                with wave_mod.open(str(wav), "rb") as w:
-                    raw = w.readframes(w.getnframes())
-                audio_arr = (np.frombuffer(raw, dtype=np.int16).astype(np.float32)
-                             / 32768.0)
-                for (s0, s1) in segs:
-                    duration = s1 - s0
-                    if duration < MIN_DURATION_S:
-                        continue
-                    try:
-                        rows = _transcribe_wav(model, audio_arr, (s0, s1), vocab_text)
-                    except Exception as e:  # noqa: BLE001
-                        print(f"    [ko-stt] segment {s0:.1f}s failed: {e}", flush=True)
-                        continue
-                    for r in rows:
-                        if r["confidence"] < MIN_CONFIDENCE and duration < 3.0:
-                            continue  # low-confidence + short → drop
-                        time_local = (dt.datetime.fromtimestamp(
-                            int(mp3.stem.split("-")[1]), tz) +
-                            dt.timedelta(seconds=r["start"])).strftime("%H:%M")
-                        out.write(json.dumps({
-                            "time_local": time_local,
-                            "duration": round(duration, 2),
-                            "text": r["text"],
-                            "confidence": round(r["confidence"], 3),
-                            "source_file": mp3.name,
-                            "engine": f"faster-whisper:{MODEL_SIZE}",
-                        }, ensure_ascii=False) + "\n")
-                        count += 1
-    return count
+                block_epoch = int(mp3.stem.split("-")[1])
+                if engine == "deepgram":
+                    rows = _transcribe_deepgram(wav, segs, block_epoch, tz, mp3.name)
+                else:
+                    if model is None:
+                        model = _load_model()
+                    rows = _transcribe_whisper(model, wav, segs, block_epoch,
+                                               tz, mp3.name, vocab_text)
+                for r in rows:
+                    if r["confidence"] < MIN_CONFIDENCE and r["duration"] < 3.0:
+                        continue  # low-confidence + short → drop
+                    out.write(json.dumps(r, ensure_ascii=False) + "\n")
+                    count += 1
+
+
+def _transcribe_whisper(model, wav: Path, segs: list[tuple[float, float]],
+                        block_epoch: int, tz: dt.tzinfo, source_file: str,
+                        vocab_text: str) -> list[dict]:
+    """Whisper path: one call per merged segment; rows in JSONL shape."""
+    import numpy as np
+    import wave as wave_mod
+    with wave_mod.open(str(wav), "rb") as w:
+        raw = w.readframes(w.getnframes())
+    audio_arr = (np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768.0)
+    rows = []
+    for (s0, s1) in segs:
+        if s1 - s0 < MIN_DURATION_S:
+            continue
+        try:
+            seg_rows = _transcribe_wav(model, audio_arr, (s0, s1), vocab_text)
+        except Exception as e:  # noqa: BLE001
+            print(f"    [ko-stt] segment {s0:.1f}s failed: {e}", flush=True)
+            continue
+        for r in seg_rows:
+            time_local = (dt.datetime.fromtimestamp(block_epoch, tz) +
+                          dt.timedelta(seconds=r["start"])).strftime("%H:%M")
+            rows.append({
+                "time_local": time_local,
+                "duration": round(r["end"] - r["start"], 2),
+                "text": r["text"],
+                "confidence": round(r["confidence"], 3),
+                "source_file": source_file,
+                "engine": f"faster-whisper:{MODEL_SIZE}",
+            })
+    return rows
+
+
+def _transcribe_deepgram(wav: Path, segs: list[tuple[float, float]],
+                         block_epoch: int, tz: dt.tzinfo,
+                         source_file: str) -> list[dict]:
+    """Deepgram path: slice VAD speech to wav bytes, one API call per
+    merged segment; billing tracks real speech seconds only."""
+    from . import deepgram
+    import wave as wave_mod
+    with wave_mod.open(str(wav), "rb") as w:
+        sr = w.getframerate()
+        raw = w.readframes(w.getnframes())
+    seg_audio = []
+    for (s0, s1) in segs:
+        if s1 - s0 < MIN_DURATION_S:
+            continue
+        chunk = raw[int(s0 * sr) * 2:int(s1 * sr) * 2]  # 16-bit mono
+        if not chunk:
+            continue
+        import io
+        buf = io.BytesIO()
+        with wave_mod.open(buf, "wb") as wo:
+            wo.setnchannels(1)
+            wo.setsampwidth(2)
+            wo.setframerate(sr)
+            wo.writeframes(chunk)
+        seg_audio.append((s0, s1, buf.getvalue()))
+    return deepgram.transcribe_segments(seg_audio, block_epoch, tz, source_file)
 
 
 def load_vocab(path: Path) -> str:

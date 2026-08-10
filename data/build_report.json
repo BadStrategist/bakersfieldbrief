@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-09T23:21:18-07:00",
+ "built_at": "2026-08-10T08:43:23-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -76,12 +76,12 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 0,
-   "top_story": "Former Bakersfield College teacher needs lung transplant",
-   "archive": "2026-08-09"
+   "chp_new": 4,
+   "top_story": "Lanes closed on 24th St after collision: BPD",
+   "archive": "2026-08-10"
   },
   "cityhall": {
-   "upcoming_meetings": 2,
+   "upcoming_meetings": 4,
    "county_items": 101,
    "drafts_generated": 0
   },
@@ -97,18 +97,18 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 12,
-    "bakersfield-nw": 4,
-    "bakersfield-sw": 12,
-    "bakersfield-east": 12,
-    "bakersfield-central": 12
+    "tehachapi": 0,
+    "bakersfield-nw": 0,
+    "bakersfield-sw": 0,
+    "bakersfield-east": 0,
+    "bakersfield-central": 0
    }
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-08-09"
+   "draft": "drafts/weekend-guide-2026-08-10"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -121,34 +121,34 @@
     "Next week": 1,
     "Later": 26
    },
-   "meetings": 2
+   "meetings": 4
   },
   "feed": {
-   "entries": 6
+   "entries": 7
   },
   "numbers": {
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 3,
-   "aqi": 58,
-   "chp_week": 51
+   "aqi": 60,
+   "chp_week": 4
   },
   "letters": {
    "published": 0
   },
   "gas_prices": {
    "ok": true,
-   "regular": 5.666,
-   "asof": "2026-08-09"
+   "regular": 5.7037,
+   "asof": "2026-08-10"
   },
   "weather_page": {
    "ok": true,
    "periods": 14,
    "alerts": 1,
-   "asof": "2026-08-09"
+   "asof": "2026-08-10"
   },
   "overnight": {
-   "published": 0
+   "published": 1
   },
   "sunday_read": {
    "topic": "Public safety",

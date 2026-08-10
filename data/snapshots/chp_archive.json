@@ -508,5 +508,45 @@
   "lat": 35.265234,
   "lon": -119.024794,
   "details": ""
+ },
+ {
+  "log_id": "260810BF0045",
+  "time": "Aug 10 2026  5:39AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "Sr178 W / Union Ave Onr",
+  "area": "Bakersfield",
+  "lat": 35.3823,
+  "lon": -119.009842,
+  "details": ""
+ },
+ {
+  "log_id": "260810BF0059",
+  "time": "Aug 10 2026  6:37AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "29449 Stockdale Hwy",
+  "area": "Buttonwillow",
+  "lat": 35.354792,
+  "lon": -119.33073,
+  "details": ""
+ },
+ {
+  "log_id": "260810BF0079",
+  "time": "Aug 10 2026  8:02AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Wood St / Olive Ave",
+  "area": "Buttonwillow",
+  "lat": 35.133202,
+  "lon": -119.456208,
+  "details": ""
+ },
+ {
+  "log_id": "260810BF0003",
+  "time": "Aug 10 2026 12:09AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
  }
 ]

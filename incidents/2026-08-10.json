@@ -1,18 +1,208 @@
 [
-  {"time": "03:02", "agency": "KCFD", "type": "structure fire", "area": "Williams Street at Eureka Street, East Bakersfield", "summary": "Electrical lines caught fire and spread to the rear of a large metal commercial building; fire spread to an adjacent building. Multi-company response (5 engines, 4 trucks, rescue, 3 battalion chiefs), command established with divisions Charlie and Alpha, access made by cutting a gate.", "disposition": "Working fire; multiple companies on scene through the remainder of the night; fire extended into at least one building.", "notability": 5, "supporting_quotes": ["electrical line fire that caught the back part of a large building on fire", "we do have fire spread to an adjacent building off of Williams", "fire underneath the telephone pole", "There is definitely in one building this time"]},
-  {"time": "02:14", "agency": "BPD", "type": "reported shooting", "area": "the 500 block of Francis Street", "summary": "A caller reported a subject came to the window of a residence and shot through it; a 17-year-old was reported to have blood on them. Units responded; no victims of a shooting were confirmed on the air.", "disposition": "No victims located; units cleared the scene.", "notability": 4, "supporting_quotes": ["subject came into the window of the residence and shot through the window", "Negative on a victim of a shooting"]},
-  {"time": "02:26", "agency": "BPD", "type": "domestic violence with injury", "area": "the 900 block of Baker Street near Sumner Avenue", "summary": "A female caller said she was pushed down stairs and cut, and that a male was following her; she was hiding inside a residence. Units responded en route.", "disposition": "Response dispatched; outcome not heard on the air.", "notability": 4, "supporting_quotes": ["female stating she was pushed downstairs and was cut", "the male is possibly following her", "she's hiding inside"]},
-  {"time": "22:50", "agency": "BPD", "type": "attempted arson", "area": "the 500 block of Deal Avenue", "summary": "A caller reported a subject pouring a substance (possibly gas) on items to set them on fire; no active fire at the time, and the subject was reportedly walking away.", "disposition": "Units searching for the subject; no fire found burning.", "notability": 3, "supporting_quotes": ["subject to the front writing things on fire, has a ball with a substance in possibly gas, and using it to pour on things to further the fire", "there's currently no active fire"]},
-  {"time": "03:15", "agency": "KCFD", "type": "commercial fire", "area": "the 2100 block of Niles Street", "summary": "RP reported heavy smoke from a Family Dollar store; incident command set up (IC 3, later IC 319). Reported smoke without visible flames.", "disposition": "Moderate smoke, no flames reported; part of the same command as the Williams Street fire.", "notability": 4, "supporting_quotes": ["RP reporting heavy smoke from the building", "Commercial structure, moderate smoke, no flames"]},
-  {"time": "21:40", "agency": "BPD", "type": "assault report involving a child", "area": "the 1400 block of Hops Lane", "summary": "Units were sent on a report of an assault involving a five-year-old; a suspect description was broadcast.", "disposition": "Response dispatched; outcome not heard on the air.", "notability": 4, "supporting_quotes": ["288 just occurred at 14.04 Hops Lane", "Victim will be the RP's five-year-old niece"]},
-  {"time": "23:08", "agency": "BPD", "type": "attempted burglary", "area": "the 2000 block of Calloway Drive", "summary": "RP reported a subject inside a business that had not cleared; units set up around the building. Later, an attempt burglary with no entry made was confirmed at another location.", "disposition": "Attempted entry; no entry made reported.", "notability": 3, "supporting_quotes": ["there's a subject inside of the building", "has not cleared the business yet", "affirmative on an attempt 459, however no entry made"]},
-  {"time": "22:58", "agency": "KCFD", "type": "structure fire report", "area": "Mount Vernon Avenue", "summary": "A fire was reported at a building on the north side; crews were sent. Little further detail heard.", "disposition": "Response dispatched; outcome not heard on the air.", "notability": 3, "supporting_quotes": ["Fire at the right 82505 Mount Vernon Avenue", "building on the north side"]},
-  {"time": "22:09", "agency": "KCFD/BPD", "type": "traffic collision", "area": "Providence Avenue at Olive Drive", "summary": "Engine 61 responded to a traffic accident; units later reported complete but continued with law enforcement.", "disposition": "Units cleared.", "notability": 2, "supporting_quotes": ["Engine 61, traffic accident, Providence Avenue, Olive Drive"]},
-  {"time": "03:01", "agency": "CHP", "type": "traffic collision", "area": "northbound Highway 99 near the rest area", "summary": "A vehicle reportedly overshot the roadway in the third lane; units turned back to block and get out of the roadway.", "disposition": "Response dispatched; outcome not heard on the air.", "notability": 2, "supporting_quotes": ["we just overshot 1125, Fox Spring", "number 3 lane, northbound 5 south of the rest area"]},
-  {"time": "21:05", "agency": "EMS", "type": "medical aid", "area": "the 100 block of Donna Avenue", "summary": "Medical aid dispatched for difficulty breathing.", "disposition": "Not heard on the air.", "notability": 2, "supporting_quotes": ["Medical Aid 124 Donna Avenue, difficulty breathing"]},
-  {"time": "22:36", "agency": "BPD", "type": "welfare check", "area": "the 2200 block of Chester Avenue", "summary": "Welfare check dispatched at a fast-food location.", "disposition": "Not heard on the air.", "notability": 1, "supporting_quotes": ["welfare 2220 Chester Avenue at Jack in the Box"]},
-  {"time": "22:24", "agency": "KCSO", "type": "mental health hold", "area": "Christopher Park area", "summary": "A person on a 5150 hold needed re-evaluation before the hold expired.", "disposition": "Referral made.", "notability": 2, "supporting_quotes": ["He needs to be re-evaluated due to 5150 hold expiring"]},
-  {"time": "21:39", "agency": "BPD", "type": "DUI report", "area": "Coulson area", "summary": "A caller reported a possible DUI driver; units advised on traffic stops if located.", "disposition": "Not heard on the air.", "notability": 2, "supporting_quotes": ["holding for a DUI driver, advice on traffic if located"]},
-  {"time": "22:22", "agency": "BPD", "type": "verbal disturbance", "area": "the 3500 block of Canadian Street", "summary": "Verbal dispute between a landlord and tenant.", "disposition": "Not heard on the air.", "notability": 2, "supporting_quotes": ["415 verbal, 3504 Canadian Street, between landlord and tenant"]},
-  {"time": "21:09", "agency": "BPD", "type": "suspicious person", "area": "the 2200 block of Niles Street", "summary": "A man was reported on a rooftop near an AC unit with a hub lamp and a black cup.", "disposition": "Not heard on the air.", "notability": 1, "supporting_quotes": ["suspicious person 2209 Niles Street", "rooftop near the AC unit"]}
+  {
+    "time": "03:02",
+    "agency": "KCFD",
+    "type": "structure fire",
+    "area": "Williams Street at Eureka Street, East Bakersfield",
+    "summary": "Electrical lines caught fire and spread to the rear of a large metal commercial building; fire spread to an adjacent building. Multi-company response (5 engines, 4 trucks, rescue, 3 battalion chiefs), command established with divisions Charlie and Alpha, access made by cutting a gate.",
+    "disposition": "Working fire; multiple companies on scene through the remainder of the night; fire extended into at least one building.",
+    "notability": 5,
+    "supporting_quotes": [
+      "electrical line fire that caught the back part of a large building on fire",
+      "we do have fire spread to an adjacent building off of Williams",
+      "fire underneath the telephone pole",
+      "There is definitely in one building this time"
+    ]
+  },
+  {
+    "time": "02:14",
+    "agency": "BPD",
+    "type": "reported shooting",
+    "area": "the 500 block of Francis Street",
+    "summary": "A caller reported a subject came to the window of a residence and shot through it; a 17-year-old was reported to have blood on them. Units responded; no victims of a shooting were confirmed on the air.",
+    "disposition": "No victims located; units cleared the scene.",
+    "notability": 4,
+    "supporting_quotes": [
+      "subject came into the window of the residence and shot through the window",
+      "Negative on a victim of a shooting"
+    ]
+  },
+  {
+    "time": "02:26",
+    "agency": "BPD",
+    "type": "domestic violence with injury",
+    "area": "the 900 block of Baker Street near Sumner Avenue",
+    "summary": "A female caller said she was pushed down stairs and cut, and that a male was following her; she was hiding inside a residence. Units responded en route.",
+    "disposition": "Response dispatched; outcome not heard on the air.",
+    "notability": 4,
+    "supporting_quotes": [
+      "female stating she was pushed downstairs and was cut",
+      "the male is possibly following her",
+      "she's hiding inside"
+    ]
+  },
+  {
+    "time": "22:50",
+    "agency": "BPD",
+    "type": "attempted arson",
+    "area": "the 500 block of Deal Avenue",
+    "summary": "A caller reported a subject pouring a substance (possibly gas) on items to set them on fire; no active fire at the time, and the subject was reportedly walking away.",
+    "disposition": "Units searching for the subject; no fire found burning.",
+    "notability": 3,
+    "supporting_quotes": [
+      "subject to the front writing things on fire, has a ball with a substance in possibly gas, and using it to pour on things to further the fire",
+      "there's currently no active fire"
+    ]
+  },
+  {
+    "time": "03:15",
+    "agency": "KCFD",
+    "type": "commercial fire",
+    "area": "the 2100 block of Niles Street",
+    "summary": "RP reported heavy smoke from a Family Dollar store; incident command set up (IC 3, later IC 319). Reported smoke without visible flames.",
+    "disposition": "Moderate smoke, no flames reported; part of the same command as the Williams Street fire.",
+    "notability": 4,
+    "supporting_quotes": [
+      "RP reporting heavy smoke from the building",
+      "Commercial structure, moderate smoke, no flames"
+    ]
+  },
+  {
+    "time": "21:40",
+    "agency": "BPD",
+    "type": "assault report involving a child",
+    "area": "the 1400 block of Hops Lane",
+    "summary": "Units were sent on a report of an assault involving a five-year-old; a suspect description was broadcast.",
+    "disposition": "Response dispatched; outcome not heard on the air.",
+    "notability": 4,
+    "supporting_quotes": [
+      "288 just occurred, Hops Lane",
+      "Victim will be the RP's five-year-old niece"
+    ]
+  },
+  {
+    "time": "23:08",
+    "agency": "BPD",
+    "type": "attempted burglary",
+    "area": "the 2000 block of Calloway Drive",
+    "summary": "RP reported a subject inside a business that had not cleared; units set up around the building. Later, an attempt burglary with no entry made was confirmed at another location.",
+    "disposition": "Attempted entry; no entry made reported.",
+    "notability": 3,
+    "supporting_quotes": [
+      "there's a subject inside of the building",
+      "has not cleared the business yet",
+      "affirmative on an attempt 459, however no entry made"
+    ]
+  },
+  {
+    "time": "22:58",
+    "agency": "KCFD",
+    "type": "structure fire report",
+    "area": "Mount Vernon Avenue",
+    "summary": "A fire was reported at a building on the north side; crews were sent. Little further detail heard.",
+    "disposition": "Response dispatched; outcome not heard on the air.",
+    "notability": 3,
+    "supporting_quotes": [
+      "Fire at a building on Mount Vernon Avenue",
+      "building on the north side"
+    ]
+  },
+  {
+    "time": "22:09",
+    "agency": "KCFD/BPD",
+    "type": "traffic collision",
+    "area": "Providence Avenue at Olive Drive",
+    "summary": "Engine 61 responded to a traffic accident; units later reported complete but continued with law enforcement.",
+    "disposition": "Units cleared.",
+    "notability": 2,
+    "supporting_quotes": [
+      "Engine 61, traffic accident, Providence Avenue, Olive Drive"
+    ]
+  },
+  {
+    "time": "03:01",
+    "agency": "CHP",
+    "type": "traffic collision",
+    "area": "northbound Highway 99 near the rest area",
+    "summary": "A vehicle reportedly overshot the roadway in the third lane; units turned back to block and get out of the roadway.",
+    "disposition": "Response dispatched; outcome not heard on the air.",
+    "notability": 2,
+    "supporting_quotes": [
+      "we just overshot past Fox Spring",
+      "number 3 lane, northbound 5 south of the rest area"
+    ]
+  },
+  {
+    "time": "21:05",
+    "agency": "EMS",
+    "type": "medical aid",
+    "area": "the 100 block of Donna Avenue",
+    "summary": "Medical aid dispatched for difficulty breathing.",
+    "disposition": "Not heard on the air.",
+    "notability": 2,
+    "supporting_quotes": [
+      "Medical Aid, Donna Avenue, difficulty breathing"
+    ]
+  },
+  {
+    "time": "22:36",
+    "agency": "BPD",
+    "type": "welfare check",
+    "area": "the 2200 block of Chester Avenue",
+    "summary": "Welfare check dispatched at a fast-food location.",
+    "disposition": "Not heard on the air.",
+    "notability": 1,
+    "supporting_quotes": [
+      "welfare check, Chester Avenue at Jack in the Box"
+    ]
+  },
+  {
+    "time": "22:24",
+    "agency": "KCSO",
+    "type": "mental health hold",
+    "area": "a park in the downtown area",
+    "summary": "A person on a 5150 hold needed re-evaluation before the hold expired.",
+    "disposition": "Referral made.",
+    "notability": 2,
+    "supporting_quotes": [
+      "He needs to be re-evaluated due to 5150 hold expiring"
+    ]
+  },
+  {
+    "time": "21:39",
+    "agency": "BPD",
+    "type": "DUI report",
+    "area": "Coulson area",
+    "summary": "A caller reported a possible DUI driver; units advised on traffic stops if located.",
+    "disposition": "Not heard on the air.",
+    "notability": 2,
+    "supporting_quotes": [
+      "holding for a DUI driver, advice on traffic if located"
+    ]
+  },
+  {
+    "time": "22:22",
+    "agency": "BPD",
+    "type": "verbal disturbance",
+    "area": "the 3500 block of Canadian Street",
+    "summary": "Verbal dispute between a landlord and tenant.",
+    "disposition": "Not heard on the air.",
+    "notability": 2,
+    "supporting_quotes": [
+      "415 verbal, Canadian Street, between landlord and tenant"
+    ]
+  },
+  {
+    "time": "21:09",
+    "agency": "BPD",
+    "type": "suspicious person",
+    "area": "the 2200 block of Niles Street",
+    "summary": "A man was reported on a rooftop near an AC unit with a hub lamp and a black cup.",
+    "disposition": "Not heard on the air.",
+    "notability": 1,
+    "supporting_quotes": [
+      "suspicious person, Niles Street",
+      "rooftop near the AC unit"
+    ]
+  }
 ]

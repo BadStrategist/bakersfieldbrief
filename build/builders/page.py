@@ -26,7 +26,7 @@ def render(*, title: str, desc: str, canonical: str, content: str,
     og_desc = og_desc or desc
 
     # nav current markers
-    cur_flags = {k: "" for k in ("index", "cityhall", "trackers", "places", "sunday")}
+    cur_flags = {k: "" for k in ("index", "cityhall", "trackers", "places", "overnight", "sunday")}
     if current in cur_flags:
         cur_flags[current] = 'aria-current="page"'
 

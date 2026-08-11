@@ -351,7 +351,7 @@ def _big_title(top, today) -> str:
 
 
 def _overnight_section(rel: str) -> str:
-    """Homepage section for The Kern Overnight (scanner-to-newsletter)."""
+    """Significant homepage section for The Kern Overnight (traffic driver)."""
     ko = _overnight_summary()
     if not ko:
         return """
@@ -359,14 +359,24 @@ def _overnight_section(rel: str) -> str:
       <p class="sec-head" id="h-overnight">The Kern Overnight <span class="unit">listened overnight &middot; written by sunrise</span></p>
       <p>First edition coming soon. <a href="%s">About the scanner-to-newsletter report</a></p>
     </section>""" % rel
-    rundown = _overnight_rundown() or (
-        f"{ko['count']} incidents tracked overnight")
+    rundown = _overnight_rundown() or f"{ko['count']} incidents tracked overnight"
+    cats = " &middot; ".join(f"{n} {c}" for c, n in ko["cats"].items() if n)
     return f"""
-    <section class="card" style="margin:14px 0" aria-labelledby="h-overnight">
+    <section class="ko-section" aria-labelledby="h-overnight">
       <p class="sec-head" id="h-overnight">The Kern Overnight <span class="unit">listened overnight &middot; written by sunrise</span></p>
-      <p class="ko-title"><a href="{rel}overnight/">{html.escape(ko['title'])}</a></p>
-      <p>{html.escape(rundown)}. <a href="{rel}overnight/">Read the full overnight report</a></p>
-      <p class="note">Locations generalized to block or cross streets &middot; details preliminary.</p>
+      <div class="ko-inner">
+        <div class="ko-main">
+          <h3 class="ko-title"><a href="{rel}overnight/">{html.escape(ko['title'])}</a></h3>
+          <p class="ko-text">{html.escape(rundown)}.</p>
+          <p class="ko-cats">{cats}</p>
+        </div>
+        <div class="ko-cta">
+          <a class="btn" href="{rel}overnight/">Read the full report</a>
+          <a class="btn btn-ghost" href="{rel}overnight/archive/">Browse the archive</a>
+          <a class="btn btn-ghost" href="{rel}map/">Live map</a>
+        </div>
+      </div>
+      <p class="note" style="margin-top:10px">Locations generalized to block or cross streets &middot; details preliminary.</p>
     </section>"""
 
 

@@ -397,6 +397,29 @@ table.data td.num, table.data th.num { font-family: var(--mono); text-align: rig
   text-transform: uppercase; color: var(--amber); margin: 0 0 4px;
 }
 
+/* ------------------------------------------------ homepage overnight section */
+.ko-section {
+  margin: 16px 0; padding: 18px 20px;
+  border: 1px solid var(--line-strong); border-top: 3px solid var(--amber);
+  border-radius: var(--radius); background: var(--paper);
+}
+.ko-inner { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-start; }
+.ko-main { flex: 1 1 320px; min-width: 0; }
+.ko-title { font-family: var(--display); font-size: 20px; margin: 0 0 6px; }
+.ko-title a { color: var(--ink); text-decoration: none; }
+.ko-title a:hover { color: var(--sign-deep); text-decoration: underline; }
+.ko-text { margin: 0 0 6px; color: var(--ink-soft); line-height: 1.55; }
+.ko-cats {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--amber); margin: 0;
+}
+.ko-cta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.btn-ghost {
+  background: transparent; color: var(--sign-deep);
+  border: 1px solid var(--line-strong);
+}
+.btn-ghost:hover { background: var(--paper-2); }
+
 /* ------------------------------------------------ prose pages */
 .prose { max-width: 780px; }
 .prose h2 { font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; font-size: 26px; color: var(--sign-deep); margin: 34px 0 10px; }

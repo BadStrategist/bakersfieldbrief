@@ -127,10 +127,15 @@ def build(ctx, sources: dict) -> list[str]:
     <div class="card"><p>No names. No license plates. No callback numbers. No patient details. No exact addresses &mdash; locations are generalized to block or cross-street level. Nothing from ambulance-to-hospital traffic. Everything is reported as preliminary dispatch information.</p></div>
     """
 
+    from .daily import _newsletter_block
+    newsletter = _newsletter_block()
+
     body = f"""
     <div class="pagehead"><div class="hero"><p class="kicker">Scanner-to-newsletter</p>
     <h1>The Kern Overnight</h1>
     <p class="lede">We listen to the county&rsquo;s police, fire, and EMS radio all night so you don&rsquo;t have to. Every morning: what happened, what&rsquo;s preliminary, and where.</p></div></div>
+
+    {newsletter}
 
     <p class="sec-head">Published reports</p>
     {recent}
@@ -143,7 +148,7 @@ def build(ctx, sources: dict) -> list[str]:
         title="The Kern Overnight | Bakersfield Daily Brief",
         desc="The Kern Overnight: a scanner-to-newsletter morning brief of overnight police, fire, and EMS activity across Bakersfield and Kern County.",
         canonical="/overnight/",
-        content=body, current="other", rel=rel,
+        content=body, current="overnight", rel=rel,
         built=built_iso, statusbar=ctx.statusbar, jsonld=[page_mod.org_jsonld()])
     common.write(common.SITE / "overnight" / "index.html", page)
     built.append("overnight/index.html")
@@ -155,6 +160,8 @@ def build(ctx, sources: dict) -> list[str]:
     <h1>The Kern Overnight — every report</h1>
     <p class="lede">All published overnight reports, newest first. The full archive stays on file so we can build trends and monthly summaries from it.</p></div></div>
 
+    {newsletter}
+
     <p class="arch-more"><a href="{archive_rel}overnight/" class="btn">&larr; Back to the latest reports</a></p>
     {all_reports}
     <p class="arch-more"><a href="{archive_rel}overnight/" class="btn">&larr; Back to the latest reports</a></p>
@@ -164,7 +171,7 @@ def build(ctx, sources: dict) -> list[str]:
         title="The Kern Overnight — Archive | Bakersfield Daily Brief",
         desc="Archive of every Kern Overnight scanner-to-newsletter report for Bakersfield and Kern County.",
         canonical="/overnight/archive/",
-        content=archive_body, current="other", rel=archive_rel,
+        content=archive_body, current="overnight", rel=archive_rel,
         built=built_iso, statusbar=ctx.statusbar, jsonld=[page_mod.org_jsonld()])
     common.write(common.SITE / "overnight" / "archive" / "index.html", archive_page)
     built.append("overnight/archive/index.html")

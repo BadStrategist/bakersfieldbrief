@@ -720,6 +720,36 @@
   "details": ""
  },
  {
+  "log_id": "260811BF0286",
+  "time": "Aug 11 2026  4:29PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "2201 Tangerine St",
+  "area": "Bakersfield",
+  "lat": 35.378181,
+  "lon": -118.927035,
+  "details": ""
+ },
+ {
+  "log_id": "260811BF0294",
+  "time": "Aug 11 2026  4:43PM",
+  "type": "CFIRE-Car Fire",
+  "location": "Nb I5 Jso Buttonwillow Rest Area",
+  "area": "Buttonwillow",
+  "lat": 35.414444,
+  "lon": -119.418333,
+  "details": ""
+ },
+ {
+  "log_id": "260811BF0295",
+  "time": "Aug 11 2026  4:44PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sb Sr99 At Panama Ln",
+  "area": "BF",
+  "lat": 35.295833,
+  "lon": -119.030556,
+  "details": ""
+ },
+ {
   "log_id": "260811BF0040",
   "time": "Aug 11 2026  5:27AM",
   "type": "MZP-Assist CT with Maintenance",

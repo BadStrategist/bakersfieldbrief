@@ -8,7 +8,7 @@ CONDITIONS
 Weather: 102° / 103°
 Alerts: Flood Advisory active
 Isabella: 208,157 AF (36.6% cap)
-CHP: 1 overnight
+CHP: 3 overnight
 Air: AQI 77 · Moderate
 Fires: 2 active in Kern
 

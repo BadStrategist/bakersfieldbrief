@@ -357,7 +357,7 @@ def _overnight_section(rel: str) -> str:
           <p class="ko-friend">Slept through the night? Here&rsquo;s what you missed while the city talked.</p>
         </div>
         <div class="ko-cta">
-          <a class="btn" href="{rel}overnight/">See what happened overnight</a>
+          <a class="btn-red" href="{rel}overnight/">See what happened overnight</a>
           <a class="btn btn-ghost" href="{rel}overnight/archive/">Browse the archive</a>
           <a class="btn btn-ghost" href="{rel}map/">Live map</a>
         </div>

@@ -14,7 +14,9 @@ def render(*, title: str, desc: str, canonical: str, content: str,
            current: str = "", rel: str = "", built: str = "",
            jsonld: list | None = None, extra_head: str = "",
            extra_scripts: str = "", og_title: str | None = None,
-           og_desc: str | None = None, statusbar: str = "") -> str:
+           og_desc: str | None = None,
+           og_image: str = "https://bakersfieldbrief.com/assets/img/emblem.png",
+           statusbar: str = "") -> str:
     """Render a full page from templates/layout.html.
 
     rel: relative prefix from this page's dir to site root ("" or "../…")
@@ -36,6 +38,7 @@ def render(*, title: str, desc: str, canonical: str, content: str,
         "__CANONICAL__": canonical,
         "__OGTITLE__": htmlmod.escape(og_title),
         "__OGDESC__": htmlmod.escape(og_desc),
+        "__OGIMAGE__": og_image,
         "__BUILT__": built,
         "__CSSV__": built or "",
         "__REL__": rel,

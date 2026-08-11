@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-10T20:49:37-07:00",
+ "built_at": "2026-08-10T22:39:56-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,7 +60,7 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 2,
    "top_story": "It\u2019s hot enough to fry candy corn on the sidewalk, but Halloween in August? Sure",
    "archive": "2026-08-10"
   },
@@ -79,11 +79,11 @@
    ],
    "tehachapi_forecast": false,
    "gnews_per_place": {
-    "tehachapi": 0,
-    "bakersfield-nw": 0,
-    "bakersfield-sw": 0,
-    "bakersfield-east": 0,
-    "bakersfield-central": 0
+    "tehachapi": 12,
+    "bakersfield-nw": 10,
+    "bakersfield-sw": 12,
+    "bakersfield-east": 12,
+    "bakersfield-central": 12
    }
   },
   "guide": {
@@ -93,7 +93,7 @@
   "grapevine": {
    "i5": "CLOSED",
    "i5_pass": "OPEN",
-   "log_entries": 22
+   "log_entries": 24
   },
   "events": {
    "groups": {
@@ -110,8 +110,8 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 2,
-   "aqi": 82,
-   "chp_week": 14
+   "aqi": 63,
+   "chp_week": 16
   },
   "letters": {
    "published": 0

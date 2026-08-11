@@ -47,6 +47,8 @@ def main(argv: list[str]) -> int:
     date = dt.date.today()
     if len(argv) > 1:
         date = dt.date.fromisoformat(argv[1])
+    phase1 = "--phase1" in argv
+    phase2 = "--phase2" in argv
     tz = pacific_tz(date)
     d = date.isoformat()
 
@@ -64,8 +66,15 @@ def main(argv: list[str]) -> int:
     print("[ko] 2/5 transcribe", flush=True)
     transcript.parent.mkdir(parents=True, exist_ok=True)
     vocab = ko_stt.load_vocab(ROOT / "kern_overnight" / "vocab.txt")
-    n_rows = ko_stt.transcribe(audio_dir, transcript, tz, vocab)
+    n_rows = ko_stt.transcribe(audio_dir, transcript, tz, vocab,
+                               append=phase2)
     print(f"[ko]     {n_rows} transmissions", flush=True)
+
+    if phase1 or phase2:
+        phase = "1 (early blocks)" if phase1 else "2 (tail blocks)"
+        print(f"[ko] transcribe-only phase {phase} done: {n_rows} new rows "
+              f"→ {transcript.name}", flush=True)
+        return 0
 
     # ---- 3 EXTRACT
     print("[ko] 3/5 extract incidents (LLM)", flush=True)

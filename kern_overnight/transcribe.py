@@ -26,10 +26,52 @@ import sys
 import tempfile
 from pathlib import Path
 
+from .fetch import _epoch_from_name  # noqa: E402 (block naming helper)
+
 ENGINE = os.environ.get("KO_STT_ENGINE", "faster-whisper")
 MODEL_SIZE = os.environ.get("KO_WHISPER_MODEL", "distil-large-v3")
 MIN_CONFIDENCE = float(os.environ.get("KO_MIN_CONF", "0.45"))
 MIN_DURATION_S = float(os.environ.get("KO_MIN_SEG_S", "1.0"))
+WORKERS = int(os.environ.get("KO_WORKERS", "3"))  # parallel blocks per night
+
+# --- per-process globals for the parallel workers (set by _init_worker)
+_W_ENGINE = ENGINE
+_W_VOCAB = ""
+_W_TZ: dt.tzinfo = dt.timezone(dt.timedelta(hours=-7))
+_W_MODEL = None
+
+
+def _init_worker(engine: str, vocab: str, tz: dt.tzinfo) -> None:
+    """One call per worker process at spawn: seed globals, cache nothing yet."""
+    global _W_ENGINE, _W_VOCAB, _W_TZ, _W_MODEL
+    _W_ENGINE, _W_VOCAB, _W_TZ, _W_MODEL = engine, vocab, tz, None
+
+
+def _block_worker(mp3: Path) -> list[dict]:
+    """Process one block in a worker process → rows in JSONL shape.
+
+    The whisper model loads lazily on the first block so each worker holds
+    exactly one copy for the whole night. A failed block returns [] — the
+    night is never lost to one corrupt file."""
+    global _W_MODEL
+    try:
+        with tempfile.TemporaryDirectory(prefix="ko-w") as td:
+            work = Path(td)
+            wav = _preprocess(mp3, work)
+            segs = _merge_segments(_vad_speech_segments(wav, work))
+            if not segs:
+                return []
+            block_epoch = int(mp3.stem.split("-")[1])
+            if _W_ENGINE == "deepgram":
+                return _transcribe_deepgram(wav, segs, block_epoch, _W_TZ, mp3.name)
+            if _W_MODEL is None:
+                _W_MODEL = _load_model()
+            return _transcribe_whisper(_W_MODEL, wav, segs, block_epoch,
+                                       _W_TZ, mp3.name, _W_VOCAB)
+    except Exception as e:  # noqa: BLE001
+        print(f"    [ko-stt] block {mp3.name} FAILED: {type(e).__name__}: {e}",
+              flush=True)
+        return []
 
 
 class TranscribeError(RuntimeError):
@@ -157,13 +199,18 @@ def _in_overnight_window(epoch: int, date: dt.date, tz: dt.tzinfo) -> bool:
 
 
 def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
-               vocab_text: str, date: dt.date | None = None) -> int:
+               vocab_text: str, date: dt.date | None = None,
+               workers: int | None = None, append: bool = False) -> int:
     """Transcribe the overnight-window MP3s in audio_dir → out_jsonl.
 
     When `date` is given, only blocks whose epoch falls in that night's
     21:00→06:00 window are processed — the audio dir may hold extra
     out-of-window archives (the fetch listings return the whole calendar
-    days). Returns row count."""
+    days). `workers` > 1 processes blocks in parallel (one model per
+    worker process). `append` keeps existing rows and skips blocks already
+    transcribed — the two-phase overnight schedule uses it: phase 1 writes
+    the early blocks at ~03:00, phase 2 appends the tail at ~06:30.
+    Returns row count."""
     mp3s = sorted(audio_dir.glob("*.mp3"))
     if date is not None:
         mp3s = [p for p in mp3s
@@ -171,25 +218,52 @@ def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
     if not mp3s:
         raise TranscribeError(
             f"no overnight-window audio blocks in {audio_dir} — run fetch first")
+    done: set[str] = set()
+    if append and out_jsonl.exists():
+        done = {json.loads(ln).get("source_file", "")
+                for ln in out_jsonl.read_text(encoding="utf-8").splitlines()
+                if ln.strip()}
+    mp3s = [p for p in mp3s if p.name not in done]
+    if not mp3s:
+        print(f"    [ko-stt] all {len(done)} window blocks already transcribed "
+              f"({out_jsonl.name}) — nothing to do", flush=True)
+        return 0
     print(f"    [ko-stt] {len(mp3s)} blocks in window (of "
-          f"{len(list(audio_dir.glob('*.mp3')))} on disk)", flush=True)
+          f"{len(list(audio_dir.glob('*.mp3')))} on disk) "
+          f"{'· append mode' if append else ''}", flush=True)
     count = 0
-    model = None
-    engine = ENGINE  # KO_STT_ENGINE: faster-whisper (default) | deepgram
+    n_workers = (workers or WORKERS)
+    parallel = n_workers > 1 and len(mp3s) > 1
+    mode = "a" if append else "w"
     with tempfile.TemporaryDirectory(prefix="ko-") as td:
+        if parallel:
+            from concurrent.futures import ProcessPoolExecutor
+            print(f"    [ko-stt] {n_workers} parallel workers "
+                  f"({len(mp3s)} blocks)", flush=True)
+            with open(out_jsonl, mode, encoding="utf-8") as out:
+                with ProcessPoolExecutor(max_workers=n_workers,
+                                         initializer=_init_worker,
+                                         initargs=(ENGINE, vocab_text, tz)) as ex:
+                    for rows in ex.map(_block_worker, mp3s):
+                        for r in rows:
+                            if r["confidence"] < MIN_CONFIDENCE and r["duration"] < 3.0:
+                                continue  # low-confidence + short → drop
+                            out.write(json.dumps(r, ensure_ascii=False) + "\n")
+                            count += 1
+            return count
+        # serial fallback (workers == 1 or a single block)
         work = Path(td)
-        with open(out_jsonl, "w", encoding="utf-8") as out:
+        with open(out_jsonl, mode, encoding="utf-8") as out:
             for mp3 in mp3s:
                 wav = _preprocess(mp3, work)
                 segs = _merge_segments(_vad_speech_segments(wav, work))
                 if not segs:
                     continue
                 block_epoch = int(mp3.stem.split("-")[1])
-                if engine == "deepgram":
+                if ENGINE == "deepgram":
                     rows = _transcribe_deepgram(wav, segs, block_epoch, tz, mp3.name)
                 else:
-                    if model is None:
-                        model = _load_model()
+                    model = _load_model()
                     rows = _transcribe_whisper(model, wav, segs, block_epoch,
                                                tz, mp3.name, vocab_text)
                 for r in rows:
@@ -197,6 +271,7 @@ def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
                         continue  # low-confidence + short → drop
                     out.write(json.dumps(r, ensure_ascii=False) + "\n")
                     count += 1
+    return count
 
 
 def _transcribe_whisper(model, wav: Path, segs: list[tuple[float, float]],

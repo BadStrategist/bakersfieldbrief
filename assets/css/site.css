@@ -430,6 +430,14 @@ table.data td.num, table.data th.num { font-family: var(--mono); text-align: rig
 }
 .btn-red:hover { background: var(--red-deep); }
 
+/* ------------------------------------------------ brief article */
+.seg-intro {
+  font-style: italic; color: var(--ink-soft); line-height: 1.6;
+  margin: 0 0 10px; max-width: 72ch;
+}
+.brief-seg { margin: 26px 0 10px; }
+.brief-seg .sec-head { margin-bottom: 8px; }
+
 /* ------------------------------------------------ prose pages */
 .prose { max-width: 780px; }
 .prose h2 { font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; font-size: 26px; color: var(--sign-deep); margin: 34px 0 10px; }

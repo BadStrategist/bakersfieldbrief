@@ -298,25 +298,6 @@ def _overnight_rundown() -> str | None:
     return f"{s} — {ko['count']} incidents total"
 
 
-def _overnight_rundown_block(rel: str) -> str:
-    """Quick professional rundown section for the daily brief article."""
-    rundown = _overnight_rundown()
-    if not rundown:
-        return ('<section class="brief-seg" aria-labelledby="seg-overnight">'
-                '<div class="sign-head"><span class="tab">Overnight</span>'
-                '<h2 id="seg-overnight">The Kern Overnight</h2></div>'
-                '<div class="card"><p>Quiet night on the scanner &mdash; a handful of '
-                f'minor incidents. <a href="{rel}overnight/">Full overnight report</a></p>'
-                '</div></section>')
-    return f"""
-    <section class="brief-seg" aria-labelledby="seg-overnight">
-      <div class="sign-head"><span class="tab">Overnight</span><h2 id="seg-overnight">The Kern Overnight</h2></div>
-      <div class="card"><p>{html.escape(rundown)}. <a href="{rel}overnight/">See the full overnight breakdown &rarr;</a></p>
-      <p class="note">Locations generalized to block or cross streets &middot; details preliminary.</p></div>
-      {_transcription_note()}
-    </section>"""
-
-
 def _transcription_note() -> str:
     """Small italic note on the brief page: how the scanner report is made."""
     return (
@@ -1036,9 +1017,9 @@ def _upcoming_meetings(rel, escribe, board, today) -> str:
     if not rows:
         return ""
     return f"""
-    <section class="block" style="margin-top:34px">
-      <div class="sign-head"><span class="tab">Next</span><h2>Public meetings — next 7 days</h2></div>
-      <ul class="ev-list">{"".join(rows)}</ul>
+    <section class="block brief-seg" style="margin-top:34px">
+      <p class="sec-head">Public meetings <span class="unit">next 7 days &middot; official agendas</span></p>
+      <ul class="ev-list">{''.join(rows)}</ul>
       <p class="note" style="margin-top:10px">Meetings from official agendas. See
       <a href="{rel}city-hall/">all city &amp; county meetings</a>.</p>
     </section>"""
@@ -1079,38 +1060,47 @@ def _article_lead(top, headlines, weather, airnow, calfire,
     events_html = _events_block(events, escribe, today, rel)
 
     return f"""
-    <article class="article-lead brief-read">
-      <div class="greet">{greeting}</div>
+    <div class="pagehead"><div class="hero">
+      <p class="kicker">The Daily Brief</p>
+      <h1>{esc((top or {}).get('title', f'The Bakersfield Brief — {_fmt_date(today)}'))}</h1>
+      <p class="lede">{greeting}</p>
+    </div></div>
 
-      {_overnight_rundown_block(rel)}
+    {_newsletter_block()}
 
-      <section class="brief-seg" aria-labelledby="seg-weather">
-        <div class="sign-head"><span class="tab">Weather</span><h2 id="seg-weather">Today's weather</h2></div>
-        {images.figure("bakersfield", rel)}
-        <div class="card">{wx}</div>
-      </section>
+    {_overnight_section(rel)}
+    {_transcription_note()}
 
-      <section class="brief-seg" aria-labelledby="seg-news">
-        <div class="sign-head"><span class="tab">News</span><h2 id="seg-news">Top stories</h2></div>
-        {stories}
-      </section>
+    <section class="brief-seg" aria-labelledby="seg-weather">
+      <p class="sec-head">Today's weather <span class="unit">forecast &middot; alerts &middot; air &middot; fires</span></p>
+      {images.figure("bakersfield", rel)}
+      <div class="card">{wx}</div>
+    </section>
 
-      <section class="brief-seg" aria-labelledby="seg-good">
-        <div class="sign-head good-head"><h2 id="seg-good">Something good</h2></div>
-        {good}
-      </section>
+    <section class="brief-seg" aria-labelledby="seg-news">
+      <p class="sec-head">Top stories <span class="unit">headlines + links, synthesized</span></p>
+      <p class="seg-intro">Here&rsquo;s what&rsquo;s making news around Kern County this morning — the overnight cases, the policy fights, and the community events worth knowing about.</p>
+      {stories}
+    </section>
 
-      <section class="brief-seg" aria-labelledby="seg-events">
-        <div class="sign-head"><span class="tab">Out</span><h2 id="seg-events">Upcoming — concerts, comedy &amp; more</h2></div>
-        {images.figure("amtrak", rel)}
-        {events_html}
-      </section>
+    <section class="brief-seg" aria-labelledby="seg-good">
+      <p class="sec-head">Something good <span class="unit">one pick to brighten your day</span></p>
+      <p class="seg-intro">Not everything in the news is heavy. Here&rsquo;s something to look forward to.</p>
+      {good}
+    </section>
 
-      <p class="note" style="margin-top:8px">This brief is compiled automatically
-      from public records and linked sources — a factual digest, not opinion.
-      <a href="{rel}letters/">Write a letter</a> about anything here · report an
-      error: <a href="mailto:corrections@bakersfieldbrief.com?subject=Correction&body=Page: {rel}briefs/">corrections@bakersfieldbrief.com</a>.</p>
-    </article>"""
+    <section class="brief-seg" aria-labelledby="seg-events">
+      <p class="sec-head">Out this week <span class="unit">concerts &middot; comedy &middot; more</span></p>
+      <p class="seg-intro">If you&rsquo;re planning a night out, these are the shows and events on the calendar.</p>
+      {images.figure("amtrak", rel)}
+      {events_html}
+    </section>
+
+    <p class="note" style="margin-top:8px">That&rsquo;s the morning read — see you back here tomorrow for the next one. This brief is compiled automatically
+    from public records and linked sources — a factual digest, not opinion.
+    <a href="{rel}letters/">Write a letter</a> about anything here · report an
+    error: <a href="mailto:corrections@bakersfieldbrief.com?subject=Correction&body=Page: {rel}briefs/">corrections@bakersfieldbrief.com</a>.</p>
+    """
 
 
 def _greeting_fallback(top, weather, airnow) -> str:
@@ -1127,9 +1117,13 @@ def _greeting_fallback(top, weather, airnow) -> str:
     cond_txt = (" — " + ", ".join(bits) + ".") if bits else "."
     if top:
         body = (f" <strong>{html.escape(top['title'])}</strong> is the big story "
-                f"we&rsquo;re watching today — full rundown below.")
+                f"we&rsquo;re watching today. The full rundown is below — the overnight "
+                f"incident summary, the weather picture, the headlines around town, "
+                f"and what&rsquo;s coming up this week.")
     else:
-        body = " Here&rsquo;s everything happening in Bakersfield and Kern County today."
+        body = (" Here&rsquo;s everything happening in Bakersfield and Kern County "
+                "today — the overnight incident summary, the weather picture, "
+                "the headlines around town, and what&rsquo;s on the calendar.")
     return f"<p><strong>Good morning, Kern County.</strong>{cond_txt}{body}</p>"
 
 

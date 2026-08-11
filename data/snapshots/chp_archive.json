@@ -670,6 +670,26 @@
   "details": ""
  },
  {
+  "log_id": "260811BF0209",
+  "time": "Aug 11 2026  1:13PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr58 E / Coffee Rd",
+  "area": "Bakersfield",
+  "lat": 35.366776,
+  "lon": -119.092152,
+  "details": ""
+ },
+ {
+  "log_id": "260811BF0216",
+  "time": "Aug 11 2026  1:24PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Wilson Ave / Grant Dr",
+  "area": "Bakersfield",
+  "lat": 35.41726,
+  "lon": -119.036699,
+  "details": ""
+ },
+ {
   "log_id": "260811BF0040",
   "time": "Aug 11 2026  5:27AM",
   "type": "MZP-Assist CT with Maintenance",
@@ -712,7 +732,7 @@
  {
   "log_id": "260811BF0152",
   "time": "Aug 11 2026 10:55AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
+  "type": "1181-Trfc Collision-Minor Inj",
   "location": "Wb Sr178 Jeo Union Ave",
   "area": "Bakersfield",
   "lat": 35.383611,

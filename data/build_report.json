@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-11T12:55:07-07:00",
+ "built_at": "2026-08-11T13:26:21-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 1, column 0"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -59,9 +59,9 @@
   "daily": {
    "news_headlines": 50,
    "news_digest": "deterministic",
-   "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Tehachapi school administrator arrested for failing to report suspected child abuse: police",
+   "alerts": 1,
+   "chp_new": 2,
+   "top_story": "California City to search for new city manager amid ongoing 'revolving door' concerns for the position",
    "archive": "2026-08-11"
   },
   "cityhall": {
@@ -79,11 +79,11 @@
    ],
    "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 0,
-    "bakersfield-nw": 0,
-    "bakersfield-sw": 0,
-    "bakersfield-east": 0,
-    "bakersfield-central": 0
+    "tehachapi": 12,
+    "bakersfield-nw": 10,
+    "bakersfield-sw": 12,
+    "bakersfield-east": 12,
+    "bakersfield-central": 12
    }
   },
   "guide": {
@@ -93,7 +93,7 @@
   "grapevine": {
    "i5": "OPEN",
    "i5_pass": "OPEN",
-   "log_entries": 26
+   "log_entries": 27
   },
   "events": {
    "groups": {
@@ -110,8 +110,8 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 2,
-   "aqi": 77,
-   "chp_week": 23
+   "aqi": 80,
+   "chp_week": 25
   },
   "letters": {
    "published": 0

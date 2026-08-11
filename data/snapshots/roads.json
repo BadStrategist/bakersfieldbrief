@@ -1,11 +1,11 @@
 {
  "i5": {
-  "status": "CLOSED",
-  "hash": "9215a85c94"
+  "status": "OPEN",
+  "hash": "eba63c7148"
  },
  "sr58": {
-  "status": "OPEN",
-  "hash": "5374f203ec"
+  "status": "CLOSED",
+  "hash": "20ce1d0a11"
  },
  "sr99": {
   "status": "RESTRICTIONS",

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-10T22:39:56-07:00",
+ "built_at": "2026-08-11T09:14:15-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,14 +60,14 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
-   "top_story": "It\u2019s hot enough to fry candy corn on the sidewalk, but Halloween in August? Sure",
-   "archive": "2026-08-10"
+   "chp_new": 4,
+   "top_story": "Activist Dolores Huerta calls for stronger pesticide protections in California",
+   "archive": "2026-08-11"
   },
   "cityhall": {
    "upcoming_meetings": 4,
    "county_items": 101,
-   "drafts_generated": 0
+   "drafts_generated": 1
   },
   "places": {
    "places": [
@@ -77,7 +77,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 10,
@@ -88,12 +88,12 @@
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-08-10"
+   "draft": "drafts/weekend-guide-2026-08-11"
   },
   "grapevine": {
-   "i5": "CLOSED",
+   "i5": "OPEN",
    "i5_pass": "OPEN",
-   "log_entries": 24
+   "log_entries": 26
   },
   "events": {
    "groups": {
@@ -104,14 +104,14 @@
    "meetings": 4
   },
   "feed": {
-   "entries": 7
+   "entries": 8
   },
   "numbers": {
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 2,
-   "aqi": 63,
-   "chp_week": 16
+   "aqi": 64,
+   "chp_week": 20
   },
   "letters": {
    "published": 0
@@ -142,8 +142,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 250,
-   "alpr_new_week": 0,
+   "alpr_total": 251,
+   "alpr_new_week": 1,
    "pages": [
     "surveillance",
     "water",

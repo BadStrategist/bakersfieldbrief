@@ -668,5 +668,45 @@
   "lat": 35.265234,
   "lon": -119.024794,
   "details": ""
+ },
+ {
+  "log_id": "260811BF0040",
+  "time": "Aug 11 2026  5:27AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260811BF0057",
+  "time": "Aug 11 2026  6:48AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "29449 Stockdale Hwy",
+  "area": "Buttonwillow",
+  "lat": 35.354792,
+  "lon": -119.33073,
+  "details": ""
+ },
+ {
+  "log_id": "260811BF0096",
+  "time": "Aug 11 2026  8:19AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "SB I5 at Frazier Mountain Park Rd",
+  "area": "Fort Tejon",
+  "lat": 34.8175,
+  "lon": -118.881944,
+  "details": ""
+ },
+ {
+  "log_id": "260811BF0002",
+  "time": "Aug 11 2026 12:00AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
  }
 ]

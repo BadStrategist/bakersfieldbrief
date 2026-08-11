@@ -212,11 +212,12 @@ def _overnight_summary() -> dict | None:
             return None
         rep = reps[0]
         incs: list[dict] = []
-        for f in sorted(Path("incidents").glob("*.json"), reverse=True):
+        f = Path("incidents") / f"{rep['date']}.json"
+        if f.exists():
             try:
-                incs += json.loads(f.read_text(encoding="utf-8"))
+                incs = json.loads(f.read_text(encoding="utf-8"))
             except Exception:  # noqa: BLE001
-                continue
+                incs = []
         cats = {"fire": 0, "police": 0, "medical": 0, "traffic": 0, "other": 0}
         for i in incs:
             c = CATEGORY.get((i.get("type") or "").lower(), "other")
@@ -259,6 +260,12 @@ _TYPE_NORM = {
     "welfare check": "welfare call", "suspicious person": "suspicious person report",
     "assault report involving a child": "assault report",
 }
+_PLURALS = {"mental health crisis": "mental health crises",
+            "assault with a weapon": "assaults with weapons"}
+
+
+def _plural(typ: str) -> str:
+    return _PLURALS.get(typ, typ + "s")
 
 
 def _overnight_rundown() -> str | None:
@@ -284,7 +291,7 @@ def _overnight_rundown() -> str | None:
         hc = hood_for.get(typ)
         where = _HOOD_PREP.get(hc.most_common(1)[0][0]) if hc else ""
         if n > 1:
-            parts.append(f"{n} {typ}s{(' ' + where) if where else ''}")
+            parts.append(f"{n} {_plural(typ)}{(' ' + where) if where else ''}")
         else:
             parts.append(f"a {typ}{(' ' + where) if where else ''}")
     s = ", ".join(parts)

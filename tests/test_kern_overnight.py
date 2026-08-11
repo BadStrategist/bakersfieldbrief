@@ -290,6 +290,19 @@ class TestData:
             assert KERN_BOUNDS[0] <= d["lat"] <= KERN_BOUNDS[1]
             assert KERN_BOUNDS[2] <= d["lng"] <= KERN_BOUNDS[3]
 
+    def test_overnight_summary_latest_only(self):
+        """The rundown must reflect ONLY the latest night, never all days."""
+        from build.builders.daily import _overnight_summary, _overnight_rundown
+        ko = _overnight_summary()
+        assert ko is not None
+        latest = sorted((ROOT / "incidents").glob("*.json"))[-1].stem
+        assert ko["date"] == latest
+        assert ko["count"] == len(json.loads(
+            (ROOT / "incidents" / f"{latest}.json").read_text(encoding="utf-8")))
+        rd = _overnight_rundown()
+        assert rd and rd.endswith(f"{ko['count']} incidents total")
+        assert "crisiss" not in rd  # pluralization is correct
+
     def test_builders_import_clean(self):
         import subprocess
         r = subprocess.run(

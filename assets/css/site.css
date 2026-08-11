@@ -409,6 +409,7 @@ table.data td.num, table.data th.num { font-family: var(--mono); text-align: rig
 .ko-title a { color: var(--ink); text-decoration: none; }
 .ko-title a:hover { color: var(--sign-deep); text-decoration: underline; }
 .ko-text { margin: 0 0 6px; color: var(--ink-soft); line-height: 1.55; }
+.ko-friend { margin: 0 0 4px; font-style: italic; color: var(--ink-soft); line-height: 1.5; }
 .ko-cats {
   font-family: var(--mono); font-size: 12px; letter-spacing: 1.2px;
   text-transform: uppercase; color: var(--amber); margin: 0;

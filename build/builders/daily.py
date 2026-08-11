@@ -354,14 +354,14 @@ def _overnight_section(rel: str) -> str:
           <h3 class="ko-title"><a href="{rel}overnight/">{html.escape(ko['title'])}</a></h3>
           <p class="ko-text">{html.escape(rundown)}.</p>
           <p class="ko-cats">{cats}</p>
+          <p class="ko-friend">Slept through the night? Here&rsquo;s what you missed while the city talked.</p>
         </div>
         <div class="ko-cta">
-          <a class="btn" href="{rel}overnight/">Read the full report</a>
+          <a class="btn" href="{rel}overnight/">See what happened overnight</a>
           <a class="btn btn-ghost" href="{rel}overnight/archive/">Browse the archive</a>
           <a class="btn btn-ghost" href="{rel}map/">Live map</a>
         </div>
       </div>
-      <p class="note" style="margin-top:10px">Locations generalized to block or cross streets &middot; details preliminary.</p>
     </section>"""
 
 

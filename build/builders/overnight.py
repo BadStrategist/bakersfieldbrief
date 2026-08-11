@@ -21,25 +21,48 @@ REPORTS_DIR = common.DATA / "overnight_reports"
 def _md(text: str) -> str:
     """Minimal markdown → HTML for the briefs (headings, bold, italics, lists, paras)."""
     out = []
+    in_list = False
+
+    def _inline(s: str) -> str:
+        esc = html.escape(s)
+        esc = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", esc)
+        esc = re.sub(r"\*(.+?)\*", r"<em>\1</em>", esc)
+        return esc
+
     for raw in text.splitlines():
         line = raw.strip()
-        if not line:
+        if not line or line == "---":
+            if in_list:
+                out.append("</ul>")
+                in_list = False
             continue
         if line.startswith("### "):
-            out.append(f"<h3>{html.escape(line[4:])}</h3>")
+            if in_list:
+                out.append("</ul>")
+                in_list = False
+            out.append(f"<h3>{_inline(line[4:])}</h3>")
         elif line.startswith("## "):
-            out.append(f"<h2>{html.escape(line[3:])}</h2>")
+            if in_list:
+                out.append("</ul>")
+                in_list = False
+            out.append(f"<h2>{_inline(line[3:])}</h2>")
         elif line.startswith("# "):
-            out.append(f"<h1>{html.escape(line[2:])}</h1>")
+            if in_list:
+                out.append("</ul>")
+                in_list = False
+            out.append(f"<h1>{_inline(line[2:])}</h1>")
         elif line.startswith("- "):
-            out.append(f"<li>{html.escape(line[2:])}</li>")
-        elif line.startswith("---"):
-            continue
+            if not in_list:
+                out.append("<ul>")
+                in_list = True
+            out.append(f"<li>{_inline(line[2:])}</li>")
         else:
-            esc = html.escape(line)
-            esc = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", esc)
-            esc = re.sub(r"\*(.+?)\*", r"<em>\1</em>", esc)
-            out.append(f"<p>{esc}</p>")
+            if in_list:
+                out.append("</ul>")
+                in_list = False
+            out.append(f"<p>{_inline(line)}</p>")
+    if in_list:
+        out.append("</ul>")
     return "\n".join(out)
 
 
@@ -98,7 +121,7 @@ def build(ctx, sources: dict) -> list[str]:
 
     <p class="sec-head">Published reports</p>
     {archive}
-    <p class="note" style="margin-top:14px">A human reads and edits every edition before it appears here. Nothing publishes automatically.</p>"""
+    <p class="note" style="margin-top:14px">Compiled from preliminary dispatch traffic each morning; details are unconfirmed until an official source reports them, and locations are generalized for privacy.</p>"""
 
     page = page_mod.render(
         title="The Kern Overnight | Bakersfield Daily Brief",

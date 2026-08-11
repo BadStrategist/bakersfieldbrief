@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-11T15:24:33-07:00",
+ "built_at": "2026-08-11T16:28:40-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,9 +59,9 @@
   "daily": {
    "news_headlines": 50,
    "news_digest": "deterministic",
-   "alerts": 2,
+   "alerts": 1,
    "chp_new": 1,
-   "top_story": "California City to search for new city manager amid ongoing 'revolving door' concerns for the position",
+   "top_story": "Coroner ID's man struck by multiple vehicles on 24th Street",
    "archive": "2026-08-11"
   },
   "cityhall": {
@@ -80,7 +80,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 9,
+    "bakersfield-nw": 10,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -110,8 +110,8 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 2,
-   "aqi": 86,
-   "chp_week": 27
+   "aqi": 77,
+   "chp_week": 28
   },
   "letters": {
    "published": 0

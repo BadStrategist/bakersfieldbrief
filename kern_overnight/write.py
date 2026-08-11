@@ -3,8 +3,9 @@
 
 Structure: title, opening, '## The big one' (only if a 4+ incident exists),
 '## Around the county' (notability 3-4), '## The log' (notability 2, one
-'## Night notes' (optional). Footer lines are appended in CODE
-so they can never be omitted: the privacy disclaimer."""
+'## Night notes' (required — a brief 2-3 sentence summary of the night's
+patterns: busiest hours, notable threads, outcomes). Footer lines are appended
+in CODE so they can never be omitted: the privacy disclaimer."""
 from __future__ import annotations
 
 import datetime as dt
@@ -68,7 +69,8 @@ def write_brief(incidents: list[dict], date: dt.date) -> str:
         "paragraph; group related incidents where natural.\n"
         "5. '## The log' — notability-2 items, one line each: **HH:MM** — {type}, "
         "{area}. {one-line summary/disposition}\n"
-        "6. '## Night notes' — optional; patterns visible ONLY in the provided data.\n\n"
+        "6. '## Night notes' — REQUIRED: a brief 2-3 sentence summary of the night's "
+        "patterns (busiest hours, notable threads, outcomes).\n\n"
         "Do not include a footer — the publisher appends it.\n\n"
         f"INCIDENTS:\n{payload}"
     )

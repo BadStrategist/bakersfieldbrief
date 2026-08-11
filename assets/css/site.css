@@ -349,6 +349,26 @@ table.data td.num, table.data th.num { font-family: var(--mono); text-align: rig
 }
 .note code { font-family: var(--mono); font-size: 13px; background: #fff; padding: 1px 5px; border-radius: 3px; border: 1px solid var(--line); }
 
+/* ------------------------------------------------ overnight strip + note */
+.ko-strip {
+  display: flex; align-items: baseline; gap: 12px;
+  margin: 6px 0 4px; padding: 11px 16px;
+  border-left: 3px solid var(--amber);
+  background: var(--paper-2);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.ko-strip .ko-label {
+  font-family: var(--mono); font-weight: 700; font-size: 11px;
+  letter-spacing: 1.4px; text-transform: uppercase;
+  color: var(--ink); white-space: nowrap;
+}
+.ko-strip .ko-text { margin: 0; font-size: 14.5px; color: var(--ink); }
+.ko-strip a { color: var(--sign-deep); font-weight: 600; white-space: nowrap; }
+.trans-note {
+  font-size: .84em; font-style: italic; color: var(--ink-soft);
+  margin: 12px 0 0; max-width: 72ch; line-height: 1.55;
+}
+
 /* ------------------------------------------------ prose pages */
 .prose { max-width: 780px; }
 .prose h2 { font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; font-size: 26px; color: var(--sign-deep); margin: 34px 0 10px; }

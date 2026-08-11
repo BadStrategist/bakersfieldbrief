@@ -580,6 +580,16 @@
   "details": ""
  },
  {
+  "log_id": "260810BF0392",
+  "time": "Aug 10 2026  8:00PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 At Frazier Mountain Park Rd",
+  "area": "Fort Tejon",
+  "lat": 34.8175,
+  "lon": -118.881944,
+  "details": ""
+ },
+ {
   "log_id": "260810BF0079",
   "time": "Aug 10 2026  8:02AM",
   "type": "1125-Traffic Hazard",
@@ -587,6 +597,36 @@
   "area": "Buttonwillow",
   "lat": 35.133202,
   "lon": -119.456208,
+  "details": ""
+ },
+ {
+  "log_id": "260810BF0394",
+  "time": "Aug 10 2026  8:04PM",
+  "type": "CZP-Assist with Construction",
+  "location": "I5 N / Sr43",
+  "area": "Buttonwillow",
+  "lat": 35.293548,
+  "lon": -119.252486,
+  "details": ""
+ },
+ {
+  "log_id": "260810BF0399",
+  "time": "Aug 10 2026  8:17PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sr58 / Buttonwillow Dr",
+  "area": "Buttonwillow",
+  "lat": 35.399295,
+  "lon": -119.47416,
+  "details": ""
+ },
+ {
+  "log_id": "260810BF0400",
+  "time": "Aug 10 2026  8:18PM",
+  "type": "FIRE-Report of Fire",
+  "location": "0 I5 N",
+  "area": "Buttonwillow",
+  "lat": 35.463522,
+  "lon": -119.485752,
   "details": ""
  },
  {

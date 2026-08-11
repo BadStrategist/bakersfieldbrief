@@ -147,6 +147,8 @@ def _page_content(ctx, today, built_iso, rel, news, weather, chp, isa,
       <aside class="sidebar-col">{sidebar}</aside>
     </div>
 
+    {_overnight_strip(rel)}
+
     {images.figure("bakersfield", rel)}
 
     <div class="ad-slot" data-ad-slot="home-hero" aria-hidden="true"></div>
@@ -307,7 +309,30 @@ def _overnight_rundown_block(rel: str) -> str:
       <div class="sign-head"><span class="tab">Overnight</span><h2 id="seg-overnight">The Kern Overnight</h2></div>
       <div class="card"><p>{html.escape(rundown)}. <a href="{rel}overnight/">See the full overnight breakdown &rarr;</a></p>
       <p class="note">Locations generalized to block or cross streets &middot; details preliminary.</p></div>
+      {_transcription_note()}
     </section>"""
+
+
+def _overnight_strip(rel: str) -> str:
+    """Compact rundown strip shown inside the homepage 'Today's Brief' section."""
+    rundown = _overnight_rundown()
+    if not rundown:
+        return ""
+    return f"""
+    <div class="ko-strip">
+      <span class="ko-label">Kern Overnight</span>
+      <p class="ko-text">{html.escape(rundown)}. <a href="{rel}overnight/">See the full breakdown &rarr;</a></p>
+    </div>"""
+
+
+def _transcription_note() -> str:
+    """Small italic note on the brief page: how the scanner report is made."""
+    return (
+        '<p class="trans-note">How the Kern Overnight report is made: archived '
+        'public-safety radio audio is transcribed to text by a speech-to-text '
+        'model, and the morning report is written from that dispatch log. '
+        'Locations are generalized to block or cross streets, and every detail '
+        'is preliminary until confirmed by an official source.</p>')
 
 
 def _big_title(top, today) -> str:

@@ -1,6 +1,13 @@
 [
  {
   "ts": "2026-08-11",
+  "route": "sr58",
+  "route_name": "State Route 58 \u2014 Tehachapi",
+  "from": "CLOSED",
+  "to": "OPEN"
+ },
+ {
+  "ts": "2026-08-11",
   "route": "sr99",
   "route_name": "State Route 99 \u2014 Central Valley",
   "from": "updated",

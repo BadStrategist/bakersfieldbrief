@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-11T11:42:43-07:00",
+ "built_at": "2026-08-11T12:55:07-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 1, column 0"
   },
   "isabella": {
    "ok": true,
@@ -60,8 +60,8 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "2 people pulled from vehicle after rollover crash along Hwy 178 in Bakersfield: CHP",
+   "chp_new": 0,
+   "top_story": "Tehachapi school administrator arrested for failing to report suspected child abuse: police",
    "archive": "2026-08-11"
   },
   "cityhall": {
@@ -79,11 +79,11 @@
    ],
    "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 12,
-    "bakersfield-nw": 10,
-    "bakersfield-sw": 12,
-    "bakersfield-east": 12,
-    "bakersfield-central": 12
+    "tehachapi": 0,
+    "bakersfield-nw": 0,
+    "bakersfield-sw": 0,
+    "bakersfield-east": 0,
+    "bakersfield-central": 0
    }
   },
   "guide": {
@@ -110,7 +110,7 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 2,
-   "aqi": 58,
+   "aqi": 77,
    "chp_week": 23
   },
   "letters": {

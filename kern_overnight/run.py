@@ -45,10 +45,11 @@ def pacific_tz(day: dt.date) -> dt.tzinfo:
 
 def main(argv: list[str]) -> int:
     date = dt.date.today()
-    if len(argv) > 1:
-        date = dt.date.fromisoformat(argv[1])
     phase1 = "--phase1" in argv
     phase2 = "--phase2" in argv
+    for a in argv[1:]:  # positional args are dates; flags never parsed as dates
+        if not a.startswith("--"):
+            date = dt.date.fromisoformat(a)
     tz = pacific_tz(date)
     d = date.isoformat()
 

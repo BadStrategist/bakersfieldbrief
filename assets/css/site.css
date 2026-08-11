@@ -534,12 +534,17 @@ table.data td.num, table.data th.num { font-family: var(--mono); text-align: rig
 @media (max-width: 900px) { .brief-top { grid-template-columns: 1fr; gap: 18px; } }
 
 .read-more {
-  font-family: var(--display); font-weight: 600; text-transform: uppercase;
-  letter-spacing: .1em; font-size: 15px; color: var(--red); text-decoration: none;
-  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--sans); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: 16px; color: #fff;
+  background: var(--red); border-radius: 8px;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 26px; margin-top: 10px; text-decoration: none;
+  box-shadow: 0 2px 0 var(--red-deep);
 }
-.read-more::after { content: "→"; transition: transform .15s ease; }
+.read-more:hover { background: var(--red-deep); }
+.read-more::after { content: "→"; font-size: 20px; transition: transform .15s ease; }
 .read-more:hover::after { transform: translateX(4px); }
+@media (max-width: 560px) { .read-more { width: 100%; justify-content: center; } }
 
 /* ---- category grid (Latest across Bakersfield) ---- */
 .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
@@ -656,12 +661,17 @@ a.cat-card:hover .card-go::after { transform: translateX(4px); }
 .today-copy h1 a:hover { color: var(--red); }
 .today-copy .lede { font-style: italic; color: var(--ink-soft); font-size: 17px; margin: 0 0 12px; }
 .read-more {
-  font-family: var(--display); font-weight: 600; text-transform: uppercase;
-  letter-spacing: .1em; font-size: 15px; color: var(--red); text-decoration: none;
-  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--sans); font-weight: 700; text-transform: uppercase;
+  letter-spacing: .08em; font-size: 16px; color: #fff;
+  background: var(--red); border-radius: 8px;
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 15px 26px; margin-top: 10px; text-decoration: none;
+  box-shadow: 0 2px 0 var(--red-deep);
 }
-.read-more::after { content: "→"; transition: transform .15s ease; }
+.read-more:hover { background: var(--red-deep); }
+.read-more::after { content: "→"; font-size: 20px; transition: transform .15s ease; }
 .read-more:hover::after { transform: translateX(4px); }
+@media (max-width: 560px) { .read-more { width: 100%; justify-content: center; } }
 .sun { flex: 0 0 auto; width: clamp(90px, 12vw, 150px); opacity: .92; }
 @media (max-width: 760px) { .sun { display: none; } }
 

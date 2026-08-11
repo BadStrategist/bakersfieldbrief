@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-11T13:26:21-07:00",
+ "built_at": "2026-08-11T13:34:22-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 1, column 0"
   },
   "isabella": {
    "ok": true,
@@ -60,7 +60,7 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "California City to search for new city manager amid ongoing 'revolving door' concerns for the position",
    "archive": "2026-08-11"
   },

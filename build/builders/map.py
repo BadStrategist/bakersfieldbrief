@@ -91,7 +91,7 @@ def build(ctx, sources: dict) -> list[str]:
         <button data-f="medical">Medical</button>
         <button data-f="traffic">Traffic</button>
       </div>
-      <p class="note">Dots are placed from dispatch traffic on Broadcastify feed 14029. Locations are
+      <p class="note">Dots are placed from overnight police, sheriff, fire, and EMS dispatch traffic. Locations are
       generalized to block or cross-street level &mdash; the map never shows an exact address &mdash; and
       everything is preliminary until confirmed. Archives lag live airwaves by up to ~30 minutes, so the
       map is a rolling picture, not instantaneous.</p>

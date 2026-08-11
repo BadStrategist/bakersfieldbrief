@@ -690,6 +690,16 @@
   "details": ""
  },
  {
+  "log_id": "260811BF0218",
+  "time": "Aug 11 2026  1:39PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 Great Western Divide Hwy",
+  "area": "Bakersfield",
+  "lat": 35.972284,
+  "lon": -118.598788,
+  "details": ""
+ },
+ {
   "log_id": "260811BF0040",
   "time": "Aug 11 2026  5:27AM",
   "type": "MZP-Assist CT with Maintenance",

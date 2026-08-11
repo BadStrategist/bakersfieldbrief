@@ -94,7 +94,7 @@ def build(ctx, sources: dict) -> list[str]:
       <p class="note">Dots are placed from dispatch traffic on Broadcastify feed 14029. Locations are
       generalized to block or cross-street level &mdash; the map never shows an exact address &mdash; and
       everything is preliminary until confirmed. Archives lag live airwaves by up to ~30 minutes, so the
-      map is a rolling picture, not instantaneous. <em>Audio Provided by Broadcastify.</em></p>
+      map is a rolling picture, not instantaneous.</p>
     </div>
 
     <p class="sec-head">What the dots mean</p>

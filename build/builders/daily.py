@@ -306,7 +306,7 @@ def _overnight_rundown_block(rel: str) -> str:
     <section class="brief-seg" aria-labelledby="seg-overnight">
       <div class="sign-head"><span class="tab">Overnight</span><h2 id="seg-overnight">The Kern Overnight</h2></div>
       <div class="card"><p>{html.escape(rundown)}. <a href="{rel}overnight/">See the full overnight breakdown &rarr;</a></p>
-      <p class="note">Locations generalized to block or cross streets &middot; details preliminary &middot; Audio Provided by Broadcastify.</p></div>
+      <p class="note">Locations generalized to block or cross streets &middot; details preliminary.</p></div>
     </section>"""
 
 
@@ -334,7 +334,7 @@ def _overnight_section(rel: str) -> str:
       <p class="sec-head" id="h-overnight">The Kern Overnight <span class="unit">listened overnight &middot; written by sunrise</span></p>
       <p class="ko-title"><a href="{rel}overnight/">{html.escape(ko['title'])}</a></p>
       <p>{html.escape(rundown)}. <a href="{rel}overnight/">Read the full overnight report</a></p>
-      <p class="note">Locations generalized to block or cross streets &middot; details preliminary &middot; Audio Provided by Broadcastify.</p>
+      <p class="note">Locations generalized to block or cross streets &middot; details preliminary.</p>
     </section>"""
 
 

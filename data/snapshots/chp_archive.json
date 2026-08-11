@@ -540,6 +540,16 @@
   "details": ""
  },
  {
+  "log_id": "260810BF0314",
+  "time": "Aug 10 2026  5:18PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sb I5 Jso Sr46",
+  "area": "Buttonwillow",
+  "lat": 35.612222,
+  "lon": -119.650556,
+  "details": ""
+ },
+ {
   "log_id": "260810BF0045",
   "time": "Aug 10 2026  5:39AM",
   "type": "MZP-Assist CT with Maintenance",
@@ -547,6 +557,16 @@
   "area": "Bakersfield",
   "lat": 35.3823,
   "lon": -119.009842,
+  "details": ""
+ },
+ {
+  "log_id": "260810BF0321",
+  "time": "Aug 10 2026  5:39PM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 Sr223",
+  "area": "Bakersfield",
+  "lat": 35.250087,
+  "lon": -118.671281,
   "details": ""
  },
  {

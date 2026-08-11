@@ -104,6 +104,8 @@ def build(ctx, sources: dict) -> list[str]:
       interactive map loads tiles from CARTO and OpenStreetMap; their privacy practices are
       governed by their policies. We do not receive any data back from those services through
       this site.</p>
+      <p>The Kern Overnight and the live map are built from public-safety radio audio
+      archived by <a href="https://www.broadcastify.com/">Broadcastify</a> (feed 14029).</p>
       <h2>Analytics</h2>
       <p>We use <a href="https://www.goatcounter.com/">GoatCounter</a>, a privacy-respecting,
       cookieless analytics tool that counts page views without cookies, tracking scripts, or

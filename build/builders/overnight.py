@@ -94,7 +94,7 @@ def build(ctx, sources: dict) -> list[str]:
     </div>
 
     <p class="sec-head">What we never publish</p>
-    <div class="card"><p>No names. No license plates. No callback numbers. No patient details. No exact addresses &mdash; locations are generalized to block or cross-street level. Nothing from ambulance-to-hospital traffic. Everything is reported as preliminary dispatch information, and every edition credits the source: <em>Audio Provided by Broadcastify.</em></p></div>
+    <div class="card"><p>No names. No license plates. No callback numbers. No patient details. No exact addresses &mdash; locations are generalized to block or cross-street level. Nothing from ambulance-to-hospital traffic. Everything is reported as preliminary dispatch information.</p></div>
 
     <p class="sec-head">Published reports</p>
     {archive}

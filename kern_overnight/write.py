@@ -3,9 +3,8 @@
 
 Structure: title, opening, '## The big one' (only if a 4+ incident exists),
 '## Around the county' (notability 3-4), '## The log' (notability 2, one
-line each), '## Night notes' (optional). Footer lines are appended in CODE
-so they can never be omitted: the privacy disclaimer AND the required
-Broadcastify attribution."""
+'## Night notes' (optional). Footer lines are appended in CODE
+so they can never be omitted: the privacy disclaimer."""
 from __future__ import annotations
 
 import datetime as dt
@@ -33,7 +32,6 @@ SYSTEM = (
 FOOTER = (
     "\n\n---\n\n*Compiled from initial emergency dispatch reports; details are "
     "preliminary and unconfirmed. Locations are generalized for privacy.*\n\n"
-    "Audio Provided by Broadcastify."
 )
 
 

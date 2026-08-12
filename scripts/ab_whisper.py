@@ -106,6 +106,17 @@ def main() -> int:
         results[model]["street"] = score(out)
 
     print("\n" + "=" * 64)
+    if len(models) == 1:
+        m = models[0]
+        r = results[m]
+        s = r["street"]
+        rate = (s["match"] / s["candidates"]) if s["candidates"] else 0
+        print(f"{'model':<28}{m[:40]:>40}")
+        print(f"{'sec/block':<28}{r['sec_per_block']:>40.1f}")
+        print(f"{'rows kept':<28}{r['rows']:>40}")
+        print(f"{'street MATCH rate':<28}{rate:>40.1%}")
+        print("=" * 64)
+        return 0
     print(f"{'metric':<28}{models[0]:>16}{models[1]:>16}")
     print("=" * 64)
     for key, label in [("sec_per_block", "sec/block"),

@@ -29,7 +29,12 @@ from pathlib import Path
 from .fetch import _epoch_from_name  # noqa: E402 (block naming helper)
 
 ENGINE = os.environ.get("KO_STT_ENGINE", "faster-whisper")
-MODEL_SIZE = os.environ.get("KO_WHISPER_MODEL", "distil-large-v3")
+MODEL_SIZE = os.environ.get("KO_WHISPER_MODEL",
+                            "mobiuslabsgmbh/faster-whisper-large-v3-turbo")
+# large-v3-turbo (ungated mobiuslabs mirror) beat distil-large-v3 in the
+# Aug-2026 A/B on this workload: 48.6% vs 35.7% street MATCH rate
+# (streetcheck gazetteer) at 9.9 vs 11.3 min/block. Systran's repo is
+# HF-gated, so we pin the mirror.
 MIN_CONFIDENCE = float(os.environ.get("KO_MIN_CONF", "0.45"))
 MIN_DURATION_S = float(os.environ.get("KO_MIN_SEG_S", "1.0"))
 WORKERS = int(os.environ.get("KO_WORKERS", "3"))  # parallel blocks per night

@@ -1092,7 +1092,7 @@ def _article_lead(top, headlines, weather, airnow, calfire,
     <section class="brief-seg" aria-labelledby="seg-events">
       <p class="sec-head">Out this week <span class="unit">concerts &middot; comedy &middot; more</span></p>
       <p class="seg-intro">If you&rsquo;re planning a night out, these are the shows and events on the calendar.</p>
-      {images.figure("amtrak", rel)}
+      {images.figure("fox", rel)}
       {events_html}
     </section>
 

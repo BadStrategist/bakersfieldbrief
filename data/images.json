@@ -44,6 +44,15 @@
   "width": 1280,
   "height": 853
  },
+ "fox": {
+  "file": "assets/img/fox.jpg",
+  "alt": "The Fox Theater marquee in downtown Bakersfield at golden hour",
+  "credit": "Daderot",
+  "license": "CC0",
+  "source": "File:Fox Theater - Bakersfield, CA - DSC00484.jpg",
+  "width": 1600,
+  "height": 1066
+ },
  "wind": {
   "file": "assets/img/wind.jpg",
   "alt": "Wind turbines at Tehachapi Pass",

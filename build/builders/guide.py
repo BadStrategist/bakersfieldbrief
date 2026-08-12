@@ -71,7 +71,7 @@ def build(ctx, sources: dict) -> list[str]:
     The Well Comedy Club, the Condors, and Visit Bakersfield&rsquo;s calendar.</p>
     <div class="meta"><span>Week of {date_label}</span><span class="dot">&bull;</span>
     <span>generated Thursday &middot; email draft is reviewed before sending</span></div></div></div>
-    {images.figure("amtrak", rel)}
+    {images.figure("fox", rel)}
     {picks}
     <section class="block">
       <div class="sign-head"><span class="tab">How</span><h2>How picks are made</h2></div>

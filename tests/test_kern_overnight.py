@@ -311,3 +311,36 @@ class TestData:
                    "build.builders.overnight, build.builders.daily"],
             cwd=ROOT, capture_output=True, text=True, timeout=120)
         assert r.returncode == 0, r.stderr[:300]
+
+    def test_arena_parser_pairs_own_dates(self, monkeypatch):
+        """Regression: every arena event must keep ITS OWN date — the old
+        parser stamped the first date found on each page onto all events
+        (Brit Floyd showed Aug 14). Slides with a time-only date-section
+        (no full date) must be dropped, never fabricated."""
+        import build.sources.venues as venues
+
+        html = """
+        <article class="slide"><h2 class="slide-title">
+        <a href="/event/gavin-adcock/147/" data-gtm-click>Gavin Adcock</a></h2>
+        <div class="date-section"><span>Aug 14, 2026 \u2022 Fri 7:00 PM</span><span></span></div></article>
+        <article class="slide"><h2 class="slide-title">
+        <a href="/event/brit-floyd/146/" data-gtm-click>Brit Floyd</a></h2>
+        <div class="date-section"><span>Oct 13, 2026 \u2022 Tue 8:00 PM</span><span></span></div></article>
+        <article class="slide"><h2 class="slide-title">
+        <a href="/event/blueys-big-play/145/" data-gtm-click>Bluey's Big Play</a></h2>
+        <div class="date-section"><span>Tue 6:00 PM</span><span></span></div></article>
+        <article class="slide"><h2 class="slide-title">
+        <a href="https://www.axs.com/series/31844/hot-wheels-tickets" data-gtm-click>Hot Wheels</a></h2>
+        <div class="date-section"><span>Sep 1, 2026 \u2022 Tue 7:00 PM</span><span></span></div></article>
+        """
+        class FakeResp:
+            text = html
+        import build.common as common
+        monkeypatch.setattr(common, "fetch", lambda *a, **k: FakeResp())
+
+        evs = venues._arena({"url": "https://www.mechanicsbankarena.com/events"})
+        by_url = {e["url"].split("/event/")[1].split("/")[0]: e for e in evs}
+        assert by_url["gavin-adcock"]["when"].startswith("Aug 14, 2026")
+        assert by_url["brit-floyd"]["when"].startswith("Oct 13, 2026")
+        assert "blueys" not in by_url          # time-only date -> dropped, not guessed
+        assert "hot-wheels" not in by_url      # external axs links excluded

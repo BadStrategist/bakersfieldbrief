@@ -66,32 +66,42 @@ def _fox(v) -> list[dict]:
 
 
 def _arena(v) -> list[dict]:
+    """Mechanics Bank Arena: pair each /event/<slug>/<id>/ link with ITS OWN
+    date-section on the listing page (one fetch, no per-page fallback).
+
+    The /event/<slug>/<id>/ detail URLs render the same upcoming-events
+    listing, so a per-page 'first date found' heuristic stamped every event
+    with the first show's date — a real bug (Brit Floyd was showing Aug 14).
+    The listing page pairs each title with its own date-section:
+      <h2 class="slide-title"><a href="/event/slug/123/">Name</a></h2>
+      <div class="date-section"><span>Aug 14, 2026 • Fri 7:00 PM</span>
+    """
     r = common.fetch(v["url"], headers=HEADERS, timeout=25)
-    slugs = re.findall(r'href="([^"]*/event/[^"]+/[0-9]+/)"', r.text)
-    origin = "https://www.mechanicsbankarena.com"
-    seen, events = set(), []
-    for s in slugs:
-        if s in seen:
+    events = []
+    # each slide: <h2 class="slide-title"><a href="...">NAME</a></h2> followed by
+    # its OWN <div class="date-section"><span>Month D, YYYY • ...</span>.
+    # Split per slide so external (axs) slides can't leak their dates onto
+    # /event/ slides. On-sale sections ('Fri 7:00 PM', no full date) are skipped.
+    for slide in re.split(r'<h2 class="slide-title">', r.text)[1:]:
+        m = re.search(r'href="([^"]+)"[^>]*>([^<]+)</a>', slide)
+        if not m:
             continue
-        seen.add(s)
-        name = s.rstrip("/").split("/")[-2].replace("-", " ").title()
-        url = s if s.startswith("http") else origin + s
-        events.append({"name": name, "when": "", "url": url})
+        href, name = m.group(1), m.group(2).strip()
+        if "/event/" not in href:
+            continue  # external ticket links (axs) are not our event pages
+        d = re.search(
+            r'<div class="date-section">\s*<span>([A-Z][a-z]{2} \d{1,2}, \d{4}[^<]*)</span>',
+            slide)
+        if not d:
+            continue
+        events.append({
+            "name": name,
+            "when": d.group(1).strip(),
+            "url": href if href.startswith("http")
+                   else "https://www.mechanicsbankarena.com" + href,
+        })
         if len(events) >= 12:
             break
-    # dates come from detail pages — fetch the first 5
-    for e in events[:5]:
-        try:
-            dr = common.fetch(e["url"], headers=HEADERS, timeout=20)
-            m = re.search(r'"startDate"\s*:\s*"([^"]+)"', dr.text)
-            if m:
-                e["when"] = m.group(1)[:16].replace("T", " ")
-            else:
-                m2 = re.search(r"(\w+ \d{1,2}, \d{4})", dr.text)
-                if m2:
-                    e["when"] = m2.group(1)
-        except Exception:  # noqa: BLE001
-            pass
     return events
 
 

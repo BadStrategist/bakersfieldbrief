@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-12T09:12:28-07:00",
+ "built_at": "2026-08-12T14:15:03-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Woman accused of vandalizing Kern County Veterans Memorial scheduled for competency hearing",
+   "top_story": "Ex-Wasco school employee sentenced after pleading no contest to inappropriately touching student",
    "archive": "2026-08-12"
   },
   "cityhall": {
@@ -80,7 +80,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 10,
+    "bakersfield-nw": 11,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -93,7 +93,7 @@
   "grapevine": {
    "i5": "RESTRICTIONS",
    "i5_pass": "OPEN",
-   "log_entries": 30
+   "log_entries": 31
   },
   "events": {
    "groups": {
@@ -110,7 +110,7 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 1,
-   "aqi": 62,
+   "aqi": 55,
    "chp_week": 41
   },
   "letters": {

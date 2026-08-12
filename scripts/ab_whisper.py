@@ -46,8 +46,6 @@ def run_model(model: str, mp3s: list[Path], vocab: str, out_jsonl: Path) -> dict
                 block_epoch = int(mp3.stem.split("-")[1])
                 rows = T._transcribe_whisper(model_obj, wav, segs, block_epoch,
                                              PACIFIC, mp3.name, vocab)
-                for r in rows:
-                    r["duration"] = r["end"] - r["start"]  # added by _block_worker in prod
                 n = 0
                 for r in rows:
                     if r["confidence"] < T.MIN_CONFIDENCE and r["duration"] < 3.0:

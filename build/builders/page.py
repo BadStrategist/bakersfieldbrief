@@ -139,7 +139,7 @@ def org_jsonld() -> dict:
         "url": "https://bakersfieldbrief.com/",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://bakersfieldbrief.com/assets/img/logo.svg",
+            "url": "https://bakersfieldbrief.com/assets/img/emblem.png",
             "width": 100,
             "height": 100,
         },

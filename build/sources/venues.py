@@ -15,6 +15,7 @@ Verified shapes (Aug 2026):
 """
 from __future__ import annotations
 
+import html
 import json
 import re
 
@@ -38,6 +39,11 @@ def run(ctx):
                 for e in evs:
                     e["venue"] = v["name"]
                     e["venue_slug"] = v["slug"]
+                    # names/whens scraped from ld+json or HTML may carry
+                    # pre-encoded entities (&#39; etc.) — decode once here so
+                    # the renderers' html.escape() doesn't double-encode them
+                    e["name"] = html.unescape(str(e.get("name") or ""))
+                    e["when"] = html.unescape(str(e.get("when") or ""))
                 out["events"].extend(evs)
         except Exception as e:  # noqa: BLE001
             common.log(f"venue {v.get('slug')} failed: {type(e).__name__}: {e}")

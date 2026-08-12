@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-11T23:59:31-07:00",
+ "built_at": "2026-08-12T06:55:29-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 1140, column 3"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -60,12 +60,12 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Criminal charges against Bakersfield officers in 2022 deadly shooting 'not appropriate': AG",
-   "archive": "2026-08-11"
+   "chp_new": 6,
+   "top_story": "Inaugural flight from LAX lands in Bakersfield",
+   "archive": "2026-08-12"
   },
   "cityhall": {
-   "upcoming_meetings": 5,
+   "upcoming_meetings": 6,
    "county_items": 101,
    "drafts_generated": 0
   },
@@ -77,18 +77,18 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 0,
-    "bakersfield-nw": 0,
-    "bakersfield-sw": 0,
-    "bakersfield-east": 0,
-    "bakersfield-central": 0
+    "tehachapi": 12,
+    "bakersfield-nw": 10,
+    "bakersfield-sw": 12,
+    "bakersfield-east": 12,
+    "bakersfield-central": 12
    }
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-08-11"
+   "draft": "drafts/weekend-guide-2026-08-12"
   },
   "grapevine": {
    "i5": "OPEN",
@@ -101,26 +101,26 @@
     "Next week": 1,
     "Later": 29
    },
-   "meetings": 5
+   "meetings": 6
   },
   "feed": {
-   "entries": 8
+   "entries": 9
   },
   "numbers": {
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 2,
-   "aqi": 53,
-   "chp_week": 35
+   "aqi": 43,
+   "chp_week": 41
   },
   "letters": {
    "published": 0
   },
   "overnight": {
-   "published": 2
+   "published": 3
   },
   "map": {
-   "dots": 32
+   "dots": 62
   },
   "sunday_read": {
    "topic": "Public safety",

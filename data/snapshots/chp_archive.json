@@ -858,5 +858,65 @@
   "lat": 35.265234,
   "lon": -119.024794,
   "details": ""
+ },
+ {
+  "log_id": "260812BF0037",
+  "time": "Aug 12 2026  5:44AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260812BF0041",
+  "time": "Aug 12 2026  6:14AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "1033 Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.825534,
+  "lon": -118.87775,
+  "details": ""
+ },
+ {
+  "log_id": "260812BF0043",
+  "time": "Aug 12 2026  6:18AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260812BF0046",
+  "time": "Aug 12 2026  6:35AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260812BF0049",
+  "time": "Aug 12 2026  6:44AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "Nb I5 Jno Copus Rd",
+  "area": "Buttonwillow",
+  "lat": 35.097222,
+  "lon": -119.039444,
+  "details": ""
+ },
+ {
+  "log_id": "260812BF0002",
+  "time": "Aug 12 2026 12:03AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
  }
 ]

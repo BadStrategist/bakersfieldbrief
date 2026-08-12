@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-11T16:48:00-07:00",
+ "built_at": "2026-08-11T17:04:41-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 1, column 0"
   },
   "isabella": {
    "ok": true,
@@ -59,8 +59,8 @@
   "daily": {
    "news_headlines": 50,
    "news_digest": "deterministic",
-   "alerts": 1,
-   "chp_new": 3,
+   "alerts": 0,
+   "chp_new": 0,
    "top_story": "Coroner ID's man struck by multiple vehicles on 24th Street",
    "archive": "2026-08-11"
   },

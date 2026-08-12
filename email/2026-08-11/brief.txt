@@ -5,10 +5,10 @@ THE KERN OVERNIGHT
 Overnight: traffic collision, Hwy 43 at Kimberlina Rd — 16 incidents tracked overnight — full report: https://bakersfieldbrief.com/overnight/ (locations generalized)
 
 CONDITIONS
-Weather: 102° / 103°
-Alerts: Flood Advisory active
+Weather: 100° / 100°
+Alerts: No active alerts
 Isabella: 208,157 AF (36.6% cap)
-CHP: 3 overnight
+CHP: None overnight
 Air: AQI 77 · Moderate
 Fires: 2 active in Kern
 

@@ -920,6 +920,16 @@
   "details": ""
  },
  {
+  "log_id": "260812BF0275",
+  "time": "Aug 12 2026  2:45PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Nb Sr99 Jno Merced Ave",
+  "area": "Bakersfield",
+  "lat": 35.52612,
+  "lon": -119.18826,
+  "details": ""
+ },
+ {
   "log_id": "260812BF0037",
   "time": "Aug 12 2026  5:44AM",
   "type": "MZP-Assist CT with Maintenance",

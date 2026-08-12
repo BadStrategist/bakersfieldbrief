@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-12T14:44:39-07:00",
+ "built_at": "2026-08-12T14:52:26-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,7 +60,7 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 7,
+   "chp_new": 1,
    "top_story": "Upside Academy hosts shoe giveaway ahead of back-to-school season",
    "archive": "2026-08-12"
   },
@@ -111,7 +111,7 @@
    "alpr_total": 247,
    "kern_fires": 1,
    "aqi": 55,
-   "chp_week": 48
+   "chp_week": 49
   },
   "letters": {
    "published": 0

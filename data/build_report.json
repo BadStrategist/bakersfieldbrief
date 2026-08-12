@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-12T15:27:59-07:00",
+ "built_at": "2026-08-12T15:59:21-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 1140, column 3"
   },
   "isabella": {
    "ok": true,
@@ -46,8 +46,8 @@
    "error": ""
   },
   "roads": {
-   "ok": false,
-   "error": "no Caltrans routes parsed"
+   "ok": true,
+   "error": ""
   },
   "blocked": {
    "ok": false,
@@ -60,8 +60,8 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
-   "top_story": "Kern County supervisors to vote on letter of support for California \u2018two-state solution\u2019 proposal",
+   "chp_new": 0,
+   "top_story": "Bakersfield police searching for suspect who stole gold chain during Facebook Marketplace meetup",
    "archive": "2026-08-12"
   },
   "cityhall": {
@@ -91,9 +91,9 @@
    "draft": "drafts/weekend-guide-2026-08-12"
   },
   "grapevine": {
-   "i5": null,
-   "i5_pass": null,
-   "log_entries": 0
+   "i5": "OPEN",
+   "i5_pass": "OPEN",
+   "log_entries": 33
   },
   "events": {
    "groups": {

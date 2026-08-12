@@ -44,7 +44,22 @@
 
   /* ---------- ads (consent-gated, inert until approved) ---------- */
   var ADSENSE_CLIENT = "ca-pub-7618641338292119"; // policeradio.org AdSense account
+  // Real ad-unit slot IDs from the AdSense dashboard (Ads → By ad unit).
+  // "0000000000" = not wired yet; the loader stays dormant until set.
+  var SLOT_IDS = { "home-hero": "0000000000", "site-footer": "0000000000" };
   var CONSENT_KEY = "bdb-consent";
+  var ADSENSE_LOADED = false;
+
+  function loadAdsense() {
+    if (ADSENSE_LOADED) return;
+    ADSENSE_LOADED = true;
+    var sc = document.createElement("script");
+    sc.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" +
+             ADSENSE_CLIENT;
+    sc.async = true;
+    sc.crossOrigin = "anonymous";
+    document.head.appendChild(sc);
+  }
 
   function consentGranted() {
     try { return localStorage.getItem(CONSENT_KEY) === "granted"; }
@@ -76,6 +91,8 @@
   function renderSlot(holder) {
     if (!ADSENSE_CLIENT || !consentGranted()) return;
     if (holder.hasAttribute("data-rendered")) return; // already filled
+    var slotId = SLOT_IDS[holder.getAttribute("data-ad-slot") || ""] || "0000000000";
+    if (slotId === "0000000000") return; // no real ad unit yet — stay inert
     holder.setAttribute("data-rendered", "1");
     var label = document.createElement("div");
     label.className = "ad-label";
@@ -86,10 +103,11 @@
       ins.className = "adsbygoogle";
       ins.style.cssText = "display:block";
       ins.setAttribute("data-ad-client", ADSENSE_CLIENT);
-      ins.setAttribute("data-ad-slot", holder.getAttribute("data-ad-slot") || "0000000000");
+      ins.setAttribute("data-ad-slot", slotId);
       ins.setAttribute("data-ad-format", "auto");
       ins.setAttribute("data-full-width-responsive", "true");
       holder.appendChild(ins);
+      loadAdsense();
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch (e) { /* leave label only */ }
   }

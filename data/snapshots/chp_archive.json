@@ -780,6 +780,26 @@
   "details": ""
  },
  {
+  "log_id": "260811BF0368",
+  "time": "Aug 11 2026  7:55PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "51468-52069 Sr58",
+  "area": "Buttonwillow",
+  "lat": 35.371338,
+  "lon": -119.568943,
+  "details": ""
+ },
+ {
+  "log_id": "260811BF0373",
+  "time": "Aug 11 2026  8:09PM",
+  "type": "CZP-Assist with Construction",
+  "location": "NB I5 at 7th Standard Rd",
+  "area": "Buttonwillow",
+  "lat": 35.442222,
+  "lon": -119.456389,
+  "details": ""
+ },
+ {
   "log_id": "260811BF0096",
   "time": "Aug 11 2026  8:19AM",
   "type": "1183-Trfc Collision-Unkn Inj",
@@ -797,6 +817,16 @@
   "area": "Bakersfield",
   "lat": 35.754685,
   "lon": -119.246995,
+  "details": ""
+ },
+ {
+  "log_id": "260811BF0402",
+  "time": "Aug 11 2026  9:34PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "8536 Sr184",
+  "area": "Bakersfield",
+  "lat": 35.377611,
+  "lon": -118.907826,
   "details": ""
  },
  {

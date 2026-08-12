@@ -35,3 +35,29 @@ Union Avenue
 Rosedale Highway
 Highway 99
 Highway 58
+# --- major arterials (curated prompt subset; full list in streets.txt) ---
+Rosedale Highway
+White Lane
+Columbus Street
+Union Avenue
+Baker Street
+California Avenue
+Niles Street
+Brundage Lane
+Wilson Road
+Fruitvale Avenue
+Allen Road
+Gosford Road
+Coffee Road
+Calloway Drive
+Oswell Street
+Auburn Street
+Mount Vernon Avenue
+Haley Street
+Olive Drive
+Real Road
+Pacheco Road
+Norris Road
+Famoso Road
+Hageman Road
+Ashe Road

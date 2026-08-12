@@ -386,3 +386,30 @@ class TestData:
         assert "transcripts" in str(adds[0][-1])
         assert str(adds[0][-1]).endswith("2026-08-11.jsonl")
         assert any(c[:2] == ["git", "push"] for c in calls)
+
+    def test_street_gazetteer_loaded(self):
+        """The Bakersfield street gazetteer must exist, be large, and
+        contain the major arterials dispatchers actually name."""
+        import kern_overnight.streetcheck as sc
+        streets = sc.load_streets()
+        assert len(streets) > 5000
+        for s in ("Chester Avenue", "Truxtun Avenue", "Panama Lane",
+                  "Rosedale Highway", "Mount Vernon Avenue", "White Lane"):
+            assert s in streets
+
+    def test_streetcheck_matches_fuzzy_and_filters(self):
+        """Street validation: exact matches resolve, mis-hears get fuzzy
+        suggestions, and radio noise is filtered out."""
+        import kern_overnight.streetcheck as sc
+        streets = sc.load_streets()
+        text = ("on the 2800 block of West Chester Avenue. "
+                "Also checking near Famoso Road and Wite Lane. "
+                "Copy that, two point five. Another location possible.")
+        results = sc.scan(text, streets)
+        statuses = {s for s, _, _ in results}
+        assert "MATCH" in statuses
+        fuzzy = [d for s, c, d in results if s == "FUZZY"]
+        assert any("White Lane" in d for d in fuzzy)
+        # radio noise must not surface as candidates
+        assert not any("two point" in c.lower() or "copy" in c.lower()
+                       for _, c, _ in results)

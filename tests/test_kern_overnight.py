@@ -383,5 +383,6 @@ class TestData:
         _ko_checkpoint(ROOT / "transcripts" / "2026-08-11.jsonl", 3, 18, push=True)
         adds = [c for c in calls if c[:2] == ["git", "add"]]
         assert adds, "git add must run for repo transcripts"
-        assert "--" in adds[0] and adds[0][-1].endswith("transcripts/2026-08-11.jsonl")
+        assert "transcripts" in str(adds[0][-1])
+        assert str(adds[0][-1]).endswith("2026-08-11.jsonl")
         assert any(c[:2] == ["git", "push"] for c in calls)

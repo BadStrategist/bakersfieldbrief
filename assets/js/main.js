@@ -81,6 +81,7 @@
     ok.addEventListener("click", function () {
       try { localStorage.setItem(CONSENT_KEY, "granted"); } catch (e) {}
       bar.remove();
+      loadAdsense();   // enables Auto Ads (dashboard-configured) post-consent
       injectSlots();
     });
     bar.appendChild(ok);
@@ -129,7 +130,10 @@
 
   if (ADSENSE_CLIENT) {
     consentBanner();
-    window.addEventListener("load", injectSlots);
+    window.addEventListener("load", function () {
+      if (consentGranted()) loadAdsense();  // returning consenting visitors
+      injectSlots();
+    });
   }
 
   // pages pass build date via <html data-built>; expose for meta

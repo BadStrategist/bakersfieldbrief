@@ -38,17 +38,34 @@ jobs:
           echo "Pacific hour is $H (build runs when == 6)"
 
       - name: Install dependencies
-        if: steps.gate.outputs.hour == '6' || github.event_name == 'workflow_dispatch'
+        if: steps.gate.outputs.hour == '6' || github.event_name != 'schedule'
         run: pip install -q -r requirements.txt
 
       - name: Build site (fetch sources → bake static HTML)
-        if: steps.gate.outputs.hour == '6' || github.event_name == 'workflow_dispatch'
+        if: steps.gate.outputs.hour == '6' || github.event_name != 'schedule'
         run: python build/build_all.py
+
+      # UptimeRobot freshness ping: fires ONLY when today's Kern Overnight
+      # report exists in the repo (i.e. the overnight pipeline ran and
+      # pushed). A missed publish = missed ping = UptimeRobot alert.
+      # The URL comes from a Cron-monitor in UptimeRobot (see
+      # scripts/resilience-setup.md); until the secret is set, this skips.
+      - name: Ping UptimeRobot if today's overnight report exists
+        if: (steps.gate.outputs.hour == '6' || github.event_name != 'schedule') && env.UP_OVERNIGHT_PING_URL != ''
+        env:
+          UP_OVERNIGHT_PING_URL: ${{ secrets.UP_OVERNIGHT_PING_URL }}
+        run: |
+          TODAY=$(python -c "from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('America/Los_Angeles')).strftime('%Y-%m-%d'))")
+          if [ -f "data/overnight_reports/$TODAY.md" ]; then
+            curl -fsS -m 20 "$UP_OVERNIGHT_PING_URL" && echo "overnight ping sent ($TODAY)"
+          else
+            echo "no overnight report for $TODAY — ping skipped (alert is the correct signal)"
+          fi
 
       # Automatic pusher: commit the generated artifacts (email/, drafts/, data/)
       # so the email renderings and review drafts are always in the repo.
       - name: Commit generated artifacts
-        if: steps.gate.outputs.hour == '6' || github.event_name == 'workflow_dispatch'
+        if: steps.gate.outputs.hour == '6' || github.event_name != 'schedule'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -73,12 +90,12 @@ jobs:
           fi
 
       - name: Upload Pages artifact
-        if: steps.gate.outputs.hour == '6' || github.event_name == 'workflow_dispatch'
+        if: steps.gate.outputs.hour == '6' || github.event_name != 'schedule'
         uses: actions/upload-pages-artifact@v3
         with:
           path: site
 
       - name: Deploy to GitHub Pages
-        if: steps.gate.outputs.hour == '6' || github.event_name == 'workflow_dispatch'
+        if: steps.gate.outputs.hour == '6' || github.event_name != 'schedule'
         id: deployment
         uses: actions/deploy-pages@v4

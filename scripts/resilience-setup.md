@@ -69,33 +69,29 @@ old DNS is ready to serve again within ~30 min.
 ## 3. UptimeRobot free (5 minutes, once) — catch failures early
 
 Two monitors. The second one is the important one: it alerts when the
-morning publish silently didn't happen (PC dead), before readers notice.
+overnight publish silently didn't happen (PC dead), before readers notice.
 
 1. Sign up at https://uptimerobot.com (free tier: 50 monitors, 5-min
    checks, email alerts).
 2. **Monitor 1 — site up:** Add New Monitor →
    - Monitor Type: **HTTP(s)**
    - URL: `https://bakersfieldbrief.com/`
-   - Interval: **5 minutes** (or 1 min if you like)
-   - Alert contacts: your email → Create.
-3. **Monitor 2 — feed freshness (the "PC died silently" alarm):**
-   Add New Monitor →
-   - Monitor Type: **Keyword**
-   - URL: `https://bakersfieldbrief.com/feed.xml`
-   - Keyword: `pubDate` (or `<entry>` — any string present in the feed)
-   - Keyword Type: **Exists** — wait, this checks the string exists, not
-     freshness. To check freshness use the **Keyword** monitor with a
-     value that changes daily? Simpler: use a **Cron** monitor:
-   - Monitor Type: **Cron Job Monitor**
-   - URL: any unique string (it pings UptimeRobot when it runs)
-   - This requires a ping — not automatic. **Alternative that works with
-     zero setup:** Monitor 2 as HTTP monitor on `https://bakersfieldbrief.com/feed.xml`
-     (catches the feed going 404), and rely on the 6am site rebuild —
-     stale-data alerts need the custom ping. If you want a true freshness
-     alert later, ask for the GH Actions "ping" step and use the Cron
-     monitor type.
-   - Recommendation: start with the plain HTTP monitor on the feed URL;
-     upgrade to the freshness ping when the site has real traffic.
+   - Interval: **5 minutes** → Create.
+3. **Monitor 2 — overnight freshness (the "PC died silently" alarm):**
+   - Add New Monitor → Monitor Type: **Cron Job Monitor**
+   - Name: "Kern Overnight publish", interval: **every 24 hours** → Create.
+   - UptimeRobot shows a unique ping URL. **Copy it.**
+   - Give the URL to the assistant (or add it as the GitHub secret
+     `UP_OVERNIGHT_PING_URL`: repo Settings → Secrets and variables →
+     Actions → New repository secret).
+   - The deploy workflow already pings this URL **only when today's
+     overnight report exists in the repo**. So: report published → ping →
+     silence. Pipeline dead → no ping → UptimeRobot emails you within the
+     monitor's grace window.
+   - (The workflow step is already in `.github/workflows/daily.yml` — it
+     activates automatically once the secret exists. Plain HTTP checks on
+     /overnight/ would NOT work for this: the old page keeps returning
+     200 when stale.)
 
 ---
 

@@ -91,13 +91,10 @@ jobs:
             echo "no artifact changes"
           fi
 
-      - name: Upload Pages artifact
+      - name: Deploy to Cloudflare Pages
         if: steps.gate.outputs.hour == '6' || github.event_name != 'schedule'
-        uses: actions/upload-pages-artifact@v3
+        uses: cloudflare/wrangler-action@v3
         with:
-          path: site
-
-      - name: Deploy to GitHub Pages
-        if: steps.gate.outputs.hour == '6' || github.event_name != 'schedule'
-        id: deployment
-        uses: actions/deploy-pages@v4
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy site --project-name=bakersfieldbrief

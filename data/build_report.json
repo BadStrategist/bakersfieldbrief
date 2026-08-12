@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-11T22:34:52-07:00",
+ "built_at": "2026-08-11T23:59:31-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 1140, column 3"
   },
   "isabella": {
    "ok": true,
@@ -79,11 +79,11 @@
    ],
    "tehachapi_forecast": false,
    "gnews_per_place": {
-    "tehachapi": 12,
-    "bakersfield-nw": 12,
-    "bakersfield-sw": 12,
-    "bakersfield-east": 12,
-    "bakersfield-central": 12
+    "tehachapi": 0,
+    "bakersfield-nw": 0,
+    "bakersfield-sw": 0,
+    "bakersfield-east": 0,
+    "bakersfield-central": 0
    }
   },
   "guide": {

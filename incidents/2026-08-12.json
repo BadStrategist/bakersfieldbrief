@@ -1,0 +1,272 @@
+[
+  {
+    "type": "structure_fire",
+    "time": "22:34",
+    "agency": "Kern County Fire Department",
+    "area": "Far Vista Avenue, east Bakersfield",
+    "notability": 5,
+    "disposition": "active",
+    "summary": "Structure fire with reinforced response — multiple engines, two battalions, safety officer. 50% involvement by 22:44, water supply established, interior attack underway."
+  },
+  {
+    "type": "vehicle_vs_pedestrian",
+    "time": "21:39",
+    "agency": "Kern County Fire Department / CHP",
+    "area": "Kern Canyon Estates, Grand Canyon Road",
+    "notability": 5,
+    "disposition": "patient en route",
+    "summary": "Vehicle versus pedestrian on Grand Canyon Road. Single patient found on the roadway, multiple emergency units dispatched including Station 42."
+  },
+  {
+    "type": "assault_with_deadly_weapon",
+    "time": "22:31",
+    "agency": "Bakersfield Police Department",
+    "area": "Metro area, west of central Bakersfield",
+    "notability": 4,
+    "disposition": "responding",
+    "summary": "Domestic incident — suspect used the victim's own vehicle as a weapon. Suspect described as Hispanic male, 54, black shirt and blue shorts."
+  },
+  {
+    "type": "hit_and_run",
+    "time": "21:46",
+    "agency": "CHP",
+    "area": "Main Drane Road & Highway 46, west of I-5",
+    "notability": 4,
+    "disposition": "searching",
+    "summary": "Semi truck hit-and-run, northbound Main Drane Road with white box trailer. Vehicle exited westbound 46 toward the truck stop. Units searching."
+  },
+  {
+    "type": "shooting",
+    "time": "22:12",
+    "agency": "Bakersfield Police Department",
+    "area": "300 block Bernard Street",
+    "notability": 4,
+    "disposition": "responding",
+    "summary": "Reports of a shooting with an injured victim. Multiple units responding, scene assessment underway."
+  },
+  {
+    "type": "suspicious_circumstances",
+    "time": "00:45",
+    "agency": "Kern County Sheriff's Office",
+    "area": "southeast Kern County",
+    "notability": 4,
+    "disposition": "investigating",
+    "summary": "Incomplete 911 call with a caller reporting someone being hung from a power line. Subjects possibly in room 106. Units en route."
+  },
+  {
+    "type": "suspicious_person",
+    "time": "01:00",
+    "agency": "Kern County Sheriff's Office",
+    "area": "Main Drane Road & I-5",
+    "notability": 4,
+    "disposition": "responding",
+    "summary": "Male subject bouncing in the middle of the roadway, possibly handcuffed or bound. Semi-nude female also in the area. Units responding."
+  },
+  {
+    "type": "burglary",
+    "time": "21:39",
+    "agency": "Bakersfield Police Department",
+    "area": "North Guam Street area",
+    "notability": 3,
+    "disposition": "investigating",
+    "summary": "Suspected burglary — neighbor reported shadows inside a residence; owner is out of state and confirmed no one should be inside. Back porch light on."
+  },
+  {
+    "type": "vegetation_fire",
+    "time": "01:52",
+    "agency": "Kern County Fire Department",
+    "area": "East Plains Road",
+    "notability": 3,
+    "disposition": "contained",
+    "summary": "Rush fire on the hillside reported by RP. Multiple units dispatched; neighboring counties notified as potential mutual aid."
+  },
+  {
+    "type": "vegetation_fire",
+    "time": "02:07",
+    "agency": "Kern County Fire Department",
+    "area": "hillside near county line, west of Bakersfield",
+    "notability": 3,
+    "disposition": "monitoring",
+    "summary": "Fire on the hill, possibly trees burning. Additional engine added; Kings and San Luis Obispo counties advised. Units checking coordinates to confirm jurisdiction."
+  },
+  {
+    "type": "suicidal_subject",
+    "time": "23:05",
+    "agency": "Bakersfield Police Department",
+    "area": "Emerald Street",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Suicidal subject at a sober living home, referred by a telecare case manager. Subject described as 41-year-old female, curly dark hair, yellow striped dress."
+  },
+  {
+    "type": "foot_pursuit",
+    "time": "23:09",
+    "agency": "Bakersfield Police Department",
+    "area": "State Hardware, downtown",
+    "notability": 3,
+    "disposition": "active",
+    "summary": "Foot pursuit in progress from a downtown hardware store; code 33 (officer needs assistance)."
+  },
+  {
+    "type": "family_disturbance",
+    "time": "23:44",
+    "agency": "Bakersfield Police Department",
+    "area": "Ming Avenue, central Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Family disturbance at an apartment complex. Male subject in gray shirt and blue jeans. Units en route."
+  },
+  {
+    "type": "family_disturbance",
+    "time": "00:52",
+    "agency": "Bakersfield Police Department",
+    "area": "Panama Lane, southeast Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Verbal disturbance at a lakeside apartment complex. Female second party wearing a gray shirt."
+  },
+  {
+    "type": "mental_health",
+    "time": "23:33",
+    "agency": "Bakersfield Police Department",
+    "area": "Plymouth Avenue",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Female (27) with bipolar disorder off medication and under the influence. Welfare concern at residence."
+  },
+  {
+    "type": "juvenile_disturbance",
+    "time": "22:35",
+    "agency": "Bakersfield Police Department",
+    "area": "Hastings Avenue",
+    "notability": 2,
+    "disposition": "handled",
+    "summary": "Juveniles kicking doors and running through the neighborhood; parents contacted."
+  },
+  {
+    "type": "welfare_check",
+    "time": "01:01",
+    "agency": "Kern County Sheriff's Office",
+    "area": "Heights Drive area",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Welfare check on elderly female living alone. Garage open since 22:00, water hose still in yard."
+  },
+  {
+    "type": "welfare_check",
+    "time": "01:50",
+    "agency": "Bakersfield Police Department",
+    "area": "Dorian Street, east Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Check welfare of suicidal subject at residence."
+  },
+  {
+    "type": "vehicle_fire",
+    "time": "22:51",
+    "agency": "Kern County Fire Department",
+    "area": "Wilson Road, Westholm area",
+    "notability": 2,
+    "disposition": "extinguished",
+    "summary": "Truck fire on the roadway. Engine 83 on scene, attack line established."
+  },
+  {
+    "type": "fire_cause_investigation",
+    "time": "23:55",
+    "agency": "Bakersfield Fire Department",
+    "area": "California Avenue, east of downtown",
+    "notability": 2,
+    "disposition": "investigating",
+    "summary": "Suspicious fire — a female reportedly started the fire at a complex. Fire is out; law enforcement checking for suspicious persons nearby."
+  },
+  {
+    "type": "hazardous_condition",
+    "time": "21:24",
+    "agency": "Bakersfield Fire Department",
+    "area": "unincorporated county area",
+    "notability": 2,
+    "disposition": "assessed",
+    "summary": "Possible propane leak hazard at a residence. PG&E and SoCal Gas contacted — neither services the area. County assessing the situation."
+  },
+  {
+    "type": "suspicious_person",
+    "time": "01:25",
+    "agency": "Bakersfield Police Department",
+    "area": "Advent Street area",
+    "notability": 2,
+    "disposition": "searching",
+    "summary": "Subject fled from an area of illegal burning, seen heading toward the bus stop near a fast-food restaurant. Patrol searching."
+  },
+  {
+    "type": "hit_and_run",
+    "time": "03:09",
+    "agency": "CHP",
+    "area": "southbound Highway 99 near exit 210",
+    "notability": 3,
+    "disposition": "report being taken",
+    "summary": "Road-rage hit-and-run. Victim in a white Honda with left-side damage; suspect vehicle a blue-black sedan driven by an adult female, continuing southbound. Victim pulled off on the right-hand shoulder; report taken."
+  },
+  {
+    "type": "vehicle_into_building",
+    "time": "03:46",
+    "agency": "Kern County Fire Department / Bakersfield Fire",
+    "area": "Morning Drive",
+    "notability": 3,
+    "disposition": "structure check done",
+    "summary": "Vehicle struck a building on Morning Drive; rescue, engine, truck and medic units responded and requested a structure check. Earlier report of a vehicle into a business nearby was cleared with no significant damage confirmed."
+  },
+  {
+    "type": "stolen_firearms_search",
+    "time": "03:48",
+    "agency": "Kern County Sheriff's Office / CHP",
+    "area": "northwest Kern County",
+    "notability": 4,
+    "disposition": "searching",
+    "summary": "Search for a flatbed tow truck driver — blue jumpsuit, black hat with a skull-and-crossbones logo — after reports of four long guns missing. CHP and deputies searching."
+  },
+  {
+    "type": "reckless_driver",
+    "time": "03:38",
+    "agency": "CHP",
+    "area": "Highway 46",
+    "notability": 2,
+    "disposition": "searching",
+    "summary": "Unknown-color semi with a box trailer reported swerving on Highway 46. No plate information given."
+  },
+  {
+    "type": "medical_aid",
+    "time": "03:44",
+    "agency": "Kern County Fire Department",
+    "area": "southwest Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid for two persons found unresponsive at a residence. Units en route."
+  },
+  {
+    "type": "probation_check",
+    "time": "04:18",
+    "agency": "Kern County Sheriff's Office",
+    "area": "unincorporated county area",
+    "notability": 2,
+    "disposition": "completed",
+    "summary": "Probation compliance check at a residence; subject has prior weapons and resisting-arrest history. Residence protected, no disturbance reported."
+  },
+  {
+    "type": "warrant_service",
+    "time": "05:19",
+    "agency": "Bakersfield Police Department",
+    "area": "King Street & East 21st Street",
+    "notability": 2,
+    "disposition": "arrest",
+    "summary": "Warrant service at King Street and East 21st Street. Subject taken into custody with an open charge of public intoxication."
+  },
+  {
+    "type": "man_down",
+    "time": "05:42",
+    "agency": "Kern County Fire Department",
+    "area": "Roth Avenue & Phillips Street",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Man down, unresponsive, in the area of Roth Avenue and Phillips Street. Medical units responding."
+  }
+]

@@ -41,13 +41,19 @@
  ],
  "2200 block of chester avenue, Bakersfield, Kern County, CA": null,
  "chester avenue, Bakersfield, CA": [
-  35.3579268,
-  -119.01891
+  35.3852156,
+  -119.0187093
  ],
  "3500 block of canadian street, Bakersfield, Kern County, CA": null,
  "canadian street, Bakersfield, CA": [
   35.321683,
   -119.0242376
  ],
- "2200 block of niles street, Bakersfield, Kern County, CA": null
+ "2200 block of niles street, Bakersfield, Kern County, CA": null,
+ "300 block of bernard street, Bakersfield, Kern County, CA": null,
+ "bernard street, Bakersfield, CA": [
+  35.3922479,
+  -118.9517374
+ ],
+ "hillside & county line, Bakersfield, CA": null
 }

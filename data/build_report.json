@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-12T14:17:43-07:00",
+ "built_at": "2026-08-12T14:44:39-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 1140, column 3"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -60,8 +60,8 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Ex-Wasco school employee sentenced after pleading no contest to inappropriately touching student",
+   "chp_new": 7,
+   "top_story": "Upside Academy hosts shoe giveaway ahead of back-to-school season",
    "archive": "2026-08-12"
   },
   "cityhall": {
@@ -91,9 +91,9 @@
    "draft": "drafts/weekend-guide-2026-08-12"
   },
   "grapevine": {
-   "i5": "RESTRICTIONS",
+   "i5": "CLOSED",
    "i5_pass": "OPEN",
-   "log_entries": 31
+   "log_entries": 32
   },
   "events": {
    "groups": {
@@ -111,7 +111,7 @@
    "alpr_total": 247,
    "kern_fires": 1,
    "aqi": 55,
-   "chp_week": 41
+   "chp_week": 48
   },
   "letters": {
    "published": 0

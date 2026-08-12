@@ -860,6 +860,66 @@
   "details": ""
  },
  {
+  "log_id": "260812BF0238",
+  "time": "Aug 12 2026  1:27PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "500 Kern St",
+  "area": "Buttonwillow",
+  "lat": 35.299078,
+  "lon": -119.354521,
+  "details": ""
+ },
+ {
+  "log_id": "260812BF0243",
+  "time": "Aug 12 2026  1:36PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Nb I5 At #4 Turn Thru",
+  "area": "Fort Tejon",
+  "lat": 34.914069,
+  "lon": -118.92362,
+  "details": ""
+ },
+ {
+  "log_id": "260812BF0250",
+  "time": "Aug 12 2026  1:47PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "3017 Center St",
+  "area": "Bakersfield",
+  "lat": 35.37227,
+  "lon": -118.951568,
+  "details": ""
+ },
+ {
+  "log_id": "260812BF0257",
+  "time": "Aug 12 2026  2:01PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Nb Sr99 Jso Pond Rd",
+  "area": "Bakersfield",
+  "lat": 35.71806,
+  "lon": -119.237134,
+  "details": ""
+ },
+ {
+  "log_id": "260812BF0268",
+  "time": "Aug 12 2026  2:28PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "12950 Rosedale Hwy",
+  "area": "Bakersfield",
+  "lat": 35.383613,
+  "lon": -119.146162,
+  "details": ""
+ },
+ {
+  "log_id": "260812BF0269",
+  "time": "Aug 12 2026  2:31PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "227 Francis St",
+  "area": "Bakersfield",
+  "lat": 35.424175,
+  "lon": -119.024037,
+  "details": ""
+ },
+ {
   "log_id": "260812BF0037",
   "time": "Aug 12 2026  5:44AM",
   "type": "MZP-Assist CT with Maintenance",
@@ -907,6 +967,16 @@
   "area": "Buttonwillow",
   "lat": 35.097222,
   "lon": -119.039444,
+  "details": ""
+ },
+ {
+  "log_id": "260812BF0102",
+  "time": "Aug 12 2026  9:14AM",
+  "type": "CFIRE-Car Fire",
+  "location": "Nb I5 At #4 Turn Thru",
+  "area": "Fort Tejon",
+  "lat": 34.914069,
+  "lon": -118.92362,
   "details": ""
  },
  {

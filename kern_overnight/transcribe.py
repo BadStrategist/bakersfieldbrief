@@ -198,6 +198,39 @@ def _in_overnight_window(epoch: int, date: dt.date, tz: dt.tzinfo) -> bool:
     return w_start <= epoch < w_end
 
 
+def _ko_checkpoint(out_jsonl: Path, blocks_done: int, total: int, push: bool = False) -> None:
+    """Commit the transcript JSONL to git so partial-night data reaches the
+    cloud even if this PC dies mid-pipeline (Tier-2 resilience).
+
+    Commits ONLY the transcript file (never `git add -A`, so sibling-session
+    artifacts are never swept in). A plain `git push` is attempted once at
+    the end; failures are tolerated silently — the morning agent's
+    stash/rebase push resolves any divergence. Skipped when the output file
+    is not inside the repo (e.g. pytest temp dirs).
+    """
+    try:
+        root = Path(__file__).resolve().parent.parent
+        try:
+            rel = out_jsonl.resolve().relative_to((root / "transcripts").resolve())
+        except ValueError:
+            return  # not a repo transcript (tests / temp dirs)
+        import subprocess
+        subprocess.run(["git", "add", "--", str(out_jsonl.resolve())],
+                       cwd=root, check=True, capture_output=True, timeout=30)
+        subprocess.run(
+            ["git", "commit", "-q",
+             "-m", f"ko: transcript checkpoint ({blocks_done}/{total} blocks)"],
+            cwd=root, capture_output=True, timeout=30)  # rc 1 = nothing staged, fine
+        if push:
+            r = subprocess.run(["git", "push", "-q", "origin", "main"],
+                               cwd=root, capture_output=True, timeout=120)
+            if r.returncode != 0:
+                print("    [ko-stt] checkpoint push deferred (will be pushed "
+                      "by the morning agent)", flush=True)
+    except Exception as e:  # noqa: BLE001 — never break transcription for git
+        print(f"    [ko-stt] checkpoint skipped: {type(e).__name__}", flush=True)
+
+
 def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
                vocab_text: str, date: dt.date | None = None,
                workers: int | None = None, append: bool = False) -> int:
@@ -244,16 +277,25 @@ def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
                 with ProcessPoolExecutor(max_workers=n_workers,
                                          initializer=_init_worker,
                                          initargs=(ENGINE, vocab_text, tz)) as ex:
+                    commit_every = max(1, int(os.environ.get("KO_COMMIT_EVERY", "3")))
+                    blocks_done = 0
                     for rows in ex.map(_block_worker, mp3s):
+                        blocks_done += 1
                         for r in rows:
                             if r["confidence"] < MIN_CONFIDENCE and r["duration"] < 3.0:
                                 continue  # low-confidence + short → drop
                             out.write(json.dumps(r, ensure_ascii=False) + "\n")
                             count += 1
+                        out.flush()
+                        if blocks_done % commit_every == 0:
+                            _ko_checkpoint(out_jsonl, blocks_done, len(mp3s))
+            _ko_checkpoint(out_jsonl, len(mp3s), len(mp3s), push=True)
             return count
         # serial fallback (workers == 1 or a single block)
         work = Path(td)
         with open(out_jsonl, mode, encoding="utf-8") as out:
+            commit_every = max(1, int(os.environ.get("KO_COMMIT_EVERY", "3")))
+            blocks_done = 0
             for mp3 in mp3s:
                 wav = _preprocess(mp3, work)
                 segs = _merge_segments(_vad_speech_segments(wav, work))
@@ -266,11 +308,16 @@ def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
                     model = _load_model()
                     rows = _transcribe_whisper(model, wav, segs, block_epoch,
                                                tz, mp3.name, vocab_text)
+                blocks_done += 1
                 for r in rows:
                     if r["confidence"] < MIN_CONFIDENCE and r["duration"] < 3.0:
                         continue  # low-confidence + short → drop
                     out.write(json.dumps(r, ensure_ascii=False) + "\n")
                     count += 1
+                out.flush()
+                if blocks_done % commit_every == 0:
+                    _ko_checkpoint(out_jsonl, blocks_done, len(mp3s))
+        _ko_checkpoint(out_jsonl, len(mp3s), len(mp3s), push=True)
     return count
 
 

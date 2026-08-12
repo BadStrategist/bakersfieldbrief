@@ -19,8 +19,9 @@ site/
 .idea/
 .vscode/
 
-# Kern Overnight pipeline artifacts
+# Kern Overnight pipeline artifacts — audio stays local (GBs), but
+# transcripts are small (~180KB/day) and ARE committed: they are the
+# cloud-side recovery source if the PC dies mid-night.
 /audio/
-/transcripts/
 /briefs/
 kern_overnight/.bcfy_cookie.json

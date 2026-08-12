@@ -344,3 +344,44 @@ class TestData:
         assert by_url["brit-floyd"]["when"].startswith("Oct 13, 2026")
         assert "blueys" not in by_url          # time-only date -> dropped, not guessed
         assert "hot-wheels" not in by_url      # external axs links excluded
+
+    def test_checkpoint_skips_non_repo_paths(self, tmp_path, monkeypatch):
+        """Tier-2: the transcript checkpoint must NEVER run git against
+        non-repo paths (pytest temp dirs) — transcription never breaks."""
+        import subprocess
+        calls = []
+
+        class FakeCompleted:
+            def __init__(self, rc):
+                self.returncode = rc
+
+        monkeypatch.setattr(subprocess, "run",
+                            lambda *a, **k: calls.append(a) or FakeCompleted(0))
+        from kern_overnight.transcribe import _ko_checkpoint
+        _ko_checkpoint(tmp_path / "out.jsonl", 3, 3, push=True)
+        assert calls == []
+
+    def test_checkpoint_commits_repo_transcripts(self, monkeypatch):
+        """Tier-2: for a repo transcript, checkpoint does git add (only that
+        file) + commit + optional push, and tolerates push failure."""
+        import subprocess
+
+        class FakeCompleted:
+            def __init__(self, rc):
+                self.returncode = rc
+
+        calls = []
+        def fake_run(cmd, **k):
+            calls.append(cmd)
+            rc = 0
+            if cmd[:2] == ["git", "push"]:
+                rc = 128  # simulate non-fast-forward — must be tolerated
+            return FakeCompleted(rc)
+
+        monkeypatch.setattr(subprocess, "run", fake_run)
+        from kern_overnight.transcribe import _ko_checkpoint
+        _ko_checkpoint(ROOT / "transcripts" / "2026-08-11.jsonl", 3, 18, push=True)
+        adds = [c for c in calls if c[:2] == ["git", "add"]]
+        assert adds, "git add must run for repo transcripts"
+        assert "--" in adds[0] and adds[0][-1].endswith("transcripts/2026-08-11.jsonl")
+        assert any(c[:2] == ["git", "push"] for c in calls)

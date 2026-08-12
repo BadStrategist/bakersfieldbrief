@@ -94,6 +94,8 @@ def scan(text: str, streets: list[str]) -> list[tuple[str, str, str]]:
     for pat in _PATTERNS:
         for m in pat.finditer(text):
             cand = re.sub(r"\s+", " ", m.group(1)).strip()
+            # strip leading connectives so 'and Wite Lane' -> 'Wite Lane'
+            cand = re.sub(r"^(?:and|near|at|of|off|on)\s+", "", cand, flags=re.I)
             low = cand.lower()
             if len(cand) < 4 or low in seen:
                 continue

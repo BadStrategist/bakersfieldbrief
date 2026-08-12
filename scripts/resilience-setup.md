@@ -78,16 +78,18 @@ overnight publish silently didn't happen (PC dead), before readers notice.
    - URL: `https://bakersfieldbrief.com/`
    - Interval: **5 minutes** → Create.
 3. **Monitor 2 — overnight freshness (the "PC died silently" alarm):**
-   - Add New Monitor → Monitor Type: **Cron Job Monitor**
-   - Name: "Kern Overnight publish", interval: **every 24 hours** → Create.
-   - UptimeRobot shows a unique ping URL. **Copy it.**
-   - Give the URL to the assistant (or add it as the GitHub secret
-     `UP_OVERNIGHT_PING_URL`: repo Settings → Secrets and variables →
+   UptimeRobot's Cron/Heartbeat monitor type is paid, so this uses
+   **healthchecks.io** (free dead-man's-switch, 20 checks, email alerts):
+   - Sign up at https://healthchecks.io → **Add Check**.
+   - Name: "Kern Overnight", Period: **1 day**, Grace: **2 hours** → Save.
+   - Copy the check's **Ping URL** (`https://hc-ping.com/<uuid>`).
+   - Give the URL to the assistant — it is stored as the GitHub secret
+     `UP_OVERNIGHT_PING_URL` (repo Settings → Secrets and variables →
      Actions → New repository secret).
-   - The deploy workflow already pings this URL **only when today's
-     overnight report exists in the repo**. So: report published → ping →
-     silence. Pipeline dead → no ping → UptimeRobot emails you within the
-     monitor's grace window.
+   - The deploy workflow pings this URL **only when today's overnight
+     report exists in the repo**. Report published → ping → silence.
+     Pipeline dead → no ping → healthchecks.io emails you ~2h after the
+     missed deadline (same morning as the failure).
    - (The workflow step is already in `.github/workflows/daily.yml` — it
      activates automatically once the secret exists. Plain HTTP checks on
      /overnight/ would NOT work for this: the old page keeps returning

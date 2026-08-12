@@ -17,7 +17,7 @@ status: draft
 
 ## Items on the posted agenda
 
-
+No agenda items are posted on eSCRIBE for this meeting. Commission agendas are usually published as PDFs at the City's Agenda Center (https://www.bakersfieldcity.us/AgendaCenter) — open the meeting's PDF and summarize the items there.
 
 ## What happened
 

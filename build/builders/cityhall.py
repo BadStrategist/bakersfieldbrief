@@ -256,7 +256,15 @@ def _recap_drafts(es: dict) -> list[str]:
         if draft_path.exists():
             continue
         items = escribe._fetch_agenda(m["id"])
-        item_lines = "\n".join(f"- {i.get('num', '')} {i.get('title', '')}" for i in items[:30])
+        if items:
+            item_lines = "\n".join(
+                f"- {i.get('num', '')} {i.get('title', '')}" for i in items[:30])
+        else:
+            item_lines = (
+                "No agenda items are posted on eSCRIBE for this meeting. "
+                "Commission agendas are usually published as PDFs at the City's "
+                "Agenda Center (https://www.bakersfieldcity.us/AgendaCenter) — "
+                "open the meeting's PDF and summarize the items there.")
         content = f"""---
 title: "What They Decided — {m['name']}"
 meeting: "{m['name']}"

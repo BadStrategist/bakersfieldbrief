@@ -750,6 +750,16 @@
   "details": ""
  },
  {
+  "log_id": "260811BF0301",
+  "time": "Aug 11 2026  4:51PM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sb I5 Jno Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.836944,
+  "lon": -118.863056,
+  "details": ""
+ },
+ {
   "log_id": "260811BF0040",
   "time": "Aug 11 2026  5:27AM",
   "type": "MZP-Assist CT with Maintenance",

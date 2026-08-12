@@ -110,6 +110,9 @@ def scan(text: str, streets: list[str]) -> list[tuple[str, str, str]]:
                 continue
             if low.split()[0] in _STOP_WORDS:
                 continue
+            if re.match(r"^(one|two|three|four|five|six|seven|eight|nine|ten|zero)$",
+                        low.split()[0]):
+                continue  # radio prowords ('two point five') are not streets
             status, detail = check_name(cand, streets, norm)
             out.append((status, cand, detail))
     return out

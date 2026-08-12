@@ -1,6 +1,8 @@
 name: Daily Brief (6am PT)
 
 on:
+  push:
+    branches: [main]
   schedule:
     # Run at 13:00 and 14:00 UTC so the 6am-Pacific gate below hits 6:00 PT
     # year-round regardless of daylight saving. The second run exits early.

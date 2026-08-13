@@ -1020,6 +1020,26 @@
   "details": ""
  },
  {
+  "log_id": "260813BF0199",
+  "time": "Aug 13 2026  2:08PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "218 Ethrum Ave",
+  "area": "Bakersfield",
+  "lat": 35.333052,
+  "lon": -119.005778,
+  "details": ""
+ },
+ {
+  "log_id": "260813BF0201",
+  "time": "Aug 13 2026  2:15PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Waco Ave / Paradise Rd",
+  "area": "Bakersfield",
+  "lat": 35.265182,
+  "lon": -118.907227,
+  "details": ""
+ },
+ {
   "log_id": "260813BF0020",
   "time": "Aug 13 2026  2:20AM",
   "type": "CFIRE-Car Fire",
@@ -1027,6 +1047,26 @@
   "area": "Bakersfield",
   "lat": 35.369008,
   "lon": -118.89656,
+  "details": ""
+ },
+ {
+  "log_id": "260813BF0203",
+  "time": "Aug 13 2026  2:27PM",
+  "type": "CFIRE-Car Fire",
+  "location": "9046 Grapevine Rd E",
+  "area": "Fort Tejon",
+  "lat": 34.94151,
+  "lon": -118.929241,
+  "details": ""
+ },
+ {
+  "log_id": "260813BF0213",
+  "time": "Aug 13 2026  2:48PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr184 / Di Giorgio Rd",
+  "area": "Bakersfield",
+  "lat": 35.252386,
+  "lon": -118.914362,
   "details": ""
  },
  {

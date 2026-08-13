@@ -30,39 +30,39 @@ Nothing to verify on the site — this is a physical setting.
 
 ---
 
-## 2. Cloudflare free (15 minutes, once) — spike-proof serving + analytics
+## 2. Cloudflare Pages (DONE Aug 13, 2026) — host, spike-proof serving + analytics
 
-Cloudflare sits in front of GitHub Pages: unlimited bandwidth (removes the
-100GB/month Pages cap — relevant at ~10k visitors/day), edge caching, free
-analytics. Zero downtime if done in this order.
+Cloudflare Pages is now the host (repo made private Aug 12 — GitHub Pages can't
+serve private repos on the free plan). Unlimited bandwidth, edge caching, free
+analytics. What was done:
 
-1. Create a free account at https://dash.cloudflare.com/sign-up.
-2. Add site → enter **bakersfieldbrief.com** → select the **Free** plan.
-3. Cloudflare scans your current DNS and imports every record. **Verify the
-   list** — you must see at least:
-   - CNAME `www` → `badstrategist.github.io` (or whatever GH Pages shows)
-   - The apex (root) record for the site
-   - Any MX / email records (email forwarding keeps working through these)
-   Click "Continue".
-4. Cloudflare shows two nameservers like `amy.ns.cloudflare.com`. **Copy
-   them.**
-5. Log in at **GoDaddy** → Domain → bakersfieldbrief.com → DNS →
-   Nameservers → **Change** → enter Cloudflare's two nameservers → Save.
-6. Back in Cloudflare: wait ~15–30 min for "Active" status. When active,
-   confirm:
-   - SSL/TLS → mode **Full** (default) — HTTPS keeps working.
-   - Security level → **Essentially off** or **Low**. Do NOT enable
-     "Under Attack Mode" (it captchas real humans).
-   - Caching → leave defaults. The site's `?v=build-date` cache-busting
-     already refreshes CSS/JS on every build.
-7. Verify after activation:
-   - https://bakersfieldbrief.com loads (HTTPS, padlock).
-   - https://bakersfieldbrief.com/feed.xml still 200.
-   - Send yourself an email to `corrections@bakersfieldbrief.com` — it
-     still arrives (MX records pass through Cloudflare).
+1. Cloudflare account (free) → add site `bakersfieldbrief.com` → Free plan
+   (imported all DNS records — verify the list).
+2. **Porkbun** (NOT GoDaddy — registrar) → Nameservers → Cloudflare's two NS
+   (`wilson.ns.cloudflare.com` / `margaret.ns.cloudflare.com`). Zone goes
+   Active in ~15–30 min; confirm via https://dns.google/resolve?name=...&type=NS
+3. Pages project `bakersfieldbrief` (production branch `main`) created via API:
+   `POST /accounts/<ACCT>/pages/projects` (token needs Account→Cloudflare
+   Pages→Edit + Zone→DNS→Edit).
+4. All 5 workflows (`.github/workflows/*.yml`) deploy with
+   `cloudflare/wrangler-action@v3`, `command: pages deploy site
+   --project-name=bakersfieldbrief`, secrets passed as **step env vars**
+   `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` (wrangler-action v3 does
+   NOT reliably export the `apiToken` input when using `command:` — the
+   subprocess needs the real env vars; that was the first failed deploy).
+   Project must EXIST before first deploy (second failure mode: "Project not
+   found").
+5. Custom domains `bakersfieldbrief.com` + `www` added to the project, then
+   DNS: deleted the 4 dead GitHub `A 185.199.x` records + `CNAME www →
+   badstrategist.github.io`, added `CNAME bakersfieldbrief.com` + `CNAME www
+   → bakersfieldbrief.pages.dev` (proxied). The Pages API does NOT auto-create
+   zone records — you must add them yourself.
+6. Verify: `https://bakersfieldbrief.com/` 200 with real title (a few 522s
+   right after the CNAME switch are cert propagation — retry), `/map/`,
+   `/feed.xml`, `/ads.txt` (real pub ID), `Server: cloudflare` header.
 
-Rollback: change the GoDaddy nameservers back to GoDaddy's defaults. The
-old DNS is ready to serve again within ~30 min.
+Rollback: repoint the CNAMEs back to the GH Pages IPs and flip the repo public
+— or change Porkbun nameservers back to Porkbun's defaults.
 
 ---
 

@@ -1023,10 +1023,10 @@
   "log_id": "260813BF0020",
   "time": "Aug 13 2026  2:20AM",
   "type": "CFIRE-Car Fire",
-  "location": "35\ufffd22'26.23\"n / 118\ufffd52'19.61\"w",
+  "location": "Vineland Rd / Pioneer Dr",
   "area": "Bakersfield",
-  "lat": 35.373952,
-  "lon": -118.872113,
+  "lat": 35.369008,
+  "lon": -118.89656,
   "details": ""
  },
  {
@@ -1097,6 +1097,16 @@
   "area": "Fort Tejon",
   "lat": 34.937778,
   "lon": -118.930556,
+  "details": ""
+ },
+ {
+  "log_id": "260813BF0128",
+  "time": "Aug 13 2026 10:32AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Wb Sr58 At Union Ave",
+  "area": "Bakersfield",
+  "lat": 35.3525,
+  "lon": -119.002778,
   "details": ""
  }
 ]

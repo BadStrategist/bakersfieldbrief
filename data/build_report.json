@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-13T10:39:17-07:00",
+ "built_at": "2026-08-13T10:40:50-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,7 +60,7 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 0,
    "top_story": "Another case pending of alleged failure by a Kern County mandated reporter to alert authorities to suspected abuse",
    "archive": "2026-08-13"
   },

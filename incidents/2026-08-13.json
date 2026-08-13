@@ -1,0 +1,155 @@
+[
+ {
+  "type": "disturbance",
+  "time": "21:19",
+  "agency": "Bakersfield Police Department",
+  "area": "Clyde Street, south Bakersfield",
+  "notability": 2,
+  "disposition": "responding",
+  "summary": "Two subjects, 18 and 19 years old, possibly under the influence, refusing to leave a residence on Clyde Street."
+ },
+ {
+  "type": "grass_fire",
+  "time": "21:28",
+  "agency": "Kern County Fire Department",
+  "area": "7200 block Round Mountain Road, Kern River Valley",
+  "notability": 4,
+  "disposition": "held small",
+  "summary": "Campfire-sized grass fire on the ridge, crawling downhill toward the river. Initial response included Engine 363, water tender 67, helicopter 409 and dozers; crews found a small fire and handled it with local equipment by 21:44."
+ },
+ {
+  "type": "juvenile_nuisance",
+  "time": "21:42",
+  "agency": "Bakersfield Police Department",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Three teenage girls running in and out of the roadway, lighting fireworks in the street."
+ },
+ {
+  "type": "domestic_disturbance",
+  "time": "22:02",
+  "agency": "Bakersfield Police Department",
+  "area": "Quincy Street area",
+  "notability": 2,
+  "disposition": "responding",
+  "summary": "Domestic disturbance in the Quincy area; female subject refusing to leave."
+ },
+ {
+  "type": "welfare_check",
+  "time": "22:04",
+  "agency": "Bakersfield Police Department",
+  "area": "Chester Avenue",
+  "notability": 2,
+  "disposition": "responding",
+  "summary": "Welfare check on a Hispanic woman in her 70s at a Chester Avenue residence."
+ },
+ {
+  "type": "assault_with_deadly_weapon",
+  "time": "22:21",
+  "agency": "Bakersfield Police Department",
+  "area": "15th Street West area",
+  "notability": 4,
+  "disposition": "investigating",
+  "summary": "Domestic incident: a woman threw cooking oil at the reporting party and an 11-month-old infant."
+ },
+ {
+  "type": "officer_assist",
+  "time": "22:43",
+  "agency": "Bakersfield Police Department",
+  "area": "Quincy Street & Owens Street",
+  "notability": 3,
+  "disposition": "cleared",
+  "summary": "Code 33 (officer needs assistance) called after an officer on a traffic stop did not answer the radio; cleared within a minute."
+ },
+ {
+  "type": "electrical_fire",
+  "time": "22:48",
+  "agency": "Bakersfield Fire Department",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Burned-up breaker box off an AC unit with heat in the wall; crews opened the wall and handled it without extending the response."
+ },
+ {
+  "type": "shooting",
+  "time": "22:59",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Valley West Road at Highway 119, Taft area",
+  "notability": 4,
+  "disposition": "investigating",
+  "summary": "Unknown subjects fired about six shots toward a business from the roadway, just west of the intersection. Units responding."
+ },
+ {
+  "type": "structure_fire",
+  "time": "01:03",
+  "agency": "Kern County Fire Department",
+  "area": "Union Avenue, east of downtown",
+  "notability": 4,
+  "disposition": "extinguished",
+  "summary": "Fire inside an abandoned building near a tire shop on Union Avenue. Engine and truck opened a roll-up door; fire confined to the abandoned structure, adjacent business not damaged. Two men seen leaving the area northbound."
+ },
+ {
+  "type": "vehicle_fire",
+  "time": "01:43",
+  "agency": "Kern County Fire Department",
+  "area": "Edison Road & Chase Avenue",
+  "notability": 3,
+  "disposition": "investigated",
+  "summary": "Vehicle fire that spread to grass, roughly half an acre with a moderate rate of spread. County arson declined; CHP was asked to check for a possibly stolen vehicle."
+ },
+ {
+  "type": "grass_fire",
+  "time": "01:58",
+  "agency": "Kern County Fire Department",
+  "area": "south of the Kern River, off Coffey Road",
+  "notability": 2,
+  "disposition": "contained",
+  "summary": "Grass fire slowly moving, south of the river off Coffey Road; Engine 11 on scene, access off the bike path."
+ },
+ {
+  "type": "outside_fire",
+  "time": "02:17",
+  "agency": "Bakersfield Fire Department",
+  "area": "Sheldon Drive area",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Transient with a fire on the ground in a parking lot behind a store; crews responded and handled it."
+ },
+ {
+  "type": "medical_alarm",
+  "time": "02:17",
+  "agency": "Kern County Fire Department",
+  "area": "apartment complex, Bakersfield",
+  "notability": 2,
+  "disposition": "assisted",
+  "summary": "Medical alarm for a fall; ambulance on scene with doors blocked and unable to make access, requesting fire assistance."
+ },
+ {
+  "type": "burglary",
+  "time": "02:40",
+  "agency": "Bakersfield Police Department",
+  "area": "railroad track area, Bakersfield",
+  "notability": 3,
+  "disposition": "two detained",
+  "summary": "Burglary detail at a business: subjects cut a fence to enter the property. Two detained, one outstanding on a black bicycle; one subject on active probation searchable for weapons. Additional units searched the perimeter."
+ },
+ {
+  "type": "hazardous_condition",
+  "time": "03:54",
+  "agency": "Kern County Fire Department",
+  "area": "Denny's parking lot, Panama Lane",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Gas leak from a motorcycle in a restaurant parking lot on Panama Lane; Engine 13 responded."
+ },
+ {
+  "type": "commercial_fire_alarm",
+  "time": "04:37",
+  "agency": "Bakersfield Fire Department",
+  "area": "Bakersfield Heart Hospital, Sillect Avenue",
+  "notability": 2,
+  "disposition": "investigated",
+  "summary": "Commercial fire alarm at Bakersfield Heart Hospital; Engine 66 responded and investigated."
+ }
+]

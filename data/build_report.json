@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-13T09:12:41-07:00",
+ "built_at": "2026-08-13T10:37:06-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 4074, column 3"
   },
   "isabella": {
    "ok": true,
@@ -60,12 +60,12 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 9,
-   "top_story": "Hold your horses: It's a country music comeback!",
+   "chp_new": 0,
+   "top_story": "Another case pending of alleged failure by a Kern County mandated reporter to alert authorities to suspected abuse",
    "archive": "2026-08-13"
   },
   "cityhall": {
-   "upcoming_meetings": 7,
+   "upcoming_meetings": 8,
    "county_items": 101,
    "drafts_generated": 0
   },
@@ -101,7 +101,7 @@
     "Next week": 1,
     "Later": 29
    },
-   "meetings": 7
+   "meetings": 8
   },
   "feed": {
    "entries": 10
@@ -110,7 +110,7 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 1,
-   "aqi": 53,
+   "aqi": 60,
    "chp_week": 60
   },
   "letters": {

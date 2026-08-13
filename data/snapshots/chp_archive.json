@@ -1,15 +1,5 @@
 [
  {
-  "log_id": "260805BF0066",
-  "time": "Aug  5 2026  7:51AM",
-  "type": "FIRE-Report of Fire",
-  "location": "Sb I5 Jso #4 Turn Thru",
-  "area": "Fort Tejon",
-  "lat": 34.914069,
-  "lon": -118.92362,
-  "details": ""
- },
- {
   "log_id": "260806BF0013",
   "time": "Aug  6 2026  1:41AM",
   "type": "TADV-Traffic Advisory",
@@ -1017,6 +1007,96 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260813BF0014",
+  "time": "Aug 13 2026  1:21AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260813BF0020",
+  "time": "Aug 13 2026  2:20AM",
+  "type": "CFIRE-Car Fire",
+  "location": "35\ufffd22'26.23\"n / 118\ufffd52'19.61\"w",
+  "area": "Bakersfield",
+  "lat": 35.373952,
+  "lon": -118.872113,
+  "details": ""
+ },
+ {
+  "log_id": "260813BF0030",
+  "time": "Aug 13 2026  5:49AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260813BF0031",
+  "time": "Aug 13 2026  6:02AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "Sb I5 Jno Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.836944,
+  "lon": -118.863056,
+  "details": ""
+ },
+ {
+  "log_id": "260813BF0043",
+  "time": "Aug 13 2026  6:49AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "29449 Stockdale Hwy",
+  "area": "Buttonwillow",
+  "lat": 35.354792,
+  "lon": -119.33073,
+  "details": ""
+ },
+ {
+  "log_id": "260813BF0068",
+  "time": "Aug 13 2026  8:04AM",
+  "type": "CZP-Assist with Construction",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260813BF0074",
+  "time": "Aug 13 2026  8:19AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "8202-8499 Tupman Rd",
+  "area": "Buttonwillow",
+  "lat": 35.287911,
+  "lon": -119.337825,
+  "details": ""
+ },
+ {
+  "log_id": "260813BF0089",
+  "time": "Aug 13 2026  8:40AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr58 W / Fairfax Rd Onr",
+  "area": "Bakersfield",
+  "lat": 35.352435,
+  "lon": -118.936002,
+  "details": ""
+ },
+ {
+  "log_id": "260813BF0099",
+  "time": "Aug 13 2026  9:06AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jso Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.937778,
+  "lon": -118.930556,
   "details": ""
  }
 ]

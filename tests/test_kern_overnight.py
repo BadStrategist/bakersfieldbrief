@@ -148,6 +148,7 @@ class TestTranscribe:
         assert abs(rows[0]["start"] - 1.25) < 1e-6
 
     def test_whisper_row_shape(self, tmp_path):
+        pytest.importorskip("numpy")  # heavy PC-only dep; skip in CI
         import wave as wave_mod
         from kern_overnight import transcribe as T
 

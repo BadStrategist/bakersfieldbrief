@@ -1,0 +1,74 @@
+[
+  {
+    "type": "welfare_check",
+    "time": "23:34",
+    "agency": "Bakersfield Police Department",
+    "area": "South Chester Avenue & Belle Terrace",
+    "notability": 4,
+    "disposition": "attempt to locate issued",
+    "summary": "Attempt-to-locate and welfare check after a caller reported a female crying for help out the passenger window of an older model red truck at South Chester and Belle Terrace, with a male hanging out the driver's window. The truck was last seen traveling southbound."
+  },
+  {
+    "type": "road_rage",
+    "time": "21:23",
+    "agency": "Bakersfield Police Department",
+    "area": "East White Lane",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Possible road-rage disturbance: a blue Honda with paper plates and a white pickup traveling eastbound on White Lane repeatedly stopping and blocking the roadway. City units broadcast for a 415 vehicle."
+  },
+  {
+    "type": "stolen_vehicle",
+    "time": "22:33",
+    "agency": "Bakersfield Police Department",
+    "area": "Kentucky Street",
+    "notability": 3,
+    "disposition": "investigating",
+    "summary": "Stolen vehicle report on Kentucky Street: a white 2001 Dodge van with California plates taken from the area."
+  },
+  {
+    "type": "dui",
+    "time": "23:39",
+    "agency": "CHP",
+    "area": "Southbound I-5, south of Grapevine",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Units broadcast on a 23152 southbound on I-5 south of Grapevine: a newer black pickup at speeds over 90, passing on the shoulder, with the driver seen drinking from an open container."
+  },
+  {
+    "type": "hit_and_run",
+    "time": "02:50",
+    "agency": "CHP",
+    "area": "Flying J truck stop, Frazier Park",
+    "notability": 3,
+    "disposition": "investigating",
+    "summary": "Traffic collision at the Flying J parking lot: a burgundy Freightliner was struck by a red Peterbilt that left the scene; the other party denied involvement."
+  },
+  {
+    "type": "theft",
+    "time": "00:09",
+    "agency": "Bakersfield Police Department",
+    "area": "Barlow Road area",
+    "notability": 2,
+    "disposition": "investigating",
+    "summary": "Theft reported from a space at a mobile home park on Barlow Road; loss estimated at roughly $3,900. A suspect who lives in the same park was named on the air."
+  },
+  {
+    "type": "fire_alarm",
+    "time": "23:00",
+    "agency": "Kern County Fire Department",
+    "area": "Greenview Lane",
+    "notability": 2,
+    "disposition": "investigating",
+    "summary": "Residential fire alarm at a Greenview Lane home, reported by the residents."
+  },
+  {
+    "type": "traffic_enforcement",
+    "time": "21:10",
+    "agency": "Bakersfield Police Department",
+    "area": "600 block 33rd Street",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Traffic unit requested for the 600 block of 33rd Street."
+  }
+]

@@ -127,7 +127,7 @@ class TestTranscribe:
         assert not T._in_overnight_window(outside, dt.date(2026, 8, 9), TZ)
 
     def test_transcribe_wav_slice_and_kwargs(self):
-        import numpy as np
+        np = pytest.importorskip("numpy")  # heavy PC-only dep; skip in CI
         from kern_overnight import transcribe as T
         captured = {}
 
@@ -306,7 +306,7 @@ class TestData:
     def test_builders_import_clean(self):
         import subprocess
         r = subprocess.run(
-            [str(ROOT / ".venv" / "Scripts" / "python.exe"),
+            [sys.executable,
              "-c", "import build.builders.map, build.builders.static_pages, "
                    "build.builders.overnight, build.builders.daily"],
             cwd=ROOT, capture_output=True, text=True, timeout=120)

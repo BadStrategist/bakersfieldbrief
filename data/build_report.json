@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-14T16:14:09-07:00",
+ "built_at": "2026-08-14T16:55:00-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 2183, column 34"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 6,
    "top_story": "2 arrested in Mexico plead no contest to voluntary manslaughter in 2019 Bakersfield homicide",
    "archive": "2026-08-14"
   },
@@ -112,7 +112,7 @@
    "alpr_total": 247,
    "kern_fires": 0,
    "aqi": 53,
-   "chp_week": 71
+   "chp_week": 77
   },
   "letters": {
    "published": 0

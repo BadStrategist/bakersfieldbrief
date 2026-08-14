@@ -222,3 +222,88 @@ def _chat(prompt: str, max_tokens: int | None = None,
 
 def normalize_whitespace(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
+
+
+# ---------------------------------------------------------------- brief full
+BRIEF_SYSTEM = (
+    "You are the morning writer for the Bakersfield Brief, a factual local "
+    "news digest for Bakersfield and Kern County, California. You write the "
+    "daily 1,000-1,500 word brief in the site's voice: warm, plain, "
+    "professional, neighborly but never folksy, never sensational. Rules: "
+    "(1) Summarize the news in your own unbiased words — do NOT copy "
+    "sentences from the articles; paraphrase. (2) Every fact must come from "
+    "the source material provided; never invent names, numbers, dates, or "
+    "quotes. (3) Cover: the overnight incident summary, the weather and "
+    "conditions, what the top local stories actually say, something good, "
+    "and what's coming up (meetings and events). (4) Plain prose paragraphs "
+    "only — no headings, no markdown, no bullet lists. (5) If an article's "
+    "full text is missing, summarize from its headline alone and do not "
+    "fabricate details. (6) Attribution: when a fact comes from a specific "
+    "outlet or agency, name it naturally in the sentence."
+)
+
+
+def fetch_article_texts(items: list[dict], n: int = 6,
+                        max_chars: int = 1600) -> list[dict]:
+    """Deterministic article fetch: trafilatura clean text for the first n
+    story URLs. Returns the items with 'text' added (or empty string on
+    any failure). Blocking but bounded (TIMEOUT per fetch)."""
+    try:
+        import trafilatura
+    except Exception:  # noqa: BLE001
+        return [dict(i, text="") for i in items]
+    from . import common
+    out = []
+    for it in items[:n]:
+        url = (it or {}).get("url", "")
+        text = ""
+        if url:
+            try:
+                html = common.fetch(url, timeout=TIMEOUT).text
+                txt = trafilatura.extract(
+                    html, include_comments=False, include_tables=False,
+                    favor_recall=False) or ""
+                text = normalize_whitespace(txt)[:max_chars]
+            except Exception:  # noqa: BLE001 - a failed article never blocks
+                text = ""
+        out.append(dict(it, text=text))
+    return out
+
+
+def brief_full(overnight_md: str, weather_prose: str, airnow: dict,
+               calfire: dict, story_items: list[dict], events: list[dict],
+               meetings_prose: str, good_prose: str,
+               today_label: str, max_words: int = 1400) -> str | None:
+    """The complete 1,000-1,500 word brief body in one LLM pass.
+
+    story_items: headline dicts with 'text' (full article text via
+    fetch_article_texts). Returns None (graceful) without a key."""
+    if not story_items and not overnight_md:
+        return None
+    head = "\n".join(
+        f"- {it.get('title', '?')} ({it.get('source', 'news')})"
+        + (f"\n  TEXT: {it['text']}" if it.get("text") else "")
+        for it in story_items if it.get("title"))
+    ev = "; ".join(
+        f"{e.get('name', 'an event')} at {e.get('venue', 'a local venue')}"
+        f" on {e.get('when', 'a date')}"
+        for e in (events or [])[:6])
+    prompt = (
+        f"Write today's Bakersfield Brief ({today_label}), {max_words} words "
+        "in total. Start with a 2-3 sentence warm morning greeting that "
+        "names the day's top story and the headline conditions. Then cover "
+        "in flowing prose: (1) The Kern Overnight summary, (2) today's "
+        "weather and conditions, (3) what the top local stories actually "
+        "say — 2-3 sentences each, paraphrased, (4) one or two upbeat "
+        "community notes, (5) what's coming up this week — meetings and "
+        "events. Use ONLY the material below.\n\n"
+        f"OVERNIGHT REPORT:\n{overnight_md[:3000]}\n\n"
+        f"WEATHER:\n{weather_prose[:1200]}\n\n"
+        f"AIR: AQI {airnow.get('aqi', 'n/a')} ({airnow.get('level', 'n/a')})"
+        f"; FIRES: {calfire.get('summary', 'n/a')}\n\n"
+        f"STORIES:\n{_truncate(head, limit=18000)}\n\n"
+        f"EVENTS: {ev[:1200]}\n\n"
+        f"MEETINGS: {meetings_prose[:1200]}\n\n"
+        f"GOOD NOTE: {good_prose[:800]}"
+    )
+    return _chat(prompt, max_tokens=2400, system=BRIEF_SYSTEM)

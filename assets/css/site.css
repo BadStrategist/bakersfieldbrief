@@ -178,6 +178,7 @@ a.mast-title:hover { color: var(--sign); }
   letter-spacing: .01em;
 }
 .hero .lede { font-size: 18px; color: var(--ink-soft); max-width: 720px; margin: 0 0 14px; }
+.hero .lede p { margin: 0 0 12px; }
 .hero .meta { font-family: var(--mono); font-size: 13.5px; color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 8px 20px; }
 .hero .meta .dot { color: var(--amber); }
 .updated { color: var(--sign); font-weight: 600; }

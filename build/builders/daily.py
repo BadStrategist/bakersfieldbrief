@@ -196,6 +196,41 @@ def _short_area(area: str) -> str:
     return a[:44]
 
 
+_INCIDENT_CAT = {
+    "dui": "traffic", "hit and run": "traffic", "hit_and_run": "traffic",
+    "traffic collision": "traffic", "traffic enforcement": "traffic",
+    "traffic_enforcement": "traffic", "vehicle vs pedestrian": "traffic",
+    "vehicle_vs_pedestrian": "traffic", "road rage": "police",
+    "road_rage": "police", "stolen vehicle": "police", "stolen_vehicle": "police",
+    "theft": "police", "welfare check": "police", "welfare_check": "police",
+    "welfare call": "police", "burglary": "police",
+    "suspicious person report": "police", "suspicious_person_report": "police",
+    "assault report": "police", "assault_report": "police",
+    "domestic call": "police", "domestic_call": "police", "shooting": "police",
+    "fire alarm": "fire", "fire_alarm": "fire", "structure fire": "fire",
+    "structure_fire": "fire", "vehicle fire": "fire", "vehicle_fire": "fire",
+    "grass fire": "fire", "grass_fire": "fire", "outside fire": "fire",
+    "outside_fire": "fire", "electrical fire": "fire", "electrical_fire": "fire",
+    "commercial fire alarm": "fire", "medical aid": "medical",
+    "medical_aid": "medical", "man down": "medical", "man_down": "medical",
+    "mental health crisis": "medical", "mental_health_crisis": "medical",
+}
+
+
+def _incident_cat(typ) -> str:
+    """Rich incident-type → category mapping (the brief's ko line was
+    collapsing everything to 'other' via the thin map-feed CATEGORY)."""
+    from .map import CATEGORY
+    t = str(typ or "").lower().strip()
+    if t in _INCIDENT_CAT:
+        return _INCIDENT_CAT[t]
+    if "_" in t:
+        t2 = t.replace("_", " ")
+        if t2 in _INCIDENT_CAT:
+            return _INCIDENT_CAT[t2]
+    return CATEGORY.get(t, "other")
+
+
 def _overnight_summary() -> dict | None:
     """Latest Kern Overnight data → {date, title, headline, count, cats, top}.
 
@@ -203,7 +238,6 @@ def _overnight_summary() -> dict | None:
     headline feeds the brief title and the section summary."""
     try:
         from .overnight import _published_reports
-        from .map import CATEGORY
         reps = _published_reports()
         if not reps:
             return None
@@ -217,8 +251,7 @@ def _overnight_summary() -> dict | None:
                 incs = []
         cats = {"fire": 0, "police": 0, "medical": 0, "traffic": 0, "other": 0}
         for i in incs:
-            c = CATEGORY.get((i.get("type") or "").lower(), "other")
-            cats[c] = cats.get(c, 0) + 1
+            cats[_incident_cat(i.get("type", ""))] += 1
         top = max(incs, key=lambda i: i.get("notability", 0)) if incs else None
         headline = None
         if top:
@@ -908,7 +941,7 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
     built = []
     rel = "../../"  # briefs/<date>/index.html is 2 levels below site root
     content = _article_lead(top, headlines, weather, airnow, calfire,
-                            escribe, events or [], today, rel)
+                            escribe, events or [], today, rel, ctx)
     content += _upcoming_meetings(rel, escribe, board, today)
 
     page = page_mod.render(
@@ -1026,8 +1059,54 @@ def _upcoming_meetings(rel, escribe, board, today) -> str:
 
 
 # ---------------------------------------------------------------- article lead
+def _meetings_prose(escribe) -> str:
+    """Compact plain-text meeting list for the LLM brief body."""
+    bits = []
+    for m in escribe.get("upcoming", []) or []:
+        iso = str(m.get("start_iso", ""))
+        bits.append(f"{m.get('name', 'Public meeting')} — {iso[:16].replace('T', ' ')}")
+    return "; ".join(bits[:8])
+
+
+def _para_html(prose: str) -> str:
+    """LLM prose → escaped <p> paragraphs (blank-line separated)."""
+    paras = [html.escape(p.strip()) for p in re.split(r"\n\s*\n", prose or "")
+             if p.strip()]
+    return "".join(f"<p>{p}</p>" for p in paras)
+
+
+def _brief_full_body(top, headlines, weather, airnow, calfire,
+                     events, escribe, today) -> str | None:
+    """The complete 1,000-1,500 word brief body (LLM, CI-only). None →
+    callers fall back to the short greeting + structured blocks."""
+    import os
+    if not os.environ.get("LLM_API_KEY"):
+        return None  # skip the article fetches entirely without a key
+    ko = _overnight_summary()
+    overnight_md = ""
+    if ko:
+        f = Path("data") / "overnight_reports" / f"{ko['date']}.md"
+        if f.exists():
+            try:
+                overnight_md = f.read_text(encoding="utf-8")[:3000]
+            except Exception:  # noqa: BLE001
+                overnight_md = ""
+    items = []
+    if top:
+        items.append(top)
+    for h in (headlines or [])[:5]:
+        items.append(h)
+    items = llm.fetch_article_texts(items, n=6)
+    wx = _weather_prose(weather, airnow, calfire)
+    good = re.sub(r"<[^>]+>", " ", _positive_block(headlines, events, today, ""))
+    return llm.brief_full(
+        overnight_md, wx, airnow or {}, calfire or {}, items,
+        events or [], _meetings_prose(escribe), good,
+        f"{today:%B} {today.day}, {today.year}" if hasattr(today, "day") else str(today))
+
+
 def _article_lead(top, headlines, weather, airnow, calfire,
-                  escribe, events, today, rel) -> str:
+                  escribe, events, today, rel, ctx) -> str:
     """Friendly, all-in-one 'Today's Brief' opening the daily article.
 
     Structure: warm greeting → weather block (figure) → top stories with
@@ -1041,11 +1120,23 @@ def _article_lead(top, headlines, weather, airnow, calfire,
     def esc(s):
         return html.escape(str(s or ""))
 
-    # ---- warm greeting (LLM when available, else friendly deterministic)
-    greeting = llm.friendly_brief(
-        (top or {}).get("title", ""), headlines, weather, airnow, calfire, events)
-    if not greeting:
-        greeting = _greeting_fallback(top, weather, airnow)
+    # ---- full brief body (LLM, CI) → else short greeting (LLM/deterministic)
+    full = _brief_full_body(top, headlines, weather, airnow, calfire,
+                            events, escribe, today)
+    if full:
+        greeting_html = _para_html(full)
+        ctx_brief_words = len(re.findall(r"[A-Za-z0-9'’-]+", full))
+    else:
+        greeting = llm.friendly_brief(
+            (top or {}).get("title", ""), headlines, weather, airnow, calfire, events)
+        if not greeting:
+            greeting = _greeting_fallback(top, weather, airnow)
+        greeting_html = _para_html(greeting)
+        ctx_brief_words = len(re.findall(r"[A-Za-z0-9'’-]+", greeting))
+    try:
+        ctx.build_report["brief_words"] = ctx_brief_words
+    except Exception:  # noqa: BLE001
+        pass
 
     # ---- weather block
     wx = _weather_prose(weather, airnow, calfire)
@@ -1063,7 +1154,7 @@ def _article_lead(top, headlines, weather, airnow, calfire,
     <div class="pagehead"><div class="hero">
       <p class="kicker">The Daily Brief</p>
       <h1>{esc((top or {}).get('title', f'The Bakersfield Brief — {_fmt_date(today)}'))}</h1>
-      <p class="lede">{greeting}</p>
+      <div class="lede">{greeting_html}</div>
     </div></div>
 
     {_newsletter_block()}

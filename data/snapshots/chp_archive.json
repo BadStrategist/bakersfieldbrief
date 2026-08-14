@@ -1070,6 +1070,16 @@
   "details": ""
  },
  {
+  "log_id": "260813BF0277",
+  "time": "Aug 13 2026  5:26PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Niles St / Shalimar Dr",
+  "area": "Bakersfield",
+  "lat": 35.375935,
+  "lon": -118.936384,
+  "details": ""
+ },
+ {
   "log_id": "260813BF0030",
   "time": "Aug 13 2026  5:49AM",
   "type": "MZP-Assist CT with Maintenance",
@@ -1077,6 +1087,16 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260813BF0288",
+  "time": "Aug 13 2026  5:52PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Nb I5 Jno Millux Rd",
+  "area": "Buttonwillow",
+  "lat": 35.183889,
+  "lon": -119.135278,
   "details": ""
  },
  {

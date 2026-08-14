@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-14T14:01:42-07:00",
+ "built_at": "2026-08-14T15:43:01-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -38,8 +38,8 @@
    "error": ""
   },
   "alpr": {
-   "ok": false,
-   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
+   "ok": true,
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -56,12 +56,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
+  "brief_words": 71,
   "daily": {
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Pet of the Week: Robbie",
+   "top_story": "Analysis: City of Bakersfield has invested over $100M in affordable housing developments since 2000",
    "archive": "2026-08-14"
   },
   "cityhall": {
@@ -110,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 49,
+   "aqi": 53,
    "chp_week": 71
   },
   "letters": {
@@ -142,7 +143,7 @@
    ]
   },
   "trackers": {
-   "alpr_total": 0,
+   "alpr_total": 252,
    "alpr_new_week": 0,
    "pages": [
     "surveillance",

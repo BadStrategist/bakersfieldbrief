@@ -2,3 +2,4 @@ requests>=2.31
 feedparser>=6.0
 pdfplumber>=0.11
 trafilatura
+pytest>=8

@@ -91,6 +91,12 @@ jobs:
             echo "no artifact changes"
           fi
 
+      # GATE: a broken build must never deploy. The offline suite covers the
+      # builders (incl. the brief lede double-escape regression test).
+      - name: Test suite (hard gate before deploy)
+        if: steps.gate.outputs.hour == '6' || github.event_name != 'schedule'
+        run: python -m pytest -q -o addopts="" --tb=short
+
       - name: Deploy to Cloudflare Pages
         if: steps.gate.outputs.hour == '6' || github.event_name != 'schedule'
         env:

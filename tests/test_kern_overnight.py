@@ -386,6 +386,10 @@ class TestData:
         assert "transcripts" in str(adds[0][-1])
         assert str(adds[0][-1]).endswith("2026-08-11.jsonl")
         assert any(c[:2] == ["git", "push"] for c in calls)
+        # transcript-only pushes must carry [skip ci] so they never trigger
+        # a site deploy (private-repo Actions-minute budget protection)
+        commits = [c for c in calls if c[:2] == ["git", "commit"]]
+        assert commits and "[skip ci]" in " ".join(str(x) for x in commits[0])
 
     def test_street_gazetteer_loaded(self):
         """The Bakersfield street gazetteer must exist, be large, and

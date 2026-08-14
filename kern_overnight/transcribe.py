@@ -224,8 +224,13 @@ def _ko_checkpoint(out_jsonl: Path, blocks_done: int, total: int, push: bool = F
                        cwd=root, check=True, capture_output=True, timeout=30)
         subprocess.run(
             ["git", "commit", "-q",
-             "-m", f"ko: transcript checkpoint ({blocks_done}/{total} blocks)"],
+             "-m", f"ko: transcript checkpoint ({blocks_done}/{total} blocks) "
+                   "[skip ci]"],
             cwd=root, capture_output=True, timeout=30)  # rc 1 = nothing staged, fine
+        # [skip ci] keeps transcript-only pushes from triggering a site deploy:
+        # the workflow runs only on content-bearing pushes (report/code/data),
+        # which saves the private-repo Actions-minute budget while keeping the
+        # per-block cloud pushes fully intact (Tier-2 crash safety unchanged).
         if push:
             r = subprocess.run(["git", "push", "-q", "origin", "main"],
                                cwd=root, capture_output=True, timeout=120)

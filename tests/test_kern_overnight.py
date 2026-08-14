@@ -439,3 +439,25 @@ class TestData:
         assert "structure fire" in types
         assert not any("plate" in i.get("summary", "") for i in incs)  # privacy
         assert incs[0]["notability"] == 4             # merged update raised it
+
+    def test_brief_lede_never_double_escapes(self, tmp_path, monkeypatch):
+        """REGRESSION (2026-08-14 live incident): the brief lede must never
+        render literal '&lt;p&gt;' / '&lt;strong&gt;' — the fallback greeting
+        is already HTML and must pass through unescaped."""
+        import datetime as dt
+        from build.builders import daily as D
+
+        monkeypatch.delenv("LLM_API_KEY", raising=False)
+        class Ctx:
+            build_report = {}
+
+        today = dt.date(2026, 8, 14)
+        top = {"title": "Analysis: City of Bakersfield has invested over $100M in affordable housing", "url": "https://example.com/1", "source": "KGET 17"}
+        weather = {"forecast": {"high": 92, "low": 66}, "alerts": []}
+        airnow, calfire = {}, {"summary": "2 in Kern"}
+        escribe = {"upcoming": []}
+        html_out = D._article_lead(top, [], weather, airnow, calfire,
+                                   escribe, [], today, "../../", Ctx())
+        assert "&lt;p&gt;" not in html_out, "lede double-escaped a <p> tag"
+        assert "&lt;strong&gt;" not in html_out, "lede double-escaped a <strong> tag"
+        assert "<strong>Good morning" in html_out, "fallback greeting must render as real HTML"

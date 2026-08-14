@@ -1124,15 +1124,18 @@ def _article_lead(top, headlines, weather, airnow, calfire,
     full = _brief_full_body(top, headlines, weather, airnow, calfire,
                             events, escribe, today)
     if full:
-        greeting_html = _para_html(full)
+        greeting_html = _para_html(full)  # LLM plain text → escaped <p>s
         ctx_brief_words = len(re.findall(r"[A-Za-z0-9'’-]+", full))
     else:
         greeting = llm.friendly_brief(
             (top or {}).get("title", ""), headlines, weather, airnow, calfire, events)
-        if not greeting:
-            greeting = _greeting_fallback(top, weather, airnow)
-        greeting_html = _para_html(greeting)
-        ctx_brief_words = len(re.findall(r"[A-Za-z0-9'’-]+", greeting))
+        if greeting:
+            greeting_html = _para_html(greeting)  # LLM plain text → escaped
+            ctx_brief_words = len(re.findall(r"[A-Za-z0-9'’-]+", greeting))
+        else:
+            greeting_html = _greeting_fallback(top, weather, airnow)  # already HTML
+            ctx_brief_words = len(re.findall(
+                r"[A-Za-z0-9'’-]+", re.sub(r"<[^>]+>", " ", greeting_html)))
     try:
         ctx.build_report["brief_words"] = ctx_brief_words
     except Exception:  # noqa: BLE001

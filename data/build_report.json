@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-14T16:09:07-07:00",
+ "built_at": "2026-08-14T16:14:09-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -81,7 +81,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 11,
+    "bakersfield-nw": 12,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12

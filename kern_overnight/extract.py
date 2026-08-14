@@ -1,131 +1,163 @@
 #!/usr/bin/env python3
-"""Stage 3 — EXTRACT: transcript JSONL -> structured incident JSON (LLM pass 1).
+"""Deterministic incident extraction from Kern Overnight transcript digests.
 
-Chunks the transcript (~30k chars per call), runs the extraction prompt with
-all privacy HARD RULEs, dedupes incidents across chunk boundaries by
-time+type+area, and writes incidents/DATE.json (append-only dataset)."""
+The LLM phase-2 agent currently reads the digest and writes incidents from
+scratch (the token- and time-heavy step). This module does the mechanical
+80% with rules: type taxonomy, agency, area (via the street gazetteer),
+notability heuristic, disposition, and dedupe. The agent then REVIEWS the
+draft instead of writing it — the hybrid pattern.
+
+Output incidents match the site schema:
+  {type, time, agency, area, notability 1-5, disposition, summary}
+
+Usage:
+  python -c "from kern_overnight.extract import extract; ..."
+"""
 from __future__ import annotations
 
-import datetime as dt
-import json
-import sys
+import re
 from pathlib import Path
 
-from . import llm
+# keyword rule → display type (first match wins; order matters)
+TYPE_RULES: list[tuple[re.Pattern, str]] = [
+    (re.compile(r"\bstructure fire\b"), "structure fire"),
+    (re.compile(r"\bvehicle fire\b"), "vehicle fire"),
+    (re.compile(r"\bgrass fire\b"), "grass fire"),
+    (re.compile(r"\bvegetation fire\b"), "vegetation fire"),
+    (re.compile(r"\boutside fire\b"), "outside fire"),
+    (re.compile(r"\belectrical fire\b"), "electrical fire"),
+    (re.compile(r"\bfire alarm\b"), "commercial fire alarm"),
+    (re.compile(r"\bfire\b"), "fire"),
+    (re.compile(r"\bshooting\b"), "shooting"),
+    (re.compile(r"\bstabbing\b|\bassault\b"), "assault with a weapon"),
+    (re.compile(r"\bburglary\b"), "burglary"),
+    (re.compile(r"\bhit[- ]and[- ]run\b"), "hit and run"),
+    (re.compile(r"\bdomestic\b"), "domestic call"),
+    (re.compile(r"\breckless\b"), "reckless driver"),
+    (re.compile(r"\bfoot pursuit\b"), "foot pursuit"),
+    (re.compile(r"\bwarrant\b"), "warrant service"),
+    (re.compile(r"\bprobation\b"), "probation check"),
+    (re.compile(r"\bsuspicious\b"), "suspicious person report"),
+    (re.compile(r"\bstolen firear"), "stolen firearms search"),
+    (re.compile(r"\bcode 33\b|\bofficer assist\b"), "officer assist"),
+    (re.compile(r"\bmedical aid\b|\bmedical\b|\bambulance\b"), "medical aid"),
+    (re.compile(r"\bman down\b"), "man down"),
+    (re.compile(r"\bmental health\b|\bsuicidal\b"), "mental health crisis"),
+    (re.compile(r"\bwelfare\b"), "welfare call"),
+    (re.compile(r"\btheft\b|\bstolen\b"), "burglary"),
+    (re.compile(r"\bpedestrian\b|\bvehicle vs\b"), "vehicle vs pedestrian"),
+    (re.compile(r"\bcollision\b|\bcrash\b|\baccident\b"), "traffic collision"),
+]
 
-CHUNK_CHARS = 30_000
-SYSTEM = (
-    "You are the overnight-desk extraction engine for 'The Kern Overnight', a "
-    "scanner-based morning brief for Bakersfield / Kern County, CA. You turn raw "
-    "police/fire/EMS scanner transcripts into a structured incident list. You are "
-    "ruthlessly factual: if a transmission is garbled or unclear, you leave the "
-    "incident OUT. Missing an incident is acceptable; inventing one is not."
-)
+AGENCY_RULES: list[tuple[re.Pattern, str]] = [
+    (re.compile(r"\bkern county fire\b|\bkcfd\b"), "Kern County Fire Department"),
+    (re.compile(r"\bsheriff\b|\bkcco\b"), "Kern County Sheriff's Office"),
+    (re.compile(r"\bbpd\b|\bpolice\b"), "Bakersfield Police Department"),
+    (re.compile(r"\bchp\b|\bhighway patrol\b"), "California Highway Patrol"),
+    (re.compile(r"\bhall\b|\bambulance\b"), "Hall Ambulance"),
+]
 
+NOTABILITY_RULES: list[tuple[int, re.Pattern]] = [
+    (5, re.compile(r"\bhelicopter\b|\bair attack\b|\bdozer\b|\b50% involvement\b")),
+    (4, re.compile(r"\bfully involved\b|\bmutual aid\b|\bmultiple (?:units|engines)\b")),
+    (3, re.compile(r"\bstructure\b|\bworking fire\b|\bcode 3\b")),
+    (2, re.compile(r"\bvehicle\b|\bpedestrian\b|\binjury\b")),
+]
 
-def _chunk_rows(rows: list[dict], limit: int = CHUNK_CHARS) -> list[list[dict]]:
-    chunks: list[list[dict]] = []
-    cur: list[dict] = []
-    size = 0
-    for r in rows:
-        size += len(r.get("text", "")) + 40
-        if cur and size > limit:
-            chunks.append(cur)
-            cur, size = [r], len(r.get("text", "")) + 40
-        else:
-            cur.append(r)
-    if cur:
-        chunks.append(cur)
-    return chunks
+DISP_RULES: list[tuple[str, re.Pattern]] = [
+    ("cleared", re.compile(r"\bcode 4\b|\bcleared\b|\bunfounded\b")),
+    ("cancelled", re.compile(r"\bcancell?ed\b|\bdisregard\b")),
+    ("active", re.compile(r"\bcode 3\b|\ben route\b|\bresponding\b")),
+]
 
+# rows that are almost never incidents (radio chatter / coordination)
+_SKIP_TEXT = re.compile(
+    r"\btest\b|\bradio check\b|\b10-?9\b|\bcode 33\b.*\bclear\b|"
+    r"\bpatrol(?:ing)?\b|\bchecking (?:on|the) (?:alley|area)\b|"
+    r"\bphone (?:number|calls?)\b|\b(?:cell|work) phone\b", re.I)
 
-def _extract_chunk(rows: list[dict]) -> list[dict]:
-    transcript = "\n".join(
-        f"{r.get('time_local', '??:??')} [{r.get('source_file', '')}] {r.get('text', '')}"
-        for r in rows)
-    prompt = (
-        "Below is a transcript of last night's police/fire/EMS scanner traffic "
-        "for Bakersfield and Kern County. Extract every distinct incident into a "
-        "JSON object with one key 'incidents' holding a list. Each incident:\n"
-        "{\"time\": \"HH:MM (24h local)\", \"agency\": \"BPD|KCSO|KCFD|EMS|CHP|Other|Unknown\", "
-        "\"type\": \"short incident type\", \"area\": \"generalized location\", "
-        "\"summary\": \"1-2 factual sentences\", \"disposition\": \"outcome if heard, else unknown\", "
-        "\"notability\": 1-5, \"supporting_quotes\": [\"short transcript fragments\"]}\n\n"
-        "HARD RULES — non-negotiable:\n"
-        "1. Never include names of any person, license plates, or callback numbers.\n"
-        "2. Never include patient details or anything from ambulance-to-hospital traffic.\n"
-        "3. Generalize all locations to block level or cross streets. Never an exact "
-        "address, apartment/unit number, or a business name that identifies a private "
-        "residence or victim.\n"
-        "4. Only extract incidents supported by clear, coherent transmissions. Garbled "
-        "or low-confidence audio is SKIPPED, never guessed at. A missing incident is "
-        "acceptable; an invented one is not.\n"
-        "5. Ignore radio checks, statuses with no incident, routine traffic stops with "
-        "no notable outcome, and test counts.\n"
-        "6. No speculation about guilt, cause, or identity — only what was dispatched "
-        "and what units reported.\n"
-        "7. Merge all transmissions about one event into a single incident.\n"
-        "Notability: 5=major, 4=significant, 3=newsworthy routine, 2=minor, 1=barely a line.\n\n"
-        f"TRANSCRIPT:\n{transcript[:CHUNK_CHARS]}"
-    )
-    data = llm.chat_json(prompt, SYSTEM)
-    incidents = data.get("incidents", [])
-    if not isinstance(incidents, list):
-        return []
-    return [i for i in incidents if isinstance(i, dict)]
-
-
-def _dedupe(incidents: list[dict]) -> list[dict]:
-    seen = {}
-    out = []
-    for inc in incidents:
-        key = (str(inc.get("time", "")), str(inc.get("type", "")).lower(),
-               str(inc.get("area", "")).lower())
-        if key in seen:
-            # merge: prefer the richer summary/disposition, union quotes
-            prev = seen[key]
-            for f in ("summary", "disposition"):
-                if len(str(inc.get(f, ""))) > len(str(prev.get(f, ""))):
-                    prev[f] = inc[f]
-            qs = set(prev.get("supporting_quotes", [])) | set(inc.get("supporting_quotes", []))
-            prev["supporting_quotes"] = sorted(qs)
-        else:
-            seen[key] = inc
-            out.append(inc)
-    return out
+# privacy: rows carrying names/numbers/plates are skipped as sources
+_PRIVACY = re.compile(
+    r"\b\d{3}[-.) ]?\d{3}[-.) ]?\d{4}\b|"           # phone
+    r"\b(?=[A-Z0-9]*\d)[A-Z0-9]{5,7}\b|"            # plate-like (needs a digit)
+    r"\bsocial security\b|born (?:in )?\d|"
+    r"\bpatient(?: name)? is\b|victim(?:'s)? name\b", re.I)
 
 
-def extract(transcript_path: Path, out_path: Path) -> list[dict]:
-    if not transcript_path.exists():
-        raise FileNotFoundError(f"transcript missing: {transcript_path}")
-    rows = []
-    for line in transcript_path.read_text(encoding="utf-8").splitlines():
-        try:
-            rows.append(json.loads(line))
-        except json.JSONDecodeError:
-            continue
-    if not rows:
-        raise RuntimeError("empty transcript — nothing to extract (refusing empty brief)")
-    all_inc = []
-    for chunk in _chunk_rows(rows):
-        all_inc += _extract_chunk(chunk)
-    deduped = _dedupe(all_inc)
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    # append-only dataset: merge with any existing file
-    existing = []
-    if out_path.exists():
-        try:
-            existing = json.loads(out_path.read_text(encoding="utf-8"))
-        except json.JSONDecodeError:
-            existing = []
-    merged = _dedupe(existing + deduped)
-    out_path.write_text(json.dumps(merged, indent=1, ensure_ascii=False), encoding="utf-8")
+def _extract_row(row: dict, streets: list[str]) -> dict | None:
+    """One digest row → incident dict, or None if it's not incident material."""
+    text = row.get("text", "")
+    if len(text) < 25:
+        return None
+    if _SKIP_TEXT.search(text) or _PRIVACY.search(text):
+        return None
+
+    typ = next((t for p, t in TYPE_RULES if p.search(text)), None)
+    if not typ:
+        return None
+    agency = next((a for p, a in AGENCY_RULES if p.search(text)), "Dispatch")
+    notability = max((n for n, p in NOTABILITY_RULES if p.search(text)),
+                     default=1)
+    disp = next((d for d, p in DISP_RULES if p.search(text)), "active")
+
+    area = ""
+    from . import streetcheck as SC  # local import: gazetteer is heavy
+    res = SC.scan(text, streets)
+    for status, cand, detail in res:
+        if status == "MATCH":
+            area = detail
+            break
+        if status == "FUZZY":
+            area = detail.split(" -> ")[-1].split(" (")[0]
+            break
+    if not area:
+        area = "Bakersfield"
+
+    return {
+        "type": typ,
+        "time": row.get("time_local", ""),
+        "agency": agency,
+        "area": area,
+        "notability": notability,
+        "disposition": disp,
+        "summary": f"{typ}, {area} ({row.get('time_local', '')})",
+        "_src": row.get("text", "")[:120],
+    }
+
+
+def _dedupe(incs: list[dict], window_min: int = 15) -> list[dict]:
+    """Merge same-type+area incidents within the window; keep highest
+    notability and earliest time."""
+    merged: list[dict] = []
+    for inc in sorted(incs, key=lambda i: (i["time"], -i["notability"])):
+        absorbed = False
+        for m in merged:
+            if m["type"] != inc["type"] or m["area"] != inc["area"]:
+                continue
+            try:
+                t1 = int(m["time"].split(":")[0]) * 60 + int(m["time"].split(":")[1])
+                t2 = int(inc["time"].split(":")[0]) * 60 + int(inc["time"].split(":")[1])
+            except (ValueError, IndexError):
+                continue
+            if abs(t1 - t2) <= window_min:
+                m["notability"] = max(m["notability"], inc["notability"])
+                m["_n"] = m.get("_n", 1) + 1
+                absorbed = True
+                break
+        if not absorbed:
+            inc["_n"] = 1
+            merged.append(inc)
     return merged
 
 
-if __name__ == "__main__":
-    d = dt.date.fromisoformat(sys.argv[1]) if len(sys.argv) > 1 else dt.date.today()
-    t = Path("transcripts") / f"{d.isoformat()}.jsonl"
-    o = Path("incidents") / f"{d.isoformat()}.json"
-    incs = extract(t, o)
-    print(f"{len(incs)} incidents → {o}")
+def extract(rows: list[dict], streets: list[str] | None = None) -> list[dict]:
+    """Digest rows → deduped incident list (LLM-ready draft)."""
+    if streets is None:
+        from . import streetcheck as SC
+        streets = SC.load_streets()
+    incs = []
+    for r in rows:
+        inc = _extract_row(r, streets)
+        if inc:
+            incs.append(inc)
+    return _dedupe(incs)

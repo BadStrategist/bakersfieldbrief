@@ -413,3 +413,25 @@ class TestData:
         # radio noise must not surface as candidates
         assert not any("two point" in c.lower() or "copy" in c.lower()
                        for _, c, _ in results)
+
+    def test_extractor_privacy_and_dedupe(self):
+        """Deterministic extractor: privacy rows are dropped, same-type
+        repeats within the window merge, distinct incidents stay."""
+        from kern_overnight import extract as EX
+        streets = ["Chester Avenue", "White Lane"]
+        rows = [
+            {"time_local": "02:00", "text": "vehicle fire on the 2800 block "
+             "of West Chester Avenue, engine 42 responding"},
+            {"time_local": "02:05", "text": "update on that vehicle fire at "
+             "Chester Avenue, now fully involved"},
+            {"time_local": "03:00", "text": "black 2012 sedan plate 4ABC123 "
+             "speeding southbound on White Lane"},
+            {"time_local": "04:00", "text": "structure fire at 100 block of "
+             "White Lane, multiple engines"},
+        ]
+        incs = EX.extract(rows, streets)
+        types = [i["type"] for i in incs]
+        assert types.count("vehicle fire") == 1       # deduped
+        assert "structure fire" in types
+        assert not any("plate" in i.get("summary", "") for i in incs)  # privacy
+        assert incs[0]["notability"] == 4             # merged update raised it

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-15T12:01:21-07:00",
+ "built_at": "2026-08-15T13:52:49-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 2183, column 34"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 5,
    "top_story": "Most Wanted: Aug, 14, 2026",
    "archive": "2026-08-15"
   },
@@ -94,7 +94,7 @@
   "grapevine": {
    "i5": "RESTRICTIONS",
    "i5_pass": "OPEN",
-   "log_entries": 41
+   "log_entries": 42
   },
   "events": {
    "groups": {
@@ -110,8 +110,8 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 40,
-   "chp_week": 89
+   "aqi": 52,
+   "chp_week": 94
   },
   "letters": {
    "published": 0

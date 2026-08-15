@@ -1050,6 +1050,46 @@
   "details": ""
  },
  {
+  "log_id": "260815BF0213",
+  "time": "Aug 15 2026  1:16PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "2806-2829 Sr119",
+  "area": "Bakersfield",
+  "lat": 35.266872,
+  "lon": -119.034054,
+  "details": ""
+ },
+ {
+  "log_id": "260815BF0214",
+  "time": "Aug 15 2026  1:32PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb Sr99 Jso Kimberlina Rd",
+  "area": "Bakersfield",
+  "lat": 35.558477,
+  "lon": -119.197166,
+  "details": ""
+ },
+ {
+  "log_id": "260815BF0221",
+  "time": "Aug 15 2026  1:46PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jso Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.937778,
+  "lon": -118.930556,
+  "details": ""
+ },
+ {
+  "log_id": "260815BF0223",
+  "time": "Aug 15 2026  1:50PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "13818-13927 Sr43",
+  "area": "Bakersfield",
+  "lat": 35.688261,
+  "lon": -119.330629,
+  "details": ""
+ },
+ {
   "log_id": "260815BF0062",
   "time": "Aug 15 2026  5:32AM",
   "type": "1180-Trfc Collision-Major Inj",
@@ -1067,6 +1107,16 @@
   "area": "Fort Tejon",
   "lat": 34.90261,
   "lon": -118.923177,
+  "details": ""
+ },
+ {
+  "log_id": "260815BF0174",
+  "time": "Aug 15 2026 11:24AM",
+  "type": "DOT-Request CalTrans Notify",
+  "location": "Sb I5 Jso Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.833056,
+  "lon": -118.865833,
   "details": ""
  },
  {

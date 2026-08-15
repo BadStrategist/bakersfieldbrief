@@ -172,9 +172,9 @@ def _hub(es: dict, board: dict, meeting_pages: list[dict], built_iso: str, rel: 
             href = f"{rel}city-hall/meetings/{m['slug']}/"
             cards.append(f"""
         <a class="card" href="{href}">
-          <span class="tag {'amber' if m['watched'] else 'green'}">{'Flock/ALPR flagged' if m['watched'] else 'agenda posted'}</span>
+          <span class="tag {'amber' if m['watched'] else ('green' if m['items'] else 'grey')}">{'Flock/ALPR flagged' if m['watched'] else ('agenda posted' if m['items'] else 'agenda pending')}</span>
           <h3>{html.escape(m['name'])}</h3>
-          <p>{html.escape((m.get('start_iso') or '').replace('T', ' · '))} &mdash; {m['items']} agenda items</p>
+          <p>{html.escape((m.get('start_iso') or '').replace('T', ' · '))} &mdash; {f"{m['items']} agenda items" if m['items'] else 'Agenda not yet posted'}</p>
           <span class="card-go">View agenda preview</span>
         </a>""")
         city_cards = '<div class="grid cols-2">' + "".join(cards) + "</div>"

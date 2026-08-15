@@ -142,15 +142,20 @@ def _sitemap():
     for p in common.SITE.rglob("index.html"):
         rel = p.relative_to(common.SITE).as_posix()
         rel = rel[: -len("index.html")]
-        urls.append(f"https://bakersfieldbrief.com/{rel}")
-    urls += ["https://bakersfieldbrief.com/"]
+        urls.append((f"https://bakersfieldbrief.com/{rel}",
+                     dt.date.fromtimestamp(p.stat().st_mtime).isoformat()))
+    urls.append(("https://bakersfieldbrief.com/", dt.date.today().isoformat()))
     urls = sorted(set(urls))
     xml = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    for u in urls:
-        xml.append(f"  <url><loc>{u}</loc></url>")
+    for u, last in urls:
+        xml.append(f"  <url><loc>{u}</loc><lastmod>{last}</lastmod></url>")
     xml.append("</urlset>")
     common.write(common.SITE / "sitemap.xml", "\n".join(xml) + "\n")
+
+    # Cloudflare Pages _redirects — guessable URLs a human might type.
+    common.write(common.SITE / "_redirects",
+                 "/places/east-bakersfield/*  /places/bakersfield-east/:splat  301\n")
 
 
 if __name__ == "__main__":

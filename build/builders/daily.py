@@ -65,7 +65,7 @@ def build(ctx, sources: dict) -> list[str]:
         {
             "@context": "https://schema.org",
             "@type": "BlogPosting",
-            "headline": (top["title"] if top else f"Bakersfield Daily Brief — {_fmt_date(today)}"),
+            "headline": f"The Bakersfield Brief — {_fmt_date(today)}",
             "datePublished": built_iso,
             "dateModified": built_iso,
             "isAccessibleForFree": True,
@@ -342,11 +342,10 @@ def _transcription_note() -> str:
 
 
 def _big_title(top, today) -> str:
-    """Professional brief title: the big story headline + brand + date."""
-    if top and (top.get("title") or "").strip():
-        return (f"{top['title'].strip()} — The Bakersfield Brief, "
-                f"{_fmt_date(today)}")
-    return f"Bakersfield Daily Brief — {_fmt_date(today)}"
+    """Own-brand title — the site is the entity, never a syndicated
+    headline. The hero still shows the top story; the <title>/og:title/
+    schema say who we are."""
+    return f"The Bakersfield Brief — {_fmt_date(today)}"
 
 
 def _overnight_section(rel: str) -> str:

@@ -20,12 +20,15 @@ from .. import common
 BASE = "https://news.google.com/rss/search?hl=en-US&gl=US&ceid=US:en&q={q}"
 
 # slug -> query (keep in sync with PLACES in build/builders/places.py)
+# Every query is pinned to the LOCAL outlets so wire-copy (Japan floods,
+# Strait of Hormuz) can never leak onto a neighborhood page.
+_LOCAL = "site:kget.com OR site:turnto23.com OR site:bakersfieldnow.com"
 GN_QUERIES = {
-    "tehachapi": "tehachapi when:3d",
-    "bakersfield-nw": "northwest bakersfield OR oildale when:3d",
-    "bakersfield-sw": "southwest bakersfield when:3d",
-    "bakersfield-east": "east bakersfield when:3d",
-    "bakersfield-central": "downtown bakersfield when:3d",
+    "tehachapi": f"({_LOCAL}) (tehachapi) when:3d",
+    "bakersfield-nw": f"({_LOCAL}) (northwest bakersfield OR oildale) when:3d",
+    "bakersfield-sw": f"({_LOCAL}) (southwest bakersfield) when:3d",
+    "bakersfield-east": f"({_LOCAL}) (east bakersfield) when:3d",
+    "bakersfield-central": f"({_LOCAL}) (downtown bakersfield) when:3d",
 }
 
 # junk domains / patterns to drop (widgets, national PR syndication)

@@ -1,0 +1,137 @@
+[
+  {
+    "type": "vegetation_fire",
+    "time": "02:21",
+    "agency": "Kern County Fire Department",
+    "area": "Nord Avenue & Hageman Road, northwest Bakersfield",
+    "notability": 4,
+    "disposition": "contained",
+    "summary": "Reports of flames at Nord Avenue and Hageman Road drew Engine 67, Engine 65, Truck 65 and Battalion 6. Crews found about a half-acre of brush and grass burning in a field — a spot the reporting party said is known for bonfires — and called for one additional engine. No structures involved; an Edwards Air Force Base water tender was offered as backup."
+  },
+  {
+    "type": "vehicle_pursuit",
+    "time": "22:54",
+    "agency": "Bakersfield Police Department",
+    "area": "Morning Drive, between College and Highland",
+    "notability": 3,
+    "disposition": "searching",
+    "summary": "A vehicle on the roadway near Morning Drive fled into a dirt field between College and Highland, with Air 1 called up and multiple off-road vehicles reported in the area. Broadcast citywide as an attempt-to-locate; no arrest announced on the air."
+  },
+  {
+    "type": "suspicious_circumstances",
+    "time": "23:28",
+    "agency": "Bakersfield Police Department",
+    "area": "furniture store parking lot, Bakersfield",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Caller reported 150 to 250 vehicles gathering in a furniture store parking lot, prompting multiple units and an Air 1 request. No further update was heard before the feed moved on."
+  },
+  {
+    "type": "disturbance",
+    "time": "22:35",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield (location garbled on the air)",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "A 415 involving five to six subjects, with a female in a yellow shirt and shorts reported displaying a taser. Units were responding as the feed moved on."
+  },
+  {
+    "type": "suspicious_circumstances",
+    "time": "00:53",
+    "agency": "Kern County Sheriff's Office",
+    "area": "Highway 119, west of Bakersfield",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "A caller in a white van west of the AM/PM on Highway 119 reported subjects attempting to attack him. Deputies were checking the area; possible 9-18 broadcast."
+  },
+  {
+    "type": "disturbance",
+    "time": "22:26",
+    "agency": "Bakersfield Police Department",
+    "area": "Niles Street, east Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "415 and a reported theft at the Dollar General on Niles Street, with transient subjects described. Units responded."
+  },
+  {
+    "type": "disturbance",
+    "time": "00:44",
+    "agency": "Bakersfield Police Department",
+    "area": "Goodman Street",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Open 911 line with a verbal disturbance in the background at a Goodman Street location; callers back on the line requesting law enforcement. No further update heard."
+  },
+  {
+    "type": "disturbance",
+    "time": "01:04",
+    "agency": "Bakersfield Police Department",
+    "area": "Rosedale Highway",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Multiple subjects arguing on Rosedale Highway, with one intoxicated subject wanting to ride a bike home. Units responded."
+  },
+  {
+    "type": "structure_fire",
+    "time": "01:18",
+    "agency": "Bakersfield Fire Department",
+    "area": "East 19th Street",
+    "notability": 2,
+    "disposition": "investigating",
+    "summary": "Smoke from an air conditioner at an East 19th Street address drew a heavy response — Engine 2, Engine 41, Truck 41, Battalion 1 and Rescue 2."
+  },
+  {
+    "type": "vandalism",
+    "time": "21:40",
+    "agency": "Bakersfield Police Department",
+    "area": "residence, Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Vandalism in progress at a residence — a neighbor and the homeowner both called in a female on the back porch damaging items. Units responded."
+  },
+  {
+    "type": "reckless_driver",
+    "time": "23:41",
+    "agency": "Bakersfield Police Department",
+    "area": "23rd Street & Chester Avenue",
+    "notability": 2,
+    "disposition": "searching",
+    "summary": "Gray Jeep Wrangler reported driving recklessly through 23rd and Chester Avenue, last seen eastbound."
+  },
+  {
+    "type": "suspicious_vehicle",
+    "time": "02:38",
+    "agency": "Bakersfield Police Department",
+    "area": "Bernard Street at Jefferson Park",
+    "notability": 2,
+    "disposition": "checking",
+    "summary": "Yellow sedan at Bernard Street and Jefferson Park with windows open and fumes reported coming from it; caller concerned. Units checked the vehicle."
+  },
+  {
+    "type": "suspicious_person",
+    "time": "01:43",
+    "agency": "Bakersfield Police Department",
+    "area": "19th Street, Metro area",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Male in a baseball cap, white sweatshirt and black shorts reported set up on a building in the 1200 block of 19th Street. Units responded."
+  },
+  {
+    "type": "vegetation_fire",
+    "time": "21:25",
+    "agency": "Kern County Fire Department",
+    "area": "rural Kern County",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Outside fire in a rural area of the county drew Engine 46. Street names garbled on the air; no further update heard."
+  },
+  {
+    "type": "welfare_check",
+    "time": "01:50",
+    "agency": "Bakersfield Police Department",
+    "area": "Chester Avenue, downtown",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Welfare check at the downtown bus terminal for a female in her 50s dressed in all black with belongings in a shopping cart. Units responded."
+  }
+]

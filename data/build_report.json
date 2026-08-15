@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-14T17:57:45-07:00",
+ "built_at": "2026-08-14T18:18:24-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 2183, column 34"
   },
   "isabella": {
    "ok": true,
@@ -56,13 +56,13 @@
  },
  "section": {
   "_digest_meta": "llm",
-  "brief_words": 716,
+  "brief_words": 978,
   "daily": {
    "news_headlines": 50,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "Bakersfield PD seeking help locating missing 74-year-old",
+   "chp_new": 0,
+   "top_story": "Kern County officials to inform public on local ICE activity during community forum Aug. 25",
    "archive": "2026-08-14"
   },
   "cityhall": {
@@ -81,7 +81,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 9,
+    "bakersfield-nw": 8,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -94,7 +94,7 @@
   "grapevine": {
    "i5": "RESTRICTIONS",
    "i5_pass": "OPEN",
-   "log_entries": 36
+   "log_entries": 37
   },
   "events": {
    "groups": {

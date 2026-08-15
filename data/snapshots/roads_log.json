@@ -1,5 +1,12 @@
 [
  {
+  "ts": "2026-08-15",
+  "route": "i5",
+  "route_name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
+  "from": "CLOSED",
+  "to": "RESTRICTIONS"
+ },
+ {
   "ts": "2026-08-14",
   "route": "i5",
   "route_name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",

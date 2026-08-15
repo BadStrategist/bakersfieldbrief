@@ -1,125 +1,5 @@
 [
  {
-  "log_id": "260807BF0236",
-  "time": "Aug  7 2026  1:37PM",
-  "type": "1125-Traffic Hazard",
-  "location": "I5 N / West Escape Ramp",
-  "area": "Fort Tejon",
-  "lat": 34.918056,
-  "lon": -118.923889,
-  "details": ""
- },
- {
-  "log_id": "260807BF0024",
-  "time": "Aug  7 2026  1:56AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260807BF0265",
-  "time": "Aug  7 2026  2:38PM",
-  "type": "FIRE-Report of Fire",
-  "location": "I5 N / GORMAN OFR",
-  "area": "Fort Tejon",
-  "lat": 34.79456,
-  "lon": -118.847656,
-  "details": ""
- },
- {
-  "log_id": "260807BF0271",
-  "time": "Aug  7 2026  2:52PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "11809 Edison Hwy",
-  "area": "Bakersfield",
-  "lat": 35.347826,
-  "lon": -118.873053,
-  "details": ""
- },
- {
-  "log_id": "260807BF0273",
-  "time": "Aug  7 2026  2:57PM",
-  "type": "FIRE-Report of Fire",
-  "location": "I5 N / Gorman Ofr",
-  "area": "Fort Tejon",
-  "lat": 34.79456,
-  "lon": -118.847656,
-  "details": ""
- },
- {
-  "log_id": "260807BF0319",
-  "time": "Aug  7 2026  4:03PM",
-  "type": "SIG Alert",
-  "location": "I5 N / Gorman Ofr",
-  "area": "Fort Tejon",
-  "lat": 34.79456,
-  "lon": -118.847656,
-  "details": ""
- },
- {
-  "log_id": "260807BF0046",
-  "time": "Aug  7 2026  6:26AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Eb Sr58 Jwo S Mount Vernon Ave",
-  "area": "Bakersfield",
-  "lat": 35.3525,
-  "lon": -118.970278,
-  "details": ""
- },
- {
-  "log_id": "260807BF0050",
-  "time": "Aug  7 2026  6:40AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Sb I5 At Laval Rd",
-  "area": "Fort Tejon",
-  "lat": 34.985833,
-  "lon": -118.945278,
-  "details": ""
- },
- {
-  "log_id": "260807BF0455",
-  "time": "Aug  7 2026  8:36PM",
-  "type": "1180-Trfc Collision-Major Inj",
-  "location": "Wb Sr178 At Sr204",
-  "area": "Bakersfield",
-  "lat": 35.381944,
-  "lon": -119.01,
-  "details": ""
- },
- {
-  "log_id": "260807BF0483",
-  "time": "Aug  7 2026  9:52PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Eb Sr58 At Hart Flat Rd",
-  "area": "Bakersfield",
-  "lat": 35.240556,
-  "lon": -118.586944,
-  "details": ""
- },
- {
-  "log_id": "260807BF0486",
-  "time": "Aug  7 2026 10:04PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Kernville Rd / Kern River Dr",
-  "area": "Bakersfield",
-  "lat": 35.755327,
-  "lon": -118.423509,
-  "details": ""
- },
- {
-  "log_id": "260807BF0208",
-  "time": "Aug  7 2026 12:37PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "22434-22569 Rancheria Rd",
-  "area": "Bakersfield",
-  "lat": 35.518617,
-  "lon": -118.726789,
-  "details": ""
- },
- {
   "log_id": "260808BF0338",
   "time": "Aug  8 2026  3:12PM",
   "type": "SILVER-Missing Elderly",
@@ -1140,6 +1020,26 @@
   "details": ""
  },
  {
+  "log_id": "260814BF0534",
+  "time": "Aug 14 2026 11:42PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Nb Sr99 Jso Sr65 Ofr",
+  "area": "Bakersfield",
+  "lat": 35.431667,
+  "lon": -119.072778,
+  "details": ""
+ },
+ {
+  "log_id": "260814BF0537",
+  "time": "Aug 14 2026 11:58PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Edison Hwy / Oswell St",
+  "area": "Bakersfield",
+  "lat": 35.366942,
+  "lon": -118.950538,
+  "details": ""
+ },
+ {
   "log_id": "260814BF0004",
   "time": "Aug 14 2026 12:14AM",
   "type": "TADV-Traffic Advisory",
@@ -1147,6 +1047,26 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260815BF0007",
+  "time": "Aug 15 2026 12:05AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260815BF0009",
+  "time": "Aug 15 2026 12:07AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sierra Hwy / I5 S Sr14 Con",
+  "area": "Newhall",
+  "lat": 34.338689,
+  "lon": -118.506807,
   "details": ""
  }
 ]

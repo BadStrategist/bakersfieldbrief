@@ -615,12 +615,8 @@ def _news_groups(headlines: list[dict], limit: int = 12) -> str:
         return ("<p class='note'>No headlines were fetched this build &mdash; the local "
                 "RSS feeds were unreachable. This block returns with tomorrow&rsquo;s build.</p>")
 
-    def src_chip(h: dict) -> str:
-        return f'<span class="src">{html.escape(h.get("source", "news"))}</span>'
-
     def card(label: str, group: list) -> str:
-        lis = "".join(f"""
-        <li><a href="{html.escape(h.get('url', '#'))}" rel="noopener">{html.escape(h['title'])}</a>{src_chip(h)}</li>"""
+        lis = "".join(f"""\n        <li><a href="{html.escape(h.get('url', '#'))}" rel="noopener">{html.escape(h['title'])}</a></li>"""
                       for h in group[:4])
         return f"""
         <div class="card ng">
@@ -648,7 +644,7 @@ def _news_groups(headlines: list[dict], limit: int = 12) -> str:
 
     return f"""
     <div class="news-groups">{"".join(cards)}</div>
-    <p class="ng-credit">Reporting by KGET 17 and 23ABC.</p>"""
+    <p class="ng-credit">Reporting by KGET 17, 23ABC and Bakersfield Now.</p>"""
 
 
 def _matches(h: dict, keywords: tuple) -> bool:

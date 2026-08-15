@@ -16,6 +16,10 @@ from .. import common
 FEEDS = [
     ("KGET 17", "https://www.kget.com/feed/"),
     ("23ABC", "https://www.turnto23.com/news/local-news.rss"),
+    # Bakersfield Now (KBAK 29, Sinclair) has no public RSS — its site is
+    # JS-rendered — so we pull it through Google News' site-filtered feed.
+    ("Bakersfield Now",
+     "https://news.google.com/rss/search?q=site:bakersfieldnow.com&hl=en-US&gl=US&ceid=US:en"),
 ]
 MAX_PER_FEED = 25
 

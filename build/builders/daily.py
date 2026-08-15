@@ -1085,6 +1085,19 @@ def _para_html(prose: str) -> str:
     return "".join(out)
 
 
+def _diversify(items: list, cap: int = 3) -> list:
+    """Keep order but cap how many stories any single source contributes —
+    the brief must never be one outlet's feed. 'KGET 17' → 'KGET'."""
+    counts, out = {}, []
+    for it in items or []:
+        src = str(it.get("source") or "Other").split()[0]
+        if counts.get(src, 0) >= cap:
+            continue
+        counts[src] = counts.get(src, 0) + 1
+        out.append(it)
+    return out
+
+
 def _brief_full_body(top, headlines, weather, airnow, calfire,
                      events, escribe, today) -> str | None:
     """The complete 1,000-1,500 word brief body (LLM, CI-only). None →
@@ -1104,7 +1117,9 @@ def _brief_full_body(top, headlines, weather, airnow, calfire,
     items = []
     if top:
         items.append(top)
-    for h in (headlines or [])[:7]:
+    # source-diverse selection: the brief must never read like one
+    # outlet's feed — cap any single source in the supporting stories
+    for h in _diversify(headlines or [], cap=3)[:7]:
         items.append(h)
     items = llm.fetch_article_texts(items, n=8)
     wx = _weather_prose(weather, airnow, calfire)

@@ -462,3 +462,15 @@ class TestData:
         assert "&lt;p&gt;" not in html_out, "lede double-escaped a <p> tag"
         assert "&lt;strong&gt;" not in html_out, "lede double-escaped a <strong> tag"
         assert "<strong>Good morning" in html_out, "fallback greeting must render as real HTML"
+
+    def test_diversify_caps_single_source(self):
+        """The brief's stories must never be one outlet's feed — any single
+        source is capped, order is preserved."""
+        from build.builders.daily import _diversify
+        items = [{"title": f"k{i}", "source": "KGET 17"} for i in range(5)] + \
+                [{"title": f"a{i}", "source": "23ABC"} for i in range(5)]
+        out = _diversify(items, cap=3)
+        kget = sum(1 for i in out if i["source"].startswith("KGET"))
+        abc = sum(1 for i in out if i["source"].startswith("23ABC"))
+        assert kget == 3 and abc == 3
+        assert out[0]["title"] == "k0"  # order preserved

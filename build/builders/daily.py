@@ -1070,19 +1070,31 @@ def _meetings_prose(escribe) -> str:
 
 def _para_html(prose: str) -> str:
     """LLM prose → escaped HTML. '## Heading' lines become the site's
-    standard sec-head style (standardized structure every day); blank-line
-    paragraphs become <p>s. The greeting (before the first heading) stays
-    as plain paragraphs."""
-    out = []
+    standard sec-head style; blank-line paragraphs become <p>s. Inside the
+    'Top stories' section the first sentence of each paragraph is bolded
+    (render-side, so skimmers always find the leads — no model reliance).
+    """
+    out, section = [], None
     for chunk in re.split(r"\n\s*\n", prose or ""):
         chunk = chunk.strip()
         if not chunk:
             continue
         if chunk.startswith("## "):
+            section = chunk[3:].strip().lower()
             out.append(f'<p class="sec-head">{html.escape(chunk[3:].strip())}</p>')
         else:
-            out.append(f"<p>{html.escape(chunk)}</p>")
+            p = html.escape(chunk).replace("**", "")
+            if section == "top stories":
+                p = _bold_first_sentence(p)
+            out.append(f"<p>{p}</p>")
     return "".join(out)
+
+
+def _bold_first_sentence(p: str) -> str:
+    m = re.match(r"(.+?[.!?])(\s|$)", p, re.S)
+    if m:
+        return f"<strong>{m.group(1)}</strong>{m.group(2)}{p[m.end():]}"
+    return p
 
 
 def _diversify(items: list, cap: int = 3) -> list:

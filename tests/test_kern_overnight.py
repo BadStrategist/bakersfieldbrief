@@ -462,6 +462,7 @@ class TestData:
         assert "&lt;p&gt;" not in html_out, "lede double-escaped a <p> tag"
         assert "&lt;strong&gt;" not in html_out, "lede double-escaped a <strong> tag"
         assert "<strong>Good morning" in html_out, "fallback greeting must render as real HTML"
+        assert "**" not in html_out, "stray markdown bold leaked into the lede"
 
     def test_diversify_caps_single_source(self):
         """The brief's stories must never be one outlet's feed — any single
@@ -474,3 +475,17 @@ class TestData:
         abc = sum(1 for i in out if i["source"].startswith("23ABC"))
         assert kget == 3 and abc == 3
         assert out[0]["title"] == "k0"  # order preserved
+
+    def test_top_stories_leads_are_bolded(self):
+        """Render-side bold: every paragraph under 'Top stories' gets a
+        bolded first sentence (skimmable leads), other sections stay plain."""
+        from build.builders.daily import _para_html
+        prose = ("Good morning.\n\n## Top stories\n\n"
+                 "KGET 17 reports that the fair opens Friday. Gates at noon.\n\n"
+                 "According to 23ABC, the council met. They voted 4-1.\n\n"
+                 "## Something good\n\nA nice note here. Not bolded.")
+        html_out = _para_html(prose)
+        assert html_out.count("<strong>") == 2
+        assert "<strong>KGET 17 reports that the fair opens Friday.</strong>" in html_out
+        assert "<strong>According to 23ABC, the council met.</strong>" in html_out
+        assert "<strong>A nice note here.</strong>" not in html_out

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-14T16:55:00-07:00",
+ "built_at": "2026-08-14T17:51:54-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 2183, column 34"
   },
   "isabella": {
    "ok": true,
@@ -56,13 +56,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 65,
+  "brief_words": 62,
   "daily": {
    "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 6,
-   "top_story": "2 arrested in Mexico plead no contest to voluntary manslaughter in 2019 Bakersfield homicide",
+   "chp_new": 0,
+   "top_story": "Bakersfield, Tehachapi airports to receive slice of $109M federal aviation funding",
    "archive": "2026-08-14"
   },
   "cityhall": {
@@ -81,7 +81,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 12,
+    "bakersfield-nw": 9,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -94,7 +94,7 @@
   "grapevine": {
    "i5": "RESTRICTIONS",
    "i5_pass": "OPEN",
-   "log_entries": 35
+   "log_entries": 36
   },
   "events": {
    "groups": {
@@ -111,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 53,
+   "aqi": 49,
    "chp_week": 77
   },
   "letters": {

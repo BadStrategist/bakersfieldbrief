@@ -56,10 +56,13 @@ def summarize_news(headlines: list[dict], max_items: int = 14) -> str | None:
     prompt = (
         "Below are today's headlines from local Bakersfield/Kern County news "
         "sources, with source names and URLs. Write a 'The News' digest of 3-5 "
-        "short paragraphs that groups related items, states facts only, and "
-        "mentions the source outlet by name for each item you include. Do not "
-        "invent details not present in the headlines. End with a closing line "
-        "naming the outlets covered today.\n\nHEADLINES:\n" + _truncate(lines)
+        "short paragraphs that groups related items and states facts only. Do "
+        "NOT invent details not present in the headlines. Attribution: name "
+        "the outlet only when it genuinely matters — a major exclusive or a "
+        "claim tied to a specific agency. Never attribute every item; "
+        "repeating 'according to KGET 17' on every sentence reads as spam. "
+        "The section footer already credits the outlets, so do not end with a "
+        "closing credit line.\n\nHEADLINES:\n" + _truncate(lines)
     )
     return _chat(prompt)
 

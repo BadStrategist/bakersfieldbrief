@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import datetime as dt
 
+import re
 import feedparser
 
 from .. import common
@@ -31,8 +32,13 @@ def run(ctx):
             r = common.fetch(url, timeout=30)
             f = feedparser.parse(r.content)
             for e in f.entries[:MAX_PER_FEED]:
+                title = (e.get("title") or "").strip()
+                # Google News titles carry an outlet suffix ("... - KBAK 29")
+                title = re.sub(
+                    r"\s+-\s+(?:KBAK 29|KBAK|Bakersfield Now|29 News|Bakersfield Now News)$",
+                    "", title, flags=re.I)
                 out.append({
-                    "title": (e.get("title") or "").strip(),
+                    "title": title,
                     "url": e.get("link", ""),
                     "source": name,
                     "published": _pub(e),

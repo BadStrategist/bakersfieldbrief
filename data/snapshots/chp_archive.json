@@ -1050,6 +1050,26 @@
   "details": ""
  },
  {
+  "log_id": "260815BF0062",
+  "time": "Aug 15 2026  5:32AM",
+  "type": "1180-Trfc Collision-Major Inj",
+  "location": "Sr184 / Mountain View Rd",
+  "area": "Bakersfield",
+  "lat": 35.281541,
+  "lon": -118.914374,
+  "details": ""
+ },
+ {
+  "log_id": "260815BF0065",
+  "time": "Aug 15 2026  5:58AM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 I5 S",
+  "area": "Fort Tejon",
+  "lat": 34.90261,
+  "lon": -118.923177,
+  "details": ""
+ },
+ {
   "log_id": "260815BF0007",
   "time": "Aug 15 2026 12:05AM",
   "type": "TADV-Traffic Advisory",

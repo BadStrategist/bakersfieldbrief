@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-14T21:18:56-07:00",
+ "built_at": "2026-08-14T22:04:45-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,7 +56,7 @@
  },
  "section": {
   "_digest_meta": "llm",
-  "brief_words": 930,
+  "brief_words": 944,
   "daily": {
    "news_headlines": 75,
    "news_digest": "llm",
@@ -111,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 56,
+   "aqi": 59,
    "chp_week": 83
   },
   "letters": {

@@ -1090,6 +1090,26 @@
   "details": ""
  },
  {
+  "log_id": "260814BF0364",
+  "time": "Aug 14 2026  6:08PM",
+  "type": "CFIRE-Car Fire",
+  "location": "Nb I5 Jso Sr46",
+  "area": "Buttonwillow",
+  "lat": 35.611848,
+  "lon": -119.649718,
+  "details": ""
+ },
+ {
+  "log_id": "260814BF0399",
+  "time": "Aug 14 2026  6:45PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sr33 / Sr46",
+  "area": "Buttonwillow",
+  "lat": 35.614949,
+  "lon": -119.867656,
+  "details": ""
+ },
+ {
   "log_id": "260814BF0004",
   "time": "Aug 14 2026 12:14AM",
   "type": "TADV-Traffic Advisory",

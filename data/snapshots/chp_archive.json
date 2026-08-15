@@ -1110,6 +1110,36 @@
   "details": ""
  },
  {
+  "log_id": "260814BF0456",
+  "time": "Aug 14 2026  8:07PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr99 N / Whisler Rd Ofr",
+  "area": "Bakersfield",
+  "lat": 35.642166,
+  "lon": -119.218781,
+  "details": ""
+ },
+ {
+  "log_id": "260814BF0466",
+  "time": "Aug 14 2026  8:20PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Eb Sr178 Jeo Haley St",
+  "area": "Bakersfield",
+  "lat": 35.392778,
+  "lon": -118.9725,
+  "details": ""
+ },
+ {
+  "log_id": "260814BF0476",
+  "time": "Aug 14 2026  8:25PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr58 W / Coffee Rd",
+  "area": "Bakersfield",
+  "lat": 35.367087,
+  "lon": -119.092187,
+  "details": ""
+ },
+ {
   "log_id": "260814BF0004",
   "time": "Aug 14 2026 12:14AM",
   "type": "TADV-Traffic Advisory",

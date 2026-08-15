@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-15T07:51:13-07:00",
+ "built_at": "2026-08-15T08:41:34-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -110,7 +110,7 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 44,
+   "aqi": 45,
    "chp_week": 89
   },
   "letters": {

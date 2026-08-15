@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-14T19:15:30-07:00",
+ "built_at": "2026-08-14T19:45:21-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,12 +56,12 @@
  },
  "section": {
   "_digest_meta": "llm",
-  "brief_words": 911,
+  "brief_words": 625,
   "daily": {
-   "news_headlines": 50,
+   "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 3,
+   "chp_new": 0,
    "top_story": "Eagles in the Arena: After state title loss, Bakersfield Christian HS looks to right the wrongs of the past",
    "archive": "2026-08-14"
   },
@@ -81,7 +81,7 @@
    "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 7,
+    "bakersfield-nw": 8,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -111,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 52,
+   "aqi": 51,
    "chp_week": 80
   },
   "letters": {

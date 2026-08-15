@@ -418,7 +418,8 @@ def _hero_row(top, headlines, today, rel, built_iso,
                              escribe, events, rel, today)
     hero = f"""
     <p class="today-label">{SUN_ICON} Today&rsquo;s Brief</p>
-    <h1 class="today-h1">{head}</h1>
+    <h1 class="today-h1">The Bakersfield Brief &mdash; {html.escape(_fmt_date(today))}</h1>
+    <p class="hero-topstory">Top story: {head} {src}</p>
     <p class="lede">{summary}</p>
     <a class="read-more" href="{rel}briefs/{built_iso}/">Read today&rsquo;s full brief</a>"""
 
@@ -441,7 +442,7 @@ def _quick_summary(top, headlines, weather, airnow, calfire,
     """2–3 sentence deterministic day-summary for the hero (keyless)."""
     bits = []
     if top:
-        bits.append(f'<strong>{html.escape(top["title"])}</strong> leads the day')
+        bits.append('The morning read for Kern County')
     others = len(headlines) - 1 if headlines else 0
     if others > 0:
         bits.append(f"{others} more {'story' if others == 1 else 'stories'} across Kern County are below")

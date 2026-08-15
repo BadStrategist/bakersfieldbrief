@@ -542,6 +542,8 @@ table.data td.num, table.data th.num { font-family: var(--mono); text-align: rig
   font-size: clamp(28px, 4.2vw, 42px); line-height: 1.08;
   letter-spacing: -.015em; margin: 0 0 10px; color: var(--ink);
 }
+.hero-topstory { font-size: 15px; color: var(--ink-soft); margin: 0 0 10px; }
+.hero-topstory a { font-weight: 600; color: var(--ink); }
 .today-h1 a { color: inherit; text-decoration: none; }
 .today-h1 a:hover { color: var(--red); }
 .hero-src { color: var(--sign); font-style: normal; font-size: 14px; }

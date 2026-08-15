@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-15T08:41:34-07:00",
+ "built_at": "2026-08-15T12:01:21-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 2183, column 34"
   },
   "isabella": {
    "ok": true,
@@ -62,7 +62,7 @@
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Eagles in the Arena: After state title loss, Bakersfield Christian HS looks to right the wrongs of the past",
+   "top_story": "Most Wanted: Aug, 14, 2026",
    "archive": "2026-08-15"
   },
   "cityhall": {
@@ -94,7 +94,7 @@
   "grapevine": {
    "i5": "RESTRICTIONS",
    "i5_pass": "OPEN",
-   "log_entries": 40
+   "log_entries": 41
   },
   "events": {
    "groups": {
@@ -110,7 +110,7 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 45,
+   "aqi": 40,
    "chp_week": 89
   },
   "letters": {

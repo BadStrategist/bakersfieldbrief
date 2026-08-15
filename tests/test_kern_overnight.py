@@ -449,6 +449,9 @@ class TestData:
         from build.builders import daily as D
 
         monkeypatch.delenv("LLM_API_KEY", raising=False)
+        # the per-day LLM brief cache may exist locally — force the
+        # deterministic fallback path this test is guarding
+        monkeypatch.setattr(D, "_cached_brief_body", lambda today: None)
         class Ctx:
             build_report = {}
 

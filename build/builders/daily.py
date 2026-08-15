@@ -1069,10 +1069,20 @@ def _meetings_prose(escribe) -> str:
 
 
 def _para_html(prose: str) -> str:
-    """LLM prose → escaped <p> paragraphs (blank-line separated)."""
-    paras = [html.escape(p.strip()) for p in re.split(r"\n\s*\n", prose or "")
-             if p.strip()]
-    return "".join(f"<p>{p}</p>" for p in paras)
+    """LLM prose → escaped HTML. '## Heading' lines become the site's
+    standard sec-head style (standardized structure every day); blank-line
+    paragraphs become <p>s. The greeting (before the first heading) stays
+    as plain paragraphs."""
+    out = []
+    for chunk in re.split(r"\n\s*\n", prose or ""):
+        chunk = chunk.strip()
+        if not chunk:
+            continue
+        if chunk.startswith("## "):
+            out.append(f'<p class="sec-head">{html.escape(chunk[3:].strip())}</p>')
+        else:
+            out.append(f"<p>{html.escape(chunk)}</p>")
+    return "".join(out)
 
 
 def _brief_full_body(top, headlines, weather, airnow, calfire,
@@ -1094,9 +1104,9 @@ def _brief_full_body(top, headlines, weather, airnow, calfire,
     items = []
     if top:
         items.append(top)
-    for h in (headlines or [])[:5]:
+    for h in (headlines or [])[:7]:
         items.append(h)
-    items = llm.fetch_article_texts(items, n=6)
+    items = llm.fetch_article_texts(items, n=8)
     wx = _weather_prose(weather, airnow, calfire)
     good = re.sub(r"<[^>]+>", " ", _positive_block(headlines, events, today, ""))
     return llm.brief_full(

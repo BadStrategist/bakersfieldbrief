@@ -184,7 +184,9 @@ def _chat(prompt: str, max_tokens: int | None = None,
         try:
             r = requests.post(
                 f"{BASE_URL}/chat/completions",
-                headers={"Authorization": f"Bearer {key}"},
+                headers={"Authorization": f"Bearer {key}",
+                         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; "
+                                       "x64) AppleWebKit/537.36"},
                 json={
                     "model": MODEL,
                     "messages": [
@@ -202,7 +204,10 @@ def _chat(prompt: str, max_tokens: int | None = None,
                 time.sleep(RETRY_SLEEP)
                 continue
             r.raise_for_status()
-            out = r.json()["choices"][0]["message"]["content"].strip()
+            msg = r.json()["choices"][0]["message"]
+            out = (msg.get("content") or "").strip()
+            if not out:  # reasoning models can return content in 'reasoning'
+                out = (msg.get("reasoning") or "").strip()
             return out if out else None
         except requests.HTTPError as e:
             code = e.response.status_code if e.response is not None else None
@@ -316,8 +321,9 @@ def brief_full(overnight_md: str, weather_prose: str, airnow: dict,
         f" on {e.get('when', 'a date')}"
         for e in (events or [])[:6])
     prompt = (
-        f"Write today's Bakersfield Brief ({today_label}), {max_words} words "
-        "in total. Start with a 2-3 sentence warm morning greeting that "
+        f"Write today's Bakersfield Brief ({today_label}). Target length: "
+        "at least 1,200 words, up to 1,500. Start with a 2-3 sentence warm " 
+        "morning greeting that "
         "names the day's top story and the headline conditions. Then cover "
         "in flowing prose: (1) The Kern Overnight summary, (2) today's "
         "weather and conditions, (3) what the top local stories actually "
@@ -333,4 +339,4 @@ def brief_full(overnight_md: str, weather_prose: str, airnow: dict,
         f"MEETINGS: {meetings_prose[:1200]}\n\n"
         f"GOOD NOTE: {good_prose[:800]}"
     )
-    return _chat(prompt, max_tokens=2400, system=BRIEF_SYSTEM)
+    return _chat(prompt, max_tokens=3600, system=BRIEF_SYSTEM)

@@ -24,6 +24,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+      LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+      LLM_MODEL: ${{ secrets.LLM_MODEL }}
       AIRNOW_API_KEY: ${{ secrets.AIRNOW_API_KEY }}
     steps:
       - uses: actions/checkout@v4

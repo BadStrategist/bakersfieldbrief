@@ -1138,6 +1138,25 @@ def _brief_full_body(top, headlines, weather, airnow, calfire,
         f"{today:%B} {today.day}, {today.year}" if hasattr(today, "day") else str(today))
 
 
+def _cached_brief_body(today) -> str | None:
+    """The LLM brief body saved by the 6am build — 3-hourly LLM-free runs
+    reuse it so the brief is never downgraded to the fallback mid-day."""
+    p = common.DATA / "briefs" / f"{today:%Y-%m-%d}.json"
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))["body"]
+    except Exception:
+        return None
+
+
+def _save_brief_body(today, body: str) -> None:
+    try:
+        p = common.DATA / "briefs" / f"{today:%Y-%m-%d}.json"
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(json.dumps({"body": body}), encoding="utf-8")
+    except Exception:
+        pass
+
+
 def _article_lead(top, headlines, weather, airnow, calfire,
                   escribe, events, today, rel, ctx) -> str:
     """Friendly, all-in-one 'Today's Brief' opening the daily article.
@@ -1155,7 +1174,11 @@ def _article_lead(top, headlines, weather, airnow, calfire,
 
     # ---- full brief body (LLM, CI) → else short greeting (LLM/deterministic)
     full = _brief_full_body(top, headlines, weather, airnow, calfire,
-                            events, escribe, today)
+                            events, escribe, today) if os.environ.get("LLM_API_KEY") else None
+    if full is None:
+        full = _cached_brief_body(today)
+    else:
+        _save_brief_body(today, full)
     if full:
         greeting_html = _para_html(full)  # LLM plain text → escaped <p>s
         ctx_brief_words = len(re.findall(r"[A-Za-z0-9'’-]+", full))

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-16T02:54:46-07:00",
+ "built_at": "2026-08-16T06:42:51-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,11 +55,11 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 58,
+  "_digest_meta": "llm",
+  "brief_words": 981,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
    "chp_new": 0,
    "top_story": "STEM in Kern: Understanding recent major earthquakes",
@@ -94,7 +94,7 @@
   "grapevine": {
    "i5": "RESTRICTIONS",
    "i5_pass": "OPEN",
-   "log_entries": 45
+   "log_entries": 46
   },
   "events": {
    "groups": {
@@ -111,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 56,
+   "aqi": 48,
    "chp_week": 96
   },
   "letters": {

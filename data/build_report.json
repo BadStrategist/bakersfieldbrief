@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-15T21:10:34-07:00",
+ "built_at": "2026-08-16T00:24:02-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,14 +56,14 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1023,
+  "brief_words": 58,
   "daily": {
-   "news_headlines": 75,
+   "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 1,
    "top_story": "STEM in Kern: Understanding recent major earthquakes",
-   "archive": "2026-08-15"
+   "archive": "2026-08-16"
   },
   "cityhall": {
    "upcoming_meetings": 5,
@@ -78,18 +78,18 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 12,
-    "bakersfield-nw": 12,
-    "bakersfield-sw": 12,
-    "bakersfield-east": 12,
-    "bakersfield-central": 12
+    "tehachapi": 0,
+    "bakersfield-nw": 0,
+    "bakersfield-sw": 0,
+    "bakersfield-east": 0,
+    "bakersfield-central": 0
    }
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-08-15"
+   "draft": "drafts/weekend-guide-2026-08-16"
   },
   "grapevine": {
    "i5": "RESTRICTIONS",
@@ -98,20 +98,21 @@
   },
   "events": {
    "groups": {
-    "Next week": 3,
-    "Later": 29
+    "This week": 1,
+    "Next week": 4,
+    "Later": 27
    },
    "meetings": 5
   },
   "feed": {
-   "entries": 12
+   "entries": 13
   },
   "numbers": {
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 85,
-   "chp_week": 95
+   "aqi": 66,
+   "chp_week": 96
   },
   "letters": {
    "published": 0

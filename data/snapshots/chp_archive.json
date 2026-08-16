@@ -1,85 +1,5 @@
 [
  {
-  "log_id": "260808BF0338",
-  "time": "Aug  8 2026  3:12PM",
-  "type": "SILVER-Missing Elderly",
-  "location": "9855 Compagnoni St",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260808BF0046",
-  "time": "Aug  8 2026  5:10AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "Sb I5 Jso #2 Turn Thru",
-  "area": "Fort Tejon",
-  "lat": 34.890111,
-  "lon": -118.91124,
-  "details": ""
- },
- {
-  "log_id": "260808BF0385",
-  "time": "Aug  8 2026  5:12PM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260808BF0088",
-  "time": "Aug  8 2026  7:24AM",
-  "type": "1125A-Animal Hazard",
-  "location": "Mt Vernon Ave Ofr / S Mount Vernon Ave",
-  "area": "Bakersfield",
-  "lat": 35.353524,
-  "lon": -118.967433,
-  "details": ""
- },
- {
-  "log_id": "260808BF0435",
-  "time": "Aug  8 2026  7:39PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "7100-7199 Di Giorgio Rd",
-  "area": "Bakersfield",
-  "lat": 35.25238,
-  "lon": -118.924999,
-  "details": ""
- },
- {
-  "log_id": "260808BF0097",
-  "time": "Aug  8 2026  7:49AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Wb Sr58 Jeo Sr99",
-  "area": "Bakersfield",
-  "lat": 35.352778,
-  "lon": -119.0375,
-  "details": ""
- },
- {
-  "log_id": "260808BF0538",
-  "time": "Aug  8 2026 11:10PM",
-  "type": "FIRE-Report of Fire",
-  "location": "Nb I5 Jso Lost Hills Rd",
-  "area": "Buttonwillow",
-  "lat": 35.663056,
-  "lon": -119.687778,
-  "details": ""
- },
- {
-  "log_id": "260808BF0539",
-  "time": "Aug  8 2026 11:12PM",
-  "type": "1184-Provide Traffic Control",
-  "location": "35\ufffd35'53.2\"n / 119\ufffd38'29.69\"w",
-  "area": "Buttonwillow",
-  "lat": 35.59811,
-  "lon": -119.64158,
-  "details": ""
- },
- {
   "log_id": "260809BF0221",
   "time": "Aug  9 2026  1:08PM",
   "type": "1183-Trfc Collision-Unkn Inj",
@@ -1147,6 +1067,16 @@
   "area": "Newhall",
   "lat": 34.338689,
   "lon": -118.506807,
+  "details": ""
+ },
+ {
+  "log_id": "260816BF0004",
+  "time": "Aug 16 2026 12:11AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
   "details": ""
  }
 ]

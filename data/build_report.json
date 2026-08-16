@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-16T13:51:31-07:00",
+ "built_at": "2026-08-16T14:40:31-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 2,
    "top_story": "STEM in Kern: Understanding recent major earthquakes",
    "archive": "2026-08-16"
   },
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 61,
-   "chp_week": 99
+   "aqi": 67,
+   "chp_week": 101
   },
   "letters": {
    "published": 0

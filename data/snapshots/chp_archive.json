@@ -1110,6 +1110,16 @@
   "details": ""
  },
  {
+  "log_id": "260815BF0336",
+  "time": "Aug 15 2026  6:05PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "0 Sr178",
+  "area": "Bakersfield",
+  "lat": 35.522319,
+  "lon": -118.670997,
+  "details": ""
+ },
+ {
   "log_id": "260815BF0174",
   "time": "Aug 15 2026 11:24AM",
   "type": "DOT-Request CalTrans Notify",

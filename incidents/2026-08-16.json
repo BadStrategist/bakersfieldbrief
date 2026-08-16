@@ -1,0 +1,101 @@
+[
+  {
+    "type": "structure_fire",
+    "time": "21:16",
+    "agency": "Kern County Fire Department",
+    "area": "6200 block of Spice Way",
+    "notability": 5,
+    "disposition": "active",
+    "summary": "Palm Tree Fire reported catching a two-story apartment complex with the roof involved. Alarm reinforced — Engine 7 established as incident command, scene access off Villalobos. Dispatcher flagged it as the night's primary incident."
+  },
+  {
+    "type": "vehicle_fire",
+    "time": "21:21",
+    "agency": "Kern County Fire Department",
+    "area": "undisclosed location",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Report of a vehicle on fire and involved in a collision; location not announced on the air."
+  },
+  {
+    "type": "trespassing",
+    "time": "21:39",
+    "agency": "Bakersfield Police Department",
+    "area": "Sanford and Roberts area",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Person refusing to leave an H&R Block business near Sanford and Roberts; business requesting video surveillance."
+  },
+  {
+    "type": "pursuit",
+    "time": "21:42",
+    "agency": "CHP",
+    "area": "southbound Highway 99 near Panama Lane",
+    "notability": 3,
+    "disposition": "active",
+    "summary": "Silver Acura sedan with no tail light reported at high speed, southbound Highway 99 near Panama Lane, with a CHP unit in chase."
+  },
+  {
+    "type": "welfare_check",
+    "time": "21:47",
+    "agency": "Bakersfield Police Department",
+    "area": "undisclosed location",
+    "notability": 2,
+    "disposition": "searching",
+    "summary": "Attempt to locate for a welfare check on a 66-year-old male."
+  },
+  {
+    "type": "shooting",
+    "time": "21:48",
+    "agency": "Bakersfield Police Department",
+    "area": "100 block of Price Street",
+    "notability": 4,
+    "disposition": "staging",
+    "summary": "Patrol check for an unknown male knocking at a door — also wanting to report fireworks — upgraded to a possible shooting; units staging."
+  },
+  {
+    "type": "domestic_violence",
+    "time": "21:49",
+    "agency": "Bakersfield Police Department",
+    "area": "Niles area",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Reported domestic assault — a man allegedly assaulted his wife, who was reportedly in the vehicle with him; units responding."
+  },
+  {
+    "type": "vandalism",
+    "time": "22:09",
+    "agency": "Bakersfield Police Department",
+    "area": "3300 block of Belhaven Street",
+    "notability": 2,
+    "disposition": "investigating",
+    "summary": "Residents reporting damage to their front fence."
+  },
+  {
+    "type": "suspicious_vehicle",
+    "time": "22:10",
+    "agency": "Bakersfield Police Department",
+    "area": "Mona Way area",
+    "notability": 2,
+    "disposition": "checking",
+    "summary": "White GMC parked in an odd manner; suspicious-vehicle check."
+  },
+  {
+    "type": "stolen_vehicle",
+    "time": "22:32",
+    "agency": "CHP",
+    "area": "undisclosed location",
+    "notability": 2,
+    "disposition": "checking",
+    "summary": "Vehicle checks on a Honda reported out of Ukiah and a Ford; plate reads broadcast on the air."
+  },
+  {
+    "type": "welfare_check",
+    "time": "22:45",
+    "agency": "Bakersfield Police Department",
+    "area": "1400 block of University Avenue",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Welfare check on a 59-year-old female; her son reportedly involved."
+  }
+]

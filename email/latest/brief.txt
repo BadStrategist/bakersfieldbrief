@@ -5,11 +5,11 @@ THE KERN OVERNIGHT
 Overnight: vegetation_fire, Nord Ave & Hageman Rd — 15 incidents tracked overnight — full report: https://bakersfieldbrief.com/overnight/ (locations generalized)
 
 CONDITIONS
-Weather: 82° / 98°
+Weather: 90° / 98°
 Alerts: No active alerts
 Isabella: 208,157 AF (36.6% cap)
 CHP: 1 overnight
-Air: AQI 55 · Moderate
+Air: AQI 61 · Moderate
 Fires: 0 active in Kern
 
 THE NEWS

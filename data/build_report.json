@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-16T12:00:40-07:00",
+ "built_at": "2026-08-16T13:51:31-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -81,7 +81,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 12,
+    "bakersfield-nw": 11,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 55,
-   "chp_week": 98
+   "aqi": 61,
+   "chp_week": 99
   },
   "letters": {
    "published": 0

@@ -1088,5 +1088,15 @@
   "lat": 35.265234,
   "lon": -119.024794,
   "details": ""
+ },
+ {
+  "log_id": "260816BF0017",
+  "time": "Aug 16 2026 12:44AM",
+  "type": "1144-Fatality",
+  "location": "0 Sr99 S",
+  "area": "Bakersfield",
+  "lat": 35.44944,
+  "lon": -119.097941,
+  "details": ""
  }
 ]

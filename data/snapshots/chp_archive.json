@@ -1070,6 +1070,16 @@
   "details": ""
  },
  {
+  "log_id": "260816BF0055",
+  "time": "Aug 16 2026  4:10AM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 N / Laval Rd E Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.983289,
+  "lon": -118.944169,
+  "details": ""
+ },
+ {
   "log_id": "260816BF0004",
   "time": "Aug 16 2026 12:11AM",
   "type": "TADV-Traffic Advisory",

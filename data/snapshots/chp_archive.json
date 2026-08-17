@@ -1150,6 +1150,46 @@
   "details": ""
  },
  {
+  "log_id": "260816BF0295",
+  "time": "Aug 16 2026  7:20PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Nb I5 At Sr43",
+  "area": "Buttonwillow",
+  "lat": 35.293333,
+  "lon": -119.252222,
+  "details": ""
+ },
+ {
+  "log_id": "260816BF0302",
+  "time": "Aug 16 2026  7:41PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Nb Sr99 At Merle Haggard Dr",
+  "area": "Bakersfield",
+  "lat": 35.441279,
+  "lon": -119.08183,
+  "details": ""
+ },
+ {
+  "log_id": "260816BF0305",
+  "time": "Aug 16 2026  7:45PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb Sr99 Jno Merced Ave",
+  "area": "Bakersfield",
+  "lat": 35.529863,
+  "lon": -119.190379,
+  "details": ""
+ },
+ {
+  "log_id": "260816BF0308",
+  "time": "Aug 16 2026  7:50PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sr58 E / Mohawk St",
+  "area": "Bakersfield",
+  "lat": 35.37132,
+  "lon": -119.066154,
+  "details": ""
+ },
+ {
   "log_id": "260816BF0004",
   "time": "Aug 16 2026 12:11AM",
   "type": "TADV-Traffic Advisory",

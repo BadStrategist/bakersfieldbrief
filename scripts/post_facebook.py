@@ -11,16 +11,24 @@ Design:
     report must ALSO be complete: no partial-coverage marker and the
     required sections present (a report published early with partial
     transcription never reaches socials).
+  * NO GUESSING gate: the overnight must be LIVE on the deployed website
+    (https://bakersfieldbrief.com/overnight/ renders <section id="<date>">)
+    before posting — a repo file that hasn't deployed is not publication.
+    CI deploys BEFORE this step; the script polls briefly for CDN
+    propagation and skips if the report never appears live.
   * Retry: when only the overnight is missing/incomplete, wait and re-pull
     (up to FB_RETRY_MINUTES, default 25) — the local KO cron pushes the
     report ~7:00-7:10 PT, after the 7:00 PT CI checkout. --retry-minutes N
     or FB_RETRY_MINUTES=0 disables the wait.
-  * Duplicate guard: refuses to post if the page feed already contains a post
-    with today's brief URL (idempotent re-runs).
+  * Duplicate guard: refuses to post if the page feed already contains an
+    actual daily post (reel or photo) with today's brief URL (idempotent
+    re-runs). Plain link posts that merely mention the URL never count, so
+    no day is skipped by a newsletter promo.
   * Post: top story headline + overnight "big one" line + link + local tags.
-  * Post type: a 30s Reel (brand card + news audio bed, Ken Burns zoom) —
-    Reels get the best organic reach on Facebook. Falls back to a photo
-    post of the same card only if the reel can't be assembled or uploaded.
+  * Post type: a 30s animated Reel (scripted story cards over the treated
+    photo-background library, mixed with our news audio bed) — Reels get the
+    best organic reach on Facebook. Falls back to a photo post of the same
+    day's still card only if the reel can't be assembled or uploaded.
   * Verify: reads back /posts and confirms the new post id appears.
   * Token: FB_PAGE_TOKEN env var (GitHub secret) or
     %LOCALAPPDATA%/hermes/secrets/fb_page_token.txt (local dev).
@@ -45,6 +53,8 @@ PAGE_ID = os.environ.get("FB_PAGE_ID", "1298315170026203")
 API = "https://graph.facebook.com/v26.0"
 HASHTAGS = "#Bakersfield #KernCounty #BakersfieldNews"
 LOCAL_TAGS = ["KGET 17", "23ABC News", "City of Bakersfield"]  # mentioned, not @-tagged (API-safe)
+SITE_OVERNIGHT_URL = "https://bakersfieldbrief.com/overnight/"
+SITE_OVERNIGHT_ARCHIVE_URL = "https://bakersfieldbrief.com/overnight/archive/"
 
 
 def today_iso() -> str:
@@ -59,6 +69,23 @@ def get_token() -> str:
     if p.exists():
         return p.read_text(encoding="utf-8").strip()
     raise SystemExit("FB_PAGE_TOKEN not set and no local token file found")
+
+
+def overnight_live_on_site(date: str) -> bool:
+    """NO GUESSING: verify the overnight report for `date` is actually
+    PUBLISHED on the live website, not merely present in the repo. The site
+    renders each published report with <section id=\"<date>\"> on the
+    /overnight/ page (and the archive). Only a report that is live there may
+    be posted to socials — a repo file that hasn't deployed yet is not
+    publication."""
+    for url in (SITE_OVERNIGHT_URL, SITE_OVERNIGHT_ARCHIVE_URL):
+        try:
+            r = requests.get(url, timeout=25)
+            if r.status_code == 200 and f'id="{date}"' in r.text:
+                return True
+        except requests.RequestException as exc:  # noqa: BLE001
+            print(f"  WARN: site check {url} failed: {exc}")
+    return False
 
 
 def gate_problems(date: str) -> list[str]:
@@ -203,16 +230,31 @@ def extract_big_one(overnight: str) -> str:
     return text.strip()[:220]
 
 
+def _is_daily_post(p: dict) -> bool:
+    """A post counts as 'the daily post' only if it is an actual reel or photo
+    upload — those are the two shapes the daily publish produces. Plain link
+    posts (newsletter promos, in-depth teasers) that happen to mention the
+    brief URL must NEVER satisfy the duplicate guard, or a real daily post
+    gets skipped (the 'don't skip days' rule)."""
+    perm = p.get("permalink_url") or ""
+    if "/reel/" in perm or "/photos/" in perm or "/photo/" in perm:
+        return True
+    # Older photo posts can have a plain /posts/<id> permalink; the message
+    # shape is still the daily post (🌅 lead + brief URL + hashtags).
+    msg = p.get("message") or ""
+    return "🌅" in msg and "#BakersfieldNews" in msg
+
+
 def already_posted(token: str, date: str) -> bool:
-    url = f"{API}/{PAGE_ID}/posts?fields=message,created_time&limit=25&access_token={token}"
+    url = f"{API}/{PAGE_ID}/posts?fields=message,permalink_url,created_time&limit=25&access_token={token}"
     r = requests.get(url, timeout=20)
     if r.status_code != 200:
         print(f"WARN: could not check existing posts ({r.status_code}) — continuing")
         return False
     needle = f"briefs/{date}/"
     for p in r.json().get("data", []):
-        if needle in (p.get("message") or ""):
-            print(f"SKIP {date}: post with {needle} already exists")
+        if needle in (p.get("message") or "") and _is_daily_post(p):
+            print(f"SKIP {date}: daily post with {needle} already exists ({p.get('permalink_url', '')})")
             return True
     return False
 
@@ -380,16 +422,18 @@ def post_reel(token: str, video_path: str, message: str) -> str:
 def verify(token: str, pid: str, date: str) -> bool:
     """Confirm the post is live. Meta mints a DIFFERENT post id for photo
     uploads than the photo id the POST returns, so match on the caption's
-    unique marker (today's brief URL) instead of the id. The page feed
-    edge can lag the POST response by several seconds, so poll briefly
-    before declaring failure (otherwise CI false-flags live posts)."""
+    unique marker (today's brief URL) instead of the id. Only an actual
+    reel/photo post counts — never a plain link post that happens to mention
+    the URL. The page feed edge can lag the POST response by several seconds,
+    so poll briefly before declaring failure (otherwise CI false-flags live
+    posts)."""
     needle = f"briefs/{date}/"
     for attempt in range(4):
-        r = requests.get(f"{API}/{PAGE_ID}/posts?fields=id,message&limit=10&access_token={token}", timeout=20)
+        r = requests.get(f"{API}/{PAGE_ID}/posts?fields=id,message,permalink_url&limit=10&access_token={token}", timeout=20)
         if r.status_code == 200:
             for p in r.json().get("data", []):
-                if needle in (p.get("message") or ""):
-                    print(f"  found live post: {p.get('id')}")
+                if needle in (p.get("message") or "") and _is_daily_post(p):
+                    print(f"  found live post: {p.get('id')} ({p.get('permalink_url', '')})")
                     return True
         else:
             print(f"WARN: verify read failed ({r.status_code})")
@@ -410,53 +454,64 @@ def main() -> int:
     if gate is None:
         return 0  # skip is not an error
     brief, overnight = gate
+
+    # NO GUESSING: a repo file is not publication. The overnight must be LIVE
+    # on the deployed website (the CI deploy runs before this step). Poll
+    # briefly for CDN propagation; if it never shows up, skip — a later run
+    # (e.g. the push-triggered rebuild) will deploy it and post.
+    import time as _time
+    site_ok = overnight_live_on_site(date)
+    if not site_ok:
+        deadline = _time.time() + max(180.0, retry_minutes * 60)
+        while _time.time() < deadline and not site_ok:
+            print(f"  overnight not yet LIVE on site — waiting 15s")
+            _time.sleep(15)
+            site_ok = overnight_live_on_site(date)
+    if not site_ok:
+        print(f"SKIP {date}: overnight report NOT verified live on {SITE_OVERNIGHT_URL} — not posting (a later run will deploy it)")
+        return 0
+
     if already_posted(token, date):
         return 0
 
-    # generate today's card (the image the post carries)
+    # Build today's brief.json — the config the reel renderer reads. It is
+    # derived deterministically from committed data (brief body + overnight +
+    # incidents), so no LLM call is needed and re-runs reproduce the reel.
     import subprocess
-    card = ROOT / "site" / "assets" / "img" / "social" / f"{date}.png"
+    brief_json = ROOT / "site" / "assets" / "img" / "social" / f"{date}-brief.json"
     rc = subprocess.run(
-        [sys.executable, str(ROOT / "scripts" / "make_social_card.py"),
-         "--date", date, "--out", str(card)],
+        [sys.executable, str(ROOT / "scripts" / "make_brief_json.py"),
+         "--date", date, "--out", str(brief_json)],
         cwd=ROOT, capture_output=True, text=True,
     )
     print(rc.stdout.strip() or rc.stderr.strip())
-    if rc.returncode != 0 or not card.exists():
-        print(f"SKIP {date}: card generation failed — no image to post")
+    if rc.returncode != 0 or not brief_json.exists():
+        print(f"SKIP {date}: brief.json generation failed — no reel to post")
         return 0
-    if card.stat().st_size < 10000:
-        print(f"SKIP {date}: card suspiciously small ({card.stat().st_size} B)")
+    if brief_json.stat().st_size < 500:
+        print(f"SKIP {date}: brief.json suspiciously small ({brief_json.stat().st_size} B)")
         return 0
 
     message = compose_post(date, brief, overnight)
     print(f"POSTING for {date} ({len(message)} chars):\n{message}\n---")
 
-    # Primary: the daily Reel (multi-panel card + news bed). Reels get the
-    # best organic reach on Facebook. Fall back to a photo post only if
-    # the reel can't be assembled or uploaded — never ship nothing.
-    reel_dir = ROOT / "site" / "assets" / "img" / "social" / "reel"
+    # Primary: the daily Reel (scripted cards + treated backgrounds + our news
+    # audio bed). Reels get the best organic reach on Facebook. Fall back to a
+    # photo post of the renderer's still card only if the reel can't be
+    # assembled or uploaded — never ship nothing.
+    reel_dir = ROOT / "site" / "assets" / "img" / "social"
+    stem = reel_dir / f"{date}-reel"
     rc = subprocess.run(
-        [sys.executable, str(ROOT / "scripts" / "make_social_card.py"),
-         "--date", date, "--out", str(card), "--reel-dir", str(reel_dir)],
+        [sys.executable, str(ROOT / "scripts" / "brief_reel" / "render_reel.py"),
+         str(brief_json),
+         "--out", str(stem),
+         "--music", str(ROOT / "assets" / "audio" / "news_reel_bed.wav")],
         cwd=ROOT, capture_output=True, text=True,
     )
     print(rc.stdout.strip() or rc.stderr.strip())
-    panels = [reel_dir / f"{date}-p{i}.png" for i in range(1, 5)]
-    panels_ok = rc.returncode == 0 and all(p.exists() for p in panels)
-
-    reel = ROOT / "site" / "assets" / "img" / "social" / f"{date}-reel.mp4"
-    reel_ok = False
-    if panels_ok:
-        rc = subprocess.run(
-            [sys.executable, str(ROOT / "scripts" / "make_reel.py"),
-             *[a for p in panels for a in ("--panels", str(p))],
-             "--audio", str(ROOT / "assets" / "audio" / "news_reel_bed.wav"),
-             "--out", str(reel)],
-            cwd=ROOT, capture_output=True, text=True,
-        )
-        print(rc.stdout.strip() or rc.stderr.strip())
-        reel_ok = rc.returncode == 0 and reel.exists() and reel.stat().st_size > 100_000
+    reel = stem.with_suffix(".mp4")
+    card = stem.with_suffix(".png")  # renderer also emits the still card
+    reel_ok = rc.returncode == 0 and reel.exists() and reel.stat().st_size > 100_000
 
     if reel_ok:
         try:
@@ -471,6 +526,9 @@ def main() -> int:
             print(f"REEL FAILED ({exc}) — falling back to photo post")
 
     # Fallback: photo post (card carries the same summary).
+    if not card.exists() or card.stat().st_size < 10000:
+        print(f"SKIP {date}: no reel and no card — nothing to post")
+        return 0
     pid = post_photo(token, card, message)
     print(f"posted id={pid}")
     if verify(token, pid, date):

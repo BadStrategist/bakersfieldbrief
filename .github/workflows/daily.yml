@@ -62,9 +62,9 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -q -r requirements.txt
-          # make_reel.py needs ffmpeg (Ken Burns + audio bed); the runner
-          # image does NOT ship it — without this the reel build crashes
-          # and the daily post silently falls back to a photo.
+          # brief_reel/render_reel.py needs ffmpeg (raw-frame pipe + audio
+          # mix); the runner image does NOT ship it — without this the reel
+          # build crashes and the daily post silently falls back to a photo.
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
           ffmpeg -version | head -1
 
@@ -119,18 +119,6 @@ jobs:
       - name: Test suite (hard gate before deploy)
         run: python -m pytest -q -o addopts="" --tb=short
 
-      # Social post: publish the Brief+Overnight summary to Facebook once the
-      # brief body and overnight report both exist for today (the 6:00 PT run
-      # gate-skips until the 6:30 PT overnight lands; the 7:00 PT run waits
-      # up to 25 min for the phase-2 push, then posts). The gate + duplicate
-      # guard inside the script make this idempotent.
-      - name: Post summary to Facebook
-        env:
-          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
-          FB_PAGE_ID: "1298315170026203"
-          FB_RETRY_MINUTES: ${{ steps.gate.outputs.retry }}
-        run: python scripts/post_facebook.py
-
       - name: Deploy to Cloudflare Pages
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -140,3 +128,19 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy site --project-name=bakersfieldbrief
+
+      # Social post: publish the Brief+Overnight summary to Facebook once the
+      # brief body and overnight report both exist for today AND the overnight
+      # is actually LIVE on the deployed website (post_facebook verifies the
+      # <section id="<date>"> anchor on /overnight/ before posting — a repo
+      # file that hasn't deployed is not publication). The deploy above runs
+      # FIRST so the site check is meaningful. The 6:00 PT run gate-skips
+      # until the 6:30 PT overnight lands; the 7:00 PT run waits up to 25 min
+      # for the phase-2 push, then posts. The gate + duplicate guard inside
+      # the script make this idempotent.
+      - name: Post summary to Facebook
+        env:
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          FB_PAGE_ID: "1298315170026203"
+          FB_RETRY_MINUTES: ${{ steps.gate.outputs.retry }}
+        run: python scripts/post_facebook.py

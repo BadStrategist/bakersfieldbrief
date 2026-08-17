@@ -591,3 +591,77 @@ class TestSocialGate:
             assert pf.wait_for_gate("2026-08-17", 25) is not None
         finally:
             pf.BRIEFS, pf.OVERNIGHTS = old_b, old_o
+
+
+class TestBriefJson:
+    """make_brief_json must build a valid reel config deterministically from
+    the committed data — the daily reel renderer's schema is the contract."""
+
+    def test_build_for_committed_date(self):
+        import scripts.make_brief_json as mbj
+        cfg = mbj.build("2026-08-17")
+        for k in ("brand", "date_label", "kicker", "tagline", "url", "stories"):
+            assert cfg.get(k), f"missing required key: {k}"
+        assert 1 <= len(cfg["stories"]) <= 4
+        assert cfg["date_label"] == "MONDAY, AUGUST 17"
+        for s in cfg["stories"]:
+            assert s.get("headline"), "every story needs a headline"
+            assert len(s["headline"].split()) <= 12, "headline too long"
+            assert s.get("scene") in mbj.TYPE_SCENE.values()
+
+    def test_lead_is_the_most_serious_incident(self):
+        """The brief's own editorial framing ('most serious') must drive which
+        incident leads the reel — here the Monterey Street firearm brandishing
+        (notability 4) leads, not a lesser call."""
+        import scripts.make_brief_json as mbj
+        cfg = mbj.build("2026-08-17")
+        lead = cfg["stories"][0]
+        assert "Monterey" in lead["headline"]
+        assert lead["time"] == "11:00 PM"
+
+    def test_subhead_never_cuts_decimal_dots(self):
+        """273.6 (penal-code decimal) must not be treated as a sentence end."""
+        import scripts.make_brief_json as mbj
+        s = mbj._first_sentence("Domestic violence in progress (273.6) at a "
+                                "residence on Animas Court; units responding.")
+        assert s.startswith("Domestic violence in progress (273.6)")
+        assert not s.endswith("(273.")
+
+
+class TestNoGuessingGate:
+    """The duplicate guard must only count real daily posts (reel/photo), and
+    the gate must verify the overnight is LIVE on the website (a repo file is
+    not publication)."""
+
+    def test_link_post_never_satisfies_duplicate_guard(self):
+        """A newsletter promo that mentions the brief URL must not block the
+        daily reel — that bug previously skipped a whole day."""
+        import scripts.post_facebook as pf
+        promo = {"permalink_url": "https://www.facebook.com/posts/12345",
+                 "message": "In depth today: https://bakersfieldbrief.com/briefs/2026-08-17/",
+                 "type": "link"}
+        assert not pf._is_daily_post(promo)
+
+    def test_reel_and_photo_satisfy_duplicate_guard(self):
+        import scripts.post_facebook as pf
+        reel = {"permalink_url": "https://www.facebook.com/reel/860799243635804/",
+                "message": "🌅 x\nhttps://bakersfieldbrief.com/briefs/2026-08-17/", "type": "video"}
+        photo = {"permalink_url": "https://www.facebook.com/photos/12345",
+                 "message": "🌅 x\nhttps://bakersfieldbrief.com/briefs/2026-08-17/", "type": "photo"}
+        assert pf._is_daily_post(reel)
+        assert pf._is_daily_post(photo)
+
+    def test_overnight_must_be_live_on_site(self, monkeypatch):
+        """NO GUESSING: a repo file is not publication — the site must render
+        <section id="<date>"> before the post is allowed."""
+        import scripts.post_facebook as pf
+
+        class _Resp:
+            status_code = 200
+            text = '<section class="letter" id="2026-08-17">...'
+
+        monkeypatch.setattr(pf.requests, "get", lambda *a, **k: _Resp())
+        assert pf.overnight_live_on_site("2026-08-17") is True
+        assert pf.overnight_live_on_site("2026-08-15") is False
+
+

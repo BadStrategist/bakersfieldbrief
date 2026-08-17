@@ -139,38 +139,66 @@ def already_posted(token: str, date: str) -> bool:
 
 
 def compose_post(date: str, brief: str, overnight: str) -> str:
+    """Longer FB caption — the card image holds the compact summary, so this
+    text complements it rather than repeating it word-for-word."""
     top = extract_top_story(brief, date)
-    big = extract_big_one(overnight)
     link = f"https://bakersfieldbrief.com/briefs/{date}/"
-    body = (
-        f"{top}\n\n"
-        f"Overnight: {big}\n\n"
-        f"Full brief + overnight report: {link}\n\n"
+
+    # fuller body: first substantive paragraph of the brief (the Kern Overnight
+    # section lead), which carries the night's story in prose
+    paras = [p.strip() for p in brief.split("\n\n") if p.strip()]
+    detail = ""
+    for p in paras:
+        if p.lower().startswith("good morning"):
+            continue
+        if p.startswith("##"):
+            continue
+        plain = re.sub(r"[*#_]", "", p).strip()
+        if len(plain) > 60:
+            detail = plain[:900]
+            break
+    if not detail:
+        detail = top
+
+    return (
+        f"🌅 {top}\n\n"
+        f"{detail}\n\n"
+        f"📰 Full brief + overnight report: {link}\n\n"
         f"{HASHTAGS}"
     )
-    return body
 
 
-def post(token: str, message: str) -> str:
-    r = requests.post(
-        f"{API}/{PAGE_ID}/feed",
-        json={"message": message, "access_token": token},
-        timeout=30,
-    )
+def post_photo(token: str, image_path: str, message: str) -> str:
+    """Upload the daily card as a photo post with caption (photo posts get
+    more reach than text-only on Facebook)."""
+    import mimetypes
+    mime = mimetypes.guess_type(str(image_path))[0] or "image/png"
+    with open(image_path, "rb") as fh:
+        files = {"source": (image_path.name, fh, mime)}
+        data = {"message": message, "access_token": token}
+        r = requests.post(f"{API}/{PAGE_ID}/photos", files=files, data=data, timeout=60)
     if r.status_code != 200:
-        raise SystemExit(f"API error posting: {r.status_code} {r.text[:300]}")
+        raise SystemExit(f"API error posting photo: {r.status_code} {r.text[:300]}")
     pid = (r.json() or {}).get("id", "")
     if not pid:
         raise SystemExit(f"API returned no post id: {r.text[:300]}")
     return pid
 
 
-def verify(token: str, pid: str) -> bool:
-    r = requests.get(f"{API}/{PAGE_ID}/posts?fields=id,message&limit=5&access_token={token}", timeout=20)
+def verify(token: str, pid: str, date: str) -> bool:
+    """Confirm the post is live. Meta mints a DIFFERENT post id for photo
+    uploads than the photo id the POST returns, so match on the caption's
+    unique marker (today's brief URL) instead of the id."""
+    needle = f"briefs/{date}/"
+    r = requests.get(f"{API}/{PAGE_ID}/posts?fields=id,message&limit=10&access_token={token}", timeout=20)
     if r.status_code != 200:
         print(f"WARN: verify read failed ({r.status_code})")
         return False
-    return any(p.get("id") == pid for p in r.json().get("data", []))
+    for p in r.json().get("data", []):
+        if needle in (p.get("message") or ""):
+            print(f"  found live post: {p.get('id')}")
+            return True
+    return False
 
 
 def main() -> int:
@@ -182,12 +210,29 @@ def main() -> int:
     brief, overnight = gate
     if already_posted(token, date):
         return 0
+
+    # generate today's card (the image the post carries)
+    import subprocess
+    card = ROOT / "site" / "assets" / "img" / "social" / f"{date}.png"
+    rc = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "make_social_card.py"),
+         "--date", date, "--out", str(card)],
+        cwd=ROOT, capture_output=True, text=True,
+    )
+    print(rc.stdout.strip() or rc.stderr.strip())
+    if rc.returncode != 0 or not card.exists():
+        print(f"SKIP {date}: card generation failed — no image to post")
+        return 0
+    if card.stat().st_size < 10000:
+        print(f"SKIP {date}: card suspiciously small ({card.stat().st_size} B)")
+        return 0
+
     message = compose_post(date, brief, overnight)
     print(f"POSTING for {date} ({len(message)} chars):\n{message}\n---")
-    pid = post(token, message)
+    pid = post_photo(token, card, message)
     print(f"posted id={pid}")
-    if verify(token, pid):
-        print(f"VERIFIED: {pid} visible in page feed")
+    if verify(token, pid, date):
+        print(f"VERIFIED: {pid} live in page feed")
         return 0
     print(f"NOT VERIFIED: {pid} not found in feed readback — manual check needed")
     return 3

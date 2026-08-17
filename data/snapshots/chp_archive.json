@@ -1262,11 +1262,21 @@
  {
   "log_id": "260817BF0142",
   "time": "Aug 17 2026 10:37AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
+  "type": "1181-Trfc Collision-Minor Inj",
   "location": "1700 N Rancho Dr",
   "area": "Bakersfield",
   "lat": 35.121768,
   "lon": -118.850603,
+  "details": ""
+ },
+ {
+  "log_id": "260817BF0161",
+  "time": "Aug 17 2026 11:32AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 Stockton Ave",
+  "area": "Bakersfield",
+  "lat": 35.427006,
+  "lon": -119.0248,
   "details": ""
  },
  {

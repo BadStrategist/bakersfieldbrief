@@ -7,8 +7,8 @@
  "bernard street & jefferson park, Bakersfield, CA": null,
  "300 block of bernard street, Bakersfield, Kern County, CA": null,
  "bernard street, Bakersfield, CA": [
-  35.3925915,
-  -118.9487183
+  35.3922479,
+  -118.9517374
  ],
  "hillside & county line, Bakersfield, CA": null,
  "northbound & grapevine road, Bakersfield, CA": null,
@@ -31,15 +31,15 @@
  "deal avenue, Bakersfield, CA": null,
  "2100 block of niles street, Bakersfield, Kern County, CA": null,
  "niles street, Bakersfield, CA": [
-  35.3816592,
-  -118.9895361
+  35.3798946,
+  -118.9821689
  ],
  "1400 block of hops lane, Bakersfield, Kern County, CA": null,
  "hops lane, Bakersfield, CA": null,
  "2000 block of calloway drive, Bakersfield, Kern County, CA": null,
  "calloway drive, Bakersfield, CA": [
-  35.3964545,
-  -119.10987
+  35.366165,
+  -119.1132804
  ],
  "providence avenue & olive drive, Bakersfield, CA": null,
  "100 block of donna avenue, Bakersfield, Kern County, CA": null,
@@ -57,5 +57,6 @@
   35.321683,
   -119.0242376
  ],
- "2200 block of niles street, Bakersfield, Kern County, CA": null
+ "2200 block of niles street, Bakersfield, Kern County, CA": null,
+ "bike path & oak street, Bakersfield, CA": null
 }

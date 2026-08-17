@@ -1,0 +1,155 @@
+[
+  {
+    "type": "shooting",
+    "time": "21:38",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield (location unclear on the air)",
+    "notability": 4,
+    "disposition": "investigating",
+    "summary": "Shots-fired incident with a possible victim — units checking local hospitals for gunshot-wound patients and looking for a suspect vehicle."
+  },
+  {
+    "type": "domestic_violence",
+    "time": "21:54",
+    "agency": "Bakersfield Police Department",
+    "area": "Animas Court",
+    "notability": 4,
+    "disposition": "responding",
+    "summary": "Domestic violence in progress (273.6) at a residence on Animas Court; multiple units responding."
+  },
+  {
+    "type": "brandishing_firearm",
+    "time": "23:00",
+    "agency": "Bakersfield Police Department",
+    "area": "Monterey Street",
+    "notability": 4,
+    "disposition": "responding",
+    "summary": "Group of juveniles — one of whom pointed a firearm at the reporting party after claiming a gang affiliation. No shots reported."
+  },
+  {
+    "type": "assault_with_deadly_weapon",
+    "time": "23:03",
+    "agency": "Bakersfield Police Department",
+    "area": "Ming Avenue, FoodMaxx",
+    "notability": 3,
+    "disposition": "investigating",
+    "summary": "Ex-boyfriend reportedly smashed a vehicle windshield with a shotgun in the FoodMaxx parking lot on Ming Avenue. Reporting party standing by."
+  },
+  {
+    "type": "vegetation_fire",
+    "time": "22:32",
+    "agency": "Kern County Fire Department",
+    "area": "bike path near Oak Street",
+    "notability": 3,
+    "disposition": "contained",
+    "summary": "One-acre grass fire near the bike path with a slow rate of spread; crews gained access from Oak Street and pulled an additional line."
+  },
+  {
+    "type": "domestic_violence",
+    "time": "22:35",
+    "agency": "Bakersfield Police Department",
+    "area": "East California Avenue",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Domestic disturbance at a residence on East California Avenue; report of a family member battered (242)."
+  },
+  {
+    "type": "welfare_check",
+    "time": "22:52",
+    "agency": "Bakersfield Police Department",
+    "area": "Coffee Road, Bank of America",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Possible overdose reported at the Bank of America on Coffee Road; medical aid en route."
+  },
+  {
+    "type": "suicidal_subject",
+    "time": "23:09",
+    "agency": "Bakersfield Police Department",
+    "area": "South Chester Avenue area",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Suicidal subject in the South Chester Avenue area; units responding."
+  },
+  {
+    "type": "burglary",
+    "time": "23:33",
+    "agency": "Kern County Sheriff's Office",
+    "area": "Manhattan Drive",
+    "notability": 3,
+    "disposition": "investigating",
+    "summary": "Possible burglary at a residence on Manhattan Drive — sliding back door found shattered."
+  },
+  {
+    "type": "vehicle_fire",
+    "time": "00:04",
+    "agency": "Kern County Fire Department",
+    "area": "Bakersfield (tow yard)",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Vehicle reported on fire inside a tow yard; exact location unclear on the air."
+  },
+  {
+    "type": "suspicious_circumstances",
+    "time": "21:55",
+    "agency": "Bakersfield Police Department",
+    "area": "Ming Avenue, AutoZone",
+    "notability": 2,
+    "disposition": "investigating",
+    "summary": "Alarm at the AutoZone on Ming Avenue; live video showed someone enter the business and leave as it was closing."
+  },
+  {
+    "type": "reckless_driver",
+    "time": "22:03",
+    "agency": "CHP",
+    "area": "southbound I-5, north of Lebec",
+    "notability": 2,
+    "disposition": "searching",
+    "summary": "Gray or silver sedan weaving in and out of traffic, cutting off vehicles and brake-checking on southbound I-5 north of Lebec."
+  },
+  {
+    "type": "medical_aid",
+    "time": "22:12",
+    "agency": "Kern County Fire Department",
+    "area": "O Street, Pacific Palms Apartments",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Unknown medical aid at the Pacific Palms Apartments on O Street; police also en route."
+  },
+  {
+    "type": "family_disturbance",
+    "time": "22:18",
+    "agency": "Bakersfield Police Department",
+    "area": "Baker Street area",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Verbal disturbance in the Baker Street area involving two subjects."
+  },
+  {
+    "type": "medical_aid",
+    "time": "22:25",
+    "agency": "Kern County Fire Department",
+    "area": "Covey Avenue",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid at a residence on Covey Avenue."
+  },
+  {
+    "type": "vegetation_fire",
+    "time": "22:58",
+    "agency": "Kern County Fire Department",
+    "area": "Yokuts Park riverbed",
+    "notability": 2,
+    "disposition": "assessing",
+    "summary": "Small fire reported on the riverbed at Yokuts Park; multiple callers."
+  },
+  {
+    "type": "welfare_check",
+    "time": "23:19",
+    "agency": "Kern County Sheriff's Office",
+    "area": "Applecreek Court",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Welfare check at a residence on Applecreek Court involving a young child."
+  }
+]

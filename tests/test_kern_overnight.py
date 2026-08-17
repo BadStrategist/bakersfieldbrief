@@ -664,4 +664,32 @@ class TestNoGuessingGate:
         assert pf.overnight_live_on_site("2026-08-17") is True
         assert pf.overnight_live_on_site("2026-08-15") is False
 
+    def test_stale_archive_headline_never_leads_post(self):
+        """The caption lead must be grounded in the brief body. A drifted
+        archive headline ('Lanterns' film review) that isn't in the body must
+        be rejected in favour of the body's own lead — this exact bug shipped
+        a wrong caption on 2026-08-17."""
+        import scripts.post_facebook as pf
+        body = json.loads((pf.ROOT / "data" / "briefs" / "2026-08-17.json")
+                          .read_text(encoding="utf-8"))["body"]
+        stale = "'Lanterns' banks heavily on two lead actors making connection"
+        assert not pf._headline_grounded_in_body(stale, body)
+        correct = "Trial begins in 2019 Bakersfield homicide over alleged 'rude comments'"
+        assert pf._headline_grounded_in_body(correct, body)
+
+    def test_headline_grounding_ratio(self):
+        """Grounding is a content-word overlap check, not a substring check:
+        a headline sharing >=60% of its significant words with the body passes,
+        a nearly-empty headline never does."""
+        import scripts.post_facebook as pf
+        body = ("Good morning. The night's most serious call involved a group "
+                "of juveniles with a firearm on Monterey Street, CHP says.")
+        assert pf._headline_grounded_in_body(
+            "Juveniles with firearm on Monterey Street", body)
+        assert not pf._headline_grounded_in_body(
+            "Unrelated headline about a film review", body)
+        assert not pf._headline_grounded_in_body("", body)
+        assert not pf._headline_grounded_in_body("the and for", body)
+
+
 

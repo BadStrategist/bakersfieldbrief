@@ -104,6 +104,16 @@ jobs:
       - name: Test suite (hard gate before deploy)
         run: python -m pytest -q -o addopts="" --tb=short
 
+      # Social post: publish the Brief+Overnight summary to Facebook once the
+      # brief body and overnight report both exist for today (the 6:00 PT run
+      # gate-skips until the 6:30 PT overnight lands; the 7:00 PT run posts).
+      # The gate + duplicate guard inside the script make this idempotent.
+      - name: Post summary to Facebook
+        env:
+          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+          FB_PAGE_ID: "1298315170026203"
+        run: python scripts/post_facebook.py
+
       - name: Deploy to Cloudflare Pages
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

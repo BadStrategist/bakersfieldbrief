@@ -1212,11 +1212,21 @@
  {
   "log_id": "260816BF0331",
   "time": "Aug 16 2026  8:52PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
+  "type": "1180-Trfc Collision-Major Inj",
   "location": "0 I5 N",
   "area": "Buttonwillow",
   "lat": 35.424904,
   "lon": -119.432606,
+  "details": ""
+ },
+ {
+  "log_id": "260816BF0343",
+  "time": "Aug 16 2026  9:22PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "E Panama Ln / S Fairfax Rd",
+  "area": "Bakersfield",
+  "lat": 35.295949,
+  "lon": -118.931977,
   "details": ""
  },
  {

@@ -1160,6 +1160,16 @@
   "details": ""
  },
  {
+  "log_id": "260817BF0204",
+  "time": "Aug 17 2026  1:07PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "Sr58 W / Sr99 N",
+  "area": "Bakersfield",
+  "lat": 35.352805,
+  "lon": -119.0394,
+  "details": ""
+ },
+ {
   "log_id": "260817BF0018",
   "time": "Aug 17 2026  2:00AM",
   "type": "20002-Hit and Run No Injuries",

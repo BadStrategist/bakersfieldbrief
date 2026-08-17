@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-17T03:17:58-07:00",
+ "built_at": "2026-08-17T07:00:37-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -34,8 +34,8 @@
    "error": ""
   },
   "isabella": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ConnectTimeout: HTTPSConnectionPool(host='cdec.water.ca.gov', port=443): Max retries exceeded with url: /dynamicapp/req/JSONDataServlet?Stations=ISB&SensorNums=15&dur_code=D&Start=2026-07-11&End=2026-08-17 (Caused by ConnectTimeoutError(<HTTPSConnection(host='cdec.water.ca.gov', port=443) at 0x7f10b9dae840>, 'Connection to cdec.water.ca.gov timed out. (connect timeout=40)'))"
   },
   "alpr": {
    "ok": true,
@@ -55,14 +55,14 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 787,
+  "_digest_meta": "llm",
+  "brief_words": 1069,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "Robert F. Kennedy Jr. tours Bakersfield program he says could reshape how schools teach kids about food",
+   "chp_new": 0,
+   "top_story": "Hayden Panettiere, who starred in the television series \u2018Heroes\u2019 and \u2018Nashville,\u2019 dies at 36",
    "archive": "2026-08-17"
   },
   "cityhall": {
@@ -81,7 +81,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 6,
+    "bakersfield-nw": 9,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -92,9 +92,9 @@
    "draft": "drafts/weekend-guide-2026-08-17"
   },
   "grapevine": {
-   "i5": "OPEN",
+   "i5": "CLOSED",
    "i5_pass": "OPEN",
-   "log_entries": 48
+   "log_entries": 50
   },
   "events": {
    "groups": {
@@ -108,10 +108,10 @@
    "entries": 14
   },
   "numbers": {
-   "isabella_af": 208157,
+   "isabella_af": null,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 58,
+   "aqi": 53,
    "chp_week": 2
   },
   "letters": {

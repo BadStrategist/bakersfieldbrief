@@ -60,7 +60,13 @@ jobs:
           echo "Pacific hour is $H (LLM build when == 6, FB gate retry ${retry:-0} min)"
 
       - name: Install dependencies
-        run: pip install -q -r requirements.txt
+        run: |
+          pip install -q -r requirements.txt
+          # make_reel.py needs ffmpeg (Ken Burns + audio bed); the runner
+          # image does NOT ship it — without this the reel build crashes
+          # and the daily post silently falls back to a photo.
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          ffmpeg -version | head -1
 
       - name: Build site (fetch sources → bake static HTML)
         run: python build/build_all.py ${{ steps.gate.outputs.llm == '0' && '--no-llm' || '' }}

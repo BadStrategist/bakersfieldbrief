@@ -552,3 +552,42 @@ class TestSocialGate:
             assert pf.gate_check("2026-08-17") is None
         finally:
             pf.BRIEFS, pf.OVERNIGHTS = old_b, old_o
+
+    def test_wait_for_gate_retry_disabled_skips_fast(self, tmp_path):
+        """retry=0 must not hang: a partial overnight returns None at once."""
+        import scripts.post_facebook as pf
+        partial = ("> ⚠️ PARTIAL COVERAGE: transcription was still running "
+                   "when this report was written.\n\n"
+                   "# The Kern Overnight — August 17, 2026\n\n"
+                   "## Night notes\n\nPartial notes.")
+        self._write(tmp_path, "2026-08-17.json", json.dumps({"body": "x" * 300}))
+        self._write(tmp_path, "2026-08-17.md", partial)
+        old_b, old_o = pf.BRIEFS, pf.OVERNIGHTS
+        pf.BRIEFS, pf.OVERNIGHTS = tmp_path, tmp_path
+        try:
+            assert pf.wait_for_gate("2026-08-17", 0) is None
+        finally:
+            pf.BRIEFS, pf.OVERNIGHTS = old_b, old_o
+
+    def test_wait_for_gate_complete_passes_immediately(self, tmp_path):
+        import scripts.post_facebook as pf
+        full = ("# The Kern Overnight — August 17, 2026\n\n"
+                "Opening paragraph with real content describing the night's "
+                "calls across Bakersfield and Kern County, including the "
+                "most serious incident and the general picture.\n\n"
+                "## The big one\n\nSomething notable happened around the "
+                "county and crews responded in force.\n\n"
+                "## Around the county\n\nA couple of scannable bullets about "
+                "the night's other calls and how they were handled.\n\n"
+                "## The log\n\n21:39 — Item one. 22:10 — Item two. "
+                "00:20 — Item three. 01:48 — Item four.\n\n"
+                "## Night notes\n\nTwo sentences of notes summarising how "
+                "the night went and what stood out.")
+        self._write(tmp_path, "2026-08-17.json", json.dumps({"body": "x" * 300}))
+        self._write(tmp_path, "2026-08-17.md", full)
+        old_b, old_o = pf.BRIEFS, pf.OVERNIGHTS
+        pf.BRIEFS, pf.OVERNIGHTS = tmp_path, tmp_path
+        try:
+            assert pf.wait_for_gate("2026-08-17", 25) is not None
+        finally:
+            pf.BRIEFS, pf.OVERNIGHTS = old_b, old_o

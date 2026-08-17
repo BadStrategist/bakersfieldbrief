@@ -7,7 +7,14 @@ Design:
   * Date defaults to today (America/Los_Angeles); --date YYYY-MM-DD overrides.
   * Gate: data/briefs/<date>.json (body) and data/overnight_reports/<date>.md
     must both exist and be non-trivial. Missing either -> SKIP, exit 0
-    (a skip is not an error; the pipeline reports it).
+    (a skip is not an error; the pipeline reports it). The overnight
+    report must ALSO be complete: no partial-coverage marker and the
+    required sections present (a report published early with partial
+    transcription never reaches socials).
+  * Retry: when only the overnight is missing/incomplete, wait and re-pull
+    (up to FB_RETRY_MINUTES, default 25) — the local KO cron pushes the
+    report ~7:00-7:10 PT, after the 7:00 PT CI checkout. --retry-minutes N
+    or FB_RETRY_MINUTES=0 disables the wait.
   * Duplicate guard: refuses to post if the page feed already contains a post
     with today's brief URL (idempotent re-runs).
   * Post: top story headline + overnight "big one" line + link + local tags.
@@ -54,20 +61,18 @@ def get_token() -> str:
     raise SystemExit("FB_PAGE_TOKEN not set and no local token file found")
 
 
-def gate_check(date: str) -> tuple[str, str] | None:
-    """Return (brief_body, overnight_md) or None with a reason if gate fails.
+def gate_problems(date: str) -> list[str]:
+    """List of publish-gate problems for date (empty list = ready to post).
 
-    Hard rule: NEVER post unless the day's brief body AND a COMPLETE
-    overnight report exist. A report is complete only when it is
-    published (in data/overnight_reports/) AND carries no partial-
-    coverage marker AND has the required structural sections. Phase 2 is
-    allowed to publish early with partial transcription — the marker is
-    what stops a partial report from being posted to socials.
+    A report is complete only when it is published (in
+    data/overnight_reports/) AND carries no partial-coverage marker AND
+    has the required structural sections. Phase 2 is allowed to publish
+    early with partial transcription — the marker is what stops a partial
+    report from being posted to socials.
     """
     bp = BRIEFS / f"{date}.json"
     op = OVERNIGHTS / f"{date}.md"
     reasons = []
-    brief = ""
     if not bp.exists():
         reasons.append(f"brief body missing: {bp.name}")
     else:
@@ -77,7 +82,6 @@ def gate_check(date: str) -> tuple[str, str] | None:
                 reasons.append(f"brief body too short ({len(brief)} chars)")
         except Exception as exc:  # noqa: BLE001
             reasons.append(f"brief body unreadable: {exc}")
-    overnight = ""
     if not op.exists():
         reasons.append(f"overnight report missing: {op.name}")
     else:
@@ -89,10 +93,69 @@ def gate_check(date: str) -> tuple[str, str] | None:
             reasons.append("overnight report marked PARTIAL (transcription incomplete)")
         elif not (overnight.startswith("# ") and "## Night notes" in overnight):
             reasons.append("overnight report missing required sections (not fully written)")
+    return reasons
+
+
+def gate_check(date: str) -> tuple[str, str] | None:
+    """Return (brief_body, overnight_md) or None with a reason if gate fails."""
+    reasons = gate_problems(date)
     if reasons:
         print(f"SKIP {date}: publish gate failed — " + "; ".join(reasons))
         return None
+    brief = (json.loads((BRIEFS / f"{date}.json").read_text(encoding="utf-8")) or {}).get("body", "")
+    overnight = (OVERNIGHTS / f"{date}.md").read_text(encoding="utf-8").strip()
     return brief, overnight
+
+
+def _git_pull_latest() -> None:
+    """Fetch origin/main and overlay the data dirs the gate reads, so a
+    report pushed by the local KO cron (after this job's checkout) becomes
+    visible. Uses fetch + sparse checkout of data/ — works on the detached
+    HEAD that actions/checkout leaves, with no rebase/conflict risk.
+    Non-fatal: on failure the next poll just re-checks local state."""
+    import subprocess
+    r = subprocess.run(
+        ["git", "fetch", "origin", "main"],
+        cwd=ROOT, capture_output=True, text=True, timeout=120,
+    )
+    if r.returncode != 0:
+        print(f"  WARN: git fetch failed ({r.returncode}): {(r.stderr or '')[-200:]}")
+        return
+    r = subprocess.run(
+        ["git", "checkout", "origin/main", "--",
+         "data/overnight_reports", "data/briefs"],
+        cwd=ROOT, capture_output=True, text=True, timeout=60,
+    )
+    if r.returncode != 0:
+        print(f"  WARN: git checkout of data/ failed ({r.returncode}): {(r.stderr or '')[-200:]}")
+
+
+def wait_for_gate(date: str, minutes: float) -> tuple[str, str] | None:
+    """Poll the publish gate until a COMPLETE brief+overnight exists or the
+    budget is exhausted. Only retries when the overnight is the missing
+    piece (a missing brief is a hard failure the KO pipeline can't fix).
+    Pulls from origin between polls so a report pushed by the local KO
+    cron (phase 2 lands ~7:00-7:10 PT, after the 7:00 CI checkout) is
+    picked up. Returns (brief, overnight) or None."""
+    import time
+    if minutes <= 0:
+        return gate_check(date)
+    problems = gate_problems(date)
+    if not problems:
+        return gate_check(date)
+    if any("brief" in p for p in problems):
+        print(f"SKIP {date}: gate failed on the brief — not retrying: " + "; ".join(problems))
+        return None
+    deadline = time.time() + minutes * 60
+    while time.time() < deadline:
+        left = int((deadline - time.time()) / 60)
+        print(f"  gate not ready (overnight) — pulling latest, retrying in 30s (≤{left} min left)")
+        _git_pull_latest()
+        time.sleep(30)
+        if not gate_problems(date):
+            return gate_check(date)
+    print(f"SKIP {date}: overnight still incomplete after {minutes:.0f} min — manual check needed")
+    return None
 
 
 def archive_headline(date: str) -> str:
@@ -340,7 +403,10 @@ def verify(token: str, pid: str, date: str) -> bool:
 def main() -> int:
     date = sys.argv[sys.argv.index("--date") + 1] if "--date" in sys.argv else today_iso()
     token = get_token()
-    gate = gate_check(date)
+    retry_minutes = float(os.environ.get("FB_RETRY_MINUTES", "25"))
+    if "--retry-minutes" in sys.argv:
+        retry_minutes = float(sys.argv[sys.argv.index("--retry-minutes") + 1])
+    gate = wait_for_gate(date, retry_minutes)
     if gate is None:
         return 0  # skip is not an error
     brief, overnight = gate

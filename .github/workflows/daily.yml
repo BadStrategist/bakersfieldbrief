@@ -48,7 +48,16 @@ jobs:
           else
             echo "llm=0" >> "$GITHUB_OUTPUT"
           fi
-          echo "Pacific hour is $H (LLM build when == 6)"
+          # The 7:00 PT run waits for the overnight: phase 2 publishes
+          # ~7:00-7:10 PT (the 6:30 cron + push), so retry the gate for up
+          # to 25 min. Other runs must not burn CI minutes on a report
+          # that hasn't landed yet (6:00) or has long since landed (8:00+).
+          if [ "$H" = "7" ]; then
+            echo "retry=25" >> "$GITHUB_OUTPUT"
+          else
+            echo "retry=0" >> "$GITHUB_OUTPUT"
+          fi
+          echo "Pacific hour is $H (LLM build when == 6, FB gate retry ${retry:-0} min)"
 
       - name: Install dependencies
         run: pip install -q -r requirements.txt
@@ -106,12 +115,14 @@ jobs:
 
       # Social post: publish the Brief+Overnight summary to Facebook once the
       # brief body and overnight report both exist for today (the 6:00 PT run
-      # gate-skips until the 6:30 PT overnight lands; the 7:00 PT run posts).
-      # The gate + duplicate guard inside the script make this idempotent.
+      # gate-skips until the 6:30 PT overnight lands; the 7:00 PT run waits
+      # up to 25 min for the phase-2 push, then posts). The gate + duplicate
+      # guard inside the script make this idempotent.
       - name: Post summary to Facebook
         env:
           FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
           FB_PAGE_ID: "1298315170026203"
+          FB_RETRY_MINUTES: ${{ steps.gate.outputs.retry }}
         run: python scripts/post_facebook.py
 
       - name: Deploy to Cloudflare Pages

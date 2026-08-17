@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-16T14:40:31-07:00",
+ "built_at": "2026-08-16T18:54:20-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,14 +55,14 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 892,
+  "_digest_meta": "llm",
+  "brief_words": 914,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 2,
-   "top_story": "STEM in Kern: Understanding recent major earthquakes",
+   "chp_new": 3,
+   "top_story": "3 dead after wrong-way crash on Highway 99 near Bakersfield, CHP says",
    "archive": "2026-08-16"
   },
   "cityhall": {
@@ -78,10 +78,10 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 11,
+    "bakersfield-nw": 8,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -111,14 +111,14 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 67,
-   "chp_week": 101
+   "aqi": 97,
+   "chp_week": 104
   },
   "letters": {
    "published": 0
   },
   "overnight": {
-   "published": 6
+   "published": 7
   },
   "map": {
    "dots": 54

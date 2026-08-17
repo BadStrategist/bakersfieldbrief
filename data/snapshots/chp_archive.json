@@ -1100,6 +1100,36 @@
   "details": ""
  },
  {
+  "log_id": "260816BF0251",
+  "time": "Aug 16 2026  5:08PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "15000-15299 Rosedale Hwy",
+  "area": "Bakersfield",
+  "lat": 35.383464,
+  "lon": -119.171833,
+  "details": ""
+ },
+ {
+  "log_id": "260816BF0272",
+  "time": "Aug 16 2026  6:22PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Nb I5 Jso Gorman School Rd",
+  "area": "Fort Tejon",
+  "lat": 34.79456,
+  "lon": -118.847656,
+  "details": ""
+ },
+ {
+  "log_id": "260816BF0278",
+  "time": "Aug 16 2026  6:33PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr58 E / S Chester Ave",
+  "area": "Bakersfield",
+  "lat": 35.352429,
+  "lon": -119.01889,
+  "details": ""
+ },
+ {
   "log_id": "260816BF0004",
   "time": "Aug 16 2026 12:11AM",
   "type": "TADV-Traffic Advisory",

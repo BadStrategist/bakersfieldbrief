@@ -1250,6 +1250,16 @@
   "details": ""
  },
  {
+  "log_id": "260817BF0118",
+  "time": "Aug 17 2026  9:36AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "0 Sr99 N",
+  "area": "Bakersfield",
+  "lat": 35.341782,
+  "lon": -119.039438,
+  "details": ""
+ },
+ {
   "log_id": "260817BF0003",
   "time": "Aug 17 2026 12:05AM",
   "type": "TADV-Traffic Advisory",

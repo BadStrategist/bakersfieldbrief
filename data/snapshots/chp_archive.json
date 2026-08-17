@@ -1180,6 +1180,16 @@
   "details": ""
  },
  {
+  "log_id": "260817BF0049",
+  "time": "Aug 17 2026  7:05AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Wb Sr58 At Oswell St",
+  "area": "Bakersfield",
+  "lat": 35.352222,
+  "lon": -118.949444,
+  "details": ""
+ },
+ {
   "log_id": "260817BF0003",
   "time": "Aug 17 2026 12:05AM",
   "type": "TADV-Traffic Advisory",

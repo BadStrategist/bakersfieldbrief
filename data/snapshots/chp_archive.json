@@ -1190,6 +1190,36 @@
   "details": ""
  },
  {
+  "log_id": "260817BF0057",
+  "time": "Aug 17 2026  7:18AM",
+  "type": "1125A-Animal Hazard",
+  "location": "SR178 JWO The 4 Lane",
+  "area": "Bakersfield",
+  "lat": 35.547222,
+  "lon": -118.615278,
+  "details": ""
+ },
+ {
+  "log_id": "260817BF0073",
+  "time": "Aug 17 2026  7:51AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "3201 Pico Ave",
+  "area": "Bakersfield",
+  "lat": 35.39027,
+  "lon": -118.954208,
+  "details": ""
+ },
+ {
+  "log_id": "260817BF0074",
+  "time": "Aug 17 2026  7:55AM",
+  "type": "1125A-Animal Hazard",
+  "location": "Eb Sr58 At Fairfax Rd",
+  "area": "Bakersfield",
+  "lat": 35.351944,
+  "lon": -118.931944,
+  "details": ""
+ },
+ {
   "log_id": "260817BF0003",
   "time": "Aug 17 2026 12:05AM",
   "type": "TADV-Traffic Advisory",

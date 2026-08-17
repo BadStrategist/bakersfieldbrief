@@ -1130,6 +1130,26 @@
   "details": ""
  },
  {
+  "log_id": "260816BF0289",
+  "time": "Aug 16 2026  7:00PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr166 / Mettler Frontage Rd W",
+  "area": "Fort Tejon",
+  "lat": 35.057847,
+  "lon": -118.969959,
+  "details": ""
+ },
+ {
+  "log_id": "260816BF0292",
+  "time": "Aug 16 2026  7:13PM",
+  "type": "JUMPER",
+  "location": "Sr46 / Sr99 S",
+  "area": "Bakersfield",
+  "lat": 35.601816,
+  "lon": -119.211348,
+  "details": ""
+ },
+ {
   "log_id": "260816BF0004",
   "time": "Aug 16 2026 12:11AM",
   "type": "TADV-Traffic Advisory",

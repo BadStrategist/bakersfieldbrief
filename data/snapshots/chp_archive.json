@@ -1220,6 +1220,36 @@
   "details": ""
  },
  {
+  "log_id": "260817BF0109",
+  "time": "Aug 17 2026  9:19AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr99 S / 7th Standard Rd",
+  "area": "Bakersfield",
+  "lat": 35.441294,
+  "lon": -119.084247,
+  "details": ""
+ },
+ {
+  "log_id": "260817BF0110",
+  "time": "Aug 17 2026  9:21AM",
+  "type": "1125A-Animal Hazard",
+  "location": "0 Union Ave Onr",
+  "area": "Bakersfield",
+  "lat": 35.38392,
+  "lon": -119.004463,
+  "details": ""
+ },
+ {
+  "log_id": "260817BF0114",
+  "time": "Aug 17 2026  9:29AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr99 S / Sr58 E",
+  "area": "Bakersfield",
+  "lat": 35.35255,
+  "lon": -119.03962,
+  "details": ""
+ },
+ {
   "log_id": "260817BF0003",
   "time": "Aug 17 2026 12:05AM",
   "type": "TADV-Traffic Advisory",

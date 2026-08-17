@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-17T08:46:07-07:00",
+ "built_at": "2026-08-17T08:52:25-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -81,7 +81,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 10,
+    "bakersfield-nw": 9,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -94,7 +94,7 @@
   "grapevine": {
    "i5": "CLOSED",
    "i5_pass": "OPEN",
-   "log_entries": 50
+   "log_entries": 51
   },
   "events": {
    "groups": {

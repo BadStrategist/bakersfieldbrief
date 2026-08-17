@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-16T22:30:03-07:00",
+ "built_at": "2026-08-16T22:37:16-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,7 +56,7 @@
  },
  "section": {
   "_digest_meta": "llm",
-  "brief_words": 1028,
+  "brief_words": 892,
   "daily": {
    "news_headlines": 75,
    "news_digest": "llm",

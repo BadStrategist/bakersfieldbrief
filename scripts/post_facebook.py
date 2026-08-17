@@ -188,16 +188,23 @@ def post_photo(token: str, image_path: str, message: str) -> str:
 def verify(token: str, pid: str, date: str) -> bool:
     """Confirm the post is live. Meta mints a DIFFERENT post id for photo
     uploads than the photo id the POST returns, so match on the caption's
-    unique marker (today's brief URL) instead of the id."""
+    unique marker (today's brief URL) instead of the id. The page feed
+    edge can lag the POST response by several seconds, so poll briefly
+    before declaring failure (otherwise CI false-flags live posts)."""
     needle = f"briefs/{date}/"
-    r = requests.get(f"{API}/{PAGE_ID}/posts?fields=id,message&limit=10&access_token={token}", timeout=20)
-    if r.status_code != 200:
-        print(f"WARN: verify read failed ({r.status_code})")
-        return False
-    for p in r.json().get("data", []):
-        if needle in (p.get("message") or ""):
-            print(f"  found live post: {p.get('id')}")
-            return True
+    for attempt in range(4):
+        r = requests.get(f"{API}/{PAGE_ID}/posts?fields=id,message&limit=10&access_token={token}", timeout=20)
+        if r.status_code == 200:
+            for p in r.json().get("data", []):
+                if needle in (p.get("message") or ""):
+                    print(f"  found live post: {p.get('id')}")
+                    return True
+        else:
+            print(f"WARN: verify read failed ({r.status_code})")
+        if attempt < 3:
+            import time
+            print(f"  feed not yet showing the post (attempt {attempt + 1}/4) — waiting 5s")
+            time.sleep(5)
     return False
 
 

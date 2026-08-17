@@ -1135,7 +1135,7 @@ def _brief_full_body(top, headlines, weather, airnow, calfire,
     return llm.brief_full(
         overnight_md, wx, airnow or {}, calfire or {}, items,
         events or [], _meetings_prose(escribe), good,
-        f"{today:%B} {today.day}, {today.year}" if hasattr(today, "day") else str(today))
+        f"{today:%A, %B} {today.day}, {today.year}" if hasattr(today, "day") else str(today))
 
 
 def _cached_brief_body(today) -> str | None:

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-16T23:25:54-07:00",
+ "built_at": "2026-08-17T00:39:22-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,14 +56,14 @@
  },
  "section": {
   "_digest_meta": "llm",
-  "brief_words": 882,
+  "brief_words": 787,
   "daily": {
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 1,
    "top_story": "3 dead after wrong-way crash on Highway 99 near Bakersfield, CHP says",
-   "archive": "2026-08-16"
+   "archive": "2026-08-17"
   },
   "cityhall": {
    "upcoming_meetings": 5,
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 7,
@@ -89,7 +89,7 @@
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-08-16"
+   "draft": "drafts/weekend-guide-2026-08-17"
   },
   "grapevine": {
    "i5": "OPEN",
@@ -105,14 +105,14 @@
    "meetings": 5
   },
   "feed": {
-   "entries": 13
+   "entries": 14
   },
   "numbers": {
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
    "aqi": 58,
-   "chp_week": 116
+   "chp_week": 1
   },
   "letters": {
    "published": 0

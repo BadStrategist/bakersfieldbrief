@@ -1,125 +1,5 @@
 [
  {
-  "log_id": "260809BF0221",
-  "time": "Aug  9 2026  1:08PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "0 WASCO WAY",
-  "area": "Buttonwillow",
-  "lat": 35.44243,
-  "lon": -119.458788,
-  "details": ""
- },
- {
-  "log_id": "260809BF0222",
-  "time": "Aug  9 2026  1:09PM",
-  "type": "1125A-Animal Hazard",
-  "location": "9000 Navajo Ave",
-  "area": "Bakersfield",
-  "lat": 35.647376,
-  "lon": -118.360668,
-  "details": ""
- },
- {
-  "log_id": "260809BF0228",
-  "time": "Aug  9 2026  1:17PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr65 / Sherwood Ave",
-  "area": "Bakersfield",
-  "lat": 35.659266,
-  "lon": -119.077548,
-  "details": ""
- },
- {
-  "log_id": "260809BF0245",
-  "time": "Aug  9 2026  1:57PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Encino Trl / Pine Canyon Rd",
-  "area": "Fort Tejon",
-  "lat": 34.819003,
-  "lon": -118.949912,
-  "details": ""
- },
- {
-  "log_id": "260809BF0250",
-  "time": "Aug  9 2026  2:12PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Olive Dr / Knudsen Dr",
-  "area": "Bakersfield",
-  "lat": 35.412244,
-  "lon": -119.058817,
-  "details": ""
- },
- {
-  "log_id": "260809BF0251",
-  "time": "Aug  9 2026  2:12PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Sr99 S / Ming Ave Ofr",
-  "area": "Bakersfield",
-  "lat": 35.35346,
-  "lon": -119.039616,
-  "details": ""
- },
- {
-  "log_id": "260809BF0254",
-  "time": "Aug  9 2026  2:19PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Sr184 / Paradise Rd",
-  "area": "Bakersfield",
-  "lat": 35.265168,
-  "lon": -118.9143,
-  "details": ""
- },
- {
-  "log_id": "260809BF0253",
-  "time": "Aug  9 2026  2:20PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Nb I5 Jso Laval Rd",
-  "area": "Fort Tejon",
-  "lat": 34.9825,
-  "lon": -118.943889,
-  "details": ""
- },
- {
-  "log_id": "260809BF0256",
-  "time": "Aug  9 2026  2:25PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sb I5 Jso Old River Rd",
-  "area": "Buttonwillow",
-  "lat": 35.158333,
-  "lon": -119.107222,
-  "details": ""
- },
- {
-  "log_id": "260809BF0069",
-  "time": "Aug  9 2026  7:10AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Sr184 / Berry Rd",
-  "area": "Bakersfield",
-  "lat": 35.314397,
-  "lon": -118.914287,
-  "details": ""
- },
- {
-  "log_id": "260809BF0152",
-  "time": "Aug  9 2026 11:39AM",
-  "type": "FIRE-Report of Fire",
-  "location": "SR99 S / MING AVE OFR",
-  "area": "Bakersfield",
-  "lat": 35.35346,
-  "lon": -119.039616,
-  "details": ""
- },
- {
-  "log_id": "260809BF0003",
-  "time": "Aug  9 2026 12:01AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
   "log_id": "260810BF0239",
   "time": "Aug 10 2026  2:30PM",
   "type": "1182-Trfc Collision-No Inj",
@@ -1277,6 +1157,16 @@
   "area": "Bakersfield",
   "lat": 35.44944,
   "lon": -119.097941,
+  "details": ""
+ },
+ {
+  "log_id": "260817BF0003",
+  "time": "Aug 17 2026 12:05AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
   "details": ""
  }
 ]

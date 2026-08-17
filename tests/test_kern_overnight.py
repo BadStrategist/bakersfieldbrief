@@ -492,3 +492,63 @@ class TestData:
         assert "<strong>KGET 17 reports that the fair opens Friday.</strong>" in html_out
         assert "<strong>According to 23ABC, the council met.</strong>" in html_out
         assert "<strong>A nice note here.</strong>" not in html_out
+
+
+# ------------------------------------------------- social post publish gate
+class TestSocialGate:
+    """post_facebook.gate_check must NEVER approve a partial or incomplete
+    overnight report — the reel/photo post can only go out once the
+    overnight is fully transcribed AND published."""
+
+    def _write(self, tmp_path, name: str, text: str) -> Path:
+        p = tmp_path / name
+        p.write_text(text, encoding="utf-8")
+        return p
+
+    def _run(self, tmp_path, overnight_text: str, brief_text: str = "x" * 300):
+        import scripts.post_facebook as pf
+        bp = self._write(tmp_path, "2026-08-17.json", json.dumps({"body": brief_text}))
+        op = self._write(tmp_path, "2026-08-17.md", overnight_text)
+        old_b, old_o = pf.BRIEFS, pf.OVERNIGHTS
+        pf.BRIEFS, pf.OVERNIGHTS = tmp_path, tmp_path
+        try:
+            return pf.gate_check("2026-08-17")
+        finally:
+            pf.BRIEFS, pf.OVERNIGHTS = old_b, old_o
+
+    def test_complete_report_passes(self, tmp_path):
+        full = ("# The Kern Overnight — August 17, 2026\n\n"
+                "Opening paragraph with real content describing the night's "
+                "calls across Bakersfield and Kern County, including the "
+                "most serious incident and the general picture.\n\n"
+                "## The big one\n\nSomething notable happened around the "
+                "county and crews responded in force.\n\n"
+                "## Around the county\n\nA couple of scannable bullets about "
+                "the night's other calls and how they were handled.\n\n"
+                "## The log\n\n21:39 — Item one. 22:10 — Item two. "
+                "00:20 — Item three. 01:48 — Item four.\n\n"
+                "## Night notes\n\nTwo sentences of notes summarising how "
+                "the night went and what stood out.")
+        assert self._run(tmp_path, full) is not None
+
+    def test_partial_coverage_marker_rejected(self, tmp_path):
+        partial = ("> ⚠️ PARTIAL COVERAGE: transcription was still running "
+                   "when this report was written.\n\n"
+                   "# The Kern Overnight — August 17, 2026\n\n"
+                   "## Night notes\n\nPartial notes.")
+        assert self._run(tmp_path, partial) is None
+
+    def test_missing_required_sections_rejected(self, tmp_path):
+        incomplete = ("# The Kern Overnight — August 17, 2026\n\n"
+                      "Only an opening paragraph, no Night notes.")
+        assert self._run(tmp_path, incomplete) is None
+
+    def test_missing_overnight_rejected(self, tmp_path):
+        import scripts.post_facebook as pf
+        bp = self._write(tmp_path, "2026-08-17.json", json.dumps({"body": "x" * 300}))
+        old_b, old_o = pf.BRIEFS, pf.OVERNIGHTS
+        pf.BRIEFS, pf.OVERNIGHTS = tmp_path, tmp_path
+        try:
+            assert pf.gate_check("2026-08-17") is None
+        finally:
+            pf.BRIEFS, pf.OVERNIGHTS = old_b, old_o

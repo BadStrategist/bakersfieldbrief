@@ -55,7 +55,15 @@ def get_token() -> str:
 
 
 def gate_check(date: str) -> tuple[str, str] | None:
-    """Return (brief_body, overnight_md) or None with a reason if gate fails."""
+    """Return (brief_body, overnight_md) or None with a reason if gate fails.
+
+    Hard rule: NEVER post unless the day's brief body AND a COMPLETE
+    overnight report exist. A report is complete only when it is
+    published (in data/overnight_reports/) AND carries no partial-
+    coverage marker AND has the required structural sections. Phase 2 is
+    allowed to publish early with partial transcription — the marker is
+    what stops a partial report from being posted to socials.
+    """
     bp = BRIEFS / f"{date}.json"
     op = OVERNIGHTS / f"{date}.md"
     reasons = []
@@ -74,8 +82,13 @@ def gate_check(date: str) -> tuple[str, str] | None:
         reasons.append(f"overnight report missing: {op.name}")
     else:
         overnight = op.read_text(encoding="utf-8").strip()
+        low = overnight.lower()
         if len(overnight) < 300:
             reasons.append(f"overnight report too short ({len(overnight)} chars)")
+        if "partial coverage" in low or "transcription was still running" in low:
+            reasons.append("overnight report marked PARTIAL (transcription incomplete)")
+        elif not (overnight.startswith("# ") and "## Night notes" in overnight):
+            reasons.append("overnight report missing required sections (not fully written)")
     if reasons:
         print(f"SKIP {date}: publish gate failed — " + "; ".join(reasons))
         return None

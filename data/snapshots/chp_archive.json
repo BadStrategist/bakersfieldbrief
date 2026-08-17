@@ -1260,6 +1260,16 @@
   "details": ""
  },
  {
+  "log_id": "260817BF0142",
+  "time": "Aug 17 2026 10:37AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "1700 N Rancho Dr",
+  "area": "Bakersfield",
+  "lat": 35.121768,
+  "lon": -118.850603,
+  "details": ""
+ },
+ {
   "log_id": "260817BF0003",
   "time": "Aug 17 2026 12:05AM",
   "type": "TADV-Traffic Advisory",

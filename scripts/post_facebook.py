@@ -353,18 +353,31 @@ def main() -> int:
     message = compose_post(date, brief, overnight)
     print(f"POSTING for {date} ({len(message)} chars):\n{message}\n---")
 
-    # Primary: the daily Reel (card + news bed, Ken Burns). Reels get the
+    # Primary: the daily Reel (multi-panel card + news bed). Reels get the
     # best organic reach on Facebook. Fall back to a photo post only if
     # the reel can't be assembled or uploaded — never ship nothing.
-    reel = ROOT / "site" / "assets" / "img" / "social" / f"{date}-reel.mp4"
+    reel_dir = ROOT / "site" / "assets" / "img" / "social" / "reel"
     rc = subprocess.run(
-        [sys.executable, str(ROOT / "scripts" / "make_reel.py"),
-         "--card", str(card), "--audio", str(ROOT / "assets" / "audio" / "news_reel_bed.wav"),
-         "--out", str(reel)],
+        [sys.executable, str(ROOT / "scripts" / "make_social_card.py"),
+         "--date", date, "--out", str(card), "--reel-dir", str(reel_dir)],
         cwd=ROOT, capture_output=True, text=True,
     )
     print(rc.stdout.strip() or rc.stderr.strip())
-    reel_ok = rc.returncode == 0 and reel.exists() and reel.stat().st_size > 100_000
+    panels = [reel_dir / f"{date}-p{i}.png" for i in range(1, 5)]
+    panels_ok = rc.returncode == 0 and all(p.exists() for p in panels)
+
+    reel = ROOT / "site" / "assets" / "img" / "social" / f"{date}-reel.mp4"
+    reel_ok = False
+    if panels_ok:
+        rc = subprocess.run(
+            [sys.executable, str(ROOT / "scripts" / "make_reel.py"),
+             *[a for p in panels for a in ("--panels", str(p))],
+             "--audio", str(ROOT / "assets" / "audio" / "news_reel_bed.wav"),
+             "--out", str(reel)],
+            cwd=ROOT, capture_output=True, text=True,
+        )
+        print(rc.stdout.strip() or rc.stderr.strip())
+        reel_ok = rc.returncode == 0 and reel.exists() and reel.stat().st_size > 100_000
 
     if reel_ok:
         try:

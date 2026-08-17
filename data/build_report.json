@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-16T18:54:20-07:00",
+ "built_at": "2026-08-16T18:59:55-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,12 +56,12 @@
  },
  "section": {
   "_digest_meta": "llm",
-  "brief_words": 914,
+  "brief_words": 835,
   "daily": {
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 3,
+   "chp_new": 0,
    "top_story": "3 dead after wrong-way crash on Highway 99 near Bakersfield, CHP says",
    "archive": "2026-08-16"
   },

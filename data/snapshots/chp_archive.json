@@ -1170,6 +1170,16 @@
   "details": ""
  },
  {
+  "log_id": "260817BF0046",
+  "time": "Aug 17 2026  7:00AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Nb I5 Jso Sr166",
+  "area": "Fort Tejon",
+  "lat": 35.055556,
+  "lon": -118.995,
+  "details": ""
+ },
+ {
   "log_id": "260817BF0003",
   "time": "Aug 17 2026 12:05AM",
   "type": "TADV-Traffic Advisory",

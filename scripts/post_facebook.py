@@ -11,6 +11,9 @@ Design:
   * Duplicate guard: refuses to post if the page feed already contains a post
     with today's brief URL (idempotent re-runs).
   * Post: top story headline + overnight "big one" line + link + local tags.
+  * Post type: a 30s Reel (brand card + news audio bed, Ken Burns zoom) —
+    Reels get the best organic reach on Facebook. Falls back to a photo
+    post of the same card only if the reel can't be assembled or uploaded.
   * Verify: reads back /posts and confirms the new post id appears.
   * Token: FB_PAGE_TOKEN env var (GitHub secret) or
     %LOCALAPPDATA%/hermes/secrets/fb_page_token.txt (local dev).
@@ -185,6 +188,119 @@ def post_photo(token: str, image_path: str, message: str) -> str:
     return pid
 
 
+def post_reel(token: str, video_path: str, message: str) -> str:
+    """Publish a Reel via the video_reels upload protocol.
+
+    Meta's Reels upload supports two flows: the older chunked session
+    (start -> transfer -> finish) and the newer single-shot direct upload
+    URL (POST the whole file to upload_url, then poll status). Both end
+    with a separate publish call. Reels get the best organic reach on
+    Facebook, so this is the primary daily post; photo is the fallback.
+    """
+    import mimetypes
+    size = Path(video_path).stat().st_size
+    mime = mimetypes.guess_type(str(video_path))[0] or "video/mp4"
+
+    # Phase 1: start the upload session
+    r = requests.post(f"{API}/{PAGE_ID}/video_reels", data={
+        "upload_phase": "start",
+        "file_size": size,
+        "access_token": token,
+    }, timeout=30)
+    if r.status_code != 200:
+        raise SystemExit(f"reel upload start failed: {r.status_code} {r.text[:300]}")
+    sess = r.json()
+    upload_session_id = sess.get("upload_session_id")
+    upload_url = sess.get("upload_url")
+
+    if upload_url:
+        # Newer flow: single-shot POST of the whole file to rupload
+        # (application/octet-stream, offset 0, file_size).
+        with open(video_path, "rb") as fh:
+            r = requests.post(
+                upload_url,
+                data=fh,
+                headers={
+                    "Authorization": f"OAuth {token}",
+                    "Content-Type": "application/octet-stream",
+                    "offset": "0",
+                    "file_size": str(size),
+                },
+                timeout=300,
+            )
+        if r.status_code not in (200, 201):
+            raise SystemExit(f"reel direct upload failed: {r.status_code} {r.text[:300]}")
+        video_id = sess.get("video_id", "")
+        if not video_id:
+            raise SystemExit(f"no video_id from start: {r.text[:300]}")
+        print(f"  upload response: {r.text[:120]}")
+    else:
+        # Older flow: chunked session.
+        if not upload_session_id:
+            raise SystemExit(f"no upload_session_id: {r.text[:300]}")
+        start = int(sess.get("start_offset", 0))
+        end = int(sess.get("end_offset", size))
+        with open(video_path, "rb") as fh:
+            while start < size:
+                fh.seek(start)
+                chunk = fh.read(end - start)
+                r = requests.post(f"{API}/{PAGE_ID}/video_reels", data={
+                    "upload_phase": "transfer",
+                    "upload_session_id": upload_session_id,
+                    "start_offset": start,
+                    "end_offset": end,
+                    "access_token": token,
+                }, files={"video_file_chunk": (Path(video_path).name, chunk, mime)}, timeout=120)
+                if r.status_code != 200:
+                    raise SystemExit(f"reel chunk transfer failed at {start}: {r.status_code} {r.text[:300]}")
+                body = r.json()
+                start = int(body.get("start_offset", end))
+                end = int(body.get("end_offset", size))
+
+        r = requests.post(f"{API}/{PAGE_ID}/video_reels", data={
+            "upload_phase": "finish",
+            "upload_session_id": upload_session_id,
+            "access_token": token,
+        }, timeout=60)
+        if r.status_code != 200:
+            raise SystemExit(f"reel upload finish failed: {r.status_code} {r.text[:300]}")
+        video_id = (r.json() or {}).get("video_id", "")
+        if not video_id:
+            raise SystemExit(f"no video_id after finish: {r.text[:300]}")
+
+    # Wait for Meta to finish processing before publishing.
+    import time
+    for attempt in range(12):
+        st = requests.get(f"{API}/{video_id}?fields=status&access_token={token}", timeout=20)
+        try:
+            status = (st.json()["status"].get("processing_phase") or {}).get("status", "complete")
+        except Exception:  # noqa: BLE001
+            status = "complete"
+        if status in ("complete", "finished", "ready"):
+            break
+        print(f"  video processing: {status} (attempt {attempt + 1}/12) — waiting 10s")
+        time.sleep(10)
+
+    # Publish the reel: finish the upload session with video_state=PUBLISHED.
+    # (POSTing to /video_id with published=true is the OLD video flow and
+    # errors with "Post Already Published" — reels publish via finish.)
+    r = requests.post(f"{API}/{PAGE_ID}/video_reels", data={
+        "upload_phase": "finish",
+        "video_id": video_id,
+        "video_state": "PUBLISHED",
+        "description": message,
+        "access_token": token,
+    }, timeout=60)
+    if r.status_code != 200:
+        raise SystemExit(f"reel publish failed: {r.status_code} {r.text[:300]}")
+    body = r.json()
+    if not body.get("success"):
+        raise SystemExit(f"reel publish returned no success: {r.text[:300]}")
+    post_id = body.get("post_id", "") or video_id
+    print(f"  reel video_id={video_id} post_id={post_id}")
+    return post_id
+
+
 def verify(token: str, pid: str, date: str) -> bool:
     """Confirm the post is live. Meta mints a DIFFERENT post id for photo
     uploads than the photo id the POST returns, so match on the caption's
@@ -236,10 +352,37 @@ def main() -> int:
 
     message = compose_post(date, brief, overnight)
     print(f"POSTING for {date} ({len(message)} chars):\n{message}\n---")
+
+    # Primary: the daily Reel (card + news bed, Ken Burns). Reels get the
+    # best organic reach on Facebook. Fall back to a photo post only if
+    # the reel can't be assembled or uploaded — never ship nothing.
+    reel = ROOT / "site" / "assets" / "img" / "social" / f"{date}-reel.mp4"
+    rc = subprocess.run(
+        [sys.executable, str(ROOT / "scripts" / "make_reel.py"),
+         "--card", str(card), "--audio", str(ROOT / "assets" / "audio" / "news_reel_bed.wav"),
+         "--out", str(reel)],
+        cwd=ROOT, capture_output=True, text=True,
+    )
+    print(rc.stdout.strip() or rc.stderr.strip())
+    reel_ok = rc.returncode == 0 and reel.exists() and reel.stat().st_size > 100_000
+
+    if reel_ok:
+        try:
+            pid = post_reel(token, reel, message)
+            print(f"posted id={pid}")
+            if verify(token, pid, date):
+                print(f"VERIFIED: {pid} live in page feed (reel)")
+                return 0
+            print(f"NOT VERIFIED: {pid} not found in feed readback — manual check needed")
+            return 3
+        except SystemExit as exc:
+            print(f"REEL FAILED ({exc}) — falling back to photo post")
+
+    # Fallback: photo post (card carries the same summary).
     pid = post_photo(token, card, message)
     print(f"posted id={pid}")
     if verify(token, pid, date):
-        print(f"VERIFIED: {pid} live in page feed")
+        print(f"VERIFIED: {pid} live in page feed (photo fallback)")
         return 0
     print(f"NOT VERIFIED: {pid} not found in feed readback — manual check needed")
     return 3

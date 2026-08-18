@@ -1210,6 +1210,16 @@
   "details": ""
  },
  {
+  "log_id": "260817BF0409",
+  "time": "Aug 17 2026  7:39PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Nb I5 At Sr43",
+  "area": "Buttonwillow",
+  "lat": 35.293333,
+  "lon": -119.252222,
+  "details": ""
+ },
+ {
   "log_id": "260817BF0073",
   "time": "Aug 17 2026  7:51AM",
   "type": "20002-Hit and Run No Injuries",
@@ -1227,6 +1237,16 @@
   "area": "Bakersfield",
   "lat": 35.351944,
   "lon": -118.931944,
+  "details": ""
+ },
+ {
+  "log_id": "260817BF0435",
+  "time": "Aug 17 2026  8:23PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "1131 Lincoln St",
+  "area": "Bakersfield",
+  "lat": 35.385692,
+  "lon": -118.982543,
   "details": ""
  },
  {

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-18T13:11:02-07:00",
+ "built_at": "2026-08-18T13:55:20-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,13 +55,13 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1190,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
+   "chp_new": 0,
    "top_story": "21-year-old woman arrested in deadly South Bakersfield stabbing",
    "archive": "2026-08-18"
   },
@@ -111,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 77,
+   "aqi": 97,
    "chp_week": 28
   },
   "letters": {
@@ -144,7 +144,7 @@
   },
   "trackers": {
    "alpr_total": 254,
-   "alpr_new_week": 1,
+   "alpr_new_week": 0,
    "pages": [
     "surveillance",
     "water",

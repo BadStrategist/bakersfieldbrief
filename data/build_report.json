@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-18T14:34:51-07:00",
+ "built_at": "2026-08-18T14:50:48-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,14 +55,14 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 996,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 1,
    "chp_new": 0,
-   "top_story": "Trump administration push to rescind protection on forested areas could have Kern County impact",
+   "top_story": "Kern County Sheriff\u2019s Office warns of scammers impersonating KCSO employees",
    "archive": "2026-08-18"
   },
   "cityhall": {

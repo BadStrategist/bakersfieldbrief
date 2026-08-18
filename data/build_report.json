@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-17T21:10:20-07:00",
+ "built_at": "2026-08-18T00:59:49-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,14 +56,14 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 932,
+  "brief_words": 59,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 1,
    "top_story": "Fight to save the Crystal Palace in Bakersfield",
-   "archive": "2026-08-17"
+   "archive": "2026-08-18"
   },
   "cityhall": {
    "upcoming_meetings": 5,
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -89,7 +89,7 @@
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-08-17"
+   "draft": "drafts/weekend-guide-2026-08-18"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -98,21 +98,21 @@
   },
   "events": {
    "groups": {
-    "This week": 1,
-    "Next week": 5,
+    "This week": 2,
+    "Next week": 4,
     "Later": 26
    },
    "meetings": 5
   },
   "feed": {
-   "entries": 14
+   "entries": 15
   },
   "numbers": {
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 97,
-   "chp_week": 16
+   "aqi": 69,
+   "chp_week": 17
   },
   "letters": {
    "published": 0

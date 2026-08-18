@@ -1240,6 +1240,26 @@
   "details": ""
  },
  {
+  "log_id": "260818BF0156",
+  "time": "Aug 18 2026 12:00PM",
+  "type": "WW-Wrong Way Driver",
+  "location": "SB SR99 JNO Herring Rd",
+  "area": "Bakersfield",
+  "lat": 35.153889,
+  "lon": -118.998333,
+  "details": ""
+ },
+ {
+  "log_id": "260818BF0174",
+  "time": "Aug 18 2026 12:20PM",
+  "type": "1125-Traffic Hazard",
+  "location": "NB I5 JSO Gorman School Rd",
+  "area": "Fort Tejon",
+  "lat": 34.79456,
+  "lon": -118.847656,
+  "details": ""
+ },
+ {
   "log_id": "260818BF0006",
   "time": "Aug 18 2026 12:47AM",
   "type": "TADV-Traffic Advisory",
@@ -1247,6 +1267,16 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260818BF0187",
+  "time": "Aug 18 2026 12:49PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Wb Sr58 Jwo Oswell St",
+  "area": "Bakersfield",
+  "lat": 35.35255,
+  "lon": -118.954049,
   "details": ""
  }
 ]

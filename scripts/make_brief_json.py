@@ -331,8 +331,10 @@ def pick_stories(date: str, brief: str, overnight: str) -> list[dict]:
         if len(chosen) == 2 and scene in used:
             # last slot: prefer a different scene, but only if it doesn't
             # cost notability — a same-scene incident with HIGHER notability
-            # still wins over a prettier-but-lesser background.
-            alt = next((r for r in rest if r is not inc and
+            # still wins over a prettier-but-lesser background. NEVER pick an
+            # incident that is already in the reel (a duplicate story shipped
+            # on 2026-08-18 when the alt search re-picked the 2nd story).
+            alt = next((r for r in rest if r is not inc and r not in chosen and
                         TYPE_SCENE.get(_norm_type(r.get("type", "")), DEFAULT_SCENE) != scene
                         and (r.get("notability") or 0) >= (inc.get("notability") or 0)),
                        None)

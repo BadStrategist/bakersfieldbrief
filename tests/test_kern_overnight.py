@@ -619,6 +619,17 @@ class TestBriefJson:
         assert "Monterey" in lead["headline"]
         assert lead["time"] == "11:00 PM"
 
+    def test_stories_never_duplicate(self):
+        """A story may never appear twice in the reel — the scene-variety
+        fallback once re-picked the 2nd story as the 3rd (suicidal subject
+        duplicated on 2026-08-18). Every headline must be unique."""
+        import scripts.make_brief_json as mbj
+        for date in ("2026-08-17", "2026-08-18"):
+            cfg = mbj.build(date)
+            heads = [s["headline"] for s in cfg["stories"]]
+            assert len(heads) == len(set(heads)), \
+                f"duplicate story in reel for {date}: {heads}"
+
     def test_subhead_never_cuts_decimal_dots(self):
         """273.6 (penal-code decimal) must not be treated as a sentence end."""
         import scripts.make_brief_json as mbj

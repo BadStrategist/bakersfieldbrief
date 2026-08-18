@@ -222,13 +222,14 @@ def _headline_grounded_in_body(headline: str, brief: str) -> bool:
 
 
 def extract_top_story(brief: str, date: str) -> str:
-    """The post lead. Prefers the archive headline (the day's real title) —
-    but ONLY when it is verifiably grounded in the brief body; a drifted
-    archive entry must never lead the post. Falls back to the first
-    substantive paragraph after the greeting (the Kern Overnight lead)."""
-    hl = archive_headline(date)
-    if hl and _headline_grounded_in_body(hl, brief):
-        return hl
+    """The post lead — MUST be the Kern Overnight scanner content, never the
+    archive headline. The archive headline is the LLM's title for the daily
+    brief and can be any top story, including national wire items (a film
+    review led the 2026-08-18 reel as "Jeff Daniels channeled Reagan in The
+    Brink of War"; 'Lanterns' did the same on 08-17). Grounding in the WHOLE
+    body proves nothing — Top stories legitimately carry those items — so the
+    archive headline is never safe here. Return the first substantive
+    paragraph's first sentence (the Kern Overnight lead)."""
     paras = [p.strip() for p in brief.split("\n\n") if p.strip()]
     for p in paras:
         if p.lower().startswith("good morning"):
@@ -242,6 +243,24 @@ def extract_top_story(brief: str, date: str) -> str:
             return first
     # fallback: first non-greeting line of the whole body
     return brief.split("\n\n")[0][:220]
+
+
+def _truncate_sentences(text: str, limit: int) -> str:
+    """Cut text to WHOLE sentences that fit within `limit` chars — never
+    mid-word (compose_post once shipped '...Columbus Street esca' from a
+    hard [:900] slice). If even the first sentence exceeds the limit, cut at
+    a word boundary with an ellipsis."""
+    if len(text) <= limit:
+        return text
+    out = ""
+    for s in re.split(r"(?<=[.!?])\s+", text):
+        if len(out) + len(s) + 1 > limit:
+            break
+        out += s + " "
+    out = out.strip()
+    if out:
+        return out
+    return text[:limit].rsplit(" ", 1)[0].rstrip(".,;:") + "…"
 
 
 def extract_big_one(overnight: str) -> str:
@@ -301,7 +320,7 @@ def compose_post(date: str, brief: str, overnight: str) -> str:
             continue
         plain = re.sub(r"[*#_]", "", p).strip()
         if len(plain) > 60:
-            detail = plain[:900]
+            detail = _truncate_sentences(plain, 900)
             break
     if not detail:
         detail = top

@@ -1,0 +1,164 @@
+[
+  {
+    "type": "vegetation_fire",
+    "time": "21:47",
+    "agency": "Kern County Fire Department",
+    "area": "hillside west of Bakersfield",
+    "notability": 5,
+    "disposition": "active",
+    "summary": "Truck fire that spread to hillside vegetation — heavy wildland response including multiple engines, dozers, helicopter and water tender. Investigators on scene, RP reported lights on the hill."
+  },
+  {
+    "type": "shots_fired",
+    "time": "22:42",
+    "agency": "Bakersfield Police Department",
+    "area": "Panama Lane & South Allen Road, south Bakersfield",
+    "notability": 4,
+    "disposition": "investigating",
+    "summary": "Reporter heard roughly 30 shots, mostly in a field in the area. Call standing for service while units investigate."
+  },
+  {
+    "type": "suspicious_circumstances",
+    "time": "22:19",
+    "agency": "Kern County Sheriff's Office",
+    "area": "7300 block Snowmass Lane",
+    "notability": 3,
+    "disposition": "investigating",
+    "summary": "Welfare check on an elderly resident who activated a medical alarm but reported someone was in the residence. History with a family member under a restraining order."
+  },
+  {
+    "type": "runaway_juvenile",
+    "time": "22:38",
+    "agency": "Kern County Sheriff's Office",
+    "area": "Rosamond Boulevard, Rosamond",
+    "notability": 3,
+    "disposition": "searching",
+    "summary": "Report of a 15-year-old missing from a residence on Rosamond Boulevard. Units responding."
+  },
+  {
+    "type": "structure_fire",
+    "time": "00:24",
+    "agency": "Kern County Fire Department",
+    "area": "1200 block Chester Avenue",
+    "notability": 3,
+    "disposition": "investigating",
+    "summary": "Report of a fire at a single-story strip mall commercial structure. First arriving units found nothing showing and are investigating; all incoming units staged."
+  },
+  {
+    "type": "burglary",
+    "time": "22:48",
+    "agency": "Kern County Sheriff's Office",
+    "area": "K Street / Chester Avenue area, east Bakersfield",
+    "notability": 3,
+    "disposition": "searching",
+    "summary": "Burglary in progress at a business — alarm company and live video showed subjects entering the yard from the south and not exiting. Containment set up and a search underway."
+  },
+  {
+    "type": "suicidal_subject",
+    "time": "01:52",
+    "agency": "Kern County Sheriff's Office",
+    "area": "3500 block Terrace Way",
+    "notability": 4,
+    "disposition": "contact made",
+    "summary": "Welfare check on a woman who threatened to shoot herself over a relationship dispute; she was also connected to a brandishing call in the same jurisdiction. Units made contact and she was reportedly highly agitated."
+  },
+  {
+    "type": "vegetation_fire",
+    "time": "23:50",
+    "agency": "Kern County Fire Department",
+    "area": "Edison Highway & Wheat Patch Highway, near Edison",
+    "notability": 3,
+    "disposition": "active",
+    "summary": "Quarter-acre grass fire in the sump northwest of Wheat Patch and Edison highways. Battalion response, crews making access off Mills Road."
+  },
+  {
+    "type": "felony_warrant",
+    "time": "00:18",
+    "agency": "Kern County Sheriff's Office",
+    "area": "Alfred Harrell Highway near Hart Park",
+    "notability": 3,
+    "disposition": "searching",
+    "summary": "Attempt to arrest a subject on a felony criminal threats warrant — the subject fled westbound Alfred Harrell Highway from River Road. Units searching."
+  },
+  {
+    "type": "stolen_vehicle",
+    "time": "00:15",
+    "agency": "Kern County Sheriff's Office",
+    "area": "6000 block Chandler Way",
+    "notability": 2,
+    "disposition": "investigating",
+    "summary": "Report of a white travel trailer with no plates; owner unable to confirm plate details. Call queued for response."
+  },
+  {
+    "type": "domestic_disturbance",
+    "time": "21:30",
+    "agency": "Kern County Sheriff's Office",
+    "area": "east Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Verbal argument between a man and woman, both possibly under the influence, at an apartment complex."
+  },
+  {
+    "type": "shots_fired",
+    "time": "22:53",
+    "agency": "Bakersfield Police Department",
+    "area": "3700 block Mary Street",
+    "notability": 2,
+    "disposition": "investigating",
+    "summary": "ShotSpotter activation for a single round northeast of the 3500 block Chester Avenue."
+  },
+  {
+    "type": "domestic_disturbance",
+    "time": "22:57",
+    "agency": "Kern County Sheriff's Office",
+    "area": "San Emidio Street, east Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Ex-boyfriend parked outside a residence and knocking on windows; units responding to the 415 call."
+  },
+  {
+    "type": "dui_driver",
+    "time": "23:09",
+    "agency": "Bakersfield Police Department",
+    "area": "38th & H Street",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Report of a possibly intoxicated driver in a red Hyundai heading southbound."
+  },
+  {
+    "type": "disturbance",
+    "time": "23:28",
+    "agency": "Kern County Sheriff's Office",
+    "area": "9600 block Shoreham Court",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "A visitor arrived in a white BMW and was pounding on the front door of a residence."
+  },
+  {
+    "type": "welfare_check",
+    "time": "23:41",
+    "agency": "Kern County Sheriff's Office",
+    "area": "Catalina Trail area, east Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Person found lying on a sidewalk, reportedly wearing a striped shirt and white shorts."
+  },
+  {
+    "type": "small_fire",
+    "time": "23:42",
+    "agency": "Kern County Fire Department",
+    "area": "20th Street & Chester Avenue, downtown Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Report of a small fire in the alley near Fire Station 1."
+  },
+  {
+    "type": "suspicious_person",
+    "time": "23:58",
+    "agency": "Bakersfield Police Department",
+    "area": "2500 block White Lane",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Subject reportedly holding a stick at a gas station; units calling for holding."
+  }
+]

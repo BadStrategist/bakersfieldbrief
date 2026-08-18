@@ -160,5 +160,59 @@
     "notability": 2,
     "disposition": "responding",
     "summary": "Subject reportedly holding a stick at a gas station; units calling for holding."
+  },
+  {
+    "type": "vehicle_fire",
+    "time": "03:44",
+    "agency": "Kern County Fire Department",
+    "area": "Garzoli Road, north of Pond, north Kern County",
+    "notability": 4,
+    "disposition": "active",
+    "summary": "53-foot trailer fully involved with a spot of grass fire spreading alongside — the Garzoli Incident. Battalion response on scene, units remained for hotspots."
+  },
+  {
+    "type": "assault",
+    "time": "03:06",
+    "agency": "Bakersfield Police Department",
+    "area": "3700 block Columbus Street, near Wells Fargo",
+    "notability": 3,
+    "disposition": "searching",
+    "summary": "Welfare check escalated into a fight involving three subjects — a man on a bicycle was approached and an impact sound was heard. Two suspects fled northbound Columbus; units searching."
+  },
+  {
+    "type": "traffic_collision",
+    "time": "04:08",
+    "agency": "CHP / Delano PD",
+    "area": "Delano",
+    "notability": 3,
+    "disposition": "roadway closed",
+    "summary": "Big-rig incident with a load of table grapes — roadway closure and Environmental Health notified."
+  },
+  {
+    "type": "shots_fired",
+    "time": "04:13",
+    "agency": "Bakersfield Police Department",
+    "area": "Augusta Street & 800 block S Kern Street",
+    "notability": 3,
+    "disposition": "investigating",
+    "summary": "Two ShotSpotter activations for a total of two rounds — one near Augusta Street, one in the 800 block of S Kern Street. Units responding."
+  },
+  {
+    "type": "suspicious_circumstances",
+    "time": "04:31",
+    "agency": "Kern County Sheriff's Office",
+    "area": "1900 block East Brindish Lane",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Report of transients on the property at a crane yard."
+  },
+  {
+    "type": "structure_fire",
+    "time": "05:21",
+    "agency": "Kern County Fire Department",
+    "area": "unidentified street, east Bakersfield",
+    "notability": 2,
+    "disposition": "investigating",
+    "summary": "Report of a fire at a single-story, single-family structure — nothing showing on arrival, units investigating."
   }
 ]

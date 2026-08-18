@@ -1160,6 +1160,56 @@
   "details": ""
  },
  {
+  "log_id": "260818BF0030",
+  "time": "Aug 18 2026  6:27AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260818BF0036",
+  "time": "Aug 18 2026  6:45AM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "Fairfax Rd / Dorva Ave",
+  "area": "Bakersfield",
+  "lat": 35.381879,
+  "lon": -118.931036,
+  "details": ""
+ },
+ {
+  "log_id": "260818BF0044",
+  "time": "Aug 18 2026  7:07AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "0 I5 N",
+  "area": "Fort Tejon",
+  "lat": 34.95216,
+  "lon": -118.934356,
+  "details": ""
+ },
+ {
+  "log_id": "260818BF0043",
+  "time": "Aug 18 2026  7:07AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Valley West Rd / Elk Hills Rd",
+  "area": "Buttonwillow",
+  "lat": 35.209632,
+  "lon": -119.445603,
+  "details": ""
+ },
+ {
+  "log_id": "260818BF0045",
+  "time": "Aug 18 2026  7:09AM",
+  "type": "1125A-Animal Hazard",
+  "location": "Nb I5 Jno Twisselman Rd",
+  "area": "Buttonwillow",
+  "lat": 35.736667,
+  "lon": -119.7425,
+  "details": ""
+ },
+ {
   "log_id": "260818BF0006",
   "time": "Aug 18 2026 12:47AM",
   "type": "TADV-Traffic Advisory",

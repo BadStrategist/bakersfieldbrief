@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-18T07:03:57-07:00",
+ "built_at": "2026-08-18T07:15:52-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 3081, column 2"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -55,13 +55,13 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 62,
+  "_digest_meta": "llm",
+  "brief_words": 1426,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 5,
    "top_story": "California holds firm on school vaccine rules as national rates dip",
    "archive": "2026-08-18"
   },
@@ -112,16 +112,16 @@
    "alpr_total": 247,
    "kern_fires": 0,
    "aqi": 65,
-   "chp_week": 17
+   "chp_week": 22
   },
   "letters": {
    "published": 0
   },
   "overnight": {
-   "published": 8
+   "published": 9
   },
   "map": {
-   "dots": 54
+   "dots": 64
   },
   "sunday_read": {
    "topic": "Public safety",

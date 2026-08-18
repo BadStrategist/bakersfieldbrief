@@ -630,6 +630,25 @@ class TestBriefJson:
             assert len(heads) == len(set(heads)), \
                 f"duplicate story in reel for {date}: {heads}"
 
+    def test_music_rotates_daily(self):
+        """The reel music bed must rotate deterministically: a DIFFERENT bed
+        on consecutive days, the SAME bed for the same date (so re-renders
+        reproduce the reel), cycling through the full stack."""
+        import scripts.make_brief_json as mbj
+        assert len(mbj.REEL_BEDS) == 3
+        beds = [mbj.music_for_date(d) for d in
+                ("2026-08-18", "2026-08-19", "2026-08-20", "2026-08-21")]
+        # one full 3-day cycle covers every bed exactly once
+        assert len(set(beds[:3])) == 3, f"rotation repeated: {beds}"
+        # consecutive days always differ (no same bed twice in a row)
+        assert all(beds[i] != beds[i + 1] for i in range(len(beds) - 1))
+        # day 1 vs day 4: same bed (3-day cycle)
+        assert beds[0] == beds[3]
+        # deterministic: same date, same bed
+        assert mbj.music_for_date("2026-08-18") == beds[0]
+        # all in the stack (no fallback triggered for valid dates)
+        assert all(b in mbj.REEL_BEDS for b in beds)
+
     def test_subhead_never_cuts_decimal_dots(self):
         """273.6 (penal-code decimal) must not be treated as a sentence end."""
         import scripts.make_brief_json as mbj

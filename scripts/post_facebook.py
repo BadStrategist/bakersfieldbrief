@@ -520,6 +520,14 @@ def main() -> int:
     message = compose_post(date, brief, overnight)
     print(f"POSTING for {date} ({len(message)} chars):\n{message}\n---")
 
+    # Music bed: the daily rotation chosen by make_brief_json (brief.json's
+    # `music` field) — read it back so the renderer uses exactly what the
+    # config picked. Absolute path: the renderer resolves relative music
+    # against ITS OWN dir, so relative repo paths break.
+    music_rel = (json.loads(brief_json.read_text(encoding="utf-8"))
+                 .get("music", "assets/audio/news_reel_bed.wav"))
+    music_abs = music_rel if os.path.isabs(music_rel) else str(ROOT / music_rel)
+
     # Primary: the daily Reel (scripted cards + treated backgrounds + our news
     # audio bed). Reels get the best organic reach on Facebook. Fall back to a
     # photo post of the renderer's still card only if the reel can't be
@@ -530,7 +538,7 @@ def main() -> int:
         [sys.executable, str(ROOT / "scripts" / "brief_reel" / "render_reel.py"),
          str(brief_json),
          "--out", str(stem),
-         "--music", str(ROOT / "assets" / "audio" / "news_reel_bed.wav")],
+         "--music", music_abs],
         cwd=ROOT, capture_output=True, text=True,
     )
     print(rc.stdout.strip() or rc.stderr.strip())

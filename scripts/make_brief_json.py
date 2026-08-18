@@ -36,7 +36,27 @@ KICKER = "THE KERN OVERNIGHT · WHILE YOU SLEPT"
 TAGLINE = "The city talks. We listen."
 URL = "bakersfieldbrief.com"
 CTA = "Follow for tomorrow’s overnight"
-MUSIC = "assets/audio/news_reel_bed.wav"  # repo path; post_facebook passes --music abs
+MUSIC = "assets/audio/news_reel_bed.wav"  # fallback bed; daily rotation below
+
+# Daily-rotation reel-bed stack (user-supplied, 2026-08-18). Each calendar
+# day gets a DIFFERENT bed: 1 → 2 → 3 → 1 ... (deterministic — the same
+# date always maps to the same bed, so re-renders reproduce the reel).
+REEL_BEDS = ("assets/audio/reel_bed_1.mp3",
+             "assets/audio/reel_bed_2.mp3",
+             "assets/audio/reel_bed_3.mp3")
+
+
+def music_for_date(date: str) -> str:
+    """Pick today's music bed by rotating through REEL_BEDS on the date's
+    ordinal day number. Falls back to MUSIC if a bed file is missing."""
+    try:
+        d = datetime.strptime(date, "%Y-%m-%d")
+        bed = REEL_BEDS[d.toordinal() % len(REEL_BEDS)]
+        if (ROOT / bed).exists():
+            return bed
+    except ValueError:
+        pass
+    return MUSIC
 
 # incident type -> reel headline label (kept short, factual, no clickbait).
 # Types are matched AFTER normalisation (lowercase, spaces->underscores), so
@@ -390,7 +410,7 @@ def build(date: str) -> dict:
         "tagline": TAGLINE,
         "url": URL,
         "cta": CTA,
-        "music": MUSIC,
+        "music": music_for_date(date),
         "backgrounds": "auto",
         "stories": stories,
     }

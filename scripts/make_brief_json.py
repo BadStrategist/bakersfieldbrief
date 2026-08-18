@@ -203,7 +203,9 @@ def _first_sentence(text: str, max_words: int = 20) -> str:
             prev = text[i - 1] if i > 0 else ""
             nxt = text[i + 1:i + 2]
             number_dot = c == "." and prev.isdigit() and nxt.isdigit()
-            abbrev = c == "." and prev.isalpha() and nxt.isalpha()
+            # a.m./p.m. (and other 2-letter abbreviations): skip the period
+            # when the next char is a letter OR closing punctuation ("p.m.,").
+            abbrev = c == "." and prev.isalpha() and (nxt.isalpha() or nxt in ".,;:")
             if not (number_dot or abbrev):
                 break
         i += 1
@@ -217,6 +219,26 @@ def _first_sentence(text: str, max_words: int = 20) -> str:
         if cut[idx].rstrip(",").endswith((",", "—", ":", ";")):
             return " ".join(cut[:idx + 1]).rstrip(",").strip()
     return " ".join(cut)
+
+
+def _first_sentence_full(text: str) -> str:
+    """First sentence WITHOUT the word cap — isolates the brief's editorial
+    lead ('The night's most serious call ... was reported on Monterey
+    Street.') from the rest of the paragraph, which may go on to name lesser
+    calls that must NOT outrank it (an Animas Court DV once won the reel
+    merely because it appeared later in the same paragraph)."""
+    i = 0
+    while i < len(text):
+        c = text[i]
+        if c in ".!?":
+            prev = text[i - 1] if i > 0 else ""
+            nxt = text[i + 1:i + 2]
+            number_dot = c == "." and prev.isdigit() and nxt.isdigit()
+            abbrev = c == "." and prev.isalpha() and (nxt.isalpha() or nxt in ".,;:")
+            if not (number_dot or abbrev):
+                break
+        i += 1
+    return text[:i + 1].strip() if i < len(text) else text.strip()
 
 
 def _fmt_time(hhmm: str) -> str:
@@ -271,14 +293,30 @@ def pick_stories(date: str, brief: str, overnight: str) -> list[dict]:
     if not incidents:
         return []
 
-    serious = most_serious_paragraph(brief, overnight).lower()
+    serious_para = most_serious_paragraph(brief, overnight)
+    # The brief's editorial framing lives in the FIRST sentence of the
+    # most-serious paragraph ("The night's most serious call ... was
+    # reported on Monterey Street."). Later sentences of the same paragraph
+    # name lesser calls — matching against them lets a lesser call steal the
+    # lead (an Animas Court DV once beat the Monterey brandishing this way).
+    # Try the first sentence first; fall back to the whole paragraph (and
+    # then to highest notability) only if it names nothing.
+    serious_first = _first_sentence_full(serious_para).lower()
+    serious_all = serious_para.lower()
     lead = None
     for inc in sorted(incidents, key=lambda x: (-(x.get("notability") or 0),
                                                 x.get("time") or "")):
         area = _clean_area(inc.get("area", "")).lower()
-        if area and area.split(",")[0] in serious:
+        if area and area.split(",")[0] in serious_first:
             lead = inc
             break
+    if lead is None:
+        for inc in sorted(incidents, key=lambda x: (-(x.get("notability") or 0),
+                                                    x.get("time") or "")):
+            area = _clean_area(inc.get("area", "")).lower()
+            if area and area.split(",")[0] in serious_all:
+                lead = inc
+                break
     if lead is None and incidents:
         lead = max(incidents, key=lambda x: (x.get("notability") or 0))
 

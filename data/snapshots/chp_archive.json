@@ -1,165 +1,5 @@
 [
  {
-  "log_id": "260810BF0239",
-  "time": "Aug 10 2026  2:30PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Sr58 W / Mt Vernon Ave Ofr",
-  "area": "Bakersfield",
-  "lat": 35.352991,
-  "lon": -118.961758,
-  "details": ""
- },
- {
-  "log_id": "260810BF0247",
-  "time": "Aug 10 2026  2:49PM",
-  "type": "1125-Traffic Hazard",
-  "location": "5629 Patton Way",
-  "area": "Bakersfield",
-  "lat": 35.409633,
-  "lon": -119.083432,
-  "details": ""
- },
- {
-  "log_id": "260810BF0257",
-  "time": "Aug 10 2026  3:18PM",
-  "type": "1125-Traffic Hazard",
-  "location": "2nd Nor St / Mccray St",
-  "area": "Bakersfield",
-  "lat": 35.420713,
-  "lon": -119.030094,
-  "details": ""
- },
- {
-  "log_id": "260810BF0314",
-  "time": "Aug 10 2026  5:18PM",
-  "type": "FIRE-Report of Fire",
-  "location": "Sb I5 Jso Sr46",
-  "area": "Buttonwillow",
-  "lat": 35.612222,
-  "lon": -119.650556,
-  "details": ""
- },
- {
-  "log_id": "260810BF0045",
-  "time": "Aug 10 2026  5:39AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "Sr178 W / Union Ave Onr",
-  "area": "Bakersfield",
-  "lat": 35.3823,
-  "lon": -119.009842,
-  "details": ""
- },
- {
-  "log_id": "260810BF0321",
-  "time": "Aug 10 2026  5:39PM",
-  "type": "1125-Traffic Hazard",
-  "location": "0 Sr223",
-  "area": "Bakersfield",
-  "lat": 35.250087,
-  "lon": -118.671281,
-  "details": ""
- },
- {
-  "log_id": "260810BF0059",
-  "time": "Aug 10 2026  6:37AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "29449 Stockdale Hwy",
-  "area": "Buttonwillow",
-  "lat": 35.354792,
-  "lon": -119.33073,
-  "details": ""
- },
- {
-  "log_id": "260810BF0392",
-  "time": "Aug 10 2026  8:00PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sb I5 At Frazier Mountain Park Rd",
-  "area": "Fort Tejon",
-  "lat": 34.8175,
-  "lon": -118.881944,
-  "details": ""
- },
- {
-  "log_id": "260810BF0079",
-  "time": "Aug 10 2026  8:02AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Wood St / Olive Ave",
-  "area": "Buttonwillow",
-  "lat": 35.133202,
-  "lon": -119.456208,
-  "details": ""
- },
- {
-  "log_id": "260810BF0394",
-  "time": "Aug 10 2026  8:04PM",
-  "type": "CZP-Assist with Construction",
-  "location": "I5 N / Sr43",
-  "area": "Buttonwillow",
-  "lat": 35.293548,
-  "lon": -119.252486,
-  "details": ""
- },
- {
-  "log_id": "260810BF0399",
-  "time": "Aug 10 2026  8:17PM",
-  "type": "FIRE-Report of Fire",
-  "location": "Sr58 / Buttonwillow Dr",
-  "area": "Buttonwillow",
-  "lat": 35.399295,
-  "lon": -119.47416,
-  "details": ""
- },
- {
-  "log_id": "260810BF0400",
-  "time": "Aug 10 2026  8:18PM",
-  "type": "FIRE-Report of Fire",
-  "location": "0 I5 N",
-  "area": "Buttonwillow",
-  "lat": 35.463522,
-  "lon": -119.485752,
-  "details": ""
- },
- {
-  "log_id": "260810BF0443",
-  "time": "Aug 10 2026 10:18PM",
-  "type": "DOT-Request CalTrans Notify",
-  "location": "Nb I5 Jso Fort Tejon Rd",
-  "area": "Fort Tejon",
-  "lat": 34.876389,
-  "lon": -118.894167,
-  "details": ""
- },
- {
-  "log_id": "260810BF0132",
-  "time": "Aug 10 2026 10:22AM",
-  "type": "1125-Traffic Hazard",
-  "location": "State Rd / Airport Dr",
-  "area": "Bakersfield",
-  "lat": 35.403024,
-  "lon": -119.040752,
-  "details": ""
- },
- {
-  "log_id": "260810BF0446",
-  "time": "Aug 10 2026 10:27PM",
-  "type": "CFIRE-Car Fire",
-  "location": "Wb Sr58 Jeo Tower Line Rd",
-  "area": "Bakersfield",
-  "lat": 35.328889,
-  "lon": -118.804444,
-  "details": ""
- },
- {
-  "log_id": "260810BF0003",
-  "time": "Aug 10 2026 12:09AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
   "log_id": "260811BF0209",
   "time": "Aug 11 2026  1:13PM",
   "type": "1125-Traffic Hazard",
@@ -1160,6 +1000,16 @@
   "details": ""
  },
  {
+  "log_id": "260817BF0204",
+  "time": "Aug 17 2026  1:07PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "Sr58 W / Sr99 N",
+  "area": "Bakersfield",
+  "lat": 35.352805,
+  "lon": -119.0394,
+  "details": ""
+ },
+ {
   "log_id": "260817BF0018",
   "time": "Aug 17 2026  2:00AM",
   "type": "20002-Hit and Run No Injuries",
@@ -1200,6 +1050,16 @@
   "details": ""
  },
  {
+  "log_id": "260817BF0409",
+  "time": "Aug 17 2026  7:39PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Nb I5 At Sr43",
+  "area": "Buttonwillow",
+  "lat": 35.293333,
+  "lon": -119.252222,
+  "details": ""
+ },
+ {
   "log_id": "260817BF0073",
   "time": "Aug 17 2026  7:51AM",
   "type": "20002-Hit and Run No Injuries",
@@ -1217,6 +1077,16 @@
   "area": "Bakersfield",
   "lat": 35.351944,
   "lon": -118.931944,
+  "details": ""
+ },
+ {
+  "log_id": "260817BF0435",
+  "time": "Aug 17 2026  8:23PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "1131 Lincoln St",
+  "area": "Bakersfield",
+  "lat": 35.385692,
+  "lon": -118.982543,
   "details": ""
  },
  {
@@ -1262,7 +1132,7 @@
  {
   "log_id": "260817BF0142",
   "time": "Aug 17 2026 10:37AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
+  "type": "1181-Trfc Collision-Minor Inj",
   "location": "1700 N Rancho Dr",
   "area": "Bakersfield",
   "lat": 35.121768,
@@ -1270,8 +1140,28 @@
   "details": ""
  },
  {
+  "log_id": "260817BF0161",
+  "time": "Aug 17 2026 11:32AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 Stockton Ave",
+  "area": "Bakersfield",
+  "lat": 35.427006,
+  "lon": -119.0248,
+  "details": ""
+ },
+ {
   "log_id": "260817BF0003",
   "time": "Aug 17 2026 12:05AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260818BF0006",
+  "time": "Aug 18 2026 12:47AM",
   "type": "TADV-Traffic Advisory",
   "location": "Bakersfield Traffic Advisories",
   "area": "BF",

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-18T13:55:20-07:00",
+ "built_at": "2026-08-18T14:34:51-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 3081, column 2"
   },
   "isabella": {
    "ok": true,
@@ -55,14 +55,14 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 1190,
+  "_digest_meta": "llm",
+  "brief_words": 996,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
-   "alerts": 0,
+   "news_digest": "llm",
+   "alerts": 1,
    "chp_new": 0,
-   "top_story": "21-year-old woman arrested in deadly South Bakersfield stabbing",
+   "top_story": "Trump administration push to rescind protection on forested areas could have Kern County impact",
    "archive": "2026-08-18"
   },
   "cityhall": {
@@ -111,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 97,
+   "aqi": 112,
    "chp_week": 28
   },
   "letters": {

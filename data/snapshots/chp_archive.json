@@ -1210,6 +1210,36 @@
   "details": ""
  },
  {
+  "log_id": "260818BF0118",
+  "time": "Aug 18 2026 10:17AM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sr178 At Walker Pass",
+  "area": "Bakersfield",
+  "lat": 35.662834,
+  "lon": -118.026719,
+  "details": ""
+ },
+ {
+  "log_id": "260818BF0121",
+  "time": "Aug 18 2026 10:27AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "5951 Niles St",
+  "area": "Bakersfield",
+  "lat": 35.375949,
+  "lon": -118.937744,
+  "details": ""
+ },
+ {
+  "log_id": "260818BF0126",
+  "time": "Aug 18 2026 10:39AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr58 E / Sr223",
+  "area": "Bakersfield",
+  "lat": 35.264167,
+  "lon": -118.658367,
+  "details": ""
+ },
+ {
   "log_id": "260818BF0006",
   "time": "Aug 18 2026 12:47AM",
   "type": "TADV-Traffic Advisory",

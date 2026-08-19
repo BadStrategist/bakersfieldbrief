@@ -129,18 +129,15 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy site --project-name=bakersfieldbrief
 
-      # Social post: publish the Brief+Overnight summary to Facebook once the
-      # brief body and overnight report both exist for today AND the overnight
-      # is actually LIVE on the deployed website (post_facebook verifies the
-      # <section id="<date>"> anchor on /overnight/ before posting — a repo
-      # file that hasn't deployed is not publication). The deploy above runs
-      # FIRST so the site check is meaningful. The 6:00 PT run gate-skips
-      # until the 6:30 PT overnight lands; the 7:00 PT run waits up to 25 min
-      # for the phase-2 push, then posts. The gate + duplicate guard inside
-      # the script make this idempotent.
-      - name: Post summary to Facebook
-        env:
-          FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
-          FB_PAGE_ID: "1298315170026203"
-          FB_RETRY_MINUTES: ${{ steps.gate.outputs.retry }}
-        run: python scripts/post_facebook.py
+      # Social post: DISABLED 2026-08-19 — API posts are withheld from the
+      # public page on this new account (verified 6/6 held; only manual UI
+      # posts render publicly). The daily kit (reel MP4 + card + caption) is
+      # delivered to the #manual-posting-station Discord thread at 08:00 PT by
+      # the KO manual posting kit cron job; the human posts it via Meta
+      # Business Suite. To re-enable, uncomment this step.
+      # - name: Post summary to Facebook
+      #   env:
+      #     FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}
+      #     FB_PAGE_ID: "1298315170026203"
+      #     FB_RETRY_MINUTES: ${{ steps.gate.outputs.retry }}
+      #   run: python scripts/post_facebook.py

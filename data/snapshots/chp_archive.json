@@ -1182,7 +1182,7 @@
  {
   "log_id": "260819BF0043",
   "time": "Aug 19 2026  6:27AM",
-  "type": "1125-Traffic Hazard",
+  "type": "1183-Trfc Collision-Unkn Inj",
   "location": "67 E Evans Rd",
   "area": "Bakersfield",
   "lat": 35.70646,
@@ -1197,6 +1197,36 @@
   "area": "Bakersfield",
   "lat": 35.392791,
   "lon": -119.044694,
+  "details": ""
+ },
+ {
+  "log_id": "260819BF0049",
+  "time": "Aug 19 2026  6:54AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "W Lerdo Hwy / Magnolia Ave",
+  "area": "Buttonwillow",
+  "lat": 35.500211,
+  "lon": -119.377034,
+  "details": ""
+ },
+ {
+  "log_id": "260819BF0054",
+  "time": "Aug 19 2026  6:58AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Elijah Way / Di Giorgio Rd",
+  "area": "Bakersfield",
+  "lat": 35.252347,
+  "lon": -118.954321,
+  "details": ""
+ },
+ {
+  "log_id": "260819BF0052",
+  "time": "Aug 19 2026  6:58AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 White Ln Onr",
+  "area": "Bakersfield",
+  "lat": 35.320867,
+  "lon": -119.036877,
   "details": ""
  },
  {

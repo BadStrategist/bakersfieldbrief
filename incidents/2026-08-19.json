@@ -1,146 +1,25 @@
 [
-  {
-    "type": "vegetation_fire",
-    "time": "01:00",
-    "agency": "Kern County Fire Department",
-    "area": "east of Bakersfield near the county dump",
-    "notability": 5,
-    "disposition": "contained",
-    "summary": "Grass fire that grew to 5–10 acres, dubbed the Apollo Incident — burning roughly 2 miles east of the dump and north of the railroad tracks. Response included engine 345, water tender 12, dozers, a safety officer and helicopter 409, with crews working access through corral roads and gates. Union Pacific train traffic was held while crews mopped up."
-  },
-  {
-    "type": "structure_fire",
-    "time": "04:35",
-    "agency": "Kern County Fire Department",
-    "area": "alley across from the 100 block of Belle Avenue",
-    "notability": 4,
-    "disposition": "active",
-    "summary": "Fire in an alley that spread to a house, upgraded to a structure response with Engine 63, Truck 1, Medics Squad 63 and Battalion 6."
-  },
-  {
-    "type": "traffic_collision",
-    "time": "03:48",
-    "agency": "California Highway Patrol",
-    "area": "9800 block South Union Avenue",
-    "notability": 3,
-    "disposition": "responding",
-    "summary": "Vehicle crashed into a building in the 9800 block of South Union Avenue; CHP en route with a fire battalion response."
-  },
-  {
-    "type": "traffic_collision",
-    "time": "05:35",
-    "agency": "Kern County Fire Department",
-    "area": "Copus Road, about 5.5 miles west of Old River",
-    "notability": 3,
-    "disposition": "responding",
-    "summary": "Head-on collision between two vehicles with a reporting party on scene; an additional engine and Truck 54 were pulled in, and an air ambulance stood by before being cancelled."
-  },
-  {
-    "type": "burglary",
-    "time": "02:19",
-    "agency": "Bakersfield Police Department",
-    "area": "Union Avenue area",
-    "notability": 3,
-    "disposition": "searching",
-    "summary": "Burglary in progress — suspect described as a white male, 5-foot-11, about 150 pounds, in a white tank top and black gym shorts, last seen riding a blue beach cruiser and exiting onto Union Avenue. Units searching."
-  },
-  {
-    "type": "vehicle_pursuit",
-    "time": "03:31",
-    "agency": "Bakersfield Police Department",
-    "area": "East 3rd Street & Union Avenue",
-    "notability": 3,
-    "disposition": "searching",
-    "summary": "Pursuit ended near 3rd & Union when the driver bailed and jumped a fence into a business yard; the female passenger was uncooperative. Officers searching the area."
-  },
-  {
-    "type": "suspicious_person",
-    "time": "00:24",
-    "agency": "Bakersfield Police Department",
-    "area": "21st Street & O Street, downtown Bakersfield",
-    "notability": 2,
-    "disposition": "responding",
-    "summary": "Person in crisis, reportedly nude at 21st & O with a shirt draped over them; possible psychiatric episode. Units responding."
-  },
-  {
-    "type": "suspicious_circumstances",
-    "time": "00:54",
-    "agency": "Bakersfield Police Department",
-    "area": "Bakersfield",
-    "notability": 2,
-    "disposition": "responding",
-    "summary": "Report of a large car meet gathering in a parking lot; units checking."
-  },
-  {
-    "type": "domestic_disturbance",
-    "time": "02:34",
-    "agency": "Bakersfield Police Department",
-    "area": "Bakersfield",
-    "notability": 2,
-    "disposition": "responding",
-    "summary": "A woman reported a man banging on her door as she screamed at him to leave; banging audible in the background. Heavy-duty response requested."
-  },
-  {
-    "type": "suspicious_circumstances",
-    "time": "03:19",
-    "agency": "Bakersfield Police Department",
-    "area": "2300 block Gibson Street",
-    "notability": 2,
-    "disposition": "investigating",
-    "summary": "Two subjects seen in the yard at a recycling business digging through materials with flashlights. No further description."
-  },
-  {
-    "type": "dui_driver",
-    "time": "03:44",
-    "agency": "Bakersfield Police Department",
-    "area": "north of Hageman Road",
-    "notability": 2,
-    "disposition": "responding",
-    "summary": "Driver reportedly slumped over at the wheel of a black Chevy SUV, swerving with loud music; units moving to stop the vehicle."
-  },
-  {
-    "type": "shots_fired",
-    "time": "03:52",
-    "agency": "Bakersfield Police Department",
-    "area": "Bakersfield",
-    "notability": 2,
-    "disposition": "investigating",
-    "summary": "Reporting party heard multiple shots; units responded code."
-  },
-  {
-    "type": "suspicious_circumstances",
-    "time": "22:01",
-    "agency": "Kern County Sheriff's Office",
-    "area": "Madera Street, Maricopa",
-    "notability": 2,
-    "disposition": "responding",
-    "summary": "Caller watching a vacant residence for the owner reported unknown subjects in a blue Honda dropping items off, then leaving southbound."
-  },
-  {
-    "type": "welfare_check",
-    "time": "22:07",
-    "agency": "Kern County Sheriff's Office",
-    "area": "700 block Jefferson Street",
-    "notability": 2,
-    "disposition": "responding",
-    "summary": "Report of a 6-year-old possibly locked out of a residence by someone inside. Units responding."
-  },
-  {
-    "type": "disturbance",
-    "time": "23:00",
-    "agency": "Bakersfield Police Department",
-    "area": "2700 block White Lane",
-    "notability": 2,
-    "disposition": "responding",
-    "summary": "Disturbance reported at a business in the 2700 block of White Lane."
-  },
-  {
-    "type": "vehicle_pursuit",
-    "time": "23:46",
-    "agency": "California Highway Patrol",
-    "area": "Highway 99 toward the 223",
-    "notability": 2,
-    "disposition": "active",
-    "summary": "Vehicle reportedly not stopping on Highway 99 toward the 223 — possible pursuit in progress."
-  }
+  {"type": "grass_fire", "time": "01:00", "agency": "Kern County Fire Department", "area": "about 2 miles east of the county dump, east Bakersfield", "notability": 5, "disposition": "held to 5–10 acres, mop-up", "summary": "A grass fire roughly 2 miles east of the county dump and north of the railroad tracks grew from 3–5 acres to 5–10 as units arrived. Engine 345, water tender 12, dozers, a safety officer and helicopter 409 made up the response, with crews working access through corral roads off Newmark; Union Pacific train traffic was held while crews mopped up. Crews dubbed it the Apollo Incident."},
+  {"type": "structure_fire", "time": "04:34", "agency": "Kern County Fire Department", "area": "Bell Avenue", "notability": 4, "disposition": "upgraded to structure response", "summary": "A fire in an alley across from the 100 block of Bell Avenue spread toward a house and was upgraded to a structure response — Station 64, Truck 1, medic squad 63 and Battalion 6 among the assignment."},
+  {"type": "traffic_collision", "time": "05:33", "agency": "Kern County Fire Department / CHP", "area": "Copus Road, about 5.5 miles west of Old River Road", "notability": 4, "disposition": "head-on, air ambulance stood down", "summary": "A two-vehicle head-on collision on Copus Road roughly 5.5 miles west of Old River Road pulled multiple engines plus a truck; an air ambulance was placed on standby and later stood down, with one ground ambulance cancelled as units handled it."},
+  {"type": "vehicle_into_building", "time": "03:48", "agency": "CHP / Kern County Fire Department", "area": "South Union Avenue", "notability": 3, "disposition": "CHP en route", "summary": "A vehicle reportedly drove into a building on South Union Avenue, with CHP en route and Battalion 4 dispatched."},
+  {"type": "shots_fired", "time": "03:52", "agency": "Bakersfield Police Department", "area": "unconfirmed location", "notability": 3, "disposition": "units responded", "summary": "A single reporting party reported multiple shots heard; the exact location was unclear on the air as units responded."},
+  {"type": "burglary", "time": "02:19", "agency": "Bakersfield Police Department", "area": "Union Avenue area", "notability": 3, "disposition": "search for suspect", "summary": "A burglary in progress sent units looking for a suspect — a white male, 5-foot-11, about 150 pounds, in a white tank top and black gym shorts — last seen riding a blue beach cruiser and exiting onto Union Avenue."},
+  {"type": "structure_fire", "time": "02:22", "agency": "Kern County Fire Department", "area": "alley near 9th & K streets, downtown", "notability": 3, "disposition": "fire in garage", "summary": "A fire in a downtown alley spread into a garage, drawing the Station 1 assignment: Engine 1, Truck 1, Rescue 1, Battalion 1 and Engine 6."},
+  {"type": "pursuit", "time": "03:31", "agency": "Bakersfield Police Department", "area": "3rd & Union area", "notability": 3, "disposition": "driver fled on foot", "summary": "A driver fled a stopped vehicle on foot near 3rd & Union and jumped a fence; the passenger was uncooperative and no direction of travel was given at first."},
+  {"type": "suspicious_vehicle", "time": "03:44", "agency": "Bakersfield Police Department", "area": "north of Hageman Road", "notability": 2, "disposition": "driver check", "summary": "A black Chevy SUV whose driver appeared slumped over, playing loud music and swerving, drew a traffic stop north of Hageman Road; it was thought related to an earlier suspicious-person report."},
+  {"type": "burglary", "time": "03:19", "agency": "Bakersfield Police Department", "area": "Gibson Street", "notability": 2, "disposition": "subjects in yard", "summary": "Two subjects were seen in a recycling yard on Gibson Street digging through material with flashlights; no further description was given."},
+  {"type": "medical_aid", "time": "04:01", "agency": "Kern County Fire Department / Hall Ambulance", "area": "South O Street", "notability": 2, "disposition": "medication error", "summary": "A medical aid for an accidental overdose, corrected to a medication error, drew Rescue 6."},
+  {"type": "domestic_disturbance", "time": "04:57", "agency": "Bakersfield Police Department", "area": "Charles Street area", "notability": 2, "disposition": "medicals responding", "summary": "A disturbance between family members had medical units responding alongside police for a subject with difficulty breathing."},
+  {"type": "medical_aid", "time": "05:05", "agency": "Kern County Fire Department / Hall Ambulance", "area": "Silver Street", "notability": 2, "disposition": "traumatic injuries", "summary": "A medical aid for traumatic injuries on Silver Street drew a Code 2 response."},
+  {"type": "medical_aid", "time": "05:16", "agency": "Kern County Fire Department / Hall Ambulance", "area": "Maple Trail", "notability": 2, "disposition": "difficulty breathing", "summary": "A medical aid for difficulty breathing on Maple Trail."},
+  {"type": "medical_aid", "time": "06:11", "agency": "Kern County Fire Department", "area": "Baker Street", "notability": 2, "disposition": "seizure", "summary": "A medical aid for a seizure at a recovery services building on Baker Street drew Engine 4."},
+  {"type": "suspicious_person", "time": "00:24", "agency": "Bakersfield Police Department", "area": "21st & O streets, downtown", "notability": 2, "disposition": "person in crisis", "summary": "A person in crisis, reportedly nude with a shirt draped over them and possibly mid-psychiatric episode, drew units to 21st & O streets."},
+  {"type": "suspicious_person", "time": "22:01", "agency": "Bakersfield Police Department", "area": "Madera Street, Maricopa", "notability": 2, "disposition": "subjects left", "summary": "A Spanish-speaking caller watching a vacant residence reported unknown subjects in a blue Honda dropping items off before leaving southbound."},
+  {"type": "welfare_check", "time": "22:07", "agency": "Bakersfield Police Department", "area": "Jefferson Street", "notability": 2, "disposition": "child possibly locked out", "summary": "Report of a 6-year-old possibly being locked out by someone inside a residence on Jefferson Street."},
+  {"type": "disturbance", "time": "23:00", "agency": "Bakersfield Police Department", "area": "2700 block of White Lane", "notability": 2, "disposition": "responded", "summary": "A disturbance at a business in the 2700 block of White Lane."},
+  {"type": "pursuit", "time": "23:46", "agency": "CHP", "area": "Highway 99 toward Highway 223", "notability": 2, "disposition": "vehicle not stopping", "summary": "A vehicle reportedly not stopping on Highway 99 toward the 223 raised the possibility of a pursuit."},
+  {"type": "domestic_disturbance", "time": "02:34", "agency": "Bakersfield Police Department", "area": "unconfirmed location", "notability": 2, "disposition": "heavy-duty response", "summary": "A woman reported a man banging on her door while she screamed at him to leave, with the banging audible in the background; a heavy-duty response was requested."},
+  {"type": "commercial_alarm", "time": "06:16", "agency": "Kern County Fire Department", "area": "18th Street, downtown", "notability": 1, "disposition": "fire alarm", "summary": "A commercial fire alarm at a downtown building on 18th Street."},
+  {"type": "grass_fire", "time": "22:22", "agency": "Kern County Fire Department", "area": "Sierra Highway", "notability": 1, "disposition": "vegetation response", "summary": "A vegetation response on Sierra Highway."}
 ]

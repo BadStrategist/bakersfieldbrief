@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-19T12:14:29-07:00",
+ "built_at": "2026-08-19T13:59:50-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -62,7 +62,7 @@
    "news_digest": "deterministic",
    "alerts": 1,
    "chp_new": 0,
-   "top_story": "Wag Wednesday: Meet Camille from Bakersfield Animal Care Center!",
+   "top_story": "Preview and predictions: Week 1 games of 2026 high school football season in Kern County, Bakersfield",
    "archive": "2026-08-19"
   },
   "cityhall": {
@@ -111,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 84,
+   "aqi": 136,
    "chp_week": 47
   },
   "letters": {

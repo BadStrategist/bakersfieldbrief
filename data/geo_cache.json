@@ -3,6 +3,11 @@
   35.4,
   -119.1
  ],
+ "2700 block of white lane, Bakersfield, Kern County, CA": null,
+ "white lane, Bakersfield, CA": [
+  35.3177131,
+  -119.0121647
+ ],
  "7300 block of snowmass lane, Bakersfield, Kern County, CA": null,
  "snowmass lane, Bakersfield, CA": [
   35.3255954,
@@ -10,13 +15,13 @@
  ],
  "1200 block of chester avenue, Bakersfield, Kern County, CA": null,
  "chester avenue, Bakersfield, CA": [
-  35.3579268,
-  -119.01891
+  35.3852156,
+  -119.0187093
  ],
  "3500 block of terrace way, Bakersfield, Kern County, CA": null,
  "terrace way, Bakersfield, CA": [
-  35.350335,
-  -119.0117508
+  35.3503265,
+  -119.0185047
  ],
  "alfred harrell highway & hart park, Bakersfield, CA": null,
  "6000 block of chandler way, Bakersfield, Kern County, CA": null,
@@ -30,10 +35,6 @@
   -118.969554
  ],
  "2500 block of white lane, Bakersfield, Kern County, CA": null,
- "white lane, Bakersfield, CA": [
-  35.3175972,
-  -119.012088
- ],
  "3700 block of columbus street, Bakersfield, Kern County, CA": null,
  "columbus street, Bakersfield, CA": [
   35.4079524,
@@ -44,46 +45,8 @@
  "bernard street & jefferson park, Bakersfield, CA": null,
  "300 block of bernard street, Bakersfield, Kern County, CA": null,
  "bernard street, Bakersfield, CA": [
-  35.3925915,
-  -118.9487183
+  35.3921431,
+  -118.9555501
  ],
- "hillside & county line, Bakersfield, CA": null,
- "northbound & grapevine road, Bakersfield, CA": null,
- "mount vernon avenue & the downtown overpass, Bakersfield, CA": null,
- "2600 block of oswald street, Bakersfield, Kern County, CA": null,
- "oswald street, Bakersfield, CA": null,
- "auburn street & canyon hills, Bakersfield, CA": null,
- "500 block of deal avenue, Bakersfield, Kern County, CA": null,
- "deal avenue, Bakersfield, CA": null,
- "1400 block of hops lane, Bakersfield, Kern County, CA": null,
- "hops lane, Bakersfield, CA": null,
- "2000 block of calloway drive, Bakersfield, Kern County, CA": null,
- "calloway drive, Bakersfield, CA": [
-  35.3685251,
-  -119.1106854
- ],
- "providence avenue & olive drive, Bakersfield, CA": null,
- "100 block of donna avenue, Bakersfield, Kern County, CA": null,
- "donna avenue, Bakersfield, CA": [
-  35.3575235,
-  -119.0066996
- ],
- "2200 block of chester avenue, Bakersfield, Kern County, CA": null,
- "3500 block of canadian street, Bakersfield, Kern County, CA": null,
- "canadian street, Bakersfield, CA": [
-  35.321683,
-  -119.0242376
- ],
- "2200 block of niles street, Bakersfield, Kern County, CA": null,
- "niles street, Bakersfield, CA": [
-  35.3816592,
-  -118.9895361
- ],
- "east of bakersfield & the county dump, Bakersfield, CA": null,
- "700 block of jefferson street, Bakersfield, Kern County, CA": null,
- "jefferson street, Bakersfield, CA": [
-  35.3891632,
-  -118.9921831
- ],
- "2700 block of white lane, Bakersfield, Kern County, CA": null
+ "hillside & county line, Bakersfield, CA": null
 }

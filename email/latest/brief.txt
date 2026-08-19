@@ -5,11 +5,11 @@ THE KERN OVERNIGHT
 Overnight: vegetation_fire, hillside west Bakersfield — 24 incidents tracked overnight — full report: https://bakersfieldbrief.com/overnight/ (locations generalized)
 
 CONDITIONS
-Weather: 91° / 101°
+Weather: 90° / 101°
 Alerts: Lake Wind Advisory active
 Isabella: 208,157 AF (36.6% cap)
 CHP: None overnight
-Air: AQI unavailable
+Air: AQI 87 · Moderate
 Fires: 0 active in Kern
 
 THE NEWS
@@ -25,6 +25,6 @@ THE NEWS
 Headlines link to the original reporting at the outlets named.
 
 ONE THING TO WATCH
-Multi Modal Transportation And Traffic Safety Committee on 2026-08-18. Agenda on the official link.
+Planning Commission on 2026-08-20. Agenda on the official link.
 
 Web: https://bakersfieldbrief.com/

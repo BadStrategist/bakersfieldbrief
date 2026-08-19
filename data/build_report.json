@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-19T07:07:15-07:00",
+ "built_at": "2026-08-19T07:37:02-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
+   "chp_new": 2,
    "top_story": "Expert tips for families trying to keep college costs under control this school year",
    "archive": "2026-08-19"
   },
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 62,
-   "chp_week": 43
+   "aqi": 66,
+   "chp_week": 45
   },
   "letters": {
    "published": 0
@@ -121,7 +121,7 @@
    "published": 10
   },
   "map": {
-   "dots": 56
+   "dots": 70
   },
   "sunday_read": {
    "topic": "Public safety",

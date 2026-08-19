@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-19T07:37:02-07:00",
+ "built_at": "2026-08-19T07:58:49-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -38,8 +38,8 @@
    "error": ""
   },
   "alpr": {
-   "ok": false,
-   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
+   "ok": true,
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 1,
    "top_story": "Expert tips for families trying to keep college costs under control this school year",
    "archive": "2026-08-19"
   },
@@ -112,7 +112,7 @@
    "alpr_total": 247,
    "kern_fires": 0,
    "aqi": 66,
-   "chp_week": 45
+   "chp_week": 46
   },
   "letters": {
    "published": 0
@@ -143,7 +143,7 @@
    ]
   },
   "trackers": {
-   "alpr_total": 0,
+   "alpr_total": 254,
    "alpr_new_week": 0,
    "pages": [
     "surveillance",

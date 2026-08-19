@@ -1160,6 +1160,46 @@
   "details": ""
  },
  {
+  "log_id": "260819BF0021",
+  "time": "Aug 19 2026  3:39AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "South Union Ave / E Planz Rd",
+  "area": "Bakersfield",
+  "lat": 35.324936,
+  "lon": -119.002929,
+  "details": ""
+ },
+ {
+  "log_id": "260819BF0042",
+  "time": "Aug 19 2026  6:10AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260819BF0043",
+  "time": "Aug 19 2026  6:27AM",
+  "type": "1125-Traffic Hazard",
+  "location": "67 E Evans Rd",
+  "area": "Bakersfield",
+  "lat": 35.70646,
+  "lon": -118.454582,
+  "details": ""
+ },
+ {
+  "log_id": "260819BF0045",
+  "time": "Aug 19 2026  6:37AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 Sr99 S",
+  "area": "Bakersfield",
+  "lat": 35.392791,
+  "lon": -119.044694,
+  "details": ""
+ },
+ {
   "log_id": "260819BF0001",
   "time": "Aug 19 2026 12:02AM",
   "type": "TADV-Traffic Advisory",

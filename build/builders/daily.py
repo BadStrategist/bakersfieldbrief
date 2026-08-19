@@ -398,7 +398,7 @@ def _newsletter_block() -> str:
     return f"""
     <section class="nl-block" aria-label="Newsletter">
       <div class="nl-text"><p class="nl-kicker">The Brief by email</p>
-      <p class="nl-pitch">The day&rsquo;s news, conditions, and what&rsquo;s coming up — one clean email, every morning. <em>Free.</em></p></div>
+      <p class="nl-pitch">The day&rsquo;s news, conditions, and what&rsquo;s coming up — one clean email, every morning. <em>Free.</em> Also on <a href="https://www.facebook.com/bakersfieldbrief" rel="noopener" target="_blank">Facebook</a> — follow for the daily reel.</p></div>
       {form}
     </section>"""
 

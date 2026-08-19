@@ -132,6 +132,28 @@ a.mast-title:hover { color: var(--sign); }
 }
 .nav-list a:hover { color: var(--red); }
 .nav-list a[aria-current="page"], .nav-list a.active { color: var(--red); border-bottom-color: var(--red); }
+/* Follow on Facebook CTA — Facebook blue, stands out against the nav */
+.nav-follow { align-self: center; margin-left: 6px; }
+.nav-follow .btn-fb {
+  display: inline-block;
+  background: #1877F2;
+  color: #fff !important;
+  border: 0;
+  border-radius: var(--radius, 6px);
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  padding: 8px 14px;
+  text-decoration: none;
+  border-bottom: 0;
+  white-space: nowrap;
+}
+.nav-follow .btn-fb:hover { background: #166FE5; color: #fff !important; }
+@media (max-width: 900px) {
+  .nav-follow { margin-left: 0; margin-top: 6px; align-self: flex-start; }
+}
 .nav-toggle {
   display: none;
   background: none; border: 0; color: var(--ink); font-family: var(--display);

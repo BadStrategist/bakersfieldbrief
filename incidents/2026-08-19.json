@@ -5,17 +5,35 @@
     "agency": "Kern County Fire Department",
     "area": "east of Bakersfield near the county dump",
     "notability": 5,
-    "disposition": "active",
-    "summary": "Grass fire that grew to 5–10 acres, dubbed the Apollo Incident — roughly 3–5 acres burning at the first update, about 2 miles east of the dump and north of the railroad tracks. Response included engine 345, water tender 12, dozers, a safety officer and helicopter 409, with crews working access through corral roads. Union Pacific train traffic was held during mop-up."
+    "disposition": "contained",
+    "summary": "Grass fire that grew to 5–10 acres, dubbed the Apollo Incident — burning roughly 2 miles east of the dump and north of the railroad tracks. Response included engine 345, water tender 12, dozers, a safety officer and helicopter 409, with crews working access through corral roads and gates. Union Pacific train traffic was held while crews mopped up."
   },
   {
     "type": "structure_fire",
-    "time": "02:22",
+    "time": "04:35",
     "agency": "Kern County Fire Department",
-    "area": "alley near 9th Street & K Street, downtown Bakersfield",
+    "area": "alley across from the 100 block of Belle Avenue",
     "notability": 4,
     "disposition": "active",
-    "summary": "Report of a fire in an alley near 9th & K that spread into a garage. Station 1 assignment — Engine 1, Truck 1, Rescue 1, Battalion 1 and Engine 6 — responded."
+    "summary": "Fire in an alley that spread to a house, upgraded to a structure response with Engine 63, Truck 1, Medics Squad 63 and Battalion 6."
+  },
+  {
+    "type": "traffic_collision",
+    "time": "03:48",
+    "agency": "California Highway Patrol",
+    "area": "9800 block South Union Avenue",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Vehicle crashed into a building in the 9800 block of South Union Avenue; CHP en route with a fire battalion response."
+  },
+  {
+    "type": "traffic_collision",
+    "time": "05:35",
+    "agency": "Kern County Fire Department",
+    "area": "Copus Road, about 5.5 miles west of Old River",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Head-on collision between two vehicles with a reporting party on scene; an additional engine and Truck 54 were pulled in, and an air ambulance stood by before being cancelled."
   },
   {
     "type": "burglary",
@@ -27,13 +45,67 @@
     "summary": "Burglary in progress — suspect described as a white male, 5-foot-11, about 150 pounds, in a white tank top and black gym shorts, last seen riding a blue beach cruiser and exiting onto Union Avenue. Units searching."
   },
   {
+    "type": "vehicle_pursuit",
+    "time": "03:31",
+    "agency": "Bakersfield Police Department",
+    "area": "East 3rd Street & Union Avenue",
+    "notability": 3,
+    "disposition": "searching",
+    "summary": "Pursuit ended near 3rd & Union when the driver bailed and jumped a fence into a business yard; the female passenger was uncooperative. Officers searching the area."
+  },
+  {
     "type": "suspicious_person",
     "time": "00:24",
     "agency": "Bakersfield Police Department",
     "area": "21st Street & O Street, downtown Bakersfield",
-    "notability": 3,
+    "notability": 2,
     "disposition": "responding",
     "summary": "Person in crisis, reportedly nude at 21st & O with a shirt draped over them; possible psychiatric episode. Units responding."
+  },
+  {
+    "type": "suspicious_circumstances",
+    "time": "00:54",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Report of a large car meet gathering in a parking lot; units checking."
+  },
+  {
+    "type": "domestic_disturbance",
+    "time": "02:34",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "A woman reported a man banging on her door as she screamed at him to leave; banging audible in the background. Heavy-duty response requested."
+  },
+  {
+    "type": "suspicious_circumstances",
+    "time": "03:19",
+    "agency": "Bakersfield Police Department",
+    "area": "2300 block Gibson Street",
+    "notability": 2,
+    "disposition": "investigating",
+    "summary": "Two subjects seen in the yard at a recycling business digging through materials with flashlights. No further description."
+  },
+  {
+    "type": "dui_driver",
+    "time": "03:44",
+    "agency": "Bakersfield Police Department",
+    "area": "north of Hageman Road",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Driver reportedly slumped over at the wheel of a black Chevy SUV, swerving with loud music; units moving to stop the vehicle."
+  },
+  {
+    "type": "shots_fired",
+    "time": "03:52",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield",
+    "notability": 2,
+    "disposition": "investigating",
+    "summary": "Reporting party heard multiple shots; units responded code."
   },
   {
     "type": "suspicious_circumstances",
@@ -61,15 +133,6 @@
     "notability": 2,
     "disposition": "responding",
     "summary": "Disturbance reported at a business in the 2700 block of White Lane."
-  },
-  {
-    "type": "domestic_disturbance",
-    "time": "02:34",
-    "agency": "Bakersfield Police Department",
-    "area": "Bakersfield",
-    "notability": 2,
-    "disposition": "responding",
-    "summary": "A woman reported a man banging on her door as she screamed at him to leave; banging could be heard in the background. Heavy-duty response requested."
   },
   {
     "type": "vehicle_pursuit",

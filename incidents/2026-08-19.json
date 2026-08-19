@@ -1,0 +1,83 @@
+[
+  {
+    "type": "vegetation_fire",
+    "time": "01:00",
+    "agency": "Kern County Fire Department",
+    "area": "east of Bakersfield near the county dump",
+    "notability": 5,
+    "disposition": "active",
+    "summary": "Grass fire that grew to 5–10 acres, dubbed the Apollo Incident — roughly 3–5 acres burning at the first update, about 2 miles east of the dump and north of the railroad tracks. Response included engine 345, water tender 12, dozers, a safety officer and helicopter 409, with crews working access through corral roads. Union Pacific train traffic was held during mop-up."
+  },
+  {
+    "type": "structure_fire",
+    "time": "02:22",
+    "agency": "Kern County Fire Department",
+    "area": "alley near 9th Street & K Street, downtown Bakersfield",
+    "notability": 4,
+    "disposition": "active",
+    "summary": "Report of a fire in an alley near 9th & K that spread into a garage. Station 1 assignment — Engine 1, Truck 1, Rescue 1, Battalion 1 and Engine 6 — responded."
+  },
+  {
+    "type": "burglary",
+    "time": "02:19",
+    "agency": "Bakersfield Police Department",
+    "area": "Union Avenue area",
+    "notability": 3,
+    "disposition": "searching",
+    "summary": "Burglary in progress — suspect described as a white male, 5-foot-11, about 150 pounds, in a white tank top and black gym shorts, last seen riding a blue beach cruiser and exiting onto Union Avenue. Units searching."
+  },
+  {
+    "type": "suspicious_person",
+    "time": "00:24",
+    "agency": "Bakersfield Police Department",
+    "area": "21st Street & O Street, downtown Bakersfield",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Person in crisis, reportedly nude at 21st & O with a shirt draped over them; possible psychiatric episode. Units responding."
+  },
+  {
+    "type": "suspicious_circumstances",
+    "time": "22:01",
+    "agency": "Kern County Sheriff's Office",
+    "area": "Madera Street, Maricopa",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Caller watching a vacant residence for the owner reported unknown subjects in a blue Honda dropping items off, then leaving southbound."
+  },
+  {
+    "type": "welfare_check",
+    "time": "22:07",
+    "agency": "Kern County Sheriff's Office",
+    "area": "700 block Jefferson Street",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Report of a 6-year-old possibly locked out of a residence by someone inside. Units responding."
+  },
+  {
+    "type": "disturbance",
+    "time": "23:00",
+    "agency": "Bakersfield Police Department",
+    "area": "2700 block White Lane",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Disturbance reported at a business in the 2700 block of White Lane."
+  },
+  {
+    "type": "domestic_disturbance",
+    "time": "02:34",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "A woman reported a man banging on her door as she screamed at him to leave; banging could be heard in the background. Heavy-duty response requested."
+  },
+  {
+    "type": "vehicle_pursuit",
+    "time": "23:46",
+    "agency": "California Highway Patrol",
+    "area": "Highway 99 toward the 223",
+    "notability": 2,
+    "disposition": "active",
+    "summary": "Vehicle reportedly not stopping on Highway 99 toward the 223 — possible pursuit in progress."
+  }
+]

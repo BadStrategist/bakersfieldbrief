@@ -1182,7 +1182,7 @@
  {
   "log_id": "260819BF0043",
   "time": "Aug 19 2026  6:27AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
+  "type": "20002-Hit and Run No Injuries",
   "location": "67 E Evans Rd",
   "area": "Bakersfield",
   "lat": 35.70646,
@@ -1257,6 +1257,16 @@
   "area": "Bakersfield",
   "lat": 35.499702,
   "lon": -119.163617,
+  "details": ""
+ },
+ {
+  "log_id": "260819BF0118",
+  "time": "Aug 19 2026  8:27AM",
+  "type": "1125-Traffic Hazard",
+  "location": "/eb58 Jwo Coffee",
+  "area": "",
+  "lat": null,
+  "lon": null,
   "details": ""
  },
  {

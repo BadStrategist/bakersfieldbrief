@@ -547,10 +547,14 @@ def main() -> int:
                  .get("music", "assets/audio/news_reel_bed.wav"))
     music_abs = music_rel if os.path.isabs(music_rel) else str(ROOT / music_rel)
 
-    # Primary: the daily Reel (scripted cards + treated backgrounds + our news
-    # audio bed). Reels get the best organic reach on Facebook. Fall back to a
-    # photo post of the renderer's still card only if the reel can't be
-    # assembled or uploaded — never ship nothing.
+    # Primary: PHOTO post of the daily card. On this new page, photo posts
+    # are the ONLY format verified to render publicly on the page timeline —
+    # reels are withheld from the page view until the page builds trust
+    # (verified 2026-08-19: the Aug 17 photo post serves publicly and appears
+    # in the page HTML, while all four reels are absent from the timeline).
+    # The reel is posted as a best-effort SECOND post (reels still reach the
+    # Reels feed and build posting history). Never ship nothing: if the card
+    # is missing, fall back to the reel; if both are missing, skip.
     reel_dir = ROOT / "site" / "assets" / "img" / "social"
     stem = reel_dir / f"{date}-reel"
     rc = subprocess.run(
@@ -565,6 +569,24 @@ def main() -> int:
     card = stem.with_suffix(".png")  # renderer also emits the still card
     reel_ok = rc.returncode == 0 and reel.exists() and reel.stat().st_size > 100_000
 
+    if card.exists() and card.stat().st_size >= 10000:
+        pid = post_photo(token, card, message)
+        print(f"posted id={pid}")
+        if verify(token, pid, date):
+            print(f"VERIFIED: {pid} live in page feed (photo card)")
+            # Best-effort second post: the reel. Photo already verified, so a
+            # reel failure must NOT fail the run (exit 0).
+            if reel_ok:
+                try:
+                    rpid = post_reel(token, reel, message)
+                    print(f"reel posted id={rpid}")
+                except SystemExit as exc:
+                    print(f"REEL BONUS SKIPPED ({exc}) — photo post already live")
+            return 0
+        print(f"NOT VERIFIED: {pid} not found in feed readback — manual check needed")
+        return 3
+
+    # Fallback: reel only when no card was rendered.
     if reel_ok:
         try:
             pid = post_reel(token, reel, message)
@@ -575,19 +597,10 @@ def main() -> int:
             print(f"NOT VERIFIED: {pid} not found in feed readback — manual check needed")
             return 3
         except SystemExit as exc:
-            print(f"REEL FAILED ({exc}) — falling back to photo post")
+            print(f"REEL FAILED ({exc})")
 
-    # Fallback: photo post (card carries the same summary).
-    if not card.exists() or card.stat().st_size < 10000:
-        print(f"SKIP {date}: no reel and no card — nothing to post")
-        return 0
-    pid = post_photo(token, card, message)
-    print(f"posted id={pid}")
-    if verify(token, pid, date):
-        print(f"VERIFIED: {pid} live in page feed (photo fallback)")
-        return 0
-    print(f"NOT VERIFIED: {pid} not found in feed readback — manual check needed")
-    return 3
+    print(f"SKIP {date}: no card and no reel — nothing to post")
+    return 0
 
 
 if __name__ == "__main__":

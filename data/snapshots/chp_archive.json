@@ -1160,6 +1160,46 @@
   "details": ""
  },
  {
+  "log_id": "260818BF0312",
+  "time": "Aug 18 2026  5:06PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "NB SR99 JNO Ming Ave",
+  "area": "Bakersfield",
+  "lat": 35.339989,
+  "lon": -119.037184,
+  "details": ""
+ },
+ {
+  "log_id": "260818BF0328",
+  "time": "Aug 18 2026  5:35PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sb Sr99 Jno Sr58 E",
+  "area": "BF",
+  "lat": 35.353333,
+  "lon": -119.039444,
+  "details": ""
+ },
+ {
+  "log_id": "260818BF0330",
+  "time": "Aug 18 2026  5:45PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sr46 / Mccombs Ave",
+  "area": "Buttonwillow",
+  "lat": 35.615809,
+  "lon": -119.593614,
+  "details": ""
+ },
+ {
+  "log_id": "260818BF0343",
+  "time": "Aug 18 2026  6:26PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sb Sr99 At Ming Ave",
+  "area": "Bakersfield",
+  "lat": 35.339444,
+  "lon": -119.039444,
+  "details": ""
+ },
+ {
   "log_id": "260818BF0030",
   "time": "Aug 18 2026  6:27AM",
   "type": "MZP-Assist CT with Maintenance",
@@ -1167,6 +1207,16 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260818BF0349",
+  "time": "Aug 18 2026  6:41PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sr178 W / Union Ave",
+  "area": "Bakersfield",
+  "lat": 35.383649,
+  "lon": -119.002924,
   "details": ""
  },
  {

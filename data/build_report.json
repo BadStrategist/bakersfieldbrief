@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-18T14:50:48-07:00",
+ "built_at": "2026-08-18T18:45:11-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 3081, column 2"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -55,14 +55,14 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 996,
+  "_digest_meta": "llm",
+  "brief_words": 754,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 1,
-   "chp_new": 0,
-   "top_story": "Kern County Sheriff\u2019s Office warns of scammers impersonating KCSO employees",
+   "chp_new": 5,
+   "top_story": "Fake AI videos falsely promise Kern County seniors they can freeze property taxes or skip school-bond charges",
    "archive": "2026-08-18"
   },
   "cityhall": {
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 112,
-   "chp_week": 28
+   "aqi": 97,
+   "chp_week": 33
   },
   "letters": {
    "published": 0

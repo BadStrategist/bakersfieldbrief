@@ -5,14 +5,15 @@ THE KERN OVERNIGHT
 Overnight: train_vs_pedestrian, near Lynwood and Height streets — 21 incidents tracked overnight — full report: https://bakersfieldbrief.com/overnight/ (locations generalized)
 
 CONDITIONS
-Weather: 77° / 104°
+Weather: 81° / 104°
 Alerts: No active alerts
 Isabella: 208,157 AF (36.6% cap)
-CHP: None overnight
-Air: AQI 74 · Moderate
+CHP: 3 overnight
+Air: AQI 70 · Moderate
 Fires: 0 active in Kern
 
 THE NEWS
+• 'We just need to pray for a just and fair outcome': Churches face loss of funds amid Dioceses bankruptcy (KGET 17) — https://www.kget.com/news/local-news/we-just-need-to-pray-for-a-just-and-fair-outcome-churches-face-loss-of-funds-amid-dioceses-bankruptcy/
 • CDC says COVID infections are growing in all 50 states, but local ER doctor says there's no reason to panic (23ABC) — https://www.turnto23.com/news/in-your-neighborhood/bakersfield/cdc-says-covid-infections-are-growing-in-all-50-states-but-local-er-doctor-says-theres-no-reason-to-panic
 • Bakersfield residents raise privacy concerns over Flock camera network logging 850K plate reads a month (23ABC) — https://www.turnto23.com/news/in-your-neighborhood/bakersfield/bakersfield-residents-raise-privacy-concerns-over-flock-camera-network-logging-850k-plate-reads-a-month
 • Bakersfield residents react to fears church expansion funds may be lost in Diocese of Fresno bankruptcy (23ABC) — https://www.turnto23.com/news/in-your-neighborhood/bakersfield/bakersfield-residents-react-to-fears-church-expansion-funds-may-be-lost-in-diocese-of-fresno-bankruptcy
@@ -20,7 +21,6 @@ THE NEWS
 • California sets first-in-the-nation tire efficiency standards (23ABC) — https://www.turnto23.com/news/in-your-neighborhood/bakersfield/california-sets-first-in-the-nation-tire-efficiency-standards
 • Bakersfield resident wins $350K slot jackpot at Hard Rock Casino Tejon (KGET 17) — https://www.kget.com/news/local-news/bakersfield-resident-wins-350k-slot-jackpot-at-hard-rock-casino-tejon/
 • Bakersfield grassroots organization hosting Flock camera townhall Wednesday night (KGET 17) — https://www.kget.com/news/local-news/bakersfield-grassroots-organization-hosting-flock-camera-townhall-wednesday-night/
-• Coroner releases update on 2025 NE Bakersfield murder-suicide (KGET 17) — https://www.kget.com/news/homicide-news/coroner-releases-update-on-2025-ne-bakersfield-murder-suicide/
 
 Headlines link to the original reporting at the outlets named.
 

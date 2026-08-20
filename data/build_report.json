@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-19T13:59:50-07:00",
+ "built_at": "2026-08-19T20:15:23-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,9 +60,9 @@
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
-   "alerts": 1,
+   "alerts": 0,
    "chp_new": 0,
-   "top_story": "Preview and predictions: Week 1 games of 2026 high school football season in Kern County, Bakersfield",
+   "top_story": "Bakersfield residents react to fears church expansion funds may be lost in Diocese of Fresno bankruptcy",
    "archive": "2026-08-19"
   },
   "cityhall": {
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -111,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 136,
+   "aqi": null,
    "chp_week": 47
   },
   "letters": {

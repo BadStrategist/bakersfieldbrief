@@ -1150,6 +1150,36 @@
   "details": ""
  },
  {
+  "log_id": "260820BF0152",
+  "time": "Aug 20 2026  1:31PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb Sr99 Jso Olive Dr",
+  "area": "Bakersfield",
+  "lat": 35.411944,
+  "lon": -119.054444,
+  "details": ""
+ },
+ {
+  "log_id": "260820BF0154",
+  "time": "Aug 20 2026  1:33PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "1111 Bush St",
+  "area": "BF",
+  "lat": 35.199936,
+  "lon": -118.836577,
+  "details": ""
+ },
+ {
+  "log_id": "260820BF0157",
+  "time": "Aug 20 2026  1:49PM",
+  "type": "CFIRE-Car Fire",
+  "location": "Nb I5 Jso Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.9375,
+  "lon": -118.928611,
+  "details": ""
+ },
+ {
   "log_id": "260820BF0026",
   "time": "Aug 20 2026  6:25AM",
   "type": "1125-Traffic Hazard",

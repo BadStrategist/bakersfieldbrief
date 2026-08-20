@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-20T08:51:02-07:00",
+ "built_at": "2026-08-20T09:03:07-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 5153, column 42"
   },
   "isabella": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
+   "chp_new": 0,
    "top_story": "'We just need to pray for a just and fair outcome': Churches face loss of funds amid Dioceses bankruptcy",
    "archive": "2026-08-20"
   },

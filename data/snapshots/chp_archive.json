@@ -1,165 +1,5 @@
 [
  {
-  "log_id": "260812BF0238",
-  "time": "Aug 12 2026  1:27PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "500 Kern St",
-  "area": "Buttonwillow",
-  "lat": 35.299078,
-  "lon": -119.354521,
-  "details": ""
- },
- {
-  "log_id": "260812BF0243",
-  "time": "Aug 12 2026  1:36PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Nb I5 At #4 Turn Thru",
-  "area": "Fort Tejon",
-  "lat": 34.914069,
-  "lon": -118.92362,
-  "details": ""
- },
- {
-  "log_id": "260812BF0250",
-  "time": "Aug 12 2026  1:47PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "3017 Center St",
-  "area": "Bakersfield",
-  "lat": 35.37227,
-  "lon": -118.951568,
-  "details": ""
- },
- {
-  "log_id": "260812BF0257",
-  "time": "Aug 12 2026  2:01PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Nb Sr99 Jso Pond Rd",
-  "area": "Bakersfield",
-  "lat": 35.71806,
-  "lon": -119.237134,
-  "details": ""
- },
- {
-  "log_id": "260812BF0268",
-  "time": "Aug 12 2026  2:28PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "12950 Rosedale Hwy",
-  "area": "Bakersfield",
-  "lat": 35.383613,
-  "lon": -119.146162,
-  "details": ""
- },
- {
-  "log_id": "260812BF0269",
-  "time": "Aug 12 2026  2:31PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "227 Francis St",
-  "area": "Bakersfield",
-  "lat": 35.424175,
-  "lon": -119.024037,
-  "details": ""
- },
- {
-  "log_id": "260812BF0275",
-  "time": "Aug 12 2026  2:45PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "NB SR99 JNO Kimberlina Rd",
-  "area": "Bakersfield",
-  "lat": 35.554325,
-  "lon": -119.196827,
-  "details": ""
- },
- {
-  "log_id": "260812BF0282",
-  "time": "Aug 12 2026  2:54PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Sr99 S / Sr46",
-  "area": "Bakersfield",
-  "lat": 35.601816,
-  "lon": -119.211348,
-  "details": ""
- },
- {
-  "log_id": "260812BF0291",
-  "time": "Aug 12 2026  3:05PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Mayer Ave / Hageman Rd",
-  "area": "Buttonwillow",
-  "lat": 35.398267,
-  "lon": -119.287544,
-  "details": ""
- },
- {
-  "log_id": "260812BF0037",
-  "time": "Aug 12 2026  5:44AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "9855 Compagnoni St",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260812BF0041",
-  "time": "Aug 12 2026  6:14AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "1033 Lebec Rd",
-  "area": "Fort Tejon",
-  "lat": 34.825534,
-  "lon": -118.87775,
-  "details": ""
- },
- {
-  "log_id": "260812BF0043",
-  "time": "Aug 12 2026  6:18AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "9855 Compagnoni St",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260812BF0046",
-  "time": "Aug 12 2026  6:35AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "9855 Compagnoni St",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260812BF0049",
-  "time": "Aug 12 2026  6:44AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "Nb I5 Jno Copus Rd",
-  "area": "Buttonwillow",
-  "lat": 35.097222,
-  "lon": -119.039444,
-  "details": ""
- },
- {
-  "log_id": "260812BF0102",
-  "time": "Aug 12 2026  9:14AM",
-  "type": "CFIRE-Car Fire",
-  "location": "Nb I5 At #4 Turn Thru",
-  "area": "Fort Tejon",
-  "lat": 34.914069,
-  "lon": -118.92362,
-  "details": ""
- },
- {
-  "log_id": "260812BF0002",
-  "time": "Aug 12 2026 12:03AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
   "log_id": "260813BF0014",
   "time": "Aug 13 2026  1:21AM",
   "type": "TADV-Traffic Advisory",
@@ -1240,6 +1080,16 @@
   "details": ""
  },
  {
+  "log_id": "260819BF0418",
+  "time": "Aug 19 2026  7:08PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Nb I5 At Sr43",
+  "area": "Buttonwillow",
+  "lat": 35.293333,
+  "lon": -119.252222,
+  "details": ""
+ },
+ {
   "log_id": "260819BF0068",
   "time": "Aug 19 2026  7:13AM",
   "type": "FIRE-Report of Fire",
@@ -1247,6 +1097,16 @@
   "area": "Bakersfield",
   "lat": 35.26985,
   "lon": -118.682381,
+  "details": ""
+ },
+ {
+  "log_id": "260819BF0432",
+  "time": "Aug 19 2026  7:28PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Pond Rd / Sr99 N",
+  "area": "Bakersfield",
+  "lat": 35.71806,
+  "lon": -119.237134,
   "details": ""
  },
  {
@@ -1277,6 +1137,16 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260820BF0005",
+  "time": "Aug 20 2026  1:01AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "0 Sr223 Onr",
+  "area": "Bakersfield",
+  "lat": 35.209053,
+  "lon": -119.010121,
   "details": ""
  }
 ]

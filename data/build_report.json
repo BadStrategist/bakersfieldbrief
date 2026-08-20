@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-20T07:09:30-07:00",
+ "built_at": "2026-08-20T07:20:17-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 5153, column 42"
   },
   "isabella": {
    "ok": true,
@@ -55,13 +55,13 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 73,
+  "_digest_meta": "llm",
+  "brief_words": 838,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "CDC says COVID infections are growing in all 50 states, but local ER doctor says there's no reason to panic",
    "archive": "2026-08-20"
   },
@@ -111,17 +111,17 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 67,
+   "aqi": 74,
    "chp_week": 52
   },
   "letters": {
    "published": 0
   },
   "overnight": {
-   "published": 10
+   "published": 11
   },
   "map": {
-   "dots": 70
+   "dots": 84
   },
   "sunday_read": {
    "topic": "Public safety",

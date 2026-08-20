@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-20T09:04:37-07:00",
+ "built_at": "2026-08-20T10:02:05-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 5153, column 42"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -55,14 +55,14 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 838,
+  "_digest_meta": "llm",
+  "brief_words": 757,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "'We just need to pray for a just and fair outcome': Churches face loss of funds amid Dioceses bankruptcy",
+   "top_story": "Preliminary hearing begins in alleged hit-and-run crash that killed girl, 17, in Bakersfield",
    "archive": "2026-08-20"
   },
   "cityhall": {
@@ -111,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 70,
+   "aqi": 71,
    "chp_week": 55
   },
   "letters": {

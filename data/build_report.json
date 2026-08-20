@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-20T07:20:17-07:00",
+ "built_at": "2026-08-20T08:04:20-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,11 +55,11 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 838,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
    "top_story": "CDC says COVID infections are growing in all 50 states, but local ER doctor says there's no reason to panic",

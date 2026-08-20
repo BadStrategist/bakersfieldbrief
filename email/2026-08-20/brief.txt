@@ -5,7 +5,7 @@ THE KERN OVERNIGHT
 Overnight: train_vs_pedestrian, near Lynwood and Height streets — 21 incidents tracked overnight — full report: https://bakersfieldbrief.com/overnight/ (locations generalized)
 
 CONDITIONS
-Weather: 75° / 104°
+Weather: 77° / 104°
 Alerts: No active alerts
 Isabella: 208,157 AF (36.6% cap)
 CHP: None overnight

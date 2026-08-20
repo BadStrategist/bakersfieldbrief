@@ -1198,5 +1198,45 @@
   "lat": 35.746886,
   "lon": -119.243673,
   "details": ""
+ },
+ {
+  "log_id": "260820BF0113",
+  "time": "Aug 20 2026 11:33AM",
+  "type": "1144-Fatality",
+  "location": "WB SR58 JEO Fairfax Rd",
+  "area": "Bakersfield",
+  "lat": 35.352222,
+  "lon": -118.928889,
+  "details": ""
+ },
+ {
+  "log_id": "260820BF0129",
+  "time": "Aug 20 2026 12:09PM",
+  "type": "1125-Traffic Hazard",
+  "location": "South Union Ave / Watts Dr",
+  "area": "BF",
+  "lat": 35.332206,
+  "lon": -119.00293,
+  "details": ""
+ },
+ {
+  "log_id": "260820BF0136",
+  "time": "Aug 20 2026 12:33PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "0 I5 N",
+  "area": "Fort Tejon",
+  "lat": 34.817674,
+  "lon": -118.881687,
+  "details": ""
+ },
+ {
+  "log_id": "260820BF0137",
+  "time": "Aug 20 2026 12:34PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "14808 Warren St",
+  "area": "Buttonwillow",
+  "lat": 35.614677,
+  "lon": -119.65933,
+  "details": ""
  }
 ]

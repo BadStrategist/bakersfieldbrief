@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-20T03:05:57-07:00",
+ "built_at": "2026-08-20T07:09:30-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,13 +56,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 66,
+  "brief_words": 73,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
-   "top_story": "Bakersfield residents raise privacy concerns over Flock camera network logging 850K plate reads a month",
+   "chp_new": 2,
+   "top_story": "CDC says COVID infections are growing in all 50 states, but local ER doctor says there's no reason to panic",
    "archive": "2026-08-20"
   },
   "cityhall": {
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 66,
-   "chp_week": 50
+   "aqi": 67,
+   "chp_week": 52
   },
   "letters": {
    "published": 0

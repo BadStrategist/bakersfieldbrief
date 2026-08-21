@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-21T07:59:53-07:00",
+ "built_at": "2026-08-21T08:20:03-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 5688, column 35"
   },
   "isabella": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
+   "chp_new": 0,
    "top_story": "NAMI Kern County to celebrate 20th annual 'NAMIWalks' this October",
    "archive": "2026-08-21"
   },

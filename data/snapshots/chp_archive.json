@@ -1230,6 +1230,26 @@
   "details": ""
  },
  {
+  "log_id": "260821BF0110",
+  "time": "Aug 21 2026  8:57AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 Jso #1 Turn Thru",
+  "area": "Fort Tejon",
+  "lat": 34.8863,
+  "lon": -118.90312,
+  "details": ""
+ },
+ {
+  "log_id": "260821BF0115",
+  "time": "Aug 21 2026  9:01AM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 N / Lebec Rd Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.831001,
+  "lon": -118.867853,
+  "details": ""
+ },
+ {
   "log_id": "260821BF0004",
   "time": "Aug 21 2026 12:45AM",
   "type": "1179-Trfc Collision-1141 Enrt",

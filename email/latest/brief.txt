@@ -8,8 +8,8 @@ CONDITIONS
 Weather: 93° / 100°
 Alerts: No active alerts
 Isabella: 208,157 AF (36.6% cap)
-CHP: 3 overnight
-Air: AQI 100 · Moderate
+CHP: None overnight
+Air: AQI 90 · Moderate
 Fires: 0 active in Kern
 
 THE NEWS
@@ -25,6 +25,6 @@ THE NEWS
 Headlines link to the original reporting at the outlets named.
 
 ONE THING TO WATCH
-Planning Commission on 2026-08-20. Agenda on the official link.
+City Council Meeting 330 on 2026-08-26. Agenda on the official link.
 
 Web: https://bakersfieldbrief.com/

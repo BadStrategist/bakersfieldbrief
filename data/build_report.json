@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-20T20:32:34-07:00",
+ "built_at": "2026-08-20T21:23:15-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
+   "chp_new": 0,
    "top_story": "32-year-old Bakersfield man dies of dehydration tied to heat exposure identified",
    "archive": "2026-08-20"
   },
@@ -111,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 100,
+   "aqi": 90,
    "chp_week": 65
   },
   "letters": {

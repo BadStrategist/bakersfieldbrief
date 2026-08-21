@@ -1,0 +1,101 @@
+[
+ {
+  "type": "vehicle_fire",
+  "time": "21:47",
+  "agency": "Kern County Fire Department",
+  "area": "Interstate 5, Grapevine area",
+  "notability": 4,
+  "disposition": "on scene",
+  "summary": "Semi truck roughly 50 percent involved with a detached trailer and about an eighth of an acre of grass burning; Engine 26 on scene with CHP, and Caltrans posted closure signs for a ramp in the area."
+ },
+ {
+  "type": "armed_robbery",
+  "time": "21:50",
+  "agency": "Bakersfield Police Department",
+  "area": "Denise Avenue, north Bakersfield",
+  "notability": 4,
+  "disposition": "responding",
+  "summary": "Robbery at gunpoint on Denise Avenue; suspect described as a transient white male in his late 30s in a baseball cap and black face mask, pulling a wagon, accompanied by a white female."
+ },
+ {
+  "type": "brush_fire",
+  "time": "22:34",
+  "agency": "Kern County Fire Department",
+  "area": "McCombs Road, north of Wasco",
+  "notability": 4,
+  "disposition": "contained, extensive mop-up",
+  "summary": "Quarter-acre brush fire with a fast rate of spread and potential to run west; multiple engines, a water tender and additional wildland equipment responded, with crews split into Division Bravo and Division Yankee for a lengthy mop-up."
+ },
+ {
+  "type": "domestic_violence",
+  "time": "22:27",
+  "agency": "Bakersfield Police Department",
+  "area": "17th Street & Union Avenue",
+  "notability": 3,
+  "disposition": "searching",
+  "summary": "Attempt to locate the victim of a domestic incident near 17th and Union; victim described as a Hispanic woman in her 30s in a blue dress, with the suspect in a red pickup truck in an alley."
+ },
+ {
+  "type": "vehicle_fire",
+  "time": "00:56",
+  "agency": "Kern County Fire Department",
+  "area": "northbound I-5, south of Grapevine",
+  "notability": 4,
+  "disposition": "investigating",
+  "summary": "Semi truck with a trailer fully engulfed in the number three lane, northbound I-5 south of Grapevine; CHP and Engine 56 on scene, with incident command established as the Tejon Incident."
+ },
+ {
+  "type": "domestic_violence",
+  "time": "01:12",
+  "agency": "Bakersfield Police Department",
+  "area": "Panama Lane at the Winco",
+  "notability": 3,
+  "disposition": "investigating",
+  "summary": "Domestic incident at the Winco on Panama Lane: a man chased a woman through the parking lot before both left in a vehicle; officers broadcast a description."
+ },
+ {
+  "type": "vehicle_fire",
+  "time": "01:36",
+  "agency": "Kern County Fire Department",
+  "area": "southbound I-5 near the Grapevine",
+  "notability": 3,
+  "disposition": "responding",
+  "summary": "Dodge Ram with a car hauler on the right-hand shoulder with a possible engine fire; information secondhand from the driver's brother, with no contact from the driver and CHP asked to respond."
+ },
+ {
+  "type": "disturbance",
+  "time": "21:43",
+  "agency": "Bakersfield Police Department",
+  "area": "Kernita Road",
+  "notability": 2,
+  "disposition": "responding",
+  "summary": "Neighbor dispute on Kernita Road following a backyard fire; officers asked to back the reporting party."
+ },
+ {
+  "type": "suspicious_person",
+  "time": "23:38",
+  "agency": "Bakersfield Police Department",
+  "area": "South Haley Street",
+  "notability": 2,
+  "disposition": "responding",
+  "summary": "Man whispering that he needed police, then the call disconnected."
+ },
+ {
+  "type": "suspicious_circumstance",
+  "time": "00:25",
+  "agency": "Bakersfield Police Department",
+  "area": "Ming Avenue",
+  "notability": 2,
+  "disposition": "responding",
+  "summary": "Alarm company reported two subjects near a business on Ming Avenue, one holding a gas can."
+ },
+ {
+  "type": "suspicious_person",
+  "time": "01:16",
+  "agency": "Bakersfield Police Department",
+  "area": "King Street",
+  "notability": 2,
+  "disposition": "responding",
+  "summary": "Three subjects seen jumping a fence on King Street."
+ }
+]

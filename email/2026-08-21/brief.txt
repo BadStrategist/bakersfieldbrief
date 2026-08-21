@@ -5,14 +5,15 @@ THE KERN OVERNIGHT
 Overnight: vehicle_fire, northbound I-5 — 19 incidents tracked overnight — full report: https://bakersfieldbrief.com/overnight/ (locations generalized)
 
 CONDITIONS
-Weather: 97° / 101°
+Weather: 99° / 101°
 Alerts: No active alerts
 Isabella: 208,157 AF (36.6% cap)
-CHP: 1 overnight
-Air: AQI 93 · Moderate
+CHP: 7 overnight
+Air: AQI 108 · Unhealthy for Sensitive Groups
 Fires: 0 active in Kern
 
 THE NEWS
+• Bakersfield police seek public's help identifying suspects in White Lane burglary (KGET 17) — https://www.kget.com/news/crime-watch/bakersfield-police-seek-publics-help-identifying-suspects-in-white-lane-burglary/
 • Flood Ministries Celebrates 20 Years of Helping Kern County Families Find Hope and Stability (KGET 17) — https://www.kget.com/news/local-news/flood-ministries-celebrates-20-years-of-helping-kern-county-families-find-hope-and-stability/
 • Cool Air Rebate Program Can Help Qualifying Californians Save on Vehicle A/C Repairs (KGET 17) — https://www.kget.com/news/local-news/cool-air-rebate-program-can-help-qualifying-californians-save-on-vehicle-a-c-repairs/
 • Bakersfield's Clean City Initiative collects more than 100 tons of trash in July (KGET 17) — https://www.kget.com/news/local-news/bakersfields-clean-city-initiative-collects-more-than-100-tons-of-trash-in-july/
@@ -20,7 +21,6 @@ THE NEWS
 • Trial date confirmed for 2 charged with murder in death of girl, 2 (KGET 17) — https://www.kget.com/news/crime-watch/trial-date-confirmed-for-2-charged-with-murder-in-death-of-girl-2/
 • 17 arrested, nearly 23 tons of trash removed following Kern River encampment clean-up: Bakersfield PD (KGET 17) — https://www.kget.com/news/local-news/17-arrested-nearly-23-tons-of-trash-removed-following-kern-river-encampment-clean-up-bakersfield-pd/
 • Delano PD to conduct bike, pedestrian safety operation (KGET 17) — https://www.kget.com/news/pedestrian-safety/delano-pd-to-conduct-bike-pedestrian-safety-operation/
-• Prosecutor objects as defense seeks another postponement in DUI crash that killed married Bakersfield couple (KGET 17) — https://www.kget.com/news/local-news/dui-news/prosecutor-objects-as-defense-seeks-another-postponement-in-dui-crash-that-killed-married-bakersfield-couple/
 
 Headlines link to the original reporting at the outlets named.
 

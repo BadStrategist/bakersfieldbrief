@@ -1190,6 +1190,76 @@
   "details": ""
  },
  {
+  "log_id": "260821BF0298",
+  "time": "Aug 21 2026  3:03PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Nb I5 Jso Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.9375,
+  "lon": -118.928611,
+  "details": ""
+ },
+ {
+  "log_id": "260821BF0305",
+  "time": "Aug 21 2026  3:28PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "6909 Calloway Dr",
+  "area": "BF",
+  "lat": 35.423136,
+  "lon": -119.110087,
+  "details": ""
+ },
+ {
+  "log_id": "260821BF0314",
+  "time": "Aug 21 2026  3:48PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "2100-2299 Pacific Dr",
+  "area": "Bakersfield",
+  "lat": 35.378546,
+  "lon": -118.96726,
+  "details": ""
+ },
+ {
+  "log_id": "260821BF0316",
+  "time": "Aug 21 2026  3:51PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 Jso Rowlee Rd",
+  "area": "Buttonwillow",
+  "lat": 35.453889,
+  "lon": -119.4725,
+  "details": ""
+ },
+ {
+  "log_id": "260821BF0320",
+  "time": "Aug 21 2026  3:55PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sr58 E Sr99 S Con / Sr58 W Sr99 S Con",
+  "area": "Bakersfield",
+  "lat": 35.349918,
+  "lon": -119.040058,
+  "details": ""
+ },
+ {
+  "log_id": "260821BF0324",
+  "time": "Aug 21 2026  4:12PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 Jno Sr43",
+  "area": "Buttonwillow",
+  "lat": 35.296111,
+  "lon": -119.255556,
+  "details": ""
+ },
+ {
+  "log_id": "260821BF0325",
+  "time": "Aug 21 2026  4:13PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "South Union Ave / White Ln",
+  "area": "Bakersfield",
+  "lat": 35.317646,
+  "lon": -119.003092,
+  "details": ""
+ },
+ {
   "log_id": "260821BF0032",
   "time": "Aug 21 2026  5:50AM",
   "type": "1125-Traffic Hazard",

@@ -1200,6 +1200,16 @@
   "details": ""
  },
  {
+  "log_id": "260820BF0329",
+  "time": "Aug 20 2026  7:04PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Granite Rd / Sr155",
+  "area": "Bakersfield",
+  "lat": 35.716269,
+  "lon": -118.727268,
+  "details": ""
+ },
+ {
   "log_id": "260820BF0072",
   "time": "Aug 20 2026  8:02AM",
   "type": "CFIRE-Car Fire",
@@ -1207,6 +1217,16 @@
   "area": "Fort Tejon",
   "lat": 34.818064,
   "lon": -118.902756,
+  "details": ""
+ },
+ {
+  "log_id": "260820BF0357",
+  "time": "Aug 20 2026  8:12PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 Unnamed Street",
+  "area": "Bakersfield",
+  "lat": 35.354395,
+  "lon": -118.885468,
   "details": ""
  },
  {
@@ -1227,6 +1247,16 @@
   "area": "Bakersfield",
   "lat": 35.746886,
   "lon": -119.243673,
+  "details": ""
+ },
+ {
+  "log_id": "260820BF0368",
+  "time": "Aug 20 2026  8:24PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "8586-8909 Cottonwood Rd",
+  "area": "Bakersfield",
+  "lat": 35.274739,
+  "lon": -118.985341,
   "details": ""
  },
  {

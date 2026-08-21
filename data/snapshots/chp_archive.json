@@ -1140,6 +1140,16 @@
   "details": ""
  },
  {
+  "log_id": "260821BF0014",
+  "time": "Aug 21 2026  1:28AM",
+  "type": "CFIRE-Car Fire",
+  "location": "I5 S / Rockford Rd",
+  "area": "Fort Tejon",
+  "lat": 34.876866,
+  "lon": -118.894945,
+  "details": ""
+ },
+ {
   "log_id": "260821BF0004",
   "time": "Aug 21 2026 12:45AM",
   "type": "1179-Trfc Collision-1141 Enrt",

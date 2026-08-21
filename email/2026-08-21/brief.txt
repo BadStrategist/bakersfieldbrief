@@ -5,11 +5,11 @@ THE KERN OVERNIGHT
 Overnight: train_vs_pedestrian, near Lynwood and Height streets — 21 incidents tracked overnight — full report: https://bakersfieldbrief.com/overnight/ (locations generalized)
 
 CONDITIONS
-Weather: 84° / 101°
+Weather: 79° / 101°
 Alerts: No active alerts
 Isabella: 208,157 AF (36.6% cap)
-CHP: 6 overnight
-Air: AQI 77 · Moderate
+CHP: 1 overnight
+Air: AQI 82 · Moderate
 Fires: 0 active in Kern
 
 THE NEWS

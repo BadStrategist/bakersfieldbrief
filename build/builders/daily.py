@@ -417,7 +417,7 @@ def _newsletter_block() -> str:
             <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#DC9A1F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Top stories &amp; what&rsquo;s coming up</strong> &mdash; the news shaping Kern County, plus meetings and events.</span></li>
             <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#DC9A1F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Free, always</strong> &mdash; no spam, no paywall. Unsubscribe any time.</span></li>
           </ul>
-          <button type="button" class="btn" data-nl-close>Done</button>
+          <button type="button" class="btn" data-nl-close>Close</button>
           <p class="nl-card-foot">See you tomorrow morning.</p>
         </div>
       </div>

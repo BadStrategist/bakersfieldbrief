@@ -247,6 +247,29 @@ def build(ctx, sources: dict) -> list[str]:
         built=built_iso, statusbar=ctx.statusbar, jsonld=[]))
     built.append("oversight/index.html")
 
+    # ---------------------------------------------------------- thanks (newsletter)
+    # No-JS / redirect fallback for the newsletter form (FormSubmit _next).
+    body = """
+    <div class="pagehead"><div class="hero"><p class="kicker">The Brief by email</p>
+    <h1>You&rsquo;re on the list</h1>
+    <p class="lede">Thanks for subscribing to The Bakersfield Brief. Here&rsquo;s what lands in
+    your inbox every morning:</p></div></div>
+    <div class="card">
+      <ul class="nl-card-list" style="list-style:none;margin:0;padding:0">
+        <li style="padding:10px 0;border-bottom:1px solid #E4DCC8"><strong>The overnight in one read</strong> &mdash; the night&rsquo;s calls, the big one, and the county roundup.</li>
+        <li style="padding:10px 0;border-bottom:1px solid #E4DCC8"><strong>Today&rsquo;s weather &amp; conditions</strong> &mdash; high, low, air quality, alerts, fires.</li>
+        <li style="padding:10px 0;border-bottom:1px solid #E4DCC8"><strong>Top stories &amp; what&rsquo;s coming up</strong> &mdash; the news shaping Kern County, plus meetings and events.</li>
+        <li style="padding:10px 0"><strong>Free, always</strong> &mdash; no spam, no paywall. Unsubscribe any time.</li>
+      </ul>
+    </div>
+    <p class="note" style="margin-top:12px"><a href="index.html">&larr; Back to the Daily Brief</a></p>"""
+    common.write(common.SITE / "thanks" / "index.html", page_mod.render(
+        title="Thanks for subscribing | Bakersfield Daily Brief",
+        desc="You're on the list — here's what you'll get in your daily email from Bakersfield Daily Brief.",
+        canonical="/thanks/", content=body, current="other", rel="../",
+        built=built_iso, statusbar=ctx.statusbar, jsonld=[]))
+    built.append("thanks/index.html")
+
     # ---------------------------------------------------------- ads.txt
     (common.SITE / "ads.txt").write_text(
         "google.com, pub-7618641338292119, DIRECT, f08c47fec0942fa0\n",

@@ -379,28 +379,56 @@ def _overnight_section(rel: str) -> str:
 
 
 # ---------------------------------------------------------------- newsletter
+NL_SUBSCRIBE_EMAIL = "hello@bakersfieldbrief.com"  # FormSubmit delivery target
+
+
 def _newsletter_block() -> str:
-    """Newsletter capture: real Buttondown form once a username is configured
-    (BUTTONDOWN_USERNAME in .env / GH secrets); mailto pre-signup until then."""
-    bd_user = os.environ.get("BUTTONDOWN_USERNAME", "").strip()
-    if bd_user:
-        form = (f'<form class="nl-form" '
-                f'action="https://buttondown.com/api/emails/embed-subscribe/{html.escape(bd_user)}" '
-                f'method="post" target="_blank">'
-                f'<input type="email" name="email" placeholder="your@email.com" required aria-label="Your email"/>'
-                f'<button type="submit" class="btn">Get the brief</button></form>')
-    else:
-        form = ('<form class="nl-form" action="mailto:hello@bakersfieldbrief.com" method="get" '
-                'enctype="text/plain">'
-                '<input type="email" name="subject" value="Subscribe me to the Daily Brief" readonly hidden/>'
-                '<input type="email" name="body" placeholder="your@email.com" required aria-label="Your email"/>'
-                '<button type="submit" class="btn">Get the brief</button></form>')
+    """Newsletter capture: secure FormSubmit HTTPS form + a professional
+    thank-you modal that lists exactly what subscribers receive. The old
+    mailto: form triggered browser 'not secure' warnings and opened the
+    email client — never render it; it is replaced here unconditionally.
+    (Buttondown embed-subscribe remains available by setting
+    BUTTONDOWN_USERNAME, but FormSubmit is the default so the flow is
+    HTTPS and shows the in-page thank-you card.)"""
+    form = (f'<form class="nl-form" id="nl-form" '
+            f'action="https://formsubmit.co/{NL_SUBSCRIBE_EMAIL}" method="POST">'
+            f'<input type="hidden" name="_subject" value="Newsletter signup — bakersfieldbrief.com"/>'
+            f'<input type="hidden" name="_template" value="table"/>'
+            f'<input type="hidden" name="_next" value="https://bakersfieldbrief.com/thanks/"/>'
+            f'<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"/>'
+            f'<input type="email" name="email" placeholder="your@email.com" required '
+            f'aria-label="Your email"/>'
+            f'<button type="submit" class="btn">Get the brief</button></form>')
+    # The thank-you modal: shown by main.js when the newsletter form submits.
+    modal = """
+    <div class="nl-modal" id="nl-modal" role="dialog" aria-modal="true" aria-labelledby="nl-modal-title" aria-hidden="true">
+      <div class="nl-card">
+        <button type="button" class="nl-card-close" data-nl-close aria-label="Close">×</button>
+        <div class="nl-card-bar"></div>
+        <div class="nl-card-body">
+          <div class="nl-card-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="#DC9A1F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3 id="nl-modal-title">You&rsquo;re on the list</h3>
+          <p class="nl-card-sub">Thanks for subscribing to The Bakersfield Brief. Here&rsquo;s what lands in your inbox every morning:</p>
+          <ul class="nl-card-list">
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#DC9A1F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>The overnight in one read</strong> &mdash; the night&rsquo;s calls, the big one, and the county roundup.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#DC9A1F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Today&rsquo;s weather &amp; conditions</strong> &mdash; high, low, air quality, alerts, fires.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#DC9A1F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Top stories &amp; what&rsquo;s coming up</strong> &mdash; the news shaping Kern County, plus meetings and events.</span></li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#DC9A1F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Free, always</strong> &mdash; no spam, no paywall. Unsubscribe any time.</span></li>
+          </ul>
+          <button type="button" class="btn" data-nl-close>Done</button>
+          <p class="nl-card-foot">See you tomorrow morning.</p>
+        </div>
+      </div>
+    </div>"""
     return f"""
     <section class="nl-block" aria-label="Newsletter">
       <div class="nl-text"><p class="nl-kicker">The Brief by email</p>
       <p class="nl-pitch">The day&rsquo;s news, conditions, and what&rsquo;s coming up — one clean email, every morning. <em>Free.</em> Also on <a href="https://www.facebook.com/bakersfieldbrief" rel="noopener" target="_blank">Facebook</a> — follow for the daily reel.</p></div>
       {form}
-    </section>"""
+    </section>
+    {modal}"""
 
 
 # ---------------------------------------------------------------- hero row

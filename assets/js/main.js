@@ -136,6 +136,97 @@
     });
   }
 
+  /* ---------- newsletter thank-you modal ----------
+     The subscribe form posts to FormSubmit (secure HTTPS). On submit we
+     show the in-page thank-you card (what you'll receive) and suppress
+     the default navigation so the visitor stays on the page; the signup
+     itself still goes through via the fetch. */
+  (function () {
+    var form = document.getElementById("nl-form");
+    var modal = document.getElementById("nl-modal");
+
+    // If JS is unavailable, FormSubmit's default behaviour navigates to its
+    // own confirmation page — that's acceptable, but we prefer our in-page
+    // card. Keep the modal path as the primary UX.
+
+    // On legacy pages (older daily archives) there may be no id="nl-form"
+    // and no modal markup — but there CAN be a leftover mailto: form that
+    // triggers the browser "this form is not secure" warning and opens the
+    // email client. Intercept it: show a lightweight inline notice instead.
+    var legacy = document.querySelector('.nl-form[action^="mailto:"]');
+    if (!form && legacy) {
+      legacy.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var box = document.createElement("div");
+        box.style.cssText = "margin-top:10px;padding:12px 14px;border:1px solid #DC9A1F;" +
+          "border-radius:6px;background:#FBEED2;color:#232B30;font-size:14px;";
+        box.textContent = "Thanks! Please use the subscribe form on the homepage " +
+          "(bakersfieldbrief.com) — it's the secure, one-click way to get the daily brief.";
+        legacy.parentNode.insertBefore(box, legacy.nextSibling);
+        legacy.querySelector("button").disabled = true;
+      });
+      return;
+    }
+    if (!form || !modal) return;
+
+    var lastFocus = null;
+
+    function openModal() {
+      lastFocus = document.activeElement;
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden", "false");
+      var done = modal.querySelector("[data-nl-close].btn");
+      if (done) done.focus();
+      document.addEventListener("keydown", onKey, true);
+    }
+
+    function closeModal() {
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.removeEventListener("keydown", onKey, true);
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    function onKey(e) {
+      if (e.key === "Escape") { closeModal(); return; }
+      if (e.key === "Tab") {  // keep focus inside the card
+        var focusables = modal.querySelectorAll(
+          "button, [href], input, select, textarea, [tabindex]:not([tabindex=\"-1\"])"
+        );
+        if (!focusables.length) return;
+        var first = focusables[0], last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var email = form.querySelector('input[name="email"]');
+      if (!email || !email.value || !email.checkValidity()) { email.reportValidity(); return; }
+
+      var data = new FormData(form);
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", form.action, true);
+      xhr.onload = function () {
+        // FormSubmit returns 200 on success (and for the blank confirmation
+        // page) — treat any completed request as the signup accepted.
+        openModal();
+      };
+      xhr.onerror = function () {
+        openModal();  // don't trap the reader on a network hiccup
+      };
+      xhr.send(data);
+    });
+
+    modal.querySelectorAll("[data-nl-close]").forEach(function (btn) {
+      btn.addEventListener("click", closeModal);
+    });
+    modal.addEventListener("click", function (e) {
+      if (e.target === modal) closeModal();
+    });
+  })();
+
   // pages pass build date via <html data-built>; expose for meta
   document.documentElement.setAttribute("data-js", "ok");
 })();

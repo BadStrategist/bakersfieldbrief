@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-21T14:47:58-07:00",
+ "built_at": "2026-08-21T14:53:25-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,13 +55,13 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 806,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 1,
    "top_story": "Flood Ministries Celebrates 20 Years of Helping Kern County Families Find Hope and Stability",
    "archive": "2026-08-21"
   },
@@ -112,7 +112,7 @@
    "alpr_total": 247,
    "kern_fires": 0,
    "aqi": 93,
-   "chp_week": 85
+   "chp_week": 86
   },
   "letters": {
    "published": 0

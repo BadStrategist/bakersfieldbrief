@@ -1180,6 +1180,16 @@
   "details": ""
  },
  {
+  "log_id": "260821BF0287",
+  "time": "Aug 21 2026  2:48PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "6500 Rosedale Hwy",
+  "area": "Bakersfield",
+  "lat": 35.383388,
+  "lon": -119.073305,
+  "details": ""
+ },
+ {
   "log_id": "260821BF0032",
   "time": "Aug 21 2026  5:50AM",
   "type": "1125-Traffic Hazard",

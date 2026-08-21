@@ -1140,6 +1140,16 @@
   "details": ""
  },
  {
+  "log_id": "260821BF0243",
+  "time": "Aug 21 2026  1:26PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "SB I5 JSO Fort Tejon Rd",
+  "area": "Fort Tejon",
+  "lat": 34.874188,
+  "lon": -118.891777,
+  "details": ""
+ },
+ {
   "log_id": "260821BF0014",
   "time": "Aug 21 2026  1:28AM",
   "type": "CFIRE-Car Fire",
@@ -1147,6 +1157,26 @@
   "area": "Fort Tejon",
   "lat": 34.876866,
   "lon": -118.894945,
+  "details": ""
+ },
+ {
+  "log_id": "260821BF0251",
+  "time": "Aug 21 2026  1:43PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Baldwin Rd / Belle Ter",
+  "area": "Bakersfield",
+  "lat": 35.346676,
+  "lon": -119.028957,
+  "details": ""
+ },
+ {
+  "log_id": "260821BF0252",
+  "time": "Aug 21 2026  1:50PM",
+  "type": "FIRE-Report of Fire",
+  "location": "I5 N / Gorman Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.79456,
+  "lon": -118.847656,
   "details": ""
  },
  {

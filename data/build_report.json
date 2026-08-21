@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-21T12:17:05-07:00",
+ "built_at": "2026-08-21T13:55:57-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 5688, column 35"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -61,12 +61,12 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "17 arrested, nearly 23 tons of trash removed following Kern River encampment clean-up: Bakersfield PD",
+   "chp_new": 3,
+   "top_story": "Trial date confirmed for 2 charged with murder in death of girl, 2",
    "archive": "2026-08-21"
   },
   "cityhall": {
-   "upcoming_meetings": 2,
+   "upcoming_meetings": 3,
    "county_items": 66,
    "drafts_generated": 0
   },
@@ -94,7 +94,7 @@
   "grapevine": {
    "i5": "CLOSED",
    "i5_pass": "OPEN",
-   "log_entries": 58
+   "log_entries": 59
   },
   "events": {
    "groups": {
@@ -102,7 +102,7 @@
     "Next week": 3,
     "Later": 26
    },
-   "meetings": 2
+   "meetings": 3
   },
   "feed": {
    "entries": 18
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 62,
-   "chp_week": 82
+   "aqi": 84,
+   "chp_week": 85
   },
   "letters": {
    "published": 0

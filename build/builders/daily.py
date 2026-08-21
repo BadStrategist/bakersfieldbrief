@@ -383,22 +383,36 @@ NL_SUBSCRIBE_EMAIL = "hello@bakersfieldbrief.com"  # FormSubmit delivery target
 
 
 def _newsletter_block() -> str:
-    """Newsletter capture: secure FormSubmit HTTPS form + a professional
-    thank-you modal that lists exactly what subscribers receive. The old
-    mailto: form triggered browser 'not secure' warnings and opened the
-    email client — never render it; it is replaced here unconditionally.
-    (Buttondown embed-subscribe remains available by setting
-    BUTTONDOWN_USERNAME, but FormSubmit is the default so the flow is
-    HTTPS and shows the in-page thank-you card.)"""
-    form = (f'<form class="nl-form" id="nl-form" '
-            f'action="https://formsubmit.co/{NL_SUBSCRIBE_EMAIL}" method="POST">'
-            f'<input type="hidden" name="_subject" value="Newsletter signup — bakersfieldbrief.com"/>'
-            f'<input type="hidden" name="_template" value="table"/>'
-            f'<input type="hidden" name="_next" value="https://bakersfieldbrief.com/thanks/"/>'
-            f'<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"/>'
-            f'<input type="email" name="email" placeholder="your@email.com" required '
-            f'aria-label="Your email"/>'
-            f'<button type="submit" class="btn">Get the brief</button></form>')
+    """Newsletter capture with a professional thank-you modal.
+
+    Backend (precedence):
+      1. Buttondown (BUTTONDOWN_USERNAME set) — posts to the embed-subscribe
+         endpoint; subscribers land in the real Buttondown list, no
+         activation wall, and the daily brief can be sent to the list.
+      2. FormSubmit (default) — HTTPS POST to hello@bakersfieldbrief.com.
+
+    Either way the visitor stays on the page: main.js intercepts the submit
+    (XHR, no navigation) and shows the in-page thank-you card.
+    """
+    bd_user = os.environ.get("BUTTONDOWN_USERNAME", "").strip()
+    if bd_user:
+        form = (f'<form class="nl-form" id="nl-form" '
+                f'action="https://buttondown.com/api/emails/embed-subscribe/{html.escape(bd_user)}" '
+                f'method="POST">'
+                f'<input type="hidden" name="embed" value="1"/>'
+                f'<input type="email" name="email" placeholder="your@email.com" required '
+                f'aria-label="Your email"/>'
+                f'<button type="submit" class="btn">Get the brief</button></form>')
+    else:
+        form = (f'<form class="nl-form" id="nl-form" '
+                f'action="https://formsubmit.co/{NL_SUBSCRIBE_EMAIL}" method="POST">'
+                f'<input type="hidden" name="_subject" value="Newsletter signup — bakersfieldbrief.com"/>'
+                f'<input type="hidden" name="_template" value="table"/>'
+                f'<input type="hidden" name="_next" value="https://bakersfieldbrief.com/thanks/"/>'
+                f'<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"/>'
+                f'<input type="email" name="email" placeholder="your@email.com" required '
+                f'aria-label="Your email"/>'
+                f'<button type="submit" class="btn">Get the brief</button></form>')
     # The thank-you modal: shown by main.js when the newsletter form submits.
     modal = """
     <div class="nl-modal" id="nl-modal" role="dialog" aria-modal="true" aria-labelledby="nl-modal-title" aria-hidden="true">

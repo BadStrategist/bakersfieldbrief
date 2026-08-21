@@ -256,7 +256,7 @@ def build(ctx, sources: dict) -> list[str]:
     your inbox every morning:</p></div></div>
     <div class="card">
       <ul class="nl-card-list" style="list-style:none;margin:0;padding:0">
-        <li style="padding:10px 0;border-bottom:1px solid #E4DCC8"><strong>The overnight in one read</strong> &mdash; the night&rsquo;s calls, the big one, and the county roundup.</li>
+        <li style="padding:10px 0;border-bottom:1px solid #E4DCC8"><strong>The Overnight</strong> — our morning brief of police scanner activity that occurred overnight while you slept.</li>
         <li style="padding:10px 0;border-bottom:1px solid #E4DCC8"><strong>Today&rsquo;s weather &amp; conditions</strong> &mdash; high, low, air quality, alerts, fires.</li>
         <li style="padding:10px 0;border-bottom:1px solid #E4DCC8"><strong>Top stories &amp; what&rsquo;s coming up</strong> &mdash; the news shaping Kern County, plus meetings and events.</li>
         <li style="padding:10px 0"><strong>Free, always</strong> &mdash; no spam, no paywall. Unsubscribe any time.</li>

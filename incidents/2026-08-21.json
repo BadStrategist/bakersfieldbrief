@@ -1,5 +1,23 @@
 [
  {
+  "type": "pursuit",
+  "time": "21:13",
+  "agency": "Bakersfield Police Department",
+  "area": "30th Street / Union Avenue / Highway 178",
+  "notability": 3,
+  "disposition": "perimeter set",
+  "summary": "Vehicle pursuit that ran from 30th Street to Union Avenue toward Highway 178. Officers set a perimeter and used a drone; the driver was described as a Hispanic male, about 56 years old and 175 pounds."
+ },
+ {
+  "type": "disturbance",
+  "time": "21:43",
+  "agency": "Bakersfield Police Department",
+  "area": "Kernita Road",
+  "notability": 2,
+  "disposition": "responding",
+  "summary": "Neighbor dispute on Kernita Road following a backyard fire; officers asked to back the reporting party."
+ },
+ {
   "type": "vehicle_fire",
   "time": "21:47",
   "agency": "Kern County Fire Department",
@@ -18,15 +36,6 @@
   "summary": "Robbery at gunpoint on Denise Avenue; suspect described as a transient white male in his late 30s in a baseball cap and black face mask, pulling a wagon, accompanied by a white female."
  },
  {
-  "type": "brush_fire",
-  "time": "22:34",
-  "agency": "Kern County Fire Department",
-  "area": "McCombs Road, north of Wasco",
-  "notability": 4,
-  "disposition": "contained, extensive mop-up",
-  "summary": "Quarter-acre brush fire with a fast rate of spread and potential to run west; multiple engines, a water tender and additional wildland equipment responded, with crews split into Division Bravo and Division Yankee for a lengthy mop-up."
- },
- {
   "type": "domestic_violence",
   "time": "22:27",
   "agency": "Bakersfield Police Department",
@@ -36,40 +45,31 @@
   "summary": "Attempt to locate the victim of a domestic incident near 17th and Union; victim described as a Hispanic woman in her 30s in a blue dress, with the suspect in a red pickup truck in an alley."
  },
  {
-  "type": "vehicle_fire",
-  "time": "00:56",
+  "type": "brush_fire",
+  "time": "22:34",
   "agency": "Kern County Fire Department",
-  "area": "northbound I-5, south of Grapevine",
+  "area": "McCombs Road, north of Wasco",
   "notability": 4,
-  "disposition": "investigating",
-  "summary": "Semi truck with a trailer fully engulfed in the number three lane, northbound I-5 south of Grapevine; CHP and Engine 56 on scene, with incident command established as the Tejon Incident."
- },
- {
-  "type": "domestic_violence",
-  "time": "01:12",
-  "agency": "Bakersfield Police Department",
-  "area": "Panama Lane at the Winco",
-  "notability": 3,
-  "disposition": "investigating",
-  "summary": "Domestic incident at the Winco on Panama Lane: a man chased a woman through the parking lot before both left in a vehicle; officers broadcast a description."
- },
- {
-  "type": "vehicle_fire",
-  "time": "01:36",
-  "agency": "Kern County Fire Department",
-  "area": "southbound I-5 near the Grapevine",
-  "notability": 3,
-  "disposition": "responding",
-  "summary": "Dodge Ram with a car hauler on the right-hand shoulder with a possible engine fire; information secondhand from the driver's brother, with no contact from the driver and CHP asked to respond."
+  "disposition": "contained, extensive mop-up",
+  "summary": "Quarter-acre brush fire with a fast rate of spread and potential to run west; multiple engines, a water tender and additional wildland equipment responded, with crews split into Division Bravo and Division Yankee for a lengthy mop-up."
  },
  {
   "type": "disturbance",
-  "time": "21:43",
+  "time": "22:58",
   "agency": "Bakersfield Police Department",
-  "area": "Kernita Road",
+  "area": "Bakersfield",
   "notability": 2,
   "disposition": "responding",
-  "summary": "Neighbor dispute on Kernita Road following a backyard fire; officers asked to back the reporting party."
+  "summary": "Family disturbance between two brothers."
+ },
+ {
+  "type": "disturbance",
+  "time": "23:07",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Weedpatch area",
+  "notability": 2,
+  "disposition": "responding",
+  "summary": "Verbal disturbance with additional subjects in the Weedpatch area; medical aid also requested."
  },
  {
   "type": "suspicious_person",
@@ -78,7 +78,7 @@
   "area": "South Haley Street",
   "notability": 2,
   "disposition": "responding",
-  "summary": "Man whispering that he needed police, then the call disconnected."
+  "summary": "Man whispering that he needed police on South Haley Street, then the call disconnected."
  },
  {
   "type": "suspicious_circumstance",
@@ -90,6 +90,24 @@
   "summary": "Alarm company reported two subjects near a business on Ming Avenue, one holding a gas can."
  },
  {
+  "type": "vehicle_fire",
+  "time": "00:56",
+  "agency": "Kern County Fire Department",
+  "area": "northbound I-5, south of Grapevine",
+  "notability": 5,
+  "disposition": "long-duration incident",
+  "summary": "Semi truck with a trailer fully engulfed in the number three lane of northbound I-5 south of Grapevine. CHP and Engine 56 on scene with command established as the Tejon Incident; crews were still working the fire after 6 a.m. with traffic backing up to the Lebec service route and a heavy-duty tow called in."
+ },
+ {
+  "type": "domestic_violence",
+  "time": "01:12",
+  "agency": "Bakersfield Police Department",
+  "area": "Panama Lane at the Winco",
+  "notability": 3,
+  "disposition": "investigating",
+  "summary": "Domestic incident at the Winco on Panama Lane: a man chased a woman through the parking lot before both left in a vehicle; officers broadcast a description."
+ },
+ {
   "type": "suspicious_person",
   "time": "01:16",
   "agency": "Bakersfield Police Department",
@@ -97,5 +115,59 @@
   "notability": 2,
   "disposition": "responding",
   "summary": "Three subjects seen jumping a fence on King Street."
+ },
+ {
+  "type": "vehicle_fire",
+  "time": "01:36",
+  "agency": "Kern County Fire Department",
+  "area": "southbound I-5 near the Grapevine",
+  "notability": 3,
+  "disposition": "responding",
+  "summary": "Dodge Ram with a car hauler on the right-hand shoulder with a possible engine fire; information secondhand from the driver's brother, with no contact from the driver and CHP asked to respond."
+ },
+ {
+  "type": "welfare_check",
+  "time": "02:56",
+  "agency": "Bakersfield Police Department",
+  "area": "Pacific Street & Mount Vernon Avenue",
+  "notability": 2,
+  "disposition": "responding",
+  "summary": "Welfare check in the Pacific and Mount Vernon area after a rambling 911 caller."
+ },
+ {
+  "type": "burglary",
+  "time": "03:07",
+  "agency": "Bakersfield Police Department",
+  "area": "Woodford Boulevard",
+  "notability": 4,
+  "disposition": "contact made, firearm located",
+  "summary": "Possible burglary on Woodford Boulevard: two subjects on the property behind a white pickup, possibly taking items. Subjects were known to be in possession of firearms, though none were seen initially; officers later made contact and located a firearm."
+ },
+ {
+  "type": "suspicious_person",
+  "time": "03:16",
+  "agency": "Bakersfield Police Department",
+  "area": "Truxtun Avenue & Sonora Street",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "Suspicious subjects on a train near Truxtun and Sonora, including one in all black; Metro officers and a security guard checked and found no burglary to the train car."
+ },
+ {
+  "type": "hit_and_run",
+  "time": "03:28",
+  "agency": "California Highway Patrol",
+  "area": "I-5 near Lebec",
+  "notability": 2,
+  "disposition": "locating",
+  "summary": "White BMW struck the center divide on I-5 and continued northbound toward Lebec; units later got behind a matching vehicle blocking the number one lane."
+ },
+ {
+  "type": "foot_pursuit",
+  "time": "04:36",
+  "agency": "Kern County Sheriff's Office",
+  "area": "trucking yard south of Gibson Street",
+  "notability": 3,
+  "disposition": "perimeter set",
+  "summary": "Three subjects at a trucking yard south of Gibson Street with possible theft of items; deputies set a perimeter and the subjects ran, one headed south toward a fence with an officer holding the hole. One subject described as known to carry a knife."
  }
 ]

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-21T16:19:17-07:00",
+ "built_at": "2026-08-21T16:47:48-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,13 +56,13 @@
  },
  "section": {
   "_digest_meta": "llm",
-  "brief_words": 1087,
+  "brief_words": 930,
   "daily": {
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 7,
-   "top_story": "Bakersfield police seek public's help identifying suspects in White Lane burglary",
+   "chp_new": 4,
+   "top_story": "Avenal city officials turn to Arvin as legal issues continue to unfold",
    "archive": "2026-08-21"
   },
   "cityhall": {
@@ -112,7 +112,7 @@
    "alpr_total": 247,
    "kern_fires": 0,
    "aqi": 108,
-   "chp_week": 93
+   "chp_week": 97
   },
   "letters": {
    "published": 0

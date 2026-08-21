@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-21T03:07:11-07:00",
+ "built_at": "2026-08-21T07:23:47-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,13 +56,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 62,
+  "brief_words": 63,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "32-year-old Bakersfield man dies of dehydration tied to heat exposure identified",
+   "chp_new": 6,
+   "top_story": "NAMI Kern County to celebrate 20th annual 'NAMIWalks' this October",
    "archive": "2026-08-21"
   },
   "cityhall": {
@@ -93,8 +93,8 @@
   },
   "grapevine": {
    "i5": "CLOSED",
-   "i5_pass": "CLOSED",
-   "log_entries": 55
+   "i5_pass": "RESTRICTIONS",
+   "log_entries": 56
   },
   "events": {
    "groups": {
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 82,
-   "chp_week": 72
+   "aqi": 71,
+   "chp_week": 78
   },
   "letters": {
    "published": 0

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-22T07:51:27-07:00",
+ "built_at": "2026-08-22T07:54:29-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,13 +55,13 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 601,
+  "_digest_meta": "llm",
+  "brief_words": 758,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 0,
    "top_story": "Bakersfield police seek public\u2019s help identifying suspects in White Lane business burglary",
    "archive": "2026-08-22"
   },
@@ -118,10 +118,10 @@
    "published": 0
   },
   "overnight": {
-   "published": 12
+   "published": 13
   },
   "map": {
-   "dots": 77
+   "dots": 69
   },
   "sunday_read": {
    "topic": "Public safety",

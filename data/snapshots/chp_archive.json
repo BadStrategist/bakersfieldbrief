@@ -1400,6 +1400,16 @@
   "details": ""
  },
  {
+  "log_id": "260822BF0297",
+  "time": "Aug 22 2026  4:42PM",
+  "type": "1166-Defective Traffic Signals",
+  "location": "Buena Vista Blvd / Comanche Dr",
+  "area": "Bakersfield",
+  "lat": 35.238103,
+  "lon": -118.842515,
+  "details": ""
+ },
+ {
   "log_id": "260822BF0057",
   "time": "Aug 22 2026  4:50AM",
   "type": "1125-Traffic Hazard",
@@ -1407,6 +1417,16 @@
   "area": "Buttonwillow",
   "lat": 35.731071,
   "lon": -119.852696,
+  "details": ""
+ },
+ {
+  "log_id": "260822BF0299",
+  "time": "Aug 22 2026  4:51PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Arvin St / Howard Ave",
+  "area": "Bakersfield",
+  "lat": 35.423205,
+  "lon": -119.023445,
   "details": ""
  },
  {

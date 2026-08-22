@@ -1,0 +1,191 @@
+[
+ {
+  "type": "shooting",
+  "time": "00:05",
+  "agency": "Bakersfield Police Department",
+  "area": "Baker Street, east Bakersfield",
+  "notability": 5,
+  "disposition": "investigating",
+  "summary": "A witness reported seeing someone shot at a Taco Bell in the Baker Street area. The suspect was described as a white male in his 40s to 50s, wearing a black shirt and dark pants, sitting in a white vehicle — possibly a Ford Explorer."
+ },
+ {
+  "type": "structure_fire",
+  "time": "02:16",
+  "agency": "Bakersfield Fire Department",
+  "area": "King Street, north Bakersfield",
+  "notability": 4,
+  "disposition": "under control",
+  "summary": "Fire at a vacant single-story house on King Street with flames visible inside and heavy smoke showing. Multiple engines and a truck company responded; the fire was under control by about 2:25 a.m."
+ },
+ {
+  "type": "vehicle_fire",
+  "time": "22:54",
+  "agency": "Kern County Fire Department",
+  "area": "Gosford Road & Harris Road",
+  "notability": 4,
+  "disposition": "investigating",
+  "summary": "Two-vehicle collision with one vehicle on fire near Gosford and Harris. Engine 14 and Engine 9 responded, with one car smoking and another about a quarter mile behind; command dubbed it the Harris Incident. Injuries unknown."
+ },
+ {
+  "type": "brush_fire",
+  "time": "01:44",
+  "agency": "Kern County Fire Department",
+  "area": "southbound Highway 395, north of Brown Road",
+  "notability": 3,
+  "disposition": "extinguished",
+  "summary": "Multiple reports of a grass fire on southbound Highway 395 just north of Brown Road drew a large response including engines, patrol units, a water tender, dozer and helicopter. Crews found a small roadside fire that was quickly extinguished and canceled the balance."
+ },
+ {
+  "type": "assault",
+  "time": "22:38",
+  "agency": "Bakersfield Police Department",
+  "area": "Bakersfield",
+  "notability": 3,
+  "disposition": "searching",
+  "summary": "Assault with a knife; no injuries reported. The suspect — about 6 feet tall with neck tattoos, wearing black shorts, a gray shirt and white shoes — fled on foot northbound."
+ },
+ {
+  "type": "firearms_incident",
+  "time": "22:04",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Houchin Road",
+  "notability": 3,
+  "disposition": "officer safety broadcast",
+  "summary": "Subject reported with a firearm in his waistband on Houchin Road, described as a Hispanic male in his 20s wearing a white shirt and brown pants with boots; possible unlicensed carry."
+ },
+ {
+  "type": "assault",
+  "time": "23:22",
+  "agency": "Kern County Fire Department",
+  "area": "Birch Avenue, Wasco",
+  "notability": 3,
+  "disposition": "responding",
+  "summary": "Assault reported on Birch Avenue in Wasco with multiple patients; medics dispatched."
+ },
+ {
+  "type": "domestic_violence",
+  "time": "01:31",
+  "agency": "Bakersfield Police Department",
+  "area": "Fairview Road",
+  "notability": 3,
+  "disposition": "responding",
+  "summary": "Domestic incident on Fairview Road in which a woman allegedly battered a family member and stated she was going to burn down the residence."
+ },
+ {
+  "type": "assault",
+  "time": "00:20",
+  "agency": "Bakersfield Police Department",
+  "area": "4th Street",
+  "notability": 3,
+  "disposition": "responding",
+  "summary": "Assault in progress with multiple people inside and a disturbance heard; suspect described as a Hispanic male with no shirt, wearing gray shorts."
+ },
+ {
+  "type": "domestic_violence",
+  "time": "00:21",
+  "agency": "Bakersfield Police Department",
+  "area": "Cardinal Avenue & Fleetwood Way",
+  "notability": 3,
+  "disposition": "responding",
+  "summary": "Domestic violence in progress at Cardinal and Fleetwood; the suspect hit the reporting party while on the phone."
+ },
+ {
+  "type": "vegetation_fire",
+  "time": "00:01",
+  "agency": "Kern County Fire Department",
+  "area": "Windsong Street",
+  "notability": 2,
+  "disposition": "working",
+  "summary": "About a half acre burning behind a residence on Windsong Street; crews working with additional resources requested."
+ },
+ {
+  "type": "assault",
+  "time": "02:19",
+  "agency": "Bakersfield Police Department",
+  "area": "18th Street",
+  "notability": 2,
+  "disposition": "located safe",
+  "summary": "Assault in progress on the 2300 block of 18th Street; the woman involved was later reported safe at a residence on S Street after being dropped off."
+ },
+ {
+  "type": "battery",
+  "time": "02:40",
+  "agency": "Bakersfield Police Department",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "searching",
+  "summary": "Battery suspect sought — a shirtless Hispanic male with a beard, walking alongside a bike — after a woman was assaulted."
+ },
+ {
+  "type": "suspicious_vehicle",
+  "time": "00:09",
+  "agency": "Bakersfield Police Department",
+  "area": "Culiacan Avenue",
+  "notability": 2,
+  "disposition": "checking",
+  "summary": "Suspicious vehicle check on Culiacan Avenue; a Honda Civic occupied by a woman in her 20s."
+ },
+ {
+  "type": "family_disturbance",
+  "time": "00:10",
+  "agency": "Bakersfield Police Department",
+  "area": "Suncrest Drive",
+  "notability": 2,
+  "disposition": "responding",
+  "summary": "Family disturbance on Suncrest Drive involving an intoxicated teenager who came home; a family member was holding him down."
+ },
+ {
+  "type": "welfare_check",
+  "time": "00:12",
+  "agency": "Bakersfield Police Department",
+  "area": "26th Street",
+  "notability": 2,
+  "disposition": "responding",
+  "summary": "Welfare check on a man lying on the ground near the curb on 26th Street."
+ },
+ {
+  "type": "welfare_check",
+  "time": "00:31",
+  "agency": "Bakersfield Police Department",
+  "area": "Carver Street",
+  "notability": 2,
+  "disposition": "responding",
+  "summary": "Welfare check after a neighbor was reported lying in a ditch between two residences, possibly injured; medical aid advised."
+ },
+ {
+  "type": "suspicious_circumstance",
+  "time": "00:43",
+  "agency": "Bakersfield Police Department",
+  "area": "20th Street & K Street",
+  "notability": 2,
+  "disposition": "responding",
+  "summary": "Reporting party at 20th and K attempting to flag down units, occupying a white Toyota."
+ },
+ {
+  "type": "domestic_disturbance",
+  "time": "02:14",
+  "agency": "Bakersfield Police Department",
+  "area": "33rd Street",
+  "notability": 2,
+  "disposition": "responding",
+  "summary": "Domestic disturbance on 33rd Street; a man who had been drinking was described as wearing a black shirt and black pants."
+ },
+ {
+  "type": "hit_and_run",
+  "time": "23:23",
+  "agency": "Bakersfield Police Department",
+  "area": "Monterey Street",
+  "notability": 2,
+  "disposition": "responding",
+  "summary": "Hit-and-run on Monterey Street involving a black Camry and a white sedan."
+ },
+ {
+  "type": "hazardous_condition",
+  "time": "23:53",
+  "agency": "City of Bakersfield",
+  "area": "22nd Street, between Q and P streets",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "Two fire hydrants reported spilling water on 22nd Street between Q and P streets."
+ }
+]

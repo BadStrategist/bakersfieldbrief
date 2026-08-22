@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-22T13:54:55-07:00",
+ "built_at": "2026-08-22T14:41:53-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,13 +55,13 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 758,
+  "_digest_meta": "llm",
+  "brief_words": 697,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 4,
+   "chp_new": 0,
    "top_story": "15-year-old arrested in connection to deadly shooting at Independence HS",
    "archive": "2026-08-22"
   },

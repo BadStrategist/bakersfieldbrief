@@ -43,6 +43,22 @@
   var flockDotNew = L.divIcon({ html: '<div class="cam-dot flock new"></div>', className: "", iconSize: [17, 17] });
   var otherDotNew = L.divIcon({ html: '<div class="cam-dot other new"></div>', className: "", iconSize: [17, 17] });
 
+  /* camera glyph marker: a CCTV body + lens; the whole marker rotates so the
+     lens points along the camera's facing. Cleaner and more intuitive than a
+     bare dot — reads as "camera" at a glance. */
+  function cameraIcon(c, isNew) {
+    var dir = parseFloat(c.direction);
+    var rot = isNaN(dir) ? 0 : (dir + 90);   // lens faces the bearing
+    var cls = "cam-marker" +
+      ((c.manufacturer || "").toLowerCase().indexOf("flock") !== -1 ? "" : " other") +
+      (isNew ? " new" : "");
+    return L.divIcon({
+      html: '<div class="' + cls + '" style="transform:rotate(' + rot + 'deg)">' +
+            '<div class="cam-body"></div></div>',
+      className: "", iconSize: [30, 26], iconAnchor: [15, 20]
+    });
+  }
+
   /* ---------- direction cone (DeFlock-style) ----------
      Draw a small wedge (cone) from the camera dot showing which compass
      direction the camera faces. c.direction is a bearing in degrees
@@ -100,8 +116,7 @@
     if (isFlock) flockCount++; else otherCount++;
     if (isNew) recentCount++;
     c._isNew = isNew;
-    var icon = isFlock ? (isNew ? flockDotNew : flockDot) : (isNew ? otherDotNew : otherDot);
-    var m = L.marker([c.lat, c.lon], { icon: icon });
+    var m = L.marker([c.lat, c.lon], { icon: cameraIcon(c, isNew) });
     var dir = c.direction ? "Facing: " + c.direction : "Direction not tagged";
     var mapped = c.mapped ? c.mapped : "unknown";
     m.bindPopup(
@@ -133,11 +148,7 @@
       if (!c.lat || !c.lon) return;
       var isFlock = (c.manufacturer || "").toLowerCase().indexOf("flock") !== -1;
       var isNew = !!(cutoff && c.mapped && c.mapped >= cutoff);
-      var icon;
-      if (highlight && isNew) icon = isFlock ? flockDotNew : otherDotNew;
-      else if (!highlight && isNew) icon = isFlock ? flockDot : otherDot;
-      else icon = isFlock ? flockDot : otherDot;
-      var m = L.marker([c.lat, c.lon], { icon: icon });
+      var m = L.marker([c.lat, c.lon], { icon: cameraIcon(c, isNew) });
       m.bindPopup(
         "<strong>License plate reader</strong><br>" +
         "Manufacturer: " + (c.manufacturer || "Unspecified") + "<br>" +
@@ -197,6 +208,91 @@
   }
   map.on("zoomend", updateCones);
   updateCones();
+
+  /* ---------- address search ----------
+     Geocode a Bakersfield address via Nominatim (free, no key), drop a
+     marker, and list the nearest cameras with distances. */
+  var searchInput = document.getElementById("addr-search");
+  var searchResult = document.getElementById("addr-result");
+  var searchMarker = null;
+  var searchCircle = null;
+
+  function haversine(a, b) {
+    var R = 6371000, dLat = (b[0] - a[0]) * Math.PI / 180, dLon = (b[1] - a[1]) * Math.PI / 180;
+    var s = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(a[0] * Math.PI / 180) * Math.cos(b[0] * Math.PI / 180) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    return 2 * R * Math.atan2(Math.sqrt(s), Math.sqrt(1 - s));
+  }
+  function fmtDist(m) { return m < 1000 ? Math.round(m) + " m" : (m / 1000).toFixed(2) + " km"; }
+
+  function showSearchError(msg) {
+    if (searchResult) searchResult.innerHTML = '<div class="ov-err">' + msg + "</div>";
+  }
+
+  if (searchInput && searchResult) {
+    var searchTimer = null;
+    searchInput.addEventListener("input", function () {
+      clearTimeout(searchTimer);
+      var q = searchInput.value.trim();
+      if (q.length < 5) {
+        searchResult.innerHTML = "";
+        if (searchMarker) { map.removeLayer(searchMarker); searchMarker = null; }
+        if (searchCircle) { map.removeLayer(searchCircle); searchCircle = null; }
+        return;
+      }
+      searchTimer = setTimeout(function () {
+        searchResult.innerHTML = '<div class="ov-sr">Searching…</div>';
+        var url = "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=us&q=" +
+                  encodeURIComponent(q + ", Bakersfield, CA");
+        fetch(url, { headers: { "Accept": "application/json" } })
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            if (!data || !data.length) { showSearchError("No address found — try adding street + number."); return; }
+            var hit = data[0];
+            var lat = parseFloat(hit.lat), lon = parseFloat(hit.lon);
+            var name = hit.display_name || q;
+
+            // clear previous
+            if (searchMarker) map.removeLayer(searchMarker);
+            if (searchCircle) map.removeLayer(searchCircle);
+
+            searchMarker = L.circleMarker([lat, lon], {
+              radius: 8, color: "#B3472F", weight: 2, fillColor: "#B3472F", fillOpacity: 0.9
+            }).addTo(map).bindPopup("<strong>Your search</strong><br>" + name);
+            // 400m neighborhood circle
+            searchCircle = L.circle([lat, lon], { radius: 400, color: "#B3472F", weight: 1, opacity: 0.5, fillOpacity: 0.05 }).addTo(map);
+
+            map.flyTo([lat, lon], 15, { duration: 0.9 });
+            searchMarker.openPopup();
+
+            // nearest cameras within ~800m, sorted by distance
+            var near = [];
+            DATA.cameras.forEach(function (c) {
+              if (!c.lat || !c.lon) return;
+              var d = haversine([lat, lon], [c.lat, c.lon]);
+              if (d <= 800) near.push({ c: c, d: d });
+            });
+            near.sort(function (a, b) { return a.d - b.d; });
+            var dirTxt = function (c) {
+              var deg = parseFloat(c.direction);
+              if (isNaN(deg)) return "";
+              return "facing " + ["N","NE","E","SE","S","SW","W","NW"][Math.round(deg / 45) % 8] + " ";
+            };
+            var html = '<div class="ov-sr"><b>' + (near.length ? near.length + " camera" + (near.length > 1 ? "s" : "") + " within 800 m" : "No cameras within 800 m") + "</b></div>";
+            if (near.length) {
+              html += '<ul class="ov-near">' + near.slice(0, 8).map(function (n) {
+                return '<li><span class="dist">' + fmtDist(n.d) + "</span> &middot; " +
+                       (n.c.manufacturer || "ALPR") + " " + dirTxt(n.c) +
+                       " &middot; <a href=\"https://www.openstreetmap.org/node/" + n.c.id + "\" target=\"_blank\" rel=\"noopener\">node</a></li>";
+              }).join("") + "</ul>";
+            }
+            searchResult.innerHTML = html;
+          })
+          .catch(function () { showSearchError("Search failed — try again."); });
+      }, 600);
+    });
+  }
 
   /* legend + stats */
   var legend = document.getElementById("map-legend-stats");

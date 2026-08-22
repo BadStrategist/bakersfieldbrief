@@ -34,6 +34,21 @@
   font-size: 12.5px; color: var(--amber-soft); margin: 12px 0 6px;
   border-top: 1px solid #2E353A; padding-top: 10px;
 }
+.ov-search { margin: 0 0 10px; }
+.ov-search input {
+  width: 100%; box-sizing: border-box; background: #1D2226; color: #E8E2D0;
+  border: 1px solid #2E353A; border-radius: 6px; padding: 8px 10px;
+  font-family: var(--sans); font-size: 13px;
+}
+.ov-search input::placeholder { color: #6E7A76; }
+.ov-search input:focus { outline: 2px solid var(--amber); border-color: var(--amber); }
+.ov-search .ov-sr { margin-top: 6px; font-size: 12px; color: #9AA5A0; }
+.ov-search .ov-sr b { color: var(--amber-soft); }
+.ov-search .ov-err { margin-top: 6px; font-size: 12px; color: #E08A7A; }
+.ov-search .ov-sr a { color: var(--amber-soft); text-decoration: underline; }
+.ov-search .ov-near { margin-top: 8px; border-top: 1px dashed #2E353A; padding-top: 6px; }
+.ov-search .ov-near li { font-size: 12.5px; padding: 3px 0; border-bottom: 0; color: #C8CFC9; }
+.ov-search .ov-near li .dist { color: var(--amber-soft); font-family: var(--mono); }
 .ov-list { list-style: none; margin: 0; padding: 0; }
 .ov-list li { padding: 5px 0; border-bottom: 1px dashed #2E353A; font-size: 13px; }
 .ov-list li:last-child { border-bottom: 0; }
@@ -45,6 +60,27 @@
 .cam-dot.flock { background: var(--amber); border: 2px solid #fff; box-shadow: 0 0 6px rgba(220, 154, 31, .8); }
 .cam-dot.other { background: #8FA099; border: 2px solid #fff; }
 .cam-dot.new { outline: 3px solid rgba(243, 199, 110, .75); outline-offset: 1px; }
+
+/* camera glyph markers — a small CCTV camera icon so the markers read as
+   "cameras" at a glance, not abstract dots. The lens dot aims along the
+   camera's facing (rotated via transform in trackers.js). */
+.cam-marker { position: relative; width: 30px; height: 26px; }
+.cam-marker .cam-body {
+  position: absolute; left: 2px; top: 6px; width: 20px; height: 14px;
+  border-radius: 4px; background: #14171A; border: 2px solid #fff;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .6);
+}
+.cam-marker .cam-body::before {   /* lens */
+  content: ""; position: absolute; left: 3px; top: 3px; width: 8px; height: 8px;
+  border-radius: 50%; background: var(--amber);
+}
+.cam-marker .cam-body::after {    /* mount arm */
+  content: ""; position: absolute; left: 8px; top: -7px; width: 4px; height: 8px;
+  background: #fff; border-radius: 2px;
+}
+.cam-marker.other .cam-body { border-color: #B9C4C0; }
+.cam-marker.other .cam-body::before { background: #8FA099; }
+.cam-marker.new .cam-body { outline: 3px solid rgba(243, 199, 110, .75); outline-offset: 1px; }
 
 .cluster-dot {
   background: var(--amber); color: #14171A; border: 3px solid #fff; border-radius: 50%;

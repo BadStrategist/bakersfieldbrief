@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-22T00:24:24-07:00",
+ "built_at": "2026-08-22T02:53:57-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,13 +56,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 59,
+  "brief_words": 64,
   "daily": {
-   "news_headlines": 50,
+   "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 1,
-   "top_story": "Bakersfield police investigating shooting at Independence High School",
+   "top_story": "Prayer held at BCHS football game as shooting investigation underway at Independence High",
    "archive": "2026-08-22"
   },
   "cityhall": {
@@ -80,11 +80,11 @@
    ],
    "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 0,
-    "bakersfield-nw": 0,
-    "bakersfield-sw": 0,
-    "bakersfield-east": 0,
-    "bakersfield-central": 0
+    "tehachapi": 12,
+    "bakersfield-nw": 12,
+    "bakersfield-sw": 12,
+    "bakersfield-east": 12,
+    "bakersfield-central": 12
    }
   },
   "guide": {
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 74,
-   "chp_week": 104
+   "aqi": 79,
+   "chp_week": 105
   },
   "letters": {
    "published": 0

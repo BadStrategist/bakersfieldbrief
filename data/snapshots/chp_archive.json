@@ -1400,6 +1400,36 @@
   "details": ""
  },
  {
+  "log_id": "260822BF0141",
+  "time": "Aug 22 2026 10:22AM",
+  "type": "ANIMAL-Live or Dead Animal",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265441,
+  "lon": -119.024719,
+  "details": ""
+ },
+ {
+  "log_id": "260822BF0162",
+  "time": "Aug 22 2026 10:51AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "23220 Wesley Ave",
+  "area": "Bakersfield",
+  "lat": 35.718822,
+  "lon": -118.104077,
+  "details": ""
+ },
+ {
+  "log_id": "260822BF0189",
+  "time": "Aug 22 2026 11:57AM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 Sr58 W",
+  "area": "Bakersfield",
+  "lat": 35.342513,
+  "lon": -118.860072,
+  "details": ""
+ },
+ {
   "log_id": "260822BF0008",
   "time": "Aug 22 2026 12:43AM",
   "type": "TADV-Traffic Advisory",

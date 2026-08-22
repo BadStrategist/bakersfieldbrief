@@ -197,10 +197,12 @@
 
   /* ---------- cones only at street zoom (declutter) ----------
      Below zoom ~14 the cones overlap; hide them. Above 14 (street level)
-     they appear so you can read the facing. */
+     they appear so you can read the facing. On mobile, require a higher
+     zoom (15+) so small screens don't get cluttered. */
+  var CONE_MIN_ZOOM = (window.innerWidth && window.innerWidth <= 700) ? 15 : 14;
   function updateCones() {
     var z = map.getZoom();
-    var show = z >= 14;
+    var show = z >= CONE_MIN_ZOOM;
     CAMERA_CONES.forEach(function (cone) {
       if (show) { if (!map.hasLayer(cone)) cone.addTo(map); }
       else if (map.hasLayer(cone)) map.removeLayer(cone);

@@ -19,16 +19,54 @@ from datetime import datetime
 
 from . import common
 
-GREEN = "#232B30"    # charcoal (brand ink)
-DEEP = "#1A2126"
-AMBER = "#DC9A1F"    # brand gold
-RED = "#B3472F"      # brand red
+# ---------------------------------------------------------------- palette
+# Website guide-sign design system (matches assets/css/site.css)
+SIGN = "#232B30"
+SIGN_DEEP = "#1A2126"
+SIGN_DARK = "#14191D"
+AMBER = "#DC9A1F"
+AMBER_SOFT = "#F3C76E"
+RED = "#B3472F"
+RED_DEEP = "#8F3720"
 INK = "#20262C"
-PAPER = "#FAF6EC"    # brand cream
-MUTED = "#57504A"
-LINE = "#E4DCC8"     # cream-line border
+INK_SOFT = "#57504A"
+PAPER = "#FAF6EC"
+PAPER2 = "#F1EADA"
+CARD = "#FFFDF7"
+LINE = "#E3DBC8"
+LINE_STRONG = "#C4BAA2"
+SHADOW = "0 1px 2px rgba(32,38,28,.07), 0 8px 24px rgba(32,38,28,.06)"
+# Email-safe font stacks (website brand fonts; fall back for clients that
+# block web fonts). IBM Plex Mono isn't email-safe -> Courier New fallback.
+SERIF = "'Lora', Georgia, 'Times New Roman', serif"
+SANS = "'Public Sans', Arial, Helvetica, sans-serif"
+DISPLAY = "'Barlow Condensed', 'Arial Narrow', Arial, sans-serif"
+MONO = "'Courier New', Courier, monospace"
+
+GREEN = SIGN          # legacy alias (weekend guide)
+DEEP = SIGN_DEEP      # legacy alias (weekend guide)
+MUTED = INK_SOFT      # legacy alias (weekend guide)
 
 BASE_URL = "https://bakersfieldbrief.com"
+
+
+def _kicker(text: str) -> str:
+    """Uppercase display-font kicker with amber rule (site style)."""
+    return (f'<table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 6px"><tr>'
+            f'<td style="width:26px;border-top:2px solid {AMBER};font-size:1px;line-height:1px">&nbsp;</td>'
+            f'<td style="padding-left:8px;font-family:{DISPLAY};font-size:14px;font-weight:600;'
+            f'letter-spacing:2px;text-transform:uppercase;color:{RED}">{H.escape(text)}</td></tr></table>')
+
+
+def _card_open(accent: str = SIGN) -> str:
+    """Site .card: cream card, left accent border, radius, soft shadow."""
+    return (f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" '
+            f'style="margin:14px 0;background:{CARD};border:1px solid {LINE};'
+            f'border-left:4px solid {accent};border-radius:6px;box-shadow:{SHADOW}"><tr><td style="padding:14px 16px">')
+
+
+def _card_close() -> str:
+    return "</td></tr></table>"
 
 
 def _brief_sections(date) -> dict:
@@ -113,9 +151,9 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
         title = H.escape(h.get("title", ""))
         url = H.escape(h.get("url", "#"), quote=True)
         src = H.escape(h.get("source", "news"))
-        news_html += (f'<tr><td style="padding:6px 0;border-bottom:1px solid #E3E0DA">'
-                      f'<a href="{url}" style="color:{GREEN};font-weight:bold;text-decoration:none">{title}</a>'
-                      f'<br><span style="font-size:11px;color:{MUTED}">{src}</span></td></tr>')
+        news_html += (f'<tr><td style="padding:7px 0;border-bottom:1px solid {LINE}">'
+                      f'<a href="{url}" style="color:{SIGN};font-weight:600;text-decoration:none">{title}</a>'
+                      f'<br><span style="font-size:11px;color:{INK_SOFT}">{src}</span></td></tr>')
         news_txt += f"• {h.get('title', '')} ({h.get('source', '')}) — {h.get('url', '')}\n"
 
     # ---- one thing to watch
@@ -134,11 +172,6 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
     except Exception:  # noqa: BLE001
         ko = None
 
-    # Email-safe font stacks (Lora + Public Sans are the site brand fonts;
-    # fall back to Georgia/Arial for clients that block web fonts).
-    SERIF = "'Lora', Georgia, 'Times New Roman', serif"
-    SANS = "'Public Sans', Arial, Helvetica, sans-serif"
-
     # ---- full overnight narrative (markdown -> paragraphs; no 'the log')
     def _md_para(text: str) -> str:
         """Convert a markdown body to email-safe <p> paragraphs (bold kept).
@@ -152,11 +185,7 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
         return "".join(f'<p style="margin:6px 0 0;font-family:{SANS};font-size:13px;line-height:1.55;color:{INK}">{p}</p>' for p in paras)
 
     def _chunk_paragraphs(text: str, sentences_per_para: int = 3) -> str:
-        """Split a long narrative into readable paragraphs at sentence ends.
-
-        Splits on '. ' / '? ' / '! ' followed by a capital (but not after
-        a.m./p.m.), then groups `sentences_per_para` sentences per <p>.
-        """
+        """Split a long narrative into readable paragraphs at sentence ends."""
         parts = re.split(r"(?<=[.!?])\s+(?=[A-Z“\"])", text)
         sentences = [p.strip() for p in parts if p.strip()]
         paras = []
@@ -194,65 +223,75 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
 <title>Bakersfield Daily Brief — {H.escape(date_label)}{(' — Overnight: ' + H.escape(ko['headline'])) if ko and ko.get('headline') else ''}</title></head>
 <body style="margin:0;padding:0;background:{PAPER}">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:{PAPER}"><tr><td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid {LINE};border-radius:12px;overflow:hidden">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background:{PAPER}">
 
-<!-- brand top bar -->
+<!-- brand top bar (guide-sign amber) -->
 <tr><td style="background:{AMBER};height:6px;font-size:0;line-height:0">&nbsp;</td></tr>
 
 <!-- masthead: derrick emblem + name (card style) -->
-<tr><td style="background:{PAPER};padding:22px 24px 14px;text-align:center;border-bottom:1px solid {LINE}">
-  <img src="{BASE_URL}/assets/img/emblem.png" width="180" alt="The Bakersfield Brief" style="display:block;margin:0 auto 8px;max-width:180px;height:auto;border:0">
-  <p style="margin:6px 0 0;font-family:{SANS};font-size:11px;letter-spacing:3px;text-transform:uppercase;color:{RED}">{H.escape(date_label)}</p>
+<tr><td style="background:{PAPER};padding:24px 24px 10px;text-align:center">
+  <img src="{BASE_URL}/assets/img/emblem.png" width="190" alt="The Bakersfield Brief" style="display:block;margin:0 auto 10px;max-width:190px;height:auto;border:0">
+  <p style="margin:6px 0 0;font-family:{DISPLAY};font-size:13px;letter-spacing:3px;text-transform:uppercase;color:{RED}">{H.escape(date_label)}</p>
 </td></tr>
 
-<!-- Kern Overnight -->
-<tr><td style="padding:18px 24px 6px">
-  <p style="margin:0;font-family:{SANS};font-size:11px;letter-spacing:2px;text-transform:uppercase;color:{AMBER}">The Kern Overnight</p>
-  <p style="margin:2px 0 0;font-family:{SANS};font-size:11px;color:{MUTED}">Scanner brief from 9pm to 6am</p>
-  {('' if not (ko and ko.get('headline')) else f'<p style="margin:8px 0 2px;font-family:{SERIF};font-size:18px;color:{INK}"><a href="{BASE_URL}/overnight/" style="color:{INK};text-decoration:none">Overnight: {H.escape(ko["headline"])}</a></p>')}
-  {('' if not ko else f'<p style="margin:2px 0 0;font-family:{SANS};font-size:12px;color:{MUTED}">{ko["count"]} incidents tracked overnight — <a href="{BASE_URL}/overnight/" style="color:{GREEN};font-weight:600;text-decoration:none">full report</a> · locations generalized</p>')}
-  {overnight_html}
+<!-- Kern Overnight card -->
+<tr><td style="padding:6px 20px 2px">
+  {_card_open(SIGN)}
+    {_kicker("The Kern Overnight")}
+    <p style="margin:0 0 4px;font-family:{MONO};font-size:11px;letter-spacing:1px;text-transform:uppercase;color:{INK_SOFT}">Scanner brief from 9pm to 6am</p>
+    {('' if not (ko and ko.get('headline')) else f'<p style="margin:8px 0 2px;font-family:{SERIF};font-size:18px;color:{INK}"><a href="{BASE_URL}/overnight/" style="color:{INK};text-decoration:none">Overnight: {H.escape(ko["headline"])}</a></p>')}
+    {('' if not ko else f'<p style="margin:2px 0 10px;font-family:{SANS};font-size:12px;color:{INK_SOFT}">{ko["count"]} incidents tracked overnight — <a href="{BASE_URL}/overnight/" style="color:{SIGN};font-weight:600;text-decoration:none">full report</a> · locations generalized</p>')}
+    {overnight_html}
+  {_card_close()}
 </td></tr>
 
-<!-- Today's Weather -->
-<tr><td style="padding:10px 24px 4px">
-  <h2 style="margin:0 0 8px;font-family:{SERIF};font-size:17px;color:{GREEN}">Today&rsquo;s Weather</h2>
-  {weather_html or '<p style="font-family:' + SANS + ';font-size:13px;color:' + MUTED + '">Weather data unavailable.</p>'}
+<!-- Today's Weather card -->
+<tr><td style="padding:2px 20px">
+  {_card_open(AMBER)}
+    {_kicker("Today's Weather")}
+    {weather_html or '<p style="font-family:' + SANS + ';font-size:13px;color:' + INK_SOFT + '">Weather data unavailable.</p>'}
+  {_card_close()}
 </td></tr>
 
-<!-- Something Good -->
+<!-- Something Good card -->
 {('' if not good_html else f'''
-<tr><td style="padding:10px 24px 4px">
-  <h2 style="margin:0 0 8px;font-family:{SERIF};font-size:17px;color:{GREEN}">Something Good</h2>
-  {good_html}
+<tr><td style="padding:2px 20px">
+  {_card_open(RED)}
+    {_kicker("Something Good")}
+    {good_html}
+  {_card_close()}
 </td></tr>''')}
 
-<!-- Local Headlines -->
-<tr><td style="padding:12px 24px 8px">
-  <h2 style="margin:0 0 8px;font-family:{SERIF};font-size:17px;color:{GREEN}">Local Headlines</h2>
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0">{news_html}</table>
-  <p style="font-family:{SANS};font-size:11px;color:{MUTED}">Headlines link to the original reporting. We never republish article text.</p>
+<!-- Local Headlines card -->
+<tr><td style="padding:2px 20px">
+  {_card_open(SIGN)}
+    {_kicker("Local Headlines")}
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">{news_html}</table>
+    <p style="font-family:{SANS};font-size:11px;color:{INK_SOFT}">Headlines link to the original reporting. We never republish article text.</p>
+  {_card_close()}
 </td></tr>
 
-<!-- One Thing to Watch -->
-<tr><td style="padding:4px 24px 12px">
-  <h2 style="margin:0 0 8px;font-family:{SERIF};font-size:17px;color:{GREEN}">One Thing to Watch</h2>
-  {watch_html}
+<!-- One Thing to Watch card -->
+<tr><td style="padding:2px 20px">
+  {_card_open(SIGN_DARK)}
+    {_kicker("One Thing to Watch")}
+    {watch_html}
+  {_card_close()}
 </td></tr>
 
 <!-- follow CTA -->
-<tr><td style="padding:6px 24px 18px;text-align:center;border-top:1px solid {LINE}">
-  <p style="margin:14px 0 10px;font-family:{SANS};font-size:12px;letter-spacing:1px;text-transform:uppercase;color:{MUTED}">Follow the Brief</p>
+<tr><td style="padding:14px 20px 18px;text-align:center">
+  <p style="margin:0 0 12px;font-family:{DISPLAY};font-size:14px;letter-spacing:2px;text-transform:uppercase;color:{INK_SOFT}">Follow the Brief</p>
   <table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 auto"><tr>
-    <td style="padding:0 6px"><a href="https://www.facebook.com/bakersfieldbrief" style="display:inline-block;background:{GREEN};color:#ffffff;font-family:{SANS};font-size:13px;font-weight:600;text-decoration:none;padding:11px 22px;border-radius:6px">Follow on Facebook</a></td>
-    <td style="padding:0 6px"><a href="https://www.instagram.com/bakersfieldbrief" style="display:inline-block;background:{RED};color:#ffffff;font-family:{SANS};font-size:13px;font-weight:600;text-decoration:none;padding:11px 22px;border-radius:6px">Follow on Instagram</a></td>
+    <td style="padding:0 6px"><a href="https://www.facebook.com/bakersfieldbrief" style="display:inline-block;background:{SIGN};color:#ffffff;font-family:{DISPLAY};font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:12px 24px;border-radius:6px;box-shadow:{SHADOW}">Follow on Facebook</a></td>
+    <td style="padding:0 6px"><a href="https://www.instagram.com/bakersfieldbrief" style="display:inline-block;background:{RED};color:#ffffff;font-family:{DISPLAY};font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:12px 24px;border-radius:6px;box-shadow:{SHADOW}">Follow on Instagram</a></td>
   </tr></table>
 </td></tr>
 
 <!-- footer: brand + unsubscribe (required elements so MailerLite appends nothing) -->
-<tr><td style="background:{PAPER};padding:14px 24px;border-top:2px solid {AMBER}">
-  <p style="margin:0;font-family:{SANS};font-size:11px;color:{MUTED}">The Bakersfield Brief &middot; Bakersfield, California &middot; <a href="{BASE_URL}/" style="color:{GREEN}">bakersfieldbrief.com</a></p>
-  <p style="margin:4px 0 0;font-family:{SANS};font-size:10px;color:{MUTED}">You&rsquo;re receiving this because you subscribed to the Bakersfield Brief. <a href="{{$unsubscribe}}" style="color:{GREEN};text-decoration:underline">Unsubscribe</a> any time.</p>
+<tr><td style="background:{PAPER2};padding:14px 24px;border-top:2px solid {AMBER}">
+  <p style="margin:0;font-family:{SANS};font-size:11px;color:{INK_SOFT}">The Bakersfield Brief &middot; Bakersfield, California &middot; <a href="{BASE_URL}/" style="color:{SIGN}">bakersfieldbrief.com</a></p>
+  <p style="margin:4px 0 0;font-family:{SANS};font-size:10px;color:{INK_SOFT}">You&rsquo;re receiving this because you subscribed to the Bakersfield Brief. <a href="{{$unsubscribe}}" style="color:{SIGN};text-decoration:underline">Unsubscribe</a> any time.</p>
 </td></tr>
 
 </table></td></tr></table>

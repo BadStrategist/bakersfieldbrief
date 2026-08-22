@@ -12,7 +12,7 @@
   "type": "structure_fire",
   "time": "02:16",
   "agency": "Bakersfield Fire Department",
-  "area": "King Street, north Bakersfield",
+  "area": "King Street, Bakersfield",
   "notability": 4,
   "disposition": "under control",
   "summary": "Fire at a vacant single-story house on King Street with flames visible inside and heavy smoke showing. Multiple engines and a truck company responded; the fire was under control by about 2:25 a.m."
@@ -60,7 +60,7 @@
   "area": "Birch Avenue, Wasco",
   "notability": 3,
   "disposition": "responding",
-  "summary": "Assault reported on Birch Avenue in Wasco with multiple patients; medics dispatched."
+  "summary": "Assault reported on Birch Avenue in Wasco; medics dispatched."
  },
  {
   "type": "domestic_violence",
@@ -187,5 +187,32 @@
   "notability": 2,
   "disposition": "reported",
   "summary": "Two fire hydrants reported spilling water on 22nd Street between Q and P streets."
+ },
+ {
+  "type": "vehicle_fire",
+  "time": "03:36",
+  "agency": "Kern County Fire Department",
+  "area": "south of Kelso Creek",
+  "notability": 2,
+  "disposition": "extinguished",
+  "summary": "A vehicle was found burned off the roadway in a field south of Kelso Creek; the driver — a woman in a blue shirt and white shorts — was seen leaving on foot."
+ },
+ {
+  "type": "reckless_driver",
+  "time": "04:37",
+  "agency": "California Highway Patrol",
+  "area": "southbound Interstate 5, south of Old River Road",
+  "notability": 2,
+  "disposition": "responding",
+  "summary": "Reckless driver reported on southbound Interstate 5 south of Old River — a black Hyundai Kona speeding with erratic braking and unable to maintain its lane."
+ },
+ {
+  "type": "reckless_driver",
+  "time": "05:04",
+  "agency": "California Highway Patrol",
+  "area": "southbound Highway 99, south of Florida Avenue",
+  "notability": 3,
+  "disposition": "responding",
+  "summary": "Passengers on a Greyhound bus reported the driver appeared sleepy and unable to maintain the lane on southbound Highway 99 south of Florida Avenue."
  }
 ]

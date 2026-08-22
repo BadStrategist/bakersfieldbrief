@@ -1390,6 +1390,16 @@
   "details": ""
  },
  {
+  "log_id": "260822BF0261",
+  "time": "Aug 22 2026  3:19PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "5026 - 5119 Granite Rd",
+  "area": "Bakersfield",
+  "lat": 35.562575,
+  "lon": -118.955262,
+  "details": ""
+ },
+ {
   "log_id": "260822BF0057",
   "time": "Aug 22 2026  4:50AM",
   "type": "1125-Traffic Hazard",

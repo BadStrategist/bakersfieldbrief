@@ -1350,6 +1350,36 @@
   "details": ""
  },
  {
+  "log_id": "260822BF0057",
+  "time": "Aug 22 2026  4:50AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Twisselman Rd / Holloway Rd",
+  "area": "Buttonwillow",
+  "lat": 35.731071,
+  "lon": -119.852696,
+  "details": ""
+ },
+ {
+  "log_id": "260822BF0068",
+  "time": "Aug 22 2026  5:50AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jso Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.937778,
+  "lon": -118.930556,
+  "details": ""
+ },
+ {
+  "log_id": "260822BF0071",
+  "time": "Aug 22 2026  6:30AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jso Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.937778,
+  "lon": -118.930556,
+  "details": ""
+ },
+ {
   "log_id": "260822BF0008",
   "time": "Aug 22 2026 12:43AM",
   "type": "TADV-Traffic Advisory",

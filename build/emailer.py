@@ -141,28 +141,48 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
 
     # ---- full overnight narrative (markdown -> paragraphs; no 'the log')
     def _md_para(text: str) -> str:
-        """Convert a markdown body to email-safe <p> paragraphs (bold kept)."""
-        import re as _re
+        """Convert a markdown body to email-safe <p> paragraphs (bold kept).
+
+        Order matters: HTML-escape FIRST, then convert **bold** markers to
+        <strong> — otherwise the injected <strong> tags get escaped too.
+        """
+        text = H.escape(text)
         text = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
         paras = [p.strip() for p in text.split("\n\n") if p.strip()]
-        return "".join(f'<p style="margin:6px 0 0;font-family:{SANS};font-size:13px;line-height:1.55;color:{INK}">{H.escape(p)}</p>' for p in paras)
+        return "".join(f'<p style="margin:6px 0 0;font-family:{SANS};font-size:13px;line-height:1.55;color:{INK}">{p}</p>' for p in paras)
+
+    def _chunk_paragraphs(text: str, sentences_per_para: int = 3) -> str:
+        """Split a long narrative into readable paragraphs at sentence ends.
+
+        Splits on '. ' / '? ' / '! ' followed by a capital (but not after
+        a.m./p.m.), then groups `sentences_per_para` sentences per <p>.
+        """
+        parts = re.split(r"(?<=[.!?])\s+(?=[A-Z“\"])", text)
+        sentences = [p.strip() for p in parts if p.strip()]
+        paras = []
+        for i in range(0, len(sentences), sentences_per_para):
+            paras.append(" ".join(sentences[i:i + sentences_per_para]))
+        return "\n\n".join(paras)
 
     overnight_full = sections.get("overnight", "")
     # strip the "the log" portion if present (a '## The log' or 'The log:' tail)
     log_idx = overnight_full.lower().find("the log")
     if log_idx >= 0:
         overnight_full = overnight_full[:log_idx].strip()
-    overnight_html = _md_para(overnight_full) if overnight_full else ""
+    overnight_html = _md_para(_chunk_paragraphs(overnight_full)) if overnight_full else ""
 
     # ---- Today's Weather (bold the leading line, then the rest)
     weather_full = sections.get("weather", "")
     weather_html = ""
     if weather_full:
         wparas = [p.strip() for p in weather_full.split("\n\n") if p.strip()]
-        first = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", wparas[0]) if wparas else ""
-        rest = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", "\n\n".join(wparas[1:])) if len(wparas) > 1 else ""
-        weather_html = (f'<p style="margin:0;font-family:{SERIF};font-size:15px;line-height:1.5;color:{INK}">{H.escape(first)}</p>'
-                        + (f'<p style="margin:6px 0 0;font-family:{SANS};font-size:13px;line-height:1.55;color:{INK}">{H.escape(rest)}</p>' if rest else ""))
+        def _bold(text: str) -> str:
+            text = H.escape(text)
+            return re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", text)
+        first = _bold(wparas[0]) if wparas else ""
+        rest = _bold("\n\n".join(wparas[1:])) if len(wparas) > 1 else ""
+        weather_html = (f'<p style="margin:0;font-family:{SERIF};font-size:15px;line-height:1.5;color:{INK}">{first}</p>'
+                        + (f'<p style="margin:6px 0 0;font-family:{SANS};font-size:13px;line-height:1.55;color:{INK}">{rest}</p>' if rest else ""))
 
     # ---- Something Good
     good_full = sections.get("something_good", "")

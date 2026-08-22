@@ -1350,6 +1350,46 @@
   "details": ""
  },
  {
+  "log_id": "260822BF0207",
+  "time": "Aug 22 2026  1:05PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 Jso Buttonwillow Rest Area",
+  "area": "Buttonwillow",
+  "lat": 35.414444,
+  "lon": -119.418333,
+  "details": ""
+ },
+ {
+  "log_id": "260822BF0214",
+  "time": "Aug 22 2026  1:32PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "Oswell St / Center St",
+  "area": "Bakersfield",
+  "lat": 35.372292,
+  "lon": -118.949781,
+  "details": ""
+ },
+ {
+  "log_id": "260822BF0215",
+  "time": "Aug 22 2026  1:35PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Edison Hwy / Sr184",
+  "area": "Bakersfield",
+  "lat": 35.358207,
+  "lon": -118.914123,
+  "details": ""
+ },
+ {
+  "log_id": "260822BF0218",
+  "time": "Aug 22 2026  1:37PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sr178 / Borel Rd",
+  "area": "Bakersfield",
+  "lat": 35.590869,
+  "lon": -118.522597,
+  "details": ""
+ },
+ {
   "log_id": "260822BF0057",
   "time": "Aug 22 2026  4:50AM",
   "type": "1125-Traffic Hazard",

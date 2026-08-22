@@ -1380,6 +1380,16 @@
   "details": ""
  },
  {
+  "log_id": "260822BF0081",
+  "time": "Aug 22 2026  7:09AM",
+  "type": "1180-Trfc Collision-Major Inj",
+  "location": "14702-14945 Mil Potrero Hwy",
+  "area": "Fort Tejon",
+  "lat": 34.852783,
+  "lon": -119.127138,
+  "details": ""
+ },
+ {
   "log_id": "260822BF0008",
   "time": "Aug 22 2026 12:43AM",
   "type": "TADV-Traffic Advisory",

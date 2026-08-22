@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-22T15:09:16-07:00",
+ "built_at": "2026-08-22T15:38:23-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,7 +56,7 @@
  },
  "section": {
   "_digest_meta": "llm",
-  "brief_words": 652,
+  "brief_words": 861,
   "daily": {
    "news_headlines": 75,
    "news_digest": "llm",
@@ -92,7 +92,7 @@
    "draft": "drafts/weekend-guide-2026-08-22"
   },
   "grapevine": {
-   "i5": "CLOSED",
+   "i5": "OPEN",
    "i5_pass": "OPEN",
    "log_entries": 60
   },

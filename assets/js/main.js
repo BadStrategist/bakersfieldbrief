@@ -137,17 +137,16 @@
   }
 
   /* ---------- newsletter thank-you modal ----------
-     The subscribe form posts to FormSubmit (secure HTTPS). On submit we
-     show the in-page thank-you card (what you'll receive) and suppress
-     the default navigation so the visitor stays on the page; the signup
-     itself still goes through via the fetch. */
+     The subscribe form posts to the Cloudflare Pages Function (/api/newsletter)
+     which proxies to MailerLite with the server-side token. On submit we show
+     the in-page thank-you card (what you'll receive) and suppress the default
+     navigation so the visitor stays on the page; the signup goes through via
+     the XHR. */
   (function () {
     var form = document.getElementById("nl-form");
     var modal = document.getElementById("nl-modal");
 
-    // If JS is unavailable, FormSubmit's default behaviour navigates to its
-    // own confirmation page — that's acceptable, but we prefer our in-page
-    // card. Keep the modal path as the primary UX.
+    // If JS is unavailable, the form action (/api/newsletter) is the fallback.
 
     // On legacy pages (older daily archives) there may be no id="nl-form"
     // and no modal markup — but there CAN be a leftover mailto: form that
@@ -205,18 +204,19 @@
       var email = form.querySelector('input[name="email"]');
       if (!email || !email.value || !email.checkValidity()) { email.reportValidity(); return; }
 
-      var data = new FormData(form);
+      // POST to the Cloudflare Pages Function (proxies to MailerLite with the
+      // server-side token). No navigation; show the thank-you modal on success.
       var xhr = new XMLHttpRequest();
-      xhr.open("POST", form.action, true);
+      xhr.open("POST", "/api/newsletter", true);
+      xhr.setRequestHeader("Content-Type", "application/json");
       xhr.onload = function () {
-        // FormSubmit returns 200 on success (and for the blank confirmation
-        // page) — treat any completed request as the signup accepted.
+        // 2xx or even a soft failure -> show the card (don't trap the reader)
         openModal();
       };
       xhr.onerror = function () {
-        openModal();  // don't trap the reader on a network hiccup
+        openModal();  // network hiccup — still show the thank-you card
       };
-      xhr.send(data);
+      xhr.send(JSON.stringify({ email: email.value }));
     });
 
     modal.querySelectorAll("[data-nl-close]").forEach(function (btn) {

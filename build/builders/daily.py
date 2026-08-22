@@ -379,40 +379,20 @@ def _overnight_section(rel: str) -> str:
 
 
 # ---------------------------------------------------------------- newsletter
-NL_SUBSCRIBE_EMAIL = "hello@bakersfieldbrief.com"  # FormSubmit delivery target
-
-
 def _newsletter_block() -> str:
     """Newsletter capture with a professional thank-you modal.
 
-    Backend (precedence):
-      1. Buttondown (BUTTONDOWN_USERNAME set) — posts to the embed-subscribe
-         endpoint; subscribers land in the real Buttondown list, no
-         activation wall, and the daily brief can be sent to the list.
-      2. FormSubmit (default) — HTTPS POST to hello@bakersfieldbrief.com.
-
-    Either way the visitor stays on the page: main.js intercepts the submit
-    (XHR, no navigation) and shows the in-page thank-you card.
+    The form posts to the Cloudflare Pages Function (/api/newsletter), which
+    adds the email to the MailerLite group server-side (the API token lives
+    in Pages env vars — never in the browser). main.js intercepts the submit
+    (XHR, no navigation) and shows the in-page thank-you card; the action is
+    the no-JS fallback.
     """
-    bd_user = os.environ.get("BUTTONDOWN_USERNAME", "").strip()
-    if bd_user:
-        form = (f'<form class="nl-form" id="nl-form" '
-                f'action="https://buttondown.com/api/emails/embed-subscribe/{html.escape(bd_user)}" '
-                f'method="POST">'
-                f'<input type="hidden" name="embed" value="1"/>'
-                f'<input type="email" name="email" placeholder="your@email.com" required '
-                f'aria-label="Your email"/>'
-                f'<button type="submit" class="btn">Get the brief</button></form>')
-    else:
-        form = (f'<form class="nl-form" id="nl-form" '
-                f'action="https://formsubmit.co/{NL_SUBSCRIBE_EMAIL}" method="POST">'
-                f'<input type="hidden" name="_subject" value="Newsletter signup — bakersfieldbrief.com"/>'
-                f'<input type="hidden" name="_template" value="table"/>'
-                f'<input type="hidden" name="_next" value="https://bakersfieldbrief.com/thanks/"/>'
-                f'<input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off"/>'
-                f'<input type="email" name="email" placeholder="your@email.com" required '
-                f'aria-label="Your email"/>'
-                f'<button type="submit" class="btn">Get the brief</button></form>')
+    form = ('<form class="nl-form" id="nl-form" '
+            'action="/api/newsletter" method="POST">'
+            '<input type="email" name="email" placeholder="your@email.com" required '
+            'aria-label="Your email"/>'
+            '<button type="submit" class="btn">Get the brief</button></form>')
     # The thank-you modal: shown by main.js when the newsletter form submits.
     modal = """
     <div class="nl-modal" id="nl-modal" role="dialog" aria-modal="true" aria-labelledby="nl-modal-title" aria-hidden="true">

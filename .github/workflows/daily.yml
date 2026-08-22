@@ -132,22 +132,25 @@ jobs:
       - name: Test suite (hard gate before deploy)
         run: python -m pytest -q -o addopts="" --tb=short
 
-      - name: Deploy to Cloudflare Pages
+      - name: Set MailerLite Pages secrets (for the newsletter function)
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           MAILERLITE_API_TOKEN: ${{ secrets.MAILERLITE_API_TOKEN }}
           MAILERLITE_GROUP_ID: ${{ secrets.MAILERLITE_GROUP_ID }}
+        run: |
+          echo "$MAILERLITE_API_TOKEN" | npx wrangler pages secret put MAILERLITE_API_TOKEN --project-name=bakersfieldbrief 2>&1 | tail -1
+          echo "$MAILERLITE_GROUP_ID" | npx wrangler pages secret put MAILERLITE_GROUP_ID --project-name=bakersfieldbrief 2>&1 | tail -1
+
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          # --var passes the MailerLite values to the Pages Function
-          # (functions/api/newsletter.js) so the browser never sees the key.
-          command: >-
-            pages deploy site --project-name=bakersfieldbrief
-            --var MAILERLITE_API_TOKEN:${{ secrets.MAILERLITE_API_TOKEN }}
-            --var MAILERLITE_GROUP_ID:${{ secrets.MAILERLITE_GROUP_ID }}
+          command: pages deploy site --project-name=bakersfieldbrief
 
       # Social post: DISABLED 2026-08-19 — API posts are withheld from the
       # public page on this new account (verified 6/6 held; only manual UI

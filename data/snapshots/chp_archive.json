@@ -1390,6 +1390,16 @@
   "details": ""
  },
  {
+  "log_id": "260822BF0098",
+  "time": "Aug 22 2026  8:02AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "2801 Johnson Rd",
+  "area": "Fort Tejon",
+  "lat": 34.821336,
+  "lon": -118.934042,
+  "details": ""
+ },
+ {
   "log_id": "260822BF0008",
   "time": "Aug 22 2026 12:43AM",
   "type": "TADV-Traffic Advisory",

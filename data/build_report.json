@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-22T07:54:29-07:00",
+ "built_at": "2026-08-22T08:46:59-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,14 +55,14 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 758,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Bakersfield police seek public\u2019s help identifying suspects in White Lane business burglary",
+   "chp_new": 1,
+   "top_story": "The National News Desk Weekend Edition",
    "archive": "2026-08-22"
   },
   "cityhall": {
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 247,
    "kern_fires": 0,
-   "aqi": 70,
-   "chp_week": 109
+   "aqi": 72,
+   "chp_week": 110
   },
   "letters": {
    "published": 0

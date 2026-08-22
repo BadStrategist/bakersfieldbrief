@@ -3,13 +3,25 @@
 
 Reads email/latest/brief.html + brief.txt (rendered by the daily build),
 creates a MailerLite regular campaign for the configured group, sets the
-content, and sends it immediately (POST /campaigns/{id}/schedule with
-delivery=instant). Prints the campaign id on success.
+content, and sends it immediately.
+
+VERIFIED API SHAPE (tested 2026-08-22):
+  POST /campaigns            -> {"name", "type": "regular", "groups": [gid],
+                                 "emails": [{"subject", "from", "from_name",
+                                 "content" (HTML), "plain_text"}]}
+                                 NOTE: "emails" is a FLAT array of objects;
+                                 content is REQUIRED for the campaign to be
+                                 valid (missing_data must be []).
+  POST /campaigns/{id}/schedule -> {"delivery": "instant"}
+  GET  /campaigns/{id}       -> status: draft -> ready -> sent
 
 Usage: python scripts/send_newsletter_ml.py
 Env:
   MAILERLITE_API_TOKEN   (required)
   MAILERLITE_GROUP_ID    (required — the group to send to)
+  MAILERLITE_FROM_EMAIL  (default brief@bakersfieldbrief.com — must be
+                          verified in MailerLite)
+  MAILERLITE_FROM_NAME   (default "Bakersfield Brief")
 Exit 0 on success; 1 on failure.
 """
 from __future__ import annotations
@@ -72,16 +84,12 @@ def main() -> int:
     html = HTML.read_text(encoding="utf-8")
     d = common.today_pacific()
     subject = f"The Bakersfield Daily Brief — {d.strftime('%A, %B')} {d.day}, {d.year}"
-
-    # Create the campaign with content inline. Custom HTML needs the Advanced
-    # plan; on free/trial use plain_text (builder default). Try HTML first,
-    # fall back to plain text if the API rejects it.
-    # NOTE: the API expects emails as a FLAT array of email objects (docs),
-    # and the from address must be VERIFIED in MailerLite (Settings ->
-    # Sender emails). The default below uses the account Gmail (verified);
-    # set MAILERLITE_FROM_EMAIL to brief@bakersfieldbrief.com once verified.
-    from_addr = os.environ.get("MAILERLITE_FROM_EMAIL", "tscgroupiron@gmail.com")
+    from_addr = os.environ.get("MAILERLITE_FROM_EMAIL", "brief@bakersfieldbrief.com")
     from_name = os.environ.get("MAILERLITE_FROM_NAME", "Bakersfield Brief")
+
+    # Create the campaign with content inline (verified: flat emails array;
+    # content required for missing_data to be empty; DO NOT send plain_text
+    # alongside content — the API 422s with "emails.0 must be an array").
     payload = {
         "name": f"Daily Brief {d.isoformat()}",
         "type": "regular",
@@ -90,20 +98,16 @@ def main() -> int:
             "subject": subject,
             "from": from_addr,
             "from_name": from_name,
-            "plain_text": txt or "See https://bakersfieldbrief.com/",
+            "content": html,
         }],
     }
-    try:
-        payload["emails"][0]["content"] = html
-        camp = _req("POST", "/campaigns", payload, token)
-    except SystemExit:
-        # retry without the HTML content (free plan)
-        del payload["emails"][0]["content"]
-        camp = _req("POST", "/campaigns", payload, token)
-
+    camp = _req("POST", "/campaigns", payload, token)
     camp_id = (camp.get("data") or {}).get("id")
     if not camp_id:
         raise SystemExit(f"no campaign id: {camp}")
+    missing = (camp.get("data") or {}).get("missing_data")
+    if missing:
+        raise SystemExit(f"campaign {camp_id} has missing_data: {missing}")
 
     # Send immediately
     _req("POST", f"/campaigns/{camp_id}/schedule", {"delivery": "instant"}, token)

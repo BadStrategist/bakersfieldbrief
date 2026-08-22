@@ -114,18 +114,18 @@ jobs:
             echo "no artifact changes"
           fi
 
-      # Newsletter send: once per day at the 6:00 PT build, email the freshly
-      # rendered brief to the Buttondown subscriber list (BUTTONDOWN_API_KEY +
-      # BUTTONDOWN_USERNAME). Without the key the script no-ops (prints the
+      # Newsletter send: once per day at the 8:30 PT build, email the freshly
+      # rendered brief to the MailerLite subscriber list (MAILERLITE_API_TOKEN +
+      # MAILERLITE_GROUP_ID). Without the key the script no-ops (prints the
       # ready-to-send path) so CI never breaks. A send failure is reported in
       # the run log but must not block the site deploy.
-      - name: Send daily newsletter (Buttondown)
-        if: steps.gate.outputs.hour == '6'
+      - name: Send daily newsletter (MailerLite)
+        if: steps.gate.outputs.hour == '8'
         continue-on-error: true
         env:
-          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
-          BUTTONDOWN_USERNAME: ${{ secrets.BUTTONDOWN_USERNAME }}
-        run: python scripts/send_newsletter.py
+          MAILERLITE_API_TOKEN: ${{ secrets.MAILERLITE_API_TOKEN }}
+          MAILERLITE_GROUP_ID: ${{ secrets.MAILERLITE_GROUP_ID }}
+        run: python scripts/send_newsletter_ml.py
 
       # GATE: a broken build must never deploy. The offline suite covers the
       # builders (incl. the brief lede double-escape regression test).

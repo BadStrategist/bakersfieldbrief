@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-22T14:53:58-07:00",
+ "built_at": "2026-08-22T15:09:16-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 2949, column 55"
   },
   "isabella": {
    "ok": true,
@@ -56,13 +56,13 @@
  },
  "section": {
   "_digest_meta": "llm",
-  "brief_words": 1102,
+  "brief_words": 652,
   "daily": {
-   "news_headlines": 50,
+   "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "15-year-old arrested in connection to deadly shooting at Independence HS",
+   "top_story": "Bakersfield Mayor Karen Goh releases statement on deadly shooting at Independence HS",
    "archive": "2026-08-22"
   },
   "cityhall": {
@@ -80,11 +80,11 @@
    ],
    "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 0,
-    "bakersfield-nw": 0,
-    "bakersfield-sw": 0,
-    "bakersfield-east": 0,
-    "bakersfield-central": 0
+    "tehachapi": 12,
+    "bakersfield-nw": 12,
+    "bakersfield-sw": 12,
+    "bakersfield-east": 12,
+    "bakersfield-central": 12
    }
   },
   "guide": {

@@ -1430,6 +1430,16 @@
   "details": ""
  },
  {
+  "log_id": "260821BF0458",
+  "time": "Aug 21 2026  8:24PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "8900-9099 Sr184",
+  "area": "Bakersfield",
+  "lat": 35.273909,
+  "lon": -118.914359,
+  "details": ""
+ },
+ {
   "log_id": "260821BF0110",
   "time": "Aug 21 2026  8:57AM",
   "type": "1125-Traffic Hazard",

@@ -97,10 +97,13 @@ def build_alpr(ctx, sources: dict):
     else:
         stat_html = '<div class="errorbox">Overpass/OSM data unavailable this build.</div>'
 
-    # overlay "newest cameras" list
+    # overlay "newest cameras" list — each link carries the camera's coords
+    # so the map can fly to it and zoom to street level (see trackers.js)
     if newest_top:
         ov_items = "".join(f"""
-        <li><a href="https://www.openstreetmap.org/node/{c['id']}" target="_blank" rel="noopener">
+        <li>
+        <a href="#" class="ov-cam" data-id="{c['id']}" data-lat="{c.get('lat', '')}"
+           data-lon="{c.get('lon', '')}" data-dir="{html.escape(str(c.get('direction', '')))}">
         {html.escape(str(c.get('mapped', '')))}</a>
         <span class="ov-meta">{html.escape(c.get('manufacturer', ''))}
         {('· facing ' + html.escape(c['direction'])) if c.get('direction') else ''}</span></li>"""

@@ -74,3 +74,9 @@ table.data td.num.hot { color: #8a5d0a; font-weight: 700; }
 @media (max-width: 700px) {
   .map-overlay { position: static; width: 100%; max-height: none; border-radius: 0 0 8px 8px; margin-top: -4px; }
 }
+
+/* direction cones (DeFlock-style): show the camera's facing at street zoom */
+.cam-cone {
+  pointer-events: none;
+  transition: opacity .2s ease;
+}

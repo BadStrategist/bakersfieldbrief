@@ -156,10 +156,15 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
                       f'<br><span style="font-size:11px;color:{INK_SOFT}">{src}</span></td></tr>')
         news_txt += f"• {h.get('title', '')} ({h.get('source', '')}) — {h.get('url', '')}\n"
 
-    # ---- one thing to watch
-    watch = _one_thing(escribe, board)
-    watch_html = f'<p style="font-family:Georgia,serif;font-size:15px;line-height:1.5;color:{INK}">{watch}</p>'
-    watch_txt = watch
+    # ---- One Thing to Watch (Flock camera tracker update when available)
+    flock_html = _flock_update_html(sources.get("alpr") or {})
+    if flock_html:
+        watch_html = flock_html
+        watch_txt = ""
+    else:
+        watch = _one_thing(escribe, board)
+        watch_html = f'<p style="font-family:Georgia,serif;font-size:15px;line-height:1.5;color:{INK}">{watch}</p>'
+        watch_txt = watch
 
     # ---- brief sections (full overnight, weather, something good)
     sections = _brief_sections(today)
@@ -240,7 +245,10 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
     {_kicker("The Kern Overnight")}
     <p style="margin:0 0 4px;font-family:{MONO};font-size:11px;letter-spacing:1px;text-transform:uppercase;color:{INK_SOFT}">Scanner brief from 9pm to 6am</p>
     {('' if not (ko and ko.get('headline')) else f'<p style="margin:8px 0 2px;font-family:{SERIF};font-size:18px;color:{INK}"><a href="{BASE_URL}/overnight/" style="color:{INK};text-decoration:none">Overnight: {H.escape(ko["headline"])}</a></p>')}
-    {('' if not ko else f'<p style="margin:2px 0 10px;font-family:{SANS};font-size:12px;color:{INK_SOFT}">{ko["count"]} incidents tracked overnight — <a href="{BASE_URL}/overnight/" style="color:{SIGN};font-weight:600;text-decoration:none">full report</a> · locations generalized</p>')}
+    {('' if not ko else f'<p style="margin:2px 0 10px;font-family:{SANS};font-size:12px;color:{INK_SOFT}">{ko["count"]} incidents tracked overnight · locations generalized &nbsp;'
+     f'<a href="{BASE_URL}/overnight/" style="display:inline-block;background:{RED};color:#ffffff;'
+     f'font-family:{DISPLAY};font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;'
+     f'text-decoration:none;padding:6px 14px;border-radius:4px">Full Report</a></p>')}
     {overnight_html}
   {_card_close()}
 </td></tr>
@@ -381,3 +389,46 @@ def _one_thing(escribe: dict, board: dict) -> str:
     if board.get("date"):
         return f"Kern County Board of Supervisors on {board['date']} — agenda at the county clerk's page."
     return "No items on the public calendar today."
+
+
+def _flock_update_html(alpr: dict) -> str:
+    """Flock/ALPR tracker update for the email: newest camera + weekly count.
+
+    Uses the same source_cache 'alpr' payload the surveillance page uses:
+    cameras (with OSM 'mapped' dates), stats (new_this_week, total, flock),
+    and the tracker URL. Renders a small card-worthy blurb.
+    """
+    if not (alpr and alpr.get("ok")):
+        return ""
+    stats = alpr.get("stats") or {}
+    cameras = alpr.get("cameras") or []
+    dated = [c for c in cameras if c.get("mapped")]
+    dated.sort(key=lambda c: c["mapped"], reverse=True)
+    newest = dated[0] if dated else None
+    if not newest:
+        return ""
+    total = stats.get("total", len(cameras))
+    flock = stats.get("flock", 0)
+    added = stats.get("new_this_week", 0)
+    nid = newest.get("id", "")
+    nmap = newest.get("mapped", "")
+    ndir = newest.get("direction", "")
+    # human-facing direction (compass bearing -> cardinal)
+    try:
+        deg = int(float(ndir)) % 360
+        cardinal = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"][round(deg / 45) % 8]
+    except (TypeError, ValueError):
+        cardinal = ndir or ""
+    dir_txt = f", facing {cardinal}" if cardinal else ""
+    added_txt = (f"{added} new camera{'s' if added != 1 else ''} mapped in the last week"
+                 if added else "No new cameras mapped in the last week")
+    tracker = f"{BASE_URL}/surveillance/"
+    return f"""<p style="margin:0;font-family:{SANS};font-size:13px;line-height:1.55;color:{INK}">
+<strong>Flock cameras keep multiplying:</strong> {flock} of {total} ALPR cameras in Kern County are Flock Safety units.
+The newest was mapped on <strong>{H.escape(nmap)}</strong>{H.escape(dir_txt)} —
+<a href="{tracker}" style="color:{SIGN};font-weight:600;text-decoration:none">see where it is on the map</a>.
+{added_txt}.</p>
+<p style="margin:8px 0 0;font-family:{SANS};font-size:12px;color:{INK_SOFT}">
+<a href="{tracker}" style="display:inline-block;background:{SIGN};color:#ffffff;font-family:{DISPLAY};font-size:12px;
+font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:6px 14px;border-radius:4px">
+View the Camera Tracker</a></p>"""

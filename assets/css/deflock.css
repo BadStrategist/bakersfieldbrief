@@ -21,7 +21,7 @@
 .map-overlay.collapsed .ov-btn, .map-overlay.collapsed .ov-note,
 .map-overlay.collapsed h4, .map-overlay.collapsed .ov-list,
 .map-overlay.collapsed .map-legend { display: none; }
-.map-overlay.collapsed h3 { display: block; margin: 0; }
+.map-overlay.collapsed .ov-toggle { margin-bottom: 0; }
 
 .map-overlay h3 {
   font-family: var(--display); text-transform: uppercase; letter-spacing: .08em;
@@ -31,7 +31,7 @@
 
 /* close / open button — compact pill, top-left, small text */
 .ov-toggle {
-  position: absolute; top: 8px; left: 8px; z-index: 910;
+  position: static; display: inline-block; margin-bottom: 8px;
   padding: 4px 10px; border-radius: 6px;
   background: var(--sign); color: #fff; border: 0;
   font-family: var(--display); font-size: 12px; font-weight: 600;
@@ -100,7 +100,7 @@
 @media (max-width: 700px) {
   .map-overlay { position: static; width: 100%; max-height: none; border-radius: 0 0 8px 8px; margin-top: -4px; }
   .map-overlay.collapsed { position: static; width: 100%; }
-  .ov-toggle { top: 8px; left: 8px; padding: 6px 14px; font-size: 13px; }
+  .ov-toggle { padding: 6px 14px; font-size: 13px; }
   .ov-list a { padding: 8px 0; display: block; }
   .ov-btn { padding: 12px 10px; font-size: 15px; }
   .ov-list li { padding: 8px 0; }

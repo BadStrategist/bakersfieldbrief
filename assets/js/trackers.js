@@ -232,108 +232,104 @@
     if (searchResult) searchResult.innerHTML = '<div class="ov-err">' + msg + "</div>";
   }
 
-  /* ---------- area search ----------
-     Curated list of well-known Bakersfield areas (verified against OSM/
-     Nominatim so every entry resolves). Matching is local + instant —
-     no geocoding API, never breaks on a house number. Picking an area
-     flies the map to it and lists nearby cameras. */
-  var AREAS = [
-    { n: "Oildale",          lat: 35.4197, lon: -119.0195, d: "North of downtown, across the Kern River" },
-    { n: "Fruitvale",        lat: 35.3833, lon: -119.0832, d: "Northwest side, Fruitvale Ave corridor" },
-    { n: "Rosedale",         lat: 35.3919, lon: -119.1988, d: "Far west, Rosedale Hwy corridor" },
-    { n: "East Bakersfield", lat: 35.3866, lon: -118.9773, d: "East side, 93305" },
-    { n: "Downtown",         lat: 35.3818, lon: -119.0184, d: "Civic Center, Chester Ave, 19th St" },
-    { n: "Southwest",        lat: 35.3461, lon: -119.1087, d: "Stockdale Hwy / California Ave" },
-    { n: "Northwest",        lat: 35.3867, lon: -119.1054, d: "7th Standard / Wible Rd" },
-    { n: "Northeast",        lat: 35.4218, lon: -118.9014, d: "Famoso Rd / Edison Hwy" },
-    { n: "Quailwood",        lat: 35.3555, lon: -119.0829, d: "Quailwood / White Ln, 93309" },
-    { n: "Panama",           lat: 35.2669, lon: -119.0568, d: "Panama Ln, far south" },
-    { n: "Wible Orchard",    lat: 35.3177, lon: -119.0212, d: "Wible Rd / Bernard St" },
-    { n: "Oleander",         lat: 35.3612, lon: -119.0255, d: "Oleander Ave, near downtown" },
-    { n: "Westchester",      lat: 35.3370, lon: -119.0420, d: "Westchester Ave / Niles St" },
-    { n: "Stockdale",        lat: 35.3268, lon: -119.1244, d: "Stockdale Hwy / Buena Vista" },
-    { n: "Greenacres",       lat: 35.3781, lon: -119.1091, d: "Calloway Dr / 7th Standard" },
-    { n: "La Cresta",        lat: 35.3220, lon: -119.0950, d: "La Cresta Dr / White Ln" }
-  ];
-
-  function matchAreas(q) {
-    var t = q.toLowerCase().replace(/^\s*\d+\s*/, "").trim();
-    if (!t) return [];
-    return AREAS.filter(function (a) { return a.n.toLowerCase().indexOf(t) !== -1; });
-  }
-
-  function selectArea(idx) {
-    var a = AREAS[idx];
-    if (!a) return;
-    if (searchMarker) map.removeLayer(searchMarker);
-    if (searchCircle) map.removeLayer(searchCircle);
-    searchMarker = L.circleMarker([a.lat, a.lon], {
-      radius: 10, color: "#B3472F", weight: 2, fillColor: "#B3472F", fillOpacity: 0.9
-    }).addTo(map).bindPopup("<strong>" + a.n + "</strong><br>" + a.d);
-    searchCircle = L.circle([a.lat, a.lon], { radius: 1200, color: "#B3472F", weight: 1, opacity: 0.5, fillOpacity: 0.06 }).addTo(map);
-    map.flyTo([a.lat, a.lon], 13, { duration: 0.9 });
-    searchMarker.openPopup();
-
-    var near = [];
-    DATA.cameras.forEach(function (c) {
-      if (!c.lat || !c.lon) return;
-      var d = haversine([a.lat, a.lon], [c.lat, c.lon]);
-      if (d <= 1200) near.push({ c: c, d: d });
-    });
-    near.sort(function (x, y) { return x.d - y.d; });
-    var dirTxt = function (c) {
-      var deg = parseFloat(c.direction);
-      if (isNaN(deg)) return "";
-      return "facing " + ["N","NE","E","SE","S","SW","W","NW"][Math.round(deg / 45) % 8] + " ";
-    };
-    var html = '<div class="ov-sr"><b>' + (near.length ? near.length + " camera" + (near.length > 1 ? "s" : "") + " near " + a.n : "No cameras near " + a.n) + "</b></div>";
-    if (near.length) {
-      html += '<ul class="ov-near">' + near.slice(0, 8).map(function (n) {
-        return '<li><span class="dist">' + fmtDist(n.d) + "</span> &middot; " +
-               (n.c.manufacturer || "ALPR") + " " + dirTxt(n.c) +
-               " &middot; <a href=\"https://www.openstreetmap.org/node/" + n.c.id + "\" target=\"_blank\" rel=\"noopener\">node</a></li>";
-      }).join("") + "</ul>";
-    }
-    searchResult.innerHTML = html;
-    suggestions = [];
-  }
-
   if (searchInput && searchResult) {
+    var searchTimer = null;
     var suggestions = [];
 
-    // render a selectable dropdown of matched areas
+    // render a selectable dropdown of address suggestions
     function renderSuggestions(items) {
       suggestions = items;
       if (!items.length) { searchResult.innerHTML = ""; return; }
-      var html = '<div class="ov-sug" role="listbox">' + items.map(function (a, i) {
+      var html = '<div class="ov-sug" role="listbox">' + items.map(function (it, i) {
+        var label = it.display_name.split(",").slice(0, 2).join(",").trim();  // "1234 Truxtun Ave, Bakersfield"
         return '<button type="button" class="ov-sug-item" data-i="' + i + '" role="option">' +
-               '<span class="ov-sug-pin">📍</span>' + a.n +
-               '<span class="ov-sug-d">' + a.d + "</span></button>";
+               '<span class="ov-sug-pin">📍</span>' + label + "</button>";
       }).join("") + "</div>";
       searchResult.innerHTML = html;
+      // wire clicks
       searchResult.querySelectorAll(".ov-sug-item").forEach(function (btn) {
         btn.addEventListener("click", function () {
-          selectArea(parseInt(btn.getAttribute("data-i"), 10));
+          selectSuggestion(parseInt(btn.getAttribute("data-i"), 10));
         });
       });
     }
 
-    searchInput.addEventListener("input", function () {
-      var q = searchInput.value.trim();
-      var matches = matchAreas(q);
-      if (q.length >= 2) {
-        renderSuggestions(matches);
-      } else {
-        searchResult.innerHTML = "";
-        suggestions = [];
+    // pick a suggestion → place marker + nearest cameras
+    function selectSuggestion(i) {
+      var hit = suggestions[i];
+      if (!hit) return;
+      var lat = parseFloat(hit.lat), lon = parseFloat(hit.lon);
+      var name = hit.display_name || searchInput.value.trim();
+      searchInput.value = name.split(",").slice(0, 2).join(",").trim();
+
+      // clear previous
+      if (searchMarker) map.removeLayer(searchMarker);
+      if (searchCircle) map.removeLayer(searchCircle);
+
+      searchMarker = L.circleMarker([lat, lon], {
+        radius: 8, color: "#B3472F", weight: 2, fillColor: "#B3472F", fillOpacity: 0.9
+      }).addTo(map).bindPopup("<strong>Your search</strong><br>" + name);
+      searchCircle = L.circle([lat, lon], { radius: 400, color: "#B3472F", weight: 1, opacity: 0.5, fillOpacity: 0.05 }).addTo(map);
+
+      map.flyTo([lat, lon], 15, { duration: 0.9 });
+      searchMarker.openPopup();
+
+      // nearest cameras within ~800m, sorted by distance
+      var near = [];
+      DATA.cameras.forEach(function (c) {
+        if (!c.lat || !c.lon) return;
+        var d = haversine([lat, lon], [c.lat, c.lon]);
+        if (d <= 800) near.push({ c: c, d: d });
+      });
+      near.sort(function (a, b) { return a.d - b.d; });
+      var dirTxt = function (c) {
+        var deg = parseFloat(c.direction);
+        if (isNaN(deg)) return "";
+        return "facing " + ["N","NE","E","SE","S","SW","W","NW"][Math.round(deg / 45) % 8] + " ";
+      };
+      var html = '<div class="ov-sr"><b>' + (near.length ? near.length + " camera" + (near.length > 1 ? "s" : "") + " within 800 m" : "No cameras within 800 m") + "</b></div>";
+      if (near.length) {
+        html += '<ul class="ov-near">' + near.slice(0, 8).map(function (n) {
+          return '<li><span class="dist">' + fmtDist(n.d) + "</span> &middot; " +
+                 (n.c.manufacturer || "ALPR") + " " + dirTxt(n.c) +
+                 " &middot; <a href=\"https://www.openstreetmap.org/node/" + n.c.id + "\" target=\"_blank\" rel=\"noopener\">node</a></li>";
+        }).join("") + "</ul>";
       }
+      searchResult.innerHTML = html;
+      suggestions = [];
+    }
+
+    searchInput.addEventListener("input", function () {
+      clearTimeout(searchTimer);
+      var q = searchInput.value.trim();
+      if (q.length < 3) { searchResult.innerHTML = ""; suggestions = []; return; }
+      searchTimer = setTimeout(function () {
+        // streets only: strip a leading house number ("6425 euclid" -> "euclid")
+        var street = q.replace(/^\s*\d+\s*/, "").trim();
+        if (!street) { showSearchError("Type a street name."); return; }
+        // structured Nominatim query — reliable for street-level results
+        var url = "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=6&addressdetails=1&" +
+                  "street=" + encodeURIComponent(street) + "&city=Bakersfield&state=CA&countrycodes=us";
+        fetch(url, { headers: { "Accept": "application/json" } })
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            if (!data || !data.length) { showSearchError("Street not found — try the street name only."); return; }
+            // streets come back with type secondary/primary/residential/etc
+            var streets = data.filter(function (r) {
+              return (r.class === "highway" || !r.class) && r.type && r.type !== "house";
+            });
+            if (!streets.length) { showSearchError("Street not found — try the street name only."); return; }
+            renderSuggestions(streets);
+          })
+          .catch(function () { showSearchError("Search failed — try again."); });
+      }, 350);
     });
 
-    // Enter picks the first match (mobile keyboards have no click)
+    // Enter picks the first suggestion (mobile keyboards have no click)
     searchInput.addEventListener("keydown", function (e) {
       if (e.key === "Enter" && suggestions.length) {
         e.preventDefault();
-        selectArea(0);
+        selectSuggestion(0);
       }
     });
 

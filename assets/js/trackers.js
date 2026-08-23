@@ -225,9 +225,9 @@
     ovToggle.addEventListener("click", function () {
       var collapsed = overlay.classList.toggle("collapsed");
       ovToggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
-      ovToggle.setAttribute("aria-label", collapsed ? "Expand panel" : "Minimize panel");
-      ovToggle.title = collapsed ? "Expand panel" : "Minimize panel";
-      ovToggle.innerHTML = collapsed ? "+" : "&minus;";
+      ovToggle.setAttribute("aria-label", collapsed ? "Expand panel" : "Close panel");
+      ovToggle.title = collapsed ? "Expand panel" : "Close panel";
+      ovToggle.innerHTML = collapsed ? "Open" : "Close";
       // let Leaflet recalc after the panel resizes
       setTimeout(function () { map.invalidateSize(); }, 250);
     });

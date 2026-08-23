@@ -117,7 +117,7 @@ def build_alpr(ctx, sources: dict):
       <div id="alpr-map" role="application" aria-label="Map of license plate reader camera locations"></div>
       <div class="map-overlay" id="map-overlay">
         <button type="button" id="ov-toggle" class="ov-toggle" aria-expanded="true"
-                aria-label="Minimize panel" title="Minimize panel">&minus;</button>
+                aria-label="Close panel" title="Close panel">Close</button>
         <h3>Flock &amp; ALPRs <span>&middot; Kern County</span></h3>
         <div class="ov-stats">
           <div><span class="n">{stats.get('total', 0)}</span> cameras mapped</div>
@@ -282,8 +282,8 @@ def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld()],
         statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         extra_head='<link rel="stylesheet" href="../assets/vendor/leaflet.css">'
-                   + ('<link rel="stylesheet" href="../assets/css/deflock.css">' if dark else ""),
-        extra_scripts='<script src="../assets/vendor/leaflet.js"></script>\n  <script src="../assets/vendor/leaflet.markercluster.js"></script>\n  <script src="../assets/js/trackers.js" defer></script>')
+                   + ('<link rel="stylesheet" href="../assets/css/deflock.css?v=' + built_iso + '">' if dark else ""),
+        extra_scripts='<script src="../assets/vendor/leaflet.js"></script>\n  <script src="../assets/vendor/leaflet.markercluster.js"></script>\n  <script src="../assets/js/trackers.js?v=' + built_iso + '" defer></script>')
     common.write(common.SITE / slug / "index.html", page)
 
 # ------------------------------------------------------------------ hub

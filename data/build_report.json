@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-22T20:12:38-07:00",
+ "built_at": "2026-08-22T20:31:29-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -22,8 +22,8 @@
    "error": ""
   },
   "airnow": {
-   "ok": false,
-   "error": "AirNow returned no data"
+   "ok": true,
+   "error": ""
   },
   "calfire": {
    "ok": true,
@@ -55,13 +55,13 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 834,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "McFarland police investigate fatal shooting at Capri Laundromat on Perkins Avenue",
    "archive": "2026-08-22"
   },

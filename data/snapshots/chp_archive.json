@@ -1540,6 +1540,16 @@
   "details": ""
  },
  {
+  "log_id": "260822BF0359",
+  "time": "Aug 22 2026  7:55PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Sr99 S / Sr223 Ofr",
+  "area": "Bakersfield",
+  "lat": 35.211906,
+  "lon": -119.010947,
+  "details": ""
+ },
+ {
   "log_id": "260822BF0098",
   "time": "Aug 22 2026  8:02AM",
   "type": "1183-Trfc Collision-Unkn Inj",
@@ -1547,6 +1557,16 @@
   "area": "Fort Tejon",
   "lat": 34.821336,
   "lon": -118.934042,
+  "details": ""
+ },
+ {
+  "log_id": "260822BF0363",
+  "time": "Aug 22 2026  8:02PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 At Sr58",
+  "area": "Buttonwillow",
+  "lat": 35.398611,
+  "lon": -119.396944,
   "details": ""
  },
  {

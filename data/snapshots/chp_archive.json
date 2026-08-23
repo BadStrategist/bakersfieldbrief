@@ -1430,6 +1430,36 @@
   "details": ""
  },
  {
+  "log_id": "260822BF0303",
+  "time": "Aug 22 2026  4:57PM",
+  "type": "1125-Traffic Hazard",
+  "location": "502 Oildale Dr",
+  "area": "Bakersfield",
+  "lat": 35.410429,
+  "lon": -119.030005,
+  "details": ""
+ },
+ {
+  "log_id": "260822BF0309",
+  "time": "Aug 22 2026  5:04PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "N Chester Ave / Day Ave",
+  "area": "Bakersfield",
+  "lat": 35.43519,
+  "lon": -119.021364,
+  "details": ""
+ },
+ {
+  "log_id": "260822BF0310",
+  "time": "Aug 22 2026  5:09PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 Kern Canyon Rd",
+  "area": "Bakersfield",
+  "lat": 35.57545,
+  "lon": -118.532722,
+  "details": ""
+ },
+ {
   "log_id": "260822BF0068",
   "time": "Aug 22 2026  5:50AM",
   "type": "1125-Traffic Hazard",

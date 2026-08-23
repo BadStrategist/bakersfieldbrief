@@ -1590,6 +1590,16 @@
   "details": ""
  },
  {
+  "log_id": "260823BF0075",
+  "time": "Aug 23 2026  6:55AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 SR58 E",
+  "area": "Bakersfield",
+  "lat": 35.36173,
+  "lon": -119.10463,
+  "details": ""
+ },
+ {
   "log_id": "260823BF0011",
   "time": "Aug 23 2026 12:12AM",
   "type": "20002-Hit and Run No Injuries",

@@ -1,0 +1,38 @@
+[
+  {
+    "type": "vehicle_rollover",
+    "time": "03:28",
+    "agency": "CHP / Kern County Fire Department",
+    "area": "northbound highway just south of Twisselman Road",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Vehicle rollover reported in the median just south of Twisselman Road, with reports of power lines down across the lane. Units en route."
+  },
+  {
+    "type": "vegetation_fire",
+    "time": "01:55",
+    "agency": "Kern County Fire Department",
+    "area": "100 block Sumner Street, near the railroad tracks",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Outside fire reported on the 100 block of Sumner Street near the railroad tracks; engine companies dispatched."
+  },
+  {
+    "type": "medical_aid",
+    "time": "01:55",
+    "agency": "Kern County Fire Department",
+    "area": "Westfield Road",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid response on Westfield Road; engine and medical units dispatched."
+  },
+  {
+    "type": "suspicious_person",
+    "time": "02:10",
+    "agency": "Kern County Sheriff's Office",
+    "area": "local campground",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Person reported coming into a campground wearing a gray t-shirt, gray pants and no shoes; units checking the area."
+  }
+]

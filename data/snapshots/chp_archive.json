@@ -1610,6 +1610,16 @@
   "details": ""
  },
  {
+  "log_id": "260823BF0107",
+  "time": "Aug 23 2026  8:19AM",
+  "type": "1125-Traffic Hazard",
+  "location": "16966-16999 Scodie Canyon Rd",
+  "area": "Bakersfield",
+  "lat": 35.683054,
+  "lon": -118.21895,
+  "details": ""
+ },
+ {
   "log_id": "260823BF0011",
   "time": "Aug 23 2026 12:12AM",
   "type": "20002-Hit and Run No Injuries",

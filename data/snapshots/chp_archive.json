@@ -1570,6 +1570,36 @@
   "details": ""
  },
  {
+  "log_id": "260822BF0377",
+  "time": "Aug 22 2026  8:37PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Rancheria Rd / Shirley Meadows Rd",
+  "area": "Bakersfield",
+  "lat": 35.714232,
+  "lon": -118.554891,
+  "details": ""
+ },
+ {
+  "log_id": "260822BF0386",
+  "time": "Aug 22 2026  8:50PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "12910 - 13799 Granite Rd",
+  "area": "Bakersfield",
+  "lat": 35.645964,
+  "lon": -118.78358,
+  "details": ""
+ },
+ {
+  "log_id": "260822BF0387",
+  "time": "Aug 22 2026  8:53PM",
+  "type": "20001-Hit and Run w/Injuries",
+  "location": "Sr65 / Fountain Springs Ave",
+  "area": "Porterville",
+  "lat": 35.891694,
+  "lon": -119.053478,
+  "details": ""
+ },
+ {
   "log_id": "260822BF0141",
   "time": "Aug 22 2026 10:22AM",
   "type": "ANIMAL-Live or Dead Animal",

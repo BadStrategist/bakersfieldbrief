@@ -1,5 +1,14 @@
 [
   {
+    "type": "vegetation_fire",
+    "time": "04:30",
+    "agency": "Kern County Fire Department",
+    "area": "south of Highway 46 near Wildwood Road",
+    "notability": 4,
+    "disposition": "active",
+    "summary": "Grass fire burning three to four acres in a field near a small trailer community just east of Wildwood Road, with roads on three sides. Battalion 3 on scene requested additional wildland units; Engine 931 gained access from the south."
+  },
+  {
     "type": "vehicle_rollover",
     "time": "03:28",
     "agency": "CHP / Kern County Fire Department",
@@ -7,6 +16,15 @@
     "notability": 3,
     "disposition": "responding",
     "summary": "Vehicle rollover reported in the median just south of Twisselman Road, with reports of power lines down across the lane. Units en route."
+  },
+  {
+    "type": "suspicious_person",
+    "time": "02:10",
+    "agency": "Kern County Sheriff's Office",
+    "area": "local campground",
+    "notability": 2,
+    "disposition": "checking",
+    "summary": "Person reported coming into a campground wearing a gray t-shirt, gray pants and no shoes; units checking the area."
   },
   {
     "type": "vegetation_fire",
@@ -25,14 +43,5 @@
     "notability": 2,
     "disposition": "responding",
     "summary": "Medical aid response on Westfield Road; engine and medical units dispatched."
-  },
-  {
-    "type": "suspicious_person",
-    "time": "02:10",
-    "agency": "Kern County Sheriff's Office",
-    "area": "local campground",
-    "notability": 2,
-    "disposition": "responding",
-    "summary": "Person reported coming into a campground wearing a gray t-shirt, gray pants and no shoes; units checking the area."
   }
 ]

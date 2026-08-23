@@ -23,10 +23,10 @@
   /* ---------------- map ---------------- */
   var map = L.map("alpr-map", { scrollWheelZoom: true }).setView([35.37, -119.02], 10);
   window._alprMap = map; // exposed for automated verification
-  /* Bold, readable light basemap: high-contrast roads + dark labels so
-     people can see exactly where they are. (Switched from dark_all which
-     made labels hard to read.) */
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+  /* Bold, readable basemap: CARTO Voyager has high-contrast roads and
+     prominent dark street labels so people can see exactly where they
+     are navigating. (light_all's labels were too faint.) */
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
     subdomains: "abcd",
     maxZoom: 19

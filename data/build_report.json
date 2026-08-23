@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-22T21:12:26-07:00",
+ "built_at": "2026-08-23T00:48:34-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,14 +56,14 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 834,
+  "brief_words": 63,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
-   "top_story": "McFarland police investigate fatal shooting at Capri Laundromat on Perkins Avenue",
-   "archive": "2026-08-22"
+   "chp_new": 2,
+   "top_story": "Southwest Market cancels Saturday event at Independence High School after fatal shooting",
+   "archive": "2026-08-23"
   },
   "cityhall": {
    "upcoming_meetings": 3,
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -89,30 +89,30 @@
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-08-22"
+   "draft": "drafts/weekend-guide-2026-08-23"
   },
   "grapevine": {
-   "i5": "OPEN",
+   "i5": "CLOSED",
    "i5_pass": "OPEN",
    "log_entries": 60
   },
   "events": {
    "groups": {
-    "This week": 4,
-    "Next week": 4,
-    "Later": 24
+    "This week": 5,
+    "Next week": 3,
+    "Later": 23
    },
    "meetings": 3
   },
   "feed": {
-   "entries": 19
+   "entries": 20
   },
   "numbers": {
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 0,
-   "aqi": 62,
-   "chp_week": 133
+   "aqi": 66,
+   "chp_week": 135
   },
   "letters": {
    "published": 0

@@ -1,105 +1,5 @@
 [
  {
-  "log_id": "260815BF0213",
-  "time": "Aug 15 2026  1:16PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "2806-2829 Sr119",
-  "area": "Bakersfield",
-  "lat": 35.266872,
-  "lon": -119.034054,
-  "details": ""
- },
- {
-  "log_id": "260815BF0214",
-  "time": "Aug 15 2026  1:32PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Nb Sr99 Jso Kimberlina Rd",
-  "area": "Bakersfield",
-  "lat": 35.558477,
-  "lon": -119.197166,
-  "details": ""
- },
- {
-  "log_id": "260815BF0221",
-  "time": "Aug 15 2026  1:46PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sb I5 Jso Grapevine Rd",
-  "area": "Fort Tejon",
-  "lat": 34.937778,
-  "lon": -118.930556,
-  "details": ""
- },
- {
-  "log_id": "260815BF0223",
-  "time": "Aug 15 2026  1:50PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "13818-13927 Sr43",
-  "area": "Bakersfield",
-  "lat": 35.688261,
-  "lon": -119.330629,
-  "details": ""
- },
- {
-  "log_id": "260815BF0062",
-  "time": "Aug 15 2026  5:32AM",
-  "type": "1180-Trfc Collision-Major Inj",
-  "location": "Sr184 / Mountain View Rd",
-  "area": "Bakersfield",
-  "lat": 35.281541,
-  "lon": -118.914374,
-  "details": ""
- },
- {
-  "log_id": "260815BF0065",
-  "time": "Aug 15 2026  5:58AM",
-  "type": "1125-Traffic Hazard",
-  "location": "0 I5 S",
-  "area": "Fort Tejon",
-  "lat": 34.90261,
-  "lon": -118.923177,
-  "details": ""
- },
- {
-  "log_id": "260815BF0336",
-  "time": "Aug 15 2026  6:05PM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "0 Sr178",
-  "area": "Bakersfield",
-  "lat": 35.522319,
-  "lon": -118.670997,
-  "details": ""
- },
- {
-  "log_id": "260815BF0174",
-  "time": "Aug 15 2026 11:24AM",
-  "type": "DOT-Request CalTrans Notify",
-  "location": "Sb I5 Jso Lebec Rd",
-  "area": "Fort Tejon",
-  "lat": 34.833056,
-  "lon": -118.865833,
-  "details": ""
- },
- {
-  "log_id": "260815BF0007",
-  "time": "Aug 15 2026 12:05AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260815BF0009",
-  "time": "Aug 15 2026 12:07AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Sierra Hwy / I5 S Sr14 Con",
-  "area": "Newhall",
-  "lat": 34.338689,
-  "lon": -118.506807,
-  "details": ""
- },
- {
   "log_id": "260816BF0194",
   "time": "Aug 16 2026  2:30PM",
   "type": "1179-Trfc Collision-1141 Enrt",
@@ -1630,6 +1530,16 @@
   "details": ""
  },
  {
+  "log_id": "260823BF0003",
+  "time": "Aug 22 2026 11:59PM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
   "log_id": "260822BF0008",
   "time": "Aug 22 2026 12:43AM",
   "type": "TADV-Traffic Advisory",
@@ -1637,6 +1547,16 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260823BF0011",
+  "time": "Aug 23 2026 12:12AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Nb Sr99 At Whisler Rd",
+  "area": "Bakersfield",
+  "lat": 35.642166,
+  "lon": -119.218781,
   "details": ""
  }
 ]

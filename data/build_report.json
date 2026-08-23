@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-22T18:11:37-07:00",
+ "built_at": "2026-08-22T18:21:26-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,7 +56,7 @@
  },
  "section": {
   "_digest_meta": "llm",
-  "brief_words": 1046,
+  "brief_words": 1170,
   "daily": {
    "news_headlines": 75,
    "news_digest": "llm",
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,

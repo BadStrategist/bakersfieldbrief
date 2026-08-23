@@ -118,8 +118,8 @@ def build_alpr(ctx, sources: dict):
       <div class="map-overlay">
         <h3>Flock &amp; ALPRs <span>&middot; Kern County</span></h3>
         <div class="ov-search">
-          <input type="search" id="addr-search" placeholder="Search a street (e.g. Euclid Ave)…"
-                 autocomplete="off" aria-label="Search a street in Bakersfield">
+          <input type="search" id="addr-search" placeholder="Search an area (Oildale, Rosedale, East Side…)"
+                 autocomplete="off" aria-label="Search a Bakersfield area">
           <div class="ov-sr" id="addr-result"></div>
         </div>
         <div class="ov-stats">

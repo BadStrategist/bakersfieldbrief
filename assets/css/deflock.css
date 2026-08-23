@@ -140,3 +140,7 @@ table.data td.num.hot { color: #8a5d0a; font-weight: 700; }
   pointer-events: none;
   transition: opacity .2s ease;
 }
+
+/* area suggestion descriptions */
+.ov-sug-d { margin-left: auto; color: #6E7A76; font-size: 11.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 45%; }
+@media (max-width: 700px) { .ov-sug-d { display: none; } }

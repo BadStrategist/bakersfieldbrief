@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-22T18:21:26-07:00",
+ "built_at": "2026-08-22T18:35:48-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -22,16 +22,16 @@
    "error": ""
   },
   "airnow": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "AirNow returned no data"
   },
   "calfire": {
    "ok": true,
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 2949, column 55"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -56,13 +56,13 @@
  },
  "section": {
   "_digest_meta": "llm",
-  "brief_words": 1170,
+  "brief_words": 885,
   "daily": {
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Deadly shooting at Independence High School football game shakes Bakersfield neighborhood",
+   "chp_new": 1,
+   "top_story": "McFarland police investigate fatal shooting at Capri Laundromat on Perkins Avenue",
    "archive": "2026-08-22"
   },
   "cityhall": {
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 0,
-   "aqi": 64,
-   "chp_week": 125
+   "aqi": null,
+   "chp_week": 126
   },
   "letters": {
    "published": 0

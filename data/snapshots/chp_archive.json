@@ -1620,6 +1620,26 @@
   "details": ""
  },
  {
+  "log_id": "260823BF0188",
+  "time": "Aug 23 2026 11:44AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr99 S / Cecil Ave Ofr",
+  "area": "Bakersfield",
+  "lat": 35.779607,
+  "lon": -119.25334,
+  "details": ""
+ },
+ {
+  "log_id": "260823BF0185",
+  "time": "Aug 23 2026 11:45AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "2600-2698 Mohawk St",
+  "area": "Bakersfield",
+  "lat": 35.383499,
+  "lon": -119.065386,
+  "details": ""
+ },
+ {
   "log_id": "260823BF0011",
   "time": "Aug 23 2026 12:12AM",
   "type": "20002-Hit and Run No Injuries",

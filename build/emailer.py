@@ -282,7 +282,7 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
 <!-- One Thing to Watch card -->
 <tr><td style="padding:2px 20px">
   {_card_open(SIGN_DARK)}
-    {_kicker("One Thing to Watch")}
+    {_kicker("Flock & ALPR Tracker" if flock_html else "One Thing to Watch")}
     {watch_html}
   {_card_close()}
 </td></tr>
@@ -392,12 +392,15 @@ def _one_thing(escribe: dict, board: dict) -> str:
 
 
 def _flock_update_html(alpr: dict) -> str:
-    """Flock/ALPR tracker update for the email: newest camera + weekly count.
+    """Flock/ALPR tracker update card for the email.
 
-    Uses the same source_cache 'alpr' payload the surveillance page uses:
-    cameras (with OSM 'mapped' dates), stats (new_this_week, total, flock),
-    and the tracker URL. Renders a small card-worthy blurb.
+    Uses the same source_cache 'alpr' payload the surveillance page uses.
+    New-camera counts are DYNAMIC: computed from each camera's OSM 'mapped'
+    date against today, so the email's number changes day to day instead of
+    repeating '5 new this week' — if nothing was mapped today it reports the
+    7-day window, and if that's also empty it says so and points to the map.
     """
+    from datetime import date as _date
     if not (alpr and alpr.get("ok")):
         return ""
     stats = alpr.get("stats") or {}
@@ -409,8 +412,6 @@ def _flock_update_html(alpr: dict) -> str:
         return ""
     total = stats.get("total", len(cameras))
     flock = stats.get("flock", 0)
-    added = stats.get("new_this_week", 0)
-    nid = newest.get("id", "")
     nmap = newest.get("mapped", "")
     ndir = newest.get("direction", "")
     # human-facing direction (compass bearing -> cardinal)
@@ -420,15 +421,39 @@ def _flock_update_html(alpr: dict) -> str:
     except (TypeError, ValueError):
         cardinal = ndir or ""
     dir_txt = f", facing {cardinal}" if cardinal else ""
-    added_txt = (f"{added} new camera{'s' if added != 1 else ''} mapped in the last week"
-                 if added else "No new cameras mapped in the last week")
+
+    # ---- dynamic new-camera counts (changes day to day) ----
+    today = _date.today().isoformat()
+    from datetime import timedelta as _td
+    week_ago = (_date.today() - _td(days=7)).isoformat()
+    new_today = sum(1 for c in cameras if c.get("mapped") == today)
+    new_week = sum(1 for c in cameras if week_ago <= (c.get("mapped") or "") < today)
+    new_total = new_today + new_week
+    if new_today:
+        added_txt = (f"<strong>{new_today} new camera{'s' if new_today != 1 else ''} mapped today</strong>"
+                     + (f" — {new_week} more this week" if new_week else ""))
+    elif new_week:
+        added_txt = f"<strong>{new_week} new camera{'s' if new_week != 1 else ''} mapped this week</strong>"
+    else:
+        added_txt = ("No new cameras mapped in the last 7 days — "
+                     "the tracker refreshes from OpenStreetMap every Monday.")
+
     tracker = f"{BASE_URL}/surveillance/"
-    return f"""<p style="margin:0;font-family:{SANS};font-size:13px;line-height:1.55;color:{INK}">
-<strong>Flock cameras keep multiplying:</strong> {flock} of {total} ALPR cameras in Kern County are Flock Safety units.
-The newest was mapped on <strong>{H.escape(nmap)}</strong>{H.escape(dir_txt)} —
-<a href="{tracker}" style="color:{SIGN};font-weight:600;text-decoration:none">see where it is on the map</a>.
-{added_txt}.</p>
-<p style="margin:8px 0 0;font-family:{SANS};font-size:12px;color:{INK_SOFT}">
-<a href="{tracker}" style="display:inline-block;background:{SIGN};color:#ffffff;font-family:{DISPLAY};font-size:12px;
-font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:6px 14px;border-radius:4px">
-View the Camera Tracker</a></p>"""
+    return f"""<table role="presentation" width="100%" cellpadding="0" cellspacing="0"
+  style="margin:8px 0 4px;border:1px solid {LINE};border-radius:6px;overflow:hidden">
+  <tr><td>
+    <a href="{tracker}" style="display:block;text-decoration:none">
+      <img src="{BASE_URL}/assets/img/tracker-map-card.jpg" width="100%" alt="Live Flock &amp; ALPR camera map for Kern County"
+           style="display:block;width:100%;height:auto;border:0">
+    </a>
+  </td></tr>
+  <tr><td style="padding:12px 14px">
+    <p style="margin:0 0 6px;font-family:{SANS};font-size:13px;line-height:1.55;color:{INK}">
+      {added_txt}. <strong>{flock}</strong> of <strong>{total}</strong> ALPR cameras in Kern County are Flock Safety units;
+      the newest was mapped <strong>{H.escape(nmap)}</strong>{H.escape(dir_txt)}.</p>
+    <p style="margin:8px 0 0;font-family:{SANS};font-size:12px;color:{INK_SOFT}">
+      <a href="{tracker}" style="display:inline-block;background:{SIGN};color:#ffffff;font-family:{DISPLAY};font-size:12px;
+      font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:6px 14px;border-radius:4px">
+      View the Live Camera Tracker</a></p>
+  </td></tr>
+</table>"""

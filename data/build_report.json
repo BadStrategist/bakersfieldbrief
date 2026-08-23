@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-22T17:51:35-07:00",
+ "built_at": "2026-08-22T18:04:48-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 2949, column 55"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -56,13 +56,13 @@
  },
  "section": {
   "_digest_meta": "llm",
-  "brief_words": 979,
+  "brief_words": 996,
   "daily": {
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Bakersfield Mayor Karen Goh releases statement on deadly shooting at Independence HS",
+   "chp_new": 2,
+   "top_story": "Deadly shooting at Independence High School football game shakes Bakersfield neighborhood",
    "archive": "2026-08-22"
   },
   "cityhall": {
@@ -112,7 +112,7 @@
    "alpr_total": 255,
    "kern_fires": 0,
    "aqi": 64,
-   "chp_week": 123
+   "chp_week": 125
   },
   "letters": {
    "published": 0

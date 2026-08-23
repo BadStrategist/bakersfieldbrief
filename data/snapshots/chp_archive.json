@@ -1460,6 +1460,16 @@
   "details": ""
  },
  {
+  "log_id": "260822BF0311",
+  "time": "Aug 22 2026  5:18PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "River Rd / Park Rd",
+  "area": "Bakersfield",
+  "lat": 35.448805,
+  "lon": -118.906434,
+  "details": ""
+ },
+ {
   "log_id": "260822BF0068",
   "time": "Aug 22 2026  5:50AM",
   "type": "1125-Traffic Hazard",
@@ -1467,6 +1477,16 @@
   "area": "Fort Tejon",
   "lat": 34.937778,
   "lon": -118.930556,
+  "details": ""
+ },
+ {
+  "log_id": "260822BF0324",
+  "time": "Aug 22 2026  6:00PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sr46 / J St",
+  "area": "BF",
+  "lat": 35.60147,
+  "lon": -119.328172,
   "details": ""
  },
  {

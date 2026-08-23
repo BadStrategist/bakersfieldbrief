@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-22T18:04:48-07:00",
+ "built_at": "2026-08-22T18:11:37-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 2949, column 55"
   },
   "isabella": {
    "ok": true,
@@ -56,12 +56,12 @@
  },
  "section": {
   "_digest_meta": "llm",
-  "brief_words": 996,
+  "brief_words": 1046,
   "daily": {
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "Deadly shooting at Independence High School football game shakes Bakersfield neighborhood",
    "archive": "2026-08-22"
   },
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,

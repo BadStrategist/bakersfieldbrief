@@ -204,7 +204,7 @@ def build_alpr(ctx, sources: dict):
 
     _write_tracker(ctx, "surveillance", "Flock & ALPR Tracker",
                    "Every automated license plate reader mapped in the Bakersfield metro — a weekly-updated dark map with facing direction, newest-camera highlights, and a real 13-week change log from OpenStreetMap.",
-                   stat_html, body, payload, sources, dark=True, img="chp")
+                   stat_html, body, payload, sources, dark=True, img="flock")
 
 
 # ------------------------------------------------------------------ Isabella / water

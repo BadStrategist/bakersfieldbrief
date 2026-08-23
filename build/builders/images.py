@@ -61,9 +61,14 @@ def figure(slug: str, rel: str = "") -> str:
     alt = (info.get("alt") or "").replace('"', "&quot;")
     w, h = info.get("width", ""), info.get("height", "")
     dims = f' width="{w}" height="{h}"' if w and h else ""
+    fname = info.get("file") or f"assets/img/{slug}.jpg"
+    src = f"{rel}{fname}"
+    # optional srcset (e.g. @800 variant) for responsive loading
+    ss = info.get("srcset_800")
+    srcset = f' srcset="{rel}{ss} 800w, {rel}{fname} 1600w" sizes="(max-width: 800px) 100vw, 1600px"' if ss else ""
     return (
         f'<figure class="fig">'
-        f'<img src="{rel}assets/img/{slug}.jpg" alt="{alt}" loading="lazy"{dims}>'
+        f'<img src="{src}" alt="{alt}" loading="lazy"{srcset}{dims}>'
         f'{_caption(info)}'
         f"</figure>"
     )

@@ -65,7 +65,7 @@
  "chp": {
   "file": "assets/img/chp.jpg",
   "alt": "California Highway Patrol vehicle",
-  "credit": "Tom\u00e1s Del Coro",
+  "credit": "Tomás Del Coro",
   "license": "CC BY-SA 2.0",
   "source": "File:California Highway Patrol Dodge Charger.jpg",
   "width": 1280,
@@ -103,5 +103,15 @@
   "alt": "Golden hour over Bakersfield and the Kern County fields",
   "width": 1600,
   "height": 900
+ },
+ "flock": {
+  "file": "assets/img/flock-tracker-hero.jpg",
+  "alt": "Three Flock Safety automated license plate reader cameras mounted on poles",
+  "credit": "Composite: Tony Webster (CC BY 2.0), MiracleMiles (CC BY 4.0) & GA Kevin (CC0)",
+  "license": "CC BY 2.0 / CC BY 4.0 / CC0",
+  "source": "Category:Flock Safety",
+  "width": 1600,
+  "height": 760,
+  "srcset_800": "assets/img/flock-tracker-hero@800.jpg"
  }
 }

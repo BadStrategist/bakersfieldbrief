@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-23T02:55:42-07:00",
+ "built_at": "2026-08-23T06:46:36-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,13 +55,13 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 63,
+  "_digest_meta": "llm",
+  "brief_words": 828,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 4,
+   "chp_new": 1,
    "top_story": "Southwest Market cancels Saturday event at Independence High School after fatal shooting",
    "archive": "2026-08-23"
   },
@@ -92,7 +92,7 @@
    "draft": "drafts/weekend-guide-2026-08-23"
   },
   "grapevine": {
-   "i5": "CLOSED",
+   "i5": "OPEN",
    "i5_pass": "OPEN",
    "log_entries": 60
   },
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 0,
-   "aqi": 63,
-   "chp_week": 139
+   "aqi": 64,
+   "chp_week": 140
   },
   "letters": {
    "published": 0

@@ -304,14 +304,22 @@
       var q = searchInput.value.trim();
       if (q.length < 3) { searchResult.innerHTML = ""; suggestions = []; return; }
       searchTimer = setTimeout(function () {
-        // autocomplete: up to 6 candidate addresses as the user types
-        var url = "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=6&countrycodes=us&addressdetails=1&q=" +
-                  encodeURIComponent(q + ", Bakersfield, Kern County, CA");
+        // streets only: strip a leading house number ("6425 euclid" -> "euclid")
+        var street = q.replace(/^\s*\d+\s*/, "").trim();
+        if (!street) { showSearchError("Type a street name."); return; }
+        // structured Nominatim query — reliable for street-level results
+        var url = "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=6&addressdetails=1&" +
+                  "street=" + encodeURIComponent(street) + "&city=Bakersfield&state=CA&countrycodes=us";
         fetch(url, { headers: { "Accept": "application/json" } })
           .then(function (r) { return r.json(); })
           .then(function (data) {
-            if (!data || !data.length) { showSearchError("No addresses found — try street + number."); return; }
-            renderSuggestions(data);
+            if (!data || !data.length) { showSearchError("Street not found — try the street name only."); return; }
+            // streets come back with type secondary/primary/residential/etc
+            var streets = data.filter(function (r) {
+              return (r.class === "highway" || !r.class) && r.type && r.type !== "house";
+            });
+            if (!streets.length) { showSearchError("Street not found — try the street name only."); return; }
+            renderSuggestions(streets);
           })
           .catch(function () { showSearchError("Search failed — try again."); });
       }, 350);

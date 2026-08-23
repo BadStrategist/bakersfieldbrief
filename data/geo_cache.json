@@ -3,12 +3,13 @@
   35.4,
   -119.1
  ],
+ "between q & p streets, Bakersfield, CA": null,
  "panama lane & the winco, Bakersfield, CA": null,
  "near lynwood & height streets, Bakersfield, CA": null,
  "2700 block of white lane, Bakersfield, Kern County, CA": null,
  "white lane, Bakersfield, CA": [
-  35.3177394,
-  -119.0258257
+  35.3177131,
+  -119.0121647
  ],
  "7300 block of snowmass lane, Bakersfield, Kern County, CA": null,
  "snowmass lane, Bakersfield, CA": [
@@ -17,13 +18,13 @@
  ],
  "1200 block of chester avenue, Bakersfield, Kern County, CA": null,
  "chester avenue, Bakersfield, CA": [
-  35.392125,
-  -119.0186757
+  35.3852284,
+  -119.0188493
  ],
  "3500 block of terrace way, Bakersfield, Kern County, CA": null,
  "terrace way, Bakersfield, CA": [
-  35.3503265,
-  -119.0185047
+  35.350335,
+  -119.0117508
  ],
  "alfred harrell highway & hart park, Bakersfield, CA": null,
  "6000 block of chandler way, Bakersfield, Kern County, CA": null,
@@ -39,13 +40,10 @@
  "2500 block of white lane, Bakersfield, Kern County, CA": null,
  "3700 block of columbus street, Bakersfield, Kern County, CA": null,
  "columbus street, Bakersfield, CA": [
-  35.4079014,
-  -118.9482324
+  35.4079524,
+  -118.9483806
  ],
  "bike path & oak street, Bakersfield, CA": null,
  "between college & highland, Bakersfield, CA": null,
- "bernard street & jefferson park, Bakersfield, CA": null,
- "crossford & harris, Bakersfield, CA": null,
- "gosford & harris, Bakersfield, CA": null,
- "between q & p streets, Bakersfield, CA": null
+ "bernard street & jefferson park, Bakersfield, CA": null
 }

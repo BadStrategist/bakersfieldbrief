@@ -1550,6 +1550,36 @@
   "details": ""
  },
  {
+  "log_id": "260823BF0032",
+  "time": "Aug 23 2026  1:49AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "8500 Gregory Ave",
+  "area": "Bakersfield",
+  "lat": 35.253851,
+  "lon": -118.909792,
+  "details": ""
+ },
+ {
+  "log_id": "260823BF0036",
+  "time": "Aug 23 2026  2:13AM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "Sr184 / Panama Rd",
+  "area": "Bakersfield",
+  "lat": 35.266956,
+  "lon": -118.914296,
+  "details": ""
+ },
+ {
+  "log_id": "260823BF0038",
+  "time": "Aug 23 2026  2:17AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 I5 S",
+  "area": "Buttonwillow",
+  "lat": 35.089371,
+  "lon": -119.031511,
+  "details": ""
+ },
+ {
   "log_id": "260823BF0011",
   "time": "Aug 23 2026 12:12AM",
   "type": "20002-Hit and Run No Injuries",
@@ -1557,6 +1587,16 @@
   "area": "Bakersfield",
   "lat": 35.642166,
   "lon": -119.218781,
+  "details": ""
+ },
+ {
+  "log_id": "260823BF0019",
+  "time": "Aug 23 2026 12:53AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "1000 Buena Vista St",
+  "area": "Buttonwillow",
+  "lat": 35.13189,
+  "lon": -119.452701,
   "details": ""
  }
 ]

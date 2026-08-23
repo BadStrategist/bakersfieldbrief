@@ -1550,6 +1550,26 @@
   "details": ""
  },
  {
+  "log_id": "260823BF0250",
+  "time": "Aug 23 2026  1:00PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Nb Sr99 At Olive Dr",
+  "area": "Bakersfield",
+  "lat": 35.412222,
+  "lon": -119.054722,
+  "details": ""
+ },
+ {
+  "log_id": "260823BF0254",
+  "time": "Aug 23 2026  1:16PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "NB I5 at #2 Turn Thru",
+  "area": "Fort Tejon",
+  "lat": 34.890111,
+  "lon": -118.91124,
+  "details": ""
+ },
+ {
   "log_id": "260823BF0032",
   "time": "Aug 23 2026  1:49AM",
   "type": "20002-Hit and Run No Injuries",

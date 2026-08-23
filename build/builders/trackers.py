@@ -115,13 +115,10 @@ def build_alpr(ctx, sources: dict):
     map_html = f"""
     <div class="mapwrap deflock">
       <div id="alpr-map" role="application" aria-label="Map of license plate reader camera locations"></div>
-      <div class="map-overlay">
+      <div class="map-overlay" id="map-overlay">
+        <button type="button" id="ov-toggle" class="ov-toggle" aria-expanded="true"
+                aria-label="Minimize panel" title="Minimize panel">&minus;</button>
         <h3>Flock &amp; ALPRs <span>&middot; Kern County</span></h3>
-        <div class="ov-search">
-          <input type="search" id="addr-search" placeholder="Search a street (e.g. Euclid Ave)…"
-                 autocomplete="off" aria-label="Search a street in Bakersfield">
-          <div class="ov-sr" id="addr-result"></div>
-        </div>
         <div class="ov-stats">
           <div><span class="n">{stats.get('total', 0)}</span> cameras mapped</div>
           <div><span class="n">{stats.get('flock', 0)}</span> Flock Safety</div>

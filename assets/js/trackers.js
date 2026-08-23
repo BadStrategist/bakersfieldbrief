@@ -23,7 +23,10 @@
   /* ---------------- map ---------------- */
   var map = L.map("alpr-map", { scrollWheelZoom: true }).setView([35.37, -119.02], 10);
   window._alprMap = map; // exposed for automated verification
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+  /* Bold, readable light basemap: high-contrast roads + dark labels so
+     people can see exactly where they are. (Switched from dark_all which
+     made labels hard to read.) */
+  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
     subdomains: "abcd",
     maxZoom: 19
@@ -38,24 +41,24 @@
     cutoff = d.toISOString().slice(0, 10);
   }
 
-  var flockDot = L.divIcon({ html: '<div class="cam-dot flock"></div>', className: "", iconSize: [15, 15] });
-  var otherDot = L.divIcon({ html: '<div class="cam-dot other"></div>', className: "", iconSize: [15, 15] });
-  var flockDotNew = L.divIcon({ html: '<div class="cam-dot flock new"></div>', className: "", iconSize: [17, 17] });
-  var otherDotNew = L.divIcon({ html: '<div class="cam-dot other new"></div>', className: "", iconSize: [17, 17] });
+  /* Professional camera marker: a crisp SVG CCTV camera glyph (filled body +
+     lens ring), colored by type. No rotation gimmicks — it reads as a camera
+     instantly and stays legible at every zoom. Newest cameras get an amber
+     ring highlight. */
+  var CAM_SVG = '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">' +
+    '<path d="M4 7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1.2l3.2-1.6a.6.6 0 0 1 .8.55V14a.6.6 0 0 1-.8.55L16 13v1a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7z" fill="__FILL__" stroke="#fff" stroke-width="1.4"/>' +
+    '<circle cx="10" cy="9.5" r="2.4" fill="#fff"/><circle cx="10" cy="9.5" r="1.1" fill="__LENS__"/></svg>';
 
-  /* camera glyph marker: a CCTV body + lens; the whole marker rotates so the
-     lens points along the camera's facing. Cleaner and more intuitive than a
-     bare dot — reads as "camera" at a glance. */
   function cameraIcon(c, isNew) {
-    var dir = parseFloat(c.direction);
-    var rot = isNaN(dir) ? 0 : (dir + 90);   // lens faces the bearing
-    var cls = "cam-marker" +
-      ((c.manufacturer || "").toLowerCase().indexOf("flock") !== -1 ? "" : " other") +
-      (isNew ? " new" : "");
+    var isFlock = (c.manufacturer || "").toLowerCase().indexOf("flock") !== -1;
+    var fill = isFlock ? "#DC9A1F" : "#8FA099";
+    var lens = isFlock ? "#7A5A0E" : "#4E5B57";
+    var svg = CAM_SVG.replace("__FILL__", fill).replace("__LENS__", lens);
+    var cls = "cam-marker" + (isNew ? " new" : "");
     return L.divIcon({
-      html: '<div class="' + cls + '" style="transform:rotate(' + rot + 'deg)">' +
-            '<div class="cam-body"></div></div>',
-      className: "", iconSize: [30, 26], iconAnchor: [15, 20]
+      html: '<div class="' + cls + '">' + svg + "</div>",
+      className: "", iconSize: [26, 26], iconAnchor: [13, 13],
+      popupAnchor: [0, -14]
     });
   }
 
@@ -97,15 +100,17 @@
   var markers = L.markerClusterGroup({
     iconCreateFunction: function (cluster) {
       var n = cluster.getChildCount();
-      var size = n > 100 ? 54 : n > 25 ? 48 : 40;
+      var size = n > 100 ? 46 : n > 25 ? 40 : n > 8 ? 34 : 30;
       var el = L.divIcon({
         html: '<div class="cluster-dot" style="width:' + size + "px;height:" + size + 'px">' + n + "</div>",
         className: "", iconSize: [size, size]
       });
       return el;
     },
-    maxClusterRadius: 48,
-    spiderfyOnMaxZoom: true
+    maxClusterRadius: 30,        // tighter: clusters split sooner as you zoom
+    spiderfyOnMaxZoom: true,
+    disableClusteringAtZoom: 15, // at street level, show every camera individually
+    chunkedLoading: true         // smooth on mobile
   });
 
   var flockCount = 0, otherCount = 0, recentCount = 0;
@@ -211,134 +216,20 @@
   map.on("zoomend", updateCones);
   updateCones();
 
-  /* ---------- address search ----------
-     Geocode a Bakersfield address via Nominatim (free, no key), drop a
-     marker, and list the nearest cameras with distances. */
-  var searchInput = document.getElementById("addr-search");
-  var searchResult = document.getElementById("addr-result");
-  var searchMarker = null;
-  var searchCircle = null;
-
-  function haversine(a, b) {
-    var R = 6371000, dLat = (b[0] - a[0]) * Math.PI / 180, dLon = (b[1] - a[1]) * Math.PI / 180;
-    var s = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-            Math.cos(a[0] * Math.PI / 180) * Math.cos(b[0] * Math.PI / 180) *
-            Math.sin(dLon / 2) * Math.sin(dLon / 2);
-    return 2 * R * Math.atan2(Math.sqrt(s), Math.sqrt(1 - s));
-  }
-  function fmtDist(m) { return m < 1000 ? Math.round(m) + " m" : (m / 1000).toFixed(2) + " km"; }
-
-  function showSearchError(msg) {
-    if (searchResult) searchResult.innerHTML = '<div class="ov-err">' + msg + "</div>";
-  }
-
-  if (searchInput && searchResult) {
-    var searchTimer = null;
-    var suggestions = [];
-
-    // render a selectable dropdown of address suggestions
-    function renderSuggestions(items) {
-      suggestions = items;
-      if (!items.length) { searchResult.innerHTML = ""; return; }
-      var html = '<div class="ov-sug" role="listbox">' + items.map(function (it, i) {
-        var label = it.display_name.split(",").slice(0, 2).join(",").trim();  // "1234 Truxtun Ave, Bakersfield"
-        return '<button type="button" class="ov-sug-item" data-i="' + i + '" role="option">' +
-               '<span class="ov-sug-pin">📍</span>' + label + "</button>";
-      }).join("") + "</div>";
-      searchResult.innerHTML = html;
-      // wire clicks
-      searchResult.querySelectorAll(".ov-sug-item").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          selectSuggestion(parseInt(btn.getAttribute("data-i"), 10));
-        });
-      });
-    }
-
-    // pick a suggestion → place marker + nearest cameras
-    function selectSuggestion(i) {
-      var hit = suggestions[i];
-      if (!hit) return;
-      var lat = parseFloat(hit.lat), lon = parseFloat(hit.lon);
-      var name = hit.display_name || searchInput.value.trim();
-      searchInput.value = name.split(",").slice(0, 2).join(",").trim();
-
-      // clear previous
-      if (searchMarker) map.removeLayer(searchMarker);
-      if (searchCircle) map.removeLayer(searchCircle);
-
-      searchMarker = L.circleMarker([lat, lon], {
-        radius: 8, color: "#B3472F", weight: 2, fillColor: "#B3472F", fillOpacity: 0.9
-      }).addTo(map).bindPopup("<strong>Your search</strong><br>" + name);
-      searchCircle = L.circle([lat, lon], { radius: 400, color: "#B3472F", weight: 1, opacity: 0.5, fillOpacity: 0.05 }).addTo(map);
-
-      map.flyTo([lat, lon], 15, { duration: 0.9 });
-      searchMarker.openPopup();
-
-      // nearest cameras within ~800m, sorted by distance
-      var near = [];
-      DATA.cameras.forEach(function (c) {
-        if (!c.lat || !c.lon) return;
-        var d = haversine([lat, lon], [c.lat, c.lon]);
-        if (d <= 800) near.push({ c: c, d: d });
-      });
-      near.sort(function (a, b) { return a.d - b.d; });
-      var dirTxt = function (c) {
-        var deg = parseFloat(c.direction);
-        if (isNaN(deg)) return "";
-        return "facing " + ["N","NE","E","SE","S","SW","W","NW"][Math.round(deg / 45) % 8] + " ";
-      };
-      var html = '<div class="ov-sr"><b>' + (near.length ? near.length + " camera" + (near.length > 1 ? "s" : "") + " within 800 m" : "No cameras within 800 m") + "</b></div>";
-      if (near.length) {
-        html += '<ul class="ov-near">' + near.slice(0, 8).map(function (n) {
-          return '<li><span class="dist">' + fmtDist(n.d) + "</span> &middot; " +
-                 (n.c.manufacturer || "ALPR") + " " + dirTxt(n.c) +
-                 " &middot; <a href=\"https://www.openstreetmap.org/node/" + n.c.id + "\" target=\"_blank\" rel=\"noopener\">node</a></li>";
-        }).join("") + "</ul>";
-      }
-      searchResult.innerHTML = html;
-      suggestions = [];
-    }
-
-    searchInput.addEventListener("input", function () {
-      clearTimeout(searchTimer);
-      var q = searchInput.value.trim();
-      if (q.length < 3) { searchResult.innerHTML = ""; suggestions = []; return; }
-      searchTimer = setTimeout(function () {
-        // streets only: strip a leading house number ("6425 euclid" -> "euclid")
-        var street = q.replace(/^\s*\d+\s*/, "").trim();
-        if (!street) { showSearchError("Type a street name."); return; }
-        // structured Nominatim query — reliable for street-level results
-        var url = "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=6&addressdetails=1&" +
-                  "street=" + encodeURIComponent(street) + "&city=Bakersfield&state=CA&countrycodes=us";
-        fetch(url, { headers: { "Accept": "application/json" } })
-          .then(function (r) { return r.json(); })
-          .then(function (data) {
-            if (!data || !data.length) { showSearchError("Street not found — try the street name only."); return; }
-            // streets come back with type secondary/primary/residential/etc
-            var streets = data.filter(function (r) {
-              return (r.class === "highway" || !r.class) && r.type && r.type !== "house";
-            });
-            if (!streets.length) { showSearchError("Street not found — try the street name only."); return; }
-            renderSuggestions(streets);
-          })
-          .catch(function () { showSearchError("Search failed — try again."); });
-      }, 350);
-    });
-
-    // Enter picks the first suggestion (mobile keyboards have no click)
-    searchInput.addEventListener("keydown", function (e) {
-      if (e.key === "Enter" && suggestions.length) {
-        e.preventDefault();
-        selectSuggestion(0);
-      }
-    });
-
-    // click outside the search area clears the dropdown
-    document.addEventListener("click", function (e) {
-      var box = document.querySelector(".ov-search");
-      if (box && !box.contains(e.target)) {
-        if (suggestions.length) { searchResult.innerHTML = ""; suggestions = []; }
-      }
+  /* ---------- minimize the info panel ----------
+     The minimize button collapses the overlay to a slim header so the map
+     gets the full screen; click again to expand. */
+  var overlay = document.getElementById("map-overlay");
+  var ovToggle = document.getElementById("ov-toggle");
+  if (overlay && ovToggle) {
+    ovToggle.addEventListener("click", function () {
+      var collapsed = overlay.classList.toggle("collapsed");
+      ovToggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
+      ovToggle.setAttribute("aria-label", collapsed ? "Expand panel" : "Minimize panel");
+      ovToggle.title = collapsed ? "Expand panel" : "Minimize panel";
+      ovToggle.innerHTML = collapsed ? "+" : "&minus;";
+      // let Leaflet recalc after the panel resizes
+      setTimeout(function () { map.invalidateSize(); }, 250);
     });
   }
 

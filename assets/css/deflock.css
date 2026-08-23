@@ -49,6 +49,20 @@
 .ov-search .ov-near { margin-top: 8px; border-top: 1px dashed #2E353A; padding-top: 6px; }
 .ov-search .ov-near li { font-size: 12.5px; padding: 3px 0; border-bottom: 0; color: #C8CFC9; }
 .ov-search .ov-near li .dist { color: var(--amber-soft); font-family: var(--mono); }
+
+/* autocomplete suggestion dropdown */
+.ov-sug { margin-top: 6px; background: #1D2226; border: 1px solid #2E353A; border-radius: 6px; overflow: hidden; }
+.ov-sug-item {
+  display: flex; align-items: center; gap: 8px; width: 100%; box-sizing: border-box;
+  background: none; border: 0; border-bottom: 1px solid #2A3136; color: #E8E2D0;
+  font-family: var(--sans); font-size: 13px; text-align: left; padding: 9px 10px; cursor: pointer;
+}
+.ov-sug-item:last-child { border-bottom: 0; }
+.ov-sug-item:hover, .ov-sug-item:focus { background: #2A3136; outline: none; }
+.ov-sug-pin { font-size: 14px; }
+@media (max-width: 700px) {
+  .ov-sug-item { padding: 12px 12px; font-size: 14px; }
+}
 .ov-list { list-style: none; margin: 0; padding: 0; }
 .ov-list li { padding: 5px 0; border-bottom: 1px dashed #2E353A; font-size: 13px; }
 .ov-list li:last-child { border-bottom: 0; }

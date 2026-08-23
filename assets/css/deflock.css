@@ -29,13 +29,13 @@
 }
 .map-overlay h3 span { color: var(--ink-soft); font-weight: 500; }
 
-/* close / open button — compact pill, top-left, small text */
+/* close / open button — footer-style, full-width, small text */
 .ov-toggle {
-  position: static; display: inline-block; margin-bottom: 8px;
-  padding: 4px 10px; border-radius: 6px;
+  display: block; width: 100%; margin-top: 10px;
+  padding: 8px 10px; border-radius: 6px;
   background: var(--sign); color: #fff; border: 0;
-  font-family: var(--display); font-size: 12px; font-weight: 600;
-  letter-spacing: .04em; text-transform: uppercase;
+  font-family: var(--display); font-size: 13px; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase;
   cursor: pointer; box-shadow: 0 1px 4px rgba(0, 0, 0, .25);
   white-space: nowrap;
 }
@@ -100,7 +100,7 @@
 @media (max-width: 700px) {
   .map-overlay { position: static; width: 100%; max-height: none; border-radius: 0 0 8px 8px; margin-top: -4px; }
   .map-overlay.collapsed { position: static; width: 100%; }
-  .ov-toggle { padding: 6px 14px; font-size: 13px; }
+  .ov-toggle { padding: 10px 14px; font-size: 14px; }
   .ov-list a { padding: 8px 0; display: block; }
   .ov-btn { padding: 12px 10px; font-size: 15px; }
   .ov-list li { padding: 8px 0; }

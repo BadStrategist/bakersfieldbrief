@@ -116,8 +116,6 @@ def build_alpr(ctx, sources: dict):
     <div class="mapwrap deflock">
       <div id="alpr-map" role="application" aria-label="Map of license plate reader camera locations"></div>
       <div class="map-overlay" id="map-overlay">
-        <button type="button" id="ov-toggle" class="ov-toggle" aria-expanded="true"
-                aria-label="Close panel" title="Close panel">Close</button>
         <h3>Flock &amp; ALPRs <span>&middot; Kern County</span></h3>
         <div class="ov-stats">
           <div><span class="n">{stats.get('total', 0)}</span> cameras mapped</div>
@@ -128,6 +126,8 @@ def build_alpr(ctx, sources: dict):
         <p class="ov-note" id="newest-note">All cameras shown — ring markers mark the last 28 days of mapping.</p>
         {overlay_list}
         <div class="map-legend" id="map-legend-stats"></div>
+        <button type="button" id="ov-toggle" class="ov-toggle" aria-expanded="true"
+                aria-label="Close panel" title="Close panel">Close</button>
       </div>
     </div>"""
 

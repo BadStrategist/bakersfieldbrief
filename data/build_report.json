@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-23T20:33:38-07:00",
+ "built_at": "2026-08-23T21:33:15-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
+   "chp_new": 3,
    "top_story": "Cal State Bakersfield launches first mariachi ensemble",
    "archive": "2026-08-23"
   },
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 1,
-   "aqi": 80,
-   "chp_week": 151
+   "aqi": null,
+   "chp_week": 154
   },
   "letters": {
    "published": 0

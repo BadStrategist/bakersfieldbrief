@@ -1610,6 +1610,16 @@
   "details": ""
  },
  {
+  "log_id": "260823BF0385",
+  "time": "Aug 23 2026  6:53PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sr155 / Blue Mountain Rd",
+  "area": "Bakersfield",
+  "lat": 35.718039,
+  "lon": -118.810354,
+  "details": ""
+ },
+ {
   "log_id": "260823BF0075",
   "time": "Aug 23 2026  6:55AM",
   "type": "1183-Trfc Collision-Unkn Inj",
@@ -1617,6 +1627,16 @@
   "area": "Bakersfield",
   "lat": 35.36173,
   "lon": -119.10463,
+  "details": ""
+ },
+ {
+  "log_id": "260823BF0403",
+  "time": "Aug 23 2026  7:33PM",
+  "type": "CZP-Assist with Construction",
+  "location": "I5 N / Hageman Rd",
+  "area": "Buttonwillow",
+  "lat": 35.398856,
+  "lon": -119.396997,
   "details": ""
  },
  {
@@ -1630,6 +1650,16 @@
   "details": ""
  },
  {
+  "log_id": "260823BF0414",
+  "time": "Aug 23 2026  7:59PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Chain Ave / Lake Isabella Blvd",
+  "area": "Bakersfield",
+  "lat": 35.602906,
+  "lon": -118.486057,
+  "details": ""
+ },
+ {
   "log_id": "260823BF0107",
   "time": "Aug 23 2026  8:19AM",
   "type": "1125-Traffic Hazard",
@@ -1637,6 +1667,16 @@
   "area": "Bakersfield",
   "lat": 35.683054,
   "lon": -118.21895,
+  "details": ""
+ },
+ {
+  "log_id": "260823BF0427",
+  "time": "Aug 23 2026  8:24PM",
+  "type": "JUMPER",
+  "location": "Wb Sr58 At Mount Vernon Ave",
+  "area": "Bakersfield",
+  "lat": 35.353056,
+  "lon": -118.967222,
   "details": ""
  },
  {

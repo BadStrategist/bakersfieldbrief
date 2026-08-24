@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-24T06:46:33-07:00",
+ "built_at": "2026-08-24T06:50:10-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,12 +56,12 @@
  },
  "section": {
   "_digest_meta": "llm",
-  "brief_words": 711,
+  "brief_words": 667,
   "daily": {
    "news_headlines": 74,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 5,
+   "chp_new": 0,
    "top_story": "Cal State Bakersfield launches first mariachi ensemble",
    "archive": "2026-08-24"
   },
@@ -121,7 +121,7 @@
    "published": 15
   },
   "map": {
-   "dots": 45
+   "dots": 47
   },
   "sunday_read": {
    "topic": "Public safety",

@@ -1560,6 +1560,46 @@
   "details": ""
  },
  {
+  "log_id": "260824BF0215",
+  "time": "Aug 24 2026  1:27PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "SR99 N / SR58 E",
+  "area": "Bakersfield",
+  "lat": 35.352548,
+  "lon": -119.039398,
+  "details": ""
+ },
+ {
+  "log_id": "260824BF0214",
+  "time": "Aug 24 2026  1:27PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "3111 N Chester Ave",
+  "area": "Bakersfield",
+  "lat": 35.434403,
+  "lon": -119.021359,
+  "details": ""
+ },
+ {
+  "log_id": "260824BF0220",
+  "time": "Aug 24 2026  1:54PM",
+  "type": "1125-Traffic Hazard",
+  "location": "12041 Granite Rd",
+  "area": "Bakersfield",
+  "lat": 35.631127,
+  "lon": -118.800211,
+  "details": ""
+ },
+ {
+  "log_id": "260824BF0221",
+  "time": "Aug 24 2026  1:54PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Sb Sr99 Jso Lerdo Hwy",
+  "area": "Bakersfield",
+  "lat": 35.499702,
+  "lon": -119.163617,
+  "details": ""
+ },
+ {
   "log_id": "260824BF0010",
   "time": "Aug 24 2026  2:46AM",
   "type": "1183-Trfc Collision-Unkn Inj",

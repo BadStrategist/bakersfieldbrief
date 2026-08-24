@@ -1402,7 +1402,7 @@
  {
   "log_id": "260823BF0385",
   "time": "Aug 23 2026  6:53PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
+  "type": "20002-Hit and Run No Injuries",
   "location": "Sr155 / Blue Mountain Rd",
   "area": "Bakersfield",
   "lat": 35.718039,
@@ -1547,6 +1547,26 @@
   "area": "Buttonwillow",
   "lat": 35.13189,
   "lon": -119.452701,
+  "details": ""
+ },
+ {
+  "log_id": "260824BF0010",
+  "time": "Aug 24 2026  2:46AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "13700-14035 Rosedale Hwy",
+  "area": "Bakersfield",
+  "lat": 35.383487,
+  "lon": -119.155096,
+  "details": ""
+ },
+ {
+  "log_id": "260824BF0013",
+  "time": "Aug 24 2026  3:06AM",
+  "type": "20001-Hit and Run w/Injuries",
+  "location": "Wheeler Ridge Rd / Valpredo Rd",
+  "area": "Bakersfield",
+  "lat": 35.074466,
+  "lon": -118.917385,
   "details": ""
  },
  {

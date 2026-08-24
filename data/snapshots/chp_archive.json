@@ -1570,6 +1570,56 @@
   "details": ""
  },
  {
+  "log_id": "260824BF0029",
+  "time": "Aug 24 2026  5:01AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "Sr58 E / Coffee Rd",
+  "area": "Bakersfield",
+  "lat": 35.366776,
+  "lon": -119.092152,
+  "details": ""
+ },
+ {
+  "log_id": "260824BF0033",
+  "time": "Aug 24 2026  5:24AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "0 Sr99 N",
+  "area": "Bakersfield",
+  "lat": 35.37799,
+  "lon": -119.044299,
+  "details": ""
+ },
+ {
+  "log_id": "260824BF0044",
+  "time": "Aug 24 2026  5:57AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr184 / Mckee Rd",
+  "area": "Bakersfield",
+  "lat": 35.274218,
+  "lon": -118.914352,
+  "details": ""
+ },
+ {
+  "log_id": "260824BF0049",
+  "time": "Aug 24 2026  6:11AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "151 Oildale Dr",
+  "area": "Bakersfield",
+  "lat": 35.405896,
+  "lon": -119.02999,
+  "details": ""
+ },
+ {
+  "log_id": "260824BF0052",
+  "time": "Aug 24 2026  6:24AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr99 S / Sr65 Onr",
+  "area": "Bakersfield",
+  "lat": 35.429932,
+  "lon": -119.071632,
+  "details": ""
+ },
+ {
   "log_id": "260824BF0002",
   "time": "Aug 24 2026 12:02AM",
   "type": "TADV-Traffic Advisory",

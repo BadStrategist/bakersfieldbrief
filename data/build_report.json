@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-24T07:25:35-07:00",
+ "built_at": "2026-08-24T08:21:40-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -61,8 +61,8 @@
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
-   "top_story": "Cal State Bakersfield launches first mariachi ensemble",
+   "chp_new": 6,
+   "top_story": "Kern County In Depth: Aug. 23, 2026",
    "archive": "2026-08-24"
   },
   "cityhall": {
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 1,
-   "aqi": 59,
-   "chp_week": 12
+   "aqi": 71,
+   "chp_week": 17
   },
   "letters": {
    "published": 0

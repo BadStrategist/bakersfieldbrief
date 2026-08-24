@@ -1710,6 +1710,26 @@
   "details": ""
  },
  {
+  "log_id": "260824BF0109",
+  "time": "Aug 24 2026  8:42AM",
+  "type": "CFIRE-Car Fire",
+  "location": "Sr99 S / Panama Ln Onr",
+  "area": "Bakersfield",
+  "lat": 35.292339,
+  "lon": -119.02969,
+  "details": ""
+ },
+ {
+  "log_id": "260824BF0115",
+  "time": "Aug 24 2026  8:50AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr58 E / Sr184 Onr",
+  "area": "Bakersfield",
+  "lat": 35.35179,
+  "lon": -118.909296,
+  "details": ""
+ },
+ {
   "log_id": "260824BF0002",
   "time": "Aug 24 2026 12:02AM",
   "type": "TADV-Traffic Advisory",

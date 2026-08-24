@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-24T09:04:38-07:00",
+ "built_at": "2026-08-24T09:08:18-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -34,8 +34,8 @@
    "error": ""
   },
   "isabella": {
-   "ok": false,
-   "error": "ConnectTimeout: HTTPSConnectionPool(host='cdec.water.ca.gov', port=443): Max retries exceeded with url: /dynamicapp/req/JSONDataServlet?Stations=ISB&SensorNums=15&dur_code=D&Start=2026-07-18&End=2026-08-24 (Caused by ConnectTimeoutError(<HTTPSConnection(host='cdec.water.ca.gov', port=443) at 0x7f65d6ffdb50>, 'Connection to cdec.water.ca.gov timed out. (connect timeout=40)'))"
+   "ok": true,
+   "error": ""
   },
   "alpr": {
    "ok": true,
@@ -61,8 +61,8 @@
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
-   "top_story": "'Healing is possible': Nonprofit founder on helping communities move forward after gang violence",
+   "chp_new": 0,
+   "top_story": "Last call to show off your talent at the Kern County Fair",
    "archive": "2026-08-24"
   },
   "cityhall": {
@@ -108,7 +108,7 @@
    "entries": 21
   },
   "numbers": {
-   "isabella_af": null,
+   "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 1,
    "aqi": 71,

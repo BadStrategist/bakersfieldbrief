@@ -1740,6 +1740,36 @@
   "details": ""
  },
  {
+  "log_id": "260824BF0183",
+  "time": "Aug 24 2026 12:04PM",
+  "type": "JUMPER",
+  "location": "Eb Sr58 Jwo Cottonwood Rd",
+  "area": "Bakersfield",
+  "lat": 35.352222,
+  "lon": -118.9875,
+  "details": ""
+ },
+ {
+  "log_id": "260824BF0186",
+  "time": "Aug 24 2026 12:08PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sr58 W / Stockdale Hwy",
+  "area": "Bakersfield",
+  "lat": 35.354093,
+  "lon": -119.047693,
+  "details": ""
+ },
+ {
+  "log_id": "260824BF0192",
+  "time": "Aug 24 2026 12:17PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jso Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.937778,
+  "lon": -118.930556,
+  "details": ""
+ },
+ {
   "log_id": "260824BF0004",
   "time": "Aug 24 2026 12:54AM",
   "type": "1166-Defective Traffic Signals",

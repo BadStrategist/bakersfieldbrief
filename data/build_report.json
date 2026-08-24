@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-24T09:20:03-07:00",
+ "built_at": "2026-08-24T12:20:38-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -61,8 +61,8 @@
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Last call to show off your talent at the Kern County Fair",
+   "chp_new": 3,
+   "top_story": "Kern County Coroner officials identify Bakersfield man stabbed, killed by woman on White Lane",
    "archive": "2026-08-24"
   },
   "cityhall": {
@@ -100,7 +100,7 @@
    "groups": {
     "This week": 5,
     "Next week": 3,
-    "Later": 24
+    "Later": 22
    },
    "meetings": 3
   },
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 1,
-   "aqi": 81,
-   "chp_week": 19
+   "aqi": 84,
+   "chp_week": 22
   },
   "letters": {
    "published": 0
@@ -145,7 +145,7 @@
   },
   "trackers": {
    "alpr_total": 257,
-   "alpr_new_week": 1,
+   "alpr_new_week": 0,
    "pages": [
     "surveillance",
     "water",

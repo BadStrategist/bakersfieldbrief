@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-24T14:06:22-07:00",
+ "built_at": "2026-08-24T14:57:56-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -61,8 +61,8 @@
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
-   "top_story": "Ex-KSCO detentions lieutenant\u2019s hearing in DUI case moved to September",
+   "chp_new": 1,
+   "top_story": "Community prayer night to be held in light of Independence High shooting",
    "archive": "2026-08-24"
   },
   "cityhall": {
@@ -92,7 +92,7 @@
    "draft": "drafts/weekend-guide-2026-08-24"
   },
   "grapevine": {
-   "i5": "OPEN",
+   "i5": "RESTRICTIONS",
    "i5_pass": "OPEN",
    "log_entries": 60
   },
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 1,
-   "aqi": 101,
-   "chp_week": 26
+   "aqi": 115,
+   "chp_week": 27
   },
   "letters": {
    "published": 0

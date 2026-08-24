@@ -1600,6 +1600,16 @@
   "details": ""
  },
  {
+  "log_id": "260824BF0227",
+  "time": "Aug 24 2026  2:17PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Nb I5 Jso Frazier Mountain Park Rd",
+  "area": "Fort Tejon",
+  "lat": 34.816389,
+  "lon": -118.8825,
+  "details": ""
+ },
+ {
   "log_id": "260824BF0010",
   "time": "Aug 24 2026  2:46AM",
   "type": "1183-Trfc Collision-Unkn Inj",

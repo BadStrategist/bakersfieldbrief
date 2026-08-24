@@ -3,10 +3,19 @@
     "type": "assault",
     "time": "22:49",
     "agency": "Bakersfield Police Department",
-    "area": "Evanston Avenue area, southwest Bakersfield",
+    "area": "Evanston Court area, southwest Bakersfield",
     "notability": 4,
     "disposition": "responding",
     "summary": "Dispute at a wellness facility escalated when a roommate reportedly poured hot water on another resident and on bedding and equipment. Officers responded to the facility."
+  },
+  {
+    "type": "vegetation_fire",
+    "time": "21:19",
+    "agency": "Kern County Fire Department",
+    "area": "unincorporated Kern County",
+    "notability": 4,
+    "disposition": "responding",
+    "summary": "Brush fire reported in a field, possibly being put out by residents. Multiple engines, two battalions and dozers dispatched to the scene."
   },
   {
     "type": "family_disturbance",
@@ -15,25 +24,34 @@
     "area": "Riverlakes Drive, southwest Bakersfield",
     "notability": 3,
     "disposition": "responding",
-    "summary": "Domestic disturbance with residents pushing and throwing property. A female on scene said she was pregnant and had been struck. Units responding."
+    "summary": "Domestic disturbance with residents pushing and throwing property. A woman on scene said she was pregnant and had been struck. Units responding."
   },
   {
-    "type": "vegetation_fire",
-    "time": "21:19",
-    "agency": "Kern County Fire Department",
-    "area": "unincorporated Kern County",
+    "type": "burglary",
+    "time": "05:54",
+    "agency": "Bakersfield Police Department",
+    "area": "north Bakersfield",
     "notability": 3,
-    "disposition": "responding",
-    "summary": "Brush fire reported in a field, possibly being put out by residents. Multiple engines, two battalions and dozers dispatched."
+    "disposition": "investigating",
+    "summary": "A caller told store staff that a subject who had just fled had burglarized his residence. Officers investigating."
   },
   {
     "type": "welfare_check",
-    "time": "00:25",
+    "time": "00:26",
     "agency": "Bakersfield Police Department",
     "area": "Beardsley Avenue, southeast Bakersfield",
     "notability": 3,
     "disposition": "responding",
     "summary": "Welfare check on a 19-year-old woman at a residence who was under the influence and had made suicidal statements. Officers responded."
+  },
+  {
+    "type": "medical_aid",
+    "time": "04:24",
+    "agency": "Kern County Fire Department",
+    "area": "Urbano Drive, southwest Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid call for a subject with possible mental health issues; fire crews and mental health units dispatched."
   },
   {
     "type": "suspicious_person",
@@ -42,7 +60,7 @@
     "area": "Lake Isabella area",
     "notability": 2,
     "disposition": "searching",
-    "summary": "A man with his face covered was reported in the Lake Isabella area; a related report described a person tampering with property. Units searching."
+    "summary": "A man with his face covered was reported in the Lake Isabella area, with a related report of someone tampering with property. Units searched the area."
   },
   {
     "type": "disturbance",
@@ -57,7 +75,7 @@
     "type": "medical_aid",
     "time": "03:26",
     "agency": "Kern County Fire Department",
-    "area": "Oshkosh Avenue area, southeast Bakersfield",
+    "area": "Oshkosh Court area, southeast Bakersfield",
     "notability": 2,
     "disposition": "responding",
     "summary": "Medical aid call in southeast Bakersfield; fire crews responded to the scene."

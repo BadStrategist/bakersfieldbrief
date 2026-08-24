@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-23T21:33:15-07:00",
+ "built_at": "2026-08-24T01:26:25-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,14 +56,14 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 823,
+  "brief_words": 58,
   "daily": {
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 3,
    "top_story": "Cal State Bakersfield launches first mariachi ensemble",
-   "archive": "2026-08-23"
+   "archive": "2026-08-24"
   },
   "cityhall": {
    "upcoming_meetings": 3,
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -89,10 +89,10 @@
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-08-23"
+   "draft": "drafts/weekend-guide-2026-08-24"
   },
   "grapevine": {
-   "i5": "OPEN",
+   "i5": "RESTRICTIONS",
    "i5_pass": "OPEN",
    "log_entries": 60
   },
@@ -105,14 +105,14 @@
    "meetings": 3
   },
   "feed": {
-   "entries": 20
+   "entries": 21
   },
   "numbers": {
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 1,
-   "aqi": null,
-   "chp_week": 154
+   "aqi": 76,
+   "chp_week": 2
   },
   "letters": {
    "published": 0

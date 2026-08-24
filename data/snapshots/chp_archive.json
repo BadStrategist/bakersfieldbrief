@@ -1620,6 +1620,36 @@
   "details": ""
  },
  {
+  "log_id": "260824BF0062",
+  "time": "Aug 24 2026  7:05AM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sr99 N / Sr223 Ofr",
+  "area": "Bakersfield",
+  "lat": 35.205022,
+  "lon": -119.009598,
+  "details": ""
+ },
+ {
+  "log_id": "260824BF0067",
+  "time": "Aug 24 2026  7:12AM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sr58 W / Chester Ave Ofr",
+  "area": "Bakersfield",
+  "lat": 35.352642,
+  "lon": -119.013531,
+  "details": ""
+ },
+ {
+  "log_id": "260824BF0076",
+  "time": "Aug 24 2026  7:21AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "8000 Olive Dr",
+  "area": "Bakersfield",
+  "lat": 35.412507,
+  "lon": -119.091086,
+  "details": ""
+ },
+ {
   "log_id": "260824BF0002",
   "time": "Aug 24 2026 12:02AM",
   "type": "TADV-Traffic Advisory",

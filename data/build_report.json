@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-24T06:50:10-07:00",
+ "built_at": "2026-08-24T07:25:35-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,13 +55,13 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 667,
   "daily": {
    "news_headlines": 74,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 3,
    "top_story": "Cal State Bakersfield launches first mariachi ensemble",
    "archive": "2026-08-24"
   },
@@ -92,7 +92,7 @@
    "draft": "drafts/weekend-guide-2026-08-24"
   },
   "grapevine": {
-   "i5": "RESTRICTIONS",
+   "i5": "OPEN",
    "i5_pass": "OPEN",
    "log_entries": 60
   },
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 1,
-   "aqi": 63,
-   "chp_week": 9
+   "aqi": 59,
+   "chp_week": 12
   },
   "letters": {
    "published": 0

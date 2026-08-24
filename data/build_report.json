@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-24T09:08:18-07:00",
+ "built_at": "2026-08-24T09:20:03-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -111,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 1,
-   "aqi": 71,
+   "aqi": 81,
    "chp_week": 19
   },
   "letters": {
@@ -144,8 +144,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 256,
-   "alpr_new_week": 0,
+   "alpr_total": 257,
+   "alpr_new_week": 1,
    "pages": [
     "surveillance",
     "water",

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-24T21:12:50-07:00",
+ "built_at": "2026-08-25T01:07:59-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,14 +56,14 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 667,
+  "brief_words": 68,
   "daily": {
-   "news_headlines": 74,
+   "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Submit your pics to the California State Parks Foundation's 2026 Photo Contest",
-   "archive": "2026-08-24"
+   "top_story": "Community gathers in prayer and music to honor Levi Brown, teen killed at high school football game",
+   "archive": "2026-08-25"
   },
   "cityhall": {
    "upcoming_meetings": 3,
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -89,7 +89,7 @@
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-08-24"
+   "draft": "drafts/weekend-guide-2026-08-25"
   },
   "grapevine": {
    "i5": "RESTRICTIONS",
@@ -98,20 +98,20 @@
   },
   "events": {
    "groups": {
-    "This week": 5,
+    "This week": 4,
     "Next week": 3,
     "Later": 22
    },
    "meetings": 3
   },
   "feed": {
-   "entries": 21
+   "entries": 22
   },
   "numbers": {
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 1,
-   "aqi": 80,
+   "aqi": 42,
    "chp_week": 27
   },
   "letters": {

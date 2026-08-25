@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-25T01:07:59-07:00",
+ "built_at": "2026-08-25T03:07:14-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 1003, column 17"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 2,
    "top_story": "Community gathers in prayer and music to honor Levi Brown, teen killed at high school football game",
    "archive": "2026-08-25"
   },
@@ -112,7 +112,7 @@
    "alpr_total": 255,
    "kern_fires": 1,
    "aqi": 42,
-   "chp_week": 27
+   "chp_week": 29
   },
   "letters": {
    "published": 0

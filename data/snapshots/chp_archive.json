@@ -1,165 +1,5 @@
 [
  {
-  "log_id": "260817BF0204",
-  "time": "Aug 17 2026  1:07PM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "Sr58 W / Sr99 N",
-  "area": "Bakersfield",
-  "lat": 35.352805,
-  "lon": -119.0394,
-  "details": ""
- },
- {
-  "log_id": "260817BF0018",
-  "time": "Aug 17 2026  2:00AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Sb I5 Jno Frazier Mountain Park Rd",
-  "area": "Fort Tejon",
-  "lat": 34.820278,
-  "lon": -118.878889,
-  "details": ""
- },
- {
-  "log_id": "260817BF0046",
-  "time": "Aug 17 2026  7:00AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Nb I5 Jso Sr166",
-  "area": "Fort Tejon",
-  "lat": 35.055556,
-  "lon": -118.995,
-  "details": ""
- },
- {
-  "log_id": "260817BF0049",
-  "time": "Aug 17 2026  7:05AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Wb Sr58 At Oswell St",
-  "area": "Bakersfield",
-  "lat": 35.352222,
-  "lon": -118.949444,
-  "details": ""
- },
- {
-  "log_id": "260817BF0057",
-  "time": "Aug 17 2026  7:18AM",
-  "type": "1125A-Animal Hazard",
-  "location": "SR178 JWO The 4 Lane",
-  "area": "Bakersfield",
-  "lat": 35.547222,
-  "lon": -118.615278,
-  "details": ""
- },
- {
-  "log_id": "260817BF0409",
-  "time": "Aug 17 2026  7:39PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Nb I5 At Sr43",
-  "area": "Buttonwillow",
-  "lat": 35.293333,
-  "lon": -119.252222,
-  "details": ""
- },
- {
-  "log_id": "260817BF0073",
-  "time": "Aug 17 2026  7:51AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "3201 Pico Ave",
-  "area": "Bakersfield",
-  "lat": 35.39027,
-  "lon": -118.954208,
-  "details": ""
- },
- {
-  "log_id": "260817BF0074",
-  "time": "Aug 17 2026  7:55AM",
-  "type": "1125A-Animal Hazard",
-  "location": "Eb Sr58 At Fairfax Rd",
-  "area": "Bakersfield",
-  "lat": 35.351944,
-  "lon": -118.931944,
-  "details": ""
- },
- {
-  "log_id": "260817BF0435",
-  "time": "Aug 17 2026  8:23PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "1131 Lincoln St",
-  "area": "Bakersfield",
-  "lat": 35.385692,
-  "lon": -118.982543,
-  "details": ""
- },
- {
-  "log_id": "260817BF0109",
-  "time": "Aug 17 2026  9:19AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr99 S / 7th Standard Rd",
-  "area": "Bakersfield",
-  "lat": 35.441294,
-  "lon": -119.084247,
-  "details": ""
- },
- {
-  "log_id": "260817BF0110",
-  "time": "Aug 17 2026  9:21AM",
-  "type": "1125A-Animal Hazard",
-  "location": "0 Union Ave Onr",
-  "area": "Bakersfield",
-  "lat": 35.38392,
-  "lon": -119.004463,
-  "details": ""
- },
- {
-  "log_id": "260817BF0114",
-  "time": "Aug 17 2026  9:29AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr99 S / Sr58 E",
-  "area": "Bakersfield",
-  "lat": 35.35255,
-  "lon": -119.03962,
-  "details": ""
- },
- {
-  "log_id": "260817BF0118",
-  "time": "Aug 17 2026  9:36AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "0 Sr99 N",
-  "area": "Bakersfield",
-  "lat": 35.341782,
-  "lon": -119.039438,
-  "details": ""
- },
- {
-  "log_id": "260817BF0142",
-  "time": "Aug 17 2026 10:37AM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "1700 N Rancho Dr",
-  "area": "Bakersfield",
-  "lat": 35.121768,
-  "lon": -118.850603,
-  "details": ""
- },
- {
-  "log_id": "260817BF0161",
-  "time": "Aug 17 2026 11:32AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "0 Stockton Ave",
-  "area": "Bakersfield",
-  "lat": 35.427006,
-  "lon": -119.0248,
-  "details": ""
- },
- {
-  "log_id": "260817BF0003",
-  "time": "Aug 17 2026 12:05AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
   "log_id": "260818BF0312",
   "time": "Aug 18 2026  5:06PM",
   "type": "1181-Trfc Collision-Minor Inj",
@@ -1760,6 +1600,16 @@
   "details": ""
  },
  {
+  "log_id": "260824BF0375",
+  "time": "Aug 24 2026  8:11PM",
+  "type": "CZP-Assist with Construction",
+  "location": "I5 N / Sr58 Ofr",
+  "area": "Buttonwillow",
+  "lat": 35.398977,
+  "lon": -119.39718,
+  "details": ""
+ },
+ {
   "log_id": "260824BF0109",
   "time": "Aug 24 2026  8:42AM",
   "type": "CFIRE-Car Fire",
@@ -1777,6 +1627,16 @@
   "area": "Bakersfield",
   "lat": 35.35179,
   "lon": -118.909296,
+  "details": ""
+ },
+ {
+  "log_id": "260824BF0403",
+  "time": "Aug 24 2026  9:18PM",
+  "type": "CZP-Assist with Construction",
+  "location": "California Ave / Sr204",
+  "area": "BF",
+  "lat": 35.368358,
+  "lon": -119.002989,
   "details": ""
  },
  {

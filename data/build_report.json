@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-25T10:05:09-07:00",
+ "built_at": "2026-08-25T12:21:07-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -58,11 +58,11 @@
   "_digest_meta": "deterministic",
   "brief_words": 697,
   "daily": {
-   "news_headlines": 75,
+   "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Killer's wife to resume testimony in Taft murder trial",
+   "top_story": "Human remains found near Oildale remain unidentified: Coroner",
    "archive": "2026-08-25"
   },
   "cityhall": {
@@ -111,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 0,
-   "aqi": 74,
+   "aqi": 57,
    "chp_week": 39
   },
   "letters": {

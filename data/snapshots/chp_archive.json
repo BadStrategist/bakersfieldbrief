@@ -1743,10 +1743,10 @@
   "log_id": "260825BF0045",
   "time": "Aug 25 2026  7:16AM",
   "type": "1125-Traffic Hazard",
-  "location": "Nb I5 Jso Grapevine Rd",
+  "location": "I5 N / West Escape Ramp",
   "area": "Fort Tejon",
-  "lat": 34.9375,
-  "lon": -118.928611,
+  "lat": 34.918056,
+  "lon": -118.923889,
   "details": ""
  },
  {
@@ -1757,6 +1757,26 @@
   "area": "Bakersfield",
   "lat": 35.339989,
   "lon": -119.037184,
+  "details": ""
+ },
+ {
+  "log_id": "260825BF0052",
+  "time": "Aug 25 2026  7:30AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "SR99 N / Cecil Ave",
+  "area": "Bakersfield",
+  "lat": 35.775905,
+  "lon": -119.252339,
+  "details": ""
+ },
+ {
+  "log_id": "260825BF0060",
+  "time": "Aug 25 2026  7:35AM",
+  "type": "CFIRE-Car Fire",
+  "location": "Sunset Blvd / Duncan St",
+  "area": "Bakersfield",
+  "lat": 35.223425,
+  "lon": -118.869156,
   "details": ""
  }
 ]

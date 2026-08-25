@@ -1778,5 +1778,15 @@
   "lat": 35.223425,
   "lon": -118.869156,
   "details": ""
+ },
+ {
+  "log_id": "260825BF0079",
+  "time": "Aug 25 2026  8:28AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "30634-30699 Sr166",
+  "area": "Buttonwillow",
+  "lat": 35.043986,
+  "lon": -119.419972,
+  "details": ""
  }
 ]

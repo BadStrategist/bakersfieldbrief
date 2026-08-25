@@ -1690,6 +1690,36 @@
   "details": ""
  },
  {
+  "log_id": "260825BF0189",
+  "time": "Aug 25 2026  1:29PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sr99 S",
+  "area": "Bakersfield",
+  "lat": 35.362776,
+  "lon": -119.039773,
+  "details": ""
+ },
+ {
+  "log_id": "260825BF0190",
+  "time": "Aug 25 2026  1:30PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Wb Sr58 At Edison Rd",
+  "area": "Bakersfield",
+  "lat": 35.345556,
+  "lon": -118.878611,
+  "details": ""
+ },
+ {
+  "log_id": "260825BF0199",
+  "time": "Aug 25 2026  1:58PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "20003-20099 Sr119",
+  "area": "Bakersfield",
+  "lat": 35.267089,
+  "lon": -119.221187,
+  "details": ""
+ },
+ {
   "log_id": "260825BF0024",
   "time": "Aug 25 2026  4:53AM",
   "type": "TADV-Traffic Advisory",
@@ -1787,6 +1817,16 @@
   "area": "Buttonwillow",
   "lat": 35.043986,
   "lon": -119.419972,
+  "details": ""
+ },
+ {
+  "log_id": "260825BF0146",
+  "time": "Aug 25 2026 11:42AM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "0 Sr99 N",
+  "area": "Bakersfield",
+  "lat": 35.239769,
+  "lon": -119.015674,
   "details": ""
  }
 ]

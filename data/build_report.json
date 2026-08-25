@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-24T14:57:56-07:00",
+ "built_at": "2026-08-24T20:18:16-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -22,16 +22,16 @@
    "error": ""
   },
   "airnow": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "AirNow returned no data"
   },
   "calfire": {
    "ok": true,
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 1003, column 17"
   },
   "isabella": {
    "ok": true,
@@ -61,8 +61,8 @@
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "Community prayer night to be held in light of Independence High shooting",
+   "chp_new": 0,
+   "top_story": "'This is deeper than my son': Family of Bakersfield teen fatally shot at Independence HS mourns loss",
    "archive": "2026-08-24"
   },
   "cityhall": {
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -111,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 1,
-   "aqi": 115,
+   "aqi": null,
    "chp_week": 27
   },
   "letters": {

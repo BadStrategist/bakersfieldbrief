@@ -1720,6 +1720,16 @@
   "details": ""
  },
  {
+  "log_id": "260825BF0223",
+  "time": "Aug 25 2026  2:43PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Stockton Ave / Franklin St",
+  "area": "BF",
+  "lat": 35.201801,
+  "lon": -118.826175,
+  "details": ""
+ },
+ {
   "log_id": "260825BF0024",
   "time": "Aug 25 2026  4:53AM",
   "type": "TADV-Traffic Advisory",

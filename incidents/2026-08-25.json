@@ -1,0 +1,65 @@
+[
+  {
+    "type": "suspicious_circumstances",
+    "time": "22:55",
+    "agency": "Bakersfield Police Department",
+    "area": "Union Avenue & Columbus Street",
+    "notability": 4,
+    "disposition": "searching",
+    "summary": "Report of two men in a tan older Toyota Camry attempting to get an 18-year-old woman into their vehicle near Union Avenue and Columbus Street. The vehicle was last seen heading northbound on Union Avenue."
+  },
+  {
+    "type": "armed_subject",
+    "time": "00:56",
+    "agency": "Bakersfield Police Department",
+    "area": "2800 block C Street",
+    "notability": 4,
+    "disposition": "responding",
+    "summary": "Disturbance on the 2800 block of C Street — a subject in possession of a butcher knife, with additional knives reported inside the garage, while the reporting party stayed barricaded in a bathroom. Officers responding."
+  },
+  {
+    "type": "pursuit",
+    "time": "01:51",
+    "agency": "Bakersfield Police Department",
+    "area": "east Bakersfield (Oregon Street, Gage Avenue, Niles Street)",
+    "notability": 4,
+    "disposition": "active",
+    "summary": "Slow-speed pursuit of a minibike through east Bakersfield — westbound on Oregon Street, then northbound Gage Avenue and across Niles Street. Speeds held between roughly 15 and 37 mph with light traffic."
+  },
+  {
+    "type": "pursuit",
+    "time": "03:16",
+    "agency": "Bakersfield Police Department",
+    "area": "east Bakersfield",
+    "notability": 3,
+    "disposition": "active",
+    "summary": "A 2017 Nissan refused to stop for officers in east Bakersfield, with a unit tracking the vehicle."
+  },
+  {
+    "type": "suspicious_circumstances",
+    "time": "00:30",
+    "agency": "Bakersfield Police Department",
+    "area": "Coventry Drive",
+    "notability": 3,
+    "disposition": "investigating",
+    "summary": "A woman reported her ex-boyfriend threw a brick through her vehicle and patio door on Coventry Drive. Officers investigating."
+  },
+  {
+    "type": "runaway_juvenile",
+    "time": "00:31",
+    "agency": "Bakersfield Police Department",
+    "area": "near a park, Bakersfield",
+    "notability": 2,
+    "disposition": "searching",
+    "summary": "Search for a missing juvenile believed to be with a known associate across from a park; the juvenile was not supposed to be in that person's company."
+  },
+  {
+    "type": "arrest",
+    "time": "01:47",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield",
+    "notability": 2,
+    "disposition": "in custody",
+    "summary": "Two people taken into custody during a vehicle stop; officers cleared the vehicle before continuing."
+  }
+]

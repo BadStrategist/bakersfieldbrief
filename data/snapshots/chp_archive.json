@@ -1688,5 +1688,55 @@
   "lat": 35.372972,
   "lon": -118.976383,
   "details": ""
+ },
+ {
+  "log_id": "260825BF0024",
+  "time": "Aug 25 2026  4:53AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260825BF0025",
+  "time": "Aug 25 2026  4:58AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "Sr58 E / Coffee Rd",
+  "area": "Bakersfield",
+  "lat": 35.366776,
+  "lon": -119.092152,
+  "details": ""
+ },
+ {
+  "log_id": "260825BF0028",
+  "time": "Aug 25 2026  5:58AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Nb I5 Jso Twisselman Rd",
+  "area": "Buttonwillow",
+  "lat": 35.728062,
+  "lon": -119.736239,
+  "details": ""
+ },
+ {
+  "log_id": "260825BF0030",
+  "time": "Aug 25 2026  6:05AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Sb I5 Truck By-pass",
+  "area": "Fort Tejon",
+  "lat": 35.012639,
+  "lon": -118.954847,
+  "details": ""
+ },
+ {
+  "log_id": "260825BF0033",
+  "time": "Aug 25 2026  6:41AM",
+  "type": "1125A-Animal Hazard",
+  "location": "0 Sr99 N",
+  "area": "Bakersfield",
+  "lat": 35.366277,
+  "lon": -119.040803,
+  "details": ""
  }
 ]

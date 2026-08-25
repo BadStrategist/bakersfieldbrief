@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-24T20:18:16-07:00",
+ "built_at": "2026-08-24T21:12:50-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -22,8 +22,8 @@
    "error": ""
   },
   "airnow": {
-   "ok": false,
-   "error": "AirNow returned no data"
+   "ok": true,
+   "error": ""
   },
   "calfire": {
    "ok": true,
@@ -62,7 +62,7 @@
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "'This is deeper than my son': Family of Bakersfield teen fatally shot at Independence HS mourns loss",
+   "top_story": "Submit your pics to the California State Parks Foundation's 2026 Photo Contest",
    "archive": "2026-08-24"
   },
   "cityhall": {
@@ -111,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 1,
-   "aqi": null,
+   "aqi": 80,
    "chp_week": 27
   },
   "letters": {

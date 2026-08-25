@@ -1738,5 +1738,25 @@
   "lat": 35.366277,
   "lon": -119.040803,
   "details": ""
+ },
+ {
+  "log_id": "260825BF0045",
+  "time": "Aug 25 2026  7:16AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 Jso Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.9375,
+  "lon": -118.928611,
+  "details": ""
+ },
+ {
+  "log_id": "260825BF0046",
+  "time": "Aug 25 2026  7:17AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb Sr99 Jso Ming Ave",
+  "area": "Bakersfield",
+  "lat": 35.339989,
+  "lon": -119.037184,
+  "details": ""
  }
 ]

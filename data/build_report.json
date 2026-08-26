@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-26T03:55:08-07:00",
+ "built_at": "2026-08-26T06:41:35-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,11 +55,11 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 61,
+  "_digest_meta": "llm",
+  "brief_words": 790,
   "daily": {
-   "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_headlines": 74,
+   "news_digest": "llm",
    "alerts": 0,
    "chp_new": 0,
    "top_story": "California City council denies appeals challenging CoreCivic ICE detention facility",
@@ -111,17 +111,17 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 0,
-   "aqi": 91,
+   "aqi": 75,
    "chp_week": 50
   },
   "letters": {
    "published": 0
   },
   "overnight": {
-   "published": 16
+   "published": 17
   },
   "map": {
-   "dots": 27
+   "dots": 19
   },
   "sunday_read": {
    "topic": "Public safety",

@@ -1,185 +1,5 @@
 [
  {
-  "log_id": "260818BF0312",
-  "time": "Aug 18 2026  5:06PM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "NB SR99 JNO Ming Ave",
-  "area": "Bakersfield",
-  "lat": 35.339989,
-  "lon": -119.037184,
-  "details": ""
- },
- {
-  "log_id": "260818BF0328",
-  "time": "Aug 18 2026  5:35PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Sb Sr99 Jno Sr58 E",
-  "area": "BF",
-  "lat": 35.353333,
-  "lon": -119.039444,
-  "details": ""
- },
- {
-  "log_id": "260818BF0330",
-  "time": "Aug 18 2026  5:45PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Sr46 / Mccombs Ave",
-  "area": "Buttonwillow",
-  "lat": 35.615809,
-  "lon": -119.593614,
-  "details": ""
- },
- {
-  "log_id": "260818BF0343",
-  "time": "Aug 18 2026  6:26PM",
-  "type": "FIRE-Report of Fire",
-  "location": "Sb Sr99 At Ming Ave",
-  "area": "Bakersfield",
-  "lat": 35.339444,
-  "lon": -119.039444,
-  "details": ""
- },
- {
-  "log_id": "260818BF0030",
-  "time": "Aug 18 2026  6:27AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "9855 Compagnoni St",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260818BF0349",
-  "time": "Aug 18 2026  6:41PM",
-  "type": "FIRE-Report of Fire",
-  "location": "Sr178 W / Union Ave",
-  "area": "Bakersfield",
-  "lat": 35.383649,
-  "lon": -119.002924,
-  "details": ""
- },
- {
-  "log_id": "260818BF0036",
-  "time": "Aug 18 2026  6:45AM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "Fairfax Rd / Dorva Ave",
-  "area": "Bakersfield",
-  "lat": 35.381879,
-  "lon": -118.931036,
-  "details": ""
- },
- {
-  "log_id": "260818BF0044",
-  "time": "Aug 18 2026  7:07AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "0 I5 N",
-  "area": "Fort Tejon",
-  "lat": 34.95216,
-  "lon": -118.934356,
-  "details": ""
- },
- {
-  "log_id": "260818BF0043",
-  "time": "Aug 18 2026  7:07AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Valley West Rd / Elk Hills Rd",
-  "area": "Buttonwillow",
-  "lat": 35.209632,
-  "lon": -119.445603,
-  "details": ""
- },
- {
-  "log_id": "260818BF0045",
-  "time": "Aug 18 2026  7:09AM",
-  "type": "1125A-Animal Hazard",
-  "location": "Nb I5 Jno Twisselman Rd",
-  "area": "Buttonwillow",
-  "lat": 35.736667,
-  "lon": -119.7425,
-  "details": ""
- },
- {
-  "log_id": "260818BF0394",
-  "time": "Aug 18 2026  7:28PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Nb Sr99 At Wilson Rd",
-  "area": "Bakersfield",
-  "lat": 35.331944,
-  "lon": -119.039444,
-  "details": ""
- },
- {
-  "log_id": "260818BF0118",
-  "time": "Aug 18 2026 10:17AM",
-  "type": "1125A-Animal Hazard",
-  "location": "Sr178 At Walker Pass",
-  "area": "Bakersfield",
-  "lat": 35.662834,
-  "lon": -118.026719,
-  "details": ""
- },
- {
-  "log_id": "260818BF0121",
-  "time": "Aug 18 2026 10:27AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "5951 Niles St",
-  "area": "Bakersfield",
-  "lat": 35.375949,
-  "lon": -118.937744,
-  "details": ""
- },
- {
-  "log_id": "260818BF0126",
-  "time": "Aug 18 2026 10:39AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr58 E / Sr223",
-  "area": "Bakersfield",
-  "lat": 35.264167,
-  "lon": -118.658367,
-  "details": ""
- },
- {
-  "log_id": "260818BF0156",
-  "time": "Aug 18 2026 12:00PM",
-  "type": "WW-Wrong Way Driver",
-  "location": "SB SR99 JNO Herring Rd",
-  "area": "Bakersfield",
-  "lat": 35.153889,
-  "lon": -118.998333,
-  "details": ""
- },
- {
-  "log_id": "260818BF0174",
-  "time": "Aug 18 2026 12:20PM",
-  "type": "1125-Traffic Hazard",
-  "location": "NB I5 JSO Gorman School Rd",
-  "area": "Fort Tejon",
-  "lat": 34.79456,
-  "lon": -118.847656,
-  "details": ""
- },
- {
-  "log_id": "260818BF0006",
-  "time": "Aug 18 2026 12:47AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260818BF0187",
-  "time": "Aug 18 2026 12:49PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Wb Sr58 Jwo Oswell St",
-  "area": "Bakersfield",
-  "lat": 35.35255,
-  "lon": -118.954049,
-  "details": ""
- },
- {
   "log_id": "260819BF0015",
   "time": "Aug 19 2026  2:29AM",
   "type": "1125-Traffic Hazard",
@@ -1887,6 +1707,16 @@
   "area": "Bakersfield",
   "lat": 35.239769,
   "lon": -119.015674,
+  "details": ""
+ },
+ {
+  "log_id": "260826BF0002",
+  "time": "Aug 26 2026 12:00AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
   "details": ""
  }
 ]

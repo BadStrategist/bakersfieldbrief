@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-25T21:24:12-07:00",
+ "built_at": "2026-08-26T01:09:03-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,17 +56,17 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 697,
+  "brief_words": 66,
   "daily": {
-   "news_headlines": 74,
+   "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
-   "top_story": "Search and Rescue search for a body at Lake Ming",
-   "archive": "2026-08-25"
+   "chp_new": 1,
+   "top_story": "Kern County Sheriff Donny Youngblood to retire in January 2027 after 20 years as sheriff",
+   "archive": "2026-08-26"
   },
   "cityhall": {
-   "upcoming_meetings": 3,
+   "upcoming_meetings": 4,
    "county_items": 66,
    "drafts_generated": 0
   },
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -89,7 +89,7 @@
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-08-25"
+   "draft": "drafts/weekend-guide-2026-08-26"
   },
   "grapevine": {
    "i5": "RESTRICTIONS",
@@ -102,17 +102,17 @@
     "Next week": 3,
     "Later": 22
    },
-   "meetings": 3
+   "meetings": 4
   },
   "feed": {
-   "entries": 22
+   "entries": 23
   },
   "numbers": {
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 0,
-   "aqi": 77,
-   "chp_week": 49
+   "aqi": 80,
+   "chp_week": 50
   },
   "letters": {
    "published": 0

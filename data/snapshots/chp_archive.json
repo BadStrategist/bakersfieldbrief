@@ -1750,6 +1750,16 @@
   "details": ""
  },
  {
+  "log_id": "260826BF0202",
+  "time": "Aug 26 2026  3:58PM",
+  "type": "FIRE-Report of Fire",
+  "location": "6182-6598 Rosedale Hwy",
+  "area": "Bakersfield",
+  "lat": 35.383391,
+  "lon": -119.073986,
+  "details": ""
+ },
+ {
   "log_id": "260826BF0002",
   "time": "Aug 26 2026 12:00AM",
   "type": "TADV-Traffic Advisory",

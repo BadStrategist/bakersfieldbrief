@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-26T15:58:44-07:00",
+ "built_at": "2026-08-26T16:06:48-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,12 +56,12 @@
  },
  "section": {
   "_digest_meta": "llm",
-  "brief_words": 701,
+  "brief_words": 753,
   "daily": {
    "news_headlines": 74,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 4,
+   "chp_new": 1,
    "top_story": "2 charged Wednesday following shooting at Independence High School",
    "archive": "2026-08-26"
   },
@@ -98,9 +98,7 @@
   },
   "events": {
    "groups": {
-    "This week": 4,
-    "Next week": 3,
-    "Later": 22
+    "Later": 2
    },
    "meetings": 4
   },
@@ -112,7 +110,7 @@
    "alpr_total": 255,
    "kern_fires": 0,
    "aqi": 87,
-   "chp_week": 54
+   "chp_week": 55
   },
   "letters": {
    "published": 0

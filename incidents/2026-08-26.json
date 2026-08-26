@@ -1,0 +1,29 @@
+[
+  {
+    "type": "suspicious_circumstances",
+    "time": "21:18",
+    "agency": "Bakersfield Police Department",
+    "area": "2400 block South M Street",
+    "notability": 3,
+    "disposition": "investigating",
+    "summary": "An unknown subject was reported attempting a fourth entry into an apartment on the 2400 block of South M Street, with the resident barricaded in a bathroom with his dog while officers responded."
+  },
+  {
+    "type": "runaway_juvenile",
+    "time": "22:17",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield",
+    "notability": 2,
+    "disposition": "searching",
+    "summary": "A juvenile fled in a vehicle; a family member followed but had not yet provided a direction of travel or a description of the vehicle."
+  },
+  {
+    "type": "welfare_check",
+    "time": "05:09",
+    "agency": "Bakersfield Police Department",
+    "area": "2800 block University Avenue",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Police staged for a subject experiencing a mental-health crisis on the 2800 block of University Avenue."
+  }
+]

@@ -73,12 +73,37 @@ def _req(method: str, path: str, payload: dict | None = None, token: str = "") -
         raise SystemExit(f"MailerLite {method} {path} -> {e.code}: {detail}")
 
 
+def _today_campaign_exists(token: str) -> str | None:
+    """Return today's campaign id if a 'Daily Brief <today>' already exists
+    (created today), else None. Makes the send idempotent so a delayed CI
+    run or the Hermes watchdog never double-sends."""
+    from datetime import datetime
+    d = datetime.now()
+    name = f"Daily Brief {d:%Y-%m-%d}"
+    page = 1
+    while page <= 3:  # guard: at most 3 pages of recent campaigns
+        data = _req("GET", f"/campaigns?limit=100&sort=-created_at&page={page}", token=token)
+        rows = data.get("data") or []
+        if not rows:
+            break
+        for c in rows:
+            if c.get("name") == name:
+                return c.get("id")
+        page += 1
+    return None
+
+
 def main() -> int:
     token = _token()
     group = _group()
     if not HTML.exists():
         print(f"no rendered brief at {HTML} — run the build first")
         return 1
+
+    existing = _today_campaign_exists(token)
+    if existing:
+        print(f"already sent: campaign {existing} for today — skipping")
+        return 0
 
     txt = TXT.read_text(encoding="utf-8") if TXT.exists() else ""
     html = HTML.read_text(encoding="utf-8")

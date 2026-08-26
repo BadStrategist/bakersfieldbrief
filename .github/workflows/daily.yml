@@ -114,13 +114,16 @@ jobs:
             echo "no artifact changes"
           fi
 
-      # Newsletter send: once per day at the 8:30 PT build, email the freshly
-      # rendered brief to the MailerLite subscriber list (MAILERLITE_API_TOKEN +
-      # MAILERLITE_GROUP_ID). Without the key the script no-ops (prints the
-      # ready-to-send path) so CI never breaks. A send failure is reported in
-      # the run log but must not block the site deploy.
+      # Newsletter send: once per day at the 8:00 PT build (or any later
+      # run — the gate is hour >= 8, not == 8, so a GitHub-schedule delay
+      # that lands the run at 9:00/10:00 still sends instead of silently
+      # skipping). The script is idempotent (checks MailerLite for today's
+      # campaign first), so a delayed run + the Hermes watchdog can never
+      # double-send. Without the key the script no-ops (prints the
+      # ready-to-send path) so CI never breaks. A send failure is reported
+      # in the run log but must not block the site deploy.
       - name: Send daily newsletter (MailerLite)
-        if: steps.gate.outputs.hour == '8'
+        if: steps.gate.outputs.hour >= '8'
         continue-on-error: true
         env:
           MAILERLITE_API_TOKEN: ${{ secrets.MAILERLITE_API_TOKEN }}

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-26T01:09:03-07:00",
+ "built_at": "2026-08-26T03:55:08-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 3011, column 17"
   },
   "isabella": {
    "ok": true,
@@ -56,13 +56,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 66,
+  "brief_words": 61,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "Kern County Sheriff Donny Youngblood to retire in January 2027 after 20 years as sheriff",
+   "chp_new": 0,
+   "top_story": "California City council denies appeals challenging CoreCivic ICE detention facility",
    "archive": "2026-08-26"
   },
   "cityhall": {
@@ -111,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 0,
-   "aqi": 80,
+   "aqi": 91,
    "chp_week": 50
   },
   "letters": {

@@ -1860,6 +1860,26 @@
   "details": ""
  },
  {
+  "log_id": "260825BF0400",
+  "time": "Aug 25 2026  9:15PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "1700 - 1798 Belle Ter",
+  "area": "BF",
+  "lat": 35.346684,
+  "lon": -119.021316,
+  "details": ""
+ },
+ {
+  "log_id": "260825BF0399",
+  "time": "Aug 25 2026  9:17PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 Jno #2 Turn Thru",
+  "area": "Fort Tejon",
+  "lat": 34.89011,
+  "lon": -118.911239,
+  "details": ""
+ },
+ {
   "log_id": "260825BF0146",
   "time": "Aug 25 2026 11:42AM",
   "type": "1181-Trfc Collision-Minor Inj",

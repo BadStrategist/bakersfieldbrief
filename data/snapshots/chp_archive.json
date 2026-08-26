@@ -1780,6 +1780,16 @@
   "details": ""
  },
  {
+  "log_id": "260825BF0343",
+  "time": "Aug 25 2026  7:14PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Sr46 / Sr99 S",
+  "area": "Bakersfield",
+  "lat": 35.601816,
+  "lon": -119.211348,
+  "details": ""
+ },
+ {
   "log_id": "260825BF0045",
   "time": "Aug 25 2026  7:16AM",
   "type": "1125-Traffic Hazard",
@@ -1817,6 +1827,26 @@
   "area": "Bakersfield",
   "lat": 35.223425,
   "lon": -118.869156,
+  "details": ""
+ },
+ {
+  "log_id": "260825BF0357",
+  "time": "Aug 25 2026  7:42PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Golf Course Rd / Brandy St",
+  "area": "Buttonwillow",
+  "lat": 35.232167,
+  "lon": -119.36847,
+  "details": ""
+ },
+ {
+  "log_id": "260825BF0369",
+  "time": "Aug 25 2026  8:13PM",
+  "type": "CZP-Assist with Construction",
+  "location": "I5 N / Sr58 Ofr",
+  "area": "Buttonwillow",
+  "lat": 35.398977,
+  "lon": -119.39718,
   "details": ""
  },
  {

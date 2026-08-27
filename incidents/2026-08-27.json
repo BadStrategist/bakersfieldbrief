@@ -1,0 +1,38 @@
+[
+  {
+    "type": "medical_aid",
+    "time": "04:35",
+    "agency": "Kern County Fire Department",
+    "area": "White Lane, Bakersfield",
+    "notability": 2,
+    "disposition": "medical aid administered",
+    "summary": "Medical aid for a possible overdose at a motel on White Lane; responders administered Narcan. Caller was transferred to medical aid."
+  },
+  {
+    "type": "medical_aid",
+    "time": "00:11",
+    "agency": "Kern County Fire Department",
+    "area": "Stine Road",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid call on Stine Road. Callers asked for an ambulance but could not describe what had happened."
+  },
+  {
+    "type": "welfare_check",
+    "time": "00:04",
+    "agency": "Kern County Fire Department",
+    "area": "Mountain Oak Road",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Units dispatched to check the welfare of an elderly woman with dementia after she could not be reached."
+  },
+  {
+    "type": "hazardous_condition",
+    "time": "21:40",
+    "agency": "Kern County Fire Department",
+    "area": "unincorporated county area",
+    "notability": 2,
+    "disposition": "assessed",
+    "summary": "A tree branch came down onto a telephone wire and a vehicle, reported as a hazard condition."
+  }
+]

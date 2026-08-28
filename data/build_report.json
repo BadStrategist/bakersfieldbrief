@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-27T07:20:05-07:00",
+ "built_at": "2026-08-27T18:01:25-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 5755, column 3"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -55,20 +55,20 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1074,
   "daily": {
-   "news_headlines": 74,
-   "news_digest": "llm",
+   "news_headlines": 75,
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Kern County water agencies take early action against golden mussel threat to water supply",
+   "chp_new": 3,
+   "top_story": "Confusion from community, Kern High School District on new stadium security measures",
    "archive": "2026-08-27"
   },
   "cityhall": {
    "upcoming_meetings": 2,
-   "county_items": 66,
-   "drafts_generated": 3
+   "county_items": 105,
+   "drafts_generated": 0
   },
   "places": {
    "places": [
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 0,
-   "aqi": 64,
-   "chp_week": 55
+   "aqi": 82,
+   "chp_week": 58
   },
   "letters": {
    "published": 0

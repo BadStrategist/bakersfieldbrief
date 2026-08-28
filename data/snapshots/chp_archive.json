@@ -1,155 +1,5 @@
 [
  {
-  "log_id": "260819BF0015",
-  "time": "Aug 19 2026  2:29AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr58 Onr / I5 S",
-  "area": "Buttonwillow",
-  "lat": 35.399801,
-  "lon": -119.398843,
-  "details": ""
- },
- {
-  "log_id": "260819BF0021",
-  "time": "Aug 19 2026  3:39AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "South Union Ave / E Planz Rd",
-  "area": "Bakersfield",
-  "lat": 35.324936,
-  "lon": -119.002929,
-  "details": ""
- },
- {
-  "log_id": "260819BF0042",
-  "time": "Aug 19 2026  6:10AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "9855 Compagnoni St",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260819BF0043",
-  "time": "Aug 19 2026  6:27AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "67 E Evans Rd",
-  "area": "Bakersfield",
-  "lat": 35.70646,
-  "lon": -118.454582,
-  "details": ""
- },
- {
-  "log_id": "260819BF0045",
-  "time": "Aug 19 2026  6:37AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "0 Sr99 S",
-  "area": "Bakersfield",
-  "lat": 35.392791,
-  "lon": -119.044694,
-  "details": ""
- },
- {
-  "log_id": "260819BF0049",
-  "time": "Aug 19 2026  6:54AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "W Lerdo Hwy / Magnolia Ave",
-  "area": "Buttonwillow",
-  "lat": 35.500211,
-  "lon": -119.377034,
-  "details": ""
- },
- {
-  "log_id": "260819BF0054",
-  "time": "Aug 19 2026  6:58AM",
-  "type": "1180-Trfc Collision-Major Inj",
-  "location": "Elijah Way / Di Giorgio Rd",
-  "area": "Bakersfield",
-  "lat": 35.252347,
-  "lon": -118.954321,
-  "details": ""
- },
- {
-  "log_id": "260819BF0052",
-  "time": "Aug 19 2026  6:58AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "0 White Ln Onr",
-  "area": "Bakersfield",
-  "lat": 35.320867,
-  "lon": -119.036877,
-  "details": ""
- },
- {
-  "log_id": "260819BF0063",
-  "time": "Aug 19 2026  7:06AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Sr46 Ofr / I5 N",
-  "area": "Buttonwillow",
-  "lat": 35.611848,
-  "lon": -119.649718,
-  "details": ""
- },
- {
-  "log_id": "260819BF0418",
-  "time": "Aug 19 2026  7:08PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Nb I5 At Sr43",
-  "area": "Buttonwillow",
-  "lat": 35.293333,
-  "lon": -119.252222,
-  "details": ""
- },
- {
-  "log_id": "260819BF0068",
-  "time": "Aug 19 2026  7:13AM",
-  "type": "FIRE-Report of Fire",
-  "location": "Wb Sr58 At Bena Rd",
-  "area": "Bakersfield",
-  "lat": 35.26985,
-  "lon": -118.682381,
-  "details": ""
- },
- {
-  "log_id": "260819BF0432",
-  "time": "Aug 19 2026  7:28PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Pond Rd / Sr99 N",
-  "area": "Bakersfield",
-  "lat": 35.71806,
-  "lon": -119.237134,
-  "details": ""
- },
- {
-  "log_id": "260819BF0107",
-  "time": "Aug 19 2026  7:46AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Sb Sr99 At Lerdo Hwy",
-  "area": "Bakersfield",
-  "lat": 35.499702,
-  "lon": -119.163617,
-  "details": ""
- },
- {
-  "log_id": "260819BF0118",
-  "time": "Aug 19 2026  8:27AM",
-  "type": "1125-Traffic Hazard",
-  "location": "/eb58 Jwo Coffee",
-  "area": "",
-  "lat": null,
-  "lon": null,
-  "details": ""
- },
- {
-  "log_id": "260819BF0001",
-  "time": "Aug 19 2026 12:02AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
   "log_id": "260820BF0005",
   "time": "Aug 20 2026  1:01AM",
   "type": "1182-Trfc Collision-No Inj",
@@ -1767,6 +1617,36 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260827BF0269",
+  "time": "Aug 27 2026  3:48PM",
+  "type": "WIND Advisory",
+  "location": "1033 Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.825534,
+  "lon": -118.87775,
+  "details": ""
+ },
+ {
+  "log_id": "260827BF0306",
+  "time": "Aug 27 2026  5:21PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Sr58 E / S Edison Rd",
+  "area": "Bakersfield",
+  "lat": 35.345437,
+  "lon": -118.878632,
+  "details": ""
+ },
+ {
+  "log_id": "260827BF0314",
+  "time": "Aug 27 2026  5:44PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Sr58 W / Bena Rd",
+  "area": "Bakersfield",
+  "lat": 35.270011,
+  "lon": -118.682452,
   "details": ""
  }
 ]

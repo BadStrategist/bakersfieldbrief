@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-27T19:20:37-07:00",
+ "built_at": "2026-08-28T07:02:10-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 4491, column 13"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -55,15 +55,15 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 1074,
+  "_digest_meta": "llm",
+  "brief_words": 1363,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Rep. Vince Fong on the golden mussel in Kern County and protecting water infrastructure",
-   "archive": "2026-08-27"
+   "chp_new": 5,
+   "top_story": "CHP investigating deadly crash on Copus Road",
+   "archive": "2026-08-28"
   },
   "cityhall": {
    "upcoming_meetings": 2,
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -89,39 +89,39 @@
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-08-27"
+   "draft": "drafts/weekend-guide-2026-08-28"
   },
   "grapevine": {
-   "i5": "CLOSED",
+   "i5": "RESTRICTIONS",
    "i5_pass": "OPEN",
    "log_entries": 60
   },
   "events": {
    "groups": {
-    "This week": 4,
-    "Next week": 3,
-    "Later": 23
+    "This week": 3,
+    "Next week": 4,
+    "Later": 22
    },
    "meetings": 2
   },
   "feed": {
-   "entries": 24
+   "entries": 25
   },
   "numbers": {
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 0,
-   "aqi": 80,
-   "chp_week": 58
+   "aqi": 57,
+   "chp_week": 63
   },
   "letters": {
    "published": 0
   },
   "overnight": {
-   "published": 18
+   "published": 19
   },
   "map": {
-   "dots": 18
+   "dots": 15
   },
   "sunday_read": {
    "topic": "Public safety",

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-28T14:51:27-07:00",
+ "built_at": "2026-08-28T14:56:09-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 4491, column 13"
   },
   "isabella": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
+   "chp_new": 0,
    "top_story": "Kern County Sheriff\u2019s Office plans to buy new armored vehicle \u2018Rook\u2019",
    "archive": "2026-08-28"
   },

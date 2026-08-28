@@ -28,11 +28,38 @@
   },
   {
     "type": "medical_aid",
+    "time": "04:00",
+    "agency": "Kern County Fire Department",
+    "area": "Coffee Road near Brookside, Bakersfield",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Medical crews were called to the front of Brookside on Coffee Road, where a person outside at the tables was unconscious but breathing in what was reported as a possible overdose."
+  },
+  {
+    "type": "medical_aid",
     "time": "03:35",
     "agency": "Kern County Fire Department",
     "area": "West Mariposa Avenue, Bakersfield",
     "notability": 2,
     "disposition": "responding",
     "summary": "Medical aid for a diabetic emergency on West Mariposa Avenue."
+  },
+  {
+    "type": "welfare_check",
+    "time": "04:11",
+    "agency": "Kern County Sheriff's Office",
+    "area": "Wagy Flat Road, Wofford Heights",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "A deputy was sent to check the welfare of a possible passenger in a vehicle on Wagy Flat Road near Wofford Heights."
+  },
+  {
+    "type": "medical_aid",
+    "time": "00:36",
+    "agency": "Kern County Fire Department",
+    "area": "Max Drive, Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Engine 46 was dispatched for a medical aid on Max Drive, where the address was being confirmed with the reporting party."
   }
 ]

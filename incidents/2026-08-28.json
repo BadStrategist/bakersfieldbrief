@@ -1,0 +1,38 @@
+[
+  {
+    "type": "fire",
+    "time": "22:55",
+    "agency": "Kern County Fire Department",
+    "area": "East Brundage Lane near Highway 99, Bakersfield",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Units rolled on a grass fire reported near the Hampton Inn on East Brundage Lane next to Highway 99."
+  },
+  {
+    "type": "domestic",
+    "time": "23:10",
+    "agency": "Bakersfield Police Department",
+    "area": "Lincoln Street, Bakersfield",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Officers responded to a domestic disturbance at an apartment on Lincoln Street where a woman reported being prevented from leaving."
+  },
+  {
+    "type": "welfare_check",
+    "time": "23:31",
+    "agency": "Kern County Sheriff's Office",
+    "area": "Grand Prairie Drive, Bakersfield",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Deputies checked on a Grand Prairie Drive home after the resident reported the alarm sounding and said someone was on the roof."
+  },
+  {
+    "type": "medical_aid",
+    "time": "03:35",
+    "agency": "Kern County Fire Department",
+    "area": "West Mariposa Avenue, Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid for a diabetic emergency on West Mariposa Avenue."
+  }
+]

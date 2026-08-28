@@ -1510,6 +1510,26 @@
   "details": ""
  },
  {
+  "log_id": "260828BF0230",
+  "time": "Aug 28 2026  2:51PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "3301 Virginia Ave",
+  "area": "Bakersfield",
+  "lat": 35.361438,
+  "lon": -118.947258,
+  "details": ""
+ },
+ {
+  "log_id": "260828BF0234",
+  "time": "Aug 28 2026  2:53PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Caliente Bodfish Rd / Breckinridge Ave",
+  "area": "Bakersfield",
+  "lat": 35.485296,
+  "lon": -118.526506,
+  "details": ""
+ },
+ {
   "log_id": "260828BF0045",
   "time": "Aug 28 2026  5:22AM",
   "type": "1144-Fatality",

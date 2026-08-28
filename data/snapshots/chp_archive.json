@@ -1460,6 +1460,16 @@
   "details": ""
  },
  {
+  "log_id": "260828BF0198",
+  "time": "Aug 28 2026  1:44PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sb Sr99 At Sherwood Ave",
+  "area": "Bakersfield",
+  "lat": 35.676527,
+  "lon": -119.227201,
+  "details": ""
+ },
+ {
   "log_id": "260828BF0023",
   "time": "Aug 28 2026  1:55AM",
   "type": "WIND Advisory",
@@ -1467,6 +1477,36 @@
   "area": "Fort Tejon",
   "lat": 34.874188,
   "lon": -118.891777,
+  "details": ""
+ },
+ {
+  "log_id": "260828BF0206",
+  "time": "Aug 28 2026  2:02PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "2800-2897 Kern River Canyon Rd",
+  "area": "Bakersfield",
+  "lat": 35.590299,
+  "lon": -118.503082,
+  "details": ""
+ },
+ {
+  "log_id": "260828BF0208",
+  "time": "Aug 28 2026  2:14PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Nb I5 Jso Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.9375,
+  "lon": -118.928611,
+  "details": ""
+ },
+ {
+  "log_id": "260828BF0229",
+  "time": "Aug 28 2026  2:48PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jno Lost Hills Rd",
+  "area": "Buttonwillow",
+  "lat": 35.666389,
+  "lon": -119.690833,
   "details": ""
  },
  {

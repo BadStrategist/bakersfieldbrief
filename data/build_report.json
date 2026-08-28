@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-28T07:02:10-07:00",
+ "built_at": "2026-08-28T14:51:27-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,14 +55,14 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1363,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 5,
-   "top_story": "CHP investigating deadly crash on Copus Road",
+   "chp_new": 4,
+   "top_story": "Kern County Sheriff\u2019s Office plans to buy new armored vehicle \u2018Rook\u2019",
    "archive": "2026-08-28"
   },
   "cityhall": {
@@ -100,7 +100,7 @@
    "groups": {
     "This week": 3,
     "Next week": 4,
-    "Later": 22
+    "Later": 23
    },
    "meetings": 2
   },
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 0,
-   "aqi": 57,
-   "chp_week": 63
+   "aqi": 71,
+   "chp_week": 67
   },
   "letters": {
    "published": 0

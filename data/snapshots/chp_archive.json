@@ -1360,6 +1360,36 @@
   "details": ""
  },
  {
+  "log_id": "260829BF0218",
+  "time": "Aug 29 2026  1:39PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr166 / Soda Lake Rd",
+  "area": "Buttonwillow",
+  "lat": 34.963178,
+  "lon": -119.446101,
+  "details": ""
+ },
+ {
+  "log_id": "260829BF0221",
+  "time": "Aug 29 2026  1:46PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "13676 - 15713 CORCORAN RD",
+  "area": "Buttonwillow",
+  "lat": 35.686226,
+  "lon": -119.580002,
+  "details": ""
+ },
+ {
+  "log_id": "260829BF0230",
+  "time": "Aug 29 2026  1:58PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "E White Ln / South Union Ave",
+  "area": "Bakersfield",
+  "lat": 35.317653,
+  "lon": -119.002937,
+  "details": ""
+ },
+ {
   "log_id": "260829BF0002",
   "time": "Aug 29 2026 12:01AM",
   "type": "TADV-Traffic Advisory",

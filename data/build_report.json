@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-29T06:06:29-07:00",
+ "built_at": "2026-08-29T06:09:20-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 4273, column 2"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -55,11 +55,11 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 60,
+  "_digest_meta": "llm",
+  "brief_words": 797,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
    "chp_new": 0,
    "top_story": "Three dead, several injured after crash on Copus Road",

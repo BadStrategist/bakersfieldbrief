@@ -1530,6 +1530,26 @@
   "details": ""
  },
  {
+  "log_id": "260828BF0279",
+  "time": "Aug 28 2026  4:35PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Nb Sr99 At Panama Ln",
+  "area": "Bakersfield",
+  "lat": 35.292236,
+  "lon": -119.029392,
+  "details": ""
+ },
+ {
+  "log_id": "260828BF0293",
+  "time": "Aug 28 2026  4:54PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Wb Sr178 Jwo Union Ave",
+  "area": "Bakersfield",
+  "lat": 35.383611,
+  "lon": -119.003889,
+  "details": ""
+ },
+ {
   "log_id": "260828BF0045",
   "time": "Aug 28 2026  5:22AM",
   "type": "1144-Fatality",

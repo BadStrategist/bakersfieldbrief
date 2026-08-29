@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-28T14:59:19-07:00",
+ "built_at": "2026-08-28T17:02:09-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -62,11 +62,11 @@
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 2,
-   "top_story": "Kern County Sheriff\u2019s Office plans to buy new armored vehicle \u2018Rook\u2019",
+   "top_story": "Adventist Health Bakersfield to offer free childhood immunizations in September",
    "archive": "2026-08-28"
   },
   "cityhall": {
-   "upcoming_meetings": 2,
+   "upcoming_meetings": 3,
    "county_items": 105,
    "drafts_generated": 0
   },
@@ -102,7 +102,7 @@
     "Next week": 4,
     "Later": 23
    },
-   "meetings": 2
+   "meetings": 3
   },
   "feed": {
    "entries": 25
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 0,
-   "aqi": 71,
-   "chp_week": 69
+   "aqi": 101,
+   "chp_week": 71
   },
   "letters": {
    "published": 0

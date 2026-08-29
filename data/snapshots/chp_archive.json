@@ -1670,6 +1670,16 @@
   "details": ""
  },
  {
+  "log_id": "260828BF0373",
+  "time": "Aug 28 2026  8:30PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sr204 N Airoprt Dr Con / Airport Dr",
+  "area": "Bakersfield",
+  "lat": 35.403024,
+  "lon": -119.040752,
+  "details": ""
+ },
+ {
   "log_id": "260828BF0002",
   "time": "Aug 28 2026 12:01AM",
   "type": "TADV-Traffic Advisory",

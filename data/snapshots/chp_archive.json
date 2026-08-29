@@ -1630,6 +1630,46 @@
   "details": ""
  },
  {
+  "log_id": "260828BF0354",
+  "time": "Aug 28 2026  7:32PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "8200 - 9799 Malaga Rd",
+  "area": "Bakersfield",
+  "lat": 35.281773,
+  "lon": -118.860699,
+  "details": ""
+ },
+ {
+  "log_id": "260828BF0357",
+  "time": "Aug 28 2026  7:38PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Kern River Power House 1",
+  "area": "Bakersfield",
+  "lat": 35.460226,
+  "lon": -118.779062,
+  "details": ""
+ },
+ {
+  "log_id": "260828BF0361",
+  "time": "Aug 28 2026  7:46PM",
+  "type": "1125A-Animal Hazard",
+  "location": "Wb Sr58 Jeo Mount Vernon Ave",
+  "area": "Bakersfield",
+  "lat": 35.352778,
+  "lon": -118.960556,
+  "details": ""
+ },
+ {
+  "log_id": "260828BF0365",
+  "time": "Aug 28 2026  7:54PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Airport Dr / Sr204 N Airoprt Dr Con",
+  "area": "Bakersfield",
+  "lat": 35.403024,
+  "lon": -119.040752,
+  "details": ""
+ },
+ {
   "log_id": "260828BF0002",
   "time": "Aug 28 2026 12:01AM",
   "type": "TADV-Traffic Advisory",

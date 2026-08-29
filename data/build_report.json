@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-28T19:06:39-07:00",
+ "built_at": "2026-08-28T20:03:45-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -22,8 +22,8 @@
    "error": ""
   },
   "airnow": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "AirNow returned no data"
   },
   "calfire": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 5,
+   "chp_new": 4,
    "top_story": "WATCH: 27 Warriors",
    "archive": "2026-08-28"
   },
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 0,
-   "aqi": 122,
-   "chp_week": 76
+   "aqi": null,
+   "chp_week": 80
   },
   "letters": {
    "published": 0

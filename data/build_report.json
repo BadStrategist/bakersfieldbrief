@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-28T17:02:09-07:00",
+ "built_at": "2026-08-28T19:06:39-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -61,8 +61,8 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
-   "top_story": "Adventist Health Bakersfield to offer free childhood immunizations in September",
+   "chp_new": 5,
+   "top_story": "WATCH: 27 Warriors",
    "archive": "2026-08-28"
   },
   "cityhall": {
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 0,
-   "aqi": 101,
-   "chp_week": 71
+   "aqi": 122,
+   "chp_week": 76
   },
   "letters": {
    "published": 0

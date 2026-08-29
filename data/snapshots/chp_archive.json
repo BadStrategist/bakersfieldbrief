@@ -1570,6 +1570,26 @@
   "details": ""
  },
  {
+  "log_id": "260828BF0328",
+  "time": "Aug 28 2026  6:23PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr223 / Sr58",
+  "area": "Bakersfield",
+  "lat": 35.264167,
+  "lon": -118.658367,
+  "details": ""
+ },
+ {
+  "log_id": "260828BF0330",
+  "time": "Aug 28 2026  6:45PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr99 N / Sr99 N Sr58 Con",
+  "area": "BF",
+  "lat": 35.351389,
+  "lon": -119.039167,
+  "details": ""
+ },
+ {
   "log_id": "260828BF0057",
   "time": "Aug 28 2026  6:46AM",
   "type": "20002-Hit and Run No Injuries",
@@ -1577,6 +1597,36 @@
   "area": "Bakersfield",
   "lat": 35.352013,
   "lon": -119.036752,
+  "details": ""
+ },
+ {
+  "log_id": "260828BF0341",
+  "time": "Aug 28 2026  6:55PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sr43 / Pond Rd",
+  "area": "Bakersfield",
+  "lat": 35.71767,
+  "lon": -119.33044,
+  "details": ""
+ },
+ {
+  "log_id": "260828BF0342",
+  "time": "Aug 28 2026  6:57PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 Sr58 W",
+  "area": "Bakersfield",
+  "lat": 35.248286,
+  "lon": -118.595266,
+  "details": ""
+ },
+ {
+  "log_id": "260828BF0345",
+  "time": "Aug 28 2026  6:58PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr58 E / Allen Rd",
+  "area": "Bakersfield",
+  "lat": 35.360945,
+  "lon": -119.145544,
   "details": ""
  },
  {

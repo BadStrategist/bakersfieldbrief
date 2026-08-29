@@ -76,10 +76,14 @@ def _req(method: str, path: str, payload: dict | None = None, token: str = "") -
 def _today_campaign_exists(token: str) -> str | None:
     """Return today's campaign id if a 'Daily Brief <today>' already exists
     (created today), else None. Makes the send idempotent so a delayed CI
-    run or the Hermes watchdog never double-sends."""
-    from datetime import datetime
-    d = datetime.now()
-    name = f"Daily Brief {d:%Y-%m-%d}"
+    run or the Hermes watchdog never double-sends.
+
+    Uses Pacific time (common.today_pacific) — NOT datetime.now(), which on
+    a GitHub Actions runner is UTC. Between 4pm PT and midnight PT the UTC
+    date is already "tomorrow", so comparing against UTC made the check miss
+    today's campaign and re-send (three emails on 2026-08-28)."""
+    d = common.today_pacific()
+    name = f"Daily Brief {d.isoformat()}"
     page = 1
     while page <= 3:  # guard: at most 3 pages of recent campaigns
         data = _req("GET", f"/campaigns?limit=100&sort=-created_at&page={page}", token=token)

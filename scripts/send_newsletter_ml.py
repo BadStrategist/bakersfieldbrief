@@ -73,6 +73,12 @@ def _req(method: str, path: str, payload: dict | None = None, token: str = "") -
         raise SystemExit(f"MailerLite {method} {path} -> {e.code}: {detail}")
 
 
+def _campaign_name(d) -> str:
+    """The canonical campaign name for a date — shared by the idempotency
+    check and the sender so the two can never drift apart."""
+    return f"Daily Brief {d.isoformat()}"
+
+
 def _today_campaign_exists(token: str) -> str | None:
     """Return today's campaign id if a 'Daily Brief <today>' already exists
     (created today), else None. Makes the send idempotent so a delayed CI
@@ -83,7 +89,7 @@ def _today_campaign_exists(token: str) -> str | None:
     date is already "tomorrow", so comparing against UTC made the check miss
     today's campaign and re-send (three emails on 2026-08-28)."""
     d = common.today_pacific()
-    name = f"Daily Brief {d.isoformat()}"
+    name = _campaign_name(d)
     page = 1
     while page <= 3:  # guard: at most 3 pages of recent campaigns
         data = _req("GET", f"/campaigns?limit=100&sort=-created_at&page={page}", token=token)
@@ -120,7 +126,7 @@ def main() -> int:
     # content required for missing_data to be empty; DO NOT send plain_text
     # alongside content — the API 422s with "emails.0 must be an array").
     payload = {
-        "name": f"Daily Brief {d.isoformat()}",
+        "name": _campaign_name(d),
         "type": "regular",
         "groups": [group],
         "emails": [{

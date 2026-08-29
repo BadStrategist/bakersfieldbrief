@@ -757,3 +757,37 @@ class TestNoGuessingGate:
 
 
 
+
+
+# ---------------------------------------------------------------- newsletter
+def test_newsletter_idempotency_uses_pacific_date():
+    """The send script must look for 'Daily Brief <Pacific-today>' — NOT the
+    UTC date (GitHub runners are UTC; between 4pm PT and midnight PT the UTC
+    date is tomorrow, which caused 3 emails on 2026-08-28)."""
+    import sys as _sys
+    from pathlib import Path as _P
+    _sys.path.insert(0, str(_P(__file__).resolve().parent.parent / "scripts"))
+    import send_newsletter_ml as sn
+
+    # The check must construct the name from common.today_pacific()
+    import inspect
+    src = inspect.getsource(sn._today_campaign_exists)
+    # strip the docstring so its prose about the old bug doesn't trip the check
+    code = src.split('"""', 2)[2] if '"""' in src else src
+    assert "common.today_pacific()" in code, "idempotency check must use Pacific date"
+    assert "datetime.now()" not in code, "UTC datetime.now() caused duplicate sends"
+
+    # And the matching must be exact (same name the sender uses)
+    assert sn._today_campaign_exists.__doc__ and "three emails on 2026-08-28" in sn._today_campaign_exists.__doc__
+
+
+def test_newsletter_campaign_name_format():
+    """Campaign name must be 'Daily Brief YYYY-MM-DD' in Pacific time."""
+    from build import common
+    import sys as _sys
+    from pathlib import Path as _P
+    _sys.path.insert(0, str(_P(__file__).resolve().parent.parent / "scripts"))
+    import send_newsletter_ml as sn
+    d = common.today_pacific()
+    name = f"Daily Brief {d.isoformat()}"
+    assert name == sn._campaign_name(d), "sender and idempotency check must agree on the name"

@@ -1,0 +1,101 @@
+[
+  {
+    "type": "robbery",
+    "time": "23:42",
+    "agency": "Bakersfield Police Department",
+    "area": "East California Avenue & Williams Street area",
+    "notability": 4,
+    "disposition": "investigating",
+    "summary": "Strong-arm robbery reported near East California Avenue and Williams Street, with medical aid also dispatched to the scene."
+  },
+  {
+    "type": "structure_fire",
+    "time": "01:39",
+    "agency": "Kern County Fire Department",
+    "area": "Commercial Avenue, east Bakersfield",
+    "notability": 3,
+    "disposition": "handled",
+    "summary": "Structure fire reported on Commercial Avenue — crews located a burnt electrical outlet; multiple engines and a battalion responded."
+  },
+  {
+    "type": "family_disturbance",
+    "time": "01:12",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield",
+    "notability": 3,
+    "disposition": "investigating",
+    "summary": "A caller reported threats made during a family dispute, with yelling heard in the background before the call dropped."
+  },
+  {
+    "type": "suspicious_circumstances",
+    "time": "23:04",
+    "agency": "Bakersfield Police Department",
+    "area": "Ginger Oak Lane",
+    "notability": 2,
+    "disposition": "investigating",
+    "summary": "Suspicious vehicle near the mailboxes on Ginger Oak Lane — the driver made a threatening comment when confronted; nothing was seen in hand."
+  },
+  {
+    "type": "vehicle_fire",
+    "time": "23:09",
+    "agency": "Kern County Fire Department",
+    "area": "Muller Road",
+    "notability": 2,
+    "disposition": "extinguished",
+    "summary": "Vehicle fire on Muller Road; crews responded to the scene."
+  },
+  {
+    "type": "medical_aid",
+    "time": "00:35",
+    "agency": "Kern County Fire Department / Kern County Sheriff's Office",
+    "area": "Wisteria Street",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid call on Wisteria Street; units staged for law enforcement before responding."
+  },
+  {
+    "type": "welfare_check",
+    "time": "02:39",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Welfare concern — a resident who relies on oxygen called for help after her husband left to take out the trash more than an hour earlier and did not return."
+  },
+  {
+    "type": "family_disturbance",
+    "time": "02:48",
+    "agency": "Kern County Sheriff's Office",
+    "area": "Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Family disturbance at a residence — caller reported a dispute involving multiple people in different rooms."
+  },
+  {
+    "type": "reckless_driver",
+    "time": "02:26",
+    "agency": "Bakersfield Police Department",
+    "area": "College Avenue, 7000 block",
+    "notability": 2,
+    "disposition": "searching",
+    "summary": "Dark-colored vehicle reported racing up and down the street in the 7000 block of College Avenue."
+  },
+  {
+    "type": "medical_aid",
+    "time": "23:30",
+    "agency": "Kern County Fire Department",
+    "area": "Navigation Center, east Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid at the Navigation Center on East Brundage Lane."
+  },
+  {
+    "type": "traffic_collision",
+    "time": "02:07",
+    "agency": "CHP",
+    "area": "unincorporated Kern County",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Traffic collision reported along a Kern County highway; units responding."
+  }
+]

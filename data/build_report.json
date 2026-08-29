@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-29T05:02:12-07:00",
+ "built_at": "2026-08-29T06:06:29-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 4273, column 2"
   },
   "isabella": {
    "ok": true,
@@ -111,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 0,
-   "aqi": 84,
+   "aqi": 81,
    "chp_week": 85
   },
   "letters": {

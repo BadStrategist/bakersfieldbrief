@@ -1680,6 +1680,16 @@
   "details": ""
  },
  {
+  "log_id": "260828BF0393",
+  "time": "Aug 28 2026  9:14PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "A St / S 10th St",
+  "area": "BF",
+  "lat": 35.136821,
+  "lon": -119.465121,
+  "details": ""
+ },
+ {
   "log_id": "260828BF0002",
   "time": "Aug 28 2026 12:01AM",
   "type": "TADV-Traffic Advisory",

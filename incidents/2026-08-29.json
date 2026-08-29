@@ -1,21 +1,48 @@
 [
   {
+    "type": "vegetation_fire",
+    "time": "05:59",
+    "agency": "Kern County Fire Department",
+    "area": "orchard in rural Kern County",
+    "notability": 4,
+    "disposition": "active",
+    "summary": "Orchard fire reported actively spreading early Saturday morning, with crews asking whether additional resources should be started."
+  },
+  {
     "type": "robbery",
     "time": "23:42",
     "agency": "Bakersfield Police Department",
     "area": "East California Avenue & Williams Street area",
     "notability": 4,
     "disposition": "investigating",
-    "summary": "Strong-arm robbery reported near East California Avenue and Williams Street, with medical aid also dispatched to the scene."
+    "summary": "Strong-arm robbery near East California Avenue and Williams Street, with medical aid also dispatched to the scene. Reporting party standing by for contact; suspects described in a gray BMW and a black-and-white Hyundai."
   },
   {
     "type": "structure_fire",
     "time": "01:39",
     "agency": "Kern County Fire Department",
-    "area": "Commercial Avenue, east Bakersfield",
+    "area": "east Bakersfield",
     "notability": 3,
     "disposition": "handled",
-    "summary": "Structure fire reported on Commercial Avenue — crews located a burnt electrical outlet; multiple engines and a battalion responded."
+    "summary": "Structure fire in east Bakersfield — crews found a burnt electrical outlet; multiple engines and a battalion responded."
+  },
+  {
+    "type": "vehicle_into_pole",
+    "time": "05:07",
+    "agency": "Kern County Fire Department / Bakersfield Fire",
+    "area": "Niles Street",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Vehicle versus pole on Niles Street with a full rescue response — engines, rescue, truck and battalion. Reporting party advised no patient on scene."
+  },
+  {
+    "type": "suicidal_subject",
+    "time": "06:03",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield",
+    "notability": 3,
+    "disposition": "searching",
+    "summary": "Attempt to locate a male subject who called a crisis hotline and stated he had attempted suicide by gas exposure a few hours earlier."
   },
   {
     "type": "family_disturbance",
@@ -24,7 +51,16 @@
     "area": "Bakersfield",
     "notability": 3,
     "disposition": "investigating",
-    "summary": "A caller reported threats made during a family dispute, with yelling heard in the background before the call dropped."
+    "summary": "Caller reported threats made during a family dispute, with a subject scaring children and possibly threatening harm before the call dropped."
+  },
+  {
+    "type": "welfare_check",
+    "time": "02:39",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Welfare concern — a resident who relies on oxygen called for help after her husband left to take out the trash more than an hour earlier and did not return."
   },
   {
     "type": "suspicious_circumstances",
@@ -41,35 +77,26 @@
     "agency": "Kern County Fire Department",
     "area": "Muller Road",
     "notability": 2,
-    "disposition": "extinguished",
-    "summary": "Vehicle fire on Muller Road; crews responded to the scene."
+    "disposition": "responding",
+    "summary": "Vehicle fire just west of Muller Road; crews responded."
   },
   {
     "type": "medical_aid",
-    "time": "00:35",
-    "agency": "Kern County Fire Department / Kern County Sheriff's Office",
-    "area": "Wisteria Street",
+    "time": "23:30",
+    "agency": "Kern County Fire Department",
+    "area": "Navigation Center, East Brundage Lane",
     "notability": 2,
     "disposition": "responding",
-    "summary": "Medical aid call on Wisteria Street; units staged for law enforcement before responding."
+    "summary": "Medical aid at the Navigation Center on East Brundage Lane."
   },
   {
-    "type": "welfare_check",
-    "time": "02:39",
-    "agency": "Bakersfield Police Department",
-    "area": "Bakersfield",
-    "notability": 3,
-    "disposition": "responding",
-    "summary": "Welfare concern — a resident who relies on oxygen called for help after her husband left to take out the trash more than an hour earlier and did not return."
-  },
-  {
-    "type": "family_disturbance",
-    "time": "02:48",
-    "agency": "Kern County Sheriff's Office",
-    "area": "Bakersfield",
+    "type": "traffic_collision",
+    "time": "02:07",
+    "agency": "CHP",
+    "area": "Kern County roadway",
     "notability": 2,
     "disposition": "responding",
-    "summary": "Family disturbance at a residence — caller reported a dispute involving multiple people in different rooms."
+    "summary": "Traffic accident reported along a county roadway; units responding."
   },
   {
     "type": "reckless_driver",
@@ -81,21 +108,84 @@
     "summary": "Dark-colored vehicle reported racing up and down the street in the 7000 block of College Avenue."
   },
   {
-    "type": "medical_aid",
-    "time": "23:30",
-    "agency": "Kern County Fire Department",
-    "area": "Navigation Center, east Bakersfield",
+    "type": "family_disturbance",
+    "time": "02:48",
+    "agency": "Kern County Sheriff's Office",
+    "area": "Bakersfield",
     "notability": 2,
     "disposition": "responding",
-    "summary": "Medical aid at the Navigation Center on East Brundage Lane."
+    "summary": "Family disturbance at a residence — caller reported a dispute involving multiple people in different rooms."
   },
   {
-    "type": "traffic_collision",
-    "time": "02:07",
-    "agency": "CHP",
-    "area": "unincorporated Kern County",
+    "type": "family_disturbance",
+    "time": "03:15",
+    "agency": "Bakersfield Police Department",
+    "area": "Martin Luther King Jr. Boulevard",
     "notability": 2,
     "disposition": "responding",
-    "summary": "Traffic collision reported along a Kern County highway; units responding."
+    "summary": "Disturbance on Martin Luther King Jr. Boulevard involving a couple; an additional reporting party called in."
+  },
+  {
+    "type": "welfare_check",
+    "time": "03:47",
+    "agency": "Bakersfield Police Department",
+    "area": "18th Street",
+    "notability": 2,
+    "disposition": "pending",
+    "summary": "Welfare check pending at an address on 18th Street."
+  },
+  {
+    "type": "medical_aid",
+    "time": "04:38",
+    "agency": "Kern County Fire Department",
+    "area": "Lee Drive",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid for a seizure on Lee Drive."
+  },
+  {
+    "type": "medical_aid",
+    "time": "04:58",
+    "agency": "Kern County Fire Department",
+    "area": "Aspen Street",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid at an address on Aspen Street."
+  },
+  {
+    "type": "medical_aid",
+    "time": "05:31",
+    "agency": "Kern County Fire Department",
+    "area": "Ashe Road",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid for an allergic reaction on Ashe Road."
+  },
+  {
+    "type": "medical_aid",
+    "time": "05:34",
+    "agency": "Kern County Fire Department",
+    "area": "Harmon Road",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid for a fainting incident on Harmon Road; call downgraded to ambulance only."
+  },
+  {
+    "type": "medical_aid",
+    "time": "05:45",
+    "agency": "Kern County Fire Department",
+    "area": "East Texas Street",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid for critical breathing difficulty on East Texas Street; possible forced entry discussed."
+  },
+  {
+    "type": "hazardous_condition",
+    "time": "06:17",
+    "agency": "Bakersfield Fire Department / Public Works",
+    "area": "Bakersfield",
+    "notability": 2,
+    "disposition": "on scene",
+    "summary": "Van on top of a power pole with public works unable to mitigate; a tow truck was requested."
   }
 ]

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-28T21:55:54-07:00",
+ "built_at": "2026-08-28T23:02:05-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,14 +55,14 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 795,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 1,
-   "top_story": "Scores: Week 2 of the high school football season in Bakersfield, Kern County",
+   "top_story": "Fans return to stands for first varsity football game since Independence High School shooting",
    "archive": "2026-08-28"
   },
   "cityhall": {
@@ -92,7 +92,7 @@
    "draft": "drafts/weekend-guide-2026-08-28"
   },
   "grapevine": {
-   "i5": "RESTRICTIONS",
+   "i5": "CLOSED",
    "i5_pass": "OPEN",
    "log_entries": 60
   },
@@ -111,8 +111,8 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 0,
-   "aqi": 100,
-   "chp_week": 82
+   "aqi": 94,
+   "chp_week": 83
   },
   "letters": {
    "published": 0

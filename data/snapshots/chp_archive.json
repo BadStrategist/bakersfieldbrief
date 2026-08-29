@@ -1690,6 +1690,16 @@
   "details": ""
  },
  {
+  "log_id": "260828BF0412",
+  "time": "Aug 28 2026 10:47PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr99 S / Ming Ave Ofr",
+  "area": "Bakersfield",
+  "lat": 35.35346,
+  "lon": -119.039616,
+  "details": ""
+ },
+ {
   "log_id": "260828BF0002",
   "time": "Aug 28 2026 12:01AM",
   "type": "TADV-Traffic Advisory",

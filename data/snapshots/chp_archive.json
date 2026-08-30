@@ -1168,5 +1168,45 @@
   "lat": 35.3525,
   "lon": -119.002778,
   "details": ""
+ },
+ {
+  "log_id": "260830BF0160",
+  "time": "Aug 30 2026 12:35PM",
+  "type": "1184-Provide Traffic Control",
+  "location": "Belle Ter / Delfino Ln",
+  "area": "Bakersfield",
+  "lat": 35.346686,
+  "lon": -119.036747,
+  "details": ""
+ },
+ {
+  "log_id": "260830BF0162",
+  "time": "Aug 30 2026 12:42PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "O St / 26th St",
+  "area": "BF",
+  "lat": 35.382883,
+  "lon": -119.012911,
+  "details": ""
+ },
+ {
+  "log_id": "260830BF0164",
+  "time": "Aug 30 2026 12:47PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "1601 South Union Ave",
+  "area": "Bakersfield",
+  "lat": 35.335939,
+  "lon": -119.003086,
+  "details": ""
+ },
+ {
+  "log_id": "260830BF0169",
+  "time": "Aug 30 2026 12:58PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "2224-3298 Di Giorgio Rd",
+  "area": "Bakersfield",
+  "lat": 35.252326,
+  "lon": -118.969153,
+  "details": ""
  }
 ]

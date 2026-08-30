@@ -1390,6 +1390,26 @@
   "details": ""
  },
  {
+  "log_id": "260829BF0420",
+  "time": "Aug 29 2026  8:13PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "NB SR99 JNO Kimberlina Rd",
+  "area": "Bakersfield",
+  "lat": 35.554325,
+  "lon": -119.196827,
+  "details": ""
+ },
+ {
+  "log_id": "260829BF0464",
+  "time": "Aug 29 2026 10:42PM",
+  "type": "CFIRE-Car Fire",
+  "location": "Eb Sr58 Jwo Sr223",
+  "area": "Bakersfield",
+  "lat": 35.265,
+  "lon": -118.663056,
+  "details": ""
+ },
+ {
   "log_id": "260829BF0002",
   "time": "Aug 29 2026 12:01AM",
   "type": "TADV-Traffic Advisory",

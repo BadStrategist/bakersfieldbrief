@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-30T13:06:48-07:00",
+ "built_at": "2026-08-30T14:05:16-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -58,10 +58,10 @@
   "_digest_meta": "deterministic",
   "brief_words": 688,
   "daily": {
-   "news_headlines": 75,
+   "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 5,
+   "chp_new": 0,
    "top_story": "USS Abraham Lincoln sails past Singapore on its way home from Middle East",
    "archive": "2026-08-30"
   },
@@ -80,11 +80,11 @@
    ],
    "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 12,
-    "bakersfield-nw": 12,
-    "bakersfield-sw": 12,
-    "bakersfield-east": 12,
-    "bakersfield-central": 12
+    "tehachapi": 0,
+    "bakersfield-nw": 0,
+    "bakersfield-sw": 0,
+    "bakersfield-east": 0,
+    "bakersfield-central": 0
    }
   },
   "guide": {
@@ -111,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 0,
-   "aqi": 56,
+   "aqi": 58,
    "chp_week": 99
   },
   "letters": {

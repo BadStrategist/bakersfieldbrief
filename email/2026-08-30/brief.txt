@@ -5,11 +5,11 @@ THE KERN OVERNIGHT
 Overnight: vegetation_fire, orchard in rural Kern County — 21 incidents tracked overnight — full report: https://bakersfieldbrief.com/overnight/ (locations generalized)
 
 CONDITIONS
-Weather: 73° / 94°
+Weather: 66° / 94°
 Alerts: No active alerts
 Isabella: 208,157 AF (36.6% cap)
-CHP: 2 overnight
-Air: AQI 74 · Moderate
+CHP: None overnight
+Air: AQI 64 · Moderate
 Fires: 0 active in Kern
 
 THE NEWS

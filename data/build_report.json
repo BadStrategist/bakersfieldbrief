@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-30T07:38:35-07:00",
+ "built_at": "2026-08-30T08:02:32-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -38,8 +38,8 @@
    "error": ""
   },
   "alpr": {
-   "ok": false,
-   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
+   "ok": true,
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -144,7 +144,7 @@
    ]
   },
   "trackers": {
-   "alpr_total": 0,
+   "alpr_total": 258,
    "alpr_new_week": 0,
    "pages": [
     "surveillance",

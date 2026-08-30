@@ -1148,5 +1148,25 @@
   "lat": 35.261968,
   "lon": -118.914441,
   "details": ""
+ },
+ {
+  "log_id": "260830BF0110",
+  "time": "Aug 30 2026 10:12AM",
+  "type": "1125-Traffic Hazard",
+  "location": "David Rd / Sr99 S",
+  "area": "Bakersfield",
+  "lat": 35.094583,
+  "lon": -118.97966,
+  "details": ""
+ },
+ {
+  "log_id": "260830BF0117",
+  "time": "Aug 30 2026 10:44AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Wb Sr58 At Union Ave",
+  "area": "Bakersfield",
+  "lat": 35.3525,
+  "lon": -119.002778,
+  "details": ""
  }
 ]

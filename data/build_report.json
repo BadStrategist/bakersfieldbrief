@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-30T07:03:41-07:00",
+ "built_at": "2026-08-30T07:38:35-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -38,8 +38,8 @@
    "error": ""
   },
   "alpr": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
   },
   "venues": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 0,
    "top_story": "Nova Sorella hosts resource fair in Bakersfield to honor founder's son",
    "archive": "2026-08-30"
   },
@@ -111,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 0,
-   "aqi": 61,
+   "aqi": 58,
    "chp_week": 93
   },
   "letters": {
@@ -126,8 +126,8 @@
   "sunday_read": {
    "topic": "Public safety",
    "source": "deterministic",
-   "words": 395,
-   "asof": "2026-08-23"
+   "words": 344,
+   "asof": "2026-08-30"
   },
   "static": {
    "pages": [
@@ -144,7 +144,7 @@
    ]
   },
   "trackers": {
-   "alpr_total": 258,
+   "alpr_total": 0,
    "alpr_new_week": 0,
    "pages": [
     "surveillance",

@@ -1,0 +1,182 @@
+[
+  {
+    "type": "vehicle_fire",
+    "time": "23:26",
+    "agency": "Kern County Fire Department",
+    "area": "Pacheco Road, southwest Kern County",
+    "notability": 4,
+    "disposition": "total loss",
+    "summary": "Tractor-trailer fire on Pacheco Road. Crews responded to a reported fire and later described the tractor as a total loss, with the trailer being salvaged."
+  },
+  {
+    "type": "shots_fired",
+    "time": "23:56",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield",
+    "notability": 4,
+    "disposition": "responding",
+    "summary": "Caller reported shots fired from inside his living room shortly before midnight; medical units were on scene."
+  },
+  {
+    "type": "shots_fired",
+    "time": "00:58",
+    "agency": "Bakersfield Police Department",
+    "area": "Potomac Avenue near Oswell Street, east Bakersfield",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Large party where a physical fight broke out; one caller reported possible shots heard, unclear whether fireworks."
+  },
+  {
+    "type": "assault_with_deadly_weapon",
+    "time": "22:08",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield apartment complex",
+    "notability": 3,
+    "disposition": "investigating",
+    "summary": "A male subject threatened to shoot the reporting party's husband during a verbal dispute. No weapon was seen at the time, but the same subject was later seen walking through the complex with a baseball bat."
+  },
+  {
+    "type": "welfare_check",
+    "time": "00:25",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Welfare check on a woman who told bystanders she had been thrown out of a vehicle. Described as Hispanic, in her 20s, with brown hair, wearing a white Packers jersey and black shorts."
+  },
+  {
+    "type": "missing_person",
+    "time": "00:21",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield",
+    "notability": 3,
+    "disposition": "searching",
+    "summary": "Officers attempted to locate a 7-year-old last seen on the front porch of a residence in a black shirt."
+  },
+  {
+    "type": "weapons_offense",
+    "time": "01:10",
+    "agency": "Bakersfield Police Department",
+    "area": "Mount Vernon Avenue, Bakersfield",
+    "notability": 3,
+    "disposition": "searching",
+    "summary": "Search for a male suspect armed with a switchblade who fled on foot north on Mount Vernon Avenue."
+  },
+  {
+    "type": "suspicious_person",
+    "time": "01:36",
+    "agency": "Bakersfield Police Department",
+    "area": "Olive Drive area, northwest Bakersfield",
+    "notability": 3,
+    "disposition": "searching",
+    "summary": "A man on a scooter reportedly armed with a knife — and possibly a gun — was last seen near a 711 parking lot in the Olive Drive area."
+  },
+  {
+    "type": "medical_aid",
+    "time": "02:17",
+    "agency": "Kern County Fire Department",
+    "area": "Niles Street, Bakersfield",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Medical aid for a reported overdose in the Niles Street area; cardiac arrest was mentioned. Units responding."
+  },
+  {
+    "type": "physical_disturbance",
+    "time": "02:35",
+    "agency": "Ridgecrest Police Department",
+    "area": "Walsh Avenue, Ridgecrest",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Large physical fight on Walsh Avenue; officers requested assistance with crowd control."
+  },
+  {
+    "type": "collision",
+    "time": "21:17",
+    "agency": "Bakersfield Police Department",
+    "area": "Panama Lane & Ashe Road area",
+    "notability": 2,
+    "disposition": "report being taken",
+    "summary": "Collision near Panama Lane and Ashe Road requiring a tow; a second case number was opened for an additional collision."
+  },
+  {
+    "type": "disturbance",
+    "time": "22:28",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Verbal dispute during which a possible gunshot was heard; no visual confirmed, subject possibly near a teal-colored Subaru."
+  },
+  {
+    "type": "physical_disturbance",
+    "time": "22:44",
+    "agency": "Bakersfield Police Department",
+    "area": "H Street area, Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Physical fight at an apartment on H Street."
+  },
+  {
+    "type": "traffic_incident",
+    "time": "23:08",
+    "agency": "CHP",
+    "area": "Highway 99, Kern County",
+    "notability": 2,
+    "disposition": "assisting",
+    "summary": "A trucker on the highway needed CHP to arrange a tow after the vehicle could not continue."
+  },
+  {
+    "type": "medical_aid",
+    "time": "00:43",
+    "agency": "Kern County Fire Department",
+    "area": "South 8th Street, Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid for an unknown complaint on South 8th Street."
+  },
+  {
+    "type": "medical_aid",
+    "time": "01:03",
+    "agency": "Kern County Fire Department",
+    "area": "Bakersfield",
+    "notability": 2,
+    "disposition": "treated",
+    "summary": "Medical aid for a possible overdose; Narcan was administered."
+  },
+  {
+    "type": "medical_aid",
+    "time": "01:11",
+    "agency": "Kern County Fire Department",
+    "area": "South Haley Street, Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid for an unknown complaint on South Haley Street; interpreters were requested."
+  },
+  {
+    "type": "medical_aid",
+    "time": "01:27",
+    "agency": "Kern County Fire Department",
+    "area": "Highway area, Kern County",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid for a seizure."
+  },
+  {
+    "type": "reckless_driver",
+    "time": "01:58",
+    "agency": "CHP",
+    "area": "Highway 99 near Niles",
+    "notability": 2,
+    "disposition": "searching",
+    "summary": "Report of a red SUV swerving on southbound Highway 99 near Niles."
+  },
+  {
+    "type": "vegetation_fire",
+    "time": "02:04",
+    "agency": "Kern County Fire Department",
+    "area": "Payne Avenue area",
+    "notability": 2,
+    "disposition": "extinguished",
+    "summary": "Five small spot fires along Payne Avenue, roughly 5x5 feet each; fires were extinguished."
+  }
+]

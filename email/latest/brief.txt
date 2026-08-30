@@ -5,11 +5,11 @@ THE KERN OVERNIGHT
 Overnight: vehicle_fire, Pacheco Rd — 25 incidents tracked overnight — full report: https://bakersfieldbrief.com/overnight/ (locations generalized)
 
 CONDITIONS
-Weather: 90° / 94°
+Weather: 93° / 94°
 Alerts: No active alerts
 Isabella: 208,157 AF (36.6% cap)
-CHP: None overnight
-Air: AQI 58 · Moderate
+CHP: 1 overnight
+Air: AQI 77 · Moderate
 Fires: 0 active in Kern
 
 THE NEWS

@@ -1140,6 +1140,16 @@
   "details": ""
  },
  {
+  "log_id": "260830BF0188",
+  "time": "Aug 30 2026  2:12PM",
+  "type": "1184-Provide Traffic Control",
+  "location": "Kerto Rd / Sr33",
+  "area": "Buttonwillow",
+  "lat": 35.083807,
+  "lon": -119.401635,
+  "details": ""
+ },
+ {
   "log_id": "260830BF0052",
   "time": "Aug 30 2026  6:15AM",
   "type": "1179-Trfc Collision-1141 Enrt",

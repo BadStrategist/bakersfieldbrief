@@ -104,6 +104,7 @@ def main():
     # ---------------------------------------------------------- robots / sitemap / CNAME
     _robots()
     _sitemap()
+    _llms()
     (common.SITE / "CNAME").write_text("bakersfieldbrief.com\n", encoding="utf-8")
 
     # ---------------------------------------------------------- report
@@ -156,6 +157,65 @@ def _sitemap():
     # Cloudflare Pages _redirects — guessable URLs a human might type.
     common.write(common.SITE / "_redirects",
                  "/places/east-bakersfield/*  /places/bakersfield-east/:splat  301\n")
+
+
+def _llms():
+    """Write site/llms.txt — the AI-agent discovery file (llmstxt.org).
+
+    Static sections are listed here; the daily/overnight pages regenerate
+    every build, so we link to the section roots rather than specific dates.
+    This makes the whole site crawlable by LLM agents (GPTBot, ClaudeBot,
+    PerplexityBot…) in one clean, structured pass.
+    """
+    common.write(common.SITE / "llms.txt", """# Bakersfield Daily Brief
+
+> A free, automated civic news brief for Bakersfield and Kern County, California — built every morning from public records.
+
+Bakersfield Daily Brief is an independent, automated local-news publication. Each day it assembles the Kern County news you'd otherwise miss: morning conditions (weather, air quality, fires, reservoirs), local headlines with links to the original reporting, the day's notable public meetings, overnight police-scanner activity, and running data trackers (ALPR / license-plate cameras, water levels, grapevine conditions).
+
+The site is static and rebuilt fresh every morning at 6:00 AM Pacific from public agencies: City of Bakersfield meeting records (eSCRIBE), Kern County Board of Supervisors agenda, California ABC license filings, Kern County Environmental Health, CHP incidents, NWS alerts, EPA AirNow, CDEC reservoir data, CAL FIRE, Caltrans road conditions, and OpenStreetMap. Headlines link to original outlets; no article text is republished.
+
+## Key Facts
+
+- Independent, automated civic news for Bakersfield and Kern County, California.
+- Free to read; funded by labeled, consent-based advertising.
+- Rebuilt daily from public records; every item links to its source.
+- Human editorial review behind meeting recaps and the corrections policy.
+- No opinions, no ballot-measure stances, no republished article text.
+
+## Daily & News
+
+- [The Daily Brief](https://bakersfieldbrief.com/): today's conditions, headlines, and meetings.
+- [The Kern Overnight](https://bakersfieldbrief.com/overnight/): police-scanner activity from the night before.
+- [The Sunday Read](https://bakersfieldbrief.com/sunday-read/): long-form weekly feature.
+- [Letters](https://bakersfieldbrief.com/letters/): letters to the Brief.
+
+## City Hall & County
+
+- [City Hall & County](https://bakersfieldbrief.com/city-hall/): meeting previews and recaps for Bakersfield and Kern County.
+- [The Numbers](https://bakersfieldbrief.com/numbers/): the numeric dashboard behind the news.
+
+## Data Trackers
+
+- [Flock & ALPRs](https://bakersfieldbrief.com/surveillance/): automated license-plate reader locations.
+- [Isabella Lake tracker](https://bakersfieldbrief.com/water/): reservoir levels.
+- [Grapevine conditions](https://bakersfieldbrief.com/grapevine/): Tejon Pass / Grapevine road conditions.
+- [Live Map](https://bakersfieldbrief.com/map/): interactive map of local data.
+
+## Guides & Places
+
+- [Weekend Guide](https://bakersfieldbrief.com/guide/): what's on around Kern County.
+- [Events](https://bakersfieldbrief.com/events/): community events calendar.
+- [Places](https://bakersfieldbrief.com/places/): neighborhood and community pages.
+
+## About
+
+- [About this site](https://bakersfieldbrief.com/about/): how the Brief works and what it publishes.
+- [Editorial standards](https://bakersfieldbrief.com/editorial-standards/): production rules and sources.
+- [Corrections](https://bakersfieldbrief.com/corrections/): how errors are fixed on the record.
+- [Ownership & funding](https://bakersfieldbrief.com/ownership/): who operates the Brief.
+- [Contact](https://bakersfieldbrief.com/contact/): corrections, source tips, and feedback.
+""")
 
 
 if __name__ == "__main__":

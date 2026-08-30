@@ -18,13 +18,22 @@
     "summary": "Caller reported shots fired from inside his living room shortly before midnight; medical units were on scene."
   },
   {
+    "type": "welfare_check",
+    "time": "02:48",
+    "agency": "Bakersfield Police Department",
+    "area": "Ginger Oak Lane, Bakersfield",
+    "notability": 4,
+    "disposition": "responding",
+    "summary": "Welfare call with medical aid requested — the reporting party was crying and unable to answer questions, with a baby heard crying in the background. A subject was later seen running through the carport toward a warehouse; units held the perimeter."
+  },
+  {
     "type": "shots_fired",
     "time": "00:58",
     "agency": "Bakersfield Police Department",
     "area": "Potomac Avenue near Oswell Street, east Bakersfield",
     "notability": 3,
     "disposition": "responding",
-    "summary": "Large party where a physical fight broke out; one caller reported possible shots heard, unclear whether fireworks."
+    "summary": "Large party that turned into a physical fight; one caller reported possible shots heard, unclear whether fireworks."
   },
   {
     "type": "assault_with_deadly_weapon",
@@ -51,7 +60,7 @@
     "area": "Bakersfield",
     "notability": 3,
     "disposition": "searching",
-    "summary": "Officers attempted to locate a 7-year-old last seen on the front porch of a residence in a black shirt."
+    "summary": "Officers attempted to locate a 7-year-old last seen on a residence's front porch wearing a black shirt."
   },
   {
     "type": "weapons_offense",
@@ -178,5 +187,41 @@
     "notability": 2,
     "disposition": "extinguished",
     "summary": "Five small spot fires along Payne Avenue, roughly 5x5 feet each; fires were extinguished."
+  },
+  {
+    "type": "medical_aid",
+    "time": "03:43",
+    "agency": "Kern County Fire Department",
+    "area": "Auburn Street area, Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid at an apartment complex on Auburn Street."
+  },
+  {
+    "type": "disturbance",
+    "time": "05:15",
+    "agency": "Bakersfield Police Department",
+    "area": "Cherry Street, Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Possible intoxication in progress at an address on Cherry Street; callers heard yelling, crying and items being broken."
+  },
+  {
+    "type": "assault",
+    "time": "05:54",
+    "agency": "Bakersfield Police Department",
+    "area": "Silver Creek Park, Harris Road",
+    "notability": 2,
+    "disposition": "standing by",
+    "summary": "Assault report from roughly an hour earlier; the reporting party was standing by at Silver Creek Park on Harris Road for contact."
+  },
+  {
+    "type": "outside_fire",
+    "time": "06:05",
+    "agency": "Bakersfield Fire Department",
+    "area": "Williams Street near Truxtun Avenue, Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Trash on fire along Williams Street just east of Truxtun Avenue, near the railroad tracks."
   }
 ]

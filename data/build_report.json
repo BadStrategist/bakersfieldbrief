@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-30T05:02:20-07:00",
+ "built_at": "2026-08-30T06:06:43-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 1,
    "top_story": "Nova Sorella hosts resource fair in Bakersfield to honor founder's son",
    "archive": "2026-08-30"
   },

@@ -1138,5 +1138,15 @@
   "lat": 35.381452,
   "lon": -118.939164,
   "details": ""
+ },
+ {
+  "log_id": "260830BF0052",
+  "time": "Aug 30 2026  6:15AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sr184 / Gail Marie Dr",
+  "area": "Bakersfield",
+  "lat": 35.261968,
+  "lon": -118.914441,
+  "details": ""
  }
 ]

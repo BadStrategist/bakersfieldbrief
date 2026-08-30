@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-30T06:10:11-07:00",
+ "built_at": "2026-08-30T07:03:41-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,13 +55,13 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 688,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 1,
    "top_story": "Nova Sorella hosts resource fair in Bakersfield to honor founder's son",
    "archive": "2026-08-30"
   },
@@ -111,17 +111,17 @@
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 0,
-   "aqi": 64,
-   "chp_week": 92
+   "aqi": 61,
+   "chp_week": 93
   },
   "letters": {
    "published": 0
   },
   "overnight": {
-   "published": 20
+   "published": 21
   },
   "map": {
-   "dots": 15
+   "dots": 49
   },
   "sunday_read": {
    "topic": "Public safety",

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-29T23:02:33-07:00",
+ "built_at": "2026-08-30T02:02:53-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,14 +56,14 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 797,
+  "brief_words": 64,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 2,
    "top_story": "Nova Sorella hosts resource fair in Bakersfield to honor founder's son",
-   "archive": "2026-08-29"
+   "archive": "2026-08-30"
   },
   "cityhall": {
    "upcoming_meetings": 3,
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -89,7 +89,7 @@
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-08-29"
+   "draft": "drafts/weekend-guide-2026-08-30"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -98,21 +98,21 @@
   },
   "events": {
    "groups": {
-    "This week": 4,
+    "This week": 3,
     "Next week": 2,
-    "Later": 24
+    "Later": 23
    },
    "meetings": 3
   },
   "feed": {
-   "entries": 26
+   "entries": 27
   },
   "numbers": {
    "isabella_af": 208157,
    "alpr_total": 255,
    "kern_fires": 0,
-   "aqi": 56,
-   "chp_week": 90
+   "aqi": 74,
+   "chp_week": 92
   },
   "letters": {
    "published": 0

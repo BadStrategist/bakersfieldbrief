@@ -1260,6 +1260,26 @@
   "details": ""
  },
  {
+  "log_id": "260830BF0334",
+  "time": "Aug 30 2026  8:36PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "0 H St Onr",
+  "area": "Bakersfield",
+  "lat": 35.352856,
+  "lon": -119.022808,
+  "details": ""
+ },
+ {
+  "log_id": "260830BF0343",
+  "time": "Aug 30 2026  8:49PM",
+  "type": "1125-Traffic Hazard",
+  "location": "NB I5 JSO Frazier Mountain Park Rd",
+  "area": "Fort Tejon",
+  "lat": 34.816389,
+  "lon": -118.8825,
+  "details": ""
+ },
+ {
   "log_id": "260830BF0110",
   "time": "Aug 30 2026 10:12AM",
   "type": "1125-Traffic Hazard",

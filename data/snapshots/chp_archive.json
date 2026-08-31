@@ -1180,6 +1180,26 @@
   "details": ""
  },
  {
+  "log_id": "260831BF0060",
+  "time": "Aug 31 2026  7:18AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sr99 S / Whisler Rd Onr",
+  "area": "Bakersfield",
+  "lat": 35.644964,
+  "lon": -119.220311,
+  "details": ""
+ },
+ {
+  "log_id": "260831BF0071",
+  "time": "Aug 31 2026  7:33AM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sr178 E / Mount Vernon Ave",
+  "area": "Bakersfield",
+  "lat": 35.394382,
+  "lon": -118.9676,
+  "details": ""
+ },
+ {
   "log_id": "260831BF0004",
   "time": "Aug 31 2026 12:15AM",
   "type": "1183-Trfc Collision-Unkn Inj",

@@ -244,7 +244,7 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
   {_card_open(SIGN)}
     {_kicker("The Kern Overnight")}
     <p style="margin:0 0 4px;font-family:{MONO};font-size:11px;letter-spacing:1px;text-transform:uppercase;color:{INK_SOFT}">Scanner brief from 9pm to 6am</p>
-    {('' if not (ko and ko.get('headline')) else f'<p style="margin:8px 0 2px;font-family:{SERIF};font-size:18px;color:{INK}"><a href="{BASE_URL}/overnight/" style="color:{INK};text-decoration:none">Overnight: {H.escape(ko["headline"])}</a></p>')}
+    {('' if not (ko and ko.get('headline')) else f'<p style="margin:8px 0 2px;font-family:{SERIF};font-size:18px;color:{INK}"><a href="{BASE_URL}/overnight/" style="color:{INK};text-decoration:none">What happened overnight: {H.escape(ko["headline"])}</a></p>')}
     {('' if not ko else f'<p style="margin:2px 0 10px;font-family:{SANS};font-size:12px;color:{INK_SOFT}">{ko["count"]} incidents tracked overnight · locations generalized &nbsp;'
      f'<a href="{BASE_URL}/overnight/" style="display:inline-block;background:{RED};color:#ffffff;'
      f'font-family:{DISPLAY};font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;'
@@ -309,7 +309,7 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
 Bakersfield & Kern County
 
 THE KERN OVERNIGHT
-{('Overnight: ' + ko['headline'] + ' — ') if (ko and ko.get('headline')) else ''}{(str(ko['count']) + ' incidents tracked overnight — ') if ko else ''}full report: {BASE_URL}/overnight/ (locations generalized)
+{('What happened overnight: ' + ko['headline'] + ' — ') if (ko and ko.get('headline')) else ''}{(str(ko['count']) + ' incidents tracked overnight — ') if ko else ''}full report: {BASE_URL}/overnight/ (locations generalized)
 
 CONDITIONS
 {chr(10).join(f"{k}: {v}" for k, v in conds)}
@@ -328,7 +328,16 @@ Web: {BASE_URL}/
     out_dir.mkdir(parents=True, exist_ok=True)
     latest = common.ROOT / "email" / "latest"
     latest.mkdir(parents=True, exist_ok=True)
-    for name, content in (("brief.html", html_doc), ("brief.txt", txt_doc)):
+
+    # Subject line: lead with the day's top story so the inbox preview says
+    # what the email is about at a glance. Falls back to the plain date.
+    ko_head = (ko or {}).get("headline") or ""
+    if ko_head:
+        subject = f"The Bakersfield Brief — {ko_head} — {date_label}"
+    else:
+        subject = f"The Bakersfield Brief — {date_label}"
+    for name, content in (("brief.html", html_doc), ("brief.txt", txt_doc),
+                          ("subject.txt", subject + "\n")):
         (out_dir / name).write_text(content, encoding="utf-8")
         (latest / name).write_text(content, encoding="utf-8")
         built.append(f"email/{today.isoformat()}/{name}")

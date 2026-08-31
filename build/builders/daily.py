@@ -245,6 +245,106 @@ def _incident_cat(typ) -> str:
     return CATEGORY.get(t, "other")
 
 
+# Human-readable labels for raw incident type tokens (underscore -> words,
+# abbreviations kept uppercase, common phrasing cleaned). Anything not in
+# this map falls back to underscore->space + Title Case in _type_label().
+_TYPE_LABEL = {
+    "working_fire": "working fire",
+    "medical_aid": "medical aid",
+    "traffic_collision": "traffic collision",
+    "hit_and_run": "hit-and-run",
+    "vehicle_vs_pedestrian": "vehicle vs. pedestrian",
+    "vehicle_vs_bicyclist": "vehicle vs. bicyclist",
+    "vehicle_into_building": "vehicle into a building",
+    "vehicle_into_pole": "vehicle into a pole",
+    "vehicle_rollover": "vehicle rollover",
+    "vehicle_pursuit": "vehicle pursuit",
+    "foot_pursuit": "foot pursuit",
+    "welfare_check": "welfare check",
+    "suspicious_person": "suspicious person",
+    "suspicious_person_report": "suspicious person report",
+    "suspicious_circumstances": "suspicious circumstances",
+    "suspicious_circumstance": "suspicious circumstances",
+    "suspicious_vehicle": "suspicious vehicle",
+    "domestic_disturbance": "domestic disturbance",
+    "domestic_violence": "domestic violence",
+    "family_disturbance": "family disturbance",
+    "physical_disturbance": "physical disturbance",
+    "juvenile_disturbance": "juvenile disturbance",
+    "verbal_disturbance": "verbal disturbance",
+    "shots_fired": "shots fired",
+    "brandishing_firearm": "brandishing a firearm",
+    "firearms_incident": "firearms incident",
+    "weapons_offense": "weapons offense",
+    "armed_robbery": "armed robbery",
+    "armed_subject": "armed subject",
+    "reckless_driver": "reckless driver",
+    "street_racing": "street racing",
+    "hazardous_condition": "hazardous condition",
+    "roadway_hazard": "roadway hazard",
+    "traffic_incident": "traffic incident",
+    "traffic_enforcement": "traffic enforcement",
+    "assault_with_deadly_weapon": "assault with a deadly weapon",
+    "assault_with_a_weapon": "assault with a weapon",
+    "stolen_vehicle": "stolen vehicle",
+    "stolen_firearms_search": "stolen-firearms search",
+    "runaway_juvenile": "runaway juvenile",
+    "suicidal_subject": "suicidal subject",
+    "mental_health_crisis": "mental health crisis",
+    "mental_health": "mental health call",
+    "mental_health_hold": "mental health hold",
+    "fire_cause_investigation": "fire-cause investigation",
+    "commercial_fire_alarm": "commercial fire alarm",
+    "commercial_alarm": "commercial alarm",
+    "medical_alarm": "medical alarm",
+    "juvenile_nuisance": "juvenile nuisance",
+    "dui_driver": "DUI driver",
+    "dui_report": "DUI report",
+    "probation_check": "probation check",
+    "warrant_service": "warrant service",
+    "felony_warrant": "felony warrant",
+    "repo_assist": "repo assist",
+    "officer_assist": "officer assist",
+    "burglary_in_progress": "burglary in progress",
+    "theft_in_progress": "theft in progress",
+    "train_vs_pedestrian": "train vs. pedestrian",
+    "vehicle_fire_check": "vehicle fire check",
+    "fire_response": "fire response",
+    "small_fire": "small fire",
+    "camp_fire": "camp fire",
+    "attempted_arson": "attempted arson",
+    "brush_fire": "brush fire",
+    "vegetation_fire": "vegetation fire",
+    "grass_fire": "grass fire",
+    "outside_fire": "outside fire",
+    "structure_fire": "structure fire",
+    "vehicle_fire": "vehicle fire",
+    "electrical_fire": "electrical fire",
+}
+
+
+def _type_label(typ) -> str:
+    """Raw incident type token → a clean, human-readable label.
+
+    'working_fire' → 'Working fire'; 'dui' → 'DUI'; anything unseen falls
+    back to underscore→space + Title Case. Used by the overnight headline
+    so raw tokens like 'working_fire' never leak into the email.
+    """
+    t = str(typ or "incident").strip().lower()
+    if t in _TYPE_LABEL:
+        return _TYPE_LABEL[t].strip().capitalize()
+    # fallback: dui -> DUI, vehicle_vs_pedestrian -> Vehicle vs pedestrian
+    words = t.replace("_", " ").split()
+    out = []
+    for w in words:
+        w = w.strip()
+        if w in ("dui", "ems", "chp", "bpd", "kcsd"):
+            out.append(w.upper())
+        else:
+            out.append(w.capitalize())
+    return " ".join(out)
+
+
 def _overnight_summary() -> dict | None:
     """Latest Kern Overnight data → {date, title, headline, count, cats, top}.
 
@@ -269,7 +369,12 @@ def _overnight_summary() -> dict | None:
         top = max(incs, key=lambda i: i.get("notability", 0)) if incs else None
         headline = None
         if top:
-            headline = f"{top.get('type', 'incident')}, {_short_area(top.get('area', ''))}"
+            # Human label, never the raw token: 'working_fire' would leak
+            # straight into the email title/card. Keep the report's own
+            # natural phrasing when it already reads like a sentence.
+            label = _type_label(top.get("type", "incident"))
+            area = _short_area(top.get("area", ""))
+            headline = f"{label} at {area}" if area and area != "the area" else label
         return {"date": rep["date"], "title": rep["title"],
                 "headline": headline, "count": len(incs), "cats": cats,
                 "top": top, "incs": incs}

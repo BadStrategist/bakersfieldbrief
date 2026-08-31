@@ -39,6 +39,7 @@ from build import common  # noqa: E402
 
 HTML = ROOT / "email" / "latest" / "brief.html"
 TXT = ROOT / "email" / "latest" / "brief.txt"
+SUBJECT = ROOT / "email" / "latest" / "subject.txt"
 API = "https://connect.mailerlite.com/api"
 
 
@@ -118,7 +119,12 @@ def main() -> int:
     txt = TXT.read_text(encoding="utf-8") if TXT.exists() else ""
     html = HTML.read_text(encoding="utf-8")
     d = common.today_pacific()
-    subject = f"The Bakersfield Daily Brief — {d.strftime('%A, %B')} {d.day}, {d.year}"
+    # Subject comes from the rendered subject.txt (single source of truth:
+    # the emailer already leads with the day's top story). Fall back to the
+    # plain date if the file is missing (e.g. older rendered email).
+    subject = (SUBJECT.read_text(encoding="utf-8").strip()
+               if SUBJECT.exists() and SUBJECT.read_text(encoding="utf-8").strip()
+               else f"The Bakersfield Daily Brief — {d.strftime('%A, %B')} {d.day}, {d.year}")
     from_addr = os.environ.get("MAILERLITE_FROM_EMAIL", "brief@bakersfieldbrief.com")
     from_name = os.environ.get("MAILERLITE_FROM_NAME", "Bakersfield Brief")
 

@@ -3,6 +3,11 @@
   35.4,
   -119.1
  ],
+ "cottonwood road & watts drive, Bakersfield, CA": null,
+ "shell street & ethel street, Bakersfield, CA": null,
+ "white lane & old river road, Bakersfield, CA": null,
+ "potomac avenue & oswell street, Bakersfield, CA": null,
+ "williams street & truxtun avenue, Bakersfield, CA": null,
  "coffee road & brookside, Bakersfield, CA": null,
  "2800 block of university avenue, Bakersfield, Kern County, CA": null,
  "university avenue, Bakersfield, CA": [
@@ -13,14 +18,5 @@
  "c street, Bakersfield, CA": [
   35.376757,
   -119.0270064
- ],
- "100 block of sumner street, Bakersfield, Kern County, CA": null,
- "sumner street, Bakersfield, CA": [
-  35.3750206,
-  -118.9850221
- ],
- "between q & p streets, Bakersfield, CA": null,
- "panama lane & the winco, Bakersfield, CA": null,
- "near lynwood & height streets, Bakersfield, CA": null,
- "potomac avenue & oswell street, Bakersfield, CA": null
+ ]
 }

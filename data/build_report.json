@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-31T06:07:26-07:00",
+ "built_at": "2026-08-31T06:11:02-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,13 +55,13 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 66,
+  "_digest_meta": "llm",
+  "brief_words": 1063,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 0,
    "top_story": "Aaron Donald ends his 2 1/2-year retirement and returns to the Los Angeles Rams",
    "archive": "2026-08-31"
   },

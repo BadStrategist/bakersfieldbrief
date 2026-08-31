@@ -1200,6 +1200,36 @@
   "details": ""
  },
  {
+  "log_id": "260831BF0074",
+  "time": "Aug 31 2026  7:36AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 Unnamed Street",
+  "area": "Bakersfield",
+  "lat": 35.475094,
+  "lon": -119.049914,
+  "details": ""
+ },
+ {
+  "log_id": "260831BF0075",
+  "time": "Aug 31 2026  7:39AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr58 W / S Mount Vernon Ave",
+  "area": "Bakersfield",
+  "lat": 35.353189,
+  "lon": -118.967598,
+  "details": ""
+ },
+ {
+  "log_id": "260831BF0080",
+  "time": "Aug 31 2026  7:44AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "Sr178 / M St",
+  "area": "BF",
+  "lat": 35.381189,
+  "lon": -119.01537,
+  "details": ""
+ },
+ {
   "log_id": "260831BF0004",
   "time": "Aug 31 2026 12:15AM",
   "type": "1183-Trfc Collision-Unkn Inj",

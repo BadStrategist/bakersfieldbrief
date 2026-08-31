@@ -202,9 +202,42 @@ def build_alpr(ctx, sources: dict):
     with node edit timestamps. Map tiles: &copy; OpenStreetMap contributors / CARTO (Dark Matter).
     Change log backfilled from real OSM node history on site setup.</p>"""
 
-    _write_tracker(ctx, "surveillance", "Flock & ALPR Tracker",
-                   "Every automated license plate reader mapped in the Bakersfield metro — a weekly-updated dark map with facing direction, newest-camera highlights, and a real 13-week change log from OpenStreetMap.",
-                   stat_html, body, payload, sources, dark=True, img="flock")
+    flock_n = stats.get("flock", 0)
+    total_n = stats.get("total", 0)
+
+    faq_jsonld = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How many Flock cameras are in Bakersfield?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": (f"Based on volunteer-mapped OpenStreetMap data, {flock_n} Flock Safety "
+                             f"cameras are mapped in Bakersfield and Kern County, out of {total_n} "
+                             f"total license plate reader (ALPR) cameras, as of {asof}.")
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Where are the Flock cameras in Bakersfield?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": (f"This page shows a live map of all {total_n} mapped license plate reader "
+                             f"cameras in the Bakersfield metro, {flock_n} of which are Flock Safety "
+                             f"units. Each camera marker shows its manufacturer, operator, and facing "
+                             f"direction.")
+                }
+            }
+        ]
+    }
+
+    _write_tracker(ctx, "surveillance", "Flock Camera Map — Bakersfield",
+                   f"See every license plate reader in Bakersfield on a live map — {flock_n} Flock Safety cameras and {total_n} total ALPR units mapped in the metro, with facing direction, newest-camera highlights, and a weekly change log from OpenStreetMap.",
+                   stat_html, body, payload, sources, dark=True, img="flock",
+                   seo_title="Bakersfield Flock Camera Map | Live ALPR Tracker",
+                   faq_jsonld=faq_jsonld)
 
 
 # ------------------------------------------------------------------ Isabella / water
@@ -252,7 +285,7 @@ def build_water(ctx, sources: dict):
 # ------------------------------------------------------------------ writer
 def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
                    body_html: str, payload: dict, sources: dict, dark: bool = False,
-                   img: str = ""):
+                   img: str = "", seo_title: str = "", faq_jsonld: dict | None = None):
     built_iso = common.iso_today()
     rel = "../"
     tpl = common.read_template("tracker.html")
@@ -275,11 +308,12 @@ def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
     tpl = common.inline_placeholder(tpl, payload)
 
     page = page_mod.render(
-        title=f"{name} | Bakersfield Daily Brief",
+        title=seo_title or f"{name} | Bakersfield Daily Brief",
         desc=lede,
         canonical=f"/{slug}/",
         content=tpl, current="trackers", rel=rel, built=built_iso,
-        jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld()],
+        jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld()]
+               + ([faq_jsonld] if faq_jsonld else []),
         statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         extra_head='<link rel="stylesheet" href="../assets/vendor/leaflet.css">'
                    + ('<link rel="stylesheet" href="../assets/css/deflock.css?v=' + built_iso + '">' if dark else ""),

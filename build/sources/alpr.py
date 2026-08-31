@@ -63,8 +63,10 @@ def run(ctx, *, record_change: bool = False):
                 "gone_ids": gone_ids,
                 "new_count": len(new_ids),
             })
-
-        common.save_snapshot("alpr_nodes", sorted(cur_ids))
+            # ONLY advance the snapshot when recording the weekly change log.
+            # If every build saved it, CI's 3-hourly builds would silently
+            # advance it and the weekly diff would always read 0 new.
+            common.save_snapshot("alpr_nodes", sorted(cur_ids))
         return {"ok": True, "cameras": cameras, "stats": stats,
                 "change_log": common.load_change_log("alpr"), "asof": common.iso_today()}
     except Exception as e:  # noqa: BLE001

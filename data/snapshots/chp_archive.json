@@ -1280,6 +1280,16 @@
   "details": ""
  },
  {
+  "log_id": "260830BF0356",
+  "time": "Aug 30 2026  9:50PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 Panama Ln Onr",
+  "area": "Bakersfield",
+  "lat": 35.295802,
+  "lon": -119.030171,
+  "details": ""
+ },
+ {
   "log_id": "260830BF0110",
   "time": "Aug 30 2026 10:12AM",
   "type": "1125-Traffic Hazard",

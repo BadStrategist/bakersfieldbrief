@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-30T23:02:55-07:00",
+ "built_at": "2026-08-31T02:02:37-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -38,8 +38,8 @@
    "error": ""
   },
   "alpr": {
-   "ok": false,
-   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
+   "ok": true,
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -56,14 +56,14 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1113,
+  "brief_words": 66,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 4,
    "top_story": "Aaron Donald ends his 2 1/2-year retirement and returns to the Los Angeles Rams",
-   "archive": "2026-08-30"
+   "archive": "2026-08-31"
   },
   "cityhall": {
    "upcoming_meetings": 3,
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -89,7 +89,7 @@
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-08-30"
+   "draft": "drafts/weekend-guide-2026-08-31"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -99,20 +99,20 @@
   "events": {
    "groups": {
     "This week": 3,
-    "Next week": 2,
-    "Later": 23
+    "Next week": 3,
+    "Later": 22
    },
    "meetings": 3
   },
   "feed": {
-   "entries": 27
+   "entries": 28
   },
   "numbers": {
    "isabella_af": 208157,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 67,
-   "chp_week": 115
+   "aqi": 57,
+   "chp_week": 2
   },
   "letters": {
    "published": 0
@@ -150,7 +150,7 @@
    ]
   },
   "trackers": {
-   "alpr_total": 0,
+   "alpr_total": 260,
    "alpr_new_week": 0,
    "pages": [
     "surveillance",

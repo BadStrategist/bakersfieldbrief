@@ -135,7 +135,7 @@ def _page_content(ctx, today, built_iso, rel, news, weather, chp, isa,
     conditions = _conditions(weather, chp, isa, airnow, calfire, built_iso, rel)
     watch = _one_thing(escribe, board)
 
-    cats = _category_grid(rel, escribe, board, abc, food, alpr)
+    cats = _category_grid(rel, escribe, board, abc, food, alpr, calfire)
     week = _week_grid(today, rel, weather, escribe, board, top)
     archive_html = _recent_briefs(rel)
 
@@ -754,7 +754,7 @@ def _score(c: dict) -> int:
 
 
 # ---------------------------------------------------------------- category grid
-def _category_grid(rel, escribe, board, abc, food, alpr) -> str:
+def _category_grid(rel, escribe, board, abc, food, alpr, calfire) -> str:
     # WHAT TO WATCH
     up = escribe.get("upcoming", [])
     if up:
@@ -802,7 +802,25 @@ def _category_grid(rel, escribe, board, abc, food, alpr) -> str:
       <span class="card-go">Open the map</span>
     </a>"""
 
-    return f'<div class="cat-grid">{watch_card}{decided_card}{depth_card}</div>'
+    # FIRE TRACKER — live count from CAL FIRE
+    kern_fires = (calfire or {}).get("kern", []) if (calfire or {}).get("ok") else []
+    kern_acres = sum(int(float(i.get("acres") or 0)) for i in kern_fires)
+    if kern_fires:
+        fire_line = (f"{len(kern_fires)} active {'fire' if len(kern_fires) == 1 else 'fires'} in Kern"
+                     f" &middot; {kern_acres:,} acres")
+        fire_h3 = "Wildfire tracker"
+    else:
+        fire_line = "No active fires in Kern right now"
+        fire_h3 = "Wildfire tracker"
+    fire_card = f"""<a class="cat-card" href="{rel}fires/">
+      {images.thumb("bakersfield", rel)}
+      <span class="cat-label">Live Data</span>
+      <h3>{fire_h3}</h3>
+      <p>{fire_line} &mdash; live map of CAL FIRE incidents across Kern County and California.</p>
+      <span class="card-go">See the map</span>
+    </a>"""
+
+    return f'<div class="cat-grid">{watch_card}{decided_card}{depth_card}{fire_card}</div>'
 
 
 # ---------------------------------------------------------------- week grid

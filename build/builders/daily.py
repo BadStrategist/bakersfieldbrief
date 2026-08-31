@@ -443,7 +443,7 @@ def _hero_row(top, headlines, today, rel, built_iso,
     <h1 class="today-h1">The Bakersfield Brief &mdash; {html.escape(_fmt_date(today))}</h1>
     <p class="hero-topstory">Top story: {head} {src}</p>
     <p class="lede">{summary}</p>
-    <a class="read-more" href="{rel}briefs/{built_iso}/">Read today&rsquo;s full brief</a>"""
+    <a class="read-more" href="{rel}briefs/">Read today&rsquo;s full brief</a>"""
 
     # numbered sidebar (top 4)
     top4 = headlines[:4]
@@ -985,26 +985,63 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
     (common.DATA / "briefs_archive.json").write_text(
         json.dumps(entries, indent=1), encoding="utf-8")
 
-    # archive index page (1 level deep → rel="../")
+    # /briefs/ hub — the stable URL that renders today's full brief as real
+    # content (the same pattern that makes /grapevine/ and /surveillance/
+    # rank). Homepage + all internal links point here so link equity
+    # accumulates at ONE URL instead of fragmenting across dated URLs.
+    # (The dated /briefs/<date>/ pages remain the permanent archive below.)
     index_rel = "../"
+    hub_content = _article_lead(top, headlines, weather, airnow, calfire,
+                                escribe, events or [], today, index_rel, ctx)
+    hub_content += _upcoming_meetings(index_rel, escribe, board, today)
+
     rows = "".join(f"""
     <li class="arch-row">
       <span class="arch-date">{html.escape(str(e.get('date', '')))}</span>
       <span class="arch-head"><a href="{index_rel}briefs/{html.escape(str(e.get('date', '')))}/">{html.escape(e.get('headline', 'Daily brief'))}</a></span>
     </li>""" for e in reversed(entries))
-    archive_body = f"""
-    <div class="pagehead">
-      <div class="hero"><p class="kicker">Archive</p>
-      <h1>All daily briefs</h1>
-      <p class="lede">Every morning at 6 AM PT, the brief is saved here as a permanent copy.
-      {len(entries)} brief{'' if len(entries) == 1 else 's'} on record.</p></div>
-    </div>
+    archive_section = f"""
+    <p class="sec-head" style="margin-top:26px">All previous briefs <span class="unit">permanent archive, {len(entries)} on record</span></p>
     <div class="card"><ul class="arch-list">{rows}</ul></div>"""
+
+    today_txt = _fmt_date(today)
+    top_title = (top or {}).get("title", "")
+    brief_faq = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is happening in Bakersfield today?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": (f"Today's Bakersfield Daily Brief for {today_txt} covers "
+                             + (f"the top story, {top_title}, " if top_title else "")
+                             + "plus Kern County news, weather, air quality, and public meetings. "
+                             "A new brief is published every morning at 6 AM PT."),
+                },
+            },
+            {
+                "@type": "Question",
+                "name": "What is the Bakersfield Daily Brief?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": ("The Bakersfield Daily Brief is a free, automated morning summary "
+                             "of Kern County news, weather, conditions, and public meetings. "
+                             "It is compiled every day at 6 AM PT and published at "
+                             "bakersfieldbrief.com."),
+                },
+            },
+        ],
+    }
+
+    hub_body = f"{hub_content}\n\n{archive_section}"
     common.write(common.SITE / "briefs" / "index.html", page_mod.render(
-        title="All daily briefs — archive | Bakersfield Daily Brief",
-        desc="Archive of every Bakersfield Daily Brief, saved automatically each morning.",
-        canonical="/briefs/", content=archive_body, current="other", rel=index_rel,
-        built=built_iso, jsonld=[page_mod.org_jsonld()],
+        title="Bakersfield News Today — Daily Brief for Kern County",
+        desc=f"Today's Bakersfield news: the {today_txt} Daily Brief with Kern County headlines, weather, air quality, and upcoming public meetings — published every morning.",
+        canonical="/briefs/", content=hub_body, current="other", rel=index_rel,
+        built=built_iso,
+        jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), brief_faq],
         statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else ""))
     built.append("briefs/index.html")
 
@@ -1195,12 +1232,15 @@ def _article_lead(top, headlines, weather, airnow, calfire,
         return html.escape(str(s or ""))
 
     # ---- full brief body (LLM, CI) → else short greeting (LLM/deterministic)
-    full = _brief_full_body(top, headlines, weather, airnow, calfire,
-                            events, escribe, today) if os.environ.get("LLM_API_KEY") else None
-    if full is None:
-        full = _cached_brief_body(today)
-    else:
-        _save_brief_body(today, full)
+    # Cache-first: the 6am build generates and saves; every later render
+    # (3-hourly runs, and the /briefs/ hub page in the same build) reuses the
+    # saved body instead of firing the LLM again.
+    full = _cached_brief_body(today)
+    if full is None and os.environ.get("LLM_API_KEY"):
+        full = _brief_full_body(top, headlines, weather, airnow, calfire,
+                                events, escribe, today)
+        if full:
+            _save_brief_body(today, full)
     if full:
         greeting_html = _para_html(full)  # LLM plain text → escaped <p>s
         ctx_brief_words = len(re.findall(r"[A-Za-z0-9'’-]+", full))

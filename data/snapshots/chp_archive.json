@@ -1150,6 +1150,56 @@
   "details": ""
  },
  {
+  "log_id": "260830BF0221",
+  "time": "Aug 30 2026  4:04PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "0 I5 N",
+  "area": "Fort Tejon",
+  "lat": 34.884666,
+  "lon": -118.901106,
+  "details": ""
+ },
+ {
+  "log_id": "260830BF0246",
+  "time": "Aug 30 2026  4:35PM",
+  "type": "1125-Traffic Hazard",
+  "location": "7912 Pembroke Ave",
+  "area": "Bakersfield",
+  "lat": 35.411356,
+  "lon": -119.09009,
+  "details": ""
+ },
+ {
+  "log_id": "260830BF0245",
+  "time": "Aug 30 2026  4:35PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "2105 Edison Hwy",
+  "area": "Bakersfield",
+  "lat": 35.371842,
+  "lon": -118.970479,
+  "details": ""
+ },
+ {
+  "log_id": "260830BF0247",
+  "time": "Aug 30 2026  4:38PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "1008-1132 Fairfax Rd",
+  "area": "Bakersfield",
+  "lat": 35.374914,
+  "lon": -118.931989,
+  "details": ""
+ },
+ {
+  "log_id": "260830BF0250",
+  "time": "Aug 30 2026  4:59PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 Jno Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.836389,
+  "lon": -118.862778,
+  "details": ""
+ },
+ {
   "log_id": "260830BF0052",
   "time": "Aug 30 2026  6:15AM",
   "type": "1179-Trfc Collision-1141 Enrt",

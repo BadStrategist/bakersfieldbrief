@@ -124,6 +124,11 @@ def build(ctx, sources: dict) -> list[str]:
       (whitelist in data/venues.json) and refresh every build.</p></div>
     </div>
     {images.figure("fair", rel)}
+    <div class="card" style="margin:14px 0"><span class="tag amber">Feature</span>
+      <h3><a href="{rel}fair/">Kern County Fair 2026 — dates, concerts &amp; tickets</a></h3>
+      <p>The county&rsquo;s biggest event runs <strong>Sept 23 &ndash; Oct 4</strong> at the
+      Kern County Fairgrounds: twelve nights of concerts at the Budweiser Pavilion, PRCA rodeo,
+      monster trucks, and the full carnival.</p></div>
     {secs}
     <p class="note">Dates are as published by each venue; always confirm on the venue's listing
     before planning around an event. Meeting items come from official agendas and can change.</p>"""

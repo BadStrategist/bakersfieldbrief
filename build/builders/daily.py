@@ -155,6 +155,20 @@ def _page_content(ctx, today, built_iso, rel, news, weather, chp, isa,
     {_newsletter_block()}
 
     {conditions}
+
+    <section class="card" style="margin:14px 0" aria-labelledby="h-fair">
+      <p class="sec-head" id="h-fair">Kern County Fair 2026 <span class="unit">Sept 23 &ndash; Oct 4 &middot; Bakersfield</span></p>
+      <div class="ko-inner">
+        <div class="ko-main">
+          <h3 class="ko-title"><a href="{rel}fair/">Fair dates, concert lineup &amp; tickets</a></h3>
+          <p class="ko-text">The 2026 Kern County Fair runs Sept 23 &ndash; Oct 4 &mdash; twelve nights of headline concerts at the Budweiser Pavilion, PRCA rodeo, monster trucks, carnival, and more.</p>
+        </div>
+        <div class="ko-cta">
+          <a class="btn-red" href="{rel}fair/">See the fair guide</a>
+        </div>
+      </div>
+    </section>
+
     <section aria-labelledby="h-news" id="the-news">
       <p class="sec-head" id="h-news">The News <span class="unit">headlines + links, synthesized</span></p>
       {digest_html}

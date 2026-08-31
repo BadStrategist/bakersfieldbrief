@@ -30,7 +30,7 @@ from build.sources import SOURCES  # noqa: E402
 from build.builders import (daily, cityhall, trackers, static_pages,
                             places, guide, grapevine, events, feed,
                             numbers, letters,
-                            overnight, sunday_read, map)  # noqa: E402
+                            overnight, sunday_read, map, fair)  # noqa: E402
 from build.builders import page as page_mod  # noqa: E402
 
 
@@ -83,6 +83,7 @@ def main():
                 ("overnight", overnight),
                 ("map", map),
                 ("sunday_read", sunday_read),
+                ("fair", fair),
                 ("static", static_pages)]
     for bname, bmod in builders:
         try:
@@ -204,6 +205,7 @@ The site is static and rebuilt fresh every morning at 6:00 AM Pacific from publi
 
 ## Guides & Places
 
+- [Kern County Fair 2026](https://bakersfieldbrief.com/fair/): dates, concert lineup, and tickets.
 - [Weekend Guide](https://bakersfieldbrief.com/guide/): what's on around Kern County.
 - [Events](https://bakersfieldbrief.com/events/): community events calendar.
 - [Places](https://bakersfieldbrief.com/places/): neighborhood and community pages.

@@ -1170,6 +1170,26 @@
   "details": ""
  },
  {
+  "log_id": "260831BF0218",
+  "time": "Aug 31 2026  1:03PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "NB I5 at Lebec Rest Area",
+  "area": "Fort Tejon",
+  "lat": 34.826667,
+  "lon": -118.871944,
+  "details": ""
+ },
+ {
+  "log_id": "260831BF0226",
+  "time": "Aug 31 2026  1:19PM",
+  "type": "1125-Traffic Hazard",
+  "location": "11858 Copus Rd",
+  "area": "Buttonwillow",
+  "lat": 35.094846,
+  "lon": -119.067542,
+  "details": ""
+ },
+ {
   "log_id": "260831BF0039",
   "time": "Aug 31 2026  5:49AM",
   "type": "1183-Trfc Collision-Unkn Inj",

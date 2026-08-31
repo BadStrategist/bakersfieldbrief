@@ -36,6 +36,11 @@ def run(ctx):
                 "county": county,
                 "acres": _g(i, "acresBurned", "AcresBurned", "Acres"),
                 "contained": _g(i, "percentContained", "PercentContained", "Containment"),
+                "lat": _g(i, "Latitude", "latitude"),
+                "lon": _g(i, "Longitude", "longitude"),
+                "started": _g(i, "StartedDateOnly", "Started", "StartedDate"),
+                "location": _g(i, "Location", "location"),
+                "type": _g(i, "Type", "type"),
                 "url": _g(i, "url", "Url", "URL")
                        or f"https://www.fire.ca.gov/incidents/{_g(i, 'slug', 'Slug') or ''}",
             })

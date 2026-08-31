@@ -240,7 +240,145 @@ def build_alpr(ctx, sources: dict):
                    faq_jsonld=faq_jsonld)
 
 
-# ------------------------------------------------------------------ Isabella / water
+# ------------------------------------------------------------------ fires
+def build_fires(ctx, sources: dict):
+    data = sources.get("calfire", {})
+    asof = data.get("asof", common.iso_today())
+    incidents = data.get("incidents", [])
+    kern = data.get("kern", [])
+
+    payload = {"incidents": incidents, "kern": kern, "asof": asof}
+
+    kern_acres = sum(int(float(i.get("acres") or 0)) for i in kern)
+    if data.get("ok"):
+        stat_html = (
+            _stat(f"{len(kern)}", "active fires in Kern County", "amber") +
+            _stat(f"{kern_acres:,}", "acres burning in Kern", "amber") +
+            _stat(f"{len(incidents)}", "active fires in California", "") +
+            _stat(asof, "data as of", "")
+        )
+    else:
+        stat_html = '<div class="errorbox">CAL FIRE data unavailable this build.</div>'
+
+    # ---- map (fires use their own JS; marker: flame pin)
+    map_html = """
+    <div class="mapwrap deflock">
+      <div id="fires-map" role="application" aria-label="Map of active wildfires in California and Kern County"></div>
+      <div class="map-overlay" id="map-overlay">
+        <h3>Active wildfires <span>&middot; Kern County + California</span></h3>
+        <div class="ov-stats">
+          <div><span class="n" id="fire-kern-count">{kern}</span> active in Kern</div>
+          <div><span class="n" id="fire-ca-count">{all_n}</span> active in CA</div>
+          <div><span class="n" id="fire-asof">{asof}</span> data as of</div>
+        </div>
+        <div class="map-legend" id="map-legend-stats"></div>
+      </div>
+    </div>""".format(kern=len(kern), all_n=len(incidents), asof=asof)
+
+    # ---- incident cards (Kern first, then others)
+    def card(i):
+        acres = i.get("acres")
+        acres_txt = f"{float(acres):,.0f}" if acres not in (None, "") else "n/a"
+        cont = i.get("contained")
+        cont_txt = f"{float(cont):.0f}%" if cont not in (None, "") else "n/a"
+        kern_tag = '<span class="tag amber">Kern County</span>' if "Kern" in str(i.get("county", "")) else ""
+        loc = i.get("location") or i.get("county", "")
+        return f"""
+        <div class="card fire-card">
+          <span class="tag">{html.escape(str(i.get('type', 'Wildfire')))}</span>{kern_tag}
+          <h3><a href="{html.escape(i.get('url', '#'))}" rel="noopener">{html.escape(str(i.get('name', 'Incident')))}</a></h3>
+          <p>{html.escape(str(loc))}{(' &middot; started ' + html.escape(str(i.get('started', '')))) if i.get('started') else ''}</p>
+          <div class="stat-row">
+            <span><strong>{acres_txt}</strong> acres</span>
+            <span><strong>{cont_txt}</strong> contained</span>
+          </div>
+        </div>"""
+
+    kern_cards = "".join(card(i) for i in kern)
+    other_cards = "".join(card(i) for i in incidents if "Kern" not in str(i.get("county", "")))
+
+    if kern_cards:
+        kern_section = f'<p class="sec-head">Kern County <span class="unit">active fires</span></p><div class="grid cols-2">{kern_cards}</div>'
+    else:
+        kern_section = f"""
+        <div class="card"><span class="tag amber">Kern County</span>
+        <h3>No active fires in Kern County right now</h3>
+        <p>As of {asof}, CAL FIRE lists no active wildfires in Kern County. When one ignites,
+        it appears here automatically at the next build &mdash; with acres, containment, and
+        location. Active fires elsewhere in California are listed below.</p></div>"""
+
+    others_section = f'<p class="sec-head" style="margin-top:26px">Active fires in California <span class="unit">{len(incidents)} statewide</span></p><div class="grid cols-2">{other_cards}</div>' if other_cards else ""
+
+    body = f"""
+    {map_html}
+
+    <div class="stats">{stat_html}</div>
+
+    {kern_section}
+    {others_section}
+
+    <div class="card">
+      <span class="tag amber">Fire · CAL FIRE</span>
+      <h3>How this tracker works</h3>
+      <p>This page pulls the official <strong>CAL FIRE incident feed</strong> (fire.ca.gov) at every
+      build and shows every active wildfire, with Kern County called out first. Data comes from
+      the state&rsquo;s own public API &mdash; not from us &mdash; so acres, containment, and status
+      are exactly what CAL FIRE reports.</p>
+      <p><strong>Important:</strong> CAL FIRE covers state and federal wildland fires; it does not
+      list every structure fire or medical call (Kern County Fire&rsquo;s dispatch is separate).
+      For evacuation orders and preparedness, see <a href="https://kerncountyfire.org/education-safety/ready-kern/" rel="noopener" target="_blank">ReadyKern</a> and
+      <a href="https://www.fire.ca.gov/" rel="noopener" target="_blank">fire.ca.gov</a>.</p>
+    </div>
+
+    <p class="note">Data: &copy; CAL FIRE / fire.ca.gov public incident feed. Fire perimeters and
+    status update continuously; this page rebuilds every few hours.</p>"""
+
+    faq_jsonld = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How many fires are burning in Kern County right now?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": (f"As of {asof}, CAL FIRE reports {len(kern)} active "
+                             f"{'fire' if len(kern) == 1 else 'fires'} in Kern County"
+                             + (f" totaling {kern_acres:,} acres." if kern_acres else ".")
+                             + " This page updates automatically from the official CAL FIRE feed."),
+                },
+            },
+            {
+                "@type": "Question",
+                "name": "Where are the active fires in Kern County?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": ("This page shows a live map of every active wildfire in Kern County "
+                             "and California, with location, acres burned, and containment, drawn "
+                             "from the official CAL FIRE incident feed."),
+                },
+            },
+            {
+                "@type": "Question",
+                "name": "Is there a fire near Bakersfield right now?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": ("The map and list above show active CAL FIRE incidents in Kern County "
+                             "and across California as of the latest build. For evacuation orders, "
+                             "check ReadyKern at kerncountyfire.org."),
+                },
+            },
+        ],
+    }
+
+    _write_tracker(ctx, "fires", "Kern County Fire Tracker",
+                   f"Active wildfires in Kern County and California, live from the official CAL FIRE feed — {len(kern)} active in Kern ({kern_acres:,} acres), with a map, containment status, and automatic updates.",
+                   stat_html, body, payload, sources, dark=True, img="",
+                   seo_title="Kern County Fire Map — Active Wildfires Live",
+                   faq_jsonld=faq_jsonld, map_js="fires.js")
+
+
+# ------------------------------------------------------------------ water
 def build_water(ctx, sources: dict):
     data = sources.get("isabella", {})
     payload = {"asof": data.get("asof", common.iso_today())}
@@ -285,7 +423,8 @@ def build_water(ctx, sources: dict):
 # ------------------------------------------------------------------ writer
 def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
                    body_html: str, payload: dict, sources: dict, dark: bool = False,
-                   img: str = "", seo_title: str = "", faq_jsonld: dict | None = None):
+                   img: str = "", seo_title: str = "", faq_jsonld: dict | None = None,
+                   map_js: str = "trackers.js"):
     built_iso = common.iso_today()
     rel = "../"
     tpl = common.read_template("tracker.html")
@@ -317,7 +456,7 @@ def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
         statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         extra_head='<link rel="stylesheet" href="../assets/vendor/leaflet.css">'
                    + ('<link rel="stylesheet" href="../assets/css/deflock.css?v=' + built_iso + '">' if dark else ""),
-        extra_scripts='<script src="../assets/vendor/leaflet.js"></script>\n  <script src="../assets/vendor/leaflet.markercluster.js"></script>\n  <script src="../assets/js/trackers.js?v=' + built_iso + '" defer></script>')
+        extra_scripts='<script src="../assets/vendor/leaflet.js"></script>\n  <script src="../assets/vendor/leaflet.markercluster.js"></script>\n  <script src="../assets/js/' + map_js + '?v=' + built_iso + '" defer></script>')
     common.write(common.SITE / slug / "index.html", page)
 
 # ------------------------------------------------------------------ hub
@@ -335,6 +474,7 @@ def build_hub(ctx, sources: dict) -> list[str]:
           <span class="card-go">Open tracker</span>
         </a>""" for slug, (tag, meta) in {
         "surveillance": ("amber", TRACKERS["surveillance"]),
+        "fires": ("amber", TRACKERS["fires"]),
         "water": ("green", TRACKERS["water"]),
     }.items())
 
@@ -373,13 +513,15 @@ def build_hub(ctx, sources: dict) -> list[str]:
     ctx.build_report["trackers"] = {
         "alpr_total": stats.get("total", 0),
         "alpr_new_week": stats.get("new_this_week", 0),
-        "pages": ["surveillance", "water", "trackers"],
+        "pages": ["surveillance", "fires", "water", "trackers"],
     }
-    return ["trackers/index.html", "surveillance/index.html", "water/index.html"]
+    return ["trackers/index.html", "surveillance/index.html", "fires/index.html", "water/index.html"]
 
 
 # register in dependency order (hub reads TRACKERS)
 register("surveillance", "Flock & ALPR Tracker",
          "Every automated license plate reader mapped in the Bakersfield metro — weekly map, facing direction, newest-camera highlights, and a real 13-week change log.", build_alpr)
+register("fires", "Kern County Fire Tracker",
+         "Active wildfires in Kern County and California, live from the official CAL FIRE feed — map, acres, containment, and automatic updates.", build_fires)
 register("water", "Isabella Lake & Kern River Tracker",
          "Lake Isabella storage, percent of capacity, and the 30-day trend from California DWR/CDEC.", build_water)

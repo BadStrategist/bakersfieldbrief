@@ -4,7 +4,8 @@
 
 .mapwrap.deflock { position: relative; background: #E8E4D8; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
 .mapwrap.deflock #alpr-map { height: 66vh; min-height: 460px; width: 100%; background: #E8E4D8; }
-@media (max-width: 700px) { .mapwrap.deflock #alpr-map { height: 58vh; min-height: 420px; } }
+.mapwrap.deflock #fires-map { height: 66vh; min-height: 460px; width: 100%; background: #E8E4D8; }
+@media (max-width: 700px) { .mapwrap.deflock #alpr-map, .mapwrap.deflock #fires-map { height: 58vh; min-height: 420px; } }
 
 /* ---------------- overlay panel ---------------- */
 .map-overlay {
@@ -76,6 +77,22 @@
   border: 2px solid var(--amber); opacity: .9; pointer-events: none;
 }
 
+/* ---------------- fire markers (flame pins, Kern + statewide) ---------------- */
+.fire-marker { position: relative; }
+.fire-marker svg { display: block; filter: drop-shadow(0 1px 3px rgba(32, 38, 28, .4)); }
+.fire-marker.kern::after {
+  content: ""; position: absolute; inset: -5px; border-radius: 50%;
+  border: 2px solid var(--amber); opacity: .9; pointer-events: none;
+}
+
+/* ---------------- fire incident cards ---------------- */
+.fire-card .stat-row {
+  display: flex; gap: 18px; margin-top: 8px;
+  font-size: 13.5px; color: var(--ink-soft);
+  font-family: var(--mono);
+}
+.fire-card .stat-row strong { color: var(--sign); font-size: 15px; }
+
 /* ---------------- clusters ---------------- */
 .cluster-dot {
   background: var(--sign); color: #fff; border: 2.5px solid #fff;
@@ -83,6 +100,7 @@
   font-family: var(--display); font-weight: 700; font-size: 14px;
   box-shadow: 0 2px 8px rgba(32, 38, 28, .35);
 }
+.cluster-dot.fire { background: #D4552E; }
 
 /* ---------------- direction cones (street zoom) ---------------- */
 .cam-cone { pointer-events: none; transition: opacity .2s ease; }

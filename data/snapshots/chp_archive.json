@@ -1310,6 +1310,16 @@
   "details": ""
  },
  {
+  "log_id": "260830BF0365",
+  "time": "Aug 30 2026 10:28PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "8900-8909 S Comanche Dr",
+  "area": "Bakersfield",
+  "lat": 35.27479,
+  "lon": -118.842806,
+  "details": ""
+ },
+ {
   "log_id": "260830BF0117",
   "time": "Aug 30 2026 10:44AM",
   "type": "1183-Trfc Collision-Unkn Inj",

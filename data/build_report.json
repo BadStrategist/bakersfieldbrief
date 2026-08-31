@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-30T22:21:56-07:00",
+ "built_at": "2026-08-30T22:59:02-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -112,7 +112,7 @@
    "alpr_total": 260,
    "kern_fires": 0,
    "aqi": 67,
-   "chp_week": 114
+   "chp_week": 115
   },
   "letters": {
    "published": 0
@@ -128,6 +128,12 @@
    "source": "deterministic",
    "words": 344,
    "asof": "2026-08-30"
+  },
+  "fair": {
+   "year": "2026",
+   "start": "2026-09-23",
+   "end": "2026-10-04",
+   "concerts": 12
   },
   "static": {
    "pages": [

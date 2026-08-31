@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-30T22:59:02-07:00",
+ "built_at": "2026-08-30T23:02:55-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -38,8 +38,8 @@
    "error": ""
   },
   "alpr": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
   },
   "venues": {
    "ok": true,
@@ -55,13 +55,13 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1113,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 0,
    "top_story": "Aaron Donald ends his 2 1/2-year retirement and returns to the Los Angeles Rams",
    "archive": "2026-08-30"
   },
@@ -150,7 +150,7 @@
    ]
   },
   "trackers": {
-   "alpr_total": 260,
+   "alpr_total": 0,
    "alpr_new_week": 0,
    "pages": [
     "surveillance",

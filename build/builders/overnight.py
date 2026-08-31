@@ -48,10 +48,12 @@ def _md(text: str) -> str:
                 in_list = False
             out.append(f"<h2>{_inline(line[3:])}</h2>")
         elif line.startswith("# "):
+            # Report title → h2, NOT h1: the page keeps exactly one real H1
+            # ("What Happened Overnight in Bakersfield") for the target query.
             if in_list:
                 out.append("</ul>")
                 in_list = False
-            out.append(f"<h1>{_inline(line[2:])}</h1>")
+            out.append(f"<h2>{_inline(line[2:])}</h2>")
         elif line.startswith("- "):
             if not in_list:
                 out.append("<ul>")
@@ -61,7 +63,20 @@ def _md(text: str) -> str:
             if in_list:
                 out.append("</ul>")
                 in_list = False
-            out.append(f"<p>{_inline(line)}</p>")
+            # Incident lead → real <h3> heading so Google sees each incident
+            # headline as crawlable heading content (matches long-tail
+            # searches like "tractor trailer fire bakersfield"). The lead is
+            # "**Headline.** rest of paragraph…". The chronological log
+            # entries start with "**HH:MM** —" — keep those as body text, not
+            # headings, or the log would produce a dozen headings.
+            m = re.match(r"\*\*(.+?)\*\*\.?\s*(.*)", line)
+            if m and not re.match(r"^\d{1,2}:\d{2}", m.group(1)):
+                lead, rest = m.group(1), m.group(2)
+                out.append(f"<h3>{_inline(lead)}</h3>")
+                if rest:
+                    out.append(f"<p>{_inline(rest)}</p>")
+            else:
+                out.append(f"<p>{_inline(line)}</p>")
     if in_list:
         out.append("</ul>")
     return "\n".join(out)
@@ -92,6 +107,38 @@ def latest_teaser() -> str | None:
 def _report_html(r: dict) -> str:
     return (f'<section class="letter" id="{html.escape(r["date"])}">'
             f'<p class="letter-meta">{html.escape(r["date"])}</p>{r["body"]}</section>')
+
+
+def _newsarticle_jsonld(r: dict) -> dict:
+    """NewsArticle JSON-LD for one report — headline, publish date, and
+    publisher. Gives Google a per-day fresh-article signal (news-style rich
+    results) instead of just a generic page."""
+    return {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": r["title"],
+        "datePublished": f'{r["date"]}T06:00:00-07:00',
+        "dateModified": f'{r["date"]}T06:00:00-07:00',
+        "author": {
+            "@type": "Organization",
+            "name": "Bakersfield Daily Brief",
+            "url": "https://bakersfieldbrief.com/",
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Bakersfield Daily Brief",
+            "url": "https://bakersfieldbrief.com/",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://bakersfieldbrief.com/assets/img/emblem.png",
+                "width": 100,
+                "height": 100,
+            },
+        },
+        "mainEntityOfPage": f"https://bakersfieldbrief.com/overnight/#{r['date']}",
+        "inLanguage": "en",
+        "isAccessibleForFree": True,
+    }
 
 
 def _top_incident(reps: list) -> str | None:
@@ -196,7 +243,8 @@ def build(ctx, sources: dict) -> list[str]:
         canonical="/overnight/",
         content=body, current="overnight", rel=rel,
         built=built_iso, statusbar=ctx.statusbar,
-        jsonld=[page_mod.org_jsonld(), faq_jsonld])
+        jsonld=[page_mod.org_jsonld(), faq_jsonld]
+               + [_newsarticle_jsonld(r) for r in reps[:2]])
     common.write(common.SITE / "overnight" / "index.html", page)
     built.append("overnight/index.html")
 
@@ -219,7 +267,8 @@ def build(ctx, sources: dict) -> list[str]:
         desc="Archive of every Kern Overnight scanner-to-newsletter report for Bakersfield and Kern County.",
         canonical="/overnight/archive/",
         content=archive_body, current="overnight", rel=archive_rel,
-        built=built_iso, statusbar=ctx.statusbar, jsonld=[page_mod.org_jsonld()])
+        built=built_iso, statusbar=ctx.statusbar,
+        jsonld=[page_mod.org_jsonld()] + [_newsarticle_jsonld(r) for r in reps])
     common.write(common.SITE / "overnight" / "archive" / "index.html", archive_page)
     built.append("overnight/archive/index.html")
 

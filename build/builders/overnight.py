@@ -94,6 +94,20 @@ def _report_html(r: dict) -> str:
             f'<p class="letter-meta">{html.escape(r["date"])}</p>{r["body"]}</section>')
 
 
+def _top_incident(reps: list) -> str | None:
+    """Return the 'big one' incident headline from the newest report (for the
+    FAQ answer) — the first bolded line under '## The big one'."""
+    if not reps:
+        return None
+    text = reps[0]["path"].read_text(encoding="utf-8")
+    m = re.search(r"##\s+The big one\s*\n\s*\*\*(.+?)\*\*", text, re.S)
+    if not m:
+        return None
+    s = re.sub(r"\*\*(.+?)\*\*", r"\1", m.group(1))
+    s = re.sub(r"\s+", " ", s).strip(" .")
+    return s or None
+
+
 def build(ctx, sources: dict) -> list[str]:
     built = []
     built_iso = common.iso_today()
@@ -130,9 +144,41 @@ def build(ctx, sources: dict) -> list[str]:
     from .daily import _newsletter_block
     newsletter = _newsletter_block()
 
+    top = _top_incident(reps)
+    latest_date = reps[0]["date"] if reps else ""
+    if top:
+        happened_text = (f"On {latest_date}, {top}. Read the full Kern Overnight "
+                         "report for the complete rundown of overnight activity.")
+    else:
+        happened_text = ("The Kern Overnight publishes a morning summary of overnight "
+                         "police, fire, and EMS activity across Bakersfield and Kern "
+                         "County, updated daily.")
+    faq_jsonld = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What happened overnight in Bakersfield?",
+                "acceptedAnswer": {"@type": "Answer", "text": happened_text},
+            },
+            {
+                "@type": "Question",
+                "name": "Is there a Bakersfield police scanner?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": ("Yes. The Kern Overnight summarizes overnight police, fire, "
+                             "and EMS dispatch activity across Bakersfield and Kern County "
+                             "every morning. For live audio, the Kern County feed is "
+                             "available on streaming scanner services like Broadcastify."),
+                },
+            },
+        ],
+    }
+
     body = f"""
-    <div class="pagehead"><div class="hero"><p class="kicker">Scanner-to-newsletter</p>
-    <h1>The Kern Overnight</h1>
+    <div class="pagehead"><div class="hero"><p class="kicker">The Kern Overnight &middot; scanner-to-newsletter</p>
+    <h1>What Happened Overnight in Bakersfield</h1>
     <p class="lede">We listen to the county&rsquo;s police, fire, and EMS radio all night so you don&rsquo;t have to. Every morning: what happened, what&rsquo;s preliminary, and where.</p></div></div>
 
     {newsletter}
@@ -145,11 +191,12 @@ def build(ctx, sources: dict) -> list[str]:
     <p class="note" style="margin-top:14px">Compiled from preliminary dispatch traffic each morning; details are unconfirmed until an official source reports them, and locations are generalized for privacy.</p>"""
 
     page = page_mod.render(
-        title="The Kern Overnight | Bakersfield Daily Brief",
-        desc="The Kern Overnight: a scanner-to-newsletter morning brief of overnight police, fire, and EMS activity across Bakersfield and Kern County.",
+        title="What Happened Overnight in Bakersfield — Police, Fire & EMS",
+        desc="What happened overnight in Bakersfield? The Kern Overnight summarizes overnight police, fire, and EMS activity across Bakersfield and Kern County every morning — published daily.",
         canonical="/overnight/",
         content=body, current="overnight", rel=rel,
-        built=built_iso, statusbar=ctx.statusbar, jsonld=[page_mod.org_jsonld()])
+        built=built_iso, statusbar=ctx.statusbar,
+        jsonld=[page_mod.org_jsonld(), faq_jsonld])
     common.write(common.SITE / "overnight" / "index.html", page)
     built.append("overnight/index.html")
 

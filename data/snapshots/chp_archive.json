@@ -1250,6 +1250,16 @@
   "details": ""
  },
  {
+  "log_id": "260830BF0332",
+  "time": "Aug 30 2026  8:30PM",
+  "type": "1125-Traffic Hazard",
+  "location": "1-199 Roberts Ln",
+  "area": "Bakersfield",
+  "lat": 35.408611,
+  "lon": -119.021758,
+  "details": ""
+ },
+ {
   "log_id": "260830BF0110",
   "time": "Aug 30 2026 10:12AM",
   "type": "1125-Traffic Hazard",

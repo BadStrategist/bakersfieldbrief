@@ -1190,6 +1190,36 @@
   "details": ""
  },
  {
+  "log_id": "260831BF0270",
+  "time": "Aug 31 2026  3:16PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Wheeler Ridge Rd / Legray Rd",
+  "area": "Fort Tejon",
+  "lat": 35.030836,
+  "lon": -118.926451,
+  "details": ""
+ },
+ {
+  "log_id": "260831BF0295",
+  "time": "Aug 31 2026  4:25PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sr33 / Lerdo Hwy",
+  "area": "Buttonwillow",
+  "lat": 35.499033,
+  "lon": -119.739259,
+  "details": ""
+ },
+ {
+  "log_id": "260831BF0300",
+  "time": "Aug 31 2026  4:33PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Adobe Rd / Sr223",
+  "area": "Bakersfield",
+  "lat": 35.208607,
+  "lon": -118.967682,
+  "details": ""
+ },
+ {
   "log_id": "260831BF0039",
   "time": "Aug 31 2026  5:49AM",
   "type": "1183-Trfc Collision-Unkn Inj",

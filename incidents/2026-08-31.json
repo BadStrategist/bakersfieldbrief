@@ -1,0 +1,146 @@
+[
+  {
+    "type": "structure_fire",
+    "time": "23:25",
+    "agency": "Bakersfield Fire Department",
+    "area": "Cottonwood Road & Watts Drive, Bakersfield",
+    "notability": 4,
+    "disposition": "working fire",
+    "summary": "A Fire 2 assignment at Cottonwood Road and Watts Drive drew multiple engines and a battalion chief. Additional callers reported smoke in the area, which crews confirmed was the same incident."
+  },
+  {
+    "type": "structure_fire",
+    "time": "00:13",
+    "agency": "Bakersfield Fire Department",
+    "area": "South Union Avenue, Bakersfield",
+    "notability": 4,
+    "disposition": "responding",
+    "summary": "A Fire 2 assignment was ordered for a fire outside the Golden West Casino on South Union Avenue, with multiple engines, a rescue and a battalion chief responding."
+  },
+  {
+    "type": "assault_with_deadly_weapon",
+    "time": "21:53",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield",
+    "notability": 4,
+    "disposition": "responding",
+    "summary": "Officers were asked to respond to a reported stabbing that had just occurred; a nearby unit was requested for the call."
+  },
+  {
+    "type": "domestic_violence",
+    "time": "01:48",
+    "agency": "Bakersfield Police Department",
+    "area": "Polo Drive, Bakersfield",
+    "notability": 3,
+    "disposition": "investigating",
+    "summary": "A possible domestic violence call on Polo Drive after a report that a man shoved his wife to the floor. Additional callers were being located."
+  },
+  {
+    "type": "domestic_disturbance",
+    "time": "01:28",
+    "agency": "Bakersfield Police Department",
+    "area": "Oregon Street area, Bakersfield",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "A possible domestic situation in which a girlfriend was heard screaming and furniture was being thrown around."
+  },
+  {
+    "type": "outside_fire",
+    "time": "01:15",
+    "agency": "Bakersfield Fire Department",
+    "area": "Bakersfield",
+    "notability": 3,
+    "disposition": "investigating",
+    "summary": "Report of people believed to be setting each other's camps on fire in a homeless encampment; responders were asked to treat it as a fire only if flames were seen."
+  },
+  {
+    "type": "welfare_check",
+    "time": "21:37",
+    "agency": "Bakersfield Police Department",
+    "area": "Calloway Avenue, Bakersfield",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Welfare check on a toddler, about 2 to 3 years old, who was seen running in and out of a business while accompanied by three men holding fishing poles."
+  },
+  {
+    "type": "disturbance",
+    "time": "21:18",
+    "agency": "Bakersfield Police Department",
+    "area": "Shannon Drive, Bakersfield",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Disturbance call involving an ex-boyfriend at a residence on Shannon Drive, with a young child present."
+  },
+  {
+    "type": "physical_disturbance",
+    "time": "22:30",
+    "agency": "Kern County Sheriff's Office",
+    "area": "El Rancho Drive, Bakersfield",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Priority call for an active fight involving multiple subjects on El Rancho Drive."
+  },
+  {
+    "type": "collision",
+    "time": "02:20",
+    "agency": "Bakersfield Police Department",
+    "area": "White Street, Bakersfield",
+    "notability": 2,
+    "disposition": "assisting",
+    "summary": "A vehicle was reported stopped in the middle of the roadway on White Street."
+  },
+  {
+    "type": "dui",
+    "time": "21:20",
+    "agency": "CHP",
+    "area": "Highway 5, Kern County",
+    "notability": 2,
+    "disposition": "searching",
+    "summary": "A silver Hyundai was reported driving northbound on Highway 5; the driver was said to be known to the reporting party."
+  },
+  {
+    "type": "medical_aid",
+    "time": "21:28",
+    "agency": "Kern County Fire Department",
+    "area": "Tucker Road, Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid at a Walmart pharmacy on Tucker Road."
+  },
+  {
+    "type": "medical_aid",
+    "time": "00:30",
+    "agency": "Kern County Fire Department",
+    "area": "8th Street, Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid for difficulty breathing on 8th Street."
+  },
+  {
+    "type": "suspicious_person",
+    "time": "23:33",
+    "agency": "Bakersfield Police Department",
+    "area": "California Avenue, Bakersfield",
+    "notability": 2,
+    "disposition": "searching",
+    "summary": "An in-progress call at a California Avenue business; a man was reported running from the scene toward a black Audi."
+  },
+  {
+    "type": "suspicious_person",
+    "time": "23:07",
+    "agency": "Bakersfield Police Department",
+    "area": "Pittsfield Street, Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Report at a busy intersection on Pittsfield Street; the caller was unable to provide suspect information."
+  },
+  {
+    "type": "medical_aid",
+    "time": "23:32",
+    "agency": "Kern County Fire Department",
+    "area": "Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical aid for a reported overdose; the patient was not violent and no weapon was involved."
+  }
+]

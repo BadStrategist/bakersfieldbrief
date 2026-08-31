@@ -1,5 +1,5 @@
 {
- "built_at": "2026-08-31T06:11:02-07:00",
+ "built_at": "2026-08-31T07:06:17-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -34,12 +34,12 @@
    "error": ""
   },
   "isabella": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ConnectTimeout: HTTPSConnectionPool(host='cdec.water.ca.gov', port=443): Max retries exceeded with url: /dynamicapp/req/JSONDataServlet?Stations=ISB&SensorNums=15&dur_code=D&Start=2026-07-25&End=2026-08-31 (Caused by ConnectTimeoutError(<HTTPSConnection(host='cdec.water.ca.gov', port=443) at 0x7f23d3e5e630>, 'Connection to cdec.water.ca.gov timed out. (connect timeout=40)'))"
   },
   "alpr": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
   },
   "venues": {
    "ok": true,
@@ -55,11 +55,11 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1063,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
    "top_story": "Aaron Donald ends his 2 1/2-year retirement and returns to the Los Angeles Rams",
@@ -108,10 +108,10 @@
    "entries": 28
   },
   "numbers": {
-   "isabella_af": 208157,
+   "isabella_af": null,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 58,
+   "aqi": 59,
    "chp_week": 3
   },
   "letters": {
@@ -150,7 +150,7 @@
    ]
   },
   "trackers": {
-   "alpr_total": 260,
+   "alpr_total": 0,
    "alpr_new_week": 0,
    "pages": [
     "surveillance",

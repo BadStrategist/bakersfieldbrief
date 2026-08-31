@@ -1170,6 +1170,16 @@
   "details": ""
  },
  {
+  "log_id": "260831BF0039",
+  "time": "Aug 31 2026  5:49AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sr99 S / Olive Dr Ofr",
+  "area": "Bakersfield",
+  "lat": 35.41557,
+  "lon": -119.058722,
+  "details": ""
+ },
+ {
   "log_id": "260831BF0004",
   "time": "Aug 31 2026 12:15AM",
   "type": "1183-Trfc Collision-Unkn Inj",

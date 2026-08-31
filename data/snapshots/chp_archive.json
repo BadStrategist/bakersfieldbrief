@@ -1300,6 +1300,16 @@
   "details": ""
  },
  {
+  "log_id": "260830BF0361",
+  "time": "Aug 30 2026 10:13PM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 S / Hageman Rd",
+  "area": "Buttonwillow",
+  "lat": 35.398884,
+  "lon": -119.397587,
+  "details": ""
+ },
+ {
   "log_id": "260830BF0117",
   "time": "Aug 30 2026 10:44AM",
   "type": "1183-Trfc Collision-Unkn Inj",

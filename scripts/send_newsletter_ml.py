@@ -104,11 +104,50 @@ def _today_campaign_exists(token: str) -> str | None:
     return None
 
 
+def _content_is_degraded() -> list[str]:
+    """HARD SEND GATE — mirror of the watchdog's content checks (bb_email_watchdog.py).
+
+    The CI send path must refuse to send a degraded email just like the
+    watchdog does, so NO path (CI schedule, manual dispatch, watchdog) can
+    ever put a broken brief in front of subscribers. Returns a list of
+    missing/empty section names; [] means content is complete.
+    """
+    from datetime import datetime
+    from zoneinfo import ZoneInfo
+
+    if not HTML.exists():
+        return ["no rendered brief"]
+    text = HTML.read_text(encoding="utf-8", errors="replace")
+    now = datetime.now(ZoneInfo("America/Los_Angeles"))
+    human = f"{now.strftime('%B')} {now.day}, {now.year}"
+    iso = now.strftime("%Y-%m-%d")
+    # weather: a real temperature reading (degree token + phrasing), not the
+    # degraded placeholder. Weather prose lives in the LLM brief body, so this
+    # also catches the "LLM brief never generated" failure (today's bug).
+    has_degree = ("°" in text) and ("high near" in text or "low around" in text or "° / " in text)
+    checks = {
+        "weather": has_degree and "Weather data unavailable" not in text,
+        "something good": "Something Good" in text and "Something Good card -->" not in text.split("Something Good")[1][:40] if "Something Good" in text else False,
+        "date": (iso in text) or (human in text),
+    }
+    return [k for k, ok in checks.items() if not ok]
+
+
 def main() -> int:
     token = _token()
     group = _group()
     if not HTML.exists():
         print(f"no rendered brief at {HTML} — run the build first")
+        return 1
+
+    # HARD GATE: never send a broken email. If the rendered brief is degraded
+    # (missing weather / something good / date — e.g. the LLM brief body never
+    # got generated), refuse to send and report. A human must fix the build.
+    degraded = _content_is_degraded()
+    if degraded:
+        print("BLOCKED send: rendered brief is degraded (missing: " + ", ".join(degraded) + ")")
+        print("The email was NOT sent. Fix the build (check LLM_BASE_URL/LLM_MODEL),")
+        print("rebuild, verify email/latest/brief.html, then send manually.")
         return 1
 
     existing = _today_campaign_exists(token)

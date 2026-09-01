@@ -133,7 +133,11 @@ def build_alpr(ctx, sources: dict):
     <div class="mapwrap deflock">
       <div id="alpr-map" role="application" aria-label="Map of license plate reader camera locations"></div>
       <div class="map-overlay" id="map-overlay">
-        <h3>Flock &amp; ALPRs <span>&middot; Kern County</span></h3>
+        <div class="ov-head">
+          <h3>Flock &amp; ALPRs <span>&middot; Kern County</span></h3>
+          <button type="button" class="ov-min" aria-expanded="true"
+                  aria-label="Close panel" title="Close panel">&#8722;</button>
+        </div>
         <div class="ov-stats">
           <div><span class="n">{stats.get('total', 0)}</span> cameras mapped</div>
           <div><span class="n">{stats.get('flock', 0)}</span> Flock Safety</div>

@@ -216,20 +216,35 @@
   updateCones();
 
   /* ---------- minimize the info panel ----------
-     The minimize button collapses the overlay to a slim header so the map
-     gets the full screen; click again to expand. */
+     The minimize control (top-right chevron + bottom Close button) collapses
+     the overlay to a slim bar so the map gets the full screen; click again
+     to expand. Both controls stay visible while collapsed so the panel can
+     always be re-opened — no scroll needed to find the toggle. */
   var overlay = document.getElementById("map-overlay");
-  var ovToggle = document.getElementById("ov-toggle");
-  if (overlay && ovToggle) {
-    ovToggle.addEventListener("click", function () {
-      var collapsed = overlay.classList.toggle("collapsed");
-      ovToggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
-      ovToggle.setAttribute("aria-label", collapsed ? "Expand panel" : "Close panel");
-      ovToggle.title = collapsed ? "Expand panel" : "Close panel";
-      ovToggle.innerHTML = collapsed ? "Open" : "Close";
-      // let Leaflet recalc after the panel resizes
-      setTimeout(function () { map.invalidateSize(); }, 250);
+  if (overlay) {
+    var toggles = overlay.querySelectorAll(".ov-min, .ov-toggle");
+    function syncToggles(collapsed) {
+      toggles.forEach(function (t) {
+        t.setAttribute("aria-expanded", collapsed ? "false" : "true");
+        t.setAttribute("aria-label", collapsed ? "Expand panel" : "Close panel");
+        t.title = collapsed ? "Expand panel" : "Close panel";
+        if (t.classList.contains("ov-toggle")) {
+          t.innerHTML = collapsed ? "Open" : "Close";
+        }
+        if (t.classList.contains("ov-min")) {
+          t.innerHTML = collapsed ? "&#43;" : "&#8722;";
+        }
+      });
+    }
+    toggles.forEach(function (ovToggle) {
+      ovToggle.addEventListener("click", function () {
+        var collapsed = overlay.classList.toggle("collapsed");
+        syncToggles(collapsed);
+        // let Leaflet recalc after the panel resizes
+        setTimeout(function () { map.invalidateSize(); }, 250);
+      });
     });
+    syncToggles(overlay.classList.contains("collapsed"));
   }
 
   /* legend + stats */

@@ -22,7 +22,21 @@
 .map-overlay.collapsed .ov-btn, .map-overlay.collapsed .ov-note,
 .map-overlay.collapsed h4, .map-overlay.collapsed .ov-list,
 .map-overlay.collapsed .map-legend { display: none; }
+.map-overlay.collapsed .ov-head { margin-bottom: 0; }
 .map-overlay.collapsed .ov-toggle { margin-bottom: 0; }
+
+/* header row: title + always-visible minimize button (top-right) */
+.ov-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 10px; }
+.ov-head h3 { margin: 2px 0 0; }
+.ov-min {
+  flex: 0 0 auto; width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--line-strong); border-radius: 7px;
+  background: var(--sign); color: #fff;
+  font-family: var(--display); font-size: 20px; font-weight: 600; line-height: 1;
+  cursor: pointer; box-shadow: 0 1px 4px rgba(0, 0, 0, .25);
+}
+.ov-min:hover { background: var(--sign-deep); }
 
 .map-overlay h3 {
   font-family: var(--display); text-transform: uppercase; letter-spacing: .08em;

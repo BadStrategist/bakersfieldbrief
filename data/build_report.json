@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-01T07:04:58-07:00",
+ "built_at": "2026-09-01T09:43:04-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -34,8 +34,8 @@
    "error": ""
   },
   "isabella": {
-   "ok": false,
-   "error": "ConnectTimeout: HTTPSConnectionPool(host='cdec.water.ca.gov', port=443): Max retries exceeded with url: /dynamicapp/req/JSONDataServlet?Stations=ISB&SensorNums=15&dur_code=D&Start=2026-07-26&End=2026-09-01 (Caused by ConnectTimeoutError(<HTTPSConnection(host='cdec.water.ca.gov', port=443) at 0x7f9c78e55df0>, 'Connection to cdec.water.ca.gov timed out. (connect timeout=40)'))"
+   "ok": true,
+   "error": ""
   },
   "alpr": {
    "ok": true,
@@ -56,13 +56,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 66,
+  "brief_words": 60,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Police seek help identifying man accused of breaking window at Dollar Tree on Wible Road",
+   "top_story": "Spanish Speaking Conference to connect families with special resources",
    "archive": "2026-09-01"
   },
   "cityhall": {
@@ -108,10 +108,10 @@
    "entries": 29
   },
   "numbers": {
-   "isabella_af": null,
+   "isabella_af": 173309,
    "alpr_total": 260,
    "kern_fires": 1,
-   "aqi": 58,
+   "aqi": 67,
    "chp_week": 31
   },
   "letters": {

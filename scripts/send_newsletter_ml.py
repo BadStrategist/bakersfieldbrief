@@ -133,9 +133,48 @@ def _content_is_degraded() -> list[str]:
     checks = {
         "weather": has_temp and "Weather data unavailable" not in text,
         "something good": text.count("Something Good") >= 2,
+        # overnight: the card is degraded to a headline + count + Full Report
+        # link when the LLM narrative is empty (the emailer emits the prose
+        # paragraphs only if the brief body generated them). The narrative is
+        # the text AFTER the 'Full Report' link — require real prose there,
+        # not just the deterministic headline block. Guards the exact 2026-09-01
+        # failure where the overnight narrative was empty.
+        "overnight": _has_overnight_narrative(text),
         "date": (iso in text) or (human in text),
     }
     return [k for k, ok in checks.items() if not ok]
+
+
+def _has_overnight_narrative(text: str) -> bool:
+    """True if the Kern Overnight card carries real narrative prose.
+
+    The emailer renders the deterministic headline + incident count + a
+    'Full Report' link always; the LLM-written narrative paragraphs are only
+    emitted when the brief body contains them. So the narrative is everything
+    between the 'Full Report' link and the end of the overnight card. Extract
+    that region (stripping tags/comments) and require enough prose to be a
+    real report rather than an empty card.
+    """
+    import re
+    card = _slice_between(text, "Kern Overnight card", "Today's Weather card")
+    tail = card
+    marker = tail.lower().rfind("full report")
+    if marker != -1:
+        tail = tail[marker + len("full report"):]
+    tail = re.sub(r"<!--.*?-->", "", tail, flags=re.S)
+    tail = re.sub(r"<[^>]+>", " ", tail)
+    tail = re.sub(r"\s+", " ", tail).strip()
+    # A real narrative is long prose with several sentence boundaries; an
+    # empty card leaves at most a few boilerplate words here.
+    return tail.count(". ") >= 3 and len(tail) >= 120
+
+
+def _slice_between(text: str, start: str, end: str) -> str:
+    i = text.find(start)
+    if i == -1:
+        return ""
+    j = text.find(end, i)
+    return text[i:j] if j != -1 else text[i:]
 
 
 def main() -> int:

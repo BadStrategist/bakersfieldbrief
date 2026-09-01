@@ -121,13 +121,18 @@ def _content_is_degraded() -> list[str]:
     now = datetime.now(ZoneInfo("America/Los_Angeles"))
     human = f"{now.strftime('%B')} {now.day}, {now.year}"
     iso = now.strftime("%Y-%m-%d")
-    # weather: a real temperature reading (degree token + phrasing), not the
-    # degraded placeholder. Weather prose lives in the LLM brief body, so this
-    # also catches the "LLM brief never generated" failure (today's bug).
-    has_degree = ("°" in text) and ("high near" in text or "low around" in text or "° / " in text)
+    # weather: a real temperature reading, not the degraded placeholder.
+    # Weather prose lives in the LLM brief body, so this also catches the
+    # "LLM brief never generated" failure. Accept either a degree symbol
+    # (72° / 97°) or the spelled-out "85 degrees" form the LLM emits.
+    has_temp = ("°" in text) or ("degrees" in text and ("high near" in text or "low around" in text))
+    # something good: the rendered card carries the kicker + prose. The HTML
+    # template emits '<!-- Something Good card -->' only when content exists,
+    # but guard on TWO occurrences (comment + kicker) so a bare template
+    # comment can't pass the gate.
     checks = {
-        "weather": has_degree and "Weather data unavailable" not in text,
-        "something good": "Something Good" in text and "Something Good card -->" not in text.split("Something Good")[1][:40] if "Something Good" in text else False,
+        "weather": has_temp and "Weather data unavailable" not in text,
+        "something good": text.count("Something Good") >= 2,
         "date": (iso in text) or (human in text),
     }
     return [k for k, ok in checks.items() if not ok]

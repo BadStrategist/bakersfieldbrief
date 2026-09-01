@@ -1218,5 +1218,25 @@
   "lat": 35.412288,
   "lon": -119.022385,
   "details": ""
+ },
+ {
+  "log_id": "260901BF0167",
+  "time": "Sep  1 2026 12:09PM",
+  "type": "1125-Traffic Hazard",
+  "location": "N Chester Ave / China Grade Loop",
+  "area": "Bakersfield",
+  "lat": 35.426662,
+  "lon": -119.021158,
+  "details": ""
+ },
+ {
+  "log_id": "260901BF0172",
+  "time": "Sep  1 2026 12:13PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Old Farm Rd / Rosedale Hwy",
+  "area": "Bakersfield",
+  "lat": 35.383473,
+  "lon": -119.136712,
+  "details": ""
  }
 ]

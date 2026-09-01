@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-01T11:02:37-07:00",
+ "built_at": "2026-09-01T12:21:15-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,13 +55,13 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 60,
+  "_digest_meta": "llm",
+  "brief_words": 1628,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 2,
    "top_story": "Spanish Speaking Conference to connect families with special resources",
    "archive": "2026-09-01"
   },
@@ -111,8 +111,8 @@
    "isabella_af": 173309,
    "alpr_total": 260,
    "kern_fires": 1,
-   "aqi": 64,
-   "chp_week": 34
+   "aqi": 57,
+   "chp_week": 36
   },
   "letters": {
    "published": 0

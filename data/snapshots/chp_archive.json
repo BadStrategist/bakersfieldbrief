@@ -1198,5 +1198,15 @@
   "lat": 34.82011,
   "lon": -118.87949,
   "details": ""
+ },
+ {
+  "log_id": "260901BF0121",
+  "time": "Sep  1 2026 10:13AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "12213 Edison Hwy",
+  "area": "Bakersfield",
+  "lat": 35.34661,
+  "lon": -118.868238,
+  "details": ""
  }
 ]

@@ -1188,5 +1188,15 @@
   "lat": 35.365346,
   "lon": -119.160561,
   "details": ""
+ },
+ {
+  "log_id": "260901BF0117",
+  "time": "Sep  1 2026 10:08AM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 S / Frazier Mountain Park Rd Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.82011,
+  "lon": -118.87949,
+  "details": ""
  }
 ]

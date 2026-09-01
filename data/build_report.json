@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-01T10:11:53-07:00",
+ "built_at": "2026-09-01T10:17:35-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 1,
    "top_story": "Spanish Speaking Conference to connect families with special resources",
    "archive": "2026-09-01"
   },
@@ -112,7 +112,7 @@
    "alpr_total": 260,
    "kern_fires": 1,
    "aqi": 58,
-   "chp_week": 31
+   "chp_week": 32
   },
   "letters": {
    "published": 0

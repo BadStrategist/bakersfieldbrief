@@ -157,7 +157,19 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
         news_txt += f"• {h.get('title', '')} ({h.get('source', '')}) — {h.get('url', '')}\n"
 
     # ---- One Thing to Watch (Flock camera tracker update when available)
-    flock_html = _flock_update_html(sources.get("alpr") or {})
+    alpr = sources.get("alpr") or {}
+    flock_html = _flock_update_html(alpr)
+    if flock_html and alpr.get("ok"):
+        # Regenerate the tracker card image from today's live camera data so
+        # the embedded image (a live URL) is always fresh — never a stale
+        # committed JPEG. Fail-closed: if the redraw throws, drop the card so
+        # the send gate blocks rather than ship an outdated image.
+        try:
+            from .tracker_card import render_tracker_card
+            render_tracker_card(alpr, None)
+        except Exception as e:  # noqa: BLE001
+            common.log(f"tracker card redraw failed — dropping flock card: {e}")
+            flock_html = ""
     if flock_html:
         watch_html = flock_html
         watch_txt = ""
@@ -448,6 +460,7 @@ def _flock_update_html(alpr: dict) -> str:
                      "the tracker refreshes from OpenStreetMap every Monday.")
 
     tracker = f"{BASE_URL}/surveillance/"
+    asof = alpr.get("asof", "")
     return f"""<table role="presentation" width="100%" cellpadding="0" cellspacing="0"
   style="margin:8px 0 4px;border:1px solid {LINE};border-radius:6px;overflow:hidden">
   <tr><td>
@@ -460,7 +473,9 @@ def _flock_update_html(alpr: dict) -> str:
     <p style="margin:0 0 6px;font-family:{SANS};font-size:13px;line-height:1.55;color:{INK}">
       {added_txt}. <strong>{flock}</strong> of <strong>{total}</strong> ALPR cameras in Kern County are Flock Safety units;
       the newest was mapped <strong>{H.escape(nmap)}</strong>{H.escape(dir_txt)}.</p>
-    <p style="margin:8px 0 0;font-family:{SANS};font-size:12px;color:{INK_SOFT}">
+    <p style="margin:0 0 8px;font-family:{MONO};font-size:11px;color:{INK_SOFT}">
+      Data as of {H.escape(asof)} · refreshed from OpenStreetMap each build.</p>
+    <p style="margin:0;font-family:{SANS};font-size:12px;color:{INK_SOFT}">
       <a href="{tracker}" style="display:inline-block;background:{SIGN};color:#ffffff;font-family:{DISPLAY};font-size:12px;
       font-weight:600;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:6px 14px;border-radius:4px">
       View the Live Camera Tracker</a></p>

@@ -138,4 +138,19 @@ def _has_flock_card(text: str) -> bool:
     # A new-camera line ("N new camera[s] mapped ..." or "No new cameras mapped").
     if "new camera" not in card:
         return False
+    # Freshness: the card must carry a "Data as of YYYY-MM-DD" line whose date
+    # is recent. The alpr source stamps asof=today every successful build, so
+    # a card that is present but stale (a 11-day-old image, as shipped on
+    # 2026-09-01) must block. 3-day window absorbs timezone/build lag without
+    # letting an old card through.
+    m = re.search(r"Data as of\s+(\d{4}-\d{2}-\d{2})", card)
+    if not m:
+        return False
+    from datetime import date, timedelta
+    try:
+        asof = date.fromisoformat(m.group(1))
+    except ValueError:
+        return False
+    if abs((date.today() - asof).days) > 3:
+        return False
     return True

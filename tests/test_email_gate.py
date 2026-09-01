@@ -74,6 +74,7 @@ def _full_brief() -> str:
   <img src="https://bakersfieldbrief.com/assets/img/tracker-map-card.jpg">
   <p><strong>3</strong> new cameras mapped this week.
      <strong>231</strong> of <strong>260</strong> ALPR cameras in Kern County.</p>
+  <p>Data as of {ISO} · refreshed from OpenStreetMap each build.</p>
 </td></tr></table>
 
 <!-- follow CTA -->
@@ -157,4 +158,15 @@ def test_flock_card_with_zero_cameras_flagged(brief):
 
 def test_flock_card_without_new_camera_line_flagged(brief):
     _replace(brief, "<strong>3</strong> new cameras mapped this week.", "Tracker refreshed from OpenStreetMap.")
+    assert "flock/alpr" in content_is_degraded(brief)
+
+
+def test_stale_flock_card_flagged(brief):
+    # present + real counts, but the "Data as of" date is old => must block
+    _replace(brief, f"Data as of {ISO}", "Data as of 2026-08-11")
+    assert "flock/alpr" in content_is_degraded(brief)
+
+
+def test_flock_card_without_asof_date_flagged(brief):
+    _replace(brief, f"  <p>Data as of {ISO} · refreshed from OpenStreetMap each build.</p>\n", "")
     assert "flock/alpr" in content_is_degraded(brief)

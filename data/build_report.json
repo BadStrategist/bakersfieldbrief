@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-01T12:21:15-07:00",
+ "built_at": "2026-09-01T14:43:16-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -62,7 +62,7 @@
    "news_digest": "llm",
    "alerts": 0,
    "chp_new": 2,
-   "top_story": "Spanish Speaking Conference to connect families with special resources",
+   "top_story": "Bakersfield police warn residents about 'courier' scam circulating",
    "archive": "2026-09-01"
   },
   "cityhall": {
@@ -100,7 +100,7 @@
    "groups": {
     "This week": 2,
     "Next week": 4,
-    "Later": 44
+    "Later": 40
    },
    "meetings": 3
   },
@@ -111,8 +111,8 @@
    "isabella_af": 173309,
    "alpr_total": 260,
    "kern_fires": 1,
-   "aqi": 57,
-   "chp_week": 36
+   "aqi": 54,
+   "chp_week": 38
   },
   "letters": {
    "published": 0

@@ -1140,6 +1140,26 @@
   "details": ""
  },
  {
+  "log_id": "260901BF0218",
+  "time": "Sep  1 2026  2:05PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Niles St / Mount Vernon Ave",
+  "area": "Bakersfield",
+  "lat": 35.376272,
+  "lon": -118.967404,
+  "details": ""
+ },
+ {
+  "log_id": "260901BF0230",
+  "time": "Sep  1 2026  2:22PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb Sr99 Jno Sr58 E",
+  "area": "BF",
+  "lat": 35.353333,
+  "lon": -119.039167,
+  "details": ""
+ },
+ {
   "log_id": "260901BF0016",
   "time": "Sep  1 2026  2:24AM",
   "type": "TADV-Traffic Advisory",

@@ -23,12 +23,11 @@
   /* ---------------- map ---------------- */
   var map = L.map("alpr-map", { scrollWheelZoom: true }).setView([35.37, -119.02], 10);
   window._alprMap = map; // exposed for automated verification
-  /* Bold, readable basemap: CARTO Voyager has high-contrast roads and
+  /* Bold, readable basemap: Esri World Street Map has high-contrast roads and
      prominent dark street labels so people can see exactly where they
-     are navigating. (light_all's labels were too faint.) */
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png", {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: "abcd",
+     are navigating. (CARTO Voyager now requires an API key / watermarks.) */
+  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}", {
+    attribution: '&copy; <a href="https://www.esri.com">Esri</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     maxZoom: 19
   }).addTo(map);
 

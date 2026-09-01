@@ -1138,5 +1138,55 @@
   "lat": 35.265234,
   "lon": -119.024794,
   "details": ""
+ },
+ {
+  "log_id": "260901BF0016",
+  "time": "Sep  1 2026  2:24AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260901BF0032",
+  "time": "Sep  1 2026  5:31AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "9700-11299 Di Giorgio Rd",
+  "area": "Bakersfield",
+  "lat": 35.252485,
+  "lon": -118.895608,
+  "details": ""
+ },
+ {
+  "log_id": "260901BF0049",
+  "time": "Sep  1 2026  6:29AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "SB I5 JNO Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.836944,
+  "lon": -118.863056,
+  "details": ""
+ },
+ {
+  "log_id": "260901BF0047",
+  "time": "Sep  1 2026  6:29AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Nb Sr99 Jso Olive Dr",
+  "area": "Bakersfield",
+  "lat": 35.411944,
+  "lon": -119.054444,
+  "details": ""
+ },
+ {
+  "log_id": "260901BF0051",
+  "time": "Sep  1 2026  6:31AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "14259 Rowland Ave",
+  "area": "Bakersfield",
+  "lat": 35.365346,
+  "lon": -119.160561,
+  "details": ""
  }
 ]

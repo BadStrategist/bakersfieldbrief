@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-01T01:02:56-07:00",
+ "built_at": "2026-09-01T06:46:11-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 1976, column 3"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -56,13 +56,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 61,
+  "brief_words": 66,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "2 lanes reopen on southbound I-5 near Grapevine Road: CHP",
+   "chp_new": 5,
+   "top_story": "Police seek help identifying man accused of breaking window at Dollar Tree on Wible Road",
    "archive": "2026-09-01"
   },
   "cityhall": {
@@ -108,11 +108,11 @@
    "entries": 29
   },
   "numbers": {
-   "isabella_af": 208157,
+   "isabella_af": 173309,
    "alpr_total": 260,
    "kern_fires": 1,
-   "aqi": 56,
-   "chp_week": 26
+   "aqi": 58,
+   "chp_week": 31
   },
   "letters": {
    "published": 0

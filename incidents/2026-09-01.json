@@ -1,0 +1,128 @@
+[
+  {
+    "type": "vehicle_rollover",
+    "time": "00:41",
+    "agency": "Kern County Fire Department / CHP",
+    "area": "Highway 58 west of Tucker Road",
+    "notability": 4,
+    "disposition": "investigating",
+    "summary": "Rollover on westbound Highway 58 west of Tucker Road with unknown injuries. Multi-unit response including a battalion chief with an air unit on standby; westbound lanes reduced as crews worked the scene."
+  },
+  {
+    "type": "shots_fired",
+    "time": "01:48",
+    "agency": "Bakersfield Police Department",
+    "area": "Coburn Ridge area, southwest Bakersfield",
+    "notability": 4,
+    "disposition": "investigating",
+    "summary": "Reports of five to six shots fired at a residence, with subjects in ski masks seen at the door. The caller was checking cameras as a vehicle fled the area. Officers responded."
+  },
+  {
+    "type": "vegetation_fire",
+    "time": "01:30",
+    "agency": "Kern County Fire Department",
+    "area": "Wasco Pond Road north of West Cecil Avenue, Wasco area",
+    "notability": 3,
+    "disposition": "contained",
+    "summary": "Grass fire near Wasco Pond Road drew an engine, a patrol unit and additional assistance. Fire progression was stopped and crews were released."
+  },
+  {
+    "type": "outside_fire",
+    "time": "21:32",
+    "agency": "Kern County Fire Department",
+    "area": "northbound Highway 99 south of Olive Drive",
+    "notability": 2,
+    "disposition": "handled",
+    "summary": "Small roadside fire reported by CHP on northbound Highway 99 south of Olive Drive; crews responded and handled."
+  },
+  {
+    "type": "vehicle_fire",
+    "time": "23:32",
+    "agency": "Kern County Fire Department",
+    "area": "Elk Hills Road",
+    "notability": 2,
+    "disposition": "checked",
+    "summary": "A reported vehicle fire on Elk Hills Road drew a first-alarm response before crews confirmed it was a dropped flare with no active fire, and cleared."
+  },
+  {
+    "type": "threats",
+    "time": "21:36",
+    "agency": "Bakersfield Police Department",
+    "area": "Virginia Avenue and Powell Street area",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Court order violation at Virginia and Powell with a male subject making threats to obtain a firearm. Additional officers responded."
+  },
+  {
+    "type": "foot_pursuit",
+    "time": "21:58",
+    "agency": "Bakersfield Police Department",
+    "area": "Chester Avenue area, north Bakersfield",
+    "notability": 3,
+    "disposition": "searching",
+    "summary": "Short foot pursuit of a male on a dirt bike running along a bike path; visual was lost at Chester Avenue. Units searching."
+  },
+  {
+    "type": "suspicious_person",
+    "time": "23:21",
+    "agency": "Bakersfield Police Department",
+    "area": "Blomquist Drive area",
+    "notability": 2,
+    "disposition": "investigating",
+    "summary": "Male transient, possibly under the influence, repeatedly returning to an abandoned residence. Officers investigating."
+  },
+  {
+    "type": "suspicious_person",
+    "time": "23:38",
+    "agency": "Bakersfield Police Department",
+    "area": "near Mount Vernon Bridge, Kentucky Street area",
+    "notability": 3,
+    "disposition": "searching",
+    "summary": "Search for a subject last seen heading eastbound toward the Mount Vernon Bridge, described in dark clothing and blue pants. Units searching."
+  },
+  {
+    "type": "welfare_check",
+    "time": "00:06",
+    "agency": "Bakersfield Police Department",
+    "area": "Bernard Street area",
+    "notability": 2,
+    "disposition": "checking",
+    "summary": "Welfare check on a 15-year-old reported missing and last seen in a gray SUV. Officers attempting to locate."
+  },
+  {
+    "type": "mental_health",
+    "time": "22:44",
+    "agency": "Bakersfield Police Department / Kern County Fire Department",
+    "area": "West China Grade area",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Female in a mental health crisis at a residence; medics and officers responding."
+  },
+  {
+    "type": "suicidal_subject",
+    "time": "22:48",
+    "agency": "Bakersfield Police Department",
+    "area": "Marble Street area",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Reports of a 17-year-old making suicidal statements at a residence; family contacted. Officers and medics responding."
+  },
+  {
+    "type": "family_disturbance",
+    "time": "23:04",
+    "agency": "Bakersfield Police Department",
+    "area": "Meadows Street area",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Verbal domestic with juveniles heard crying in the background and a female heard crying. Officers responding given concern for children."
+  },
+  {
+    "type": "pedestrian_on_highway",
+    "time": "02:23",
+    "agency": "CHP",
+    "area": "West Escape Ramp, northbound I-5",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Caller reported a family member walking on the right-hand shoulder of northbound I-5 near the escape ramp. CHP responding."
+  }
+]

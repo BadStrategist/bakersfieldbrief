@@ -1203,10 +1203,10 @@
   "log_id": "260831BF0295",
   "time": "Aug 31 2026  4:25PM",
   "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Sr33 / Lerdo Hwy",
+  "location": "16828-16977 SR33",
   "area": "Buttonwillow",
-  "lat": 35.499033,
-  "lon": -119.739259,
+  "lat": 35.528551,
+  "lon": -119.76137,
   "details": ""
  },
  {
@@ -1217,6 +1217,16 @@
   "area": "Bakersfield",
   "lat": 35.208607,
   "lon": -118.967682,
+  "details": ""
+ },
+ {
+  "log_id": "260831BF0309",
+  "time": "Aug 31 2026  4:49PM",
+  "type": "FIRE-Report of Fire",
+  "location": "8902-8983 Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.93017,
+  "lon": -118.927367,
   "details": ""
  },
  {

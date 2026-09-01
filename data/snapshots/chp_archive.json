@@ -1208,5 +1208,15 @@
   "lat": 35.34661,
   "lon": -118.868238,
   "details": ""
+ },
+ {
+  "log_id": "260901BF0131",
+  "time": "Sep  1 2026 10:41AM",
+  "type": "1125-Traffic Hazard",
+  "location": "115 Warren Ave",
+  "area": "Bakersfield",
+  "lat": 35.412288,
+  "lon": -119.022385,
+  "details": ""
  }
 ]

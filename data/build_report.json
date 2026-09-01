@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-01T06:46:11-07:00",
+ "built_at": "2026-09-01T07:04:58-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -34,8 +34,8 @@
    "error": ""
   },
   "isabella": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ConnectTimeout: HTTPSConnectionPool(host='cdec.water.ca.gov', port=443): Max retries exceeded with url: /dynamicapp/req/JSONDataServlet?Stations=ISB&SensorNums=15&dur_code=D&Start=2026-07-26&End=2026-09-01 (Caused by ConnectTimeoutError(<HTTPSConnection(host='cdec.water.ca.gov', port=443) at 0x7f9c78e55df0>, 'Connection to cdec.water.ca.gov timed out. (connect timeout=40)'))"
   },
   "alpr": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 5,
+   "chp_new": 0,
    "top_story": "Police seek help identifying man accused of breaking window at Dollar Tree on Wible Road",
    "archive": "2026-09-01"
   },
@@ -108,7 +108,7 @@
    "entries": 29
   },
   "numbers": {
-   "isabella_af": 173309,
+   "isabella_af": null,
    "alpr_total": 260,
    "kern_fires": 1,
    "aqi": 58,
@@ -118,10 +118,10 @@
    "published": 0
   },
   "overnight": {
-   "published": 22
+   "published": 23
   },
   "map": {
-   "dots": 81
+   "dots": 75
   },
   "sunday_read": {
    "topic": "Public safety",

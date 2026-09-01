@@ -1170,6 +1170,16 @@
   "details": ""
  },
  {
+  "log_id": "260901BF0241",
+  "time": "Sep  1 2026  2:43PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Mccutchen Rd / Mountain Ridge Dr",
+  "area": "BF",
+  "lat": 35.281423,
+  "lon": -119.065509,
+  "details": ""
+ },
+ {
   "log_id": "260901BF0032",
   "time": "Sep  1 2026  5:31AM",
   "type": "1182-Trfc Collision-No Inj",

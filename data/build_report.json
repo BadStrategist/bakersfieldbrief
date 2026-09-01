@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-01T14:43:16-07:00",
+ "built_at": "2026-09-01T14:51:33-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 1,
    "top_story": "Bakersfield police warn residents about 'courier' scam circulating",
    "archive": "2026-09-01"
   },
@@ -112,7 +112,7 @@
    "alpr_total": 260,
    "kern_fires": 1,
    "aqi": 54,
-   "chp_week": 38
+   "chp_week": 39
   },
   "letters": {
    "published": 0

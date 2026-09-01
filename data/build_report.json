@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-01T00:20:34-07:00",
+ "built_at": "2026-09-01T01:02:56-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 1976, column 3"
   },
   "isabella": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 12,
+   "chp_new": 0,
    "top_story": "2 lanes reopen on southbound I-5 near Grapevine Road: CHP",
    "archive": "2026-09-01"
   },
@@ -111,7 +111,7 @@
    "isabella_af": 208157,
    "alpr_total": 260,
    "kern_fires": 1,
-   "aqi": 55,
+   "aqi": 56,
    "chp_week": 26
   },
   "letters": {

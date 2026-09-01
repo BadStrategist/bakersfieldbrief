@@ -16,12 +16,29 @@ To ADD a tracker: 1) write a source module in build/sources/,
 from __future__ import annotations
 
 import datetime as dt
+import hashlib
 import html
 import json
 
 from .. import common
 from . import images
 from . import page as page_mod
+
+
+def _js_ver(map_js: str) -> str:
+    """Content hash of a tracker JS file — the cache-busting query param.
+
+    Date-based (?v=YYYY-MM-DD) failed us: a same-day JS edit left the query
+    unchanged, so returning browsers kept serving the cached old file (e.g.
+    the watermarked CARTO map). A hash changes on EVERY content change, so
+    browsers always pick up edits while still caching unchanged files.
+    """
+    try:
+        b = (common.ROOT / "assets" / "js" / map_js).read_bytes()
+        return hashlib.sha1(b).hexdigest()[:10]
+    except OSError:
+        return common.iso_today()
+
 
 # ------------------------------------------------------------------ registry
 TRACKERS = {}  # slug -> dict(name=..., lede=..., build=callable)
@@ -456,7 +473,7 @@ def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
         statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         extra_head='<link rel="stylesheet" href="../assets/vendor/leaflet.css">'
                    + ('<link rel="stylesheet" href="../assets/css/deflock.css?v=' + built_iso + '">' if dark else ""),
-        extra_scripts='<script src="../assets/vendor/leaflet.js"></script>\n  <script src="../assets/vendor/leaflet.markercluster.js"></script>\n  <script src="../assets/js/' + map_js + '?v=' + built_iso + '" defer></script>')
+        extra_scripts='<script src="../assets/vendor/leaflet.js"></script>\n  <script src="../assets/vendor/leaflet.markercluster.js"></script>\n  <script src="../assets/js/' + map_js + '?v=' + _js_ver(map_js) + '" defer></script>')
     common.write(common.SITE / slug / "index.html", page)
 
 # ------------------------------------------------------------------ hub

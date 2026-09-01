@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-01T15:24:43-07:00",
+ "built_at": "2026-09-01T15:54:10-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 1968, column 18"
   },
   "isabella": {
    "ok": true,
@@ -62,7 +62,7 @@
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "6 passengers survive plane crash near Porterville airport, officials say",
+   "top_story": "Kern County supervisors proclaim September 2026 as National Suicide Prevention Awareness Month",
    "archive": "2026-09-01"
   },
   "cityhall": {

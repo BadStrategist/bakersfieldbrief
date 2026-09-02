@@ -1,205 +1,5 @@
 [
  {
-  "log_id": "260825BF0189",
-  "time": "Aug 25 2026  1:29PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Sr99 S",
-  "area": "Bakersfield",
-  "lat": 35.362776,
-  "lon": -119.039773,
-  "details": ""
- },
- {
-  "log_id": "260825BF0190",
-  "time": "Aug 25 2026  1:30PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Wb Sr58 At Edison Rd",
-  "area": "Bakersfield",
-  "lat": 35.345556,
-  "lon": -118.878611,
-  "details": ""
- },
- {
-  "log_id": "260825BF0199",
-  "time": "Aug 25 2026  1:58PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "20003-20099 Sr119",
-  "area": "Bakersfield",
-  "lat": 35.267089,
-  "lon": -119.221187,
-  "details": ""
- },
- {
-  "log_id": "260825BF0223",
-  "time": "Aug 25 2026  2:43PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Stockton Ave / Franklin St",
-  "area": "BF",
-  "lat": 35.201801,
-  "lon": -118.826175,
-  "details": ""
- },
- {
-  "log_id": "260825BF0024",
-  "time": "Aug 25 2026  4:53AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260825BF0025",
-  "time": "Aug 25 2026  4:58AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "Sr58 E / Coffee Rd",
-  "area": "Bakersfield",
-  "lat": 35.366776,
-  "lon": -119.092152,
-  "details": ""
- },
- {
-  "log_id": "260825BF0028",
-  "time": "Aug 25 2026  5:58AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Nb I5 Jso Twisselman Rd",
-  "area": "Buttonwillow",
-  "lat": 35.728062,
-  "lon": -119.736239,
-  "details": ""
- },
- {
-  "log_id": "260825BF0030",
-  "time": "Aug 25 2026  6:05AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Sb I5 Truck By-pass",
-  "area": "Fort Tejon",
-  "lat": 35.012639,
-  "lon": -118.954847,
-  "details": ""
- },
- {
-  "log_id": "260825BF0033",
-  "time": "Aug 25 2026  6:41AM",
-  "type": "1125A-Animal Hazard",
-  "location": "0 Sr99 N",
-  "area": "Bakersfield",
-  "lat": 35.366277,
-  "lon": -119.040803,
-  "details": ""
- },
- {
-  "log_id": "260825BF0343",
-  "time": "Aug 25 2026  7:14PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Sr46 / Sr99 S",
-  "area": "Bakersfield",
-  "lat": 35.601816,
-  "lon": -119.211348,
-  "details": ""
- },
- {
-  "log_id": "260825BF0045",
-  "time": "Aug 25 2026  7:16AM",
-  "type": "1125-Traffic Hazard",
-  "location": "I5 N / West Escape Ramp",
-  "area": "Fort Tejon",
-  "lat": 34.918056,
-  "lon": -118.923889,
-  "details": ""
- },
- {
-  "log_id": "260825BF0046",
-  "time": "Aug 25 2026  7:17AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Nb Sr99 Jso Ming Ave",
-  "area": "Bakersfield",
-  "lat": 35.339989,
-  "lon": -119.037184,
-  "details": ""
- },
- {
-  "log_id": "260825BF0052",
-  "time": "Aug 25 2026  7:30AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "SR99 N / Cecil Ave",
-  "area": "Bakersfield",
-  "lat": 35.775905,
-  "lon": -119.252339,
-  "details": ""
- },
- {
-  "log_id": "260825BF0060",
-  "time": "Aug 25 2026  7:35AM",
-  "type": "CFIRE-Car Fire",
-  "location": "Sunset Blvd / Duncan St",
-  "area": "Bakersfield",
-  "lat": 35.223425,
-  "lon": -118.869156,
-  "details": ""
- },
- {
-  "log_id": "260825BF0357",
-  "time": "Aug 25 2026  7:42PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Golf Course Rd / Brandy St",
-  "area": "Buttonwillow",
-  "lat": 35.232167,
-  "lon": -119.36847,
-  "details": ""
- },
- {
-  "log_id": "260825BF0369",
-  "time": "Aug 25 2026  8:13PM",
-  "type": "CZP-Assist with Construction",
-  "location": "I5 N / Sr58 Ofr",
-  "area": "Buttonwillow",
-  "lat": 35.398977,
-  "lon": -119.39718,
-  "details": ""
- },
- {
-  "log_id": "260825BF0079",
-  "time": "Aug 25 2026  8:28AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "30634-30699 Sr166",
-  "area": "Buttonwillow",
-  "lat": 35.043986,
-  "lon": -119.419972,
-  "details": ""
- },
- {
-  "log_id": "260825BF0400",
-  "time": "Aug 25 2026  9:15PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "1700 - 1798 Belle Ter",
-  "area": "BF",
-  "lat": 35.346684,
-  "lon": -119.021316,
-  "details": ""
- },
- {
-  "log_id": "260825BF0399",
-  "time": "Aug 25 2026  9:17PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Nb I5 Jno #2 Turn Thru",
-  "area": "Fort Tejon",
-  "lat": 34.89011,
-  "lon": -118.911239,
-  "details": ""
- },
- {
-  "log_id": "260825BF0146",
-  "time": "Aug 25 2026 11:42AM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "0 Sr99 N",
-  "area": "Bakersfield",
-  "lat": 35.239769,
-  "lon": -119.015674,
-  "details": ""
- },
- {
   "log_id": "260826BF0175",
   "time": "Aug 26 2026  2:31PM",
   "type": "1182-Trfc Collision-No Inj",
@@ -1337,6 +1137,46 @@
   "area": "Bakersfield",
   "lat": 35.383473,
   "lon": -119.136712,
+  "details": ""
+ },
+ {
+  "log_id": "260902BF0014",
+  "time": "Sep  2 2026  1:22AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260902BF0054",
+  "time": "Sep  2 2026  6:04AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "0 Sr204",
+  "area": "Bakersfield",
+  "lat": 35.401186,
+  "lon": -119.039398,
+  "details": ""
+ },
+ {
+  "log_id": "260902BF0063",
+  "time": "Sep  2 2026  6:55AM",
+  "type": "1125-Traffic Hazard",
+  "location": "7th Standard Rd / Coffee Rd",
+  "area": "Bakersfield",
+  "lat": 35.441404,
+  "lon": -119.092171,
+  "details": ""
+ },
+ {
+  "log_id": "260902BF0066",
+  "time": "Sep  2 2026  6:58AM",
+  "type": "1125-Traffic Hazard",
+  "location": "NB I5 JNO Grapevine CVEF",
+  "area": "Fort Tejon",
+  "lat": 34.965833,
+  "lon": -118.938611,
   "details": ""
  }
 ]

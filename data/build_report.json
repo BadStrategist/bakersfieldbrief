@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-02T06:05:15-07:00",
+ "built_at": "2026-09-02T07:05:55-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 1968, column 18"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 4,
    "top_story": "The 'silver tsunami' never came. Here's what that means for younger homebuyers today",
    "archive": "2026-09-02"
   },
@@ -111,17 +111,17 @@
    "isabella_af": 172342,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 53,
-   "chp_week": 46
+   "aqi": 58,
+   "chp_week": 50
   },
   "letters": {
    "published": 0
   },
   "overnight": {
-   "published": 23
+   "published": 24
   },
   "map": {
-   "dots": 75
+   "dots": 70
   },
   "sunday_read": {
    "topic": "Public safety",

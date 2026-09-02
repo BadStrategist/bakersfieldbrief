@@ -1188,5 +1188,15 @@
   "lat": 35.264722,
   "lon": -118.661667,
   "details": ""
+ },
+ {
+  "log_id": "260902BF0144",
+  "time": "Sep  2 2026 10:22AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Rosedale Service Rd / Jewetta Ave",
+  "area": "Bakersfield",
+  "lat": 35.384357,
+  "lon": -119.127871,
+  "details": ""
  }
 ]

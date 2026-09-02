@@ -220,7 +220,7 @@ def build_alpr(ctx, sources: dict):
     </div>
 
     <p class="note">Data: &copy; OpenStreetMap contributors (ODbL), queried via the Overpass API
-    with node edit timestamps. Map tiles: &copy; OpenStreetMap contributors / CARTO (Dark Matter).
+    with node edit timestamps. Map tiles: &copy; OpenStreetMap contributors / Esri World Street Map.
     Change log backfilled from real OSM node history on site setup.</p>"""
 
     flock_n = stats.get("flock", 0)
@@ -477,7 +477,9 @@ def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
         statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         extra_head='<link rel="stylesheet" href="../assets/vendor/leaflet.css">'
                    + ('<link rel="stylesheet" href="../assets/css/deflock.css?v=' + built_iso + '">' if dark else ""),
-        extra_scripts='<script src="../assets/vendor/leaflet.js"></script>\n  <script src="../assets/vendor/leaflet.markercluster.js"></script>\n  <script src="../assets/js/' + map_js + '?v=' + _js_ver(map_js) + '" defer></script>')
+        extra_scripts='<script src="../assets/vendor/leaflet.js"></script>\n  <script src="../assets/vendor/leaflet.markercluster.js"></script>\n  <script src="../assets/js/' + map_js + '?v=' + _js_ver(map_js) + '" defer></script>'
+                   + (('<script src="../assets/js/webmcp-alpr.js?v=' + _js_ver("webmcp-alpr.js") + '" defer></script>')
+                      if slug == "surveillance" else ""))
     common.write(common.SITE / slug / "index.html", page)
 
 # ------------------------------------------------------------------ hub

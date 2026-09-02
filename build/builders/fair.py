@@ -19,6 +19,9 @@ FAIR_START = "2026-09-23"
 FAIR_END = "2026-10-04"
 FAIR_YEAR = "2026"
 FAIR_ADDRESS = "1142 South P Street, Bakersfield, CA 93307"
+# Fairgrounds geo (real coords from OSM Nominatim geocode of the address)
+FAIR_LAT = 35.3443522
+FAIR_LON = -119.0117664
 
 # Concert series: Hard Rock Hotel & Casino Tejon Concert Series at the
 # Budweiser Pavilion, 8:00 PM nightly, FREE with fair admission.
@@ -175,6 +178,41 @@ def _events_jsonld() -> list[dict]:
     return evs
 
 
+def _fairgrounds_jsonld() -> dict:
+    """Local SEO geo markup for the fairgrounds (EventVenue + GeoCoordinates)."""
+    return {
+        "@context": "https://schema.org",
+        "@type": "EventVenue",
+        "name": "Kern County Fairgrounds",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "1142 South P Street",
+            "addressLocality": "Bakersfield",
+            "addressRegion": "CA",
+            "postalCode": "93307",
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": FAIR_LAT,
+            "longitude": FAIR_LON,
+        },
+        "url": "https://www.kerncountyfair.com/",
+    }
+
+
+def _breadcrumb_jsonld() -> dict:
+    return {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home",
+             "item": "https://bakersfieldbrief.com/"},
+            {"@type": "ListItem", "position": 2, "name": "Kern County Fair 2026",
+             "item": "https://bakersfieldbrief.com/fair/"},
+        ],
+    }
+
+
 def build(ctx, sources: dict) -> list[str]:
     built = []
     built_iso = common.iso_today()
@@ -244,8 +282,10 @@ def build(ctx, sources: dict) -> list[str]:
         canonical="/fair/",
         content=body, current="other", rel=rel, built=built_iso,
         statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
+        og_image="https://bakersfieldbrief.com/assets/img/fair.jpg",
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(),
-                _faq_jsonld()] + _events_jsonld())
+                _breadcrumb_jsonld(),
+                _faq_jsonld(), _fairgrounds_jsonld()] + _events_jsonld())
     common.write(common.SITE / "fair" / "index.html", page)
     built.append("fair/index.html")
 

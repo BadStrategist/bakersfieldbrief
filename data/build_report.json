@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-02T15:25:26-07:00",
+ "built_at": "2026-09-02T15:54:33-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 3560, column 34"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -61,8 +61,8 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Kern County awarded nearly $7M in funding for aerospace projects, defense innovation",
+   "chp_new": 2,
+   "top_story": "Kern County coroner confirms man found in residential fire died of smoke inhalation, thermal burns",
    "archive": "2026-09-02"
   },
   "cityhall": {
@@ -110,9 +110,9 @@
   "numbers": {
    "isabella_af": 172342,
    "alpr_total": 260,
-   "kern_fires": 0,
+   "kern_fires": 1,
    "aqi": 62,
-   "chp_week": 52
+   "chp_week": 54
   },
   "letters": {
    "published": 0

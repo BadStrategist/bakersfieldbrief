@@ -1,0 +1,155 @@
+[
+  {
+    "type": "vegetation_fire",
+    "time": "03:43",
+    "agency": "Kern County Fire Department",
+    "area": "Cottonwood Road & East Pacheco Road, east Bakersfield",
+    "notability": 4,
+    "disposition": "contained",
+    "summary": "Grass fire burning in a field at Cottonwood and East Pacheco. Multiple engines and patrol units staged a flank attack from two sides and reported the spread stopped shortly before 4:45 a.m."
+  },
+  {
+    "type": "traffic_collision",
+    "time": "22:27",
+    "agency": "CHP",
+    "area": "westbound Highway 58, east of Broome Avenue",
+    "notability": 4,
+    "disposition": "cleared",
+    "summary": "A big rig jackknifed and struck the center divider on westbound Highway 58. A trauma activation was called for a person with possible long-bone fractures; ambulances responded."
+  },
+  {
+    "type": "possibly_held_against_will",
+    "time": "01:32",
+    "agency": "Bakersfield Police Department",
+    "area": "South Union Avenue, south Bakersfield",
+    "notability": 4,
+    "disposition": "responding",
+    "summary": "Caller reported a female believed to be held against her will by a male subject at a motel on South Union Avenue. Officers responded to check on her welfare."
+  },
+  {
+    "type": "possibly_held_against_will",
+    "time": "05:42",
+    "agency": "Bakersfield Police Department",
+    "area": "city motel, central Bakersfield",
+    "notability": 4,
+    "disposition": "responding",
+    "summary": "Hotel security watched a female try to flee a room while a male subject pulled her back inside. Officers were dispatched to the scene."
+  },
+  {
+    "type": "assault",
+    "time": "22:24",
+    "agency": "Bakersfield Police Department",
+    "area": "downtown Bakersfield",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "A passerby reported a transient male assaulting a business employee. Officers responded to the location."
+  },
+  {
+    "type": "medical_aid",
+    "time": "05:13",
+    "agency": "Kern County Fire Department",
+    "area": "Panama Lane, southeast Bakersfield",
+    "notability": 3,
+    "disposition": "patient transported",
+    "summary": "Emergency crews responded to a woman in labor at the Lakeside Apartments. Dispatchers reported the baby appeared to be born before medics arrived; a second ambulance was requested."
+  },
+  {
+    "type": "medical_aid",
+    "time": "01:40",
+    "agency": "Kern County Fire Department",
+    "area": "Butte Street, downtown Bakersfield",
+    "notability": 3,
+    "disposition": "patient transported",
+    "summary": "Medical aid dispatched for a reported overdose on Butte Street."
+  },
+  {
+    "type": "self_harm_welfare",
+    "time": "02:18",
+    "agency": "Bakersfield Police Department",
+    "area": "11th Street, central Bakersfield",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Officers checked the welfare of a woman reported to have cut herself after a dispute with her boyfriend. Officers asked her father to have her step out to meet them."
+  },
+  {
+    "type": "suicidal_subject",
+    "time": "04:15",
+    "agency": "Bakersfield Police Department",
+    "area": "bus terminal, White Wolf area",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Welfare check on a suicidal subject reported to have expressed suicidal ideation at a bus terminal."
+  },
+  {
+    "type": "medical_aid",
+    "time": "04:19",
+    "agency": "Bakersfield Police Department",
+    "area": "Motel 6, Olive Tree Court",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "A man in his 30s was found slumped over on the floor near a motel room; officers and medical units responded."
+  },
+  {
+    "type": "traffic_collision",
+    "time": "23:54",
+    "agency": "Kern County Fire Department",
+    "area": "Fairfax area",
+    "notability": 3,
+    "disposition": "cleared",
+    "summary": "Multi-vehicle crash; all occupants were reported out of the vehicles when a medic unit arrived on scene."
+  },
+  {
+    "type": "vehicle_vs_curb",
+    "time": "00:30",
+    "agency": "Bakersfield Police Department",
+    "area": "Metro area",
+    "notability": 3,
+    "disposition": "investigating",
+    "summary": "A white four-door struck a curb; witnesses said occupants fled on foot. The vehicle was left behind and officers investigated."
+  },
+  {
+    "type": "dumpster_fire",
+    "time": "03:14",
+    "agency": "Kern County Fire Department",
+    "area": "Panama Lane & Wible Road",
+    "notability": 2,
+    "disposition": "extinguished",
+    "summary": "Outside fire reported at a dumpster near a market at Panama Lane and Wible Road."
+  },
+  {
+    "type": "medical_aid",
+    "time": "03:18",
+    "agency": "Kern County Fire Department",
+    "area": "Cave Avenue",
+    "notability": 2,
+    "disposition": "patient transported",
+    "summary": "Medical aid for difficulty breathing on Cave Avenue."
+  },
+  {
+    "type": "medical_aid",
+    "time": "02:09",
+    "agency": "Kern County Fire Department",
+    "area": "Victor Street",
+    "notability": 2,
+    "disposition": "patient transported",
+    "summary": "Engine responded to Victor Street for a person experiencing a seizure."
+  },
+  {
+    "type": "trash_fire",
+    "time": "04:49",
+    "agency": "Kern County Fire Department",
+    "area": "Chester Avenue area",
+    "notability": 2,
+    "disposition": "extinguished",
+    "summary": "Exterior trash pile fire near Chester Avenue; truck unit investigated and handled it."
+  },
+  {
+    "type": "kitchen_fire",
+    "time": "23:56",
+    "agency": "Bakersfield Fire Department",
+    "area": "central Bakersfield",
+    "notability": 2,
+    "disposition": "extinguished",
+    "summary": "Report of an oven fire; engine and truck units responded."
+  }
+]

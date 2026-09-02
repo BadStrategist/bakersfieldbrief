@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-01T23:50:51-07:00",
+ "built_at": "2026-09-02T00:23:17-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 1968, column 18"
   },
   "isabella": {
    "ok": true,
@@ -56,14 +56,14 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1628,
+  "brief_words": 65,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
+   "chp_new": 0,
    "top_story": "From Melbourne to Bakersfield: The unlikely match for Bakersfield College's starting quarterback",
-   "archive": "2026-09-01"
+   "archive": "2026-09-02"
   },
   "cityhall": {
    "upcoming_meetings": 3,
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -89,7 +89,7 @@
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-09-01"
+   "draft": "drafts/weekend-guide-2026-09-02"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -105,7 +105,7 @@
    "meetings": 3
   },
   "feed": {
-   "entries": 29
+   "entries": 30
   },
   "numbers": {
    "isabella_af": 173309,

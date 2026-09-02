@@ -3,6 +3,14 @@
   "ts": "2026-09-02",
   "route": "sr99",
   "route_name": "State Route 99 \u2014 Central Valley",
+  "from": "updated",
+  "to": "CLOSED",
+  "note": "condition text changed"
+ },
+ {
+  "ts": "2026-09-02",
+  "route": "sr99",
+  "route_name": "State Route 99 \u2014 Central Valley",
   "from": "RESTRICTIONS",
   "to": "CLOSED"
  },
@@ -435,12 +443,5 @@
   "route_name": "State Route 99 \u2014 Central Valley",
   "from": "CLOSED",
   "to": "RESTRICTIONS"
- },
- {
-  "ts": "2026-08-16",
-  "route": "sr99",
-  "route_name": "State Route 99 \u2014 Central Valley",
-  "from": "RESTRICTIONS",
-  "to": "CLOSED"
  }
 ]

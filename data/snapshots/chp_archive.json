@@ -1250,6 +1250,46 @@
   "details": ""
  },
  {
+  "log_id": "260901BF0399",
+  "time": "Sep  1 2026  7:29PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Allen Rd / Sr58 E",
+  "area": "Bakersfield",
+  "lat": 35.360945,
+  "lon": -119.145544,
+  "details": ""
+ },
+ {
+  "log_id": "260901BF0410",
+  "time": "Sep  1 2026  7:49PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Sr58 E / Sr99 N",
+  "area": "Bakersfield",
+  "lat": 35.352548,
+  "lon": -119.039398,
+  "details": ""
+ },
+ {
+  "log_id": "260901BF0417",
+  "time": "Sep  1 2026  8:00PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Nb I5 Jso Lerdo Hwy",
+  "area": "Buttonwillow",
+  "lat": 35.497165,
+  "lon": -119.531506,
+  "details": ""
+ },
+ {
+  "log_id": "260901BF0443",
+  "time": "Sep  1 2026  8:54PM",
+  "type": "CZP-Assist with Construction",
+  "location": "1033 Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.825534,
+  "lon": -118.87775,
+  "details": ""
+ },
+ {
   "log_id": "260901BF0117",
   "time": "Sep  1 2026 10:08AM",
   "type": "1125-Traffic Hazard",

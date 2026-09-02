@@ -39,10 +39,16 @@ def content_is_degraded(html_path) -> list[str]:
     iso = now.strftime("%Y-%m-%d")
 
     # weather: a real temperature reading, not the degraded placeholder.
-    # Accept either the degree symbol (72° / 97°) or the spelled-out "85
-    # degrees" / "low around 58" forms the LLM emits — requiring only "°"
-    # false-flagged a GOOD email on 2026-09-01.
-    has_temp = ("°" in text) or ("degrees" in text and ("high near" in text or "low around" in text))
+    # Accept the degree symbol (72°), a number + "degrees" (61 degrees), or a
+    # high/low phrase that carries a number ("high near 82", "high expected to
+    # reach only 82", "low dipping to around 60"). The LLM's prose varies, so
+    # only requiring "°" or the literal "high near"/"low around" phrases
+    # false-flagged GOOD emails on 2026-09-01 and 2026-09-02.
+    has_temp = (
+        ("°" in text)
+        or bool(re.search(r"\b\d{1,3}\s*degrees?\b", text))
+        or bool(re.search(r"\b(high|low)\b[^.]{0,80}?\b\d{1,3}\b", text))
+    )
 
     checks = {
         "weather": has_temp and "Weather data unavailable" not in text,

@@ -230,6 +230,38 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
         weather_html = (f'<p style="margin:0;font-family:{SERIF};font-size:15px;line-height:1.5;color:{INK}">{first}</p>'
                         + (f'<p style="margin:6px 0 0;font-family:{SANS};font-size:13px;line-height:1.55;color:{INK}">{rest}</p>' if rest else ""))
 
+    # ---- Today's Weather graphic card (baked PNG, refreshed every build).
+    # Regenerate from live NWS + AirNow data so the embedded image (a live URL)
+    # is never stale. Fail-closed: if the redraw throws OR there is no real
+    # temperature reading, drop the image so the send gate blocks rather than
+    # ship a degraded/placeholder card.
+    weather_img = ""
+    _fc = (weather or {}).get("forecast", {}) or {}
+    _air = (weather.get("airnow") or {}) or (airnow or {})
+    if _fc.get("current") is not None or _fc.get("high") is not None:
+        try:
+            from .weather_card import render_weather_card
+            _alerts = [(a.get("event") or "") for a in (weather.get("alerts") or []) if a.get("event")]
+            render_weather_card({
+                "current": _fc.get("current"), "high": _fc.get("high"),
+                "low": _fc.get("low"), "condition": _fc.get("condition"),
+                "wind_mph": _fc.get("wind_mph"), "wind_dir": _fc.get("wind_dir"),
+                "humidity": _fc.get("humidity"),
+                "aqi": _air.get("aqi"), "aqi_category": _air.get("category"),
+                "alerts": _alerts, "observed": _fc.get("observed"),
+                "day_label": date_label,
+            }, None)
+            weather_img = (f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" '
+                           f'style="margin:8px 0 12px;border:1px solid {LINE};border-radius:6px;overflow:hidden">'
+                           f'<tr><td>'
+                           f'<img src="{BASE_URL}/assets/img/weather-card.jpg" width="100%" '
+                           f'alt="Today\'s weather for Bakersfield &amp; Kern County" '
+                           f'style="display:block;width:100%;height:auto;border:0">'
+                           f'</td></tr></table>')
+        except Exception as e:  # noqa: BLE001
+            common.log(f"weather card redraw failed — dropping weather graphic: {e}")
+            weather_img = ""
+
     # ---- Something Good
     good_full = sections.get("something_good", "")
     good_html = _md_para(good_full) if good_full else ""
@@ -269,6 +301,7 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
 <tr><td style="padding:2px 20px">
   {_card_open(AMBER)}
     {_kicker("Today's Weather")}
+    {weather_img}
     {weather_html or '<p style="font-family:' + SANS + ';font-size:13px;color:' + INK_SOFT + '">Weather data unavailable.</p>'}
   {_card_close()}
 </td></tr>

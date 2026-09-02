@@ -54,6 +54,7 @@ def _full_brief() -> str:
 
 <!-- Today's Weather card -->
 <table><tr><td>Today's Weather
+  <img src="https://bakersfieldbrief.com/assets/img/weather-card.jpg" width="100%">
   <p>High near 97° · low around 68. Sunny, breezy by afternoon.</p>
 </td></tr></table>
 
@@ -111,6 +112,15 @@ def test_missing_brief_file_flagged(tmp_path):
 def test_degraded_weather_flagged(brief):
     _replace(brief, "High near 97° · low around 68.", "Weather data unavailable.")
     assert "weather" in content_is_degraded(brief)
+
+
+def test_missing_weather_image_flagged(brief):
+    # prose present but the baked weather graphic is gone (redraw failed in
+    # emailer.py drops it) => must block, never ship a degrader with a live
+    # URL pointing nowhere.
+    _replace(brief, '  <img src="https://bakersfieldbrief.com/assets/img/weather-card.jpg" width="100%">\n', "")
+    missing = content_is_degraded(brief)
+    assert "weather image" in missing
 
 
 def test_degraded_something_good_flagged(brief):

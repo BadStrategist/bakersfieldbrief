@@ -52,6 +52,11 @@ def content_is_degraded(html_path) -> list[str]:
 
     checks = {
         "weather": has_temp and "Weather data unavailable" not in text,
+        # the baked weather graphic (bakersfieldbrief.com/assets/img/weather-card.jpg)
+        # must be embedded in the Today's Weather card — it is regenerated every
+        # build from live NWS + AirNow data, so a card missing it means the
+        # redraw failed and the send must be blocked (never a degraded/stale card).
+        "weather image": _has_weather_image(text),
         # something good: the template emits the card + kicker only when content
         # exists; guard on TWO occurrences (comment + kicker) so a bare template
         # comment can't pass.
@@ -78,6 +83,21 @@ def _slice_between(text: str, start: str, end: str) -> str:
         return ""
     j = text.find(end, i)
     return text[i:j] if j != -1 else text[i:]
+
+
+def _has_weather_image(text: str) -> bool:
+    """True if the Today's Weather card embeds the live weather graphic.
+
+    The emailer regenerates weather-card.jpg from today's NWS observation +
+    forecast and AirNow AQI on every build and embeds it as a live URL. A
+    render failure drops the image (fail-closed in emailer.py), so a complete
+    email must carry the image reference inside the weather card. This mirrors
+    the Flock tracker card's presence check.
+    """
+    card = _slice_between(text, "Today's Weather card", "Something Good card")
+    if not card:
+        return False
+    return "weather-card.jpg" in card
 
 
 def _has_overnight_narrative(text: str) -> bool:

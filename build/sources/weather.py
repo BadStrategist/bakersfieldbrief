@@ -41,8 +41,8 @@ def run(ctx):
 
 def _bakersfield_forecast() -> dict:
     """Today's high/low from the NWS gridpoint forecast for downtown Bakersfield
-    (35.3733, -119.0187 → Hanford/HNX office) + current temp from the KBFL
-    airport observation station. All free, no key. Any failure → partial dict."""
+    (35.3733, -119.0187 → Hanford/HNX office) + the KBFL airport observation.
+    All free, no key. Any failure → partial dict."""
     out = {"high": None, "low": None, "current": None}
     try:
         pt = common.fetch("https://api.weather.gov/points/35.3733,-119.0187",
@@ -69,6 +69,24 @@ def _bakersfield_forecast() -> dict:
         c = (obs.get("temperature") or {}).get("value")
         if c is not None:
             out["current"] = round(c * 9 / 5 + 32)
+        # card extras: condition, wind, humidity, observed stamp (all optional)
+        out["condition"] = (obs.get("textDescription") or "").strip()
+        ws = (obs.get("windSpeed") or {}).get("value")  # m/s
+        if ws is not None:
+            out["wind_mph"] = round(ws * 2.23694)
+        wd = (obs.get("windDirection") or {}).get("value")
+        if wd is not None:
+            out["wind_dir"] = int(wd)
+        rh = (obs.get("relativeHumidity") or {}).get("value")
+        if rh is not None:
+            out["humidity"] = round(rh)
+        ts = obs.get("timestamp") or ""
+        if ts:
+            try:
+                out["observed"] = dt.datetime.fromisoformat(ts.replace("Z", "+00:00")).astimezone(
+                    dt.timezone(dt.timedelta(hours=-7))).strftime("%I:%M %p").lstrip("0")
+            except Exception:  # noqa: BLE001
+                pass
     except Exception:  # noqa: BLE001
         pass
     return out

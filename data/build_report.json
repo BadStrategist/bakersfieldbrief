@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-01T16:48:58-07:00",
+ "built_at": "2026-09-01T17:39:16-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -62,7 +62,7 @@
    "news_digest": "llm",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Kern County supervisors proclaim September 2026 as National Suicide Prevention Awareness Month",
+   "top_story": "Kern County coroner rules man's Kern River death as 'accidental'",
    "archive": "2026-09-01"
   },
   "cityhall": {
@@ -111,7 +111,7 @@
    "isabella_af": 173309,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 80,
+   "aqi": 84,
    "chp_week": 39
   },
   "letters": {

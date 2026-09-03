@@ -1190,6 +1190,36 @@
   "details": ""
  },
  {
+  "log_id": "260903BF0035",
+  "time": "Sep  3 2026  4:48AM",
+  "type": "1144-Fatality",
+  "location": "16136-19896 Panama Rd",
+  "area": "Bakersfield",
+  "lat": 35.267382,
+  "lon": -118.824841,
+  "details": ""
+ },
+ {
+  "log_id": "260903BF0041",
+  "time": "Sep  3 2026  5:37AM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 Sr119",
+  "area": "Buttonwillow",
+  "lat": 35.267431,
+  "lon": -119.268265,
+  "details": ""
+ },
+ {
+  "log_id": "260903BF0045",
+  "time": "Sep  3 2026  5:45AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Kimberlina Rd / Palm Ave",
+  "area": "Buttonwillow",
+  "lat": 35.557983,
+  "lon": -119.349651,
+  "details": ""
+ },
+ {
   "log_id": "260903BF0002",
   "time": "Sep  3 2026 12:09AM",
   "type": "1182-Trfc Collision-No Inj",
@@ -1197,6 +1227,16 @@
   "area": "Bakersfield",
   "lat": 35.441112,
   "lon": -119.038827,
+  "details": ""
+ },
+ {
+  "log_id": "260903BF0010",
+  "time": "Sep  3 2026 12:39AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
   "details": ""
  }
 ]

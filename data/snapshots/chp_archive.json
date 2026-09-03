@@ -1,65 +1,5 @@
 [
  {
-  "log_id": "260826BF0175",
-  "time": "Aug 26 2026  2:31PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Brundage Ln / N St",
-  "area": "BF",
-  "lat": 35.353866,
-  "lon": -119.014247,
-  "details": ""
- },
- {
-  "log_id": "260826BF0185",
-  "time": "Aug 26 2026  2:52PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "8201 Palm Ave",
-  "area": "Bakersfield",
-  "lat": 35.257881,
-  "lon": -118.913144,
-  "details": ""
- },
- {
-  "log_id": "260826BF0186",
-  "time": "Aug 26 2026  2:56PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "401 Electra Ave",
-  "area": "Bakersfield",
-  "lat": 35.43684,
-  "lon": -119.018301,
-  "details": ""
- },
- {
-  "log_id": "260826BF0188",
-  "time": "Aug 26 2026  3:07PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "0 Sr178 E",
-  "area": "Bakersfield",
-  "lat": 35.384569,
-  "lon": -118.991429,
-  "details": ""
- },
- {
-  "log_id": "260826BF0202",
-  "time": "Aug 26 2026  3:58PM",
-  "type": "FIRE-Report of Fire",
-  "location": "6182-6598 Rosedale Hwy",
-  "area": "Bakersfield",
-  "lat": 35.383391,
-  "lon": -119.073986,
-  "details": ""
- },
- {
-  "log_id": "260826BF0002",
-  "time": "Aug 26 2026 12:00AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
   "log_id": "260827BF0269",
   "time": "Aug 27 2026  3:48PM",
   "type": "WIND Advisory",
@@ -1200,6 +1140,36 @@
   "details": ""
  },
  {
+  "log_id": "260902BF0404",
+  "time": "Sep  2 2026  7:33PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Sr58 E / Mohawk St Ofr",
+  "area": "Bakersfield",
+  "lat": 35.369061,
+  "lon": -119.072651,
+  "details": ""
+ },
+ {
+  "log_id": "260902BF0410",
+  "time": "Sep  2 2026  7:44PM",
+  "type": "CZP-Assist with Construction",
+  "location": "I5 N / Hageman Rd",
+  "area": "Buttonwillow",
+  "lat": 35.398856,
+  "lon": -119.396997,
+  "details": ""
+ },
+ {
+  "log_id": "260902BF0441",
+  "time": "Sep  2 2026  8:56PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Sr58 E / Sr99 N",
+  "area": "Bakersfield",
+  "lat": 35.352548,
+  "lon": -119.039398,
+  "details": ""
+ },
+ {
   "log_id": "260902BF0130",
   "time": "Sep  2 2026  9:48AM",
   "type": "1182-Trfc Collision-No Inj",
@@ -1217,6 +1187,16 @@
   "area": "Bakersfield",
   "lat": 35.384357,
   "lon": -119.127871,
+  "details": ""
+ },
+ {
+  "log_id": "260903BF0002",
+  "time": "Sep  3 2026 12:09AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Merle Haggard Dr / Airport Dr",
+  "area": "Bakersfield",
+  "lat": 35.441112,
+  "lon": -119.038827,
   "details": ""
  }
 ]

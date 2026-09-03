@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-03T06:06:42-07:00",
+ "built_at": "2026-09-03T07:09:23-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -61,8 +61,8 @@
    "news_headlines": 50,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 4,
-   "top_story": "New CalFresh work requirements now in effect in Kern County, with more changes coming Oct. 1",
+   "chp_new": 1,
+   "top_story": "At least one dead after crash on Panama Rd",
    "archive": "2026-09-03"
   },
   "cityhall": {
@@ -80,11 +80,11 @@
    ],
    "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 12,
-    "bakersfield-nw": 0,
-    "bakersfield-sw": 0,
-    "bakersfield-east": 12,
-    "bakersfield-central": 12
+    "tehachapi": 0,
+    "bakersfield-nw": 12,
+    "bakersfield-sw": 12,
+    "bakersfield-east": 0,
+    "bakersfield-central": 0
    }
   },
   "guide": {
@@ -111,17 +111,17 @@
    "isabella_af": 171318,
    "alpr_total": 260,
    "kern_fires": 2,
-   "aqi": 35,
-   "chp_week": 62
+   "aqi": 37,
+   "chp_week": 63
   },
   "letters": {
    "published": 0
   },
   "overnight": {
-   "published": 24
+   "published": 25
   },
   "map": {
-   "dots": 70
+   "dots": 54
   },
   "sunday_read": {
    "topic": "Public safety",

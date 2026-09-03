@@ -1220,6 +1220,16 @@
   "details": ""
  },
  {
+  "log_id": "260903BF0057",
+  "time": "Sep  3 2026  6:54AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "I5 S / Gorman Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.795674,
+  "lon": -118.858202,
+  "details": ""
+ },
+ {
   "log_id": "260903BF0002",
   "time": "Sep  3 2026 12:09AM",
   "type": "1182-Trfc Collision-No Inj",

@@ -1,0 +1,92 @@
+[
+  {
+    "type": "vehicle_pursuit",
+    "time": "22:13",
+    "agency": "Bakersfield Police Department / CHP",
+    "area": "Westside Parkway, west Bakersfield",
+    "notability": 5,
+    "disposition": "handed to CHP",
+    "summary": "High-speed pursuit of a silver Nissan Altima with an unlicensed driver. Speeds reached roughly 110 mph with light traffic on the Westside Parkway before the driver reversed course eastbound. CHP took over the chase near the Allen Road area after air support was unavailable."
+  },
+  {
+    "type": "disturbance_with_firearm",
+    "time": "21:22",
+    "agency": "Bakersfield Police Department",
+    "area": "Rosedale Highway, northwest Bakersfield",
+    "notability": 4,
+    "disposition": "parties fled",
+    "summary": "Physical fight involving a firearm reported at a restaurant on Rosedale Highway. A second caller reported another man armed with a gun in his waistband. Parties fled westbound in a black Dodge Challenger before officers arrived."
+  },
+  {
+    "type": "traffic_collision",
+    "time": "22:53",
+    "agency": "Kern County Fire Department",
+    "area": "railroad crossing area, Bakersfield",
+    "notability": 4,
+    "disposition": "patient pinned, trauma response",
+    "summary": "Collision near railroad tracks with a patient pinned in a vehicle. Multiple engines and a red trauma activation responded; crews worked to free the patient, a man in his 40s with a head injury."
+  },
+  {
+    "type": "theft_from_vehicle",
+    "time": "06:03",
+    "agency": "Bakersfield Police Department",
+    "area": "2000 block Leicester Avenue area",
+    "notability": 3,
+    "disposition": "investigating",
+    "summary": "Catalytic converter theft reported. Three masked suspects in a black BMW took a converter and possibly a gunshot was heard in the area after the theft. Patrol investigating."
+  },
+  {
+    "type": "traffic_collision",
+    "time": "04:53",
+    "agency": "Kern County Fire Department",
+    "area": "Panama Road & Tejon Avenue, south Kern County",
+    "notability": 2,
+    "disposition": "patient pinned",
+    "summary": "Vehicle accident with one person pinned in the Panama Road and Tejon Avenue area. Multiple engines and a battalion chief responded."
+  },
+  {
+    "type": "medical_aid",
+    "time": "04:44",
+    "agency": "Bakersfield Fire / medics",
+    "area": "Truxtun Avenue, downtown Bakersfield",
+    "notability": 2,
+    "disposition": "ambulance requested",
+    "summary": "Man in his 30s with traumatic injuries at the Amtrak station; an ambulance was called code 3 for transport."
+  },
+  {
+    "type": "overdose_response",
+    "time": "01:47",
+    "agency": "Kern County Fire Department",
+    "area": "Boron area",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Subject found breathing but cold to the touch with no Narcan available at a residence in the Boron area. Medical units responded."
+  },
+  {
+    "type": "suicidal_subject",
+    "time": "01:54",
+    "agency": "Kern County Sheriff's Office",
+    "area": "Highway 99 bridge area, White Lane",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Deputies and fire responded to a report of a man threatening to jump from a Highway 99 overpass near White Lane."
+  },
+  {
+    "type": "welfare_check",
+    "time": "21:36",
+    "agency": "Bakersfield Police Department",
+    "area": "Lake Street area",
+    "notability": 2,
+    "disposition": "unable to contact, relocated",
+    "summary": "Welfare check on a juvenile in possession of a blade with intent to self-harm. Units were unable to make contact at the first location and were redirected to a nearby address."
+  },
+  {
+    "type": "audible_alarm",
+    "time": "00:16",
+    "agency": "Kern County Fire Department",
+    "area": "Buena Vista Road",
+    "notability": 2,
+    "disposition": "checked",
+    "summary": "Audible alarm reported on Buena Vista Road; crews checked the location."
+  }
+]

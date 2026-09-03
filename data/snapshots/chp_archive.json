@@ -1230,6 +1230,16 @@
   "details": ""
  },
  {
+  "log_id": "260903BF0127",
+  "time": "Sep  3 2026 10:12AM",
+  "type": "1166-Defective Traffic Signals",
+  "location": "Sr223 / Old River Rd",
+  "area": "Bakersfield",
+  "lat": 35.208829,
+  "lon": -119.109965,
+  "details": ""
+ },
+ {
   "log_id": "260903BF0002",
   "time": "Sep  3 2026 12:09AM",
   "type": "1182-Trfc Collision-No Inj",

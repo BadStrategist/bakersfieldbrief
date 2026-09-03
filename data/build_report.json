@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-03T10:00:07-07:00",
+ "built_at": "2026-09-03T10:24:11-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -58,11 +58,11 @@
   "_digest_meta": "deterministic",
   "brief_words": 1594,
   "daily": {
-   "news_headlines": 75,
+   "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "'Remembering where you were on that day': Theatre performs powerful play based on tragic events of 9/11",
+   "chp_new": 1,
+   "top_story": "Thousands of travelers expected to take to roads, skies and seas this weekend",
    "archive": "2026-09-03"
   },
   "cityhall": {
@@ -81,10 +81,10 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 12,
+    "bakersfield-nw": 0,
     "bakersfield-sw": 12,
-    "bakersfield-east": 12,
-    "bakersfield-central": 12
+    "bakersfield-east": 0,
+    "bakersfield-central": 0
    }
   },
   "guide": {
@@ -112,7 +112,7 @@
    "alpr_total": 260,
    "kern_fires": 2,
    "aqi": 59,
-   "chp_week": 63
+   "chp_week": 64
   },
   "letters": {
    "published": 0

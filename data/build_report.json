@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-02T15:54:33-07:00",
+ "built_at": "2026-09-02T18:46:08-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 3560, column 34"
   },
   "isabella": {
    "ok": true,
@@ -61,8 +61,8 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
-   "top_story": "Kern County coroner confirms man found in residential fire died of smoke inhalation, thermal burns",
+   "chp_new": 0,
+   "top_story": "Shafter passes ordinance making sleeping in public places unlawful",
    "archive": "2026-09-02"
   },
   "cityhall": {
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -111,7 +111,7 @@
    "isabella_af": 172342,
    "alpr_total": 260,
    "kern_fires": 1,
-   "aqi": 62,
+   "aqi": 67,
    "chp_week": 54
   },
   "letters": {

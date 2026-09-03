@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-03T11:11:08-07:00",
+ "built_at": "2026-09-03T15:19:17-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -62,7 +62,7 @@
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Bakersfield PD to conduct DUI, license checkpoint Sept. 4",
+   "top_story": "Bakersfield police searching for man who allegedly stole gas from parked vehicle at Home Depot",
    "archive": "2026-09-03"
   },
   "cityhall": {
@@ -111,7 +111,7 @@
    "isabella_af": 171318,
    "alpr_total": 260,
    "kern_fires": 2,
-   "aqi": 49,
+   "aqi": 50,
    "chp_week": 64
   },
   "letters": {

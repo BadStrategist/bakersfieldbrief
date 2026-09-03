@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-02T18:46:08-07:00",
+ "built_at": "2026-09-02T23:54:16-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -62,7 +62,7 @@
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Shafter passes ordinance making sleeping in public places unlawful",
+   "top_story": "Local mother calls for answers, joining the fight for cameras in special education classrooms",
    "archive": "2026-09-02"
   },
   "cityhall": {
@@ -110,8 +110,8 @@
   "numbers": {
    "isabella_af": 172342,
    "alpr_total": 260,
-   "kern_fires": 1,
-   "aqi": 67,
+   "kern_fires": 2,
+   "aqi": 70,
    "chp_week": 54
   },
   "letters": {

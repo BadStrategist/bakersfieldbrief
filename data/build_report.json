@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-03T07:09:23-07:00",
+ "built_at": "2026-09-03T07:39:58-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 3560, column 34"
   },
   "isabella": {
    "ok": true,
@@ -55,14 +55,14 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1594,
   "daily": {
-   "news_headlines": 50,
-   "news_digest": "llm",
+   "news_headlines": 75,
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "At least one dead after crash on Panama Rd",
+   "chp_new": 0,
+   "top_story": "Kern County groups offer help amid Suicide Prevention Awareness Month",
    "archive": "2026-09-03"
   },
   "cityhall": {
@@ -81,10 +81,10 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 0,
-    "bakersfield-nw": 12,
+    "bakersfield-nw": 0,
     "bakersfield-sw": 12,
-    "bakersfield-east": 0,
-    "bakersfield-central": 0
+    "bakersfield-east": 12,
+    "bakersfield-central": 12
    }
   },
   "guide": {
@@ -111,7 +111,7 @@
    "isabella_af": 171318,
    "alpr_total": 260,
    "kern_fires": 2,
-   "aqi": 37,
+   "aqi": 36,
    "chp_week": 63
   },
   "letters": {

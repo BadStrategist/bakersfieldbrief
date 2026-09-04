@@ -1480,6 +1480,26 @@
   "details": ""
  },
  {
+  "log_id": "260904BF0173",
+  "time": "Sep  4 2026 10:17AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sr178 / Comanche Dr",
+  "area": "Bakersfield",
+  "lat": 35.406846,
+  "lon": -118.862084,
+  "details": ""
+ },
+ {
+  "log_id": "260904BF0183",
+  "time": "Sep  4 2026 10:43AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "I5 S / Fort Tejon Rd Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.874188,
+  "lon": -118.891777,
+  "details": ""
+ },
+ {
   "log_id": "260904BF0002",
   "time": "Sep  4 2026 12:02AM",
   "type": "TADV-Traffic Advisory",

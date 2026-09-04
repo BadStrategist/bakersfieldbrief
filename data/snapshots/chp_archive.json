@@ -1370,6 +1370,16 @@
   "details": ""
  },
  {
+  "log_id": "260904BF0036",
+  "time": "Sep  4 2026  4:42AM",
+  "type": "CFIRE-Car Fire",
+  "location": "I5 S / Fort Tejon Rd Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.874188,
+  "lon": -118.891777,
+  "details": ""
+ },
+ {
   "log_id": "260904BF0002",
   "time": "Sep  4 2026 12:02AM",
   "type": "TADV-Traffic Advisory",

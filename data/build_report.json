@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-04T09:45:26-07:00",
+ "built_at": "2026-09-04T09:49:50-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 4885, column 12"
   },
   "isabella": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
+   "chp_new": 0,
    "top_story": "Beale Library to screen 2008 documentary on museum's historic Lopez-Hill House",
    "archive": "2026-09-04"
   },

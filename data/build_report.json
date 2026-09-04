@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-04T09:49:50-07:00",
+ "built_at": "2026-09-04T10:17:33-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 4885, column 12"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -61,8 +61,8 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Beale Library to screen 2008 documentary on museum's historic Lopez-Hill House",
+   "chp_new": 3,
+   "top_story": "Bakersfield police searching for man who stole US flag on South Chester Avenue",
    "archive": "2026-09-04"
   },
   "cityhall": {
@@ -112,7 +112,7 @@
    "alpr_total": 260,
    "kern_fires": 1,
    "aqi": 54,
-   "chp_week": 87
+   "chp_week": 90
   },
   "letters": {
    "published": 0

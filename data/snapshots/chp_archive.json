@@ -1430,6 +1430,16 @@
   "details": ""
  },
  {
+  "log_id": "260904BF0143",
+  "time": "Sep  4 2026  9:15AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "2020 South Union Ave",
+  "area": "Bakersfield",
+  "lat": 35.329224,
+  "lon": -119.002922,
+  "details": ""
+ },
+ {
   "log_id": "260904BF0146",
   "time": "Sep  4 2026  9:26AM",
   "type": "1125-Traffic Hazard",
@@ -1447,6 +1457,26 @@
   "area": "Bakersfield",
   "lat": 35.416128,
   "lon": -119.059571,
+  "details": ""
+ },
+ {
+  "log_id": "260904BF0159",
+  "time": "Sep  4 2026  9:55AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Oswell St / Virginia Ave",
+  "area": "Bakersfield",
+  "lat": 35.361395,
+  "lon": -118.949819,
+  "details": ""
+ },
+ {
+  "log_id": "260904BF0171",
+  "time": "Sep  4 2026 10:14AM",
+  "type": "1125A-Animal Hazard",
+  "location": "Wb Sr58 At Mount Vernon Ave",
+  "area": "Bakersfield",
+  "lat": 35.353056,
+  "lon": -118.967222,
   "details": ""
  },
  {

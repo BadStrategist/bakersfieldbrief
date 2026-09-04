@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-04T10:53:35-07:00",
+ "built_at": "2026-09-04T12:59:03-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 4885, column 12"
   },
   "isabella": {
    "ok": true,
@@ -61,8 +61,8 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
-   "top_story": "Bakersfield police searching for man who stole US flag on South Chester Avenue",
+   "chp_new": 0,
+   "top_story": "Bakersfield law enforcement seeking help ID'ing woman involved in Real Road grand theft",
    "archive": "2026-09-04"
   },
   "cityhall": {
@@ -100,7 +100,7 @@
    "groups": {
     "This week": 3,
     "Next week": 3,
-    "Later": 40
+    "Later": 42
    },
    "meetings": 0
   },
@@ -111,7 +111,7 @@
    "isabella_af": 170119,
    "alpr_total": 260,
    "kern_fires": 1,
-   "aqi": 48,
+   "aqi": 38,
    "chp_week": 92
   },
   "letters": {

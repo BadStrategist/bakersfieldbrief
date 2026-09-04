@@ -1340,6 +1340,16 @@
   "details": ""
  },
  {
+  "log_id": "260903BF0396",
+  "time": "Sep  3 2026  7:32PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Sr58 E / Sr99 N",
+  "area": "Bakersfield",
+  "lat": 35.352548,
+  "lon": -119.039398,
+  "details": ""
+ },
+ {
   "log_id": "260903BF0127",
   "time": "Sep  3 2026 10:12AM",
   "type": "1166-Defective Traffic Signals",
@@ -1347,6 +1357,26 @@
   "area": "Bakersfield",
   "lat": 35.208829,
   "lon": -119.109965,
+  "details": ""
+ },
+ {
+  "log_id": "260903BF0457",
+  "time": "Sep  3 2026 11:20PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Bates Ave / E California Ave",
+  "area": "Bakersfield",
+  "lat": 35.368471,
+  "lon": -118.973649,
+  "details": ""
+ },
+ {
+  "log_id": "260903BF0460",
+  "time": "Sep  3 2026 11:32PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr223 Ofr / Sr99 N",
+  "area": "Bakersfield",
+  "lat": 35.205022,
+  "lon": -119.009598,
   "details": ""
  },
  {

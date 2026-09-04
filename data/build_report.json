@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-03T18:39:25-07:00",
+ "built_at": "2026-09-03T23:58:26-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -61,8 +61,8 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 7,
-   "top_story": "'I'm sure it was miserable': Kern County Navy veterans react to USS Lincoln's record-long deployment",
+   "chp_new": 3,
+   "top_story": "California's wildfire funding fee on utility bills leaves some residents unaware of the charge",
    "archive": "2026-09-03"
   },
   "cityhall": {
@@ -110,9 +110,9 @@
   "numbers": {
    "isabella_af": 171318,
    "alpr_total": 260,
-   "kern_fires": 3,
-   "aqi": 50,
-   "chp_week": 75
+   "kern_fires": 1,
+   "aqi": 60,
+   "chp_week": 78
   },
   "letters": {
    "published": 0

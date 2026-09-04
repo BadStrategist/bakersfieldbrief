@@ -1403,10 +1403,20 @@
   "log_id": "260904BF0070",
   "time": "Sep  4 2026  7:02AM",
   "type": "1182-Trfc Collision-No Inj",
-  "location": "0 Fort Tejon Rd Onr",
+  "location": "SB I5 JNO Fort Tejon Rd",
   "area": "Fort Tejon",
-  "lat": 34.873416,
-  "lon": -118.891138,
+  "lat": 34.882222,
+  "lon": -118.900556,
+  "details": ""
+ },
+ {
+  "log_id": "260904BF0089",
+  "time": "Sep  4 2026  7:37AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 At #1 Turn Thru",
+  "area": "Fort Tejon",
+  "lat": 34.8863,
+  "lon": -118.90312,
   "details": ""
  },
  {

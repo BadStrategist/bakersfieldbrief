@@ -1,0 +1,92 @@
+[
+  {
+    "type": "pursuit",
+    "time": "21:30",
+    "agency": "Bakersfield Police Department / CHP",
+    "area": "Madison Street corridor, north Bakersfield",
+    "notability": 4,
+    "disposition": "continued northbound",
+    "summary": "A driver who refused to yield led officers on a prolonged pursuit along Madison Street. Speeds climbed to about 55 mph with no pedestrians or other traffic on the roadway, and there was a brief concern over a possible gunshot as the chase continued northbound."
+  },
+  {
+    "type": "structure_fire",
+    "time": "00:26",
+    "agency": "Kern County Fire Department",
+    "area": "near Edwards Air Force Base, eastern Kern County",
+    "notability": 3,
+    "disposition": "knocked down",
+    "summary": "Reports of smoke from a building drew a large assignment including multiple engines and a battalion in the Edwards Air Force Base area. Crews found only light residual smoke extending into the attic, cancelled reinforcements and reduced the response to a regular structure fire."
+  },
+  {
+    "type": "commercial_burglary",
+    "time": "00:37",
+    "agency": "law enforcement",
+    "area": "business on 15th Street West",
+    "notability": 3,
+    "disposition": "investigating",
+    "summary": "An employee watching surveillance footage saw two hooded males force their way into a business and begin taking items. The employee then lost connection to the cameras, possibly because they had been removed by the suspects."
+  },
+  {
+    "type": "family_violence",
+    "time": "23:40",
+    "agency": "Bakersfield Police Department",
+    "area": "East 21st Street area",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Domestic incident in progress — a caller could be heard yelling in the background before the suspect began chasing her. Officers responded; the caller reported being struck in the 21st and D Street area."
+  },
+  {
+    "type": "domestic_disturbance",
+    "time": "02:13",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Female caller on an open line reported a man had tried to strangle her during an active verbal dispute. The subject was last seen gathering belongings outside the residence."
+  },
+  {
+    "type": "outside_fire",
+    "time": "21:53",
+    "agency": "Bakersfield Fire Department",
+    "area": "E Street, downtown area",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Report of an outside fire on E Street; crews dispatched."
+  },
+  {
+    "type": "child_welfare",
+    "time": "22:05",
+    "agency": "Bakersfield Police Department",
+    "area": "St. Mary's Street area",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Welfare check for a possible child-endangerment matter in which a juvenile said an older brother had choked him and covered his mouth. Officers responding."
+  },
+  {
+    "type": "missing_juvenile",
+    "time": "22:27",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield",
+    "notability": 2,
+    "disposition": "report being taken",
+    "summary": "Officers took a report of a missing 8-year-old girl."
+  },
+  {
+    "type": "medical_aid",
+    "time": "23:07",
+    "agency": "Kern County Fire Department",
+    "area": "Highway 58 corridor",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Medical response to a motel for a guest with stroke symptoms; crews dispatched."
+  },
+  {
+    "type": "welfare_check",
+    "time": "23:35",
+    "agency": "Kern County Sheriff's Office",
+    "area": "Braham Street & 90th Street West",
+    "notability": 2,
+    "disposition": "checking",
+    "summary": "Welfare check for a possible battery situation in the Braham Street and 90th Street West area; units checking."
+  }
+]

@@ -6,7 +6,16 @@
     "area": "Madison Street corridor, north Bakersfield",
     "notability": 4,
     "disposition": "continued northbound",
-    "summary": "A driver who refused to yield led officers on a prolonged pursuit along Madison Street. Speeds climbed to about 55 mph with no pedestrians or other traffic on the roadway, and there was a brief concern over a possible gunshot as the chase continued northbound."
+    "summary": "A driver who refused to yield led officers on a prolonged pursuit along Madison Street. Speeds climbed to about 55 mph with no pedestrians or other traffic on the roadway, and there was a brief concern over a possible gunshot as the chase continued north."
+  },
+  {
+    "type": "domestic_assault",
+    "time": "02:55",
+    "agency": "Bakersfield Police Department",
+    "area": "Bluestone Riverway area",
+    "notability": 4,
+    "disposition": "under investigation",
+    "summary": "A man was accused of attacking his girlfriend with scissors and throwing a vase at her hand during a domestic dispute, leaving minor injuries. Officers and medical units responded to the residence, where juveniles were present and one reported a nosebleed. A caller disputed a claim that one of the juveniles was pregnant."
   },
   {
     "type": "structure_fire",
@@ -36,6 +45,24 @@
     "summary": "Domestic incident in progress — a caller could be heard yelling in the background before the suspect began chasing her. Officers responded; the caller reported being struck in the 21st and D Street area."
   },
   {
+    "type": "assault_with_deadly_weapon",
+    "time": "02:42",
+    "agency": "Bakersfield Police Department",
+    "area": "Union Avenue",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "Report of an attempted assault with a knife on Union Avenue. The described suspect, under the influence, was said to be in possession of a pocket knife. Officers responding."
+  },
+  {
+    "type": "stolen_vehicle_pursuit",
+    "time": "02:37",
+    "agency": "Bakersfield Police Department",
+    "area": "Beach Park and Mill Creek Park, near the Kern River",
+    "notability": 2,
+    "disposition": "contact made",
+    "summary": "After a report that a vehicle had been taken, officers tracked a subject through Beach Park and Mill Creek Park toward the Kern River and made contact near the parks."
+  },
+  {
     "type": "domestic_disturbance",
     "time": "02:13",
     "agency": "Bakersfield Police Department",
@@ -43,6 +70,15 @@
     "notability": 2,
     "disposition": "responding",
     "summary": "Female caller on an open line reported a man had tried to strangle her during an active verbal dispute. The subject was last seen gathering belongings outside the residence."
+  },
+  {
+    "type": "domestic_disturbance",
+    "time": "03:55",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield",
+    "notability": 2,
+    "disposition": "cleared",
+    "summary": "A woman told dispatchers she had been hit with a baseball bat and had an injury to her leg, but then declined to file a report and said she was leaving."
   },
   {
     "type": "outside_fire",
@@ -63,30 +99,30 @@
     "summary": "Welfare check for a possible child-endangerment matter in which a juvenile said an older brother had choked him and covered his mouth. Officers responding."
   },
   {
-    "type": "missing_juvenile",
-    "time": "22:27",
-    "agency": "Bakersfield Police Department",
-    "area": "Bakersfield",
-    "notability": 2,
-    "disposition": "report being taken",
-    "summary": "Officers took a report of a missing 8-year-old girl."
-  },
-  {
-    "type": "medical_aid",
-    "time": "23:07",
-    "agency": "Kern County Fire Department",
-    "area": "Highway 58 corridor",
+    "type": "traffic_collision",
+    "time": "04:02",
+    "agency": "CHP",
+    "area": "Highway 33 south of Petroleum Club Road",
     "notability": 2,
     "disposition": "responding",
-    "summary": "Medical response to a motel for a guest with stroke symptoms; crews dispatched."
+    "summary": "A sedan ran off the roadway on southbound Highway 33 in the Maricopa area and struck a guardrail. CHP responding."
   },
   {
-    "type": "welfare_check",
-    "time": "23:35",
-    "agency": "Kern County Sheriff's Office",
-    "area": "Braham Street & 90th Street West",
+    "type": "traffic_collision",
+    "time": "22:59",
+    "agency": "Kern County Fire Department",
+    "area": "Wooner Drive area",
     "notability": 2,
-    "disposition": "checking",
-    "summary": "Welfare check for a possible battery situation in the Braham Street and 90th Street West area; units checking."
+    "disposition": "responding",
+    "summary": "Medical and fire units responded to an unknown medical call on Wooner Drive."
+  },
+  {
+    "type": "traffic_hazard",
+    "time": "21:20",
+    "agency": "CHP",
+    "area": "Highway 99 corridor",
+    "notability": 2,
+    "disposition": "searching",
+    "summary": "A white service truck was reported swerving and unable to maintain its lane after exiting the freeway, possibly a DUI. Units checked the area."
   }
 ]

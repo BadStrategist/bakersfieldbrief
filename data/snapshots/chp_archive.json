@@ -1230,6 +1230,16 @@
   "details": ""
  },
  {
+  "log_id": "260903BF0296",
+  "time": "Sep  3 2026  4:06PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "China Grade Loop / N Chester Ave",
+  "area": "Bakersfield",
+  "lat": 35.426662,
+  "lon": -119.021158,
+  "details": ""
+ },
+ {
   "log_id": "260903BF0035",
   "time": "Sep  3 2026  4:48AM",
   "type": "1144-Fatality",
@@ -1250,6 +1260,16 @@
   "details": ""
  },
  {
+  "log_id": "260903BF0328",
+  "time": "Sep  3 2026  5:40PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jso Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.937778,
+  "lon": -118.930556,
+  "details": ""
+ },
+ {
   "log_id": "260903BF0045",
   "time": "Sep  3 2026  5:45AM",
   "type": "1182-Trfc Collision-No Inj",
@@ -1257,6 +1277,56 @@
   "area": "Buttonwillow",
   "lat": 35.557983,
   "lon": -119.349651,
+  "details": ""
+ },
+ {
+  "log_id": "260903BF0345",
+  "time": "Sep  3 2026  6:07PM",
+  "type": "1125-Traffic Hazard",
+  "location": "801 Ann Arbor Dr",
+  "area": "Bakersfield",
+  "lat": 35.422264,
+  "lon": -119.03638,
+  "details": ""
+ },
+ {
+  "log_id": "260903BF0354",
+  "time": "Sep  3 2026  6:15PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "I5 N / Copus Rd",
+  "area": "Buttonwillow",
+  "lat": 35.095009,
+  "lon": -119.037102,
+  "details": ""
+ },
+ {
+  "log_id": "260903BF0352",
+  "time": "Sep  3 2026  6:16PM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 S / Fort Tejon Rd Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.874188,
+  "lon": -118.891777,
+  "details": ""
+ },
+ {
+  "log_id": "260903BF0358",
+  "time": "Sep  3 2026  6:21PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sb Sr99 Jno Merced Ave",
+  "area": "Bakersfield",
+  "lat": 35.529863,
+  "lon": -119.190379,
+  "details": ""
+ },
+ {
+  "log_id": "260903BF0356",
+  "time": "Sep  3 2026  6:21PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr99 N / Whisler Rd Onr",
+  "area": "Bakersfield",
+  "lat": 35.649339,
+  "lon": -119.220535,
   "details": ""
  },
  {

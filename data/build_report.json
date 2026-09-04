@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-03T15:52:52-07:00",
+ "built_at": "2026-09-03T18:39:25-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -61,8 +61,8 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
-   "top_story": "Bakersfield police searching for man who allegedly stole gas from parked vehicle at Home Depot",
+   "chp_new": 7,
+   "top_story": "'I'm sure it was miserable': Kern County Navy veterans react to USS Lincoln's record-long deployment",
    "archive": "2026-09-03"
   },
   "cityhall": {
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -110,9 +110,9 @@
   "numbers": {
    "isabella_af": 171318,
    "alpr_total": 260,
-   "kern_fires": 2,
-   "aqi": 53,
-   "chp_week": 68
+   "kern_fires": 3,
+   "aqi": 50,
+   "chp_week": 75
   },
   "letters": {
    "published": 0

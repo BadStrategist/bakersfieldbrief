@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-04T15:09:00-07:00",
+ "built_at": "2026-09-04T15:37:04-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 4885, column 12"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 6,
    "top_story": "Most Wanted: Sept. 3, 2026",
    "archive": "2026-09-04"
   },
@@ -81,10 +81,10 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 0,
-    "bakersfield-sw": 0,
+    "bakersfield-nw": 12,
+    "bakersfield-sw": 12,
     "bakersfield-east": 12,
-    "bakersfield-central": 0
+    "bakersfield-central": 12
    }
   },
   "guide": {
@@ -111,8 +111,8 @@
    "isabella_af": 170119,
    "alpr_total": 260,
    "kern_fires": 1,
-   "aqi": 47,
-   "chp_week": 92
+   "aqi": 50,
+   "chp_week": 98
   },
   "letters": {
    "published": 0

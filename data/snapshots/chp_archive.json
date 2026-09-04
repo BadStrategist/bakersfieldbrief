@@ -1370,6 +1370,66 @@
   "details": ""
  },
  {
+  "log_id": "260904BF0340",
+  "time": "Sep  4 2026  3:05PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Airport Dr Onr / Sr99 N",
+  "area": "Bakersfield",
+  "lat": 35.399573,
+  "lon": -119.044702,
+  "details": ""
+ },
+ {
+  "log_id": "260904BF0344",
+  "time": "Sep  4 2026  3:08PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Plymouth Ave / Moneta Ave",
+  "area": "Bakersfield",
+  "lat": 35.409559,
+  "lon": -119.025548,
+  "details": ""
+ },
+ {
+  "log_id": "260904BF0346",
+  "time": "Sep  4 2026  3:14PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr43 / Panama Ln",
+  "area": "Bakersfield",
+  "lat": 35.296163,
+  "lon": -119.252464,
+  "details": ""
+ },
+ {
+  "log_id": "260904BF0351",
+  "time": "Sep  4 2026  3:22PM",
+  "type": "1125-Traffic Hazard",
+  "location": "EB SR178 JEO Morning Dr",
+  "area": "Bakersfield",
+  "lat": 35.394167,
+  "lon": -118.9675,
+  "details": ""
+ },
+ {
+  "log_id": "260904BF0352",
+  "time": "Sep  4 2026  3:27PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 Jso #2 Turn Thru",
+  "area": "Fort Tejon",
+  "lat": 34.890111,
+  "lon": -118.91124,
+  "details": ""
+ },
+ {
+  "log_id": "260904BF0356",
+  "time": "Sep  4 2026  3:28PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Knudsen Dr / Norris Rd",
+  "area": "Bakersfield",
+  "lat": 35.417788,
+  "lon": -119.060495,
+  "details": ""
+ },
+ {
   "log_id": "260904BF0036",
   "time": "Sep  4 2026  4:42AM",
   "type": "CFIRE-Car Fire",

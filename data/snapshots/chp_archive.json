@@ -1420,6 +1420,36 @@
   "details": ""
  },
  {
+  "log_id": "260904BF0096",
+  "time": "Sep  4 2026  7:54AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Nb I5 Jso Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.9375,
+  "lon": -118.928611,
+  "details": ""
+ },
+ {
+  "log_id": "260904BF0146",
+  "time": "Sep  4 2026  9:26AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb Sr99 Jno Sr119",
+  "area": "BF",
+  "lat": 35.271111,
+  "lon": -119.023889,
+  "details": ""
+ },
+ {
+  "log_id": "260904BF0155",
+  "time": "Sep  4 2026  9:43AM",
+  "type": "20001-Hit and Run w/Injuries",
+  "location": "Olive Tree Ct / Knudsen Dr",
+  "area": "Bakersfield",
+  "lat": 35.416128,
+  "lon": -119.059571,
+  "details": ""
+ },
+ {
   "log_id": "260904BF0002",
   "time": "Sep  4 2026 12:02AM",
   "type": "TADV-Traffic Advisory",

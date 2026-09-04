@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-04T07:52:02-07:00",
+ "built_at": "2026-09-04T09:45:26-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,14 +55,14 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1209,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "Meet two Arvin City Council candidates: Anabel Quintino Rubio and Nora Perez",
+   "chp_new": 3,
+   "top_story": "Beale Library to screen 2008 documentary on museum's historic Lopez-Hill House",
    "archive": "2026-09-04"
   },
   "cityhall": {
@@ -111,8 +111,8 @@
    "isabella_af": 170119,
    "alpr_total": 260,
    "kern_fires": 1,
-   "aqi": 43,
-   "chp_week": 84
+   "aqi": 54,
+   "chp_week": 87
   },
   "letters": {
    "published": 0

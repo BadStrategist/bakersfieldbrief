@@ -124,5 +124,23 @@
     "notability": 2,
     "disposition": "searching",
     "summary": "A white service truck was reported swerving and unable to maintain its lane after exiting the freeway, possibly a DUI. Units checked the area."
+  },
+  {
+    "type": "vehicle_fire",
+    "time": "04:46",
+    "agency": "CHP / Kern County Fire Department",
+    "area": "southbound Interstate 5 near Fort Tejon",
+    "notability": 3,
+    "disposition": "knocked down",
+    "summary": "A semi truck hauling produce caught fire in the center divider on southbound Interstate 5 roughly two miles north of Fort Tejon, with the cab burning while still connected to the trailer. Fire crews and a water-carrying unit responded, and roughly 15 feet of guardrail on the east side was damaged; Caltrans was notified."
+  },
+  {
+    "type": "grass_fire",
+    "time": "05:58",
+    "agency": "Kern County Fire Department",
+    "area": "Highway 119, Station 21 area",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "Grass fire reported along Highway 119 in the Station 21 area; engines and patrols dispatched to the scene."
   }
 ]

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-04T12:59:03-07:00",
+ "built_at": "2026-09-04T15:09:00-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -62,7 +62,7 @@
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Bakersfield law enforcement seeking help ID'ing woman involved in Real Road grand theft",
+   "top_story": "Most Wanted: Sept. 3, 2026",
    "archive": "2026-09-04"
   },
   "cityhall": {
@@ -81,10 +81,10 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 12,
-    "bakersfield-sw": 12,
+    "bakersfield-nw": 0,
+    "bakersfield-sw": 0,
     "bakersfield-east": 12,
-    "bakersfield-central": 12
+    "bakersfield-central": 0
    }
   },
   "guide": {
@@ -111,7 +111,7 @@
    "isabella_af": 170119,
    "alpr_total": 260,
    "kern_fires": 1,
-   "aqi": 38,
+   "aqi": 47,
    "chp_week": 92
   },
   "letters": {

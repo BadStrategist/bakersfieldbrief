@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-04T05:59:39-07:00",
+ "built_at": "2026-09-04T07:10:16-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,13 +55,13 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 63,
+  "_digest_meta": "llm",
+  "brief_words": 1209,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 3,
    "top_story": "Meet two Arvin City Council candidates: Anabel Quintino Rubio and Nora Perez",
    "archive": "2026-09-04"
   },
@@ -92,7 +92,7 @@
    "draft": "drafts/weekend-guide-2026-09-04"
   },
   "grapevine": {
-   "i5": "CLOSED",
+   "i5": "RESTRICTIONS",
    "i5_pass": "RESTRICTIONS",
    "log_entries": 60
   },
@@ -111,17 +111,17 @@
    "isabella_af": 170119,
    "alpr_total": 260,
    "kern_fires": 1,
-   "aqi": 41,
-   "chp_week": 80
+   "aqi": 40,
+   "chp_week": 83
   },
   "letters": {
    "published": 0
   },
   "overnight": {
-   "published": 25
+   "published": 26
   },
   "map": {
-   "dots": 54
+   "dots": 50
   },
   "sunday_read": {
    "topic": "Public safety",

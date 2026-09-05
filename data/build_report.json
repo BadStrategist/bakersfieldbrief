@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-04T23:42:37-07:00",
+ "built_at": "2026-09-05T00:10:14-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,14 +56,14 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1209,
+  "brief_words": 59,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 6,
+   "chp_new": 3,
    "top_story": "Harrington House restaurant in SW Bakersfield to close",
-   "archive": "2026-09-04"
+   "archive": "2026-09-05"
   },
   "cityhall": {
    "upcoming_meetings": 0,
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -89,7 +89,7 @@
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-09-04"
+   "draft": "drafts/weekend-guide-2026-09-05"
   },
   "grapevine": {
    "i5": "RESTRICTIONS",
@@ -98,9 +98,9 @@
   },
   "events": {
    "groups": {
-    "This week": 3,
-    "Next week": 3,
-    "Later": 43
+    "This week": 2,
+    "Next week": 4,
+    "Later": 42
    },
    "meetings": 0
   },
@@ -112,7 +112,7 @@
    "alpr_total": 260,
    "kern_fires": 1,
    "aqi": 68,
-   "chp_week": 106
+   "chp_week": 109
   },
   "letters": {
    "published": 0

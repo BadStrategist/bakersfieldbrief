@@ -1,0 +1,74 @@
+[
+  {
+    "type": "pursuit_ended_crash",
+    "time": "01:40",
+    "agency": "Bakersfield Police Department",
+    "area": "Airport Drive and Olive Drive area, north Bakersfield",
+    "notability": 5,
+    "disposition": "major-injury crash, CPR in progress",
+    "summary": "A high-speed chase that began after officers tried to stop a wanted subject ran north along Airport Drive at speeds up to 91 mph, with an air unit and K9 available. The pursuit ended in a major-injury crash near Airport and Olive drives where crews performed CPR. Officers had called for spike strips as the driver turned onto North Chester Avenue."
+  },
+  {
+    "type": "wildfire",
+    "time": "23:16",
+    "agency": "Kern County Fire Department",
+    "area": "Pozo Creek area near Highway 155, eastern Kern County",
+    "notability": 4,
+    "disposition": "crews working the fire",
+    "summary": "A brush fire burning near Pozo Creek and the Granite area drew a large county assignment, including engines, a strike team and a type-2 helicopter. Crews reached the flames over rough country by way of ranch gates and dirt roads, with the fire reported at roughly 15 to 20 acres."
+  },
+  {
+    "type": "gunshot_wound",
+    "time": "02:36",
+    "agency": "Kern County Fire Department / law enforcement",
+    "area": "Acres Road and Barbara Avenue area",
+    "notability": 4,
+    "disposition": "staging for gunshot wound",
+    "summary": "Emergency medical units were sent to stage for a reported gunshot wound at the intersection of Acres Road and Barbara Avenue. Officers and medics positioned nearby as the call developed."
+  },
+  {
+    "type": "vehicle_vs_bicycle",
+    "time": "23:48",
+    "agency": "CHP",
+    "area": "White Lane, between Monitor and Union avenues",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "A collision between a vehicle and a bicycle was reported on White Lane between Monitor and Union avenues. Units responded."
+  },
+  {
+    "type": "copper_theft",
+    "time": "21:48",
+    "agency": "law enforcement",
+    "area": "Bell Terrace area",
+    "notability": 2,
+    "disposition": "investigating",
+    "summary": "After a utility pole was reported de-energized, authorities said people have been cutting down poles in the area to pull copper wire from them."
+  },
+  {
+    "type": "street_takeover",
+    "time": "21:49",
+    "agency": "law enforcement",
+    "area": "parking lot on Colony Drive, Oildale area",
+    "notability": 2,
+    "disposition": "dispersed",
+    "summary": "A car meet of roughly 30 vehicles drew a response after several began performing maneuvers in a shopping center parking lot. Units cleared the gathering."
+  },
+  {
+    "type": "residential_alarm",
+    "time": "02:05",
+    "agency": "Bakersfield Police Department",
+    "area": "Adelaide Avenue area",
+    "notability": 2,
+    "disposition": "investigating",
+    "summary": "A panic alarm at a home was triggered by a resident reporting a man outside, and officers also checked the area for a man in a black shirt seen nearby. It was unknown if the two were related."
+  },
+  {
+    "type": "domestic_disturbance",
+    "time": "01:51",
+    "agency": "Bakersfield Police Department",
+    "area": "Chester Lane area",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "A domestic dispute escalated when a caller said her sister-in-law's ex-boyfriend would not let her leave. Officers responded to the residence."
+  }
+]

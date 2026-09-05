@@ -178,7 +178,7 @@ def build(ctx, sources: dict) -> list[str]:
     explainer = """
     <p class="sec-head">How it works</p>
     <div class="link-grid">
-      <div class="tile"><strong>Listen</strong><span>Police, sheriff, fire, and EMS radio overnight, 9 PM &ndash; 6 AM.</span></div>
+      <div class="tile"><strong>Listen</strong><span>Police, sheriff, fire, and EMS radio overnight, 9 PM &ndash; 5 AM.</span></div>
       <div class="tile"><strong>Transcribe</strong><span>Radio audio is cleaned and turned into text with local vocabulary tuned for scanner jargon.</span></div>
       <div class="tile"><strong>Extract</strong><span>Incidents are pulled from the transcript under strict privacy rules.</span></div>
       <div class="tile"><strong>Write</strong><span>Each morning&rsquo;s report is drafted from the transcript and published automatically.</span></div>

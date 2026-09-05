@@ -24,10 +24,17 @@ BASE_URL = os.environ.get("LLM_BASE_URL", "https://api.openai.com/v1")
 MAX_INPUT_CHARS = 6000          # ~1.5k tokens — keeps each call < $0.002
 MAX_OUTPUT_TOKENS = 380
 TIMEOUT = 45
-# Upstream capacity/rate-limit errors: sleep RETRY_SLEEP seconds and retry,
-# up to MAX_RETRIES extra attempts, then fall back gracefully.
-RETRYABLE_STATUS = {429, 503}
-RETRY_SLEEP = int(os.environ.get("LLM_RETRY_SLEEP", "70"))
+# Long generations (the ~1,200-1,500 word brief body, the Sunday feature)
+# legitimately need far more than the short-call timeout: a single request
+# streams 1,600-3,600 output tokens and an endpoint under load will exceed 45s
+# to first byte. Give them a real budget so they aren't cut off mid-stream.
+LONG_TIMEOUT = int(os.environ.get("LLM_LONG_TIMEOUT", "240"))
+# Upstream capacity/rate-limit errors + transient network failures (timeouts,
+# connection resets) are retried with backoff, up to MAX_RETRIES extra attempts,
+# then fall back gracefully. A read-timeout MUST be retried — it was silently
+# skipping to fallback on 2026-09-05 because the except-path didn't loop.
+RETRYABLE_STATUS = {429, 500, 502, 503, 504}
+RETRY_SLEEP = int(os.environ.get("LLM_RETRY_SLEEP", "20"))
 MAX_RETRIES = int(os.environ.get("LLM_MAX_RETRIES", "3"))
 SYSTEM = (
     "You are the wire editor of Bakersfield Daily Brief, a factual local civic "
@@ -174,15 +181,22 @@ def write_sunday_read(topic: str, facts: str, max_words: int = 1100) -> str | No
         "where they are rich rather than padding.\n\n"
         f"WEEK'S FACTS:\n{_truncate(facts, limit=MAX_INPUT_CHARS)}"
     )
-    return _chat(prompt, max_tokens=1600, system=SUNDAY_SYSTEM)
+    return _chat(prompt, max_tokens=1600, system=SUNDAY_SYSTEM, timeout=LONG_TIMEOUT)
 
 
 def _chat(prompt: str, max_tokens: int | None = None,
-          system: str | None = None) -> str | None:
+          system: str | None = None, timeout: int | None = None) -> str | None:
+    """One OpenAI-compatible chat call with retry + backoff. Never raises.
+
+    Retried failures (up to MAX_RETRIES extra attempts): HTTP 429/5xx and
+    transient network errors (ReadTimeout, ConnectTimeout, ConnectionError).
+    Anything else → graceful None fallback so a caller never blocks the build.
+    """
     key = os.environ.get("LLM_API_KEY")
     if not key:
         print("    [llm] no LLM_API_KEY set — skipping (graceful fallback)", flush=True)
         return None
+    to = timeout or TIMEOUT
     for attempt in range(MAX_RETRIES + 1):
         try:
             r = requests.post(
@@ -199,7 +213,7 @@ def _chat(prompt: str, max_tokens: int | None = None,
                     "max_tokens": max_tokens or MAX_OUTPUT_TOKENS,
                     "temperature": 0.3,
                 },
-                timeout=TIMEOUT,
+                timeout=to,
             )
             if r.status_code in RETRYABLE_STATUS and attempt < MAX_RETRIES:
                 print(f"    [llm] HTTP {r.status_code} (upstream capacity) — "
@@ -221,7 +235,18 @@ def _chat(prompt: str, max_tokens: int | None = None,
                 continue
             print(f"    [llm] HTTP {code or '?'} after {attempt + 1} attempt(s) — fallback", flush=True)
             return None
-        except Exception as e:  # noqa: BLE001 - graceful skip on any failure
+        except requests.exceptions.RequestException as e:
+            # Timeouts, connection resets/refused, DNS — all transient and worth a
+            # retry. On 2026-09-05 a bare ReadTimeout skipped straight to fallback
+            # (never reached the retry loop), silently killing the day's email.
+            if attempt < MAX_RETRIES:
+                print(f"    [llm] {type(e).__name__} (retryable) — sleeping "
+                      f"{RETRY_SLEEP}s, retry {attempt + 1}/{MAX_RETRIES}", flush=True)
+                time.sleep(RETRY_SLEEP)
+                continue
+            print(f"    [llm] {type(e).__name__} after {MAX_RETRIES + 1} attempts — fallback", flush=True)
+            return None
+        except Exception as e:  # noqa: BLE001 - graceful skip on any other failure
             print(f"    [llm] {type(e).__name__}: {e} — fallback", flush=True)
             return None
     print(f"    [llm] giving up after {MAX_RETRIES + 1} attempts — fallback", flush=True)
@@ -364,4 +389,4 @@ def brief_full(overnight_md: str, weather_prose: str, airnow: dict,
         f"MEETINGS: {meetings_prose[:1200]}\n\n"
         f"GOOD NOTE: {good_prose[:800]}"
     )
-    return _chat(prompt, max_tokens=3600, system=BRIEF_SYSTEM)
+    return _chat(prompt, max_tokens=3600, system=BRIEF_SYSTEM, timeout=LONG_TIMEOUT)

@@ -37,7 +37,13 @@ MODEL_SIZE = os.environ.get("KO_WHISPER_MODEL",
 # HF-gated, so we pin the mirror.
 MIN_CONFIDENCE = float(os.environ.get("KO_MIN_CONF", "0.45"))
 MIN_DURATION_S = float(os.environ.get("KO_MIN_SEG_S", "1.0"))
-WORKERS = int(os.environ.get("KO_WORKERS", "3"))  # parallel blocks per night
+# Parallel transcription workers. 3 made this 16GB rig swap/stall for 20-30 min
+# under memory pressure (observed 2026-09-02/03/05): 3 x ~1.4GB models needs
+# ~4.2GB free, but Chrome/RuneLite/Discord leave only ~5GB. 2 workers (~2.8GB)
+# fits comfortably -> steady, no thrash. Fewer parallel model loads barely cost
+# wall-clock on 32 cores (RAM, not CPU, is the bottleneck) and eliminates the
+# stalls that actually ran transcription long. Env KO_WORKERS still overrides.
+WORKERS = int(os.environ.get("KO_WORKERS", "2"))  # parallel blocks per night
 
 # --- per-process globals for the parallel workers (set by _init_worker)
 _W_ENGINE = ENGINE

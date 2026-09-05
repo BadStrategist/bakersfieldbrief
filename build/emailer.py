@@ -105,6 +105,122 @@ def _brief_sections(date) -> dict:
     return sections
 
 
+# ----------------------------------------------------------------- keyless prose
+def _read_overnight_report(today) -> str:
+    """The published Kern Overnight report markdown (real narrative), '' if none."""
+    iso = today.isoformat() if hasattr(today, "isoformat") else str(today)
+    p = common.DATA / "overnight_reports" / f"{iso}.md"
+    try:
+        return p.read_text(encoding="utf-8") if p.exists() else ""
+    except Exception:  # noqa: BLE001
+        return ""
+
+
+def _keyless_overnight(today, ko) -> str:
+    """Deterministic overnight narrative: use the published report's prose.
+
+    The LLM brief re-writes the scanner report in its own voice; when that body
+    is missing we reuse the report's own narrative paragraphs (strip the markdown
+    headings/log so only flowing prose reaches the email). Falls back to the
+    one-line summary if no report is on disk.
+    """
+    md = _read_overnight_report(today)
+    if md:
+        lines = []
+        for ln in md.splitlines():
+            s = ln.strip()
+            if not s:
+                lines.append("")
+                continue
+            if s.startswith("#"):          # drop #/## headings
+                continue
+            if s.startswith("- "):         # drop the bullet 'log' lines
+                continue
+            lines.append(s)
+        body = "\n\n".join(l.strip() for l in lines if l.strip())
+        if len(body) >= 150 and body.count(". ") >= 3:
+            return body
+    if ko and ko.get("headline"):
+        return (f"{ko['headline']} — {ko['count']} incidents tracked overnight. "
+                "Locations are generalized to neighborhoods; details remain "
+                "preliminary until confirmed by an official source.")
+    return ""
+
+
+def _keyless_weather(weather, airnow, calfire) -> str:
+    """Deterministic weather prose from the live forecast/alerts/AQI/fires."""
+    fc = (weather or {}).get("forecast", {}) or {}
+    hi, lo, cur = fc.get("high"), fc.get("low"), fc.get("current")
+    parts = []
+    hi_txt = f"a high near {hi}°" if hi is not None else "a mild day"
+    lo_txt = f" and a low around {lo}° tonight" if lo is not None else ""
+    parts.append(f"Expect {hi_txt}{lo_txt}.")
+    if cur is not None:
+        parts.append(f"It is currently {cur}° at Meadows Field (KBFL).")
+    alerts = (weather or {}).get("alerts", [])
+    if alerts:
+        a = alerts[0]
+        parts.append(f"**{a.get('event', 'Weather alert')}**: "
+                     f"{(a.get('headline') or '')[:180]}")
+    else:
+        parts.append("No active weather alerts for Kern County.")
+    if airnow and airnow.get("ok") and airnow.get("aqi") is not None:
+        parts.append(f"Air quality is {airnow['aqi']} — "
+                     f"{(airnow.get('category') or 'moderate').lower()}.")
+    kern = [f for f in (calfire or {}).get("incidents", []) if "Kern" in str(f.get("county", ""))]
+    if kern:
+        names = ", ".join(f.get("name", "a fire") for f in kern)
+        parts.append(f"Fire crews are on {len(kern)} active "
+                     f"{'fire' if len(kern) == 1 else 'fires'} in Kern ({names}).")
+    return " ".join(parts)
+
+
+def _keyless_good(headlines, events, today) -> str:
+    """Deterministic 'something good': a real dated family event or a positive
+    headline, else the quiet-honest fallback. Mirror of the site's pick logic."""
+    # 1) a real dated family-friendly event in the next 7 days
+    try:
+        from .builders.daily import _family_event
+        fam = _family_event(events or [], today)
+        if fam:
+            d, e = fam
+            name = e.get("name", "A local event")
+            venue = e.get("venue") or "a local venue"
+            when = d.strftime("%a, %b %d") if hasattr(d, "strftime") else ""
+            return (f"A bright spot this week: **{name}** "
+                    f"at {venue}" + (f" on {when}." if when else "."))
+    except Exception:  # noqa: BLE001
+        pass
+    # 2) a positive headline (real uplift)
+    for h in (headlines or []):
+        t = (h.get("title") or "").lower()
+        if any(k in t for k in ("grand opening", "scholarship", "fundraiser",
+                                "donation", "volunteer", "festival", "celebrat",
+                                "anniversary", "museum", "award", "family")):
+            return (f"**{h.get('title', '')}** — "
+                    f"from {h.get('source', 'local news')}. Good news worth a smile.")
+    return ""
+
+
+def _fill_keyless_prose(sections, sources, today, ko) -> None:
+    """Fill empty prose sections in-place from deterministic real data.
+
+    Called only when the LLM brief body is absent/partial (see render_brief).
+    Only overwrites keys that are empty — never downgrades LLM prose that exists.
+    """
+    if not (sections.get("overnight") or "").strip():
+        sections["overnight"] = _keyless_overnight(today, ko)
+    if not (sections.get("weather") or "").strip():
+        weather = sources.get("weather", {})
+        airnow = sources.get("airnow", {})
+        calfire = sources.get("calfire", {})
+        sections["weather"] = _keyless_weather(weather, airnow, calfire)
+    if not (sections.get("something_good") or "").strip():
+        headlines = (sources.get("news_rss") or {}).get("headlines", [])
+        events = (sources.get("venues") or {}).get("events", [])
+        sections["something_good"] = _keyless_good(headlines, events, today)
+
+
 # ---------------------------------------------------------------- brief
 def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
     """Render today's brief as email-safe HTML + plain text. Returns file paths."""
@@ -188,6 +304,21 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
         ko = _overnight_summary()
     except Exception:  # noqa: BLE001
         ko = None
+
+    # ---- resilience: an LLM outage must degrade prose QUALITY, never section
+    # PRESENCE. The brief body (data/briefs/<today>.json) is written by a single
+    # LLM call; when that call fails (timeout, 5xx, no key) the file is never
+    # written and _brief_sections returns empty prose for overnight/weather/
+    # something-good — which used to blank the email and trip the send gate
+    # (2026-09-05). Fill each empty prose section from real deterministic data
+    # (the published overnight report, the live forecast, real headlines/events)
+    # so the email always ships with genuine content. Deterministic < LLM prose,
+    # but a factual no-LLM email beats no email. The card-style sections (weather
+    # graphic, Flock tracker, headline links) already survive LLM death.
+    if not (sections.get("overnight") or "").strip() or \
+       not (sections.get("weather") or "").strip() or \
+       not (sections.get("something_good") or "").strip():
+        _fill_keyless_prose(sections, sources, today, ko)
 
     # ---- full overnight narrative (markdown -> paragraphs; no 'the log')
     def _md_para(text: str) -> str:
@@ -287,7 +418,7 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
 <tr><td style="padding:6px 20px 2px">
   {_card_open(SIGN)}
     {_kicker("The Kern Overnight")}
-    <p style="margin:0 0 4px;font-family:{MONO};font-size:11px;letter-spacing:1px;text-transform:uppercase;color:{INK_SOFT}">Scanner brief from 9pm to 6am</p>
+    <p style="margin:0 0 4px;font-family:{MONO};font-size:11px;letter-spacing:1px;text-transform:uppercase;color:{INK_SOFT}">Scanner brief from 9pm to 5am</p>
     {('' if not (ko and ko.get('headline')) else f'<p style="margin:8px 0 2px;font-family:{SERIF};font-size:18px;color:{INK}"><a href="{BASE_URL}/overnight/" style="color:{INK};text-decoration:none">What happened overnight: {H.escape(ko["headline"])}</a></p>')}
     {('' if not ko else f'<p style="margin:2px 0 10px;font-family:{SANS};font-size:12px;color:{INK_SOFT}">{ko["count"]} incidents tracked overnight · locations generalized &nbsp;'
      f'<a href="{BASE_URL}/overnight/" style="display:inline-block;background:{RED};color:#ffffff;'

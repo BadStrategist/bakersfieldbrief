@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-05T09:59:48-07:00",
+ "built_at": "2026-09-05T12:39:28-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -56,13 +56,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 59,
+  "brief_words": 65,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Harrington House restaurant in SW Bakersfield to close",
+   "chp_new": 3,
+   "top_story": "Bakersfield police pursuit ends in pedestrian death after suspect vehicle hits man on sidewalk",
    "archive": "2026-09-05"
   },
   "cityhall": {
@@ -111,8 +111,8 @@
    "isabella_af": 169222,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 48,
-   "chp_week": 120
+   "aqi": 44,
+   "chp_week": 123
   },
   "letters": {
    "published": 0

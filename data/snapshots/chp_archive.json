@@ -1500,6 +1500,16 @@
   "details": ""
  },
  {
+  "log_id": "260905BF0252",
+  "time": "Sep  5 2026 11:26AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Nb I5 Jso Gorman School Rd",
+  "area": "Fort Tejon",
+  "lat": 34.79456,
+  "lon": -118.847656,
+  "details": ""
+ },
+ {
   "log_id": "260905BF0004",
   "time": "Sep  5 2026 12:06AM",
   "type": "20002-Hit and Run No Injuries",
@@ -1527,6 +1537,26 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260905BF0278",
+  "time": "Sep  5 2026 12:14PM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sr178 At Walker Pass",
+  "area": "Bakersfield",
+  "lat": 35.662834,
+  "lon": -118.026719,
+  "details": ""
+ },
+ {
+  "log_id": "260905BF0285",
+  "time": "Sep  5 2026 12:24PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Old River Rd / Sr223",
+  "area": "Bakersfield",
+  "lat": 35.208829,
+  "lon": -119.109965,
   "details": ""
  }
 ]

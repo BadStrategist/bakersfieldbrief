@@ -1470,6 +1470,36 @@
   "details": ""
  },
  {
+  "log_id": "260905BF0183",
+  "time": "Sep  5 2026  9:02AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "400 Elk St",
+  "area": "Buttonwillow",
+  "lat": 35.298521,
+  "lon": -119.350411,
+  "details": ""
+ },
+ {
+  "log_id": "260905BF0188",
+  "time": "Sep  5 2026  9:09AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "0 I5 N",
+  "area": "Fort Tejon",
+  "lat": 34.873583,
+  "lon": -118.890861,
+  "details": ""
+ },
+ {
+  "log_id": "260905BF0190",
+  "time": "Sep  5 2026  9:11AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Burlando Rd / Plater Rd",
+  "area": "Bakersfield",
+  "lat": 35.73651,
+  "lon": -118.427011,
+  "details": ""
+ },
+ {
   "log_id": "260905BF0004",
   "time": "Sep  5 2026 12:06AM",
   "type": "20002-Hit and Run No Injuries",

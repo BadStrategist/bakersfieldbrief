@@ -1402,7 +1402,7 @@
  {
   "log_id": "260905BF0034",
   "time": "Sep  5 2026  1:41AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
+  "type": "20001-Hit and Run w/Injuries",
   "location": "534-698 Airport Dr",
   "area": "Bakersfield",
   "lat": 35.41171,
@@ -1447,6 +1447,26 @@
   "area": "Fort Tejon",
   "lat": 35.00725,
   "lon": -118.95158,
+  "details": ""
+ },
+ {
+  "log_id": "260905BF0155",
+  "time": "Sep  5 2026  8:14AM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sr58 / Ccmo Rd",
+  "area": "Buttonwillow",
+  "lat": 35.291423,
+  "lon": -119.675098,
+  "details": ""
+ },
+ {
+  "log_id": "260905BF0177",
+  "time": "Sep  5 2026  8:49AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sr99 S / Sr58 E",
+  "area": "Bakersfield",
+  "lat": 35.35255,
+  "lon": -119.03962,
   "details": ""
  },
  {

@@ -1400,6 +1400,36 @@
   "details": ""
  },
  {
+  "log_id": "260905BF0034",
+  "time": "Sep  5 2026  1:41AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "534-698 Airport Dr",
+  "area": "Bakersfield",
+  "lat": 35.41171,
+  "lon": -119.039054,
+  "details": ""
+ },
+ {
+  "log_id": "260905BF0054",
+  "time": "Sep  5 2026  3:07AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "3721 Eucalyptus Dr",
+  "area": "Bakersfield",
+  "lat": 35.365156,
+  "lon": -118.934189,
+  "details": ""
+ },
+ {
+  "log_id": "260905BF0060",
+  "time": "Sep  5 2026  4:35AM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "Sr184 / Hermosa Rd",
+  "area": "Bakersfield",
+  "lat": 35.310666,
+  "lon": -118.914309,
+  "details": ""
+ },
+ {
   "log_id": "260905BF0004",
   "time": "Sep  5 2026 12:06AM",
   "type": "20002-Hit and Run No Injuries",
@@ -1417,6 +1447,16 @@
   "area": "Fort Tejon",
   "lat": 34.896406,
   "lon": -118.920366,
+  "details": ""
+ },
+ {
+  "log_id": "260905BF0009",
+  "time": "Sep  5 2026 12:12AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
   "details": ""
  }
 ]

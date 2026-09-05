@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-05T00:10:14-07:00",
+ "built_at": "2026-09-05T05:12:15-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -61,7 +61,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
+   "chp_new": 4,
    "top_story": "Harrington House restaurant in SW Bakersfield to close",
    "archive": "2026-09-05"
   },
@@ -108,11 +108,11 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 170119,
+   "isabella_af": 169222,
    "alpr_total": 260,
    "kern_fires": 1,
-   "aqi": 68,
-   "chp_week": 109
+   "aqi": 62,
+   "chp_week": 113
   },
   "letters": {
    "published": 0

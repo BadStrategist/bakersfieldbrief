@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-05T12:39:28-07:00",
+ "built_at": "2026-09-05T14:45:12-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 2926, column 30"
   },
   "isabella": {
    "ok": true,
@@ -55,14 +55,14 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 65,
+  "_digest_meta": "llm",
+  "brief_words": 1294,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 3,
-   "top_story": "Bakersfield police pursuit ends in pedestrian death after suspect vehicle hits man on sidewalk",
+   "chp_new": 0,
+   "top_story": "One dead, two arrested following police chase in North Bakersfield",
    "archive": "2026-09-05"
   },
   "cityhall": {
@@ -98,7 +98,7 @@
   },
   "events": {
    "groups": {
-    "This week": 2,
+    "This week": 1,
     "Next week": 4,
     "Later": 42
    },
@@ -111,7 +111,7 @@
    "isabella_af": 169222,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 44,
+   "aqi": 54,
    "chp_week": 123
   },
   "letters": {

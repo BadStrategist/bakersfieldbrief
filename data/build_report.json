@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-04T15:37:04-07:00",
+ "built_at": "2026-09-04T18:40:29-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -61,8 +61,8 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 6,
-   "top_story": "Most Wanted: Sept. 3, 2026",
+   "chp_new": 2,
+   "top_story": "Jeff Richards, William Montgomery to perform at The Well Comedy Club",
    "archive": "2026-09-04"
   },
   "cityhall": {
@@ -78,7 +78,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -100,7 +100,7 @@
    "groups": {
     "This week": 3,
     "Next week": 3,
-    "Later": 42
+    "Later": 43
    },
    "meetings": 0
   },
@@ -111,8 +111,8 @@
    "isabella_af": 170119,
    "alpr_total": 260,
    "kern_fires": 1,
-   "aqi": 50,
-   "chp_week": 98
+   "aqi": 52,
+   "chp_week": 100
   },
   "letters": {
    "published": 0

@@ -1440,6 +1440,26 @@
   "details": ""
  },
  {
+  "log_id": "260904BF0450",
+  "time": "Sep  4 2026  5:30PM",
+  "type": "1125A-Animal Hazard",
+  "location": "Mil Potrero Hwy / Cuddy Valley Rd",
+  "area": "Fort Tejon",
+  "lat": 34.841802,
+  "lon": -119.085238,
+  "details": ""
+ },
+ {
+  "log_id": "260904BF0468",
+  "time": "Sep  4 2026  6:04PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Oakhaven St / Olive Dr",
+  "area": "Bakersfield",
+  "lat": 35.412279,
+  "lon": -119.070077,
+  "details": ""
+ },
+ {
   "log_id": "260904BF0059",
   "time": "Sep  4 2026  6:54AM",
   "type": "1182-Trfc Collision-No Inj",

@@ -9,6 +9,15 @@
     "summary": "A high-speed chase that began after officers tried to stop a wanted subject ran north along Airport Drive at speeds up to 91 mph, with an air unit and K9 available. The pursuit ended in a major-injury crash near Airport and Olive drives where crews performed CPR. Officers had called for spike strips as the driver turned onto North Chester Avenue."
   },
   {
+    "type": "suspicious_fires_arson",
+    "time": "03:48",
+    "agency": "Bakersfield Fire Department",
+    "area": "East California Avenue corridor",
+    "notability": 4,
+    "disposition": "arson investigation",
+    "summary": "A caller reported several separate fires and a man with a shopping cart walking east along East California Avenue, lighting additional fires. As crews knocked down one blaze, more fires were reported near East California and Haley and at California and Williams streets, prompting an arson investigation and additional engines dispatched down the corridor."
+  },
+  {
     "type": "wildfire",
     "time": "23:16",
     "agency": "Kern County Fire Department",
@@ -27,6 +36,15 @@
     "summary": "Emergency medical units were sent to stage for a reported gunshot wound at the intersection of Acres Road and Barbara Avenue. Officers and medics positioned nearby as the call developed."
   },
   {
+    "type": "multi_vehicle_crash",
+    "time": "05:25",
+    "agency": "CHP / fire",
+    "area": "Interstate 5 at the split",
+    "notability": 3,
+    "disposition": "freeway shut down",
+    "summary": "Up to three vehicles were involved in a crash on northbound Interstate 5 just south of the split, leaving vehicles in the center divider and the lanes. The freeway was shut down while a rescue and multiple engines responded."
+  },
+  {
     "type": "vehicle_vs_bicycle",
     "time": "23:48",
     "agency": "CHP",
@@ -34,6 +52,24 @@
     "notability": 3,
     "disposition": "responding",
     "summary": "A collision between a vehicle and a bicycle was reported on White Lane between Monitor and Union avenues. Units responded."
+  },
+  {
+    "type": "domestic_disturbance",
+    "time": "01:51",
+    "agency": "Bakersfield Police Department",
+    "area": "Chester Lane area",
+    "notability": 3,
+    "disposition": "responding",
+    "summary": "A domestic dispute escalated when a caller said her sister-in-law's ex-boyfriend would not let her leave a residence on Chester Lane. Officers responded to the residence."
+  },
+  {
+    "type": "domestic_disturbance",
+    "time": "04:10",
+    "agency": "Bakersfield Police Department",
+    "area": "Donna Avenue area",
+    "notability": 2,
+    "disposition": "responding",
+    "summary": "An active domestic incident was reported on Donna Avenue with an open line, involving a woman holding a hammer. Units responded."
   },
   {
     "type": "copper_theft",
@@ -63,12 +99,12 @@
     "summary": "A panic alarm at a home was triggered by a resident reporting a man outside, and officers also checked the area for a man in a black shirt seen nearby. It was unknown if the two were related."
   },
   {
-    "type": "domestic_disturbance",
-    "time": "01:51",
-    "agency": "Bakersfield Police Department",
-    "area": "Chester Lane area",
-    "notability": 3,
+    "type": "outside_fire",
+    "time": "05:26",
+    "agency": "Bakersfield Fire Department",
+    "area": "railroad tracks near East Truxton Avenue",
+    "notability": 2,
     "disposition": "responding",
-    "summary": "A domestic dispute escalated when a caller said her sister-in-law's ex-boyfriend would not let her leave. Officers responded to the residence."
+    "summary": "An outside fire was reported burning along the railroad tracks just south of East Truxton Avenue, with crews dispatched."
   }
 ]

@@ -1430,6 +1430,26 @@
   "details": ""
  },
  {
+  "log_id": "260905BF0098",
+  "time": "Sep  5 2026  6:49AM",
+  "type": "1125-Traffic Hazard",
+  "location": "601 Stephens Dr",
+  "area": "Bakersfield",
+  "lat": 35.349082,
+  "lon": -119.035607,
+  "details": ""
+ },
+ {
+  "log_id": "260905BF0106",
+  "time": "Sep  5 2026  6:58AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb Sr99 Jno I5,split",
+  "area": "Fort Tejon",
+  "lat": 35.00725,
+  "lon": -118.95158,
+  "details": ""
+ },
+ {
   "log_id": "260905BF0004",
   "time": "Sep  5 2026 12:06AM",
   "type": "20002-Hit and Run No Injuries",

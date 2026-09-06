@@ -109,7 +109,7 @@ export async function onRequestGet(context) {
       });
       probes.push(`${r.slug}:${res.status}:${(res.headers.get("content-type") || "").slice(0,20)}`);
       const html = await res.text();
-      if (html && res.ok) routes.push(parseRoute(r, html));
+      if (html && res.ok) routes.push(parseRoute(html, r));
       else if (res.ok) lastErr = `${r.slug} ok but empty body`;
       else lastErr = `${r.slug} http ${res.status}`;
     } catch (e) {

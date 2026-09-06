@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-06T13:33:42-07:00",
+ "built_at": "2026-09-06T14:58:12-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,14 +59,14 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1236,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
-   "top_story": "Shooting death on 8th Street in McFarland under investigation",
+   "chp_new": 0,
+   "top_story": "Amber Alert issued in multiple Central, Southern California counties for teen believed to have been abducted",
    "archive": "2026-09-06"
   },
   "cityhall": {
@@ -96,7 +96,7 @@
    "draft": "drafts/weekend-guide-2026-09-06"
   },
   "grapevine": {
-   "i5": "CLOSED",
+   "i5": "RESTRICTIONS",
    "i5_pass": "RESTRICTIONS",
    "log_entries": 60
   },
@@ -107,13 +107,13 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 64,
+   "temp": 70,
    "wind_mph": 17,
    "alerts": 0
   },
   "roads": {
    "routes": [
-    "i5:CLOSED",
+    "i5:RESTRICTIONS",
     "sr58:OPEN",
     "sr99:RESTRICTIONS"
    ],

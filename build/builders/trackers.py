@@ -400,45 +400,219 @@ def build_fires(ctx, sources: dict):
 
 
 # ------------------------------------------------------------------ water
+def _fmt_day(dstr: str) -> str:
+    """CDEC obsDate '2026-9-5 00:00' -> 'Sep 5'."""
+    try:
+        import re
+        m = re.match(r"(\d{4})-(\d{1,2})-(\d{1,2})", str(dstr))
+        if not m:
+            return str(dstr)
+        d = dt.date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+        return d.strftime("%b %d").replace(" 0", " ")
+    except Exception:  # noqa: BLE001
+        return str(dstr)
+
+
+def _water_level_status(elev_ft, full_pool_ft) -> tuple[str, str]:
+    """Honest, objective framing of where the level sits vs full pool.
+
+    Returns (label, note). No fabrication — pure arithmetic on the real
+    elevation vs the published full-pool elevation (2605.5 ft).
+    """
+    if not elev_ft or not full_pool_ft:
+        return "", ""
+    diff = full_pool_ft - elev_ft
+    if diff <= 2:
+        return "Near full pool", "The lake is essentially full — most ramps and the main boat launch areas have good access."
+    if diff <= 15:
+        return "Below full pool", "Water is down a short way from full; main ramps typically remain usable, but check current ramp status."
+    if diff <= 40:
+        return "Down from full pool", "Lower water exposes some shoreline. Longer ramps still work; smaller or unimproved launches may be marginal. Check ramp status before launching."
+    return "Well below full pool", "Water is well down. Ramp access can be limited to the main improved launches, and unmarked hazards near the old shore are more likely. Check current ramp status before launching."
+
+
 def build_water(ctx, sources: dict):
     data = sources.get("isabella", {})
     payload = {"asof": data.get("asof", common.iso_today())}
+    asof = data.get("asof", common.iso_today())
+    full_pool = data.get("full_pool_ft", 2605.5)
 
-    if data.get("ok") and data.get("last"):
-        last = data["last"]
-        series = data.get("series", [])
-        vals = [s["value"] for s in series]
-        delta = (vals[-1] - vals[0]) if len(vals) > 1 else 0
+    if data.get("ok") and data.get("storage"):
+        storage = data["storage"]
+        elev = data.get("elev_ft")
+        inflow = data.get("inflow_cfs")
+        series = data.get("storage_series") or data.get("series", [])
+        vals = [float(s["value"]) for s in series]
         pct = data.get("pct", 0)
+
+        # elevation stat + level framing
+        delta = (vals[-1] - vals[0]) if len(vals) > 1 else 0
+
+        status_label, status_note = _water_level_status(
+            elev["value"] if elev else None, full_pool)
+
         stat_html = (
-            _stat(f"{last['value']:,} <small>AF</small>", "Isabella storage", "") +
-            _stat(f"{pct}%", "of capacity (568,000 AF)", "amber") +
-            _stat(f"{delta:+,} <small>AF</small>", "30-day change", "") +
-            _stat(f"{len(series)}", "daily readings kept", "")
+            _stat(f'{elev["value"]:,}<small> ft</small>' if elev else "n/a",
+                  "Water level elevation", "") +
+            _stat(f"{storage['value']:,} <small>AF</small>", "Isabella storage", "amber") +
+            _stat(f"{pct}%", f"of full pool (568,000 AF)", "") +
+            _stat(f"{inflow['value']:,}<small> cfs</small>" if inflow else "n/a",
+                  "Kern River inflow", "amber")
         )
+
+        # ---- chart (storage trend) ----
         chart = f'<div class="chart">{svg_line_chart(vals)}<p style="font-family:IBM Plex Mono,monospace;font-size:12px;color:#4A545C;margin:4px 0 0">Lake Isabella storage, acre-feet &mdash; last {len(series)} days</p></div>'
-        rows = "".join(f'<tr><td>{html.escape(str(s["date"]))}</td><td class="num">{s["value"]:,} AF</td></tr>'
-                       for s in reversed(series[-14:]))
+
+        # ---- 14-day table ----
+        rows = "".join(
+            f'<tr><td>{_fmt_day(s["date"])}</td><td class="num">{int(float(s["value"])):,} AF</td></tr>'
+            for s in reversed(series[-14:]))
         table = f"""
         <div class="table-wrap"><table class="data">
           <thead><tr><th>Date</th><th class="num">Storage (acre-feet)</th></tr></thead>
           <tbody>{rows}</tbody>
         </table></div>"""
+
+        # ---- objective level reading (no invented 'good/bad') ----
+        level_read = ""
+        if elev:
+            diff = full_pool - elev["value"]
+            feet_line = (f"{elev['value']:,} ft, which is {diff:.1f} ft "
+                         f"{'below' if diff >= 0 else 'above'} the full-pool elevation "
+                         f"of {full_pool:,} ft")
+            level_read = (f"<p><strong>The lake is at {feet_line}.</strong> "
+                          f"At this level, {status_note}</p>")
+
         body = f"""
-        <div class="card"><span class="tag">Water</span><h3>Isabella Lake storage</h3>
-        <p>Lake Isabella, on the Kern River above Bakersfield, is the valley&rsquo;s biggest
-        reservoir. The U.S. Army Corps of Engineers reports storage to the California Data
-        Exchange Center (CDEC) daily; we track the 30-day trend. Kern River flows and snowpack
-        trackers follow the same pattern.</p></div>
+        <div class="card"><span class="tag">Lake Isabella</span>
+        <h3>Current water level</h3>
+        <p><strong>Lake Isabella is at {elev['value']:,} feet elevation</strong> — {pct}% of its
+        {storage['value']:,}-acre-foot capacity (full pool {full_pool:,} ft). That is the live
+        reading from California DWR / CDEC, updated with each build.</p>
+        {level_read}
+        <p>Lake Isabella, on the Kern River above Bakersfield, is the valley's biggest reservoir.
+        The U.S. Army Corps of Engineers reports storage, elevation and inflow to the California
+        Data Exchange Center (CDEC) daily.</p></div>
         {chart}
-        {table}"""
+        {table}
+
+        <div class="card"><span class="tag">Fishing</span>
+        <h3>Fishing Lake Isabella</h3>
+        <p>Lake Isabella holds <strong>trout, largemouth bass, bluegill, crappie and catfish</strong>.
+        It is one of Kern County's most-visited fishing lakes, with bank access around the main
+        recreation areas and boat access from the improved ramps.</p>
+        <p><strong>Seasonal patterns (general guidance, not a live bite report):</strong></p>
+        <ul>
+          <li><strong>Trout</strong> — best in spring and fall when the water is cool; the lake is
+          regularly planted and trout hold near cooler inlets (Kern River, French Gulch) in summer.</li>
+          <li><strong>Largemouth bass</strong> — active spring through fall; target structure,
+          points and weedlines. Spawn is typically spring.</li>
+          <li><strong>Crappie &amp; bluegill</strong> — strongest spring to early summer around
+          brush and docks.</li>
+          <li><strong>Catfish</strong> — best on warm summer evenings and nights.</li>
+          <li><strong>How the water level matters:</strong> rising water floods new structure that
+          fish move onto; a fast drop pulls fish out of newly exposed shallows; very low water
+          concentrates fish but can make ramps harder to use and expose hazards.</li>
+        </ul>
+        <p class="note">Fishing quality depends on weather, water temperature and recent plantings —
+        this is general seasonal guidance, not a live bite report. Always check the current
+        California Department of Fish &amp; Wildlife regulations and any fish-consumption advisory
+        before keeping fish.</p></div>
+
+        <div class="card"><span class="tag">Boating &amp; access</span>
+        <h3>Is the lake open? Boat ramp status</h3>
+        <p>At {elev['value']:,} ft elevation ({pct}% of capacity), the lake is {status_label.lower()}.
+        {status_note}</p>
+        <p><strong>Boat access is controlled by the U.S. Army Corps of Engineers and Kern County
+        Parks</strong> — ramps and the marina can close for debris, construction or maintenance
+        regardless of water level (Lake Isabella ramps closed for two weeks in March 2026 for flood-
+        debris removal, then reopened). There is no reliable real-time open/closed feed we can
+        automate, so for the current ramp and marina status check the official sources:</p>
+        <ul>
+          <li>Kern County Parks — <a href="https://www.kerncounty.com/government/parks/facilities/lakes-fishing-boating/lake-isabella" rel="noopener">Lake Isabella boating &amp; permits</a></li>
+          <li>U.S. Army Corps of Engineers — <a href="https://www.spk-wc.usace.army.mil/fcgi-bin/hourly.py?report=isb" rel="noopener">Isabella Dam hourly report</a></li>
+        </ul>
+        <p class="note">Boating on Lake Isabella requires a Kern County boat permit (annual, available
+        each November). All boats need a U.S. Coast Guard-approved life jacket per person; operators
+        16+ need a California Boater Card. Watch for 60 mph gusts and always slow to no-wake within
+        200 ft of shore.</p></div>
+
+        <div class="card"><span class="tag">Know before you go</span>
+        <h3>Water-level hazards</h3>
+        <p>As the level changes, watch for: submerged fencing near the South Fork, tree snags, rock
+        outcroppings and sand spits that appear and disappear with the water, and the 8-ft-deep
+        Borel Canal that cuts across the western lake. When the lake is low, these are closer to the
+        surface and to where you'd normally launch. Report an emergency to 911; the Kern Valley
+        Hospital line is (760) 379-2681.</p></div>"""
     else:
         stat_html = '<div class="errorbox">CDEC data unavailable this build.</div>'
         body = '<p class="note">Reservoir data could not be fetched this build.</p>'
 
-    _write_tracker(ctx, "water", "Isabella Lake & Kern River Tracker",
-                   "Lake Isabella storage levels, percent of capacity, and the 30-day trend — updated daily from California DWR/CDEC data.",
-                   stat_html, body, payload, sources, img="isabella")
+    # ---- FAQ (query-matched for featured snippets) ----
+    ev_txt, st_pct = "n/a", "n/a"
+    faq_jsonld = None
+    if data.get("ok") and data.get("storage"):
+        storage = data["storage"]
+        elev = data.get("elev_ft")
+        inflow = data.get("inflow_cfs")
+        st_pct = data.get("pct", 0)
+        ev_txt = f"{elev['value']:,} ft" if elev else "n/a"
+        cap_txt = f"{storage['value']:,} acre-feet"
+        iflow_txt = f"{inflow['value']:,} cubic feet per second" if inflow else "n/a"
+        faq_jsonld = {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {"@type": "Question",
+                 "name": "What is the current water level of Lake Isabella?",
+                 "acceptedAnswer": {"@type": "Answer",
+                                    "text": (f"Lake Isabella is at {ev_txt} elevation, holding "
+                                             f"{cap_txt} ({st_pct}% of its 568,000 acre-foot "
+                                             f"capacity). This live reading updates automatically "
+                                             f"from California DWR/CDEC.")}},
+                {"@type": "Question",
+                 "name": "Is Lake Isabella full or going up?",
+                 "acceptedAnswer": {"@type": "Answer",
+                                    "text": (f"Lake Isabella is at {st_pct}% of capacity as of the "
+                                             f"latest reading. The 30-day chart above shows whether "
+                                             f"storage is rising, falling or steady.")}},
+                {"@type": "Question",
+                 "name": "What is the elevation of Lake Isabella?",
+                 "acceptedAnswer": {"@type": "Answer",
+                                    "text": (f"The lake elevation is {ev_txt} (full pool is 2605.5 "
+                                             f"ft). Elevation is updated from CDEC with each build.")}},
+                {"@type": "Question",
+                 "name": "How much water is flowing into Lake Isabella?",
+                 "acceptedAnswer": {"@type": "Answer",
+                                    "text": (f"Kern River inflow into Lake Isabella is "
+                                             f"{iflow_txt} as of the latest reading.")}},
+                {"@type": "Question",
+                 "name": "What kind of fish are in Lake Isabella?",
+                 "acceptedAnswer": {"@type": "Answer",
+                                    "text": "Lake Isabella holds trout, largemouth bass, bluegill, "
+                                            "crappie and catfish. Fishing is popular year-round; trout "
+                                            "are best in cooler months, bass and panfish in spring to "
+                                            "fall, and catfish on warm summer nights."}},
+                {"@type": "Question",
+                 "name": "Is Lake Isabella open for boating?",
+                 "acceptedAnswer": {"@type": "Answer",
+                                    "text": (f"At its current level the lake is generally open for "
+                                             f"boating from the improved ramps, but ramp and marina "
+                                             f"status can change for debris, construction or "
+                                             f"maintenance. Check Kern County Parks and the U.S. Army "
+                                             f"Corps of Engineers for current status. A Kern County "
+                                             f"boat permit is required.")}},
+            ],
+        }
+    else:
+        faq_jsonld = None
+
+    _write_tracker(ctx, "water",
+                   "Lake Isabella Water Level & Elevation",
+                   f"Lake Isabella is at {ev_txt} elevation — {st_pct}% of capacity. Live water level, elevation, Kern River inflow, fishing species, and boat ramp status, updated from California DWR/CDEC.",
+                   stat_html, body, payload, sources, img="isabella",
+                   seo_title="Lake Isabella Water Level Today | Elevation, Fishing & Ramp Status",
+                   faq_jsonld=faq_jsonld)
 
 
 # ------------------------------------------------------------------ writer
@@ -546,5 +720,5 @@ register("surveillance", "Flock & ALPR Tracker",
          "Every automated license plate reader mapped in the Bakersfield metro — weekly map, facing direction, newest-camera highlights, and a real 13-week change log.", build_alpr)
 register("fires", "Kern County Fire Tracker",
          "Active wildfires in Kern County and California, live from the official CAL FIRE feed — map, acres, containment, and automatic updates.", build_fires)
-register("water", "Isabella Lake & Kern River Tracker",
-         "Lake Isabella storage, percent of capacity, and the 30-day trend from California DWR/CDEC.", build_water)
+register("water", "Lake Isabella Water Level",
+         "Lake Isabella water level and elevation, live from California DWR/CDEC — storage, Kern River inflow, fishing species, and boat ramp status.", build_water)

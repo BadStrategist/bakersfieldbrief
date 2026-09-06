@@ -171,9 +171,12 @@ jobs:
 
       # A blocked/failed email must reach a human the same morning, not sit in
       # run logs. Posts to the ops Discord webhook when the send step failed.
-      # Without the secret it still fails loudly in the log (never silent).
+      # `if: failure()` is the reliable GitHub Actions condition (fires when
+      # any prior step in the job failed) — `steps.send.outcome == 'failure'`
+      # proved unreliable and skipped the alert on 2026-09-06. Without the
+      # secret it still fails loudly in the log (never silent).
       - name: Notify ops Discord if email was blocked/failed
-        if: steps.send.outcome == 'failure'
+        if: failure()
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
@@ -183,7 +186,11 @@ jobs:
             exit 1
           fi
           printf 'A blocked/failed send is now a RED run - not silent.\n```\n' > /tmp/bb_discord.txt
-          tail -6 /tmp/bb_send.out >> /tmp/bb_discord.txt
+          if [ -f /tmp/bb_send.out ]; then
+            tail -6 /tmp/bb_send.out >> /tmp/bb_discord.txt
+          else
+            printf '(send step did not run - an earlier step failed and the email was never attempted)\n' >> /tmp/bb_discord.txt
+          fi
           printf '\n```\nSee: %s\n' "$RUN_URL" >> /tmp/bb_discord.txt
           python scripts/notify_discord.py --header "Bakersfield Brief - daily email did NOT send (run #$GITHUB_RUN_NUMBER)" --file /tmp/bb_discord.txt
           echo "ops Discord alert sent for blocked/failed email"

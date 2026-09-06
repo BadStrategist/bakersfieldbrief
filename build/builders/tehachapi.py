@@ -18,6 +18,7 @@ import html
 import re
 
 from .. import common
+from . import images
 from . import page as page_mod
 from .grapevine import _report_age_hint
 
@@ -211,8 +212,10 @@ def build(ctx, sources: dict) -> list[str]:
 
     {big}
 
-    <div class="grid cols-2">
-      {wind_card}
+        {images.figure("tehachapi", rel)}
+
+        <div class="grid cols-2">
+          {wind_card}
       <div class="card"><h3>Forecast</h3>{fc_html}</div>
     </div>
 

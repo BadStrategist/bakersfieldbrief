@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-05T23:53:18-07:00",
+ "built_at": "2026-09-06T00:22:12-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,14 +60,14 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1294,
+  "brief_words": 66,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
    "top_story": "Volunteers prep for Greek Food Festival with new dishes, chance to win trip to Greece",
-   "archive": "2026-09-05"
+   "archive": "2026-09-06"
   },
   "cityhall": {
    "upcoming_meetings": 0,
@@ -82,7 +82,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -93,7 +93,7 @@
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-09-05"
+   "draft": "drafts/weekend-guide-2026-09-06"
   },
   "grapevine": {
    "i5": "RESTRICTIONS",
@@ -102,19 +102,19 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 12,
+   "wind_mph": 0,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 61,
-   "wind_mph": 12,
+   "temp": 57,
+   "wind_mph": 0,
    "alerts": 0
   },
   "events": {
    "groups": {
-    "This week": 1,
-    "Next week": 4,
+    "This week": 2,
+    "Next week": 3,
     "Later": 42
    },
    "meetings": 0

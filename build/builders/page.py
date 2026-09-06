@@ -164,6 +164,25 @@ def org_jsonld() -> dict:
     }
 
 
+def webpage_jsonld(url: str, date_modified: str, name: str = "",
+                   desc: str = "") -> dict:
+    """Lightweight WebPage block with dateModified (and datePublished, both
+    stamped with the current build date for data-tracker pages)."""
+    block = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "url": f"https://bakersfieldbrief.com{url}",
+        "dateModified": date_modified,
+        "datePublished": date_modified,
+        "inLanguage": "en",
+    }
+    if name:
+        block["name"] = name
+    if desc:
+        block["description"] = desc
+    return block
+
+
 def website_jsonld() -> dict:
     return {
         "@context": "https://schema.org",

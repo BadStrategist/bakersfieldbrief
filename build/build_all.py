@@ -106,6 +106,8 @@ def main():
     _robots()
     _sitemap()
     _llms()
+    _llms_full(results)
+    _agentic_sitemap(results)
     (common.SITE / "CNAME").write_text("bakersfieldbrief.com\n", encoding="utf-8")
 
     # ---------------------------------------------------------- report
@@ -140,18 +142,20 @@ Sitemap: https://bakersfieldbrief.com/sitemap.xml
 
 
 def _sitemap():
+    today = dt.date.today().isoformat()
     urls = []
     for p in common.SITE.rglob("index.html"):
         rel = p.relative_to(common.SITE).as_posix()
         rel = rel[: -len("index.html")]
-        urls.append((f"https://bakersfieldbrief.com/{rel}",
-                     dt.date.fromtimestamp(p.stat().st_mtime).isoformat()))
-    urls.append(("https://bakersfieldbrief.com/", dt.date.today().isoformat()))
+        urls.append(f"https://bakersfieldbrief.com/{rel}")
+    urls.append("https://bakersfieldbrief.com/")
     urls = sorted(set(urls))
     xml = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    for u, last in urls:
-        xml.append(f"  <url><loc>{u}</loc><lastmod>{last}</lastmod></url>")
+    # The site rebuilds daily, so every build stamps today as lastmod for all
+    # URLs — no stale dates when a page's content changes on a later day.
+    for u in urls:
+        xml.append(f"  <url><loc>{u}</loc><lastmod>{today}</lastmod></url>")
     xml.append("</urlset>")
     common.write(common.SITE / "sitemap.xml", "\n".join(xml) + "\n")
 
@@ -218,6 +222,106 @@ The site is static and rebuilt fresh every morning at 6:00 AM Pacific from publi
 - [Ownership & funding](https://bakersfieldbrief.com/ownership/): who operates the Brief.
 - [Contact](https://bakersfieldbrief.com/contact/): corrections, source tips, and feedback.
 """)
+
+
+def _llms_full(results: dict) -> None:
+    """Write site/llms-full.txt — current canonical answers per data tracker,
+    stamped with the build date. Numbers are read live from the build results
+    (never fabricated); any unavailable source degrades to an honest fallback.
+    """
+    today = common.iso_today()
+
+    # --- surveillance ---
+    alpr = results.get("alpr", {})
+    if alpr.get("ok"):
+        st = alpr.get("stats", {})
+        surv = (f"{st.get('flock', 0)} Flock Safety cameras and "
+                f"{st.get('total', 0)} total license-plate readers are mapped in "
+                f"OpenStreetMap within the Bakersfield metro as of "
+                f"{alpr.get('asof', today)}.")
+    else:
+        surv = "Live map of license-plate readers in the Bakersfield metro; data unavailable this build."
+
+    # --- water ---
+    iso = results.get("isabella", {})
+    if iso.get("ok") and iso.get("storage"):
+        elev = iso.get("elev_ft") or {}
+        w = (f"Lake Isabella is at {iso.get('pct', 0)}% of capacity "
+             f"({iso['storage'].get('value', 0):,} acre-feet"
+             + (f", {elev.get('value', 0):,} ft elevation)" if elev.get("value") else ")"))
+        w += f", as of {iso.get('asof', today)}."
+    else:
+        w = "Lake Isabella water level from CDEC; data unavailable this build."
+
+    # --- grapevine (Caltrans routes) ---
+    roads = results.get("roads", {})
+    if roads.get("ok") and roads.get("routes"):
+        statuses = "; ".join(f"{r.get('name')}: {r.get('pass_status') or r.get('status')}"
+                             for r in roads["routes"])
+        grape = f"{statuses}, as reported by Caltrans as of {roads.get('asof', today)}."
+    else:
+        grape = "Grapevine / Tejon Pass road conditions from Caltrans; data unavailable this build."
+
+    common.write(common.SITE / "llms-full.txt", f"""# Bakersfield Daily Brief — Full Text
+
+> Machine-readable full content. Built {today} from public records. Each data tracker page below states its current canonical answer.
+
+Bakersfield Daily Brief is an independent, automated civic-news brief for Bakersfield and Kern County, California. It rebuilds fresh every morning from public agencies: City of Bakersfield meeting records (eSCRIBE), Kern County Board of Supervisors agendas, ABC license filings, Kern County Environmental Health, CHP incidents, NWS alerts, EPA AirNow, CDEC reservoir data, CAL FIRE, Caltrans road conditions, and OpenStreetMap. Headlines link to original outlets; no article text is republished.
+
+## Home
+
+https://bakersfieldbrief.com/ — Today's conditions, headlines, meetings, and data-tracker links.
+
+## Data Trackers
+
+https://bakersfieldbrief.com/surveillance/ — {surv}
+
+https://bakersfieldbrief.com/water/ — {w}
+
+https://bakersfieldbrief.com/grapevine/ — {grape}
+
+## City Hall & County
+
+https://bakersfieldbrief.com/city-hall/ — Meeting previews and recaps for Bakersfield and Kern County.
+https://bakersfieldbrief.com/numbers/ — The numeric dashboard behind the news.
+
+## Guides & Places
+
+https://bakersfieldbrief.com/guide/ — What's on around Kern County.
+https://bakersfieldbrief.com/places/ — Neighborhood and community pages.
+https://bakersfieldbrief.com/events/ — Community events calendar.
+https://bakersfieldbrief.com/fair/ — Kern County Fair dates, lineup, and tickets.
+
+## About
+
+https://bakersfieldbrief.com/about/ — How the Brief works and what it publishes.
+https://bakersfieldbrief.com/contact/ — Corrections, source tips, and feedback.
+""")
+
+
+def _agentic_sitemap(results: dict) -> None:
+    """Write site/sitemap_agentic_discovery.xml — the agentic-sitemap discovery
+    file (https://agentic-sitemaps.org) listing the key evergreen pages with a
+    one-line description and lastmod, so AI crawlers find the right entry points.
+    """
+    today = common.iso_today()
+    pages = [
+        ("https://bakersfieldbrief.com/",
+         "Home — today's Bakersfield and Kern County conditions, headlines, and meetings."),
+        ("https://bakersfieldbrief.com/water/",
+         "Lake Isabella water level and elevation — live from California DWR/CDEC."),
+        ("https://bakersfieldbrief.com/surveillance/",
+         "Flock Safety and ALPR license-plate-reader camera map for Bakersfield and Kern County."),
+        ("https://bakersfieldbrief.com/grapevine/",
+         "Grapevine / Tejon Pass road conditions — live from Caltrans."),
+    ]
+    rows = "\n".join(
+        f"  <url><loc>{loc}</loc><description>{desc}</description>"
+        f"<lastmod>{today}</lastmod></url>"
+        for loc, desc in pages)
+    common.write(common.SITE / "sitemap_agentic_discovery.xml",
+                 f'<?xml version="1.0" encoding="UTF-8"?>\n'
+                 f'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{rows}\n</urlset>\n')
 
 
 if __name__ == "__main__":

@@ -40,15 +40,23 @@ def _num(v) -> float | None:
 
 
 def _sensor_series(sess_rows) -> list[dict]:
-    out = []
+    """Dedupe by day and sort chronologically (CDEC can return duplicated or
+    out-of-order daily rows). One reading per date, newest last."""
+    import datetime as _dt
+    by_day: dict[str, float] = {}
     for row in sess_rows:
         v = _num(row.get("value"))
         if v is None:
             continue
-        out.append({"date": (row.get("obsDate") or row.get("date") or ""),
-                    "value": round(v, 2)})
-    out.sort(key=lambda x: x["date"])
-    return out
+        dstr = row.get("obsDate") or row.get("date") or ""
+        # normalize CDEC '2026-9-5 00:00' -> '2026-09-05'
+        m = __import__("re").match(r"(\d{4})-(\d{1,2})-(\d{1,2})", str(dstr))
+        if not m:
+            continue
+        key = f"{int(m.group(1)):04d}-{int(m.group(2)):02d}-{int(m.group(3)):02d}"
+        # last reading wins for a day
+        by_day[key] = v
+    return [{"date": k, "value": round(by_day[k], 2)} for k in sorted(by_day)]
 
 
 def run(ctx):

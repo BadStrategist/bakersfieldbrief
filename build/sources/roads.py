@@ -42,6 +42,20 @@ def run(ctx):
         except Exception as e:  # noqa: BLE001
             common.log(f"roads {route['number']} failed: {type(e).__name__}: {e}")
     if not out["routes"]:
+        # graceful stale fallback: reuse the last successful fetch, clearly
+        # flagged so the builder can show "may be out of date" + a direct
+        # Caltrans link instead of a bare error box.
+        last = common.load_snapshot("roads_last", default={})
+        if last.get("routes"):
+            out["ok"] = False
+            out["asof"] = last.get("asof", out["asof"])  # carry the real report date, not today
+            out["routes"] = last["routes"]
+            out["stale"] = True
+            out["stale_note"] = ("Source (Caltrans) unreachable this build; showing the most "
+                                 "recent report with its original timestamp.")
+            out["last_good"] = True
+            out["log"] = common.load_snapshot("roads_log", default=[])
+            return out
         return {"ok": False, "error": "no Caltrans routes parsed"}
 
     # ---- diff against snapshot + change log
@@ -70,6 +84,8 @@ def run(ctx):
     common.save_snapshot("roads_log", log)
     common.save_snapshot("roads", {x["slug"]: {"status": x["status"], "hash": x["hash"]}
                                    for x in out["routes"]})
+    # full last-known payload so a later failed fetch can degrade gracefully
+    common.save_snapshot("roads_last", out)
     out["log"] = log
     return out
 

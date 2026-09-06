@@ -84,6 +84,24 @@ def _stat(value_html: str, label: str, cls: str = "") -> str:
     return f'<div class="stat {cls}"><div class="n">{value_html}</div><div class="l">{label}</div></div>'
 
 
+def _faq_visible(faq_jsonld: dict | None, heading: str) -> str:
+    """Render the SAME Q&A that lives in the FAQPage JSON-LD as visible page
+    content. Because both are built from one faq_jsonld dict, the on-page text
+    and the schema can never drift. Returns '' when there is nothing to render."""
+    if not faq_jsonld:
+        return ""
+    items = faq_jsonld.get("mainEntity", [])
+    if not items:
+        return ""
+    parts = [f'<p class="sec-head">{heading}</p>']
+    for q in items:
+        name = html.escape(str(q.get("name", "")))
+        ans = html.escape(str(q.get("acceptedAnswer", {}).get("text", "")))
+        parts.append(f'<p class="pr-q"><strong>Q: {name}</strong></p>')
+        parts.append(f"<p>{ans}</p>")
+    return "\n".join(parts)
+
+
 # ------------------------------------------------------------------ ALPR
 def build_alpr(ctx, sources: dict):
     data = sources.get("alpr", {})
@@ -103,6 +121,11 @@ def build_alpr(ctx, sources: dict):
 
     last4 = sum(e.get("new_count", 0) for e in change_log[-4:])
     newest_date = stats.get("newest_mapped", "—")
+    # Honest overlay counts: on a data failure show "—" not a false "0".
+    stat_ok = bool(data.get("ok"))
+    ov_total = (str(stats.get("total", 0)) if stat_ok else "—")
+    ov_flock = (str(stats.get("flock", 0)) if stat_ok else "—")
+    ov_last4 = (f"+{last4}" if stat_ok else "—")
 
     if data.get("ok"):
         stat_html = (
@@ -139,9 +162,9 @@ def build_alpr(ctx, sources: dict):
                   aria-label="Close panel" title="Close panel">&#8722;</button>
         </div>
         <div class="ov-stats">
-          <div><span class="n">{stats.get('total', 0)}</span> cameras mapped</div>
-          <div><span class="n">{stats.get('flock', 0)}</span> Flock Safety</div>
-          <div><span class="n">+{last4}</span> new in 28 days</div>
+          <div><span class="n">{ov_total}</span> cameras mapped</div>
+          <div><span class="n">{ov_flock}</span> Flock Safety</div>
+          <div><span class="n">{ov_last4}</span> new in 28 days</div>
         </div>
         <button id="toggle-newest" class="ov-btn" aria-pressed="false">Highlight newest (28 days)</button>
         <p class="ov-note" id="newest-note">All cameras shown — ring markers mark the last 28 days of mapping.</p>
@@ -237,7 +260,11 @@ def build_alpr(ctx, sources: dict):
                     "@type": "Answer",
                     "text": (f"Based on volunteer-mapped OpenStreetMap data, {flock_n} Flock Safety "
                              f"cameras are mapped in Bakersfield and Kern County, out of {total_n} "
-                             f"total license plate reader (ALPR) cameras, as of {asof}.")
+                             f"total license plate reader (ALPR) cameras, as of {asof}."
+                             if data.get("ok") else
+                             "A current count is unavailable because the camera data source "
+                             "(OpenStreetMap) did not load this build. Use the map and stats once "
+                             "data is restored.")
                 }
             },
             {
@@ -248,14 +275,68 @@ def build_alpr(ctx, sources: dict):
                     "text": (f"This page shows a live map of all {total_n} mapped license plate reader "
                              f"cameras in the Bakersfield metro, {flock_n} of which are Flock Safety "
                              f"units. Each camera marker shows its manufacturer, operator, and facing "
-                             f"direction.")
+                             f"direction."
+                             if data.get("ok") else
+                             "The camera map cannot be shown right now because the data source "
+                             "(OpenStreetMap) did not load this build. Check back once data is restored.")
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Are Flock cameras legal in California?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": ("Automated license-plate reader (ALPR) use by law enforcement is "
+                             "generally lawful in California, subject to state and local restrictions. "
+                             "Flock and similar systems must comply with California's ALPR statutes, and "
+                             "specific rules vary by agency. This page maps publicly visible cameras and "
+                             "offers no guidance on avoiding or interfering with them.")
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How long do Flock cameras keep data?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": ("Data retention varies by agency. California law requires agencies that use "
+                             "ALPR to publish a retention schedule, so check the specific law-enforcement "
+                             "agency's policy rather than assuming a single number. This page does not "
+                             "track or report on stored plate data.")
                 }
             }
         ]
     }
 
+    # visible declarative answer + honest scope note (resolves the count vs.
+    # commercial maps) — same asof as the FAQ schema and the template meta.
+    # Only when OSM data actually loaded: on a fetch failure the stats box
+    # already says "unavailable", and we must NOT assert "0 cameras".
+    if data.get("ok"):
+        body = (
+            f'<p class="callout"><strong>{flock_n} Flock Safety cameras and {total_n} total '
+            f'license-plate readers</strong> are mapped in Bakersfield and Kern County as of '
+            f'{asof}. See them on the map below. Count reflects ALPR cameras mapped in '
+            f'OpenStreetMap within the Bakersfield metro area as of {asof} — a smaller scope '
+            f'than some commercial maps.</p>'
+        ) + body
+
+    # on-page lede + meta description — never assert "0 cameras" on a fetch failure
+    if data.get("ok"):
+        desc = (f"See every license plate reader in Bakersfield on a live map — {flock_n} "
+                f"Flock Safety cameras and {total_n} total ALPR units mapped in the metro, "
+                f"with facing direction, newest-camera highlights, and a weekly change log "
+                f"from OpenStreetMap.")
+    else:
+        desc = ("Live map of license-plate reader (ALPR) and Flock Safety cameras in "
+                f"Bakersfield — data source (OpenStreetMap) was unavailable this build. "
+                f"Check back for the latest camera map and change log. Last successful as of "
+                f"{asof}.")
+
+    # render the same Q&A visibly so on-page text and schema never drift
+    body += _faq_visible(faq_jsonld, "Flock &amp; ALPR questions")
+
     _write_tracker(ctx, "surveillance", "Flock Camera Map — Bakersfield",
-                   f"See every license plate reader in Bakersfield on a live map — {flock_n} Flock Safety cameras and {total_n} total ALPR units mapped in the metro, with facing direction, newest-camera highlights, and a weekly change log from OpenStreetMap.",
+                   desc,
                    stat_html, body, payload, sources, dark=True, img="flock",
                    seo_title="Bakersfield Flock Camera Map | Live ALPR Tracker",
                    faq_jsonld=faq_jsonld)
@@ -436,6 +517,7 @@ def build_water(ctx, sources: dict):
     payload = {"asof": data.get("asof", common.iso_today())}
     asof = data.get("asof", common.iso_today())
     full_pool = data.get("full_pool_ft", 2605.5)
+    cap_af = data.get("capacity_af", 568_000)
 
     if data.get("ok") and data.get("storage"):
         storage = data["storage"]
@@ -481,13 +563,14 @@ def build_water(ctx, sources: dict):
                          f"{'below' if diff >= 0 else 'above'} the full-pool elevation "
                          f"of {full_pool:,} ft")
             level_read = (f"<p><strong>The lake is at {feet_line}.</strong> "
-                          f"At this level, {status_note}</p>")
+                          f"At this level, {status_note[0].lower()}{status_note[1:]}</p>")
 
         body = f"""
         <div class="card"><span class="tag">Lake Isabella</span>
         <h3>Current water level</h3>
-        <p><strong>Lake Isabella is at {elev['value']:,} feet elevation</strong> — {pct}% of its
-        {storage['value']:,}-acre-foot capacity (full pool {full_pool:,} ft). That is the live
+        <p><strong>Lake Isabella is at {elev['value']:,} feet elevation</strong>, holding
+        {storage['value']:,} acre-feet — {pct}% of its {cap_af:,}-acre-foot full capacity
+        (full pool {full_pool:,} ft). That is the live
         reading from California DWR / CDEC, updated with each build.</p>
         {level_read}
         <p>Lake Isabella, on the Kern River above Bakersfield, is the valley's biggest reservoir.
@@ -607,6 +690,9 @@ def build_water(ctx, sources: dict):
     else:
         faq_jsonld = None
 
+    # render the same Q&A visibly so on-page text and schema never drift
+    body += _faq_visible(faq_jsonld, "Lake Isabella questions")
+
     _write_tracker(ctx, "water",
                    "Lake Isabella Water Level & Elevation",
                    f"Lake Isabella is at {ev_txt} elevation — {st_pct}% of capacity. Live water level, elevation, Kern River inflow, fishing species, and boat ramp status, updated from California DWR/CDEC.",
@@ -646,7 +732,9 @@ def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
         desc=lede,
         canonical=f"/{slug}/",
         content=tpl, current="trackers", rel=rel, built=built_iso,
-        jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld()]
+        jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(),
+                page_mod.webpage_jsonld(f"/{slug}/", built_iso,
+                                        name=name, desc=lede)]
                + ([faq_jsonld] if faq_jsonld else []),
         statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         extra_head='<link rel="stylesheet" href="../assets/vendor/leaflet.css">'

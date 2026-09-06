@@ -174,6 +174,7 @@ def build(ctx, sources: dict) -> list[str]:
       <a class="tile" href="{rel}water/"><strong>Isabella Lake</strong><span>live CDEC storage</span></a>
       <a class="tile" href="{rel}surveillance/"><strong>Flock &amp; ALPRs</strong><span>camera map + change log</span></a>
       <a class="tile" href="{rel}grapevine/"><strong>Grapevine conditions</strong><span>Caltrans, 3&times; daily</span></a>
+      <a class="tile" href="{rel}tehachapi-pass/"><strong>Tehachapi Pass</strong><span>SR-58 + wind, 3&times; daily</span></a>
       <a class="tile" href="{rel}events/"><strong>Events</strong><span>what&rsquo;s on around town</span></a>
     </div>"""
 

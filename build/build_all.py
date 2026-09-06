@@ -30,7 +30,7 @@ from build.sources import SOURCES  # noqa: E402
 from build.builders import (daily, cityhall, trackers, static_pages,
                             places, guide, grapevine, events, feed,
                             numbers, letters,
-                            overnight, sunday_read, map, fair)  # noqa: E402
+                            overnight, sunday_read, map, fair, tehachapi)  # noqa: E402
 from build.builders import page as page_mod  # noqa: E402
 
 
@@ -78,7 +78,8 @@ def main():
     builders = [("daily", daily), ("cityhall", cityhall),
                 ("trackers", trackers),
                 ("places", places), ("guide", guide),
-                ("grapevine", grapevine), ("events", events),
+                ("grapevine", grapevine), ("tehachapi", tehachapi),
+                ("events", events),
                 ("feed", feed), ("numbers", numbers), ("letters", letters),
                 ("overnight", overnight),
                 ("map", map),
@@ -259,8 +260,14 @@ def _llms_full(results: dict) -> None:
         statuses = "; ".join(f"{r.get('name')}: {r.get('pass_status') or r.get('status')}"
                              for r in roads["routes"])
         grape = f"{statuses}, as reported by Caltrans as of {roads.get('asof', today)}."
+        sr58 = next((r for r in roads["routes"] if r.get("slug") == "sr58"), None)
+        teh = (f"SR-58 Tehachapi Pass: {sr58.get('pass_status') or sr58.get('status')}, "
+               f"as reported by Caltrans as of {sr58.get('reported_as_of') or roads.get('asof', today)}."
+               if sr58 else
+               "Tehachapi Pass SR-58 road conditions from Caltrans; data unavailable this build.")
     else:
         grape = "Grapevine / Tejon Pass road conditions from Caltrans; data unavailable this build."
+        teh = "Tehachapi Pass SR-58 road conditions from Caltrans; data unavailable this build."
 
     common.write(common.SITE / "llms-full.txt", f"""# Bakersfield Daily Brief — Full Text
 
@@ -279,6 +286,8 @@ https://bakersfieldbrief.com/surveillance/ — {surv}
 https://bakersfieldbrief.com/water/ — {w}
 
 https://bakersfieldbrief.com/grapevine/ — {grape}
+
+https://bakersfieldbrief.com/tehachapi-pass/ — {teh}
 
 ## City Hall & County
 
@@ -313,8 +322,10 @@ def _agentic_sitemap(results: dict) -> None:
         ("https://bakersfieldbrief.com/surveillance/",
          "Flock Safety and ALPR license-plate-reader camera map for Bakersfield and Kern County."),
         ("https://bakersfieldbrief.com/grapevine/",
-         "Grapevine / Tejon Pass road conditions — live from Caltrans."),
-    ]
+                 "Grapevine / Tejon Pass road conditions — live from Caltrans."),
+                ("https://bakersfieldbrief.com/tehachapi-pass/",
+                 "Tehachapi Pass (SR-58) road conditions, wind, and weather — live from Caltrans and NWS."),
+            ]
     rows = "\n".join(
         f"  <url><loc>{loc}</loc><description>{desc}</description>"
         f"<lastmod>{today}</lastmod></url>"

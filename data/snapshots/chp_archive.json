@@ -1570,6 +1570,16 @@
   "details": ""
  },
  {
+  "log_id": "260905BF0603",
+  "time": "Sep  5 2026  9:48PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "River Blvd / University Ave",
+  "area": "Bakersfield",
+  "lat": 35.401471,
+  "lon": -118.985295,
+  "details": ""
+ },
+ {
   "log_id": "260905BF0252",
   "time": "Sep  5 2026 11:26AM",
   "type": "1183-Trfc Collision-Unkn Inj",

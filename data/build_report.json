@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-05T23:24:03-07:00",
+ "built_at": "2026-09-05T23:53:18-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,11 +59,11 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1294,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
    "top_story": "Volunteers prep for Greek Food Festival with new dishes, chance to win trip to Greece",
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 21,
+   "wind_mph": 12,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 61,
-   "wind_mph": 21,
+   "wind_mph": 12,
    "alerts": 0
   },
   "events": {

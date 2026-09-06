@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-05T18:12:23-07:00",
+ "built_at": "2026-09-05T18:34:53-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -55,11 +55,11 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1294,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
    "top_story": "Bystander killed during high-speed pursuit in Bakersfield, 2 suspects taken into custody",

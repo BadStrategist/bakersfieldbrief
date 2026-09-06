@@ -1500,6 +1500,16 @@
   "details": ""
  },
  {
+  "log_id": "260905BF0569",
+  "time": "Sep  5 2026  8:35PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 Jno Frazier Mountain Park Rd",
+  "area": "Fort Tejon",
+  "lat": 34.820278,
+  "lon": -118.878611,
+  "details": ""
+ },
+ {
   "log_id": "260905BF0177",
   "time": "Sep  5 2026  8:49AM",
   "type": "1183-Trfc Collision-Unkn Inj",

@@ -233,7 +233,8 @@ def build(ctx, sources: dict) -> list[str]:
         desc="Live Caltrans conditions for the I-5 Grapevine over Tejon Pass — the LA to Bakersfield route — plus SR-58 Tehachapi and SR-99. Closed or restricted? Updated 3x daily.",
         canonical="/grapevine/", content=body, current="other", rel=rel,
         built=built_iso, statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
-        jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), _faq_jsonld(live_answer)])
+                jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), _faq_jsonld(live_answer)],
+                extra_scripts='<script src="{rel}assets/js/live-pass.js" defer></script>'.format(rel=rel))
     common.write(common.SITE / "grapevine" / "index.html", page)
     built.append("grapevine/index.html")
 

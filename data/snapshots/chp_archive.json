@@ -1613,10 +1613,30 @@
   "log_id": "260906BF0148",
   "time": "Sep  6 2026  9:32AM",
   "type": "1125-Traffic Hazard",
-  "location": "I5 N / Grapevine Rd Ofr",
+  "location": "I5 N / West Escape Ramp",
   "area": "Fort Tejon",
-  "lat": 34.939994,
-  "lon": -118.930124,
+  "lat": 34.918056,
+  "lon": -118.923889,
+  "details": ""
+ },
+ {
+  "log_id": "260906BF0156",
+  "time": "Sep  6 2026  9:47AM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "7th Standard Rd / Rowlee Rd",
+  "area": "Buttonwillow",
+  "lat": 35.442346,
+  "lon": -119.474118,
+  "details": ""
+ },
+ {
+  "log_id": "260906BF0173",
+  "time": "Sep  6 2026 10:17AM",
+  "type": "1166-Defective Traffic Signals",
+  "location": "Adams St / Shields Dr",
+  "area": "Bakersfield",
+  "lat": 35.343342,
+  "lon": -118.998246,
   "details": ""
  },
  {

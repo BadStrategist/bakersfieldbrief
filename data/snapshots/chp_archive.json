@@ -1610,6 +1610,16 @@
   "details": ""
  },
  {
+  "log_id": "260906BF0148",
+  "time": "Sep  6 2026  9:32AM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 N / Grapevine Rd Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.939994,
+  "lon": -118.930124,
+  "details": ""
+ },
+ {
   "log_id": "260906BF0004",
   "time": "Sep  6 2026 12:05AM",
   "type": "TADV-Traffic Advisory",

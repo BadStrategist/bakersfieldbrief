@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-05T20:44:16-07:00",
+ "built_at": "2026-09-05T20:57:05-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 2926, column 30"
   },
   "isabella": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 0,
    "top_story": "Volunteers prep for Greek Food Festival with new dishes, chance to win trip to Greece",
    "archive": "2026-09-05"
   },
@@ -102,7 +102,7 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 16,
+   "wind_mph": 12,
    "alerts": 0,
    "stale": false
   },

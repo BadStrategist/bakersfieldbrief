@@ -1,65 +1,5 @@
 [
  {
-  "log_id": "260829BF0218",
-  "time": "Aug 29 2026  1:39PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr166 / Soda Lake Rd",
-  "area": "Buttonwillow",
-  "lat": 34.963178,
-  "lon": -119.446101,
-  "details": ""
- },
- {
-  "log_id": "260829BF0221",
-  "time": "Aug 29 2026  1:46PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "13676 - 15713 CORCORAN RD",
-  "area": "Buttonwillow",
-  "lat": 35.686226,
-  "lon": -119.580002,
-  "details": ""
- },
- {
-  "log_id": "260829BF0230",
-  "time": "Aug 29 2026  1:58PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "E White Ln / South Union Ave",
-  "area": "Bakersfield",
-  "lat": 35.317653,
-  "lon": -119.002937,
-  "details": ""
- },
- {
-  "log_id": "260829BF0420",
-  "time": "Aug 29 2026  8:13PM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "NB SR99 JNO Kimberlina Rd",
-  "area": "Bakersfield",
-  "lat": 35.554325,
-  "lon": -119.196827,
-  "details": ""
- },
- {
-  "log_id": "260829BF0464",
-  "time": "Aug 29 2026 10:42PM",
-  "type": "CFIRE-Car Fire",
-  "location": "Eb Sr58 Jwo Sr223",
-  "area": "Bakersfield",
-  "lat": 35.265,
-  "lon": -118.663056,
-  "details": ""
- },
- {
-  "log_id": "260829BF0002",
-  "time": "Aug 29 2026 12:01AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
   "log_id": "260830BF0019",
   "time": "Aug 30 2026  1:03AM",
   "type": "TADV-Traffic Advisory",
@@ -1637,6 +1577,36 @@
   "area": "Bakersfield",
   "lat": 35.208829,
   "lon": -119.109965,
+  "details": ""
+ },
+ {
+  "log_id": "260906BF0037",
+  "time": "Sep  6 2026  1:43AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "13120 S Fairfax Rd",
+  "area": "Bakersfield",
+  "lat": 35.230283,
+  "lon": -118.9321,
+  "details": ""
+ },
+ {
+  "log_id": "260906BF0065",
+  "time": "Sep  6 2026  3:23AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Edison Hwy / Sr184",
+  "area": "Bakersfield",
+  "lat": 35.358207,
+  "lon": -118.914123,
+  "details": ""
+ },
+ {
+  "log_id": "260906BF0004",
+  "time": "Sep  6 2026 12:05AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
   "details": ""
  }
 ]

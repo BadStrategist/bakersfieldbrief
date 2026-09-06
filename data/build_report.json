@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-06T07:41:01-07:00",
+ "built_at": "2026-09-06T09:02:25-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,13 +60,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 66,
+  "brief_words": 64,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "Volunteers prep for Greek Food Festival with new dishes, chance to win trip to Greece",
+   "chp_new": 0,
+   "top_story": "Kern Autism Network marks 30 years of support for families in Kern County",
    "archive": "2026-09-06"
   },
   "cityhall": {
@@ -85,7 +85,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 11,
+    "bakersfield-nw": 12,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 55,
+   "temp": 61,
    "wind_mph": 0,
    "alerts": 0
   },

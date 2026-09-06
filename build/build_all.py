@@ -31,7 +31,7 @@ from build.builders import (daily, cityhall, trackers, static_pages,
                             places, guide, grapevine, events, feed,
                             numbers, letters,
                             overnight, sunday_read, map, fair, tehachapi,
-                            tehachapi_weather)  # noqa: E402
+                            tehachapi_weather, roads)  # noqa: E402
 from build.builders import page as page_mod  # noqa: E402
 
 
@@ -81,6 +81,7 @@ def main():
                 ("places", places), ("guide", guide),
                 ("grapevine", grapevine), ("tehachapi", tehachapi),
                 ("tehachapi_weather", tehachapi_weather),
+                ("roads", roads),
                 ("events", events),
                 ("feed", feed), ("numbers", numbers), ("letters", letters),
                 ("overnight", overnight),
@@ -208,6 +209,7 @@ The site is static and rebuilt fresh every morning at 6:00 AM Pacific from publi
 - [Flock & ALPRs](https://bakersfieldbrief.com/surveillance/): automated license-plate reader locations.
 - [Isabella Lake tracker](https://bakersfieldbrief.com/water/): reservoir levels.
 - [Grapevine conditions](https://bakersfieldbrief.com/grapevine/): Tejon Pass / Grapevine road conditions.
+- [Kern road conditions](https://bakersfieldbrief.com/roads/): I-5, SR-58, and SR-99 status in Bakersfield & Kern County.
 - [Live Map](https://bakersfieldbrief.com/map/): interactive map of local data.
 
 ## Guides & Places
@@ -267,9 +269,12 @@ def _llms_full(results: dict) -> None:
                f"as reported by Caltrans as of {sr58.get('reported_as_of') or roads.get('asof', today)}."
                if sr58 else
                "Tehachapi Pass SR-58 road conditions from Caltrans; data unavailable this build.")
+        roads_all = (f"{statuses}, as reported by Caltrans as of {roads.get('asof', today)}. "
+                     f"See per-route status for I-5 Grapevine, SR-58 Tehachapi, and SR-99.")
     else:
         grape = "Grapevine / Tejon Pass road conditions from Caltrans; data unavailable this build."
         teh = "Tehachapi Pass SR-58 road conditions from Caltrans; data unavailable this build."
+        roads_all = "Kern County road conditions from Caltrans; data unavailable this build."
 
     # --- tehachapi weather ---
     tw = results.get("tehachapi_weather", {})
@@ -302,6 +307,8 @@ https://bakersfieldbrief.com/grapevine/ — {grape}
 https://bakersfieldbrief.com/tehachapi-pass/ — {teh}
 
 https://bakersfieldbrief.com/tehachapi-weather/ — {tehwx}
+
+https://bakersfieldbrief.com/roads/ — {roads_all}
 
 ## City Hall & County
 
@@ -341,6 +348,8 @@ def _agentic_sitemap(results: dict) -> None:
                  "Tehachapi Pass (SR-58) road conditions, wind, and weather — live from Caltrans and NWS."),
                 ("https://bakersfieldbrief.com/tehachapi-weather/",
                  "Tehachapi weather — current conditions and forecast from the National Weather Service."),
+                ("https://bakersfieldbrief.com/roads/",
+                 "Bakersfield and Kern County road conditions right now — I-5 Grapevine, SR-58 Tehachapi, and SR-99, live from Caltrans."),
             ]
     rows = "\n".join(
         f"  <url><loc>{loc}</loc><description>{desc}</description>"

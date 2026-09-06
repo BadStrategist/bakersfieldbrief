@@ -171,6 +171,9 @@ def build(ctx, sources: dict) -> list[str]:
       <span class="dot">&bull;</span><span>refreshes 3× daily</span></div></div>
     </div>
 
+    <p class="note" style="margin-top:10px">Also see the <a href="../roads/">Kern County road conditions hub</a>
+    — I-5, SR-58, and SR-99 status on one page.</p>
+
     {direct_answer}
 
     {staledom}

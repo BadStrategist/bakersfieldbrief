@@ -99,18 +99,27 @@ export async function onRequestGet(context) {
 
   const routes = [];
   let lastErr = "";
+  const probes = [];
   for (const r of ROUTES) {
     try {
-      const html = await fetchCaltrans(r);
-      if (html) routes.push(parseRoute(r, html));
+      const res = await fetch(URL(r.number), {
+        headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36",
+                   "Accept": "text/html,application/xhtml+xml" },
+        redirect: "follow",
+      });
+      probes.push(`${r.slug}:${res.status}:${(res.headers.get("content-type") || "").slice(0,20)}`);
+      const html = await res.text();
+      if (html && res.ok) routes.push(parseRoute(r, html));
+      else if (res.ok) lastErr = `${r.slug} ok but empty body`;
+      else lastErr = `${r.slug} http ${res.status}`;
     } catch (e) {
-      lastErr = String(e && e.message ? e.message : e).slice(0, 120);
+      lastErr = `${r.slug} threw ${String(e && e.message ? e.message : e).slice(0, 100)}`;
     }
   }
 
   const ok = routes.length > 0;
   const data = {
-    ok, routes,
+    ok, routes, probes,
     status: ok ? "ok" : "unavailable",
     fetched_at: new Date().toISOString(),
     err: ok ? undefined : (lastErr || "fetch failed"),

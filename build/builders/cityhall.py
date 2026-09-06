@@ -79,31 +79,101 @@ def _county_page(board: dict, built_iso: str, rel: str, ctx) -> str:
             </table></div>"""
         else:
             table = '<p class="note">No numbered items were extractable from the current board agenda PDF this build.</p>'
+
+        # ---- direct quotable answer (first text after H1, for crawlers/AI)
+        date_str = html.escape(str(board.get('date', '')))
+        watched = board.get("watched", [])
+        top_item = items[0]['title'] if items else ""
+        direct_answer = (f'<p class="answer"><strong>The Kern County Board of Supervisors '
+                         f'next meets on {date_str or "a posted date"} at 9:00 AM at the County '
+                         f'Administration Building, 1115 Truxtun Avenue, Bakersfield.</strong> '
+                         f'This agenda carries {len(items)} items'
+                         + (f", led by {html.escape(top_item[:60])}" if top_item else "")
+                         + (f". {len(watched)} item(s) reference Flock or ALPR surveillance." if watched else ".")
+                         + ' Agendas are posted 72 hours ahead under the Brown Act.</p>')
+
+        # ---- FAQ (on-page + schema)
+        faq_qa = [
+            ("When does the Kern County Board of Supervisors meet?",
+             f"The board generally meets on Tuesdays at 9:00 AM at the Kern County Administration Building, 1115 Truxtun Avenue, Bakersfield. The next posted meeting is {date_str or 'TBD'}."),
+            ("How do I see the Kern County Board of Supervisors agenda?",
+             "Agendas are posted 72 hours before each meeting per the Brown Act. This page shows the current posted agenda items; the official agenda PDF is linked above."),
+            ("What is on the next Kern County Board of Supervisors agenda?",
+             (f"The next posted agenda ({date_str or 'current meeting'}) includes {len(items)} items."
+              + (f" Led by {html.escape(top_item[:80])}." if top_item else ""))),
+            ("How does Flock / license-plate-reader surveillance get approved in Kern County?",
+             "Flock Safety camera and ALPR (automated license plate reader) proposals come before the Board of Supervisors as agenda items. This page flags those items with an amber 'Flock/ALPR watch' tag."),
+            ("Where can I watch or participate in the Kern County Board of Supervisors meeting?",
+             "Meetings are at the Kern County Administration Building, 1115 Truxtun Avenue, Bakersfield. Check the official board page for live-stream and public-comment details."),
+        ]
+        faq_html = "".join(
+            f'<p class="pr-q"><strong>{html.escape(q)}</strong></p><p>{a}</p>' for q, a in faq_qa)
+        import re as _re
+        live_answer = _re.sub(r"<[^>]+>", "", faq_qa[0][1])
+
         body = f"""
         <div class="hero"><p class="kicker">County &middot; Kern Board of Supervisors</p>
-        <h1>What to Watch</h1>
+        <h1>Kern County Board of Supervisors Agenda</h1>
         <p class="lede">The current Kern County Board of Supervisors agenda, posted for the
-        {html.escape(str(board.get('date', '')))} meeting. The board meets in the County
+        {date_str or 'upcoming'} meeting. The board meets in the County
         Administration Building, 1115 Truxtun Avenue, Bakersfield, generally Tuesdays at 9:00 AM.
         Agendas are posted 72 hours ahead per the Brown Act.</p>
-        <div class="meta"><span>Agenda posted: <span class="updated">{html.escape(str(board.get('date', '')))}</span></span>
+        <div class="meta"><span>Agenda posted: <span class="updated">{date_str}</span></span>
         <span class="dot">&bull;</span><span>Source: official board agenda PDF</span></div></div>
+        {direct_answer}
         <p><a class="pill amber" href="https://itsapps.kerncounty.com/clerk/minutes/boardagenda.pdf">Official agenda PDF ↗</a>
         <a class="pill" href="https://www.kerncounty.com/government/board-of-supervisors">Board page ↗</a></p>
         {table}
         <div class="callout"><strong>Surveillance watch:</strong> items mentioning Flock, ALPR, or license-plate
-        readers are flagged amber. The Board&rsquo;s consent calendar is also captured when present.</div>"""
+        readers are flagged amber. The Board&rsquo;s consent calendar is also captured when present.</div>
+        <section class="block"><div class="sign-head"><span class="tab">FAQ</span><h2>Board of Supervisors questions</h2></div>
+        <div class="card">{faq_html}</div></section>"""
     else:
-        body = ('<div class="hero"><h1>County Board agenda</h1>'
+        body = ('<div class="hero"><h1>Kern County Board of Supervisors Agenda</h1>'
                 f'<div class="errorbox">The county agenda PDF could not be fetched this build ({html.escape(board.get("error", "unknown"))}).</div></div>')
 
     page = page_mod.render(
-        title="Kern County Board of Supervisors — What to Watch | Bakersfield Daily Brief",
-        desc="Current Kern County Board of Supervisors agenda with item-by-item previews: resolutions, departmental requests, consent items, and Flock/ALPR surveillance items flagged.",
+        title="Kern County Board of Supervisors Agenda Today | Bakersfield Daily Brief",
+        desc="Kern County Board of Supervisors agenda with item-by-item previews: meeting date, resolutions, consent items, and Flock/ALPR surveillance items flagged. Updated each posted agenda.",
         canonical="/city-hall/county-board/",
         content=body, current="cityhall", rel=rel, built=built_iso, statusbar=ctx.statusbar,
-        jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld()])
+        jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), _county_faq_jsonld(board)])
     return page
+
+
+def _county_faq_jsonld(board: dict) -> dict:
+    """FAQPage schema for the county board page — Q1 carries the live meeting
+    date/count so an AI/featured snippet quotes the real current agenda."""
+    date_str = str(board.get("date", "TBD"))
+    items = board.get("items", [])
+    watched = board.get("watched", [])
+    top = items[0]["title"] if items else ""
+    q1 = (f"The Kern County Board of Supervisors next meets on {date_str or 'a posted date'} at 9:00 AM "
+          f"at the County Administration Building, 1115 Truxtun Avenue, Bakersfield. "
+          f"This agenda carries {len(items)} items"
+          + (f", led by {top[:80]}" if top else "")
+          + (f". {len(watched)} item(s) reference Flock or ALPR surveillance." if watched else "."))
+    return {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {"@type": "Question", "name": "When does the Kern County Board of Supervisors meet?",
+             "acceptedAnswer": {"@type": "Answer", "text": q1}},
+            {"@type": "Question", "name": "How do I see the Kern County Board of Supervisors agenda?",
+             "acceptedAnswer": {"@type": "Answer", "text":
+                "Agendas are posted 72 hours before each meeting per the Brown Act. This page shows the current posted agenda items; the official agenda PDF is linked above."}},
+            {"@type": "Question", "name": "What is on the next Kern County Board of Supervisors agenda?",
+             "acceptedAnswer": {"@type": "Answer", "text":
+                (f"The next posted agenda ({date_str}) includes {len(items)} items."
+                 + (f" Led by {top[:80]}." if top else ""))}},
+            {"@type": "Question", "name": "How does Flock / license-plate-reader surveillance get approved in Kern County?",
+             "acceptedAnswer": {"@type": "Answer", "text":
+                "Flock Safety camera and ALPR proposals come before the Board of Supervisors as agenda items. This page flags those items with an amber 'Flock/ALPR watch' tag."}},
+            {"@type": "Question", "name": "Where can I watch or participate in the Kern County Board of Supervisors meeting?",
+             "acceptedAnswer": {"@type": "Answer", "text":
+                "Meetings are at the Kern County Administration Building, 1115 Truxtun Avenue, Bakersfield. Check the official board page for live-stream and public-comment details."}},
+        ],
+    }
 
 
 # ---------------------------------------------------------------- meetings

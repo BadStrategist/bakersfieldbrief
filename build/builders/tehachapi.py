@@ -257,6 +257,20 @@ def build(ctx, sources: dict) -> list[str]:
     </section>
 
     <section class="block">
+      <div class="sign-head"><span class="tab">Before you drive</span><h2>Know before you go</h2></div>
+      <div class="card"><ul class="hl">
+        <li><strong>Elevation:</strong> the pass crest is about <strong>4,067 ft</strong> — snow at
+        the summit is common even when the valley is dry.</li>
+        <li><strong>Chain controls:</strong> R2 (chains or traction devices on all vehicles except
+        4WD/AWD with snow tires) and R3 (chains required on all vehicles) are posted at the base of
+        the grade when winter storms hit.</li>
+        <li><strong>See it live:</strong> view current Caltrans cameras and traffic on
+        <a href="https://quickmap.dot.ca.gov/" target="_blank" rel="noopener">QuickMap</a> — the
+        official free live map of highway conditions, closures, and road cams for SR-58.</li>
+      </ul></div>
+    </section>
+
+    <section class="block">
       <div class="sign-head"><span class="tab">Log</span><h2>Recent changes</h2></div>
       {log_html}
     </section>

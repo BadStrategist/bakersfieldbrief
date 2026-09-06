@@ -138,3 +138,11 @@ def test_alt_routes_and_links_present(tmp_path, monkeypatch):
     assert "grapevine" in body.lower()          # crosslink to the grapevine alternative
     assert "1-800-427-7623" in body             # Caltrans phone
     assert "roads.dot.ca.gov" in body
+
+
+def test_know_before_you_go_block_present(tmp_path, monkeypatch):
+    body = _visible(_render({"roads": _sr58(), "tehachapi_weather": _weather()}, tmp_path, monkeypatch))
+    assert "Know before you go" in body
+    assert "4,067" in body                       # elevation
+    assert "R2" in body and "R3" in body          # chain controls
+    assert "QuickMap" in body                     # live camera link

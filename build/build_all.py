@@ -30,7 +30,8 @@ from build.sources import SOURCES  # noqa: E402
 from build.builders import (daily, cityhall, trackers, static_pages,
                             places, guide, grapevine, events, feed,
                             numbers, letters,
-                            overnight, sunday_read, map, fair, tehachapi)  # noqa: E402
+                            overnight, sunday_read, map, fair, tehachapi,
+                            tehachapi_weather)  # noqa: E402
 from build.builders import page as page_mod  # noqa: E402
 
 
@@ -79,6 +80,7 @@ def main():
                 ("trackers", trackers),
                 ("places", places), ("guide", guide),
                 ("grapevine", grapevine), ("tehachapi", tehachapi),
+                ("tehachapi_weather", tehachapi_weather),
                 ("events", events),
                 ("feed", feed), ("numbers", numbers), ("letters", letters),
                 ("overnight", overnight),
@@ -269,6 +271,16 @@ def _llms_full(results: dict) -> None:
         grape = "Grapevine / Tejon Pass road conditions from Caltrans; data unavailable this build."
         teh = "Tehachapi Pass SR-58 road conditions from Caltrans; data unavailable this build."
 
+    # --- tehachapi weather ---
+    tw = results.get("tehachapi_weather", {})
+    tcur = tw.get("current", {})
+    if tw.get("ok") and tcur.get("ok"):
+        tehwx = (f"Tehachapi current conditions: {tcur.get('temperature', '—')}°F, "
+                 f"wind {tcur.get('wind_mph', '—')} mph from {tcur.get('wind_dir', '?')}, "
+                 f"observed {tcur.get('observed') or 'by NWS'}.")
+    else:
+        tehwx = "Tehachapi weather from the National Weather Service; data unavailable this build."
+
     common.write(common.SITE / "llms-full.txt", f"""# Bakersfield Daily Brief — Full Text
 
 > Machine-readable full content. Built {today} from public records. Each data tracker page below states its current canonical answer.
@@ -288,6 +300,8 @@ https://bakersfieldbrief.com/water/ — {w}
 https://bakersfieldbrief.com/grapevine/ — {grape}
 
 https://bakersfieldbrief.com/tehachapi-pass/ — {teh}
+
+https://bakersfieldbrief.com/tehachapi-weather/ — {tehwx}
 
 ## City Hall & County
 
@@ -325,6 +339,8 @@ def _agentic_sitemap(results: dict) -> None:
                  "Grapevine / Tejon Pass road conditions — live from Caltrans."),
                 ("https://bakersfieldbrief.com/tehachapi-pass/",
                  "Tehachapi Pass (SR-58) road conditions, wind, and weather — live from Caltrans and NWS."),
+                ("https://bakersfieldbrief.com/tehachapi-weather/",
+                 "Tehachapi weather — current conditions and forecast from the National Weather Service."),
             ]
     rows = "\n".join(
         f"  <url><loc>{loc}</loc><description>{desc}</description>"

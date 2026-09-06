@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-05T18:34:53-07:00",
+ "built_at": "2026-09-05T20:09:23-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -22,16 +22,16 @@
    "error": ""
   },
   "airnow": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "AirNow returned no data"
   },
   "calfire": {
    "ok": true,
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 2926, column 30"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -55,14 +55,14 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
+  "_digest_meta": "llm",
   "brief_words": 1294,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Bystander killed during high-speed pursuit in Bakersfield, 2 suspects taken into custody",
+   "chp_new": 4,
+   "top_story": "Volunteers prep for Greek Food Festival with new dishes, chance to win trip to Greece",
    "archive": "2026-09-05"
   },
   "cityhall": {
@@ -111,8 +111,8 @@
    "isabella_af": 169222,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 50,
-   "chp_week": 123
+   "aqi": null,
+   "chp_week": 127
   },
   "letters": {
    "published": 0

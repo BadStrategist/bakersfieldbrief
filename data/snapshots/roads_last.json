@@ -1,0 +1,72 @@
+{
+ "ok": true,
+ "routes": [
+  {
+   "number": "5",
+   "slug": "i5",
+   "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
+   "pass": true,
+   "status": "RESTRICTIONS",
+   "pass_status": "RESTRICTIONS",
+   "sections": [
+    {
+     "region": "SOUTHERN CALIFORNIA",
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
+    },
+    {
+     "region": "CENTRAL CALIFORNIA",
+     "text": "A high wind advisory is in effect from the Los Angeles/Kern Co Line to 5 mi south of the Jct of SR-99 /at Grapevine Rd/ (Kern Co) /the Grapevine/ - Travel is not recommended for campers, trailers, or permit loads",
+     "status": "RESTRICTIONS"
+    },
+    {
+     "region": "NORTHERN CALIFORNIA",
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
+    }
+   ],
+   "reported_as_of": "Saturday, September 5th, 2026 at 08:08 PM",
+   "hash": "77c0941641"
+  },
+  {
+   "number": "58",
+   "slug": "sr58",
+   "name": "State Route 58 \u2014 Tehachapi",
+   "pass": false,
+   "status": "OPEN",
+   "pass_status": "OPEN",
+   "sections": [
+    {
+     "region": "CENTRAL CALIFORNIA",
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
+    }
+   ],
+   "reported_as_of": "Saturday, September 5th, 2026 at 08:08 PM",
+   "hash": "5374f203ec"
+  },
+  {
+   "number": "99",
+   "slug": "sr99",
+   "name": "State Route 99 \u2014 Central Valley",
+   "pass": false,
+   "status": "RESTRICTIONS",
+   "pass_status": "RESTRICTIONS",
+   "sections": [
+    {
+     "region": "CENTRAL CALIFORNIA",
+     "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "status": "RESTRICTIONS"
+    },
+    {
+     "region": "NORTHERN CALIFORNIA",
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
+    }
+   ],
+   "reported_as_of": "Saturday, September 5th, 2026 at 08:08 PM",
+   "hash": "f97882795e"
+  }
+ ],
+ "asof": "2026-09-05"
+}

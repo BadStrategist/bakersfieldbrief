@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-06T05:26:45-07:00",
+ "built_at": "2026-09-06T07:41:01-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
+   "chp_new": 1,
    "top_story": "Volunteers prep for Greek Food Festival with new dishes, chance to win trip to Greece",
    "archive": "2026-09-06"
   },
@@ -85,7 +85,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 12,
+    "bakersfield-nw": 11,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -96,7 +96,7 @@
    "draft": "drafts/weekend-guide-2026-09-06"
   },
   "grapevine": {
-   "i5": "RESTRICTIONS",
+   "i5": "CLOSED",
    "i5_pass": "RESTRICTIONS",
    "log_entries": 60
   },
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 54,
+   "temp": 55,
    "wind_mph": 0,
    "alerts": 0
   },
@@ -126,8 +126,8 @@
    "isabella_af": 168448,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 31,
-   "chp_week": 134
+   "aqi": 35,
+   "chp_week": 135
   },
   "letters": {
    "published": 0
@@ -141,8 +141,8 @@
   "sunday_read": {
    "topic": "Public safety",
    "source": "deterministic",
-   "words": 344,
-   "asof": "2026-08-30"
+   "words": 359,
+   "asof": "2026-09-06"
   },
   "fair": {
    "year": "2026",

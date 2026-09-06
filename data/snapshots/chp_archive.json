@@ -1600,6 +1600,16 @@
   "details": ""
  },
  {
+  "log_id": "260906BF0088",
+  "time": "Sep  6 2026  7:31AM",
+  "type": "1125-Traffic Hazard",
+  "location": "James Rd / N Chester Ave",
+  "area": "Bakersfield",
+  "lat": 35.444386,
+  "lon": -119.024383,
+  "details": ""
+ },
+ {
   "log_id": "260906BF0004",
   "time": "Sep  6 2026 12:05AM",
   "type": "TADV-Traffic Advisory",

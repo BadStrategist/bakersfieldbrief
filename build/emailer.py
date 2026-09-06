@@ -116,13 +116,72 @@ def _read_overnight_report(today) -> str:
         return ""
 
 
-def _keyless_overnight(today, ko) -> str:
-    """Deterministic overnight narrative: use the published report's prose.
+def _read_incidents(today) -> list:
+    """Today's incident list from incidents/<iso>.json (real extracted data).
 
-    The LLM brief re-writes the scanner report in its own voice; when that body
-    is missing we reuse the report's own narrative paragraphs (strip the markdown
-    headings/log so only flowing prose reaches the email). Falls back to the
-    one-line summary if no report is on disk.
+    The published report markdown can be missing on a day the overnight
+    pipeline partially failed (cron/LLM outage), while the incident data that
+    WAS extracted still exists on disk. The email must degrade to a real
+    narrative built from these incidents, not to a stale stub.
+    """
+    import json as _json
+    iso = today.isoformat() if hasattr(today, "isoformat") else str(today)
+    p = common.ROOT / "incidents" / f"{iso}.json"
+    try:
+        if not p.exists():
+            return []
+        data = _json.loads(p.read_text(encoding="utf-8"))
+        return data if isinstance(data, list) else []
+    except Exception:  # noqa: BLE001
+        return []
+
+
+def _incidents_narrative(incs: list) -> str:
+    """A real multi-sentence overnight narrative built from today's incidents.
+
+    Reuses the incident summaries already extracted from the overnight
+    transcript (type, area, notability, summary), so the degraded email is
+    genuinely informative — never a stub. Always yields >= 2 sentences carrying
+    a real number (incident count), which also satisfies the content gate's
+    'real but short' check.
+    """
+    from collections import Counter
+    if not incs:
+        return ""
+    try:
+        from .builders.daily import _type_label
+    except Exception:  # noqa: BLE001
+        _type_label = lambda t: str(t or "incident").replace("_", " ")
+    n = len(incs)
+    by_type = Counter(_type_label(i.get("type", "incident")) for i in incs)
+    kinds = ", ".join(
+        f"{c} {t}" if c > 1 else f"a {t}"
+        for t, c in by_type.most_common(3)
+    )
+    sents = [f"Crews and officers handled {kinds} overnight across Bakersfield "
+             f"and Kern County — {n} incidents in all."]
+    top = sorted(incs, key=lambda i: i.get("notability", 0), reverse=True)[:3]
+    for i in top:
+        s = (i.get("summary") or "").strip()
+        if s:
+            sents.append(s)
+    body = " ".join(s for s in sents if s).strip()
+    return body.rstrip(".") + "." if body else ""
+
+
+def _keyless_overnight(today, ko) -> str:
+    """Deterministic overnight narrative: use REAL data for TODAY.
+
+    Priority:
+      1. today's published report prose (strip headings/log);
+      2. a real multi-sentence narrative built from today's incidents
+         (incidents/<iso>.json) when the report markdown is missing but the
+         extracted incident data exists;
+      3. '' — genuinely nothing for today, which the content gate MUST block.
+
+    Deliberately does NOT fall back to ko (the latest published report summary):
+    when today's report is missing, ko is the PREVIOUS day's data, and shipping
+    it as today's "overnight" would silently mislabel yesterday as today.
     """
     md = _read_overnight_report(today)
     if md:
@@ -140,11 +199,38 @@ def _keyless_overnight(today, ko) -> str:
         body = "\n\n".join(l.strip() for l in lines if l.strip())
         if len(body) >= 150 and body.count(". ") >= 3:
             return body
-    if ko and ko.get("headline"):
-        return (f"{ko['headline']} — {ko['count']} incidents tracked overnight. "
-                "Locations are generalized to neighborhoods; details remain "
-                "preliminary until confirmed by an official source.")
+    incs = _read_incidents(today)
+    if incs:
+        return _incidents_narrative(incs)
     return ""
+
+
+def _ko_effective(ko, today) -> dict | None:
+    """Today-accurate Kern Overnight summary for the email header/count.
+
+    _overnight_summary() reads the PUBLISHED reports; when today's report is
+    missing (cron/LLM outage) that resolves to YESTERDAY's data. When today's
+    incidents exist, rebuild the headline/count from them so the email's
+    header, count line, and narrative are all consistent and current instead of
+    a stale prior day. Passes ko through unchanged on a normal day (when
+    today's report is present, ko is already today-accurate).
+    """
+    iso = today.isoformat() if hasattr(today, "isoformat") else str(today)
+    if ko and ko.get("date") == iso:
+        return ko
+    incs = _read_incidents(today)
+    if not incs:
+        return ko
+    try:
+        from .builders.daily import _short_area, _type_label
+    except Exception:  # noqa: BLE001
+        return ko
+    top = max(incs, key=lambda i: i.get("notability", 0))
+    label = _type_label(top.get("type", "incident"))
+    area = _short_area(top.get("area", ""))
+    headline = f"{label} at {area}" if area and area != "the area" else label
+    return {**(ko or {}), "headline": headline, "count": len(incs),
+            "date": iso, "incs": incs, "title": f"The Kern Overnight — {iso}"}
 
 
 def _keyless_weather(weather, airnow, calfire) -> str:
@@ -297,13 +383,17 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
     # ---- brief sections (full overnight, weather, something good)
     sections = _brief_sections(today)
 
-    # Kern Overnight summary (feeds the title + a top block)
+    # Kern Overnight summary (feeds the title + a top block). On a day the
+    # report is missing, _overnight_summary() returns the LATEST published
+    # report (yesterday) — rebuild a today-accurate ko from today's incidents
+    # so header/count/narrative stay consistent and current.
     ko = None
     try:
         from .builders.daily import _overnight_summary
         ko = _overnight_summary()
     except Exception:  # noqa: BLE001
         ko = None
+    ko = _ko_effective(ko, today)
 
     # ---- resilience: an LLM outage must degrade prose QUALITY, never section
     # PRESENCE. The brief body (data/briefs/<today>.json) is written by a single

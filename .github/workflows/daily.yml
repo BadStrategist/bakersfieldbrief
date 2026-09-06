@@ -122,18 +122,12 @@ jobs:
       # The script is idempotent (checks MailerLite for today's campaign
       # first), so a delayed run + the Hermes watchdog can never double-send.
       # Without the key the script no-ops (prints the ready-to-send path) so
-      # CI never breaks. A send failure is reported in the run log but must
-      # not block the site deploy.
-      - name: Send daily newsletter (MailerLite)
-        if: fromJSON(steps.gate.outputs.hour) >= 8
-        continue-on-error: true
-        env:
-          MAILERLITE_API_TOKEN: ${{ secrets.MAILERLITE_API_TOKEN }}
-          MAILERLITE_GROUP_ID: ${{ secrets.MAILERLITE_GROUP_ID }}
-        run: python scripts/send_newsletter_ml.py
-
-      # GATE: a broken build must never deploy. The offline suite covers the
-      # builders (incl. the brief lede double-escape regression test).
+      # CI never breaks.
+      # SEND RUNS AFTER THE DEPLOY so a blocked/failed email can never hold up
+      # the site. It deliberately FAILS the job (NO continue-on-error) when the
+      # email is blocked or the send errors — a skipped email must be a RED run
+      # a human sees, never a silent green check — and a notification step posts
+      # to the ops Discord channel so nobody has to grep run logs.
       - name: Test suite (hard gate before deploy)
         run: python -m pytest -q -o addopts="" --tb=short
 
@@ -156,6 +150,43 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy site --project-name=bakersfieldbrief
+
+      # Newsletter send — runs AFTER deploy so a blocked/failed email can never
+      # hold up the site, but NO continue-on-error: a blocked send exits 1 and
+      # FAILS the job, so `gh run list` shows RED, not a silent green check.
+      - name: Send daily newsletter (MailerLite)
+        if: fromJSON(steps.gate.outputs.hour) >= 8
+        id: send
+        env:
+          MAILERLITE_API_TOKEN: ${{ secrets.MAILERLITE_API_TOKEN }}
+          MAILERLITE_GROUP_ID: ${{ secrets.MAILERLITE_GROUP_ID }}
+        run: |
+          set +e
+          python scripts/send_newsletter_ml.py > /tmp/bb_send.out 2>&1
+          code=$?
+          cat /tmp/bb_send.out
+          # surface the failure reason to the notify step (job-level env)
+          { echo "BB_SEND_MSG<<EOF"; tail -6 /tmp/bb_send.out; echo "EOF"; } >> "$GITHUB_ENV"
+          exit $code
+
+      # A blocked/failed email must reach a human the same morning, not sit in
+      # run logs. Posts to the ops Discord webhook when the send step failed.
+      # Without the secret it still fails loudly in the log (never silent).
+      - name: Notify ops Discord if email was blocked/failed
+        if: steps.send.outcome == 'failure'
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "!! DISCORD_WEBHOOK_URL secret not set - email blocked/failed and NO Discord alert could be sent. See $RUN_URL"
+            exit 1
+          fi
+          printf 'A blocked/failed send is now a RED run - not silent.\n```\n' > /tmp/bb_discord.txt
+          tail -6 /tmp/bb_send.out >> /tmp/bb_discord.txt
+          printf '\n```\nSee: %s\n' "$RUN_URL" >> /tmp/bb_discord.txt
+          python scripts/notify_discord.py --header "Bakersfield Brief - daily email did NOT send (run #$GITHUB_RUN_NUMBER)" --file /tmp/bb_discord.txt
+          echo "ops Discord alert sent for blocked/failed email"
 
       # Social post: DISABLED 2026-08-19 — API posts are withheld from the
       # public page on this new account (verified 6/6 held; only manual UI

@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -83,12 +84,38 @@ def test_keyless_overnight_reads_published_report():
     assert "Airport" in text  # real narrative, not boilerplate
 
 
-def test_keyless_overnight_falls_back_to_summary_when_no_report(tmp_path, monkeypatch):
+def test_keyless_overnight_builds_narrative_from_incidents_when_report_missing(tmp_path, monkeypatch):
+    # Today's report md is missing but today's incidents exist (2026-09-05):
+    # the email must degrade to a REAL narrative from those incidents, not to a
+    # stale ko stub. Asserts real data + enough prose to satisfy the gate, and
+    # that the ko stub text is NOT used.
     monkeypatch.setattr(emailer, "_read_overnight_report", lambda today: "")
-    ko = {"headline": "Pursuit on Airport Dr", "count": 12}
-    text = emailer._keyless_overnight(TODAY, ko)
-    assert "Pursuit on Airport Dr" in text
-    assert "12 incidents" in text
+    text = emailer._keyless_overnight(TODAY, {"headline": "FAKE STUB", "count": 999})
+    assert "incidents" in text
+    assert any(ch.isdigit() for ch in text)            # carries a real number
+    assert len(re.findall(r"[.!?](?=\s|$)", text)) >= 2  # >= 2 real sentences
+    assert "FAKE STUB" not in text                     # never the stale stub
+
+
+def test_keyless_overnight_empty_when_no_report_and_no_incidents(tmp_path, monkeypatch):
+    # BOTH today's report AND today's incidents genuinely missing => '' so the
+    # content gate MUST block. This is the honest 'missing' case (2026-09-06's
+    # report was absent, but its incidents existed — that is the OTHER branch).
+    monkeypatch.setattr(emailer, "_read_overnight_report", lambda today: "")
+    monkeypatch.setattr(emailer, "_read_incidents", lambda today: [])
+    assert emailer._keyless_overnight(TODAY, {"headline": "x", "count": 1}) == ""
+
+
+def test_incidents_narrative_is_real_multisentence(monkeypatch):
+    incs = [
+        {"type": "vehicle_pursuit", "area": "Airport Drive and Olive Drive area, north Bakersfield",
+         "notability": 5, "summary": "A pursuit ended in a major-injury crash where crews performed CPR."},
+        {"type": "working_fire", "area": "East California Avenue corridor",
+         "notability": 4, "summary": "Crews knocked down a structure fire off East California Avenue."},
+    ]
+    text = emailer._incidents_narrative(incs)
+    assert "2 incidents" in text
+    assert len(re.findall(r"[.!?](?=\s|$)", text)) >= 3
 
 
 # ---------------------------------------------------------------- merge

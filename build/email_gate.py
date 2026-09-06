@@ -100,25 +100,54 @@ def _has_weather_image(text: str) -> bool:
     return "weather-card.jpg" in card
 
 
+def _overnight_tail(text: str) -> str:
+    """The overnight narrative prose: text after the 'Full Report' link inside
+    the Kern Overnight card, with HTML comments/tags stripped and whitespace
+    collapsed. Returns '' when there is no card or no narrative text.
+
+    Matches the card by its visible kicker text ('Kern Overnight' and
+    \"Today's Weather\") rather than the exact HTML comment markers, so the
+    check survives a template comment change. Both strings appear in the card
+    regardless of comment verbatimness (they are the rendered kickers too).
+    """
+    i = text.find("Kern Overnight")
+    if i == -1:
+        return ""
+    j = text.find("Today's Weather", i)
+    card = text[i:j] if j != -1 else text[i:]
+    marker = card.lower().rfind("full report")
+    if marker != -1:
+        card = card[marker + len("full report"):]
+    card = re.sub(r"<!--.*?-->", "", card, flags=re.S)
+    card = re.sub(r"<[^>]+>", " ", card)
+    return re.sub(r"\s+", " ", card).strip()
+
+
 def _has_overnight_narrative(text: str) -> bool:
     """True if the Kern Overnight card carries real narrative prose.
 
-    The emailer always renders the deterministic headline + incident count + a
-    'Full Report' link; the LLM-written narrative paragraphs are only emitted
-    when the brief body contains them. The narrative is the prose after the
-    'Full Report' link, up to the end of the overnight card.
+    Distinguishes a REAL overnight summary — even a short 2-3 sentence one
+    that carries a real number (incident count / time) — from a genuinely
+    MISSING one, where the card degrades to boilerplate with no real data.
+
+    Sentence boundaries are counted structurally ([.!?] followed by whitespace
+    or end-of-string), NOT via the brittle '. ' marker — real prose may join
+    sentences with newlines, which '. ' misses.
+
+    * >= 2 sentences is required (a missing card leaves 0-1 boilerplate lines).
+    * A short 2-sentence summary must carry a digit (a count/time), otherwise
+      it is only boilerplate ("Scanner brief from 9pm to 5am. Locations
+      generalized."), not a real overnight rundown. Longer prose (>= 3
+      sentences) passes on volume alone.
     """
-    card = _slice_between(text, "Kern Overnight card", "Today's Weather card")
-    tail = card
-    marker = tail.lower().rfind("full report")
-    if marker != -1:
-        tail = tail[marker + len("full report"):]
-    tail = re.sub(r"<!--.*?-->", "", tail, flags=re.S)
-    tail = re.sub(r"<[^>]+>", " ", tail)
-    tail = re.sub(r"\s+", " ", tail).strip()
-    # A real narrative is long prose with several sentence boundaries; an empty
-    # card leaves at most a few boilerplate words here.
-    return tail.count(". ") >= 3 and len(tail) >= 120
+    tail = _overnight_tail(text)
+    if not tail:
+        return False
+    sentences = len(re.findall(r"[.!?](?=\s|$)", tail))
+    if sentences < 2:
+        return False
+    has_digit = bool(re.search(r"\d", tail))
+    return has_digit or sentences >= 3
 
 
 def _has_headlines(text: str) -> bool:

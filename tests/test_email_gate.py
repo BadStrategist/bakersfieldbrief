@@ -136,6 +136,26 @@ def test_degraded_overnight_narrative_flagged(brief):
     assert "overnight" in content_is_degraded(brief)
 
 
+def test_short_real_overnight_summary_passes(brief):
+    # A legitimate SHORT overnight summary (2 sentences carrying a real number)
+    # must PASS — the old gate demanded tail.count('. ') >= 3 and mis-flagged
+    # real-but-short overnight data (2026-09-06).
+    short = ("A pursuit ended in a crash near Airport Drive — 12 incidents "
+             "tracked overnight. Locations are generalized to neighborhoods.")
+    _replace(brief, f"  <p>{NARRATIVE}</p>\n", f"  <p>{short}</p>\n")
+    assert "overnight" not in content_is_degraded(brief)
+
+
+def test_boilerplate_overnight_without_numbers_flagged(brief):
+    # 2 boilerplate sentences with NO incident number are not a real rundown —
+    # the gate must stay honest and still block them (real-but-short needs a
+    # data signal, not just prose volume).
+    boilerplate = ("Scanner activity was quiet overnight. All clear across the "
+                   "county as calls were handled normally.")
+    _replace(brief, f"  <p>{NARRATIVE}</p>\n", f"  <p>{boilerplate}</p>\n")
+    assert "overnight" in content_is_degraded(brief)
+
+
 def test_degraded_date_flagged(brief):
     _write(brief, brief.read_text(encoding="utf-8").replace(HUMAN, "Jan 1, 1999").replace(ISO, "1999-01-01"))
     assert "date" in content_is_degraded(brief)

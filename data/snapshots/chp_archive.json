@@ -1640,6 +1640,16 @@
   "details": ""
  },
  {
+  "log_id": "260906BF0176",
+  "time": "Sep  6 2026 10:25AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "8884-9409 Sr178",
+  "area": "Bakersfield",
+  "lat": 35.655254,
+  "lon": -118.450133,
+  "details": ""
+ },
+ {
   "log_id": "260906BF0004",
   "time": "Sep  6 2026 12:05AM",
   "type": "TADV-Traffic Advisory",

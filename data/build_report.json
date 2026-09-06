@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-05T21:08:51-07:00",
+ "built_at": "2026-09-05T21:16:04-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -122,7 +122,7 @@
    "alpr_total": 260,
    "kern_fires": 0,
    "aqi": 47,
-   "chp_week": 129
+   "chp_week": 130
   },
   "letters": {
    "published": 0

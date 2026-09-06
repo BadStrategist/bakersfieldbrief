@@ -1550,6 +1550,16 @@
   "details": ""
  },
  {
+  "log_id": "260905BF0590",
+  "time": "Sep  5 2026  9:10PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Herring Rd / Sr99 S",
+  "area": "Bakersfield",
+  "lat": 35.150151,
+  "lon": -118.997225,
+  "details": ""
+ },
+ {
   "log_id": "260905BF0190",
   "time": "Sep  5 2026  9:11AM",
   "type": "1182-Trfc Collision-No Inj",

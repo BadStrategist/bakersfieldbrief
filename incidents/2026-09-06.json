@@ -1,0 +1,83 @@
+[
+  {
+    "type": "structure_fire",
+    "time": "22:01",
+    "agency": "Bakersfield Fire Department",
+    "area": "Fremont Street area, south Bakersfield",
+    "notability": 2,
+    "disposition": "fire at apartments, multiple companies responding",
+    "summary": "Fire crews were dispatched to an apartment complex in the Fremont Street area on the south end of the street, with multiple engines and a battalion chief responding to what was reported as a fire at the location."
+  },
+  {
+    "type": "foot_pursuit",
+    "time": "23:16",
+    "agency": "Bakersfield Police Department",
+    "area": "Golden State Avenue corridor, north Bakersfield",
+    "notability": 3,
+    "disposition": "subjects taken into custody after perimeter search",
+    "summary": "Officers with helicopter support chased subjects who fled on foot across a property near Golden State Avenue, setting up a perimeter and clearing buildings before taking them into custody. Air 1 briefly lost sight of the runners in trees before the ground team re-established contact."
+  },
+  {
+    "type": "pursuit_ended_crash",
+    "time": "00:23",
+    "agency": "Bakersfield Police Department",
+    "area": "Decatur Avenue area, central Bakersfield",
+    "notability": 2,
+    "disposition": "suspect contained and arrested",
+    "summary": "A foot chase through residential yards near Decatur Avenue ended when officers contained the suspect between two fenced properties and took him into custody after a brief search."
+  },
+  {
+    "type": "vehicle_fire",
+    "time": "00:47",
+    "agency": "Kern County Fire Department",
+    "area": "Highway 99, just north of 7th Standard Road",
+    "notability": 2,
+    "disposition": "fire on the freeway, crews responding",
+    "summary": "Fire crews were sent to a reported fire on Highway 99 just north of 7th Standard Road in the south county."
+  },
+  {
+    "type": "vehicle_into_power_pole",
+    "time": "02:01",
+    "agency": "law enforcement and utility crews",
+    "area": "off King Street, east Kern",
+    "notability": 3,
+    "disposition": "downed power poles and lines; vehicle abandoned",
+    "summary": "A vehicle left the roadway and struck a power pole in a vineyard off King Street, shearing the pole and bringing down power lines. The car was found empty with no one inside, and utility crews were notified."
+  },
+  {
+    "type": "weapon_disturbance",
+    "time": "02:14",
+    "agency": "law enforcement",
+    "area": "alley off Pacheco Road, south Bakersfield",
+    "notability": 2,
+    "disposition": "person detained; knife located",
+    "summary": "A person reported to be armed with a knife was located in an alley area off Pacheco Road. The weapon was found and the subject was taken into custody."
+  },
+  {
+    "type": "grass_fire",
+    "time": "02:23",
+    "agency": "Kern County Fire Department",
+    "area": "railroad tracks and riverbed east of Golden State Avenue",
+    "notability": 3,
+    "disposition": "fire knocked down on both sides of the tracks",
+    "summary": "A vegetation fire broke out along the railroad tracks and riverbed just east of Golden State Avenue, burning on both sides of the tracks and requiring multiple engines, a patrol and a battalion chief. Crews accessed the blaze via a bike path off Chester Avenue to knock it down."
+  },
+  {
+    "type": "vehicle_into_power_pole",
+    "time": "03:33",
+    "agency": "California Highway Patrol",
+    "area": "Edison Highway corridor, east Kern",
+    "notability": 3,
+    "disposition": "rollover into power pole; lines compromised",
+    "summary": "A vehicle rolled onto its roof and crashed into a power pole along Edison Highway just west of the main stretch near the Weedpatch area, leaving the pole leaning and lines down. Utility crews were called as officers investigated the crash."
+  },
+  {
+    "type": "possible_dui",
+    "time": "23:43",
+    "agency": "law enforcement",
+    "area": "18th Street area, east Bakersfield",
+    "notability": 2,
+    "disposition": "driver fled after claiming to have a firearm",
+    "summary": "A possible intoxicated driver fled a location in the 18th Street area after claiming to have a firearm, last seen southbound in a dark Audi. Officers broadcast a lookout for the vehicle."
+  }
+]

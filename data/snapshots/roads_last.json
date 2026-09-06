@@ -11,7 +11,7 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "Is closed to southbound traffic at Lake Hughes Rd (Los Angeles Co) - Due to a road hazard - Motorists are advised to use an alternate route Southbound traffic is reduced to 1 lane at San Fernando Mission Blvd /in San Fernando/ (Los Angeles Co) - Due to a jackknifed big rig",
+     "text": "Is closed to southbound traffic at Lake Hughes Rd (Los Angeles Co) - Due to a road hazard - Motorists are advised to use an alternate route",
      "status": "CLOSED"
     },
     {
@@ -25,8 +25,8 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Sunday, September 6th, 2026 at 10:42 AM",
-   "hash": "1b02a684ac"
+   "reported_as_of": "Sunday, September 6th, 2026 at 12:38 PM",
+   "hash": "47433119e4"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Sunday, September 6th, 2026 at 10:42 AM",
+   "reported_as_of": "Sunday, September 6th, 2026 at 12:38 PM",
    "hash": "5374f203ec"
   },
   {
@@ -64,7 +64,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Sunday, September 6th, 2026 at 10:42 AM",
+   "reported_as_of": "Sunday, September 6th, 2026 at 12:38 PM",
    "hash": "f97882795e"
   }
  ],

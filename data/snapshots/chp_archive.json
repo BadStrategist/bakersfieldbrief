@@ -1650,6 +1650,16 @@
   "details": ""
  },
  {
+  "log_id": "260906BF0209",
+  "time": "Sep  6 2026 11:39AM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "12408 Mountain Mesa Rd",
+  "area": "Bakersfield",
+  "lat": 35.63937,
+  "lon": -118.405395,
+  "details": ""
+ },
+ {
   "log_id": "260906BF0004",
   "time": "Sep  6 2026 12:05AM",
   "type": "TADV-Traffic Advisory",
@@ -1657,6 +1667,36 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260906BF0223",
+  "time": "Sep  6 2026 12:12PM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sr58 E / Mt Vernon Ave Onr",
+  "area": "Bakersfield",
+  "lat": 35.352821,
+  "lon": -118.963752,
+  "details": ""
+ },
+ {
+  "log_id": "260906BF0229",
+  "time": "Sep  6 2026 12:27PM",
+  "type": "20001-Hit and Run w/Injuries",
+  "location": "201-295 N Chester Ave",
+  "area": "Bakersfield",
+  "lat": 35.40819,
+  "lon": -119.021088,
+  "details": ""
+ },
+ {
+  "log_id": "260906BF0234",
+  "time": "Sep  6 2026 12:34PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "I5 S / Gorman Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.795674,
+  "lon": -118.858202,
   "details": ""
  }
 ]

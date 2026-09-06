@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-05T21:04:26-07:00",
+ "built_at": "2026-09-05T21:08:51-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 2926, column 30"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 1,
    "top_story": "Volunteers prep for Greek Food Festival with new dishes, chance to win trip to Greece",
    "archive": "2026-09-05"
   },
@@ -122,7 +122,7 @@
    "alpr_total": 260,
    "kern_fires": 0,
    "aqi": 47,
-   "chp_week": 128
+   "chp_week": 129
   },
   "letters": {
    "published": 0

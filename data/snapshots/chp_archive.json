@@ -1520,6 +1520,16 @@
   "details": ""
  },
  {
+  "log_id": "260905BF0583",
+  "time": "Sep  5 2026  8:59PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Stockdale Hwy / Real Rd",
+  "area": "BF",
+  "lat": 35.354097,
+  "lon": -119.043373,
+  "details": ""
+ },
+ {
   "log_id": "260905BF0183",
   "time": "Sep  5 2026  9:02AM",
   "type": "1183-Trfc Collision-Unkn Inj",

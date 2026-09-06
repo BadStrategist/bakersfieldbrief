@@ -28,10 +28,10 @@ const CACHE_MS = 60_000;
 
 async function fetchCaltrans(route) {
   const resp = await fetch(URL(route.number), {
-    headers: { "User-Agent": "BakersfieldBrief-live/1.0 (+roads.dot.ca.gov)" },
-    cf: { cacheTtl: 60 },
+    headers: { "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36" },
+    redirect: "follow",
   });
-  if (!resp.ok) return null;
+  if (!resp.ok) throw new Error("status " + resp.status);
   return await resp.text();
 }
 
@@ -98,12 +98,13 @@ export async function onRequestGet(context) {
   }
 
   const routes = [];
+  let lastErr = "";
   for (const r of ROUTES) {
     try {
       const html = await fetchCaltrans(r);
       if (html) routes.push(parseRoute(r, html));
-    } catch {
-      // skip this route; fail-open overall
+    } catch (e) {
+      lastErr = String(e && e.message ? e.message : e).slice(0, 120);
     }
   }
 
@@ -112,6 +113,7 @@ export async function onRequestGet(context) {
     ok, routes,
     status: ok ? "ok" : "unavailable",
     fetched_at: new Date().toISOString(),
+    err: ok ? undefined : (lastErr || "fetch failed"),
     note: ok
       ? "Caltrans conditions, live via /api/pass-conditions."
       : "Caltrans unreachable right now — showing the last static build. Confirm before driving.",

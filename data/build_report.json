@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-05T20:57:05-07:00",
+ "built_at": "2026-09-05T21:04:26-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -102,7 +102,7 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 12,
+   "wind_mph": 25,
    "alerts": 0,
    "stale": false
   },

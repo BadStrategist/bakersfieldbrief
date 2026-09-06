@@ -1580,6 +1580,26 @@
   "details": ""
  },
  {
+  "log_id": "260906BF0250",
+  "time": "Sep  6 2026  1:01PM",
+  "type": "AMBER-Missing/Abducted Child",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260906BF0261",
+  "time": "Sep  6 2026  1:25PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Fillmore Ave / Sr184",
+  "area": "Bakersfield",
+  "lat": 35.369877,
+  "lon": -118.914191,
+  "details": ""
+ },
+ {
   "log_id": "260906BF0037",
   "time": "Sep  6 2026  1:43AM",
   "type": "20002-Hit and Run No Injuries",

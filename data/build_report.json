@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-06T10:39:24-07:00",
+ "built_at": "2026-09-06T10:43:25-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 0,
    "top_story": "Kern Autism Network marks 30 years of support for families in Kern County",
    "archive": "2026-09-06"
   },
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 66,
+   "temp": 68,
    "wind_mph": 0,
    "alerts": 0
   },
@@ -126,7 +126,7 @@
    "isabella_af": 168448,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": null,
+   "aqi": 45,
    "chp_week": 139
   },
   "letters": {

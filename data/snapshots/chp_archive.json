@@ -1698,5 +1698,25 @@
   "lat": 35.40819,
   "lon": -119.021088,
   "details": ""
+ },
+ {
+  "log_id": "260906BF0234",
+  "time": "Sep  6 2026 12:34PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "I5 S / Gorman Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.795674,
+  "lon": -118.858202,
+  "details": ""
+ },
+ {
+  "log_id": "260906BF0239",
+  "time": "Sep  6 2026 12:40PM",
+  "type": "1125A-Animal Hazard",
+  "location": "Wb Sr58 At Union Ave",
+  "area": "Bakersfield",
+  "lat": 35.3525,
+  "lon": -119.002778,
+  "details": ""
  }
 ]

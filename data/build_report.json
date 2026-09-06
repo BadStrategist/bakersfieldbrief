@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-06T12:42:29-07:00",
+ "built_at": "2026-09-06T12:34:28-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 1,
    "top_story": "Shooting death on 8th Street in McFarland under investigation",
    "archive": "2026-09-06"
   },

@@ -1660,6 +1660,16 @@
   "details": ""
  },
  {
+  "log_id": "260906BF0218",
+  "time": "Sep  6 2026 11:56AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "I5 S / Gorman Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.795674,
+  "lon": -118.858202,
+  "details": ""
+ },
+ {
   "log_id": "260906BF0004",
   "time": "Sep  6 2026 12:05AM",
   "type": "TADV-Traffic Advisory",
@@ -1687,16 +1697,6 @@
   "area": "Bakersfield",
   "lat": 35.40819,
   "lon": -119.021088,
-  "details": ""
- },
- {
-  "log_id": "260906BF0234",
-  "time": "Sep  6 2026 12:34PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "I5 S / Gorman Ofr",
-  "area": "Fort Tejon",
-  "lat": 34.795674,
-  "lon": -118.858202,
   "details": ""
  }
 ]

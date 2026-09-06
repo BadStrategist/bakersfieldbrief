@@ -285,7 +285,7 @@ a.card:hover .card-go::after { transform: translateX(4px); }
 }
 .card .tag.amber { background: #FBEED2; color: #8a5d0a; }
 .card .tag.red { background: #FBE3DE; color: #9c3a1d; }
-.card .tag.green { background: #E7E9EA; color: #232B30; }
+.card .tag.green { background: #E1F3E3; color: #1e7a2c; }
 
 /* ------------------------------------------------ data lists */
 .dl { list-style: none; margin: 0; padding: 0; }

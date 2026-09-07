@@ -40,6 +40,19 @@ def _js_ver(map_js: str) -> str:
         return common.iso_today()
 
 
+def _asset_ver_css() -> str:
+    """Content hash of assets/css/deflock.css — the cache-busting query param.
+
+    Same rationale as _js_ver: NEVER date-based (a same-day CSS edit would keep
+    the same ?v and returning browsers would serve the stale file). Hash changes
+    on every content change."""
+    try:
+        b = (common.ROOT / "assets" / "css" / "deflock.css").read_bytes()
+        return hashlib.sha1(b).hexdigest()[:10]
+    except OSError:
+        return common.iso_today()
+
+
 # ------------------------------------------------------------------ registry
 TRACKERS = {}  # slug -> dict(name=..., lede=..., build=callable)
 
@@ -345,14 +358,26 @@ def build_alpr(ctx, sources: dict):
 # ------------------------------------------------------------------ fires
 def build_fires(ctx, sources: dict):
     data = sources.get("calfire", {})
+    ok = bool(data.get("ok"))
     asof = data.get("asof", common.iso_today())
     incidents = data.get("incidents", [])
     kern = data.get("kern", [])
 
-    payload = {"incidents": incidents, "kern": kern, "asof": asof}
+    # Last-known-good fallback: on a failed fetch, surface the snapshot's real
+    # last-known state + its asof instead of a fabricated empty/zero. The page
+    # is never presented as "0 fires" when the source is actually down.
+    if not ok:
+        last = data.get("last") or {}
+        last_asof = last.get("asof")
+        if last:
+            incidents = last.get("incidents", incidents)
+            kern = last.get("kern", kern)
+            asof = last_asof or asof
+
+    payload = {"incidents": incidents, "kern": kern, "asof": asof, "ok": ok}
 
     kern_acres = sum(int(float(i.get("acres") or 0)) for i in kern)
-    if data.get("ok"):
+    if ok:
         stat_html = (
             _stat(f"{len(kern)}", "active fires in Kern County", "amber") +
             _stat(f"{kern_acres:,}", "acres burning in Kern", "amber") +
@@ -360,9 +385,18 @@ def build_fires(ctx, sources: dict):
             _stat(asof, "data as of", "")
         )
     else:
-        stat_html = '<div class="errorbox">CAL FIRE data unavailable this build.</div>'
+        last_txt = f" (last confirmed {asof})" if asof else ""
+        stat_html = (f'<div class="errorbox">CAL FIRE data source did not load '
+                     f'this build{last_txt}. Showing last-known data; check back '
+                     f'shortly.</div>')
 
     # ---- map (fires use their own JS; marker: flame pin)
+    # On a failed fetch the overlay must not claim "0 active" — say unavailable.
+    if ok:
+        kern_count_txt, ca_count_txt, asof_txt = len(kern), len(incidents), asof
+    else:
+        kern_count_txt = ca_count_txt = "unavailable"
+        asof_txt = f"as of {asof}" if asof else "unavailable"
     map_html = """
     <div class="mapwrap deflock">
       <div id="fires-map" role="application" aria-label="Map of active wildfires in California and Kern County"></div>
@@ -375,7 +409,7 @@ def build_fires(ctx, sources: dict):
         </div>
         <div class="map-legend" id="map-legend-stats"></div>
       </div>
-    </div>""".format(kern=len(kern), all_n=len(incidents), asof=asof)
+    </div>""".format(kern=kern_count_txt, all_n=ca_count_txt, asof=asof_txt)
 
     # ---- incident cards (Kern first, then others)
     def card(i):
@@ -399,8 +433,26 @@ def build_fires(ctx, sources: dict):
     kern_cards = "".join(card(i) for i in kern)
     other_cards = "".join(card(i) for i in incidents if "Kern" not in str(i.get("county", "")))
 
-    if kern_cards:
+    if not ok:
+        # Honest failure state: never present "0 fires" or "no fires" as if the
+        # source is live. Show last-known data (if a snapshot exists) under a
+        # clear "source did not load" banner + last-confirmed asof.
+        last_txt = f", last confirmed {asof}" if asof else ""
+        kern_section = f"""
+        <div class="card"><span class="tag amber">Kern County</span>
+        <h3>CAL FIRE data source did not load this build{last_txt}</h3>
+        <p>The official CAL FIRE feed was unreachable when this page was built.{" Showing the last-known incident data below." if (kern_cards or other_cards) else " No last-known incident data is available yet."}
+        Check back shortly — this page refreshes automatically.</p></div>"""
+        if kern_cards:
+            kern_section += (f'<p class="sec-head">Kern County <span class="unit">last-known</span>'
+                             f'</p><div class="grid cols-2">{kern_cards}</div>')
+        others_section = ""
+        if other_cards:
+            others_section = (f'<p class="sec-head" style="margin-top:26px">Active fires in California'
+                              f' <span class="unit">last-known</span></p><div class="grid cols-2">{other_cards}</div>')
+    elif kern_cards:
         kern_section = f'<p class="sec-head">Kern County <span class="unit">active fires</span></p><div class="grid cols-2">{kern_cards}</div>'
+        others_section = f'<p class="sec-head" style="margin-top:26px">Active fires in California <span class="unit">{len(incidents)} statewide</span></p><div class="grid cols-2">{other_cards}</div>' if other_cards else ""
     else:
         kern_section = f"""
         <div class="card"><span class="tag amber">Kern County</span>
@@ -408,13 +460,14 @@ def build_fires(ctx, sources: dict):
         <p>As of {asof}, CAL FIRE lists no active wildfires in Kern County. When one ignites,
         it appears here automatically at the next build &mdash; with acres, containment, and
         location. Active fires elsewhere in California are listed below.</p></div>"""
-
-    others_section = f'<p class="sec-head" style="margin-top:26px">Active fires in California <span class="unit">{len(incidents)} statewide</span></p><div class="grid cols-2">{other_cards}</div>' if other_cards else ""
+        others_section = f'<p class="sec-head" style="margin-top:26px">Active fires in California <span class="unit">{len(incidents)} statewide</span></p><div class="grid cols-2">{other_cards}</div>' if other_cards else ""
 
     body = f"""
     {map_html}
 
     <div class="stats">{stat_html}</div>
+
+    <div id="fires-list" data-fires-list class="live-fires-list" aria-live="polite"></div>
 
     {kern_section}
     {others_section}
@@ -447,7 +500,11 @@ def build_fires(ctx, sources: dict):
                     "text": (f"As of {asof}, CAL FIRE reports {len(kern)} active "
                              f"{'fire' if len(kern) == 1 else 'fires'} in Kern County"
                              + (f" totaling {kern_acres:,} acres." if kern_acres else ".")
-                             + " This page updates automatically from the official CAL FIRE feed."),
+                             + " This page updates automatically from the official CAL FIRE feed."
+                             if ok else
+                             f"The CAL FIRE feed could not be reached for this build"
+                             + (f"; the last confirmed report as of {asof} is shown." if asof else ".")
+                             + " Check back shortly — this page refreshes automatically."),
                 },
             },
             {
@@ -455,9 +512,12 @@ def build_fires(ctx, sources: dict):
                 "name": "Where are the active fires in Kern County?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": ("This page shows a live map of every active wildfire in Kern County "
+                    "text": (f"This page shows a live map of every active wildfire in Kern County "
                              "and California, with location, acres burned, and containment, drawn "
-                             "from the official CAL FIRE incident feed."),
+                             "from the official CAL FIRE incident feed." if ok else
+                             "This page normally shows a live map of every active wildfire in Kern "
+                             "County and California, but the official CAL FIRE feed was unreachable "
+                             "for the latest build."),
                 },
             },
             {
@@ -465,19 +525,32 @@ def build_fires(ctx, sources: dict):
                 "name": "Is there a fire near Bakersfield right now?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": ("The map and list above show active CAL FIRE incidents in Kern County "
-                             "and across California as of the latest build. For evacuation orders, "
-                             "check ReadyKern at kerncountyfire.org."),
+                    "text": (f"The map and list above show active CAL FIRE incidents in Kern County "
+                             f"and across California as of the latest build. For evacuation orders, "
+                             f"check ReadyKern at kerncountyfire.org." if ok else
+                             "The official CAL FIRE feed was unreachable for the latest build. For "
+                             "current conditions and evacuation orders, check ReadyKern at "
+                             "kerncountyfire.org."),
                 },
             },
         ],
     }
 
+    if ok:
+        seo_lede = (f"Active wildfires in Kern County and California, live from the official "
+                    f"CAL FIRE feed — {len(kern)} active in Kern ({kern_acres:,} acres), with a "
+                    f"map, containment status, and automatic updates.")
+    else:
+        seo_lede = (f"Active wildfires in Kern County and California from the official CAL FIRE "
+                    f"feed. The latest build could not reach CAL FIRE"
+                    + (f"; showing last-known data as of {asof}." if asof else "."))
+
     _write_tracker(ctx, "fires", "Kern County Fire Tracker",
-                   f"Active wildfires in Kern County and California, live from the official CAL FIRE feed — {len(kern)} active in Kern ({kern_acres:,} acres), with a map, containment status, and automatic updates.",
+                   seo_lede,
                    stat_html, body, payload, sources, dark=True, img="",
                    seo_title="Kern County Fire Map — Active Wildfires Live",
-                   faq_jsonld=faq_jsonld, map_js="fires.js")
+                   faq_jsonld=faq_jsonld, map_js="fires.js",
+                   cadence="updates every few hours from CAL FIRE")
 
 
 # ------------------------------------------------------------------ water
@@ -698,30 +771,41 @@ def build_water(ctx, sources: dict):
                    f"Lake Isabella is at {ev_txt} elevation — {st_pct}% of capacity. Live water level, elevation, Kern River inflow, fishing species, and boat ramp status, updated from California DWR/CDEC.",
                    stat_html, body, payload, sources, img="isabella",
                    seo_title="Lake Isabella Water Level Today | Elevation, Fishing & Ramp Status",
-                   faq_jsonld=faq_jsonld)
+                   faq_jsonld=faq_jsonld,
+                   cadence="updated from DWR/CDEC with each build")
 
 
 # ------------------------------------------------------------------ writer
 def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
                    body_html: str, payload: dict, sources: dict, dark: bool = False,
                    img: str = "", seo_title: str = "", faq_jsonld: dict | None = None,
-                   map_js: str = "trackers.js"):
+                   map_js: str = "trackers.js", cadence: str | None = None,
+                   method: str | None = None):
     built_iso = common.iso_today()
     rel = "../"
     tpl = common.read_template("tracker.html")
+
+    # Honest cadence: default is the ALPR/surveillance weekly cadence. Fires and
+    # water rebuild every ~3h on CI, not weekly — say so (the audit flagged the
+    # self-contradictory "weekly" badge on those pages).
+    if cadence is None:
+        cadence = "refreshed weekly"
+    if method is None:
+        method = ("Every run fetches the official public data source, diffs it against the "
+                  "previous snapshot, and bakes the result into this static page. No data is "
+                  "loaded by your browser.")
 
     tokens = {
         "__REL__": rel,
         "__TRACKER_NAME__": html.escape(name),
         "__TRACKER_LEDE__": html.escape(lede),
-        "__TRACKER_UPDATE__": "Auto-updated by the weekly tracker build",
+        "__TRACKER_UPDATE__": html.escape(cadence),
+        "__TRACKER_KICKER__": html.escape(cadence),
         "__TRACKER_IMG__": img,
         "__TRACKER_FIGURE__": images.figure(img, rel),
         "__STATS__": stat_html,
         "__TRACKER_BODY__": body_html,
-        "__TRACKER_METHOD__": "Every run fetches the official public data source, diffs it against the "
-                              "previous snapshot, and bakes the result into this static page. No data is "
-                              "loaded by your browser.",
+        "__TRACKER_METHOD__": method,
     }
     for tok, val in tokens.items():
         tpl = tpl.replace(f"<!--{tok}-->", val)
@@ -738,8 +822,10 @@ def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
                + ([faq_jsonld] if faq_jsonld else []),
         statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         extra_head='<link rel="stylesheet" href="../assets/vendor/leaflet.css">'
-                   + ('<link rel="stylesheet" href="../assets/css/deflock.css?v=' + built_iso + '">' if dark else ""),
+                   + ('<link rel="stylesheet" href="../assets/css/deflock.css?v=' + _asset_ver_css() + '">' if dark else ""),
         extra_scripts='<script src="../assets/vendor/leaflet.js"></script>\n  <script src="../assets/vendor/leaflet.markercluster.js"></script>\n  <script src="../assets/js/' + map_js + '?v=' + _js_ver(map_js) + '" defer></script>'
+                   + (('<script src="../assets/js/live-fires.js?v=' + _js_ver("live-fires.js") + '" defer></script>')
+                      if slug == "fires" else "")
                    + (('<script src="../assets/js/webmcp-alpr.js?v=' + _js_ver("webmcp-alpr.js") + '" defer></script>')
                       if slug == "surveillance" else ""))
     common.write(common.SITE / slug / "index.html", page)

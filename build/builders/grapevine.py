@@ -121,7 +121,8 @@ def build(ctx, sources: dict) -> list[str]:
          "SR-58 over Tehachapi Pass is the usual detour; SR-14/US-395 around the east side stays "
          "open when both passes close. Amtrak San Joaquins also serves Bakersfield."),
         ("How do I get current California highway conditions?",
-         "Call Caltrans at 1-800-427-7623 or visit roads.dot.ca.gov. This page refreshes 3 times daily."),
+         "Call Caltrans at 1-800-427-7623 or visit roads.dot.ca.gov. This page also checks "
+         "Caltrans in real time when you load it and refreshes every 60 seconds while it's open."),
     ]
     faq_html = "".join(
         f'<p class="pr-q"><strong>{html.escape(q)}</strong></p><p>{a}</p>' for q, a in faq_qa)
@@ -168,7 +169,7 @@ def build(ctx, sources: dict) -> list[str]:
       <p class="lede">Live I-5 conditions over Tejon Pass — the 40-mile climb that connects
       Los Angeles and Bakersfield — plus SR-58 over Tehachapi and SR-99 up the valley.</p>
       <div class="meta"><span>Caltrans report: {ts_html}</span>
-      <span class="dot">&bull;</span><span>refreshes 3× daily</span></div></div>
+      <span class="dot">&bull;</span><span>live &middot; checks the Grapevine in real time</span></div></div>
     </div>
 
     <p class="note" style="margin-top:10px">Also see the <a href="../roads/">Kern County road conditions hub</a>
@@ -233,7 +234,7 @@ def build(ctx, sources: dict) -> list[str]:
 
     page = page_mod.render(
         title="Is the Grapevine (I-5 Tejon Pass) closed right now? | Bakersfield Daily Brief",
-        desc="Live Caltrans conditions for the I-5 Grapevine over Tejon Pass — the LA to Bakersfield route — plus SR-58 Tehachapi and SR-99. Closed or restricted? Updated 3x daily.",
+        desc="Live Caltrans conditions for the I-5 Grapevine over Tejon Pass — the LA to Bakersfield route — plus SR-58 Tehachapi and SR-99. Closed or restricted? Live: checks Caltrans in real time on every load.",
         canonical="/grapevine/", content=body, current="other", rel=rel,
         built=built_iso, statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
                 jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), _faq_jsonld(live_answer)],
@@ -270,6 +271,6 @@ def _faq_jsonld(live_answer: str | None = None) -> dict:
                 "SR-58 over Tehachapi Pass is the usual detour; SR-14/US-395 around the east side stays open when both passes close. Amtrak San Joaquins also serves Bakersfield."}},
             {"@type": "Question", "name": "How do I get current California highway conditions?",
              "acceptedAnswer": {"@type": "Answer", "text":
-                "Call Caltrans at 1-800-427-7623 or visit roads.dot.ca.gov. This page refreshes 3 times daily."}},
+                "Call Caltrans at 1-800-427-7623 or visit roads.dot.ca.gov. This page also checks Caltrans in real time when you load it and refreshes every 60 seconds while it's open."}},
         ],
     }

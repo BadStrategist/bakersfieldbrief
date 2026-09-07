@@ -2,6 +2,7 @@
 """Page shell: fills the layout template tokens shared by every page."""
 from __future__ import annotations
 
+import hashlib
 import html as htmlmod
 import json
 
@@ -40,7 +41,8 @@ def render(*, title: str, desc: str, canonical: str, content: str,
         "__OGDESC__": htmlmod.escape(og_desc),
         "__OGIMAGE__": og_image,
         "__BUILT__": built,
-        "__CSSV__": built or "",
+        "__CSSV__": _asset_ver("assets/css/site.css"),
+        "__JSV__": _asset_ver("assets/js/main.js"),
         "__REL__": rel,
         "__CONTENT__": content,
         "__EXTRAHEAD__": extra_head,
@@ -54,6 +56,21 @@ def render(*, title: str, desc: str, canonical: str, content: str,
     for tok, val in tokens.items():
         tpl = tpl.replace(f"<!--{tok}-->", val)
     return tpl
+
+
+def _asset_ver(rel_path: str) -> str:
+    """Content-hash cache-buster (?v=<sha1[:10]>) for a built asset.
+
+    Hashes the SOURCE bytes under assets/ (copied verbatim into site/ during
+    the build), so the version equals the deployed file's content hash. NEVER
+    date-based: a same-day CSS/JS edit must change the version or returning
+    browsers keep serving the stale cached file (this bit us before).
+    """
+    try:
+        b = (common.ROOT / rel_path).read_bytes()
+        return hashlib.sha1(b).hexdigest()[:10]
+    except OSError:
+        return ""
 
 
 def _jsonld(blocks: list | None) -> str:

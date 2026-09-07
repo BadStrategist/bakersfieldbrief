@@ -62,6 +62,28 @@ def build(ctx, sources: dict) -> list[str]:
 
 
 # ---------------------------------------------------------------- county
+def _meeting_date(raw: str):
+    """Parse a board date string ('September 1, 2026' or '9/1/2026') to a
+    date, or None if unparseable/empty. Raises nothing."""
+    s = (raw or "").strip()
+    if not s:
+        return None
+    for fmt in ("%B %d, %Y", "%m/%d/%Y"):
+        try:
+            return dt.datetime.strptime(s, fmt).date()
+        except ValueError:
+            continue
+    return None
+
+
+def _meeting_is_past(raw: str) -> bool:
+    """True when the board meeting date is before today (America/Los_Angeles).
+    Unparseable/missing dates are treated as NOT past so the page keeps the
+    normal 'next meets' copy rather than inventing a gap."""
+    d = _meeting_date(raw)
+    return bool(d) and d < common.today_pacific()
+
+
 def _county_page(board: dict, built_iso: str, rel: str, ctx) -> str:
     items = board.get("items", [])[:80]
     if board.get("ok"):
@@ -81,26 +103,52 @@ def _county_page(board: dict, built_iso: str, rel: str, ctx) -> str:
             table = '<p class="note">No numbered items were extractable from the current board agenda PDF this build.</p>'
 
         # ---- direct quotable answer (first text after H1, for crawlers/AI)
-        date_str = html.escape(str(board.get('date', '')))
+        raw_date = str(board.get('date', ''))
+        date_str = html.escape(raw_date)
         watched = board.get("watched", [])
         top_item = items[0]['title'] if items else ""
-        direct_answer = (f'<p class="answer"><strong>The Kern County Board of Supervisors '
-                         f'next meets on {date_str or "a posted date"} at 9:00 AM at the County '
-                         f'Administration Building, 1115 Truxtun Avenue, Bakersfield.</strong> '
-                         f'This agenda carries {len(items)} items'
-                         + (f", led by {html.escape(top_item[:60])}" if top_item else "")
-                         + (f". {len(watched)} item(s) reference Flock or ALPR surveillance." if watched else ".")
-                         + ' Agendas are posted 72 hours ahead under the Brown Act.</p>')
+        past = _meeting_is_past(raw_date)
+        if past:
+            ago = (common.today_pacific() - _meeting_date(raw_date)).days
+            direct_answer = (f'<p class="answer"><strong>The latest posted agenda is from '
+                             f'{date_str or "a past meeting"}; check the board&rsquo;s page for '
+                             f'the next meeting.</strong> '
+                             f'This agenda carries {len(items)} items'
+                             + (f", led by {html.escape(top_item[:60])}" if top_item else "")
+                             + (f". {len(watched)} item(s) reference Flock or ALPR surveillance." if watched else ".")
+                             + ' Agendas are posted 72 hours ahead under the Brown Act.</p>')
+            direct_answer += (f'<p class="note">This agenda was posted for the {date_str} meeting, '
+                              f'{ago} day(s) ago. It is the board&rsquo;s most recently published '
+                              f'agenda; a new one appears once the next meeting date is set.</p>')
+        else:
+            direct_answer = (f'<p class="answer"><strong>The Kern County Board of Supervisors '
+                             f'next meets on {date_str or "a posted date"} at 9:00 AM at the County '
+                             f'Administration Building, 1115 Truxtun Avenue, Bakersfield.</strong> '
+                             f'This agenda carries {len(items)} items'
+                             + (f", led by {html.escape(top_item[:60])}" if top_item else "")
+                             + (f". {len(watched)} item(s) reference Flock or ALPR surveillance." if watched else ".")
+                             + ' Agendas are posted 72 hours ahead under the Brown Act.</p>')
 
         # ---- FAQ (on-page + schema)
+        if past:
+            q1_answer = (f"The board generally meets on Tuesdays at 9:00 AM at the Kern County "
+                         f"Administration Building, 1115 Truxtun Avenue, Bakersfield. The most "
+                         f"recent posted agenda is from {date_str or 'a past meeting'}; check the "
+                         f"board's page for the next meeting.")
+            q3_answer = (f"The most recent posted agenda ({date_str or 'a past meeting'}) includes "
+                         f"{len(items)} items."
+                         + (f" Led by {html.escape(top_item[:80])}." if top_item else ""))
+        else:
+            q1_answer = (f"The board generally meets on Tuesdays at 9:00 AM at the Kern County "
+                         f"Administration Building, 1115 Truxtun Avenue, Bakersfield. The next "
+                         f"posted meeting is {date_str or 'TBD'}.")
+            q3_answer = (f"The next posted agenda ({date_str or 'current meeting'}) includes {len(items)} items."
+                         + (f" Led by {html.escape(top_item[:80])}." if top_item else ""))
         faq_qa = [
-            ("When does the Kern County Board of Supervisors meet?",
-             f"The board generally meets on Tuesdays at 9:00 AM at the Kern County Administration Building, 1115 Truxtun Avenue, Bakersfield. The next posted meeting is {date_str or 'TBD'}."),
+            ("When does the Kern County Board of Supervisors meet?", q1_answer),
             ("How do I see the Kern County Board of Supervisors agenda?",
              "Agendas are posted 72 hours before each meeting per the Brown Act. This page shows the current posted agenda items; the official agenda PDF is linked above."),
-            ("What is on the next Kern County Board of Supervisors agenda?",
-             (f"The next posted agenda ({date_str or 'current meeting'}) includes {len(items)} items."
-              + (f" Led by {html.escape(top_item[:80])}." if top_item else ""))),
+            ("What is on the next Kern County Board of Supervisors agenda?", q3_answer),
             ("How does Flock / license-plate-reader surveillance get approved in Kern County?",
              "Flock Safety camera and ALPR (automated license plate reader) proposals come before the Board of Supervisors as agenda items. This page flags those items with an amber 'Flock/ALPR watch' tag."),
             ("Where can I watch or participate in the Kern County Board of Supervisors meeting?",
@@ -129,8 +177,15 @@ def _county_page(board: dict, built_iso: str, rel: str, ctx) -> str:
         <section class="block"><div class="sign-head"><span class="tab">FAQ</span><h2>Board of Supervisors questions</h2></div>
         <div class="card">{faq_html}</div></section>"""
     else:
+        asof = html.escape(str(board.get("asof", "")))
+        asof_note = (f' Last known data as of <span class="updated">{asof}</span>.' if asof else '')
         body = ('<div class="hero"><h1>Kern County Board of Supervisors Agenda</h1>'
-                f'<div class="errorbox">The county agenda PDF could not be fetched this build ({html.escape(board.get("error", "unknown"))}).</div></div>')
+                f'<div class="errorbox">The county agenda data source did not load this build '
+                f'({html.escape(str(board.get("error", "unknown")))}).{asof_note}</div>'
+                '<p>Check the <a href="https://itsapps.kerncounty.com/clerk/minutes/boardagenda.pdf">'
+                'official board agenda PDF ↗</a> or the <a '
+                'href="https://www.kerncounty.com/government/board-of-supervisors">board page ↗</a> '
+                'for the latest meeting information.</p></div>')
 
     page = page_mod.render(
         title="Kern County Board of Supervisors Agenda Today | Bakersfield Daily Brief",
@@ -144,15 +199,29 @@ def _county_page(board: dict, built_iso: str, rel: str, ctx) -> str:
 def _county_faq_jsonld(board: dict) -> dict:
     """FAQPage schema for the county board page — Q1 carries the live meeting
     date/count so an AI/featured snippet quotes the real current agenda."""
-    date_str = str(board.get("date", "TBD"))
+    raw_date = str(board.get("date", ""))
+    date_str = raw_date or "TBD"
     items = board.get("items", [])
     watched = board.get("watched", [])
     top = items[0]["title"] if items else ""
-    q1 = (f"The Kern County Board of Supervisors next meets on {date_str or 'a posted date'} at 9:00 AM "
-          f"at the County Administration Building, 1115 Truxtun Avenue, Bakersfield. "
-          f"This agenda carries {len(items)} items"
-          + (f", led by {top[:80]}" if top else "")
-          + (f". {len(watched)} item(s) reference Flock or ALPR surveillance." if watched else "."))
+    past = _meeting_is_past(raw_date)
+    if past:
+        q1 = (f"The most recent posted Kern County Board of Supervisors agenda is from "
+              f"{date_str or 'a past meeting'}; check the board's page for the next meeting. "
+              f"This agenda carries {len(items)} items"
+              + (f", led by {top[:80]}" if top else "")
+              + (f". {len(watched)} item(s) reference Flock or ALPR surveillance." if watched else "."))
+        q3 = (f"The most recent posted agenda ({date_str or 'a past meeting'}) includes "
+              f"{len(items)} items."
+              + (f" Led by {top[:80]}." if top else ""))
+    else:
+        q1 = (f"The Kern County Board of Supervisors next meets on {date_str or 'a posted date'} at 9:00 AM "
+              f"at the County Administration Building, 1115 Truxtun Avenue, Bakersfield. "
+              f"This agenda carries {len(items)} items"
+              + (f", led by {top[:80]}" if top else "")
+              + (f". {len(watched)} item(s) reference Flock or ALPR surveillance." if watched else "."))
+        q3 = (f"The next posted agenda ({date_str}) includes {len(items)} items."
+              + (f" Led by {top[:80]}." if top else ""))
     return {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -163,9 +232,7 @@ def _county_faq_jsonld(board: dict) -> dict:
              "acceptedAnswer": {"@type": "Answer", "text":
                 "Agendas are posted 72 hours before each meeting per the Brown Act. This page shows the current posted agenda items; the official agenda PDF is linked above."}},
             {"@type": "Question", "name": "What is on the next Kern County Board of Supervisors agenda?",
-             "acceptedAnswer": {"@type": "Answer", "text":
-                (f"The next posted agenda ({date_str}) includes {len(items)} items."
-                 + (f" Led by {top[:80]}." if top else ""))}},
+             "acceptedAnswer": {"@type": "Answer", "text": q3}},
             {"@type": "Question", "name": "How does Flock / license-plate-reader surveillance get approved in Kern County?",
              "acceptedAnswer": {"@type": "Answer", "text":
                 "Flock Safety camera and ALPR proposals come before the Board of Supervisors as agenda items. This page flags those items with an amber 'Flock/ALPR watch' tag."}},

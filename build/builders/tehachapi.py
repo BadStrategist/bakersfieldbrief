@@ -184,7 +184,8 @@ def build(ctx, sources: dict) -> list[str]:
           if cur.get("ok") else
           "A current wind reading is unavailable this build — the NWS station did not report.")),
         ("How do I check SR-58 Tehachapi Pass conditions?",
-         f"Call Caltrans at {_PHONE} or visit roads.dot.ca.gov. This page refreshes 3 times daily."),
+         f"Call Caltrans at {_PHONE} or visit roads.dot.ca.gov. This page also checks Caltrans "
+         f"in real time when you load it and refreshes every 60 seconds while it's open."),
         ("Why does Tehachapi Pass close?",
          "Snow and ice in winter storms, and high winds that tip high-profile vehicles. Caltrans posts "
          "chain controls (R2/R3) at the base of the grade."),
@@ -203,7 +204,7 @@ def build(ctx, sources: dict) -> list[str]:
       <p class="lede">Live SR-58 conditions over Tehachapi Pass (elevation 4,067 ft) — the mountain
       alternative to the Grapevine — plus live wind, the NWS forecast, and Kern alerts.</p>
       <div class="meta"><span>Caltrans report: {ts_html}</span>
-      <span class="dot">&bull;</span><span>refreshes 3× daily</span></div></div>
+      <span class="dot">&bull;</span><span>live &middot; checks SR-58 &amp; wind in real time</span></div></div>
     </div>
 
     {direct_answer}
@@ -288,7 +289,7 @@ def build(ctx, sources: dict) -> list[str]:
 
     page = page_mod.render(
         title="Is Tehachapi Pass (SR-58) open right now? | Bakersfield Daily Brief",
-        desc="Live SR-58 conditions over Tehachapi Pass — the LA-to-Bakersfield alternative to the Grapevine — plus Tehachapi wind, weather, and NWS alerts. Updated 3x daily.",
+        desc="Live SR-58 conditions over Tehachapi Pass — the LA-to-Bakersfield alternative to the Grapevine — plus Tehachapi wind, weather, and NWS alerts. Live: checks Caltrans & NWS in real time on every load.",
         canonical="/tehachapi-pass/", content=body, current="other", rel=rel,
         built=built_iso, statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), _faq(live_answer, faq_qa)],

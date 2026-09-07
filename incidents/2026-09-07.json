@@ -1,0 +1,74 @@
+[
+  {
+    "type": "loud_explosion_report",
+    "time": "21:36",
+    "agency": "Bakersfield Police and Fire",
+    "area": "La Cresta Avenue area, southeast Bakersfield",
+    "notability": 3,
+    "disposition": "treated as a firework; several neighbors called in the same boom",
+    "summary": "Residents near La Cresta Avenue reported a loud boom they said was strong enough to shake doors open, and several neighbors called in the same blast shortly before 10 p.m. Crews treated it as a firework report."
+  },
+  {
+    "type": "grand_theft_auto",
+    "time": "22:27",
+    "agency": "Bakersfield Police Department",
+    "area": "northwest Bakersfield",
+    "notability": 2,
+    "disposition": "reported stolen; firearm was inside at the time",
+    "summary": "A white 2018 Freightliner semi truck was reported stolen from a property in northwest Bakersfield, with the owner saying a firearm was inside the cab when it was taken."
+  },
+  {
+    "type": "vehicle_vs_animal_hit_run",
+    "time": "22:56",
+    "agency": "Kern County Sheriff's Office",
+    "area": "Wheeler Ridge Road near Berry Road, southwest Kern County",
+    "notability": 2,
+    "disposition": "vehicle fled the scene",
+    "summary": "A vehicle struck a horse in the Wheeler Ridge Road area and kept going, leaving the animal down in the roadway. Deputies went to the scene to confirm what happened."
+  },
+  {
+    "type": "assault_threats_disturbance",
+    "time": "22:19",
+    "agency": "Bakersfield Police Department",
+    "area": "Union Avenue, Bakersfield",
+    "notability": 2,
+    "disposition": "officers responding",
+    "summary": "A man in dark clothing was reported standing in the median along Union Avenue yelling threats, and the caller said he was holding a piece of sheet metal. Officers were sent to the scene."
+  },
+  {
+    "type": "dui_crash",
+    "time": "23:46",
+    "agency": "Bakersfield Police Department",
+    "area": "Bakersfield",
+    "notability": 2,
+    "disposition": "no injuries; one driver taken into custody on suspicion of DUI",
+    "summary": "A two-vehicle collision left both cars off the roadway shortly before midnight. No injuries were reported, and officers took one driver into custody on suspicion of driving under the influence."
+  },
+  {
+    "type": "suspicious_prowler_video",
+    "time": "03:21",
+    "agency": "Bakersfield Police Department",
+    "area": "North Chester Avenue area, Bakersfield",
+    "notability": 2,
+    "disposition": "subject fled on foot",
+    "summary": "A person in black clothing and a mask with a backpack was captured on surveillance outside a building near North Chester Avenue early Monday, then fled northwest behind the property."
+  },
+  {
+    "type": "burglary_in_progress",
+    "time": "04:08",
+    "agency": "Kern County Sheriff's Office",
+    "area": "230th Street and Gaskell Avenue, southeast Kern County",
+    "notability": 3,
+    "disposition": "reported in progress; deputies responding",
+    "summary": "Deputies were sent to a property near 230th Street and Gaskell Avenue after three people in dark clothing were reported cutting through a chain-link fence toward heavy equipment and storage sheds, arriving in a pickup and an SUV pulling flatbed trailers."
+  },
+  {
+    "type": "domestic_welfare_check",
+    "time": "05:12",
+    "agency": "Bakersfield Police Department",
+    "area": "Bernard Street at Jefferson Park, Bakersfield",
+    "notability": 2,
+    "disposition": "welfare check; officers dispatched",
+    "summary": "Officers were asked to check on a woman in the Bernard Street area near Jefferson Park whose friend reported hearing impact sounds in the background during a call."
+  }
+]

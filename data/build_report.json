@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-07T11:48:58-07:00",
+ "built_at": "2026-09-07T11:55:51-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -66,7 +66,7 @@
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Delano Police Department to host anonymous gun buy back program Thursday",
+   "top_story": "Kern County In Depth: Sept. 6, 2026",
    "archive": "2026-09-07"
   },
   "cityhall": {
@@ -96,24 +96,24 @@
    "draft": "drafts/weekend-guide-2026-09-07"
   },
   "grapevine": {
-   "i5": "RESTRICTIONS",
-   "i5_pass": "RESTRICTIONS",
+   "i5": "OPEN",
+   "i5_pass": "OPEN",
    "log_entries": 60
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 41,
+   "wind_mph": 22,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 79,
-   "wind_mph": 41,
+   "temp": 77,
+   "wind_mph": 22,
    "alerts": 0
   },
   "roads": {
    "routes": [
-    "i5:RESTRICTIONS",
+    "i5:OPEN",
     "sr58:OPEN",
     "sr99:RESTRICTIONS"
    ],

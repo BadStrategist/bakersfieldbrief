@@ -6,8 +6,8 @@
    "slug": "i5",
    "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
    "pass": true,
-   "status": "RESTRICTIONS",
-   "pass_status": "RESTRICTIONS",
+   "status": "OPEN",
+   "pass_status": "OPEN",
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
@@ -16,8 +16,8 @@
     },
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Los Angeles/Kern Co Line to 5 mi south of the Jct of SR-99 /at Grapevine Rd/ (Kern Co) /the Grapevine/ - Travel is not recommended for campers, trailers, or permit loads",
-     "status": "RESTRICTIONS"
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
     },
     {
      "region": "NORTHERN CALIFORNIA",
@@ -25,8 +25,8 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Monday, September 7th, 2026 at 11:48 AM",
-   "hash": "77c0941641"
+   "reported_as_of": "Monday, September 7th, 2026 at 11:55 AM",
+   "hash": "eba63c7148"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Monday, September 7th, 2026 at 11:48 AM",
+   "reported_as_of": "Monday, September 7th, 2026 at 11:55 AM",
    "hash": "5374f203ec"
   },
   {
@@ -64,7 +64,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Monday, September 7th, 2026 at 11:48 AM",
+   "reported_as_of": "Monday, September 7th, 2026 at 11:55 AM",
    "hash": "f97882795e"
   }
  ],

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-07T09:15:18-07:00",
+ "built_at": "2026-09-07T11:07:48-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,14 +59,14 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1015,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "Bakersfield man held to answer on charges alleging sexual abuse of girl, 8",
+   "chp_new": 0,
+   "top_story": "Delano Police Department to host anonymous gun buy back program Thursday",
    "archive": "2026-09-07"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 17,
+   "wind_mph": 0,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 59,
-   "wind_mph": 17,
+   "temp": 73,
+   "wind_mph": 0,
    "alerts": 0
   },
   "roads": {
@@ -134,7 +134,7 @@
    "isabella_af": 167676,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 48,
+   "aqi": 54,
    "chp_week": 2
   },
   "letters": {
@@ -173,8 +173,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 260,
-   "alpr_new_week": 0,
+   "alpr_total": 261,
+   "alpr_new_week": 1,
    "pages": [
     "surveillance",
     "fires",

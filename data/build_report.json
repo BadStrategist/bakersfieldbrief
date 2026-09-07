@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-06T18:34:01-07:00",
+ "built_at": "2026-09-07T00:03:28-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,14 +60,14 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1236,
+  "brief_words": 61,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 6,
-   "top_story": "8-year-old Bakersfield boxer is already 6-0 with three titles to his name",
-   "archive": "2026-09-06"
+   "chp_new": 4,
+   "top_story": "Eyewitness News 'Health Alert' for September 6, 2026",
+   "archive": "2026-09-07"
   },
   "cityhall": {
    "upcoming_meetings": 0,
@@ -82,7 +82,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -93,7 +93,7 @@
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-09-06"
+   "draft": "drafts/weekend-guide-2026-09-07"
   },
   "grapevine": {
    "i5": "RESTRICTIONS",
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 21,
+   "wind_mph": 17,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 66,
-   "wind_mph": 21,
+   "temp": 59,
+   "wind_mph": 17,
    "alerts": 0
   },
   "roads": {
@@ -121,8 +121,8 @@
   },
   "events": {
    "groups": {
-    "This week": 2,
-    "Next week": 3,
+    "This week": 3,
+    "Next week": 2,
     "Later": 42
    },
    "meetings": 0
@@ -135,7 +135,7 @@
    "alpr_total": 260,
    "kern_fires": 0,
    "aqi": 54,
-   "chp_week": 153
+   "chp_week": 1
   },
   "letters": {
    "published": 0

@@ -43,10 +43,32 @@ def pacific_tz(day: dt.date) -> dt.tzinfo:
     return dt.timezone(dt.timedelta(hours=-8), "PST")
 
 
+def _usable_rows(transcript: Path) -> list[dict]:
+    """Load a transcript JSONL into digest-style rows (conf > -0.45, len > 30),
+    matching the deterministic extraction that runs on real digest rows."""
+    import json as _json
+    rows = []
+    if not transcript.exists():
+        return rows
+    for ln in transcript.read_text(encoding="utf-8").splitlines():
+        ln = ln.strip()
+        if not ln:
+            continue
+        try:
+            r = _json.loads(ln)
+        except _json.JSONDecodeError:
+            continue
+        text = (r.get("text") or "").strip()
+        if r.get("confidence", 0.0) > -0.45 and len(text) > 30:
+            rows.append(r)
+    return rows
+
+
 def main(argv: list[str]) -> int:
     date = dt.date.today()
     phase1 = "--phase1" in argv
     phase2 = "--phase2" in argv
+    extract_only = "--extract-only" in argv
     for a in argv[1:]:  # positional args are dates; flags never parsed as dates
         if not a.startswith("--"):
             date = dt.date.fromisoformat(a)
@@ -57,6 +79,24 @@ def main(argv: list[str]) -> int:
     transcript = ROOT / "transcripts" / f"{d}.jsonl"
     incidents = ROOT / "incidents" / f"{d}.json"
     brief = ROOT / "briefs" / f"{d}.md"
+
+    # ---- 0 EXTRACT-ONLY: turn an ALREADY-ON-DISK transcript into incidents.
+    # Never re-fetch or re-transcribe (the ~60-min hang when a publish job found
+    # incidents missing but a full transcript already existed). Only stages 3-5.
+    if extract_only:
+        print(f"[ko] extract-only {d} from existing transcript", flush=True)
+        rows = _usable_rows(transcript)
+        print(f"[ko]     {len(rows)} usable transcript rows", flush=True)
+        if not rows:
+            print(f"[ko] FATAL: no usable rows in {transcript.name}", file=sys.stderr)
+            return 1
+        incs = ko_extract.extract(rows)
+        print(f"[ko]     {len(incs)} incidents", flush=True)
+        incidents.parent.mkdir(parents=True, exist_ok=True)
+        incidents.write_text(json.dumps(incs, indent=1, ensure_ascii=False),
+                             encoding="utf-8")
+        print(f"[ko] wrote incidents/{d}.json ({len(incs)})", flush=True)
+        return 0
 
     # ---- 1 FETCH
     print(f"[ko] 1/5 fetch feed {ko_fetch.FEED_ID} for {d} ({tz.tzname(None)})", flush=True)

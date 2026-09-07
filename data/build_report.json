@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-07T00:37:27-07:00",
+ "built_at": "2026-09-07T07:33:08-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,13 +60,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 61,
+  "brief_words": 71,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Eyewitness News 'Health Alert' for September 6, 2026",
+   "chp_new": 1,
+   "top_story": "'Incredible instructor' among 3 killed in Fresno's weekend plane crash: What do we know so far?",
    "archive": "2026-09-07"
   },
   "cityhall": {
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 55,
+   "temp": 48,
    "wind_mph": 12,
    "alerts": 0
   },
@@ -131,11 +131,11 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 168448,
+   "isabella_af": 167676,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 54,
-   "chp_week": 1
+   "aqi": 52,
+   "chp_week": 2
   },
   "letters": {
    "published": 0

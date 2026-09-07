@@ -316,6 +316,7 @@ a.card:hover .card-go::after { transform: translateX(4px); }
 /* ------------------------------------------------ tables */
 .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--shadow); }
 table.data { width: 100%; border-collapse: collapse; font-size: 14.5px; min-width: 0; }
+table.data.wide { min-width: 460px; } /* multi-col data tables scroll instead of clipping on mobile */
 table.data th {
   background: var(--sign);
   color: #fff;

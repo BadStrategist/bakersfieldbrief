@@ -24,9 +24,9 @@ from .grapevine import _STATUS_COPY, _TAG_CLS, _report_age_hint
 _PHONE = "1-800-427-7623"
 
 _ROUTE_META = {
-    "i5": ("I-5 · Grapevine (Tejon Pass)", "the LA-to-Bakersfield pass"),
-    "sr58": ("SR-58 · Tehachapi Pass", "the east–west pass to the desert"),
-    "sr99": ("SR-99 · Central Valley", "the valley route north through Bakersfield"),
+    "i5": ("I-5 · Grapevine (Tejon Pass)", "the LA-to-Bakersfield pass", "../grapevine/"),
+    "sr58": ("SR-58 · Tehachapi Pass", "the east–west pass to the desert", "../tehachapi-pass/"),
+    "sr99": ("SR-99 · Central Valley", "the valley route north through Bakersfield", ""),
 }
 
 
@@ -53,7 +53,7 @@ def build(ctx, sources: dict) -> list[str]:
 
     # ---- big summary cards per route
     cards = ""
-    for slug, (label, blurb) in _ROUTE_META.items():
+    for slug, (label, blurb, tracker_link) in _ROUTE_META.items():
         r = next((x for x in routes if x["slug"] == slug), None)
         if not r:
             cards += f"""<div class="card"><h3>{html.escape(label)}</h3>
@@ -69,12 +69,15 @@ def build(ctx, sources: dict) -> list[str]:
             for s in r.get("sections", []))
         ts = r.get("reported_as_of", "")
         age = _report_age_hint(ts)
+        link_html = (f'<p class="note"><a href="{tracker_link}">Detailed {html.escape(label.split(" · ")[0])} conditions →</a></p>'
+                     if tracker_link else "")
         cards += f"""<div class="card" data-route="{html.escape(r['slug'])}">
           <span class="tag {_TAG_CLS.get(status,'amber')}">{status}</span>
           <h3>{html.escape(label)}</h3>
           <p class="note">{blurb}.</p>
           <ul class="hl">{secs or '<li class="note">No conditions text parsed.</li>'}</ul>
           <p class="note"><span class="updated">{html.escape(ts)}{html.escape(age)}</span></p>
+          {link_html}
         </div>"""
     ts_any = next((r.get("reported_as_of") for r in routes if r.get("reported_as_of")), "")
     _age_all = _report_age_hint(ts_any)
@@ -175,7 +178,7 @@ def build(ctx, sources: dict) -> list[str]:
              "Bakersfield — closed, restricted, or open. Live: checks Caltrans in real time on every load.",
         canonical="/roads/", content=body, current="other", rel=rel,
         built=built_iso, statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
-        jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), _faq_jsonld(live_answer)],
+        jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), _faq_jsonld(faq_qa, live_answer)],
         extra_scripts='<script src="{rel}assets/js/live-roads.js" defer></script>'.format(rel=rel))
     common.write(common.SITE / "roads" / "index.html", page)
     built.append("roads/index.html")
@@ -187,29 +190,14 @@ def build(ctx, sources: dict) -> list[str]:
     return built
 
 
-def _faq_jsonld(live_answer: str) -> dict:
-    return {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {"@type": "Question",
-             "name": "What are the road conditions in Bakersfield and Kern County right now?",
-             "acceptedAnswer": {"@type": "Answer", "text": live_answer}},
-            {"@type": "Question",
-             "name": "Is SR-58 / Tehachapi Pass open?",
-             "acceptedAnswer": {"@type": "Answer",
-                "text": "SR-58 over Tehachapi Pass is a mountain pass that can close for snow, wind, and chain controls in winter. Check the status above for the current Caltrans report."}},
-            {"@type": "Question",
-             "name": "Is the Grapevine (I-5) open?",
-             "acceptedAnswer": {"@type": "Answer",
-                "text": "I-5 over Tejon Pass is the highest point on I-5 between LA and the Central Valley and can close for snow, fog, and high winds. Check the status above for the current Caltrans report."}},
-            {"@type": "Question",
-             "name": "Is SR-99 open through Bakersfield?",
-             "acceptedAnswer": {"@type": "Answer",
-                "text": "SR-99 is the main valley route through Bakersfield. Check the status above for the current Caltrans report."}},
-            {"@type": "Question",
-             "name": "How do I get current California highway conditions?",
-             "acceptedAnswer": {"@type": "Answer",
-                "text": "Call Caltrans at 1-800-427-7623 or visit roads.dot.ca.gov. This page also checks Caltrans in real time when you load it and refreshes every 60 seconds while it's open."}},
-        ],
-    }
+def _faq_jsonld(faq_qa, live_answer: str) -> dict:
+    """FAQPage schema built from the SAME faq_qa list rendered on-page, so the
+    schema answers can never drift from the visible text (Q1 gets the live
+    status, Q2-Q4 carry their real reported statuses)."""
+    main = []
+    for i, (q, a) in enumerate(faq_qa):
+        text = live_answer if (i == 0 and live_answer) else re.sub(r"<[^>]+>", "", a)
+        main.append({"@type": "Question", "name": q,
+                     "acceptedAnswer": {"@type": "Answer", "text": text}})
+    return {"@context": "https://schema.org", "@type": "FAQPage",
+            "mainEntity": main}

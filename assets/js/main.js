@@ -65,8 +65,13 @@
     try { return localStorage.getItem(CONSENT_KEY) === "granted"; }
     catch (e) { return false; }
   }
+  function consentDismissed() {
+    try { return localStorage.getItem(CONSENT_KEY) === "dismissed"; }
+    catch (e) { return false; }
+  }
+
   function consentBanner() {
-    if (consentGranted() || !ADSENSE_CLIENT) return;
+    if (consentGranted() || consentDismissed() || !ADSENSE_CLIENT) return;
     var bar = document.createElement("div");
     bar.id = "consent-bar";
     bar.style.cssText = "position:fixed;bottom:0;left:0;right:0;background:#20262C;color:#fff;" +
@@ -74,6 +79,8 @@
       "justify-content:space-between;flex-wrap:wrap;";
     bar.innerHTML = "<span>This site shows ads only with your consent. We never sell your data. " +
       "<a href=\"privacy/\" style=\"color:#F3C76E\">Privacy policy</a></span>";
+    var btnWrap = document.createElement("span");
+    btnWrap.style.cssText = "display:flex;gap:8px;";
     var ok = document.createElement("button");
     ok.textContent = "OK, show ads";
     ok.style.cssText = "background:#DC9A1F;color:#20262C;border:0;padding:7px 16px;border-radius:4px;" +
@@ -81,10 +88,24 @@
     ok.addEventListener("click", function () {
       try { localStorage.setItem(CONSENT_KEY, "granted"); } catch (e) {}
       bar.remove();
+      document.body.style.paddingBottom = "";
       loadAdsense();   // enables Auto Ads (dashboard-configured) post-consent
       injectSlots();
     });
-    bar.appendChild(ok);
+    // a dismiss that persists, so visitors who decline aren't re-prompted on
+    // every page and the fixed bar stops covering hero/direct-answer content
+    var no = document.createElement("button");
+    no.textContent = "No thanks";
+    no.style.cssText = "background:transparent;color:#F3C76E;border:1px solid #F3C76E;padding:7px 16px;" +
+      "border-radius:4px;font-weight:600;cursor:pointer;";
+    no.addEventListener("click", function () {
+      try { localStorage.setItem(CONSENT_KEY, "dismissed"); } catch (e) {}
+      bar.remove();
+      document.body.style.paddingBottom = "";
+    });
+    btnWrap.appendChild(no);
+    btnWrap.appendChild(ok);
+    bar.appendChild(btnWrap);
     document.body.appendChild(bar);
     document.body.style.paddingBottom = "64px";
   }

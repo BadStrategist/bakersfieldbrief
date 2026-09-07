@@ -122,7 +122,7 @@ def build(ctx, sources: dict) -> list[str]:
             f'<td>{html.escape(p.get("wind_speed", ""))} {html.escape(p.get("wind_dir", ""))}</td>'
             f'<td>{html.escape(p.get("short", ""))}</td></tr>'
             for p in forecast[:5])
-        fc_html = (f'<div class="table-wrap"><table class="data">'
+        fc_html = (f'<div class="table-wrap"><table class="data wide">'
                    f'<thead><tr><th>Period</th><th>Hi/Lo</th><th>Wind</th><th>Forecast</th></tr></thead>'
                    f'<tbody>{rows}</tbody></table></div>'
                    f'<p class="note">Source: National Weather Service.</p>')
@@ -139,18 +139,32 @@ def build(ctx, sources: dict) -> list[str]:
         al_html = f'<ul class="hl">{items}</ul><p class="note">Source: NWS. Confirm at weather.gov.</p>'
 
     # ---- route cards (SR-58 focus + I-5 + SR-99 compare)
-    # ---- route cards (SR-58 focus + I-5 + SR-99 compare)
+    _TRACKER_LINKS = {"i5": "../grapevine/", "sr58": "", "sr99": ""}
     route_cards = []
     for r in ([rte] if rte else []) + others:
         if not r:
             continue
         st = r.get("pass_status") or r.get("status")
-        vtext = (" ".join(s.get("text", "") for s in (r.get("sections") or [])) or
-                 "No detail text from Caltrans.")
+        # dedupe identical Caltrans section text (I-5 sometimes returns the same
+        # "No traffic restrictions reported." line three times) and truncate on
+        # a word boundary so no dangling fragment ("…permit loads N") ships.
+        seen, txts = set(), []
+        for s in (r.get("sections") or []):
+            t = (s.get("text") or "").strip()
+            if t and t not in seen:
+                seen.add(t)
+                txts.append(t)
+        vtext = " ".join(txts) or "No detail text from Caltrans."
+        if len(vtext) > 180:
+            cut = vtext[:180].rsplit(" ", 1)[0].rstrip(",;:.")
+            vtext = cut + "…"
+        link = _TRACKER_LINKS.get(r.get("slug", ""))
+        h3 = (f'<h3><a href="{link}">{html.escape(r.get("name", r.get("slug", "")))}</a></h3>'
+              if link else f'<h3>{html.escape(r.get("name", r.get("slug", "")))}</h3>')
         route_cards.append(f"""
         <div class="card"><span class="tag {_TAG_CLS.get(st, 'amber')}">{st}</span>
-        <h3>{html.escape(r.get('name', r.get('slug', '')))}</h3>
-        <p class="note">{html.escape(vtext[:180])}</p></div>""")
+        {h3}
+        <p class="note">{html.escape(vtext)}</p></div>""")
     cards_html = "".join(route_cards)
 
     # ---- recent changes log
@@ -179,9 +193,7 @@ def build(ctx, sources: dict) -> list[str]:
           f"Confirm on roads.dot.ca.gov before driving." if rte else
           "Caltrans conditions are unavailable this build.")),
         ("How windy is Tehachapi Pass right now?",
-         (f"As of {cur.get('observed', 'the latest observation')}, the {cur.get('station', 'NWS')} station reports "
-          f"{cur.get('wind_mph', '—')} mph with gusts to {cur.get('gust_mph', '—')} mph from {cur.get('wind_dir', '—')}."
-          if cur.get("ok") else
+         (_wind_answer(cur) if cur.get("ok") else
           "A current wind reading is unavailable this build — the NWS station did not report.")),
         ("How do I check SR-58 Tehachapi Pass conditions?",
          f"Call Caltrans at {_PHONE} or visit roads.dot.ca.gov. This page also checks Caltrans "
@@ -308,6 +320,22 @@ def build(ctx, sources: dict) -> list[str]:
 
 def _sev_cls(sev: str) -> str:
     return {"Extreme": "red", "Severe": "red", "Moderate": "amber"}.get(sev, "green")
+
+
+def _wind_answer(cur: dict) -> str:
+    """Honest wind sentence for the FAQ/schema. Omits the gust clause entirely
+    when no gust reading is present, instead of leaving a blank 'gusts to — mph'."""
+    mph = cur.get("wind_mph")
+    gust = cur.get("gust_mph")
+    wdir = cur.get("wind_dir") or "—"
+    obs = cur.get("observed", "the latest observation")
+    station = cur.get("station", "NWS")
+    if mph is None:
+        return f"As of {obs}, the {station} station did not report a wind speed."
+    base = f"As of {obs}, the {station} station reports {mph} mph"
+    if gust is not None:
+        base += f" with gusts to {gust} mph"
+    return f"{base} from {wdir}."
 
 
 def _faq(live_answer: str | None, faq_qa) -> dict:

@@ -33,6 +33,11 @@ def render(*, title: str, desc: str, canonical: str, content: str,
     if current in cur_flags:
         cur_flags[current] = 'aria-current="page"'
 
+    _year = built[:4] if (built and len(built) >= 4 and built[:4].isdigit()) else ""
+    if not _year:
+        import datetime as _dt
+        _year = str(_dt.date.today().year)
+
     tokens = {
         "__TITLE__": htmlmod.escape(title),
         "__DESC__": htmlmod.escape(desc),
@@ -41,6 +46,7 @@ def render(*, title: str, desc: str, canonical: str, content: str,
         "__OGDESC__": htmlmod.escape(og_desc),
         "__OGIMAGE__": og_image,
         "__BUILT__": built,
+        "__YEAR__": _year,
         "__CSSV__": _asset_ver("assets/css/site.css"),
         "__JSV__": _asset_ver("assets/js/main.js"),
         "__REL__": rel,

@@ -209,6 +209,8 @@ The site is static and rebuilt fresh every morning at 6:00 AM Pacific from publi
 - [Flock & ALPRs](https://bakersfieldbrief.com/surveillance/): automated license-plate reader locations.
 - [Isabella Lake tracker](https://bakersfieldbrief.com/water/): reservoir levels.
 - [Grapevine conditions](https://bakersfieldbrief.com/grapevine/): Tejon Pass / Grapevine road conditions.
+- [Tehachapi Pass conditions](https://bakersfieldbrief.com/tehachapi-pass/): SR-58 road conditions and wind.
+- [Tehachapi weather](https://bakersfieldbrief.com/tehachapi-weather/): pass-level wind and forecast.
 - [Kern road conditions](https://bakersfieldbrief.com/roads/): I-5, SR-58, and SR-99 status in Bakersfield & Kern County.
 - [Live Map](https://bakersfieldbrief.com/map/): interactive map of local data.
 

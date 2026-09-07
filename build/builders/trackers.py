@@ -71,14 +71,20 @@ def build(ctx, sources: dict) -> list[str]:
 # ------------------------------------------------------------------ SVG charts
 def svg_line_chart(points: list[float], *, width: int = 860, height: int = 200,
                    labels: list[str] | None = None) -> str:
-    """Baked inline SVG line chart (no client-side chart lib)."""
+    """Baked inline SVG line chart (no client-side chart lib).
+
+    Includes a left Y-axis (gridlines + rounded labels) so a normal seasonal
+    decline reads as a shallow slope, not a steep crash drawn across the full
+    height."""
     if len(points) < 2:
         return ""
     mn, mx = min(points), max(points)
     span = (mx - mn) or 1
     pad = 10
+    axis_w = 52  # gutter for Y-axis labels
     n = len(points)
-    xs = [pad + i * (width - 2 * pad) / (n - 1) for i in range(n)]
+    plot_w = width - 2 * pad - axis_w
+    xs = [pad + axis_w + i * plot_w / (n - 1) for i in range(n)]
     ys = [height - pad - (v - mn) * (height - 2 * pad) / span for v in points]
     path = " ".join(f"L{x:.1f},{y:.1f}" for x, y in zip(xs[1:], ys[1:]))
     area = f"M{xs[0]:.1f},{height - pad} L{xs[0]:.1f},{ys[0]:.1f} {path} L{xs[-1]:.1f},{height - pad} Z"
@@ -86,7 +92,19 @@ def svg_line_chart(points: list[float], *, width: int = 860, height: int = 200,
                   for x, y in zip(xs, ys))
     last_label = f'<text x="{xs[-1]:.1f}" y="{ys[-1] - 8:.1f}" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="12" fill="#4A545C">{points[-1]:,.0f}</text>'
     first_label = f'<text x="{xs[0]:.1f}" y="{ys[0] + 14:.1f}" text-anchor="start" font-family="IBM Plex Mono, monospace" font-size="12" fill="#4A545C">{points[0]:,.0f}</text>'
+
+    # Y-axis: 4 gridlines with rounded labels spanning [mn, mx]
+    grid = ""
+    for i in range(4):
+        v = mn + span * i / 3
+        y = height - pad - (v - mn) * (height - 2 * pad) / span
+        grid += (f'<line x1="{pad + axis_w:.1f}" y1="{y:.1f}" x2="{width - pad:.1f}" y2="{y:.1f}" '
+                 f'stroke="#E4DED2" stroke-width="1"/>'
+                 f'<text x="{pad + axis_w - 6:.1f}" y="{y + 4:.1f}" text-anchor="end" '
+                 f'font-family="IBM Plex Mono, monospace" font-size="11" fill="#8A9299">{v:,.0f}</text>')
+
     return f"""<svg viewBox="0 0 {width} {height}" role="img" aria-label="30-day trend chart">
+      {grid}
       <path d="{area}" fill="#DC9A1F" opacity="0.18"/>
       <path d="M{xs[0]:.1f},{ys[0]:.1f} {path}" fill="none" stroke="#232B30" stroke-width="2.5" stroke-linejoin="round"/>
       {pts}{first_label}{last_label}
@@ -550,6 +568,7 @@ def build_fires(ctx, sources: dict):
                    stat_html, body, payload, sources, dark=True, img="",
                    seo_title="Kern County Fire Map — Active Wildfires Live",
                    faq_jsonld=faq_jsonld, map_js="fires.js",
+                   current="other",
                    cadence="updates every few hours from CAL FIRE")
 
 
@@ -772,6 +791,8 @@ def build_water(ctx, sources: dict):
                    stat_html, body, payload, sources, img="isabella",
                    seo_title="Lake Isabella Water Level Today | Elevation, Fishing & Ramp Status",
                    faq_jsonld=faq_jsonld,
+                   map_js="", current="other",
+                   og_image="https://bakersfieldbrief.com/assets/img/isabella.jpg",
                    cadence="updated from DWR/CDEC with each build")
 
 
@@ -780,7 +801,8 @@ def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
                    body_html: str, payload: dict, sources: dict, dark: bool = False,
                    img: str = "", seo_title: str = "", faq_jsonld: dict | None = None,
                    map_js: str = "trackers.js", cadence: str | None = None,
-                   method: str | None = None):
+                   method: str | None = None, current: str = "trackers",
+                   og_image: str = "https://bakersfieldbrief.com/assets/img/emblem.png"):
     built_iso = common.iso_today()
     rel = "../"
     tpl = common.read_template("tracker.html")
@@ -801,6 +823,7 @@ def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
         "__TRACKER_LEDE__": html.escape(lede),
         "__TRACKER_UPDATE__": html.escape(cadence),
         "__TRACKER_KICKER__": html.escape(cadence),
+        "__TRACKER_ASOF__": html.escape(str(payload.get("asof", ""))),
         "__TRACKER_IMG__": img,
         "__TRACKER_FIGURE__": images.figure(img, rel),
         "__STATS__": stat_html,
@@ -811,23 +834,38 @@ def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
         tpl = tpl.replace(f"<!--{tok}-->", val)
     tpl = common.inline_placeholder(tpl, payload)
 
+    # Map assets only on pages that actually render a Leaflet map. Water (and
+    # other non-map trackers) used to ship leaflet.js + markercluster + the ALPR
+    # trackers.js for zero functional reason — gate them on map_js being set.
+    if map_js:
+        map_head = '<link rel="stylesheet" href="../assets/vendor/leaflet.css">'
+        map_scripts = ('<script src="../assets/vendor/leaflet.js"></script>\n'
+                       '  <script src="../assets/vendor/leaflet.markercluster.js"></script>\n'
+                       '  <script src="../assets/js/' + map_js + '?v=' + _js_ver(map_js) + '" defer></script>')
+    else:
+        map_head = ""
+        map_scripts = ""
+
+    extra_scripts = (map_scripts
+                     + (('<script src="../assets/js/live-fires.js?v=' + _js_ver("live-fires.js") + '" defer></script>')
+                        if slug == "fires" else "")
+                     + (('<script src="../assets/js/webmcp-alpr.js?v=' + _js_ver("webmcp-alpr.js") + '" defer></script>')
+                        if slug == "surveillance" else ""))
+
     page = page_mod.render(
         title=seo_title or f"{name} | Bakersfield Daily Brief",
         desc=lede,
         canonical=f"/{slug}/",
-        content=tpl, current="trackers", rel=rel, built=built_iso,
+        content=tpl, current=current, rel=rel, built=built_iso,
+        og_image=og_image,
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(),
                 page_mod.webpage_jsonld(f"/{slug}/", built_iso,
                                         name=name, desc=lede)]
                + ([faq_jsonld] if faq_jsonld else []),
         statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
-        extra_head='<link rel="stylesheet" href="../assets/vendor/leaflet.css">'
+        extra_head=map_head
                    + ('<link rel="stylesheet" href="../assets/css/deflock.css?v=' + _asset_ver_css() + '">' if dark else ""),
-        extra_scripts='<script src="../assets/vendor/leaflet.js"></script>\n  <script src="../assets/vendor/leaflet.markercluster.js"></script>\n  <script src="../assets/js/' + map_js + '?v=' + _js_ver(map_js) + '" defer></script>'
-                   + (('<script src="../assets/js/live-fires.js?v=' + _js_ver("live-fires.js") + '" defer></script>')
-                      if slug == "fires" else "")
-                   + (('<script src="../assets/js/webmcp-alpr.js?v=' + _js_ver("webmcp-alpr.js") + '" defer></script>')
-                      if slug == "surveillance" else ""))
+        extra_scripts=extra_scripts)
     common.write(common.SITE / slug / "index.html", page)
 
 # ------------------------------------------------------------------ hub

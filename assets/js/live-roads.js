@@ -44,6 +44,7 @@
 
   function applyRoutes(routes) {
     var parts = [];
+    var newest = "";
     routes.forEach(function (rte) {
       var card = cardFor(rte.slug);
       var status = rte.pass_status || rte.status || "OPEN";
@@ -68,11 +69,20 @@
         }
       }
       if (rte.reported_as_of) {
-        parts.push(rte.slug.toUpperCase() + " " + status + " (" + rte.reported_as_of + ")");
+        // keep the direct answer compact: route + status only (one shared
+        // timestamp for the whole set, applied below) so it doesn't balloon on
+        // mobile where the full per-route timestamps wrapped into a long block.
+        parts.push(rte.slug.toUpperCase() + " " + status);
+        if (!newest || rte.reported_as_of > newest) newest = rte.reported_as_of;
       }
     });
     if (answer && parts.length) {
-      answer.innerHTML = "<strong>Live Caltrans report:</strong> " + esc(parts.join("; ")) + ".";
+      answer.innerHTML = "<strong>Live Caltrans report:</strong> " + esc(parts.join("; ")) +
+        (newest ? " (as of " + esc(newest) + ")." : ".");
+    }
+    // refresh the header timestamp to match the cards so they never disagree
+    if (metaUpdated && newest) {
+      metaUpdated.textContent = newest + ageHint(newest);
     }
   }
 

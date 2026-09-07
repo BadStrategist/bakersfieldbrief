@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-07T11:32:08-07:00",
+ "built_at": "2026-09-07T11:44:09-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,11 +59,11 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
+  "_digest_meta": "llm",
   "brief_words": 1015,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
    "chp_new": 0,
    "top_story": "Delano Police Department to host anonymous gun buy back program Thursday",
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 14,
+   "wind_mph": 21,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 77,
-   "wind_mph": 14,
+   "wind_mph": 21,
    "alerts": 0
   },
   "roads": {

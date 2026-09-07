@@ -11,8 +11,8 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "Northbound traffic is reduced to 1 lane at Lake Hughes Rd (Los Angeles Co) - Due to a road hazard",
-     "status": "RESTRICTIONS"
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
     },
     {
      "region": "CENTRAL CALIFORNIA",
@@ -25,8 +25,8 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Sunday, September 6th, 2026 at 03:32 PM",
-   "hash": "7adaedba27"
+   "reported_as_of": "Sunday, September 6th, 2026 at 06:33 PM",
+   "hash": "77c0941641"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Sunday, September 6th, 2026 at 03:32 PM",
+   "reported_as_of": "Sunday, September 6th, 2026 at 06:33 PM",
    "hash": "5374f203ec"
   },
   {
@@ -64,7 +64,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Sunday, September 6th, 2026 at 03:32 PM",
+   "reported_as_of": "Sunday, September 6th, 2026 at 06:33 PM",
    "hash": "f97882795e"
   }
  ],

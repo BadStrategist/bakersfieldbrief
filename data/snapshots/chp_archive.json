@@ -1620,6 +1620,66 @@
   "details": ""
  },
  {
+  "log_id": "260906BF0375",
+  "time": "Sep  6 2026  5:36PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "South Union Ave / Pacheco Rd",
+  "area": "Bakersfield",
+  "lat": 35.310377,
+  "lon": -119.003068,
+  "details": ""
+ },
+ {
+  "log_id": "260906BF0385",
+  "time": "Sep  6 2026  6:09PM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sr43 / San Diego St",
+  "area": "Buttonwillow",
+  "lat": 35.463432,
+  "lon": -119.261031,
+  "details": ""
+ },
+ {
+  "log_id": "260906BF0394",
+  "time": "Sep  6 2026  6:23PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "N Chester Ave / Beardsley Ave",
+  "area": "Bakersfield",
+  "lat": 35.40493,
+  "lon": -119.021019,
+  "details": ""
+ },
+ {
+  "log_id": "260906BF0393",
+  "time": "Sep  6 2026  6:23PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Beardsley Ave / Chester Ave",
+  "area": "Bakersfield",
+  "lat": 35.40493,
+  "lon": -119.021019,
+  "details": ""
+ },
+ {
+  "log_id": "260906BF0392",
+  "time": "Sep  6 2026  6:23PM",
+  "type": "1125-Traffic Hazard",
+  "location": "11506-11990 Sr46",
+  "area": "Buttonwillow",
+  "lat": 35.674142,
+  "lon": -120.088252,
+  "details": ""
+ },
+ {
+  "log_id": "260906BF0395",
+  "time": "Sep  6 2026  6:26PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Niles St / Mount Vernon Ave",
+  "area": "Bakersfield",
+  "lat": 35.376272,
+  "lon": -118.967404,
+  "details": ""
+ },
+ {
   "log_id": "260906BF0088",
   "time": "Sep  6 2026  7:31AM",
   "type": "1125-Traffic Hazard",

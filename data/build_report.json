@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-06T15:32:18-07:00",
+ "built_at": "2026-09-06T18:34:01-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,8 +65,8 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Amber Alert issued in multiple Central, Southern California counties for teen believed to have been abducted",
+   "chp_new": 6,
+   "top_story": "8-year-old Bakersfield boxer is already 6-0 with three titles to his name",
    "archive": "2026-09-06"
   },
   "cityhall": {
@@ -82,7 +82,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 0,
+   "wind_mph": 21,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 70,
-   "wind_mph": 0,
+   "temp": 66,
+   "wind_mph": 21,
    "alerts": 0
   },
   "roads": {
@@ -134,8 +134,8 @@
    "isabella_af": 168448,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": null,
-   "chp_week": 147
+   "aqi": 54,
+   "chp_week": 153
   },
   "letters": {
    "published": 0

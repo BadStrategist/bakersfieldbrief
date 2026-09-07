@@ -150,10 +150,25 @@ def build_alpr(ctx, sources: dict):
     newest_top = dated[:6]
     newest_full = dated[:12]
 
-    last4 = sum(e.get("new_count", 0) for e in change_log[-4:])
+    # Honest "last 4 weeks" count: derive it from each camera's OSM `mapped`
+    # edit date, not from the change log. The change log proved unreliable
+    # (a pre-Aug-30 bug advanced the snapshot every build, permanently zeroing
+    # several weekly `new_count` entries), while `mapped` is a live OSM
+    # timestamp recomputed every build — the same 28-day logic the map's
+    # "Highlight newest" ring already uses, so stat and map always agree.
+    stat_ok = bool(data.get("ok"))
+    last4 = 0
+    if stat_ok and cameras:
+        try:
+            asof_d = dt.date.fromisoformat(str(asof)[:10])
+            cutoff = (asof_d - dt.timedelta(days=28)).isoformat()
+            last4 = sum(1 for c in cameras
+                        if c.get("mapped") and c["mapped"] >= cutoff)
+        except ValueError:
+            last4 = 0
+
     newest_date = stats.get("newest_mapped", "—")
     # Honest overlay counts: on a data failure show "—" not a false "0".
-    stat_ok = bool(data.get("ok"))
     ov_total = (str(stats.get("total", 0)) if stat_ok else "—")
     ov_flock = (str(stats.get("flock", 0)) if stat_ok else "—")
     ov_last4 = (f"+{last4}" if stat_ok else "—")

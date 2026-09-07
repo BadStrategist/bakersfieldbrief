@@ -36,7 +36,7 @@ jobs:
       # Mondays even if a daily run was missed, and is the natural home for
       # moving individual source jobs to a self-hosted runner later.
       - name: Build site
-        run: python build/build_all.py
+        run: python build/build_all.py --alpr-change
 
       - name: Commit generated artifacts
         run: |

@@ -24,6 +24,8 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
+import contextlib
 from pathlib import Path
 
 from .fetch import _epoch_from_name  # noqa: E402 (block naming helper)
@@ -247,6 +249,64 @@ def _ko_checkpoint(out_jsonl: Path, blocks_done: int, total: int, push: bool = F
         print(f"    [ko-stt] checkpoint skipped: {type(e).__name__}", flush=True)
 
 
+@contextlib.contextmanager
+def _transcript_lock(path: Path, wait: float = 900.0):
+    """Advisory exclusive lock on <path>.lock, auto-released by the OS when the
+    holding process dies (no stale-lock cleanup needed). A second transcriber
+    WAITS up to `wait` (phase1/phase2/publish are legitimately sequential and
+    must not block each other), then raises if still held by a hung-but-alive
+    process. No-op where no advisory-lock API exists (tests / temp dirs).
+    Prevents two concurrent transcribers truncating the shared
+    transcripts/<date>.jsonl to 0 bytes (the 2026-09-07 corruption)."""
+    lock_file = path.with_name(path.name + ".lock")
+    fd = None
+    msvcrt = fcntl = None
+    try:
+        import msvcrt  # type: ignore  # Windows advisory file lock
+    except ImportError:
+        pass
+    try:
+        import fcntl  # type: ignore  # POSIX advisory file lock
+    except ImportError:
+        pass
+    if msvcrt is None and fcntl is None:
+        yield  # no advisory-lock API available — best effort
+        return
+    fd = os.open(str(lock_file), os.O_CREAT | os.O_RDWR, 0o644)
+    try:
+        os.write(fd, b"\x00")  # ensure >=1 byte so the lock region is valid
+        os.lseek(fd, 0, os.SEEK_SET)
+    except OSError:
+        pass
+    deadline = time.monotonic() + wait
+    while True:
+        try:
+            os.lseek(fd, 0, os.SEEK_SET)
+            if msvcrt is not None:
+                msvcrt.locking(fd, msvcrt.LK_NBLCK, 1)
+            else:
+                fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            break
+        except OSError:
+            if time.monotonic() >= deadline:
+                raise RuntimeError(
+                    f"transcript {path.name} still locked after {wait:.0f}s "
+                    f"(another transcriber hung?)")
+            time.sleep(5)
+    try:
+        yield
+    finally:
+        try:
+            os.lseek(fd, 0, os.SEEK_SET)
+            if msvcrt is not None:
+                msvcrt.locking(fd, msvcrt.LK_UNLCK, 1)
+            else:
+                fcntl.flock(fd, fcntl.LOCK_UN)
+        except Exception:
+            pass
+        os.close(fd)
+
+
 def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
                vocab_text: str, date: dt.date | None = None,
                workers: int | None = None, append: bool = False) -> int:
@@ -284,7 +344,7 @@ def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
     n_workers = (workers or WORKERS)
     parallel = n_workers > 1 and len(mp3s) > 1
     mode = "a" if append else "w"
-    with tempfile.TemporaryDirectory(prefix="ko-") as td:
+    with _transcript_lock(out_jsonl), tempfile.TemporaryDirectory(prefix="ko-") as td:
         if parallel:
             from concurrent.futures import ProcessPoolExecutor
             print(f"    [ko-stt] {n_workers} parallel workers "

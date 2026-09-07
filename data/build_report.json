@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-07T09:06:11-07:00",
+ "built_at": "2026-09-07T09:15:18-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 1,
    "top_story": "Bakersfield man held to answer on charges alleging sexual abuse of girl, 8",
    "archive": "2026-09-07"
   },

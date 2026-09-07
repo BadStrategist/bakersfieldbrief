@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-07T00:03:28-07:00",
+ "built_at": "2026-09-07T00:37:27-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
+   "chp_new": 0,
    "top_story": "Eyewitness News 'Health Alert' for September 6, 2026",
    "archive": "2026-09-07"
   },
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 17,
+   "wind_mph": 12,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 59,
-   "wind_mph": 17,
+   "temp": 55,
+   "wind_mph": 12,
    "alerts": 0
   },
   "roads": {

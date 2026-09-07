@@ -237,5 +237,16 @@
   "new_ids": [],
   "gone_ids": [],
   "new_count": 0
+ },
+ {
+  "date": "2026-09-07",
+  "total": 260,
+  "new_ids": [
+   14158180501
+  ],
+  "gone_ids": [
+   13994141201
+  ],
+  "new_count": 1
  }
 ]

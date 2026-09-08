@@ -1,0 +1,200 @@
+[
+ {
+  "type": "medical aid",
+  "time": "00:48",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "medical aid, Bakersfield (00:48)",
+  "_src": "10-4, we're holding the call for a victim of a 242, the same location, medical aid staging, it'll be Hispanic, no shirt,",
+  "_n": 1
+ },
+ {
+  "type": "fire",
+  "time": "01:08",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "fire, Bakersfield (01:08)",
+  "_src": "We have a knockdown on the fire, primary, complete, crew will remain on scene for approximately 30 minutes from up.",
+  "_n": 1
+ },
+ {
+  "type": "fire",
+  "time": "01:55",
+  "agency": "Dispatch",
+  "area": "Rodeo Avenue",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "fire, Rodeo Avenue (01:55)",
+  "_src": "Region 32, Outset Fire, Rode Avenue, Merced, Chester PD is reporting a small fire near the power lines.",
+  "_n": 1
+ },
+ {
+  "type": "fire",
+  "time": "03:25",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "fire, Bakersfield (03:25)",
+  "_src": "I'd be advised, this fire is going to continue to burn, smoke a little, to confine to an irrigation problem, we've made ",
+  "_n": 1
+ },
+ {
+  "type": "officer assist",
+  "time": "03:37",
+  "agency": "Dispatch",
+  "area": "Planz Road",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "officer assist, Planz Road (03:37)",
+  "_src": "10-4, clear to be in contact with 7-1-H, code 33, channel 1, 3-13, Plans Road.",
+  "_n": 2
+ },
+ {
+  "type": "medical aid",
+  "time": "03:58",
+  "agency": "Dispatch",
+  "area": "S Brown Street",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "medical aid, S Brown Street (03:58)",
+  "_src": "Any unit for a priority check, the welfare, 516, Brown Street, Apartment A, Adams, for a subject that's got blood on his",
+  "_n": 2
+ },
+ {
+  "type": "fire",
+  "time": "04:56",
+  "agency": "Dispatch",
+  "area": "Marriott Drive",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "fire, Marriott Drive (04:56)",
+  "_src": "Nipra, 901T, at the Marriott, 3801, Marriott Drive, vehicle versus a parked car that's now on fire.",
+  "_n": 1
+ },
+ {
+  "type": "fire",
+  "time": "04:59",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "fire, Bakersfield (04:59)",
+  "_src": "We have an additional RP believing someone's inside the vehicle that's on fire.",
+  "_n": 1
+ },
+ {
+  "type": "medical aid",
+  "time": "05:00",
+  "agency": "Hall Ambulance",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "medical aid, Bakersfield (05:00)",
+  "_src": "ECC, Battalion 6, go ahead and start an ambulance if you have any ready",
+  "_n": 1
+ },
+ {
+  "type": "medical aid",
+  "time": "21:11",
+  "agency": "Hall Ambulance",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "medical aid, Bakersfield (21:11)",
+  "_src": "Copy the notes, I dispatched, uh, ambulance was coming out of Mettler, as a BLS ambulance, and medic was coming from Bak",
+  "_n": 1
+ },
+ {
+  "type": "shooting",
+  "time": "21:16",
+  "agency": "Dispatch",
+  "area": "Morse Court",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "shooting, Morse Court (21:16)",
+  "_src": "1-4-4-4-4-4-4-4-4-4-4-4-4-4-4-4-4-4-4-4-2-5-2-2-2-2-2-9-0-8-Morse Court, Cross-House Charleston, you have Colby Patton, ",
+  "_n": 1
+ },
+ {
+  "type": "fire",
+  "time": "21:38",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "fire, Bakersfield (21:38)",
+  "_src": "Copy 2316, Brundage. Is fire also with unit?",
+  "_n": 1
+ },
+ {
+  "type": "medical aid",
+  "time": "22:11",
+  "agency": "Hall Ambulance",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "medical aid, Bakersfield (22:11)",
+  "_src": "10-4, can you inquire from OIC if you want me to respond to the office to pair up and then go about to Kern Medical or j",
+  "_n": 1
+ },
+ {
+  "type": "probation check",
+  "time": "22:33",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "probation check, Bakersfield (22:33)",
+  "_src": "One is for a probation violation.",
+  "_n": 1
+ },
+ {
+  "type": "man down",
+  "time": "22:50",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "man down, Bakersfield (22:50)",
+  "_src": "Port California at the mobile, turn a man down, no further.",
+  "_n": 1
+ },
+ {
+  "type": "medical aid",
+  "time": "23:07",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "medical aid, Bakersfield (23:07)",
+  "_src": "Copy, so is there still a response for medical?",
+  "_n": 1
+ },
+ {
+  "type": "welfare call",
+  "time": "23:07",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "welfare call, Bakersfield (23:07)",
+  "_src": "Respond for a check to welfare at Tommy's Liquor, 2501 South Chester of two black male juveniles, 11 years old.",
+  "_n": 1
+ },
+ {
+  "type": "mental health crisis",
+  "time": "23:28",
+  "agency": "Dispatch",
+  "area": "Raymond Street",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "mental health crisis, Raymond Street (23:28)",
+  "_src": "Road 4, Road 7, check the welfare at 2924 Diamond Street, it'll be with RPS friend Rudy Scott, Lizette, Kirchhen, she's ",
+  "_n": 1
+ }
+]

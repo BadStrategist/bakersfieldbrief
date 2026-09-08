@@ -1350,6 +1350,36 @@
   "details": ""
  },
  {
+  "log_id": "260907BF0185",
+  "time": "Sep  7 2026 11:50AM",
+  "type": "1125-Traffic Hazard",
+  "location": "21959 Sr46",
+  "area": "Buttonwillow",
+  "lat": 35.616103,
+  "lon": -119.659136,
+  "details": ""
+ },
+ {
+  "log_id": "260907BF0186",
+  "time": "Sep  7 2026 11:51AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr58 W / Coffee Rd Ofr",
+  "area": "Bakersfield",
+  "lat": 35.367919,
+  "lon": -119.083104,
+  "details": ""
+ },
+ {
+  "log_id": "260907BF0187",
+  "time": "Sep  7 2026 11:53AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb Sr99 Jno Pond Rd",
+  "area": "Bakersfield",
+  "lat": 35.71806,
+  "lon": -119.237134,
+  "details": ""
+ },
+ {
   "log_id": "260907BF0002",
   "time": "Sep  7 2026 12:00AM",
   "type": "TADV-Traffic Advisory",

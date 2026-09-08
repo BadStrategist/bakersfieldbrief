@@ -25,7 +25,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Tuesday, September 8th, 2026 at 12:30 AM",
+   "reported_as_of": "Tuesday, September 8th, 2026 at 06:09 AM",
    "hash": "eba63c7148"
   },
   {
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Tuesday, September 8th, 2026 at 12:30 AM",
+   "reported_as_of": "Tuesday, September 8th, 2026 at 06:09 AM",
    "hash": "5374f203ec"
   },
   {
@@ -60,12 +60,12 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "No traffic restrictions reported.",
-     "status": "OPEN"
+     "text": "Northbound traffic is reduced to 1 lane 5.6 mi north of the Jct of SR-113 (Sutter Co) - Due to a traffic collision",
+     "status": "RESTRICTIONS"
     }
    ],
-   "reported_as_of": "Tuesday, September 8th, 2026 at 12:30 AM",
-   "hash": "f97882795e"
+   "reported_as_of": "Tuesday, September 8th, 2026 at 06:09 AM",
+   "hash": "097d65eb29"
   }
  ],
  "asof": "2026-09-08"

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-08T00:30:05-07:00",
+ "built_at": "2026-09-08T06:15:35-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,11 +59,11 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 60,
+  "_digest_meta": "llm",
+  "brief_words": 174,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
    "chp_new": 0,
    "top_story": "Deadly crash during police pursuit kills pedestrian in Oildale",
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 12,
+   "wind_mph": 0,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 59,
-   "wind_mph": 12,
+   "temp": 55,
+   "wind_mph": 0,
    "alerts": 0
   },
   "roads": {
@@ -131,10 +131,10 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 167676,
+   "isabella_af": 166729,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 54,
+   "aqi": 52,
    "chp_week": 7
   },
   "letters": {

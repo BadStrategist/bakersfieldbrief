@@ -1380,6 +1380,16 @@
   "details": ""
  },
  {
+  "log_id": "260908BF0002",
+  "time": "Sep  7 2026 11:57PM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
   "log_id": "260907BF0002",
   "time": "Sep  7 2026 12:00AM",
   "type": "TADV-Traffic Advisory",
@@ -1397,6 +1407,26 @@
   "area": "Fort Tejon",
   "lat": 34.876944,
   "lon": -118.894722,
+  "details": ""
+ },
+ {
+  "log_id": "260908BF0112",
+  "time": "Sep  8 2026  9:22AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "2101 Alta Vista Dr",
+  "area": "Bakersfield",
+  "lat": 35.391288,
+  "lon": -118.994528,
+  "details": ""
+ },
+ {
+  "log_id": "260908BF0121",
+  "time": "Sep  8 2026  9:36AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "6600-7003 Coffee Rd",
+  "area": "Bakersfield",
+  "lat": 35.421293,
+  "lon": -119.092177,
   "details": ""
  }
 ]

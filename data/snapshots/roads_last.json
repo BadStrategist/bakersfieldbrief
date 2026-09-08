@@ -11,7 +11,7 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Jct of SR-126 /in Los Angeles/ to Kern Co - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "A high wind advisory is in effect from the Jct of SR-126 /in Los Angeles/ to Kern Co - Travel is not recommended for campers, trailers, or permit loads Southbound traffic is reduced to 1 lane at Encinitas Blvd /in Encinitas/ (San Diego Co) - Due to an overturned vehicle",
      "status": "RESTRICTIONS"
     },
     {
@@ -25,8 +25,8 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Tuesday, September 8th, 2026 at 06:50 AM",
-   "hash": "53adc5f835"
+   "reported_as_of": "Tuesday, September 8th, 2026 at 10:05 AM",
+   "hash": "3b547d79de"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Tuesday, September 8th, 2026 at 06:50 AM",
+   "reported_as_of": "Tuesday, September 8th, 2026 at 10:05 AM",
    "hash": "5374f203ec"
   },
   {
@@ -64,7 +64,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Tuesday, September 8th, 2026 at 06:50 AM",
+   "reported_as_of": "Tuesday, September 8th, 2026 at 10:05 AM",
    "hash": "f97882795e"
   }
  ],

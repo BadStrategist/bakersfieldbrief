@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-08T06:52:24-07:00",
+ "built_at": "2026-09-08T10:05:53-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,18 +59,18 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1568,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "Deadly crash during police pursuit kills pedestrian in Oildale",
+   "chp_new": 3,
+   "top_story": "Mexico trial begins for men charged with killing of Australian surfers and American friend",
    "archive": "2026-09-08"
   },
   "cityhall": {
-   "upcoming_meetings": 0,
+   "upcoming_meetings": 1,
    "county_items": 105,
    "drafts_generated": 0
   },
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 12,
+   "wind_mph": 9,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 55,
-   "wind_mph": 12,
+   "temp": 78,
+   "wind_mph": 9,
    "alerts": 0
   },
   "roads": {
@@ -125,7 +125,7 @@
     "Next week": 2,
     "Later": 41
    },
-   "meetings": 0
+   "meetings": 1
   },
   "feed": {
    "entries": 30
@@ -134,8 +134,8 @@
    "isabella_af": 166729,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 54,
-   "chp_week": 10
+   "aqi": 67,
+   "chp_week": 13
   },
   "letters": {
    "published": 0

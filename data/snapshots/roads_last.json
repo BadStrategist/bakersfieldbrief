@@ -6,13 +6,13 @@
    "slug": "i5",
    "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
    "pass": true,
-   "status": "OPEN",
+   "status": "RESTRICTIONS",
    "pass_status": "OPEN",
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "No traffic restrictions reported.",
-     "status": "OPEN"
+     "text": "A high wind advisory is in effect from the Jct of SR-126 /in Los Angeles/ to Kern Co - Travel is not recommended for campers, trailers, or permit loads",
+     "status": "RESTRICTIONS"
     },
     {
      "region": "CENTRAL CALIFORNIA",
@@ -25,8 +25,8 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Tuesday, September 8th, 2026 at 06:09 AM",
-   "hash": "eba63c7148"
+   "reported_as_of": "Tuesday, September 8th, 2026 at 06:50 AM",
+   "hash": "53adc5f835"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Tuesday, September 8th, 2026 at 06:09 AM",
+   "reported_as_of": "Tuesday, September 8th, 2026 at 06:50 AM",
    "hash": "5374f203ec"
   },
   {
@@ -60,12 +60,12 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "Northbound traffic is reduced to 1 lane 5.6 mi north of the Jct of SR-113 (Sutter Co) - Due to a traffic collision",
-     "status": "RESTRICTIONS"
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
     }
    ],
-   "reported_as_of": "Tuesday, September 8th, 2026 at 06:09 AM",
-   "hash": "097d65eb29"
+   "reported_as_of": "Tuesday, September 8th, 2026 at 06:50 AM",
+   "hash": "f97882795e"
   }
  ],
  "asof": "2026-09-08"

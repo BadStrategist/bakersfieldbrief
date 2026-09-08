@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-08T10:41:13-07:00",
+ "built_at": "2026-09-08T11:10:45-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,8 +65,8 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "Mexico trial begins for men charged with killing of Australian surfers and American friend",
+   "chp_new": 0,
+   "top_story": "Driver flees scene on foot after hitting, killing man on Fairfax Rd: CHP",
    "archive": "2026-09-08"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 33,
+   "wind_mph": 37,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 82,
-   "wind_mph": 33,
+   "temp": 81,
+   "wind_mph": 37,
    "alerts": 0
   },
   "roads": {

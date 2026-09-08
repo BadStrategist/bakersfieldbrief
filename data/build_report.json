@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-08T10:12:46-07:00",
+ "built_at": "2026-09-08T10:41:13-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
+   "chp_new": 1,
    "top_story": "Mexico trial begins for men charged with killing of Australian surfers and American friend",
    "archive": "2026-09-08"
   },
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 13,
+   "wind_mph": 33,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 78,
-   "wind_mph": 13,
+   "temp": 82,
+   "wind_mph": 33,
    "alerts": 0
   },
   "roads": {
@@ -134,7 +134,7 @@
    "isabella_af": 166729,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 67,
+   "aqi": 65,
    "chp_week": 13
   },
   "letters": {

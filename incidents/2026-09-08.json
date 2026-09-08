@@ -1,200 +1,83 @@
 [
- {
-  "type": "medical aid",
-  "time": "00:48",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "medical aid, Bakersfield (00:48)",
-  "_src": "10-4, we're holding the call for a victim of a 242, the same location, medical aid staging, it'll be Hispanic, no shirt,",
-  "_n": 1
- },
- {
-  "type": "fire",
-  "time": "01:08",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "fire, Bakersfield (01:08)",
-  "_src": "We have a knockdown on the fire, primary, complete, crew will remain on scene for approximately 30 minutes from up.",
-  "_n": 1
- },
- {
-  "type": "fire",
-  "time": "01:55",
-  "agency": "Dispatch",
-  "area": "Rodeo Avenue",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "fire, Rodeo Avenue (01:55)",
-  "_src": "Region 32, Outset Fire, Rode Avenue, Merced, Chester PD is reporting a small fire near the power lines.",
-  "_n": 1
- },
- {
-  "type": "fire",
-  "time": "03:25",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "fire, Bakersfield (03:25)",
-  "_src": "I'd be advised, this fire is going to continue to burn, smoke a little, to confine to an irrigation problem, we've made ",
-  "_n": 1
- },
- {
-  "type": "officer assist",
-  "time": "03:37",
-  "agency": "Dispatch",
-  "area": "Planz Road",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "officer assist, Planz Road (03:37)",
-  "_src": "10-4, clear to be in contact with 7-1-H, code 33, channel 1, 3-13, Plans Road.",
-  "_n": 2
- },
- {
-  "type": "medical aid",
-  "time": "03:58",
-  "agency": "Dispatch",
-  "area": "S Brown Street",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "medical aid, S Brown Street (03:58)",
-  "_src": "Any unit for a priority check, the welfare, 516, Brown Street, Apartment A, Adams, for a subject that's got blood on his",
-  "_n": 2
- },
- {
-  "type": "fire",
-  "time": "04:56",
-  "agency": "Dispatch",
-  "area": "Marriott Drive",
-  "notability": 2,
-  "disposition": "active",
-  "summary": "fire, Marriott Drive (04:56)",
-  "_src": "Nipra, 901T, at the Marriott, 3801, Marriott Drive, vehicle versus a parked car that's now on fire.",
-  "_n": 1
- },
- {
-  "type": "fire",
-  "time": "04:59",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 2,
-  "disposition": "active",
-  "summary": "fire, Bakersfield (04:59)",
-  "_src": "We have an additional RP believing someone's inside the vehicle that's on fire.",
-  "_n": 1
- },
- {
-  "type": "medical aid",
-  "time": "05:00",
-  "agency": "Hall Ambulance",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "medical aid, Bakersfield (05:00)",
-  "_src": "ECC, Battalion 6, go ahead and start an ambulance if you have any ready",
-  "_n": 1
- },
- {
-  "type": "medical aid",
-  "time": "21:11",
-  "agency": "Hall Ambulance",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "medical aid, Bakersfield (21:11)",
-  "_src": "Copy the notes, I dispatched, uh, ambulance was coming out of Mettler, as a BLS ambulance, and medic was coming from Bak",
-  "_n": 1
- },
- {
-  "type": "shooting",
-  "time": "21:16",
-  "agency": "Dispatch",
-  "area": "Morse Court",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "shooting, Morse Court (21:16)",
-  "_src": "1-4-4-4-4-4-4-4-4-4-4-4-4-4-4-4-4-4-4-4-2-5-2-2-2-2-2-9-0-8-Morse Court, Cross-House Charleston, you have Colby Patton, ",
-  "_n": 1
- },
- {
-  "type": "fire",
-  "time": "21:38",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "fire, Bakersfield (21:38)",
-  "_src": "Copy 2316, Brundage. Is fire also with unit?",
-  "_n": 1
- },
- {
-  "type": "medical aid",
-  "time": "22:11",
-  "agency": "Hall Ambulance",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "medical aid, Bakersfield (22:11)",
-  "_src": "10-4, can you inquire from OIC if you want me to respond to the office to pair up and then go about to Kern Medical or j",
-  "_n": 1
- },
- {
-  "type": "probation check",
-  "time": "22:33",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "probation check, Bakersfield (22:33)",
-  "_src": "One is for a probation violation.",
-  "_n": 1
- },
- {
-  "type": "man down",
-  "time": "22:50",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "man down, Bakersfield (22:50)",
-  "_src": "Port California at the mobile, turn a man down, no further.",
-  "_n": 1
- },
- {
-  "type": "medical aid",
-  "time": "23:07",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "medical aid, Bakersfield (23:07)",
-  "_src": "Copy, so is there still a response for medical?",
-  "_n": 1
- },
- {
-  "type": "welfare call",
-  "time": "23:07",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "welfare call, Bakersfield (23:07)",
-  "_src": "Respond for a check to welfare at Tommy's Liquor, 2501 South Chester of two black male juveniles, 11 years old.",
-  "_n": 1
- },
- {
-  "type": "mental health crisis",
-  "time": "23:28",
-  "agency": "Dispatch",
-  "area": "Raymond Street",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "mental health crisis, Raymond Street (23:28)",
-  "_src": "Road 4, Road 7, check the welfare at 2924 Diamond Street, it'll be with RPS friend Rudy Scott, Lizette, Kirchhen, she's ",
-  "_n": 1
- }
+  {
+    "type": "structure_fire",
+    "time": "00:55",
+    "agency": "Bakersfield Fire Department",
+    "area": "Mount Vernon Avenue near Niles Street, east Bakersfield",
+    "notability": 4,
+    "disposition": "knocked down; primary search complete; crews remained on scene",
+    "summary": "A passerby reported smoke coming from a building near Mount Vernon Avenue and Niles Street shortly before 1 a.m., drawing a heavy response of multiple engines, two trucks and battalion chiefs to the area of a nearby discount store. Crews had the fire knocked down within about 15 minutes and completed a primary search, then stayed on scene for roughly half an hour. No injuries were reported."
+  },
+  {
+    "type": "vehicle_fire_possible_occupant",
+    "time": "04:56",
+    "agency": "Bakersfield Fire Department",
+    "area": "hotel parking lot on Marriott Drive, Bakersfield",
+    "notability": 4,
+    "disposition": "crews on scene; ambulance requested; possible occupant not confirmed",
+    "summary": "A vehicle struck a parked car that caught fire in a hotel parking lot on Marriott Drive just before 5 a.m. A second caller believed someone might still be inside the burning vehicle, prompting fire crews and an ambulance to respond to the scene."
+  },
+  {
+    "type": "grass_fire",
+    "time": "03:25",
+    "agency": "Kern County Fire Department",
+    "area": "Hageman Road area, northeast Kern County",
+    "notability": 3,
+    "disposition": "burning with light smoke; landowner notified; no immediate threat; crews to return in the morning",
+    "summary": "A grass fire in the Hageman Road area burned through the night with light smoke, but crews said it was contained to an irrigation area with no immediate threat. Firefighters made contact with the landowner and planned to return in the morning with equipment to finish putting it out."
+  },
+  {
+    "type": "domestic_in_progress",
+    "time": "23:43",
+    "agency": "Kern County Sheriff's Office",
+    "area": "Paramount Colony area",
+    "notability": 3,
+    "disposition": "reported in progress; units responding",
+    "summary": "A domestic disturbance was reported in progress in the Paramount Colony area late Monday, with a caller saying a driver in a dark sedan holding a toddler had left an In-N-Out parking lot. The vehicle's direction was not known as deputies responded."
+  },
+  {
+    "type": "domestic_possible_in_progress",
+    "time": "04:45",
+    "agency": "Bakersfield Police Department",
+    "area": "White Lane, southeast Bakersfield",
+    "notability": 3,
+    "disposition": "officers responding; open line with the reporting party",
+    "summary": "Officers were sent to an apartment complex on White Lane before dawn after a neighbor heard a woman screaming and a man shouting. An open phone line with a woman who was crying led dispatchers to treat it as a possible domestic incident in progress."
+  },
+  {
+    "type": "assault_medical_staging",
+    "time": "00:48",
+    "agency": "Bakersfield Police Department",
+    "area": "near 2nd Street, Bakersfield",
+    "notability": 2,
+    "disposition": "victim staged for medical aid; units responding",
+    "summary": "A caller flagged officers down near 2nd Street after an apparent assault, and responders held the call at the same location to stage medical aid for the victim."
+  },
+  {
+    "type": "medical_aid_welfare",
+    "time": "03:58",
+    "agency": "Bakersfield Police Department",
+    "area": "Brown Street, Bakersfield",
+    "notability": 2,
+    "disposition": "medical aid; officers staging before contact",
+    "summary": "Officers and medics were sent to a home on Brown Street for a man reported to have blood on his clothing and to be off his medications. Units staged before making contact."
+  },
+  {
+    "type": "welfare_check",
+    "time": "02:00",
+    "agency": "Kern County Sheriff's Office",
+    "area": "Gosford Road, Bakersfield",
+    "notability": 2,
+    "disposition": "welfare check; units dispatched",
+    "summary": "Deputies were asked to check on a man and a woman reported sleeping in the canal area along Gosford Road in the early hours."
+  },
+  {
+    "type": "stranded_motorist",
+    "time": "04:10",
+    "agency": "California Highway Patrol",
+    "area": "Interstate 5 north of Quebec Avenue, Kern County",
+    "notability": 2,
+    "disposition": "motorist helped off the freeway",
+    "summary": "A driver who said she had been broken down on the right shoulder of Interstate 5 north of Quebec Avenue since the previous day asked for help getting off the freeway to use a restroom."
+  }
 ]

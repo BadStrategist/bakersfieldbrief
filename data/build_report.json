@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-08T18:50:25-07:00",
+ "built_at": "2026-09-09T00:09:01-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,17 +60,17 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1568,
+  "brief_words": 66,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Nearly $7 million investment to boost aerospace and defense growth in Eastern Kern County",
-   "archive": "2026-09-08"
+   "top_story": "Man killed on his 22nd birthday after fleeing car strikes him during Bakersfield police pursuit",
+   "archive": "2026-09-09"
   },
   "cityhall": {
-   "upcoming_meetings": 1,
+   "upcoming_meetings": 3,
    "county_items": 105,
    "drafts_generated": 0
   },
@@ -82,7 +82,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -93,7 +93,7 @@
   },
   "guide": {
    "picked": 4,
-   "draft": "drafts/weekend-guide-2026-09-08"
+   "draft": "drafts/weekend-guide-2026-09-09"
   },
   "grapevine": {
    "i5": "RESTRICTIONS",
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 29,
+   "wind_mph": 0,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 77,
-   "wind_mph": 29,
+   "temp": 64,
+   "wind_mph": 0,
    "alerts": 0
   },
   "roads": {
@@ -125,7 +125,7 @@
     "Next week": 2,
     "Later": 41
    },
-   "meetings": 1
+   "meetings": 3
   },
   "feed": {
    "entries": 30
@@ -134,7 +134,7 @@
    "isabella_af": 166729,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 67,
+   "aqi": 70,
    "chp_week": 13
   },
   "letters": {

@@ -1,0 +1,35 @@
+[
+ {
+  "type": "medical aid",
+  "time": "21:25",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "medical aid, Bakersfield (21:25)",
+  "_src": "We're code 4 on stop, appears it's a medical emergency, unknown situation, so family member needing medical aid inside t",
+  "_n": 1
+ },
+ {
+  "type": "officer assist",
+  "time": "21:28",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "officer assist, Bakersfield (21:28)",
+  "_src": "1-1-9-4-3-4-2, zone units at 4-30-good, my code 33",
+  "_n": 1
+ },
+ {
+  "type": "fire",
+  "time": "22:18",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "fire, Bakersfield (22:18)",
+  "_src": "The RPMIC still has a visual of the fire.",
+  "_n": 1
+ }
+]

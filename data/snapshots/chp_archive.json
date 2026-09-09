@@ -1240,6 +1240,16 @@
   "details": ""
  },
  {
+  "log_id": "260909BF0105",
+  "time": "Sep  9 2026 10:20AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "SB I5 JNO SR119",
+  "area": "Buttonwillow",
+  "lat": 35.270833,
+  "lon": -119.228611,
+  "details": ""
+ },
+ {
   "log_id": "260909BF0007",
   "time": "Sep  9 2026 12:31AM",
   "type": "TADV-Traffic Advisory",

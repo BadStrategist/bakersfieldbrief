@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-09T10:06:38-07:00",
+ "built_at": "2026-09-09T10:27:15-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 1,
    "top_story": "Andrew Garfield redefines heroes with \u2018The Uprising\u2019",
    "archive": "2026-09-09"
   },
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 79,
+   "temp": 81,
    "wind_mph": 0,
    "alerts": 0
   },
@@ -135,8 +135,8 @@
    "isabella_af": 165962,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 82,
-   "chp_week": 15
+   "aqi": 93,
+   "chp_week": 16
   },
   "letters": {
    "published": 0

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-09T00:37:52-07:00",
+ "built_at": "2026-09-09T06:16:17-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,14 +59,14 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 66,
+  "_digest_meta": "llm",
+  "brief_words": 1246,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Man killed on his 22nd birthday after fleeing car strikes him during Bakersfield police pursuit",
+   "top_story": "Community presses KHSD on school safety after deadly Independence High shooting",
    "archive": "2026-09-09"
   },
   "cityhall": {
@@ -85,7 +85,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 12,
+    "bakersfield-nw": 10,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 1,
+   "wind_mph": 13,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 68,
-   "wind_mph": 1,
+   "temp": 63,
+   "wind_mph": 13,
    "alerts": 0
   },
   "roads": {
@@ -131,10 +131,10 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 166729,
+   "isabella_af": 165962,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 69,
+   "aqi": 62,
    "chp_week": 13
   },
   "letters": {

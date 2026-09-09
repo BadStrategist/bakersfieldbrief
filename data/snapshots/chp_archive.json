@@ -1,205 +1,5 @@
 [
  {
-  "log_id": "260901BF0218",
-  "time": "Sep  1 2026  2:05PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Niles St / Mount Vernon Ave",
-  "area": "Bakersfield",
-  "lat": 35.376272,
-  "lon": -118.967404,
-  "details": ""
- },
- {
-  "log_id": "260901BF0230",
-  "time": "Sep  1 2026  2:22PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Nb Sr99 Jno Sr58 E",
-  "area": "BF",
-  "lat": 35.353333,
-  "lon": -119.039167,
-  "details": ""
- },
- {
-  "log_id": "260901BF0016",
-  "time": "Sep  1 2026  2:24AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260901BF0241",
-  "time": "Sep  1 2026  2:43PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Mccutchen Rd / Mountain Ridge Dr",
-  "area": "BF",
-  "lat": 35.281423,
-  "lon": -119.065509,
-  "details": ""
- },
- {
-  "log_id": "260901BF0032",
-  "time": "Sep  1 2026  5:31AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "9700-11299 Di Giorgio Rd",
-  "area": "Bakersfield",
-  "lat": 35.252485,
-  "lon": -118.895608,
-  "details": ""
- },
- {
-  "log_id": "260901BF0362",
-  "time": "Sep  1 2026  5:55PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "0 Fairfax Rd Onr",
-  "area": "Bakersfield",
-  "lat": 35.397069,
-  "lon": -118.930211,
-  "details": ""
- },
- {
-  "log_id": "260901BF0371",
-  "time": "Sep  1 2026  6:19PM",
-  "type": "CFIRE-Car Fire",
-  "location": "Nb I5 Jno Sr138",
-  "area": "Fort Tejon",
-  "lat": 34.771389,
-  "lon": -118.803611,
-  "details": ""
- },
- {
-  "log_id": "260901BF0376",
-  "time": "Sep  1 2026  6:26PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr178 / Borel Rd",
-  "area": "Bakersfield",
-  "lat": 35.590869,
-  "lon": -118.522597,
-  "details": ""
- },
- {
-  "log_id": "260901BF0049",
-  "time": "Sep  1 2026  6:29AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "SB I5 JNO Lebec Rd",
-  "area": "Fort Tejon",
-  "lat": 34.836944,
-  "lon": -118.863056,
-  "details": ""
- },
- {
-  "log_id": "260901BF0047",
-  "time": "Sep  1 2026  6:29AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Nb Sr99 Jso Olive Dr",
-  "area": "Bakersfield",
-  "lat": 35.411944,
-  "lon": -119.054444,
-  "details": ""
- },
- {
-  "log_id": "260901BF0051",
-  "time": "Sep  1 2026  6:31AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "14259 Rowland Ave",
-  "area": "Bakersfield",
-  "lat": 35.365346,
-  "lon": -119.160561,
-  "details": ""
- },
- {
-  "log_id": "260901BF0399",
-  "time": "Sep  1 2026  7:29PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Allen Rd / Sr58 E",
-  "area": "Bakersfield",
-  "lat": 35.360945,
-  "lon": -119.145544,
-  "details": ""
- },
- {
-  "log_id": "260901BF0410",
-  "time": "Sep  1 2026  7:49PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Sr58 E / Sr99 N",
-  "area": "Bakersfield",
-  "lat": 35.352548,
-  "lon": -119.039398,
-  "details": ""
- },
- {
-  "log_id": "260901BF0417",
-  "time": "Sep  1 2026  8:00PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Nb I5 Jso Lerdo Hwy",
-  "area": "Buttonwillow",
-  "lat": 35.497165,
-  "lon": -119.531506,
-  "details": ""
- },
- {
-  "log_id": "260901BF0443",
-  "time": "Sep  1 2026  8:54PM",
-  "type": "CZP-Assist with Construction",
-  "location": "1033 Lebec Rd",
-  "area": "Fort Tejon",
-  "lat": 34.825534,
-  "lon": -118.87775,
-  "details": ""
- },
- {
-  "log_id": "260901BF0117",
-  "time": "Sep  1 2026 10:08AM",
-  "type": "1125-Traffic Hazard",
-  "location": "I5 S / Frazier Mountain Park Rd Ofr",
-  "area": "Fort Tejon",
-  "lat": 34.82011,
-  "lon": -118.87949,
-  "details": ""
- },
- {
-  "log_id": "260901BF0121",
-  "time": "Sep  1 2026 10:13AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "12213 Edison Hwy",
-  "area": "Bakersfield",
-  "lat": 35.34661,
-  "lon": -118.868238,
-  "details": ""
- },
- {
-  "log_id": "260901BF0131",
-  "time": "Sep  1 2026 10:41AM",
-  "type": "1125-Traffic Hazard",
-  "location": "115 Warren Ave",
-  "area": "Bakersfield",
-  "lat": 35.412288,
-  "lon": -119.022385,
-  "details": ""
- },
- {
-  "log_id": "260901BF0167",
-  "time": "Sep  1 2026 12:09PM",
-  "type": "1125-Traffic Hazard",
-  "location": "N Chester Ave / China Grade Loop",
-  "area": "Bakersfield",
-  "lat": 35.426662,
-  "lon": -119.021158,
-  "details": ""
- },
- {
-  "log_id": "260901BF0172",
-  "time": "Sep  1 2026 12:13PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Old Farm Rd / Rosedale Hwy",
-  "area": "Bakersfield",
-  "lat": 35.383473,
-  "lon": -119.136712,
-  "details": ""
- },
- {
   "log_id": "260902BF0014",
   "time": "Sep  2 2026  1:22AM",
   "type": "TADV-Traffic Advisory",
@@ -1427,6 +1227,26 @@
   "area": "Bakersfield",
   "lat": 35.421293,
   "lon": -119.092177,
+  "details": ""
+ },
+ {
+  "log_id": "260909BF0090",
+  "time": "Sep  9 2026  9:36AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jno Gorman School Rd",
+  "area": "Fort Tejon",
+  "lat": 34.795674,
+  "lon": -118.858202,
+  "details": ""
+ },
+ {
+  "log_id": "260909BF0007",
+  "time": "Sep  9 2026 12:31AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
   "details": ""
  }
 ]

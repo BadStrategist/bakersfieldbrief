@@ -1,35 +1,52 @@
 [
  {
-  "type": "medical aid",
-  "time": "21:25",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
+  "type": "traffic collision",
+  "time": "21:24",
+  "agency": "CHP",
+  "area": "State Route 58 near MLK Boulevard, eastbound",
   "notability": 2,
   "disposition": "cleared",
-  "summary": "medical aid, Bakersfield (21:25)",
-  "_src": "We're code 4 on stop, appears it's a medical emergency, unknown situation, so family member needing medical aid inside t",
-  "_n": 1
+  "summary": "Traffic stop on SR-58 turned into a medical emergency; a family member in the stopped vehicle needed medical aid. Units cleared the scene.",
+  "_src": "code 4 on stop, appears it's a medical emergency, family member needing medical aid inside the vehicle"
  },
  {
-  "type": "officer assist",
-  "time": "21:28",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
+  "type": "person with knife",
+  "time": "21:26",
+  "agency": "Bakersfield PD",
+  "area": "Goodman Street",
+  "notability": 3,
   "disposition": "active",
-  "summary": "officer assist, Bakersfield (21:28)",
-  "_src": "1-1-9-4-3-4-2, zone units at 4-30-good, my code 33",
-  "_n": 1
+  "summary": "Officers responded to a report of a person armed with a knife; an arrest was initiated on the Goodman Street block.",
+  "_src": "For a 417 with a knife and claw arrest King 3 start, I'll leave 430 Goodman Street"
  },
  {
   "type": "fire",
   "time": "22:18",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
+  "agency": "Kern County Fire",
+  "area": "Gephardt Road area",
+  "notability": 3,
   "disposition": "active",
-  "summary": "fire, Bakersfield (22:18)",
-  "_src": "The RPMIC still has a visual of the fire.",
-  "_n": 1
+  "summary": "Crews responded to a fire off Gephardt Road, accessed by a dirt road past abandoned structures; command kept a visual on the flames.",
+  "_src": "The RPMIC still has a visual of the fire. He said to continue to go down Gephardt then go left on one of their dirt roads and it's past the abandoned buildings."
+ },
+ {
+  "type": "fire",
+  "time": "22:20",
+  "agency": "Kern County Fire",
+  "area": "District Boulevard near Dreyer's Ice Cream",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Fire reported next to Dreyer's Ice Cream on District Boulevard; crews responded to the 7300 block.",
+  "_src": "Fire, next to Dreyer's Ice Cream, 7-3-0-1, District Boulevard"
+ },
+ {
+  "type": "welfare check",
+  "time": "21:54",
+  "agency": "Dispatch / Regional Center",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "Welfare check involving a Regional Center client who expressed suicidal thoughts but had no access to medication; units cleared the call.",
+  "_src": "The RP was with the Regional Center advising about her client ... would want to order medications to be able to commit suicide, however, doesn't have any access to medication at this time. We're 1032 on that."
  }
 ]

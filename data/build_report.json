@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-08T16:03:45-07:00",
+ "built_at": "2026-09-08T18:50:25-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -64,9 +64,9 @@
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
-   "alerts": 1,
+   "alerts": 0,
    "chp_new": 0,
-   "top_story": "Man charged with 4 felonies in connection to Ridgecrest baby's injuries",
+   "top_story": "Nearly $7 million investment to boost aerospace and defense growth in Eastern Kern County",
    "archive": "2026-09-08"
   },
   "cityhall": {
@@ -82,7 +82,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 50,
+   "wind_mph": 29,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 82,
-   "wind_mph": 50,
+   "temp": 77,
+   "wind_mph": 29,
    "alerts": 0
   },
   "roads": {
@@ -134,7 +134,7 @@
    "isabella_af": 166729,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 93,
+   "aqi": 67,
    "chp_week": 13
   },
   "letters": {
@@ -173,8 +173,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 261,
-   "alpr_new_week": 1,
+   "alpr_total": 262,
+   "alpr_new_week": 2,
    "pages": [
     "surveillance",
     "fires",

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-09T06:16:17-07:00",
+ "built_at": "2026-09-09T07:14:28-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -85,7 +85,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 10,
+    "bakersfield-nw": 11,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 13,
+   "wind_mph": 0,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 63,
-   "wind_mph": 13,
+   "temp": 57,
+   "wind_mph": 0,
    "alerts": 0
   },
   "roads": {
@@ -134,17 +134,17 @@
    "isabella_af": 165962,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 62,
+   "aqi": 65,
    "chp_week": 13
   },
   "letters": {
    "published": 0
   },
   "overnight": {
-   "published": 30
+   "published": 31
   },
   "map": {
-   "dots": 30
+   "dots": 25
   },
   "sunday_read": {
    "topic": "Public safety",

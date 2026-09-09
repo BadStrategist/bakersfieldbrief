@@ -6,7 +6,7 @@
   "area": "State Route 58 near MLK Boulevard, eastbound",
   "notability": 2,
   "disposition": "cleared",
-  "summary": "Traffic stop on SR-58 turned into a medical emergency; a family member in the stopped vehicle needed medical aid. Units cleared the scene.",
+  "summary": "A traffic stop on SR-58 turned into a medical emergency when a family member in the stopped vehicle needed medical aid. Units cleared the scene.",
   "_src": "code 4 on stop, appears it's a medical emergency, family member needing medical aid inside the vehicle"
  },
  {
@@ -15,8 +15,8 @@
   "agency": "Bakersfield PD",
   "area": "Goodman Street",
   "notability": 3,
-  "disposition": "active",
-  "summary": "Officers responded to a report of a person armed with a knife; an arrest was initiated on the Goodman Street block.",
+  "disposition": "arrest initiated",
+  "summary": "Officers responded to a report of a person armed with a knife and moved to make an arrest on the Goodman Street block.",
   "_src": "For a 417 with a knife and claw arrest King 3 start, I'll leave 430 Goodman Street"
  },
  {
@@ -25,8 +25,8 @@
   "agency": "Kern County Fire",
   "area": "Gephardt Road area",
   "notability": 3,
-  "disposition": "active",
-  "summary": "Crews responded to a fire off Gephardt Road, accessed by a dirt road past abandoned structures; command kept a visual on the flames.",
+  "disposition": "crews on scene; visual maintained",
+  "summary": "Crews responded to a fire off Gephardt Road, reached by a dirt road past abandoned structures. Command kept a visual on the flames while crews worked their way in.",
   "_src": "The RPMIC still has a visual of the fire. He said to continue to go down Gephardt then go left on one of their dirt roads and it's past the abandoned buildings."
  },
  {
@@ -35,8 +35,8 @@
   "agency": "Kern County Fire",
   "area": "District Boulevard near Dreyer's Ice Cream",
   "notability": 3,
-  "disposition": "active",
-  "summary": "Fire reported next to Dreyer's Ice Cream on District Boulevard; crews responded to the 7300 block.",
+  "disposition": "crews responding",
+  "summary": "A fire was reported next to Dreyer's Ice Cream in the 7300 block of District Boulevard, drawing a county fire response.",
   "_src": "Fire, next to Dreyer's Ice Cream, 7-3-0-1, District Boulevard"
  },
  {
@@ -46,7 +46,107 @@
   "area": "Bakersfield",
   "notability": 2,
   "disposition": "cleared",
-  "summary": "Welfare check involving a Regional Center client who expressed suicidal thoughts but had no access to medication; units cleared the call.",
+  "summary": "Dispatchers handled a welfare check involving a Regional Center client who expressed suicidal thoughts but had no access to medication. Units cleared the call.",
   "_src": "The RP was with the Regional Center advising about her client ... would want to order medications to be able to commit suicide, however, doesn't have any access to medication at this time. We're 1032 on that."
+ },
+ {
+  "type": "vehicle into wall",
+  "time": "00:13",
+  "agency": "Bakersfield Fire / BPD",
+  "area": "5500 block of Silver Crossing Street, south Bakersfield",
+  "notability": 3,
+  "disposition": "both occupants out of the vehicle; crews on scene",
+  "summary": "A vehicle crashed into a wall in the 5500 block of Silver Crossing Street just after midnight, drawing a full fire assignment alongside Bakersfield police. Both occupants were out of the vehicle when crews arrived.",
+  "_src": "Rescue response, station 14's area, engine 14, engine 9, truck 15, battalion 2, 5500 Silver Crossing Street for a vehicle into a wall, BPD en route"
+ },
+ {
+  "type": "assault",
+  "time": "00:49",
+  "agency": "Bakersfield PD",
+  "area": "North Chester Avenue near Washington Avenue, southwest Bakersfield",
+  "notability": 3,
+  "disposition": "response ongoing; suspects sought",
+  "summary": "Officers responded to an alley off North Chester Avenue near Washington Avenue after a report that two men were beating a victim on the ground, one of them holding an unknown object.",
+  "_src": "The second subject was in possession of an unknown object hitting the victim while on the ground at Northchester, Washington."
+ },
+ {
+  "type": "medical aid",
+  "time": "00:38",
+  "agency": "Kern County Fire",
+  "area": "Brentwood Drive, Bakersfield",
+  "notability": 2,
+  "disposition": "medical response",
+  "summary": "Firefighters were sent to Brentwood Drive for a medical aid call involving a person reported possibly unconscious.",
+  "_src": "Medical Aid, 9-0-8, Frontwood Drive, very possibly unconscious patients"
+ },
+ {
+  "type": "homicide-related check",
+  "time": "00:58",
+  "agency": "Bakersfield PD",
+  "area": "East 19th Street at Baker Street, east Bakersfield",
+  "notability": 2,
+  "disposition": "unit checking area",
+  "summary": "An officer on a bicycle flagged an area near East 19th and Baker streets as potentially connected to a homicide investigation, and units moved in to check the scene.",
+  "_src": "Metro 6, Prior 2, Show Me Code 6 on a Bicycle, East 19th and Baker, possibly related to the 10-187"
+ },
+ {
+  "type": "disabled vehicle",
+  "time": "01:06",
+  "agency": "CHP",
+  "area": "northbound Interstate 5 near Grapevine",
+  "notability": 2,
+  "disposition": "tow arranged",
+  "summary": "A box truck carrying about 20,000 pounds of freight was stopped in the slow lane northbound on Interstate 5 south of Grapevine Road with mechanical issues, and a tow was arranged.",
+  "_src": "vehicle is going to be northbound 5 south of Bajamont Park Group for a white semi with a box trailer under mechanical issues"
+ },
+ {
+  "type": "disturbance",
+  "time": "03:05",
+  "agency": "Bakersfield PD",
+  "area": "Beardsley Avenue, east Bakersfield",
+  "notability": 2,
+  "disposition": "response",
+  "summary": "Officers responded to Beardsley Avenue after a dispute in which one person was reportedly attempting to take another's vehicle.",
+  "_src": "811 Beardsley Avenue, it's either space 7 or space 30 ... Boyfriend's attempting to take the RP's vehicle"
+ },
+ {
+  "type": "water rescue / medical",
+  "time": "03:22",
+  "agency": "Kern County Fire",
+  "area": "Miracle Hot Springs area, east Kern County",
+  "notability": 3,
+  "disposition": "medical response; squad sent",
+  "summary": "A medical aid call sent crews to the hot springs east of Bakersfield after a person went down while diving, prompting a squad response to the area.",
+  "_src": "Engine 72 to assist, Nash, Watt 72, medical aid, Hermitian Hot Springs at the hot tub, for a patient that is out on a rock while diving"
+ },
+ {
+  "type": "overdose",
+  "time": "03:52",
+  "agency": "Bakersfield Fire / BPD",
+  "area": "Denny's on Buck Owens Boulevard",
+  "notability": 4,
+  "disposition": "CPR started; emergency response",
+  "summary": "Fire and police units responded to a Denny's on Buck Owens Boulevard after a person was reported not breathing in an apparent fentanyl overdose. The caller was transferred to fire crews for CPR instructions, and an ambulance was called to the scene.",
+  "_src": "overdose at Denny's 2627 Buck Owens ... overdosing on fentanyl, not breathing. Caller was transferred to fire for CPR instructions, advising no NARCAN available."
+ },
+ {
+  "type": "burglary in progress",
+  "time": "04:27",
+  "agency": "Kern County Sheriff's Office",
+  "area": "White Lane, southwest Bakersfield",
+  "notability": 3,
+  "disposition": "suspects sought; K9 unavailable",
+  "summary": "Deputies responded to a White Lane home after a caller reported a person entering through the roof. A second subject in a ski mask was also described, and crews requested a ladder while a K9 was sought, though one was not available.",
+  "_src": "2501 White Lane, DG requesting assistance with the ladder ... black or Hispanic male, black ski mask"
+ },
+ {
+  "type": "disturbance",
+  "time": "05:26",
+  "agency": "Bakersfield PD",
+  "area": "Buena Vista Boulevard, Bakersfield",
+  "notability": 2,
+  "disposition": "suspect detained",
+  "summary": "Officers responded to Buena Vista Boulevard after a report of a man under the influence knocking on doors and walking near nearby residences; a suspect was detained.",
+  "_src": "415, 8419, Buena Vista Boulevard ... under the influence of methamphetamine ... was knocking on the door"
  }
 ]

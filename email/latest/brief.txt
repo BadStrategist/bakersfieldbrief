@@ -9,7 +9,7 @@ Weather: 84° / 100°
 Alerts: No active alerts
 Isabella: 166,729 AF (29.4% cap)
 CHP: None overnight
-Air: AQI 70 · Moderate
+Air: AQI 69 · Moderate
 Fires: 0 active in Kern
 
 THE NEWS

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-09T10:27:15-07:00",
+ "built_at": "2026-09-09T10:50:17-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,18 +59,18 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
+  "_digest_meta": "llm",
   "brief_words": 1246,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "Andrew Garfield redefines heroes with \u2018The Uprising\u2019",
+   "chp_new": 0,
+   "top_story": "Lawsuit accuses civil rights icon Cesar Chavez of sexual assault, claims union covered it up",
    "archive": "2026-09-09"
   },
   "cityhall": {
-   "upcoming_meetings": 3,
+   "upcoming_meetings": 4,
    "county_items": 105,
    "drafts_generated": 0
   },
@@ -96,7 +96,7 @@
    "draft": "drafts/weekend-guide-2026-09-09"
   },
   "grapevine": {
-   "i5": "RESTRICTIONS",
+   "i5": "CLOSED",
    "i5_pass": "OPEN",
    "log_entries": 60
   },
@@ -107,13 +107,13 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 81,
+   "temp": 82,
    "wind_mph": 0,
    "alerts": 0
   },
   "roads": {
    "routes": [
-    "i5:RESTRICTIONS",
+    "i5:CLOSED",
     "sr58:OPEN",
     "sr99:RESTRICTIONS"
    ],
@@ -126,7 +126,7 @@
     "Later": 41,
     "Date TBD": 1
    },
-   "meetings": 3
+   "meetings": 4
   },
   "feed": {
    "entries": 30
@@ -145,7 +145,7 @@
    "published": 31
   },
   "map": {
-   "dots": 25
+   "dots": 35
   },
   "sunday_read": {
    "topic": "Public safety",

@@ -1250,6 +1250,16 @@
   "details": ""
  },
  {
+  "log_id": "260909BF0121",
+  "time": "Sep  9 2026 10:59AM",
+  "type": "CFIRE-Car Fire",
+  "location": "W Lerdo Hwy / Wasco Ave",
+  "area": "Buttonwillow",
+  "lat": 35.499989,
+  "lon": -119.332375,
+  "details": ""
+ },
+ {
   "log_id": "260909BF0007",
   "time": "Sep  9 2026 12:31AM",
   "type": "TADV-Traffic Advisory",

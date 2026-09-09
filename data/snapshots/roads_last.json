@@ -21,12 +21,12 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "Is closed to southbound traffic at the Jct of SR-119 (Kern Co) at 1021 hrs on 9/9/26 - Due to a vehicle fire - Motorists are advised to use an alternate route",
+     "text": "Is closed to southbound traffic at the Jct of SR-119 (Kern Co) - Due to a vehicle fire - Motorists are advised to use an alternate route",
      "status": "CLOSED"
     }
    ],
-   "reported_as_of": "Wednesday, September 9th, 2026 at 11:06 AM",
-   "hash": "eb027f8c32"
+   "reported_as_of": "Wednesday, September 9th, 2026 at 03:17 PM",
+   "hash": "bd1c9f2501"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Wednesday, September 9th, 2026 at 11:06 AM",
+   "reported_as_of": "Wednesday, September 9th, 2026 at 03:17 PM",
    "hash": "5374f203ec"
   },
   {
@@ -64,7 +64,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Wednesday, September 9th, 2026 at 11:06 AM",
+   "reported_as_of": "Wednesday, September 9th, 2026 at 03:17 PM",
    "hash": "f97882795e"
   }
  ],

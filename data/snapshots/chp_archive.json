@@ -1250,6 +1250,16 @@
   "details": ""
  },
  {
+  "log_id": "260910BF0130",
+  "time": "Sep 10 2026 10:04AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "N Chester Ave / Highland Dr",
+  "area": "Bakersfield",
+  "lat": 35.424934,
+  "lon": -119.021131,
+  "details": ""
+ },
+ {
   "log_id": "260910BF0006",
   "time": "Sep 10 2026 12:15AM",
   "type": "CFIRE-Car Fire",

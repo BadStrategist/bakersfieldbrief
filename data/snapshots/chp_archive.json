@@ -1230,6 +1230,56 @@
   "details": ""
  },
  {
+  "log_id": "260909BF0189",
+  "time": "Sep  9 2026  2:41PM",
+  "type": "CFIRE-Car Fire",
+  "location": "Nb I5 Jno Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.836389,
+  "lon": -118.862778,
+  "details": ""
+ },
+ {
+  "log_id": "260909BF0291",
+  "time": "Sep  9 2026  6:00PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "5602 Dennis Mccarthy Dr",
+  "area": "Fort Tejon",
+  "lat": 34.987475,
+  "lon": -118.946372,
+  "details": ""
+ },
+ {
+  "log_id": "260909BF0300",
+  "time": "Sep  9 2026  6:34PM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 I5 N",
+  "area": "Fort Tejon",
+  "lat": 34.917929,
+  "lon": -118.923996,
+  "details": ""
+ },
+ {
+  "log_id": "260909BF0304",
+  "time": "Sep  9 2026  6:41PM",
+  "type": "1125-Traffic Hazard",
+  "location": "14819 Warren St",
+  "area": "Buttonwillow",
+  "lat": 35.614531,
+  "lon": -119.65933,
+  "details": ""
+ },
+ {
+  "log_id": "260909BF0305",
+  "time": "Sep  9 2026  6:46PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "2117 E California Ave",
+  "area": "Bakersfield",
+  "lat": 35.368493,
+  "lon": -118.968437,
+  "details": ""
+ },
+ {
   "log_id": "260909BF0090",
   "time": "Sep  9 2026  9:36AM",
   "type": "1125-Traffic Hazard",

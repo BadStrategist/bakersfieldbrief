@@ -6,8 +6,8 @@
    "slug": "i5",
    "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
    "pass": true,
-   "status": "CLOSED",
-   "pass_status": "OPEN",
+   "status": "RESTRICTIONS",
+   "pass_status": "RESTRICTIONS",
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
@@ -16,17 +16,17 @@
     },
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "No traffic restrictions reported.",
-     "status": "OPEN"
+     "text": "Northbound traffic is reduced to 2 lanes from 1.3 mi north to 5 mi north of the Los Angeles/Kern Co Line - Due to a big rig fire",
+     "status": "RESTRICTIONS"
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "Is closed to southbound traffic at the Jct of SR-119 (Kern Co) - Due to a vehicle fire - Motorists are advised to use an alternate route",
-     "status": "CLOSED"
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
     }
    ],
-   "reported_as_of": "Wednesday, September 9th, 2026 at 03:49 PM",
-   "hash": "bd1c9f2501"
+   "reported_as_of": "Wednesday, September 9th, 2026 at 06:48 PM",
+   "hash": "6f0d1c5762"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Wednesday, September 9th, 2026 at 03:49 PM",
+   "reported_as_of": "Wednesday, September 9th, 2026 at 06:48 PM",
    "hash": "5374f203ec"
   },
   {
@@ -64,7 +64,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Wednesday, September 9th, 2026 at 03:49 PM",
+   "reported_as_of": "Wednesday, September 9th, 2026 at 06:48 PM",
    "hash": "f97882795e"
   }
  ],

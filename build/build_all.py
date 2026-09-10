@@ -146,7 +146,11 @@ Sitemap: https://bakersfieldbrief.com/sitemap.xml
 
 
 def _sitemap():
-    today = dt.date.today().isoformat()
+    # Use the Pacific build date, NOT dt.date.today(). GitHub runners are UTC, so
+    # between 16:00 and midnight PT dt.date.today() returns TOMORROW — stamping
+    # <lastmod> a day in the future while llms-full.txt and the agentic sitemap
+    # written in the same build use the Pacific date.
+    today = common.iso_today()
     urls = []
     for p in common.SITE.rglob("index.html"):
         rel = p.relative_to(common.SITE).as_posix()

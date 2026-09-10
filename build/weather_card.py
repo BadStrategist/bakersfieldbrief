@@ -196,6 +196,20 @@ if __name__ == "__main__":
     def get(u):
         with urllib.request.urlopen(urllib.request.Request(u, headers=HDR), timeout=25) as r:
             return json.loads(r.read())
+    def _observed_local(obs):
+        """Observation time in Pacific, from the station's OWN timestamp.
+        Mirrors build/sources/weather.py so the harness and the real render path
+        cannot disagree about what "observed" means."""
+        ts = (obs or {}).get("timestamp") or ""
+        if not ts:
+            return ""
+        try:
+            return (dt.datetime.fromisoformat(ts.replace("Z", "+00:00"))
+                    .astimezone(dt.timezone(dt.timedelta(hours=-7)))
+                    .strftime("%I:%M %p").lstrip("0"))
+        except Exception:  # noqa: BLE001
+            return ""
+
     o = get("https://api.weather.gov/stations/KBFL/observations/latest")["properties"]
     def f(c):
         return None if c is None else round(c * 9 / 5 + 32)
@@ -222,7 +236,11 @@ if __name__ == "__main__":
         "aqi": int(sys.argv[1]) if len(sys.argv) > 1 else None,
         "aqi_category": sys.argv[2] if len(sys.argv) > 2 else "",
         "alerts": [],
-        "observed": dt.datetime.now().strftime("%I:%M %p").lstrip("0"),
+        # Use the OBSERVATION's own timestamp, not the clock. dt.datetime.now()
+        # here mislabelled the card with the time the harness ran (and printed a
+        # UTC time as if it were local on a UTC runner), unlike the real render
+        # path in build/sources/weather.py which reads o["timestamp"].
+        "observed": _observed_local(o),
     }
     p = render_weather_card(wx, Path(sys.argv[0]).resolve().parent / ".." / "assets" / "img" / "_weather_draft.jpg")
     print(p)

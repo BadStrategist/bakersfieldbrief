@@ -25,3 +25,10 @@ site/
 /audio/
 /briefs/
 kern_overnight/.bcfy_cookie.json
+
+# Local scratch that is neither source nor deployable output. The CI artifact
+# commit stages `data` (and, on its retry path, `git add -A`), so an unignored
+# dump here can be swept into a deploy commit.
+/work/
+/transcripts/*.lock
+/Y812BT*

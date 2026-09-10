@@ -119,7 +119,11 @@ def main(argv: list[str]) -> int:
 
     # ---- 3 EXTRACT
     print("[ko] 3/5 extract incidents (LLM)", flush=True)
-    incs = ko_extract.extract(transcript, incidents)
+    # extract() takes digest ROWS, not paths. Passing the transcript/incidents
+    # Paths here crashed stage 3 with "TypeError: 'WindowsPath' object is not
+    # iterable" on every full (non --extract-only) run, so stages 4-5 never ran.
+    # Use the same loader as the --extract-only path so both agree.
+    incs = ko_extract.extract(_usable_rows(transcript))
     print(f"[ko]     {len(incs)} incidents", flush=True)
 
     # ---- 4 WRITE

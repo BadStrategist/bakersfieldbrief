@@ -104,7 +104,10 @@ jobs:
                 git push && break
               else
                 git checkout --ours -- data email drafts 2>/dev/null || true
-                git add -A
+                # Re-stage ONLY the generated artifacts, never `git add -A`: the
+                # -A form swept any untracked scratch file in the runner's tree
+                # (work/ dumps, stray scripts) into a deploy commit.
+                git add email drafts data
                 git -c core.editor=true rebase --continue 2>/dev/null || git rebase --abort
                 git push && break
               fi

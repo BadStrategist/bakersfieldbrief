@@ -161,3 +161,32 @@ def extract(rows: list[dict], streets: list[str] | None = None) -> list[dict]:
         if inc:
             incs.append(inc)
     return _dedupe(incs)
+
+
+if __name__ == "__main__":
+    # The README documents `python -m kern_overnight.extract <date>` as stage 3 of
+    # the per-stage workflow, but this module had no __main__, so the documented
+    # command silently did nothing and exited 0 — a maintainer would believe the
+    # incidents had been regenerated when no file was written. Mirror write.py's
+    # harness: load the transcript, extract, write incidents/<date>.json.
+    import datetime as _dt
+    import json as _json
+    import sys as _sys
+
+    date = (_dt.date.fromisoformat(_sys.argv[1]) if len(_sys.argv) > 1
+            else _dt.date.today())
+    src = Path("transcripts") / f"{date.isoformat()}.jsonl"
+    if not src.exists():
+        _sys.exit(f"no transcript at {src} — run fetch/transcribe first")
+    # Lazy import: run.py imports this module at load time, so importing it at
+    # module scope here would be circular. Deferred, it is safe.
+    from .run import _usable_rows
+    rows = _usable_rows(src)
+    if not rows:
+        _sys.exit(f"no usable rows in {src.name}")
+    incs = extract(rows)
+    out = Path("incidents") / f"{date.isoformat()}.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(_json.dumps(incs, indent=1, ensure_ascii=False),
+                   encoding="utf-8")
+    print(f"{len(incs)} incidents → {out}")

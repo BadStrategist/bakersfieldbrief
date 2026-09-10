@@ -33,7 +33,19 @@ SYSTEM = (
 FOOTER = (
     "\n\n---\n\n*Compiled from initial emergency dispatch reports; details are "
     "preliminary and unconfirmed. Locations are generalized for privacy.*\n\n"
+    "> Audio Provided by Broadcastify.\n\n"
 )
+
+
+def _fmt_date_long(date: dt.date) -> str:
+    """'Thursday, September 10, 2026'.
+
+    Build with ``%A, %B`` + ``date.day`` — NEVER ``%A, %B %-d, %Y``. The ``%-d``
+    no-pad modifier is glibc-only: on Windows (this pipeline's platform) it
+    raises ``ValueError: Invalid format string`` and killed stage 4 outright.
+    The rest of the repo already does it this way (build/builders/fair.py:71).
+    """
+    return f"{date.strftime('%A, %B')} {date.day}, {date.year}"
 
 
 def _fmt_time(t: str) -> str:
@@ -58,7 +70,7 @@ def write_brief(incidents: list[dict], date: dt.date) -> str:
 
     payload = json.dumps(incidents, indent=1, ensure_ascii=False)
     prompt = (
-        f"Write 'The Kern Overnight — {date.strftime('%A, %B %-d, %Y')}'. Markdown.\n\n"
+        f"Write 'The Kern Overnight — {_fmt_date_long(date)}'. Markdown.\n\n"
         "Structure:\n"
         "1. Title heading (# The Kern Overnight — {date})\n"
         "2. Opening paragraph: the night's pace, dominant theme, which parts of "

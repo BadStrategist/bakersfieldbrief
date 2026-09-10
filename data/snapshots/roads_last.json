@@ -7,7 +7,7 @@
    "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
    "pass": true,
    "status": "CLOSED",
-   "pass_status": "RESTRICTIONS",
+   "pass_status": "OPEN",
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
@@ -16,8 +16,8 @@
     },
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "Northbound traffic is reduced to 2 lanes at the Jct of I-205 (San Joaquin Co) - Due to a big rig fire",
-     "status": "RESTRICTIONS"
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
     },
     {
      "region": "NORTHERN CALIFORNIA",
@@ -25,8 +25,8 @@
      "status": "CLOSED"
     }
    ],
-   "reported_as_of": "Thursday, September 10th, 2026 at 03:17 PM",
-   "hash": "69a6b57e85"
+   "reported_as_of": "Thursday, September 10th, 2026 at 03:50 PM",
+   "hash": "fb153b994d"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Thursday, September 10th, 2026 at 03:17 PM",
+   "reported_as_of": "Thursday, September 10th, 2026 at 03:50 PM",
    "hash": "5374f203ec"
   },
   {
@@ -64,7 +64,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Thursday, September 10th, 2026 at 03:17 PM",
+   "reported_as_of": "Thursday, September 10th, 2026 at 03:50 PM",
    "hash": "f97882795e"
   }
  ],

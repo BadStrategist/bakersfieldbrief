@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-10T15:17:20-07:00",
+ "built_at": "2026-09-10T15:50:51-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 3061, column 34"
   },
   "isabella": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "World War II veteran celebrates 105th birthday",
    "archive": "2026-09-10"
   },
@@ -97,18 +97,18 @@
   },
   "grapevine": {
    "i5": "CLOSED",
-   "i5_pass": "RESTRICTIONS",
+   "i5_pass": "OPEN",
    "log_entries": 60
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 62,
+   "wind_mph": 71,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 90,
-   "wind_mph": 62,
+   "wind_mph": 71,
    "alerts": 0
   },
   "roads": {
@@ -135,7 +135,7 @@
    "isabella_af": 165022,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 112,
+   "aqi": 105,
    "chp_week": 32
   },
   "letters": {

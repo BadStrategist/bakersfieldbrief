@@ -7,7 +7,7 @@
    "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
    "pass": true,
    "status": "CLOSED",
-   "pass_status": "OPEN",
+   "pass_status": "RESTRICTIONS",
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
@@ -16,17 +16,17 @@
     },
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "No traffic restrictions reported.",
-     "status": "OPEN"
+     "text": "Northbound traffic is reduced to 2 lanes at the Jct of I-205 (San Joaquin Co) - Due to a big rig fire",
+     "status": "RESTRICTIONS"
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "The southbound connector to eastbound US-50 /in Sacramento/ (Sacramento Co) is closed from 2300 hrs each night to 0600 each morning thru 9/12/26 - Due to construction - Motorists are advised to use an alternate route Southbound traffic is reduced to 1 lane 6 mi south of Woodside /at River Rd/ (Yolo Co) - Due to a road hazard",
+     "text": "The southbound connector to eastbound US-50 /in Sacramento/ (Sacramento Co) is closed from 2300 hrs each night to 0600 each morning thru 9/12/26 - Due to construction - Motorists are advised to use an alternate route",
      "status": "CLOSED"
     }
    ],
-   "reported_as_of": "Thursday, September 10th, 2026 at 01:13 PM",
-   "hash": "53491bf785"
+   "reported_as_of": "Thursday, September 10th, 2026 at 03:17 PM",
+   "hash": "69a6b57e85"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Thursday, September 10th, 2026 at 01:13 PM",
+   "reported_as_of": "Thursday, September 10th, 2026 at 03:17 PM",
    "hash": "5374f203ec"
   },
   {
@@ -64,7 +64,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Thursday, September 10th, 2026 at 01:13 PM",
+   "reported_as_of": "Thursday, September 10th, 2026 at 03:17 PM",
    "hash": "f97882795e"
   }
  ],

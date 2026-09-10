@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-10T13:13:48-07:00",
+ "built_at": "2026-09-10T15:17:20-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -66,12 +66,12 @@
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 2,
-   "top_story": "Competency hearing postponed for man shot by deputy while allegedly armed with sword in Rosamond",
+   "top_story": "World War II veteran celebrates 105th birthday",
    "archive": "2026-09-10"
   },
   "cityhall": {
-   "upcoming_meetings": 5,
-   "county_items": 105,
+   "upcoming_meetings": 6,
+   "county_items": 89,
    "drafts_generated": 0
   },
   "places": {
@@ -97,18 +97,18 @@
   },
   "grapevine": {
    "i5": "CLOSED",
-   "i5_pass": "OPEN",
+   "i5_pass": "RESTRICTIONS",
    "log_entries": 60
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 50,
+   "wind_mph": 62,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 88,
-   "wind_mph": 50,
+   "temp": 90,
+   "wind_mph": 62,
    "alerts": 0
   },
   "roads": {
@@ -126,7 +126,7 @@
     "Later": 42,
     "Date TBD": 10
    },
-   "meetings": 5
+   "meetings": 6
   },
   "feed": {
    "entries": 30
@@ -135,8 +135,8 @@
    "isabella_af": 165022,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 105,
-   "chp_week": 30
+   "aqi": 112,
+   "chp_week": 32
   },
   "letters": {
    "published": 0

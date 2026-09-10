@@ -1240,6 +1240,16 @@
   "details": ""
  },
  {
+  "log_id": "260910BF0241",
+  "time": "Sep 10 2026  2:26PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "3464 Rustic Meadow Ct",
+  "area": "Bakersfield",
+  "lat": 35.438122,
+  "lon": -119.037975,
+  "details": ""
+ },
+ {
   "log_id": "260910BF0016",
   "time": "Sep 10 2026  2:28AM",
   "type": "TADV-Traffic Advisory",
@@ -1247,6 +1257,16 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260910BF0268",
+  "time": "Sep 10 2026  2:58PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Descanso St / Monterey St",
+  "area": "Bakersfield",
+  "lat": 35.374972,
+  "lon": -118.95413,
   "details": ""
  },
  {

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-10T10:56:55-07:00",
+ "built_at": "2026-09-10T10:59:59-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 3061, column 34"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -59,11 +59,11 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
+  "_digest_meta": "llm",
   "brief_words": 1229,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
    "chp_new": 0,
    "top_story": "Bakersfield marks 25th anniversary of 9/11 with ceremony at Fire Station 15",

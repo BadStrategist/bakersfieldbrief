@@ -1230,6 +1230,26 @@
   "details": ""
  },
  {
+  "log_id": "260910BF0016",
+  "time": "Sep 10 2026  2:28AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260910BF0032",
+  "time": "Sep 10 2026  6:09AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
   "log_id": "260910BF0006",
   "time": "Sep 10 2026 12:15AM",
   "type": "CFIRE-Car Fire",

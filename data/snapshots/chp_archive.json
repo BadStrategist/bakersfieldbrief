@@ -1,115 +1,5 @@
 [
  {
-  "log_id": "260902BF0014",
-  "time": "Sep  2 2026  1:22AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260902BF0265",
-  "time": "Sep  2 2026  2:55PM",
-  "type": "1125-Traffic Hazard",
-  "location": "NB I5 at #3 Turn Thru",
-  "area": "Fort Tejon",
-  "lat": 34.895731,
-  "lon": -118.91976,
-  "details": ""
- },
- {
-  "log_id": "260902BF0284",
-  "time": "Sep  2 2026  3:19PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "SB SR99 JSO California Ave",
-  "area": "Bakersfield",
-  "lat": 35.367991,
-  "lon": -119.043411,
-  "details": ""
- },
- {
-  "log_id": "260902BF0054",
-  "time": "Sep  2 2026  6:04AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "0 Sr204",
-  "area": "Bakersfield",
-  "lat": 35.401186,
-  "lon": -119.039398,
-  "details": ""
- },
- {
-  "log_id": "260902BF0063",
-  "time": "Sep  2 2026  6:55AM",
-  "type": "1125-Traffic Hazard",
-  "location": "7th Standard Rd / Coffee Rd",
-  "area": "Bakersfield",
-  "lat": 35.441404,
-  "lon": -119.092171,
-  "details": ""
- },
- {
-  "log_id": "260902BF0066",
-  "time": "Sep  2 2026  6:58AM",
-  "type": "1125-Traffic Hazard",
-  "location": "NB I5 JNO Grapevine CVEF",
-  "area": "Fort Tejon",
-  "lat": 34.965833,
-  "lon": -118.938611,
-  "details": ""
- },
- {
-  "log_id": "260902BF0404",
-  "time": "Sep  2 2026  7:33PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Sr58 E / Mohawk St Ofr",
-  "area": "Bakersfield",
-  "lat": 35.369061,
-  "lon": -119.072651,
-  "details": ""
- },
- {
-  "log_id": "260902BF0410",
-  "time": "Sep  2 2026  7:44PM",
-  "type": "CZP-Assist with Construction",
-  "location": "I5 N / Hageman Rd",
-  "area": "Buttonwillow",
-  "lat": 35.398856,
-  "lon": -119.396997,
-  "details": ""
- },
- {
-  "log_id": "260902BF0441",
-  "time": "Sep  2 2026  8:56PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Sr58 E / Sr99 N",
-  "area": "Bakersfield",
-  "lat": 35.352548,
-  "lon": -119.039398,
-  "details": ""
- },
- {
-  "log_id": "260902BF0130",
-  "time": "Sep  2 2026  9:48AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Wb Sr58 Jwo Sr223",
-  "area": "Bakersfield",
-  "lat": 35.264722,
-  "lon": -118.661667,
-  "details": ""
- },
- {
-  "log_id": "260902BF0144",
-  "time": "Sep  2 2026 10:22AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Rosedale Service Rd / Jewetta Ave",
-  "area": "Bakersfield",
-  "lat": 35.384357,
-  "lon": -119.127871,
-  "details": ""
- },
- {
   "log_id": "260903BF0244",
   "time": "Sep  3 2026  2:46PM",
   "type": "1179-Trfc Collision-1141 Enrt",
@@ -1272,7 +1162,7 @@
  {
   "log_id": "260909BF0305",
   "time": "Sep  9 2026  6:46PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
+  "type": "1181-Trfc Collision-Minor Inj",
   "location": "2117 E California Ave",
   "area": "Bakersfield",
   "lat": 35.368493,
@@ -1300,6 +1190,16 @@
   "details": ""
  },
  {
+  "log_id": "260909BF0381",
+  "time": "Sep  9 2026 10:24PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "SR99 N / HERRING RD OFR",
+  "area": "Bakersfield",
+  "lat": 35.144725,
+  "lon": -118.995253,
+  "details": ""
+ },
+ {
   "log_id": "260909BF0121",
   "time": "Sep  9 2026 10:59AM",
   "type": "CFIRE-Car Fire",
@@ -1307,6 +1207,16 @@
   "area": "Buttonwillow",
   "lat": 35.499989,
   "lon": -119.332375,
+  "details": ""
+ },
+ {
+  "log_id": "260909BF0387",
+  "time": "Sep  9 2026 11:07PM",
+  "type": "1125-Traffic Hazard",
+  "location": "20696-21629 Caliente Bodfish Rd",
+  "area": "Bakersfield",
+  "lat": 35.30384,
+  "lon": -118.584735,
   "details": ""
  },
  {

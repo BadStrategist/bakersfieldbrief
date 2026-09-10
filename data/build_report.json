@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-10T00:34:18-07:00",
+ "built_at": "2026-09-10T06:16:40-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 3061, column 34"
   },
   "isabella": {
    "ok": true,
@@ -59,13 +59,13 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 64,
+  "_digest_meta": "llm",
+  "brief_words": 1229,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 0,
    "top_story": "Police searching for man accused of kicking security door at Chester Lane home",
    "archive": "2026-09-10"
   },
@@ -85,7 +85,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 10,
+    "bakersfield-nw": 12,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -97,18 +97,18 @@
   },
   "grapevine": {
    "i5": "CLOSED",
-   "i5_pass": "RESTRICTIONS",
+   "i5_pass": "OPEN",
    "log_entries": 60
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 0,
+   "wind_mph": 12,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 70,
-   "wind_mph": 0,
+   "wind_mph": 12,
    "alerts": 0
   },
   "roads": {
@@ -132,10 +132,10 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 165962,
+   "isabella_af": 165022,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 74,
+   "aqi": 67,
    "chp_week": 25
   },
   "letters": {

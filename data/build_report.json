@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-10T06:16:40-07:00",
+ "built_at": "2026-09-10T06:52:25-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -34,8 +34,8 @@
    "error": "ParseError: unclosed token: line 3061, column 34"
   },
   "isabella": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ConnectTimeout: HTTPSConnectionPool(host='cdec.water.ca.gov', port=443): Max retries exceeded with url: /dynamicapp/req/JSONDataServlet?Stations=ISB&SensorNums=15&dur_code=D&Start=2026-08-04&End=2026-09-10 (Caused by ConnectTimeoutError(<HTTPSConnection(host='cdec.water.ca.gov', port=443) at 0x7fbe00ae6c60>, 'Connection to cdec.water.ca.gov timed out. (connect timeout=40)'))"
   },
   "alpr": {
    "ok": true,
@@ -85,7 +85,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 12,
+    "bakersfield-nw": 10,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -132,20 +132,20 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 165022,
+   "isabella_af": null,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 67,
+   "aqi": 81,
    "chp_week": 25
   },
   "letters": {
    "published": 0
   },
   "overnight": {
-   "published": 31
+   "published": 32
   },
   "map": {
-   "dots": 35
+   "dots": 45
   },
   "sunday_read": {
    "topic": "Public safety",

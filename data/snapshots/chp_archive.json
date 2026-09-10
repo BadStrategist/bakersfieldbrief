@@ -1228,5 +1228,15 @@
   "lat": 35.265234,
   "lon": -119.024794,
   "details": ""
+ },
+ {
+  "log_id": "260910BF0006",
+  "time": "Sep 10 2026 12:15AM",
+  "type": "CFIRE-Car Fire",
+  "location": "Stine Rd / Sr223",
+  "area": "Bakersfield",
+  "lat": 35.208749,
+  "lon": -119.056937,
+  "details": ""
  }
 ]

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-10T00:06:39-07:00",
+ "built_at": "2026-09-10T00:34:18-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,13 +60,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 66,
+  "brief_words": 64,
   "daily": {
-   "news_headlines": 50,
+   "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
-   "top_story": "Protests grow against Sevita Health, Loyd's Liberty Homes as records confirm staffing violation",
+   "chp_new": 1,
+   "top_story": "Police searching for man accused of kicking security door at Chester Lane home",
    "archive": "2026-09-10"
   },
   "cityhall": {
@@ -84,11 +84,11 @@
    ],
    "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 0,
-    "bakersfield-nw": 0,
-    "bakersfield-sw": 0,
-    "bakersfield-east": 0,
-    "bakersfield-central": 0
+    "tehachapi": 12,
+    "bakersfield-nw": 10,
+    "bakersfield-sw": 12,
+    "bakersfield-east": 12,
+    "bakersfield-central": 12
    }
   },
   "guide": {
@@ -96,7 +96,7 @@
    "draft": "drafts/weekend-guide-2026-09-10"
   },
   "grapevine": {
-   "i5": "RESTRICTIONS",
+   "i5": "CLOSED",
    "i5_pass": "RESTRICTIONS",
    "log_entries": 60
   },
@@ -107,13 +107,13 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 68,
+   "temp": 70,
    "wind_mph": 0,
    "alerts": 0
   },
   "roads": {
    "routes": [
-    "i5:RESTRICTIONS",
+    "i5:CLOSED",
     "sr58:OPEN",
     "sr99:RESTRICTIONS"
    ],
@@ -136,7 +136,7 @@
    "alpr_total": 260,
    "kern_fires": 0,
    "aqi": 74,
-   "chp_week": 24
+   "chp_week": 25
   },
   "letters": {
    "published": 0

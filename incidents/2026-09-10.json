@@ -1,0 +1,68 @@
+[
+ {
+  "type": "probation check",
+  "time": "00:34",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "probation check, Bakersfield (00:34)",
+  "_src": "And advised, he's possibly under the influence of meth and is on probation, only wanted to report he was in possession o",
+  "_n": 1
+ },
+ {
+  "type": "welfare call",
+  "time": "02:16",
+  "agency": "Dispatch",
+  "area": "Mohawk Street",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "welfare call, Mohawk Street (02:16)",
+  "_src": "Mission 5-5-5-1, I'm check the welfare, 6508 Mohawk Street, RP's advising there was a possible 460 to a vacant unit, he ",
+  "_n": 1
+ },
+ {
+  "type": "structure fire",
+  "time": "02:27",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "structure fire, Bakersfield (02:27)",
+  "_src": "to continue to investigate. We can counsel with structure fire reinforce. We'll handle with a structure fire response.",
+  "_n": 1
+ },
+ {
+  "type": "fire",
+  "time": "21:20",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "fire, Bakersfield (21:20)",
+  "_src": "Call over 31, can we get a fire out?",
+  "_n": 2
+ },
+ {
+  "type": "traffic collision",
+  "time": "22:07",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "traffic collision, Bakersfield (22:07)",
+  "_src": "Control 1, Ranger 5, End of Heart 6, being flagged down regarding a crash motorcycle beyond the east entrance of the Hea",
+  "_n": 1
+ },
+ {
+  "type": "domestic call",
+  "time": "22:21",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "domestic call, Bakersfield (22:21)",
+  "_src": "10-4. It's going to be a domestic 415.",
+  "_n": 1
+ }
+]

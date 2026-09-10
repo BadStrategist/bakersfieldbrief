@@ -25,7 +25,7 @@
      "status": "CLOSED"
     }
    ],
-   "reported_as_of": "Thursday, September 10th, 2026 at 09:58 AM",
+   "reported_as_of": "Thursday, September 10th, 2026 at 10:25 AM",
    "hash": "fb153b994d"
   },
   {
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Thursday, September 10th, 2026 at 09:58 AM",
+   "reported_as_of": "Thursday, September 10th, 2026 at 10:25 AM",
    "hash": "5374f203ec"
   },
   {
@@ -50,13 +50,13 @@
    "slug": "sr99",
    "name": "State Route 99 \u2014 Central Valley",
    "pass": false,
-   "status": "CLOSED",
-   "pass_status": "CLOSED",
+   "status": "RESTRICTIONS",
+   "pass_status": "RESTRICTIONS",
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "Is closed to southbound traffic at Jack Tone Rd /in Ripon/ (San Joaquin Co) - Due to a traffic collision - Motorists are advised to use an alternate route A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
-     "status": "CLOSED"
+     "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "status": "RESTRICTIONS"
     },
     {
      "region": "NORTHERN CALIFORNIA",
@@ -64,8 +64,8 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Thursday, September 10th, 2026 at 09:58 AM",
-   "hash": "c709364f8d"
+   "reported_as_of": "Thursday, September 10th, 2026 at 10:25 AM",
+   "hash": "f97882795e"
   }
  ],
  "asof": "2026-09-10"

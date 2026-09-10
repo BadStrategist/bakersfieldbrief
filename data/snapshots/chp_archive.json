@@ -1230,6 +1230,16 @@
   "details": ""
  },
  {
+  "log_id": "260910BF0202",
+  "time": "Sep 10 2026  1:05PM",
+  "type": "1125A-Animal Hazard",
+  "location": "Wb Sr58 Jeo South Chester Ave",
+  "area": "Bakersfield",
+  "lat": 35.3525,
+  "lon": -119.016667,
+  "details": ""
+ },
+ {
   "log_id": "260910BF0016",
   "time": "Sep 10 2026  2:28AM",
   "type": "TADV-Traffic Advisory",
@@ -1267,6 +1277,16 @@
   "area": "Bakersfield",
   "lat": 35.208749,
   "lon": -119.056937,
+  "details": ""
+ },
+ {
+  "log_id": "260910BF0200",
+  "time": "Sep 10 2026 12:57PM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 I5 N",
+  "area": "Fort Tejon",
+  "lat": 34.911568,
+  "lon": -118.923228,
   "details": ""
  }
 ]

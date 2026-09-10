@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-10T10:59:59-07:00",
+ "built_at": "2026-09-10T13:13:48-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,14 +59,14 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1229,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Bakersfield marks 25th anniversary of 9/11 with ceremony at Fire Station 15",
+   "chp_new": 2,
+   "top_story": "Competency hearing postponed for man shot by deputy while allegedly armed with sword in Rosamond",
    "archive": "2026-09-10"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 37,
+   "wind_mph": 50,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 82,
-   "wind_mph": 37,
+   "temp": 88,
+   "wind_mph": 50,
    "alerts": 0
   },
   "roads": {
@@ -135,8 +135,8 @@
    "isabella_af": 165022,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 75,
-   "chp_week": 28
+   "aqi": 105,
+   "chp_week": 30
   },
   "letters": {
    "published": 0

@@ -1170,6 +1170,16 @@
   "details": ""
  },
  {
+  "log_id": "260911BF0066",
+  "time": "Sep 11 2026  8:12AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "405 Plymouth Ave",
+  "area": "Bakersfield",
+  "lat": 35.409596,
+  "lon": -119.025547,
+  "details": ""
+ },
+ {
   "log_id": "260911BF0078",
   "time": "Sep 11 2026  8:52AM",
   "type": "1125-Traffic Hazard",

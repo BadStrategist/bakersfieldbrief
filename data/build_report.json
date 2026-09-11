@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-11T10:26:33-07:00",
+ "built_at": "2026-09-11T10:58:40-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,8 +65,8 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "NFL Kickoff: From Kern County to the National Football League",
+   "chp_new": 1,
+   "top_story": "Fong endorses Cassie Bittle, Ryan Crowl in Bakersfield City Council races",
    "archive": "2026-09-11"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 46,
+   "wind_mph": 58,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 81,
-   "wind_mph": 46,
+   "wind_mph": 58,
    "alerts": 0
   },
   "roads": {
@@ -136,7 +136,7 @@
    "alpr_total": 260,
    "kern_fires": 0,
    "aqi": 66,
-   "chp_week": 42
+   "chp_week": 43
   },
   "letters": {
    "published": 0

@@ -308,6 +308,24 @@ def _fill_keyless_prose(sections, sources, today, ko) -> None:
 
 
 # ---------------------------------------------------------------- brief
+_LOG_HEAD_RE = re.compile(r"^[ \t]*(?:#{1,6}[ \t]*|\*\*[ \t]*)?the log\b", re.I | re.M)
+
+
+def strip_log_section(text: str) -> str:
+    """Drop a trailing 'log' SECTION from a narrative — never prose.
+
+    The marker MUST sit at a line start (optionally behind markdown heading
+    markers). A plain substring search for "the log" also matches ordinary
+    prose such as "...at the time.\\n\\nThe rest of the log leaned on
+    disturbances..." — which silently truncated the overnight narrative
+    mid-sentence in the 2026-09-11 email ("...moving at the time. The rest of")
+    and shipped it to every subscriber.
+    """
+    text = text or ""
+    m = _LOG_HEAD_RE.search(text)
+    return text[:m.start()].strip() if m else text
+
+
 def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
     """Render today's brief as email-safe HTML + plain text. Returns file paths."""
     built = []
@@ -374,11 +392,17 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
             flock_html = ""
     if flock_html:
         watch_html = flock_html
+        # The txt email prints its own heading. When the Flock card replaces the
+        # watch item, watch_txt is "" — the old template still emitted
+        # "ONE THING TO WATCH" with nothing under it (an empty section in every
+        # text part). Emit the block only when it actually has content.
         watch_txt = ""
+        watch_block = ""
     else:
         watch = _one_thing(escribe, board)
         watch_html = f'<p style="font-family:Georgia,serif;font-size:15px;line-height:1.5;color:{INK}">{watch}</p>'
         watch_txt = watch
+        watch_block = f"ONE THING TO WATCH\n{watch}\n\n"
 
     # ---- brief sections (full overnight, weather, something good)
     sections = _brief_sections(today)
@@ -431,11 +455,7 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
             paras.append(" ".join(sentences[i:i + sentences_per_para]))
         return "\n\n".join(paras)
 
-    overnight_full = sections.get("overnight", "")
-    # strip the "the log" portion if present (a '## The log' or 'The log:' tail)
-    log_idx = overnight_full.lower().find("the log")
-    if log_idx >= 0:
-        overnight_full = overnight_full[:log_idx].strip()
+    overnight_full = strip_log_section(sections.get("overnight", ""))
     overnight_html = _md_para(_chunk_paragraphs(overnight_full)) if overnight_full else ""
 
     # ---- Today's Weather (bold the leading line, then the rest)
@@ -584,10 +604,7 @@ THE NEWS
 {news_txt}
 Headlines link to the original reporting at the outlets named.
 
-ONE THING TO WATCH
-{watch_txt}
-
-Web: {BASE_URL}/
+{watch_block}Web: {BASE_URL}/
 """
 
     out_dir = common.ROOT / "email" / today.isoformat()

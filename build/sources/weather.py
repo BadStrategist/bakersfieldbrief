@@ -71,9 +71,9 @@ def _bakersfield_forecast() -> dict:
             out["current"] = round(c * 9 / 5 + 32)
         # card extras: condition, wind, humidity, observed stamp (all optional)
         out["condition"] = (obs.get("textDescription") or "").strip()
-        ws = (obs.get("windSpeed") or {}).get("value")  # m/s
+        ws = common.wind_mph(obs.get("windSpeed"))
         if ws is not None:
-            out["wind_mph"] = round(ws * 2.23694)
+            out["wind_mph"] = ws
         wd = (obs.get("windDirection") or {}).get("value")
         if wd is not None:
             out["wind_dir"] = int(wd)

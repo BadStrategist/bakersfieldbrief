@@ -51,12 +51,11 @@ def _current() -> dict:
                 continue   # empty obs, try next station
             out["station"] = st
             out["temperature"] = round(c * 9 / 5 + 32)  # C -> F
-            ws = (props.get("windSpeed") or {}).get("value")       # m/s
-            if ws is not None:
-                out["wind_mph"] = round(ws * 2.23694)
-            wg = (props.get("windGust") or {}).get("value")
-            if wg is not None:
-                out["gust_mph"] = round(wg * 2.23694)
+            out["wind_mph"] = common.wind_mph(props.get("windSpeed"))
+            out["gust_mph"] = common.wind_mph(props.get("windGust"))
+            for k in ("wind_mph", "gust_mph"):      # drop nulls: renderer keys off presence
+                if out[k] is None:
+                    del out[k]
             wd = (props.get("windDirection") or {}).get("value")
             if wd is not None:
                 out["wind_dir_deg"] = int(wd)

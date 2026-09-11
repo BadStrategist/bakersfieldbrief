@@ -67,6 +67,40 @@ def iso_today() -> str:
     return today_pacific().isoformat()
 
 
+# ---------------------------------------------------------------- units
+# api.weather.gov hands back windSpeed/windGust as {"unitCode": "...", "value": n}.
+# The unit is NOT always m/s: every station we poll (KTSP, KBFL, SE067, C1020)
+# returns wmoUnit:km_h-1. Multiplying that by the m/s factor inflated every wind
+# reading 3.6x (19 mph showed as 66 mph). Always convert from the unitCode that
+# ships with the value; never assume.
+_TO_MPH = {
+    "wmoUnit:m_s-1": 2.23694,
+    "wmoUnit:m_s-1:1": 2.23694,
+    "wmoUnit:km_h-1": 0.621371,
+    "wmoUnit:mi_h-1": 1.0,
+    "wmoUnit:kt": 1.150779,
+    "wmoUnit:kt_i": 1.150779,
+    "wmoUnit:mile_h-1": 1.0,
+}
+
+
+def wind_mph(node) -> int | None:
+    """{"unitCode","value"} from an NWS observation -> whole miles per hour.
+
+    Returns None when the reading is missing (NWS sends value:null with
+    qualityControl "Z" for variables the station didn't report). Unknown unit
+    codes fall back to km/h — what NWS actually serves today — and are left
+    visible in the caller's logs rather than silently inflated.
+    """
+    if not isinstance(node, dict):
+        return None
+    v = node.get("value")
+    if v is None:
+        return None
+    factor = _TO_MPH.get(node.get("unitCode") or "", _TO_MPH["wmoUnit:km_h-1"])
+    return round(float(v) * factor)
+
+
 # ---------------------------------------------------------------- http
 def fetch(url: str, *, timeout: int = 30, retries: int = 2, method: str = "GET",
           headers: dict | None = None, **kwargs) -> requests.Response:

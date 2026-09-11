@@ -226,11 +226,10 @@ if __name__ == "__main__":
             else:
                 lo = p["temperature"] if lo is None else min(lo, p["temperature"])
     wd = (o.get("windDirection") or {}).get("value")
-    wspd = (o.get("windSpeed") or {}).get("value")
     wx = {
         "current": f((o.get("temperature") or {}).get("value")),
         "high": hi, "low": lo, "condition": cond,
-        "wind_mph": None if wspd is None else round(wspd * 2.237),
+        "wind_mph": common.wind_mph(o.get("windSpeed")),
         "wind_dir": wd,
         "humidity": (o.get("relativeHumidity") or {}).get("value"),
         "aqi": int(sys.argv[1]) if len(sys.argv) > 1 else None,

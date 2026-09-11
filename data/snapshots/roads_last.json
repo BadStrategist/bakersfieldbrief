@@ -7,7 +7,7 @@
    "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
    "pass": true,
    "status": "CLOSED",
-   "pass_status": "RESTRICTIONS",
+   "pass_status": "OPEN",
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
@@ -16,8 +16,8 @@
     },
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "Northbound traffic is reduced to 1 lane 15.3 mi north of Redding (Sacramento Co) - Due to a traffic collision",
-     "status": "RESTRICTIONS"
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
     },
     {
      "region": "NORTHERN CALIFORNIA",
@@ -25,8 +25,8 @@
      "status": "CLOSED"
     }
    ],
-   "reported_as_of": "Friday, September 11th, 2026 at 01:21 PM",
-   "hash": "091b3d0e56"
+   "reported_as_of": "Friday, September 11th, 2026 at 02:50 PM",
+   "hash": "bf983d15f2"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Friday, September 11th, 2026 at 01:21 PM",
+   "reported_as_of": "Friday, September 11th, 2026 at 02:50 PM",
    "hash": "5374f203ec"
   },
   {
@@ -64,7 +64,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Friday, September 11th, 2026 at 01:21 PM",
+   "reported_as_of": "Friday, September 11th, 2026 at 02:50 PM",
    "hash": "f97882795e"
   }
  ],

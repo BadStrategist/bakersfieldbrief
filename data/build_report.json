@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-11T13:21:04-07:00",
+ "built_at": "2026-09-11T14:50:48-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 4569, column 22"
   },
   "isabella": {
    "ok": true,
@@ -59,18 +59,18 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
+  "_digest_meta": "llm",
   "brief_words": 1355,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 2,
-   "top_story": "Kern County Sheriff's Office seeking tips from the public regarding 2022 murder case",
+   "chp_new": 0,
+   "top_story": "Bakersfield police investigating fuel theft of Marine Corps recruitment vehicle",
    "archive": "2026-09-11"
   },
   "cityhall": {
-   "upcoming_meetings": 6,
+   "upcoming_meetings": 7,
    "county_items": 89,
    "drafts_generated": 0
   },
@@ -97,18 +97,18 @@
   },
   "grapevine": {
    "i5": "CLOSED",
-   "i5_pass": "RESTRICTIONS",
+   "i5_pass": "OPEN",
    "log_entries": 60
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 66,
+   "wind_mph": null,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 86,
-   "wind_mph": 66,
+   "wind_mph": null,
    "alerts": 0
   },
   "roads": {
@@ -126,7 +126,7 @@
     "Later": 42,
     "Date TBD": 10
    },
-   "meetings": 6
+   "meetings": 7
   },
   "feed": {
    "entries": 30
@@ -135,7 +135,7 @@
    "isabella_af": 163967,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 74,
+   "aqi": 67,
    "chp_week": 45
   },
   "letters": {

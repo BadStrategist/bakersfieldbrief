@@ -1,0 +1,119 @@
+[
+ {
+  "type": "large fight",
+  "time": "03:22",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Main Street block, Kern County",
+  "notability": 4,
+  "disposition": "response; investigation ongoing",
+  "summary": "Deputies were sent to reports of 10 to 15 people fighting outside a Main Street location, including a call from a neighbor who saw the group. A firearm was mentioned during the reports."
+ },
+ {
+  "type": "vegetation fire",
+  "time": "00:10",
+  "agency": "Kern County Fire",
+  "area": "95th Street West at Rosamond Boulevard, Rosamond area",
+  "notability": 4,
+  "disposition": "reinforcements requested: water tender and two additional wildland engines",
+  "summary": "Crews took a grass and brush fire burning three to four acres with a moderate rate of spread and wind out of the west. Command requested a water tender and two additional wildland engines."
+ },
+ {
+  "type": "fire",
+  "time": "02:11",
+  "agency": "Bakersfield Fire",
+  "area": "East Terrace Way block, Bakersfield",
+  "notability": 3,
+  "disposition": "fire assignment",
+  "summary": "Engine and truck companies were sent to a fire on the East Terrace Way block with no further information available at dispatch."
+ },
+ {
+  "type": "domestic assault",
+  "time": "03:57",
+  "agency": "Bakersfield Police",
+  "area": "Quincy Street apartment block, Bakersfield",
+  "notability": 3,
+  "disposition": "response",
+  "summary": "Officers were sent to a Quincy Street apartment after a woman reported that her daughter's boyfriend was assaulting her."
+ },
+ {
+  "type": "welfare check",
+  "time": "23:32",
+  "agency": "Bakersfield Police",
+  "area": "Norris Road area, Bakersfield",
+  "notability": 3,
+  "disposition": "response",
+  "summary": "Officers were sent to the Norris Road area after a report of a young person going door to door asking for help and then running east."
+ },
+ {
+  "type": "reckless driving",
+  "time": "23:05",
+  "agency": "California Highway Patrol",
+  "area": "southbound Interstate 5 north of Highway 46",
+  "notability": 2,
+  "disposition": "officer en route",
+  "summary": "A semi pulling an aluminum trailer was reported unable to maintain its lane southbound on Interstate 5 just north of Highway 46, and an officer was sent to check on it."
+ },
+ {
+  "type": "road closure",
+  "time": "22:14",
+  "agency": "California Highway Patrol",
+  "area": "eastbound Highway 58 at Mohawk Street",
+  "notability": 2,
+  "disposition": "full closure until 5 a.m.",
+  "summary": "Eastbound Highway 58 at Mohawk was placed under a full closure set to run until 5 a.m."
+ },
+ {
+  "type": "disturbance",
+  "time": "21:40",
+  "agency": "Bakersfield Police",
+  "area": "Terrace Way apartment block, Bakersfield",
+  "notability": 2,
+  "disposition": "response",
+  "summary": "Two units were sent to a Terrace Way apartment complex after a caller reported that neighbors were in possession of their pet bearded dragon, which had been missing for several months."
+ },
+ {
+  "type": "disturbance",
+  "time": "03:14",
+  "agency": "Bakersfield Police",
+  "area": "Donna Avenue block, Bakersfield",
+  "notability": 2,
+  "disposition": "response",
+  "summary": "Officers responded after a caller reported a brother-in-law at their front door."
+ },
+ {
+  "type": "suspicious person",
+  "time": "05:05",
+  "agency": "Bakersfield Police",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "subject left; area check",
+  "summary": "A man in a black and pink top was reportedly seen with a crowbar trying to open a tan four-door sedan before leaving the area."
+ },
+ {
+  "type": "medical aid",
+  "time": "00:30",
+  "agency": "Bakersfield Fire",
+  "area": "F Street block, central Bakersfield",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "An ambulance crew was flagged down at an F Street address for a patient in an alley, and the call cleared shortly afterward."
+ },
+ {
+  "type": "hazardous condition",
+  "time": "03:30",
+  "agency": "Bakersfield Fire",
+  "area": "San Marino Drive block, Bakersfield",
+  "notability": 2,
+  "disposition": "response",
+  "summary": "Crews were sent to a San Marino Drive address for a person who had contact with a pesticide."
+ },
+ {
+  "type": "suspicious person",
+  "time": "03:32",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Wheeler Ridge Road travel center",
+  "notability": 2,
+  "disposition": "response",
+  "summary": "A caller reported a man who appeared to be under the influence inside a travel center store before walking out to a white sedan with a spare tire on the left side."
+ }
+]

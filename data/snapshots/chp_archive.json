@@ -1270,6 +1270,16 @@
   "details": ""
  },
  {
+  "log_id": "260910BF0346",
+  "time": "Sep 10 2026  5:43PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "14808 Warren St",
+  "area": "Buttonwillow",
+  "lat": 35.614677,
+  "lon": -119.65933,
+  "details": ""
+ },
+ {
   "log_id": "260910BF0032",
   "time": "Sep 10 2026  6:09AM",
   "type": "MZP-Assist CT with Maintenance",

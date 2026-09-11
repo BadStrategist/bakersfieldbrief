@@ -1138,5 +1138,35 @@
   "lat": 34.911568,
   "lon": -118.923228,
   "details": ""
+ },
+ {
+  "log_id": "260911BF0013",
+  "time": "Sep 11 2026  1:58AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260911BF0028",
+  "time": "Sep 11 2026  5:50AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sr119 / Cedar St",
+  "area": "Buttonwillow",
+  "lat": 35.154533,
+  "lon": -119.447825,
+  "details": ""
+ },
+ {
+  "log_id": "260911BF0029",
+  "time": "Sep 11 2026  5:54AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr43 / Dresser Ave",
+  "area": "Bakersfield",
+  "lat": 35.543929,
+  "lon": -119.328792,
+  "details": ""
  }
 ]

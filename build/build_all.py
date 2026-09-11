@@ -286,8 +286,16 @@ def _llms_full(results: dict) -> None:
     tw = results.get("tehachapi_weather", {})
     tcur = tw.get("current", {})
     if tw.get("ok") and tcur.get("ok"):
+        # Only state a wind figure the station actually reported — a missing
+        # reading used to render as "wind — mph from ?" here.
+        if tcur.get("wind_mph") is not None:
+            _wind = (f"wind {tcur['wind_mph']} mph"
+                     + (f" gusting to {tcur['gust_mph']} mph" if tcur.get("gust_mph") else "")
+                     + f" from {tcur.get('wind_dir') or 'an unstated direction'}, ")
+        else:
+            _wind = "wind not reported by the station, "
         tehwx = (f"Tehachapi current conditions: {tcur.get('temperature', '—')}°F, "
-                 f"wind {tcur.get('wind_mph', '—')} mph from {tcur.get('wind_dir', '?')}, "
+                 f"{_wind}"
                  f"observed {tcur.get('observed') or 'by NWS'}.")
     else:
         tehwx = "Tehachapi weather from the National Weather Service; data unavailable this build."

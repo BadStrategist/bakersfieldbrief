@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-11T00:02:56-07:00",
+ "built_at": "2026-09-11T00:34:42-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 4569, column 22"
   },
   "isabella": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
+   "chp_new": 0,
    "top_story": "High school students reflect on 9/11's legacy 25 years after the attacks",
    "archive": "2026-09-11"
   },
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 33,
+   "wind_mph": 29,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 73,
-   "wind_mph": 33,
+   "wind_mph": 29,
    "alerts": 0
   },
   "roads": {

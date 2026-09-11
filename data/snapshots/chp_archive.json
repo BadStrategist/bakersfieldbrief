@@ -1240,6 +1240,36 @@
   "details": ""
  },
  {
+  "log_id": "260911BF0218",
+  "time": "Sep 11 2026  3:15PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr58 E / Martin Luther King Blvd Ofr",
+  "area": "Bakersfield",
+  "lat": 35.352264,
+  "lon": -118.98965,
+  "details": ""
+ },
+ {
+  "log_id": "260911BF0219",
+  "time": "Sep 11 2026  3:16PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "I5 N / LEBEC RD OFR",
+  "area": "Fort Tejon",
+  "lat": 34.831001,
+  "lon": -118.867853,
+  "details": ""
+ },
+ {
+  "log_id": "260911BF0224",
+  "time": "Sep 11 2026  3:30PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Union Ave Onr / Sr58 E",
+  "area": "Bakersfield",
+  "lat": 35.352294,
+  "lon": -119.002288,
+  "details": ""
+ },
+ {
   "log_id": "260911BF0028",
   "time": "Sep 11 2026  5:50AM",
   "type": "1179-Trfc Collision-1141 Enrt",

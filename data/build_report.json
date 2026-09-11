@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-11T10:08:53-07:00",
+ "built_at": "2026-09-11T10:26:33-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 4569, column 22"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -59,11 +59,11 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1355,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
    "top_story": "NFL Kickoff: From Kern County to the National Football League",
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 37,
+   "wind_mph": 46,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 79,
-   "wind_mph": 37,
+   "temp": 81,
+   "wind_mph": 46,
    "alerts": 0
   },
   "roads": {
@@ -135,7 +135,7 @@
    "isabella_af": 163967,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 74,
+   "aqi": 66,
    "chp_week": 42
   },
   "letters": {

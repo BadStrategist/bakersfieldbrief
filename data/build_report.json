@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-11T15:00:37-07:00",
+ "built_at": "2026-09-11T15:17:30-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,14 +59,14 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1355,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Bakersfield police investigating fuel theft of Marine Corps recruitment vehicle",
+   "chp_new": 1,
+   "top_story": "Week 4 of the high school football season in Bakersfield, Kern County",
    "archive": "2026-09-11"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": null,
+   "wind_mph": 22,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 86,
-   "wind_mph": null,
+   "wind_mph": 22,
    "alerts": 0
   },
   "roads": {
@@ -136,7 +136,7 @@
    "alpr_total": 260,
    "kern_fires": 0,
    "aqi": 67,
-   "chp_week": 51
+   "chp_week": 52
   },
   "letters": {
    "published": 0

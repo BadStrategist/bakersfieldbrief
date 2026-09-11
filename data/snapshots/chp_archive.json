@@ -1140,6 +1140,26 @@
   "details": ""
  },
  {
+  "log_id": "260911BF0163",
+  "time": "Sep 11 2026  1:07PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Wb Sr58 Jeo Sr223",
+  "area": "Bakersfield",
+  "lat": 35.263889,
+  "lon": -118.652778,
+  "details": ""
+ },
+ {
+  "log_id": "260911BF0165",
+  "time": "Sep 11 2026  1:09PM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 N / Grapevine Rd E",
+  "area": "Fort Tejon",
+  "lat": 34.939285,
+  "lon": -118.929655,
+  "details": ""
+ },
+ {
   "log_id": "260911BF0013",
   "time": "Sep 11 2026  1:58AM",
   "type": "TADV-Traffic Advisory",

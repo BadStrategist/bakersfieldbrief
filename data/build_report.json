@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-11T06:50:18-07:00",
+ "built_at": "2026-09-11T09:59:03-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 4569, column 22"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -59,14 +59,14 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1355,
   "daily": {
-   "news_headlines": 75,
-   "news_digest": "llm",
+   "news_headlines": 50,
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Inflation held steady in August as Iran war surges oil prices",
+   "chp_new": 3,
+   "top_story": "NFL Kickoff: From Kern County to the National Football League",
    "archive": "2026-09-11"
   },
   "cityhall": {
@@ -84,11 +84,11 @@
    ],
    "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 12,
-    "bakersfield-nw": 12,
-    "bakersfield-sw": 12,
-    "bakersfield-east": 12,
-    "bakersfield-central": 12
+    "tehachapi": 0,
+    "bakersfield-nw": 0,
+    "bakersfield-sw": 0,
+    "bakersfield-east": 0,
+    "bakersfield-central": 0
    }
   },
   "guide": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 46,
+   "wind_mph": 37,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 72,
-   "wind_mph": 46,
+   "temp": 79,
+   "wind_mph": 37,
    "alerts": 0
   },
   "roads": {
@@ -135,8 +135,8 @@
    "isabella_af": 163967,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 79,
-   "chp_week": 39
+   "aqi": 74,
+   "chp_week": 42
   },
   "letters": {
    "published": 0

@@ -1168,5 +1168,35 @@
   "lat": 35.543929,
   "lon": -119.328792,
   "details": ""
+ },
+ {
+  "log_id": "260911BF0078",
+  "time": "Sep 11 2026  8:52AM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 S / Fort Tejon Rd Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.874188,
+  "lon": -118.891777,
+  "details": ""
+ },
+ {
+  "log_id": "260911BF0081",
+  "time": "Sep 11 2026  8:56AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Park Dr / Niles St",
+  "area": "Bakersfield",
+  "lat": 35.376206,
+  "lon": -118.918632,
+  "details": ""
+ },
+ {
+  "log_id": "260911BF0101",
+  "time": "Sep 11 2026  9:53AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Old Farm Rd / Palm Ave",
+  "area": "Bakersfield",
+  "lat": 35.376159,
+  "lon": -119.136763,
+  "details": ""
  }
 ]

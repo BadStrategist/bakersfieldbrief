@@ -25,7 +25,7 @@
      "status": "CLOSED"
     }
    ],
-   "reported_as_of": "Friday, September 11th, 2026 at 06:50 PM",
+   "reported_as_of": "Friday, September 11th, 2026 at 11:54 PM",
    "hash": "bf983d15f2"
   },
   {
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Friday, September 11th, 2026 at 06:50 PM",
+   "reported_as_of": "Friday, September 11th, 2026 at 11:54 PM",
    "hash": "5374f203ec"
   },
   {
@@ -55,7 +55,7 @@
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads Northbound traffic is reduced to 1 lane at Ward Dr /in Kingsburg/ (Tulare Co) - Due to a traffic collision",
      "status": "RESTRICTIONS"
     },
     {
@@ -64,8 +64,8 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Friday, September 11th, 2026 at 06:50 PM",
-   "hash": "f97882795e"
+   "reported_as_of": "Friday, September 11th, 2026 at 11:54 PM",
+   "hash": "033e20fc0b"
   }
  ],
  "asof": "2026-09-11"

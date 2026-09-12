@@ -1290,6 +1290,36 @@
   "details": ""
  },
  {
+  "log_id": "260911BF0293",
+  "time": "Sep 11 2026  5:54PM",
+  "type": "1125-Traffic Hazard",
+  "location": "NB I5 JSO #1 Turn Thru",
+  "area": "Fort Tejon",
+  "lat": 34.8863,
+  "lon": -118.90312,
+  "details": ""
+ },
+ {
+  "log_id": "260911BF0316",
+  "time": "Sep 11 2026  6:30PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb Sr99 Jso Ming Ave",
+  "area": "Bakersfield",
+  "lat": 35.339989,
+  "lon": -119.037184,
+  "details": ""
+ },
+ {
+  "log_id": "260911BF0323",
+  "time": "Sep 11 2026  6:44PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Frazier Mountain Park Rd / Mount Pinos Way",
+  "area": "Fort Tejon",
+  "lat": 34.821249,
+  "lon": -118.969707,
+  "details": ""
+ },
+ {
   "log_id": "260911BF0066",
   "time": "Sep 11 2026  8:12AM",
   "type": "20002-Hit and Run No Injuries",

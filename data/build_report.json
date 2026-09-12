@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-11T23:54:17-07:00",
+ "built_at": "2026-09-12T00:24:40-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 4569, column 22"
   },
   "isabella": {
    "ok": true,
@@ -60,19 +60,19 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1355,
+  "brief_words": 71,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 3,
+   "chp_new": 0,
    "top_story": "Betty Ann Ong: The voice that alerted the world of 9/11 attacks",
-   "archive": "2026-09-11"
+   "archive": "2026-09-12"
   },
   "cityhall": {
-   "upcoming_meetings": 7,
+   "upcoming_meetings": 6,
    "county_items": 89,
-   "drafts_generated": 0
+   "drafts_generated": 1
   },
   "places": {
    "places": [
@@ -82,7 +82,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -93,7 +93,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-09-11"
+   "draft": "drafts/weekend-guide-2026-09-12"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -121,12 +121,12 @@
   },
   "events": {
    "groups": {
-    "This week": 3,
-    "Next week": 3,
+    "This week": 4,
+    "Next week": 2,
     "Later": 42,
     "Date TBD": 10
    },
-   "meetings": 7
+   "meetings": 6
   },
   "feed": {
    "entries": 30

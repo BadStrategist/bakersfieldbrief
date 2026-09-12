@@ -1120,6 +1120,26 @@
   "details": ""
  },
  {
+  "log_id": "260912BF0229",
+  "time": "Sep 12 2026  3:03PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Rowlee Rd / 7th Standard Rd",
+  "area": "Buttonwillow",
+  "lat": 35.442346,
+  "lon": -119.474118,
+  "details": ""
+ },
+ {
+  "log_id": "260912BF0242",
+  "time": "Sep 12 2026  3:28PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "NB SR99 at County Line Rd",
+  "area": "Bakersfield",
+  "lat": 35.790405,
+  "lon": -119.250693,
+  "details": ""
+ },
+ {
   "log_id": "260912BF0034",
   "time": "Sep 12 2026  4:23AM",
   "type": "TADV-Traffic Advisory",

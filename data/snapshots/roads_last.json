@@ -11,8 +11,8 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "The northbound & southbound connectors to northbound & southbound SR-133 (Orange Co) are closed from 2300 hrs each night to 0600 each morning thru 9/12/26 - Due to construction - Motorists are advised to use an alternate route",
-     "status": "CLOSED"
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
     },
     {
      "region": "CENTRAL CALIFORNIA",
@@ -25,8 +25,8 @@
      "status": "CLOSED"
     }
    ],
-   "reported_as_of": "Saturday, September 12th, 2026 at 12:24 AM",
-   "hash": "bf983d15f2"
+   "reported_as_of": "Saturday, September 12th, 2026 at 05:28 AM",
+   "hash": "e00f04dd7e"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Saturday, September 12th, 2026 at 12:24 AM",
+   "reported_as_of": "Saturday, September 12th, 2026 at 05:28 AM",
    "hash": "5374f203ec"
   },
   {
@@ -64,7 +64,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Saturday, September 12th, 2026 at 12:24 AM",
+   "reported_as_of": "Saturday, September 12th, 2026 at 05:28 AM",
    "hash": "033e20fc0b"
   }
  ],

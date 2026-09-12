@@ -1,295 +1,5 @@
 [
  {
-  "log_id": "260904BF0340",
-  "time": "Sep  4 2026  3:05PM",
-  "type": "FIRE-Report of Fire",
-  "location": "Airport Dr Onr / Sr99 N",
-  "area": "Bakersfield",
-  "lat": 35.399573,
-  "lon": -119.044702,
-  "details": ""
- },
- {
-  "log_id": "260904BF0344",
-  "time": "Sep  4 2026  3:08PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Plymouth Ave / Moneta Ave",
-  "area": "Bakersfield",
-  "lat": 35.409559,
-  "lon": -119.025548,
-  "details": ""
- },
- {
-  "log_id": "260904BF0346",
-  "time": "Sep  4 2026  3:14PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Sr43 / Panama Ln",
-  "area": "Bakersfield",
-  "lat": 35.296163,
-  "lon": -119.252464,
-  "details": ""
- },
- {
-  "log_id": "260904BF0351",
-  "time": "Sep  4 2026  3:22PM",
-  "type": "1125-Traffic Hazard",
-  "location": "EB SR178 JEO Morning Dr",
-  "area": "Bakersfield",
-  "lat": 35.394167,
-  "lon": -118.9675,
-  "details": ""
- },
- {
-  "log_id": "260904BF0352",
-  "time": "Sep  4 2026  3:27PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Nb I5 Jso #2 Turn Thru",
-  "area": "Fort Tejon",
-  "lat": 34.890111,
-  "lon": -118.91124,
-  "details": ""
- },
- {
-  "log_id": "260904BF0356",
-  "time": "Sep  4 2026  3:28PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Knudsen Dr / Norris Rd",
-  "area": "Bakersfield",
-  "lat": 35.417788,
-  "lon": -119.060495,
-  "details": ""
- },
- {
-  "log_id": "260904BF0036",
-  "time": "Sep  4 2026  4:42AM",
-  "type": "CFIRE-Car Fire",
-  "location": "I5 S / Fort Tejon Rd Ofr",
-  "area": "Fort Tejon",
-  "lat": 34.874188,
-  "lon": -118.891777,
-  "details": ""
- },
- {
-  "log_id": "260904BF0450",
-  "time": "Sep  4 2026  5:30PM",
-  "type": "1125A-Animal Hazard",
-  "location": "Mil Potrero Hwy / Cuddy Valley Rd",
-  "area": "Fort Tejon",
-  "lat": 34.841802,
-  "lon": -119.085238,
-  "details": ""
- },
- {
-  "log_id": "260904BF0468",
-  "time": "Sep  4 2026  6:04PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Oakhaven St / Olive Dr",
-  "area": "Bakersfield",
-  "lat": 35.412279,
-  "lon": -119.070077,
-  "details": ""
- },
- {
-  "log_id": "260904BF0059",
-  "time": "Sep  4 2026  6:54AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Nb Sr99 Jno Panama Ln",
-  "area": "Bakersfield",
-  "lat": 35.299456,
-  "lon": -119.031269,
-  "details": ""
- },
- {
-  "log_id": "260904BF0065",
-  "time": "Sep  4 2026  7:00AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Panama Rd / General Beale Rd",
-  "area": "Bakersfield",
-  "lat": 35.267615,
-  "lon": -118.752515,
-  "details": ""
- },
- {
-  "log_id": "260904BF0070",
-  "time": "Sep  4 2026  7:02AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "SB I5 JNO Fort Tejon Rd",
-  "area": "Fort Tejon",
-  "lat": 34.882222,
-  "lon": -118.900556,
-  "details": ""
- },
- {
-  "log_id": "260904BF0089",
-  "time": "Sep  4 2026  7:37AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sb I5 At #1 Turn Thru",
-  "area": "Fort Tejon",
-  "lat": 34.8863,
-  "lon": -118.90312,
-  "details": ""
- },
- {
-  "log_id": "260904BF0096",
-  "time": "Sep  4 2026  7:54AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Nb I5 Jso Grapevine Rd",
-  "area": "Fort Tejon",
-  "lat": 34.9375,
-  "lon": -118.928611,
-  "details": ""
- },
- {
-  "log_id": "260904BF0143",
-  "time": "Sep  4 2026  9:15AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "2020 South Union Ave",
-  "area": "Bakersfield",
-  "lat": 35.329224,
-  "lon": -119.002922,
-  "details": ""
- },
- {
-  "log_id": "260904BF0146",
-  "time": "Sep  4 2026  9:26AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sb Sr99 Jno Sr119",
-  "area": "BF",
-  "lat": 35.271111,
-  "lon": -119.023889,
-  "details": ""
- },
- {
-  "log_id": "260904BF0155",
-  "time": "Sep  4 2026  9:43AM",
-  "type": "20001-Hit and Run w/Injuries",
-  "location": "Olive Tree Ct / Knudsen Dr",
-  "area": "Bakersfield",
-  "lat": 35.416128,
-  "lon": -119.059571,
-  "details": ""
- },
- {
-  "log_id": "260904BF0159",
-  "time": "Sep  4 2026  9:55AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Oswell St / Virginia Ave",
-  "area": "Bakersfield",
-  "lat": 35.361395,
-  "lon": -118.949819,
-  "details": ""
- },
- {
-  "log_id": "260904BF0171",
-  "time": "Sep  4 2026 10:14AM",
-  "type": "1125A-Animal Hazard",
-  "location": "Wb Sr58 At Mount Vernon Ave",
-  "area": "Bakersfield",
-  "lat": 35.353056,
-  "lon": -118.967222,
-  "details": ""
- },
- {
-  "log_id": "260904BF0173",
-  "time": "Sep  4 2026 10:17AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Sr178 / Comanche Dr",
-  "area": "Bakersfield",
-  "lat": 35.406846,
-  "lon": -118.862084,
-  "details": ""
- },
- {
-  "log_id": "260904BF0581",
-  "time": "Sep  4 2026 10:35PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Arvin St / N Chester Ave",
-  "area": "Bakersfield",
-  "lat": 35.423186,
-  "lon": -119.021311,
-  "details": ""
- },
- {
-  "log_id": "260904BF0183",
-  "time": "Sep  4 2026 10:43AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "I5 S / Fort Tejon Rd Ofr",
-  "area": "Fort Tejon",
-  "lat": 34.874188,
-  "lon": -118.891777,
-  "details": ""
- },
- {
-  "log_id": "260904BF0586",
-  "time": "Sep  4 2026 10:45PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "0 I5 S",
-  "area": "Fort Tejon",
-  "lat": 35.018462,
-  "lon": -118.957639,
-  "details": ""
- },
- {
-  "log_id": "260904BF0592",
-  "time": "Sep  4 2026 10:50PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Garces Hwy / Benner Ave",
-  "area": "Bakersfield",
-  "lat": 35.761177,
-  "lon": -119.311914,
-  "details": ""
- },
- {
-  "log_id": "260904BF0593",
-  "time": "Sep  4 2026 11:01PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "0 Sr99 S",
-  "area": "Bakersfield",
-  "lat": 35.318751,
-  "lon": -119.036595,
-  "details": ""
- },
- {
-  "log_id": "260904BF0594",
-  "time": "Sep  4 2026 11:03PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Kentucky St / Webster St",
-  "area": "Bakersfield",
-  "lat": 35.373143,
-  "lon": -118.963049,
-  "details": ""
- },
- {
-  "log_id": "260904BF0600",
-  "time": "Sep  4 2026 11:17PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "0 I5 N",
-  "area": "Fort Tejon",
-  "lat": 34.932689,
-  "lon": -118.925163,
-  "details": ""
- },
- {
-  "log_id": "260904BF0608",
-  "time": "Sep  4 2026 11:46PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Brush Creek Ave / Sherman Peak Dr",
-  "area": "Bakersfield",
-  "lat": 35.432498,
-  "lon": -119.024448,
-  "details": ""
- },
- {
-  "log_id": "260904BF0002",
-  "time": "Sep  4 2026 12:02AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
   "log_id": "260905BF0034",
   "time": "Sep  5 2026  1:41AM",
   "type": "20001-Hit and Run w/Injuries",
@@ -1387,6 +1097,46 @@
   "area": "Bakersfield",
   "lat": 35.375984,
   "lon": -118.931871,
+  "details": ""
+ },
+ {
+  "log_id": "260912BF0034",
+  "time": "Sep 12 2026  4:23AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260912BF0035",
+  "time": "Sep 12 2026  4:26AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "1809 Lucky St",
+  "area": "Bakersfield",
+  "lat": 35.365791,
+  "lon": -118.976251,
+  "details": ""
+ },
+ {
+  "log_id": "260912BF0037",
+  "time": "Sep 12 2026  4:40AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Airport Dr / Petrol Rd",
+  "area": "Bakersfield",
+  "lat": 35.448517,
+  "lon": -119.038575,
+  "details": ""
+ },
+ {
+  "log_id": "260912BF0043",
+  "time": "Sep 12 2026  5:24AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Cottonwood Rd / E Pacheco Rd",
+  "area": "Bakersfield",
+  "lat": 35.310409,
+  "lon": -118.985439,
   "details": ""
  }
 ]

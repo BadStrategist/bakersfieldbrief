@@ -1138,5 +1138,25 @@
   "lat": 35.310409,
   "lon": -118.985439,
   "details": ""
+ },
+ {
+  "log_id": "260912BF0067",
+  "time": "Sep 12 2026  7:46AM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "11300-11426 Sr184",
+  "area": "Bakersfield",
+  "lat": 35.252219,
+  "lon": -118.914485,
+  "details": ""
+ },
+ {
+  "log_id": "260912BF0093",
+  "time": "Sep 12 2026  8:38AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Brown Material Rd / Sr33",
+  "area": "Buttonwillow",
+  "lat": 35.557719,
+  "lon": -119.797327,
+  "details": ""
  }
 ]

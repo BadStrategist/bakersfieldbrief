@@ -1158,5 +1158,15 @@
   "lat": 35.557719,
   "lon": -119.797327,
   "details": ""
+ },
+ {
+  "log_id": "260912BF0180",
+  "time": "Sep 12 2026 12:13PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "E Panama Ln / S Edison Rd",
+  "area": "Bakersfield",
+  "lat": 35.296231,
+  "lon": -118.878521,
+  "details": ""
  }
 ]

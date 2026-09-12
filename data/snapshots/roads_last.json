@@ -11,8 +11,8 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "Southbound traffic is reduced to 2 lanes at Templin Hwy /in Los Angeles/ (Los Angeles Co) - Due to a traffic collision",
-     "status": "RESTRICTIONS"
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
     },
     {
      "region": "CENTRAL CALIFORNIA",
@@ -21,12 +21,12 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "The southbound connector to eastbound US-50 /in Sacramento/ (Sacramento Co) is closed from 2300 hrs each night to 0600 each morning thru 9/12/26 - Due to construction - Motorists are advised to use an alternate route",
+     "text": "The southbound connector to eastbound US-50 /in Sacramento/ (Sacramento Co) is closed from 2300 hrs each night to 0600 each morning thru 9/12/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from Weed to Yrekea (Siskiyou Co) - Travel is not recommended for campers, trailers, or permit loads",
      "status": "CLOSED"
     }
    ],
-   "reported_as_of": "Saturday, September 12th, 2026 at 10:30 AM",
-   "hash": "fef544f1d0"
+   "reported_as_of": "Saturday, September 12th, 2026 at 12:46 PM",
+   "hash": "b6cf49eec6"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Saturday, September 12th, 2026 at 10:30 AM",
+   "reported_as_of": "Saturday, September 12th, 2026 at 12:46 PM",
    "hash": "5374f203ec"
   },
   {
@@ -64,7 +64,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Saturday, September 12th, 2026 at 10:30 AM",
+   "reported_as_of": "Saturday, September 12th, 2026 at 12:46 PM",
    "hash": "9824c8d578"
   }
  ],

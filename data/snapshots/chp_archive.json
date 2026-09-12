@@ -1100,6 +1100,26 @@
   "details": ""
  },
  {
+  "log_id": "260912BF0209",
+  "time": "Sep 12 2026  2:23PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr99 N / Cecil Ave",
+  "area": "Bakersfield",
+  "lat": 35.775905,
+  "lon": -119.252339,
+  "details": ""
+ },
+ {
+  "log_id": "260912BF0217",
+  "time": "Sep 12 2026  2:44PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb Sr99 Jno Sr155",
+  "area": "Bakersfield",
+  "lat": 35.761944,
+  "lon": -119.248889,
+  "details": ""
+ },
+ {
   "log_id": "260912BF0034",
   "time": "Sep 12 2026  4:23AM",
   "type": "TADV-Traffic Advisory",

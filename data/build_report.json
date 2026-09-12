@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-12T12:46:53-07:00",
+ "built_at": "2026-09-12T14:58:26-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 1,
+   "chp_new": 2,
    "top_story": "Betty Ann Ong: The voice that alerted the world of 9/11 attacks",
    "archive": "2026-09-12"
   },
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 20,
+   "wind_mph": 17,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 88,
-   "wind_mph": 20,
+   "temp": 86,
+   "wind_mph": 17,
    "alerts": 0
   },
   "roads": {
@@ -135,8 +135,8 @@
    "isabella_af": 162917,
    "alpr_total": 260,
    "kern_fires": 0,
-   "aqi": 54,
-   "chp_week": 68
+   "aqi": 67,
+   "chp_week": 70
   },
   "letters": {
    "published": 0

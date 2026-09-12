@@ -25,7 +25,7 @@
      "status": "CLOSED"
     }
    ],
-   "reported_as_of": "Saturday, September 12th, 2026 at 12:46 PM",
+   "reported_as_of": "Saturday, September 12th, 2026 at 02:57 PM",
    "hash": "b6cf49eec6"
   },
   {
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Saturday, September 12th, 2026 at 12:46 PM",
+   "reported_as_of": "Saturday, September 12th, 2026 at 02:57 PM",
    "hash": "5374f203ec"
   },
   {
@@ -55,7 +55,7 @@
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "Southbound traffic is reduced to 1 lane 6.4 mi south of the Jct of SR-152 (Madera Co) - Due to a semi fire A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "RESTRICTIONS"
     },
     {
@@ -64,8 +64,8 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Saturday, September 12th, 2026 at 12:46 PM",
-   "hash": "9824c8d578"
+   "reported_as_of": "Saturday, September 12th, 2026 at 02:57 PM",
+   "hash": "f97882795e"
   }
  ],
  "asof": "2026-09-12"

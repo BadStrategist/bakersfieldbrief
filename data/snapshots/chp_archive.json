@@ -1140,6 +1140,16 @@
   "details": ""
  },
  {
+  "log_id": "260912BF0252",
+  "time": "Sep 12 2026  3:43PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Conifer Ct / Piute St",
+  "area": "Bakersfield",
+  "lat": 35.588171,
+  "lon": -118.460601,
+  "details": ""
+ },
+ {
   "log_id": "260912BF0034",
   "time": "Sep 12 2026  4:23AM",
   "type": "TADV-Traffic Advisory",
@@ -1177,6 +1187,46 @@
   "area": "Bakersfield",
   "lat": 35.310409,
   "lon": -118.985439,
+  "details": ""
+ },
+ {
+  "log_id": "260912BF0312",
+  "time": "Sep 12 2026  6:05PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "Niles St / Mount Vernon Ave",
+  "area": "Bakersfield",
+  "lat": 35.376272,
+  "lon": -118.967404,
+  "details": ""
+ },
+ {
+  "log_id": "260912BF0317",
+  "time": "Sep 12 2026  6:10PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "26332 - 26765 Gas Company Rd",
+  "area": "Buttonwillow",
+  "lat": 35.154647,
+  "lon": -119.423772,
+  "details": ""
+ },
+ {
+  "log_id": "260912BF0323",
+  "time": "Sep 12 2026  6:20PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "1302 El Tejon Ave",
+  "area": "Bakersfield",
+  "lat": 35.418091,
+  "lon": -119.049587,
+  "details": ""
+ },
+ {
+  "log_id": "260912BF0330",
+  "time": "Sep 12 2026  6:35PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb Sr99 Jso Sr46",
+  "area": "Bakersfield",
+  "lat": 35.599993,
+  "lon": -119.209824,
   "details": ""
  },
  {

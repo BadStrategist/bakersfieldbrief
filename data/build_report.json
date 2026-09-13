@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-12T15:42:09-07:00",
+ "built_at": "2026-09-12T18:41:46-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,13 +60,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 71,
+  "brief_words": 72,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 2,
-   "top_story": "Betty Ann Ong: The voice that alerted the world of 9/11 attacks",
+   "chp_new": 5,
+   "top_story": "Over 1,500 people participate in the annual Kern Cancer Run/Walk in Bakersfield",
    "archive": "2026-09-12"
   },
   "cityhall": {
@@ -82,7 +82,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 15,
+   "wind_mph": 16,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 84,
-   "wind_mph": 15,
+   "temp": 79,
+   "wind_mph": 16,
    "alerts": 0
   },
   "roads": {
@@ -134,9 +134,9 @@
   "numbers": {
    "isabella_af": 162917,
    "alpr_total": 260,
-   "kern_fires": 0,
-   "aqi": 77,
-   "chp_week": 72
+   "kern_fires": 1,
+   "aqi": 58,
+   "chp_week": 77
   },
   "letters": {
    "published": 0

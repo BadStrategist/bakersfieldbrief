@@ -1040,6 +1040,26 @@
   "details": ""
  },
  {
+  "log_id": "260913BF0019",
+  "time": "Sep 13 2026  1:24AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260913BF0058",
+  "time": "Sep 13 2026  5:13AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "2730 Garber Way",
+  "area": "Bakersfield",
+  "lat": 35.306866,
+  "lon": -118.998619,
+  "details": ""
+ },
+ {
   "log_id": "260913BF0006",
   "time": "Sep 13 2026 12:34AM",
   "type": "1183-Trfc Collision-Unkn Inj",

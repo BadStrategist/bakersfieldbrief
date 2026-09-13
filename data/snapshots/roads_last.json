@@ -6,7 +6,7 @@
    "slug": "i5",
    "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
    "pass": true,
-   "status": "OPEN",
+   "status": "CLOSED",
    "pass_status": "OPEN",
    "sections": [
     {
@@ -21,12 +21,12 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "No traffic restrictions reported.",
-     "status": "OPEN"
+     "text": "The southbound connector to eastbound US 50n /in Sacramento/ (Sacramento Co) is closed 24 hours a day 7 days a week thru 0900 hrs on 9/13/26 - Due to construction",
+     "status": "CLOSED"
     }
    ],
-   "reported_as_of": "Sunday, September 13th, 2026 at 12:43 AM",
-   "hash": "eba63c7148"
+   "reported_as_of": "Sunday, September 13th, 2026 at 06:32 AM",
+   "hash": "2a85e5c9f3"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Sunday, September 13th, 2026 at 12:43 AM",
+   "reported_as_of": "Sunday, September 13th, 2026 at 06:32 AM",
    "hash": "5374f203ec"
   },
   {
@@ -50,13 +50,13 @@
    "slug": "sr99",
    "name": "State Route 99 \u2014 Central Valley",
    "pass": false,
-   "status": "RESTRICTIONS",
-   "pass_status": "RESTRICTIONS",
+   "status": "CLOSED",
+   "pass_status": "CLOSED",
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
-     "status": "RESTRICTIONS"
+     "text": "Is closed to northbound traffic at Floral Ave /in Selma/ (Fresno Co) at 0415 hrs on 9/13/26 - Due to a traffic collision - Motorists are advised to use an alternate route A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "status": "CLOSED"
     },
     {
      "region": "NORTHERN CALIFORNIA",
@@ -64,8 +64,8 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Sunday, September 13th, 2026 at 12:43 AM",
-   "hash": "f97882795e"
+   "reported_as_of": "Sunday, September 13th, 2026 at 06:32 AM",
+   "hash": "9c8ce43e36"
   }
  ],
  "asof": "2026-09-13"

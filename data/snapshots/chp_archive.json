@@ -1,245 +1,5 @@
 [
  {
-  "log_id": "260905BF0034",
-  "time": "Sep  5 2026  1:41AM",
-  "type": "20001-Hit and Run w/Injuries",
-  "location": "534-698 Airport Dr",
-  "area": "Bakersfield",
-  "lat": 35.41171,
-  "lon": -119.039054,
-  "details": ""
- },
- {
-  "log_id": "260905BF0054",
-  "time": "Sep  5 2026  3:07AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "3721 Eucalyptus Dr",
-  "area": "Bakersfield",
-  "lat": 35.365156,
-  "lon": -118.934189,
-  "details": ""
- },
- {
-  "log_id": "260905BF0060",
-  "time": "Sep  5 2026  4:35AM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "Sr184 / Hermosa Rd",
-  "area": "Bakersfield",
-  "lat": 35.310666,
-  "lon": -118.914309,
-  "details": ""
- },
- {
-  "log_id": "260905BF0508",
-  "time": "Sep  5 2026  6:44PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "10555 Copus Rd",
-  "area": "Buttonwillow",
-  "lat": 35.095011,
-  "lon": -119.047421,
-  "details": ""
- },
- {
-  "log_id": "260905BF0098",
-  "time": "Sep  5 2026  6:49AM",
-  "type": "1125-Traffic Hazard",
-  "location": "601 Stephens Dr",
-  "area": "Bakersfield",
-  "lat": 35.349082,
-  "lon": -119.035607,
-  "details": ""
- },
- {
-  "log_id": "260905BF0106",
-  "time": "Sep  5 2026  6:58AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Nb Sr99 Jno I5,split",
-  "area": "Fort Tejon",
-  "lat": 35.00725,
-  "lon": -118.95158,
-  "details": ""
- },
- {
-  "log_id": "260905BF0528",
-  "time": "Sep  5 2026  7:14PM",
-  "type": "FIRE-Report of Fire",
-  "location": "0 Sr58 Ofr",
-  "area": "Buttonwillow",
-  "lat": 35.400579,
-  "lon": -119.398761,
-  "details": ""
- },
- {
-  "log_id": "260905BF0538",
-  "time": "Sep  5 2026  7:38PM",
-  "type": "FIRE-Report of Fire",
-  "location": "7th Standard Rd / Brandt Rd",
-  "area": "Buttonwillow",
-  "lat": 35.442063,
-  "lon": -119.376067,
-  "details": ""
- },
- {
-  "log_id": "260905BF0552",
-  "time": "Sep  5 2026  8:00PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "SR184 / McKee Rd",
-  "area": "Bakersfield",
-  "lat": 35.274218,
-  "lon": -118.914352,
-  "details": ""
- },
- {
-  "log_id": "260905BF0155",
-  "time": "Sep  5 2026  8:14AM",
-  "type": "1125A-Animal Hazard",
-  "location": "Sr58 / Ccmo Rd",
-  "area": "Buttonwillow",
-  "lat": 35.291423,
-  "lon": -119.675098,
-  "details": ""
- },
- {
-  "log_id": "260905BF0569",
-  "time": "Sep  5 2026  8:35PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Nb I5 Jno Frazier Mountain Park Rd",
-  "area": "Fort Tejon",
-  "lat": 34.820278,
-  "lon": -118.878611,
-  "details": ""
- },
- {
-  "log_id": "260905BF0177",
-  "time": "Sep  5 2026  8:49AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Sr99 S / Sr58 E",
-  "area": "Bakersfield",
-  "lat": 35.35255,
-  "lon": -119.03962,
-  "details": ""
- },
- {
-  "log_id": "260905BF0583",
-  "time": "Sep  5 2026  8:59PM",
-  "type": "FIRE-Report of Fire",
-  "location": "Stockdale Hwy / Real Rd",
-  "area": "BF",
-  "lat": 35.354097,
-  "lon": -119.043373,
-  "details": ""
- },
- {
-  "log_id": "260905BF0183",
-  "time": "Sep  5 2026  9:02AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "400 Elk St",
-  "area": "Buttonwillow",
-  "lat": 35.298521,
-  "lon": -119.350411,
-  "details": ""
- },
- {
-  "log_id": "260905BF0188",
-  "time": "Sep  5 2026  9:09AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "0 I5 N",
-  "area": "Fort Tejon",
-  "lat": 34.873583,
-  "lon": -118.890861,
-  "details": ""
- },
- {
-  "log_id": "260905BF0590",
-  "time": "Sep  5 2026  9:10PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Herring Rd / Sr99 S",
-  "area": "Bakersfield",
-  "lat": 35.150151,
-  "lon": -118.997225,
-  "details": ""
- },
- {
-  "log_id": "260905BF0190",
-  "time": "Sep  5 2026  9:11AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Burlando Rd / Plater Rd",
-  "area": "Bakersfield",
-  "lat": 35.73651,
-  "lon": -118.427011,
-  "details": ""
- },
- {
-  "log_id": "260905BF0603",
-  "time": "Sep  5 2026  9:48PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "River Blvd / University Ave",
-  "area": "Bakersfield",
-  "lat": 35.401471,
-  "lon": -118.985295,
-  "details": ""
- },
- {
-  "log_id": "260905BF0252",
-  "time": "Sep  5 2026 11:26AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Nb I5 Jso Gorman School Rd",
-  "area": "Fort Tejon",
-  "lat": 34.79456,
-  "lon": -118.847656,
-  "details": ""
- },
- {
-  "log_id": "260905BF0004",
-  "time": "Sep  5 2026 12:06AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "7th Standard Rd Ofr / Sr99 S",
-  "area": "Bakersfield",
-  "lat": 35.446157,
-  "lon": -119.093548,
-  "details": ""
- },
- {
-  "log_id": "260905BF0005",
-  "time": "Sep  5 2026 12:08AM",
-  "type": "1125-Traffic Hazard",
-  "location": "0 I5 N",
-  "area": "Fort Tejon",
-  "lat": 34.896406,
-  "lon": -118.920366,
-  "details": ""
- },
- {
-  "log_id": "260905BF0009",
-  "time": "Sep  5 2026 12:12AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260905BF0278",
-  "time": "Sep  5 2026 12:14PM",
-  "type": "1125A-Animal Hazard",
-  "location": "Sr178 At Walker Pass",
-  "area": "Bakersfield",
-  "lat": 35.662834,
-  "lon": -118.026719,
-  "details": ""
- },
- {
-  "log_id": "260905BF0285",
-  "time": "Sep  5 2026 12:24PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Old River Rd / Sr223",
-  "area": "Bakersfield",
-  "lat": 35.208829,
-  "lon": -119.109965,
-  "details": ""
- },
- {
   "log_id": "260906BF0250",
   "time": "Sep  6 2026  1:01PM",
   "type": "AMBER-Missing/Abducted Child",
@@ -1247,6 +1007,26 @@
   "area": "Buttonwillow",
   "lat": 35.557719,
   "lon": -119.797327,
+  "details": ""
+ },
+ {
+  "log_id": "260912BF0395",
+  "time": "Sep 12 2026 10:08PM",
+  "type": "1166-Defective Traffic Signals",
+  "location": "Roberts Ln / N Chester Ave",
+  "area": "Bakersfield",
+  "lat": 35.408601,
+  "lon": -119.020929,
+  "details": ""
+ },
+ {
+  "log_id": "260912BF0415",
+  "time": "Sep 12 2026 11:49PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Olive Dr / Roberts Ln",
+  "area": "Bakersfield",
+  "lat": 35.412322,
+  "lon": -119.048586,
   "details": ""
  },
  {

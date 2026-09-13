@@ -6,7 +6,7 @@
    "slug": "i5",
    "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
    "pass": true,
-   "status": "CLOSED",
+   "status": "OPEN",
    "pass_status": "OPEN",
    "sections": [
     {
@@ -21,12 +21,12 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "The southbound connector to eastbound US 50n /in Sacramento/ (Sacramento Co) is closed 24 hours a day 7 days a week thru 0900 hrs on 9/13/26 - Due to construction",
-     "status": "CLOSED"
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
     }
    ],
-   "reported_as_of": "Sunday, September 13th, 2026 at 10:47 AM",
-   "hash": "2a85e5c9f3"
+   "reported_as_of": "Sunday, September 13th, 2026 at 12:57 PM",
+   "hash": "eba63c7148"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Sunday, September 13th, 2026 at 10:47 AM",
+   "reported_as_of": "Sunday, September 13th, 2026 at 12:57 PM",
    "hash": "5374f203ec"
   },
   {
@@ -64,7 +64,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Sunday, September 13th, 2026 at 10:47 AM",
+   "reported_as_of": "Sunday, September 13th, 2026 at 12:57 PM",
    "hash": "f97882795e"
   }
  ],

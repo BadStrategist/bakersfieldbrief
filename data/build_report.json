@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-13T10:47:15-07:00",
+ "built_at": "2026-09-13T12:57:17-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 1,
+   "chp_new": 2,
    "top_story": "Altercation in parking lot led to deadly stabbing at Ming Ave Target store: Bakersfield PD",
    "archive": "2026-09-13"
   },
@@ -96,24 +96,24 @@
    "draft": "drafts/weekend-guide-2026-09-13"
   },
   "grapevine": {
-   "i5": "CLOSED",
+   "i5": "OPEN",
    "i5_pass": "OPEN",
    "log_entries": 60
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 17,
+   "wind_mph": 18,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 68,
-   "wind_mph": 17,
+   "temp": 70,
+   "wind_mph": 18,
    "alerts": 0
   },
   "roads": {
    "routes": [
-    "i5:CLOSED",
+    "i5:OPEN",
     "sr58:OPEN",
     "sr99:RESTRICTIONS"
    ],
@@ -135,8 +135,8 @@
    "isabella_af": 162220,
    "alpr_total": 260,
    "kern_fires": 1,
-   "aqi": 51,
-   "chp_week": 85
+   "aqi": 38,
+   "chp_week": 87
   },
   "letters": {
    "published": 0

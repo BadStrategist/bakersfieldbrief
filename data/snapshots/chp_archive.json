@@ -1080,6 +1080,16 @@
   "details": ""
  },
  {
+  "log_id": "260913BF0142",
+  "time": "Sep 13 2026 11:14AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "3071 Mm178 W Ker R30.71",
+  "area": "Bakersfield",
+  "lat": 35.542164,
+  "lon": -118.619454,
+  "details": ""
+ },
+ {
   "log_id": "260913BF0006",
   "time": "Sep 13 2026 12:34AM",
   "type": "1183-Trfc Collision-Unkn Inj",
@@ -1097,6 +1107,16 @@
   "area": "Buttonwillow",
   "lat": 35.193697,
   "lon": -119.428971,
+  "details": ""
+ },
+ {
+  "log_id": "260913BF0167",
+  "time": "Sep 13 2026 12:48PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb Sr99 Jso Ming Ave",
+  "area": "Bakersfield",
+  "lat": 35.339989,
+  "lon": -119.037184,
   "details": ""
  }
 ]

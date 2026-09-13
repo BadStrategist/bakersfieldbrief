@@ -8,7 +8,7 @@ CONDITIONS
 Weather: 72° / 86°
 Alerts: Lake Wind Advisory active
 Isabella: 162,220 AF (28.6% cap)
-CHP: 1 overnight
+CHP: None overnight
 Air: AQI 61 · Moderate
 Fires: 1 active in Kern
 

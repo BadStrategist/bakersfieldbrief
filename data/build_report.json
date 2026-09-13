@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-13T10:09:22-07:00",
+ "built_at": "2026-09-13T10:34:07-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 10,
+   "wind_mph": 17,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 66,
-   "wind_mph": 10,
+   "temp": 68,
+   "wind_mph": 17,
    "alerts": 0
   },
   "roads": {
@@ -135,7 +135,7 @@
    "isabella_af": 162220,
    "alpr_total": 260,
    "kern_fires": 1,
-   "aqi": 61,
+   "aqi": 51,
    "chp_week": 84
   },
   "letters": {
@@ -150,8 +150,8 @@
   "sunday_read": {
    "topic": "Public safety",
    "source": "deterministic",
-   "words": 359,
-   "asof": "2026-09-06"
+   "words": 474,
+   "asof": "2026-09-13"
   },
   "fair": {
    "year": "2026",

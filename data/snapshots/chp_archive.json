@@ -1038,5 +1038,25 @@
   "lat": 35.296231,
   "lon": -118.878521,
   "details": ""
+ },
+ {
+  "log_id": "260913BF0006",
+  "time": "Sep 13 2026 12:34AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Lake Isabella Blvd / Kilbreth Dr",
+  "area": "Bakersfield",
+  "lat": 35.600808,
+  "lon": -118.487092,
+  "details": ""
+ },
+ {
+  "log_id": "260913BF0007",
+  "time": "Sep 13 2026 12:38AM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sr119 / Airport Rd",
+  "area": "Buttonwillow",
+  "lat": 35.193697,
+  "lon": -119.428971,
+  "details": ""
  }
 ]

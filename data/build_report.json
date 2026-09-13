@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-13T15:08:43-07:00",
+ "built_at": "2026-09-13T15:43:26-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,8 +65,8 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 3,
-   "top_story": "Altercation in parking lot led to deadly stabbing at Ming Ave Target store: Bakersfield PD",
+   "chp_new": 2,
+   "top_story": "Arvin High School staff members make history with 2026 Yale Educator Award wins",
    "archive": "2026-09-13"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": null,
+   "wind_mph": 15,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 73,
-   "wind_mph": null,
+   "wind_mph": 15,
    "alerts": 0
   },
   "roads": {
@@ -135,8 +135,8 @@
    "isabella_af": 162220,
    "alpr_total": 260,
    "kern_fires": 1,
-   "aqi": 43,
-   "chp_week": 90
+   "aqi": 46,
+   "chp_week": 92
   },
   "letters": {
    "published": 0

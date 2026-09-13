@@ -1080,6 +1080,26 @@
   "details": ""
  },
  {
+  "log_id": "260913BF0223",
+  "time": "Sep 13 2026  3:21PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 Jso Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.9375,
+  "lon": -118.928611,
+  "details": ""
+ },
+ {
+  "log_id": "260913BF0226",
+  "time": "Sep 13 2026  3:31PM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 S / Grapevine Rd Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.945041,
+  "lon": -118.932384,
+  "details": ""
+ },
+ {
   "log_id": "260913BF0058",
   "time": "Sep 13 2026  5:13AM",
   "type": "20002-Hit and Run No Injuries",

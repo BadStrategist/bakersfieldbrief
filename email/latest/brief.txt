@@ -8,11 +8,12 @@ CONDITIONS
 Weather: 82° / 86°
 Alerts: Lake Wind Advisory active
 Isabella: 162,220 AF (28.6% cap)
-CHP: 3 overnight
-Air: AQI 43 · Good
+CHP: 2 overnight
+Air: AQI 46 · Good
 Fires: 1 active in Kern
 
 THE NEWS
+• Arvin High School staff members make history with 2026 Yale Educator Award wins (23ABC) — https://www.turnto23.com/news/in-your-neighborhood/arvin-lamont/arvin-high-school-staff-members-make-history-with-2026-yale-educator-award-wins
 • Altercation in parking lot led to deadly stabbing at Ming Ave Target store: Bakersfield PD (KGET 17) — https://www.kget.com/news/crime-watch/altercation-in-parking-lot-led-to-deadly-stabbing-at-ming-ave-target-store-bakersfield-pd/
 • Over 1,500 people participate in the annual Kern Cancer Run/Walk in Bakersfield (23ABC) — https://www.turnto23.com/news/in-your-neighborhood/bakersfield/over-1-500-people-participate-in-the-annual-kern-cancer-run-walk-in-bakersfield
 • Person ‘illegally entered’ Malibu property of Kamala Harris, Doug Emhoff (KGET 17) — https://www.kget.com/news/state-news/person-illegally-entered-malibu-property-of-kamala-harris-doug-emhoff/
@@ -20,7 +21,6 @@ THE NEWS
 • GLP-1-driven vitamin deficiency linked to rare brain disorder: Study (KGET 17) — https://www.kget.com/health/glp-1-driven-vitamin-deficiency-linked-to-rare-brain-disorder-study/
 • Anthropic CEO calls to 'slow the pace' of AI development amid safety concerns (KGET 17) — https://www.kget.com/national-news/anthropic-ceo-calls-to-slow-the-pace-of-ai-development-amid-safety-concerns/
 • 'A+ employee': Flight attendant’s kind gesture goes viral, earns praise online (KGET 17) — https://www.kget.com/national-news/a-employee-flight-attendants-kind-gesture-goes-viral-earns-praise-online/
-• New virus detected in a tick invasive to the US. Should we be concerned? (KGET 17) — https://www.kget.com/health/new-virus-detected-in-a-tick-invasive-to-the-us-should-we-be-concerned/
 
 Headlines link to the original reporting at the outlets named.
 

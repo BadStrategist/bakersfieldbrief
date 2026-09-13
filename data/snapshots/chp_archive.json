@@ -1060,6 +1060,16 @@
   "details": ""
  },
  {
+  "log_id": "260913BF0080",
+  "time": "Sep 13 2026  8:19AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "6600 MM178 E KER 66.00",
+  "area": "Bakersfield",
+  "lat": 35.7161,
+  "lon": -118.172373,
+  "details": ""
+ },
+ {
   "log_id": "260913BF0006",
   "time": "Sep 13 2026 12:34AM",
   "type": "1183-Trfc Collision-Unkn Inj",

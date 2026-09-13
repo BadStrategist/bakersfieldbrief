@@ -1062,11 +1062,21 @@
  {
   "log_id": "260913BF0080",
   "time": "Sep 13 2026  8:19AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
+  "type": "20002-Hit and Run No Injuries",
   "location": "6600 MM178 E KER 66.00",
   "area": "Bakersfield",
   "lat": 35.7161,
   "lon": -118.172373,
+  "details": ""
+ },
+ {
+  "log_id": "260913BF0127",
+  "time": "Sep 13 2026 10:38AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jno #3 Turn Thru",
+  "area": "Fort Tejon",
+  "lat": 34.895731,
+  "lon": -118.91372,
   "details": ""
  },
  {

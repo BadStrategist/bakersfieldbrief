@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-13T10:34:07-07:00",
+ "built_at": "2026-09-13T10:47:15-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 0,
+   "chp_new": 1,
    "top_story": "Altercation in parking lot led to deadly stabbing at Ming Ave Target store: Bakersfield PD",
    "archive": "2026-09-13"
   },
@@ -136,7 +136,7 @@
    "alpr_total": 260,
    "kern_fires": 1,
    "aqi": 51,
-   "chp_week": 84
+   "chp_week": 85
   },
   "letters": {
    "published": 0

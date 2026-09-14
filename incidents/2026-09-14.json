@@ -1,0 +1,182 @@
+[
+ {
+  "type": "brush fire",
+  "time": "22:37",
+  "agency": "Fire crews",
+  "area": "river bottom area, Bakersfield",
+  "notability": 4,
+  "disposition": "quarter- to half-acre fire in heavy brush and grass, burning slowly; crews worked access from the river side",
+  "summary": "A fire burning in heavy brush and grass in a riparian area was reported at roughly a quarter- to half-acre in size and moving slowly. Crews worked out how to reach it, weighing access from the river side, and additional resources were requested while the fire stayed within heavy fuels."
+ },
+ {
+  "type": "armed robbery investigation",
+  "time": "22:15",
+  "agency": "Bakersfield Police Department",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "call held for a victim of a recent robbery",
+  "summary": "A caller reported being the victim of a recent armed robbery and gave a description of a suspect in a green shirt, gray pants, green hat and white shoes."
+ },
+ {
+  "type": "disturbance",
+  "time": "23:01",
+  "agency": "Bakersfield Police Department",
+  "area": "convenience store parking lot, Bakersfield",
+  "notability": 2,
+  "disposition": "officers sent to the parking lot",
+  "summary": "Officers were sent to a convenience store parking lot for a man with an open alcohol container who was refusing to leave and harassing customers."
+ },
+ {
+  "type": "theft report",
+  "time": "23:02",
+  "agency": "Bakersfield Police Department",
+  "area": "Ming Avenue block, Bakersfield",
+  "notability": 2,
+  "disposition": "call pending; suspect and vehicle described",
+  "summary": "A theft reported earlier in the evening at a Ming Avenue home improvement store was passed to patrol units with a suspect vehicle description and the incident left pending for service."
+ },
+ {
+  "type": "disturbance",
+  "time": "23:06",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Stine Road block, south Bakersfield",
+  "notability": 3,
+  "disposition": "deputies responding; parties separated over a phone",
+  "summary": "Deputies were sent to a disturbance between a caller and her husband that deputies described as an argument over a cell phone at a Stine Road address."
+ },
+ {
+  "type": "large gathering",
+  "time": "23:38",
+  "agency": "Kern County Sheriff's Office",
+  "area": "lake recreation area, Kern County",
+  "notability": 2,
+  "disposition": "routine backup requested",
+  "summary": "Deputies asked for a routine backup at a lake recreation area where about 60 other vehicles had gathered in the area."
+ },
+ {
+  "type": "suspicious circumstance",
+  "time": "23:54",
+  "agency": "Bakersfield Police Department",
+  "area": "Panama Lane at Mountain Vista Drive, Bakersfield",
+  "notability": 2,
+  "disposition": "call logged for a check",
+  "summary": "A caller near a Panama Lane intersection reported a bright light coming from an electrical box and believed someone was inside it."
+ },
+ {
+  "type": "domestic battery report",
+  "time": "00:01",
+  "agency": "Bakersfield Police Department",
+  "area": "Quincy Street block, Bakersfield",
+  "notability": 3,
+  "disposition": "call screened; juvenile at the residence",
+  "summary": "Officers took a report in which a juvenile living at a Quincy Street apartment said her mother battered her and put a knee on her neck. She was reported to be at the residence while the call was screened."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "00:02",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Roseman Mobile Home Park, Bakersfield",
+  "notability": 3,
+  "disposition": "deputies responding; firearm access reported",
+  "summary": "Deputies were sent to a mobile home park for a domestic disturbance between a woman and her partner. The caller reported the man had access to a firearm and was refusing to let her leave."
+ },
+ {
+  "type": "vehicle pursuit",
+  "time": "00:09",
+  "agency": "Law enforcement",
+  "area": "California Avenue corridor, Bakersfield",
+  "notability": 4,
+  "disposition": "pursuit ended at a residence parking lot",
+  "summary": "A pursuit ran westbound along California Avenue with speeds reported from about 60 up to 95 mph, with officers calling out light traffic and no pedestrians. The vehicle turned north off the avenue and into a residence parking lot, where units moved in."
+ },
+ {
+  "type": "welfare check",
+  "time": "01:44",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Main Street block, Maricopa",
+  "notability": 2,
+  "disposition": "deputy assigned",
+  "summary": "A deputy was assigned to check on a resident on the Main Street block in Maricopa, where the caller reported trash in front of the property and multiple dogs in the yard."
+ },
+ {
+  "type": "shots heard",
+  "time": "01:02",
+  "agency": "Bakersfield Police Department",
+  "area": "central Bakersfield",
+  "notability": 3,
+  "disposition": "officers en route",
+  "summary": "Officers were sent to investigate a report of shots heard and a related call was tied to a prior weapons report from last month."
+ },
+ {
+  "type": "disabled vehicle",
+  "time": "01:19",
+  "agency": "California Highway Patrol",
+  "area": "northbound Interstate 5 south of Grapevine, Kern County",
+  "notability": 2,
+  "disposition": "driver declined a tow; hazards on",
+  "summary": "A car with a flat tire and no spare was reported in the center divide on northbound Interstate 5 south of Grapevine, with hazard lights on. The driver had tried to arrange service through insurance and declined a CHP tow."
+ },
+ {
+  "type": "disturbance",
+  "time": "01:27",
+  "agency": "Bakersfield Police Department",
+  "area": "Niles Street block near Mount Vernon Avenue, east Bakersfield",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a Niles Street business across from Mount Vernon Avenue for a man in dark clothing reported to be under the influence and refusing to leave."
+ },
+ {
+  "type": "foot pursuit and search",
+  "time": "02:11",
+  "agency": "Bakersfield Police Department",
+  "area": "residential neighborhood, Bakersfield",
+  "notability": 4,
+  "disposition": "backyard, attic and neighborhood searched; officers fanned out on foot",
+  "summary": "After a pursuit ended at a home, officers searched the backyard and an attic and then fanned out on foot through surrounding streets for the people involved. One subject was reported to be in the backyard, and a second was last seen walking west. A K-9 and additional units joined the search and officers checked several spots where someone could hide."
+ },
+ {
+  "type": "open-line call",
+  "time": "03:55",
+  "agency": "Bakersfield Police Department",
+  "area": "Delwood Avenue block, Bakersfield",
+  "notability": 3,
+  "disposition": "line disconnected, no callback; officers checking",
+  "summary": "An open line came in with a woman asking someone to get off of her. The line disconnected and a callback went unanswered, and officers were sent to check the area."
+ },
+ {
+  "type": "traffic collision",
+  "time": "04:06",
+  "agency": "California Highway Patrol",
+  "area": "southbound Interstate 5, Kern County",
+  "notability": 3,
+  "disposition": "lanes blocked; heavy-duty tow requested",
+  "summary": "A tractor-trailer was reported disabled in the number four lane of southbound Interstate 5 with the driver out putting out triangles, and a second semi was on the right-hand shoulder. Units reported the crash and requested a heavy-duty tow."
+ },
+ {
+  "type": "suspicious subjects",
+  "time": "04:20",
+  "agency": "Bakersfield Police Department",
+  "area": "Niles Street at Ashe Road, Bakersfield",
+  "notability": 2,
+  "disposition": "officers checking the area",
+  "summary": "Officers were sent to Niles Street at Ashe Road for two subjects dressed in all black, one in a blue shirt and black pants."
+ },
+ {
+  "type": "assault investigation",
+  "time": "04:39",
+  "agency": "Law enforcement",
+  "area": "Bakersfield",
+  "notability": 3,
+  "disposition": "investigation",
+  "summary": "Officers took a call involving two 18-year-olds, a male and a female, both described in dark clothing."
+ },
+ {
+  "type": "vegetation fire",
+  "time": "05:11",
+  "agency": "Kern County Fire Department",
+  "area": "railroad tracks north of Highway 58, Bakersfield",
+  "notability": 5,
+  "disposition": "large wildland assignment; air-to-ground coordination requested",
+  "summary": "A vegetation fire reported near the Union Pacific Railroad tracks north of Highway 58 drew a heavy assignment just after 5 a.m. Two engines, three patrol units, a water tender, two dozers and multiple battalion chiefs were sent, a helicopter was placed on standby, and air-to-ground coordination was requested if needed."
+ }
+]

@@ -11,6 +11,8 @@ Weekly change log: node IDs diffed against the previous snapshot
 """
 from __future__ import annotations
 
+import datetime as dt
+
 from .. import common
 
 OVERPASS = "https://overpass-api.de/api/interpreter"
@@ -48,10 +50,29 @@ def run(ctx, *, record_change: bool = False):
         gone_ids = sorted(prev_ids - cur_ids)
 
         newest = max((c["mapped"] for c in cameras if c["mapped"]), default="")
+
+        # "New this week" = cameras whose live OSM `mapped` date falls inside the
+        # rolling 7-day window. This is the ONE number the tracker card badge
+        # ("+N NEW THIS WEEK"), the surveillance page and the email sentence all
+        # read, so they can never disagree.
+        # Do NOT use the snapshot diff (new_ids) here: the snapshot advances on
+        # the weekly change-log run, so a diff-based counter reads 0 for every
+        # build after it. That shipped as a badge reading "+0" next to the email
+        # sentence "5 new cameras mapped this week" (2026-09-14).
+        wk_cutoff = ""
+        try:
+            wk_cutoff = (dt.date.fromisoformat(common.iso_today())
+                         - dt.timedelta(days=7)).isoformat()
+        except ValueError:  # noqa: BLE001 — never break the build on a bad clock
+            wk_cutoff = ""
+        new_week = sum(1 for c in cameras
+                       if wk_cutoff and (c.get("mapped") or "") >= wk_cutoff)
+
         stats = {
             "total": len(cameras),
             "flock": sum(1 for c in cameras if "flock" in (c["manufacturer"] or "").lower()),
-            "new_this_week": len(new_ids),
+            "new_this_week": new_week,
+            "new_this_week_snapshot_diff": len(new_ids),
             "newest_mapped": newest,
         }
 

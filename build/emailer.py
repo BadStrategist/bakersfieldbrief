@@ -719,7 +719,16 @@ def _flock_update_html(alpr: dict) -> str:
     from datetime import timedelta as _td
     week_ago = (_date.today() - _td(days=7)).isoformat()
     new_today = sum(1 for c in cameras if c.get("mapped") == today)
-    new_week = sum(1 for c in cameras if week_ago <= (c.get("mapped") or "") < today)
+    # The 7-day total comes from the source payload (stats['new_this_week']) so
+    # this sentence and the tracker card's "+N NEW THIS WEEK" badge are the same
+    # number by construction. They used to diverge: the badge read the weekly
+    # snapshot diff, which reads 0 for every build after the Monday snapshot
+    # advance (badge "+0" next to "5 new cameras mapped this week", 2026-09-14).
+    week_total = stats.get("new_this_week")
+    if week_total is None:            # older cached payload
+        week_total = new_today + sum(1 for c in cameras
+                                     if week_ago <= (c.get("mapped") or "") < today)
+    new_week = max(0, int(week_total) - new_today)
     new_total = new_today + new_week
     if new_today:
         added_txt = (f"<strong>{new_today} new camera{'s' if new_today != 1 else ''} mapped today</strong>"

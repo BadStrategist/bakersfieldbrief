@@ -1063,10 +1063,10 @@
   "log_id": "260913BF0208",
   "time": "Sep 13 2026  2:57PM",
   "type": "CFIRE-Car Fire",
-  "location": "Nb Sr99 Jso Sr166",
+  "location": "NB SR99 JNO I5,SPLIT",
   "area": "Fort Tejon",
-  "lat": 35.054489,
-  "lon": -118.965546,
+  "lat": 35.00725,
+  "lon": -118.95158,
   "details": ""
  },
  {
@@ -1107,6 +1107,36 @@
   "area": "Bakersfield",
   "lat": 35.306866,
   "lon": -118.998619,
+  "details": ""
+ },
+ {
+  "log_id": "260913BF0266",
+  "time": "Sep 13 2026  6:09PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 I5 N",
+  "area": "Fort Tejon",
+  "lat": 34.79812,
+  "lon": -118.870889,
+  "details": ""
+ },
+ {
+  "log_id": "260913BF0267",
+  "time": "Sep 13 2026  6:10PM",
+  "type": "1125A-Animal Hazard",
+  "location": "Lebec Rd / North Dr",
+  "area": "Fort Tejon",
+  "lat": 34.847063,
+  "lon": -118.872137,
+  "details": ""
+ },
+ {
+  "log_id": "260913BF0284",
+  "time": "Sep 13 2026  6:58PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Niles St / Mount Vernon Ave",
+  "area": "Bakersfield",
+  "lat": 35.376272,
+  "lon": -118.967404,
   "details": ""
  },
  {

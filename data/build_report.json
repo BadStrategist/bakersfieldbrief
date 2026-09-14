@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-13T15:43:26-07:00",
+ "built_at": "2026-09-13T18:59:43-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 2,
+   "chp_new": 3,
    "top_story": "Arvin High School staff members make history with 2026 Yale Educator Award wins",
    "archive": "2026-09-13"
   },
@@ -82,7 +82,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 15,
+   "wind_mph": 17,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 73,
-   "wind_mph": 15,
+   "temp": 68,
+   "wind_mph": 17,
    "alerts": 0
   },
   "roads": {
@@ -135,8 +135,8 @@
    "isabella_af": 162220,
    "alpr_total": 260,
    "kern_fires": 1,
-   "aqi": 46,
-   "chp_week": 92
+   "aqi": 50,
+   "chp_week": 95
   },
   "letters": {
    "published": 0
@@ -174,8 +174,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 263,
-   "alpr_new_week": 3,
+   "alpr_total": 265,
+   "alpr_new_week": 5,
    "pages": [
     "surveillance",
     "fires",

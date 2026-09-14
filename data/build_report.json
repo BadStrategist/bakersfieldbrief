@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-14T11:22:07-07:00",
+ "built_at": "2026-09-14T11:29:35-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,16 +30,16 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 3644, column 3"
   },
   "isabella": {
    "ok": true,
    "error": ""
   },
   "alpr": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
   },
   "venues": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 0,
    "top_story": "Local groups step in as immigrants released from ICE custody in Bakersfield face uncertain path home",
    "archive": "2026-09-14"
   },
@@ -174,8 +174,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 265,
-   "alpr_new_week": 5,
+   "alpr_total": 0,
+   "alpr_new_week": 0,
    "pages": [
     "surveillance",
     "fires",

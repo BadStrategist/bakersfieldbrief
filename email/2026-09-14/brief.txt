@@ -8,7 +8,7 @@ CONDITIONS
 Weather: 75° / 86°
 Alerts: No active alerts
 Isabella: 161,119 AF (28.4% cap)
-CHP: 1 overnight
+CHP: None overnight
 Air: AQI 49 · Good
 Fires: 0 active in Kern
 
@@ -23,5 +23,8 @@ THE NEWS
 • Some Democrats are recalibrating their approach to transgender issues as they seek a path to power (23ABC) — https://www.turnto23.com/news/some-democrats-are-recalibrating-their-approach-to-transgender-issues-as-they-seek-a-path-to-power
 
 Headlines link to the original reporting at the outlets named.
+
+ONE THING TO WATCH
+City Council Meeting 330 on 2026-09-16. Agenda on the official link.
 
 Web: https://bakersfieldbrief.com/

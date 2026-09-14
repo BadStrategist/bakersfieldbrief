@@ -1000,6 +1000,16 @@
   "details": ""
  },
  {
+  "log_id": "260914BF0201",
+  "time": "Sep 14 2026 12:22PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Oswell St / College Ave",
+  "area": "Bakersfield",
+  "lat": 35.383124,
+  "lon": -118.949735,
+  "details": ""
+ },
+ {
   "log_id": "260914BF0008",
   "time": "Sep 14 2026 12:25AM",
   "type": "TADV-Traffic Advisory",

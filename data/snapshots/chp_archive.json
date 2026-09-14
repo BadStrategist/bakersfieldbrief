@@ -1,255 +1,5 @@
 [
  {
-  "log_id": "260906BF0250",
-  "time": "Sep  6 2026  1:01PM",
-  "type": "AMBER-Missing/Abducted Child",
-  "location": "9855 Compagnoni St",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260906BF0261",
-  "time": "Sep  6 2026  1:25PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Fillmore Ave / Sr184",
-  "area": "Bakersfield",
-  "lat": 35.369877,
-  "lon": -118.914191,
-  "details": ""
- },
- {
-  "log_id": "260906BF0037",
-  "time": "Sep  6 2026  1:43AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "13120 S Fairfax Rd",
-  "area": "Bakersfield",
-  "lat": 35.230283,
-  "lon": -118.9321,
-  "details": ""
- },
- {
-  "log_id": "260906BF0065",
-  "time": "Sep  6 2026  3:23AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Edison Hwy / Sr184",
-  "area": "Bakersfield",
-  "lat": 35.358207,
-  "lon": -118.914123,
-  "details": ""
- },
- {
-  "log_id": "260906BF0375",
-  "time": "Sep  6 2026  5:36PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "South Union Ave / Pacheco Rd",
-  "area": "Bakersfield",
-  "lat": 35.310377,
-  "lon": -119.003068,
-  "details": ""
- },
- {
-  "log_id": "260906BF0385",
-  "time": "Sep  6 2026  6:09PM",
-  "type": "1125A-Animal Hazard",
-  "location": "Sr43 / San Diego St",
-  "area": "Buttonwillow",
-  "lat": 35.463432,
-  "lon": -119.261031,
-  "details": ""
- },
- {
-  "log_id": "260906BF0394",
-  "time": "Sep  6 2026  6:23PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "N Chester Ave / Beardsley Ave",
-  "area": "Bakersfield",
-  "lat": 35.40493,
-  "lon": -119.021019,
-  "details": ""
- },
- {
-  "log_id": "260906BF0393",
-  "time": "Sep  6 2026  6:23PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Beardsley Ave / Chester Ave",
-  "area": "Bakersfield",
-  "lat": 35.40493,
-  "lon": -119.021019,
-  "details": ""
- },
- {
-  "log_id": "260906BF0392",
-  "time": "Sep  6 2026  6:23PM",
-  "type": "1125-Traffic Hazard",
-  "location": "11506-11990 Sr46",
-  "area": "Buttonwillow",
-  "lat": 35.674142,
-  "lon": -120.088252,
-  "details": ""
- },
- {
-  "log_id": "260906BF0395",
-  "time": "Sep  6 2026  6:26PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Niles St / Mount Vernon Ave",
-  "area": "Bakersfield",
-  "lat": 35.376272,
-  "lon": -118.967404,
-  "details": ""
- },
- {
-  "log_id": "260906BF0088",
-  "time": "Sep  6 2026  7:31AM",
-  "type": "1125-Traffic Hazard",
-  "location": "James Rd / N Chester Ave",
-  "area": "Bakersfield",
-  "lat": 35.444386,
-  "lon": -119.024383,
-  "details": ""
- },
- {
-  "log_id": "260906BF0148",
-  "time": "Sep  6 2026  9:32AM",
-  "type": "1125-Traffic Hazard",
-  "location": "I5 N / West Escape Ramp",
-  "area": "Fort Tejon",
-  "lat": 34.918056,
-  "lon": -118.923889,
-  "details": ""
- },
- {
-  "log_id": "260906BF0480",
-  "time": "Sep  6 2026  9:43PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "500 Oildale Dr",
-  "area": "Bakersfield",
-  "lat": 35.41042,
-  "lon": -119.030005,
-  "details": ""
- },
- {
-  "log_id": "260906BF0156",
-  "time": "Sep  6 2026  9:47AM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "7th Standard Rd / Rowlee Rd",
-  "area": "Buttonwillow",
-  "lat": 35.442346,
-  "lon": -119.474118,
-  "details": ""
- },
- {
-  "log_id": "260906BF0173",
-  "time": "Sep  6 2026 10:17AM",
-  "type": "1166-Defective Traffic Signals",
-  "location": "Adams St / Shields Dr",
-  "area": "Bakersfield",
-  "lat": 35.343342,
-  "lon": -118.998246,
-  "details": ""
- },
- {
-  "log_id": "260906BF0176",
-  "time": "Sep  6 2026 10:25AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "8884-9409 Sr178",
-  "area": "Bakersfield",
-  "lat": 35.655254,
-  "lon": -118.450133,
-  "details": ""
- },
- {
-  "log_id": "260906BF0505",
-  "time": "Sep  6 2026 10:39PM",
-  "type": "1180-Trfc Collision-Major Inj",
-  "location": "SR184 / Berry Rd",
-  "area": "Bakersfield",
-  "lat": 35.314397,
-  "lon": -118.914287,
-  "details": ""
- },
- {
-  "log_id": "260906BF0513",
-  "time": "Sep  6 2026 11:38PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Sr46 / Powers St",
-  "area": "Buttonwillow",
-  "lat": 35.616089,
-  "lon": -119.661046,
-  "details": ""
- },
- {
-  "log_id": "260906BF0209",
-  "time": "Sep  6 2026 11:39AM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "12408 Mountain Mesa Rd",
-  "area": "Bakersfield",
-  "lat": 35.63937,
-  "lon": -118.405395,
-  "details": ""
- },
- {
-  "log_id": "260906BF0218",
-  "time": "Sep  6 2026 11:56AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "I5 S / Gorman Ofr",
-  "area": "Fort Tejon",
-  "lat": 34.795674,
-  "lon": -118.858202,
-  "details": ""
- },
- {
-  "log_id": "260906BF0004",
-  "time": "Sep  6 2026 12:05AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260906BF0223",
-  "time": "Sep  6 2026 12:12PM",
-  "type": "1125A-Animal Hazard",
-  "location": "Sr58 E / Mt Vernon Ave Onr",
-  "area": "Bakersfield",
-  "lat": 35.352821,
-  "lon": -118.963752,
-  "details": ""
- },
- {
-  "log_id": "260906BF0229",
-  "time": "Sep  6 2026 12:27PM",
-  "type": "20001-Hit and Run w/Injuries",
-  "location": "201-295 N Chester Ave",
-  "area": "Bakersfield",
-  "lat": 35.40819,
-  "lon": -119.021088,
-  "details": ""
- },
- {
-  "log_id": "260906BF0234",
-  "time": "Sep  6 2026 12:34PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "I5 S / Gorman Ofr",
-  "area": "Fort Tejon",
-  "lat": 34.795674,
-  "lon": -118.858202,
-  "details": ""
- },
- {
-  "log_id": "260906BF0239",
-  "time": "Sep  6 2026 12:40PM",
-  "type": "1125A-Animal Hazard",
-  "location": "Wb Sr58 At Union Ave",
-  "area": "Bakersfield",
-  "lat": 35.3525,
-  "lon": -119.002778,
-  "details": ""
- },
- {
   "log_id": "260907BF0229",
   "time": "Sep  7 2026  1:12PM",
   "type": "1182-Trfc Collision-No Inj",
@@ -1197,6 +947,56 @@
   "area": "Bakersfield",
   "lat": 35.339989,
   "lon": -119.037184,
+  "details": ""
+ },
+ {
+  "log_id": "260914BF0045",
+  "time": "Sep 14 2026  4:57AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260914BF0073",
+  "time": "Sep 14 2026  7:38AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Schuster Rd / Melcher Rd",
+  "area": "Bakersfield",
+  "lat": 35.732234,
+  "lon": -119.276229,
+  "details": ""
+ },
+ {
+  "log_id": "260914BF0074",
+  "time": "Sep 14 2026  7:44AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr99 N / 24th St Ofr",
+  "area": "Bakersfield",
+  "lat": 35.378659,
+  "lon": -119.044311,
+  "details": ""
+ },
+ {
+  "log_id": "260914BF0080",
+  "time": "Sep 14 2026  7:48AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Airport Dr / Olive Dr",
+  "area": "Bakersfield",
+  "lat": 35.412249,
+  "lon": -119.038933,
+  "details": ""
+ },
+ {
+  "log_id": "260914BF0008",
+  "time": "Sep 14 2026 12:25AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
   "details": ""
  }
 ]

@@ -6,13 +6,13 @@
    "slug": "i5",
    "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
    "pass": true,
-   "status": "OPEN",
+   "status": "CLOSED",
    "pass_status": "OPEN",
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "No traffic restrictions reported.",
-     "status": "OPEN"
+     "text": "The southbound connector to eastbound & westbound SR-76 /in Oceanside/ (San Diego Co) is closed from 2100 hrs on 9/13/26 to 0500 hrs on 9/14/26 - Due to permit work - Motorists are advised to use an alternate route",
+     "status": "CLOSED"
     },
     {
      "region": "CENTRAL CALIFORNIA",
@@ -25,8 +25,8 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Sunday, September 13th, 2026 at 06:59 PM",
-   "hash": "eba63c7148"
+   "reported_as_of": "Monday, September 14th, 2026 at 12:37 AM",
+   "hash": "906c508da2"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Sunday, September 13th, 2026 at 06:59 PM",
+   "reported_as_of": "Monday, September 14th, 2026 at 12:37 AM",
    "hash": "5374f203ec"
   },
   {
@@ -64,9 +64,9 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Sunday, September 13th, 2026 at 06:59 PM",
+   "reported_as_of": "Monday, September 14th, 2026 at 12:37 AM",
    "hash": "f97882795e"
   }
  ],
- "asof": "2026-09-13"
+ "asof": "2026-09-14"
 }

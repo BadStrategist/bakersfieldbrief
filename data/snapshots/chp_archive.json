@@ -990,6 +990,16 @@
   "details": ""
  },
  {
+  "log_id": "260914BF0141",
+  "time": "Sep 14 2026 10:13AM",
+  "type": "ANIMAL-Live or Dead Animal",
+  "location": "I5 S / Sr46 Ofr",
+  "area": "Buttonwillow",
+  "lat": 35.620881,
+  "lon": -119.656893,
+  "details": ""
+ },
+ {
   "log_id": "260914BF0008",
   "time": "Sep 14 2026 12:25AM",
   "type": "TADV-Traffic Advisory",

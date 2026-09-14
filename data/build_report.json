@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-14T09:27:31-07:00",
+ "built_at": "2026-09-14T11:22:07-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 3644, column 3"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -59,14 +59,14 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1311,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "\u2018Tommy & Tuppence\u2019 combines mystery, romance",
+   "chp_new": 1,
+   "top_story": "Local groups step in as immigrants released from ICE custody in Bakersfield face uncertain path home",
    "archive": "2026-09-14"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 8,
+   "wind_mph": 9,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 63,
-   "wind_mph": 8,
+   "temp": 68,
+   "wind_mph": 9,
    "alerts": 0
   },
   "roads": {
@@ -135,8 +135,8 @@
    "isabella_af": 161119,
    "alpr_total": 265,
    "kern_fires": 0,
-   "aqi": 59,
-   "chp_week": 5
+   "aqi": 49,
+   "chp_week": 6
   },
   "letters": {
    "published": 0

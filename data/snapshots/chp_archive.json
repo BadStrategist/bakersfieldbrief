@@ -950,6 +950,16 @@
   "details": ""
  },
  {
+  "log_id": "260914BF0249",
+  "time": "Sep 14 2026  1:16PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Nb I5 Jso #4 Turn Thru",
+  "area": "Fort Tejon",
+  "lat": 34.914069,
+  "lon": -118.92362,
+  "details": ""
+ },
+ {
   "log_id": "260914BF0045",
   "time": "Sep 14 2026  4:57AM",
   "type": "MZP-Assist CT with Maintenance",

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-14T12:34:13-07:00",
+ "built_at": "2026-09-14T14:07:39-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -22,8 +22,8 @@
    "error": ""
   },
   "airnow": {
-   "ok": false,
-   "error": "AirNow returned no data"
+   "ok": true,
+   "error": ""
   },
   "calfire": {
    "ok": true,
@@ -66,7 +66,7 @@
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 1,
-   "top_story": "Adventist Health to host 13th annual VIPink event in Bakersfield for breast cancer awareness",
+   "top_story": "Snoop Dogg to bring the Puff Puff Pass Tour to Bakersfield",
    "archive": "2026-09-14"
   },
   "cityhall": {
@@ -97,18 +97,18 @@
   },
   "grapevine": {
    "i5": "RESTRICTIONS",
-   "i5_pass": "OPEN",
+   "i5_pass": "RESTRICTIONS",
    "log_entries": 60
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 11,
+   "wind_mph": 15,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 73,
-   "wind_mph": 11,
+   "temp": 75,
+   "wind_mph": 15,
    "alerts": 0
   },
   "roads": {
@@ -135,8 +135,8 @@
    "isabella_af": 161119,
    "alpr_total": 265,
    "kern_fires": 0,
-   "aqi": null,
-   "chp_week": 7
+   "aqi": 52,
+   "chp_week": 8
   },
   "letters": {
    "published": 0

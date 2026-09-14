@@ -952,11 +952,51 @@
  {
   "log_id": "260914BF0249",
   "time": "Sep 14 2026  1:16PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
+  "type": "1181-Trfc Collision-Minor Inj",
   "location": "Nb I5 Jso #4 Turn Thru",
   "area": "Fort Tejon",
   "lat": 34.914069,
   "lon": -118.92362,
+  "details": ""
+ },
+ {
+  "log_id": "260914BF0312",
+  "time": "Sep 14 2026  3:18PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "222 Chimney Canyon Rd",
+  "area": "Fort Tejon",
+  "lat": 34.822007,
+  "lon": -118.884564,
+  "details": ""
+ },
+ {
+  "log_id": "260914BF0314",
+  "time": "Sep 14 2026  3:24PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "31902-32099 Sr155",
+  "area": "Bakersfield",
+  "lat": 35.761345,
+  "lon": -119.212904,
+  "details": ""
+ },
+ {
+  "log_id": "260914BF0323",
+  "time": "Sep 14 2026  3:48PM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 I5 N",
+  "area": "Fort Tejon",
+  "lat": 34.802185,
+  "lon": -118.875929,
+  "details": ""
+ },
+ {
+  "log_id": "260914BF0324",
+  "time": "Sep 14 2026  3:51PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "31502 Peterson Rd",
+  "area": "Bakersfield",
+  "lat": 35.703315,
+  "lon": -119.232157,
   "details": ""
  },
  {

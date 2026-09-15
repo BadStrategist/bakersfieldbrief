@@ -1010,6 +1010,16 @@
   "details": ""
  },
  {
+  "log_id": "260914BF0353",
+  "time": "Sep 14 2026  4:59PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Nb I5 Jno Sr138",
+  "area": "Fort Tejon",
+  "lat": 34.771389,
+  "lon": -118.803611,
+  "details": ""
+ },
+ {
   "log_id": "260914BF0073",
   "time": "Sep 14 2026  7:38AM",
   "type": "20002-Hit and Run No Injuries",

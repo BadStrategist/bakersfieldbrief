@@ -1010,6 +1010,56 @@
   "details": ""
  },
  {
+  "log_id": "260915BF0195",
+  "time": "Sep 15 2026  1:14PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "I5 N / GRAPEVINE RD OFR",
+  "area": "Fort Tejon",
+  "lat": 34.939994,
+  "lon": -118.930124,
+  "details": ""
+ },
+ {
+  "log_id": "260915BF0233",
+  "time": "Sep 15 2026  2:40PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sr33 / Sr46",
+  "area": "Buttonwillow",
+  "lat": 35.614949,
+  "lon": -119.867656,
+  "details": ""
+ },
+ {
+  "log_id": "260915BF0249",
+  "time": "Sep 15 2026  3:05PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Airport Dr / Norris Rd",
+  "area": "Bakersfield",
+  "lat": 35.419525,
+  "lon": -119.039179,
+  "details": ""
+ },
+ {
+  "log_id": "260915BF0258",
+  "time": "Sep 15 2026  3:13PM",
+  "type": "1125-Traffic Hazard",
+  "location": "7th Standard Rd / Calloway Dr",
+  "area": "Bakersfield",
+  "lat": 35.441439,
+  "lon": -119.109905,
+  "details": ""
+ },
+ {
+  "log_id": "260915BF0262",
+  "time": "Sep 15 2026  3:14PM",
+  "type": "1125-Traffic Hazard",
+  "location": "N Chester Ave / Ferguson Ave",
+  "area": "Bakersfield",
+  "lat": 35.415564,
+  "lon": -119.021072,
+  "details": ""
+ },
+ {
   "log_id": "260915BF0039",
   "time": "Sep 15 2026  5:25AM",
   "type": "MZP-Assist CT with Maintenance",

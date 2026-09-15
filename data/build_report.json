@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-15T01:06:00-07:00",
+ "built_at": "2026-09-15T06:58:20-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,14 +59,14 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 61,
+  "_digest_meta": "llm",
+  "brief_words": 1330,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
    "chp_new": 3,
-   "top_story": "Man arrested after deadly stabbing at Bakersfield Target parking lot",
+   "top_story": "Arvin's new police chief hits the ground running on first day, outlines vision for department",
    "archive": "2026-09-15"
   },
   "cityhall": {
@@ -96,24 +96,24 @@
    "draft": "drafts/weekend-guide-2026-09-15"
   },
   "grapevine": {
-   "i5": "CLOSED",
+   "i5": "RESTRICTIONS",
    "i5_pass": "OPEN",
    "log_entries": 60
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 1,
+   "wind_mph": 0,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 54,
-   "wind_mph": 1,
+   "temp": 45,
+   "wind_mph": 0,
    "alerts": 0
   },
   "roads": {
    "routes": [
-    "i5:CLOSED",
+    "i5:RESTRICTIONS",
     "sr58:OPEN",
     "sr99:RESTRICTIONS"
    ],
@@ -132,11 +132,11 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 161119,
+   "isabella_af": 160311,
    "alpr_total": 265,
    "kern_fires": 0,
-   "aqi": 61,
-   "chp_week": 17
+   "aqi": 57,
+   "chp_week": 19
   },
   "letters": {
    "published": 0

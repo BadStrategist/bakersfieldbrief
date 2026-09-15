@@ -1028,5 +1028,15 @@
   "lat": 35.265234,
   "lon": -119.024794,
   "details": ""
+ },
+ {
+  "log_id": "260915BF0136",
+  "time": "Sep 15 2026 10:15AM",
+  "type": "BREAK-Traffic Break",
+  "location": "I5 N / Grapevine Rd Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.939994,
+  "lon": -118.930124,
+  "details": ""
  }
 ]

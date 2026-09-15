@@ -1,0 +1,137 @@
+[
+ {
+  "type": "fire report",
+  "time": "21:06",
+  "agency": "Kern County Fire Department",
+  "area": "ranch property, Kern County",
+  "notability": 2,
+  "disposition": "crews found nothing; assignment completed",
+  "summary": "A resident at a ranch reported a small fire at the back of his property that looked like it might be dying down. Crews checked the area, were unable to locate anything and cleared."
+ },
+ {
+  "type": "water rescue",
+  "time": "22:02",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Westdale Park area near the California Aqueduct, Kern County",
+  "notability": 4,
+  "disposition": "search and rescue response; crews moved toward the water on foot",
+  "summary": "Deputies and search-and-rescue units were sent to a county park after a caller reported a woman in the water near the California Aqueduct. Crews staged and walked toward the water, with a long approach on foot."
+ },
+ {
+  "type": "gas leak",
+  "time": "22:13",
+  "agency": "Kern County Fire Department",
+  "area": "Meacham Road block, Bakersfield",
+  "notability": 4,
+  "disposition": "fire crews sent to the residence",
+  "summary": "Fire crews were sent to a Meacham Road home where residents reported a major gas leak inside the house."
+ },
+ {
+  "type": "weapons call",
+  "time": "23:06",
+  "agency": "Bakersfield Police Department",
+  "area": "South Union Avenue block, Bakersfield",
+  "notability": 2,
+  "disposition": "officers responding",
+  "summary": "Officers were sent behind a South Union Avenue convenience store for a man reported to be known to carry a weapon."
+ },
+ {
+  "type": "missing person search",
+  "time": "23:32",
+  "agency": "Bakersfield Police Department",
+  "area": "railroad tracks, east Bakersfield",
+  "notability": 4,
+  "disposition": "train traffic placed under manual control while officers closed on foot",
+  "summary": "Officers searched along the railroad tracks in east Bakersfield for someone reported missing and at risk, tracking the person to the tracks. Units moved in on foot and asked whether train traffic needed to be stopped, and traffic was placed under manual control while they worked."
+ },
+ {
+  "type": "911 hang-up",
+  "time": "00:00",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Boron",
+  "notability": 3,
+  "disposition": "no answer on callback; deputies sent to check",
+  "summary": "Deputies were sent to a Boron address after a 911 hang-up in which the caller rambled about a man trying to open a door. There was no answer when dispatch called back."
+ },
+ {
+  "type": "structure fire",
+  "time": "00:02",
+  "agency": "Bakersfield Fire Department",
+  "area": "Planz Road block, Bakersfield",
+  "notability": 5,
+  "disposition": "full assignment; fire extended from the garage into the house",
+  "summary": "Multiple callers reported a garage on fire, attached to the house and burning into the home, in the Planz Road block just after midnight. Two trucks, an engine and two battalion chiefs were assigned. Fire debris was later cleared from the area, and a vehicle was reported at the same address about 40 minutes later."
+ },
+ {
+  "type": "assault call and standoff",
+  "time": "00:45",
+  "agency": "Bakersfield Police Department",
+  "area": "near Center Street and Prospect Street, Bakersfield",
+  "notability": 4,
+  "disposition": "subject barricaded in a bedroom; units held the scene",
+  "summary": "Officers were sent to a residence where a teenager had barricaded himself in a bedroom after assaulting his parents. The call appeared to come from a group home line, and the person was reported to have gone back inside the residence while units held the scene."
+ },
+ {
+  "type": "shooting",
+  "time": "01:00",
+  "agency": "Bakersfield Police Department",
+  "area": "south Bakersfield near the Kern River",
+  "notability": 4,
+  "disposition": "one person wounded; tourniquet applied at 1:04 a.m.",
+  "summary": "Officers were sent south of the city near the river for a report of shots fired, with a second caller reporting the situation was still active and someone outside with a firearm. One person was wounded in the leg and a tourniquet was applied at 1:04 a.m., with the scene held for the investigation."
+ },
+ {
+  "type": "disturbance",
+  "time": "01:13",
+  "agency": "Bakersfield Police Department",
+  "area": "Stockdale Highway block, Bakersfield",
+  "notability": 2,
+  "disposition": "officers checked the area",
+  "summary": "Officers were sent to a Stockdale Highway bank parking lot to check on a woman heard yelling, possibly in a fight with a man. The pair may have been on foot behind the building."
+ },
+ {
+  "type": "robbery investigation",
+  "time": "01:38",
+  "agency": "Bakersfield Police Department",
+  "area": "Pacific Street block, Bakersfield",
+  "notability": 3,
+  "disposition": "subject fled the area on foot after jumping a fence",
+  "summary": "Officers were sent to a Pacific Street robbery that had just occurred. The person had fled and then returned, and was reported to be gone again on foot after jumping a fence."
+ },
+ {
+  "type": "fire alarm",
+  "time": "01:45",
+  "agency": "Bakersfield Fire Department",
+  "area": "Niles Street block, east Bakersfield",
+  "notability": 2,
+  "disposition": "engine assigned",
+  "summary": "An engine was sent to a commercial fire alarm at a Niles Street grocery store."
+ },
+ {
+  "type": "traffic collision",
+  "time": "03:35",
+  "agency": "Ridgecrest Police Department",
+  "area": "Ridgecrest Boulevard near the motel strip, Ridgecrest",
+  "notability": 3,
+  "disposition": "vehicle versus pedestrian; police and fire on scene",
+  "summary": "Fire and police units were sent to a vehicle versus pedestrian collision near a Ridgecrest Boulevard motel. Only limited information came in at first."
+ },
+ {
+  "type": "welfare check",
+  "time": "03:52",
+  "agency": "Bakersfield Police Department",
+  "area": "Robinson Street at Jefferson Street, Bakersfield",
+  "notability": 3,
+  "disposition": "officers sent to check on the caller",
+  "summary": "A woman told dispatchers she had recently woken up inside a sedan and said she had been kidnapped. Officers were sent to the area to check on her."
+ },
+ {
+  "type": "emergency alarm",
+  "time": "04:44",
+  "agency": "Kern County Sheriff's Office",
+  "area": "canyon area, Kern County",
+  "notability": 2,
+  "disposition": "deputies en route; CHP requested; locked gate blocked access",
+  "summary": "An emergency button was activated in a white pickup out in the canyons, with deputies sent to check on the driver and CHP requested in case it turned out to be a crash. A locked gate kept units from reaching a residence in the area."
+ }
+]

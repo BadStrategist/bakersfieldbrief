@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-15T15:43:46-07:00",
+ "built_at": "2026-09-15T16:15:51-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,8 +65,8 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 7,
-   "top_story": "Arts Council of Kern to host new workshops",
+   "chp_new": 4,
+   "top_story": "September marks Bakersfield, national library card sign up month",
    "archive": "2026-09-15"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 17,
+   "wind_mph": 15,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 81,
-   "wind_mph": 17,
+   "wind_mph": 15,
    "alerts": 0
   },
   "roads": {
@@ -174,8 +174,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 265,
-   "alpr_new_week": 4,
+   "alpr_total": 266,
+   "alpr_new_week": 5,
    "pages": [
     "surveillance",
     "fires",

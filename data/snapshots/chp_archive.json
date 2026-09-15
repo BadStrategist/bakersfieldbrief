@@ -910,6 +910,16 @@
   "details": ""
  },
  {
+  "log_id": "260914BF0400",
+  "time": "Sep 14 2026  7:25PM",
+  "type": "BREAK-Traffic Break",
+  "location": "Sr99 S / Union Ave Onr",
+  "area": "Bakersfield",
+  "lat": 35.172725,
+  "lon": -119.004403,
+  "details": ""
+ },
+ {
   "log_id": "260914BF0406",
   "time": "Sep 14 2026  7:35PM",
   "type": "CZP-Assist with Construction",

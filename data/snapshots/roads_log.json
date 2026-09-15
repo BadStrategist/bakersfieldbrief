@@ -1,5 +1,12 @@
 [
  {
+  "ts": "2026-09-15",
+  "route": "i5",
+  "route_name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
+  "from": "RESTRICTIONS",
+  "to": "CLOSED"
+ },
+ {
   "ts": "2026-09-14",
   "route": "i5",
   "route_name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
@@ -448,12 +455,5 @@
   "route_name": "State Route 58 \u2014 Tehachapi",
   "from": "RESTRICTIONS",
   "to": "CLOSED"
- },
- {
-  "ts": "2026-09-01",
-  "route": "sr58",
-  "route_name": "State Route 58 \u2014 Tehachapi",
-  "from": "OPEN",
-  "to": "RESTRICTIONS"
  }
 ]

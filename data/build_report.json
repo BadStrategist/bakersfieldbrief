@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-14T19:08:04-07:00",
+ "built_at": "2026-09-15T00:17:10-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,19 +60,19 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1311,
+  "brief_words": 61,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "'It\u2019s night and day': CSU Bakersfield opens new food pantry for students, staff",
-   "archive": "2026-09-14"
+   "chp_new": 3,
+   "top_story": "Man arrested after deadly stabbing at Bakersfield Target parking lot",
+   "archive": "2026-09-15"
   },
   "cityhall": {
    "upcoming_meetings": 8,
    "county_items": 89,
-   "drafts_generated": 0
+   "drafts_generated": 1
   },
   "places": {
    "places": [
@@ -82,7 +82,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -93,27 +93,27 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-09-14"
+   "draft": "drafts/weekend-guide-2026-09-15"
   },
   "grapevine": {
-   "i5": "RESTRICTIONS",
+   "i5": "CLOSED",
    "i5_pass": "OPEN",
    "log_entries": 60
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 13,
+   "wind_mph": 1,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 68,
-   "wind_mph": 13,
+   "temp": 54,
+   "wind_mph": 1,
    "alerts": 0
   },
   "roads": {
    "routes": [
-    "i5:RESTRICTIONS",
+    "i5:CLOSED",
     "sr58:OPEN",
     "sr99:RESTRICTIONS"
    ],
@@ -122,7 +122,7 @@
   "events": {
    "groups": {
     "This week": 2,
-    "Next week": 3,
+    "Next week": 2,
     "Later": 41,
     "Date TBD": 10
    },
@@ -135,8 +135,8 @@
    "isabella_af": 161119,
    "alpr_total": 265,
    "kern_fires": 0,
-   "aqi": 54,
-   "chp_week": 13
+   "aqi": 61,
+   "chp_week": 16
   },
   "letters": {
    "published": 0
@@ -175,7 +175,7 @@
   },
   "trackers": {
    "alpr_total": 265,
-   "alpr_new_week": 5,
+   "alpr_new_week": 4,
    "pages": [
     "surveillance",
     "fires",

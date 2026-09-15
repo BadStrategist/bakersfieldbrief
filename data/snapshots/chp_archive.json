@@ -1,115 +1,5 @@
 [
  {
-  "log_id": "260907BF0229",
-  "time": "Sep  7 2026  1:12PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Nb I5 Jso Sr99,split",
-  "area": "Fort Tejon",
-  "lat": 35.00725,
-  "lon": -118.95158,
-  "details": ""
- },
- {
-  "log_id": "260907BF0247",
-  "time": "Sep  7 2026  2:21PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Nb I5 Jso Laval Rd",
-  "area": "Fort Tejon",
-  "lat": 34.9825,
-  "lon": -118.943889,
-  "details": ""
- },
- {
-  "log_id": "260907BF0287",
-  "time": "Sep  7 2026  3:33PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Laval Rd / Tejon Industrial Dr",
-  "area": "Fort Tejon",
-  "lat": 34.994259,
-  "lon": -118.99215,
-  "details": ""
- },
- {
-  "log_id": "260907BF0284",
-  "time": "Sep  7 2026  3:34PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "0 I5 N",
-  "area": "Fort Tejon",
-  "lat": 34.79729,
-  "lon": -118.868807,
-  "details": ""
- },
- {
-  "log_id": "260907BF0066",
-  "time": "Sep  7 2026  7:19AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "7th Standard Rd / Coffee Rd",
-  "area": "Bakersfield",
-  "lat": 35.441404,
-  "lon": -119.092171,
-  "details": ""
- },
- {
-  "log_id": "260907BF0185",
-  "time": "Sep  7 2026 11:50AM",
-  "type": "1125-Traffic Hazard",
-  "location": "21959 Sr46",
-  "area": "Buttonwillow",
-  "lat": 35.616103,
-  "lon": -119.659136,
-  "details": ""
- },
- {
-  "log_id": "260907BF0186",
-  "time": "Sep  7 2026 11:51AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr58 W / Coffee Rd Ofr",
-  "area": "Bakersfield",
-  "lat": 35.367919,
-  "lon": -119.083104,
-  "details": ""
- },
- {
-  "log_id": "260907BF0187",
-  "time": "Sep  7 2026 11:53AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sb Sr99 Jno Pond Rd",
-  "area": "Bakersfield",
-  "lat": 35.71806,
-  "lon": -119.237134,
-  "details": ""
- },
- {
-  "log_id": "260908BF0002",
-  "time": "Sep  7 2026 11:57PM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260907BF0002",
-  "time": "Sep  7 2026 12:00AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260907BF0197",
-  "time": "Sep  7 2026 12:19PM",
-  "type": "DOT-Request CalTrans Notify",
-  "location": "Nb I5 At Fort Tejon Rd",
-  "area": "Fort Tejon",
-  "lat": 34.876944,
-  "lon": -118.894722,
-  "details": ""
- },
- {
   "log_id": "260908BF0112",
   "time": "Sep  8 2026  9:22AM",
   "type": "20002-Hit and Run No Injuries",
@@ -1020,6 +910,16 @@
   "details": ""
  },
  {
+  "log_id": "260914BF0406",
+  "time": "Sep 14 2026  7:35PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Nb I5 Jno Sr119",
+  "area": "Buttonwillow",
+  "lat": 35.269722,
+  "lon": -119.227222,
+  "details": ""
+ },
+ {
   "log_id": "260914BF0073",
   "time": "Sep 14 2026  7:38AM",
   "type": "20002-Hit and Run No Injuries",
@@ -1050,6 +950,16 @@
   "details": ""
  },
  {
+  "log_id": "260914BF0444",
+  "time": "Sep 14 2026  9:56PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "29500-29699 7th Standard Rd",
+  "area": "Buttonwillow",
+  "lat": 35.441872,
+  "lon": -119.316522,
+  "details": ""
+ },
+ {
   "log_id": "260914BF0141",
   "time": "Sep 14 2026 10:13AM",
   "type": "ANIMAL-Live or Dead Animal",
@@ -1057,6 +967,16 @@
   "area": "Buttonwillow",
   "lat": 35.620881,
   "lon": -119.656893,
+  "details": ""
+ },
+ {
+  "log_id": "260915BF0002",
+  "time": "Sep 14 2026 11:59PM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
   "details": ""
  },
  {

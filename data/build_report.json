@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-15T10:36:38-07:00",
+ "built_at": "2026-09-15T10:51:11-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,8 +65,8 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
-   "top_story": "Three Bakersfield World War II veterans go for a memorable ride in a vintage B-17 bomber",
+   "chp_new": 0,
+   "top_story": "Woman dies in head-on crash on Cuddy Valley Road: CHP",
    "archive": "2026-09-15"
   },
   "cityhall": {
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 72,
+   "temp": 75,
    "wind_mph": 0,
    "alerts": 0
   },

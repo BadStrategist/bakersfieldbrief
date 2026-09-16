@@ -1140,6 +1140,26 @@
   "details": ""
  },
  {
+  "log_id": "260916BF0141",
+  "time": "Sep 16 2026 11:01AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Airport Dr / Norris Rd",
+  "area": "Bakersfield",
+  "lat": 35.419525,
+  "lon": -119.039179,
+  "details": ""
+ },
+ {
+  "log_id": "260916BF0150",
+  "time": "Sep 16 2026 11:15AM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "Sb Sr99 At White Ln",
+  "area": "BF",
+  "lat": 35.317611,
+  "lon": -119.038864,
+  "details": ""
+ },
+ {
   "log_id": "260916BF0001",
   "time": "Sep 16 2026 12:01AM",
   "type": "TADV-Traffic Advisory",

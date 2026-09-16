@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-16T10:53:30-07:00",
+ "built_at": "2026-09-16T11:32:17-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,8 +65,8 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "1 dead after solo-vehicle crash on Sycamore Rd: CHP",
+   "chp_new": 2,
+   "top_story": "RangeFest 2026 comes to Bakersfield this weekend with gun demos, competitions, and a focus on safety",
    "archive": "2026-09-16"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 3,
+   "wind_mph": 10,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 72,
-   "wind_mph": 3,
+   "temp": 73,
+   "wind_mph": 10,
    "alerts": 0
   },
   "roads": {
@@ -135,8 +135,8 @@
    "isabella_af": 159506,
    "alpr_total": 265,
    "kern_fires": 0,
-   "aqi": 59,
-   "chp_week": 34
+   "aqi": 54,
+   "chp_week": 36
   },
   "letters": {
    "published": 0

@@ -11,7 +11,7 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads Northbound traffic is reduced to 2 lanes at Jeffery Rd /in Irvine/ (Orange Co) - Due to a traffic collision",
+     "text": "A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "RESTRICTIONS"
     },
     {
@@ -25,8 +25,8 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Wednesday, September 16th, 2026 at 10:53 AM",
-   "hash": "1fe99239ae"
+   "reported_as_of": "Wednesday, September 16th, 2026 at 11:32 AM",
+   "hash": "dfa6dd9ce1"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Wednesday, September 16th, 2026 at 10:53 AM",
+   "reported_as_of": "Wednesday, September 16th, 2026 at 11:32 AM",
    "hash": "5374f203ec"
   },
   {
@@ -64,7 +64,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Wednesday, September 16th, 2026 at 10:53 AM",
+   "reported_as_of": "Wednesday, September 16th, 2026 at 11:32 AM",
    "hash": "f97882795e"
   }
  ],

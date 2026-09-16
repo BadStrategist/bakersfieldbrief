@@ -1110,6 +1110,26 @@
   "details": ""
  },
  {
+  "log_id": "260916BF0274",
+  "time": "Sep 16 2026  3:05PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "1916 N Chester Frontage Ave",
+  "area": "Bakersfield",
+  "lat": 35.423348,
+  "lon": -119.020958,
+  "details": ""
+ },
+ {
+  "log_id": "260916BF0284",
+  "time": "Sep 16 2026  3:36PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sb Sr99 Jso Airport Dr",
+  "area": "Bakersfield",
+  "lat": 35.392778,
+  "lon": -119.044722,
+  "details": ""
+ },
+ {
   "log_id": "260916BF0024",
   "time": "Sep 16 2026  3:45AM",
   "type": "20002-Hit and Run No Injuries",

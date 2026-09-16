@@ -1117,8 +1117,8 @@ _TITLE_STOPWORDS = {"for", "and", "the", "with", "in", "of", "to", "at", "on",
 
 def _brief_title(headline: str, d) -> str:
     h = (headline or "Bakersfield Daily Brief").strip().rstrip(", .;-")
-    if len(h) > 72:
-        h = h[:72].rsplit(" ", 1)[0].rstrip(", .;-")
+    if len(h) > 60:
+        h = h[:60].rsplit(" ", 1)[0].rstrip(", .;-")
         while h and h.rsplit(" ", 1)[-1].lower() in _TITLE_STOPWORDS:
             h = h.rsplit(" ", 1)[0].rstrip(", .;-")
     return f"{h} | Bakersfield Brief, {d.strftime('%b')} {d.day}, {d.year}"

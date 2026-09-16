@@ -1130,6 +1130,16 @@
   "details": ""
  },
  {
+  "log_id": "260916BF0030",
+  "time": "Sep 16 2026  5:13AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
   "log_id": "260916BF0001",
   "time": "Sep 16 2026 12:01AM",
   "type": "TADV-Traffic Advisory",

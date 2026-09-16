@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-16T06:50:22-07:00",
+ "built_at": "2026-09-16T06:53:30-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 0,
    "top_story": "Mariachi San Marcos: A Bakersfield family's journey from Mexico to musical legacy",
    "archive": "2026-09-16"
   },
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 45,
+   "temp": 51,
    "wind_mph": 0,
    "alerts": 0
   },
@@ -142,10 +142,10 @@
    "published": 0
   },
   "overnight": {
-   "published": 36
+   "published": 37
   },
   "map": {
-   "dots": 53
+   "dots": 61
   },
   "sunday_read": {
    "topic": "Public safety",

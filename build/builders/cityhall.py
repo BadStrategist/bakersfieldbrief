@@ -197,7 +197,7 @@ def _county_page(board: dict, built_iso: str, rel: str, ctx) -> str:
                       "Kern County Board of Supervisors Agenda | Bakersfield Daily Brief")
             _desc = (f"Kern County Board of Supervisors agenda for {_date or 'the current meeting'}: "
                      f"{len(items)} items"
-                     + (f", led by {_top[:70]}" if _top else "")
+                     + (f", led by {_top[:70].rstrip(', .;-')}" if _top else "")
                      + (f". {_watched} flagged for Flock/ALPR surveillance" if _watched else "")
                      + ". Item-by-item preview with the official agenda PDF linked.")
         else:

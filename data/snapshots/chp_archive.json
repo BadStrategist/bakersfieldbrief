@@ -1118,5 +1118,15 @@
   "lat": 35.265234,
   "lon": -119.024794,
   "details": ""
+ },
+ {
+  "log_id": "260916BF0007",
+  "time": "Sep 16 2026 12:41AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sycamore Rd / S Edison Rd",
+  "area": "Bakersfield",
+  "lat": 35.194165,
+  "lon": -118.878026,
+  "details": ""
  }
 ]

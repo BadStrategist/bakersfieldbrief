@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-16T04:07:16-07:00",
+ "built_at": "2026-09-16T04:11:54-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "Bakersfield College kicks off Hispanic Heritage Month with celebration",
    "archive": "2026-09-16"
   },
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 52,
+   "temp": 46,
    "wind_mph": 0,
    "alerts": 0
   },

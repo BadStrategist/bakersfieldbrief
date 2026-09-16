@@ -1,0 +1,173 @@
+[
+ {
+  "type": "vegetation fire",
+  "time": "21:28",
+  "agency": "Kern County Fire Department",
+  "area": "Westside Canal area off Highway 58, Kern County",
+  "notability": 4,
+  "disposition": "forward progress stopped; dozers canceled; extensive mop-up",
+  "summary": "Crews were sent a little before 9:30 p.m. to a brush fire burning in heavy river-bottom vegetation between the Westside Canal and the Kern River flood canal, reached by dirt roads off Highway 58. Fire command reported roughly an acre at first look, then about a half acre burning in thick grass and brush. Access was the problem of the night: engines staged off the highway, crews flagged in a dirt road for the units behind them, and incoming resources were held on the assignment. Forward progress was stopped shortly after 10 p.m. and dozers were canceled, leaving ground crews to work extensive mop-up in the river bottom."
+ },
+ {
+  "type": "traffic collision",
+  "time": "21:48",
+  "agency": "Bakersfield Police Department",
+  "area": "Baker Street at Dolores Street, Bakersfield",
+  "notability": 2,
+  "disposition": "officers responding",
+  "summary": "A caller reported that a person on an e-bike struck a pedestrian at Baker and Dolores."
+ },
+ {
+  "type": "welfare check",
+  "time": "21:54",
+  "agency": "Bakersfield Police Department",
+  "area": "Gardenwood Lane block, Bakersfield",
+  "notability": 2,
+  "disposition": "officers assigned to check on the person",
+  "summary": "A caller asked officers to check on an autistic adult family member who was not where he was expected. Units were assigned to the address."
+ },
+ {
+  "type": "domestic violence call",
+  "time": "22:13",
+  "agency": "Kern County Sheriff's Office",
+  "area": "rural road, Kern County",
+  "notability": 3,
+  "disposition": "deputies sent; caller had no description of either person",
+  "summary": "A caller reported a loud argument between a man and a woman with what sounded like a battery, and said the woman was telling the man to stop choking her. Deputies were sent to the rural address, and the caller could not describe either person."
+ },
+ {
+  "type": "search after possible collision into a building",
+  "time": "22:51",
+  "agency": "Bakersfield Police Department",
+  "area": "Stone Pine Circle area, Bakersfield",
+  "notability": 3,
+  "disposition": "area searched; no one found; residence with open side gate cleared",
+  "summary": "Officers searched a south Bakersfield neighborhood after a report of a possible vehicle into a building, with subjects running from the scene. Residents along the street reported nothing, and a residence with an open side gate was cleared."
+ },
+ {
+  "type": "family disturbance",
+  "time": "23:12",
+  "agency": "Bakersfield Police Department",
+  "area": "Brook Drive block, Bakersfield",
+  "notability": 2,
+  "disposition": "officers sent to the residence",
+  "summary": "A young caller reported a family disturbance in an apartment, saying a woman was pushing him around the residence."
+ },
+ {
+  "type": "medical aid",
+  "time": "23:28",
+  "agency": "Bakersfield Fire Department",
+  "area": "S Eye Street block, Bakersfield",
+  "notability": 2,
+  "disposition": "engine and ambulance assigned",
+  "summary": "Crews were sent to an apartment for a patient with a hemorrhage."
+ },
+ {
+  "type": "traffic hazard",
+  "time": "23:45",
+  "agency": "California Highway Patrol",
+  "area": "highway, Kern County",
+  "notability": 2,
+  "disposition": "broadcast to units",
+  "summary": "Units were advised of a semi with a white box trailer swerving and unable to maintain its lane, with a possible tire problem."
+ },
+ {
+  "type": "medical aid",
+  "time": "00:10",
+  "agency": "Bakersfield Fire Department",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "ambulance assigned",
+  "summary": "A caller reported a baby who was conscious and breathing but possibly having a seizure."
+ },
+ {
+  "type": "fire alarm",
+  "time": "00:25",
+  "agency": "Bakersfield Fire Department",
+  "area": "Key West Drive block, Bakersfield",
+  "notability": 2,
+  "disposition": "engine assigned",
+  "summary": "An engine was sent to a commercial fire alarm at a Key West Drive business."
+ },
+ {
+  "type": "weapons call",
+  "time": "01:10",
+  "agency": "Bakersfield Police Department",
+  "area": "Chester Avenue area, Bakersfield",
+  "notability": 3,
+  "disposition": "caller uncooperative and disconnected; officers sent",
+  "summary": "Officers were sent to an apartment for a fight in progress in which the caller said one person was armed with an axe and a second person with a knife. The caller refused to give any further information and hung up."
+ },
+ {
+  "type": "vegetation fire",
+  "time": "01:21",
+  "agency": "Kern County Fire Department",
+  "area": "Kern County",
+  "notability": 2,
+  "disposition": "handled by county equipment",
+  "summary": "A tenth of an acre was reported burning at a slow rate of spread between a road and a field break, and county equipment handled it without additional resources."
+ },
+ {
+  "type": "traffic hazard",
+  "time": "01:28",
+  "agency": "California Highway Patrol",
+  "area": "northbound Interstate 5 near Weiser Road, Kern County",
+  "notability": 2,
+  "disposition": "broadcast to units",
+  "summary": "A semi with a white box trailer was reported cutting off vehicles at high speed on northbound Interstate 5 near Weiser Road."
+ },
+ {
+  "type": "welfare check",
+  "time": "02:14",
+  "agency": "Bakersfield Police Department",
+  "area": "Andromeda Drive block, Bakersfield",
+  "notability": 2,
+  "disposition": "call re-queued for a later hour",
+  "summary": "A caller asked that a welfare check be re-queued for later and mentioned that it could involve a suicide risk."
+ },
+ {
+  "type": "fire report",
+  "time": "02:48",
+  "agency": "Bakersfield Fire Department",
+  "area": "Columbus Street block, Bakersfield",
+  "notability": 2,
+  "disposition": "crews sent to check",
+  "summary": "A caller reported some type of fire on top of a roof, possibly a wreath, and crews were sent to get more information."
+ },
+ {
+  "type": "medical aid",
+  "time": "02:53",
+  "agency": "Bakersfield Fire Department",
+  "area": "Lausanne Street block, Bakersfield",
+  "notability": 2,
+  "disposition": "ambulance assigned",
+  "summary": "An ambulance was sent for an unconscious patient."
+ },
+ {
+  "type": "domestic violence call",
+  "time": "03:46",
+  "agency": "Bakersfield Police Department",
+  "area": "Stockdale Highway block, Bakersfield",
+  "notability": 2,
+  "disposition": "caller disconnected; officers sent",
+  "summary": "A caller said her boyfriend battered her and then the line went dead."
+ },
+ {
+  "type": "welfare check",
+  "time": "04:04",
+  "agency": "Bakersfield Police Department",
+  "area": "Panorama Drive, Bakersfield",
+  "notability": 2,
+  "disposition": "officers sent to check on the person",
+  "summary": "A caller asked officers to check on someone at the Bakersfield College campus."
+ },
+ {
+  "type": "vehicle stuck on railroad tracks",
+  "time": "04:49",
+  "agency": "Bakersfield Police Department",
+  "area": "Baker Street at Truxtun Avenue, Bakersfield",
+  "notability": 3,
+  "disposition": "railroad notified; units sent",
+  "summary": "A pickup was reported stuck on the railroad tracks at Baker and Truxtun. The caller was a railroad employee who said his company was being notified."
+ }
+]

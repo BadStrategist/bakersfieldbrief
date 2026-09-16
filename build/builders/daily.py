@@ -1083,6 +1083,118 @@ def _load_archive() -> list:
         return []
 
 
+# ------------------------------------------- brief page surface (SEO + job)
+def _h2ify(block_html: str) -> str:
+    """Section labels on brief pages ship as <p class="sec-head">. A 2,000-word
+    article with no h2 gives search engines no heading outline. Convert at
+    render time only (.sec-head carries its own type, margin and flex layout,
+    so the swap is visually identical)."""
+    return re.sub(r'<p class="sec-head"(?P<rest>[^>]*)>(?P<body>.*?)</p>',
+                  r'<h2 class="sec-head"\g<rest>>\g<body></h2>',
+                  block_html, flags=re.S)
+
+
+def _plain(block_html: str) -> str:
+    return " ".join(html.unescape(re.sub(r"<[^>]+>", " ", block_html)).split())
+
+
+def _brief_lede(content_html: str, limit: int = 155) -> str:
+    """First real paragraph of the brief, for the meta description. Skips the
+    greeting so every day's description is not the same sentence."""
+    for m in re.finditer(r"<p(?![^>]*sec-head)[^>]*>(.*?)</p>", content_html, re.S):
+        txt = _plain(m.group(1))
+        if len(txt) < 60 or txt.lower().startswith("good morning"):
+            continue
+        if len(txt) <= limit:
+            return txt
+        return txt[:limit].rsplit(" ", 1)[0].rstrip(",;:.-")
+    return ""
+
+
+_TITLE_STOPWORDS = {"for", "and", "the", "with", "in", "of", "to", "at", "on",
+                    "a", "an", "as", "but", "or", "its", "after", "over", "from"}
+
+
+def _brief_title(headline: str, d) -> str:
+    h = (headline or "Bakersfield Daily Brief").strip().rstrip(", .;-")
+    if len(h) > 72:
+        h = h[:72].rsplit(" ", 1)[0].rstrip(", .;-")
+        while h and h.rsplit(" ", 1)[-1].lower() in _TITLE_STOPWORDS:
+            h = h.rsplit(" ", 1)[0].rstrip(", .;-")
+    return f"{h} | Bakersfield Brief, {d.strftime('%b')} {d.day}, {d.year}"
+
+
+def _brief_newsarticle(headline: str, desc: str, iso: str) -> dict:
+    """NewsArticle JSON-LD for a dated brief page (news-style fresh signal,
+    same pattern overnight.py uses per report)."""
+    return {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": headline,
+        "description": desc,
+        "datePublished": f"{iso}T06:00:00-07:00",
+        "dateModified": f"{iso}T06:00:00-07:00",
+        "author": {"@type": "Organization", "name": "Bakersfield Daily Brief",
+                   "url": "https://bakersfieldbrief.com/"},
+        "publisher": {"@type": "Organization", "name": "Bakersfield Daily Brief",
+                      "url": "https://bakersfieldbrief.com/",
+                      "logo": {"@type": "ImageObject",
+                               "url": "https://bakersfieldbrief.com/assets/img/emblem.png",
+                               "width": 100, "height": 100}},
+        "mainEntityOfPage": f"https://bakersfieldbrief.com/briefs/{iso}/",
+        "articleSection": "Daily Brief",
+        "inLanguage": "en",
+        "isAccessibleForFree": True,
+    }
+
+
+# topic → the evergreen tracker that owns it (all paths verified in the sitemap)
+_BRIEF_TOPICS = (
+    (("grapevine", "tejon", "i-5", "interstate 5", "tehachapi pass", "hwy 58",
+      "highway 58", "chain control", "road closure"), "grapevine/",
+     "Is the Grapevine open right now?"),
+    (("alpr", "flock", "license plate", "surveillance camera"), "surveillance/",
+     "Surveillance cameras in Kern County"),
+    (("dispatch", "scanner", "police", "deputies", "chp", "crash", "shooting"), "overnight/",
+     "The Kern Overnight: what happened overnight"),
+    (("supervisors", "city council", "board of supervisors", "agenda",
+      "public meeting", "planning commission"), "city-hall/",
+     "City and county meetings this week"),
+    (("reservoir", "lake isabella", "aqueduct", "water level", "drought"), "water/",
+     "Kern County water levels"),
+    (("wildfire", "brush fire", "evacuation", "calfire", "cal fire"), "fires/",
+     "Fires and smoke in Kern County"),
+)
+
+
+def _related_trackers(rel: str, content_html: str) -> str:
+    """Give every brief page a job: a path into the evergreen trackers that
+    actually earn clicks. Chosen by what the day's brief mentions, topped up to
+    at least three so a quiet news day still links somewhere useful."""
+    text = _plain(content_html).lower()
+    scored = []
+    for kws, href, label in _BRIEF_TOPICS:
+        hits = sum(text.count(k) for k in kws)
+        if hits:
+            scored.append((hits, href, label))
+    scored.sort(key=lambda x: -x[0])
+    picked = [(href, label) for _, href, label in scored[:4]]
+    for _, href, label in _BRIEF_TOPICS:
+        if len(picked) >= 3:
+            break
+        if (href, label) not in picked:
+            picked.append((href, label))
+    rows = "".join(f"""
+    <li class="arch-row"><span class="arch-date">tracker</span>
+    <span class="arch-head"><a href="{rel}{href}">{html.escape(label)}</a></span></li>"""
+                   for href, label in picked)
+    return f"""
+    <section class="block brief-seg" style="margin-top:34px">
+      <p class="sec-head">Keep reading <span class="unit">live trackers, updated all day</span></p>
+      <div class="card"><ul class="arch-list">{rows}</ul></div>
+    </section>"""
+
+
 def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
              escribe, board, abc, food, alpr, airnow, calfire, headlines,
              events=None) -> list[str]:
@@ -1099,12 +1211,18 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
                             escribe, events or [], today, rel, ctx)
     content += _upcoming_meetings(rel, escribe, board, today)
 
+    headline = (top or {}).get("title") or "Bakersfield Daily Brief"
+    dated_desc = _brief_lede(content) or (
+        f"Today's Bakersfield and Kern County brief for {_fmt_date(today)}: local news, "
+        "weather, conditions, and public meetings, published every morning at 6 AM PT.")
     page = page_mod.render(
-        title=_big_title(top, today) + " (archive)",
-        desc="Archived copy of today's Bakersfield Daily Brief.",
+        title=_brief_title(headline, today),
+        desc=dated_desc,
         canonical=f"/briefs/{built_iso}/",
-        content=content, current="index", rel=rel, built=built_iso,
-        jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld()],
+        content=_h2ify(content) + _related_trackers(rel, content),
+        current="index", rel=rel, built=built_iso,
+        jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(),
+                _brief_newsarticle(headline, dated_desc, built_iso)],
         statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
     )
     common.write(common.SITE / "briefs" / built_iso / "index.html", page)
@@ -1172,10 +1290,11 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
         ],
     }
 
-    hub_body = f"{hub_content}\n\n{archive_section}"
+    hub_body = (f"{_h2ify(hub_content)}\n\n{_related_trackers(index_rel, hub_content)}"
+                f"\n\n{archive_section}")
     common.write(common.SITE / "briefs" / "index.html", page_mod.render(
         title="Bakersfield News Today — Daily Brief for Kern County",
-        desc=f"Today's Bakersfield news: the {today_txt} Daily Brief with Kern County headlines, weather, air quality, and upcoming public meetings — published every morning.",
+        desc=f"Today's Bakersfield news: the {today_txt} Daily Brief with Kern County headlines, weather, air quality, and public meetings. Every morning.",
         canonical="/briefs/", content=hub_body, current="other", rel=index_rel,
         built=built_iso,
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), brief_faq],
@@ -1195,22 +1314,30 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
         except ValueError:
             continue
         stored = e.get("content") or ""
+        past_headline = str(e.get("headline") or "Bakersfield Daily Brief")
         if stored:
-            past_body = stored + _upcoming_meetings(past_rel, escribe, board, d)
+            past_desc = _brief_lede(stored) or (
+                f"The {_fmt_date(d)} Bakersfield Daily Brief: Kern County news, "
+                "weather, conditions, and public meetings.")
+            past_body = (_h2ify(stored) + _related_trackers(past_rel, stored)
+                         + _upcoming_meetings(past_rel, escribe, board, d))
         else:
+            past_desc = (f"The headline that led the {_fmt_date(d)} Bakersfield Daily "
+                         f"Brief: {past_headline}")
             past_body = f"""
         <div class="pagehead"><div class="hero"><p class="kicker">Archive</p>
         <h1>Brief for {_fmt_date(d)}</h1>
         <p class="lede">The headline that led the Bakersfield Daily Brief that morning.</p></div></div>
-        <div class="card"><p>Headline: <strong>{html.escape(str(e.get('headline', 'Daily brief')))}</strong></p>
+        <div class="card"><p>Headline: <strong>{html.escape(past_headline)}</strong></p>
         <p class="note" style="margin-top:8px">The full article for this date was not retained; see
         <a href="{past_rel}index.html">today&rsquo;s brief</a> or the
-        <a href="{past_rel}briefs/">archive index</a>.</p></div>"""
+        <a href="{past_rel}briefs/">archive index</a>.</p></div>""" + _related_trackers(past_rel, "")
         common.write(common.SITE / "briefs" / dstr / "index.html", page_mod.render(
-            title=f"Bakersfield Daily Brief — {_fmt_date(d)} (archive)",
-            desc=f"Archived copy of the {_fmt_date(d)} Bakersfield Daily Brief.",
+            title=_brief_title(past_headline, d),
+            desc=past_desc,
             canonical=f"/briefs/{dstr}/", content=past_body, current="index", rel=past_rel,
-            built=built_iso, jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld()],
+            built=built_iso, jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(),
+                                     _brief_newsarticle(past_headline, past_desc, dstr)],
             statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else ""))
         built.append(f"briefs/{dstr}/index.html")
     return built

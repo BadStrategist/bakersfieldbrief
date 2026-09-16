@@ -85,7 +85,8 @@ def build(ctx, sources: dict) -> list[str]:
         <p class="big-note">{note}</p>
       </div>"""
         # ---- direct quotable answer (first text after H1 for crawlers/AI)
-        direct_answer = (f'<p class="answer"><strong>As of {html.escape(i5.get("reported_as_of", "the latest Caltrans report"))}, '
+        direct_answer = (f'<p class="answer"><strong>Is the Grapevine open right now? '
+                         f'As of {html.escape(i5.get("reported_as_of", "the latest Caltrans report"))}, '
                          f'I-5 over Tejon Pass is <span class="{cls}">{label}</span>.</strong> '
                          f'{note}</p>')
     else:
@@ -109,9 +110,14 @@ def build(ctx, sources: dict) -> list[str]:
                     "report and may be out of date. Confirm live status before driving."
                     if is_stale else "")
     faq_qa = [
-        ("Is the Grapevine closed right now?",
+        ("Is the Grapevine open right now?",
          (f'The Grapevine (I-5 over Tejon Pass) is currently <strong>{label}</strong> '
           f'as reported by Caltrans at {html.escape(ts or "the latest update")}{stale_suffix}. {note}'
+          if i5 else
+          "Caltrans conditions are unavailable this build — see the official source below.")),
+        ("Is the Grapevine closed right now?",
+         (f'Caltrans reports the Grapevine (I-5 over Tejon Pass) as <strong>{label}</strong> '
+          f'at {html.escape(ts or "the latest update")}{stale_suffix}. {note}'
           if i5 else
           "Caltrans conditions are unavailable this build — see the official source below.")),
         ("Why does the Grapevine close?",
@@ -125,10 +131,7 @@ def build(ctx, sources: dict) -> list[str]:
          "Caltrans in real time when you load it and refreshes every 60 seconds while it's open."),
     ]
     faq_html = "".join(
-        f'<p class="pr-q"><strong>{html.escape(q)}</strong></p><p>{a}</p>' for q, a in faq_qa)
-    # plain-text version of the live answer for the schema (no HTML tags)
-    import re as _re
-    live_answer = (_re.sub(r"<[^>]+>", "", faq_qa[0][1]) if i5 else None)
+            f'<p class="pr-q"><strong>{html.escape(q)}</strong></p><p>{a}</p>' for q, a in faq_qa)
 
     # ---- all-route details (per-section status chips; no misleading
     #      route-wide tag — for I-5 the tag is the pass itself)
@@ -165,19 +168,19 @@ def build(ctx, sources: dict) -> list[str]:
     body = f"""
     <div class="pagehead">
       <div class="hero"><p class="kicker">Highway conditions · Caltrans</p>
-      <h1>Is the Grapevine closed right now?</h1>
+      <h1>Is the Grapevine open right now?</h1>
       <p class="lede">Live I-5 conditions over Tejon Pass — the 40-mile climb that connects
       Los Angeles and Bakersfield — plus SR-58 over Tehachapi and SR-99 up the valley.</p>
       <div class="meta"><span>Caltrans report: {ts_html}</span>
       <span class="dot">&bull;</span><span>live &middot; checks the Grapevine in real time</span></div></div>
     </div>
 
-    <p class="note" style="margin-top:10px">Also see the <a href="../roads/">Kern County road conditions hub</a>
-    — I-5, SR-58, and SR-99 status on one page.</p>
-
     {direct_answer}
 
-    {staledom}
+        {staledom}
+
+        <p class="note" style="margin-top:10px">Also see the <a href="../roads/">Kern County road conditions hub</a>
+        — I-5, SR-58, and SR-99 status on one page.</p>
 
     {images.figure("wind", rel)}
 
@@ -233,11 +236,11 @@ def build(ctx, sources: dict) -> list[str]:
     on the official source before driving.</p>"""
 
     page = page_mod.render(
-        title="Is the Grapevine (I-5 Tejon Pass) closed right now? | Bakersfield Daily Brief",
-        desc="Live Caltrans conditions for the I-5 Grapevine over Tejon Pass — the LA to Bakersfield route — plus SR-58 Tehachapi and SR-99. Closed or restricted? Live: checks Caltrans in real time on every load.",
-        canonical="/grapevine/", content=body, current="other", rel=rel,
-        built=built_iso, statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
-                jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), _faq_jsonld(live_answer)],
+        title="Is the Grapevine Open Right Now? Live I-5 Tejon Pass Status | Bakersfield Daily Brief",
+                desc="Is the Grapevine open or closed right now? Live Caltrans status for I-5 over Tejon Pass with the agency's own timestamp, chain controls, and the SR-58 and SR-99 alternates. Checks Caltrans on every load.",
+                canonical="/grapevine/", content=body, current="other", rel=rel,
+                built=built_iso, statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
+                        jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), _faq_jsonld(faq_qa)],
                 extra_scripts='<script src="{rel}assets/js/live-pass.js" defer></script>'.format(rel=rel))
     common.write(common.SITE / "grapevine" / "index.html", page)
     built.append("grapevine/index.html")
@@ -250,27 +253,22 @@ def build(ctx, sources: dict) -> list[str]:
     return built
 
 
-def _faq_jsonld(live_answer: str | None = None) -> dict:
-    """FAQ schema. Q1's answer carries the LIVE Caltrans status when available
-    (so an AI/featured-snippet citing this page quotes the real current state,
-    not a circular 'check this page')."""
-    q1 = (live_answer if live_answer else
-          "Check this page: we show the current Caltrans-reported status of I-5 "
-          "over Tejon Pass — OPEN, RESTRICTIONS, or CLOSED — with the agency's own timestamp.")
+def _faq_jsonld(faq_qa: list) -> dict:
+    """FAQPage schema built from the SAME on-page Q&A list, so the visible FAQ
+    and the schema can never drift. Q1 carries the LIVE Caltrans status (so an
+    AI/featured snippet citing this page quotes the real current state, not a
+    circular 'check this page')."""
+    import re as _re
+
+    def _plain(s: str) -> str:
+        return _re.sub(r"\s+", " ", _re.sub(r"<[^>]+>", "", s)).strip()
+
     return {
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
-            {"@type": "Question", "name": "Is the Grapevine closed right now?",
-             "acceptedAnswer": {"@type": "Answer", "text": q1}},
-            {"@type": "Question", "name": "Why does the Grapevine close?",
-             "acceptedAnswer": {"@type": "Answer", "text":
-                "Snow and ice, dense fog, and high winds. Caltrans also schedules overnight maintenance closures. Chain controls (R2/R3) are posted at the bottom of the grade."}},
-            {"@type": "Question", "name": "What is the best alternate route if the Grapevine is closed?",
-             "acceptedAnswer": {"@type": "Answer", "text":
-                "SR-58 over Tehachapi Pass is the usual detour; SR-14/US-395 around the east side stays open when both passes close. Amtrak San Joaquins also serves Bakersfield."}},
-            {"@type": "Question", "name": "How do I get current California highway conditions?",
-             "acceptedAnswer": {"@type": "Answer", "text":
-                "Call Caltrans at 1-800-427-7623 or visit roads.dot.ca.gov. This page also checks Caltrans in real time when you load it and refreshes every 60 seconds while it's open."}},
+            {"@type": "Question", "name": q,
+             "acceptedAnswer": {"@type": "Answer", "text": _plain(a)}}
+            for q, a in faq_qa
         ],
     }

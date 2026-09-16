@@ -187,9 +187,31 @@ def _county_page(board: dict, built_iso: str, rel: str, ctx) -> str:
                 'href="https://www.kerncounty.com/government/board-of-supervisors">board page ↗</a> '
                 'for the latest meeting information.</p></div>')
 
+    if board.get("ok"):
+        _date = str(board.get("date", "") or "")
+        _top = (items[0]["title"] if items else "").strip().rstrip(", .;-")
+        _watched = len(board.get("watched", []) or [])
+        if items:
+            _title = (f"Kern County Board of Supervisors Agenda {_date} | Bakersfield Daily Brief"
+                      if _date else
+                      "Kern County Board of Supervisors Agenda | Bakersfield Daily Brief")
+            _desc = (f"Kern County Board of Supervisors agenda for {_date or 'the current meeting'}: "
+                     f"{len(items)} items"
+                     + (f", led by {_top[:70]}" if _top else "")
+                     + (f". {_watched} flagged for Flock/ALPR surveillance" if _watched else "")
+                     + ". Item-by-item preview with the official agenda PDF linked.")
+        else:
+            _title = "Kern County Board of Supervisors Agenda | Bakersfield Daily Brief"
+            _desc = ("Kern County Board of Supervisors agenda and meeting details: date, place, "
+                     "how agendas are posted under the Brown Act, and the official agenda PDF.")
+    else:
+        _title = "Kern County Board of Supervisors Agenda | Bakersfield Daily Brief"
+        _desc = ("Kern County Board of Supervisors meeting information and the official agenda PDF. "
+                 "The county agenda source did not load this build.")
+
     page = page_mod.render(
-        title="Kern County Board of Supervisors Agenda Today | Bakersfield Daily Brief",
-        desc="Kern County Board of Supervisors agenda with item-by-item previews: meeting date, resolutions, consent items, and Flock/ALPR surveillance items flagged. Updated each posted agenda.",
+        title=_title,
+        desc=_desc,
         canonical="/city-hall/county-board/",
         content=body, current="cityhall", rel=rel, built=built_iso, statusbar=ctx.statusbar,
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), _county_faq_jsonld(board)])

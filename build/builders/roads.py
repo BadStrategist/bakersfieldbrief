@@ -30,6 +30,18 @@ _ROUTE_META = {
 }
 
 
+def _kern_status(r: dict) -> str:
+    """The status word this page should report for a route, in Kern County terms.
+
+    A route's `status` rolls up EVERY Caltrans region, so a closed connector in
+    Orange County was headlined as "I5 CLOSED" on this Kern County page while
+    Tejon Pass itself was open. `pass_status` is the Central California / pass
+    section, which is what grapevine.py, tehachapi.py and the status bar already
+    report, so use the same field here and the whole site agrees.
+    """
+    return r.get("pass_status") or r.get("status", "OPEN")
+
+
 def build(ctx, sources: dict) -> list[str]:
     built = []
     built_iso = common.iso_today()
@@ -41,7 +53,7 @@ def build(ctx, sources: dict) -> list[str]:
 
     # ---- direct quotable answer (first text after H1, for crawlers/AI)
     if routes:
-        statuses = ", ".join(f"{r['slug'].upper()} {r['status']}"
+        statuses = ", ".join(f"{r['slug'].upper()} {_kern_status(r)}"
                              for r in routes if r['slug'] in _ROUTE_META)
         asof = next((r.get("reported_as_of") for r in routes if r.get("reported_as_of")), data.get("asof", "the latest Caltrans report"))
         direct = (f'<p class="answer"><strong>As of {html.escape(asof)}, '
@@ -59,10 +71,10 @@ def build(ctx, sources: dict) -> list[str]:
             cards += f"""<div class="card"><h3>{html.escape(label)}</h3>
             <p class="note">Conditions unavailable this build.</p></div>"""
             continue
-        status = r.get("pass_status") if r["slug"] == "i5" else r["status"]
+        status = _kern_status(r)
         wlabel, wcls, note = _STATUS_COPY.get(status, _STATUS_COPY["OPEN"])
-        if r["slug"] == "i5" and r.get("pass_status") != r.get("status"):
-            note += " Note: other I-5 sections report differently — see details below."
+        if r.get("status") != status:
+            note += " Note: other sections of this route report differently — see details below."
         secs = "".join(
             f"""<li><span class="tag {_TAG_CLS.get(s['status'],'amber')}">{s['status']}</span>
             <strong>{html.escape(s['region'])}:</strong> {html.escape(s['text'])}</li>"""
@@ -109,7 +121,7 @@ def build(ctx, sources: dict) -> list[str]:
         r = next((x for x in routes if x["slug"] == slug), None)
         if not r:
             return "unavailable this build"
-        return r.get("pass_status") if slug == "i5" else r.get("status")
+        return _kern_status(r)
 
     live_status = statuses if routes else "unavailable this build"
     faq_qa = [
@@ -184,7 +196,7 @@ def build(ctx, sources: dict) -> list[str]:
     built.append("roads/index.html")
 
     ctx.build_report["roads"] = {
-        "routes": [f"{r['slug']}:{r['status']}" for r in routes],
+        "routes": [f"{r['slug']}:{_kern_status(r)}" for r in routes],
         "log_entries": len(log),
     }
     return built

@@ -272,6 +272,36 @@ def _meeting_page(m: dict, built_iso: str, rel: str, ctx) -> str:
     items = m.get("items", [])
     watched = [i for i in items if _watch(i)]
 
+    # Past meetings: the page used to keep saying "upcoming" forever, and it
+    # stays in the sitemap as a permanent agenda record. Say what actually
+    # happened instead of implying the meeting is still ahead.
+    date_iso = (start_iso or "")[:10]
+    is_past = bool(date_iso) and date_iso < built_iso
+    if is_past:
+        kicker = "City of Bakersfield &middot; meeting held"
+        lede = (f"This meeting was held on {date_iso}. The items below are quoted from the "
+                f"official agenda as posted; items can be continued, amended, or withdrawn "
+                f"at the meeting.")
+        page_title = f"{html.escape(name)} — agenda ({date_iso}, meeting held) | Bakersfield Daily Brief"
+        page_desc = (f"Agenda for the {html.escape(name)} meeting of the City of Bakersfield on "
+                     f"{date_iso}: every posted item, with Flock/ALPR surveillance items flagged.")
+        tail_note = (f'<p class="note">This meeting took place on {date_iso}. See the '
+                     f'<a href="{rel}city-hall/">meeting calendar</a> for what&rsquo;s next, or '
+                     f'<a href="{rel}briefs/">today&rsquo;s brief</a> for coverage.</p>')
+        when_label = "Held"
+    else:
+        kicker = "City of Bakersfield &middot; agenda preview"
+        lede = ("Preview of the posted agenda for this upcoming City of Bakersfield public "
+                "meeting. Item titles are quoted from the official agenda; agendas can change "
+                "before the meeting.")
+        page_title = f"{html.escape(name)} — agenda preview | Bakersfield Daily Brief"
+        page_desc = (f"Agenda preview for the upcoming {html.escape(name)} meeting of the City of "
+                     f"Bakersfield: every posted item, with Flock/ALPR surveillance items flagged.")
+        tail_note = ('<p class="note">Meeting location, staff reports, and attachments are on the '
+                     'official agenda page. Public comment instructions are published there as '
+                     'well.</p>')
+        when_label = "Scheduled"
+
     if items:
         rows = "".join(f"""
         <tr>
@@ -299,23 +329,20 @@ def _meeting_page(m: dict, built_iso: str, rel: str, ctx) -> str:
     <div class="pagehead">
       <nav class="breadcrumbs"><a href="{rel}index.html">Daily Brief</a> &rsaquo;
       <a href="{rel}city-hall/">City Hall &amp; County</a> &rsaquo; {html.escape(name)}</nav>
-      <div class="hero"><p class="kicker">City of Bakersfield &middot; agenda preview</p>
+      <div class="hero"><p class="kicker">{kicker}</p>
       <h1>{html.escape(name)}</h1>
-      <p class="lede">Preview of the posted agenda for this upcoming City of Bakersfield public
-      meeting. Item titles are quoted from the official agenda; agendas can change before
-      the meeting.</p>
-      <div class="meta"><span>Scheduled: <span class="updated">{html.escape(start_iso.replace('T', ' · '))}</span></span>
+      <p class="lede">{lede}</p>
+      <div class="meta"><span>{when_label}: <span class="updated">{html.escape(start_iso.replace('T', ' · '))}</span></span>
       <span class="dot">&bull;</span><span>{len(items)} agenda items extracted</span></div></div>
     </div>
     <p><a class="pill amber" href="{html.escape(m.get('url', '#'))}">Official agenda ↗</a></p>
     {watched_html}
     {table}
-    <p class="note">Meeting location, staff reports, and attachments are on the official agenda page.
-    Public comment instructions are published there as well.</p>"""
+    {tail_note}"""
 
     page = page_mod.render(
-        title=f"{html.escape(name)} — agenda preview | Bakersfield Daily Brief",
-        desc=f"Agenda preview for the upcoming {html.escape(name)} meeting of the City of Bakersfield: every posted item, with Flock/ALPR surveillance items flagged.",
+        title=page_title,
+        desc=page_desc,
         canonical=f"/city-hall/meetings/{_slug(name, start_iso)}/",
         content=body, current="cityhall", rel=rel, built=built_iso, statusbar=ctx.statusbar,
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld()])

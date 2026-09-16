@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-16T02:17:07-07:00",
+ "built_at": "2026-09-16T04:07:16-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 2,
    "top_story": "Bakersfield College kicks off Hispanic Heritage Month with celebration",
    "archive": "2026-09-16"
   },
@@ -135,8 +135,8 @@
    "isabella_af": 159506,
    "alpr_total": 265,
    "kern_fires": 0,
-   "aqi": 47,
-   "chp_week": 31
+   "aqi": 43,
+   "chp_week": 33
   },
   "letters": {
    "published": 0

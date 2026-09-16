@@ -1110,6 +1110,26 @@
   "details": ""
  },
  {
+  "log_id": "260916BF0024",
+  "time": "Sep 16 2026  3:45AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "I5 S / No Sr138",
+  "area": "Fort Tejon",
+  "lat": 34.771082,
+  "lon": -118.803671,
+  "details": ""
+ },
+ {
+  "log_id": "260916BF0025",
+  "time": "Sep 16 2026  3:49AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "I5 S / No Sr138",
+  "area": "Fort Tejon",
+  "lat": 34.771082,
+  "lon": -118.803671,
+  "details": ""
+ },
+ {
   "log_id": "260916BF0001",
   "time": "Sep 16 2026 12:01AM",
   "type": "TADV-Traffic Advisory",

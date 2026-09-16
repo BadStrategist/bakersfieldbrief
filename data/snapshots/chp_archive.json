@@ -1,25 +1,5 @@
 [
  {
-  "log_id": "260908BF0112",
-  "time": "Sep  8 2026  9:22AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "2101 Alta Vista Dr",
-  "area": "Bakersfield",
-  "lat": 35.391288,
-  "lon": -118.994528,
-  "details": ""
- },
- {
-  "log_id": "260908BF0121",
-  "time": "Sep  8 2026  9:36AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "6600-7003 Coffee Rd",
-  "area": "Bakersfield",
-  "lat": 35.421293,
-  "lon": -119.092177,
-  "details": ""
- },
- {
   "log_id": "260909BF0189",
   "time": "Sep  9 2026  2:41PM",
   "type": "CFIRE-Car Fire",
@@ -1090,6 +1070,26 @@
   "details": ""
  },
  {
+  "log_id": "260915BF0404",
+  "time": "Sep 15 2026  8:26PM",
+  "type": "CZP-Assist with Construction",
+  "location": "I5 N / 7th Standard Rd",
+  "area": "Buttonwillow",
+  "lat": 35.442268,
+  "lon": -119.456484,
+  "details": ""
+ },
+ {
+  "log_id": "260915BF0431",
+  "time": "Sep 15 2026 10:06PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "3509 Nebraska Trl",
+  "area": "Fort Tejon",
+  "lat": 34.81704,
+  "lon": -118.944545,
+  "details": ""
+ },
+ {
   "log_id": "260915BF0136",
   "time": "Sep 15 2026 10:15AM",
   "type": "BREAK-Traffic Break",
@@ -1097,6 +1097,26 @@
   "area": "Fort Tejon",
   "lat": 34.939994,
   "lon": -118.930124,
+  "details": ""
+ },
+ {
+  "log_id": "260915BF0437",
+  "time": "Sep 15 2026 10:24PM",
+  "type": "1125-Traffic Hazard",
+  "location": "31452-31473 Sr166",
+  "area": "Buttonwillow",
+  "lat": 35.016128,
+  "lon": -119.414915,
+  "details": ""
+ },
+ {
+  "log_id": "260916BF0001",
+  "time": "Sep 16 2026 12:01AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
   "details": ""
  }
 ]

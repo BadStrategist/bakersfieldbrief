@@ -32,3 +32,4 @@ kern_overnight/.bcfy_cookie.json
 /work/
 /transcripts/*.lock
 /Y812BT*
+.wrangler/

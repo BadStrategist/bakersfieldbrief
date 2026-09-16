@@ -1070,6 +1070,16 @@
   "details": ""
  },
  {
+  "log_id": "260915BF0337",
+  "time": "Sep 15 2026  5:29PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "NB SR99 JNO Olive Dr",
+  "area": "Bakersfield",
+  "lat": 35.4125,
+  "lon": -119.054722,
+  "details": ""
+ },
+ {
   "log_id": "260915BF0042",
   "time": "Sep 15 2026  5:46AM",
   "type": "MZP-Assist CT with Maintenance",

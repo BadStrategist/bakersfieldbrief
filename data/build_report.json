@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-16T10:34:57-07:00",
+ "built_at": "2026-09-16T10:53:30-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 5,
+   "wind_mph": 3,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 70,
-   "wind_mph": 5,
+   "temp": 72,
+   "wind_mph": 3,
    "alerts": 0
   },
   "roads": {

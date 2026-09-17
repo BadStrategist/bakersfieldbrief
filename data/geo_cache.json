@@ -16,5 +16,12 @@
  "north chester avenue & washington avenue, Bakersfield, CA": null,
  "th street & baker street, Bakersfield, CA": null,
  "baker street & dolores street, Bakersfield, CA": null,
- "baker street & truxtun avenue, Bakersfield, CA": null
+ "baker street & truxtun avenue, Bakersfield, CA": null,
+ "6200 block of victor street, Bakersfield, Kern County, CA": null,
+ "victor street, Bakersfield, CA": [
+  35.4092257,
+  -119.0621634
+ ],
+ "east of haley street & panorama drive, Bakersfield, CA": null,
+ "union avenue & panama road, Bakersfield, CA": null
 }

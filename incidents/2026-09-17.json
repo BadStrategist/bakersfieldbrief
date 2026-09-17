@@ -1,0 +1,173 @@
+[
+ {
+  "type": "vehicle pursuit",
+  "time": "00:52",
+  "agency": "Bakersfield Police Department",
+  "area": "Hampton Avenue area, Bakersfield",
+  "notability": 4,
+  "disposition": "vehicle yielded; channel returned to normal traffic",
+  "summary": "A unit broadcast a Code 33, clearing the radio channel for emergency traffic, as officers went after a vehicle they said appeared to be yielding. The stop was reported on Hampton Avenue, with a second block location given moments later, and multiple units were en route before the code was cleared."
+ },
+ {
+  "type": "assault with injury",
+  "time": "02:26",
+  "agency": "Bakersfield Police Department",
+  "area": "Goode Park on Hawthorne Avenue, Bakersfield",
+  "notability": 4,
+  "disposition": "medic rolled; engine sent to an updated address on Hawthorne",
+  "summary": "Officers and Liberty Ambulance paramedics were sent to a park on Hawthorne Avenue for a possible assault victim. Dispatch described a man in a black shirt and blue jeans with facial injuries who said he had been jumped and was last seen walking eastbound on Hawthorne from the park. An engine was cleared into an updated address on Hawthorne a few minutes later."
+ },
+ {
+  "type": "refuse fire",
+  "time": "23:52",
+  "agency": "Kern County Fire Department",
+  "area": "Kern County",
+  "notability": 3,
+  "disposition": "downgraded to a code 2 response; remaining companies handling",
+  "summary": "Battalion 6 was sent to a refuse fire burning inside a decommissioned tank that crews recognized as one previously used to burn copper wire. The battalion downgraded the assignment, kept the fire with the companies already on scene and advised when they arrived."
+ },
+ {
+  "type": "burglary in progress",
+  "time": "21:29",
+  "agency": "Bakersfield Police Department",
+  "area": "6200 block of Victor Street, Bakersfield",
+  "notability": 3,
+  "disposition": "officers sent to the apartment",
+  "summary": "Officers were sent to an apartment after a caller reported that a man and a woman were taking boards off the place and entering the residence."
+ },
+ {
+  "type": "prowler",
+  "time": "01:18",
+  "agency": "Bakersfield Police Department",
+  "area": "8100 block of East Brundage Lane, Bakersfield",
+  "notability": 3,
+  "disposition": "officers sent; subjects possibly tied to an earlier vandalism report",
+  "summary": "Officers were sent for a prowler report at a car wash on East Brundage Lane after an initial report of a nearby business. Dispatch gave descriptions of a woman in a tie-dye shirt and black shorts and a man in a hunter-green ball cap, green shirt and blue jeans in front of the business along a weed patch sign, and noted they could be connected to an earlier vandalism report."
+ },
+ {
+  "type": "welfare check",
+  "time": "21:32",
+  "agency": "Bakersfield Police Department",
+  "area": "Smith Street block, Bakersfield",
+  "notability": 2,
+  "disposition": "officers assigned to the residence",
+  "summary": "A caller asked officers to check on a family member at a Smith Street block residence."
+ },
+ {
+  "type": "disturbance",
+  "time": "21:46",
+  "agency": "Bakersfield Police Department",
+  "area": "Breezeway Drive area, Bakersfield",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a verbal disturbance involving an ex-boyfriend who was refusing to leave and was described as being with a white Toyota pickup."
+ },
+ {
+  "type": "battery reported",
+  "time": "22:07",
+  "agency": "Bakersfield Police Department",
+  "area": "east of Haley Street and Panorama Drive, Bakersfield",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Security reported a woman in her mid-twenties who was belligerent and battering her friend near Haley Street and Panorama Drive."
+ },
+ {
+  "type": "traffic hazard",
+  "time": "23:01",
+  "agency": "California Highway Patrol",
+  "area": "highway, Kern County",
+  "notability": 2,
+  "disposition": "CHP requested for a tire change",
+  "summary": "A semi was reported on the right-hand shoulder and CHP was requested to handle a tire change."
+ },
+ {
+  "type": "welfare check",
+  "time": "23:04",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Bakersfield area",
+  "notability": 2,
+  "disposition": "deputies asked to check on the juvenile",
+  "summary": "A caller reported that a juvenile had texted about an argument with her boyfriend and said she was going to harm herself. Deputies were asked to check on her."
+ },
+ {
+  "type": "vehicle stop",
+  "time": "23:21",
+  "agency": "Bakersfield Police Department",
+  "area": "Union Avenue at Panama Road, Bakersfield",
+  "notability": 2,
+  "disposition": "driver taken into custody, code 4",
+  "summary": "Officers stopped a pickup at Union Avenue and Panama Road and took the driver into custody."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "23:27",
+  "agency": "Bakersfield Police Department",
+  "area": "north Bakersfield",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Units were sent to a domestic disturbance in the north part of the city."
+ },
+ {
+  "type": "welfare check",
+  "time": "23:31",
+  "agency": "Bakersfield Police Department",
+  "area": "First Street block, Bakersfield",
+  "notability": 2,
+  "disposition": "officers sent to check on the resident",
+  "summary": "Officers were sent to check the welfare of a First Street block resident who was described as having made statements about harming herself."
+ },
+ {
+  "type": "medical aid",
+  "time": "23:37",
+  "agency": "Bakersfield Fire Department",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "ambulance assigned",
+  "summary": "An ambulance was sent for a juvenile patient who was unconscious but breathing after taking medication."
+ },
+ {
+  "type": "fire alarm",
+  "time": "03:06",
+  "agency": "Bakersfield Fire Department",
+  "area": "Spirit Falls Court area, Bakersfield",
+  "notability": 2,
+  "disposition": "crews sent to the alarm; station assigned to a lift assist",
+  "summary": "Crews were sent to an audible alarm at a residence, and a station was sent to a business on Wilson Road to assist with a lift assist."
+ },
+ {
+  "type": "medical aid",
+  "time": "03:18",
+  "agency": "Bakersfield Fire Department",
+  "area": "Hume Lane block, Bakersfield",
+  "notability": 2,
+  "disposition": "ambulance assigned",
+  "summary": "An ambulance was sent to an apartment for a patient having difficulty breathing."
+ },
+ {
+  "type": "welfare check",
+  "time": "03:28",
+  "agency": "Bakersfield Police Department",
+  "area": "Union Avenue block, Bakersfield",
+  "notability": 2,
+  "disposition": "officers assigned",
+  "summary": "A caller asked officers to check on someone at a Union Avenue block address."
+ },
+ {
+  "type": "medical aid",
+  "time": "03:35",
+  "agency": "Bakersfield Fire Department",
+  "area": "Auburn Street block, Bakersfield",
+  "notability": 2,
+  "disposition": "ambulance assigned",
+  "summary": "An ambulance was sent to an apartment for a patient with abdominal pain."
+ },
+ {
+  "type": "welfare check",
+  "time": "03:41",
+  "agency": "Bakersfield Police Department",
+  "area": "Fremont Street block, Bakersfield",
+  "notability": 2,
+  "disposition": "officers assigned",
+  "summary": "A caller asked officers to check on a neighbor at a Fremont Street block address."
+ }
+]

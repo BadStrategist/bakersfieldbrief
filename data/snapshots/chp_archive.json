@@ -1,115 +1,5 @@
 [
  {
-  "log_id": "260909BF0189",
-  "time": "Sep  9 2026  2:41PM",
-  "type": "CFIRE-Car Fire",
-  "location": "Nb I5 Jno Lebec Rd",
-  "area": "Fort Tejon",
-  "lat": 34.836389,
-  "lon": -118.862778,
-  "details": ""
- },
- {
-  "log_id": "260909BF0291",
-  "time": "Sep  9 2026  6:00PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "5602 Dennis Mccarthy Dr",
-  "area": "Fort Tejon",
-  "lat": 34.987475,
-  "lon": -118.946372,
-  "details": ""
- },
- {
-  "log_id": "260909BF0300",
-  "time": "Sep  9 2026  6:34PM",
-  "type": "1125-Traffic Hazard",
-  "location": "0 I5 N",
-  "area": "Fort Tejon",
-  "lat": 34.917929,
-  "lon": -118.923996,
-  "details": ""
- },
- {
-  "log_id": "260909BF0304",
-  "time": "Sep  9 2026  6:41PM",
-  "type": "1125-Traffic Hazard",
-  "location": "14819 Warren St",
-  "area": "Buttonwillow",
-  "lat": 35.614531,
-  "lon": -119.65933,
-  "details": ""
- },
- {
-  "log_id": "260909BF0305",
-  "time": "Sep  9 2026  6:46PM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "2117 E California Ave",
-  "area": "Bakersfield",
-  "lat": 35.368493,
-  "lon": -118.968437,
-  "details": ""
- },
- {
-  "log_id": "260909BF0090",
-  "time": "Sep  9 2026  9:36AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sb I5 Jno Gorman School Rd",
-  "area": "Fort Tejon",
-  "lat": 34.795674,
-  "lon": -118.858202,
-  "details": ""
- },
- {
-  "log_id": "260909BF0105",
-  "time": "Sep  9 2026 10:20AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "SB I5 JSO SR43",
-  "area": "Buttonwillow",
-  "lat": 35.291111,
-  "lon": -119.250278,
-  "details": ""
- },
- {
-  "log_id": "260909BF0381",
-  "time": "Sep  9 2026 10:24PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "SR99 N / HERRING RD OFR",
-  "area": "Bakersfield",
-  "lat": 35.144725,
-  "lon": -118.995253,
-  "details": ""
- },
- {
-  "log_id": "260909BF0121",
-  "time": "Sep  9 2026 10:59AM",
-  "type": "CFIRE-Car Fire",
-  "location": "W Lerdo Hwy / Wasco Ave",
-  "area": "Buttonwillow",
-  "lat": 35.499989,
-  "lon": -119.332375,
-  "details": ""
- },
- {
-  "log_id": "260909BF0387",
-  "time": "Sep  9 2026 11:07PM",
-  "type": "1125-Traffic Hazard",
-  "location": "20696-21629 Caliente Bodfish Rd",
-  "area": "Bakersfield",
-  "lat": 35.30384,
-  "lon": -118.584735,
-  "details": ""
- },
- {
-  "log_id": "260909BF0007",
-  "time": "Sep  9 2026 12:31AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
   "log_id": "260910BF0202",
   "time": "Sep 10 2026  1:05PM",
   "type": "1125A-Animal Hazard",
@@ -1220,6 +1110,16 @@
   "details": ""
  },
  {
+  "log_id": "260916BF0386",
+  "time": "Sep 16 2026  7:41PM",
+  "type": "CZP-Assist with Construction",
+  "location": "I5 N / 7th Standard Rd Ofr",
+  "area": "Buttonwillow",
+  "lat": 35.439693,
+  "lon": -119.452938,
+  "details": ""
+ },
+ {
   "log_id": "260916BF0141",
   "time": "Sep 16 2026 11:01AM",
   "type": "1125-Traffic Hazard",
@@ -1237,6 +1137,16 @@
   "area": "BF",
   "lat": 35.317611,
   "lon": -119.038864,
+  "details": ""
+ },
+ {
+  "log_id": "260916BF0457",
+  "time": "Sep 16 2026 11:37PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "30742 - 30931 Riverside St",
+  "area": "Buttonwillow",
+  "lat": 35.48523,
+  "lon": -119.262555,
   "details": ""
  },
  {

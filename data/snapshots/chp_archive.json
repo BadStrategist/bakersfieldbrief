@@ -1160,6 +1160,66 @@
   "details": ""
  },
  {
+  "log_id": "260916BF0351",
+  "time": "Sep 16 2026  6:10PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Nb Sr99 Jso Merle Haggard Dr",
+  "area": "Bakersfield",
+  "lat": 35.441279,
+  "lon": -119.08183,
+  "details": ""
+ },
+ {
+  "log_id": "260916BF0354",
+  "time": "Sep 16 2026  6:13PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Height St / Berkeley St",
+  "area": "Bakersfield",
+  "lat": 35.393875,
+  "lon": -118.982783,
+  "details": ""
+ },
+ {
+  "log_id": "260916BF0364",
+  "time": "Sep 16 2026  6:40PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Mount Vernon Ave / Niles St",
+  "area": "Bakersfield",
+  "lat": 35.376272,
+  "lon": -118.967404,
+  "details": ""
+ },
+ {
+  "log_id": "260916BF0370",
+  "time": "Sep 16 2026  6:56PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Sr99 N / Union Ave Ofr",
+  "area": "Bakersfield",
+  "lat": 35.167503,
+  "lon": -119.00248,
+  "details": ""
+ },
+ {
+  "log_id": "260916BF0373",
+  "time": "Sep 16 2026  6:59PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "0 Sr178",
+  "area": "Bakersfield",
+  "lat": 35.52986,
+  "lon": -118.653219,
+  "details": ""
+ },
+ {
+  "log_id": "260916BF0374",
+  "time": "Sep 16 2026  7:01PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 At Upper Water Hole",
+  "area": "Fort Tejon",
+  "lat": 34.890827,
+  "lon": -118.914674,
+  "details": ""
+ },
+ {
   "log_id": "260916BF0141",
   "time": "Sep 16 2026 11:01AM",
   "type": "1125-Traffic Hazard",

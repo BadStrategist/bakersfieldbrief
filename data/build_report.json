@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-17T01:03:51-07:00",
+ "built_at": "2026-09-17T06:55:17-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 1461, column 36"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -59,13 +59,13 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 64,
+  "_digest_meta": "llm",
+  "brief_words": 1331,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 7,
    "top_story": "KCSO: Arrest made in connection to east Bakersfield shooting that left two dead",
    "archive": "2026-09-17"
   },
@@ -96,7 +96,7 @@
    "draft": "drafts/weekend-guide-2026-09-17"
   },
   "grapevine": {
-   "i5": "RESTRICTIONS",
+   "i5": "CLOSED",
    "i5_pass": "RESTRICTIONS",
    "log_entries": 60
   },
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 55,
+   "temp": 46,
    "wind_mph": 0,
    "alerts": 0
   },
@@ -132,20 +132,20 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 159506,
+   "isabella_af": 158703,
    "alpr_total": 265,
    "kern_fires": 0,
-   "aqi": 54,
-   "chp_week": 46
+   "aqi": 53,
+   "chp_week": 53
   },
   "letters": {
    "published": 0
   },
   "overnight": {
-   "published": 37
+   "published": 38
   },
   "map": {
-   "dots": 61
+   "dots": 60
   },
   "sunday_read": {
    "topic": "Public safety",
@@ -175,7 +175,7 @@
   },
   "trackers": {
    "alpr_total": 266,
-   "alpr_new_week": 4,
+   "alpr_new_week": 6,
    "pages": [
     "surveillance",
     "fires",

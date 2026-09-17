@@ -11,7 +11,7 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "The northbound connector to eastbound I-10 (Los Angeles Co) is closed - Due to a traffic collision - Motorists are advised to use an alternate route The southbound connector to northbound SR-133 /in Irvine/ (Orange Co) is closed 24 hours a day thur 0500 hrs on 9/18/26 - Due to construction - Motorists are advised to use an alternate route Is closed to southbound traffic at Camino De Plaza /in San Diego/ (San Diego Co) at 0424 hrs on 9/17/26 - Due to a traffic collision - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "The southbound connector to northbound SR-133 /in Irvine/ (Orange Co) is closed 24 hours a day thur 0500 hrs on 9/18/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads Southbound traffic is reduced to 3 lanes at Camino De Plaza /in San Diego/ (San Diego Co) - Due to an overturned vehicle",
      "status": "CLOSED"
     },
     {
@@ -25,8 +25,8 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Thursday, September 17th, 2026 at 06:50 AM",
-   "hash": "5b2f363006"
+   "reported_as_of": "Thursday, September 17th, 2026 at 10:29 AM",
+   "hash": "49e3ae277c"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Thursday, September 17th, 2026 at 06:51 AM",
+   "reported_as_of": "Thursday, September 17th, 2026 at 10:29 AM",
    "hash": "5374f203ec"
   },
   {
@@ -64,7 +64,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Thursday, September 17th, 2026 at 06:51 AM",
+   "reported_as_of": "Thursday, September 17th, 2026 at 10:29 AM",
    "hash": "f97882795e"
   }
  ],

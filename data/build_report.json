@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-17T06:55:17-07:00",
+ "built_at": "2026-09-17T10:29:29-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 1461, column 36"
   },
   "isabella": {
    "ok": true,
@@ -59,14 +59,14 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1331,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 7,
-   "top_story": "KCSO: Arrest made in connection to east Bakersfield shooting that left two dead",
+   "chp_new": 0,
+   "top_story": "Age of Accountability: Youth Violence Laws in California",
    "archive": "2026-09-17"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 0,
+   "wind_mph": 9,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 46,
-   "wind_mph": 0,
+   "temp": 63,
+   "wind_mph": 9,
    "alerts": 0
   },
   "roads": {
@@ -135,7 +135,7 @@
    "isabella_af": 158703,
    "alpr_total": 265,
    "kern_fires": 0,
-   "aqi": 53,
+   "aqi": 56,
    "chp_week": 53
   },
   "letters": {

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-17T00:15:17-07:00",
+ "built_at": "2026-09-17T01:03:51-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 1461, column 36"
   },
   "isabella": {
    "ok": true,
@@ -65,14 +65,14 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
-   "top_story": "Hit-and-run driver sought after elote vendor was struck near FoodMaxx on Niles Street",
+   "chp_new": 0,
+   "top_story": "KCSO: Arrest made in connection to east Bakersfield shooting that left two dead",
    "archive": "2026-09-17"
   },
   "cityhall": {
    "upcoming_meetings": 3,
    "county_items": 89,
-   "drafts_generated": 2
+   "drafts_generated": 0
   },
   "places": {
    "places": [
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 57,
+   "temp": 55,
    "wind_mph": 0,
    "alerts": 0
   },
@@ -135,7 +135,7 @@
    "isabella_af": 159506,
    "alpr_total": 265,
    "kern_fires": 0,
-   "aqi": 56,
+   "aqi": 54,
    "chp_week": 46
   },
   "letters": {

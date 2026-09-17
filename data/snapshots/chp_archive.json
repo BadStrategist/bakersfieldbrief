@@ -1200,6 +1200,26 @@
   "details": ""
  },
  {
+  "log_id": "260917BF0263",
+  "time": "Sep 17 2026  3:39PM",
+  "type": "1125-Traffic Hazard",
+  "location": "6801 Weldon Ave",
+  "area": "Bakersfield",
+  "lat": 35.405505,
+  "lon": -119.077724,
+  "details": ""
+ },
+ {
+  "log_id": "260917BF0273",
+  "time": "Sep 17 2026  3:57PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr99 S / 7th Standard Rd",
+  "area": "Bakersfield",
+  "lat": 35.441294,
+  "lon": -119.084247,
+  "details": ""
+ },
+ {
   "log_id": "260917BF0043",
   "time": "Sep 17 2026  5:26AM",
   "type": "1182-Trfc Collision-No Inj",

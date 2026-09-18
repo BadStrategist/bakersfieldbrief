@@ -1,0 +1,164 @@
+[
+ {
+  "type": "vehicle fire",
+  "time": "23:52",
+  "agency": "California Highway Patrol",
+  "area": "southbound Interstate 5, Grapevine area, Kern County",
+  "notability": 4,
+  "disposition": "occupants out of the vehicle; units assigned",
+  "summary": "A vehicle on the right-hand shoulder of southbound Interstate 5 south of the Grapevine was reported fully engulfed, and the reporting party said all occupants were out of the vehicle. About fifteen minutes later crews reported a vehicle fully involved in the center divider, burning roughly a tenth of an acre of brush, with no threat to either side of the freeway; the vegetation response was cancelled and the left two lanes were taken while units worked."
+ },
+ {
+  "type": "vehicle pursuit",
+  "time": "21:18",
+  "agency": "California Highway Patrol",
+  "area": "Madison Street area, Bakersfield",
+  "notability": 4,
+  "disposition": "pursuit ran north on Madison; stop reported a short time later",
+  "summary": "A vehicle failed to yield and a pursuit went north on Madison Street at speeds approaching 50 mph, with the dispatcher noting no other vehicles or pedestrians on the road. A white Crown Victoria was run through the system and a traffic stop was reported on Madison a short time later."
+ },
+ {
+  "type": "structure fire investigation",
+  "time": "21:53",
+  "agency": "Fire department",
+  "area": "1300 block of Ralston Street, Bakersfield",
+  "notability": 4,
+  "disposition": "truck, engine and battalion assigned",
+  "summary": "A truck, an engine and a battalion were sent to the 1300 block of Ralston Street for a report of smoke coming from a roof."
+ },
+ {
+  "type": "suspicious circumstances at a school",
+  "time": "21:55",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Mojave Elementary area, Mojave",
+  "notability": 3,
+  "disposition": "units sent; subject last seen leaving toward the high school",
+  "summary": "A unit was sent to Mojave Elementary for a possible subject trying to open the double doors at the front of the school. The subject was last seen in a black SUV heading toward the high school."
+ },
+ {
+  "type": "medical aid with fire report",
+  "time": "03:42",
+  "agency": "Kern County Fire Department",
+  "area": "58th Street West at Holladay Avenue, Bakersfield",
+  "notability": 3,
+  "disposition": "medics unable to locate; search of the block",
+  "summary": "Medics were sent to the area of 58th Street West and Holladay Avenue after a call reported a medical aid along with the smell of smoke and a possible fire. Dispatch relayed that the call hit at about the second residence from Holladay on the east side of 58th Street West, and medics reported they were unable to locate anyone at the address."
+ },
+ {
+  "type": "perimeter search",
+  "time": "02:26",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Sweet Springs area, northeast Bakersfield",
+  "notability": 3,
+  "disposition": "perimeter held; residents checked",
+  "summary": "Units working a northeast perimeter asked for another car to take the April Street area and for coverage of the Sweet Springs neighborhood. A unit began checking residents on the perimeter, and all units were told to hold their positions."
+ },
+ {
+  "type": "suspicious vehicle report",
+  "time": "05:04",
+  "agency": "Bakersfield Police Department",
+  "area": "northbound Highway 99 south of California Avenue, Bakersfield",
+  "notability": 3,
+  "disposition": "possible suspect vehicle stopped; name check forwarded",
+  "summary": "A unit went out with a possible suspect vehicle on northbound Highway 99 just south of California Avenue while another unit cleared a suspicious circumstances call at a city garage. Two people were reported running toward the south parking lot behind the building, and a possible name match was forwarded to a patrol car at an address off Oregon Street."
+ },
+ {
+  "type": "burglary in progress",
+  "time": "23:58",
+  "agency": "Kern County Sheriff's Office",
+  "area": "2300 block of Gibson Street, Kern County",
+  "notability": 3,
+  "disposition": "units sent to the property",
+  "summary": "Deputies were sent to the 2300 block of Gibson Street for two men who entered a recycling property over the northwest fence, one carrying a bag and the other a flashlight."
+ },
+ {
+  "type": "impaired driver report",
+  "time": "22:26",
+  "agency": "California Highway Patrol",
+  "area": "northbound Interstate 5 north of Old River, Kern County",
+  "notability": 3,
+  "disposition": "broadcast to units",
+  "summary": "A semi hauling a car carrier loaded with six vehicles was reported swerving and unable to maintain its lane on northbound Interstate 5 north of Old River."
+ },
+ {
+  "type": "vehicle off the roadway",
+  "time": "03:05",
+  "agency": "California Highway Patrol",
+  "area": "Interstate 5, Grapevine area, Kern County",
+  "notability": 2,
+  "disposition": "units sent; only the rear of the vehicle visible",
+  "summary": "A caller described a white four-door sedan that had left the roadway and gone into the bushes, with only the rear end of the vehicle visible, and a second report placed a white sedan off the roadway one mile north of Highway 223."
+ },
+ {
+  "type": "suspicious vehicle report",
+  "time": "22:37",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Earthmover Court near Enos Lane, Kern County",
+  "notability": 2,
+  "disposition": "deputies en route; caller said he was armed",
+  "summary": "A caller at a business on Earthmover Court off Enos Lane reported a white pickup heading toward the back of the yard a few minutes earlier and said he was armed and walking toward the back of the property where the vehicle was last seen."
+ },
+ {
+  "type": "impaired driver report",
+  "time": "22:39",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Taylor Street area, Bakersfield",
+  "notability": 2,
+  "disposition": "caller followed the rig to an address",
+  "summary": "A caller reported that a semi driver appeared to be under the influence and got back into his rig, and said the truck went to a Taylor Street address."
+ },
+ {
+  "type": "traffic hazard",
+  "time": "21:33",
+  "agency": "Bakersfield Police Department",
+  "area": "Wible Road just south of Valley Plaza, Bakersfield",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Fluid was reported in the northbound lanes of Wible Road just south of Valley Plaza."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "23:25",
+  "agency": "Bakersfield Police Department",
+  "area": "Edison Highway corridor, Bakersfield",
+  "notability": 2,
+  "disposition": "officers sent to an open line",
+  "summary": "Units were sent to an open line in the Edison Highway corridor with a man and a woman arguing, and dispatchers heard a woman say she had been hit."
+ },
+ {
+  "type": "DUI arrest",
+  "time": "00:02",
+  "agency": "Bakersfield Police Department",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "on-call judge information requested for a chemical test refusal",
+  "summary": "Officers handling a DUI arrest asked for the on-call judge information to be put in the log for a chemical test refusal."
+ },
+ {
+  "type": "impaired driver report",
+  "time": "00:46",
+  "agency": "California Highway Patrol",
+  "area": "Old River area, Kern County",
+  "notability": 2,
+  "disposition": "broadcast to units; no damage reported",
+  "summary": "A grey two-door car was broadcast as a DUI driver on westbound Old River after it struck an object; the reporting party's vehicle was not damaged."
+ },
+ {
+  "type": "suspicious persons",
+  "time": "21:48",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Bena Road, east of Bakersfield",
+  "notability": 2,
+  "disposition": "units sent",
+  "summary": "Deputies were sent to the area of Bena Road for two men in dark clothing carrying trash bags and walking eastbound."
+ },
+ {
+  "type": "impaired driver report",
+  "time": "04:33",
+  "agency": "California Highway Patrol",
+  "area": "highway, western Kern County",
+  "notability": 2,
+  "disposition": "broadcast to units",
+  "summary": "A white pickup pulling a black and gray trailer was reported as a possible impaired driver on westbound Highway 46 and Highway 33."
+ }
+]

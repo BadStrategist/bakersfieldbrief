@@ -1300,6 +1300,16 @@
   "details": ""
  },
  {
+  "log_id": "260918BF0153",
+  "time": "Sep 18 2026 10:05AM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 I5 N",
+  "area": "Buttonwillow",
+  "lat": 35.347393,
+  "lon": -119.325072,
+  "details": ""
+ },
+ {
   "log_id": "260918BF0006",
   "time": "Sep 18 2026 12:19AM",
   "type": "TADV-Traffic Advisory",

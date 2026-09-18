@@ -10,12 +10,18 @@ from __future__ import annotations
 
 import html
 import re
+from datetime import date as _date
 from pathlib import Path
 
 from .. import common
 from . import page as page_mod
 
 REPORTS_DIR = Path(common.DATA) / "overnight_reports"
+
+# Deterministic English day/month names (no locale or platform strftime surprises).
+_DOW = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+_MONTH = ("January", "February", "March", "April", "May", "June", "July", "August",
+          "September", "October", "November", "December")
 
 
 # ---------------------------------------------------------------- markdown-lite
@@ -104,9 +110,39 @@ def latest_teaser() -> str | None:
             f'<span class="note">({r["date"]})</span>')
 
 
-def _report_html(r: dict) -> str:
-    return (f'<section class="letter" id="{html.escape(r["date"])}">'
-            f'<p class="letter-meta">{html.escape(r["date"])}</p>{r["body"]}</section>')
+def _day_banner(date_iso: str, tag: str | None = None, prev: bool = False) -> str:
+    """Prominent day header for one report: weekday, full date, optional age tag.
+
+    tag ("Today"/"Yesterday") is only passed on the two newest reports; the
+    archive passes nothing so it never claims a stale report is current.
+    """
+    try:
+        d = _date.fromisoformat(date_iso)
+    except ValueError:
+        return ""
+    tag_html = ""
+    if tag:
+        cls = "ko-day-tag is-prev" if prev else "ko-day-tag"
+        tag_html = f'<span class="{cls}">{html.escape(tag)}</span>'
+    return (f'<div class="ko-day"><div>'
+            f'<p class="ko-day-dow">{_DOW[d.weekday()]}</p>'
+            f'<p class="ko-day-date">{_MONTH[d.month - 1]} {d.day}, {d.year}</p>'
+            f'</div>{tag_html}</div>')
+
+
+def _age_tag(date_iso: str, built_iso: str) -> str | None:
+    """"Today" / "Yesterday" against the build date, else None (never guess)."""
+    try:
+        delta = (_date.fromisoformat(built_iso) - _date.fromisoformat(date_iso)).days
+    except ValueError:
+        return None
+    return "Today" if delta == 0 else ("Yesterday" if delta == 1 else None)
+
+
+def _report_html(r: dict, tag: str | None = None, prev: bool = False) -> str:
+    return (f'<section class="letter ko-report" id="{html.escape(r["date"])}">'
+            f'{_day_banner(r["date"], tag, prev)}'
+            f'<div class="ko-body">{r["body"]}</div></section>')
 
 
 def _newsarticle_jsonld(r: dict) -> dict:
@@ -162,8 +198,13 @@ def build(ctx, sources: dict) -> list[str]:
     reps = _published_reports()
 
     if reps:
-        recent = "".join(_report_html(r) for r in reps[:2])
-        all_reports = "".join(_report_html(r) for r in reps)
+        parts = [_report_html(r, _age_tag(r["date"], built_iso), prev=i > 0)
+                 for i, r in enumerate(reps[:2])]
+        # a dashed rule between the two day cards makes the break unmistakable
+        recent = ('<div class="ko-reports">'
+                  + '<div class="ko-sep"></div>'.join(parts) + '</div>')
+        all_reports = ('<div class="ko-reports">'
+                       + "".join(_report_html(r) for r in reps) + '</div>')
         n_old = len(reps) - 2
         more_btn = (f'<p class="arch-more" style="margin-top:10px">'
                     f'<a class="btn" href="{rel}overnight/archive/">'

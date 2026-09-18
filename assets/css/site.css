@@ -425,6 +425,38 @@ table.data td.num, table.data th.num { font-family: var(--mono); text-align: rig
   text-transform: uppercase; color: var(--amber); margin: 0 0 4px;
 }
 
+/* ------------------------------------------------ overnight day headers */
+.ko-reports { display: grid; gap: 34px; margin: 0 0 26px; }
+.letter.ko-report {
+  padding: 0 18px 18px; border-left: 4px solid var(--amber); overflow: hidden;
+}
+.ko-day {
+  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+  margin: 0 -18px 16px; padding: 13px 18px; background: var(--sign-deep);
+}
+.ko-day .ko-day-dow {
+  font-family: var(--display); text-transform: uppercase; letter-spacing: .16em;
+  font-size: 12.5px; font-weight: 600; color: var(--amber-soft);
+  margin: 0 0 1px; padding: 0; max-width: none;
+}
+.ko-day .ko-day-date {
+  font-family: var(--display); font-weight: 700; font-size: 32px; line-height: 1.02;
+  letter-spacing: .01em; color: #fff; margin: 0; padding: 0; max-width: none;
+}
+.ko-day-tag {
+  margin-left: auto; font-family: var(--mono); font-size: 10px; font-weight: 700;
+  letter-spacing: 1.2px; text-transform: uppercase; line-height: 1.5;
+  background: var(--amber); color: var(--sign-deep);
+  padding: 2px 9px; border-radius: 20px; white-space: nowrap;
+}
+.ko-day-tag.is-prev { background: var(--paper-2); color: var(--ink); }
+.ko-sep { height: 0; border-top: 1px dashed var(--line-strong); margin: 0; }
+@media (max-width: 640px) {
+  .ko-day .ko-day-date { font-size: 23px; }
+  .ko-day { gap: 8px; padding: 11px 14px; margin: 0 -14px 14px; }
+  .letter.ko-report { padding: 0 14px 16px; }
+}
+
 /* ------------------------------------------------ homepage overnight section */
 .ko-section {
   margin: 16px 0; padding: 18px 20px;

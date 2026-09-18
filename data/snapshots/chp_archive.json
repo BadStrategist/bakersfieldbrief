@@ -1,125 +1,5 @@
 [
  {
-  "log_id": "260910BF0202",
-  "time": "Sep 10 2026  1:05PM",
-  "type": "1125A-Animal Hazard",
-  "location": "Wb Sr58 Jeo South Chester Ave",
-  "area": "Bakersfield",
-  "lat": 35.3525,
-  "lon": -119.016667,
-  "details": ""
- },
- {
-  "log_id": "260910BF0241",
-  "time": "Sep 10 2026  2:26PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "3464 Rustic Meadow Ct",
-  "area": "Bakersfield",
-  "lat": 35.438122,
-  "lon": -119.037975,
-  "details": ""
- },
- {
-  "log_id": "260910BF0016",
-  "time": "Sep 10 2026  2:28AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260910BF0268",
-  "time": "Sep 10 2026  2:58PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Descanso St / Monterey St",
-  "area": "Bakersfield",
-  "lat": 35.374972,
-  "lon": -118.95413,
-  "details": ""
- },
- {
-  "log_id": "260910BF0346",
-  "time": "Sep 10 2026  5:43PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "14808 Warren St",
-  "area": "Buttonwillow",
-  "lat": 35.614677,
-  "lon": -119.65933,
-  "details": ""
- },
- {
-  "log_id": "260910BF0032",
-  "time": "Sep 10 2026  6:09AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "9855 Compagnoni St",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260910BF0395",
-  "time": "Sep 10 2026  7:34PM",
-  "type": "CZP-Assist with Construction",
-  "location": "I5 N / 7th Standard Rd",
-  "area": "Buttonwillow",
-  "lat": 35.442268,
-  "lon": -119.456484,
-  "details": ""
- },
- {
-  "log_id": "260910BF0397",
-  "time": "Sep 10 2026  7:39PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Sr58 E / Sr99 S",
-  "area": "Bakersfield",
-  "lat": 35.35255,
-  "lon": -119.03962,
-  "details": ""
- },
- {
-  "log_id": "260910BF0130",
-  "time": "Sep 10 2026 10:04AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "N Chester Ave / Highland Dr",
-  "area": "Bakersfield",
-  "lat": 35.424934,
-  "lon": -119.021131,
-  "details": ""
- },
- {
-  "log_id": "260910BF0453",
-  "time": "Sep 10 2026 11:28PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sb Sr99 Jno Ming Ave",
-  "area": "Bakersfield",
-  "lat": 35.345278,
-  "lon": -119.039722,
-  "details": ""
- },
- {
-  "log_id": "260910BF0006",
-  "time": "Sep 10 2026 12:15AM",
-  "type": "CFIRE-Car Fire",
-  "location": "Stine Rd / Sr223",
-  "area": "Bakersfield",
-  "lat": 35.208749,
-  "lon": -119.056937,
-  "details": ""
- },
- {
-  "log_id": "260910BF0200",
-  "time": "Sep 10 2026 12:57PM",
-  "type": "1125-Traffic Hazard",
-  "location": "0 I5 N",
-  "area": "Fort Tejon",
-  "lat": 34.911568,
-  "lon": -118.923228,
-  "details": ""
- },
- {
   "log_id": "260911BF0163",
   "time": "Sep 11 2026  1:07PM",
   "type": "1125-Traffic Hazard",
@@ -1360,8 +1240,38 @@
   "details": ""
  },
  {
+  "log_id": "260917BF0441",
+  "time": "Sep 17 2026 10:30PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "513 Taylor St",
+  "area": "Buttonwillow",
+  "lat": 35.157808,
+  "lon": -119.460138,
+  "details": ""
+ },
+ {
+  "log_id": "260917BF0467",
+  "time": "Sep 17 2026 11:52PM",
+  "type": "CFIRE-Car Fire",
+  "location": "Sb I5 Jso Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.937778,
+  "lon": -118.930556,
+  "details": ""
+ },
+ {
   "log_id": "260917BF0005",
   "time": "Sep 17 2026 12:15AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260918BF0006",
+  "time": "Sep 18 2026 12:19AM",
   "type": "TADV-Traffic Advisory",
   "location": "Bakersfield Traffic Advisories",
   "area": "BF",

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-17T17:57:53-07:00",
+ "built_at": "2026-09-17T18:02:43-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -82,10 +82,10 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 11,
+    "bakersfield-nw": 12,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 13,
+   "wind_mph": 11,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 68,
-   "wind_mph": 13,
+   "temp": 65,
+   "wind_mph": 11,
    "alerts": 0
   },
   "roads": {

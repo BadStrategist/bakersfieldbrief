@@ -7,7 +7,7 @@
    "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
    "pass": true,
    "status": "CLOSED",
-   "pass_status": "CLOSED",
+   "pass_status": "RESTRICTIONS",
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
@@ -16,8 +16,8 @@
     },
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "Is closed to northbound traffic 1.4 mi north of Stockton /at March Ln/ (San Joaquin Co) - Due to an overturned big rig - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
-     "status": "CLOSED"
+     "text": "A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads Northbound traffic is reduced to 1 lnae 1.4 mi north of Stockton /at March Ln/ (San Joaquin Co) - Due to an overturned big rig",
+     "status": "RESTRICTIONS"
     },
     {
      "region": "NORTHERN CALIFORNIA",
@@ -25,8 +25,8 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Thursday, September 17th, 2026 at 06:07 PM",
-   "hash": "8de0791d44"
+   "reported_as_of": "Thursday, September 17th, 2026 at 06:17 PM",
+   "hash": "7d6a347fd0"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Thursday, September 17th, 2026 at 06:07 PM",
+   "reported_as_of": "Thursday, September 17th, 2026 at 06:17 PM",
    "hash": "5374f203ec"
   },
   {
@@ -64,7 +64,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Thursday, September 17th, 2026 at 06:07 PM",
+   "reported_as_of": "Thursday, September 17th, 2026 at 06:17 PM",
    "hash": "f97882795e"
   }
  ],

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-17T18:08:06-07:00",
+ "built_at": "2026-09-17T18:17:55-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -82,10 +82,10 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 12,
+    "bakersfield-nw": 11,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -97,7 +97,7 @@
   },
   "grapevine": {
    "i5": "CLOSED",
-   "i5_pass": "CLOSED",
+   "i5_pass": "RESTRICTIONS",
    "log_entries": 60
   },
   "tehachapi": {
@@ -113,7 +113,7 @@
   },
   "roads": {
    "routes": [
-    "i5:CLOSED",
+    "i5:RESTRICTIONS",
     "sr58:OPEN",
     "sr99:RESTRICTIONS"
    ],

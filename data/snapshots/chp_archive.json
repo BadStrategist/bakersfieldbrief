@@ -1270,6 +1270,16 @@
   "details": ""
  },
  {
+  "log_id": "260918BF0051",
+  "time": "Sep 18 2026  6:17AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sr166 / Short Rd",
+  "area": "Fort Tejon",
+  "lat": 35.058284,
+  "lon": -119.367023,
+  "details": ""
+ },
+ {
   "log_id": "260918BF0006",
   "time": "Sep 18 2026 12:19AM",
   "type": "TADV-Traffic Advisory",

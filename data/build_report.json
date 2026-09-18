@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-18T09:58:59-07:00",
+ "built_at": "2026-09-18T10:01:12-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "Man wounded after shooting near Sam Lynn Ballpark",
    "archive": "2026-09-18"
   },

@@ -1280,6 +1280,26 @@
   "details": ""
  },
  {
+  "log_id": "260918BF0098",
+  "time": "Sep 18 2026  7:54AM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sr43 / Merced Ave",
+  "area": "Bakersfield",
+  "lat": 35.529018,
+  "lon": -119.306003,
+  "details": ""
+ },
+ {
+  "log_id": "260918BF0122",
+  "time": "Sep 18 2026  8:44AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sr155 / Driver Rd",
+  "area": "Bakersfield",
+  "lat": 35.761319,
+  "lon": -119.205231,
+  "details": ""
+ },
+ {
   "log_id": "260918BF0006",
   "time": "Sep 18 2026 12:19AM",
   "type": "TADV-Traffic Advisory",

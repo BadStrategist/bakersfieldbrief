@@ -1318,5 +1318,15 @@
   "lat": 35.265234,
   "lon": -119.024794,
   "details": ""
+ },
+ {
+  "log_id": "260918BF0223",
+  "time": "Sep 18 2026 12:50PM",
+  "type": "1125A-Animal Hazard",
+  "location": "I5 S / Sr166 Ofr",
+  "area": "Fort Tejon",
+  "lat": 35.06238,
+  "lon": -119.002659,
+  "details": ""
  }
 ]

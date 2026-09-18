@@ -7,17 +7,17 @@
    "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
    "pass": true,
    "status": "CLOSED",
-   "pass_status": "RESTRICTIONS",
+   "pass_status": "CLOSED",
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "The southbound connector to northbound SR-133 /in Irvine/ (Orange Co) is closed 24 hours a day thur 0500 hrs on 9/18/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads Southbound traffic is reduced to 3 lanes at Camino De Plaza /in San Diego/ (San Diego Co) - Due to an overturned vehicle",
+     "text": "The southbound connector to northbound SR-133 /in Irvine/ (Orange Co) is closed 24 hours a day thur 0500 hrs on 9/18/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "CLOSED"
     },
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
-     "status": "RESTRICTIONS"
+     "text": "Is closed to northbound traffic 1.4 mi north of Stockton /at March Ln/ (San Joaquin Co) - Due to an overturned big rig - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
+     "status": "CLOSED"
     },
     {
      "region": "NORTHERN CALIFORNIA",
@@ -25,8 +25,8 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Thursday, September 17th, 2026 at 06:02 PM",
-   "hash": "49e3ae277c"
+   "reported_as_of": "Thursday, September 17th, 2026 at 06:07 PM",
+   "hash": "8de0791d44"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Thursday, September 17th, 2026 at 06:02 PM",
+   "reported_as_of": "Thursday, September 17th, 2026 at 06:07 PM",
    "hash": "5374f203ec"
   },
   {
@@ -64,7 +64,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Thursday, September 17th, 2026 at 06:02 PM",
+   "reported_as_of": "Thursday, September 17th, 2026 at 06:07 PM",
    "hash": "f97882795e"
   }
  ],

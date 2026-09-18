@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-18T13:08:23-07:00",
+ "built_at": "2026-09-18T15:25:00-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -26,12 +26,12 @@
    "error": ""
   },
   "calfire": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ReadTimeout: HTTPSConnectionPool(host='incidents.fire.ca.gov', port=443): Read timed out. (read timeout=30)"
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 5087, column 0"
   },
   "isabella": {
    "ok": true,
@@ -65,8 +65,8 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "Bakersfield police request community\u2019s help in finding missing 65-year-old man",
+   "chp_new": 0,
+   "top_story": "Kern County officials ID man struck by train in April",
    "archive": "2026-09-18"
   },
   "cityhall": {
@@ -85,7 +85,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 12,
+    "bakersfield-nw": 11,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 66,
+   "temp": 68,
    "wind_mph": 17,
    "alerts": 0
   },

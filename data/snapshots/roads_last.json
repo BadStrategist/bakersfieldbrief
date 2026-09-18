@@ -16,7 +16,7 @@
     },
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads Northbound traffic is reduced to 1 lnae 1.4 mi north of Stockton /at March Ln/ (San Joaquin Co) - Due to an overturned big rig",
+     "text": "A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
      "status": "RESTRICTIONS"
     },
     {
@@ -25,8 +25,8 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Thursday, September 17th, 2026 at 08:48 PM",
-   "hash": "7d6a347fd0"
+   "reported_as_of": "Friday, September 18th, 2026 at 12:09 AM",
+   "hash": "6f2896965e"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Thursday, September 17th, 2026 at 08:48 PM",
+   "reported_as_of": "Friday, September 18th, 2026 at 12:09 AM",
    "hash": "5374f203ec"
   },
   {
@@ -64,9 +64,9 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Thursday, September 17th, 2026 at 08:48 PM",
+   "reported_as_of": "Friday, September 18th, 2026 at 12:09 AM",
    "hash": "f97882795e"
   }
  ],
- "asof": "2026-09-17"
+ "asof": "2026-09-18"
 }

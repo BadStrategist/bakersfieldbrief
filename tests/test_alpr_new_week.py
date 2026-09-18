@@ -28,7 +28,13 @@ class _Resp:
 
 
 def _node(nid, mapped_days_ago, manufacturer="Flock Safety"):
-    stamp = (dt.date.today() - dt.timedelta(days=mapped_days_ago)).isoformat()
+    # Use the SAME clock the source uses (common.iso_today() = Pacific), not
+    # dt.date.today() (the runner's local date = UTC in CI). Otherwise the
+    # runner's UTC date rolls over ~7 hours before the Pacific date and this
+    # test fails for any build pushed between 5pm and midnight Pacific.
+    from build import common
+    stamp = (dt.date.fromisoformat(common.iso_today())
+             - dt.timedelta(days=mapped_days_ago)).isoformat()
     return {"id": nid, "lat": 35.37, "lon": -119.02,
             "timestamp": f"{stamp}T00:00:00Z",
             "tags": {"manufacturer": manufacturer, "surveillance": "ALPR"}}

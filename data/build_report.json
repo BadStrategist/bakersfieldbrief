@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-17T18:17:55-07:00",
+ "built_at": "2026-09-17T18:50:49-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,14 +59,14 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1331,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Scratch-off ticket worth $2M won in Shafter",
+   "top_story": "Thousands of Kern County immigrants could lose green card path under new Trump public charge rule",
    "archive": "2026-09-17"
   },
   "cityhall": {
@@ -85,7 +85,7 @@
    "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 11,
+    "bakersfield-nw": 12,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 66,
+   "temp": 64,
    "wind_mph": 14,
    "alerts": 0
   },
@@ -135,7 +135,7 @@
    "isabella_af": 158703,
    "alpr_total": 265,
    "kern_fires": 0,
-   "aqi": 65,
+   "aqi": 62,
    "chp_week": 58
   },
   "letters": {

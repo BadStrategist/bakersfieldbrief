@@ -1,0 +1,14 @@
+{
+  "name": "Bakersfield Daily Brief",
+  "short_name": "Bakersfield",
+  "description": "Free daily civic news brief for Bakersfield and Kern County, California.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#232B30",
+  "theme_color": "#232B30",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

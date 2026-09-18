@@ -162,9 +162,9 @@ def org_jsonld() -> dict:
         "url": "https://bakersfieldbrief.com/",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://bakersfieldbrief.com/assets/img/emblem.png",
-            "width": 100,
-            "height": 100,
+            "url": "https://bakersfieldbrief.com/icon-512.png",
+            "width": 512,
+            "height": 512,
         },
         "description": "A free, automated daily civic news brief for Bakersfield and Kern County, California.",
         "areaServed": "Bakersfield and Kern County, California",
@@ -184,6 +184,22 @@ def org_jsonld() -> dict:
         "ownershipFundingInfo": "https://bakersfieldbrief.com/about/",
         "ethicsPolicy": "https://bakersfieldbrief.com/about/",
         "isAccessibleForFree": True,
+    }
+
+
+def publisher_logo() -> dict:
+    """schema.org ImageObject for the publisher logo, with the REAL dimensions.
+
+    The width/height here must match assets/img/emblem.png on disk (1200x630).
+    They were hard-coded as 100x100 at three call sites while the file was a
+    1200x630 wordmark — a false claim Google can drop the logo rich result over.
+    One source of truth now; tests/test_site_icons.py checks it against the file.
+    """
+    return {
+        "@type": "ImageObject",
+        "url": "https://bakersfieldbrief.com/assets/img/emblem.png",
+        "width": 1200,
+        "height": 630,
     }
 
 

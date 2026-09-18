@@ -104,6 +104,7 @@ def main():
     # ---------------------------------------------------------- assets
     for src in ("css", "js", "fonts", "vendor", "img"):
         shutil.copytree(common.ASSETS / src, common.SITE / "assets" / src, dirs_exist_ok=True)
+    _icons()
     common.log("assets copied")
 
     # ---------------------------------------------------------- robots / sitemap / CNAME
@@ -136,6 +137,28 @@ def main():
     if not all(v.get("ok", False) for k, v in results.items() if k != "blocked"):
         failed = [k for k, v in results.items() if not v.get("ok", False) and k != "blocked"]
         common.log(f"NOTE — sources with failures (site still builds): {failed}")
+
+
+ICON_ROOT_FILES = ("favicon.ico", "favicon.svg", "apple-touch-icon.png",
+                   "icon-96.png", "icon-192.png", "icon-512.png",
+                   "site.webmanifest")
+
+
+def _icons():
+    """Copy the favicon set from assets/icons/ into the SITE ROOT.
+
+    Browsers and Google request these at the domain root (/favicon.ico), so
+    they cannot live under /assets/. Source art is committed under
+    assets/icons/; the artwork is generated (rarely) by
+    ~/AppData/Local/hermes/scripts/bb_make_icons.py. A missing file is logged,
+    never fatal — an absent icon must not stop the daily build.
+    """
+    for name in ICON_ROOT_FILES:
+        try:
+            shutil.copy2(common.ASSETS / "icons" / name, common.SITE / name)
+        except OSError as e:  # noqa: BLE001
+            common.log(f"WARN — site icon {name} not copied: {e}")
+    common.log(f"site icons copied ({len(ICON_ROOT_FILES)})")
 
 
 def _robots():

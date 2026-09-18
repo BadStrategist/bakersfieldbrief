@@ -164,12 +164,7 @@ def _newsarticle_jsonld(r: dict) -> dict:
             "@type": "Organization",
             "name": "Bakersfield Daily Brief",
             "url": "https://bakersfieldbrief.com/",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://bakersfieldbrief.com/assets/img/emblem.png",
-                "width": 100,
-                "height": 100,
-            },
+            "logo": page_mod.publisher_logo(),
         },
         "mainEntityOfPage": f"https://bakersfieldbrief.com/overnight/#{r['date']}",
         "inLanguage": "en",

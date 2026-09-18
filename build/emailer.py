@@ -715,9 +715,13 @@ def _flock_update_html(alpr: dict) -> str:
     dir_txt = f", facing {cardinal}" if cardinal else ""
 
     # ---- dynamic new-camera counts (changes day to day) ----
-    today = _date.today().isoformat()
+    # One clock for the whole pipeline: common.iso_today() (Pacific), the same
+    # clock alpr.py counts 'mapped' dates against. _date.today() is the RUNNER's
+    # local date (UTC in CI), which rolls over ~7 hours before Pacific, so after
+    # 5pm PT the two clocks disagree and this sentence dropped the "today" part.
+    today = common.iso_today()
     from datetime import timedelta as _td
-    week_ago = (_date.today() - _td(days=7)).isoformat()
+    week_ago = (_date.fromisoformat(today) - _td(days=7)).isoformat()
     new_today = sum(1 for c in cameras if c.get("mapped") == today)
     # The 7-day total comes from the source payload (stats['new_this_week']) so
     # this sentence and the tracker card's "+N NEW THIS WEEK" badge are the same

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-18T15:25:00-07:00",
+ "built_at": "2026-09-18T15:56:56-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -66,7 +66,7 @@
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Kern County officials ID man struck by train in April",
+   "top_story": "Kern officials ID man killed in solo-car crash in Arvin on Tuesday",
    "archive": "2026-09-18"
   },
   "cityhall": {
@@ -85,7 +85,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 11,
+    "bakersfield-nw": 12,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12

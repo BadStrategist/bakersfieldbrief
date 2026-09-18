@@ -153,12 +153,16 @@ def _icons():
     ~/AppData/Local/hermes/scripts/bb_make_icons.py. A missing file is logged,
     never fatal — an absent icon must not stop the daily build.
     """
+    copied = 0
     for name in ICON_ROOT_FILES:
         try:
             shutil.copy2(common.ASSETS / "icons" / name, common.SITE / name)
+            copied += 1
         except OSError as e:  # noqa: BLE001
             common.log(f"WARN — site icon {name} not copied: {e}")
-    common.log(f"site icons copied ({len(ICON_ROOT_FILES)})")
+    # Report the REAL count, not len(ICON_ROOT_FILES): a summary line that says
+    # "copied (7)" while the WARN above says otherwise is a lie in the log.
+    common.log(f"site icons copied ({copied}/{len(ICON_ROOT_FILES)})")
 
 
 def _robots():

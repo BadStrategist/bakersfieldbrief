@@ -6,13 +6,13 @@
    "slug": "i5",
    "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
    "pass": true,
-   "status": "CLOSED",
+   "status": "RESTRICTIONS",
    "pass_status": "RESTRICTIONS",
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "The southbound connector to northbound SR-133 /in Irvine/ (Orange Co) is closed 24 hours a day thur 0500 hrs on 9/18/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
-     "status": "CLOSED"
+     "text": "A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "status": "RESTRICTIONS"
     },
     {
      "region": "CENTRAL CALIFORNIA",
@@ -25,8 +25,8 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Friday, September 18th, 2026 at 12:40 AM",
-   "hash": "6f2896965e"
+   "reported_as_of": "Friday, September 18th, 2026 at 06:16 AM",
+   "hash": "efa451eb67"
   },
   {
    "number": "58",
@@ -42,7 +42,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Friday, September 18th, 2026 at 12:40 AM",
+   "reported_as_of": "Friday, September 18th, 2026 at 06:16 AM",
    "hash": "5374f203ec"
   },
   {
@@ -64,7 +64,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Friday, September 18th, 2026 at 12:40 AM",
+   "reported_as_of": "Friday, September 18th, 2026 at 06:16 AM",
    "hash": "f97882795e"
   }
  ],

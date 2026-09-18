@@ -456,6 +456,11 @@ table.data td.num, table.data th.num { font-family: var(--mono); text-align: rig
   .ko-day { gap: 8px; padding: 11px 14px; margin: 0 -14px 14px; }
   .letter.ko-report { padding: 0 14px 16px; }
 }
+/* 320px (iPhone SE 1st gen): the longer "Yesterday" pill pushes the row over the
+   card width and wraps to a second line. Trim the pill, keep the date size. */
+@media (max-width: 360px) {
+  .ko-day-tag { font-size: 9px; letter-spacing: 1px; padding: 2px 7px; }
+}
 
 /* ------------------------------------------------ homepage overnight section */
 .ko-section {

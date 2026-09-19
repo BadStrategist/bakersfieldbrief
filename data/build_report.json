@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-19T00:05:35-07:00",
+ "built_at": "2026-09-19T00:36:38-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 5087, column 0"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 1,
    "top_story": "Scores: Week 5 of the high school football season in Bakersfield, Kern County",
    "archive": "2026-09-19"
   },
@@ -136,7 +136,7 @@
    "alpr_total": 265,
    "kern_fires": 0,
    "aqi": 75,
-   "chp_week": 74
+   "chp_week": 75
   },
   "letters": {
    "published": 0

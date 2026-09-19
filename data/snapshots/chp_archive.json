@@ -1090,6 +1090,16 @@
   "details": ""
  },
  {
+  "log_id": "260919BF0260",
+  "time": "Sep 19 2026  2:09PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr166 / Short Rd",
+  "area": "Fort Tejon",
+  "lat": 35.058284,
+  "lon": -119.367023,
+  "details": ""
+ },
+ {
   "log_id": "260919BF0039",
   "time": "Sep 19 2026  2:10AM",
   "type": "TADV-Traffic Advisory",
@@ -1097,6 +1107,16 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260919BF0276",
+  "time": "Sep 19 2026  2:51PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sr58 / Superior Rd",
+  "area": "Bakersfield",
+  "lat": 35.354305,
+  "lon": -119.234331,
   "details": ""
  },
  {

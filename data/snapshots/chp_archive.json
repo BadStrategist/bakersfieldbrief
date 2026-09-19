@@ -1108,5 +1108,15 @@
   "lat": 35.267175,
   "lon": -119.116099,
   "details": ""
+ },
+ {
+  "log_id": "260919BF0153",
+  "time": "Sep 19 2026 10:15AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jno Lerdo Hwy",
+  "area": "Buttonwillow",
+  "lat": 35.503333,
+  "lon": -119.538889,
+  "details": ""
  }
 ]

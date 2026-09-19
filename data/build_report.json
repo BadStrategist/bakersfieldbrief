@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-19T09:56:48-07:00",
+ "built_at": "2026-09-19T10:33:56-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 5087, column 0"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 1,
    "top_story": "Elderly woman rescued from east Bakersfield house fire",
    "archive": "2026-09-19"
   },
@@ -85,7 +85,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 9,
+    "bakersfield-nw": 11,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 2,
+   "wind_mph": 3,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 59,
-   "wind_mph": 2,
+   "temp": 62,
+   "wind_mph": 3,
    "alerts": 0
   },
   "roads": {
@@ -136,7 +136,7 @@
    "alpr_total": 265,
    "kern_fires": 0,
    "aqi": 63,
-   "chp_week": 77
+   "chp_week": 78
   },
   "letters": {
    "published": 0

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-18T18:56:04-07:00",
+ "built_at": "2026-09-19T00:05:35-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,14 +60,14 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1083,
+  "brief_words": 64,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Elderly woman rescued from burning East Bakersfield home dies at Kern Medical",
-   "archive": "2026-09-18"
+   "top_story": "Scores: Week 5 of the high school football season in Bakersfield, Kern County",
+   "archive": "2026-09-19"
   },
   "cityhall": {
    "upcoming_meetings": 3,
@@ -82,7 +82,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 11,
@@ -93,22 +93,22 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-09-18"
+   "draft": "drafts/weekend-guide-2026-09-19"
   },
   "grapevine": {
-   "i5": "RESTRICTIONS",
+   "i5": "CLOSED",
    "i5_pass": "RESTRICTIONS",
    "log_entries": 60
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 16,
+   "wind_mph": 5,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 63,
-   "wind_mph": 16,
+   "temp": 52,
+   "wind_mph": 5,
    "alerts": 0
   },
   "roads": {
@@ -121,7 +121,7 @@
   },
   "events": {
    "groups": {
-    "This week": 3,
+    "This week": 2,
     "Next week": 1,
     "Later": 43,
     "Date TBD": 10
@@ -135,7 +135,7 @@
    "isabella_af": 157789,
    "alpr_total": 265,
    "kern_fires": 0,
-   "aqi": 58,
+   "aqi": 75,
    "chp_week": 74
   },
   "letters": {

@@ -1,0 +1,110 @@
+[
+ {
+  "type": "water rescue",
+  "time": "22:03",
+  "agency": "Kern County Fire Department",
+  "area": "Kern River behind the Kern River Golf Course, northeast Bakersfield",
+  "notability": 4,
+  "disposition": "woman located; search stood down",
+  "summary": "A caller reported that a woman had gone into the river and floated roughly an hour toward Lake Ming, with a blue and white raft mentioned in the call. The reporting party, who had been in the water with her, said both of them had gotten out and there was no reason she would have gone back toward the river. Crews searched the bank behind the Kern River Golf Course and later reported they had her, at a camp just southeast of the golf course area."
+ },
+ {
+  "type": "pursuit and arrest",
+  "time": "00:08",
+  "agency": "Bakersfield Police Department",
+  "area": "Rosedale Highway and canal bank area, Bakersfield",
+  "notability": 4,
+  "disposition": "suspect detained; currency recovered; victim brought for identification",
+  "summary": "Units went looking for a man with a satchel who was tracked southbound and then eastbound along a nearby street, heading toward the canal bank and Rosedale Highway. A caller reported that the man was discarding items near a chain link fence in a clearing by a tree. Officers reported recovering currency from the suspect and asked for the victim to be brought by for an in-field identification."
+ },
+ {
+  "type": "hit and run collision",
+  "time": "01:45",
+  "agency": "California Highway Patrol",
+  "area": "northbound Interstate 5 near the county line, Kern County",
+  "notability": 4,
+  "disposition": "victim rig on the shoulder; suspect last seen northbound; CHP handling",
+  "summary": "A hit and run was broadcast on northbound Interstate 5 just north of the county line: a Freightliner Cascadia pulling a trailer with damage to the passenger side struck a Kenworth whose occupants were on the right-hand shoulder. The suspect rig was last seen northbound. About two hours later a unit reported the victim vehicle was still on the shoulder, less than half a mile north of the county line."
+ },
+ {
+  "type": "shed fire",
+  "time": "02:09",
+  "agency": "Bakersfield Fire Department",
+  "area": "800 block of Exchange Street, Bakersfield",
+  "notability": 3,
+  "disposition": "units assigned",
+  "summary": "A battalion and engine crews were sent to the 800 block of Exchange Street for a report of a back house or shed on fire, with people at the property trying to put it out."
+ },
+ {
+  "type": "assault investigation",
+  "time": "00:27",
+  "agency": "Bakersfield Police Department",
+  "area": "19th Street area, Bakersfield",
+  "notability": 3,
+  "disposition": "medical aid requested",
+  "summary": "A caller told dispatchers he had been knocked unconscious and was bleeding. An ambulance was requested to the 19th Street address."
+ },
+ {
+  "type": "welfare check",
+  "time": "21:22",
+  "agency": "Bakersfield Police Department",
+  "area": "East Cedar Street at Franklin Field, Bakersfield",
+  "notability": 2,
+  "disposition": "units sent",
+  "summary": "A unit was sent to check the welfare of a man reported to be at Franklin Field in a 2008 Ford Escape with a rope."
+ },
+ {
+  "type": "vehicle versus pedestrian",
+  "time": "21:29",
+  "agency": "Bakersfield Police Department",
+  "area": "Lincoln Street at Pierce, Bakersfield",
+  "notability": 2,
+  "disposition": "pedestrian up and walking",
+  "summary": "Units were sent for a vehicle versus pedestrian collision. The pedestrian was up and walking and did not appear to be injured."
+ },
+ {
+  "type": "traffic hazard",
+  "time": "21:42",
+  "agency": "California Highway Patrol",
+  "area": "southbound Interstate 5 north of the Grapevine, Kern County",
+  "notability": 2,
+  "disposition": "unit assigned",
+  "summary": "A white pickup with its hazard lights on was reported in the slow lane, and a short time later it was reported blocking the number 4 lane."
+ },
+ {
+  "type": "rubbish fire",
+  "time": "23:03",
+  "agency": "Bakersfield Fire Department",
+  "area": "Edison Highway at the railroad tracks, east Bakersfield",
+  "notability": 2,
+  "disposition": "engine 41 handled; balance cancelled",
+  "summary": "A caller reported fire seen from a distance in the Edison Highway area, and crews located a rubbish fire on the north side of the railroad tracks. Engine 41 reported it could handle, and the rest of the assignment was cancelled."
+ },
+ {
+  "type": "medical aid",
+  "time": "01:25",
+  "agency": "Kern County Fire Department",
+  "area": "Sierra Highway mobile home park, eastern Kern County",
+  "notability": 2,
+  "disposition": "medical response",
+  "summary": "A 911 caller reported a suspected overdose at a mobile home park on Sierra Highway, and dispatchers worked to reach family members who were on scene."
+ },
+ {
+  "type": "verbal disturbance",
+  "time": "02:23",
+  "agency": "Bakersfield Police Department",
+  "area": "2400 block of Boyd Street, Bakersfield",
+  "notability": 2,
+  "disposition": "priority call; units sent",
+  "summary": "Officers were sent for a priority verbal disturbance after a Spanish-speaking caller asked for law enforcement, with crying and screaming heard in the background."
+ },
+ {
+  "type": "impaired driver report",
+  "time": "02:49",
+  "agency": "California Highway Patrol",
+  "area": "Highway, Kern County",
+  "notability": 2,
+  "disposition": "unit assigned",
+  "summary": "A semi with a trailer was reported speeding and moving in and out of its lane, and dispatchers ran the trailer plate for a 2019 utility reefer out of Bakersfield."
+ }
+]

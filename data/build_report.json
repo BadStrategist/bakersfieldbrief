@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-19T09:15:02-07:00",
+ "built_at": "2026-09-19T09:20:42-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 5087, column 0"
   },
   "isabella": {
    "ok": true,

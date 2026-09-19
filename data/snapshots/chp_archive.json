@@ -1120,6 +1120,26 @@
   "details": ""
  },
  {
+  "log_id": "260919BF0300",
+  "time": "Sep 19 2026  4:05PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "6000-6199 Norris Rd",
+  "area": "Bakersfield",
+  "lat": 35.419624,
+  "lon": -119.068986,
+  "details": ""
+ },
+ {
+  "log_id": "260919BF0305",
+  "time": "Sep 19 2026  4:19PM",
+  "type": "WW-Wrong Way Driver",
+  "location": "Eb Sr46 Jeo Kern Co San Luis Co Line",
+  "area": "Buttonwillow",
+  "lat": 35.726111,
+  "lon": -120.193333,
+  "details": ""
+ },
+ {
   "log_id": "260919BF0067",
   "time": "Sep 19 2026  5:39AM",
   "type": "1179-Trfc Collision-1141 Enrt",

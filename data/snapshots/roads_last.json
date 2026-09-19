@@ -7,7 +7,7 @@
    "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
    "pass": true,
    "status": "CLOSED",
-   "pass_status": "RESTRICTIONS",
+   "pass_status": "OPEN",
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
@@ -25,7 +25,30 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Saturday, September 19th, 2026 at 03:32 PM",
+   "scope": {
+    "on_pass": "OPEN",
+    "on_pass_reported": false,
+    "on_pass_items": [],
+    "elsewhere": [
+     {
+      "status": "CLOSED",
+      "place": "Irvine",
+      "county": "Orange Co",
+      "where": "Irvine (Orange Co)",
+      "text": "The northbound connector to northbound SR-133 /in Irvine/ (Orange Co) is closed from 2200 hrs on 9/18/26 to 0600 hrs on 9/19/26 - Due to construction - Motorists are advised to use an alternate route A high wind...",
+      "region": "SOUTHERN CALIFORNIA"
+     },
+     {
+      "status": "RESTRICTIONS",
+      "place": "",
+      "county": "San Joaquin Co",
+      "where": "San Joaquin Co",
+      "text": "A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
+      "region": "CENTRAL CALIFORNIA"
+     }
+    ]
+   },
+   "reported_as_of": "Saturday, September 19th, 2026 at 04:31 PM",
    "hash": "2fd31ddff8"
   },
   {
@@ -33,17 +56,32 @@
    "slug": "sr58",
    "name": "State Route 58 \u2014 Tehachapi",
    "pass": false,
-   "status": "OPEN",
-   "pass_status": "OPEN",
+   "status": "CLOSED",
+   "pass_status": "CLOSED",
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "No traffic restrictions reported.",
-     "status": "OPEN"
+     "text": "Is closed at Superior Rd /in Bakersfield/ (Kern Co) - Due to a traffic collision - Motorists are advised to use an alternate route",
+     "status": "CLOSED"
     }
    ],
-   "reported_as_of": "Saturday, September 19th, 2026 at 03:32 PM",
-   "hash": "5374f203ec"
+   "scope": {
+    "on_pass": "OPEN",
+    "on_pass_reported": false,
+    "on_pass_items": [],
+    "elsewhere": [
+     {
+      "status": "CLOSED",
+      "place": "Bakersfield",
+      "county": "Kern Co",
+      "where": "Bakersfield (Kern Co)",
+      "text": "Is closed at Superior Rd /in Bakersfield/ (Kern Co) - Due to a traffic collision - Motorists are advised to use an alternate route",
+      "region": "CENTRAL CALIFORNIA"
+     }
+    ]
+   },
+   "reported_as_of": "Saturday, September 19th, 2026 at 04:31 PM",
+   "hash": "49b8491b84"
   },
   {
    "number": "99",
@@ -64,7 +102,22 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Saturday, September 19th, 2026 at 03:32 PM",
+   "scope": {
+    "on_pass": "OPEN",
+    "on_pass_reported": false,
+    "on_pass_items": [],
+    "elsewhere": [
+     {
+      "status": "CLOSED",
+      "place": "Merced",
+      "county": "Merced Co",
+      "where": "Merced (Merced Co)",
+      "text": "Is closed to southbound traffic at Martin Luther King Jr /in Merced/ (Merced Co) - Due to a traffic collision - Motorists are advised to use an alternate route A high wind advisory is in effect from the Stanislaus/San...",
+      "region": "CENTRAL CALIFORNIA"
+     }
+    ]
+   },
+   "reported_as_of": "Saturday, September 19th, 2026 at 04:31 PM",
    "hash": "b8cf92b944"
   }
  ],

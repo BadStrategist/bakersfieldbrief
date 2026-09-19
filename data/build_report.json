@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-19T15:33:48-07:00",
+ "built_at": "2026-09-19T16:32:17-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 2,
    "top_story": "Elderly woman rescued from east Bakersfield house fire",
    "archive": "2026-09-19"
   },
@@ -85,7 +85,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 9,
+    "bakersfield-nw": 12,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -97,24 +97,24 @@
   },
   "grapevine": {
    "i5": "CLOSED",
-   "i5_pass": "RESTRICTIONS",
+   "i5_pass": "OPEN",
    "log_entries": 60
   },
   "tehachapi": {
-   "sr58": "OPEN",
-   "wind_mph": 0,
+   "sr58": "CLOSED",
+   "wind_mph": null,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 82,
-   "wind_mph": 0,
+   "temp": 79,
+   "wind_mph": null,
    "alerts": 0
   },
   "roads": {
    "routes": [
-    "i5:RESTRICTIONS",
-    "sr58:OPEN",
+    "i5:OPEN",
+    "sr58:CLOSED",
     "sr99:CLOSED"
    ],
    "log_entries": 60
@@ -135,8 +135,8 @@
    "isabella_af": 157106,
    "alpr_total": 265,
    "kern_fires": 0,
-   "aqi": null,
-   "chp_week": 80
+   "aqi": 93,
+   "chp_week": 82
   },
   "letters": {
    "published": 0

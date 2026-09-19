@@ -601,6 +601,11 @@ def _fmt_day(dstr: str) -> str:
         return str(dstr)
 
 
+def _chg_clause(chg_txt: str) -> str:
+    """Turn the change line into a sentence for the quotable first paragraph."""
+    return chg_txt + "."
+
+
 def _water_level_status(elev_ft, full_pool_ft) -> tuple[str, str]:
     """Honest, objective framing of where the level sits vs full pool.
 
@@ -637,6 +642,19 @@ def build_water(ctx, sources: dict):
         # elevation stat + level framing
         delta = (vals[-1] - vals[0]) if len(vals) > 1 else 0
 
+        # ---- change over the last week: the number answer engines actually quote ----
+        chg7_af, chg7_days = None, 0
+        if len(vals) >= 8:
+            chg7_af, chg7_days = vals[-1] - vals[-8], 7
+        elif len(vals) >= 2:
+            chg7_af, chg7_days = vals[-1] - vals[-2], 1
+        chg_txt = ""
+        if chg7_af is not None:
+            chg_txt = (f"Storage is {'up' if chg7_af >= 0 else 'down'} "
+                       f"{abs(chg7_af):,.0f} acre-feet over the last "
+                       f"{'7 days' if chg7_days == 7 else '24 hours'}")
+        below_pool_txt = ""
+
         status_label, status_note = _water_level_status(
             elev["value"] if elev else None, full_pool)
 
@@ -669,16 +687,21 @@ def build_water(ctx, sources: dict):
             feet_line = (f"{elev['value']:,} ft, which is {diff:.1f} ft "
                          f"{'below' if diff >= 0 else 'above'} the full-pool elevation "
                          f"of {full_pool:,} ft")
+            below_pool_txt = (f"{abs(diff):.1f} ft {'below' if diff >= 0 else 'above'} "
+                              f"the full-pool elevation of {full_pool:,} ft")
             level_read = (f"<p><strong>The lake is at {feet_line}.</strong> "
                           f"At this level, {status_note[0].lower()}{status_note[1:]}</p>")
 
+        _chg_sentence = (_chg_clause(chg_txt) if chg_txt else
+                         "A week-over-week storage comparison is unavailable this build.")
         body = f"""
         <div class="card"><span class="tag">Lake Isabella</span>
         <h3>Current water level</h3>
         <p><strong>Lake Isabella is at {elev['value']:,} feet elevation</strong>, holding
         {storage['value']:,} acre-feet — {pct}% of its {cap_af:,}-acre-foot full capacity
         (full pool {full_pool:,} ft). That is the live
-        reading from California DWR / CDEC, updated with each build.</p>
+        reading from California DWR / CDEC, updated with each build.
+        {_chg_sentence}</p>
         {level_read}
         <p>Lake Isabella, on the Kern River above Bakersfield, is the valley's biggest reservoir.
         The U.S. Army Corps of Engineers reports storage, elevation and inflow to the California
@@ -761,11 +784,28 @@ def build_water(ctx, sources: dict):
                                              f"capacity). This live reading updates automatically "
                                              f"from California DWR/CDEC.")}},
                 {"@type": "Question",
+                 "name": "How full is Lake Isabella right now?",
+                 "acceptedAnswer": {"@type": "Answer",
+                                    "text": (f"Lake Isabella is {st_pct}% full, holding {cap_txt} of "
+                                             f"its 568,000 acre-foot capacity at an elevation of "
+                                             f"{ev_txt} (full pool 2,605.5 ft), from the latest "
+                                             f"California DWR/CDEC reading.")}},
+                {"@type": "Question",
+                 "name": "How far below full pool is Lake Isabella?",
+                 "acceptedAnswer": {"@type": "Answer",
+                                    "text": ((f"Lake Isabella is {below_pool_txt} (elevation {ev_txt}, "
+                                              f"{st_pct}% of capacity).") if below_pool_txt else
+                                             (f"Lake Isabella is at {st_pct}% of capacity; the "
+                                              f"elevation reading is unavailable this build."))}},
+                {"@type": "Question",
                  "name": "Is Lake Isabella full or going up?",
                  "acceptedAnswer": {"@type": "Answer",
-                                    "text": (f"Lake Isabella is at {st_pct}% of capacity as of the "
-                                             f"latest reading. The 30-day chart above shows whether "
-                                             f"storage is rising, falling or steady.")}},
+                                    "text": ((f"Lake Isabella is at {st_pct}% of capacity. {chg_txt} "
+                                              f"(the 7-day change from the CDEC storage series).")
+                                             if chg_txt else
+                                             (f"Lake Isabella is at {st_pct}% of capacity as of the "
+                                              f"latest reading. The 30-day chart above shows whether "
+                                              f"storage is rising, falling or steady."))}},
                 {"@type": "Question",
                  "name": "What is the elevation of Lake Isabella?",
                  "acceptedAnswer": {"@type": "Answer",

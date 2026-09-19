@@ -19,7 +19,8 @@ import re
 from .. import common
 from . import images
 from . import page as page_mod
-from .grapevine import _STATUS_COPY, _TAG_CLS, _report_age_hint
+from .grapevine import (_STATUS_COPY, _TAG_CLS, _report_age_hint, _scope_note,
+                        _elsewhere_phrase, NO_PROBLEM_LABEL, NO_PROBLEM_SPOKEN)
 
 _PHONE = "1-800-427-7623"
 
@@ -27,6 +28,13 @@ _ROUTE_META = {
     "i5": ("I-5 · Grapevine (Tejon Pass)", "the LA-to-Bakersfield pass", "../grapevine/"),
     "sr58": ("SR-58 · Tehachapi Pass", "the east–west pass to the desert", "../tehachapi-pass/"),
     "sr99": ("SR-99 · Central Valley", "the valley route north through Bakersfield", ""),
+}
+
+# Prose names for the direct answer, so it never renders "I-5 (Grapevine (Tejon Pass))".
+_ROUTE_PROSE = {
+    "i5": "I-5 over Tejon Pass",
+    "sr58": "SR-58 over Tehachapi Pass",
+    "sr99": "SR-99 through the Central Valley",
 }
 
 
@@ -53,11 +61,28 @@ def build(ctx, sources: dict) -> list[str]:
 
     # ---- direct quotable answer (first text after H1, for crawlers/AI)
     if routes:
-        statuses = ", ".join(f"{r['slug'].upper()} {_kern_status(r)}"
-                             for r in routes if r['slug'] in _ROUTE_META)
+        # Spoken form, not raw status words: "I5 RESTRICTIONS" is unquotable,
+        # "I-5 (Tejon Pass) is open with restrictions" is what an answer engine repeats.
+        _numbers = {"i5": "I-5", "sr58": "SR-58", "sr99": "SR-99"}
+        parts = []
+        for r in routes:
+            meta = _ROUTE_META.get(r["slug"])
+            if not meta:
+                continue
+            sc = r.get("scope")
+            if sc is None:
+                spoken = _STATUS_COPY.get(_kern_status(r), _STATUS_COPY["OPEN"])[3]
+            elif sc.get("on_pass_reported"):
+                spoken = _STATUS_COPY.get(sc.get("on_pass", _kern_status(r)),
+                                          _STATUS_COPY["OPEN"])[3]
+            else:
+                # No Caltrans item names this corridor: say that, never a bare OPEN/CLOSED
+                spoken = NO_PROBLEM_SPOKEN
+            parts.append(f"{_ROUTE_PROSE.get(r['slug'], meta[0])} is {spoken}")
+        statuses = "; ".join(parts)
         asof = next((r.get("reported_as_of") for r in routes if r.get("reported_as_of")), data.get("asof", "the latest Caltrans report"))
-        direct = (f'<p class="answer"><strong>As of {html.escape(asof)}, '
-                  f'Kern County highways are: {html.escape(statuses)}.</strong> '
+        direct = (f'<p class="answer"><strong>As of {html.escape(asof)}, Caltrans reports: '
+                  f'{statuses}.</strong> '
                   f'Check each route below for the latest Caltrans-reported conditions '
                   f'before you drive.</p>')
     else:
@@ -72,7 +97,7 @@ def build(ctx, sources: dict) -> list[str]:
             <p class="note">Conditions unavailable this build.</p></div>"""
             continue
         status = _kern_status(r)
-        wlabel, wcls, note = _STATUS_COPY.get(status, _STATUS_COPY["OPEN"])
+        wlabel, wcls, note, _wspoken = _STATUS_COPY.get(status, _STATUS_COPY["OPEN"])
         if r.get("status") != status:
             note += " Note: other sections of this route report differently — see details below."
         secs = "".join(
@@ -123,19 +148,56 @@ def build(ctx, sources: dict) -> list[str]:
             return "unavailable this build"
         return _kern_status(r)
 
+    def _route_scope(slug: str) -> dict | None:
+        """None means 'no route'; {} means 'route present, snapshot has no scope'."""
+        r = next((x for x in routes if x["slug"] == slug), None)
+        return None if r is None else (r.get("scope") or {})
+
+    def _route_spoken(slug: str) -> str:
+        sc = _route_scope(slug)
+        if sc is None:
+            return "unavailable this build"
+        if not sc:                       # pre-scope snapshot: report the rollup word
+            return _STATUS_COPY.get(_kern_status(next(x for x in routes if x["slug"] == slug)),
+                                    _STATUS_COPY["OPEN"])[3]
+        if sc.get("on_pass_reported"):
+            return _STATUS_COPY.get(sc.get("on_pass", "OPEN"), _STATUS_COPY["OPEN"])[3]
+        return NO_PROBLEM_SPOKEN
+
+    def _route_clause(slug: str, name: str) -> str:
+        """Full honest sentence about a pass, plus where the real problem is."""
+        sc = _route_scope(slug)
+        if sc is None:
+            return f"Caltrans {name} conditions are unavailable this build."
+        if not sc:
+            return (f"{name} is {_route_spoken(slug)}, as reported by Caltrans "
+                    f"(Caltrans reports this area-wide, which covers more than the pass).")
+        note = _scope_note(sc, name.split()[0])
+        if sc.get("on_pass_reported"):
+            return f"{name} is {_route_spoken(slug)}, as reported by Caltrans.{note}"
+        return (f"Caltrans reports no closure or restriction on {name} itself."
+                f"{note}")
+
     live_status = statuses if routes else "unavailable this build"
     faq_qa = [
         ("What are the road conditions in Bakersfield and Kern County right now?",
-         f"As of {html.escape(asof)}, Kern County highways are: {html.escape(live_status)}.{stale_suffix} "
+         f"As of {html.escape(asof)}, Caltrans reports: {html.escape(live_status)}.{stale_suffix} "
          f"See each route above for details, or call Caltrans at {_PHONE}."),
         ("Is SR-58 / Tehachapi Pass open?",
-         f"SR-58 over Tehachapi Pass is reported {html.escape(_route_status('sr58'))} by Caltrans. "
+         f"{_route_clause('sr58', 'SR-58 through Tehachapi Pass')} "
          f"It is a mountain pass and can close for snow, wind, and chain controls in winter."),
         ("Is the Grapevine (I-5) open?",
-         f"I-5 over Tejon Pass is reported {html.escape(_route_status('i5'))} by Caltrans. "
+         f"{_route_clause('i5', 'I-5 over Tejon Pass')} "
          f"It is the highest point on I-5 between LA and the Central Valley."),
         ("Is SR-99 open through Bakersfield?",
-         f"SR-99 is reported {html.escape(_route_status('sr99'))} by Caltrans."),
+         f"SR-99 is {_route_spoken('sr99')}, as reported by Caltrans."),
+        ("Is SR-99 closed in Bakersfield?",
+         (f"{_route_clause('sr99', 'SR-99 through Bakersfield')} Caltrans posts closures of "
+          f"SR-99 anywhere along the route, so read the location before you change plans.")),
+        ("Is the Grapevine or Tehachapi Pass closed right now?",
+         (f"Caltrans reports no closure on the pass corridors. "
+          f"{_scope_note(_route_scope('i5'), 'I-5').strip()} "
+          f"{_scope_note(_route_scope('sr58'), 'SR-58').strip()}").replace("  ", " ")),
         ("How do I get current California highway conditions?",
          f"Call Caltrans at {_PHONE} or visit roads.dot.ca.gov. This page also checks Caltrans "
          f"in real time when you load it and refreshes every 60 seconds while it's open."),

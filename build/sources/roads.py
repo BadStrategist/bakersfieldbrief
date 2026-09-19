@@ -30,6 +30,30 @@ URL = "https://roads.dot.ca.gov/roadscell.php?roadnumber={n}"
 _STATUS = ("OPEN", "RESTRICTIONS", "CLOSED")
 _NO_PROBLEM = re.compile(r"no (traffic )?(restrictions|closures?|incidents?|delays?)", re.I)
 
+# Caltrans groups conditions by AREA, which is far too coarse to answer "is the
+# pass open?": I-5's CENTRAL CALIFORNIA blob is a San Joaquin County wind
+# advisory (200 miles north of Tejon Pass), and SR-58 ships ONE Central section,
+# so a Bakersfield city collision was headlined as "Tehachapi Pass: CLOSED".
+# Corridor keywords keep a pass answer scoped to places ON the corridor.
+CORRIDOR = {
+    "i5": ("TEJON", "LEBEC", "GORMAN", "GRAPEVINE", "FORT TEJON", "CASTAIC",
+           "PYRAMID LAKE", "SR-138", "SMOKEY BEAR"),
+    "sr58": ("TEHACHAPI", "KEENE", "MONOLITH", "BEALVILLE", "CALIENTE",
+             "SR-202", "TOWER LINE", "WOODFORD", "TWIN OAKS"),
+    "sr99": ("BAKERSFIELD", "DELANO", "WASCO", "MCFARLAND", "SHAFTER",
+             "LAMONT", "KERN CO"),
+}
+
+# a problem phrase: the anchor we scope to a place
+_PROBLEM = re.compile(
+    r"is\s+closed|are\s+closed|will be closed|is currently closed|"
+    r"closed|restrictions?|chains|reduced to \d lane|one lane|"
+    r"two lanes closed|wind advisory|wind|fog|snow|traffic hazard|"
+    r"collision|disabled vehicle", re.I)
+_PLACE = re.compile(r"/in ([^/]+)/\s*\(([A-Za-z .]+?) Co\)")
+_COUNTY = re.compile(r"\(([A-Za-z .]+?) Co\)")
+_WINDOW = 210
+
 
 def run(ctx):
     out = {"ok": True, "routes": [], "asof": common.iso_today()}
@@ -122,8 +146,9 @@ def _parse(html: str, route: dict) -> dict:
 
     status = _classify(sections) if sections else "OPEN"
     detail_text = " ".join(f"{s['region']}: {s['text']}" for s in sections)
-    pass_status = next((s["status"] for s in sections
-                        if "CENTRAL" in s["region"].upper()), status)
+    scope = _scope(sections, route["slug"])
+    pass_status = scope["on_pass"] if route.get("pass") else (
+        scope["on_pass"] if scope["on_pass_reported"] else status)
     return {
         "number": route["number"],
         "slug": route["slug"],
@@ -132,9 +157,79 @@ def _parse(html: str, route: dict) -> dict:
         "status": status,
         "pass_status": pass_status if route.get("pass") else status,
         "sections": sections,
+        "scope": scope,
         "reported_as_of": ts,
         "hash": hashlib.md5(detail_text.encode()).hexdigest()[:10],
     }
+
+
+def _worst(statuses) -> str:
+    if "CLOSED" in statuses:
+        return "CLOSED"
+    if "RESTRICTIONS" in statuses:
+        return "RESTRICTIONS"
+    return "OPEN"
+
+
+def _scope(sections: list[dict], slug: str) -> dict:
+    """Split Caltrans' area text into ON-CORRIDOR problems and everything else.
+
+    Returns {"on_pass": status, "on_pass_reported": bool, "elsewhere": [...]}.
+    `on_pass_reported` is False when no problem phrase names the corridor, which
+    is Caltrans' way of saying nothing is wrong there; the page must then say
+    "no problems reported on the pass" rather than claim a bare OPEN or CLOSED.
+    """
+    keywords = CORRIDOR.get(slug, ())
+    on_corridor, elsewhere = [], []
+    for s in sections:
+        text = s["text"]
+        for m in _PROBLEM.finditer(text):
+            lo, hi = max(0, m.start() - _WINDOW), min(len(text), m.end() + _WINDOW)
+            win = text[lo:hi]
+            if _section_status(win) == "OPEN":
+                continue
+            place = _PLACE.search(win)
+            county_m = _COUNTY.search(win)
+            place_name = place.group(1).strip() if place else ""
+            county = (place.group(2).strip() + " Co") if place else (
+                county_m.group(1).strip() + " Co" if county_m else "")
+            item = {
+                "status": _section_status(win),
+                "place": place_name,
+                "county": county,
+                "where": (f"{place_name} ({county})" if place_name and county else
+                          place_name or county or f"the {s['region'].title()} area"),
+                "text": _sentence(win),
+                "region": s["region"],
+            }
+            if any(k in win.upper() for k in keywords):
+                on_corridor.append(item)
+            elif not any(x["text"] == item["text"] for x in elsewhere):
+                elsewhere.append(item)
+    # dedupe corridor items the same way
+    seen, uniq = set(), []
+    for it in on_corridor:
+        if it["text"] not in seen:
+            seen.add(it["text"])
+            uniq.append(it)
+    return {
+        "on_pass": _worst([i["status"] for i in uniq]),
+        "on_pass_reported": bool(uniq),
+        "on_pass_items": uniq,
+        "elsewhere": elsewhere[:4],
+    }
+
+
+def _sentence(win: str, limit: int = 220) -> str:
+    """The status clause from a window, trimmed to readable words."""
+    t = " ".join(win.split())
+    m = _PLACE.search(t)
+    if m:
+        t = t[max(0, m.start() - 90):]
+    t = t.strip(" -.·")
+    if len(t) > limit:
+        t = t[:limit].rsplit(" ", 1)[0] + "..."
+    return t
 
 
 # light typo/spacing cleanup of Caltrans' text (facts unchanged)

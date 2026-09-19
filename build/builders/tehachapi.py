@@ -20,16 +20,22 @@ import re
 from .. import common
 from . import images
 from . import page as page_mod
-from .grapevine import _report_age_hint
+from .grapevine import (_report_age_hint, _scope_note,
+                        NO_PROBLEM_LABEL, NO_PROBLEM_SPOKEN)
 
 _PHONE = "1-800-427-7623"
 _TAG_CLS = {"OPEN": "green", "RESTRICTIONS": "amber", "CLOSED": "red"}
 
 # Status copy map mirrors grapevine's (same labels/logic).
 _STATUS_COPY = {
-    "OPEN": ("Open", "big-open", "No closures or restrictions are currently reported on this route."),
-    "RESTRICTIONS": ("Restrictions", "big-restrict", "The route is open with restrictions — see the details below."),
-    "CLOSED": ("Closed", "big-closed", "The route is reported closed — see the details below."),
+    # (badge label, css class, plain note, spoken form for sentences) — the spoken
+    # form keeps the quotable answer grammatical: "is reported Restrictions" is not.
+    "OPEN": ("Open", "big-open", "No closures or restrictions are currently reported on this route.",
+             "open"),
+    "RESTRICTIONS": ("Restrictions", "big-restrict", "The route is open with restrictions — see the details below.",
+                     "open with restrictions"),
+    "CLOSED": ("Closed", "big-closed", "The route is reported closed — see the details below.",
+               "closed"),
 }
 
 
@@ -50,21 +56,58 @@ def build(ctx, sources: dict) -> list[str]:
 
     # ---- big status (honest, area-scoped wording)
     if rte and routes_present:
-        status = rte.get("pass_status") or rte.get("status", "OPEN")
-        label, cls, note = _STATUS_COPY.get(status, _STATUS_COPY["OPEN"])
+        scope = rte.get("scope")
+        area_note = "(Caltrans Central California area)"
+        scope_legend = ""
+        if scope is None:
+            # Snapshot predates corridor scoping: keep the area-scoped claim.
+            status = rte.get("pass_status") or rte.get("status", "OPEN")
+            label, cls, note, spoken = _STATUS_COPY.get(status, _STATUS_COPY["OPEN"])
+            scope = {}
+        elif scope.get("on_pass_reported"):
+            status = scope.get("on_pass", rte.get("pass_status") or rte.get("status", "OPEN"))
+            label, cls, note, spoken = _STATUS_COPY.get(status, _STATUS_COPY["OPEN"])
+        else:
+            # SR-58 ships ONE Caltrans section for the whole route, so a collision
+            # in Bakersfield was headlined as "Tehachapi Pass: CLOSED". Only claim
+            # a pass status when a Caltrans item names the corridor.
+            label, cls, spoken = NO_PROBLEM_LABEL, "big-open", NO_PROBLEM_SPOKEN
+            note = "Caltrans reports no closures or restrictions on Tehachapi Pass itself."
+            area_note = "(Caltrans condition text below)"
+
+        if rte.get("scope") is None:
+            scope_legend = ("SR-58&rsquo;s Caltrans report is area-wide (Central California), so "
+                            "the status word means &ldquo;SR-58 reported " + str(label) +
+                            " (Central California area)&rdquo;, not a pass-specific claim.")
+        elif scope.get("on_pass_reported"):
+            scope_legend = ("A Caltrans item names the pass corridor, so this is a pass-specific "
+                            "claim; other SR-58 items are listed separately with their location.")
+        else:
+            scope_legend = ("Caltrans names no problem on the pass corridor; any SR-58 problem "
+                            "elsewhere is listed with its location, not as a claim about the pass.")
+        note += _scope_note(scope, "SR-58")
         verbatim = " ".join(s.get("text", "") for s in (rte.get("sections") or []))
         big = f"""
       <div class="big-status {cls}">
         <p class="big-label">SR-58 · Tehachapi Pass</p>
         <p class="big-word">{label}</p>
-        <p class="big-note">{note} <span class="subtle">(Caltrans Central California area)</span></p>
+        <p class="big-note">{note} <span class="subtle">{area_note}</span></p>
       </div>"""
         # direct quotable answer (first text after H1 for crawlers/AI) — honest scoping
         ts = rte.get("reported_as_of", "")
-        direct_answer = (
-            f'<p class="answer"><strong>As of {html.escape(ts or "the latest Caltrans report")}, '
-            f'SR-58 is reported <span class="{cls}">{label}</span> by Caltrans '
-            f'(Central California area).</strong> {note}</p>')
+        if rte.get("scope") is None:
+            # legacy snapshot wording, unchanged: it never claimed the pass itself
+            direct_answer = (
+                f'<p class="answer"><strong>As of {html.escape(ts or "the latest Caltrans report")}, '
+                f'SR-58 is reported <span class="{cls}">{label}</span> by Caltrans '
+                f'(Central California area).</strong> {note}</p>')
+        else:
+            _verdict = (f'<span class="{cls}">{spoken}</span>, as reported by Caltrans'
+                        if scope.get("on_pass_reported") else
+                        f'<span class="{cls}">{spoken}</span>')
+            direct_answer = (
+                f'<p class="answer"><strong>As of {html.escape(ts or "the latest Caltrans report")}, '
+                f'SR-58 through Tehachapi Pass is {_verdict}.</strong> {note}</p>')
         if verbatim:
             direct_answer += (f'<p class="note">Showing Caltrans&rsquo; condition text: '
                               f'<em>{html.escape(verbatim)}</em></p>')
@@ -73,7 +116,9 @@ def build(ctx, sources: dict) -> list[str]:
         direct_answer = (
             '<p class="answer">Caltrans SR-58 conditions are unavailable this build. '
             f'Check <a href="https://roads.dot.ca.gov/">roads.dot.ca.gov</a> or call {_PHONE}.</p>')
-        label, cls, note, ts = "—", "", "", ""
+        label, cls, note, spoken, ts = "—", "", "", "unavailable", ""
+        scope_legend = "Caltrans SR-58 conditions are unavailable this build."
+
 
     _age = _report_age_hint(rte.get("reported_as_of", "")) if rte else ""
     ts_html = (f'<span class="updated">{html.escape(rte["reported_as_of"])}{html.escape(_age)}</span>'
@@ -183,14 +228,25 @@ def build(ctx, sources: dict) -> list[str]:
     # ---- FAQ (visible + schema). Q1 carries the live status.
     stale_sfx = (" — Caltrans is unreachable right now, so this is the most recent report and may "
                  "be out of date. Confirm live status before driving." if is_stale else "")
+    # Only claim "as reported by Caltrans" when Caltrans names the pass corridor.
+    _asof = html.escape(ts or "the latest update")
+    if rte and rte.get("scope") is None:
+        faq_lead = (f'SR-58 over Tehachapi Pass is reported <strong>{label}</strong> by Caltrans '
+                    f'as of {_asof}{stale_sfx}.')
+    elif rte and (rte.get("scope") or {}).get("on_pass_reported"):
+        faq_lead = (f'SR-58 through Tehachapi Pass is <strong>{spoken}</strong>, as reported by '
+                    f'Caltrans as of {_asof}{stale_sfx}.')
+    elif rte:
+        faq_lead = (f'SR-58 through Tehachapi Pass is clear of reported problems as of '
+                    f'{_asof}{stale_sfx}.')
+    else:
+        faq_lead = "Caltrans SR-58 conditions are unavailable this build."
     faq_qa = [
         ("Is Tehachapi Pass open right now?",
-         (f"SR-58 over Tehachapi Pass is reported {label} by Caltrans as of {html.escape(ts or 'the latest update')}"
-          f"{stale_sfx}. {note}" if rte else
+         (f"{faq_lead} {note}" if rte else
           "Caltrans SR-58 conditions are unavailable this build — see roads.dot.ca.gov or call 1-800-427-7623.")),
         ("What are the road conditions on Highway 58 through Tehachapi Pass?",
-         (f"Caltrans reports SR-58 as {label} (Central California area) as of {html.escape(ts or 'the latest update')}. "
-          f"Confirm on roads.dot.ca.gov before driving." if rte else
+         (f"{faq_lead} Confirm on roads.dot.ca.gov before driving." if rte else
           "Caltrans conditions are unavailable this build.")),
         ("How windy is Tehachapi Pass right now?",
          (_wind_answer(cur) if cur.get("ok") else
@@ -294,10 +350,9 @@ def build(ctx, sources: dict) -> list[str]:
     </section>
 
     <p class="note">Road conditions are Caltrans&rsquo; text, lightly cleaned for typos and spacing
-    (facts and the agency&rsquo;s timestamp are unchanged). Because SR-58&rsquo;s Caltrans report is
-    area-wide (Central California), the status word means &ldquo;SR-58 reported {label}
-    (Central California area)&rdquo;, not a pass-specific claim. Wind/weather are from the NWS station
-    and forecast; each shows its own timestamp. Always confirm on the official source before driving.</p>"""
+    (facts and the agency&rsquo;s timestamp are unchanged). {scope_legend}
+    Wind/weather are from the NWS station and forecast; each shows its own timestamp.
+    Always confirm on the official source before driving.</p>"""
 
     page = page_mod.render(
         title="Is Tehachapi Pass (SR-58) open right now? | Bakersfield Daily Brief",

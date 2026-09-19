@@ -18,12 +18,55 @@ from . import page as page_mod
 _PHONE = "1-800-427-7623"
 
 _STATUS_COPY = {
-    "OPEN": ("Open", "big-open", "No closures or restrictions are currently reported on this route."),
-    "RESTRICTIONS": ("Restrictions", "big-restrict", "The route is open with restrictions — see the details below."),
-    "CLOSED": ("Closed", "big-closed", "The route is reported closed — see the details below."),
+    # (badge label, css class, plain note, spoken form for sentences)
+    # The spoken form exists because "the pass is Restrictions" is not a sentence:
+    # answer engines quote the direct answer verbatim, so it has to read as English.
+    "OPEN": ("Open", "big-open",
+             "No closures or restrictions are currently reported on this route.",
+             "open"),
+    "RESTRICTIONS": ("Restrictions", "big-restrict",
+                     "The route is open with restrictions — see the details below.",
+                     "open with restrictions"),
+    "CLOSED": ("Closed", "big-closed",
+               "The route is reported closed — see the details below.",
+               "closed"),
 }
 
 _TAG_CLS = {"OPEN": "green", "RESTRICTIONS": "amber", "CLOSED": "red"}
+
+
+def _elsewhere_phrase(it: dict) -> str:
+    """Plain-words phrase for a Caltrans problem that is NOT on the pass."""
+    kind = {"CLOSED": "a closure", "RESTRICTIONS": "restrictions"}.get(it.get("status"), "an advisory")
+    return f"{kind} at {it['where']}" if it.get("place") else f"{kind} in {it['where']}"
+
+
+def _scope_note(scope: dict, route_word: str) -> str:
+    """Sentence naming Caltrans problems that sit elsewhere on the route.
+
+    The pass answer has to survive being quoted: a bare "other sections report
+    closed" next to "is the pass open" is what makes an answer engine quote the
+    wrong road, so name the place and say outright that it is not the pass.
+    """
+    items = (scope or {}).get("elsewhere") or []
+    if not items:
+        return ""
+    bits = [_elsewhere_phrase(it) for it in items[:2]]
+    tail = "none of them on the pass" if (scope or {}).get("on_pass_reported") else "not on the pass"
+    return (f" Elsewhere on {route_word}, Caltrans reports "
+            + " and ".join(bits) + f" — {tail}.")
+
+
+NO_PROBLEM_LABEL = "No problems reported"
+NO_PROBLEM_SPOKEN = "clear of reported problems"
+
+
+def _first_sentence(text: str, limit: int = 190) -> str:
+    """Caltrans' first sentence for a section, bounded, for the 'elsewhere' note."""
+    t = " ".join((text or "").split())
+    cut = t.find(". ")
+    s = t[:cut + 1] if cut > 0 else t
+    return s if len(s) <= limit else s[:limit - 1].rstrip() + "..."
 
 
 def _report_age_hint(reported_as_of: str) -> str:
@@ -73,11 +116,25 @@ def build(ctx, sources: dict) -> list[str]:
 
     # ---- big answer (headlines the pass itself; notes other I-5 sections)
     if i5:
-        pass_status = i5.get("pass_status") or i5["status"]
-        label, cls, note = _STATUS_COPY.get(pass_status, _STATUS_COPY["OPEN"])
-        if i5["status"] != pass_status:
-            note += (f" Note: other I-5 sections report "
-                     f"{i5['status'].lower()} — see the details below.")
+        scope = i5.get("scope")
+        _legacy = False
+        if scope is None:
+            # Snapshot predates corridor scoping (last-known fallback): keep the old
+            # area-scoped claim rather than inventing "no problems reported".
+            pass_status = i5.get("pass_status") or i5["status"]
+            label, cls, note, spoken = _STATUS_COPY.get(pass_status, _STATUS_COPY["OPEN"])
+            note += (" Note: that status is Caltrans' area-wide text, which covers more "
+                     "than the pass.")
+            scope = {}
+            _legacy = True
+        elif scope.get("on_pass_reported"):
+            pass_status = scope.get("on_pass", i5.get("pass_status") or i5["status"])
+            label, cls, note, spoken = _STATUS_COPY.get(pass_status, _STATUS_COPY["OPEN"])
+        else:
+            # Caltrans names no problem on the corridor, so claim no bare OPEN/CLOSED.
+            label, cls, spoken = NO_PROBLEM_LABEL, "big-open", NO_PROBLEM_SPOKEN
+            note = "Caltrans reports no closures or restrictions on Tejon Pass itself."
+        note += _scope_note(scope, "I-5")
         big = f"""
       <div class="big-status {cls}">
         <p class="big-label">I-5 · Grapevine (Tejon Pass)</p>
@@ -87,7 +144,7 @@ def build(ctx, sources: dict) -> list[str]:
         # ---- direct quotable answer (first text after H1 for crawlers/AI)
         direct_answer = (f'<p class="answer"><strong>Is the Grapevine open right now? '
                          f'As of {html.escape(i5.get("reported_as_of", "the latest Caltrans report"))}, '
-                         f'I-5 over Tejon Pass is <span class="{cls}">{label}</span>.</strong> '
+                         f'I-5 over Tejon Pass is <span class="{cls}">{spoken}</span>.</strong> '
                          f'{note}</p>')
     else:
         big = '<div class="errorbox">Caltrans conditions unavailable this build.</div>'
@@ -109,17 +166,29 @@ def build(ctx, sources: dict) -> list[str]:
     stale_suffix = (" — Caltrans is unreachable right now, so this is the most recent "
                     "report and may be out of date. Confirm live status before driving."
                     if is_stale else "")
+
+    # FAQ lead: only say "as reported by Caltrans" when Caltrans actually names the
+    # corridor. Otherwise it reads "clear of reported problems as reported by
+    # Caltrans", which is the kind of sentence an answer engine drops.
+    if i5:
+        _asof = html.escape(ts or "the latest update")
+        if (i5.get("scope") or {}).get("on_pass_reported") or i5.get("scope") is None:
+            faq_lead = (f'The Grapevine (I-5 over Tejon Pass) is <strong>{spoken}</strong>, '
+                        f'as reported by Caltrans at {_asof}{stale_suffix}.')
+        else:
+            faq_lead = (f'The Grapevine (I-5 over Tejon Pass) is clear of reported problems '
+                        f'as of {_asof}{stale_suffix}.')
+    else:
+        faq_lead = "Caltrans conditions are unavailable this build."
     faq_qa = [
         ("Is the Grapevine open right now?",
-         (f'The Grapevine (I-5 over Tejon Pass) is currently <strong>{label}</strong> '
-          f'as reported by Caltrans at {html.escape(ts or "the latest update")}{stale_suffix}. {note}'
-          if i5 else
-          "Caltrans conditions are unavailable this build — see the official source below.")),
-        ("Is the Grapevine closed right now?",
-         (f'Caltrans reports the Grapevine (I-5 over Tejon Pass) as <strong>{label}</strong> '
-          f'at {html.escape(ts or "the latest update")}{stale_suffix}. {note}'
-          if i5 else
-          "Caltrans conditions are unavailable this build — see the official source below.")),
+                 (f'{faq_lead} {note}'
+                  if i5 else
+                  "Caltrans conditions are unavailable this build — see the official source below.")),
+                ("Is the Grapevine closed right now?",
+                 (f'{faq_lead} {note}'
+                  if i5 else
+                  "Caltrans conditions are unavailable this build — see the official source below.")),
         ("Why does the Grapevine close?",
          "Snow and ice, dense fog, and high winds. Caltrans also schedules overnight maintenance "
          "closures. Chain controls (R2/R3) are posted at the bottom of the grade."),
@@ -141,10 +210,15 @@ def build(ctx, sources: dict) -> list[str]:
         if not r:
             continue
         card_status = r.get("pass_status") if r["slug"] == "i5" else r["status"]
+        secs_list = list(r.get("sections", []))
+        if r["slug"] == "i5" and card_status:
+            # Pass-scoped sections first: the Tejon Pass answer must not sit under
+            # a closure 200 miles away (an Orange County connector) in visual order.
+            secs_list.sort(key=lambda s: 0 if s.get("status") == card_status else 1)
         secs = "".join(f"""
         <li><span class="tag {_TAG_CLS.get(s['status'], 'amber')}">{s['status']}</span>
         <strong>{html.escape(s['region'])}:</strong> {html.escape(s['text'])}</li>"""
-                       for s in r.get("sections", []))
+                       for s in secs_list)
         cards += f"""
         <div class="card">
           <span class="tag {_TAG_CLS.get(card_status, 'amber')}">{card_status}</span>

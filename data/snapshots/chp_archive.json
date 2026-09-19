@@ -1088,5 +1088,25 @@
   "lat": 35.06238,
   "lon": -119.002659,
   "details": ""
+ },
+ {
+  "log_id": "260919BF0039",
+  "time": "Sep 19 2026  2:10AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260919BF0067",
+  "time": "Sep 19 2026  5:39AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "9778-10351 Sr119",
+  "area": "Bakersfield",
+  "lat": 35.267175,
+  "lon": -119.116099,
+  "details": ""
  }
 ]

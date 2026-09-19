@@ -17,7 +17,9 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import html
 import json
+import re
 import shutil
 import sys
 import types
@@ -199,15 +201,51 @@ def _sitemap():
                  "/places/east-bakersfield/*  /places/bakersfield-east/:splat  301\n")
 
 
+def _page_titles() -> dict:
+    """path -> the page's own <title>, read from the HTML this build just wrote.
+
+    This is the discovery files' source of truth: a page that exists in site/
+    must appear in llms.txt and in sitemap_agentic_discovery.xml, so the lists
+    are generated from the built output instead of a hand-written list that
+    silently falls behind (it had fallen 66 pages behind by 2026-09-19).
+    """
+    out = {}
+    for p in common.SITE.rglob("index.html"):
+        path = "/" + p.relative_to(common.SITE).as_posix()[: -len("index.html")]
+        try:
+            raw = p.read_text(encoding="utf-8", errors="replace")
+        except OSError:
+            raw = ""
+        m = (re.search(r"<title[^>]*>(.*?)</title>", raw, re.S | re.I)
+             or re.search(r"<h1[^>]*>(.*?)</h1>", raw, re.S | re.I))
+        text = html.unescape(re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", m.group(1))).strip()) if m else ""
+        text = re.sub(r"\s*[|\-–—]\s*Bakersfield (Daily )?Brief\s*$", "", text).strip()
+        out[path] = text or path
+    return out
+
+
+def _llms_extras(curated: str) -> str:
+    """Markdown links for every built page the curated sections do not cover."""
+    linked = set(re.findall(r"bakersfieldbrief\.com(/[^)\s]*)", curated))
+    missing = [p for p in sorted(_page_titles()) if p not in linked]
+    if not missing:
+        return ""
+    titles = _page_titles()
+    lines = ["", "## Page index", "",
+             "Every page this build produced, one line each.", ""]
+    for p in missing:
+        lines.append(f"- [{titles[p]}](https://bakersfieldbrief.com{p})")
+    return "\n".join(lines) + "\n"
+
+
 def _llms():
     """Write site/llms.txt — the AI-agent discovery file (llmstxt.org).
 
-    Static sections are listed here; the daily/overnight pages regenerate
-    every build, so we link to the section roots rather than specific dates.
-    This makes the whole site crawlable by LLM agents (GPTBot, ClaudeBot,
-    PerplexityBot…) in one clean, structured pass.
+    The curated sections below carry the descriptions. A generated Page index
+    is appended for every built page the curated sections miss, so a new page
+    is never invisible to AI crawlers (GPTBot, ClaudeBot, PerplexityBot…).
     """
-    common.write(common.SITE / "llms.txt", """# Bakersfield Daily Brief
+    curated = """# Bakersfield Daily Brief
 
 > A free, automated civic news brief for Bakersfield and Kern County, California — built every morning from public records.
 
@@ -259,7 +297,8 @@ The site is static and rebuilt fresh every morning at 6:00 AM Pacific from publi
 - [Corrections](https://bakersfieldbrief.com/corrections/): how errors are fixed on the record.
 - [Ownership & funding](https://bakersfieldbrief.com/ownership/): who operates the Brief.
 - [Contact](https://bakersfieldbrief.com/contact/): corrections, source tips, and feedback.
-""")
+"""
+    common.write(common.SITE / "llms.txt", curated + _llms_extras(curated))
 
 
 def _llms_full(results: dict) -> None:
@@ -372,28 +411,27 @@ https://bakersfieldbrief.com/contact/ — Corrections, source tips, and feedback
 
 def _agentic_sitemap(results: dict) -> None:
     """Write site/sitemap_agentic_discovery.xml — the agentic-sitemap discovery
-    file (https://agentic-sitemaps.org) listing the key evergreen pages with a
+    file (https://agentic-sitemaps.org) listing every built page with a
     one-line description and lastmod, so AI crawlers find the right entry points.
+
+    The curated descriptions below cover the key entry points. Every other page
+    the build produced is appended with its own <title>, so the file stays
+    complete as pages are added (it had covered 7 of 88 built pages).
     """
     today = common.iso_today()
-    pages = [
-        ("https://bakersfieldbrief.com/",
-         "Home — today's Bakersfield and Kern County conditions, headlines, and meetings."),
-        ("https://bakersfieldbrief.com/water/",
-         "Lake Isabella water level and elevation — live from California DWR/CDEC."),
-        ("https://bakersfieldbrief.com/surveillance/",
-         "Flock Safety and ALPR license-plate-reader camera map for Bakersfield and Kern County."),
-        ("https://bakersfieldbrief.com/grapevine/",
-                 "Grapevine / Tejon Pass road conditions — live from Caltrans."),
-                ("https://bakersfieldbrief.com/tehachapi-pass/",
-                 "Tehachapi Pass (SR-58) road conditions, wind, and weather — live from Caltrans and NWS."),
-                ("https://bakersfieldbrief.com/tehachapi-weather/",
-                 "Tehachapi weather — current conditions and forecast from the National Weather Service."),
-                ("https://bakersfieldbrief.com/roads/",
-                 "Bakersfield and Kern County road conditions right now — I-5 Grapevine, SR-58 Tehachapi, and SR-99, live from Caltrans."),
-            ]
+    curated = {
+        "/": "Home — today's Bakersfield and Kern County conditions, headlines, and meetings.",
+        "/water/": "Lake Isabella water level and elevation — live from California DWR/CDEC.",
+        "/surveillance/": "Flock Safety and ALPR license-plate-reader camera map for Bakersfield and Kern County.",
+        "/grapevine/": "Grapevine / Tejon Pass road conditions — live from Caltrans.",
+        "/tehachapi-pass/": "Tehachapi Pass (SR-58) road conditions, wind, and weather — live from Caltrans and NWS.",
+        "/tehachapi-weather/": "Tehachapi weather — current conditions and forecast from the National Weather Service.",
+        "/roads/": "Bakersfield and Kern County road conditions right now — I-5 Grapevine, SR-58 Tehachapi, and SR-99, live from Caltrans.",
+    }
+    titles = _page_titles()
+    pages = [(f"https://bakersfieldbrief.com{p}", curated.get(p) or titles[p]) for p in sorted(titles)]
     rows = "\n".join(
-        f"  <url><loc>{loc}</loc><description>{desc}</description>"
+        f"  <url><loc>{html.escape(loc)}</loc><description>{html.escape(desc, quote=False)}</description>"
         f"<lastmod>{today}</lastmod></url>"
         for loc, desc in pages)
     common.write(common.SITE / "sitemap_agentic_discovery.xml",

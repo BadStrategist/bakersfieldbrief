@@ -25,25 +25,8 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Saturday, September 19th, 2026 at 05:45 AM",
+   "reported_as_of": "Saturday, September 19th, 2026 at 06:57 AM",
    "hash": "2fd31ddff8"
-  },
-  {
-   "number": "58",
-   "slug": "sr58",
-   "name": "State Route 58 \u2014 Tehachapi",
-   "pass": false,
-   "status": "OPEN",
-   "pass_status": "OPEN",
-   "sections": [
-    {
-     "region": "CENTRAL CALIFORNIA",
-     "text": "No traffic restrictions reported.",
-     "status": "OPEN"
-    }
-   ],
-   "reported_as_of": "Saturday, September 19th, 2026 at 05:45 AM",
-   "hash": "5374f203ec"
   },
   {
    "number": "99",
@@ -64,7 +47,7 @@
      "status": "OPEN"
     }
    ],
-   "reported_as_of": "Saturday, September 19th, 2026 at 05:45 AM",
+   "reported_as_of": "Saturday, September 19th, 2026 at 06:57 AM",
    "hash": "f97882795e"
   }
  ],

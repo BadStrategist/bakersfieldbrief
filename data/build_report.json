@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-19T05:45:32-07:00",
+ "built_at": "2026-09-19T06:59:23-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -34,8 +34,8 @@
    "error": ""
   },
   "isabella": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ConnectTimeout: HTTPSConnectionPool(host='cdec.water.ca.gov', port=443): Max retries exceeded with url: /dynamicapp/req/JSONDataServlet?Stations=ISB&SensorNums=15&dur_code=D&Start=2026-08-13&End=2026-09-19 (Caused by ConnectTimeoutError(<HTTPSConnection(host='cdec.water.ca.gov', port=443) at 0x7ff10c76e480>, 'Connection to cdec.water.ca.gov timed out. (connect timeout=40)'))"
   },
   "alpr": {
    "ok": true,
@@ -59,13 +59,13 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 59,
+  "_digest_meta": "llm",
+  "brief_words": 1286,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "Elderly woman rescued from east Bakersfield house fire",
    "archive": "2026-09-19"
   },
@@ -101,20 +101,19 @@
    "log_entries": 60
   },
   "tehachapi": {
-   "sr58": "OPEN",
+   "sr58": null,
    "wind_mph": 0,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 48,
+   "temp": 43,
    "wind_mph": 0,
    "alerts": 0
   },
   "roads": {
    "routes": [
     "i5:RESTRICTIONS",
-    "sr58:OPEN",
     "sr99:RESTRICTIONS"
    ],
    "log_entries": 60
@@ -132,7 +131,7 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 157106,
+   "isabella_af": null,
    "alpr_total": 265,
    "kern_fires": 0,
    "aqi": 58,
@@ -142,10 +141,10 @@
    "published": 0
   },
   "overnight": {
-   "published": 39
+   "published": 40
   },
   "map": {
-   "dots": 61
+   "dots": 57
   },
   "sunday_read": {
    "topic": "Public safety",

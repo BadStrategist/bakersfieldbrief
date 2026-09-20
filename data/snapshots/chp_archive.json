@@ -1068,5 +1068,25 @@
   "lat": 35.062778,
   "lon": -119.003056,
   "details": ""
+ },
+ {
+  "log_id": "260920BF0115",
+  "time": "Sep 20 2026 10:23AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "EB SR58 JWO Oswell St",
+  "area": "Bakersfield",
+  "lat": 35.351944,
+  "lon": -118.953056,
+  "details": ""
+ },
+ {
+  "log_id": "260920BF0121",
+  "time": "Sep 20 2026 10:30AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr58 E / Mt Vernon Ave Ofr",
+  "area": "Bakersfield",
+  "lat": 35.352393,
+  "lon": -118.973431,
+  "details": ""
  }
 ]

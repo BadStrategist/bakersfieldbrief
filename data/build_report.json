@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-20T07:06:58-07:00",
+ "built_at": "2026-09-20T09:41:53-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 3537, column 50"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -59,14 +59,14 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1141,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Elderly woman rescued from east Bakersfield house fire",
+   "chp_new": 1,
+   "top_story": "Diesel prices in Bakersfield top $8 a gallon, squeezing trucking firms and raising grocery costs",
    "archive": "2026-09-20"
   },
   "cityhall": {
@@ -85,7 +85,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 9,
+    "bakersfield-nw": 10,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 48,
+   "temp": 62,
    "wind_mph": 0,
    "alerts": 0
   },
@@ -134,8 +134,8 @@
    "isabella_af": 156481,
    "alpr_total": 265,
    "kern_fires": 0,
-   "aqi": 59,
-   "chp_week": 89
+   "aqi": 62,
+   "chp_week": 90
   },
   "letters": {
    "published": 0

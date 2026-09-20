@@ -1048,5 +1048,15 @@
   "lat": 35.265234,
   "lon": -119.024794,
   "details": ""
+ },
+ {
+  "log_id": "260920BF0077",
+  "time": "Sep 20 2026  8:07AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "I5 S / Frazier Mountain Park Rd Onr",
+  "area": "Fort Tejon",
+  "lat": 34.813144,
+  "lon": -118.884656,
+  "details": ""
  }
 ]

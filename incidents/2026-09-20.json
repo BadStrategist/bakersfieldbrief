@@ -1,0 +1,119 @@
+[
+ {
+  "type": "brush fire",
+  "time": "03:06",
+  "agency": "Kern County Fire Department",
+  "area": "Lake Ming area, northeast Bakersfield",
+  "notability": 5,
+  "disposition": "full assignment; incident named the Haven Fire",
+  "summary": "Crews went out on a single report of a large brush fire on the foothills north of Lake Ming that was growing. The call went out as a full response, with a helicopter, air attack, water tenders, air-to-ground coordination and several engine, patrol and battalion assignments, and crews designated the incident the Haven Fire on the tactical channel. Units were directed onto side roads looking for access to the top of the hill."
+ },
+ {
+  "type": "brush fire",
+  "time": "22:51",
+  "agency": "Kern County Fire Department",
+  "area": "river bottom, Bakersfield",
+  "notability": 3,
+  "disposition": "crew committed; access made through a gate on the Chevron lease",
+  "summary": "A fire was reported on the south side of the river in an area of about an eighth of an acre, and a crew reported it was making access through a gate on the Chevron lease. A second unit committed to the same fire a minute later."
+ },
+ {
+  "type": "vehicle versus pedestrian",
+  "time": "22:39",
+  "agency": "Bakersfield Police Department",
+  "area": "200 block of Baker Street, Bakersfield",
+  "notability": 3,
+  "disposition": "units sent; asked to confirm the man was struck by a vehicle",
+  "summary": "A caller reported a man lying in the roadway who was not moving, and units on the call were asked to confirm whether the man had told them he had been hit by a vehicle."
+ },
+ {
+  "type": "vehicle versus pole",
+  "time": "22:04",
+  "agency": "California Highway Patrol",
+  "area": "Kern County highway",
+  "notability": 3,
+  "disposition": "one person out of the vehicle",
+  "summary": "Rescue, engine and truck crews responded with CHP on a report of a possible vehicle versus a pole, and one person was already out of the vehicle when the first crews arrived."
+ },
+ {
+  "type": "backyard fire",
+  "time": "00:41",
+  "agency": "Bakersfield Fire Department",
+  "area": "Bakersfield",
+  "notability": 3,
+  "disposition": "engines and a battalion assigned",
+  "summary": "Engine and battalion units were sent for a fire burning in a backyard, two to three feet from a house and threatening the structure."
+ },
+ {
+  "type": "illegal burning",
+  "time": "22:11",
+  "agency": "Kern County Fire Department",
+  "area": "Highway 119, west of Bakersfield",
+  "notability": 2,
+  "disposition": "unit assigned",
+  "summary": "A unit was sent for a report of illegal burning along Highway 119 west of Bakersfield."
+ },
+ {
+  "type": "shots heard",
+  "time": "22:23",
+  "agency": "Bakersfield Police Department",
+  "area": "3600 block of Hale Street, Bakersfield",
+  "notability": 2,
+  "disposition": "units sent; officer safety noted",
+  "summary": "A caller reported shots heard in a field area, with people living in the field and drinking there."
+ },
+ {
+  "type": "gas leak",
+  "time": "00:39",
+  "agency": "Bakersfield Fire Department",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "one engine handled; balance cancelled",
+  "summary": "Crews were sent for a gas leak. One engine reported it could handle, and the rest of the assignment was cancelled."
+ },
+ {
+  "type": "disturbance",
+  "time": "00:42",
+  "agency": "Bakersfield Police Department",
+  "area": "700 block of South Tulare Street, Bakersfield",
+  "notability": 2,
+  "disposition": "units sent",
+  "summary": "Officers were sent for a disturbance with several people yelling in the background and several people speaking Spanish."
+ },
+ {
+  "type": "street racing",
+  "time": "00:05",
+  "agency": "California Highway Patrol",
+  "area": "Cottonwood Road at Kennelly Road, Bakersfield",
+  "notability": 2,
+  "disposition": "units moved in to break up the group",
+  "summary": "Units at Cottonwood Road and Kennelly Road reported they were breaking up a group of racers in the area."
+ },
+ {
+  "type": "impaired driver report",
+  "time": "02:15",
+  "agency": "California Highway Patrol",
+  "area": "northbound Interstate 5, Kern County",
+  "notability": 2,
+  "disposition": "unit assigned; also given to the Los Angeles center",
+  "summary": "A tan pickup was reported swerving and running at fluctuating speeds on northbound Interstate 5."
+ },
+ {
+  "type": "impaired driver report",
+  "time": "03:44",
+  "agency": "California Highway Patrol",
+  "area": "northbound Interstate 5 south of Highway 138, Kern County",
+  "notability": 2,
+  "disposition": "unit assigned",
+  "summary": "A white Hyundai sedan was reported moving in and out of its lane on northbound Interstate 5 south of Highway 138."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "04:07",
+  "agency": "Bakersfield Police Department",
+  "area": "400 block of Irene Street, Bakersfield",
+  "notability": 2,
+  "disposition": "unit sent",
+  "summary": "The next available unit was sent to a domestic call where the caller reported three children were home alone."
+ }
+]

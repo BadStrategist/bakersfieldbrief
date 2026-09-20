@@ -1150,6 +1150,46 @@
   "details": ""
  },
  {
+  "log_id": "260919BF0344",
+  "time": "Sep 19 2026  6:12PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sr99 N / Houghton Rd Ofr",
+  "area": "Bakersfield",
+  "lat": 35.233981,
+  "lon": -119.014208,
+  "details": ""
+ },
+ {
+  "log_id": "260919BF0345",
+  "time": "Sep 19 2026  6:14PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "8000 Mm58 W Ker 80.00",
+  "area": "Bakersfield",
+  "lat": 35.243741,
+  "lon": -118.589804,
+  "details": ""
+ },
+ {
+  "log_id": "260919BF0351",
+  "time": "Sep 19 2026  6:32PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 California Ave Onr",
+  "area": "Bakersfield",
+  "lat": 35.367738,
+  "lon": -119.041224,
+  "details": ""
+ },
+ {
+  "log_id": "260919BF0353",
+  "time": "Sep 19 2026  6:45PM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 N / Grapevine Rd Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.939994,
+  "lon": -118.930124,
+  "details": ""
+ },
+ {
   "log_id": "260919BF0153",
   "time": "Sep 19 2026 10:15AM",
   "type": "1125-Traffic Hazard",

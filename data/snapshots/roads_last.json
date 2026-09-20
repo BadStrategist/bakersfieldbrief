@@ -48,7 +48,7 @@
      }
     ]
    },
-   "reported_as_of": "Saturday, September 19th, 2026 at 04:31 PM",
+   "reported_as_of": "Saturday, September 19th, 2026 at 06:58 PM",
    "hash": "2fd31ddff8"
   },
   {
@@ -56,45 +56,36 @@
    "slug": "sr58",
    "name": "State Route 58 \u2014 Tehachapi",
    "pass": false,
-   "status": "CLOSED",
-   "pass_status": "CLOSED",
+   "status": "OPEN",
+   "pass_status": "OPEN",
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "Is closed at Superior Rd /in Bakersfield/ (Kern Co) - Due to a traffic collision - Motorists are advised to use an alternate route",
-     "status": "CLOSED"
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
     }
    ],
    "scope": {
     "on_pass": "OPEN",
     "on_pass_reported": false,
     "on_pass_items": [],
-    "elsewhere": [
-     {
-      "status": "CLOSED",
-      "place": "Bakersfield",
-      "county": "Kern Co",
-      "where": "Bakersfield (Kern Co)",
-      "text": "Is closed at Superior Rd /in Bakersfield/ (Kern Co) - Due to a traffic collision - Motorists are advised to use an alternate route",
-      "region": "CENTRAL CALIFORNIA"
-     }
-    ]
+    "elsewhere": []
    },
-   "reported_as_of": "Saturday, September 19th, 2026 at 04:31 PM",
-   "hash": "49b8491b84"
+   "reported_as_of": "Saturday, September 19th, 2026 at 06:58 PM",
+   "hash": "5374f203ec"
   },
   {
    "number": "99",
    "slug": "sr99",
    "name": "State Route 99 \u2014 Central Valley",
    "pass": false,
-   "status": "CLOSED",
-   "pass_status": "CLOSED",
+   "status": "RESTRICTIONS",
+   "pass_status": "RESTRICTIONS",
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "Is closed to southbound traffic at Martin Luther King Jr /in Merced/ (Merced Co) - Due to a traffic collision - Motorists are advised to use an alternate route A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
-     "status": "CLOSED"
+     "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads Southbound traffic is reduced to 1 lane at Martin Luther King Jr /in Merced/ (Merced Co) - Due to a traffic collision",
+     "status": "RESTRICTIONS"
     },
     {
      "region": "NORTHERN CALIFORNIA",
@@ -108,17 +99,25 @@
     "on_pass_items": [],
     "elsewhere": [
      {
-      "status": "CLOSED",
+      "status": "RESTRICTIONS",
+      "place": "",
+      "county": "",
+      "where": "the Central California area",
+      "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads Southbound traffic is reduced to 1 lane...",
+      "region": "CENTRAL CALIFORNIA"
+     },
+     {
+      "status": "RESTRICTIONS",
       "place": "Merced",
       "county": "Merced Co",
       "where": "Merced (Merced Co)",
-      "text": "Is closed to southbound traffic at Martin Luther King Jr /in Merced/ (Merced Co) - Due to a traffic collision - Motorists are advised to use an alternate route A high wind advisory is in effect from the Stanislaus/San...",
+      "text": "railers, or permit loads Southbound traffic is reduced to 1 lane at Martin Luther King Jr /in Merced/ (Merced Co) - Due to a traffic collision",
       "region": "CENTRAL CALIFORNIA"
      }
     ]
    },
-   "reported_as_of": "Saturday, September 19th, 2026 at 04:31 PM",
-   "hash": "b8cf92b944"
+   "reported_as_of": "Saturday, September 19th, 2026 at 06:58 PM",
+   "hash": "22baec96de"
   }
  ],
  "asof": "2026-09-19"

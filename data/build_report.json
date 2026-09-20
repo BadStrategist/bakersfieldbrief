@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-20T10:46:44-07:00",
+ "built_at": "2026-09-20T12:54:34-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 3537, column 50"
   },
   "isabella": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 0,
    "top_story": "Diesel prices in Bakersfield top $8 a gallon, squeezing trucking firms and raising grocery costs",
    "archive": "2026-09-20"
   },
@@ -85,7 +85,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 11,
+    "bakersfield-nw": 12,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 7,
+   "wind_mph": 13,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 72,
-   "wind_mph": 7,
+   "temp": 82,
+   "wind_mph": 13,
    "alerts": 0
   },
   "roads": {
@@ -134,7 +134,7 @@
    "isabella_af": 156481,
    "alpr_total": 265,
    "kern_fires": 0,
-   "aqi": 62,
+   "aqi": 60,
    "chp_week": 94
   },
   "letters": {

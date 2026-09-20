@@ -48,7 +48,7 @@
      }
     ]
    },
-   "reported_as_of": "Sunday, September 20th, 2026 at 10:46 AM",
+   "reported_as_of": "Sunday, September 20th, 2026 at 12:54 PM",
    "hash": "2fd31ddff8"
   },
   {
@@ -71,7 +71,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Sunday, September 20th, 2026 at 10:46 AM",
+   "reported_as_of": "Sunday, September 20th, 2026 at 12:54 PM",
    "hash": "5374f203ec"
   },
   {
@@ -89,8 +89,8 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "Southbound traffic is reduced to 1 lane at Cohasset /in Chico/ (Butte Co) - Due to a traffic collision",
-     "status": "RESTRICTIONS"
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
     }
    ],
    "scope": {
@@ -105,19 +105,11 @@
       "where": "the Central California area",
       "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
       "region": "CENTRAL CALIFORNIA"
-     },
-     {
-      "status": "RESTRICTIONS",
-      "place": "Chico",
-      "county": "Butte Co",
-      "where": "Chico (Butte Co)",
-      "text": "Southbound traffic is reduced to 1 lane at Cohasset /in Chico/ (Butte Co) - Due to a traffic collision",
-      "region": "NORTHERN CALIFORNIA"
      }
     ]
    },
-   "reported_as_of": "Sunday, September 20th, 2026 at 10:46 AM",
-   "hash": "62b141b217"
+   "reported_as_of": "Sunday, September 20th, 2026 at 12:54 PM",
+   "hash": "f97882795e"
   }
  ],
  "asof": "2026-09-20"

@@ -68,6 +68,8 @@ STREETS: dict[str, tuple[float, float]] = {
     "7th standard road": (35.440, -119.100), "hageman road": (35.373, -119.075),
     "norris road": (35.373, -119.095), "oak street": (35.400, -119.100),
     "panama lane west": (35.267, -119.080),
+    # landmarks
+    "lake ming": (35.4376, -118.8688), "hart park": (35.4476, -118.9113),
     # outlying towns (area-level dots)
     "delano": (35.769, -119.247), "wasco": (35.594, -119.341),
     "shafter": (35.500, -119.272), "tehachapi": (35.132, -118.449),

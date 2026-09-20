@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-20T07:03:41-07:00",
+ "built_at": "2026-09-20T07:06:58-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -38,8 +38,8 @@
    "error": ""
   },
   "alpr": {
-   "ok": false,
-   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
+   "ok": true,
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -144,7 +144,7 @@
    "published": 41
   },
   "map": {
-   "dots": 57
+   "dots": 54
   },
   "sunday_read": {
    "topic": "Public safety",
@@ -173,8 +173,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 0,
-   "alpr_new_week": 0,
+   "alpr_total": 267,
+   "alpr_new_week": 6,
    "pages": [
     "surveillance",
     "fires",

@@ -1060,6 +1060,36 @@
   "details": ""
  },
  {
+  "log_id": "260920BF0201",
+  "time": "Sep 20 2026  3:18PM",
+  "type": "CFIRE-Car Fire",
+  "location": "0 Sr58 W",
+  "area": "Bakersfield",
+  "lat": 35.314657,
+  "lon": -118.78623,
+  "details": ""
+ },
+ {
+  "log_id": "260920BF0208",
+  "time": "Sep 20 2026  3:33PM",
+  "type": "ANIMAL-Live or Dead Animal",
+  "location": "0 Sr58 W",
+  "area": "Bakersfield",
+  "lat": 35.336361,
+  "lon": -118.834546,
+  "details": ""
+ },
+ {
+  "log_id": "260920BF0210",
+  "time": "Sep 20 2026  3:39PM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sr178 W Sr204 Con / Sr204",
+  "area": "Bakersfield",
+  "lat": 35.383417,
+  "lon": -119.012683,
+  "details": ""
+ },
+ {
   "log_id": "260920BF0077",
   "time": "Sep 20 2026  8:07AM",
   "type": "1182-Trfc Collision-No Inj",

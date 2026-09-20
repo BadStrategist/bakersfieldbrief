@@ -1058,5 +1058,15 @@
   "lat": 34.813144,
   "lon": -118.884656,
   "details": ""
+ },
+ {
+  "log_id": "260920BF0102",
+  "time": "Sep 20 2026  9:42AM",
+  "type": "ANIMAL-Live or Dead Animal",
+  "location": "SB I5 JNO SR166",
+  "area": "Buttonwillow",
+  "lat": 35.062778,
+  "lon": -119.003056,
+  "details": ""
  }
 ]

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-20T09:41:53-07:00",
+ "built_at": "2026-09-20T09:45:09-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 3537, column 50"
   },
   "isabella": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 0,
    "top_story": "Diesel prices in Bakersfield top $8 a gallon, squeezing trucking firms and raising grocery costs",
    "archive": "2026-09-20"
   },

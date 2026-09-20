@@ -1,185 +1,5 @@
 [
  {
-  "log_id": "260912BF0209",
-  "time": "Sep 12 2026  2:23PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr99 N / Cecil Ave",
-  "area": "Bakersfield",
-  "lat": 35.775905,
-  "lon": -119.252339,
-  "details": ""
- },
- {
-  "log_id": "260912BF0217",
-  "time": "Sep 12 2026  2:44PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Nb Sr99 Jno Sr155",
-  "area": "Bakersfield",
-  "lat": 35.761944,
-  "lon": -119.248889,
-  "details": ""
- },
- {
-  "log_id": "260912BF0229",
-  "time": "Sep 12 2026  3:03PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Rowlee Rd / 7th Standard Rd",
-  "area": "Buttonwillow",
-  "lat": 35.442346,
-  "lon": -119.474118,
-  "details": ""
- },
- {
-  "log_id": "260912BF0242",
-  "time": "Sep 12 2026  3:28PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "NB SR99 at County Line Rd",
-  "area": "Bakersfield",
-  "lat": 35.790405,
-  "lon": -119.250693,
-  "details": ""
- },
- {
-  "log_id": "260912BF0252",
-  "time": "Sep 12 2026  3:43PM",
-  "type": "FIRE-Report of Fire",
-  "location": "Conifer Ct / Piute St",
-  "area": "Bakersfield",
-  "lat": 35.588171,
-  "lon": -118.460601,
-  "details": ""
- },
- {
-  "log_id": "260912BF0034",
-  "time": "Sep 12 2026  4:23AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260912BF0035",
-  "time": "Sep 12 2026  4:26AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "1809 Lucky St",
-  "area": "Bakersfield",
-  "lat": 35.365791,
-  "lon": -118.976251,
-  "details": ""
- },
- {
-  "log_id": "260912BF0037",
-  "time": "Sep 12 2026  4:40AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Airport Dr / Petrol Rd",
-  "area": "Bakersfield",
-  "lat": 35.448517,
-  "lon": -119.038575,
-  "details": ""
- },
- {
-  "log_id": "260912BF0043",
-  "time": "Sep 12 2026  5:24AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Cottonwood Rd / E Pacheco Rd",
-  "area": "Bakersfield",
-  "lat": 35.310409,
-  "lon": -118.985439,
-  "details": ""
- },
- {
-  "log_id": "260912BF0312",
-  "time": "Sep 12 2026  6:05PM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "Niles St / Mount Vernon Ave",
-  "area": "Bakersfield",
-  "lat": 35.376272,
-  "lon": -118.967404,
-  "details": ""
- },
- {
-  "log_id": "260912BF0317",
-  "time": "Sep 12 2026  6:10PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "26332 - 26765 Gas Company Rd",
-  "area": "Buttonwillow",
-  "lat": 35.154647,
-  "lon": -119.423772,
-  "details": ""
- },
- {
-  "log_id": "260912BF0323",
-  "time": "Sep 12 2026  6:20PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "1302 El Tejon Ave",
-  "area": "Bakersfield",
-  "lat": 35.418091,
-  "lon": -119.049587,
-  "details": ""
- },
- {
-  "log_id": "260912BF0330",
-  "time": "Sep 12 2026  6:35PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Nb Sr99 Jso Sr46",
-  "area": "Bakersfield",
-  "lat": 35.599993,
-  "lon": -119.209824,
-  "details": ""
- },
- {
-  "log_id": "260912BF0067",
-  "time": "Sep 12 2026  7:46AM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "11300-11426 Sr184",
-  "area": "Bakersfield",
-  "lat": 35.252219,
-  "lon": -118.914485,
-  "details": ""
- },
- {
-  "log_id": "260912BF0093",
-  "time": "Sep 12 2026  8:38AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Brown Material Rd / Sr33",
-  "area": "Buttonwillow",
-  "lat": 35.557719,
-  "lon": -119.797327,
-  "details": ""
- },
- {
-  "log_id": "260912BF0395",
-  "time": "Sep 12 2026 10:08PM",
-  "type": "1166-Defective Traffic Signals",
-  "location": "Roberts Ln / N Chester Ave",
-  "area": "Bakersfield",
-  "lat": 35.408601,
-  "lon": -119.020929,
-  "details": ""
- },
- {
-  "log_id": "260912BF0415",
-  "time": "Sep 12 2026 11:49PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Olive Dr / Roberts Ln",
-  "area": "Bakersfield",
-  "lat": 35.412322,
-  "lon": -119.048586,
-  "details": ""
- },
- {
-  "log_id": "260912BF0180",
-  "time": "Sep 12 2026 12:13PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "E Panama Ln / S Edison Rd",
-  "area": "Bakersfield",
-  "lat": 35.296231,
-  "lon": -118.878521,
-  "details": ""
- },
- {
   "log_id": "260913BF0019",
   "time": "Sep 13 2026  1:24AM",
   "type": "TADV-Traffic Advisory",
@@ -1197,6 +1017,26 @@
   "area": "Buttonwillow",
   "lat": 35.503333,
   "lon": -119.538889,
+  "details": ""
+ },
+ {
+  "log_id": "260919BF0438",
+  "time": "Sep 19 2026 10:20PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Mil Potrero Hwy / Tirol Dr",
+  "area": "Fort Tejon",
+  "lat": 34.852657,
+  "lon": -119.136906,
+  "details": ""
+ },
+ {
+  "log_id": "260919BF0453",
+  "time": "Sep 19 2026 10:53PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Comanche Dr / Buena Vista Blvd",
+  "area": "Bakersfield",
+  "lat": 35.238103,
+  "lon": -118.842515,
   "details": ""
  }
 ]

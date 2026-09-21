@@ -3,6 +3,33 @@
   35.4,
   -119.1
  ],
+ "flower street & lincoln street, Bakersfield, CA": null,
+ "300 block of chester lane, Bakersfield, Kern County, CA": null,
+ "chester lane, Bakersfield, CA": [
+  35.3649783,
+  -119.0421989
+ ],
+ "2100 block of coventry drive, Bakersfield, Kern County, CA": null,
+ "coventry drive, Bakersfield, CA": [
+  35.3285782,
+  -119.035331
+ ],
+ "200 block of baker street, Bakersfield, Kern County, CA": null,
+ "baker street, Bakersfield, CA": [
+  35.3858728,
+  -118.9896757
+ ],
+ "3600 block of hale street, Bakersfield, Kern County, CA": null,
+ "hale street, Bakersfield, CA": [
+  35.3231797,
+  -118.9815531
+ ],
+ "cottonwood road & kennelly road, Bakersfield, CA": null,
+ "400 block of irene street, Bakersfield, Kern County, CA": null,
+ "irene street, Bakersfield, CA": [
+  35.3933733,
+  -118.9910296
+ ],
  "rosedale highway & canal bank area, Bakersfield, CA": null,
  "800 block of exchange street, Bakersfield, Kern County, CA": null,
  "exchange street, Bakersfield, CA": null,
@@ -42,37 +69,5 @@
  "robinson street & jefferson street, Bakersfield, CA": null,
  "panama lane & mountain vista drive, Bakersfield, CA": null,
  "niles street block & mount vernon avenue, Bakersfield, CA": null,
- "niles street & ashe road, Bakersfield, CA": null,
- "200 block of baker street, Bakersfield, Kern County, CA": null,
- "baker street, Bakersfield, CA": [
-  35.3741892,
-  -118.9938485
- ],
- "3600 block of hale street, Bakersfield, Kern County, CA": null,
- "hale street, Bakersfield, CA": [
-  35.3231797,
-  -118.9815531
- ],
- "cottonwood road & kennelly road, Bakersfield, CA": null,
- "400 block of irene street, Bakersfield, Kern County, CA": null,
- "irene street, Bakersfield, CA": [
-  35.3933733,
-  -118.9910296
- ],
- "flower street & lincoln street, Bakersfield, CA": null,
- "138 block of at highway, Bakersfield, Kern County, CA": null,
- "at highway, Bakersfield, CA": [
-  35.3981076,
-  -118.8886047
- ],
- "300 block of chester lane, Bakersfield, Kern County, CA": null,
- "chester lane, Bakersfield, CA": [
-  35.3663227,
-  -119.0469922
- ],
- "2100 block of coventry drive, Bakersfield, Kern County, CA": null,
- "coventry drive, Bakersfield, CA": [
-  35.3285782,
-  -119.035331
- ]
+ "niles street & ashe road, Bakersfield, CA": null
 }

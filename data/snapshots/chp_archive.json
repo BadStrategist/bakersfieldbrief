@@ -1090,6 +1090,46 @@
   "details": ""
  },
  {
+  "log_id": "260920BF0234",
+  "time": "Sep 20 2026  4:53PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Rosedale Hwy / Karla St",
+  "area": "Bakersfield",
+  "lat": 35.383419,
+  "lon": -119.120431,
+  "details": ""
+ },
+ {
+  "log_id": "260920BF0273",
+  "time": "Sep 20 2026  6:21PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sr65 / Poso Heights Rd",
+  "area": "Bakersfield",
+  "lat": 35.575714,
+  "lon": -119.087898,
+  "details": ""
+ },
+ {
+  "log_id": "260920BF0272",
+  "time": "Sep 20 2026  6:22PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Riverside St / Poplar Ave",
+  "area": "Buttonwillow",
+  "lat": 35.485368,
+  "lon": -119.296294,
+  "details": ""
+ },
+ {
+  "log_id": "260920BF0289",
+  "time": "Sep 20 2026  6:35PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "317 Tanner Michael Dr",
+  "area": "Bakersfield",
+  "lat": 35.431752,
+  "lon": -119.026648,
+  "details": ""
+ },
+ {
   "log_id": "260920BF0077",
   "time": "Sep 20 2026  8:07AM",
   "type": "1182-Trfc Collision-No Inj",

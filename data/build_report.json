@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-21T11:30:05-07:00",
+ "built_at": "2026-09-21T11:35:26-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
+   "chp_new": 0,
    "top_story": "Bakersfield law enforcement investigating Gordon Street home burglary from July",
    "archive": "2026-09-21"
   },
@@ -85,7 +85,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 12,
+    "bakersfield-nw": 11,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12

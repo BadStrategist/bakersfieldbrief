@@ -21,8 +21,8 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "No traffic restrictions reported.",
-     "status": "OPEN"
+     "text": "Northbound traffic is reduced to 1 lane 4.6 mi north of the San Joaquin/Sacramento Co Line - Due to a traffic collision",
+     "status": "RESTRICTIONS"
     }
    ],
    "scope": {
@@ -45,11 +45,19 @@
       "where": "San Joaquin Co",
       "text": "A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
       "region": "CENTRAL CALIFORNIA"
+     },
+     {
+      "status": "RESTRICTIONS",
+      "place": "",
+      "county": "",
+      "where": "the Northern California area",
+      "text": "Northbound traffic is reduced to 1 lane 4.6 mi north of the San Joaquin/Sacramento Co Line - Due to a traffic collision",
+      "region": "NORTHERN CALIFORNIA"
      }
     ]
    },
-   "reported_as_of": "Monday, September 21st, 2026 at 11:35 AM",
-   "hash": "3539be72d6"
+   "reported_as_of": "Monday, September 21st, 2026 at 11:59 AM",
+   "hash": "e58bcdac71"
   },
   {
    "number": "58",
@@ -71,7 +79,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Monday, September 21st, 2026 at 11:35 AM",
+   "reported_as_of": "Monday, September 21st, 2026 at 11:59 AM",
    "hash": "5374f203ec"
   },
   {
@@ -108,7 +116,7 @@
      }
     ]
    },
-   "reported_as_of": "Monday, September 21st, 2026 at 11:35 AM",
+   "reported_as_of": "Monday, September 21st, 2026 at 11:59 AM",
    "hash": "f97882795e"
   }
  ],

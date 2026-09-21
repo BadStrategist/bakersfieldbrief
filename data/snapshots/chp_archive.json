@@ -1090,6 +1090,26 @@
   "details": ""
  },
  {
+  "log_id": "260921BF0154",
+  "time": "Sep 21 2026 11:14AM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sr58 W / Tower Line Rd",
+  "area": "Bakersfield",
+  "lat": 35.329868,
+  "lon": -118.807558,
+  "details": ""
+ },
+ {
+  "log_id": "260921BF0163",
+  "time": "Sep 21 2026 11:24AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "2406 Edison Hwy",
+  "area": "Bakersfield",
+  "lat": 35.370457,
+  "lon": -118.96498,
+  "details": ""
+ },
+ {
   "log_id": "260921BF0003",
   "time": "Sep 21 2026 12:00AM",
   "type": "TADV-Traffic Advisory",

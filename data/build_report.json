@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-21T11:35:26-07:00",
+ "built_at": "2026-09-21T11:59:32-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 4,
    "top_story": "Bakersfield law enforcement investigating Gordon Street home burglary from July",
    "archive": "2026-09-21"
   },
@@ -135,7 +135,7 @@
    "alpr_total": 268,
    "kern_fires": 0,
    "aqi": 51,
-   "chp_week": 5
+   "chp_week": 7
   },
   "letters": {
    "published": 0

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-21T11:59:32-07:00",
+ "built_at": "2026-09-21T12:39:50-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -66,7 +66,7 @@
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 4,
-   "top_story": "Bakersfield law enforcement investigating Gordon Street home burglary from July",
+   "top_story": "State of emergency declared for all of California ahead of strong El Ni\u00f1o forecast",
    "archive": "2026-09-21"
   },
   "cityhall": {
@@ -85,7 +85,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 11,
+    "bakersfield-nw": 12,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 10,
+   "wind_mph": 11,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 68,
-   "wind_mph": 10,
+   "wind_mph": 11,
    "alerts": 0
   },
   "roads": {

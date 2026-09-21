@@ -271,7 +271,10 @@ def build(ctx, sources: dict) -> list[str]:
     {more_btn}
 
     {explainer}
-    <p class="note" style="margin-top:14px">Compiled from preliminary dispatch traffic each morning; details are unconfirmed until an official source reports them, and locations are generalized for privacy.</p>"""
+    <p class="note" style="margin-top:14px">Compiled from preliminary dispatch traffic each morning; details are unconfirmed until an official source reports them, and locations are generalized for privacy.</p>
+    <p class="note credit" style="margin-top:10px">Audio provided by
+    <a href="https://www.broadcastify.com/listen/feed/14029" rel="noopener nofollow" target="_blank">Broadcastify</a>.
+    Feed archives are used under a Creative Commons Attribution 3.0 United States license.</p>"""
 
     page = page_mod.render(
         title="What Happened Overnight in Bakersfield — Police, Fire & EMS",

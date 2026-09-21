@@ -22,6 +22,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 FONT_PATH = os.path.join(HERE, "fonts", "Lora-Variable.ttf")
 
 W, H = 1080, 1920
+# A scene shorter than this cannot be read: the headline lands at 0.5 s,
+# the subhead at 1.5 s and the place box at 2.1 s, so the reader needs the
+# card to hold well past 2.1 s. Operator rule 2026-09-20: reels run about
+# 30 s, never under 25, and scenes never flip faster than a reader reads.
+MIN_CARD = 6.0
 CREAM = (250, 246, 236)
 INK = (38, 43, 48)
 GOLD = (214, 158, 30)
@@ -95,7 +100,7 @@ def fade_over(im, color, a):
 
 
 # ---------- scenes ----------
-def story_card(im, d, cfg, s, idx, total, tl, card_len, dark=False):
+def story_card(im, d, cfg, s, idx, total, tl, card_len, dark=False, fade_out=True):
     C_HEAD = CREAM if dark else INK
     C_SUB = (215, 210, 200) if dark else GREY
     C_KICK = (196, 90, 66) if dark else RED
@@ -149,26 +154,77 @@ def story_card(im, d, cfg, s, idx, total, tl, card_len, dark=False):
             od.polygon([(px - 24, py - 10), (px + 24, py - 10), (px, py + 40)], fill=GOLD + (int(255 * ma),))
             od.ellipse([px - 10, py - 30, px + 10, py - 10], fill=INK + (int(255 * ma),))
             im.alpha_composite(ov)
-    fade_over(im, (0, 0, 0) if dark else CREAM, prog(tl, card_len - 0.5, card_len))
+    if fade_out:
+        fade_over(im, (0, 0, 0) if dark else CREAM, prog(tl, card_len - 0.5, card_len))
 
 
 _BG_CACHE = {}
+
+
+def scene_of(cfg, s):
+    """Scene name for a story: the brief's scene when it carries one, otherwise
+    picked from the headline words. An unmapped incident type leaves the scene
+    empty (make_brief_json no longer writes the default), which is what stopped
+    every unmapped story showing the same library image."""
+    mode = cfg.get("backgrounds", "auto")   # "auto" | "none" | a scene name
+    scene = (s.get("scene") or "").strip()
+    if not scene:
+        scene = BG.pick_scene(s["headline"] + " " + s.get("subhead", "")) if mode == "auto" else mode
+    return scene or "city"
+
+
 def story_bg(cfg, s, k):
     """Return treated background for story s (or None for the flat cream card)."""
     mode = cfg.get("backgrounds", "auto")   # "auto" | "none" | a scene name
     if mode == "none" and not s.get("image") and not s.get("scene"):
         return None
-    key = (k, s.get("image"), s.get("scene"), mode)
+    scene = scene_of(cfg, s)
+    key = (k, s.get("image"), scene, mode)
     if key not in _BG_CACHE:
-        scene = s.get("scene") or (BG.pick_scene(s["headline"] + " " + s.get("subhead", "")) if mode == "auto" else mode)
         _BG_CACHE[key] = BG.load_or_make(scene, s.get("image"), seed=k)
     return _BG_CACHE[key]
+
+
+def bg_variant(bg, k):
+    """Per-story treatment. Adjacent stories can share a scene (two fire
+    stories) and the library holds ONE image per scene, so without this the
+    same picture shows twice running and reads as a flash. Alternate stories
+    get a mirror and a slightly different crop scale."""
+    im = bg
+    if k % 2:
+        im = im.transpose(Image.FLIP_LEFT_RIGHT)
+    z = 1.12 if k % 2 == 0 else 1.20
+    return im.resize((int(im.width * z), int(im.height * z)), Image.LANCZOS)
+
+
+def bg_at(bg, tl, card_len):
+    """Ken Burns window: a slow drift across the card so the background is
+    never a frozen image that pops on and off."""
+    if bg.width <= W or bg.height <= H:
+        return bg
+    p = 0.0 if card_len <= 0 else max(0.0, min(1.0, tl / card_len))
+    x0 = int((bg.width - W) * p)
+    # A diagonal move: a horizontal-only pan is invisible on a scene whose
+    # bright detail sits low (the fire glow), so the window also travels up.
+    y0 = int((bg.height - H) * (0.18 + 0.64 * p))
+    return bg.crop((x0, y0, x0 + W, y0 + H))
+
 
 
 def frame(t, cfg, dur):
     stories = cfg["stories"]
     intro, outro = 1.0, 4.0
     card_len = (dur - intro - outro) / max(1, len(stories))
+    if card_len < MIN_CARD:
+        raise SystemExit(
+            f"FATAL {len(stories)} stories in {dur:.0f}s leaves {card_len:.1f}s per "
+            f"scene; the floor is {MIN_CARD:.1f}s (all text is on screen by "
+            f"2.1s). Drop a story or lengthen the soundtrack.")
+
+    scenes = [scene_of(cfg, s) for s in stories]
+    first = {}
+    for i, sc in enumerate(scenes):
+        first.setdefault(sc, i)
 
     im = Image.new("RGBA", (W, H), CREAM + (255,))
     d = ImageDraw.Draw(im)
@@ -190,15 +246,29 @@ def frame(t, cfg, dur):
         fade_over(im, CREAM, prog(t, 0.72, 1.0))
     elif t < dur - outro:
         k = min(len(stories) - 1, int((t - intro) // card_len)); tl = (t - intro) - card_len * k
-        bg = story_bg(cfg, stories[k], k)
+        # Two stories in a row with the same scene are ONE continuous shot: same
+        # variant, the drift keeps running and there is no fade to black between
+        # them. Fading between two copies of the same picture is what read as
+        # "flashing the same image".
+        kk = first[scenes[k]]
+        same_next = k + 1 < len(stories) and scenes[k + 1] == scenes[k]
+        # One continuous shot: the drift spans the whole run of same-scene cards,
+        # so the picture keeps moving instead of freezing at the panned edge.
+        group = 1
+        while kk + group < len(stories) and scenes[kk + group] == scenes[kk]:
+            group += 1
+        bg = story_bg(cfg, stories[k], kk)
         dark = bg is not None
         if dark:
-            im.paste(bg, (0, 0)); d = ImageDraw.Draw(im)
+            drift = tl + (k - kk) * card_len
+            im.paste(bg_at(bg_variant(bg, kk), drift, card_len * group), (0, 0))
+            d = ImageDraw.Draw(im)
             d.rectangle([0, 0, W, 14], fill=(60, 55, 45)); d.rectangle([0, 0, int(W * t / dur), 14], fill=GOLD)
             # (bottom URL band removed: unusable on every 9:16 surface)
         draw_logo(im, 92, 90, 46)
         d.text((155, 66), cfg["brand"], font=F["brand_sm"], fill=CREAM if dark else INK)
-        story_card(im, d, cfg, stories[k], k, len(stories), tl, card_len, dark=dark)
+        story_card(im, d, cfg, stories[k], k, len(stories), tl, card_len, dark=dark,
+                   fade_out=not same_next)
     else:
         tl = t - (dur - outro)
         draw_logo(im, W / 2, 700, 170, prog(tl, 0.0, 0.8))
@@ -254,6 +324,15 @@ def main():
             sys.exit(f"brief.json missing required key: {k}")
     if not (1 <= len(cfg["stories"]) <= 4):
         sys.exit("stories must have 1-4 items")
+    # Pacing gate, up front: never spawn the encoder (and never leave a stub
+    # mp4 behind) for a reel whose scenes are too short to read. Text is fully
+    # on screen by 2.1 s, so a card under MIN_CARD seconds cannot be read.
+    _card = (args.duration - 1.0 - 4.0) / max(1, len(cfg["stories"]))
+    if _card < MIN_CARD:
+        sys.exit(
+            f"FATAL {len(cfg['stories'])} stories in {args.duration:.0f}s leaves "
+            f"{_card:.1f}s per scene; the floor is {MIN_CARD:.1f}s. Drop a story or "
+            f"lengthen the soundtrack.")
     music = args.music or cfg.get("music", "music/bed_dark.mp3")
     if not os.path.isabs(music):
         music = os.path.join(HERE, music)

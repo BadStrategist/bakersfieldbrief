@@ -411,7 +411,12 @@ def story_json(inc: dict) -> dict:
     label = TYPE_LABEL.get(t, "Incident reported")
     summary = inc.get("summary", "") or ""
     sub = _first_sentence(summary)
-    scene = TYPE_SCENE.get(t, DEFAULT_SCENE)
+    scene = TYPE_SCENE.get(t, "")
+    # An unmapped type carries no scene: leave it empty so the reel picks one
+    # from the headline words. Writing the DEFAULT_SCENE here gave every
+    # unmapped story the same "city" background, so two stories in a row
+    # showed the identical image (reported 2026-09-20: "keeps flashing the
+    # same black highway image").
     return {
         "headline": _no_em_dash(_cut_words(f"{label} {_preposition(head_area)} {head_area}", 120)),
         "subhead": _no_em_dash(sub),

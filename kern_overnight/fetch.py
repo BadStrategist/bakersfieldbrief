@@ -24,6 +24,9 @@ import requests
 
 PACIFIC = dt.timezone(dt.timedelta(hours=-7), "PDT")  # DST assumption for Aug; run.py adjusts
 FEED_ID = "14029"
+# Backup feed: Bakersfield Police / Kern County Sheriff (police-side coverage only,
+# no fire or EMS). Used only when the primary feed yields no blocks for the window.
+BACKUP_FEED_ID = os.environ.get("KO_BACKUP_FEED", "47440")
 BLOCK_SECONDS = 30 * 60
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -32,9 +35,14 @@ class FetchError(RuntimeError):
     pass
 
 
-def _epoch_from_name(name: str) -> int | None:
-    m = re.search(rf"^{FEED_ID}-(\d{{10}})\.mp3$", name)
-    return int(m.group(1)) if m else None
+def _epoch_from_name(name: str, feed_id: str | None = None) -> int | None:
+    """Epoch start from a block filename. Accepts any feed id; filter with feed_id."""
+    m = re.search(r"^(\d{4,6})-(\d{10})\.mp3$", name)
+    if not m:
+        return None
+    if feed_id is not None and m.group(1) != str(feed_id):
+        return None
+    return int(m.group(2))
 
 
 def overnight_blocks(date: dt.date, tz: dt.tzinfo) -> list[tuple[int, int]]:
@@ -123,19 +131,19 @@ def _download_with_cookie(url: str, dest: Path) -> None:
     return r.url  # final URL (after redirects) — embeds the epoch filename
 
 
-def _archive_entries(date: dt.date) -> list[dict]:
+def _archive_entries(date: dt.date, feed_id: str = FEED_ID) -> list[dict]:
     """Archive entries for one calendar date via the live archives API."""
     d = f"{date.month:02d}%2F{date.day:02d}%2F{date.year}"
     ua = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
           "(KHTML, like Gecko) Chrome/126.0 Safari/537.36")
     tok = _load_cookie() or _login()
     r = requests.get(
-        f"https://www.broadcastify.com/archives/api/archives.php?feedId={FEED_ID}&date={d}",
+        f"https://www.broadcastify.com/archives/api/archives.php?feedId={feed_id}&date={d}",
         headers={"user-agent": ua, "cookie": f"bcfyuser1={tok}"}, timeout=60)
     if r.status_code == 403:
         tok = _login()
         r = requests.get(
-            f"https://www.broadcastify.com/archives/api/archives.php?feedId={FEED_ID}&date={d}",
+            f"https://www.broadcastify.com/archives/api/archives.php?feedId={feed_id}&date={d}",
             headers={"user-agent": ua, "cookie": f"bcfyuser1={tok}"}, timeout=60)
     r.raise_for_status()
     return r.json().get("archives", [])
@@ -161,12 +169,13 @@ def _audio_url(archive_id: str) -> str:
     return url
 
 
-def _download_archive(archive_id: str, start_ts: int, audio_dir: Path) -> Path:
-    """Download one archive to audio_dir/14029-<startTs>.mp3 (epoch name)."""
+def _download_archive(archive_id: str, start_ts: int, audio_dir: Path,
+                      feed_id: str = FEED_ID) -> Path:
+    """Download one archive to audio_dir/<feedId>-<startTs>.mp3 (epoch name)."""
     url = _audio_url(archive_id)
     ua = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
           "(KHTML, like Gecko) Chrome/126.0 Safari/537.36")
-    dest = audio_dir / f"{FEED_ID}-{start_ts}.mp3"
+    dest = audio_dir / f"{feed_id}-{start_ts}.mp3"
     if dest.exists() and dest.stat().st_size > 50_000:
         return dest
     r = requests.get(url, headers={"user-agent": ua}, timeout=180, stream=True)
@@ -175,6 +184,16 @@ def _download_archive(archive_id: str, start_ts: int, audio_dir: Path) -> Path:
         for chunk in r.iter_content(1 << 16):
             f.write(chunk)
     return dest
+
+
+def _collect(audio_dir: Path, w_start: int, w_end: int, feed_id: str) -> list[Path]:
+    """Usable blocks of one feed already on disk inside the overnight window."""
+    out: list[Path] = []
+    for p in sorted(audio_dir.glob(f"{feed_id}-*.mp3")):
+        e = _epoch_from_name(p.name)
+        if e is not None and w_start <= e < w_end and p.stat().st_size > 50_000:
+            out.append(p)
+    return out
 
 
 def fetch(date: dt.date, audio_dir: Path, tz: dt.tzinfo) -> list[Path]:
@@ -209,11 +228,32 @@ def fetch(date: dt.date, audio_dir: Path, tz: dt.tzinfo) -> list[Path]:
                           f"HTTP {e.response.status_code}", flush=True)
                     continue
 
-    got: list[Path] = []
-    for p in sorted(audio_dir.glob(f"{FEED_ID}-*.mp3")):
-        e = _epoch_from_name(p.name)
-        if e is not None and w_start <= e < w_end and p.stat().st_size > 50_000:
-            got.append(p)
+    got = _collect(audio_dir, w_start, w_end, FEED_ID)
+    if not got:
+        # Primary feed down or empty for the whole window: try the backup feed once.
+        print(f"    [ko-fetch] feed {FEED_ID} produced no usable blocks for the window; "
+              f"falling back to {BACKUP_FEED_ID}", flush=True)
+        for d in span:
+            try:
+                entries = _archive_entries(d, BACKUP_FEED_ID)
+            except (requests.RequestException, FetchError) as e:
+                print(f"    [ko-fetch] backup listing for {d} failed: {e}", flush=True)
+                continue
+            for entry in entries:
+                if not (w_start <= entry["startTs"] < w_end):
+                    continue
+                try:
+                    p = _download_archive(entry["id"], entry["startTs"], audio_dir,
+                                          BACKUP_FEED_ID)
+                    print(f"    [ko-fetch] backup got {p.name}", flush=True)
+                except requests.HTTPError as e:
+                    print(f"    [ko-fetch] backup {entry['id']} failed: "
+                          f"HTTP {e.response.status_code}", flush=True)
+                    continue
+        got = _collect(audio_dir, w_start, w_end, BACKUP_FEED_ID)
+        if got:
+            print(f"    [ko-fetch] backup feed {BACKUP_FEED_ID} supplied "
+                  f"{len(got)} blocks (police-side audio only)", flush=True)
     return got
 
 

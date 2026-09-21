@@ -1050,6 +1050,46 @@
   "details": ""
  },
  {
+  "log_id": "260921BF0032",
+  "time": "Sep 21 2026  5:09AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260921BF0047",
+  "time": "Sep 21 2026  7:13AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr99 N / 7th Standard Rd Ofr",
+  "area": "Bakersfield",
+  "lat": 35.438373,
+  "lon": -119.08026,
+  "details": ""
+ },
+ {
+  "log_id": "260921BF0055",
+  "time": "Sep 21 2026  7:47AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Manor St / China Grade Loop",
+  "area": "Bakersfield",
+  "lat": 35.426705,
+  "lon": -119.012226,
+  "details": ""
+ },
+ {
+  "log_id": "260921BF0059",
+  "time": "Sep 21 2026  7:48AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sr178 E / Mt Vernon Ave Ofr",
+  "area": "Bakersfield",
+  "lat": 35.39359,
+  "lon": -118.970517,
+  "details": ""
+ },
+ {
   "log_id": "260921BF0003",
   "time": "Sep 21 2026 12:00AM",
   "type": "TADV-Traffic Advisory",

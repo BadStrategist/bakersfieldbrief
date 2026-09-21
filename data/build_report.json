@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-21T07:53:07-07:00",
+ "built_at": "2026-09-21T07:57:01-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -38,8 +38,8 @@
    "error": ""
   },
   "alpr": {
-   "ok": false,
-   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
+   "ok": true,
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 5,
    "top_story": "Kern County Vintage Flea Market caps all prices at $20 for its 3rd anniversary celebration",
    "archive": "2026-09-21"
   },
@@ -135,7 +135,7 @@
    "alpr_total": 268,
    "kern_fires": 0,
    "aqi": 56,
-   "chp_week": 1
+   "chp_week": 5
   },
   "letters": {
    "published": 0
@@ -173,8 +173,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 0,
-   "alpr_new_week": 0,
+   "alpr_total": 268,
+   "alpr_new_week": 5,
    "pages": [
     "surveillance",
     "fires",

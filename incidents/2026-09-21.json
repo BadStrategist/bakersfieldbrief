@@ -1,0 +1,110 @@
+[
+ {
+  "type": "assault with a weapon",
+  "time": "23:03",
+  "agency": "Bakersfield Police Department",
+  "area": "Flower Street at Lincoln Street, Bakersfield",
+  "notability": 3,
+  "disposition": "report taken; suspect description passed to officers",
+  "summary": "A caller reported an assault with a baseball bat that had happened at Flower Street and Lincoln Street. The caller was waiting for officers nearby, and a suspect description was broadcast: a man in a black shirt and blue pants."
+ },
+ {
+  "type": "welfare check",
+  "time": "21:53",
+  "agency": "Kern County Sheriff's Office",
+  "area": "east Kern County",
+  "notability": 3,
+  "disposition": "deputies checking the area; location came from a phone ping",
+  "summary": "A woman told dispatchers her husband had said he planned to kill himself. Deputies were sent to the area east of Bakersfield, and the location was found through a ping on the man's phone."
+ },
+ {
+  "type": "vehicle rollover",
+  "time": "22:44",
+  "agency": "California Highway Patrol; Kern County Fire Department",
+  "area": "southbound Interstate 5, south of Bakersfield",
+  "notability": 3,
+  "disposition": "call cancelled; arriving units found no vehicle",
+  "summary": "A rescue, engine, truck and battalion assignment went out with CHP for a reported rollover on southbound Interstate 5 south of Bakersfield. The first unit on scene reported the vehicle had rolled and then left, and the assignment was cancelled."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "22:41",
+  "agency": "Kern County Fire Department",
+  "area": "Mount Vernon Avenue, east Bakersfield",
+  "notability": 3,
+  "disposition": "engine response",
+  "summary": "A vehicle fire was reported on Mount Vernon Avenue, with a gray SUV burning on the roadway."
+ },
+ {
+  "type": "vegetation fire check",
+  "time": "21:33",
+  "agency": "Kern County Fire Department",
+  "area": "Interstate 5 near the Grapevine",
+  "notability": 2,
+  "disposition": "nothing found; vegetation response cancelled",
+  "summary": "Units working the southbound side of Interstate 5 near the Grapevine reported nothing showing and cancelled the vegetation response."
+ },
+ {
+  "type": "gas leak",
+  "time": "21:57",
+  "agency": "Kern County Fire Department",
+  "area": "Kern County",
+  "notability": 2,
+  "disposition": "single engine; balance cancelled",
+  "summary": "Crews were sent to a home for a report of a gas leak coming from inside, possibly from the stove. The homeowner said they could not turn it off, and the response was cut to a single engine."
+ },
+ {
+  "type": "roadway hazard",
+  "time": "22:04",
+  "agency": "California Highway Patrol",
+  "area": "Wilson Road, Bakersfield",
+  "notability": 2,
+  "disposition": "crew returned to clear the roadway",
+  "summary": "A unit went back to Wilson Road to clear debris out of the roadway."
+ },
+ {
+  "type": "grass fire",
+  "time": "22:11",
+  "agency": "Kern County Fire Department",
+  "area": "Highway 138 at Highway 14",
+  "notability": 2,
+  "disposition": "engine and water tender sent on the request of Los Angeles County",
+  "summary": "Los Angeles County dispatchers asked Kern units to respond to a grass fire at Highway 138 and Highway 14, and an engine and a water tender were sent."
+ },
+ {
+  "type": "disturbance",
+  "time": "22:51",
+  "agency": "Kern County Sheriff's Office",
+  "area": "300 block of Chester Lane, Bakersfield",
+  "notability": 2,
+  "disposition": "unit sent",
+  "summary": "A unit was sent to a disturbance at an apartment on the 300 block of Chester Lane."
+ },
+ {
+  "type": "welfare check",
+  "time": "23:02",
+  "agency": "Kern County Sheriff's Office",
+  "area": "2100 block of Coventry Drive, Bakersfield",
+  "notability": 2,
+  "disposition": "deputies and an ambulance sent",
+  "summary": "Deputies and an ambulance were sent for a welfare check at a home on the 2100 block of Coventry Drive."
+ },
+ {
+  "type": "traffic hazard",
+  "time": "23:06",
+  "agency": "California Highway Patrol",
+  "area": "Highway 178 at Alfred Harrell Highway, Bakersfield",
+  "notability": 2,
+  "disposition": "unit assigned",
+  "summary": "Three vehicles pulling jet skis were reported parked in the westbound lanes at Highway 178 and Alfred Harrell Highway."
+ },
+ {
+  "type": "public assist",
+  "time": "23:52",
+  "agency": "Bakersfield Police Department",
+  "area": "800 block of 8th Street, Bakersfield",
+  "notability": 2,
+  "disposition": "officers sent to assist",
+  "summary": "Officers were sent to assist at a home on the 800 block of 8th Street."
+ }
+]

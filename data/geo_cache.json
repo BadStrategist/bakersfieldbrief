@@ -58,5 +58,21 @@
  "irene street, Bakersfield, CA": [
   35.3933733,
   -118.9910296
+ ],
+ "flower street & lincoln street, Bakersfield, CA": null,
+ "138 block of at highway, Bakersfield, Kern County, CA": null,
+ "at highway, Bakersfield, CA": [
+  35.3981076,
+  -118.8886047
+ ],
+ "300 block of chester lane, Bakersfield, Kern County, CA": null,
+ "chester lane, Bakersfield, CA": [
+  35.3663227,
+  -119.0469922
+ ],
+ "2100 block of coventry drive, Bakersfield, Kern County, CA": null,
+ "coventry drive, Bakersfield, CA": [
+  35.3285782,
+  -119.035331
  ]
 }

@@ -211,6 +211,37 @@ def _preposition(area: str) -> str:
     return "near"
 
 
+# Trailing function words that make a truncated clause read as machine-cut
+# ("...after a vehicle they", "...after an initial report of"). Dropped before
+# an ellipsis is added so the cap lands on a real word.
+_DANGLING = {
+    "the", "a", "an", "and", "or", "but", "of", "to", "in", "on", "at", "for",
+    "with", "from", "by", "as", "that", "which", "who", "whom", "whose", "when",
+    "where", "while", "after", "before", "during", "into", "onto", "over",
+    "under", "near", "they", "he", "she", "it", "we", "you", "them", "his",
+    "her", "its", "their", "our", "your", "my", "was", "were", "is", "are",
+    "be", "been", "being", "had", "has", "have", "left", "one", "two", "three",
+    "another", "both", "each", "such", "been", "about", "than", "then",
+}
+
+
+def _cut_words(t: str, n: int) -> str:
+    """Cap a string at n characters ON A WORD BOUNDARY, never mid-word."""
+    t = (t or "").strip()
+    if len(t) <= n:
+        return t
+    cut = t[:n]
+    if " " in cut:
+        cut = cut[:cut.rfind(" ")]
+    return cut.rstrip(",;: ").strip()
+
+
+def _no_em_dash(t: str) -> str:
+    """House style: shipped copy never contains an em dash (it reads as AI slop)."""
+    t = (t or "").replace(" \u2014 ", ", ").replace("\u2014", ",")
+    return re.sub(r"\s*,\s*,+", ", ", t).strip()
+
+
 def _first_sentence(text: str, max_words: int = 20) -> str:
     """First sentence of an incident summary, skipping a.m./p.m. abbreviations
     AND decimal dots (273.6), capped at max_words. When the cap lands mid-
@@ -238,7 +269,13 @@ def _first_sentence(text: str, max_words: int = 20) -> str:
     for idx in range(len(cut) - 1, -1, -1):
         if cut[idx].rstrip(",").endswith((",", "—", ":", ";")):
             return " ".join(cut[:idx + 1]).rstrip(",").strip()
-    return " ".join(cut)
+    # No natural boundary inside the cap. Never ship a mid-phrase fragment:
+    # drop trailing function words and mark the cut so it reads as deliberate.
+    while cut and cut[-1].strip(",;:.").lower() in _DANGLING:
+        cut.pop()
+    if not cut:
+        cut = words[:max_words]
+    return " ".join(cut).rstrip(",;: ") + " \u2026"
 
 
 def _first_sentence_full(text: str) -> str:
@@ -376,10 +413,10 @@ def story_json(inc: dict) -> dict:
     sub = _first_sentence(summary)
     scene = TYPE_SCENE.get(t, DEFAULT_SCENE)
     return {
-        "headline": f"{label} {_preposition(head_area)} {head_area}"[:120],
-        "subhead": sub,
+        "headline": _no_em_dash(_cut_words(f"{label} {_preposition(head_area)} {head_area}", 120)),
+        "subhead": _no_em_dash(sub),
         "time": _fmt_time(inc.get("time", "")),
-        "place": area.upper()[:60],
+        "place": _no_em_dash(_cut_words(area.upper(), 60)),
         "scene": scene,
     }
 

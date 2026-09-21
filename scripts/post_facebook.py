@@ -51,7 +51,13 @@ BRIEFS = ROOT / "data" / "briefs"
 OVERNIGHTS = ROOT / "data" / "overnight_reports"
 PAGE_ID = os.environ.get("FB_PAGE_ID", "1298315170026203")
 API = "https://graph.facebook.com/v26.0"
-HASHTAGS = "#Bakersfield #KernCounty #BakersfieldNews"
+# Instagram hard-caps tags at 5 per post (official Help Center: more than 5 and the
+# caption will not post), and the same caption goes to Facebook, so stay at or under 5.
+# Evidence: big local news accounts run 0 tags (KGET 0/6, BakersfieldNow 0/7); 23ABC
+# uses 3-7 anchored on #bakersfield + #kerncounty; #bakersfieldca is the common second
+# spelling; #661bakersfield is a genuine low-competition local tag. #BakersfieldNews
+# was dropped: no local account was found using it.
+HASHTAGS = "#Bakersfield #KernCounty #BakersfieldCA #661Bakersfield"
 LOCAL_TAGS = ["KGET 17", "23ABC News", "City of Bakersfield"]  # mentioned, not @-tagged (API-safe)
 SITE_OVERNIGHT_URL = "https://bakersfieldbrief.com/overnight/"
 SITE_OVERNIGHT_ARCHIVE_URL = "https://bakersfieldbrief.com/overnight/archive/"
@@ -289,16 +295,34 @@ def _is_daily_post(p: dict) -> bool:
     return "🌅" in msg and "#BakersfieldNews" in msg
 
 
+def _post_is_for_date(p: dict, date: str) -> bool:
+    """Is this post's own publish time on the day we care about?
+
+    The caption now links to a FIXED overnight URL, so the URL can no longer
+    identify a given day's post the way the old per-day brief URL did
+    (/briefs/<date>/). Match created_time in the site's timezone instead, or the
+    duplicate guard and the live check both stop working.
+    """
+    ct = (p.get("created_time") or "").strip()
+    if not ct:
+        return False
+    try:
+        when = datetime.fromisoformat(ct.replace("Z", "+00:00")).astimezone(
+            ZoneInfo("America/Los_Angeles"))
+    except ValueError:
+        return False
+    return when.strftime("%Y-%m-%d") == date
+
+
 def already_posted(token: str, date: str) -> bool:
     url = f"{API}/{PAGE_ID}/posts?fields=message,permalink_url,created_time&limit=25&access_token={token}"
     r = requests.get(url, timeout=20)
     if r.status_code != 200:
         print(f"WARN: could not check existing posts ({r.status_code}) — continuing")
         return False
-    needle = f"briefs/{date}/"
     for p in r.json().get("data", []):
-        if needle in (p.get("message") or "") and _is_daily_post(p):
-            print(f"SKIP {date}: daily post with {needle} already exists ({p.get('permalink_url', '')})")
+        if _is_daily_post(p) and _post_is_for_date(p, date):
+            print(f"SKIP {date}: daily post for {date} already exists ({p.get('permalink_url', '')})")
             return True
     return False
 
@@ -307,7 +331,10 @@ def compose_post(date: str, brief: str, overnight: str) -> str:
     """Longer FB caption — the card image holds the compact summary, so this
     text complements it rather than repeating it word-for-word."""
     top = extract_top_story(brief, date)
-    link = f"https://bakersfieldbrief.com/briefs/{date}/"
+    # Social posts land on the OVERNIGHT report, never the daily brief. The reel
+    # and the story both summarize the night's scanner activity, so the overnight
+    # page is the page that matches what the viewer just watched.
+    link = SITE_OVERNIGHT_URL
 
     # fuller body: first substantive paragraph of the brief (the Kern Overnight
     # section lead), which carries the night's story in prose
@@ -328,7 +355,7 @@ def compose_post(date: str, brief: str, overnight: str) -> str:
     return (
         f"🌅 {top}\n\n"
         f"{detail}\n\n"
-        f"📰 Full brief + overnight report: {link}\n\n"
+        f"📰 Full overnight report: {link}\n\n"
         f"{HASHTAGS}"
     )
 
@@ -466,17 +493,16 @@ def post_reel(token: str, video_path: str, message: str) -> str:
 def verify(token: str, pid: str, date: str) -> bool:
     """Confirm the post is live. Meta mints a DIFFERENT post id for photo
     uploads than the photo id the POST returns, so match on the caption's
-    unique marker (today's brief URL) instead of the id. Only an actual
+    own publish date instead of the id. Only an actual
     reel/photo post counts — never a plain link post that happens to mention
     the URL. The page feed edge can lag the POST response by several seconds,
     so poll briefly before declaring failure (otherwise CI false-flags live
     posts)."""
-    needle = f"briefs/{date}/"
     for attempt in range(4):
-        r = requests.get(f"{API}/{PAGE_ID}/posts?fields=id,message,permalink_url&limit=10&access_token={token}", timeout=20)
+        r = requests.get(f"{API}/{PAGE_ID}/posts?fields=id,message,permalink_url,created_time&limit=10&access_token={token}", timeout=20)
         if r.status_code == 200:
             for p in r.json().get("data", []):
-                if needle in (p.get("message") or "") and _is_daily_post(p):
+                if _is_daily_post(p) and _post_is_for_date(p, date):
                     print(f"  found live post: {p.get('id')} ({p.get('permalink_url', '')})")
                     return True
         else:

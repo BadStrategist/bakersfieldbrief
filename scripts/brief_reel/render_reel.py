@@ -106,18 +106,18 @@ def story_card(im, d, cfg, s, idx, total, tl, card_len, dark=False):
     lines = wrap(d, s["headline"], F["head"], 900)
     y = 330
     for i, ln in enumerate(lines):
-        la = prog(tl, 0.35 + i * 0.28, 0.85 + i * 0.28)
+        la = prog(tl, 0.15 + i * 0.18, 0.5 + i * 0.18)
         text_c(im, d, y, ln, F["head"], C_HEAD, la, dy=int((1 - la) * 24))
         y += 96
     n = len(lines)
-    ra = prog(tl, 0.9 + n * 0.28, 1.4 + n * 0.28)
+    ra = prog(tl, 0.7, 1.0)
     if ra > 0:
         rw = int(300 * ra); d.line([(W / 2 - rw / 2, y + 30), (W / 2 + rw / 2, y + 30)], fill=GOLD, width=5)
-    sa = prog(tl, 1.3 + n * 0.28, 1.9 + n * 0.28)
+    sa = prog(tl, 0.95, 1.5)
     for j, ln in enumerate(wrap(d, s.get("subhead", ""), F["sub"], 880)):
         text_c(im, d, y + 80 + j * 56, ln, F["sub"], C_SUB, sa)
     if s.get("time") or s.get("place"):
-        ma = prog(tl, 2.0 + n * 0.28, 2.6 + n * 0.28)
+        ma = prog(tl, 1.6, 2.1)
         if ma > 0:
             ov = Image.new("RGBA", im.size, (0, 0, 0, 0)); od = ImageDraw.Draw(ov)
             by = 1180 + int((1 - ma) * 40)
@@ -126,7 +126,24 @@ def story_card(im, d, cfg, s, idx, total, tl, card_len, dark=False):
             else:
                 od.rounded_rectangle([140, by, W - 140, by + 220], radius=22, fill=INK + (int(235 * ma),))
             od.text((190, by + 42), s.get("time", ""), font=F["meta"], fill=(255, 255, 255, int(255 * ma)))
-            od.text((190, by + 120), s.get("place", ""), font=F["meta2"], fill=GOLD + (int(255 * ma),))
+            # Place label: shrink to fit, then wrap. It must never run off the
+            # frame edge or collide with the marker icon at x ~ 850.
+            pl = s.get("place", "")
+            pf, maxw = 36, 600
+            while pf > 22 and od.textlength(pl, font=font(pf, 500)) > maxw:
+                pf -= 2
+            fpl = font(pf, 500)
+            if od.textlength(pl, font=fpl) <= maxw:
+                od.text((190, by + 120), pl, font=fpl, fill=GOLD + (int(255 * ma),))
+            else:
+                ws = pl.split()
+                mid = (len(ws) + 1) // 2
+                l1, l2 = " ".join(ws[:mid]), " ".join(ws[mid:])
+                while mid > 1 and (od.textlength(l1, font=fpl) > maxw or od.textlength(l2, font=fpl) > maxw):
+                    mid -= 1
+                    l1, l2 = " ".join(ws[:mid]), " ".join(ws[mid:])
+                od.text((190, by + 96), l1, font=fpl, fill=GOLD + (int(255 * ma),))
+                od.text((190, by + 100 + pf), l2, font=fpl, fill=GOLD + (int(255 * ma),))
             px, py = W - 230, by + 110
             od.ellipse([px - 26, py - 46, px + 26, py + 6], outline=GOLD + (int(255 * ma),), width=6)
             od.polygon([(px - 24, py - 10), (px + 24, py - 10), (px, py + 40)], fill=GOLD + (int(255 * ma),))
@@ -150,24 +167,27 @@ def story_bg(cfg, s, k):
 
 def frame(t, cfg, dur):
     stories = cfg["stories"]
-    intro, outro = 4.0, 5.0
+    intro, outro = 1.0, 4.0
     card_len = (dur - intro - outro) / max(1, len(stories))
 
     im = Image.new("RGBA", (W, H), CREAM + (255,))
     d = ImageDraw.Draw(im)
     d.rectangle([0, 0, W, 14], fill=(232, 224, 205))
     d.rectangle([0, 0, int(W * t / dur), 14], fill=GOLD)
-    d.rectangle([0, H - 150, W, H], fill=INK)
-    text_c(im, d, H - 112, cfg["url"], F["url"], GOLD)
+    # No bottom URL band: the bottom 35% of a 9:16 surface is covered by the
+    # caption bar, the audio chip and the story reply box. The URL ships once,
+    # in the outro, and lives in the caption every time.
 
     if t < intro:
-        a = prog(t, 0.0, 1.0)
-        draw_logo(im, W / 2, 640, 170 * (0.85 + 0.15 * a), a)
-        text_c(im, d, 890, cfg["date_label"], F["date"], INK, prog(t, 0.6, 1.3))
-        rw = int(240 * prog(t, 0.9, 1.4)); d.line([(W / 2 - rw / 2, 960), (W / 2 + rw / 2, 960)], fill=GOLD, width=5)
-        text_c(im, d, 1000, cfg["brand"], F["mast"], INK, prog(t, 1.1, 1.8))
-        text_c(im, d, 1130, cfg["kicker"], F["kick"], RED, prog(t, 1.7, 2.3))
-        fade_over(im, CREAM, prog(t, intro - 0.5, intro))
+        # 1 second title flash. The reel must open on story 1 inside the first
+        # second, so the masthead is a bug here, not a 4 second curtain.
+        a = prog(t, 0.0, 0.28)
+        draw_logo(im, W / 2, 660, 150 * (0.88 + 0.12 * a), a)
+        text_c(im, d, 880, cfg["date_label"], F["date"], INK, prog(t, 0.10, 0.42))
+        rw = int(220 * prog(t, 0.16, 0.46)); d.line([(W / 2 - rw / 2, 944), (W / 2 + rw / 2, 944)], fill=GOLD, width=5)
+        text_c(im, d, 990, cfg["brand"], F["mast"], INK, prog(t, 0.22, 0.54))
+        text_c(im, d, 1120, cfg["kicker"], F["kick"], RED, prog(t, 0.32, 0.64))
+        fade_over(im, CREAM, prog(t, 0.72, 1.0))
     elif t < dur - outro:
         k = min(len(stories) - 1, int((t - intro) // card_len)); tl = (t - intro) - card_len * k
         bg = story_bg(cfg, stories[k], k)
@@ -175,7 +195,7 @@ def frame(t, cfg, dur):
         if dark:
             im.paste(bg, (0, 0)); d = ImageDraw.Draw(im)
             d.rectangle([0, 0, W, 14], fill=(60, 55, 45)); d.rectangle([0, 0, int(W * t / dur), 14], fill=GOLD)
-            d.rectangle([0, H - 150, W, H], fill=(20, 22, 26)); text_c(im, d, H - 112, cfg["url"], F["url"], GOLD)
+            # (bottom URL band removed: unusable on every 9:16 surface)
         draw_logo(im, 92, 90, 46)
         d.text((155, 66), cfg["brand"], font=F["brand_sm"], fill=CREAM if dark else INK)
         story_card(im, d, cfg, stories[k], k, len(stories), tl, card_len, dark=dark)
@@ -250,7 +270,7 @@ def main():
     cmd = ["ffmpeg", "-y", "-loglevel", "error",
            "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(args.fps), "-i", "-",
            "-i", music,
-           "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p",
+           "-c:v", "libx264", "-preset", "veryfast", "-tune", "stillimage", "-threads", "2", "-crf", "20", "-pix_fmt", "yuv420p",
            "-c:a", "aac", "-b:a", "192k", "-shortest", "-movflags", "+faststart", mp4]
     p = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     n = int(args.fps * args.duration)

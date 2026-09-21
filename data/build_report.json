@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-20T18:59:59-07:00",
+ "built_at": "2026-09-21T00:41:25-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,14 +60,14 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1141,
+  "brief_words": 66,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
+   "chp_new": 3,
    "top_story": "Kern County Vintage Flea Market caps all prices at $20 for its 3rd anniversary celebration",
-   "archive": "2026-09-20"
+   "archive": "2026-09-21"
   },
   "cityhall": {
    "upcoming_meetings": 3,
@@ -82,10 +82,10 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 12,
+    "bakersfield-nw": 9,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -93,7 +93,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-09-20"
+   "draft": "drafts/weekend-guide-2026-09-21"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 11,
+   "wind_mph": 5,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 70,
-   "wind_mph": 11,
+   "temp": 54,
+   "wind_mph": 5,
    "alerts": 0
   },
   "roads": {
@@ -134,8 +134,8 @@
    "isabella_af": 156481,
    "alpr_total": 265,
    "kern_fires": 0,
-   "aqi": 101,
-   "chp_week": 102
+   "aqi": 55,
+   "chp_week": 0
   },
   "letters": {
    "published": 0
@@ -173,8 +173,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 267,
-   "alpr_new_week": 6,
+   "alpr_total": 268,
+   "alpr_new_week": 5,
    "pages": [
     "surveillance",
     "fires",

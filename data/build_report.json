@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-21T08:25:14-07:00",
+ "built_at": "2026-09-21T11:30:05-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,8 +65,8 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Kern County Vintage Flea Market caps all prices at $20 for its 3rd anniversary celebration",
+   "chp_new": 4,
+   "top_story": "Bakersfield law enforcement investigating Gordon Street home burglary from July",
    "archive": "2026-09-21"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 0,
+   "wind_mph": 10,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 52,
-   "wind_mph": 0,
+   "temp": 68,
+   "wind_mph": 10,
    "alerts": 0
   },
   "roads": {
@@ -134,7 +134,7 @@
    "isabella_af": 155745,
    "alpr_total": 268,
    "kern_fires": 0,
-   "aqi": 61,
+   "aqi": 51,
    "chp_week": 5
   },
   "letters": {

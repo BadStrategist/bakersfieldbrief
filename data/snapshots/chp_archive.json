@@ -1050,6 +1050,36 @@
   "details": ""
  },
  {
+  "log_id": "260921BF0224",
+  "time": "Sep 21 2026  2:33PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "14814 Aloma St",
+  "area": "Buttonwillow",
+  "lat": 35.61464,
+  "lon": -119.65746,
+  "details": ""
+ },
+ {
+  "log_id": "260921BF0226",
+  "time": "Sep 21 2026  2:36PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "I5 N / Millux Rd",
+  "area": "Buttonwillow",
+  "lat": 35.179985,
+  "lon": -119.130816,
+  "details": ""
+ },
+ {
+  "log_id": "260921BF0245",
+  "time": "Sep 21 2026  3:25PM",
+  "type": "ANIMAL-Live or Dead Animal",
+  "location": "Sr99 S / Sr58 W",
+  "area": "Bakersfield",
+  "lat": 35.352804,
+  "lon": -119.039621,
+  "details": ""
+ },
+ {
   "log_id": "260921BF0032",
   "time": "Sep 21 2026  5:09AM",
   "type": "MZP-Assist CT with Maintenance",

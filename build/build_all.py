@@ -92,6 +92,7 @@ def main():
                 ("sunday_read", sunday_read),
                 ("fair", fair),
                 ("static", static_pages)]
+    builder_failures = []
     for bname, bmod in builders:
         try:
             files = bmod.build(ctx, results)
@@ -100,9 +101,15 @@ def main():
             import traceback
             common.log(f"builder {bname} FAILED: {type(e).__name__}: {e}")
             traceback.print_exc()
+            builder_failures.append(f"{bname}: {type(e).__name__}: {e}")
 
-    trackers.build_hub(ctx, results)
-    common.log("builder trackers-hub done")
+    try:
+        trackers.build_hub(ctx, results)
+        common.log("builder trackers-hub done")
+    except Exception as e:  # noqa: BLE001
+        import traceback
+        traceback.print_exc()
+        builder_failures.append(f"trackers-hub: {type(e).__name__}: {e}")
 
     # ---------------------------------------------------------- assets
     for src in ("css", "js", "fonts", "vendor", "img"):
@@ -125,6 +132,7 @@ def main():
                         **({} if v.get("ok") else {})}
                     for k, v in results.items()},
         "section": ctx.build_report,
+        "builder_failures": builder_failures,
     }
     (common.DATA / "build_report.json").write_text(
         json.dumps(report, indent=1, default=str), encoding="utf-8")
@@ -140,6 +148,12 @@ def main():
     if not all(v.get("ok", False) for k, v in results.items() if k != "blocked"):
         failed = [k for k, v in results.items() if not v.get("ok", False) and k != "blocked"]
         common.log(f"NOTE — sources with failures (site still builds): {failed}")
+    # A crashed builder is a code bug, and site/ was wiped at the start, so its pages are simply
+    # gone from this build (a daily.py crash cut the site from 89 pages to 37). Fail the run: CI
+    # then skips the deploy, the last good site stays live, and the failure alert fires.
+    if builder_failures:
+        common.log("FAILED — builders crashed, not deploying a partial site: " + "; ".join(builder_failures))
+        sys.exit(1)
 
 
 ICON_ROOT_FILES = ("favicon.ico", "favicon.svg", "apple-touch-icon.png",

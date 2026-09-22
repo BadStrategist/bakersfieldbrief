@@ -68,7 +68,7 @@ def _current() -> dict:
             if ts:
                 try:
                     out["observed"] = dt.datetime.fromisoformat(ts.replace("Z", "+00:00")).astimezone(
-                        dt.timezone(dt.timedelta(hours=-7))).strftime("%b %d, %I:%M %p").lstrip("0")
+                        common.PACIFIC).strftime("%b %d, %I:%M %p").lstrip("0")
                 except Exception:  # noqa: BLE001
                     pass
             out["ok"] = True

@@ -40,9 +40,17 @@ def test_keyless_weather_has_temperature_reading():
 
 
 def test_keyless_weather_handles_empty_forecast():
-    text = emailer._keyless_weather({}, {}, {})
+    # NWS answered (ok) with no forecast and no alerts: an honest all-clear
+    text = emailer._keyless_weather({"ok": True}, {}, {})
     assert text.strip()  # never empty; graceful prose
     assert "No active weather alerts" in text
+
+
+def test_keyless_weather_failed_source_is_not_an_all_clear():
+    # NWS did not load: the email must not claim there are no alerts
+    text = emailer._keyless_weather({}, {}, {})
+    assert text.strip()
+    assert "No active weather alerts" not in text
 
 
 def test_keyless_weather_mentions_fires_when_present():

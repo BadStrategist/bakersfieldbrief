@@ -161,6 +161,8 @@ def _place_page(ctx, slug: str, meta: dict, built_iso: str, sources: dict,
         <span class="when">{html.escape(i.get('location', ''))} &middot; {html.escape(i.get('time', ''))}</span></li>"""
                       for i in chp_items[:7])
         chp_html = f'<ul class="hl">{lis}</ul>'
+    elif not (chp or {}).get("ok"):
+        chp_html = '<p class="note">CHP incident data did not load for this build. Check back after the next update.</p>'
     else:
         chp_html = '<p class="note">No CHP incidents logged near this area in the last 7 days. The archive grows with each daily build.</p>'
 
@@ -188,6 +190,8 @@ def _place_page(ctx, slug: str, meta: dict, built_iso: str, sources: dict,
         <ul class="newest-list">{newest}</ul>
         <p class="note" style="margin-top:8px">Mapping is crowdsourced &mdash; mapped dates are not installation dates.
         <a href="{rel}surveillance/">Full map &rarr;</a></p>"""
+    elif not (alpr or {}).get("ok"):
+        alpr_html = '<p class="note">Camera data did not load for this build.</p>'
     else:
         alpr_html = ('<p class="note">No ALPR cameras mapped in this area. Camera mapping is '
                      'crowdsourced and concentrated in the Bakersfield metro core.</p>')

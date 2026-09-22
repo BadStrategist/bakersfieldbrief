@@ -6,10 +6,12 @@ on:
   schedule:
     # Every 3h UTC: cheap LLM-free refreshes so conditions (weather, AQI,
     # active fires, reservoir, CHP) stay current. The 13:00/14:00 UTC pair
-    # guarantees a 6:00-PT LLM build year-round (DST-proof).
+    # guarantees a 6:00-PT LLM build year-round (DST-proof). 16:00 UTC is 8:00 PST: in winter
+    # no other slot lands on the 8 AM send (15:00 UTC is 7:00 PST, 18:00 UTC is 10:00).
     - cron: "0 */3 * * *"
     - cron: "0 13 * * *"
     - cron: "0 14 * * *"
+    - cron: "0 16 * * *"
   workflow_dispatch:
 
 permissions:
@@ -41,9 +43,12 @@ jobs:
         run: |
           H=$(python -c "from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('America/Los_Angeles')).hour)")
           echo "hour=$H" >> "$GITHUB_OUTPUT"
-          # LLM only at the 6:00 PT build (and any push/dispatch run);
-          # the 3-hourly refreshes build LLM-free.
-          if [ "$H" = "6" ] || [ "${{ github.event_name }}" != "schedule" ]; then
+          # LLM at the 6:00 PT build, any push/dispatch run, and any 7-9 AM run
+          # when today's brief was never written: GitHub starts scheduled runs
+          # late or drops them, and the only 6 AM slot can land at 7. Once the
+          # brief is cached, later runs reuse it and build LLM-free.
+          D=$(python -c "from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('America/Los_Angeles')).strftime('%Y-%m-%d'))")
+          if [ "$H" = "6" ] || [ "${{ github.event_name }}" != "schedule" ] || { [ "$H" -ge 7 ] && [ "$H" -le 9 ] && [ ! -f "data/briefs/$D.json" ]; }; then
             echo "llm=1" >> "$GITHUB_OUTPUT"
           else
             echo "llm=0" >> "$GITHUB_OUTPUT"
@@ -52,12 +57,9 @@ jobs:
           # ~7:00-7:10 PT (the 6:30 cron + push), so retry the gate for up
           # to 25 min. Other runs must not burn CI minutes on a report
           # that hasn't landed yet (6:00) or has long since landed (8:00+).
-          if [ "$H" = "7" ]; then
-            echo "retry=25" >> "$GITHUB_OUTPUT"
-          else
-            echo "retry=0" >> "$GITHUB_OUTPUT"
-          fi
-          echo "Pacific hour is $H (LLM build when == 6, FB gate retry ${retry:-0} min)"
+          if [ "$H" = "7" ]; then R=25; else R=0; fi
+          echo "retry=$R" >> "$GITHUB_OUTPUT"
+          echo "Pacific hour is $H (LLM build at 6, or 7-9 with no brief yet; FB gate retry $R min)"
 
       - name: Install dependencies
         run: |
@@ -91,31 +93,12 @@ jobs:
       # Automatic pusher: commit the generated artifacts (email/, drafts/, data/)
       # so the email renderings and review drafts are always in the repo.
       - name: Commit generated artifacts
+        # scripts/ci_push.sh: keeps THIS run's data on a rebase conflict and flags a failed push
+        # (an ::error annotation) instead of a green step with nothing pushed. It never blocks the
+        # deploy or the send, hence continue-on-error.
+        continue-on-error: true
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add email drafts data
-          if ! git diff --cached --quiet; then
-            git commit -m "build: $(date -u +%Y-%m-%d) artifacts [skip ci]"
-            # concurrent workflows can race the push — rebase and retry
-            for i in 1 2 3; do
-              git rebase --abort 2>/dev/null || true
-              if git pull --rebase origin main --autostash; then
-                git push && break
-              else
-                git checkout --ours -- data email drafts 2>/dev/null || true
-                # Re-stage ONLY the generated artifacts, never `git add -A`: the
-                # -A form swept any untracked scratch file in the runner's tree
-                # (work/ dumps, stray scripts) into a deploy commit.
-                git add email drafts data
-                git -c core.editor=true rebase --continue 2>/dev/null || git rebase --abort
-                git push && break
-              fi
-              echo "push retry $i"; sleep 8
-            done
-          else
-            echo "no artifact changes"
-          fi
+          bash scripts/ci_push.sh "build: $(date -u +%Y-%m-%d) artifacts [skip ci]"
 
       # Newsletter send: once per day at the 8:00 PT build (or any later
       # run — the gate is hour >= 8, not == 8, so a GitHub-schedule delay
@@ -141,6 +124,7 @@ jobs:
           MAILERLITE_API_TOKEN: ${{ secrets.MAILERLITE_API_TOKEN }}
           MAILERLITE_GROUP_ID: ${{ secrets.MAILERLITE_GROUP_ID }}
         run: |
+          set -o pipefail   # without it, "| tail -1" hid a failed secret put
           echo "$MAILERLITE_API_TOKEN" | npx wrangler pages secret put MAILERLITE_API_TOKEN --project-name=bakersfieldbrief 2>&1 | tail -1
           echo "$MAILERLITE_GROUP_ID" | npx wrangler pages secret put MAILERLITE_GROUP_ID --project-name=bakersfieldbrief 2>&1 | tail -1
 
@@ -195,7 +179,14 @@ jobs:
             printf '(send step did not run - an earlier step failed and the email was never attempted)\n' >> /tmp/bb_discord.txt
           fi
           printf '\n```\nSee: %s\n' "$RUN_URL" >> /tmp/bb_discord.txt
-          python scripts/notify_discord.py --header "Bakersfield Brief - daily email did NOT send (run #$GITHUB_RUN_NUMBER)" --file /tmp/bb_discord.txt
+          # Only say the email failed when the send step ran and failed; a test or
+          # deploy failure at 3 AM is not a missed email.
+          if [ -f /tmp/bb_send.out ]; then
+            HDR="Bakersfield Brief - daily email did NOT send (run #$GITHUB_RUN_NUMBER)"
+          else
+            HDR="Bakersfield Brief - daily build failed before the send step (run #$GITHUB_RUN_NUMBER)"
+          fi
+          python scripts/notify_discord.py --header "$HDR" --file /tmp/bb_discord.txt
           echo "ops Discord alert sent for blocked/failed email"
 
       # Social post: DISABLED 2026-08-19 — API posts are withheld from the

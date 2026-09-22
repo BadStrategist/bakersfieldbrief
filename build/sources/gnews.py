@@ -40,18 +40,27 @@ _BLOCK = (
 
 def run(ctx):
     out = {"ok": True, "results": {}, "asof": common.iso_today()}
+    failed = 0
     for slug, query in GN_QUERIES.items():
-        out["results"][slug] = _fetch(query)
+        items = _fetch(query)
+        if items is None:
+            failed += 1
+            items = []
+        out["results"][slug] = items
+    # every query failing is a failed source, not "no local news anywhere"
+    out["ok"] = failed < len(GN_QUERIES)
+    out["failed"] = failed
     return out
 
 
-def _fetch(query: str, limit: int = 12) -> list[dict]:
+def _fetch(query: str, limit: int = 12) -> list[dict] | None:
+    """Items for one query; None when the fetch itself failed (not the same as no results)."""
     url = BASE.format(q=urllib.parse.quote(query))
     try:
         r = common.fetch(url, timeout=25)
         f = feedparser.parse(r.content)
     except Exception:  # noqa: BLE001
-        return []
+        return None
 
     items = []
     seen = set()

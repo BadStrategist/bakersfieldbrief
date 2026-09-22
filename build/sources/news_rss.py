@@ -62,7 +62,9 @@ def run(ctx):
     for h in dedup:
         h.pop("_epoch", None)
 
-    return {"ok": True, "headlines": dedup, "errors": errors, "asof": common.iso_today()}
+    # every feed failing is a failed source, not "no news today"
+    return {"ok": len(errors) < len(FEEDS), "headlines": dedup, "errors": errors,
+            "asof": common.iso_today()}
 
 
 def _epoch(published: str) -> float:

@@ -14,6 +14,11 @@ fails closed if the redraw throws (it must never ship a stale image).
 from __future__ import annotations
 
 import datetime as dt
+from zoneinfo import ZoneInfo
+
+
+def _pt_today():
+    return dt.datetime.now(ZoneInfo("America/Los_Angeles")).date()
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont
@@ -103,7 +108,7 @@ def render_weather_card(wx: dict, out_path=None):
     aqi_cat = wx.get("aqi_category")
     alerts = wx.get("alerts") or []
     observed = wx.get("observed") or ""
-    day_label = wx.get("day_label") or (dt.date.today().strftime("%A, %B") + " " + str(dt.date.today().day))
+    day_label = wx.get("day_label") or (_pt_today().strftime("%A, %B") + " " + str(_pt_today().day))
 
     img = Image.new("RGB", (W, H), PAPER)
     d = ImageDraw.Draw(img)
@@ -205,7 +210,7 @@ if __name__ == "__main__":
             return ""
         try:
             return (dt.datetime.fromisoformat(ts.replace("Z", "+00:00"))
-                    .astimezone(dt.timezone(dt.timedelta(hours=-7)))
+                    .astimezone(ZoneInfo("America/Los_Angeles"))
                     .strftime("%I:%M %p").lstrip("0"))
         except Exception:  # noqa: BLE001
             return ""
@@ -213,7 +218,7 @@ if __name__ == "__main__":
     o = get("https://api.weather.gov/stations/KBFL/observations/latest")["properties"]
     def f(c):
         return None if c is None else round(c * 9 / 5 + 32)
-    today = dt.date.today().isoformat()
+    today = dt.datetime.now(ZoneInfo("America/Los_Angeles")).date().isoformat()
     periods = get(get("https://api.weather.gov/points/35.3733,-119.0187")["properties"]["forecast"])["properties"]["periods"]
     hi = lo = None
     cond = ""

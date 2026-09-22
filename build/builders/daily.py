@@ -52,6 +52,12 @@ def build(ctx, sources: dict) -> list[str]:
 
     headlines = news.get("headlines", [])
     top = headlines[0] if headlines else None
+    # The 6am build writes the brief body once and caches it; later builds reuse that body. The
+    # headline must be the story that body was written about, not whatever leads the feed three
+    # hours later (2026-09-22: a fire headline over a body about oil permits).
+    pinned = _cached_brief_top(today)
+    if pinned and pinned.get("title"):
+        top = next((h for h in headlines if h.get("title") == pinned["title"]), pinned)
 
     rel = ""
     content = _page_content(ctx, today, built_iso, rel,
@@ -627,12 +633,14 @@ def _conditions(weather, chp, isa, airnow, calfire, built_iso, rel="") -> str:
     else:
         weather_v = "n/a"
     alerts = (weather or {}).get("alerts", [])
-    alert_v = alerts[0]["event"] + " active" if alerts else "No active alerts"
+    alert_v = (alerts[0]["event"] + " active" if alerts else
+               "No active alerts" if (weather or {}).get("ok") else "Unavailable")
     isa_last = isa.get("last")
     isa_v = f"{isa_last['value']:,} AF" if isa_last else "n/a"
     isa_pct = isa.get("pct")
-    chp_new = chp.get("new", [])
-    chp_v = f"{len(chp_new)} new" if chp_new else "None overnight"
+    chp_night = chp.get("overnight", [])
+    chp_v = ("Unavailable" if not chp.get("ok") else
+             f"{len(chp_night)} overnight" if chp_night else "None overnight")
 
     # AQI chip: real value when the key is set; honest states otherwise
     if airnow.get("ok") and airnow.get("aqi") is not None:
@@ -908,7 +916,13 @@ def _category_grid(rel, escribe, board, abc, food, alpr, calfire) -> str:
 
     # IN DEPTH
     alpr_stats = alpr.get("stats", {}) if alpr.get("ok") else {}
-    alpr_last4 = sum(e.get("new_count", 0) for e in alpr.get("change_log", [])[-4:])
+    # Same count /surveillance/ shows: cameras first mapped in the 28 days to the data date.
+    # Summing the last 4 change-log entries disagreed with it (duplicate and backfill entries).
+    try:
+        _cut = (dt.date.fromisoformat(str(alpr.get("asof", ""))[:10]) - dt.timedelta(days=28)).isoformat()
+    except ValueError:
+        _cut = ""
+    alpr_last4 = sum(1 for c in alpr.get("cameras", []) if _cut and (c.get("mapped") or "") >= _cut)
     depth_line = (f"{alpr_stats.get('total', '—')} ALPR cameras mapped"
                   f" &middot; +{alpr_last4} in 4 weeks") if alpr_stats else "License plate reader tracker"
     depth_card = f"""<a class="cat-card" href="{rel}surveillance/">
@@ -926,8 +940,11 @@ def _category_grid(rel, escribe, board, abc, food, alpr, calfire) -> str:
         fire_line = (f"{len(kern_fires)} active {'fire' if len(kern_fires) == 1 else 'fires'} in Kern"
                      f" &middot; {kern_acres:,} acres")
         fire_h3 = "Wildfire tracker"
-    else:
+    elif (calfire or {}).get("ok"):
         fire_line = "No active fires in Kern right now"
+        fire_h3 = "Wildfire tracker"
+    else:
+        fire_line = "CAL FIRE data unavailable right now"
         fire_h3 = "Wildfire tracker"
     fire_card = f"""<a class="cat-card" href="{rel}fires/">
       {images.thumb("bakersfield", rel)}
@@ -1467,11 +1484,22 @@ def _cached_brief_body(today) -> str | None:
         return None
 
 
-def _save_brief_body(today, body: str) -> None:
+def _cached_brief_top(today) -> dict | None:
+    """The top headline the cached brief body was written about, if it was saved with it."""
+    p = common.DATA / "briefs" / f"{today:%Y-%m-%d}.json"
+    try:
+        top = json.loads(p.read_text(encoding="utf-8")).get("top")
+        return top if isinstance(top, dict) else None
+    except Exception:
+        return None
+
+
+def _save_brief_body(today, body: str, top: dict | None = None) -> None:
     try:
         p = common.DATA / "briefs" / f"{today:%Y-%m-%d}.json"
         p.parent.mkdir(parents=True, exist_ok=True)
-        p.write_text(json.dumps({"body": body}), encoding="utf-8")
+        keep = {k: top.get(k) for k in ("title", "url", "source", "published")} if top else None
+        p.write_text(json.dumps({"body": body, "top": keep}), encoding="utf-8")
     except Exception:
         pass
 
@@ -1500,7 +1528,7 @@ def _article_lead(top, headlines, weather, airnow, calfire,
         full = _brief_full_body(top, headlines, weather, airnow, calfire,
                                 events, escribe, today)
         if full:
-            _save_brief_body(today, full)
+            _save_brief_body(today, full, top)
     if full:
         greeting_html = _para_html(full)  # LLM plain text → escaped <p>s
         ctx_brief_words = len(re.findall(r"[A-Za-z0-9'’-]+", full))
@@ -1616,8 +1644,10 @@ def _weather_prose(weather, airnow, calfire) -> str:
         a = alerts[0]
         bits.append(f"<strong>{html.escape(a.get('event', 'Weather alert'))}</strong>: "
                     f"{html.escape((a.get('headline') or '')[:160])}")
-    else:
+    elif (weather or {}).get("ok"):
         bits.append("No active weather alerts for Kern County.")
+    else:
+        bits.append("Weather alerts could not be checked for this edition.")
     if airnow and airnow.get("ok") and airnow.get("aqi") is not None:
         bits.append(f"Air quality is {airnow['aqi']} — "
                     f"{html.escape((airnow.get('category') or 'moderate').lower())}.")

@@ -31,6 +31,7 @@ def run(ctx):
         whitelist = json.loads((common.DATA / "venues.json").read_text(encoding="utf-8"))
     except Exception:  # noqa: BLE001
         return {"ok": False, "error": "venues.json unreadable"}
+    failed = 0
     for v in whitelist.get("venues", []):
         try:
             parser = _PARSERS.get(v.get("parse"))
@@ -46,7 +47,12 @@ def run(ctx):
                     e["when"] = html.unescape(str(e.get("when") or ""))
                 out["events"].extend(evs)
         except Exception as e:  # noqa: BLE001
+            failed += 1
             common.log(f"venue {v.get('slug')} failed: {type(e).__name__}: {e}")
+    tried = len([v for v in whitelist.get("venues", []) if _PARSERS.get(v.get("parse"))])
+    # every venue failing is a failed source, not "no events"
+    out["ok"] = not tried or failed < tried
+    out["failed"] = failed
     return out
 
 

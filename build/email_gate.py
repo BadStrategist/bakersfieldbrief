@@ -206,6 +206,6 @@ def _has_flock_card(text: str) -> bool:
         asof = date.fromisoformat(m.group(1))
     except ValueError:
         return False
-    if abs((date.today() - asof).days) > 3:
+    if abs((datetime.now(ZoneInfo("America/Los_Angeles")).date() - asof).days) > 3:
         return False
     return True

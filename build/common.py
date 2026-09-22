@@ -148,14 +148,33 @@ def load_change_log(tracker: str) -> list:
         return []
 
 
-def append_change_log(tracker: str, entry: dict) -> None:
+def append_change_log(tracker: str, entry: dict) -> bool:
+    """Append one entry per date. Returns False when that date is already logged.
+
+    Two writers (the local Monday job and weekly.yml) both ran --alpr-change. The second found
+    the snapshot already advanced and logged a "+0" twin for the same week, which /numbers/ and
+    the home card then summed as a separate week. The first entry of a date is the real diff.
+    """
     log = load_change_log(tracker)
+    if entry.get("date") and any(e.get("date") == entry["date"] for e in log):
+        return False
     log.append(entry)
     (LOGS / f"{tracker}.json").write_text(
         json.dumps(log, indent=1, default=str), encoding="utf-8")
 
 
 # ---------------------------------------------------------------- template render
+def script_json(data, **kw) -> str:
+    """JSON that is safe to place inside a <script> element.
+
+    Feeds carry text anyone can edit (OSM tags, news headlines, scanner notes). A value holding
+    "</script><script>..." ends the element early and runs as page script; escaping every "<"
+    as \\u003c keeps the JSON identical to a parser and inert to the HTML tokenizer.
+    """
+    kw.setdefault("ensure_ascii", False)
+    return json.dumps(data, **kw).replace("<", "\\u003c")
+
+
 def inline_placeholder(html: str, data) -> str:
     """Replace the JS-visible placeholder with real JSON.
 
@@ -163,7 +182,7 @@ def inline_placeholder(html: str, data) -> str:
     <script type="application/json"> block so the browser never executes it
     (XSS-safe: we control all content, but defense in depth).
     """
-    dumped = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
+    dumped = script_json(data, separators=(",", ":"))
     n = html.count(PLACEHOLDER)
     if n == 0:
         raise ValueError("placeholder /*__DATA__*/null not found in template")

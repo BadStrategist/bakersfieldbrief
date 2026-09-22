@@ -248,8 +248,10 @@ def _keyless_weather(weather, airnow, calfire) -> str:
         a = alerts[0]
         parts.append(f"**{a.get('event', 'Weather alert')}**: "
                      f"{(a.get('headline') or '')[:180]}")
-    else:
+    elif (weather or {}).get("ok"):
         parts.append("No active weather alerts for Kern County.")
+    else:
+        parts.append("Weather alerts could not be checked for this edition.")
     if airnow and airnow.get("ok") and airnow.get("aqi") is not None:
         parts.append(f"Air quality is {airnow['aqi']} — "
                      f"{(airnow.get('category') or 'moderate').lower()}.")
@@ -344,12 +346,17 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
     # ---- conditions
     fc = (weather or {}).get("forecast", {}) or {}
     cur, hi, lo = fc.get("current"), fc.get("high"), fc.get("low")
-    weather_v = f"{cur}° / {hi}°" if cur and hi else (f"{hi}°" if hi else "n/a")
+    # labelled: "88° / 88°" read as high / low when it was current / high
+    weather_v = (f"{cur}° now, high {hi}°" if cur is not None and hi is not None
+                 else (f"high {hi}°" if hi is not None else "n/a"))
     alerts = (weather or {}).get("alerts", [])
-    alert_v = f"{alerts[0]['event']} active" if alerts else "No active alerts"
+    alert_v = (f"{alerts[0]['event']} active" if alerts else
+               "No active alerts" if (weather or {}).get("ok") else "Unavailable")
     isa_last = isa.get("last")
     isa_v = f"{isa_last['value']:,} AF ({isa.get('pct')}% cap)" if isa_last else "n/a"
-    chp_v = f"{len(chp.get('new', []))} overnight" if chp.get("new") else "None overnight"
+    chp_night = chp.get("overnight", [])
+    chp_v = ("Unavailable" if not chp.get("ok") else
+             f"{len(chp_night)} overnight" if chp_night else "None overnight")
     if airnow.get("ok") and airnow.get("aqi") is not None:
         aqi_v = f"AQI {airnow['aqi']} · {airnow.get('category')}"
     elif airnow.get("needs_key"):
@@ -357,7 +364,8 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
     else:
         aqi_v = "AQI unavailable"
     kern_fires = [f for f in calfire.get("incidents", []) if "Kern" in str(f.get("county", ""))]
-    fire_v = f"{len(kern_fires)} active in Kern" if kern_fires else "0 active in Kern"
+    fire_v = (f"{len(kern_fires)} active in Kern" if kern_fires else
+              "0 active in Kern" if calfire.get("ok") else "Unavailable")
 
     conds = [
         ("Weather", weather_v), ("Alerts", alert_v), ("Isabella", isa_v),

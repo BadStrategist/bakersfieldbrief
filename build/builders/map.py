@@ -58,7 +58,7 @@ def build(ctx, sources: dict) -> list[str]:
             "prec": PRECISION_LABEL.get(d.get("p", "city"), "general area"),
             "nb": int(d.get("nb", 2)),
         })
-    dots_json = json.dumps(dots, ensure_ascii=False)
+    dots_json = common.script_json(dots)
 
     legend = "".join(
         f'<span class="lg"><i style="background:{COLORS[c]}"></i>{c.title()} ({counts.get(c, 0)})</span>'
@@ -117,6 +117,12 @@ def build(ctx, sources: dict) -> list[str]:
         }}).addTo(map);
         var markers = [];
         var SIZES = {{5: 16, 4: 13, 3: 11, 2: 9, 1: 7}};
+        // scanner text is outside data: escape it before it becomes popup HTML
+        function escH(s) {{
+          return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {{
+            return {{'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}}[c];
+          }});
+        }}
         function addDot(d) {{
           var m = L.circleMarker([d.lat, d.lng], {{
             radius: SIZES[d.nb] || 9, color: '#fff', weight: 1.5,
@@ -124,9 +130,9 @@ def build(ctx, sources: dict) -> list[str]:
               : d.cat === 'medical' ? '#2E7D32' : d.cat === 'traffic' ? '#64748B' : '#475569',
             fillOpacity: 0.9
           }}).addTo(map);
-          m.bindPopup('<div class="pop"><b>' + d.type + '</b>'
-            + '<span class="tm">' + d.time + '</span><br>' + d.area
-            + '<br><span class="nb">' + d.prec + (d.nb >= 4 ? ' &middot; significant' : '') + '</span></div>');
+          m.bindPopup('<div class="pop"><b>' + escH(d.type) + '</b>'
+            + '<span class="tm">' + escH(d.time) + '</span><br>' + escH(d.area)
+            + '<br><span class="nb">' + escH(d.prec) + (d.nb >= 4 ? ' &middot; significant' : '') + '</span></div>');
           m._ko = d;
           markers.push(m);
         }}

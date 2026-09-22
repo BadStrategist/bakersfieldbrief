@@ -70,7 +70,16 @@ def build(ctx, sources: dict) -> list[str]:
         alpr_log = json.loads((common.DATA / "change_logs" / "alpr.json").read_text(encoding="utf-8"))
     except Exception:  # noqa: BLE001
         pass
-    alpr_weeks = alpr_log[-4:] if isinstance(alpr_log, list) else []
+    # The last four WEEKS by date, not the last four entries: the log holds backfilled entries on
+    # adjacent days (08-30 and 08-31), so four entries could span barely two weeks.
+    alpr_weeks = []
+    if isinstance(alpr_log, list) and alpr_log:
+        try:
+            _last = dt.date.fromisoformat(str(alpr_log[-1].get("date", ""))[:10])
+            _from = (_last - dt.timedelta(days=28)).isoformat()
+            alpr_weeks = [e for e in alpr_log if str(e.get("date", "")) > _from]
+        except ValueError:
+            alpr_weeks = []
     alpr_total = alpr_weeks[-1].get("total", 0) if alpr_weeks else 0
     alpr_added = sum(int(e.get("new_count", 0)) for e in alpr_weeks)
 
@@ -114,10 +123,10 @@ def build(ctx, sources: dict) -> list[str]:
             f'Follow the day-to-day on the <a href="{rel}water/">Isabella tracker</a>.</p>')
 
     if alpr_weeks:
-        span = f"{alpr_weeks[0].get('date', '')} to {alpr_weeks[-1].get('date', '')}"
+        span = f"the four weeks to {alpr_weeks[-1].get('date', '')}"
         paras.append(
             f"<p><strong>Flock cameras keep multiplying: {alpr_total} mapped and counting.</strong> "
-            f"Across the last four weekly snapshots ({span}) the OpenStreetMap-based count grew "
+            f"In {span}, the OpenStreetMap-based count grew "
             f"by {alpr_added} cameras. Every camera is a node on the map — location, direction, "
             f"and a 13-week change log live on the "
             f'<a href="{rel}surveillance/">Flock &amp; ALPR tracker</a>.</p>')

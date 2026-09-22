@@ -21,6 +21,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+      LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+      LLM_MODEL: ${{ secrets.LLM_MODEL }}
       AIRNOW_API_KEY: ${{ secrets.AIRNOW_API_KEY }}
     steps:
       - uses: actions/checkout@v4
@@ -36,30 +38,17 @@ jobs:
       # Mondays even if a daily run was missed, and is the natural home for
       # moving individual source jobs to a self-hosted runner later.
       - name: Build site
-        run: python build/build_all.py --alpr-change
+        # --no-llm: only the daily brief (daily.yml) and the Sunday Read use the AI writer. Without
+        # it this build re-ran the daily builder's AI calls again for nothing.
+        run: python build/build_all.py --alpr-change --no-llm
 
       - name: Commit generated artifacts
+        # scripts/ci_push.sh: keeps THIS run's data on a rebase conflict and flags a failed push
+        # (an ::error annotation) instead of a green step with nothing pushed. It never blocks the
+        # deploy or the send, hence continue-on-error.
+        continue-on-error: true
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add email drafts data
-          if ! git diff --cached --quiet; then
-            git commit -m "build: $(date -u +%Y-%m-%d) weekly artifacts [skip ci]"
-            for i in 1 2 3; do
-              git rebase --abort 2>/dev/null || true
-              if git pull --rebase origin main --autostash; then
-                git push && break
-              else
-                git checkout --ours -- data email drafts 2>/dev/null || true
-                git add -A
-                git -c core.editor=true rebase --continue 2>/dev/null || git rebase --abort
-                git push && break
-              fi
-              echo "push retry $i"; sleep 8
-            done
-          else
-            echo "no artifact changes"
-          fi
+          bash scripts/ci_push.sh "build: $(date -u +%Y-%m-%d) weekly artifacts [skip ci]"
 
       - name: Deploy to Cloudflare Pages
         env:

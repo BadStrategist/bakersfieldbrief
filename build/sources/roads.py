@@ -61,7 +61,7 @@ def run(ctx):
         try:
             r = common.fetch(URL.format(n=route["number"]), timeout=25)
             parsed = _parse(r.text, route)
-            if parsed:
+            if parsed and not parsed.get("_no_report"):
                 out["routes"].append(parsed)
         except Exception as e:  # noqa: BLE001
             common.log(f"roads {route['number']} failed: {type(e).__name__}: {e}")
@@ -82,10 +82,20 @@ def run(ctx):
             return out
         return {"ok": False, "error": "no Caltrans routes parsed"}
 
-    # ---- diff against snapshot + change log
+    # ---- one route failed while others parsed: keep its last good report, flagged stale, so a
+    # partial outage neither drops the route from the page nor erases it from the snapshot (which
+    # made its next real status change go unlogged).
+    fresh_routes = list(out["routes"])
+    fresh = {x["slug"] for x in fresh_routes}
+    last = common.load_snapshot("roads_last", default={})
+    for x in last.get("routes", []) or []:
+        if x.get("slug") not in fresh:
+            out["routes"].append(dict(x, stale=True))
+
+    # ---- diff against snapshot + change log (fresh routes only)
     snap = common.load_snapshot("roads", default={})
     log = common.load_snapshot("roads_log", default=[])
-    for rte in out["routes"]:
+    for rte in fresh_routes:
         prev = snap.get(rte["slug"], {})
         if prev.get("status") != rte["status"] and prev:
             log.insert(0, {
@@ -106,8 +116,8 @@ def run(ctx):
             })
     log = log[:60]
     common.save_snapshot("roads_log", log)
-    common.save_snapshot("roads", {x["slug"]: {"status": x["status"], "hash": x["hash"]}
-                                   for x in out["routes"]})
+    snap.update({x["slug"]: {"status": x["status"], "hash": x["hash"]} for x in fresh_routes})
+    common.save_snapshot("roads", snap)
     # full last-known payload so a later failed fetch can degrade gracefully
     common.save_snapshot("roads_last", out)
     out["log"] = log
@@ -144,6 +154,11 @@ def _parse(html: str, route: dict) -> dict:
     for s in sections:
         s["status"] = _section_status(s["text"])
 
+    # A Caltrans report always carries an "[IN THE ... AREA]" section or a "reported as of"
+    # stamp. A page with neither (an outage or error page served with HTTP 200) is not a report,
+    # and must not be read as "OPEN": the caller falls back to the last good report instead.
+    if not sections and not ts:
+        return {"_no_report": True}
     status = _classify(sections) if sections else "OPEN"
     detail_text = " ".join(f"{s['region']}: {s['text']}" for s in sections)
     scope = _scope(sections, route["slug"])

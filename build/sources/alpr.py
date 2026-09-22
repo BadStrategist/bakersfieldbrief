@@ -26,7 +26,18 @@ def run(ctx, *, record_change: bool = False):
     """record_change=True on the weekly job → append a change-log entry."""
     try:
         r = common.fetch(OVERPASS, method="POST", data={"data": QUERY}, timeout=90)
-        elements = r.json().get("elements", [])
+        j = r.json()
+        elements = j.get("elements", [])
+        # Overpass answers a timeout or memory error with HTTP 200, a "remark" and an empty or
+        # partial element list. Taken at face value that is "0 cameras", and on the weekly run it
+        # would log every camera as gone. Treat it as the failure it is.
+        remark = str(j.get("remark") or "")
+        if remark and ("error" in remark.lower() or "timed out" in remark.lower()):
+            raise RuntimeError(f"Overpass remark: {remark[:160]}")
+        prev_n = len(common.load_snapshot("alpr_nodes", default=[]) or [])
+        if prev_n >= 50 and len(elements) < prev_n * 0.6:
+            raise RuntimeError(f"Overpass returned {len(elements)} nodes, last snapshot had {prev_n}")
+        first_mapped = _first_mapped(elements)
         cameras = []
         for e in elements:
             t = e.get("tags") or {}
@@ -37,7 +48,10 @@ def run(ctx, *, record_change: bool = False):
                 "manufacturer": t.get("manufacturer", "Unspecified"),
                 "operator": t.get("operator", ""),
                 "direction": t.get("direction", ""),      # camera facing, if tagged
-                "mapped": (e.get("timestamp") or "")[:10],  # OSM edit date (≈ creation)
+                # First-mapped date. `out meta` carries the LAST edit, so a re-tagged old camera
+                # used to count as "new" (4 of 15 "new in 4 weeks" on 2026-09-22 were edits).
+                "mapped": first_mapped.get(str(e["id"]), ""),
+                "edited": (e.get("timestamp") or "")[:10],
                 "start_date": t.get("start_date", ""),   # crowdsourced, not authoritative
                 "camera_type": t.get("surveillance", ""),
             })
@@ -92,3 +106,50 @@ def run(ctx, *, record_change: bool = False):
                 "change_log": common.load_change_log("alpr"), "asof": common.iso_today()}
     except Exception as e:  # noqa: BLE001
         return {"ok": False, "error": f"{type(e).__name__}: {e}"}
+
+
+OSM_V1 = "https://api.openstreetmap.org/api/0.6/node/{id}/1.json"
+MAX_LOOKUPS = 60   # per build; the answers are cached for good, so this only bites once
+
+
+def _first_mapped(elements: list) -> dict:
+    """node id -> date the node was first mapped (its version 1).
+
+    A version-1 node's own timestamp is its creation. An edited node's creation date comes from
+    the OSM history API once, then lives in data/snapshots/alpr_created.json. If a lookup fails,
+    the week the change log first saw the node stands in; failing that the date stays unknown
+    ("") rather than falling back to the edit date, and the lookup is retried next build.
+    """
+    created = common.load_snapshot("alpr_created", default={}) or {}
+    if not isinstance(created, dict):   # a damaged snapshot must not take the whole source down
+        created = {}
+    seen_week = {}
+    for entry in common.load_change_log("alpr"):
+        for nid in entry.get("new_ids", []) or []:
+            seen_week.setdefault(str(nid), str(entry.get("date", ""))[:10])
+    out, changed, lookups = {}, False, 0
+    for e in elements:
+        key = str(e.get("id"))
+        if key in created:
+            out[key] = created[key]
+            continue
+        if int(e.get("version") or 1) <= 1:
+            created[key] = out[key] = (e.get("timestamp") or "")[:10]
+            changed = True
+            continue
+        date = ""
+        if lookups < MAX_LOOKUPS:
+            lookups += 1
+            try:
+                r = common.fetch(OSM_V1.format(id=key), timeout=15, retries=1)
+                el = (r.json().get("elements") or [{}])[0]
+                date = (el.get("timestamp") or "")[:10]
+            except Exception:  # noqa: BLE001 - retried on the next build
+                date = ""
+        if date:
+            created[key] = date
+            changed = True
+        out[key] = date or seen_week.get(key, "")
+    if changed:
+        common.save_snapshot("alpr_created", created)
+    return out

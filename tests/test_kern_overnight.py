@@ -771,14 +771,42 @@ def test_newsletter_idempotency_uses_pacific_date():
 
     # The check must construct the name from common.today_pacific()
     import inspect
-    src = inspect.getsource(sn._today_campaign_exists)
+    src = inspect.getsource(sn._today_campaigns)
     # strip the docstring so its prose about the old bug doesn't trip the check
     code = src.split('"""', 2)[2] if '"""' in src else src
     assert "common.today_pacific()" in code, "idempotency check must use Pacific date"
     assert "datetime.now()" not in code, "UTC datetime.now() caused duplicate sends"
 
     # And the matching must be exact (same name the sender uses)
-    assert sn._today_campaign_exists.__doc__ and "three emails on 2026-08-28" in sn._today_campaign_exists.__doc__
+    assert sn._today_campaigns.__doc__ and "three emails on 2026-08-28" in sn._today_campaigns.__doc__
+
+
+def test_newsletter_unsent_draft_is_not_already_sent(monkeypatch):
+    """A draft left by a failed schedule call must not block the day's send (it used to count
+    as "already sent", so CI and the watchdog both skipped the day silently)."""
+    import sys as _sys
+    from pathlib import Path as _P
+    _sys.path.insert(0, str(_P(__file__).resolve().parent.parent / "scripts"))
+    import send_newsletter_ml as sn
+    from build import common
+    name = sn._campaign_name(common.today_pacific())
+    calls = []
+
+    def fake_req(method, path, payload=None, token=""):
+        calls.append((method, path))
+        if method == "GET":
+            return {"data": rows} if "page=1" in path else {"data": []}
+        return {}
+    monkeypatch.setattr(sn, "_req", fake_req)
+
+    rows = [{"id": "d1", "name": name, "status": "draft"}]
+    assert sn._today_campaign_exists("t") is None
+    assert ("DELETE", "/campaigns/d1") in calls
+
+    calls.clear()
+    rows = [{"id": "d2", "name": name, "status": "draft"}, {"id": "s1", "name": name, "status": "sent"}]
+    assert sn._today_campaign_exists("t") == "s1"
+    assert not any(m == "DELETE" for m, _ in calls)
 
 
 def test_newsletter_campaign_name_format():

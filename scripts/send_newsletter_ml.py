@@ -81,10 +81,8 @@ def _campaign_name(d) -> str:
     return f"Daily Brief {d.isoformat()}"
 
 
-def _today_campaign_exists(token: str) -> str | None:
-    """Return today's campaign id if a 'Daily Brief <today>' already exists
-    (created today), else None. Makes the send idempotent so a delayed CI
-    run or the Hermes watchdog never double-sends.
+def _today_campaigns(token: str) -> list[dict]:
+    """Every 'Daily Brief <today>' campaign, newest first: [{"id", "status"}].
 
     Uses Pacific time (common.today_pacific) — NOT datetime.now(), which on
     a GitHub Actions runner is UTC. Between 4pm PT and midnight PT the UTC
@@ -92,6 +90,7 @@ def _today_campaign_exists(token: str) -> str | None:
     today's campaign and re-send (three emails on 2026-08-28)."""
     d = common.today_pacific()
     name = _campaign_name(d)
+    found = []
     page = 1
     while page <= 3:  # guard: at most 3 pages of recent campaigns
         data = _req("GET", f"/campaigns?limit=100&sort=-created_at&page={page}", token=token)
@@ -100,8 +99,26 @@ def _today_campaign_exists(token: str) -> str | None:
             break
         for c in rows:
             if c.get("name") == name:
-                return c.get("id")
+                found.append({"id": c.get("id"), "status": str(c.get("status") or "").lower()})
         page += 1
+    return found
+
+
+def _today_campaign_exists(token: str) -> str | None:
+    """Today's campaign id if one was actually SENT or is on its way, else None.
+
+    A campaign is created first and scheduled in a second call. When that second call failed,
+    the unsent draft used to count as "already sent", so every later run (CI and the watchdog)
+    skipped the day and nobody was told. Only a non-draft campaign counts now; leftover drafts
+    are deleted so the next create is clean. Idempotent: a delayed CI run or the watchdog still
+    never double-sends."""
+    found = _today_campaigns(token)
+    for c in found:
+        if c["status"] and c["status"] != "draft":
+            return c["id"]
+    for c in found:
+        _req("DELETE", f"/campaigns/{c['id']}", token=token)
+        print(f"removed unsent draft campaign {c['id']} left by an earlier failed send")
     return None
 
 
@@ -170,7 +187,9 @@ def main() -> int:
         raise SystemExit(f"no campaign id: {camp}")
     missing = (camp.get("data") or {}).get("missing_data")
     if missing:
-        raise SystemExit(f"campaign {camp_id} has missing_data: {missing}")
+        # do not leave an unsendable draft behind to block the next attempt
+        _req("DELETE", f"/campaigns/{camp_id}", token=token)
+        raise SystemExit(f"campaign {camp_id} has missing_data: {missing} (draft removed)")
 
     # Send immediately
     _req("POST", f"/campaigns/{camp_id}/schedule", {"delivery": "instant"}, token)

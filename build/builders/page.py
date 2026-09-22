@@ -84,7 +84,7 @@ def _jsonld(blocks: list | None) -> str:
         return ""
     out = []
     for b in blocks:
-        out.append(f'<script type="application/ld+json">{json.dumps(b, ensure_ascii=False)}</script>')
+        out.append(f'<script type="application/ld+json">{common.script_json(b)}</script>')
     return "\n  ".join(out)
 
 
@@ -99,6 +99,9 @@ def build_statusbar(weather: dict, escribe: dict) -> str:
     if alerts:
         top = alerts[0]
         alert_txt = (f'<span class="sb-alert">{h.escape(top.get("event", "Weather alert"))} active</span>')
+    elif not (weather or {}).get("ok"):
+        # a failed NWS fetch is not an all-clear
+        alert_txt = '<span class="sb-meeting">Weather alerts unavailable right now</span>'
     else:
         alert_txt = '<span class="sb-ok"><span class="dot"></span>No active weather alerts</span>'
 
@@ -111,6 +114,8 @@ def build_statusbar(weather: dict, escribe: dict) -> str:
         day, time = _meeting_when(when)
         meeting_txt = (f'<span class="sb-meeting"><strong>Next meeting:</strong> '
                        f'{h.escape(name[:38])} &middot; {day} {h.escape(time)}</span>')
+    elif not (escribe or {}).get("ok"):
+        meeting_txt = '<span class="sb-meeting">City meeting calendar unavailable right now</span>'
     else:
         meeting_txt = '<span class="sb-meeting">No upcoming meetings posted</span>'
 

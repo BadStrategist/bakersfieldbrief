@@ -49,7 +49,7 @@ def _bakersfield_forecast() -> dict:
                           headers={"Accept": "application/geo+json"})
         fc_url = pt.json()["properties"]["forecast"]
         periods = common.fetch(fc_url, headers={"Accept": "application/geo+json"}).json()["properties"]["periods"]
-        today = dt.date.today().isoformat()
+        today = common.iso_today()
         highs, lows = [], []
         for p in periods:
             if (p.get("startTime") or "")[:10] == today:
@@ -84,7 +84,7 @@ def _bakersfield_forecast() -> dict:
         if ts:
             try:
                 out["observed"] = dt.datetime.fromisoformat(ts.replace("Z", "+00:00")).astimezone(
-                    dt.timezone(dt.timedelta(hours=-7))).strftime("%I:%M %p").lstrip("0")
+                    common.PACIFIC).strftime("%I:%M %p").lstrip("0")
             except Exception:  # noqa: BLE001
                 pass
     except Exception:  # noqa: BLE001

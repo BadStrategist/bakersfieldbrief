@@ -3,8 +3,8 @@
 
 Verified Aug 2026: Center/Dispatch IDs are XML *attributes*
 (<Center ID="LAHB"><Dispatch ID="BFCC">), and element values are quoted
-strings ("Aug  4 2026  1:24PM"). "Overnight" = logs we haven't seen yet in
-this snapshot (new since last build). Bakersfield dispatch = BFCC under
+strings ("Aug  4 2026  1:24PM"). "new" = logs not seen by the previous build;
+"overnight" = logs timed 9 PM to 7 AM Pacific (see _overnight). Bakersfield dispatch = BFCC under
 center LAHB.
 """
 from __future__ import annotations
@@ -54,12 +54,32 @@ def run(ctx):
         common.save_snapshot("chp_archive", pruned)
 
         return {"ok": True, "logs": logs, "new": fresh, "archive": pruned,
+                "overnight": _overnight(pruned),
                 "asof": common.iso_today()}
     except Exception as e:  # noqa: BLE001
         return {"ok": False, "error": f"{type(e).__name__}: {e}"}
 
 
 _LOG_TIME_FORMATS = ("%b %d %Y %I:%M%p", "%b %d %Y %H:%M", "%m/%d/%Y %I:%M %p", "%Y-%m-%d %H:%M:%S")
+
+
+def _overnight(archive: list) -> list:
+    """Incidents logged 9 PM to 7 AM Pacific: last night, or tonight so far before 7 AM.
+
+    "new" means "not seen by the previous build", and builds run every 3 hours, so the 6 AM
+    brief's "new" held about one hour of incidents, not the night. CHP log times are Pacific.
+    """
+    now = common.now_pacific().replace(tzinfo=None)
+    end = now.replace(hour=7, minute=0, second=0, microsecond=0)
+    if now < end:
+        end = now
+    start = dt.datetime.combine(end.date() - dt.timedelta(days=1), dt.time(21, 0))
+    out = []
+    for a in archive:
+        t = _parse_log_time(a.get("time", ""))
+        if t is not None and start <= t < end:
+            out.append(a)
+    return out
 
 
 def _parse_log_time(s: str):

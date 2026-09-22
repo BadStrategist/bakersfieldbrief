@@ -48,7 +48,8 @@ def _sensor_series(sess_rows) -> list[dict]:
         v = _num(row.get("value"))
         if v is None:
             continue
-        dstr = row.get("obsDate") or row.get("date") or ""
+        # "date" is the day the reading belongs to; CDEC's obsDate is stamped a day later
+        dstr = row.get("date") or row.get("obsDate") or ""
         # normalize CDEC '2026-9-5 00:00' -> '2026-09-05'
         m = __import__("re").match(r"(\d{4})-(\d{1,2})-(\d{1,2})", str(dstr))
         if not m:

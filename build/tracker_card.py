@@ -181,7 +181,7 @@ def render_tracker_card(alpr: dict, out_path=None):
         x += 250
 
     # newest cameras (last 28 days) ring highlight (matches trackers.js)
-    cutoff = (dt.date.today() - dt.timedelta(days=28)).isoformat()
+    cutoff = (common.today_pacific() - dt.timedelta(days=28)).isoformat()
     newest_set = {c["id"] for c in cameras if (c.get("mapped") or "") >= cutoff}
 
     # cluster + draw markers

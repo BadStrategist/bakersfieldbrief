@@ -140,7 +140,7 @@ def build_alpr(ctx, sources: dict):
     stats = data.get("stats", {})
     change_log = data.get("change_log", [])
     cameras = data.get("cameras", [])
-    asof = data.get("asof", common.iso_today())
+    asof = (data.get("asof") or "unavailable")
 
     payload = {"cameras": cameras, "stats": stats,
                "change_log": change_log, "asof": asof}
@@ -353,8 +353,7 @@ def build_alpr(ctx, sources: dict):
     else:
         desc = ("Live map of license-plate reader (ALPR) and Flock Safety cameras in "
                 f"Bakersfield — data source (OpenStreetMap) was unavailable this build. "
-                f"Check back for the latest camera map and change log. Last successful as of "
-                f"{asof}.")
+                f"Check back for the latest camera map and change log.")
 
     # render the same Q&A visibly so on-page text and schema never drift
     body += _faq_visible(faq_jsonld, "Flock &amp; ALPR questions")
@@ -395,7 +394,7 @@ def build_alpr(ctx, sources: dict):
 def build_fires(ctx, sources: dict):
     data = sources.get("calfire", {})
     ok = bool(data.get("ok"))
-    asof = data.get("asof", common.iso_today())
+    asof = (data.get("asof") or "unavailable")
     incidents = data.get("incidents", [])
     kern = data.get("kern", [])
 
@@ -629,8 +628,8 @@ def _water_level_status(elev_ft, full_pool_ft) -> tuple[str, str]:
 
 def build_water(ctx, sources: dict):
     data = sources.get("isabella", {})
-    payload = {"asof": data.get("asof", common.iso_today())}
-    asof = data.get("asof", common.iso_today())
+    payload = {"asof": (data.get("asof") or "unavailable")}
+    asof = (data.get("asof") or "unavailable")
     full_pool = data.get("full_pool_ft", 2605.5)
     cap_af = data.get("capacity_af", 568_000)
 

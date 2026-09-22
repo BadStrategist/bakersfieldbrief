@@ -82,11 +82,12 @@ def _week_facts(sources: dict) -> str:
         lines.append("")
 
     chp = sources.get("chp", {})
-    inc = chp.get("new", []) or chp.get("incidents", [])
+    # the 7-day archive, newest first: "new" is only what the previous build had not seen
+    inc = list(reversed(chp.get("archive") or [])) or chp.get("new", [])
     if inc:
         lines.append("CHP INCIDENTS THIS WEEK")
         for i in inc[:12]:
-            lines.append(f"- {i.get('date', '')}: {i.get('title', i.get('location', ''))}")
+            lines.append(f"- {i.get('time', '')}: {i.get('type', '')} at {i.get('location', '')}")
         lines.append("")
 
     cal = sources.get("calfire", {})
@@ -156,15 +157,17 @@ def _fallback_deterministic(topic: str, sources: dict, built_iso: str) -> dict:
     fires = [f for f in cal.get("incidents", []) if "Kern" in str(f.get("county", ""))]
     isa = sources.get("isabella", {})
     chp = sources.get("chp", {})
-    inc = (chp.get("new", []) or chp.get("incidents", []))[:8]
+    inc = (list(reversed(chp.get("archive") or [])) or chp.get("new", []))[:8]
     wx = sources.get("weather", {})
     alerts = wx.get("alerts", [])[:3] if wx.get("ok") else []
     escribe = sources.get("escribe", {})
     meets = escribe.get("upcoming", [])[:5]
 
     paras = [
-        "<p>It has been a full week in Kern County — a week of fire, water, "
-        "and the everyday business of the valley. This is the long-form look "
+        "<p>It has been a full week in Kern County"
+        + (" — a week of fire, water, and the everyday business of the valley. " if fires
+           else " — a week of the everyday business of the valley. ")
+        + "This is the long-form look "
         "at what happened, assembled from public records and linked "
         "reporting.</p>",
     ]
@@ -230,7 +233,7 @@ def _fallback_deterministic(topic: str, sources: dict, built_iso: str) -> dict:
 
     # 5. roads
     if inc:
-        il = "; ".join(html.escape(i.get("title", i.get("location", "an incident")))
+        il = "; ".join(html.escape(f"{i.get('type') or 'an incident'} at {i.get('location') or 'an unlisted location'}")
                        for i in inc[:5])
         paras.append(
             "<p><strong>On the roads.</strong> CHP logged its share of "
@@ -284,6 +287,7 @@ def _render(f: dict, rel: str) -> str:
     if src == "llm":
         # LLM prose may contain ## section headings — convert to styled ones
         import re
+        body = html.escape(body, quote=False)   # LLM text is text, never markup
         body = re.sub(r"^##\s+(.+)$", r'<h3 class="sunday-h">\1</h3>',
                       body, flags=re.M)
         body = "".join(f"<p>{p.strip()}</p>" for p in body.split("\n\n") if p.strip())

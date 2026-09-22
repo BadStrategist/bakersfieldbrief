@@ -82,6 +82,20 @@ def build(ctx, sources: dict) -> list[str]:
             alpr_weeks = []
     alpr_total = alpr_weeks[-1].get("total", 0) if alpr_weeks else 0
     alpr_added = sum(int(e.get("new_count", 0)) for e in alpr_weeks)
+    alpr_span_end = alpr_weeks[-1].get("date", "") if alpr_weeks else ""
+    # Prefer the live count /surveillance/ and the home card show (cameras first mapped in the
+    # 28 days to the data date), so the three pages print one number.
+    _alpr = sources.get("alpr", {}) or {}
+    if _alpr.get("ok") and _alpr.get("cameras"):
+        try:
+            _to = dt.date.fromisoformat(str(_alpr.get("asof", ""))[:10])
+            _cut = (_to - dt.timedelta(days=28)).isoformat()
+            alpr_total = len(_alpr["cameras"])
+            alpr_added = sum(1 for c in _alpr["cameras"] if (c.get("mapped") or "") >= _cut)
+            alpr_span_end = _to.isoformat()
+            alpr_weeks = alpr_weeks or [{"date": alpr_span_end}]
+        except ValueError:
+            pass
 
     chp_archive = []
     try:
@@ -123,11 +137,11 @@ def build(ctx, sources: dict) -> list[str]:
             f'Follow the day-to-day on the <a href="{rel}water/">Isabella tracker</a>.</p>')
 
     if alpr_weeks:
-        span = f"the four weeks to {alpr_weeks[-1].get('date', '')}"
+        span = f"the four weeks to {alpr_span_end}"
         paras.append(
             f"<p><strong>Flock cameras keep multiplying: {alpr_total} mapped and counting.</strong> "
-            f"In {span}, the OpenStreetMap-based count grew "
-            f"by {alpr_added} cameras. Every camera is a node on the map — location, direction, "
+            f"In {span}, OpenStreetMap volunteers mapped "
+            f"{alpr_added} new cameras. Every camera is a node on the map — location, direction, "
             f"and a 13-week change log live on the "
             f'<a href="{rel}surveillance/">Flock &amp; ALPR tracker</a>.</p>')
 

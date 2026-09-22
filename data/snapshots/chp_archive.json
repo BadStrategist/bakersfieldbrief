@@ -1170,6 +1170,16 @@
   "details": ""
  },
  {
+  "log_id": "260922BF0177",
+  "time": "Sep 22 2026 10:57AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "130 El Tejon Ave",
+  "area": "Bakersfield",
+  "lat": 35.418182,
+  "lon": -119.021924,
+  "details": ""
+ },
+ {
   "log_id": "260922BF0002",
   "time": "Sep 22 2026 12:03AM",
   "type": "TADV-Traffic Advisory",

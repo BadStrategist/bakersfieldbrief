@@ -1040,6 +1040,16 @@
   "details": ""
  },
  {
+  "log_id": "260922BF0293",
+  "time": "Sep 22 2026  3:49PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr58 W / Union Ave Ofr",
+  "area": "Bakersfield",
+  "lat": 35.352547,
+  "lon": -118.998744,
+  "details": ""
+ },
+ {
   "log_id": "260922BF0032",
   "time": "Sep 22 2026  5:04AM",
   "type": "MZP-Assist CT with Maintenance",

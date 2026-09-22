@@ -1070,6 +1070,16 @@
   "details": ""
  },
  {
+  "log_id": "260922BF0317",
+  "time": "Sep 22 2026  4:41PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Terrace Way / S Oleander Ave",
+  "area": "Bakersfield",
+  "lat": 35.350294,
+  "lon": -119.025642,
+  "details": ""
+ },
+ {
   "log_id": "260922BF0032",
   "time": "Sep 22 2026  5:04AM",
   "type": "MZP-Assist CT with Maintenance",

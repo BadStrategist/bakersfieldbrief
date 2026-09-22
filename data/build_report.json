@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-22T16:39:27-07:00",
+ "built_at": "2026-09-22T16:44:31-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 1,
    "top_story": "Bakersfield student receives 2026 CSU Trustees\u2019 Award for Outstanding Achievement",
    "archive": "2026-09-22"
   },
@@ -133,10 +133,10 @@
   },
   "numbers": {
    "isabella_af": 155067,
-   "alpr_total": 268,
+   "alpr_total": 269,
    "kern_fires": 0,
    "aqi": 66,
-   "chp_week": 36
+   "chp_week": 37
   },
   "letters": {
    "published": 0

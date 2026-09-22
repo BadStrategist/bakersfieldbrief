@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-22T10:33:05-07:00",
+ "built_at": "2026-09-22T10:38:22-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 5,
+   "chp_new": 0,
    "top_story": "Man arrested on suspicion of attempted homicide in east Bakersfield",
    "archive": "2026-09-22"
   },

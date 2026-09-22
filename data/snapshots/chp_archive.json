@@ -1050,6 +1050,26 @@
   "details": ""
  },
  {
+  "log_id": "260922BF0301",
+  "time": "Sep 22 2026  3:59PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb Sr99 Jno I5",
+  "area": "Fort Tejon",
+  "lat": 35.023056,
+  "lon": -118.956944,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0313",
+  "time": "Sep 22 2026  4:17PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sr58 E / Union Ave Onr",
+  "area": "Bakersfield",
+  "lat": 35.352274,
+  "lon": -118.999548,
+  "details": ""
+ },
+ {
   "log_id": "260922BF0032",
   "time": "Sep 22 2026  5:04AM",
   "type": "MZP-Assist CT with Maintenance",

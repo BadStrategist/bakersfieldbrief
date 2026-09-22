@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-22T15:52:50-07:00",
+ "built_at": "2026-09-22T16:21:04-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,14 +59,14 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1022,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "2 assigned courtroom for trial in Bakersfield child murder case",
+   "chp_new": 2,
+   "top_story": "Coroner identifies Onyx man killed in suspected DUI solo-vehicle crash in Kernville",
    "archive": "2026-09-22"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 16,
+   "wind_mph": 14,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 75,
-   "wind_mph": 16,
+   "wind_mph": 14,
    "alerts": 0
   },
   "roads": {
@@ -135,8 +135,8 @@
    "isabella_af": 155067,
    "alpr_total": 268,
    "kern_fires": 0,
-   "aqi": 67,
-   "chp_week": 34
+   "aqi": 64,
+   "chp_week": 36
   },
   "letters": {
    "published": 0

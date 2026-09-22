@@ -1020,6 +1020,96 @@
   "details": ""
  },
  {
+  "log_id": "260922BF0032",
+  "time": "Sep 22 2026  5:04AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "5900 MM178 E KER 79.00",
+  "area": "Bakersfield",
+  "lat": 35.668591,
+  "lon": -118.035292,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0035",
+  "time": "Sep 22 2026  5:12AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0042",
+  "time": "Sep 22 2026  5:30AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "7th Standard Rd / Tracy Ave",
+  "area": "Buttonwillow",
+  "lat": 35.44215,
+  "lon": -119.411497,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0046",
+  "time": "Sep 22 2026  5:41AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0049",
+  "time": "Sep 22 2026  5:52AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "City Of Delano",
+  "area": "Bakersfield",
+  "lat": 35.761329,
+  "lon": -119.240785,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0050",
+  "time": "Sep 22 2026  6:05AM",
+  "type": "1125-Traffic Hazard",
+  "location": "NB SR99 JNO Cecil Ave",
+  "area": "Bakersfield",
+  "lat": 35.775905,
+  "lon": -119.252339,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0056",
+  "time": "Sep 22 2026  6:19AM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sr99 S / Elmo Hwy Onr",
+  "area": "Bakersfield",
+  "lat": 35.685918,
+  "lon": -119.229088,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0052",
+  "time": "Sep 22 2026  6:19AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "Nb I5 Jno Copus Rd",
+  "area": "Buttonwillow",
+  "lat": 35.097222,
+  "lon": -119.039444,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0058",
+  "time": "Sep 22 2026  6:27AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr99 S / County Line Rd Onr",
+  "area": "Bakersfield",
+  "lat": 35.787511,
+  "lon": -119.250391,
+  "details": ""
+ },
+ {
   "log_id": "260922BF0002",
   "time": "Sep 22 2026 12:03AM",
   "type": "TADV-Traffic Advisory",

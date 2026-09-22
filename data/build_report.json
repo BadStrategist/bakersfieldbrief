@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-22T01:00:48-07:00",
+ "built_at": "2026-09-22T06:46:18-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,14 +59,14 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 67,
+  "_digest_meta": "llm",
+  "brief_words": 1022,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "KC Honor Flight 54 trip canceled; veterans & guardians to get priority for April 2027 trip",
+   "chp_new": 9,
+   "top_story": "How to watch the Board of Education Area 3 debate on KGET",
    "archive": "2026-09-22"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 7,
+   "wind_mph": 0,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 55,
-   "wind_mph": 7,
+   "temp": 52,
+   "wind_mph": 0,
    "alerts": 0
   },
   "roads": {
@@ -132,11 +132,11 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 155745,
+   "isabella_af": 155067,
    "alpr_total": 268,
    "kern_fires": 0,
-   "aqi": 42,
-   "chp_week": 15
+   "aqi": 46,
+   "chp_week": 24
   },
   "letters": {
    "published": 0

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-22T06:46:18-07:00",
+ "built_at": "2026-09-22T06:57:48-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 9,
+   "chp_new": 1,
    "top_story": "How to watch the Board of Education Area 3 debate on KGET",
    "archive": "2026-09-22"
   },
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 0,
+   "wind_mph": 1,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 52,
-   "wind_mph": 0,
+   "temp": 50,
+   "wind_mph": 1,
    "alerts": 0
   },
   "roads": {
@@ -136,16 +136,16 @@
    "alpr_total": 268,
    "kern_fires": 0,
    "aqi": 46,
-   "chp_week": 24
+   "chp_week": 25
   },
   "letters": {
    "published": 0
   },
   "overnight": {
-   "published": 42
+   "published": 43
   },
   "map": {
-   "dots": 48
+   "dots": 46
   },
   "sunday_read": {
    "topic": "Public safety",

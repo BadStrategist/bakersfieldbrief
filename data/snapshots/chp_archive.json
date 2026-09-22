@@ -1063,10 +1063,10 @@
   "log_id": "260922BF0049",
   "time": "Sep 22 2026  5:52AM",
   "type": "MZP-Assist CT with Maintenance",
-  "location": "City Of Delano",
+  "location": "NB SR99 JNO Pond Rd",
   "area": "Bakersfield",
-  "lat": 35.761329,
-  "lon": -119.240785,
+  "lat": 35.71806,
+  "lon": -119.237134,
   "details": ""
  },
  {
@@ -1107,6 +1107,76 @@
   "area": "Bakersfield",
   "lat": 35.787511,
   "lon": -119.250391,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0064",
+  "time": "Sep 22 2026  6:46AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Sr99 N / Whisler Rd Ofr",
+  "area": "Bakersfield",
+  "lat": 35.642166,
+  "lon": -119.218781,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0113",
+  "time": "Sep 22 2026  8:54AM",
+  "type": "CZP-Assist with Construction",
+  "location": "Nb I5 At Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.835556,
+  "lon": -118.863056,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0126",
+  "time": "Sep 22 2026  9:15AM",
+  "type": "CFIRE-Car Fire",
+  "location": "I5 S / Gorman Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.795674,
+  "lon": -118.858202,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0145",
+  "time": "Sep 22 2026  9:46AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "6309 Carter Ave",
+  "area": "Bakersfield",
+  "lat": 35.415501,
+  "lon": -119.072097,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0156",
+  "time": "Sep 22 2026 10:19AM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sr58 W / Coffee Rd",
+  "area": "Bakersfield",
+  "lat": 35.367087,
+  "lon": -119.092187,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0166",
+  "time": "Sep 22 2026 10:29AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Airport Dr / Merle Haggard Dr",
+  "area": "Bakersfield",
+  "lat": 35.441112,
+  "lon": -119.038827,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0177",
+  "time": "Sep 22 2026 10:57AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "130 El Tejon Ave",
+  "area": "Bakersfield",
+  "lat": 35.418182,
+  "lon": -119.021924,
   "details": ""
  },
  {

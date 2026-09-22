@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-22T15:20:48-07:00",
+ "built_at": "2026-09-22T15:45:37-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,14 +59,14 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1022,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
-   "top_story": "CA Dept. of Public Health notifies public of possible measles exposure related to train, bus passenger",
+   "chp_new": 0,
+   "top_story": "Two-alarm fire burns structure in east Bakersfield",
    "archive": "2026-09-22"
   },
   "cityhall": {
@@ -174,8 +174,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 269,
-   "alpr_new_week": 6,
+   "alpr_total": 268,
+   "alpr_new_week": 5,
    "pages": [
     "surveillance",
     "fires",

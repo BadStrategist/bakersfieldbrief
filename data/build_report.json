@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-22T06:57:48-07:00",
+ "built_at": "2026-09-22T10:33:05-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,14 +59,14 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1022,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "How to watch the Board of Education Area 3 debate on KGET",
+   "chp_new": 5,
+   "top_story": "Man arrested on suspicion of attempted homicide in east Bakersfield",
    "archive": "2026-09-22"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 1,
+   "wind_mph": 10,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 50,
-   "wind_mph": 1,
+   "temp": 70,
+   "wind_mph": 10,
    "alerts": 0
   },
   "roads": {
@@ -135,8 +135,8 @@
    "isabella_af": 155067,
    "alpr_total": 268,
    "kern_fires": 0,
-   "aqi": 46,
-   "chp_week": 25
+   "aqi": 75,
+   "chp_week": 30
   },
   "letters": {
    "published": 0

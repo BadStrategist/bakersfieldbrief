@@ -91,8 +91,13 @@ def test_last4_honest_fallback_on_failure(tmp_path, monkeypatch):
 
 
 def test_overlay_last4_matches_stat(tmp_path, monkeypatch):
-    """The map overlay's '+N new in 28 days' must agree with the stat card."""
+    """The map's 'New, last 28 days' filter must agree with the stat card.
+
+    (The old map overlay carried '+N new in 28 days'; the explorer's filter chip replaced it and
+    counts the same `mapped` dates against the same 28-day cutoff.)"""
     mapped = ["2026-08-11", "2026-08-15", "2026-09-07", "2026-04-01"]
     raw = _render({"alpr": _alpr_ok(mapped)}, tmp_path, monkeypatch)
-    # both the stat card and the overlay use the same +3 value
-    assert raw.count("+3") >= 2
+    assert "+3" in raw
+    chip = re.search(r'data-f="new"[^>]*>[^<]*<b>(\d+)</b>', raw)
+    assert chip and chip.group(1) == "3"
+    assert raw.count(" data-new") == 3

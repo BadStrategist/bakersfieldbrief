@@ -21,6 +21,7 @@ import html
 import json
 
 from .. import common
+from . import alpr_explorer, alpr_page
 from . import images
 from . import page as page_mod
 
@@ -147,7 +148,6 @@ def build_alpr(ctx, sources: dict):
     # newest mapped cameras (real OSM edit dates)
     dated = [c for c in cameras if c.get("mapped")]
     dated.sort(key=lambda c: c["mapped"], reverse=True)
-    newest_top = dated[:6]
     newest_full = dated[:12]
 
     # Honest "last 4 weeks" count: derive it from each camera's OSM `mapped`
@@ -168,11 +168,6 @@ def build_alpr(ctx, sources: dict):
             last4 = 0
 
     newest_date = stats.get("newest_mapped", "—")
-    # Honest overlay counts: on a data failure show "—" not a false "0".
-    ov_total = (str(stats.get("total", 0)) if stat_ok else "—")
-    ov_flock = (str(stats.get("flock", 0)) if stat_ok else "—")
-    ov_last4 = (f"+{last4}" if stat_ok else "—")
-
     if data.get("ok"):
         stat_html = (
             _stat(f"{stats.get('total', 0)}", "ALPR cameras mapped", "") +
@@ -183,43 +178,14 @@ def build_alpr(ctx, sources: dict):
     else:
         stat_html = '<div class="errorbox">Overpass/OSM data unavailable this build.</div>'
 
-    # overlay "newest cameras" list — each link carries the camera's coords
-    # so the map can fly to it and zoom to street level (see trackers.js)
-    if newest_top:
-        ov_items = "".join(f"""
-        <li>
-        <a href="#" class="ov-cam" data-id="{c['id']}" data-lat="{c.get('lat', '')}"
-           data-lon="{c.get('lon', '')}" data-dir="{html.escape(str(c.get('direction', '')))}">
-        {html.escape(str(c.get('mapped', '')))}</a>
-        <span class="ov-meta">{html.escape(c.get('manufacturer', ''))}
-        {('· facing ' + html.escape(c['direction'])) if c.get('direction') else ''}</span></li>"""
-                           for c in newest_top)
-        overlay_list = f'<h4>Newest cameras</h4><ol class="ov-list">{ov_items}</ol>'
-    else:
-        overlay_list = ""
-
-    map_html = f"""
-    <div class="mapwrap deflock">
-      <div id="alpr-map" role="application" aria-label="Map of license plate reader camera locations"></div>
-      <div class="map-overlay" id="map-overlay">
-        <div class="ov-head">
-          <h3>Flock &amp; ALPRs <span>&middot; Kern County</span></h3>
-          <button type="button" class="ov-min" aria-expanded="true"
-                  aria-label="Close panel" title="Close panel">&#8722;</button>
-        </div>
-        <div class="ov-stats">
-          <div><span class="n">{ov_total}</span> cameras mapped</div>
-          <div><span class="n">{ov_flock}</span> Flock Safety</div>
-          <div><span class="n">{ov_last4}</span> new in 28 days</div>
-        </div>
-        <button id="toggle-newest" class="ov-btn" aria-pressed="false">Highlight newest (28 days)</button>
-        <p class="ov-note" id="newest-note">All cameras shown — ring markers mark the last 28 days of mapping.</p>
-        {overlay_list}
-        <div class="map-legend" id="map-legend-stats"></div>
-        <button type="button" id="ov-toggle" class="ov-toggle" aria-expanded="true"
-                aria-label="Close panel" title="Close panel">Close</button>
-      </div>
-    </div>"""
+    # The land ownership explorer IS the map on this page: every camera from OSM on a Leaflet map,
+    # each joined to the owner of record for the land at or beside it. Lists are server-rendered
+    # (crawlable, readable without JS); alpr-explorer.js adds the map, search and full records.
+    # /surveillance/ is the only ALPR url: records live at #camera/<id>, not on pages of their own.
+    total_n = stats.get("total", 0)
+    flock_n = stats.get("flock", 0)
+    explorer, facts = alpr_page.explorer_html(cameras, asof, total_n, bool(data.get("ok")))
+    own_ok = bool(facts.get("own"))
 
     # change log table
     if change_log:
@@ -237,10 +203,10 @@ def build_alpr(ctx, sources: dict):
     else:
         log_table = '<p class="note">No weekly snapshots recorded yet.</p>'
 
-    # newest full list (below map)
+    # newest list: each entry opens the camera on the map and keeps its OSM node link
     if newest_full:
         nl = "".join(f"""
-        <li><span class="n-date">{html.escape(str(c.get('mapped', '')))}</span>
+        <li><a class="n-date" href="#camera/{c['id']}">{html.escape(str(c.get('mapped', '')))}</a>
         <span class="n-meta">{html.escape(c.get('manufacturer', ''))}{(' · facing ' + html.escape(c['direction'])) if c.get('direction') else ''}
         &middot; <a href="https://www.openstreetmap.org/node/{c['id']}" target="_blank" rel="noopener">node {c['id']}</a></span></li>"""
                      for c in newest_full)
@@ -249,9 +215,9 @@ def build_alpr(ctx, sources: dict):
         newest_list = '<p class="note">No cameras with OSM mapped dates yet.</p>'
 
     body = f"""
-    {map_html}
+    {explorer}
 
-    <div class="stats">{stat_html}</div>
+    {alpr_page.ownership_html(facts, total_n)}
 
     <div class="brief-grid" style="margin-top:6px">
       <div class="brief-main">
@@ -270,14 +236,17 @@ def build_alpr(ctx, sources: dict):
       </div>
     </div>
 
+    {images.figure("flock", "../")}
+
     <div class="card">
       <span class="tag amber">Flock · ALPR</span>
       <h3>What this tracker shows</h3>
       <p>Bakersfield is one of the most camera-dense cities in California for automated license
       plate readers. This page maps every ALPR camera that volunteers have recorded in
       OpenStreetMap inside the Bakersfield metro, most of which are Flock Safety units. The map
-      updates weekly; camera markers show manufacturer, operator, facing direction, and the date
-      the node was mapped.</p>
+      updates weekly; tap any camera for its manufacturer, operator, facing direction, the date the
+      node was mapped, and the owner of record for the land at or beside it. At street zoom the map
+      draws an amber cone showing the direction each camera faces.</p>
       <p>Understanding where plate readers are mounted is public-record information that helps
       residents know when their vehicle&rsquo;s movements are being recorded. This page offers
       <strong>no guidance on avoiding or interfering with these devices</strong> &mdash; they are
@@ -288,69 +257,76 @@ def build_alpr(ctx, sources: dict):
       tags are also volunteer-supplied.</p>
     </div>
 
+    {alpr_page.sources_html(facts, total_n)}
+
     <p class="note">Data: &copy; OpenStreetMap contributors (ODbL), queried via the Overpass API
-    with node edit timestamps. Map tiles: &copy; OpenStreetMap contributors / Esri World Street Map.
+    with node edit timestamps. Map tiles: &copy; Esri World Street Map. Land ownership: Kern County
+    assessor roll, City of Bakersfield GIS and California Secretary of State records.
     Change log backfilled from real OSM node history on site setup.</p>"""
 
-    flock_n = stats.get("flock", 0)
-    total_n = stats.get("total", 0)
-
+    ok = bool(data.get("ok"))
+    questions = [
+        ("How many Flock cameras are in Bakersfield?",
+         (f"Based on volunteer-mapped OpenStreetMap data, {flock_n} Flock Safety "
+          f"cameras are mapped in Bakersfield and Kern County, out of {total_n} "
+          f"total license plate reader (ALPR) cameras, as of {asof}.")
+         if ok else
+         ("A current count is unavailable because the camera data source "
+          "(OpenStreetMap) did not load this build. Use the map and stats once "
+          "data is restored.")),
+        ("Where are the Flock cameras in Bakersfield?",
+         (f"This page shows a live map of all {total_n} mapped license plate reader "
+          f"cameras in the Bakersfield metro, {flock_n} of which are Flock Safety "
+          f"units. Each camera marker shows its manufacturer, operator, and facing "
+          f"direction.")
+         if ok else
+         ("The camera map cannot be shown right now because the data source "
+          "(OpenStreetMap) did not load this build. Check back once data is restored.")),
+        ("Are Flock cameras legal in California?",
+         ("Automated license-plate reader (ALPR) use by law enforcement is "
+          "generally lawful in California, subject to state and local restrictions. "
+          "Flock and similar systems must comply with California's ALPR statutes, and "
+          "specific rules vary by agency. This page maps publicly visible cameras and "
+          "offers no guidance on avoiding or interfering with them.")),
+        ("How long do Flock cameras keep data?",
+         ("Data retention varies by agency. California law requires agencies that use "
+          "ALPR to publish a retention schedule, so check the specific law-enforcement "
+          "agency's policy rather than assuming a single number. This page does not "
+          "track or report on stored plate data.")),
+    ]
+    if own_ok:
+        est = alpr_explorer.stats()
+        top = sorted([o for o in facts["own"]["owners"] if not o.get("withheld")],
+                     key=lambda o: (-o.get("n", 0), o.get("name", "")))[:5]
+        top_txt = "; ".join(f"{o['name']}, {o['n']}" for o in top)
+        questions += [
+            ("Who owns the land under the license plate cameras?",
+             (f"Each camera on this page is joined to the nearest Kern County tax-roll parcel and to "
+              f"its owner of record: {facts['joined']} of the {total_n} mapped cameras, "
+              f"{facts['owners']} owners of record and {facts['parcels']} parcels, from county records "
+              f"as of {facts['built']}. {est['private_parcel']} cameras stand on or beside a privately "
+              f"titled parcel, {est['street_row']} stand in a street or right of way where the named "
+              f"parcel is only the nearest one, and {est['city_owned']} stand on or beside land with a "
+              f"City of Bakersfield interest. Every record prints the public source behind it.")),
+            ("Which owners have the most license plate cameras at or beside their land?",
+             (f"By camera count, from the county tax roll as of {facts['built']}: {top_txt}. "
+              f"{est['multi_owner']} owners have more than one camera at or beside their land.")),
+            ("Are the owners named, or are the names withheld?",
+             (("Every owner is named exactly as the Kern County assessor roll states it, with the "
+               "source printed for every value.")
+              if alpr_explorer.PUBLISH_PRIVATE_NAMES else
+              ("Companies and public agencies are named exactly as the Kern County assessor roll and "
+               "the California Secretary of State state them. Private individuals and family trusts "
+               "are not named on this page: their records keep the camera, the parcel number and "
+               "the public sources, and the name stays with the county."))
+             + f" {est['contact_owners']} of the {est['owners']} owners have a published phone, email "
+               f"or mailing address, and that route is printed with its source."),
+        ]
     faq_jsonld = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "How many Flock cameras are in Bakersfield?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": (f"Based on volunteer-mapped OpenStreetMap data, {flock_n} Flock Safety "
-                             f"cameras are mapped in Bakersfield and Kern County, out of {total_n} "
-                             f"total license plate reader (ALPR) cameras, as of {asof}."
-                             if data.get("ok") else
-                             "A current count is unavailable because the camera data source "
-                             "(OpenStreetMap) did not load this build. Use the map and stats once "
-                             "data is restored.")
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Where are the Flock cameras in Bakersfield?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": (f"This page shows a live map of all {total_n} mapped license plate reader "
-                             f"cameras in the Bakersfield metro, {flock_n} of which are Flock Safety "
-                             f"units. Each camera marker shows its manufacturer, operator, and facing "
-                             f"direction."
-                             if data.get("ok") else
-                             "The camera map cannot be shown right now because the data source "
-                             "(OpenStreetMap) did not load this build. Check back once data is restored.")
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Are Flock cameras legal in California?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": ("Automated license-plate reader (ALPR) use by law enforcement is "
-                             "generally lawful in California, subject to state and local restrictions. "
-                             "Flock and similar systems must comply with California's ALPR statutes, and "
-                             "specific rules vary by agency. This page maps publicly visible cameras and "
-                             "offers no guidance on avoiding or interfering with them.")
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "How long do Flock cameras keep data?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": ("Data retention varies by agency. California law requires agencies that use "
-                             "ALPR to publish a retention schedule, so check the specific law-enforcement "
-                             "agency's policy rather than assuming a single number. This page does not "
-                             "track or report on stored plate data.")
-                }
-            }
-        ]
+        "mainEntity": [{"@type": "Question", "name": q,
+                        "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in questions],
     }
 
     # visible declarative answer + honest scope note (resolves the count vs.
@@ -371,7 +347,9 @@ def build_alpr(ctx, sources: dict):
         desc = (f"See every license plate reader in Bakersfield on a live map — {flock_n} "
                 f"Flock Safety cameras and {total_n} total ALPR units mapped in the metro, "
                 f"with facing direction, newest-camera highlights, and a weekly change log "
-                f"from OpenStreetMap.")
+                f"from OpenStreetMap."
+                + (" Tap any camera for the owner of record of the land at or beside it."
+                   if own_ok else ""))
     else:
         desc = ("Live map of license-plate reader (ALPR) and Flock Safety cameras in "
                 f"Bakersfield — data source (OpenStreetMap) was unavailable this build. "
@@ -381,11 +359,36 @@ def build_alpr(ctx, sources: dict):
     # render the same Q&A visibly so on-page text and schema never drift
     body += _faq_visible(faq_jsonld, "Flock &amp; ALPR questions")
 
+    # the records file the explorer opens (an asset with a content hash, never a page)
+    if own_ok:
+        body = body.replace('<section class="ax" id="explorer"',
+                            f'<section class="ax" id="explorer" data-src="{alpr_explorer.asset_url("../")}"', 1)
+
+    extra_ld = []
+    if own_ok:
+        extra_ld.append({
+            "@context": "https://schema.org", "@type": "Dataset",
+            "name": "Bakersfield license plate camera land ownership",
+            "description": (f"Automated license plate reader cameras mapped in Bakersfield, California, "
+                            f"each joined to the nearest Kern County tax-roll parcel and its owner of "
+                            f"record: {facts['joined']} cameras, {facts['owners']} owners of record, "
+                            f"{facts['parcels']} parcels, with the public source for each value."),
+            "url": "https://bakersfieldbrief.com/surveillance/",
+            "isAccessibleForFree": True,
+            "creator": {"@type": "NewsMediaOrganization", "name": "Bakersfield Daily Brief",
+                        "url": "https://bakersfieldbrief.com/"},
+            "spatialCoverage": {"@type": "Place", "name": "Bakersfield, Kern County, California"},
+            "dateModified": facts["built"] or asof,
+            "isBasedOn": ["https://www.openstreetmap.org/", "https://www.kerndata.com/"],
+        })
+
+    # The explorer draws the map now: leaflet + markercluster load (the page promises a live map),
+    # trackers.js does not. webmcp-alpr.js stays and so does #tracker-data.
     _write_tracker(ctx, "surveillance", "Flock Camera Map — Bakersfield",
                    desc,
-                   stat_html, body, payload, sources, dark=True, img="flock",
+                   stat_html, body, payload, sources, dark=True, img="",
                    seo_title="Bakersfield Flock Camera Map | Live ALPR Tracker",
-                   faq_jsonld=faq_jsonld)
+                   faq_jsonld=faq_jsonld, map_js="alpr-explorer.js", extra_jsonld=extra_ld)
 
 
 # ------------------------------------------------------------------ fires
@@ -857,7 +860,8 @@ def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
                    img: str = "", seo_title: str = "", faq_jsonld: dict | None = None,
                    map_js: str = "trackers.js", cadence: str | None = None,
                    method: str | None = None, current: str = "trackers",
-                   og_image: str = "https://bakersfieldbrief.com/assets/img/emblem.png"):
+                   og_image: str = "https://bakersfieldbrief.com/assets/img/emblem.png",
+                   extra_jsonld: list | None = None):
     built_iso = common.iso_today()
     rel = "../"
     tpl = common.read_template("tracker.html")
@@ -916,7 +920,8 @@ def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(),
                 page_mod.webpage_jsonld(f"/{slug}/", built_iso,
                                         name=name, desc=lede)]
-               + ([faq_jsonld] if faq_jsonld else []),
+               + ([faq_jsonld] if faq_jsonld else [])
+               + (extra_jsonld or []),
         statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         extra_head=map_head
                    + ('<link rel="stylesheet" href="../assets/css/deflock.css?v=' + _asset_ver_css() + '">' if dark else ""),
@@ -962,7 +967,9 @@ def build_hub(ctx, sources: dict) -> list[str]:
       fetching &mdash; the page you see is the page that was built. Adding a tracker is a
       ~30-minute job: see the README.</p>
       <p>ALPR count on the last build: <strong>{stats.get('total', '—')} cameras mapped</strong>
-      ({stats.get('flock', 0)} Flock Safety). Map data &copy; OpenStreetMap contributors, ODbL.</p></div>
+      ({stats.get('flock', 0)} Flock Safety). Map data &copy; OpenStreetMap contributors, ODbL.
+      Every camera is also joined to the nearest tax-roll parcel and the owner of record: see
+      <a href="{rel}surveillance/#ownership">who owns the land at or beside each camera</a>.</p></div>
     </section>"""
 
     page = page_mod.render(
@@ -984,7 +991,7 @@ def build_hub(ctx, sources: dict) -> list[str]:
 
 # register in dependency order (hub reads TRACKERS)
 register("surveillance", "Flock & ALPR Tracker",
-         "Every automated license plate reader mapped in the Bakersfield metro — weekly map, facing direction, newest-camera highlights, and a real 13-week change log.", build_alpr)
+         "Every automated license plate reader mapped in the Bakersfield metro, each one joined to its tax-roll parcel and owner of record: weekly map, facing direction, newest-camera highlights and a real 13-week change log.", build_alpr)
 register("fires", "Kern County Fire Tracker",
          "Active wildfires in Kern County and California, live from the official CAL FIRE feed — map, acres, containment, and automatic updates.", build_fires)
 register("water", "Lake Isabella Water Level",

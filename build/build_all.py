@@ -33,7 +33,7 @@ from build.builders import (daily, cityhall, trackers, static_pages,
                             places, guide, grapevine, events, feed,
                             numbers, letters,
                             overnight, sunday_read, map, fair, tehachapi,
-                            tehachapi_weather, roads)  # noqa: E402
+                            tehachapi_weather, roads, alpr_explorer)  # noqa: E402
 from build.builders import page as page_mod  # noqa: E402
 
 
@@ -88,6 +88,7 @@ def main():
                 ("feed", feed), ("numbers", numbers), ("letters", letters),
                 ("overnight", overnight),
                 ("map", map),
+                ("alpr_explorer", alpr_explorer),
                 ("sunday_read", sunday_read),
                 ("fair", fair),
                 ("static", static_pages)]
@@ -198,7 +199,10 @@ def _sitemap():
 
     # Cloudflare Pages _redirects — guessable URLs a human might type.
     common.write(common.SITE / "_redirects",
-                 "/places/east-bakersfield/*  /places/bakersfield-east/:splat  301\n")
+                 "/places/east-bakersfield/*  /places/bakersfield-east/:splat  301\n"
+                 # /surveillance/ is the only ALPR page; the explorer was never a url of its own.
+                 "/alpr-explorer  /surveillance/  301\n"
+                 "/alpr-explorer/*  /surveillance/  301\n")
 
 
 def _page_titles() -> dict:
@@ -318,6 +322,12 @@ def _llms_full(results: dict) -> None:
                 f"{alpr.get('asof', today)}.")
     else:
         surv = "Live map of license-plate readers in the Bakersfield metro; data unavailable this build."
+    # the land ownership join, from the same committed data the page renders (never typed)
+    _own = alpr_explorer.stats()
+    if isinstance(_own.get("owners"), int):
+        surv += (f" Each camera is joined to the nearest Kern County tax-roll parcel and its owner of "
+                 f"record: {_own['owners']} owners of record across {_own['parcels']} parcels "
+                 f"(county records as of {_own['built']}).")
 
     # --- water ---
     iso = results.get("isabella", {})

@@ -915,7 +915,7 @@ def _category_grid(rel, escribe, board, abc, food, alpr, calfire) -> str:
       {images.thumb("chp", rel)}
       <span class="cat-label">In Depth</span>
       <h3>Flock &amp; ALPR tracker</h3>
-      <p>{depth_line} &mdash; map, direction, and a real 13-week change log from OpenStreetMap.</p>
+      <p>{depth_line} &mdash; map, direction, who owns the land at or beside each camera, and a real 13-week change log.</p>
       <span class="card-go">Open the map</span>
     </a>"""
 

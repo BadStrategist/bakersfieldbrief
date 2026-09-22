@@ -1,0 +1,146 @@
+[
+ {
+  "type": "armed subject / officer safety",
+  "time": "22:47",
+  "agency": "Bakersfield Police Department",
+  "area": "1700 block of Mount Vernon Avenue, Bakersfield",
+  "notability": 4,
+  "disposition": "subject escorted off hospital property; area broadcast to officers on both radio channels",
+  "summary": "A city-wide officer safety broadcast went out for a man armed with a knife at a hospital in the 1700 block of Mount Vernon Avenue. He was escorted off the property and was last seen walking toward East High School. Officers were told he was no longer on the grounds."
+ },
+ {
+  "type": "weapons call",
+  "time": "21:53",
+  "agency": "Kern County Sheriff's Office",
+  "area": "east Bakersfield",
+  "notability": 3,
+  "disposition": "deputies searching the area; caller stayed on the line",
+  "summary": "A caller told dispatchers that people looking for him had guns, and that they were still wearing dark clothing. The caller stayed on the phone with dispatchers while deputies responded to the east Bakersfield park where he said he was, and units were asked to stand by as the call continued."
+ },
+ {
+  "type": "assault with a weapon",
+  "time": "01:45",
+  "agency": "Bakersfield Police Department",
+  "area": "2700 block of White Lane, Bakersfield",
+  "notability": 3,
+  "disposition": "officers sent to take the report; no answer on callback",
+  "summary": "Two units were sent for an assault with a bat that had happened about 20 minutes earlier in the 2700 block of White Lane. The caller could not be reached again, and a description of the person who was struck went out to responding officers."
+ },
+ {
+  "type": "call for help",
+  "time": "00:14",
+  "agency": "Bakersfield Police Department",
+  "area": "100 block of Hart Street, Bakersfield",
+  "notability": 3,
+  "disposition": "units responding; caller rang back with more detail",
+  "summary": "A caller reported a woman screaming for help at a location in the 100 block of Hart Street, near the river bed. The caller called back a minute later to say the screaming could still be heard in the background and asked for officers to keep coming."
+ },
+ {
+  "type": "outside fire",
+  "time": "01:41",
+  "agency": "Kern County Fire Department",
+  "area": "Mount Vernon Avenue at Kentucky Street, Bakersfield",
+  "notability": 3,
+  "disposition": "fire assignment sent",
+  "summary": "A fire crew was sent for an outside fire at Mount Vernon Avenue and Kentucky Street."
+ },
+ {
+  "type": "outside fire",
+  "time": "00:31",
+  "agency": "Kern County Fire Department",
+  "area": "Highway 58 west of Mount Vernon Avenue, Bakersfield",
+  "notability": 3,
+  "disposition": "fire assignment sent",
+  "summary": "An outside fire was reported along westbound Highway 58 just west of Mount Vernon Avenue, and a fire unit was assigned."
+ },
+ {
+  "type": "disturbance",
+  "time": "02:14",
+  "agency": "Bakersfield Police Department",
+  "area": "1400 block of 2nd Street, Bakersfield",
+  "notability": 3,
+  "disposition": "officers responding",
+  "summary": "Officers were sent to a disturbance in progress in the 1400 block of 2nd Street, where a man and a woman were reported in a physical fight, moving in and out of an apartment."
+ },
+ {
+  "type": "welfare check",
+  "time": "22:16",
+  "agency": "Kern County Sheriff's Office",
+  "area": "4600 block of Columbus Street, Bakersfield",
+  "notability": 2,
+  "disposition": "deputies responding",
+  "summary": "Deputies were sent to check the welfare of children who were with their mother, who was reported to be in a mental health crisis, at an apartment in the 4600 block of Columbus Street."
+ },
+ {
+  "type": "disturbance",
+  "time": "23:06",
+  "agency": "Bakersfield Police Department",
+  "area": "600 block of Sumner Street, Bakersfield",
+  "notability": 2,
+  "disposition": "unit responding",
+  "summary": "A disturbance call had been holding for some time at an apartment in the 600 block of Sumner Street, and an officer was sent."
+ },
+ {
+  "type": "disturbance",
+  "time": "22:15",
+  "agency": "Bakersfield Police Department",
+  "area": "Motel 6, Oak Street, Bakersfield",
+  "notability": 2,
+  "disposition": "call holding; officers responding",
+  "summary": "A disturbance call had been holding at the Motel 6 on Oak Street, at a room in the far end of the property."
+ },
+ {
+  "type": "disturbance",
+  "time": "22:41",
+  "agency": "Bakersfield Police Department",
+  "area": "5600 block of Auburn Street, Bakersfield",
+  "notability": 2,
+  "disposition": "officers responding",
+  "summary": "Officers were sent to a Circle K in the 5600 block of Auburn Street for a report of two people swinging at the air, with a 17-year-old with them."
+ },
+ {
+  "type": "suspicious person",
+  "time": "23:24",
+  "agency": "Bakersfield Police Department",
+  "area": "2400 block of Ming Avenue, Bakersfield",
+  "notability": 2,
+  "disposition": "officers responding",
+  "summary": "Officers were sent to a restaurant in the 2400 block of Ming Avenue, where a man was reported to be following a 17-year-old."
+ },
+ {
+  "type": "medical aid",
+  "time": "04:58",
+  "agency": "Kern County Fire Department",
+  "area": "1900 block of East Brundage Lane, Bakersfield",
+  "notability": 2,
+  "disposition": "medics sent; entry made on the east side",
+  "summary": "A fire engine was sent to the Navigation Center in the 1900 block of East Brundage Lane for a medical aid, with the patient reported in the men's restroom."
+ },
+ {
+  "type": "loitering complaint",
+  "time": "00:56",
+  "agency": "Bakersfield Police Department",
+  "area": "100 block of Montclair Street, Bakersfield",
+  "notability": 2,
+  "disposition": "call holding; unit advised",
+  "summary": "A loitering call had been holding for about an hour and a half in the 100 block of Montclair Street, where several people were reported in the alley."
+ },
+ {
+  "type": "pedestrian check",
+  "time": "04:06",
+  "agency": "California Highway Patrol",
+  "area": "Highway 43 northwest of Panama Lane, Bakersfield",
+  "notability": 2,
+  "disposition": "area checked; nothing found",
+  "summary": "A caller reported a man in a wheelchair flagging down traffic on Highway 43 northwest of Panama Lane. Units checked the area and found no one in the roadway."
+ },
+ {
+  "type": "alarm",
+  "time": "00:53",
+  "agency": "Bakersfield Police Department",
+  "area": "2900 block of F Street, Bakersfield",
+  "notability": 2,
+  "disposition": "officers responding",
+  "summary": "An audible alarm was reported at a restaurant in the 2900 block of F Street, with the activation at a dining room door."
+ }
+]

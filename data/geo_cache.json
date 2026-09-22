@@ -69,5 +69,43 @@
  "robinson street & jefferson street, Bakersfield, CA": null,
  "panama lane & mountain vista drive, Bakersfield, CA": null,
  "niles street block & mount vernon avenue, Bakersfield, CA": null,
- "niles street & ashe road, Bakersfield, CA": null
+ "niles street & ashe road, Bakersfield, CA": null,
+ "2700 block of white lane, Bakersfield, Kern County, CA": null,
+ "white lane, Bakersfield, CA": [
+  35.324929,
+  -119.1479182
+ ],
+ "100 block of hart street, Bakersfield, Kern County, CA": null,
+ "hart street, Bakersfield, CA": null,
+ "mount vernon avenue & kentucky street, Bakersfield, CA": null,
+ "4600 block of columbus street, Bakersfield, Kern County, CA": null,
+ "columbus street, Bakersfield, CA": [
+  35.4079524,
+  -118.9483806
+ ],
+ "600 block of sumner street, Bakersfield, Kern County, CA": null,
+ "sumner street, Bakersfield, CA": [
+  35.3783101,
+  -118.9987394
+ ],
+ "5600 block of auburn street, Bakersfield, Kern County, CA": null,
+ "auburn street, Bakersfield, CA": [
+  35.3989991,
+  -118.9158126
+ ],
+ "2400 block of ming avenue, Bakersfield, Kern County, CA": null,
+ "ming avenue, Bakersfield, CA": [
+  35.3353799,
+  -119.0789235
+ ],
+ "100 block of montclair street, Bakersfield, Kern County, CA": null,
+ "montclair street, Bakersfield, CA": [
+  35.3639189,
+  -119.0508473
+ ],
+ "2900 block of f street, Bakersfield, Kern County, CA": null,
+ "f street, Bakersfield, CA": [
+  35.3821437,
+  -119.0234864
+ ]
 }

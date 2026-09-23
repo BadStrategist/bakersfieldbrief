@@ -1388,5 +1388,15 @@
   "lat": 34.79459,
   "lon": -118.851591,
   "details": ""
+ },
+ {
+  "log_id": "260923BF0158",
+  "time": "Sep 23 2026 10:56AM",
+  "type": "CFIRE-Car Fire",
+  "location": "Nb I5 Jso Lerdo Hwy",
+  "area": "Buttonwillow",
+  "lat": 35.497165,
+  "lon": -119.531506,
+  "details": ""
  }
 ]

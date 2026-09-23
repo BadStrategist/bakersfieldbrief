@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-23T10:48:15-07:00",
+ "built_at": "2026-09-23T11:09:17-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -14,7 +14,7 @@
    "error": ""
   },
   "gnews": {
-   "ok": true,
+   "ok": false,
    "error": ""
   },
   "weather": {
@@ -39,7 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": ""
+   "error": "ConnectionError: HTTPSConnectionPool(host='overpass-api.de', port=443): Max retries exceeded with url: /api/interpreter (Caused by NewConnectionError(\"HTTPSConnection(host='overpass-api.de', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\"))"
   },
   "venues": {
    "ok": true,
@@ -62,10 +62,10 @@
   "_digest_meta": "deterministic",
   "brief_words": 988,
   "daily": {
-   "news_headlines": 75,
+   "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 1,
    "top_story": "BPD: Search for two men, one in black wig, accused of breaking into Oleander home - bakersfieldnow.com",
    "archive": "2026-09-23"
   },
@@ -84,11 +84,11 @@
    ],
    "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 12,
-    "bakersfield-nw": 12,
-    "bakersfield-sw": 12,
-    "bakersfield-east": 12,
-    "bakersfield-central": 12
+    "tehachapi": 0,
+    "bakersfield-nw": 0,
+    "bakersfield-sw": 0,
+    "bakersfield-east": 0,
+    "bakersfield-central": 0
    }
   },
   "guide": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 6,
+   "wind_mph": 10,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 80,
-   "wind_mph": 6,
+   "temp": 79,
+   "wind_mph": 10,
    "alerts": 0
   },
   "roads": {
@@ -135,7 +135,7 @@
    "alpr_total": 268,
    "kern_fires": 0,
    "aqi": 85,
-   "chp_week": 63
+   "chp_week": 64
   },
   "letters": {
    "published": 0

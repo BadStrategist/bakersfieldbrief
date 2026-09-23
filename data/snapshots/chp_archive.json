@@ -1300,6 +1300,16 @@
   "details": ""
  },
  {
+  "log_id": "260922BF0365",
+  "time": "Sep 22 2026  6:55PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb Sr99 At 7th Standard Rd",
+  "area": "Bakersfield",
+  "lat": 35.441294,
+  "lon": -119.084247,
+  "details": ""
+ },
+ {
   "log_id": "260922BF0113",
   "time": "Sep 22 2026  8:54AM",
   "type": "CZP-Assist with Construction",

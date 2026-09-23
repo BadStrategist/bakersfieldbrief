@@ -1,8 +1,10 @@
 """Server-rendered parts of the land ownership explorer on /surveillance/.
 
 Every camera, owner and parcel is written into the page's own HTML, so the records are crawlable and
-readable without JavaScript. assets/js/alpr-explorer.js enhances the same markup: map, search,
-filters and full records at #camera/<id>, #owner/<n> and #parcel/<n>. Hash routes are not urls of
+readable without JavaScript. assets/js/alpr-explorer.js enhances the same markup: the map, the
+filters and the full records at #camera/<id>, #owner/<n> and #parcel/<n>. There is no search box
+on this page (removed 2026-09-22 at the owner's request, and the data-q index went with it). Hash
+routes are not urls of
 their own: /surveillance/ stays the only ALPR page.
 
 Copy rule: a camera stands "at or beside" an owner's land, or the parcel is "the nearest parcel".
@@ -109,14 +111,11 @@ def _cam_item(c: dict, cutoff: str) -> str:
     if o:
         own_line = (f'{esc(relation(o)).capitalize()} parcel {esc(o.get("apn") or "")}: '
                     f'<b>{esc(o.get("owner") or "no owner name on the roll")}</b>')
-        hay = " ".join([loc, o.get("owner") or "", o.get("apn") or "", o.get("use") or "",
-                        c["id"], c["manu"], c["op"]])
     else:
         own_line = "Ownership not joined yet: mapped after the county records snapshot."
-        hay = " ".join([loc, c["id"], c["manu"], c["op"]])
     return (f'<li class="ax-item" data-id="{esc(c["id"])}" data-k="{k}"'
-            f'{" data-new" if is_new else ""}{" data-flock" if flock else ""}'
-            f' data-q="{esc(hay.lower())}"><a href="#camera/{esc(c["id"])}">'
+            f'{" data-new" if is_new else ""}{" data-flock" if flock else ""}>'
+            f'<a href="#camera/{esc(c["id"])}">'
             f'<span class="ax-it">{esc(loc)}{" <em class=ax-new>new</em>" if is_new else ""}</span>'
             f'<span class="ax-im">{" &middot; ".join(meta)}</span>'
             f'<span class="ax-io">{own_line}</span></a></li>')
@@ -128,7 +127,7 @@ def _owner_item(o: dict) -> str:
     chips = f'<span class="ax-chip {k}">{TYPE_LABEL.get(k, "owner")}</span>'
     if o.get("phone") or o.get("email"):
         chips += '<span class="ax-chip ok">contact published</span>'
-    return (f'<li class="ax-item" data-oid="{o.get("oid")}" data-k="{k}" data-q="{esc(str(o.get("name", "")).lower())}">'
+    return (f'<li class="ax-item" data-oid="{o.get("oid")}" data-k="{k}">'
             f'<a href="#owner/{o.get("oid")}"><span class="ax-it">{esc(o.get("name", ""))}</span>'
             f'<span class="ax-im"><b>{n}</b> camera{"s" if n != 1 else ""} at or beside their land, '
             f'{np_} parcel{"s" if np_ != 1 else ""}</span><span class="ax-io">{chips}</span></a></li>')
@@ -138,8 +137,7 @@ def _parcel_item(p: dict, owners: list[dict]) -> str:
     oids = [x for x in p.get("oids", []) if x is not None]
     k = type_key(owners[oids[0]].get("type")) if oids and oids[0] < len(owners) else "other"
     n = p.get("n", 0)
-    return (f'<li class="ax-item" data-pid="{p.get("pid")}" data-k="{k}" '
-            f'data-q="{esc((p.get("apn", "") + " " + " ".join(p.get("owners", [])) + " " + (p.get("use") or "")).lower())}">'
+    return (f'<li class="ax-item" data-pid="{p.get("pid")}" data-k="{k}">'
             f'<a href="#parcel/{p.get("pid")}"><span class="ax-it">Parcel {esc(p.get("apn", ""))}</span>'
             f'<span class="ax-im"><b>{n}</b> camera{"s" if n != 1 else ""} on or beside it &middot; {esc(p.get("use") or "use not stated")}</span>'
             f'<span class="ax-io">{esc(", ".join(p.get("owners", [])))}</span></a></li>')
@@ -180,7 +178,7 @@ def explorer_html(osm_cams: list[dict], asof: str, total: int, ok: bool) -> tupl
         sub = "The camera source (OpenStreetMap) did not load this build."
     elif own and joined == total:
         sub = (f"All {total} mapped cameras, each joined to the owner of record for the land at or beside "
-               f"it (Kern County tax roll, {esc(built)}). Tap a camera, or search.")
+               f"it (Kern County tax roll, {esc(built)}). Tap a camera to open its record.")
     elif own:
         sub = (f"{total} cameras on the map. {joined} are joined to the owner of record for the land at "
                f"or beside them (Kern County tax roll, {esc(built)}); newer cameras join at the next "
@@ -194,12 +192,6 @@ def explorer_html(osm_cams: list[dict], asof: str, total: int, ok: bool) -> tupl
         <div class="ax-title">
           <h3 id="ax-h">Flock &amp; ALPRs <span>&middot; Kern County</span></h3>
           <p class="ax-sub">{sub}</p>
-        </div>
-        <div class="ax-search" role="search">
-          <label class="sr" for="ax-q">Search cameras, streets, owners or parcel numbers</label>
-          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15.5 15.5 21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <input id="ax-q" type="search" placeholder="Search a street, business, owner or parcel number"
-                 autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="search">
         </div>
         <div class="ax-filters" role="group" aria-label="Show cameras">
           {chip("all", "All")}{chip("new", "New, last 28 days")}{chip("flock", "Flock Safety")}{chip("agency", "Public agency land")}{chip("entity", "Company land")}{chip("private", "Private land")}

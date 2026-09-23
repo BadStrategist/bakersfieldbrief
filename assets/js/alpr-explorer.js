@@ -5,7 +5,7 @@
    (crawlable, and readable with JavaScript off). This script adds:
      - the Leaflet map of every OSM camera (from #tracker-data, inlined at build time), with
        clusters, a "new in 28 days" ring and facing cones at street zoom;
-     - search and filters that drive the lists and the map together;
+     - filters that drive the lists and the map together;
      - full records at #camera/<id>, #owner/<n>, #parcel/<n>, opened from the data file named in
        #explorer[data-src]. Hash routes are not pages: /surveillance/ is the only ALPR url.
    Wheel zoom is off so a wheel over the map scrolls the page; Ctrl (or Cmd) + wheel zooms.
@@ -124,12 +124,12 @@
   root.appendChild(liveEl);
   function say(m) { liveEl.textContent = m; }
 
-  /* ---------------- lists, tabs, filters, search ---------------- */
+  /* ---------------- lists, tabs, filters ---------------- */
   var lists = { cams: $("ax-l-cams"), owners: $("ax-l-owners"), parcels: $("ax-l-parcels") };
   var tabs = { cams: $("ax-t-cams"), owners: $("ax-t-owners"), parcels: $("ax-t-parcels") };
-  var qEl = $("ax-q"), countEl = $("ax-count"), emptyEl = $("ax-empty"), moreEl = $("ax-more");
+  var countEl = $("ax-count"), emptyEl = $("ax-empty"), moreEl = $("ax-more");
   var detailEl = $("ax-detail"), scrollEl = $("ax-scroll"), panel = $("ax-panel");
-  var state = { tab: "cams", filter: "all", q: "", expanded: false, record: null };
+  var state = { tab: "cams", filter: "all", expanded: false, record: null };
   var NOUN = { cams: ["camera", "cameras"], owners: ["owner", "owners"], parcels: ["parcel", "parcels"] };
   var PAGE = 20;   // rows shown on a phone before "Show all"
 
@@ -138,16 +138,15 @@
     if (c) { c.li = li; c.k = li.getAttribute("data-k"); }
   });
 
+  // Filters only: there is no search box on this page. Every chip pairs with a data-k on the
+  // server-rendered lists, so a filter works with the map and with JavaScript off.
   function passes(li, name) {
     var f = state.filter, k = li.getAttribute("data-k");
-    if (f !== "all") {
-      if (f === "new" || f === "flock") {
-        if (name === "cams" && !li.hasAttribute("data-" + f)) return false;
-      } else if (k !== f) return false;
-    }
-    // One phrase, matched as typed: "home depot" must not match every record holding "home" and
-    // "depot" in two different fields.
-    return !state.q || (li.getAttribute("data-q") || "").indexOf(state.q) > -1;
+    if (f === "all") return true;
+    if (f === "new" || f === "flock") {
+      if (name === "cams" && !li.hasAttribute("data-" + f)) return false;
+    } else if (k !== f) return false;
+    return true;
   }
 
   function apply(fromSearch) {
@@ -155,7 +154,7 @@
     // controls over it.
     if (state.record) { moreEl.hidden = true; emptyEl.hidden = true; drawMarkers(fromSearch); return; }
     var name = state.tab, list = lists[name], shown = 0, total = 0;
-    var cut = !wide.matches && !state.expanded && !state.q;
+    var cut = !wide.matches && !state.expanded;
     [].forEach.call(list.children, function (li) {
       total++;
       var ok = passes(li, name);
@@ -164,11 +163,11 @@
     });
     var noun = NOUN[name];
     var filtered = state.filter !== "all" && !(name !== "cams" && (state.filter === "new" || state.filter === "flock"));
-    countEl.textContent = (state.q || filtered)
-      ? plural(shown, noun[0], noun[1]) + " match" + (shown === 1 ? "es" : "") + (state.q ? ' "' + state.q + '"' : " this filter")
+    countEl.textContent = filtered
+      ? plural(shown, noun[0], noun[1]) + " this filter"
       : "All " + total + " " + noun[1] + (name === "cams" ? ", newest first" : ", most cameras first");
     emptyEl.hidden = shown > 0;
-    if (!shown) emptyEl.textContent = "Nothing matches. Try a street name (Rosedale), a business (Home Depot), a parcel number like 023-521-01, or clear the filter.";
+    if (!shown) emptyEl.textContent = "Nothing matches this filter. Choose All to see every record.";
     moreEl.hidden = !(cut && shown > PAGE);
     if (!moreEl.hidden) moreEl.textContent = "Show all " + shown + " " + noun[1];
     drawMarkers(fromSearch);
@@ -211,30 +210,6 @@
     });
   });
 
-  var qTimer = 0;
-  qEl.addEventListener("input", function () {
-    clearTimeout(qTimer);
-    qTimer = setTimeout(function () {
-      state.q = qEl.value.trim().toLowerCase().replace(/\s+/g, " ");
-      if (state.record) leaveRecord(true);
-      // A query that only matches owners or parcels should not leave the reader on an empty list.
-      if (state.q && ![].some.call(lists[state.tab].children, function (li) { return passes(li, state.tab); })) {
-        var alt = ["cams", "owners", "parcels"].filter(function (n) {
-          return [].some.call(lists[n].children, function (li) { return passes(li, n); });
-        })[0];
-        if (alt) { setTab(alt); return; }
-      }
-      apply(true);
-      if (state.q) say(countEl.textContent);
-    }, 140);
-  });
-  qEl.addEventListener("keydown", function (e) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      var first = [].filter.call(lists[state.tab].children, function (li) { return !li.hidden; })[0];
-      if (first) first.querySelector("a").click();
-    } else if (e.key === "Escape") { qEl.value = ""; qEl.dispatchEvent(new Event("input")); }
-  });
   moreEl.addEventListener("click", function () { state.expanded = true; apply(); });
 
   function showLists() {
@@ -299,7 +274,7 @@
     cluster.clearLayers();
     cluster.addLayers(vis.map(function (c) { return markers[c.id]; }));
     drawCones();
-    if (fit && vis.length && (state.q || state.filter !== "all")) {
+    if (fit && vis.length && state.filter !== "all") {
       if (vis.length === 1) map.setView([vis[0].lat, vis[0].lon], Math.max(map.getZoom(), 16));
       else map.fitBounds(L.latLngBounds(vis.map(function (c) { return [c.lat, c.lon]; })).pad(0.15), { maxZoom: 16 });
     }

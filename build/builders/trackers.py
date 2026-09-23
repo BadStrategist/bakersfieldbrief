@@ -180,7 +180,7 @@ def build_alpr(ctx, sources: dict):
 
     # The land ownership explorer IS the map on this page: every camera from OSM on a Leaflet map,
     # each joined to the owner of record for the land at or beside it. Lists are server-rendered
-    # (crawlable, readable without JS); alpr-explorer.js adds the map, search and full records.
+    # (crawlable, readable without JS); alpr-explorer.js adds the map, the filters and full records.
     # /surveillance/ is the only ALPR url: records live at #camera/<id>, not on pages of their own.
     total_n = stats.get("total", 0)
     flock_n = stats.get("flock", 0)

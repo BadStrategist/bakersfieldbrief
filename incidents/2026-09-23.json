@@ -1,0 +1,137 @@
+[
+ {
+  "type": "kidnapping / assault with a firearm",
+  "time": "03:30",
+  "agency": "Bakersfield Police Department",
+  "area": "1100 block of 3rd Street, Bakersfield",
+  "notability": 5,
+  "disposition": "officers searching; suspect and vehicle description broadcast",
+  "summary": "A caller told city dispatchers that a woman had been forced into a vehicle and made to drive with a firearm held at her. Officers were given a description of the man: under the influence of methamphetamine, gray sweater and jogger pants, last seen in a blue sedan heading east on California Avenue. A second caller on a different phone number reported a woman yelling for help near South Oleander, and dispatchers could hear a female voice saying a man was attacking her. A domestic violence call over a divorce situation came in from the 400 block of Cypress Street at about the same time."
+ },
+ {
+  "type": "structure fire",
+  "time": "23:11",
+  "agency": "Bakersfield Fire Department",
+  "area": "200 block of South King Street, Bakersfield",
+  "notability": 4,
+  "disposition": "fire attack; alarms at the address set to priority one",
+  "summary": "A full structure assignment went out for a vehicle on fire next to a house in the 200 block of South King Street. Crews were told the fire was spreading to the house and then to the roof. A caller told fire dispatchers that someone had lit her house on fire and that the person might still have been at the scene. Dispatchers marked any alarms at that address as priority one for the rest of the night after a report that an ex-husband had tried to get into the home."
+ },
+ {
+  "type": "grass fire",
+  "time": "01:11",
+  "agency": "Kern County Fire Department",
+  "area": "Magnolia Avenue at 7th Standard Road, Bakersfield",
+  "notability": 3,
+  "disposition": "fire attack; assignment held",
+  "summary": "An engine, a patrol and a battalion were sent to a brush fire at Magnolia Avenue and 7th Standard Road, reported by the sheriff's office. The first unit on scene found about a quarter acre burning with a slow rate of spread, moving east and south along the road, and more units were added to the call."
+ },
+ {
+  "type": "downed power lines",
+  "time": "22:43",
+  "agency": "Bakersfield Fire Department",
+  "area": "East California Avenue at Washington Street, Bakersfield",
+  "notability": 3,
+  "disposition": "area to be blocked off; utility asked to respond",
+  "summary": "Crews were sent to a downed power pole with transformers and active power lines just north of East California Avenue and Washington Street. A caller asked that the area be closed off so nobody would walk into the wires, and the utility was asked to respond. The utility already had a work order open for that line."
+ },
+ {
+  "type": "structure fire",
+  "time": "23:48",
+  "agency": "Bakersfield Fire Department",
+  "area": "700 block of Height Street, Bakersfield",
+  "notability": 3,
+  "disposition": "fire assignment sent",
+  "summary": "A structure fire assignment went out for the 700 block of Height Street, with three engines and a battalion assigned."
+ },
+ {
+  "type": "structure fire",
+  "time": "02:15",
+  "agency": "Bakersfield Fire Department",
+  "area": "1800 block of 23rd Street, Bakersfield",
+  "notability": 3,
+  "disposition": "fire attack; rescue and truck cancelled, one engine held",
+  "summary": "A full structure response was sent for a fire threatening a building in the 1800 block of 23rd Street. The first unit on scene kept one engine on the call and cancelled the rescue and truck."
+ },
+ {
+  "type": "foot pursuit / arrest",
+  "time": "22:31",
+  "agency": "Bakersfield Police Department",
+  "area": "3500 block of South H Street, Bakersfield",
+  "notability": 3,
+  "disposition": "one person in custody",
+  "summary": "A traffic stop on South H Street turned into a foot pursuit through a park and along the railroad tracks. Officers reported the person in custody a short time later, and a unit was assigned to backtrack from the park restrooms to the tracks. Officers were working out whether the person was connected to the traffic stop."
+ },
+ {
+  "type": "welfare check",
+  "time": "21:57",
+  "agency": "Bakersfield Police Department",
+  "area": "4800 block of Columbus Street, Bakersfield",
+  "notability": 2,
+  "disposition": "officers responding",
+  "summary": "Officers were sent for a priority welfare check at an apartment in the 4800 block of Columbus Street. A caller reported hearing juveniles screaming inside and the sound of impacts."
+ },
+ {
+  "type": "suspicious person",
+  "time": "22:07",
+  "agency": "Bakersfield Police Department",
+  "area": "1400 block of Washington Street, Bakersfield",
+  "notability": 2,
+  "disposition": "officers responding",
+  "summary": "A caller passed on second-hand information from a neighbor that three people were trying to cut the electricity to a property in the 1400 block of Washington Street."
+ },
+ {
+  "type": "building fire",
+  "time": "22:56",
+  "agency": "Bakersfield Fire Department",
+  "area": "8th Street at Union Avenue, Bakersfield",
+  "notability": 2,
+  "disposition": "caller reported a building on fire",
+  "summary": "A caller reported a building on fire at 8th Street and Union Avenue, possibly the same building that burned earlier that morning."
+ },
+ {
+  "type": "medical aid",
+  "time": "00:07",
+  "agency": "Bakersfield Fire Department",
+  "area": "800 block of Wallace Street, Bakersfield",
+  "notability": 2,
+  "disposition": "medic unit sent",
+  "summary": "A medical unit was sent to an address in the 800 block of Wallace Street."
+ },
+ {
+  "type": "suspicious person",
+  "time": "01:36",
+  "agency": "Bakersfield Police Department",
+  "area": "700 block of Lost Trail Court, Bakersfield",
+  "notability": 2,
+  "disposition": "officers sent to check",
+  "summary": "A resident watching her camera saw that the screen on a back window had been removed but saw no one on the property, and officers were sent to check the area."
+ },
+ {
+  "type": "person down",
+  "time": "03:06",
+  "agency": "Bakersfield Police Department; Kern County Fire Department",
+  "area": "South Union Avenue, Bakersfield",
+  "notability": 2,
+  "disposition": "medics staged nearby",
+  "summary": "A man was reported down next to a bicycle in the area of South Union Avenue, and medics were told to stage nearby while officers checked the area."
+ },
+ {
+  "type": "outside fire",
+  "time": "04:31",
+  "agency": "Bakersfield Fire Department",
+  "area": "South King Street at East California Avenue, Bakersfield",
+  "notability": 2,
+  "disposition": "engine sent",
+  "summary": "An engine was sent for a trash can on fire at a bus stop at South King Street and East California Avenue."
+ },
+ {
+  "type": "forced entry",
+  "time": "00:33",
+  "agency": "Bakersfield Police Department",
+  "area": "6700 block of Mountain View Avenue, Bakersfield",
+  "notability": 2,
+  "disposition": "officers responding",
+  "summary": "A caller said a woman was climbing over a gate to get into a residence in the 6700 block of Mountain View Avenue."
+ }
+]

@@ -3,6 +3,63 @@
   35.4,
   -119.1
  ],
+ "east california avenue & washington street, Bakersfield, CA": null,
+ "700 block of height street, Bakersfield, Kern County, CA": null,
+ "height street, Bakersfield, CA": [
+  35.393883,
+  -118.9807524
+ ],
+ "4800 block of columbus street, Bakersfield, Kern County, CA": null,
+ "columbus street, Bakersfield, CA": [
+  35.4079524,
+  -118.9483806
+ ],
+ "1400 block of washington street, Bakersfield, Kern County, CA": null,
+ "washington street, Bakersfield, CA": [
+  35.3576457,
+  -118.9763736
+ ],
+ "th street & union avenue, Bakersfield, CA": null,
+ "800 block of wallace street, Bakersfield, Kern County, CA": null,
+ "wallace street, Bakersfield, CA": [
+  35.3666059,
+  -119.0017253
+ ],
+ "south king street & east california avenue, Bakersfield, CA": null,
+ "2700 block of white lane, Bakersfield, Kern County, CA": null,
+ "white lane, Bakersfield, CA": [
+  35.3175789,
+  -119.0212688
+ ],
+ "100 block of hart street, Bakersfield, Kern County, CA": null,
+ "hart street, Bakersfield, CA": null,
+ "mount vernon avenue & kentucky street, Bakersfield, CA": null,
+ "4600 block of columbus street, Bakersfield, Kern County, CA": null,
+ "600 block of sumner street, Bakersfield, Kern County, CA": null,
+ "sumner street, Bakersfield, CA": [
+  35.3765173,
+  -118.9912498
+ ],
+ "5600 block of auburn street, Bakersfield, Kern County, CA": null,
+ "auburn street, Bakersfield, CA": [
+  35.3989991,
+  -118.9158126
+ ],
+ "2400 block of ming avenue, Bakersfield, Kern County, CA": null,
+ "ming avenue, Bakersfield, CA": [
+  35.3353799,
+  -119.0789235
+ ],
+ "100 block of montclair street, Bakersfield, Kern County, CA": null,
+ "montclair street, Bakersfield, CA": [
+  35.3639189,
+  -119.0508473
+ ],
+ "2900 block of f street, Bakersfield, Kern County, CA": null,
+ "f street, Bakersfield, CA": [
+  35.3897429,
+  -119.0228839
+ ],
  "flower street & lincoln street, Bakersfield, CA": null,
  "300 block of chester lane, Bakersfield, Kern County, CA": null,
  "chester lane, Bakersfield, CA": [
@@ -16,8 +73,8 @@
  ],
  "200 block of baker street, Bakersfield, Kern County, CA": null,
  "baker street, Bakersfield, CA": [
-  35.3858728,
-  -118.9896757
+  35.3758508,
+  -118.9932544
  ],
  "3600 block of hale street, Bakersfield, Kern County, CA": null,
  "hale street, Bakersfield, CA": [
@@ -62,50 +119,5 @@
  "union avenue & panama road, Bakersfield, CA": null,
  "baker street & dolores street, Bakersfield, CA": null,
  "baker street & truxtun avenue, Bakersfield, CA": null,
- "westdale park area & the california aqueduct, Bakersfield, CA": null,
- "near center street & prospect street, Bakersfield, CA": null,
- "south bakersfield & the kern river, Bakersfield, CA": null,
- "ridgecrest boulevard & the motel strip, Bakersfield, CA": null,
- "robinson street & jefferson street, Bakersfield, CA": null,
- "panama lane & mountain vista drive, Bakersfield, CA": null,
- "niles street block & mount vernon avenue, Bakersfield, CA": null,
- "niles street & ashe road, Bakersfield, CA": null,
- "2700 block of white lane, Bakersfield, Kern County, CA": null,
- "white lane, Bakersfield, CA": [
-  35.324929,
-  -119.1479182
- ],
- "100 block of hart street, Bakersfield, Kern County, CA": null,
- "hart street, Bakersfield, CA": null,
- "mount vernon avenue & kentucky street, Bakersfield, CA": null,
- "4600 block of columbus street, Bakersfield, Kern County, CA": null,
- "columbus street, Bakersfield, CA": [
-  35.4079524,
-  -118.9483806
- ],
- "600 block of sumner street, Bakersfield, Kern County, CA": null,
- "sumner street, Bakersfield, CA": [
-  35.3783101,
-  -118.9987394
- ],
- "5600 block of auburn street, Bakersfield, Kern County, CA": null,
- "auburn street, Bakersfield, CA": [
-  35.3989991,
-  -118.9158126
- ],
- "2400 block of ming avenue, Bakersfield, Kern County, CA": null,
- "ming avenue, Bakersfield, CA": [
-  35.3353799,
-  -119.0789235
- ],
- "100 block of montclair street, Bakersfield, Kern County, CA": null,
- "montclair street, Bakersfield, CA": [
-  35.3639189,
-  -119.0508473
- ],
- "2900 block of f street, Bakersfield, Kern County, CA": null,
- "f street, Bakersfield, CA": [
-  35.3821437,
-  -119.0234864
- ]
+ "westdale park area & the california aqueduct, Bakersfield, CA": null
 }

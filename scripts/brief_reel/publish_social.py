@@ -820,6 +820,33 @@ def verify(page, caption: str) -> dict:
     return out
 
 
+def verify_safe(page, browser, caption: str, tries: int = 2) -> dict:
+    """verify() that survives the Business Suite tab dying under it.
+
+    The keeper closes that tab when its --hold expires and after a publish, so
+    page.wait_for_timeout raised TargetClosedError INSIDE verify() and killed the
+    process AFTER both legs had already published (2026-09-22: reel live on the
+    Page feed, story up on both platforms, run RED, five days of the same). Reopen
+    a page on the same CDP connection and try again. Only when every try dies,
+    return an error dict: the caller reports UNVERIFIED instead of a traceback, so
+    the exit code stays honest (not ok) without losing the run's output.
+    """
+    last = None
+    for i in range(tries):
+        try:
+            return verify(page, caption)
+        except Exception as e:  # noqa: BLE001 - the playwright error classes are not one base
+            last = f"{type(e).__name__}: {e}".splitlines()[0]
+            log(f"verify attempt {i + 1}/{tries} died: {last}")
+            try:
+                page = get_page(browser)
+            except Exception as e2:  # noqa: BLE001
+                last = f"{type(e2).__name__}: {e2}".splitlines()[0]
+                break
+    return {"head": " ".join(caption.split())[:40], "posts": None, "stories": {},
+            "story_ages": {}, "error": last}
+
+
 # --------------------------------------------------------------------------- #
 def ensure_session(port: int = 9222, timeout_s: int = 240) -> str:
     """Make sure a healthy, signed-in Chrome is answering on the CDP port.
@@ -909,7 +936,7 @@ def main(argv: list[str]) -> int:
         with sync_playwright() as pw:
             b = pw.chromium.connect_over_cdp(CDP, timeout=90000)
             page = get_page(b)
-            pre = verify(page, a.verify_caption or caption)
+            pre = verify_safe(page, b, a.verify_caption or caption)
             story_fb_pre, story_ig_pre, fb_age_pre, ig_age_pre = story_flags(pre)
             log(f"preflight stories: facebook={story_fb_pre} ({fb_age_pre} min) "
                 f"instagram={story_ig_pre} ({ig_age_pre} min)")
@@ -978,20 +1005,32 @@ def main(argv: list[str]) -> int:
     for i in range(attempts):
         from playwright.sync_api import sync_playwright
 
-        with sync_playwright() as pw:
-            b = pw.chromium.connect_over_cdp(CDP, timeout=90000)
-            page = get_page(b)
-            v = verify(page, a.verify_caption or caption)
-        if v.get("posts") or i == attempts - 1:
+        try:
+            with sync_playwright() as pw:
+                b = pw.chromium.connect_over_cdp(CDP, timeout=90000)
+                page = get_page(b)
+                v = verify_safe(page, b, a.verify_caption or caption)
+        except Exception as e:  # noqa: BLE001 - a gone CDP connection is reported, not raised
+            v = {"head": " ".join(caption.split())[:40], "posts": None, "stories": {},
+                 "story_ages": {}, "error": f"{type(e).__name__}: {e}".splitlines()[0]}
+            log(f"verify: could not reach the browser ({v['error']})")
+        if v.get("posts") or v.get("error") or i == attempts - 1:
+            # A dead page is not a slow content list: the 90s re-check would
+            # repeat the same crash, and the retry slot re-verifies with a fresh
+            # browser. Break and report UNVERIFIED.
             break
         log(f"verify: not in the content list yet (try {i + 1}/{attempts}) - "
             f"a fresh reel processes for a few minutes; re-checking in 90s")
         time.sleep(90)
-    if i:
+    if i and not v.get("error"):
         log(f"verify: appeared on try {i + 1}")
+    if v.get("error"):
+        log(f"verify: page died mid-check ({v['error']}) - this run reports "
+            "UNVERIFIED, not PARTIAL")
 
     fb_now = fb_post_live(head)
     state["verify"] = v
+    state["verify_error"] = v.get("error")
     state["verified_at"] = datetime.now(ZoneInfo("America/Los_Angeles")).isoformat(
         timespec="seconds")
 
@@ -1025,7 +1064,12 @@ def main(argv: list[str]) -> int:
     print(f"story_instagram_age_min={ig_age} fresh(max {STORY_FRESH_MIN})={story_ig}")
     print(f"story_facebook={v['stories'].get('Facebook', '')[:100]}")
     print(f"story_instagram={v['stories'].get('Instagram', '')[:100]}")
-    print(f"verify={'ok' if ok else 'PARTIAL'}")
+    if v.get("error"):
+        print(f"verify=UNVERIFIED (the content list page died mid-check: {v['error']})")
+        print("verify_hint=the reel and story were both submitted; the 9:00 retry "
+              "slot re-checks with a fresh browser")
+    else:
+        print(f"verify={'ok' if ok else 'PARTIAL'}")
     return 0 if ok else 1
 
 

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-22T20:31:24-07:00",
+ "built_at": "2026-09-22T20:46:38-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -22,8 +22,8 @@
    "error": ""
   },
   "airnow": {
-   "ok": false,
-   "error": "AirNow returned no data"
+   "ok": true,
+   "error": ""
   },
   "calfire": {
    "ok": true,
@@ -46,7 +46,7 @@
    "error": ""
   },
   "roads": {
-   "ok": false,
+   "ok": true,
    "error": ""
   },
   "tehachapi_weather": {
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "Bakersfield reports mixed results in homelessness outreach as city sees influx",
    "archive": "2026-09-22"
   },
@@ -104,7 +104,7 @@
    "sr58": "OPEN",
    "wind_mph": 6,
    "alerts": 0,
-   "stale": true
+   "stale": false
   },
   "tehachapi_weather": {
    "temp": 63,
@@ -132,9 +132,9 @@
   },
   "numbers": {
    "isabella_af": 155067,
-   "alpr_total": 268,
+   "alpr_total": 269,
    "kern_fires": 0,
-   "aqi": null,
+   "aqi": 63,
    "chp_week": 53
   },
   "letters": {
@@ -173,8 +173,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 268,
-   "alpr_new_week": 3,
+   "alpr_total": 269,
+   "alpr_new_week": 4,
    "pages": [
     "surveillance",
     "fires",

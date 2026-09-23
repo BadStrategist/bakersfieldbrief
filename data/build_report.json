@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-23T12:26:51-07:00",
+ "built_at": "2026-09-23T16:03:27-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,7 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 15,
+   "wind_mph": 11,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 82,
-   "wind_mph": 15,
+   "temp": 86,
+   "wind_mph": 11,
    "alerts": 0
   },
   "roads": {
@@ -132,9 +132,9 @@
   },
   "numbers": {
    "isabella_af": 154448,
-   "alpr_total": 269,
+   "alpr_total": 268,
    "kern_fires": 0,
-   "aqi": 79,
+   "aqi": 119,
    "chp_week": 66
   },
   "letters": {
@@ -173,8 +173,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 269,
-   "alpr_new_week": 3,
+   "alpr_total": 268,
+   "alpr_new_week": 2,
    "pages": [
     "surveillance",
     "fires",

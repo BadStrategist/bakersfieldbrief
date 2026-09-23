@@ -1160,6 +1160,16 @@
   "details": ""
  },
  {
+  "log_id": "260922BF0336",
+  "time": "Sep 22 2026  5:47PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Sr99 S / Ming Ave Ofr",
+  "area": "Bakersfield",
+  "lat": 35.35346,
+  "lon": -119.039616,
+  "details": ""
+ },
+ {
   "log_id": "260922BF0333",
   "time": "Sep 22 2026  5:50PM",
   "type": "1125-Traffic Hazard",
@@ -1177,6 +1187,36 @@
   "area": "Bakersfield",
   "lat": 35.71806,
   "lon": -119.237134,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0338",
+  "time": "Sep 22 2026  5:54PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Wb Sr58 Jeo Bealeville Rd",
+  "area": "Bakersfield",
+  "lat": 35.263611,
+  "lon": -118.630833,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0337",
+  "time": "Sep 22 2026  5:54PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 Allen Rd Onr",
+  "area": "Bakersfield",
+  "lat": 35.361655,
+  "lon": -119.14101,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0340",
+  "time": "Sep 22 2026  5:55PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "1627 South Union Ave",
+  "area": "Bakersfield",
+  "lat": 35.335548,
+  "lon": -119.003087,
   "details": ""
  },
  {

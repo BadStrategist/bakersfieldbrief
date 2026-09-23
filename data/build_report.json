@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-22T17:54:00-07:00",
+ "built_at": "2026-09-22T18:09:24-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,13 +59,13 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1022,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 4,
    "top_story": "Vendors, students and game operators gear up for the 2026 Kern County Fair opening night",
    "archive": "2026-09-22"
   },
@@ -82,7 +82,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 13,
+   "wind_mph": 14,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 73,
-   "wind_mph": 13,
+   "temp": 72,
+   "wind_mph": 14,
    "alerts": 0
   },
   "roads": {
@@ -134,8 +134,8 @@
    "isabella_af": 155067,
    "alpr_total": 269,
    "kern_fires": 0,
-   "aqi": 64,
-   "chp_week": 42
+   "aqi": null,
+   "chp_week": 46
   },
   "letters": {
    "published": 0

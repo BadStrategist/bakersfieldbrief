@@ -1080,6 +1080,16 @@
   "details": ""
  },
  {
+  "log_id": "260922BF0322",
+  "time": "Sep 22 2026  4:57PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb Sr99 At California Ave",
+  "area": "Bakersfield",
+  "lat": 35.367991,
+  "lon": -119.043411,
+  "details": ""
+ },
+ {
   "log_id": "260922BF0032",
   "time": "Sep 22 2026  5:04AM",
   "type": "MZP-Assist CT with Maintenance",

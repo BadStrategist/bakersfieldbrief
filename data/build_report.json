@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-22T16:44:31-07:00",
+ "built_at": "2026-09-22T17:03:44-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,11 +59,11 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1022,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 1,
    "top_story": "Bakersfield student receives 2026 CSU Trustees\u2019 Award for Outstanding Achievement",
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 14,
+   "wind_mph": 13,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 73,
-   "wind_mph": 14,
+   "wind_mph": 13,
    "alerts": 0
   },
   "roads": {
@@ -136,7 +136,7 @@
    "alpr_total": 269,
    "kern_fires": 0,
    "aqi": 66,
-   "chp_week": 37
+   "chp_week": 38
   },
   "letters": {
    "published": 0

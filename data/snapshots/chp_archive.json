@@ -1100,6 +1100,16 @@
   "details": ""
  },
  {
+  "log_id": "260922BF0325",
+  "time": "Sep 22 2026  5:07PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Roberts Ln / Airport Dr",
+  "area": "Bakersfield",
+  "lat": 35.408549,
+  "lon": -119.03875,
+  "details": ""
+ },
+ {
   "log_id": "260922BF0035",
   "time": "Sep 22 2026  5:12AM",
   "type": "MZP-Assist CT with Maintenance",
@@ -1107,6 +1117,16 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0329",
+  "time": "Sep 22 2026  5:20PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sr99 S / California Ave Ofr",
+  "area": "Bakersfield",
+  "lat": 35.371835,
+  "lon": -119.043453,
   "details": ""
  },
  {

@@ -7,7 +7,7 @@
    "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
    "pass": true,
    "status": "CLOSED",
-   "pass_status": "OPEN",
+   "pass_status": "RESTRICTIONS",
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
@@ -26,16 +26,25 @@
     }
    ],
    "scope": {
-    "on_pass": "OPEN",
-    "on_pass_reported": false,
-    "on_pass_items": [],
+    "on_pass": "RESTRICTIONS",
+    "on_pass_reported": true,
+    "on_pass_items": [
+     {
+      "status": "RESTRICTIONS",
+      "place": "",
+      "county": "",
+      "where": "the Southern California area",
+      "text": "A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+      "region": "SOUTHERN CALIFORNIA"
+     }
+    ],
     "elsewhere": [
      {
       "status": "CLOSED",
       "place": "",
       "county": "Orange Co",
       "where": "Orange Co",
-      "text": "ector to northbound SR-133 (Orange Co) is closed from 2200 hrs each night to 0500 hrs each morning Monday thru Friday thru 9/26/26 - Due to construction - Motorists are advised to use an alternate route A high wind...",
+      "text": "The northbound connector to northbound SR-133 (Orange Co) is closed from 2200 hrs each night to 0500 hrs each morning Monday thru Friday thru 9/26/26 - Due to construction - Motorists are advised to use an alternate...",
       "region": "SOUTHERN CALIFORNIA"
      },
      {
@@ -43,12 +52,20 @@
       "place": "",
       "county": "San Joaquin Co",
       "where": "San Joaquin Co",
-      "text": "A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads Northbound traffic is reduced to 1 lane from 14.1 mi north...",
+      "text": "A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
+      "region": "CENTRAL CALIFORNIA"
+     },
+     {
+      "status": "RESTRICTIONS",
+      "place": "",
+      "county": "Fresno Co",
+      "where": "Fresno Co",
+      "text": "Northbound traffic is reduced to 1 lane from 14.1 mi north to 18.2 mi north of Panoche Junction (Fresno Co) - Due to a big rig fire",
       "region": "CENTRAL CALIFORNIA"
      }
     ]
    },
-   "reported_as_of": "Tuesday, September 22nd, 2026 at 05:02 PM",
+   "reported_as_of": "Tuesday, September 22nd, 2026 at 05:38 PM",
    "hash": "cc57784d17"
   },
   {
@@ -71,7 +88,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Tuesday, September 22nd, 2026 at 05:02 PM",
+   "reported_as_of": "Tuesday, September 22nd, 2026 at 05:38 PM",
    "hash": "5374f203ec"
   },
   {
@@ -108,7 +125,7 @@
      }
     ]
    },
-   "reported_as_of": "Tuesday, September 22nd, 2026 at 05:02 PM",
+   "reported_as_of": "Tuesday, September 22nd, 2026 at 05:38 PM",
    "hash": "f97882795e"
   }
  ],

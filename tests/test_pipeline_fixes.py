@@ -72,6 +72,7 @@ def test_overpass_error_remark_is_a_failure(monkeypatch):
     from build.sources import alpr
     monkeypatch.setattr(common, "fetch", lambda *a, **k: _Resp(
         {"elements": [], "remark": "runtime error: Query timed out in \"query\" at line 1"}))
+    monkeypatch.setattr(common, "load_snapshot", lambda name, default=None: default)  # no fallback on disk
     r = alpr.run(types.SimpleNamespace(today=dt.date.today()))
     assert r["ok"] is False
 

@@ -1140,6 +1140,16 @@
   "details": ""
  },
  {
+  "log_id": "260922BF0332",
+  "time": "Sep 22 2026  5:34PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Nb Sr99 At Rosedale Hwy",
+  "area": "Bakersfield",
+  "lat": 35.383056,
+  "lon": -119.044167,
+  "details": ""
+ },
+ {
   "log_id": "260922BF0046",
   "time": "Sep 22 2026  5:41AM",
   "type": "MZP-Assist CT with Maintenance",
@@ -1147,6 +1157,16 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0333",
+  "time": "Sep 22 2026  5:50PM",
+  "type": "1125-Traffic Hazard",
+  "location": "2013 Esther Dr",
+  "area": "Bakersfield",
+  "lat": 35.424304,
+  "lon": -119.037214,
   "details": ""
  },
  {

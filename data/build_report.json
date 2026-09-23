@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-22T17:38:27-07:00",
+ "built_at": "2026-09-22T17:54:00-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -66,7 +66,7 @@
    "news_digest": "llm",
    "alerts": 0,
    "chp_new": 2,
-   "top_story": "Bakersfield student receives 2026 CSU Trustees\u2019 Award for Outstanding Achievement",
+   "top_story": "Vendors, students and game operators gear up for the 2026 Kern County Fair opening night",
    "archive": "2026-09-22"
   },
   "cityhall": {
@@ -132,10 +132,10 @@
   },
   "numbers": {
    "isabella_af": 155067,
-   "alpr_total": 268,
+   "alpr_total": 269,
    "kern_fires": 0,
    "aqi": 64,
-   "chp_week": 40
+   "chp_week": 42
   },
   "letters": {
    "published": 0
@@ -173,8 +173,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 268,
-   "alpr_new_week": 3,
+   "alpr_total": 269,
+   "alpr_new_week": 4,
    "pages": [
     "surveillance",
     "fires",

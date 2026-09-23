@@ -65,7 +65,7 @@
      }
     ]
    },
-   "reported_as_of": "Tuesday, September 22nd, 2026 at 05:38 PM",
+   "reported_as_of": "Tuesday, September 22nd, 2026 at 05:53 PM",
    "hash": "cc57784d17"
   },
   {
@@ -88,7 +88,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Tuesday, September 22nd, 2026 at 05:38 PM",
+   "reported_as_of": "Tuesday, September 22nd, 2026 at 05:53 PM",
    "hash": "5374f203ec"
   },
   {
@@ -106,8 +106,8 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "No traffic restrictions reported.",
-     "status": "OPEN"
+     "text": "Southbound traffic is reduced to 3 lanes at 12th Ave /in Sacrametno/ (Sacramento Co) - Due to maintenance",
+     "status": "RESTRICTIONS"
     }
    ],
    "scope": {
@@ -122,11 +122,19 @@
       "where": "the Central California area",
       "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
       "region": "CENTRAL CALIFORNIA"
+     },
+     {
+      "status": "RESTRICTIONS",
+      "place": "Sacrametno",
+      "county": "Sacramento Co",
+      "where": "Sacrametno (Sacramento Co)",
+      "text": "Southbound traffic is reduced to 3 lanes at 12th Ave /in Sacrametno/ (Sacramento Co) - Due to maintenance",
+      "region": "NORTHERN CALIFORNIA"
      }
     ]
    },
-   "reported_as_of": "Tuesday, September 22nd, 2026 at 05:38 PM",
-   "hash": "f97882795e"
+   "reported_as_of": "Tuesday, September 22nd, 2026 at 05:53 PM",
+   "hash": "b6e7528549"
   }
  ],
  "asof": "2026-09-22"

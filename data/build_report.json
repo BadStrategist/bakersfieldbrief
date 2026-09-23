@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-22T18:50:12-07:00",
+ "built_at": "2026-09-22T18:56:25-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -38,8 +38,8 @@
    "error": ""
   },
   "alpr": {
-   "ok": false,
-   "error": "ConnectionError: HTTPSConnectionPool(host='overpass-api.de', port=443): Max retries exceeded with url: /api/interpreter (Caused by NewConnectionError(\"HTTPSConnection(host='overpass-api.de', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\"))"
+   "ok": true,
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 70,
+   "temp": 68,
    "wind_mph": 9,
    "alerts": 0
   },
@@ -132,7 +132,7 @@
   },
   "numbers": {
    "isabella_af": 155067,
-   "alpr_total": 268,
+   "alpr_total": 269,
    "kern_fires": 0,
    "aqi": 64,
    "chp_week": 49
@@ -173,8 +173,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 0,
-   "alpr_new_week": 0,
+   "alpr_total": 269,
+   "alpr_new_week": 4,
    "pages": [
     "surveillance",
     "fires",

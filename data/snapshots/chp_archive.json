@@ -1298,5 +1298,35 @@
   "lat": 35.265234,
   "lon": -119.024794,
   "details": ""
+ },
+ {
+  "log_id": "260923BF0011",
+  "time": "Sep 23 2026  1:44AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "0 Sr99 S",
+  "area": "Bakersfield",
+  "lat": 35.403381,
+  "lon": -119.045872,
+  "details": ""
+ },
+ {
+  "log_id": "260923BF0022",
+  "time": "Sep 23 2026  2:32AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr58 W / Union Ave Onr",
+  "area": "Bakersfield",
+  "lat": 35.352584,
+  "lon": -119.003707,
+  "details": ""
+ },
+ {
+  "log_id": "260923BF0023",
+  "time": "Sep 23 2026  2:35AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "1515 La Naranja Ave",
+  "area": "Bakersfield",
+  "lat": 35.391601,
+  "lon": -118.974462,
+  "details": ""
  }
 ]

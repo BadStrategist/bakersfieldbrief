@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-22T22:16:17-07:00",
+ "built_at": "2026-09-22T22:20:00-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,11 +59,11 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1022,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
    "top_story": "What you need to know before you go to the 2026 Kern County Fair",

@@ -1310,6 +1310,16 @@
   "details": ""
  },
  {
+  "log_id": "260922BF0367",
+  "time": "Sep 22 2026  7:02PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 At Sr119",
+  "area": "Buttonwillow",
+  "lat": 35.266944,
+  "lon": -119.224722,
+  "details": ""
+ },
+ {
   "log_id": "260922BF0113",
   "time": "Sep 22 2026  8:54AM",
   "type": "CZP-Assist with Construction",

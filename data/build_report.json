@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-22T20:46:38-07:00",
+ "built_at": "2026-09-22T22:16:17-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -66,7 +66,7 @@
    "news_digest": "llm",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Bakersfield reports mixed results in homelessness outreach as city sees influx",
+   "top_story": "What you need to know before you go to the 2026 Kern County Fair",
    "archive": "2026-09-22"
   },
   "cityhall": {
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 63,
+   "temp": 61,
    "wind_mph": 6,
    "alerts": 0
   },
@@ -132,9 +132,9 @@
   },
   "numbers": {
    "isabella_af": 155067,
-   "alpr_total": 269,
+   "alpr_total": 268,
    "kern_fires": 0,
-   "aqi": 63,
+   "aqi": 74,
    "chp_week": 53
   },
   "letters": {
@@ -173,8 +173,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 269,
-   "alpr_new_week": 4,
+   "alpr_total": 268,
+   "alpr_new_week": 3,
    "pages": [
     "surveillance",
     "fires",

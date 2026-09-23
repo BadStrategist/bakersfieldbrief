@@ -1398,5 +1398,25 @@
   "lat": 35.458123,
   "lon": -119.478311,
   "details": ""
+ },
+ {
+  "log_id": "260923BF0174",
+  "time": "Sep 23 2026 11:35AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb Sr99 At Sherwood Ave",
+  "area": "Bakersfield",
+  "lat": 35.670196,
+  "lon": -119.225176,
+  "details": ""
+ },
+ {
+  "log_id": "260923BF0175",
+  "time": "Sep 23 2026 11:36AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Roberts Ln / Sequoia Dr",
+  "area": "Bakersfield",
+  "lat": 35.4086,
+  "lon": -119.034142,
+  "details": ""
  }
 ]

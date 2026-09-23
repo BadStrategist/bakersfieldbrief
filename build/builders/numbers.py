@@ -53,17 +53,10 @@ def build(ctx, sources: dict) -> list[str]:
                 return None
         return None
 
-    isa_delta = None
-    try:
-        series = sorted([(s.get("date", ""), s.get("value")) for s in isa.get("series", [])
-                         if s.get("value")], key=lambda kv: kv[0])
-        target = today - dt.timedelta(days=7)
-        prev = min(series, key=lambda kv: abs(
-            (_cdec_date(kv[0]) - target).days) if _cdec_date(kv[0]) else 10 ** 9)
-        if prev and prev[1] and _cdec_date(prev[0]):
-            isa_delta = int(isa_af) - int(prev[1])
-    except Exception:  # noqa: BLE001
-        isa_delta = None
+    # the same weekly change /water/ prints (isabella.week_change), not a second definition
+    from build.sources.isabella import week_change
+    _wk = week_change(isa.get("storage_series") or isa.get("series", []))
+    isa_delta = _wk["change"] if _wk else None
 
     alpr_log = []
     try:
@@ -130,6 +123,10 @@ def build(ctx, sources: dict) -> list[str]:
             trend = (f" That is <strong>{direction} {abs(isa_delta):,} acre-feet "
                      f"({100.0 * abs(isa_delta) / int(isa_cap):.2f}% of capacity) "
                      f"in the last week.</strong>")
+            if _wk:
+                _f, _t = dt.date.fromisoformat(_wk["from"]), dt.date.fromisoformat(_wk["to"])
+                trend = trend.replace("in the last week.</strong>",
+                                      f"in the week of readings from {_f:%b} {_f.day} to {_t:%b} {_t.day}.</strong>")
         paras.append(
             f"<p><strong>Isabella Lake holds {int(isa_af):,} acre-feet — "
             f"{isa_pct}% of capacity.</strong>{trend} Storage in Kern County's largest reservoir "

@@ -31,15 +31,23 @@ def build(ctx, sources: dict) -> list[str]:
 
     # Thursday/--guide builds scrape the whitelist fresh and cache the picks;
     # other builds render the cached picks so the footer link never 404s.
+    # Venue listings are fetched on EVERY build, so pick from them every build: the Thursday cache
+    # alone showed Sept 18 and 21 events on the 22nd. The cache is only the fallback when the
+    # venue fetch came back empty.
     cache_path = common.DATA / "last_guide.json"
-    if getattr(ctx, "guide", False):
-        events = _pick(sources.get("venues", {}).get("events", []), today)
-        cache_path.write_text(json.dumps(events, default=str), encoding="utf-8")
+    fresh = sources.get("venues", {}).get("events", []) or []
+    if fresh:
+        events = _pick(fresh, today)
+        if getattr(ctx, "guide", False):
+            cache_path.write_text(json.dumps(events, default=str), encoding="utf-8")
     else:
         try:
             events = _pick(json.loads(cache_path.read_text(encoding="utf-8")), today)
         except Exception:  # noqa: BLE001
             events = []
+    wk_start, wk_end = _weekend(today)
+    weekend_label = (f"{wk_start:%b} {wk_start.day}" + (f" to {wk_end:%b} {wk_end.day}" if wk_end.month != wk_start.month
+                     else f" to {wk_end.day}"))
 
     # ---- email drafts (human review) — guide builds only
     if getattr(ctx, "guide", False):
@@ -55,12 +63,12 @@ def build(ctx, sources: dict) -> list[str]:
     if events:
         lis = "".join(f"""
         <li><strong>{html.escape(e.get('name', ''))}</strong>
-        <span class="when">{html.escape(e.get('venue', ''))} · {html.escape(e.get('when', '') or 'check listing')}</span>
+        <span class="when">{html.escape(e.get('venue', ''))} · {html.escape(e.get('when', '') or _fmt_day(_event_date(e, today)))}</span>
         <a href="{html.escape(e.get('url', '#'))}" target="_blank" rel="noopener">Details →</a></li>""" for e in events)
         picks = f'<ol class="guide-list">{lis}</ol>'
     else:
-        picks = ('<p class="note">No dated events found in the venue whitelist yet — '
-                 'the Thursday build scrapes the whitelist; check back after it runs.</p>')
+        picks = ('<p class="note">No dated events are posted by our local venues yet. '
+                 'The guide refreshes every Thursday; see <a href="../events/">all events</a> meanwhile.</p>')
         events = []  # report below
 
     rel = "../"
@@ -69,21 +77,21 @@ def build(ctx, sources: dict) -> list[str]:
     <h1>5 Things to Do This Weekend</h1>
     <p class="lede">Picked from the venues we watch — Fox Theater, Mechanics Bank Arena,
     The Well Comedy Club, the Condors, and Visit Bakersfield&rsquo;s calendar.</p>
-    <div class="meta"><span>Week of {date_label}</span><span class="dot">&bull;</span>
-    <span>generated Thursday &middot; email draft is reviewed before sending</span></div></div></div>
+    <div class="meta"><span>Weekend of {weekend_label}</span><span class="dot">&bull;</span>
+    <span>Updated {date_label}</span></div></div></div>
     {images.figure("fox", rel)}
     {picks}
     <section class="block">
       <div class="sign-head"><span class="tab">How</span><h2>How picks are made</h2></div>
       <div class="card"><p>Events come from each venue&rsquo;s own website (schema.org event data,
-      ticketing calendars, or events feeds). We scrape only the venues on our hand-maintained
-      whitelist — a whitelist can&rsquo;t recommend a dead venue the way a scraper can.
-      Venues with no dated events this weekend are skipped; dates are as the venue published them,
-      so check before you go.</p></div>
+      ticketing calendars, or events feeds). We only read a fixed list of established local
+      venues, so a closed venue or a spam listing can&rsquo;t slip in.
+      This weekend&rsquo;s events come first, then the next ones coming up; past events are
+      never listed. Dates are as each venue published them, so check before you go.</p></div>
     </section>"""
     page = page_mod.render(
         title="Weekend Guide — 5 things to do in Bakersfield | Bakersfield Daily Brief",
-        desc="Five things to do this weekend in Bakersfield, picked weekly from a hand-maintained venue whitelist (Fox Theater, Mechanics Bank Arena, The Well, Condors, Visit Bakersfield).",
+        desc="Five things to do this weekend in Bakersfield, picked weekly from the listings of established local venues (Fox Theater, Mechanics Bank Arena, The Well, Condors, Visit Bakersfield).",
         canonical="/guide/", content=body, current="other", rel=rel,
         built=common.iso_today(), statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld()])
@@ -94,15 +102,30 @@ def build(ctx, sources: dict) -> list[str]:
     return built
 
 
+def _weekend(today) -> tuple:
+    """The coming Friday-to-Sunday (the current one from Friday through Sunday)."""
+    wd = today.weekday()   # Mon=0 .. Sun=6
+    if wd >= 4:
+        start = today - dt.timedelta(days=wd - 4)
+    else:
+        start = today + dt.timedelta(days=4 - wd)
+    return start, start + dt.timedelta(days=2)
+
+
 def _pick(events: list[dict], today) -> list[dict]:
-    """Prefer dated events in the next 4 days; max 2 per venue; 5 total."""
-    window = [today + dt.timedelta(days=i) for i in range(5)]
+    """This weekend's dated events first, then the soonest upcoming; never a past event.
+    Max 2 per venue, 5 total. Undated listings only fill leftover slots."""
+    start, end = _weekend(today)
+
     def score(e):
-        when = _parse_when(e.get("when", ""), today)
-        if when in window:
+        when = _event_date(e, today)
+        if when is None:
+            return (2, 0)
+        if start <= when <= end:
             return (0, when.toordinal())
-        return (1, 0)
-    ranked = sorted(events, key=score)
+        return (1, when.toordinal())
+    ranked = [e for e in sorted(events, key=score)
+              if (_event_date(e, today) or today) >= today]
     out, per_venue = [], {}
     for e in ranked:
         vs = e.get("venue_slug", "?")
@@ -113,6 +136,25 @@ def _pick(events: list[dict], today) -> list[dict]:
         if len(out) >= 5:
             break
     return out
+
+
+def _fmt_day(d) -> str:
+    return f"{d:%a}, {d:%b} {d.day}" if d else "see listing for date"
+
+
+def _event_date(e: dict, today) -> dt.date | None:
+    """The listing's date, or a "9/25" date written into the name (Condors games list that way)."""
+    d = _parse_when(e.get("when", ""), today)
+    if d is None:
+        m = re.search(r"(?<!\d)(\d{1,2})/(\d{1,2})(?!\d|/)", str(e.get("name", "")))
+        if m:
+            try:
+                d = dt.date(today.year, int(m.group(1)), int(m.group(2)))
+                if (d - today).days < -180:   # a January game listed in December
+                    d = d.replace(year=today.year + 1)
+            except ValueError:
+                d = None
+    return d
 
 
 def _parse_when(s: str, today) -> dt.date | None:

@@ -22,7 +22,8 @@ def build(ctx, sources: dict) -> list[str]:
         arch = []
     for e in reversed(arch[-30:]):
         d = str(e.get("date", ""))
-        title = str(e.get("headline", "Daily brief"))
+        # our own words, never the lead outlet's headline
+        title = str(e.get("summary") or f"Bakersfield Daily Brief for {d}")
         entries.append(f"""  <entry>
     <title>{sx.escape(title)}</title>
     <link href="{BASE}/briefs/{d}/"/>

@@ -75,7 +75,8 @@ def _md(text: str) -> str:
             # "**Headline.** rest of paragraph…". The chronological log
             # entries start with "**HH:MM** —" — keep those as body text, not
             # headings, or the log would produce a dozen headings.
-            m = re.match(r"\*\*(.+?)\*\*\.?\s*(.*)", line)
+            # the lead can end "**Headline.**" or "**Headline**:"; drop either separator
+            m = re.match(r"\*\*(.+?)\*\*[.:]?\s*(.*)", line)
             if m and not re.match(r"^\d{1,2}:\d{2}", m.group(1)):
                 lead, rest = m.group(1), m.group(2)
                 out.append(f"<h3>{_inline(lead)}</h3>")

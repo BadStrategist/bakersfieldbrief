@@ -528,7 +528,7 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
 
 <!-- masthead: derrick emblem + name (card style) -->
 <tr><td style="background:{PAPER};padding:24px 24px 10px;text-align:center">
-  <img src="{BASE_URL}/assets/img/emblem.png" width="190" alt="The Bakersfield Brief" style="display:block;margin:0 auto 10px;max-width:190px;height:auto;border:0">
+  <img src="{BASE_URL}/assets/img/emblem.png" width="190" alt="Bakersfield Daily Brief" style="display:block;margin:0 auto 10px;max-width:190px;height:auto;border:0">
   <p style="margin:6px 0 0;font-family:{DISPLAY};font-size:13px;letter-spacing:3px;text-transform:uppercase;color:{RED}">{H.escape(date_label)}</p>
 </td></tr>
 
@@ -592,7 +592,7 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
 
 <!-- footer: brand + unsubscribe (required elements so MailerLite appends nothing) -->
 <tr><td style="background:{PAPER2};padding:14px 24px;border-top:2px solid {AMBER}">
-  <p style="margin:0;font-family:{SANS};font-size:11px;color:{INK_SOFT}">The Bakersfield Brief &middot; Bakersfield, California &middot; <a href="{BASE_URL}/" style="color:{SIGN}">bakersfieldbrief.com</a></p>
+  <p style="margin:0;font-family:{SANS};font-size:11px;color:{INK_SOFT}">Bakersfield Daily Brief &middot; Bakersfield, California &middot; <a href="{BASE_URL}/" style="color:{SIGN}">bakersfieldbrief.com</a></p>
   <p style="margin:4px 0 0;font-family:{SANS};font-size:10px;color:{INK_SOFT}">You&rsquo;re receiving this because you subscribed to the Bakersfield Brief. <a href="{{$unsubscribe}}" style="color:{SIGN};text-decoration:underline">Unsubscribe</a> any time.</p>
 </td></tr>
 
@@ -624,9 +624,9 @@ Headlines link to the original reporting at the outlets named.
     # what the email is about at a glance. Falls back to the plain date.
     ko_head = (ko or {}).get("headline") or ""
     if ko_head:
-        subject = f"The Bakersfield Brief — {ko_head} — {date_label}"
+        subject = f"Bakersfield Daily Brief — {ko_head} — {date_label}"
     else:
-        subject = f"The Bakersfield Brief — {date_label}"
+        subject = f"Bakersfield Daily Brief — {date_label}"
     for name, content in (("brief.html", html_doc), ("brief.txt", txt_doc),
                           ("subject.txt", subject + "\n")):
         (out_dir / name).write_text(content, encoding="utf-8")

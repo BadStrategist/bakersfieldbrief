@@ -41,6 +41,14 @@ def _when_date(e, today) -> dt.date | None:
             return dt.date(year, mon, int(m.group(2)))
         except ValueError:
             return None
+    # Condors games carry the date in the name ("9/25 vs SJ") and no "when": they showed "Date TBD"
+    m = re.search(r"(?<!\d)(\d{1,2})/(\d{1,2})(?!\d|/)", str(e.get("name") or ""))
+    if m:
+        try:
+            d = dt.date(today.year, int(m.group(1)), int(m.group(2)))
+            return d.replace(year=today.year + 1) if (d - today).days < -180 else d
+        except ValueError:
+            return None
     return None
 
 
@@ -63,15 +71,16 @@ def build(ctx, sources: dict) -> list[str]:
 
     future.sort(key=sort_key)
     groups = {
-        "This week": [p for p in future if p[1] and p[1] <= today + dt.timedelta(days=6)],
-        "Next week": [p for p in future if p[1] and today + dt.timedelta(days=7) <= p[1] <= today + dt.timedelta(days=13)],
+        # rolling windows from today, labelled as such: "Next week" put Oct 5 under "next week" on Sep 22
+        "In the next 7 days": [p for p in future if p[1] and p[1] <= today + dt.timedelta(days=6)],
+        "In 1 to 2 weeks": [p for p in future if p[1] and today + dt.timedelta(days=7) <= p[1] <= today + dt.timedelta(days=13)],
         "Later": [p for p in future if p[1] and p[1] > today + dt.timedelta(days=13)],
-        "Date TBD": [p for p in future if p[1] is None],
+        "Date not posted yet": [p for p in future if p[1] is None],
     }
     groups = {k: v for k, v in groups.items() if v}
 
     def ev_row(e, d) -> str:
-        when = (d.strftime("%a, %b") + f" {d.day}") if d else (html.escape(str(e.get("when") or "Date TBD")))
+        when = (d.strftime("%a, %b") + f" {d.day}") if d else str(e.get("when") or "Date not posted")
         when = html.escape(when)
         url = html.escape(e.get("url") or "#")
         venue = html.escape(e.get("venue") or "")
@@ -88,7 +97,7 @@ def build(ctx, sources: dict) -> list[str]:
         rows = "".join(ev_row(e, d) for e, d in items)
         secs += f"""
       <section class="block">
-        <div class="sign-head"><span class="tab">{len(items)}</span><h2>{gname}</h2></div>
+        <div class="sign-head"><span class="tab">{len(items)} event{"s" if len(items) != 1 else ""}</span><h2>{gname}</h2></div>
         <ul class="ev-list">{rows}</ul>
       </section>"""
 
@@ -120,8 +129,8 @@ def build(ctx, sources: dict) -> list[str]:
       <div class="hero"><p class="kicker">Around town</p>
       <h1>Events in Bakersfield</h1>
       <p class="lede">What's on at the Fox, Mechanics Bank Arena, The Well and more — plus
-      public meetings on the city calendar. Listings come from each venue's own site
-      (whitelist in data/venues.json) and refresh every build.</p></div>
+      public meetings on the city calendar. Listings come from each venue&rsquo;s own website and
+      update several times a day. Dates are as each venue posted them, so confirm before you go.</p></div>
     </div>
     {images.figure("fair", rel)}
     <div class="card" style="margin:14px 0"><span class="tag amber">Feature</span>

@@ -99,17 +99,17 @@
     liveBadge.textContent = "● live · updated " + (data.fetched_at ? ago(data.fetched_at) : "now");
   }
 
+  // The live refresh failing does not make the page's numbers wrong: they are CAL FIRE's figures
+  // from the last site update, with their own "data as of" date. Overwriting them with
+  // "unavailable" put "unavailable active in Kern" beside stat tiles reading 0 and 9 (CAL FIRE
+  // blocks the Cloudflare fetch with a 403). Keep the numbers; say only that the refresh failed.
+  var failures = 0, timer = null;
   function markUnavailable() {
-    if (chipValue && chipValue.textContent.indexOf("Unavailable") === -1) {
-      chipValue.textContent = chipValue.textContent + " (live feed unavailable — showing last static build)";
-    }
-    // On the /fires/ page, mark the overlay counts honestly too.
-    var kernEl = document.querySelector("#fire-kern-count");
-    var caEl = document.querySelector("#fire-ca-count");
-    if (kernEl) kernEl.textContent = "unavailable";
-    if (caEl) caEl.textContent = "unavailable";
-    liveBadge.textContent = "○ live feed unavailable";
+    failures++;
+    liveBadge.textContent = "○ showing the last site update";
+    liveBadge.title = "The minute-by-minute refresh from CAL FIRE is not reachable right now.";
     liveBadge.classList.add("is-off");
+    if (failures >= 2 && timer) { clearInterval(timer); timer = null; }   // stop retrying every minute
   }
 
   function ago(iso) {
@@ -136,7 +136,7 @@
   if ((chip && chipValue) || onFires) {
     if (!started) {
       poll();
-      setInterval(poll, 60_000);
+      timer = setInterval(poll, 60_000);
       started = true;
     }
     // inject the badge into the Conditions section head if present

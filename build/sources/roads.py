@@ -36,19 +36,30 @@ _NO_PROBLEM = re.compile(r"no (traffic )?(restrictions|closures?|incidents?|dela
 # so a Bakersfield city collision was headlined as "Tehachapi Pass: CLOSED".
 # Corridor keywords keep a pass answer scoped to places ON the corridor.
 CORRIDOR = {
+    # SR-126 (Castaic) to the Los Angeles/Kern county line is the south side of the Grapevine:
+    # a wind advisory worded that way was read as "not on the pass" while the live check flagged it.
     "i5": ("TEJON", "LEBEC", "GORMAN", "GRAPEVINE", "FORT TEJON", "CASTAIC",
-           "PYRAMID LAKE", "SR-138", "SMOKEY BEAR"),
+           "PYRAMID LAKE", "SR-138", "SMOKEY BEAR", "SR-126", "SR 126", "KERN CO LINE"),
     "sr58": ("TEHACHAPI", "KEENE", "MONOLITH", "BEALVILLE", "CALIENTE",
              "SR-202", "TOWER LINE", "WOODFORD", "TWIN OAKS"),
     "sr99": ("BAKERSFIELD", "DELANO", "WASCO", "MCFARLAND", "SHAFTER",
              "LAMONT", "KERN CO"),
 }
 
+# Counties each corridor runs through. An item that names another county is never "on the
+# pass", even when its text window runs into a corridor keyword from the next item (an Irvine,
+# Orange Co closure sat right before a "SR-126 to the Kern Co line" wind advisory).
+CORRIDOR_COUNTIES = {
+    "i5": ("KERN", "LOS ANGELES"),
+    "sr58": ("KERN",),
+    "sr99": ("KERN", "TULARE"),
+}
+
 # a problem phrase: the anchor we scope to a place
 _PROBLEM = re.compile(
-    r"is\s+closed|are\s+closed|will be closed|is currently closed|"
-    r"closed|restrictions?|chains|reduced to \d lane|one lane|"
-    r"two lanes closed|wind advisory|wind|fog|snow|traffic hazard|"
+    r"\bis\s+closed\b|\bare\s+closed\b|will be closed|is currently closed|"
+    r"\bclosed\b|\brestrictions?\b|chains|reduced to \d lane|one lane|"
+    r"two lanes closed|wind advisory|\bwind\b|\bfog\b|snow|traffic hazard|"
     r"collision|disabled vehicle", re.I)
 _PLACE = re.compile(r"/in ([^/]+)/\s*\(([A-Za-z .]+?) Co\)")
 _COUNTY = re.compile(r"\(([A-Za-z .]+?) Co\)")
@@ -197,11 +208,11 @@ def _scope(sections: list[dict], slug: str) -> dict:
     keywords = CORRIDOR.get(slug, ())
     on_corridor, elsewhere = [], []
     for s in sections:
-        text = s["text"]
-        for m in _PROBLEM.finditer(text):
-            lo, hi = max(0, m.start() - _WINDOW), min(len(text), m.end() + _WINDOW)
-            win = text[lo:hi]
-            if _section_status(win) == "OPEN":
+        # Judge each Caltrans item on its own text. A fixed character window around a problem
+        # word ran into the neighbouring item: an Irvine closure borrowed the next item's SR-126,
+        # and the SR-126 wind advisory borrowed the Irvine item's "(Orange Co)".
+        for win in _items(s["text"]):
+            if not _PROBLEM.search(win) or _section_status(win) == "OPEN":
                 continue
             place = _PLACE.search(win)
             county_m = _COUNTY.search(win)
@@ -217,7 +228,9 @@ def _scope(sections: list[dict], slug: str) -> dict:
                 "text": _sentence(win),
                 "region": s["region"],
             }
-            if any(k in win.upper() for k in keywords):
+            other_county = bool(county) and not any(
+                c in county.upper() for c in CORRIDOR_COUNTIES.get(slug, ()))
+            if any(k in win.upper() for k in keywords) and not other_county:
                 on_corridor.append(item)
             elif not any(x["text"] == item["text"] for x in elsewhere):
                 elsewhere.append(item)
@@ -233,6 +246,18 @@ def _scope(sections: list[dict], slug: str) -> dict:
         "on_pass_items": uniq,
         "elsewhere": elsewhere[:4],
     }
+
+
+_ITEM_START = re.compile(
+    r"(?<=[a-z0-9)])\s+(?=(?:The|A|An|Northbound|Southbound|Eastbound|Westbound|Both|All|"
+    r"Traffic|Chain|Chains|There|One|Two)\b)")
+
+
+def _items(text: str) -> list[str]:
+    """Split one area's text into separate Caltrans items. Caltrans runs items together with no
+    separator; a new item starts with a capitalised word right after the previous one ends.
+    Clauses inside an item follow " - " and are never split."""
+    return [t.strip() for t in _ITEM_START.split(text or "") if t.strip()]
 
 
 def _sentence(win: str, limit: int = 220) -> str:

@@ -272,9 +272,10 @@ def build(ctx, sources: dict) -> list[str]:
       winds</strong> that tip trucks — the pass has a history of overturns that shut both
       directions for hours. Caltrans also schedules maintenance closures overnight, which
       appear on this page as restrictions with times.</p>
-      <p>Chain requirements are posted at the bottom of the grade. When R2 or R3 chain
-      controls are in effect, traction devices are mandatory — Caltrans officers turn
-      vehicles around at the chain-installation points.</p></div>
+      <p>Chain requirements are posted at the bottom of the grade. Under R2 chain controls,
+      every vehicle needs chains except four-wheel or all-wheel drive with snow tires on all four
+      wheels; under R3, every vehicle needs chains. Drivers without them are turned back at the
+      chain-control checkpoints.</p></div>
     </section>
 
     <section class="block">

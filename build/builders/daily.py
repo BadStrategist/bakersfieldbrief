@@ -71,7 +71,7 @@ def build(ctx, sources: dict) -> list[str]:
         {
             "@context": "https://schema.org",
             "@type": "BlogPosting",
-            "headline": f"The Bakersfield Brief — {_fmt_date(today)}",
+            "headline": _brief_h1(today),
             "datePublished": built_iso,
             "dateModified": built_iso,
             "isAccessibleForFree": True,
@@ -468,7 +468,7 @@ def _big_title(top, today) -> str:
     """Own-brand title — the site is the entity, never a syndicated
     headline. The hero still shows the top story; the <title>/og:title/
     schema say who we are."""
-    return f"The Bakersfield Brief — {_fmt_date(today)}"
+    return f"Bakersfield News Today, {_fmt_date(today)} | Bakersfield Daily Brief"
 
 
 def _overnight_section(rel: str) -> str:
@@ -527,7 +527,7 @@ def _newsletter_block() -> str:
             <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7" stroke="#DC9A1F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </div>
           <h3 id="nl-modal-title">You&rsquo;re on the list</h3>
-          <p class="nl-card-sub">Thanks for subscribing to The Bakersfield Brief. Here&rsquo;s what lands in your inbox every morning:</p>
+          <p class="nl-card-sub">Thanks for subscribing to the Bakersfield Daily Brief. Here&rsquo;s what lands in your inbox every morning:</p>
           <ul class="nl-card-list">
             <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#DC9A1F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>The Overnight</strong> — our morning brief of police scanner activity that occurred overnight while you slept.</span></li>
             <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7" stroke="#DC9A1F" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Today&rsquo;s weather &amp; conditions</strong> &mdash; high, low, air quality, alerts, fires.</span></li>
@@ -563,7 +563,7 @@ def _hero_row(top, headlines, today, rel, built_iso,
                              escribe, events, rel, today)
     hero = f"""
     <p class="today-label">{SUN_ICON} Today&rsquo;s Brief</p>
-    <h1 class="today-h1">The Bakersfield Brief &mdash; {html.escape(_fmt_date(today))}</h1>
+    <h1 class="today-h1">Bakersfield Daily Brief: {html.escape(_fmt_date(today))}</h1>
     <p class="hero-topstory">Top story: {head} {src}</p>
     <p class="lede">{summary}</p>
     <a class="read-more" href="{rel}briefs/">Read today&rsquo;s full brief</a>"""
@@ -627,9 +627,9 @@ def _conditions(weather, chp, isa, airnow, calfire, built_iso, rel="") -> str:
     fc = (weather or {}).get("forecast", {}) or {}
     cur, hi, lo = fc.get("current"), fc.get("high"), fc.get("low")
     if cur is not None and hi is not None:
-        weather_v = f"{cur}&deg; / {hi}&deg;"
+        weather_v = f"{cur}&deg; now &middot; high {hi}&deg;"
     elif hi is not None and lo is not None:
-        weather_v = f"{hi}&deg; / {lo}&deg;"
+        weather_v = f"high {hi}&deg; &middot; low {lo}&deg;"
     else:
         weather_v = "n/a"
     alerts = (weather or {}).get("alerts", [])
@@ -823,13 +823,19 @@ _WATCH_PRIORITY = ("budget", "ordinance", "vote", "flock", "alpr", "surveillance
 
 
 def _one_thing(escribe: dict, board: dict) -> str:
+    """One upcoming agenda item worth watching. Never a meeting that already happened: on
+    2026-09-22 this pointed readers to a Sept 15 board item as if it were ahead."""
+    from .cityhall import _meeting_is_past
+    today_iso = common.iso_today()
     candidates = []
     for m in escribe.get("upcoming", []):
+        if str(m.get("start_iso", ""))[:10] and str(m.get("start_iso", ""))[:10] < today_iso:
+            continue
         for it in (m.get("items") or [])[:40]:
             candidates.append({"meeting": m.get("name", "City meeting"), "item": it.get("title", ""),
                                "date": m.get("start_iso", ""), "url": m.get("url", ""),
                                "text": it.get("text", "")})
-    for it in board.get("items", [])[:60]:
+    for it in ([] if _meeting_is_past(board.get("date", "")) else board.get("items", [])[:60]):
         candidates.append({"meeting": "Kern County Board of Supervisors",
                            "item": it.get("title", ""),
                            "date": board.get("date", ""),
@@ -1005,7 +1011,7 @@ def _week_grid(today, rel, weather, escribe, board, top) -> str:
             arch = archive.get(iso)
             if arch and arch.get("headline"):
                 items.append(f'<li><span class="tag">Brief</span> '
-                             f'<a href="{rel}briefs/{iso}/">{html.escape(arch["headline"])}</a></li>')
+                             f'<a href="{rel}briefs/{iso}/">{html.escape(_entry_label(arch))}</a></li>')
 
         if not items:
             items.append('<li class="day-empty">No items posted</li>')
@@ -1085,7 +1091,7 @@ def _recent_briefs(rel) -> str:
     rows = "".join(f"""
     <li class="arch-row">
       <span class="arch-date">{html.escape(str(e.get('date', '')))}</span>
-      <span class="arch-head"><a href="{rel}briefs/{html.escape(str(e.get('date', '')))}/">{html.escape(e.get('headline', 'Daily brief'))}</a></span>
+      <span class="arch-head"><a href="{rel}briefs/{html.escape(str(e.get('date', '')))}/">{html.escape(_entry_label(e))}</a></span>
     </li>""" for e in entries[-6:])
     return f"""<div class="card"><ul class="arch-list">{rows}</ul>
     <p class="arch-more"><a href="{rel}briefs/">See all daily briefs &rarr;</a></p></div>"""
@@ -1134,12 +1140,42 @@ _TITLE_STOPWORDS = {"for", "and", "the", "with", "in", "of", "to", "at", "on",
 
 
 def _brief_title(headline: str, d) -> str:
-    h = (headline or "Bakersfield Daily Brief").strip().rstrip(", .;-")
-    if len(h) > 60:
-        h = h[:60].rsplit(" ", 1)[0].rstrip(", .;-")
-        while h and h.rsplit(" ", 1)[-1].lower() in _TITLE_STOPWORDS:
-            h = h.rsplit(" ", 1)[0].rstrip(", .;-")
-    return f"{h} | Bakersfield Brief, {d.strftime('%b')} {d.day}, {d.year}"
+    """Our own title for a dated brief. Never another outlet's headline: the lead story is
+    credited and linked in the body, not used as our page title (owner's rule, 2026-09-22)."""
+    return f"Bakersfield News for {d:%A}, {d:%b} {d.day}, {d.year} | Bakersfield Daily Brief"
+
+
+def _brief_h1(d) -> str:
+    return f"Bakersfield Daily Brief: {_fmt_date(d)}"
+
+
+def _lede_summary(content_html: str, limit: int = 110) -> str:
+    """One line from the brief's own written summary (the lede), without the greeting."""
+    m = re.search(r'<div class="lede">(.*?)</div>', content_html or "", re.S)
+    txt = _plain(m.group(1)) if m else ""
+    txt = re.sub(r"^(Good morning|Morning)[^.!]*[.!]\s*", "", txt, flags=re.I).strip()
+    if len(txt) <= limit:
+        return txt
+    return txt[:limit].rsplit(" ", 1)[0].rstrip(",;:.-") + "…"
+
+
+def _entry_label(e: dict) -> str:
+    """Archive link text in our own words: the brief's own opening summary, else the date."""
+    s = _lede_summary(str(e.get("content") or "")) or str(e.get("summary") or "").strip()
+    if s:
+        return s
+    try:
+        return f"Daily brief for {_fmt_date(dt.date.fromisoformat(str(e.get('date', ''))))}"
+    except ValueError:
+        return "Daily brief"
+
+
+def _own_h1(stored_html: str, d) -> str:
+    """Stored archive bodies carry the old lead-headline h1 (or none); show our own."""
+    h1 = f"<h1>{html.escape(_brief_h1(d))}</h1>"
+    if re.search(r"<h1[^>]*>", stored_html):
+        return re.sub(r"<h1[^>]*>.*?</h1>", h1, stored_html, count=1, flags=re.S)
+    return f'<div class="pagehead"><div class="hero"><p class="kicker">The Daily Brief</p>{h1}</div></div>' + stored_html
 
 
 def _brief_newsarticle(headline: str, desc: str, iso: str) -> dict:
@@ -1227,7 +1263,7 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
                             escribe, events or [], today, rel, ctx)
     content += _upcoming_meetings(rel, escribe, board, today)
 
-    headline = (top or {}).get("title") or "Bakersfield Daily Brief"
+    headline = _brief_title("", today).split(" | ")[0]
     dated_desc = _brief_lede(content) or (
         f"Today's Bakersfield and Kern County brief for {_fmt_date(today)}: local news, "
         "weather, conditions, and public meetings, published every morning at 6 AM PT.")
@@ -1248,7 +1284,8 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
     # content instead of a headline stub (feed.py reads headline/date only)
     entries = _load_archive()
     entry = {"date": built_iso,
-             "headline": top["title"] if top else "No headlines fetched",
+             "headline": top["title"] if top else "No headlines fetched",   # the lead story, kept as data
+             "summary": _lede_summary(content),
              "url": f"/briefs/{built_iso}/",
              "content": content}
     entries = [e for e in entries if e.get("date") != built_iso] + [entry]
@@ -1269,7 +1306,7 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
     rows = "".join(f"""
     <li class="arch-row">
       <span class="arch-date">{html.escape(str(e.get('date', '')))}</span>
-      <span class="arch-head"><a href="{index_rel}briefs/{html.escape(str(e.get('date', '')))}/">{html.escape(e.get('headline', 'Daily brief'))}</a></span>
+      <span class="arch-head"><a href="{index_rel}briefs/{html.escape(str(e.get('date', '')))}/">{html.escape(_entry_label(e))}</a></span>
     </li>""" for e in reversed(entries))
     archive_section = f"""
     <p class="sec-head" style="margin-top:26px">All previous briefs <span class="unit">permanent archive, {len(entries)} on record</span></p>
@@ -1330,7 +1367,8 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
         except ValueError:
             continue
         stored = e.get("content") or ""
-        past_headline = str(e.get("headline") or "Bakersfield Daily Brief")
+        past_headline = _brief_title("", d).split(" | ")[0]
+        stored = _own_h1(stored, d) if stored else stored
         if stored:
             past_desc = _brief_lede(stored) or (
                 f"The {_fmt_date(d)} Bakersfield Daily Brief: Kern County news, "
@@ -1338,14 +1376,13 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
             past_body = (_h2ify(stored) + _related_trackers(past_rel, stored)
                          + _upcoming_meetings(past_rel, escribe, board, d))
         else:
-            past_desc = (f"The headline that led the {_fmt_date(d)} Bakersfield Daily "
-                         f"Brief: {past_headline}")
+            past_desc = (f"The Bakersfield Daily Brief for {_fmt_date(d)}: Kern County news, "
+                         "weather, conditions, and public meetings.")
             past_body = f"""
         <div class="pagehead"><div class="hero"><p class="kicker">Archive</p>
         <h1>Brief for {_fmt_date(d)}</h1>
-        <p class="lede">The headline that led the Bakersfield Daily Brief that morning.</p></div></div>
-        <div class="card"><p>Headline: <strong>{html.escape(past_headline)}</strong></p>
-        <p class="note" style="margin-top:8px">The full article for this date was not retained; see
+        <p class="lede">The Bakersfield Daily Brief for this morning.</p></div></div>
+        <div class="card"><p class="note" style="margin-top:8px">The full article for this date was not retained; see
         <a href="{past_rel}index.html">today&rsquo;s brief</a> or the
         <a href="{past_rel}briefs/">archive index</a>.</p></div>""" + _related_trackers(past_rel, "")
         common.write(common.SITE / "briefs" / dstr / "index.html", page_mod.render(
@@ -1532,14 +1569,20 @@ def _article_lead(top, headlines, weather, airnow, calfire,
                                 events, escribe, today)
         if full:
             _save_brief_body(today, full, top)
+    ai_note = ""
     if full:
         greeting_html = _para_html(full)  # LLM plain text → escaped <p>s
+        ai_note = ('<p class="ai-note">This summary is written by AI at 6 AM from that morning&rsquo;s '
+                   'headlines, weather and meetings. The sections below come straight from the '
+                   'sources and update through the day; if a number differs, trust the section.</p>')
         ctx_brief_words = len(re.findall(r"[A-Za-z0-9'’-]+", full))
     else:
         greeting = llm.friendly_brief(
             (top or {}).get("title", ""), headlines, weather, airnow, calfire, events)
         if greeting:
             greeting_html = _para_html(greeting)  # LLM plain text → escaped
+            ai_note = ('<p class="ai-note">This greeting is written by AI from the morning&rsquo;s '
+                       'data; the sections below come straight from the sources.</p>')
             ctx_brief_words = len(re.findall(r"[A-Za-z0-9'’-]+", greeting))
         else:
             greeting_html = _greeting_fallback(top, weather, airnow)  # already HTML
@@ -1565,8 +1608,9 @@ def _article_lead(top, headlines, weather, airnow, calfire,
     return f"""
     <div class="pagehead"><div class="hero">
       <p class="kicker">The Daily Brief</p>
-      <h1>{esc((top or {}).get('title', f'The Bakersfield Brief — {_fmt_date(today)}'))}</h1>
+      <h1>{esc(_brief_h1(today))}</h1>
       <div class="lede">{greeting_html}</div>
+      {ai_note}
     </div></div>
 
     {_newsletter_block()}

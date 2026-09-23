@@ -100,3 +100,28 @@ def run(ctx):
         }
     except Exception as e:  # noqa: BLE001
         return {"ok": False, "error": f"{type(e).__name__}: {e}"}
+
+
+def week_change(series: list) -> dict | None:
+    """Storage change from the reading 7 days before the latest one to the latest one.
+
+    One definition for every page. /water/ counted back seven readings and /numbers/ went back
+    seven calendar days from today, so the two printed different "weekly" drops (5,374 vs 4,566
+    acre-feet on 2026-09-22). Returns {"change", "from", "to"} with the two reading dates, or None
+    when there is no reading 7 to 10 days before the latest.
+    """
+    pts = []
+    for s in series or []:
+        try:
+            pts.append((dt.date.fromisoformat(str(s.get("date", ""))[:10]), float(s["value"])))
+        except (ValueError, KeyError, TypeError):
+            continue
+    if len(pts) < 2:
+        return None
+    pts.sort()
+    last_d, last_v = pts[-1]
+    earlier = [p for p in pts if 7 <= (last_d - p[0]).days <= 10]
+    if not earlier:
+        return None
+    from_d, from_v = max(earlier)   # the one closest to exactly 7 days back
+    return {"change": round(last_v - from_v), "from": from_d.isoformat(), "to": last_d.isoformat()}

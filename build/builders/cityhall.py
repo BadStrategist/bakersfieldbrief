@@ -370,23 +370,27 @@ def _hub(es: dict, board: dict, meeting_pages: list[dict], built_iso: str, rel: 
                       'this build).</p>')
 
     board_items = len(board.get("items", []))
+    _bdate = html.escape(str(board.get('date', '')))
+    board_line = (f"Most recent posted agenda: {_bdate}, {board_items} items. The next agenda is not "
+                  f"posted yet." if _meeting_is_past(board.get('date', '')) else
+                  f"Next regular meeting: agenda for {_bdate or 'the upcoming meeting'}, {board_items} items.")
     board_card = f"""
         <a class="card" href="{rel}city-hall/county-board/">
           <span class="tag {'amber' if board.get('watched') else 'green'}">{'Flock/ALPR flagged' if board.get('watched') else 'agenda posted'}</span>
           <h3>Kern County Board of Supervisors</h3>
-          <p>Next regular meeting &mdash; agenda for {html.escape(str(board.get('date', 'the upcoming meeting')))}: {board_items} items extracted.</p>
+          <p>{board_line}</p>
           <span class="card-go">View agenda preview</span>
         </a>"""
 
     body = f"""
     <div class="pagehead">
       <div class="hero"><p class="kicker">City Hall &amp; County</p>
-      <h1>What to Watch</h1>
-      <p class="lede">Upcoming public meetings in Bakersfield and Kern County, with posted agendas
-      previewed item by item. We flag items that touch surveillance systems (Flock / ALPR) and
-      publish post-meeting recaps as review drafts.</p>
+      <h1>Bakersfield City Council &amp; Kern County Meetings</h1>
+      <p class="lede">Upcoming public meetings in Bakersfield and Kern County, with each posted
+      agenda previewed item by item. Items about surveillance cameras (Flock license plate
+      readers) are flagged.</p>
       <div class="meta"><span>Updated <span class="updated">{built_iso}</span></span>
-      <span class="dot">&bull;</span><span>City agendas via eSCRIBE &middot; county via official PDF</span></div></div>
+      <span class="dot">&bull;</span><span>Source: the city&rsquo;s online agenda system and the county&rsquo;s posted PDF agendas</span></div></div>
     </div>
 
     {images.figure("cityhall", rel)}
@@ -400,21 +404,20 @@ def _hub(es: dict, board: dict, meeting_pages: list[dict], built_iso: str, rel: 
       <div class="sign-head"><span class="tab">County</span><h2>Kern County</h2></div>
       <div class="grid cols-2">{board_card}
       <div class="card"><span class="tag">Coming soon</span><h3>School boards</h3>
-      <p>KHSD and BCSD agenda feeds are stubbed &mdash; their portals block automated access from
-      datacenter IPs; a home-runner migration is planned.</p><span class="card-go">On the roadmap</span></div>
+      <p>Kern High School District and Bakersfield City School District board agendas are not
+      covered yet. Until they are, check each district&rsquo;s own website.</p><span class="card-go">Coming soon</span></div>
       </div>
     </section>
 
     <section class="block">
       <div class="sign-head"><span class="tab">After</span><h2>What They Decided</h2></div>
-      <div class="card"><p>Post-meeting recaps are generated as <strong>review drafts</strong> in the
-      repo (<code>drafts/</code>) &mdash; they are never auto-published. A recap appears there after a
-      meeting date passes; we review, edit, and promote it to the site with
-      <code>python scripts/promote_draft.py drafts/recap-&lt;slug&gt;.md</code>.</p></div>
+      <div class="card"><p>Recaps of what each meeting decided are written after the meeting and
+      checked by a person before they appear here. None are published yet; until then, each
+      meeting&rsquo;s official agenda and minutes are linked above.</p></div>
     </section>"""
 
     page = page_mod.render(
-        title="City Hall & County — What to Watch | Bakersfield Daily Brief",
+        title="Bakersfield City Council & Kern County Meeting Agendas | Bakersfield Daily Brief",
         desc="Upcoming Bakersfield City Council, planning commission, and Kern County Board of Supervisors meetings with item-by-item agenda previews and surveillance-item flags.",
         canonical="/city-hall/",
         content=body, current="cityhall", rel=rel, built=built_iso, statusbar=ctx.statusbar,

@@ -19,50 +19,77 @@ def build(ctx, sources: dict) -> list[str]:
     body = """
     <div class="pagehead"><div class="hero"><p class="kicker">About</p>
     <h1>About Bakersfield Daily Brief</h1>
-    <p class="lede">A free, automated civic news brief for Bakersfield and Kern County — built
-    from public records every morning, edited by software, reviewed by a human.</p></div></div>
+    <p class="lede">A free, independent local news site for Bakersfield and Kern County. Software
+    gathers public records and news links several times a day; parts of the writing are done by
+    AI, and this page says which parts.</p></div></div>
     <div class="prose">
       <h2>What this is</h2>
       <p>Bakersfield Daily Brief is a daily digest of local civic information: the morning&rsquo;s
-      conditions, the day&rsquo;s local news headlines, and the most notable item on the public
-      meeting calendar. It covers the City of Bakersfield, Kern County, and the surrounding
-      valley &mdash; the communities along State Route 99 from Wheeler Ridge to the Kern River
-      Canyon.</p>
-      <h2>How it works</h2>
-      <p>Every morning at 6:00 AM Pacific, a build pipeline fetches data from the agencies that
-      publish it: the City of Bakersfield&rsquo;s meeting system (eSCRIBE), the Kern County Board
-      of Supervisors&rsquo; official agenda, the California Department of Alcoholic Beverage
-      Control, Kern County Environmental Health, the California Highway Patrol, the National
-      Weather Service, the EPA (AirNow), the California Data Exchange Center, and
-      OpenStreetMap. The data is checked, summarized, and baked into static pages &mdash; there
-      is no database and no live data connection on this site.</p>
-      <h2>What we publish &mdash; and what we don&rsquo;t</h2>
-      <p>We publish <strong>headlines with links</strong> to the original reporting (we never
-      republish article text), <strong>factual summaries</strong> of public agendas and records,
-      and <strong>data trackers</strong> with clear sourcing. We deliberately do not cover crime
-      bookings or sports, and we do not take positions on ballot measures, candidates, or policy.
-      When we make a mistake, we correct it openly &mdash; email the contact address below.</p>
+      conditions, the day&rsquo;s local news headlines with links to the outlets that reported them,
+      public meetings, and data trackers for roads, wildfires, Lake Isabella and license plate
+      cameras. It covers the City of Bakersfield, Kern County, and the communities along State
+      Route 99 from Wheeler Ridge to the Kern River Canyon.</p>
+      <h2>Where the information comes from</h2>
+      <ul>
+        <li><strong>Public meetings:</strong> the City of Bakersfield&rsquo;s online agenda system and
+        the Kern County Board of Supervisors&rsquo; posted agendas.</li>
+        <li><strong>Weather and air:</strong> the National Weather Service and the EPA&rsquo;s AirNow.</li>
+        <li><strong>Roads:</strong> Caltrans highway conditions and California Highway Patrol (CHP) incident logs.</li>
+        <li><strong>Wildfires:</strong> CAL FIRE incident data.</li>
+        <li><strong>Lake Isabella:</strong> the state&rsquo;s California Data Exchange Center (CDEC).</li>
+        <li><strong>License plate cameras:</strong> OpenStreetMap, joined to Kern County assessor and
+        City of Bakersfield records for land ownership.</li>
+        <li><strong>News:</strong> headlines and links from local outlets&rsquo; public feeds. We never
+        republish article text.</li>
+        <li><strong>Events:</strong> the listings local venues publish on their own websites.</li>
+        <li><strong>The Kern Overnight:</strong> public-safety radio archived by Broadcastify.</li>
+      </ul>
+      <h2>What is written by AI</h2>
+      <p>Three things on this site are drafted by an AI language model from the data above:</p>
+      <ul>
+        <li><strong>The daily brief&rsquo;s written summary</strong>, from that morning&rsquo;s headlines,
+        weather and meetings.</li>
+        <li><strong>The Kern Overnight</strong>, from a speech-to-text transcript of overnight
+        police and fire radio. Radio traffic is preliminary: details can be wrong until an
+        official source confirms them, and the report says so.</li>
+        <li><strong>The Sunday Read</strong>, a weekly roundup from the week&rsquo;s records.</li>
+      </ul>
+      <p>Everything else, including the trackers, meeting lists, headlines and numbers, is taken
+      directly from the source and shown with its date. When the AI summary and a data box
+      disagree, the data box is the source record.</p>
+      <h2>What we publish, and what we don&rsquo;t</h2>
+      <p>We publish headlines with links to the original reporting, factual summaries of public
+      agendas and records, and data trackers with clear sourcing. The overnight report covers
+      public-safety calls but never publishes names, license plates, patient details, or exact
+      addresses; locations are generalized to the block or cross street. We do not take positions on ballot measures, candidates, or policy.
+      When we make a mistake, we correct it openly: see the <a href="../corrections/">corrections
+      page</a> or email the address below.</p>
+      <h2>How often it updates</h2>
+      <p>The site rebuilds from its sources about every three hours, and the full daily brief is
+      published each morning. Road and wildfire pages also check their sources while you have the
+      page open. Every page shows when its data was last updated.</p>
       <h2>Independence &amp; funding</h2>
-      <p>This site is independent and reader-funded by display advertising. Ads are clearly
-      labeled, shown only with your consent, and never placed inside content in a way that
-      could be mistaken for reporting. No agency, advertiser, or official controls the content
-      of the brief.</p>
+      <p>This site is independent and funded by display advertising. Ads are clearly labeled,
+      shown only with your consent, and never placed inside content in a way that could be
+      mistaken for reporting. No agency, advertiser, or official controls the content of the
+      brief.</p>
       <h2>Who runs it</h2>
-      <p>Bakersfield Daily Brief is an automated publication with human editorial review.
-      Automation drafts; a human reviews meeting recaps before they publish and stands behind
-      the corrections policy.</p>
+      <p>Bakersfield Daily Brief is run by an independent local publisher. Most pages are produced
+      automatically; the publisher sets the rules the automation follows, watches for errors, and
+      handles corrections.</p>
       <h2>Hand-verified sources</h2>
       <p>Some agencies refuse automated visitors. For those, coverage comes from alert
       subscriptions and hand checks, and we publish the last time each was verified:</p>
     </div>"""
 
     # append the hand-verified list from data/manual_checks.json (may be empty)
+    _rows = ""
     try:
         import json as _json
         _mc = _json.loads((common.DATA / "manual_checks.json").read_text(encoding="utf-8"))
         _rows = "".join(
             f"<li>{common.esc(s.get('name', ''))} — <strong>{common.esc(s.get('last_verified') or 'not yet')}</strong></li>"
-            for s in _mc.get("sources", []))
+            for s in _mc.get("sources", []) if s.get("last_verified"))
         if _rows:
             body = body.replace(
                 'hand checks, and we publish the last time each was verified:</p>\n    </div>',
@@ -70,9 +97,13 @@ def build(ctx, sources: dict) -> list[str]:
                 f'{_rows}</ul>\n    </div>')
     except Exception:  # noqa: BLE001
         pass
+    if not _rows:   # nothing verified yet: no heading promising a list that isn't there
+        _i = body.find("      <h2>Hand-verified sources</h2>")
+        if _i > -1:
+            body = body[:_i] + "    </div>"
     common.write(common.SITE / "about" / "index.html", page_mod.render(
         title="About — how the Brief works, what we publish | Bakersfield Daily Brief",
-        desc="How Bakersfield Daily Brief works: an independent, automated civic news brief for Bakersfield and Kern County, built from public records, funded by labeled, consent-based ads.",
+        desc="How Bakersfield Daily Brief works: where its Bakersfield and Kern County information comes from, which parts are written by AI, how often it updates, and how corrections work.",
         canonical="/about/", content=body, current="other", rel="../",
         built=built_iso, statusbar=ctx.statusbar, jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld()]))
     built.append("about/index.html")
@@ -85,9 +116,12 @@ def build(ctx, sources: dict) -> list[str]:
     servers, and shows ads only with your consent.</p></div></div>
     <div class="prose">
       <h2>What this site collects</h2>
-      <p>Bakersfield Daily Brief is a static website hosted on GitHub Pages. It has no accounts,
-      no comments, no login, and no server-side tracking of its own. We do not collect names,
-      email addresses, or any personal information through this site.</p>
+      <p>Bakersfield Daily Brief is a static website hosted on Cloudflare Pages. It has no accounts,
+      no comments, no login, and no server-side tracking of its own.</p>
+      <p><strong>Newsletter.</strong> If you sign up for the daily email, the address you enter is
+      sent to MailerLite, the service that delivers the newsletter, and is used only to send it.
+      Every email has an unsubscribe link. Apart from that sign-up form, we do not collect names,
+      email addresses, or other personal information through this site.</p>
       <h2>Advertising</h2>
       <p>This site is funded by display advertising served by Google AdSense. Ads render only
       after you accept the consent prompt, which we show because Google&rsquo;s advertising
@@ -101,7 +135,7 @@ def build(ctx, sources: dict) -> list[str]:
       <h2>Third-party data we display</h2>
       <p>Everything we display comes from public agencies. When you follow a link to a source
       (a news outlet, an agency, a map), that site&rsquo;s own privacy policy applies. The
-      interactive map loads tiles from CARTO and OpenStreetMap; their privacy practices are
+      maps load tiles from Esri and OpenStreetMap; their privacy practices are
       governed by their policies. We do not receive any data back from those services through
       this site.</p>
       <p>The Kern Overnight and the live map are built from public-safety radio audio
@@ -116,7 +150,7 @@ def build(ctx, sources: dict) -> list[str]:
       <h2>Contact</h2>
       <p>Privacy questions: use the <a href="../contact/">contact page</a>. We respond to
       privacy inquiries within 30 days.</p>
-      <p class="note">Last updated: <strong>August 4, 2026</strong>.</p>
+      <p class="note">Last updated: <strong>September 22, 2026</strong>.</p>
     </div>"""
     common.write(common.SITE / "privacy" / "index.html", page_mod.render(
         title="Privacy Policy | Bakersfield Daily Brief",
@@ -252,7 +286,7 @@ def build(ctx, sources: dict) -> list[str]:
     body = """
     <div class="pagehead"><div class="hero"><p class="kicker">The Brief by email</p>
     <h1>You&rsquo;re on the list</h1>
-    <p class="lede">Thanks for subscribing to The Bakersfield Brief. Here&rsquo;s what lands in
+    <p class="lede">Thanks for subscribing to the Bakersfield Daily Brief. Here&rsquo;s what lands in
     your inbox every morning:</p></div></div>
     <div class="card">
       <ul class="nl-card-list" style="list-style:none;margin:0;padding:0">

@@ -500,8 +500,6 @@ def build_fires(ctx, sources: dict):
     body = f"""
     {map_html}
 
-    <div class="stats">{stat_html}</div>
-
     <div id="fires-list" data-fires-list class="live-fires-list" aria-live="polite"></div>
 
     {kern_section}
@@ -645,16 +643,16 @@ def build_water(ctx, sources: dict):
         delta = (vals[-1] - vals[0]) if len(vals) > 1 else 0
 
         # ---- change over the last week: the number answer engines actually quote ----
-        chg7_af, chg7_days = None, 0
-        if len(vals) >= 8:
-            chg7_af, chg7_days = vals[-1] - vals[-8], 7
-        elif len(vals) >= 2:
-            chg7_af, chg7_days = vals[-1] - vals[-2], 1
+        # one definition shared with /numbers/ (isabella.week_change), with its reading dates
+        from build.sources.isabella import week_change
+        wk = week_change(series)
+        chg7_af = wk["change"] if wk else None
         chg_txt = ""
-        if chg7_af is not None:
+        if wk:
+            _f, _t = dt.date.fromisoformat(wk["from"]), dt.date.fromisoformat(wk["to"])
             chg_txt = (f"Storage is {'up' if chg7_af >= 0 else 'down'} "
-                       f"{abs(chg7_af):,.0f} acre-feet over the last "
-                       f"{'7 days' if chg7_days == 7 else '24 hours'}")
+                       f"{abs(chg7_af):,.0f} acre-feet over the last 7 days "
+                       f"({_f:%b} {_f.day} to {_t:%b} {_t.day} readings)")
         below_pool_txt = ""
 
         status_label, status_note = _water_level_status(
@@ -871,9 +869,8 @@ def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
     if cadence is None:
         cadence = "refreshed weekly"
     if method is None:
-        method = ("Every run fetches the official public data source, diffs it against the "
-                  "previous snapshot, and bakes the result into this static page. No data is "
-                  "loaded by your browser.")
+        method = ("Each update pulls the official public source, compares it with the previous "
+                  "copy to spot what changed, and rebuilds this page from it.")
 
     tokens = {
         "__REL__": rel,
@@ -960,11 +957,10 @@ def build_hub(ctx, sources: dict) -> list[str]:
 
     <section class="block">
       <div class="sign-head"><span class="tab">How</span><h2>How trackers work</h2></div>
-      <div class="card"><p>Every tracker is a small pipeline: fetch the public source
-      (Overpass/OSM, CDEC), normalize it, diff it against the stored snapshot, and bake the
-      result into a static page at build time. There is no database and no client-side data
-      fetching &mdash; the page you see is the page that was built. Adding a tracker is a
-      ~30-minute job: see the README.</p>
+      <div class="card"><p>Each tracker pulls one official public source (for example
+      OpenStreetMap for cameras, the state&rsquo;s CDEC service for Lake Isabella, CAL FIRE for
+      wildfires), compares it with the previous copy to spot what changed, and rebuilds its page.
+      Every page shows when its data was last updated and where it came from.</p>
       <p>ALPR count on the last build: <strong>{stats.get('total', '—')} cameras mapped</strong>
       ({stats.get('flock', 0)} Flock Safety). Map data &copy; OpenStreetMap contributors, ODbL.
       Every camera is also joined to the nearest tax-roll parcel and the owner of record: see

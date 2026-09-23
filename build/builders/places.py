@@ -125,7 +125,7 @@ def _place_page(ctx, slug: str, meta: dict, built_iso: str, sources: dict,
     fc = _forecast_for(meta["nws_point"]) if meta["nws_point"] else (weather or {}).get("forecast", {})
     cur, hi, lo = fc.get("current"), fc.get("high"), fc.get("low")
     if hi is not None and lo is not None:
-        weather_v = f"{hi}&deg; / {lo}&deg;"
+        weather_v = f"high {hi}&deg; &middot; low {lo}&deg;"
     elif cur is not None:
         weather_v = f"{cur}&deg;"
     else:

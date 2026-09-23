@@ -122,10 +122,11 @@ def build_statusbar(weather: dict, escribe: dict) -> str:
     # right: weather
     fc = (weather or {}).get("forecast", {}) or {}
     cur, hi, lo = fc.get("current"), fc.get("high"), fc.get("low")
+    # labelled: a bare "66° / 86°" read as low / high, and "88° / 88°" as a broken reading
     if cur is not None and hi is not None:
-        w = f"{cur}&deg; / {hi}&deg;"
+        w = f"{cur}&deg; now &middot; high {hi}&deg;"
     elif hi is not None and lo is not None:
-        w = f"{hi}&deg; / {lo}&deg;"
+        w = f"high {hi}&deg; &middot; low {lo}&deg;"
     elif cur is not None:
         w = f"{cur}&deg;"
     else:

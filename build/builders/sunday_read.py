@@ -102,9 +102,10 @@ def _week_facts(sources: dict) -> str:
     isa = sources.get("isabella", {})
     if isa.get("ok") and isa.get("last"):
         last = isa["last"]
-        lines.append(f"ISABELLA LAKE: {last.get('value', '')} "
-                     f"({last.get('pct', '')}% of capacity), 30-day trend: "
-                     f"{isa.get('trend', '')}")
+        _pct = isa.get("pct", last.get("pct"))
+        lines.append(f"ISABELLA LAKE: {last.get('value', '')} acre-feet "
+                     + (f"({_pct}% of capacity)" if _pct not in (None, "") else "")
+                     + (f", 30-day trend: {isa.get('trend')}" if isa.get("trend") else ""))
         lines.append("")
 
     wx = sources.get("weather", {})
@@ -205,17 +206,22 @@ def _fallback_deterministic(topic: str, sources: dict, built_iso: str) -> dict:
     # 3. water
     if isa.get("ok") and isa.get("last"):
         last = isa["last"]
-        series = isa.get("series", [])
-        trend = ""
-        if len(series) >= 2:
-            vals = [s.get("value") for s in series if s.get("value") is not None]
-            if len(vals) >= 2:
-                d = vals[-1] - vals[0]
-                trend = f" That is a change of about {d:+,} acre-feet over the tracked window." if d else ""
+        # the same weekly change /water/ and /numbers/ print; pct lives on the payload, not on
+        # "last" (reading it from "last" printed "roughly —% of capacity")
+        from build.sources.isabella import week_change
+        wk = week_change(isa.get("storage_series") or isa.get("series", []))
+        trend = (f" That is {'up' if wk['change'] >= 0 else 'down'} {abs(wk['change']):,} acre-feet "
+                 f"over the past week." if wk and wk["change"] else "")
+        pct = isa.get("pct", last.get("pct"))
+        try:
+            af = f"{int(round(float(last.get('value')))):,}"
+        except (TypeError, ValueError):
+            af = str(last.get("value", ""))
         paras.append(
             "<p><strong>The water that runs the valley.</strong> Lake Isabella "
-            f"sits at {last.get('value', '—')} acre-feet — roughly "
-            f"{last.get('pct', '—')}% of capacity.{trend} The number matters "
+            f"holds {af} acre-feet"
+            + (f", about {pct}% of capacity." if pct not in (None, "") else ".")
+            + f"{trend} The number matters "
             "beyond the reservoir itself: it shapes irrigation allotments, "
             "recreation, and the color of the hills into fall. California "
             "watches these figures through every season, and Kern County "
@@ -298,7 +304,7 @@ def _render(f: dict, rel: str) -> str:
     return f"""
     <div class="pagehead">
       <div class="hero"><p class="kicker">The Sunday Read</p>
-      <h1>{topic}</h1>
+      <h1>The Sunday Read: {topic}</h1>
       <p class="lede">A weekly, newsletter-length look at one Kern County story —
       assembled from public records and linked reporting.</p>
       <div class="meta"><span>Week of {date_txt}</span><span class="dot">&bull;</span>

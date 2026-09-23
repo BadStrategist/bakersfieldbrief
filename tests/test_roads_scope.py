@@ -36,9 +36,13 @@ def test_i5_irvine_closure_is_not_the_pass():
     p = _parse("i5", "roads_i5_2026-09-19.html")
     sc = p["scope"]
     assert p["status"] == "CLOSED"          # route-wide rollup is still CLOSED
-    assert sc["on_pass_reported"] is False
-    assert sc["on_pass"] == "OPEN"
+    # The Irvine closure is elsewhere, never the pass...
+    assert not any("Irvine" in i["text"] for i in sc["on_pass_items"])
     assert any("Irvine" in i["place"] for i in sc["elsewhere"])
+    assert sc["on_pass"] != "CLOSED"
+    # ...but the same page's wind advisory from SR-126 to the Kern County line IS the Grapevine
+    # climb (it was missed while the classifier's word-boundary regex was corrupted).
+    assert any("SR-126" in i["text"] for i in sc["on_pass_items"])
 
 
 def test_i5_san_joaquin_wind_advisory_is_elsewhere():

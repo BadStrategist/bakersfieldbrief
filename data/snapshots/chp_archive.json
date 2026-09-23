@@ -1320,6 +1320,26 @@
   "details": ""
  },
  {
+  "log_id": "260922BF0376",
+  "time": "Sep 22 2026  7:19PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Wb Sr58 At General Beale Rd",
+  "area": "Bakersfield",
+  "lat": 35.2925,
+  "lon": -118.7525,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0388",
+  "time": "Sep 22 2026  7:41PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Nb I5 At 7th Standard Rd",
+  "area": "Buttonwillow",
+  "lat": 35.442222,
+  "lon": -119.456389,
+  "details": ""
+ },
+ {
   "log_id": "260922BF0113",
   "time": "Sep 22 2026  8:54AM",
   "type": "CZP-Assist with Construction",

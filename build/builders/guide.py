@@ -131,10 +131,22 @@ def _pick(events: list[dict], today) -> list[dict]:
               if (_event_date(e, today) or today) >= today and not minor.search(str(e.get("name", "")))]
     # Weekend picks go round the days (Fri, Sat, Sun) so one busy Friday can't take all five;
     # then the next upcoming events fill any slots left. One pick per venue keeps it varied.
-    weekend = [e for e in ranked if (d := _event_date(e, today)) and start <= d <= end]
+    def _runs_over_weekend(e):
+        # a theatrical run (Gaslight) that is playing across this weekend
+        try:
+            return (e.get("start") and e.get("end") and
+                    dt.date.fromisoformat(e["start"]) <= end and dt.date.fromisoformat(e["end"]) >= start)
+        except ValueError:
+            return False
+    weekend = [e for e in ranked
+               if ((d := _event_date(e, today)) and start <= d <= end) or _runs_over_weekend(e)]
     by_day = {}
     for e in weekend:
-        by_day.setdefault(_event_date(e, today), []).append(e)
+        d = _event_date(e, today)
+        bucket = by_day.setdefault(d if d and start <= d <= end else start, [])
+        # a running production has no single date; put it first on its day so a busy Friday
+        # of one-night events can't crowd it out of the five
+        bucket.insert(0, e) if _runs_over_weekend(e) else bucket.append(e)
     order = []
     while any(by_day.values()):
         for day in sorted(by_day):
@@ -155,6 +167,8 @@ def _pick(events: list[dict], today) -> list[dict]:
 
 def _fmt_when_txt(e: dict, today) -> str:
     """Readable date for a pick: ISO stamps become 'Fri, Sep 25 at 7:30 p.m.'."""
+    if e.get("label"):
+        return str(e["label"])
     w = str(e.get("when") or "").strip()
     if w[:4].isdigit() and w[4:5] == "-":
         return common.fmt_when(w.replace(" ", "T"))

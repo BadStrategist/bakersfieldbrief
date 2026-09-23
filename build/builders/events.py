@@ -87,13 +87,15 @@ def _event_jsonld(future: list, today: dt.date, limit: int = 60) -> list[dict]:
         ev = {
             "@context": "https://schema.org", "@type": "Event",
             "name": _display_name(e),
-            "startDate": d.isoformat(),
+            "startDate": e.get("start") or d.isoformat(),
             "eventStatus": "https://schema.org/EventScheduled",
             "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
             "location": {"@type": "Place", "name": venue,
                          "address": {"@type": "PostalAddress", "addressLocality": "Bakersfield",
                                      "addressRegion": "CA", "addressCountry": "US"}},
         }
+        if e.get("end"):                  # a theatrical run: its real closing date
+            ev["endDate"] = e["end"]
         if e.get("url"):
             ev["url"] = e["url"]
         out.append(ev)
@@ -142,7 +144,8 @@ def build(ctx, sources: dict) -> list[str]:
     groups = {k: v for k, v in groups.items() if v}
 
     def ev_row(e, d) -> str:
-        when = (d.strftime("%a, %b") + f" {d.day}") if d else str(e.get("when") or "Date not posted")
+        when = (e.get("label") or ((d.strftime("%a, %b") + f" {d.day}") if d else
+                                   str(e.get("when") or "Date not posted")))
         when = html.escape(when)
         url = html.escape(e.get("url") or "#")
         venue = html.escape(e.get("venue") or "")
@@ -192,7 +195,7 @@ def build(ctx, sources: dict) -> list[str]:
     <div class="pagehead">
       <div class="hero"><p class="kicker">Around town</p>
       <h1>Events in Bakersfield</h1>
-      <p class="lede">Concerts, shows, plays, the symphony, Condors hockey, CSUB and Bakersfield
+      <p class="lede">Concerts, shows, plays, melodrama at the Gaslight, the symphony, Condors hockey, CSUB and Bakersfield
       College home games, and more, plus public meetings on the city calendar. Listings come from each venue&rsquo;s own website and
       update several times a day. Dates are as each venue posted them, so confirm before you go.</p></div>
     </div>

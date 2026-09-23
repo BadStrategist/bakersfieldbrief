@@ -232,3 +232,18 @@ def test_well_comedy_slides(monkeypatch):
     out = venues._well({"url": "https://www.thewellcomedyclub.com/"})
     assert out == [{"name": "Joe Sib", "when": "2026-11-12",
                     "url": "https://www.thewellcomedyclub.com/events/135705"}]
+
+
+def test_gaslight_runs(monkeypatch):
+    """Gaslight productions become one entry per run with its real dates, never invented times."""
+    from build.sources import venues_extra as X
+    page = ("<h1>2026 Schedule</h1><h4>July 10 - September 5</h4><h2>Rosedale The Untold <span>Story</span></h2>"
+            "<h4>September 18 - November 14</h4><h2>A Funny Fright In The <span>Night</span></h2>")
+
+    class R:
+        content = page.encode("utf-8")
+    monkeypatch.setattr(common, "fetch", lambda *a, **k: R())
+    monkeypatch.setattr(common, "today_pacific", lambda: dt.date(2026, 9, 22))
+    out = X.gaslight({"url": "https://themelodrama.com/schedule/"})
+    assert [(e["name"], e["label"], e["start"], e["end"]) for e in out] == [
+        ("A Funny Fright In The Night", "Now playing, through Nov 14", "2026-09-18", "2026-11-14")]

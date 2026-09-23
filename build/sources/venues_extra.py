@@ -202,4 +202,39 @@ def squarespace(v) -> list[dict]:
     return events
 
 
-PARSERS = {"simpletix": simpletix, "temblor": temblor, "ics": ics, "squarespace": squarespace}
+def gaslight(v) -> list[dict]:
+    """Gaslight Melodrama Theatre: the schedule page lists each production as
+    <h4>September 18 - November 14</h4><h2>A Funny Fright In The <span>Night</span></h2>.
+    Weekly show times aren't published in a readable form, so a production is one entry for its
+    run (never invented performance times): "Now playing, through Nov 14" or "Opens Nov 27, runs
+    through Dec 23". Only runs that haven't ended and open within 60 days are kept."""
+    r = common.fetch(v["url"], headers=HEADERS, timeout=20, retries=1)
+    page = r.content.decode("utf-8", "replace")
+    today = common.today_pacific()
+    ym = re.search(r"(20\d\d) Schedule", page)
+    year = int(ym.group(1)) if ym else today.year
+    events = []
+    for rng, title in re.findall(r"<h4>\s*([A-Za-z]+ \d{1,2}\s*-\s*(?:[A-Za-z]+ )?\d{1,2})\s*</h4>\s*<h2>(.*?)</h2>",
+                                 page, re.S):
+        m = re.match(r"([A-Za-z]+) (\d{1,2})\s*-\s*(?:([A-Za-z]+) )?(\d{1,2})", rng)
+        try:
+            start = dt.datetime.strptime(f"{m.group(1)} {m.group(2)} {year}", "%B %d %Y").date()
+            end = dt.datetime.strptime(f"{m.group(3) or m.group(1)} {m.group(4)} {year}", "%B %d %Y").date()
+        except (ValueError, AttributeError):
+            continue
+        if end < start:                      # a run that crosses New Year
+            end = end.replace(year=year + 1)
+        if end < today or (start - today).days > HORIZON_DAYS:
+            continue
+        name = " ".join(html.unescape(re.sub(r"<[^>]+>", " ", title)).split())
+        running = start <= today
+        label = (f"Now playing, through {end:%b} {end.day}" if running
+                 else f"Opens {start:%b} {start.day}, runs through {end:%b} {end.day}")
+        events.append({"name": name, "when": (today if running else start).isoformat(),
+                       "label": label, "start": start.isoformat(), "end": end.isoformat(),
+                       "url": v.get("site", v["url"])})
+    return events
+
+
+PARSERS = {"simpletix": simpletix, "temblor": temblor, "ics": ics, "squarespace": squarespace,
+           "gaslight": gaslight}

@@ -83,6 +83,14 @@
    "prefix": "Bakersfield College ",
    "site": "https://www.gogades.com/",
    "last_verified": "2026-09-22"
+  },
+  {
+   "name": "Gaslight Melodrama Theatre",
+   "slug": "gaslight",
+   "url": "https://themelodrama.com/schedule/",
+   "parse": "gaslight",
+   "site": "https://themelodrama.com/tickets/",
+   "last_verified": "2026-09-22"
   }
  ]
 }

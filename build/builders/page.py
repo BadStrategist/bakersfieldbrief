@@ -17,7 +17,8 @@ def render(*, title: str, desc: str, canonical: str, content: str,
            extra_scripts: str = "", og_title: str | None = None,
            og_desc: str | None = None,
            og_image: str = "https://bakersfieldbrief.com/assets/img/emblem.png",
-           statusbar: str = "") -> str:
+           statusbar: str = "", og_type: str = "website",
+           robots: str = "index, follow") -> str:
     """Render a full page from templates/layout.html.
 
     rel: relative prefix from this page's dir to site root ("" or "../…")
@@ -46,6 +47,8 @@ def render(*, title: str, desc: str, canonical: str, content: str,
         "__OGTITLE__": htmlmod.escape(og_title),
         "__OGDESC__": htmlmod.escape(og_desc),
         "__OGIMAGE__": og_image,
+        "__OGTYPE__": og_type,
+        "__ROBOTS__": robots,
         "__BUILT__": built,
         "__YEAR__": _year,
         "__CSSV__": _asset_ver("assets/css/site.css"),
@@ -54,7 +57,7 @@ def render(*, title: str, desc: str, canonical: str, content: str,
         "__CONTENT__": content,
         "__EXTRAHEAD__": extra_head,
         "__EXTRASCRIPTS__": extra_scripts,
-        "__JSONLD__": _jsonld(jsonld),
+        "__JSONLD__": _jsonld((jsonld or []) + _breadcrumb_ld(content, canonical)),
         "__STATUSBAR__": statusbar or "",
     }
     for k, v in cur_flags.items():
@@ -78,6 +81,29 @@ def _asset_ver(rel_path: str) -> str:
         return hashlib.sha1(b).hexdigest()[:10]
     except OSError:
         return ""
+
+
+def _breadcrumb_ld(content: str, canonical: str) -> list:
+    """BreadcrumbList from the page's own visible breadcrumbs, so markup and page never differ.
+    Visible breadcrumbs existed on trackers, places and city hall, but only /fair/ had the markup."""
+    import re
+    from urllib.parse import urljoin
+    m = re.search(r'<nav class="breadcrumbs"[^>]*>(.*?)</nav>', content or "", re.S)
+    if not m:
+        return []
+    base = "https://bakersfieldbrief.com" + (canonical or "/")
+    parts = [p.strip() for p in re.split(r"&rsaquo;|›", m.group(1)) if p.strip()]
+    items = []
+    for i, part in enumerate(parts, 1):
+        a = re.search(r'<a[^>]*href="([^"]+)"[^>]*>(.*?)</a>', part, re.S)
+        name = htmlmod.unescape(re.sub(r"<[^>]+>", "", a.group(2) if a else part)).strip()
+        if not name:
+            continue
+        url = urljoin(base, a.group(1)) if a else base
+        items.append({"@type": "ListItem", "position": len(items) + 1, "name": name, "item": url})
+    if len(items) < 2:
+        return []
+    return [{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": items}]
 
 
 def _jsonld(blocks: list | None) -> str:

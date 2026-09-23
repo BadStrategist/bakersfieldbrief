@@ -204,10 +204,14 @@ def _sitemap():
     urls = sorted(set(urls))
     xml = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    # The site rebuilds daily, so every build stamps today as lastmod for all
-    # URLs — no stale dates when a page's content changes on a later day.
+    # lastmod must mean "this page changed". A dated brief never changes after its day, so it
+    # carries its own date; noindex pages stay out; data pages rebuild with fresh data daily.
+    # (Every URL used to say today, and a sitemap where every date is the same gets ignored.)
     for u in urls:
-        xml.append(f"  <url><loc>{u}</loc><lastmod>{today}</lastmod></url>")
+        if u.endswith("/thanks/"):
+            continue
+        m = re.search(r"/briefs/(\d{4}-\d{2}-\d{2})/$", u)
+        xml.append(f"  <url><loc>{u}</loc><lastmod>{m.group(1) if m else today}</lastmod></url>")
     xml.append("</urlset>")
     common.write(common.SITE / "sitemap.xml", "\n".join(xml) + "\n")
 
@@ -390,11 +394,28 @@ def _llms_full(results: dict) -> None:
     else:
         tehwx = "Tehachapi weather from the National Weather Service; data unavailable this build."
 
+    # recent briefs, in our own words (the brief's own summary line), and upcoming meetings:
+    # dated, sourced facts an answer engine can cite
+    try:
+        _arch = json.loads((common.DATA / "briefs_archive.json").read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        _arch = []
+    _recent = "\n".join(f"https://bakersfieldbrief.com/briefs/{e.get('date')}/ — {e.get('date')}: {daily._entry_label(e)}"
+                         for e in reversed(_arch[-7:]) if e.get("date"))
+    _meet = "\n".join(
+        f"- {common.fmt_when(m.get('start_iso', ''))}: {m.get('name', 'Public meeting')} ({m.get('url', '')})"
+        for m in sorted(results.get("escribe", {}).get("upcoming", []) or [], key=lambda x: str(x.get("start_iso", "")))
+        if str(m.get("start_iso", ""))[:10] >= today)[:2000]
+    _cf = results.get("calfire", {})
+    fires = ((f"{len(_cf.get('kern', []))} active CAL FIRE incidents in Kern County and "
+              f"{len(_cf.get('incidents', []))} statewide as of {_cf.get('asof', today)}.")
+             if _cf.get("ok") else "CAL FIRE data unavailable this build.")
+
     common.write(common.SITE / "llms-full.txt", f"""# Bakersfield Daily Brief — Full Text
 
 > Machine-readable full content. Built {today} from public records. Each data tracker page below states its current canonical answer.
 
-Bakersfield Daily Brief is an independent, automated civic-news brief for Bakersfield and Kern County, California. It rebuilds fresh every morning from public agencies: City of Bakersfield meeting records (eSCRIBE), Kern County Board of Supervisors agendas, ABC license filings, Kern County Environmental Health, CHP incidents, NWS alerts, EPA AirNow, CDEC reservoir data, CAL FIRE, Caltrans road conditions, and OpenStreetMap. Headlines link to original outlets; no article text is republished.
+Bakersfield Daily Brief is an independent, automated civic-news brief for Bakersfield and Kern County, California. It rebuilds about every three hours from public sources: City of Bakersfield and Kern County meeting agendas, the National Weather Service, EPA AirNow, CHP incident logs, Caltrans road conditions, CAL FIRE, Lake Isabella data (CDEC), OpenStreetMap, and headlines from local outlets (linked, never republished). The daily brief summary, the overnight scanner report and the Sunday Read are written by an AI model from that data; trackers and numbers come straight from the sources.
 
 ## Home
 
@@ -413,6 +434,16 @@ https://bakersfieldbrief.com/tehachapi-pass/ — {teh}
 https://bakersfieldbrief.com/tehachapi-weather/ — {tehwx}
 
 https://bakersfieldbrief.com/roads/ — {roads_all}
+
+https://bakersfieldbrief.com/fires/ — {fires}
+
+## Recent daily briefs
+
+{_recent or "No briefs archived yet."}
+
+## Upcoming public meetings (Bakersfield)
+
+{_meet or "No upcoming city meetings posted."}
 
 ## City Hall & County
 

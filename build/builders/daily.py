@@ -1149,6 +1149,23 @@ def _brief_h1(d) -> str:
     return f"Bakersfield Daily Brief: {_fmt_date(d)}"
 
 
+def _brief_pager(dstr: str, dates: list, rel: str) -> str:
+    """Previous / next day links on a dated brief. Older briefs were reachable only from the
+    /briefs/ list, one internal link each; this chains every day to its neighbours."""
+    ds = sorted({d for d in dates if re.match(r"^\d{4}-\d{2}-\d{2}$", d or "")})
+    if dstr not in ds:
+        return ""
+    i = ds.index(dstr)
+
+    def lab(d):
+        x = dt.date.fromisoformat(d)
+        return f"{x:%a}, {x:%b} {x.day}"
+    prev_l = (f'<a rel="prev" href="{rel}briefs/{ds[i - 1]}/">&larr; {lab(ds[i - 1])}</a>' if i > 0 else "<span></span>")
+    next_l = (f'<a rel="next" href="{rel}briefs/{ds[i + 1]}/">{lab(ds[i + 1])} &rarr;</a>' if i < len(ds) - 1 else "<span></span>")
+    return (f'<nav class="brief-pager" aria-label="Other days">{prev_l}'
+            f'<a href="{rel}briefs/">All daily briefs</a>{next_l}</nav>')
+
+
 def _lede_summary(content_html: str, limit: int = 110) -> str:
     """One line from the brief's own written summary (the lede), without the greeting."""
     m = re.search(r'<div class="lede">(.*?)</div>', content_html or "", re.S)
@@ -1182,13 +1199,20 @@ def _own_h1(stored_html: str, d) -> str:
 def _brief_newsarticle(headline: str, desc: str, iso: str) -> dict:
     """NewsArticle JSON-LD for a dated brief page (news-style fresh signal,
     same pattern overnight.py uses per report)."""
+    # 6 AM Pacific with the right offset for that date (-07:00 in summer, -08:00 in winter)
+    try:
+        stamp = dt.datetime.combine(dt.date.fromisoformat(iso), dt.time(6, 0),
+                                    tzinfo=common.PACIFIC).isoformat()
+    except ValueError:
+        stamp = f"{iso}T06:00:00-07:00"
     return {
         "@context": "https://schema.org",
         "@type": "NewsArticle",
         "headline": headline,
         "description": desc,
-        "datePublished": f"{iso}T06:00:00-07:00",
-        "dateModified": f"{iso}T06:00:00-07:00",
+        "image": ["https://bakersfieldbrief.com/assets/img/bakersfield.jpg"],
+        "datePublished": stamp,
+        "dateModified": stamp,
         "author": {"@type": "Organization", "name": "Bakersfield Daily Brief",
                    "url": "https://bakersfieldbrief.com/"},
         "publisher": {"@type": "Organization", "name": "Bakersfield Daily Brief",
@@ -1272,11 +1296,13 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
         title=_brief_title(headline, today),
         desc=dated_desc,
         canonical=f"/briefs/{built_iso}/",
-        content=_h2ify(content) + _related_trackers(rel, content),
+        content=(_h2ify(content) + _related_trackers(rel, content)
+                 + _brief_pager(built_iso, [str(e.get("date", "")) for e in _load_archive()] + [built_iso], rel)),
         current="index", rel=rel, built=built_iso,
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(),
                 _brief_newsarticle(headline, dated_desc, built_iso)],
         statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
+        og_type="article", og_image="https://bakersfieldbrief.com/assets/img/bakersfield.jpg",
     )
     common.write(common.SITE / "briefs" / built_iso / "index.html", page)
     built.append(f"briefs/{built_iso}/index.html")
@@ -1389,10 +1415,13 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
         common.write(common.SITE / "briefs" / dstr / "index.html", page_mod.render(
             title=_brief_title(past_headline, d),
             desc=past_desc,
-            canonical=f"/briefs/{dstr}/", content=past_body, current="index", rel=past_rel,
+            canonical=f"/briefs/{dstr}/",
+            content=past_body + _brief_pager(dstr, [str(x.get("date", "")) for x in entries], past_rel),
+            current="index", rel=past_rel,
             built=built_iso, jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(),
                                      _brief_newsarticle(past_headline, past_desc, dstr)],
-            statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else ""))
+            statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
+            og_type="article", og_image="https://bakersfieldbrief.com/assets/img/bakersfield.jpg"))
         built.append(f"briefs/{dstr}/index.html")
     return built
 

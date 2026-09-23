@@ -255,6 +255,7 @@ def build(ctx, sources: dict) -> list[str]:
         title="Page not found | Bakersfield Daily Brief",
         desc="404 — this page does not exist on Bakersfield Daily Brief.",
         canonical="/404.html", content=body, current="other", rel="",
+        robots="noindex, follow",
         built=built_iso, statusbar=ctx.statusbar, jsonld=[]))
     built.append("404.html")
 
@@ -301,6 +302,7 @@ def build(ctx, sources: dict) -> list[str]:
         title="Thanks for subscribing | Bakersfield Daily Brief",
         desc="You're on the list — here's what you'll get in your daily email from Bakersfield Daily Brief.",
         canonical="/thanks/", content=body, current="other", rel="../",
+        robots="noindex, follow",
         built=built_iso, statusbar=ctx.statusbar, jsonld=[]))
     built.append("thanks/index.html")
 

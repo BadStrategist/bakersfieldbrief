@@ -20,6 +20,7 @@ from .. import common
 from ..emailer import render_guide
 from . import images
 from . import page as page_mod
+from .events import _display_name
 
 _VENUE_ORDER = {"fox": 0, "arena": 1, "well": 2, "condors": 3, "visit": 4}
 
@@ -62,7 +63,7 @@ def build(ctx, sources: dict) -> list[str]:
     # ---- site page (auto-published every build; cached picks off-Thursday)
     if events:
         lis = "".join(f"""
-        <li><strong>{html.escape(e.get('name', ''))}</strong>
+        <li><strong>{html.escape(_display_name(e))}</strong>
         <span class="when">{html.escape(e.get('venue', ''))} · {html.escape(e.get('when', '') or _fmt_day(_event_date(e, today)))}</span>
         <a href="{html.escape(e.get('url', '#'))}" target="_blank" rel="noopener">Details →</a></li>""" for e in events)
         picks = f'<ol class="guide-list">{lis}</ol>'

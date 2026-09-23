@@ -52,6 +52,56 @@ def _when_date(e, today) -> dt.date | None:
     return None
 
 
+# AHL Pacific Division opponents, by the codes the Condors schedule feed uses
+_AHL = {"ABB": "Abbotsford Canucks", "CGY": "Calgary Wranglers", "COL": "Colorado Eagles",
+        "CV": "Coachella Valley Firebirds", "HSK": "Henderson Silver Knights",
+        "ONT": "Ontario Reign", "SD": "San Diego Gulls", "SJ": "San Jose Barracuda",
+        "TUC": "Tucson Roadrunners", "TEX": "Texas Stars"}
+
+
+def _display_name(e: dict) -> str:
+    """Condors listings read "9/25 vs SJ"; say "Condors vs. San Jose Barracuda" instead."""
+    name = str(e.get("name") or "")
+    if e.get("venue_slug") != "condors":
+        return name
+    m = re.search(r"(vs|at|@)\s+([A-Z]{2,4})\b", name)
+    if not m:
+        return f"Bakersfield Condors: {name}"
+    team = _AHL.get(m.group(2), m.group(2))
+    return f"Bakersfield Condors vs. {team}" if m.group(1) == "vs" else f"Bakersfield Condors at {team} (away)"
+
+
+def _event_jsonld(future: list, today: dt.date, limit: int = 60) -> list[dict]:
+    """schema.org Event for each dated upcoming listing in Bakersfield (event rich results).
+
+    Location is the venue name with the city: no street address is stored for these venues and
+    none is guessed. Away games ("9/26 at SJ") happen elsewhere and are left out."""
+    out = []
+    for e, d in future:
+        if d is None or d < today:
+            continue
+        name = str(e.get("name") or "").strip()
+        if not name or re.search(r"(\bat|@) [A-Z]{2,4}\b", name):
+            continue
+        venue = str(e.get("venue") or "Bakersfield venue")
+        ev = {
+            "@context": "https://schema.org", "@type": "Event",
+            "name": _display_name(e),
+            "startDate": d.isoformat(),
+            "eventStatus": "https://schema.org/EventScheduled",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "location": {"@type": "Place", "name": venue,
+                         "address": {"@type": "PostalAddress", "addressLocality": "Bakersfield",
+                                     "addressRegion": "CA", "addressCountry": "US"}},
+        }
+        if e.get("url"):
+            ev["url"] = e["url"]
+        out.append(ev)
+        if len(out) >= limit:
+            break
+    return out
+
+
 def build(ctx, sources: dict) -> list[str]:
     built = []
     built_iso = common.iso_today()
@@ -84,7 +134,7 @@ def build(ctx, sources: dict) -> list[str]:
         when = html.escape(when)
         url = html.escape(e.get("url") or "#")
         venue = html.escape(e.get("venue") or "")
-        name = html.escape(e.get("name") or "Untitled event")
+        name = html.escape(_display_name(e) or "Untitled event")
         return f"""
       <li class="ev-row">
         <span class="ev-date">{when}</span>
@@ -107,7 +157,7 @@ def build(ctx, sources: dict) -> list[str]:
     for m in sorted(up, key=lambda x: str(x.get("start_iso", ""))):
         if (m.get("start_iso") or "")[:10] < built_iso:
             continue
-        when = (m.get("start_iso") or "")[:16].replace("T", " ")
+        when = common.fmt_when(m.get("start_iso") or "")
         meet_rows += f"""
       <li class="ev-row">
         <span class="ev-date">{html.escape(when)}</span>
@@ -122,7 +172,7 @@ def build(ctx, sources: dict) -> list[str]:
       </section>"""
 
     if not secs:
-        secs = '<p class="note">No dated events or meetings found yet — the venue scrape refreshes every build.</p>'
+        secs = '<p class="note">No dated events or meetings are posted right now. Listings update several times a day.</p>'
 
     body = f"""
     <div class="pagehead">
@@ -147,7 +197,7 @@ def build(ctx, sources: dict) -> list[str]:
         desc="Live events at Bakersfield venues (Fox Theater, Mechanics Bank Arena, The Well) plus public meetings — refreshed every build.",
         canonical="/events/", content=body, current="events", rel=rel,
         built=built_iso, statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
-        jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld()])
+        jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld()] + _event_jsonld(future, today))
     common.write(common.SITE / "events" / "index.html", page)
     built.append("events/index.html")
 

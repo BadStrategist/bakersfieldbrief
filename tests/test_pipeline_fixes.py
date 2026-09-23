@@ -247,3 +247,19 @@ def test_gaslight_runs(monkeypatch):
     out = X.gaslight({"url": "https://themelodrama.com/schedule/"})
     assert [(e["name"], e["label"], e["start"], e["end"]) for e in out] == [
         ("A Funny Fright In The Night", "Now playing, through Nov 14", "2026-09-18", "2026-11-14")]
+
+
+def test_overpass_outage_serves_last_good_list(monkeypatch):
+    """2026-09-22: Overpass unreachable from CI rebuilt /surveillance/ with zero cameras."""
+    from build.sources import alpr
+
+    def boom(*a, **k):
+        raise ConnectionError("Network is unreachable")
+    last = {"cameras": [{"id": 1, "lat": 35.4, "lon": -119.0, "mapped": "2026-09-01"}],
+            "stats": {"total": 1, "flock": 1}, "asof": "2026-09-21"}
+    monkeypatch.setattr(common, "fetch", boom)
+    monkeypatch.setattr(common, "load_snapshot",
+                        lambda name, default=None: last if name == "alpr_last" else default)
+    r = alpr.run(types.SimpleNamespace(today=dt.date.today()))
+    assert r["ok"] is True and r["stale"] is True
+    assert r["asof"] == "2026-09-21" and len(r["cameras"]) == 1

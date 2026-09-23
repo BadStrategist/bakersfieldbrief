@@ -140,6 +140,14 @@ def main() -> int:
         print(f"no rendered brief at {HTML} — run the build first")
         return 1
 
+    # Already sent today? Check that FIRST. The content gate below judges the email we would send
+    # now; after the morning send, an evening rebuild with one failed source used to fail this
+    # step (and alert) over an email nobody was going to send.
+    existing = _today_campaign_exists(token)
+    if existing:
+        print(f"already sent: campaign {existing} for today — skipping")
+        return 0
+
     # HARD GATE: never send a broken email. If the rendered brief is degraded
     # (missing weather / something good / date — e.g. the LLM brief body never
     # got generated), refuse to send and report. A human must fix the build.
@@ -149,11 +157,6 @@ def main() -> int:
         print("The email was NOT sent. Fix the build (check LLM_BASE_URL/LLM_MODEL),")
         print("rebuild, verify email/latest/brief.html, then send manually.")
         return 1
-
-    existing = _today_campaign_exists(token)
-    if existing:
-        print(f"already sent: campaign {existing} for today — skipping")
-        return 0
 
     txt = TXT.read_text(encoding="utf-8") if TXT.exists() else ""
     html = HTML.read_text(encoding="utf-8")

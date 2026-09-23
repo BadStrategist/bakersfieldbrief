@@ -102,10 +102,23 @@ def run(ctx, *, record_change: bool = False):
             # If every build saved it, CI's 3-hourly builds would silently
             # advance it and the weekly diff would always read 0 new.
             common.save_snapshot("alpr_nodes", sorted(cur_ids))
+        # last good payload: the fallback when Overpass can't be reached (see below)
+        common.save_snapshot("alpr_last", {"cameras": cameras, "stats": stats,
+                                           "asof": common.iso_today()})
         return {"ok": True, "cameras": cameras, "stats": stats,
                 "change_log": common.load_change_log("alpr"), "asof": common.iso_today()}
     except Exception as e:  # noqa: BLE001
-        return {"ok": False, "error": f"{type(e).__name__}: {e}"}
+        # Overpass unreachable from CI for a few minutes (2026-09-22 evening) rebuilt
+        # /surveillance/, the site's top search page, with zero cameras. Serve the last good list
+        # instead, stamped with ITS date so "Data as of" stays true, and flagged stale.
+        err = f"{type(e).__name__}: {e}"
+        last = common.load_snapshot("alpr_last", default={}) or {}
+        if last.get("cameras"):
+            common.log(f"alpr: fetch failed ({err[:120]}); serving last good list from {last.get('asof')}")
+            return {"ok": True, "stale": True, "error": err, "cameras": last["cameras"],
+                    "stats": last.get("stats", {}), "change_log": common.load_change_log("alpr"),
+                    "asof": last.get("asof", "")}
+        return {"ok": False, "error": err}
 
 
 OSM_V1 = "https://api.openstreetmap.org/api/0.6/node/{id}/1.json"

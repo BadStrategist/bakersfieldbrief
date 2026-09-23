@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-22T18:25:29-07:00",
+ "built_at": "2026-09-22T18:30:37-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 1,
    "top_story": "Bakersfield reports mixed results in homelessness outreach as city sees influx",
    "archive": "2026-09-22"
   },
@@ -121,9 +121,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 13,
+    "In the next 7 days": 16,
     "In 1 to 2 weeks": 15,
-    "Later": 111
+    "Later": 116
    },
    "meetings": 2
   },
@@ -132,10 +132,10 @@
   },
   "numbers": {
    "isabella_af": 155067,
-   "alpr_total": 268,
+   "alpr_total": 269,
    "kern_fires": 0,
    "aqi": 64,
-   "chp_week": 48
+   "chp_week": 49
   },
   "letters": {
    "published": 0
@@ -173,8 +173,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 268,
-   "alpr_new_week": 3,
+   "alpr_total": 269,
+   "alpr_new_week": 4,
    "pages": [
     "surveillance",
     "fires",

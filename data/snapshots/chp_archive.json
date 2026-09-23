@@ -1270,6 +1270,16 @@
   "details": ""
  },
  {
+  "log_id": "260922BF0354",
+  "time": "Sep 22 2026  6:23PM",
+  "type": "20001-Hit and Run w/Injuries",
+  "location": "1601 Petrol Rd",
+  "area": "Bakersfield",
+  "lat": 35.448538,
+  "lon": -119.054116,
+  "details": ""
+ },
+ {
   "log_id": "260922BF0058",
   "time": "Sep 22 2026  6:27AM",
   "type": "1125-Traffic Hazard",

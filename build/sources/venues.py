@@ -108,22 +108,29 @@ def _arena(v) -> list[dict]:
 
 
 def _well(v) -> list[dict]:
+    """The Well's site is itself a SeatEngine site: each show is a slide with a title, a date
+    ("October 25", no year) and a /events/<id> ticket link. The old parser looked for a separate
+    SeatEngine calendar link, matched a stylesheet URL instead, and returned no shows."""
+    import datetime as _dt
     r = common.fetch(v["url"], headers=HEADERS, timeout=25)
-    # SeatEngine calendar link from the ticket buttons
-    m = re.search(r'href="([^"]*seatengine[^"]*)"', r.text, re.I)
-    cal_url = m.group(1) if m else ""
-    events = []
-    if not cal_url:
-        # fallback: any shows with dates on the homepage
-        for name, when in re.findall(r'([A-Z][^<>]{4,40})\s*[-–]\s*(\w+ \d{1,2})', r.text)[:6]:
-            events.append({"name": name.strip(), "when": when, "url": v["url"]})
-        return events
-    try:
-        cr = common.fetch(cal_url, headers=HEADERS, timeout=25)
-        for name, when in re.findall(r'([A-Z][^<>"]{4,50})\s*(\w{3,9} \d{1,2}(?:st|nd|rd|th)?,? \d{4})', cr.text)[:10]:
-            events.append({"name": name.strip(), "when": when, "url": cal_url})
-    except Exception:  # noqa: BLE001
-        pass
+    base = re.match(r"https?://[^/]+", v["url"]).group(0)
+    today = common.today_pacific()
+    events, seen = [], set()
+    for title, date_s, href in re.findall(
+            r'class="slide-info-title">(.*?)</div>\s*<div class="slide-info-date">(.*?)</div>'
+            r'.*?href="(/events/\d+)"', r.text, re.S):
+        name = html.unescape(re.sub(r"<[^>]+>", "", title)).strip()
+        m = re.search(r"([A-Za-z]+)\s+(\d{1,2})", html.unescape(date_s))
+        if not name or not m or href in seen:
+            continue
+        seen.add(href)
+        try:
+            d = _dt.datetime.strptime(f"{m.group(1)[:3]} {m.group(2)} {today.year}", "%b %d %Y").date()
+        except ValueError:
+            continue
+        if (d - today).days < -60:          # "January 9" listed in December is next year
+            d = d.replace(year=today.year + 1)
+        events.append({"name": name, "when": d.isoformat(), "url": base + href})
     return events
 
 

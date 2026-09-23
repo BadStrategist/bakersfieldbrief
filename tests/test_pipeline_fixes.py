@@ -216,3 +216,19 @@ def test_guide_never_lists_past_events():
     evs = [{"name": "Old show", "when": "Sep 18, 2026", "venue_slug": "fox"},
            {"name": "Friday show", "when": "Sep 25, 2026", "venue_slug": "temblor"}]
     assert [e["name"] for e in guide._pick(evs, today)] == ["Friday show"]
+
+
+def test_well_comedy_slides(monkeypatch):
+    """The Well lists shows as SeatEngine slides; the old parser returned none."""
+    from build.sources import venues
+    page = ('<div class="slide-info"> <div class="slide-info-title">Joe Sib</div> '
+            '<div class="slide-info-date">November 12</div> <div class="slide-actions"> '
+            '<a class="btn btn-primary" href="/events/135705">Buy Tickets</a>')
+
+    class R:
+        text = page
+    monkeypatch.setattr(common, "fetch", lambda *a, **k: R())
+    monkeypatch.setattr(common, "today_pacific", lambda: dt.date(2026, 9, 22))
+    out = venues._well({"url": "https://www.thewellcomedyclub.com/"})
+    assert out == [{"name": "Joe Sib", "when": "2026-11-12",
+                    "url": "https://www.thewellcomedyclub.com/events/135705"}]

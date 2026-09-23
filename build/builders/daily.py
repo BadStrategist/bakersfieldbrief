@@ -717,7 +717,9 @@ def _news(news: dict, built_iso: str) -> tuple[str, str]:
     headlines = news.get("headlines", [])
     digest = _get_digest(headlines)
     if digest:
-        digest_html = f"<div class='card'><p>{digest}</p></div>"
+        # model text is text: escape it, and keep its paragraph breaks
+        digest_html = "<div class='card'>" + "".join(
+            f"<p>{html.escape(p.strip())}</p>" for p in re.split(r"\n\s*\n", digest) if p.strip()) + "</div>"
         meta = "llm"
     else:
         # Always-on path: topic-grouped headline cards — scannable, keyless.
@@ -837,9 +839,10 @@ def _one_thing(escribe: dict, board: dict) -> str:
     pick = None
     if candidates:
         pick = llm.pick_thing_to_watch(candidates)
+        pick = html.escape(pick) if pick else None   # model text is text, never markup
     if not pick and candidates:
         top = sorted(candidates, key=_score, reverse=True)[0]
-        pick = (f"{top['item']} &mdash; a {html.escape(top['meeting'])} item scheduled for "
+        pick = (f"{html.escape(str(top['item']))} &mdash; a {html.escape(top['meeting'])} item scheduled for "
                 f"{top['date']}. Agenda and participation details are on the official agenda link.")
 
     if pick:
@@ -1732,7 +1735,7 @@ def _positive_block(headlines, events, today, rel) -> str:
           {images.thumb("fair", rel)}
           <div class="pos-body">
             <span class="cat-tag">Community</span>
-            <p>{pick}</p>
+            <p>{html.escape(pick)}</p>
           </div>
         </div>"""
 

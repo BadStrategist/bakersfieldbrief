@@ -131,3 +131,38 @@ def test_no_unconditional_all_clear_strings(mod_path):
         i = src.find(s)
         assert i > 0
         assert '.get("ok")' in src[max(0, i - 200):i], f"{mod_path}: {s} is not gated on ok"
+
+
+# ---------------------------------------------------------------- AI output
+class _LLMResp:
+    status_code = 200
+
+    def __init__(self, content, reasoning=""):
+        self._j = {"choices": [{"message": {"content": content, "reasoning": reasoning},
+                                "finish_reason": "length"}]}
+
+    def raise_for_status(self):
+        pass
+
+    def json(self):
+        return self._j
+
+
+@pytest.mark.parametrize("content,reasoning", [
+    ("", "We need to write a digest of 3-5 short paragraphs grouping related items."),
+    ("We need to write a digest. Let's outline: Paragraph 1: crime.", ""),
+])
+def test_model_planning_never_becomes_page_copy(monkeypatch, content, reasoning):
+    """2026-09-22: the model's reasoning went live on the home page under The News."""
+    from build import llm
+    monkeypatch.setenv("LLM_API_KEY", "k")
+    monkeypatch.setattr(llm.requests, "post", lambda *a, **k: _LLMResp(content, reasoning))
+    assert llm._chat("prompt") is None
+
+
+def test_real_answer_passes(monkeypatch):
+    from build import llm
+    monkeypatch.setenv("LLM_API_KEY", "k")
+    monkeypatch.setattr(llm.requests, "post",
+                        lambda *a, **k: _LLMResp("Bakersfield police are searching for two burglary suspects."))
+    assert llm._chat("prompt").startswith("Bakersfield police")

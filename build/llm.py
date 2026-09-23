@@ -221,11 +221,19 @@ def _chat(prompt: str, max_tokens: int | None = None,
                 time.sleep(RETRY_SLEEP)
                 continue
             r.raise_for_status()
-            msg = r.json()["choices"][0]["message"]
-            out = (msg.get("content") or "").strip()
-            if not out:  # reasoning models can return content in 'reasoning'
-                out = (msg.get("reasoning") or "").strip()
-            return out if out else None
+            choice = r.json()["choices"][0]
+            out = ((choice.get("message") or {}).get("content") or "").strip()
+            # Never fall back to the 'reasoning' field. It is the model's private planning, and
+            # it is only populated alone when the model ran out of tokens before answering: on
+            # 2026-09-22 it went live on the home page as "We need to write a digest of 3-5
+            # short paragraphs...". An empty answer is a failed call; the caller falls back.
+            if not out:
+                print(f"    [llm] empty answer (finish_reason={choice.get('finish_reason')}) — fallback", flush=True)
+                return None
+            if looks_like_planning(out):
+                print("    [llm] answer reads like planning notes, not copy — fallback", flush=True)
+                return None
+            return out
         except requests.HTTPError as e:
             code = e.response.status_code if e.response is not None else None
             if code in RETRYABLE_STATUS and attempt < MAX_RETRIES:
@@ -251,6 +259,21 @@ def _chat(prompt: str, max_tokens: int | None = None,
             return None
     print(f"    [llm] giving up after {MAX_RETRIES + 1} attempts — fallback", flush=True)
     return None
+
+
+_PLANNING_OPENERS = ("we need to", "we need ", "let's ", "let me ", "i need to", "i will ",
+                     "i'll ", "okay,", "ok,", "alright,", "first, i", "the user ", "we should ",
+                     "we must ", "the task ", "i should ")
+_PLANNING_MARKERS = ("paragraph 1:", "let's outline", "need to group", "we need to write",
+                     "headlines provided", "no invented details", "the prompt", "word count:")
+
+
+def looks_like_planning(text: str) -> bool:
+    """True when a model answer is its own working notes rather than publishable copy."""
+    t = (text or "").strip().lower()
+    if t.startswith(_PLANNING_OPENERS):
+        return True
+    return any(m in t for m in _PLANNING_MARKERS)
 
 
 def normalize_whitespace(text: str) -> str:

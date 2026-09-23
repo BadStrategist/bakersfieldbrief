@@ -1,40 +1,88 @@
 {
-  "_comment": "Hand-maintained venue whitelist for the Weekend Guide. Only venues listed here are scraped — a whitelist can't send readers to a dead venue (Buck Owens' Crystal Palace closed in Aug 2025 but its site still serves events). Add a venue = add an entry + a parser below. 'last_verified' is filled by hand monthly.",
-  "venues": [
-    {
-      "name": "Fox Theater",
-      "slug": "fox",
-      "url": "https://thebakersfieldfox.com/events/",
-      "parse": "ldjson",
-      "last_verified": ""
-    },
-    {
-      "name": "Mechanics Bank Arena",
-      "slug": "arena",
-      "url": "https://www.mechanicsbankarena.com/events",
-      "parse": "arena_links",
-      "last_verified": ""
-    },
-    {
-      "name": "The Well Comedy Club",
-      "slug": "well",
-      "url": "https://www.thewellcomedyclub.com/",
-      "parse": "well_seatengine",
-      "last_verified": ""
-    },
-    {
-      "name": "Bakersfield Condors",
-      "slug": "condors",
-      "url": "https://www.bakersfieldcondors.com/schedule/feed/",
-      "parse": "condors_feed",
-      "last_verified": ""
-    },
-    {
-      "name": "Visit Bakersfield",
-      "slug": "visit",
-      "url": "https://visitbakersfield.com/events/",
-      "parse": "visit",
-      "last_verified": ""
-    }
-  ]
+ "_comment": "Venues read for the Events page and Weekend Guide. Only venues listed here are read, so a closed venue can't send readers to a dead event (Buck Owens' Crystal Palace closed in Aug 2025 but its site still serves events). Add a venue = add an entry here + a parser in build/sources/venues.py or venues_extra.py.",
+ "venues": [
+  {
+   "name": "Fox Theater",
+   "slug": "fox",
+   "url": "https://thebakersfieldfox.com/events/",
+   "parse": "ldjson",
+   "last_verified": ""
+  },
+  {
+   "name": "Mechanics Bank Arena",
+   "slug": "arena",
+   "url": "https://www.mechanicsbankarena.com/events",
+   "parse": "arena_links",
+   "last_verified": ""
+  },
+  {
+   "name": "The Well Comedy Club",
+   "slug": "well",
+   "url": "https://www.thewellcomedyclub.com/",
+   "parse": "well_seatengine",
+   "last_verified": ""
+  },
+  {
+   "name": "Bakersfield Condors",
+   "slug": "condors",
+   "url": "https://www.bakersfieldcondors.com/schedule/feed/",
+   "parse": "condors_feed",
+   "last_verified": ""
+  },
+  {
+   "name": "Visit Bakersfield",
+   "slug": "visit",
+   "url": "https://visitbakersfield.com/events/",
+   "parse": "visit",
+   "last_verified": ""
+  },
+  {
+   "name": "Bakersfield Community Theatre",
+   "slug": "bct",
+   "url": "https://bctstage.simpletix.com/",
+   "parse": "simpletix",
+   "last_verified": "2026-09-22"
+  },
+  {
+   "name": "Temblor Brewing",
+   "slug": "temblor",
+   "url": "https://temblorbrewing.com/",
+   "parse": "temblor",
+   "last_verified": "2026-09-22"
+  },
+  {
+   "name": "Bakersfield Symphony Orchestra",
+   "slug": "bso",
+   "url": "https://www.bsonow.org/calendar",
+   "parse": "squarespace",
+   "last_verified": "2026-09-22"
+  },
+  {
+   "name": "Arts Council of Kern",
+   "slug": "artscouncil",
+   "url": "https://kernarts.org/events/list/",
+   "parse": "ldjson",
+   "last_verified": "2026-09-22"
+  },
+  {
+   "name": "CSU Bakersfield Athletics",
+   "slug": "csub",
+   "url": "https://gorunners.com/calendar.ashx/calendar.ics",
+   "parse": "ics",
+   "home_rule": "location_bakersfield",
+   "prefix": "CSUB ",
+   "site": "https://gorunners.com/",
+   "last_verified": "2026-09-22"
+  },
+  {
+   "name": "Bakersfield College Athletics",
+   "slug": "bc",
+   "url": "https://www.gogades.com/composite?print=ical",
+   "parse": "ics",
+   "home_rule": "vs_bakersfield",
+   "prefix": "Bakersfield College ",
+   "site": "https://www.gogades.com/",
+   "last_verified": "2026-09-22"
+  }
+ ]
 }

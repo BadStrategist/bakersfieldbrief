@@ -183,3 +183,36 @@ def test_no_control_characters_in_source():
             if any(ch in s for ch in "\x00\x07\x08\x0b\x0c"):
                 bad.append(str(p.relative_to(common.ROOT)))
     assert not bad, bad
+
+
+# ---------------------------------------------------------------- venues
+def test_utc_show_time_is_local_day():
+    from build.sources.venues_extra import local_when
+    # a 7:30 PM Pacific show stored as 02:30 UTC the next day
+    assert local_when("2026-10-10T02:30:00+00:00") == "2026-10-09 19:30"
+    assert local_when("2026-10-03") == "2026-10-03"
+
+
+def test_ics_home_games_only(monkeypatch):
+    from build.sources import venues_extra as X
+    soon = (common.now_pacific() + dt.timedelta(days=3)).strftime("%Y%m%d")
+    ics = ("BEGIN:VCALENDAR\r\nBEGIN:VEVENT\r\nSUMMARY:(Football) Pasadena City vs. Bakersfield\r\n"
+           f"DTSTART:{soon}T010000Z\r\nURL:/links/abc\r\nEND:VEVENT\r\n"
+           "BEGIN:VEVENT\r\nSUMMARY:(Football) Bakersfield vs. Fresno City\r\n"
+           f"DTSTART:{soon}T010000Z\r\nEND:VEVENT\r\nEND:VCALENDAR\r\n")
+
+    class R:
+        text = ics
+    monkeypatch.setattr(common, "fetch", lambda *a, **k: R())
+    out = X.ics({"url": "https://www.gogades.com/x.ics", "home_rule": "vs_bakersfield",
+                 "prefix": "Bakersfield College "})
+    assert [e["name"] for e in out] == ["Bakersfield College Football vs. Pasadena City"]
+    assert out[0]["url"] == "https://www.gogades.com/links/abc"
+
+
+def test_guide_never_lists_past_events():
+    from build.builders import guide
+    today = dt.date(2026, 9, 22)
+    evs = [{"name": "Old show", "when": "Sep 18, 2026", "venue_slug": "fox"},
+           {"name": "Friday show", "when": "Sep 25, 2026", "venue_slug": "temblor"}]
+    assert [e["name"] for e in guide._pick(evs, today)] == ["Friday show"]

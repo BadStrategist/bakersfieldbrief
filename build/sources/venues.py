@@ -58,23 +58,13 @@ def run(ctx):
 
 # ---------------------------------------------------------------- parsers
 def _fox(v) -> list[dict]:
+    """Generic schema.org Event reader: finds Events nested in @graph / itemListElement too,
+    and turns a UTC start into Pacific time (a cut-off UTC stamp showed evening shows a day late)."""
+    from .venues_extra import ld_events, local_when
     r = common.fetch(v["url"], headers=HEADERS, timeout=25)
-    blocks = re.findall(r'<script type="application/ld\+json"[^>]*>(.*?)</script>', r.text, re.S)
-    events = []
-    for b in blocks:
-        try:
-            d = json.loads(b)
-        except Exception:  # noqa: BLE001
-            continue
-        items = d if isinstance(d, list) else [d]
-        for it in items:
-            if it.get("@type") in ("Event", ["Event"]) or "Event" in (it.get("@type") or []):
-                events.append({
-                    "name": it.get("name", ""),
-                    "when": (it.get("startDate") or "")[:16].replace("T", " "),
-                    "url": it.get("url") or v["url"],
-                })
-    return events
+    return [{"name": html.unescape(str(it.get("name", ""))).strip(),
+             "when": local_when(str(it.get("startDate") or "")),
+             "url": it.get("url") or v["url"]} for it in ld_events(r.text)]
 
 
 def _arena(v) -> list[dict]:
@@ -177,3 +167,5 @@ def _visit(v) -> list[dict]:
 
 _PARSERS = {"ldjson": _fox, "arena_links": _arena, "well_seatengine": _well,
             "condors_feed": _condors, "visit": _visit}
+from .venues_extra import PARSERS as _EXTRA  # noqa: E402
+_PARSERS.update(_EXTRA)

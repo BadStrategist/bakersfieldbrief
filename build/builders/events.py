@@ -120,6 +120,18 @@ def build(ctx, sources: dict) -> list[str]:
         return (d is None, d or dt.date.max, str(e.get("venue", "")).lower())
 
     future.sort(key=sort_key)
+    # A run of the same show (Bakersfield Community Theatre lists every performance) becomes one
+    # entry at its next date, with the count of later dates.
+    seen, collapsed = {}, []
+    for e, d in future:
+        key = (e.get("venue_slug"), str(e.get("name", "")).strip().lower())
+        if key in seen and d is not None:
+            seen[key]["_more"] = seen[key].get("_more", 0) + 1
+            continue
+        e = dict(e)
+        seen[key] = e
+        collapsed.append((e, d))
+    future = collapsed
     groups = {
         # rolling windows from today, labelled as such: "Next week" put Oct 5 under "next week" on Sep 22
         "In the next 7 days": [p for p in future if p[1] and p[1] <= today + dt.timedelta(days=6)],
@@ -135,6 +147,8 @@ def build(ctx, sources: dict) -> list[str]:
         url = html.escape(e.get("url") or "#")
         venue = html.escape(e.get("venue") or "")
         name = html.escape(_display_name(e) or "Untitled event")
+        if e.get("_more"):
+            name += f' <span class="ev-more">+{e["_more"]} more date{"s" if e["_more"] != 1 else ""}</span>'
         return f"""
       <li class="ev-row">
         <span class="ev-date">{when}</span>
@@ -178,8 +192,8 @@ def build(ctx, sources: dict) -> list[str]:
     <div class="pagehead">
       <div class="hero"><p class="kicker">Around town</p>
       <h1>Events in Bakersfield</h1>
-      <p class="lede">What's on at the Fox, Mechanics Bank Arena, The Well and more — plus
-      public meetings on the city calendar. Listings come from each venue&rsquo;s own website and
+      <p class="lede">Concerts, shows, plays, the symphony, Condors hockey, CSUB and Bakersfield
+      College home games, and more, plus public meetings on the city calendar. Listings come from each venue&rsquo;s own website and
       update several times a day. Dates are as each venue posted them, so confirm before you go.</p></div>
     </div>
     {images.figure("fair", rel)}
@@ -194,7 +208,7 @@ def build(ctx, sources: dict) -> list[str]:
 
     page = page_mod.render(
         title="Events in Bakersfield — what's on around town | Bakersfield Daily Brief",
-        desc="Live events at Bakersfield venues (Fox Theater, Mechanics Bank Arena, The Well) plus public meetings — refreshed every build.",
+        desc="Things to do in Bakersfield: concerts at the Fox, Temblor Brewing shows, Bakersfield Community Theatre plays, the symphony, Condors, CSUB and Bakersfield College home games, and public meetings.",
         canonical="/events/", content=body, current="events", rel=rel,
         built=built_iso, statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld()] + _event_jsonld(future, today))

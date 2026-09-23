@@ -64,7 +64,7 @@ def build(ctx, sources: dict) -> list[str]:
     if events:
         lis = "".join(f"""
         <li><strong>{html.escape(_display_name(e))}</strong>
-        <span class="when">{html.escape(e.get('venue', ''))} · {html.escape(e.get('when', '') or _fmt_day(_event_date(e, today)))}</span>
+        <span class="when">{html.escape(e.get('venue', ''))} · {html.escape(_fmt_when_txt(e, today))}</span>
         <a href="{html.escape(e.get('url', '#'))}" target="_blank" rel="noopener">Details →</a></li>""" for e in events)
         picks = f'<ol class="guide-list">{lis}</ol>'
     else:
@@ -76,8 +76,9 @@ def build(ctx, sources: dict) -> list[str]:
     body = f"""
     <div class="pagehead"><div class="hero"><p class="kicker">Weekend Guide</p>
     <h1>5 Things to Do This Weekend</h1>
-    <p class="lede">Picked from the venues we watch — Fox Theater, Mechanics Bank Arena,
-    The Well Comedy Club, the Condors, and Visit Bakersfield&rsquo;s calendar.</p>
+    <p class="lede">Picked from the calendars of local venues: the Fox, Mechanics Bank Arena,
+    Temblor Brewing, Bakersfield Community Theatre, the Bakersfield Symphony, the Condors,
+    and CSUB and Bakersfield College home games.</p>
     <div class="meta"><span>Weekend of {weekend_label}</span><span class="dot">&bull;</span>
     <span>Updated {date_label}</span></div></div></div>
     {images.figure("fox", rel)}
@@ -115,7 +116,7 @@ def _weekend(today) -> tuple:
 
 def _pick(events: list[dict], today) -> list[dict]:
     """This weekend's dated events first, then the soonest upcoming; never a past event.
-    Max 2 per venue, 5 total. Undated listings only fill leftover slots."""
+    Max 1 per venue, 5 total. Undated listings only fill leftover slots."""
     start, end = _weekend(today)
 
     def score(e):
@@ -125,18 +126,39 @@ def _pick(events: list[dict], today) -> list[dict]:
         if start <= when <= end:
             return (0, when.toordinal())
         return (1, when.toordinal())
+    minor = re.compile(r"swim|dive|cross country|golf|tennis|track|alumni|select-a-seat", re.I)
     ranked = [e for e in sorted(events, key=score)
-              if (_event_date(e, today) or today) >= today]
-    out, per_venue = [], {}
-    for e in ranked:
+              if (_event_date(e, today) or today) >= today and not minor.search(str(e.get("name", "")))]
+    # Weekend picks go round the days (Fri, Sat, Sun) so one busy Friday can't take all five;
+    # then the next upcoming events fill any slots left. One pick per venue keeps it varied.
+    weekend = [e for e in ranked if (d := _event_date(e, today)) and start <= d <= end]
+    by_day = {}
+    for e in weekend:
+        by_day.setdefault(_event_date(e, today), []).append(e)
+    order = []
+    while any(by_day.values()):
+        for day in sorted(by_day):
+            if by_day[day]:
+                order.append(by_day[day].pop(0))
+    order += [e for e in ranked if e not in weekend]
+    out, per_venue = [], set()
+    for e in order:
         vs = e.get("venue_slug", "?")
-        if per_venue.get(vs, 0) >= 2:
+        if vs in per_venue:
             continue
         out.append(e)
-        per_venue[vs] = per_venue.get(vs, 0) + 1
+        per_venue.add(vs)
         if len(out) >= 5:
             break
-    return out
+    return sorted(out, key=score)
+
+
+def _fmt_when_txt(e: dict, today) -> str:
+    """Readable date for a pick: ISO stamps become 'Fri, Sep 25 at 7:30 p.m.'."""
+    w = str(e.get("when") or "").strip()
+    if w[:4].isdigit() and w[4:5] == "-":
+        return common.fmt_when(w.replace(" ", "T"))
+    return w or _fmt_day(_event_date(e, today))
 
 
 def _fmt_day(d) -> str:

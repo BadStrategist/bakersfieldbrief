@@ -1328,5 +1328,45 @@
   "lat": 35.391601,
   "lon": -118.974462,
   "details": ""
+ },
+ {
+  "log_id": "260923BF0038",
+  "time": "Sep 23 2026  5:16AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260923BF0044",
+  "time": "Sep 23 2026  5:57AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "29449 Stockdale Hwy",
+  "area": "Buttonwillow",
+  "lat": 35.354792,
+  "lon": -119.33073,
+  "details": ""
+ },
+ {
+  "log_id": "260923BF0047",
+  "time": "Sep 23 2026  6:22AM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "Enos Ln / Rosedale Hwy",
+  "area": "Bakersfield",
+  "lat": 35.383465,
+  "lon": -119.252083,
+  "details": ""
+ },
+ {
+  "log_id": "260923BF0055",
+  "time": "Sep 23 2026  6:55AM",
+  "type": "1184-Provide Traffic Control",
+  "location": "1903 Virginia Ave",
+  "area": "Bakersfield",
+  "lat": 35.361253,
+  "lon": -118.974563,
+  "details": ""
  }
 ]

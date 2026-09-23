@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-22T18:09:24-07:00",
+ "built_at": "2026-09-22T18:25:29-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,8 +65,8 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
-   "top_story": "Vendors, students and game operators gear up for the 2026 Kern County Fair opening night",
+   "chp_new": 2,
+   "top_story": "Bakersfield reports mixed results in homelessness outreach as city sees influx",
    "archive": "2026-09-22"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 14,
+   "wind_mph": 9,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 72,
-   "wind_mph": 14,
+   "wind_mph": 9,
    "alerts": 0
   },
   "roads": {
@@ -121,9 +121,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 4,
-    "In 1 to 2 weeks": 3,
-    "Later": 48
+    "In the next 7 days": 13,
+    "In 1 to 2 weeks": 15,
+    "Later": 111
    },
    "meetings": 2
   },
@@ -132,10 +132,10 @@
   },
   "numbers": {
    "isabella_af": 155067,
-   "alpr_total": 269,
+   "alpr_total": 268,
    "kern_fires": 0,
-   "aqi": null,
-   "chp_week": 46
+   "aqi": 64,
+   "chp_week": 48
   },
   "letters": {
    "published": 0
@@ -173,8 +173,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 269,
-   "alpr_new_week": 4,
+   "alpr_total": 268,
+   "alpr_new_week": 3,
    "pages": [
     "surveillance",
     "fires",

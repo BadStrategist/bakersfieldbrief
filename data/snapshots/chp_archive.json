@@ -1230,6 +1230,26 @@
   "details": ""
  },
  {
+  "log_id": "260922BF0347",
+  "time": "Sep 22 2026  6:13PM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 Airport Dr Ofr",
+  "area": "Bakersfield",
+  "lat": 35.397176,
+  "lon": -119.044289,
+  "details": ""
+ },
+ {
+  "log_id": "260922BF0349",
+  "time": "Sep 22 2026  6:14PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Ferguson Ave / N Chester Ave",
+  "area": "Bakersfield",
+  "lat": 35.415564,
+  "lon": -119.021072,
+  "details": ""
+ },
+ {
   "log_id": "260922BF0056",
   "time": "Sep 22 2026  6:19AM",
   "type": "FIRE-Report of Fire",

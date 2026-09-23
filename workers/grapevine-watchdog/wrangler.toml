@@ -1,0 +1,17 @@
+name = "grapevine-watchdog"
+main = "src/index.js"
+compatibility_date = "2026-09-01"
+workers_dev = true
+
+# Same cadence as the Hermes cron job it replaces: every 3 hours at :17.
+# Free plan allows 5 Cron Triggers per account; this is one.
+[triggers]
+crons = ["17 */3 * * *"]
+
+[observability]
+enabled = true
+
+# DISCORD_WEBHOOK_URL is a Worker secret, set with:
+#   npx wrangler secret put DISCORD_WEBHOOK_URL --name grapevine-watchdog
+# Without it the check still runs, logs the alert, and reports
+# delivery="not_deliverable" instead of quietly looking healthy.

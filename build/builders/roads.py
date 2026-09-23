@@ -250,7 +250,7 @@ def build(ctx, sources: dict) -> list[str]:
         title="Bakersfield & Kern County Road Conditions Today | Live Caltrans",
         desc="Live Caltrans conditions for I-5 (Grapevine), SR-58 (Tehachapi Pass), and SR-99 through "
              "Bakersfield — closed, restricted, or open. Live: checks Caltrans in real time on every load.",
-        canonical="/roads/", content=body, current="other", rel=rel,
+        canonical="/roads/", content=body, current="trackers", rel=rel,
         built=built_iso, statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), _faq_jsonld(faq_qa, live_answer)],
         extra_scripts='<script src="{rel}assets/js/live-roads.js" defer></script>'.format(rel=rel))

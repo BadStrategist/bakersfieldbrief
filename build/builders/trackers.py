@@ -387,7 +387,8 @@ def build_alpr(ctx, sources: dict):
                    desc,
                    stat_html, body, payload, sources, dark=True, img="",
                    seo_title="Bakersfield Flock Camera Map | Live ALPR Tracker",
-                   faq_jsonld=faq_jsonld, map_js="alpr-explorer.js", extra_jsonld=extra_ld)
+                   faq_jsonld=faq_jsonld, map_js="alpr-explorer.js", extra_jsonld=extra_ld,
+                   current="alpr")
 
 
 # ------------------------------------------------------------------ fires
@@ -660,11 +661,11 @@ def build_water(ctx, sources: dict):
 
         stat_html = (
             _stat(f'{elev["value"]:,}<small> ft</small>' if elev else "n/a",
-                  "Water level elevation", "") +
-            _stat(f"{storage['value']:,} <small>AF</small>", "Isabella storage", "amber") +
-            _stat(f"{pct}%", f"of full pool (568,000 AF)", "") +
+                  "Water level (feet above sea level)", "") +
+            _stat(f"{storage['value']:,} <small>acre-feet</small>", "Water in the lake", "amber") +
+            _stat(f"{pct}%", "full (holds 568,000 acre-feet)", "") +
             _stat(f"{inflow['value']:,}<small> cfs</small>" if inflow else "n/a",
-                  "Kern River inflow", "amber")
+                  "Kern River flowing in (cubic feet per second)", "amber")
         )
 
         # ---- chart (storage trend) ----
@@ -708,6 +709,16 @@ def build_water(ctx, sources: dict):
         Data Exchange Center (CDEC) daily.</p></div>
         {chart}
         {table}
+        <div class="card glossary"><span class="tag">Plain English</span>
+        <h3>What these terms mean</h3>
+        <dl>
+          <dt>Acre-foot</dt><dd>Enough water to cover one acre a foot deep: about 326,000 gallons,
+          roughly a football field filled one foot deep.</dd>
+          <dt>Full pool</dt><dd>The lake&rsquo;s level when it is completely full, {full_pool:,} feet
+          above sea level.</dd>
+          <dt>cfs (cubic feet per second)</dt><dd>How fast the Kern River is flowing into the lake.
+          One cfs for a full day is about two acre-feet.</dd>
+        </dl></div>
 
         <div class="card"><span class="tag">Fishing</span>
         <h3>Fishing Lake Isabella</h3>
@@ -931,27 +942,36 @@ def build_hub(ctx, sources: dict) -> list[str]:
     alpr = sources.get("alpr", {})
     stats = alpr.get("stats", {}) if alpr.get("ok") else {}
 
+    # (slug, tag class, tag word, title, one plain line). The tag used to print its CSS class
+    # ("AMBER", "GREEN") as the label, and the road trackers were missing from the hub.
+    hub = [
+        ("grapevine", "amber", "Roads", "Is the Grapevine open?",
+         "I-5 over Tejon Pass: open, restricted or closed, from Caltrans, checked while you read."),
+        ("tehachapi-pass", "amber", "Roads", "Tehachapi Pass (SR-58)",
+         "Highway 58 conditions between Bakersfield and Mojave, plus wind on the pass."),
+        ("roads", "", "Roads", "Kern County road conditions",
+         "I-5, SR-58 and SR-99 in one place, with each Caltrans report time."),
+        ("fires", "red", "Wildfire", TRACKERS["fires"]["name"], TRACKERS["fires"]["lede"]),
+        ("water", "green", "Water", TRACKERS["water"]["name"], TRACKERS["water"]["lede"]),
+        ("surveillance", "", "Cameras", TRACKERS["surveillance"]["name"], TRACKERS["surveillance"]["lede"]),
+        ("tehachapi-weather", "", "Weather", "Tehachapi weather",
+         "Current conditions and forecast for the Tehachapi mountains."),
+    ]
     cards = "".join(f"""
         <a class="card" href="{rel}{slug}/">
-          <span class="tag">{tag}</span>
-          <h3>{html.escape(meta['name'])}</h3>
-          <p>{html.escape(meta['lede'])}</p>
+          <span class="tag {cls}">{html.escape(word)}</span>
+          <h3>{html.escape(title)}</h3>
+          <p>{html.escape(line)}</p>
           <span class="card-go">Open tracker</span>
-        </a>""" for slug, (tag, meta) in {
-        "surveillance": ("amber", TRACKERS["surveillance"]),
-        "fires": ("amber", TRACKERS["fires"]),
-        "water": ("green", TRACKERS["water"]),
-    }.items())
+        </a>""" for slug, cls, word, title, line in hub)
 
     body = f"""
     <div class="pagehead">
       <div class="hero"><p class="kicker">Trackers</p>
-      <h1>Live data, updated on a schedule</h1>
-      <p class="lede">Evergreen pages that track Kern County&rsquo;s public data over time:
-      license plate readers and reservoir levels. Each tracker diffs every run and keeps a
-      change log &mdash; so you can see not just the current state, but how it changes.</p>
-      <div class="meta"><span>Updated <span class="updated">{built_iso}</span></span>
-      <span class="dot">&bull;</span><span>ALPR map: weekly &middot; water: daily</span></div></div>
+      <h1>Kern County Trackers: Roads, Wildfires, Lake Isabella &amp; Cameras</h1>
+      <p class="lede">Pages that follow one public source each and show what it says right now,
+      with the time the source last reported. Pick the one you need.</p>
+      <div class="meta"><span>Updated <span class="updated">{built_iso}</span></span></div></div>
     </div>
     <div class="grid cols-2">{cards}</div>
 
@@ -968,7 +988,7 @@ def build_hub(ctx, sources: dict) -> list[str]:
     </section>"""
 
     page = page_mod.render(
-        title="Trackers — ALPR map, Isabella Lake | Bakersfield Daily Brief",
+        title="Kern County Trackers: Grapevine, Wildfires, Lake Isabella, Flock Cameras | Bakersfield Daily Brief",
         desc="Auto-updating data trackers for Kern County: the license plate reader (ALPR) camera map with weekly change log, and Lake Isabella storage levels.",
         canonical="/trackers/",
         content=body, current="trackers", rel=rel, built=built_iso,

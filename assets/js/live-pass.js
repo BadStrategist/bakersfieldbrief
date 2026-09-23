@@ -72,8 +72,8 @@
 
   function markUnavailable() {
     if (metaUpdated) metaUpdated.textContent =
-      metaUpdated.textContent + " (live feed unavailable — showing last static build)";
-    liveBadge.textContent = "○ live feed unavailable";
+      metaUpdated.textContent + " (live check unavailable, showing the last update)";
+    liveBadge.textContent = "○ showing the last update";
     liveBadge.classList.add("is-off");
   }
 

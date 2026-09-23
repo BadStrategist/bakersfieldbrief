@@ -243,8 +243,8 @@ def build(ctx, sources: dict) -> list[str]:
     <div class="pagehead">
       <div class="hero"><p class="kicker">Highway conditions · Caltrans</p>
       <h1>Is the Grapevine open right now?</h1>
-      <p class="lede">Live I-5 conditions over Tejon Pass — the 40-mile climb that connects
-      Los Angeles and Bakersfield — plus SR-58 over Tehachapi and SR-99 up the valley.</p>
+      <p class="lede">I-5 over Tejon Pass, the climb between Los Angeles and Bakersfield,
+      checked against Caltrans while this page is open.</p>
       <div class="meta"><span>Caltrans report: {ts_html}</span>
       <span class="dot">&bull;</span><span>live &middot; checks the Grapevine in real time</span></div></div>
     </div>
@@ -313,7 +313,7 @@ def build(ctx, sources: dict) -> list[str]:
     page = page_mod.render(
         title="Is the Grapevine Open Right Now? Live I-5 Tejon Pass Status | Bakersfield Daily Brief",
                 desc="Is the Grapevine open or closed right now? Live Caltrans status for I-5 over Tejon Pass with the agency's own timestamp, chain controls, and the SR-58 and SR-99 alternates. Checks Caltrans on every load.",
-                canonical="/grapevine/", content=body, current="other", rel=rel,
+                canonical="/grapevine/", content=body, current="trackers", rel=rel,
                 built=built_iso, statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
                         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), _faq_jsonld(faq_qa)],
                 extra_scripts='<script src="{rel}assets/js/live-pass.js" defer></script>'.format(rel=rel))

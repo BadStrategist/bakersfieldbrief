@@ -224,3 +224,21 @@ def write(path: Path, content: str) -> None:
 
 def log(msg: str) -> None:
     print(f"[build] {dt.datetime.now().strftime('%H:%M:%S')} {msg}", flush=True)
+
+
+def fmt_when(iso: str) -> str:
+    """'2026-09-25T12:00:00' -> 'Fri, Sep 25 at noon'; date-only -> 'Fri, Sep 25'.
+    One readable format for meeting times (pages printed '2026-09-25 · 12:00:00')."""
+    s = str(iso or "").strip()
+    try:
+        d = dt.datetime.fromisoformat(s[:19]) if len(s) > 10 else dt.datetime.fromisoformat(s[:10])
+    except ValueError:
+        return s
+    day = f"{d:%a}, {d:%b} {d.day}"
+    if len(s) <= 10:
+        return day
+    if d.hour == 12 and d.minute == 0:
+        t = "noon"
+    else:
+        t = f"{d.hour % 12 or 12}:{d:%M} {'a.m.' if d.hour < 12 else 'p.m.'}".replace(":00 ", " ")
+    return f"{day} at {t}"

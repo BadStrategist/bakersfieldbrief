@@ -15,6 +15,7 @@ import html
 import json
 
 from .. import common, llm
+from ..chp_text import plain_location, plain_type
 from . import images
 from . import page as page_mod
 
@@ -87,7 +88,7 @@ def _week_facts(sources: dict) -> str:
     if inc:
         lines.append("CHP INCIDENTS THIS WEEK")
         for i in inc[:12]:
-            lines.append(f"- {i.get('time', '')}: {i.get('type', '')} at {i.get('location', '')}")
+            lines.append(f"- {i.get('time', '')}: {plain_type(i.get('type', ''))} at {plain_location(i.get('location', ''))}")
         lines.append("")
 
     cal = sources.get("calfire", {})
@@ -239,7 +240,7 @@ def _fallback_deterministic(topic: str, sources: dict, built_iso: str) -> dict:
 
     # 5. roads
     if inc:
-        il = "; ".join(html.escape(f"{i.get('type') or 'an incident'} at {i.get('location') or 'an unlisted location'}")
+        il = "; ".join(html.escape(f"{plain_type(i.get('type')).lower() if i.get('type') else 'an incident'} at {plain_location(i.get('location')) or 'an unlisted location'}")
                        for i in inc[:5])
         paras.append(
             "<p><strong>On the roads.</strong> CHP logged its share of "
@@ -315,5 +316,5 @@ def _render(f: dict, rel: str) -> str:
       {body}
     </article>
     <p class="note" style="margin-top:14px">{meta} Every fact links to its source;
-    the <a href="{rel}index.html">Daily Brief</a> covers the week in full.</p>
+    the <a href="/">Daily Brief</a> covers the week in full.</p>
     """

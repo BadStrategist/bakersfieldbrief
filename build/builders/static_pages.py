@@ -104,7 +104,7 @@ def build(ctx, sources: dict) -> list[str]:
     common.write(common.SITE / "about" / "index.html", page_mod.render(
         title="About — how the Brief works, what we publish | Bakersfield Daily Brief",
         desc="How Bakersfield Daily Brief works: where its Bakersfield and Kern County information comes from, which parts are written by AI, how often it updates, and how corrections work.",
-        canonical="/about/", content=body, current="other", rel="../",
+        canonical="/about/", content=body, current="about", rel="../",
         built=built_iso, statusbar=ctx.statusbar, jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld()]))
     built.append("about/index.html")
 
@@ -248,7 +248,7 @@ def build(ctx, sources: dict) -> list[str]:
     <h1>Off-ramp not found</h1>
     <p class="lede">That page doesn&rsquo;t exist &mdash; maybe it moved, or the brief rebuilt
     and the URL changed.</p></div>
-    <div class="card"><p>Try the <a href="index.html">Daily Brief</a>, the
+    <div class="card"><p>Try the <a href="/">Daily Brief</a>, the
     <a href="city-hall/">City Hall &amp; County</a> section, or the
     <a href="trackers/">trackers</a>.</p></div>"""
     common.write(common.SITE / "404.html", page_mod.render(
@@ -296,7 +296,7 @@ def build(ctx, sources: dict) -> list[str]:
         <li style="padding:10px 0"><strong>Free, always</strong> &mdash; no spam, no paywall. Unsubscribe any time.</li>
       </ul>
     </div>
-    <p class="note" style="margin-top:12px"><a href="index.html">&larr; Back to the Daily Brief</a></p>"""
+    <p class="note" style="margin-top:12px"><a href="/">&larr; Back to the Daily Brief</a></p>"""
     common.write(common.SITE / "thanks" / "index.html", page_mod.render(
         title="Thanks for subscribing | Bakersfield Daily Brief",
         desc="You're on the list — here's what you'll get in your daily email from Bakersfield Daily Brief.",

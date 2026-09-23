@@ -357,7 +357,7 @@ def build(ctx, sources: dict) -> list[str]:
     page = page_mod.render(
         title="Is Tehachapi Pass (SR-58) open right now? | Bakersfield Daily Brief",
         desc="Live SR-58 conditions over Tehachapi Pass — the LA-to-Bakersfield alternative to the Grapevine — plus Tehachapi wind, weather, and NWS alerts. Live: checks Caltrans & NWS in real time on every load.",
-        canonical="/tehachapi-pass/", content=body, current="other", rel=rel,
+        canonical="/tehachapi-pass/", content=body, current="trackers", rel=rel,
         built=built_iso, statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), _faq(live_answer, faq_qa)],
         extra_scripts='<script src="{rel}assets/js/live-pass.js" defer></script>'.format(rel=rel))

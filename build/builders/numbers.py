@@ -12,6 +12,7 @@ import json
 import re
 
 from .. import common
+from ..chp_text import plain_location, plain_type
 from . import images
 from . import page as page_mod
 
@@ -128,7 +129,7 @@ def build(ctx, sources: dict) -> list[str]:
                 trend = trend.replace("in the last week.</strong>",
                                       f"in the week of readings from {_f:%b} {_f.day} to {_t:%b} {_t.day}.</strong>")
         paras.append(
-            f"<p><strong>Isabella Lake holds {int(isa_af):,} acre-feet — "
+            f"<p><strong>Lake Isabella holds {int(isa_af):,} acre-feet — "
             f"{isa_pct}% of capacity.</strong>{trend} Storage in Kern County's largest reservoir "
             f"drives downstream allocations for the Kern River corridor and agriculture. "
             f'Follow the day-to-day on the <a href="{rel}water/">Isabella tracker</a>.</p>')
@@ -161,7 +162,7 @@ def build(ctx, sources: dict) -> list[str]:
     if chp_week:
         kinds = {}
         for e in chp_week:
-            t = str(e.get("type", "Other"))
+            t = plain_type(str(e.get("type", "Other")))   # "Traffic hazard", not "1125-Traffic Hazard"
             kinds[t] = kinds.get(t, 0) + 1
         top_kind = max(kinds.items(), key=lambda kv: kv[1]) if kinds else (None, 0)
         paras.append(
@@ -191,7 +192,7 @@ def build(ctx, sources: dict) -> list[str]:
     </article>
     <p class="sec-head">The trackers behind this article</p>
     <div class="link-grid">
-      <a class="tile" href="{rel}water/"><strong>Isabella Lake</strong><span>live CDEC storage</span></a>
+      <a class="tile" href="{rel}water/"><strong>Lake Isabella</strong><span>water level, updated daily</span></a>
       <a class="tile" href="{rel}surveillance/"><strong>Flock &amp; ALPRs</strong><span>camera map + change log</span></a>
       <a class="tile" href="{rel}grapevine/"><strong>Grapevine conditions</strong><span>Caltrans, 3&times; daily</span></a>
       <a class="tile" href="{rel}tehachapi-pass/"><strong>Tehachapi Pass</strong><span>SR-58 + wind, 3&times; daily</span></a>

@@ -327,12 +327,12 @@ def _meeting_page(m: dict, built_iso: str, rel: str, ctx) -> str:
 
     body = f"""
     <div class="pagehead">
-      <nav class="breadcrumbs"><a href="{rel}index.html">Daily Brief</a> &rsaquo;
+      <nav class="breadcrumbs"><a href="/">Daily Brief</a> &rsaquo;
       <a href="{rel}city-hall/">City Hall &amp; County</a> &rsaquo; {html.escape(name)}</nav>
       <div class="hero"><p class="kicker">{kicker}</p>
       <h1>{html.escape(name)}</h1>
       <p class="lede">{lede}</p>
-      <div class="meta"><span>{when_label}: <span class="updated">{html.escape(start_iso.replace('T', ' · '))}</span></span>
+      <div class="meta"><span>{when_label}: <span class="updated">{html.escape(common.fmt_when(start_iso))}</span></span>
       <span class="dot">&bull;</span><span>{len(items)} agenda items extracted</span></div></div>
     </div>
     <p><a class="pill amber" href="{html.escape(m.get('url', '#'))}">Official agenda ↗</a></p>
@@ -360,7 +360,7 @@ def _hub(es: dict, board: dict, meeting_pages: list[dict], built_iso: str, rel: 
         <a class="card" href="{href}">
           <span class="tag {'amber' if m['watched'] else ('green' if m['items'] else 'grey')}">{'Flock/ALPR flagged' if m['watched'] else ('agenda posted' if m['items'] else 'agenda pending')}</span>
           <h3>{html.escape(m['name'])}</h3>
-          <p>{html.escape((m.get('start_iso') or '').replace('T', ' · '))} &mdash; {f"{m['items']} agenda items" if m['items'] else 'Agenda not yet posted'}</p>
+          <p>{html.escape(common.fmt_when(m.get('start_iso') or ''))} &mdash; {f"{m['items']} agenda items" if m['items'] else 'Agenda not yet posted'}</p>
           <span class="card-go">View agenda preview</span>
         </a>""")
         city_cards = '<div class="grid cols-2">' + "".join(cards) + "</div>"

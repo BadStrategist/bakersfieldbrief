@@ -20,6 +20,7 @@ import html
 import math
 
 from .. import common
+from ..chp_text import plain_location, plain_type
 from ..sources.airnow import css_class as _aqi_css
 from . import images
 from . import page as page_mod
@@ -35,7 +36,7 @@ PLACES = {
         "nws_point": (35.1322, -118.4490),
         "city_filter": "TEHACHAPI",
         "citywide": False,
-        "school_note": "Tehachapi Unified School District agendas are on the blocked list — a self-hosted runner unlocks them.",
+        "school_note": "Tehachapi Unified School District board agendas are not covered yet; check the district's own website.",
     },
     "bakersfield-nw": {
         "name": "Northwest Bakersfield",
@@ -131,7 +132,8 @@ def _place_page(ctx, slug: str, meta: dict, built_iso: str, sources: dict,
     else:
         weather_v = "n/a"
     alerts = (weather or {}).get("alerts", [])
-    alert_v = alerts[0]["event"] + " active" if alerts else "No active alerts"
+    alert_v = (alerts[0]["event"] + " active" if alerts else
+               "No active alerts" if (weather or {}).get("ok") else "Unavailable right now")
 
     if airnow.get("ok") and airnow.get("aqi") is not None:
         aqi_v = (f'<span class="{_aqi_css(airnow.get("category_num"))}">{airnow["aqi"]} &middot; '
@@ -157,8 +159,8 @@ def _place_page(ctx, slug: str, meta: dict, built_iso: str, sources: dict,
     chp_items = _nearby_chp(chp, meta)
     if chp_items:
         lis = "".join(f"""
-        <li><strong>{html.escape(i.get('type', 'Incident')[:38])}</strong>
-        <span class="when">{html.escape(i.get('location', ''))} &middot; {html.escape(i.get('time', ''))}</span></li>"""
+        <li><strong>{html.escape(plain_type(i.get('type', 'Incident')))}</strong>
+        <span class="when">{html.escape(plain_location(i.get('location', '')))} &middot; {html.escape(i.get('time', ''))}</span></li>"""
                       for i in chp_items[:7])
         chp_html = f'<ul class="hl">{lis}</ul>'
     elif not (chp or {}).get("ok"):
@@ -209,7 +211,7 @@ def _place_page(ctx, slug: str, meta: dict, built_iso: str, sources: dict,
 
     body = f"""
     <div class="pagehead">
-      <nav class="breadcrumbs"><a href="{rel}index.html">Daily Brief</a> &rsaquo;
+      <nav class="breadcrumbs"><a href="/">Daily Brief</a> &rsaquo;
       <a href="{rel}places/">Places</a> &rsaquo; {html.escape(name)}</nav>
       <div class="hero"><p class="kicker">Places &middot; hyperlocal</p>
       <h1>{html.escape(name)}</h1>

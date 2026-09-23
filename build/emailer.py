@@ -353,7 +353,7 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
     alert_v = (f"{alerts[0]['event']} active" if alerts else
                "No active alerts" if (weather or {}).get("ok") else "Unavailable")
     isa_last = isa.get("last")
-    isa_v = f"{isa_last['value']:,} AF ({isa.get('pct')}% cap)" if isa_last else "n/a"
+    isa_v = f"{isa_last['value']:,} acre-feet ({isa.get('pct')}% full)" if isa_last else "n/a"
     chp_night = chp.get("overnight", [])
     chp_v = ("Unavailable" if not chp.get("ok") else
              f"{len(chp_night)} overnight" if chp_night else "None overnight")

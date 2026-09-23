@@ -80,7 +80,11 @@ def build(ctx, sources: dict) -> list[str]:
       .pop .nb {{ font-size:.75rem; color:#92400E; }}
     </style>
 
-    <p class="sec-head">Live incident map <span class="unit">rolling, from the overnight feed</span></p>
+    <div class="pagehead"><div class="hero"><p class="kicker">The Kern Overnight</p>
+      <h1>Overnight Police &amp; Fire Calls Map</h1>
+      <p class="lede">Where police, sheriff, fire and ambulance crews were sent overnight in
+      Bakersfield, from public dispatch radio. Locations are shown only to the block, and every
+      call is unconfirmed until an official source reports it.</p></div></div>
     <div class="card">
       <div id="map"></div>
       <div class="legend">{legend}</div>
@@ -104,10 +108,8 @@ def build(ctx, sources: dict) -> list[str]:
     streets, never a house number. Read the full morning write-up on the
     <a href="{rel}overnight/">Kern Overnight</a> page.</p></div>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="{rel}assets/vendor/leaflet.css">
+    <script src="{rel}assets/vendor/leaflet.js"></script>
     <script>
       (function () {{
         var feed = {dots_json};
@@ -156,7 +158,7 @@ def build(ctx, sources: dict) -> list[str]:
     """
 
     page = page_mod.render(
-        title="Live Incident Map | Bakersfield Daily Brief",
+        title="Bakersfield Overnight Police & Fire Calls Map | Bakersfield Daily Brief",
         desc="A rolling map of overnight police, fire, and EMS incidents across Bakersfield and Kern County, placed to block or cross-street level from scanner dispatch audio.",
         canonical="/map/", content=body, current="other", rel=rel,
         built=built_iso, statusbar=ctx.statusbar, jsonld=[page_mod.org_jsonld()])

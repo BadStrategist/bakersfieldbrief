@@ -184,7 +184,7 @@ def build(ctx, sources: dict) -> list[str]:
     page = page_mod.render(
         title="Tehachapi Weather | Current Conditions & Forecast | Bakersfield Daily Brief",
         desc="Live Tehachapi weather — current temperature, wind, and forecast from the National Weather Service, plus alerts. Updated 3x daily.",
-        canonical="/tehachapi-weather/", content=body, current="other", rel=rel,
+        canonical="/tehachapi-weather/", content=body, current="trackers", rel=rel,
         built=built_iso, statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), _faq(live_answer, faq_qa)])
     common.write(common.SITE / "tehachapi-weather" / "index.html", page)

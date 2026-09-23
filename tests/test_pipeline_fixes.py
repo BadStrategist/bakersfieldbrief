@@ -166,3 +166,20 @@ def test_real_answer_passes(monkeypatch):
     monkeypatch.setattr(llm.requests, "post",
                         lambda *a, **k: _LLMResp("Bakersfield police are searching for two burglary suspects."))
     assert llm._chat("prompt").startswith("Bakersfield police")
+
+
+def test_no_control_characters_in_source():
+    """An editing slip once turned regex word boundaries into literal backspace characters in
+    build/sources/roads.py, and the "closed"/"wind"/"fog" patterns silently never matched."""
+    bad = []
+    for ext in ("*.py", "*.js", "*.html", "*.css", "*.yml"):
+        for p in common.ROOT.glob(f"**/{ext}"):
+            if any(part in {"site", "work", ".venv", "node_modules", "__pycache__"} for part in p.parts):
+                continue
+            try:
+                s = p.read_text(encoding="utf-8")
+            except (UnicodeDecodeError, OSError):
+                continue
+            if any(ch in s for ch in "\x00\x07\x08\x0b\x0c"):
+                bad.append(str(p.relative_to(common.ROOT)))
+    assert not bad, bad

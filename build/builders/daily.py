@@ -636,7 +636,7 @@ def _conditions(weather, chp, isa, airnow, calfire, built_iso, rel="") -> str:
     alert_v = (alerts[0]["event"] + " active" if alerts else
                "No active alerts" if (weather or {}).get("ok") else "Unavailable")
     isa_last = isa.get("last")
-    isa_v = f"{isa_last['value']:,} AF" if isa_last else "n/a"
+    isa_v = f"{isa_last['value']:,} acre-feet" if isa_last else "n/a"
     isa_pct = isa.get("pct")
     chp_night = chp.get("overnight", [])
     chp_v = ("Unavailable" if not chp.get("ok") else
@@ -672,7 +672,7 @@ def _conditions(weather, chp, isa, airnow, calfire, built_iso, rel="") -> str:
         f'<div class="l">Weather alerts</div><div class="v {"amber" if alerts else ""}">{html.escape(alert_v)}</div>')
     isa_html = chip(
         f"{rel}water/",
-        f'<div class="l">Isabella Lake</div><div class="v">{isa_v} <span style="font-size:13px;color:#57504A">({isa_pct}% cap)</span></div>',
+        f'<div class="l">Lake Isabella</div><div class="v">{isa_v} <span style="font-size:13px;color:#57504A">({isa_pct}% full)</span></div>',
         external=False)
     chp_html = chip(
         "https://quickmap.dot.ca.gov/",
@@ -893,7 +893,7 @@ def _category_grid(rel, escribe, board, abc, food, alpr, calfire) -> str:
     up = escribe.get("upcoming", [])
     if up:
         m = up[0]
-        when = (m.get("start_iso") or "").replace("T", " · ")
+        when = common.fmt_when(m.get("start_iso") or "")
         watch_inner = (f'<span class="cat-label">What to Watch</span>'
                        f'<h3>{html.escape(m.get("name", "City meeting"))}</h3>'
                        f'<p>{html.escape(when)}</p>'
@@ -1173,6 +1173,7 @@ def _entry_label(e: dict) -> str:
 def _own_h1(stored_html: str, d) -> str:
     """Stored archive bodies carry the old lead-headline h1 (or none); show our own."""
     h1 = f"<h1>{html.escape(_brief_h1(d))}</h1>"
+    stored_html = stored_html.replace("The Bakersfield Brief", "the Bakersfield Daily Brief")
     if re.search(r"<h1[^>]*>", stored_html):
         return re.sub(r"<h1[^>]*>.*?</h1>", h1, stored_html, count=1, flags=re.S)
     return f'<div class="pagehead"><div class="hero"><p class="kicker">The Daily Brief</p>{h1}</div></div>' + stored_html
@@ -1383,7 +1384,7 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
         <h1>Brief for {_fmt_date(d)}</h1>
         <p class="lede">The Bakersfield Daily Brief for this morning.</p></div></div>
         <div class="card"><p class="note" style="margin-top:8px">The full article for this date was not retained; see
-        <a href="{past_rel}index.html">today&rsquo;s brief</a> or the
+        <a href="/">today&rsquo;s brief</a> or the
         <a href="{past_rel}briefs/">archive index</a>.</p></div>""" + _related_trackers(past_rel, "")
         common.write(common.SITE / "briefs" / dstr / "index.html", page_mod.render(
             title=_brief_title(past_headline, d),

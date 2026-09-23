@@ -145,7 +145,7 @@ def build(ctx, sources: dict) -> list[str]:
     page = page_mod.render(
         title="Events in Bakersfield — what's on around town | Bakersfield Daily Brief",
         desc="Live events at Bakersfield venues (Fox Theater, Mechanics Bank Arena, The Well) plus public meetings — refreshed every build.",
-        canonical="/events/", content=body, current="other", rel=rel,
+        canonical="/events/", content=body, current="events", rel=rel,
         built=built_iso, statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld()])
     common.write(common.SITE / "events" / "index.html", page)

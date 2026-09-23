@@ -294,7 +294,7 @@ The site is static and rebuilt fresh every morning at 6:00 AM Pacific from publi
 ## Data Trackers
 
 - [Flock & ALPRs](https://bakersfieldbrief.com/surveillance/): automated license-plate reader locations.
-- [Isabella Lake tracker](https://bakersfieldbrief.com/water/): reservoir levels.
+- [Lake Isabella water level](https://bakersfieldbrief.com/water/): reservoir levels.
 - [Grapevine conditions](https://bakersfieldbrief.com/grapevine/): Tejon Pass / Grapevine road conditions.
 - [Tehachapi Pass conditions](https://bakersfieldbrief.com/tehachapi-pass/): SR-58 road conditions and wind.
 - [Tehachapi weather](https://bakersfieldbrief.com/tehachapi-weather/): pass-level wind and forecast.

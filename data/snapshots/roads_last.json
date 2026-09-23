@@ -65,7 +65,7 @@
      }
     ]
    },
-   "reported_as_of": "Tuesday, September 22nd, 2026 at 06:30 PM",
+   "reported_as_of": "Tuesday, September 22nd, 2026 at 06:49 PM",
    "hash": "cc57784d17"
   },
   {
@@ -88,7 +88,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Tuesday, September 22nd, 2026 at 06:30 PM",
+   "reported_as_of": "Tuesday, September 22nd, 2026 at 06:49 PM",
    "hash": "5374f203ec"
   },
   {
@@ -106,7 +106,7 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "Southbound traffic is reduced to 2 lanes at Elk Grove Blvd /in Elk Grove/ (Sacramento Co) - Due to a traffic collision Southbound traffic is reduced to 3 lanes at 12th Ave /in Sacrametno/ (Sacramento Co) - Due to maintenance",
+     "text": "Southbound traffic is reduced to 3 lanes at 12th Ave /in Sacrametno/ (Sacramento Co) - Due to maintenance",
      "status": "RESTRICTIONS"
     }
    ],
@@ -125,14 +125,6 @@
      },
      {
       "status": "RESTRICTIONS",
-      "place": "Elk Grove",
-      "county": "Sacramento Co",
-      "where": "Elk Grove (Sacramento Co)",
-      "text": "Southbound traffic is reduced to 2 lanes at Elk Grove Blvd /in Elk Grove/ (Sacramento Co) - Due to a traffic collision",
-      "region": "NORTHERN CALIFORNIA"
-     },
-     {
-      "status": "RESTRICTIONS",
       "place": "Sacrametno",
       "county": "Sacramento Co",
       "where": "Sacrametno (Sacramento Co)",
@@ -141,8 +133,8 @@
      }
     ]
    },
-   "reported_as_of": "Tuesday, September 22nd, 2026 at 06:30 PM",
-   "hash": "6f1dede806"
+   "reported_as_of": "Tuesday, September 22nd, 2026 at 06:49 PM",
+   "hash": "b6e7528549"
   }
  ],
  "asof": "2026-09-22"

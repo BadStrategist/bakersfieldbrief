@@ -17,6 +17,14 @@
  },
  {
   "ts": "2026-09-22",
+  "route": "sr99",
+  "route_name": "State Route 99 \u2014 Central Valley",
+  "from": "updated",
+  "to": "RESTRICTIONS",
+  "note": "condition text changed"
+ },
+ {
+  "ts": "2026-09-22",
   "route": "i5",
   "route_name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
   "from": "updated",
@@ -446,12 +454,5 @@
   "from": "updated",
   "to": "CLOSED",
   "note": "condition text changed"
- },
- {
-  "ts": "2026-09-09",
-  "route": "i5",
-  "route_name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
-  "from": "RESTRICTIONS",
-  "to": "CLOSED"
  }
 ]

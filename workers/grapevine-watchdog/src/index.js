@@ -72,8 +72,19 @@ function ageMinutes(ts) {
   return Math.max(Math.floor((Date.now() - instant) / 60000), 0);
 }
 
+/** Wall-clock stamp in Pacific, matching the Python watchdog's "%Y-%m-%d %H:%M %Z".
+ *  An operator reading a Kern County alert should not have to convert UTC by hand. */
+function nowPt() {
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/Los_Angeles", hourCycle: "h23",
+    year: "numeric", month: "2-digit", day: "2-digit",
+    hour: "2-digit", minute: "2-digit", timeZoneName: "short",
+  }).formatToParts(new Date()).map((x) => [x.type, x.value]));
+  return `${p.year}-${p.month}-${p.day} ${p.hour}:${p.minute} ${p.timeZoneName}`;
+}
+
 async function check() {
-  const now = new Date().toISOString();
+  const now = nowPt();
   let res;
   try {
     res = await fetch(URL, {

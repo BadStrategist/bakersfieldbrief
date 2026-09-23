@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-23T02:57:56-07:00",
+ "built_at": "2026-09-23T06:57:12-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 649, column 24"
   },
   "isabella": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 3,
+   "chp_new": 0,
    "top_story": "BPD: Search for two men, one in black wig, accused of breaking into Oleander home - bakersfieldnow.com",
    "archive": "2026-09-23"
   },
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 50,
+   "temp": 46,
    "wind_mph": 0,
    "alerts": 0
   },
@@ -134,7 +134,7 @@
    "isabella_af": 154448,
    "alpr_total": 269,
    "kern_fires": 0,
-   "aqi": 66,
+   "aqi": 80,
    "chp_week": 57
   },
   "letters": {

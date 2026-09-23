@@ -1343,10 +1343,10 @@
   "log_id": "260923BF0044",
   "time": "Sep 23 2026  5:57AM",
   "type": "MZP-Assist CT with Maintenance",
-  "location": "29449 Stockdale Hwy",
+  "location": "NB I5 JNO Copus Rd",
   "area": "Buttonwillow",
-  "lat": 35.354792,
-  "lon": -119.33073,
+  "lat": 35.097222,
+  "lon": -119.039444,
   "details": ""
  },
  {
@@ -1367,6 +1367,26 @@
   "area": "Bakersfield",
   "lat": 35.361253,
   "lon": -118.974563,
+  "details": ""
+ },
+ {
+  "log_id": "260923BF0111",
+  "time": "Sep 23 2026  9:01AM",
+  "type": "CZP-Assist with Construction",
+  "location": "Nb I5 At Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.835556,
+  "lon": -118.863056,
+  "details": ""
+ },
+ {
+  "log_id": "260923BF0150",
+  "time": "Sep 23 2026 10:43AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 Jno Gorman School Rd",
+  "area": "Fort Tejon",
+  "lat": 34.79459,
+  "lon": -118.851591,
   "details": ""
  }
 ]

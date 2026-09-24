@@ -1,0 +1,182 @@
+[
+ {
+  "type": "structure fire",
+  "time": "02:21",
+  "agency": "Bakersfield Fire Department",
+  "area": "2200 block of C Street, Bakersfield",
+  "notability": 4,
+  "disposition": "reinforced response; fire attack",
+  "summary": "A reinforced structure assignment went out for a garage on fire across the street from an address in the 2200 block of C Street, and dispatchers logged multiple calls to the same location. Four engines, two truck companies, a rescue and two battalions were included in the initial response."
+ },
+ {
+  "type": "structure fire",
+  "time": "01:37",
+  "agency": "Kern County Fire Department",
+  "area": "Rosamond Boulevard at a mobile home park, Rosamond",
+  "notability": 4,
+  "disposition": "knocked down with the first tank; water supply established",
+  "summary": "Crews were sent to a mobile home park on Rosamond Boulevard for multiple reports of a trailer on fire. The first medic squad on scene found a fully involved double-wide trailer at the back of the park with no exposures, described as a vacant trailer left outside the park on a graded lot. Crews knocked the fire down with the first tank of water and held units for water supply, and the county engine and battalion that had been added to the call were cancelled."
+ },
+ {
+  "type": "building fire",
+  "time": "23:46",
+  "agency": "Bakersfield Fire Department",
+  "area": "Niles Street at Mount Vernon Avenue, Bakersfield",
+  "notability": 3,
+  "disposition": "search completed, all clear",
+  "summary": "A battalion and a city battalion were sent to heavy smoke coming from the former Family Dollar building at Niles Street and Mount Vernon Avenue. Crews reported a heavy smoke condition on arrival, and by 11:56 p.m. dispatchers confirmed the primary and secondary searches were complete with the building all clear."
+ },
+ {
+  "type": "medical aid",
+  "time": "00:59",
+  "agency": "Kern County Fire Department",
+  "area": "Kern Valley State Prison, Delano",
+  "notability": 3,
+  "disposition": "ambulance staged at the gate in case of transport",
+  "summary": "An engine and an ambulance were sent to the gate of Kern Valley State Prison for a reported overdose. The ambulance was asked to stage at the gate in case transport was needed."
+ },
+ {
+  "type": "grass fire",
+  "time": "22:39",
+  "agency": "Bakersfield Fire Department",
+  "area": "Highway 58 at the Highway 99 on-ramp, Bakersfield",
+  "notability": 3,
+  "disposition": "located and worked by first-arriving engine",
+  "summary": "Crews were sent for smoke seen near the freeway and found a grass fire along the on-ramp from Highway 58 to Highway 99. An engine checked the area behind a nearby discount store and reported nothing burning there, and the fire was worked along the highway shoulder."
+ },
+ {
+  "type": "shots heard",
+  "time": "22:51",
+  "agency": "Bakersfield Police Department",
+  "area": "Bakersfield",
+  "notability": 3,
+  "disposition": "officers checking the area; vehicle description broadcast",
+  "summary": "Officers were sent after shots were reported. A caller described a dark-colored pickup leaving the area eastbound, and the description was broadcast to units working the call."
+ },
+ {
+  "type": "assault",
+  "time": "01:14",
+  "agency": "Kern County Sheriff's Office",
+  "area": "19500 block of Sycamore Drive, Bakersfield",
+  "notability": 3,
+  "disposition": "ambulance requested; standby request issued",
+  "summary": "Medics were sent to an assault at an address in the 19500 block of Sycamore Drive. The call came in as an assault with a patient reported unconscious, and a standby request was issued before units arrived."
+ },
+ {
+  "type": "domestic violence",
+  "time": "00:29",
+  "agency": "Bakersfield Police Department",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "report taken from a relayed caller; officers responding",
+  "summary": "A caller reaching dispatchers from a hotel relayed a woman yelling that she had been assaulted by her husband, and said the man was leaving the room. Officers were sent to check the area."
+ },
+ {
+  "type": "disturbance",
+  "time": "23:27",
+  "agency": "Bakersfield Police Department",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "officers responding; one party reported injured",
+  "summary": "A family disturbance call came in with both parties giving dispatchers accounts of a physical fight, including scratches and a leg bite, and one person said she was hiding in a bathroom."
+ },
+ {
+  "type": "disturbance",
+  "time": "22:50",
+  "agency": "Bakersfield Police Department",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "officers responding",
+  "summary": "Officers were sent to a fight between two siblings, with one juvenile described to dispatchers by clothing and age."
+ },
+ {
+  "type": "theft",
+  "time": "23:22",
+  "agency": "Bakersfield Police Department",
+  "area": "northeast Bakersfield",
+  "notability": 2,
+  "disposition": "suspect fled; area checked",
+  "summary": "A caller reported a theft and said the suspect left the scene on a black bicycle about ten minutes earlier. The person was described by clothing, and the caller told dispatchers no weapon was seen."
+ },
+ {
+  "type": "medical aid",
+  "time": "22:12",
+  "agency": "Bakersfield Fire Department",
+  "area": "300 block of Kentucky Street, Bakersfield",
+  "notability": 1,
+  "disposition": "medic unit sent",
+  "summary": "A medic unit was sent to an address in the 300 block of Kentucky Street."
+ },
+ {
+  "type": "medical aid",
+  "time": "02:57",
+  "agency": "Bakersfield Fire Department",
+  "area": "100 block of Claire Street, Bakersfield",
+  "notability": 1,
+  "disposition": "medical unit sent",
+  "summary": "An engine company and a medical unit were sent to the 100 block of Claire Street for a medical alarm."
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "02:51",
+  "agency": "Bakersfield Police Department",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "officers responded; no suspect located",
+  "summary": "A resident called after a neighbor reported someone had gone into the garage, then heard the garage entry door open. Crews were told there was possible access through a closet."
+ },
+ {
+  "type": "suspicious person",
+  "time": "03:18",
+  "agency": "Bakersfield Police Department",
+  "area": "1500 block of El Sorrento Drive, Bakersfield",
+  "notability": 1,
+  "disposition": "officers responding; no description beyond the flashlight",
+  "summary": "A caller reported a man with a flashlight trying the door of a vehicle across the street and then going through the caller's trash cans on the 1500 block of El Sorrento Drive."
+ },
+ {
+  "type": "gas odor",
+  "time": "04:10",
+  "agency": "Bakersfield Fire Department",
+  "area": "1100 block of Custer Avenue, Bakersfield",
+  "notability": 2,
+  "disposition": "crews sent to investigate",
+  "summary": "Fire crews were sent to a report of a strong smell of gas at a property in the 1100 block of Custer Avenue."
+ },
+ {
+  "type": "welfare check",
+  "time": "04:10",
+  "agency": "Bakersfield Police Department",
+  "area": "Park Square Drive, Bakersfield",
+  "notability": 2,
+  "disposition": "officers responding",
+  "summary": "Officers were sent for a welfare check after a woman came to a store asking for police help and told the caller there had been a disturbance between a man and a woman."
+ },
+ {
+  "type": "disturbance",
+  "time": "04:12",
+  "agency": "Bakersfield Police Department",
+  "area": "Stargaze Drive, Bakersfield",
+  "notability": 2,
+  "disposition": "officers responding; caller waiting outside",
+  "summary": "A disturbance call came in from Stargaze Drive with a man reported inside the residence and the caller waiting outside."
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "04:14",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Hageman Road at Patton Way, Bakersfield",
+  "notability": 2,
+  "disposition": "deputies responding",
+  "summary": "Deputies were sent to a suspicious circumstance call at Hageman Road and Patton Way for two people in a white Nissan reported to be tampering with heavy construction equipment."
+ },
+ {
+  "type": "medical aid",
+  "time": "04:21",
+  "agency": "Bakersfield Fire Department",
+  "area": "5000 block of Gosford Road, Bakersfield",
+  "notability": 1,
+  "disposition": "medics sent",
+  "summary": "Medics were sent to the grocery side of a parking area in the 5000 block of Gosford Road for a fainting episode."
+ }
+]

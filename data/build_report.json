@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-23T18:54:46-07:00",
+ "built_at": "2026-09-24T00:44:55-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,17 +60,17 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 988,
+  "brief_words": 65,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "BPD: Search for two men, one in black wig, accused of breaking into Oleander home - bakersfieldnow.com",
-   "archive": "2026-09-23"
+   "top_story": "Semi-truck fire at Shafter Pilot Travel Center sends massive smoke plume visible for miles",
+   "archive": "2026-09-24"
   },
   "cityhall": {
-   "upcoming_meetings": 1,
+   "upcoming_meetings": 2,
    "county_items": 89,
    "drafts_generated": 0
   },
@@ -82,7 +82,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -93,7 +93,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-09-23"
+   "draft": "drafts/weekend-guide-2026-09-24"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 11,
+   "wind_mph": 1,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 75,
-   "wind_mph": 11,
+   "temp": 61,
+   "wind_mph": 1,
    "alerts": 0
   },
   "roads": {
@@ -121,11 +121,11 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 17,
+    "In the next 7 days": 18,
     "In 1 to 2 weeks": 15,
-    "Later": 115
+    "Later": 113
    },
-   "meetings": 1
+   "meetings": 2
   },
   "feed": {
    "entries": 30
@@ -134,7 +134,7 @@
    "isabella_af": 154448,
    "alpr_total": 269,
    "kern_fires": 0,
-   "aqi": 122,
+   "aqi": 87,
    "chp_week": 66
   },
   "letters": {

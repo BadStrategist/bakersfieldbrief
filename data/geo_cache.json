@@ -119,5 +119,38 @@
  "union avenue & panama road, Bakersfield, CA": null,
  "baker street & dolores street, Bakersfield, CA": null,
  "baker street & truxtun avenue, Bakersfield, CA": null,
- "westdale park area & the california aqueduct, Bakersfield, CA": null
+ "westdale park area & the california aqueduct, Bakersfield, CA": null,
+ "2200 block of c street, Bakersfield, Kern County, CA": null,
+ "c street, Bakersfield, CA": [
+  35.376757,
+  -119.0270064
+ ],
+ "rosamond boulevard & a mobile home park, Bakersfield, CA": null,
+ "niles street & mount vernon avenue, Bakersfield, CA": null,
+ "19500 block of sycamore drive, Bakersfield, Kern County, CA": null,
+ "sycamore drive, Bakersfield, CA": [
+  35.2846068,
+  -119.044551
+ ],
+ "300 block of kentucky street, Bakersfield, Kern County, CA": null,
+ "kentucky street, Bakersfield, CA": [
+  35.3771909,
+  -118.9852259
+ ],
+ "100 block of claire street, Bakersfield, Kern County, CA": null,
+ "claire street, Bakersfield, CA": [
+  35.3051694,
+  -119.017336
+ ],
+ "1100 block of custer avenue, Bakersfield, Kern County, CA": null,
+ "custer avenue, Bakersfield, CA": [
+  35.3346351,
+  -119.0246691
+ ],
+ "hageman road & patton way, Bakersfield, CA": null,
+ "5000 block of gosford road, Bakersfield, Kern County, CA": null,
+ "gosford road, Bakersfield, CA": [
+  35.2997674,
+  -119.0920766
+ ]
 }

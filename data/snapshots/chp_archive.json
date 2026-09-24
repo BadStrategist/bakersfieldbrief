@@ -1360,6 +1360,36 @@
   "details": ""
  },
  {
+  "log_id": "260924BF0129",
+  "time": "Sep 24 2026  9:09AM",
+  "type": "CZP-Assist with Construction",
+  "location": "1033 Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.825534,
+  "lon": -118.87775,
+  "details": ""
+ },
+ {
+  "log_id": "260924BF0138",
+  "time": "Sep 24 2026  9:13AM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 N / Gorman Onr",
+  "area": "Fort Tejon",
+  "lat": 34.795896,
+  "lon": -118.858006,
+  "details": ""
+ },
+ {
+  "log_id": "260924BF0170",
+  "time": "Sep 24 2026 10:30AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Nb I5 Jso Gorman School Rd",
+  "area": "Fort Tejon",
+  "lat": 34.79456,
+  "lon": -118.847656,
+  "details": ""
+ },
+ {
   "log_id": "260924BF0003",
   "time": "Sep 24 2026 12:08AM",
   "type": "TADV-Traffic Advisory",

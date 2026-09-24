@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-24T10:50:26-07:00",
+ "built_at": "2026-09-24T10:55:54-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,7 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": ""
+   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
   },
   "venues": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
+   "chp_new": 0,
    "top_story": "Stanford admits AI was used to swap gender, race of student image",
    "archive": "2026-09-24"
   },

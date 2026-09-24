@@ -1350,6 +1350,16 @@
   "details": ""
  },
  {
+  "log_id": "260924BF0080",
+  "time": "Sep 24 2026  6:55AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Merle Haggard Dr / Landings Way",
+  "area": "Bakersfield",
+  "lat": 35.441239,
+  "lon": -119.047645,
+  "details": ""
+ },
+ {
   "log_id": "260924BF0003",
   "time": "Sep 24 2026 12:08AM",
   "type": "TADV-Traffic Advisory",

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-24T07:06:26-07:00",
+ "built_at": "2026-09-24T07:11:34-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,7 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -59,11 +59,11 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1365,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 1,
    "top_story": "Stanford admits AI was used to swap gender, race of student image",
@@ -144,7 +144,7 @@
    "published": 45
   },
   "map": {
-   "dots": 48
+   "dots": 63
   },
   "sunday_read": {
    "topic": "Public safety",

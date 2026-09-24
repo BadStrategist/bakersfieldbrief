@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-23T16:17:08-07:00",
+ "built_at": "2026-09-23T18:54:46-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -82,7 +82,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 7,
+   "wind_mph": 11,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 86,
-   "wind_mph": 7,
+   "temp": 75,
+   "wind_mph": 11,
    "alerts": 0
   },
   "roads": {
@@ -121,7 +121,7 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 18,
+    "In the next 7 days": 17,
     "In 1 to 2 weeks": 15,
     "Later": 115
    },
@@ -132,9 +132,9 @@
   },
   "numbers": {
    "isabella_af": 154448,
-   "alpr_total": 268,
+   "alpr_total": 269,
    "kern_fires": 0,
-   "aqi": 119,
+   "aqi": 122,
    "chp_week": 66
   },
   "letters": {
@@ -173,8 +173,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 268,
-   "alpr_new_week": 2,
+   "alpr_total": 269,
+   "alpr_new_week": 3,
    "pages": [
     "surveillance",
     "fires",

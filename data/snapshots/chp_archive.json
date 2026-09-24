@@ -1393,10 +1393,10 @@
   "log_id": "260924BF0177",
   "time": "Sep 24 2026 10:54AM",
   "type": "1125-Traffic Hazard",
-  "location": "0 Sr58 W",
+  "location": "SR58 W / Bena Rd",
   "area": "Bakersfield",
-  "lat": 35.247431,
-  "lon": -118.594055,
+  "lat": 35.270011,
+  "lon": -118.682452,
   "details": ""
  },
  {
@@ -1420,6 +1420,26 @@
   "details": ""
  },
  {
+  "log_id": "260924BF0204",
+  "time": "Sep 24 2026 11:46AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Ash St / Polk St",
+  "area": "Buttonwillow",
+  "lat": 35.151407,
+  "lon": -119.458821,
+  "details": ""
+ },
+ {
+  "log_id": "260924BF0214",
+  "time": "Sep 24 2026 11:58AM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "Wings Way / Merle Haggard Dr",
+  "area": "Bakersfield",
+  "lat": 35.441227,
+  "lon": -119.052419,
+  "details": ""
+ },
+ {
   "log_id": "260924BF0003",
   "time": "Sep 24 2026 12:08AM",
   "type": "TADV-Traffic Advisory",
@@ -1427,6 +1447,26 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260924BF0221",
+  "time": "Sep 24 2026 12:22PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Round Mountain Rd / Vista Del Rio Ct",
+  "area": "Bakersfield",
+  "lat": 35.442339,
+  "lon": -118.944501,
+  "details": ""
+ },
+ {
+  "log_id": "260924BF0224",
+  "time": "Sep 24 2026 12:24PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Nb I5 Jno Lebec Rest Area",
+  "area": "Fort Tejon",
+  "lat": 34.828412,
+  "lon": -118.870526,
   "details": ""
  }
 ]

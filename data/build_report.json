@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-24T11:45:01-07:00",
+ "built_at": "2026-09-24T12:44:07-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,13 +65,13 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 4,
    "top_story": "Stanford admits AI was used to swap gender, race of student image",
    "archive": "2026-09-24"
   },
   "cityhall": {
    "upcoming_meetings": 2,
-   "county_items": 89,
+   "county_items": 133,
    "drafts_generated": 0
   },
   "places": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 4,
+   "wind_mph": 6,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 82,
-   "wind_mph": 4,
+   "temp": 83,
+   "wind_mph": 6,
    "alerts": 0
   },
   "roads": {
@@ -134,8 +134,8 @@
    "isabella_af": 153606,
    "alpr_total": 269,
    "kern_fires": 0,
-   "aqi": 84,
-   "chp_week": 84
+   "aqi": 97,
+   "chp_week": 88
   },
   "letters": {
    "published": 0

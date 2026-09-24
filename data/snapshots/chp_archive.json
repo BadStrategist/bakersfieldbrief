@@ -1390,6 +1390,26 @@
   "details": ""
  },
  {
+  "log_id": "260924BF0177",
+  "time": "Sep 24 2026 10:54AM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 Sr58 W",
+  "area": "Bakersfield",
+  "lat": 35.247431,
+  "lon": -118.594055,
+  "details": ""
+ },
+ {
+  "log_id": "260924BF0178",
+  "time": "Sep 24 2026 10:56AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Eb Sr58 Jwo Edison Rd",
+  "area": "Bakersfield",
+  "lat": 35.346667,
+  "lon": -118.883611,
+  "details": ""
+ },
+ {
   "log_id": "260924BF0003",
   "time": "Sep 24 2026 12:08AM",
   "type": "TADV-Traffic Advisory",

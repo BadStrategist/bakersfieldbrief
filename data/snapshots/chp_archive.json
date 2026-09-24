@@ -1410,6 +1410,16 @@
   "details": ""
  },
  {
+  "log_id": "260924BF0185",
+  "time": "Sep 24 2026 11:17AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr99 S / Sr46",
+  "area": "Bakersfield",
+  "lat": 35.601816,
+  "lon": -119.211348,
+  "details": ""
+ },
+ {
   "log_id": "260924BF0003",
   "time": "Sep 24 2026 12:08AM",
   "type": "TADV-Traffic Advisory",

@@ -1280,6 +1280,76 @@
   "details": ""
  },
  {
+  "log_id": "260924BF0042",
+  "time": "Sep 24 2026  4:58AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "I5 N / GORMAN ONR",
+  "area": "Fort Tejon",
+  "lat": 34.795896,
+  "lon": -118.858006,
+  "details": ""
+ },
+ {
+  "log_id": "260924BF0059",
+  "time": "Sep 24 2026  5:56AM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "1700 - 1871 Wheeler Ridge Rd",
+  "area": "Bakersfield",
+  "lat": 35.121988,
+  "lon": -118.914658,
+  "details": ""
+ },
+ {
+  "log_id": "260924BF0062",
+  "time": "Sep 24 2026  6:03AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "Copus Rd Ofr / I5 N",
+  "area": "Buttonwillow",
+  "lat": 35.091867,
+  "lon": -119.033714,
+  "details": ""
+ },
+ {
+  "log_id": "260924BF0064",
+  "time": "Sep 24 2026  6:04AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Nb Sr99 At Pond Rd",
+  "area": "Bakersfield",
+  "lat": 35.71806,
+  "lon": -119.237134,
+  "details": ""
+ },
+ {
+  "log_id": "260924BF0066",
+  "time": "Sep 24 2026  6:11AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "2101 Cecil Brunner Dr",
+  "area": "Bakersfield",
+  "lat": 35.345206,
+  "lon": -119.025631,
+  "details": ""
+ },
+ {
+  "log_id": "260924BF0068",
+  "time": "Sep 24 2026  6:15AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Nb Sr99 At Olive Dr",
+  "area": "Bakersfield",
+  "lat": 35.412222,
+  "lon": -119.054722,
+  "details": ""
+ },
+ {
+  "log_id": "260924BF0070",
+  "time": "Sep 24 2026  6:25AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Nb Sr99 At County Line Rd",
+  "area": "Bakersfield",
+  "lat": 35.790405,
+  "lon": -119.250693,
+  "details": ""
+ },
+ {
   "log_id": "260924BF0003",
   "time": "Sep 24 2026 12:08AM",
   "type": "TADV-Traffic Advisory",

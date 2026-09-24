@@ -11,7 +11,7 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "The northbound connector to northbound SR-133 (Orange Co) is closed from 2200 hrs each night to 0500 hrs each morning Monday thru Friday thru 9/26/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "The southbound connector to southbound SR-73 /in Laguna Hills/ (Orange Co) is closed from 0001 hrs to 0400 hrs on 9/24/26 - Due to construction - Motorists are advised to use an alternate route The northbound connector to northbound SR-133 (Orange Co) is closed from 2200 hrs each night to 0500 hrs each morning Monday thru Friday thru 9/26/26 - Due to construction - Motorists are advised to use an alternate route Northbound traffic is reduced to 1 lane 2.5 mi south of the Los Angeles/ Kern Co line - Due to a jackknifed big rig A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "CLOSED"
     },
     {
@@ -34,11 +34,27 @@
       "place": "",
       "county": "",
       "where": "the Southern California area",
+      "text": "Northbound traffic is reduced to 1 lane 2.5 mi south of the Los Angeles/ Kern Co line - Due to a jackknifed big rig",
+      "region": "SOUTHERN CALIFORNIA"
+     },
+     {
+      "status": "RESTRICTIONS",
+      "place": "",
+      "county": "",
+      "where": "the Southern California area",
       "text": "A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
       "region": "SOUTHERN CALIFORNIA"
      }
     ],
     "elsewhere": [
+     {
+      "status": "CLOSED",
+      "place": "Laguna Hills",
+      "county": "Orange Co",
+      "where": "Laguna Hills (Orange Co)",
+      "text": "The southbound connector to southbound SR-73 /in Laguna Hills/ (Orange Co) is closed from 0001 hrs to 0400 hrs on 9/24/26 - Due to construction - Motorists are advised to use an alternate route",
+      "region": "SOUTHERN CALIFORNIA"
+     },
      {
       "status": "CLOSED",
       "place": "",
@@ -57,8 +73,8 @@
      }
     ]
    },
-   "reported_as_of": "Thursday, September 24th, 2026 at 12:53 AM",
-   "hash": "f053461ce7"
+   "reported_as_of": "Thursday, September 24th, 2026 at 06:54 AM",
+   "hash": "e99c0eadb3"
   },
   {
    "number": "58",
@@ -80,7 +96,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Thursday, September 24th, 2026 at 12:53 AM",
+   "reported_as_of": "Thursday, September 24th, 2026 at 06:54 AM",
    "hash": "5374f203ec"
   },
   {
@@ -117,7 +133,7 @@
      }
     ]
    },
-   "reported_as_of": "Thursday, September 24th, 2026 at 12:53 AM",
+   "reported_as_of": "Thursday, September 24th, 2026 at 06:54 AM",
    "hash": "5f583f85d4"
   }
  ],

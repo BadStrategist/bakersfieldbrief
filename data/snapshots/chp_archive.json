@@ -1320,6 +1320,26 @@
   "details": ""
  },
  {
+  "log_id": "260925BF0191",
+  "time": "Sep 25 2026 11:44AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Old River Rd / Herring Rd",
+  "area": "Buttonwillow",
+  "lat": 35.151941,
+  "lon": -119.109881,
+  "details": ""
+ },
+ {
+  "log_id": "260925BF0193",
+  "time": "Sep 25 2026 11:45AM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 I5 S",
+  "area": "Fort Tejon",
+  "lat": 34.884358,
+  "lon": -118.901748,
+  "details": ""
+ },
+ {
   "log_id": "260925BF0011",
   "time": "Sep 25 2026 12:53AM",
   "type": "TADV-Traffic Advisory",

@@ -1,0 +1,155 @@
+[
+ {
+  "type": "structure fire",
+  "time": "00:50",
+  "agency": "Bakersfield Fire Department",
+  "area": "Alley behind the 1000 block of Flower Street at Owens Street, Bakersfield",
+  "notability": 4,
+  "disposition": "all units on scene; crews checked for extension to other buildings",
+  "summary": "Dispatchers sent a structure assignment for a fire in an alley at Flower Street and Owens Street, with alley access for arriving companies. A correction later put the fire in the alley behind the 1000 block of Flower Street. Units reported all companies on scene and began checking the building for extension."
+ },
+ {
+  "type": "disturbance",
+  "time": "00:10",
+  "agency": "Bakersfield Police Department",
+  "area": "100 block of 20th Street West, Bakersfield",
+  "notability": 2,
+  "disposition": "officers responding; details relayed from a manager",
+  "summary": "Officers were sent to a disturbance outside a business on 20th Street West. A caller could hear subjects yelling and employees trying to keep the parties apart, and the information came secondhand from the business manager."
+ },
+ {
+  "type": "weapon",
+  "time": "00:58",
+  "agency": "Bakersfield Police Department",
+  "area": "Union Avenue at a motel, Bakersfield",
+  "notability": 3,
+  "disposition": "units responding; description broadcast",
+  "summary": "Officers were sent to a motel on Union Avenue for a report of a person with a firearm. A description was broadcast to units working the call, and the subject was reported to be moving on foot."
+ },
+ {
+  "type": "assault",
+  "time": "02:47",
+  "agency": "Bakersfield Police Department",
+  "area": "Bakersfield",
+  "notability": 3,
+  "disposition": "report taken; investigation continuing",
+  "summary": "A victim told dispatchers he had been struck with a crowbar by a man in his 20s wearing all black clothing."
+ },
+ {
+  "type": "medical aid",
+  "time": "03:27",
+  "agency": "Bakersfield Fire Department",
+  "area": "Oak Street at Brundage Lane, Bakersfield",
+  "notability": 3,
+  "disposition": "engine assigned; ambulance requested",
+  "summary": "An engine was sent to a medical aid near a discount store at Oak Street and Brundage Lane for two patients. The caller reported both were unresponsive and asked that responding units bring medication, then left the scene."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "03:48",
+  "agency": "Kern County Fire Department",
+  "area": "Northbound Interstate 5 north of Gorman School Road",
+  "notability": 3,
+  "disposition": "outer county assist with a neighboring county engine",
+  "summary": "Engine 56 was sent on an outer-county assist for a vehicle fire on the northbound side of Interstate 5 north of Gorman School Road, responding alongside an out-of-county engine."
+ },
+ {
+  "type": "grass fire",
+  "time": "04:00",
+  "agency": "Kern County Fire Department",
+  "area": "East Bear Mountain Boulevard south of the 48th station area",
+  "notability": 3,
+  "disposition": "multiple reports; engine, two patrols and a battalion assigned",
+  "summary": "Crews were sent to a grass fire described as south of the 48th station area at East Bear Mountain Boulevard. Multiple reports came in, including word that the fire could spread to an electrical pole, and an engine, two patrols and a battalion were assigned. Crews on Interstate 5 reported being just south of the fire."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "05:23",
+  "agency": "Kern County Fire Department",
+  "area": "Northwest of Hermosa Road, Kern County",
+  "notability": 3,
+  "disposition": "assigned to the Station 46 area; deputies responding",
+  "summary": "A vehicle fire was reported northwest of Hermosa Road and assigned to the Station 46 area, with a deputy unit reporting a person seen. Crews also asked for an updated closure estimate from the state highway department."
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "04:16",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Bakersfield area",
+  "notability": 2,
+  "disposition": "checked; nothing further heard",
+  "summary": "A caller reported hearing a man in an alley yelling for help and saying someone had a gun. The caller said it had happened about ten minutes earlier and that nothing else was heard afterward."
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "22:26",
+  "agency": "Bakersfield Police Department",
+  "area": "Bakersfield",
+  "notability": 3,
+  "disposition": "units responding; description broadcast",
+  "summary": "Officers were sent to a disturbance that dispatchers described as five or six females against one, with one female reported to be holding a firearm. The group was associated with a black pickup parked in front of a residence, and the original call began as a physical fight."
+ },
+ {
+  "type": "stolen vehicle",
+  "time": "23:40",
+  "agency": "Bakersfield Police Department",
+  "area": "1000 block of McDonald Way, Bakersfield",
+  "notability": 2,
+  "disposition": "recovered; vehicle cleared",
+  "summary": "A stolen vehicle was recovered in the 1000 block of McDonald Way. The car was described as a 2000 Honda Accord painted primer black by hand."
+ },
+ {
+  "type": "threats",
+  "time": "23:18",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Kern County",
+  "notability": 2,
+  "disposition": "units advised of the history before contact",
+  "summary": "Units were told before making contact that a subject had a prior mental-health-related call history and had said on that earlier call that she would shoot the people involved. Dispatchers also advised that she had a registered firearm."
+ },
+ {
+  "type": "welfare check",
+  "time": "02:00",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Merced Avenue west of Highway 65",
+  "notability": 2,
+  "disposition": "area checked; no contact reported",
+  "summary": "A truck driver asked deputies to check the welfare of a person who appeared to be trying to flag down his rig on Merced Avenue just west of Highway 65. The person was described as wearing a black jacket and beige shorts."
+ },
+ {
+  "type": "disturbance",
+  "time": "22:17",
+  "agency": "Bakersfield Police Department",
+  "area": "2700 block of Holland Street, Bakersfield",
+  "notability": 2,
+  "disposition": "officers responding",
+  "summary": "Officers were sent to the 2700 block of Holland Street for a report of loud music."
+ },
+ {
+  "type": "medical aid",
+  "time": "23:35",
+  "agency": "Bakersfield Fire Department",
+  "area": "Ashe Road at Panama Lane, Bakersfield",
+  "notability": 2,
+  "disposition": "fire unit responding to the caller",
+  "summary": "A fire unit was asked to respond to Ashe Road and Panama Lane, where a caller was requesting medical aid."
+ },
+ {
+  "type": "medical aid",
+  "time": "04:45",
+  "agency": "Kern County Fire Department",
+  "area": "4400 block of Columbus Street, Bakersfield",
+  "notability": 2,
+  "disposition": "ambulance dispatched from Lamont",
+  "summary": "Crews were sent to the 4400 block of Columbus Street for a medical aid, with an ambulance responding from Lamont and universal precautions requested."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "23:58",
+  "agency": "Bakersfield Police Department",
+  "area": "Roberts Lane at Central Avenue, Bakersfield",
+  "notability": 3,
+  "disposition": "units responding; description broadcast",
+  "summary": "A caller reported that a family member in an older white vehicle was trying to hit her vehicle at Roberts Lane and Central Avenue. The call was still current when it was broadcast to units."
+ }
+]

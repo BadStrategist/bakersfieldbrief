@@ -3,16 +3,49 @@
   35.4,
   -119.1
  ],
+ "2200 block of c street, Bakersfield, Kern County, CA": null,
+ "c street, Bakersfield, CA": [
+  35.376757,
+  -119.0270064
+ ],
+ "rosamond boulevard & a mobile home park, Bakersfield, CA": null,
+ "niles street & mount vernon avenue, Bakersfield, CA": null,
+ "19500 block of sycamore drive, Bakersfield, Kern County, CA": null,
+ "sycamore drive, Bakersfield, CA": [
+  35.2846068,
+  -119.044551
+ ],
+ "300 block of kentucky street, Bakersfield, Kern County, CA": null,
+ "kentucky street, Bakersfield, CA": [
+  35.3771909,
+  -118.9852259
+ ],
+ "100 block of claire street, Bakersfield, Kern County, CA": null,
+ "claire street, Bakersfield, CA": [
+  35.3051694,
+  -119.017336
+ ],
+ "1100 block of custer avenue, Bakersfield, Kern County, CA": null,
+ "custer avenue, Bakersfield, CA": [
+  35.3346351,
+  -119.0246691
+ ],
+ "hageman road & patton way, Bakersfield, CA": null,
+ "5000 block of gosford road, Bakersfield, Kern County, CA": null,
+ "gosford road, Bakersfield, CA": [
+  35.2997674,
+  -119.0920766
+ ],
  "east california avenue & washington street, Bakersfield, CA": null,
  "700 block of height street, Bakersfield, Kern County, CA": null,
  "height street, Bakersfield, CA": [
-  35.393883,
-  -118.9807524
+  35.3942979,
+  -118.9698497
  ],
  "4800 block of columbus street, Bakersfield, Kern County, CA": null,
  "columbus street, Bakersfield, CA": [
-  35.4079524,
-  -118.9483806
+  35.3979718,
+  -118.9543416
  ],
  "1400 block of washington street, Bakersfield, Kern County, CA": null,
  "washington street, Bakersfield, CA": [
@@ -28,8 +61,8 @@
  "south king street & east california avenue, Bakersfield, CA": null,
  "2700 block of white lane, Bakersfield, Kern County, CA": null,
  "white lane, Bakersfield, CA": [
-  35.3175789,
-  -119.0212688
+  35.3177491,
+  -119.0324144
  ],
  "100 block of hart street, Bakersfield, Kern County, CA": null,
  "hart street, Bakersfield, CA": null,
@@ -42,13 +75,13 @@
  ],
  "5600 block of auburn street, Bakersfield, Kern County, CA": null,
  "auburn street, Bakersfield, CA": [
-  35.3989991,
-  -118.9158126
+  35.3982285,
+  -118.9182554
  ],
  "2400 block of ming avenue, Bakersfield, Kern County, CA": null,
  "ming avenue, Bakersfield, CA": [
-  35.3353799,
-  -119.0789235
+  35.3397028,
+  -119.1676048
  ],
  "100 block of montclair street, Bakersfield, Kern County, CA": null,
  "montclair street, Bakersfield, CA": [
@@ -57,14 +90,14 @@
  ],
  "2900 block of f street, Bakersfield, Kern County, CA": null,
  "f street, Bakersfield, CA": [
-  35.3897429,
-  -119.0228839
+  35.3821437,
+  -119.0234864
  ],
  "flower street & lincoln street, Bakersfield, CA": null,
  "300 block of chester lane, Bakersfield, Kern County, CA": null,
  "chester lane, Bakersfield, CA": [
-  35.3649783,
-  -119.0421989
+  35.3663227,
+  -119.0469922
  ],
  "2100 block of coventry drive, Bakersfield, Kern County, CA": null,
  "coventry drive, Bakersfield, CA": [
@@ -118,39 +151,24 @@
  "east of haley street & panorama drive, Bakersfield, CA": null,
  "union avenue & panama road, Bakersfield, CA": null,
  "baker street & dolores street, Bakersfield, CA": null,
- "baker street & truxtun avenue, Bakersfield, CA": null,
- "westdale park area & the california aqueduct, Bakersfield, CA": null,
- "2200 block of c street, Bakersfield, Kern County, CA": null,
- "c street, Bakersfield, CA": [
-  35.376757,
-  -119.0270064
+ "1000 block of flower street, Bakersfield, Kern County, CA": null,
+ "flower street, Bakersfield, CA": [
+  35.3848187,
+  -118.9836077
  ],
- "rosamond boulevard & a mobile home park, Bakersfield, CA": null,
- "niles street & mount vernon avenue, Bakersfield, CA": null,
- "19500 block of sycamore drive, Bakersfield, Kern County, CA": null,
- "sycamore drive, Bakersfield, CA": [
-  35.2846068,
-  -119.044551
+ "union avenue & a motel, Bakersfield, CA": null,
+ "oak street & brundage lane, Bakersfield, CA": null,
+ "1000 block of mcdonald way, Bakersfield, Kern County, CA": null,
+ "mcdonald way, Bakersfield, CA": [
+  35.345708,
+  -119.0529903
  ],
- "300 block of kentucky street, Bakersfield, Kern County, CA": null,
- "kentucky street, Bakersfield, CA": [
-  35.3771909,
-  -118.9852259
+ "2700 block of holland street, Bakersfield, Kern County, CA": null,
+ "holland street, Bakersfield, CA": [
+  35.3681801,
+  -119.143676
  ],
- "100 block of claire street, Bakersfield, Kern County, CA": null,
- "claire street, Bakersfield, CA": [
-  35.3051694,
-  -119.017336
- ],
- "1100 block of custer avenue, Bakersfield, Kern County, CA": null,
- "custer avenue, Bakersfield, CA": [
-  35.3346351,
-  -119.0246691
- ],
- "hageman road & patton way, Bakersfield, CA": null,
- "5000 block of gosford road, Bakersfield, Kern County, CA": null,
- "gosford road, Bakersfield, CA": [
-  35.2997674,
-  -119.0920766
- ]
+ "ashe road & panama lane, Bakersfield, CA": null,
+ "4400 block of columbus street, Bakersfield, Kern County, CA": null,
+ "roberts lane & central avenue, Bakersfield, CA": null
 }

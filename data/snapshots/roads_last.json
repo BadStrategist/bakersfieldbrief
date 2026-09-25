@@ -11,7 +11,7 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "The northbound connector to northbound SR-133 (Orange Co) is closed from 2200 hrs each night to 0500 hrs each morning Monday thru Friday thru 9/26/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads Southbound traffic is reduced to 2 lanes 1 mi south of the Jct of SR-138 (Los Angeles Co) - Due to a vehicle fire",
+     "text": "The northbound connector to northbound SR-133 (Orange Co) is closed from 2200 hrs each night to 0500 hrs each morning Monday thru Friday thru 9/26/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads Southbound traffic is no longer reduced to 2 lanes 1 mi south of the Jct of SR-138 (Los Angeles Co) at 1000 hrs on 9/25/26",
      "status": "CLOSED"
     },
     {
@@ -21,8 +21,8 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "No traffic restrictions reported.",
-     "status": "OPEN"
+     "text": "Northbound traffic is reduced to 2 lanes at J St /in Sacramento/ (Sacramento Co) - Due to a traffic collision Northbound traffic is reduced to 1 lane 10 mi north of the Yolo/Colusa Co Line /at Hahn Rd/ - Due to a traffic collision",
+     "status": "RESTRICTIONS"
     }
    ],
    "scope": {
@@ -42,7 +42,7 @@
       "place": "",
       "county": "Los Angeles Co",
       "where": "Los Angeles Co",
-      "text": "Southbound traffic is reduced to 2 lanes 1 mi south of the Jct of SR-138 (Los Angeles Co) - Due to a vehicle fire",
+      "text": "Southbound traffic is no longer reduced to 2 lanes 1 mi south of the Jct of SR-138 (Los Angeles Co) at 1000 hrs on 9/25/26",
       "region": "SOUTHERN CALIFORNIA"
      }
     ],
@@ -62,11 +62,27 @@
       "where": "San Joaquin Co",
       "text": "A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
       "region": "CENTRAL CALIFORNIA"
+     },
+     {
+      "status": "RESTRICTIONS",
+      "place": "Sacramento",
+      "county": "Sacramento Co",
+      "where": "Sacramento (Sacramento Co)",
+      "text": "Northbound traffic is reduced to 2 lanes at J St /in Sacramento/ (Sacramento Co) - Due to a traffic collision",
+      "region": "NORTHERN CALIFORNIA"
+     },
+     {
+      "status": "RESTRICTIONS",
+      "place": "",
+      "county": "",
+      "where": "the Northern California area",
+      "text": "Northbound traffic is reduced to 1 lane 10 mi north of the Yolo/Colusa Co Line /at Hahn Rd/ - Due to a traffic collision",
+      "region": "NORTHERN CALIFORNIA"
      }
     ]
    },
-   "reported_as_of": "Friday, September 25th, 2026 at 07:16 AM",
-   "hash": "44cba094db"
+   "reported_as_of": "Friday, September 25th, 2026 at 10:53 AM",
+   "hash": "bd3598ef40"
   },
   {
    "number": "58",
@@ -88,7 +104,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Friday, September 25th, 2026 at 07:16 AM",
+   "reported_as_of": "Friday, September 25th, 2026 at 10:53 AM",
    "hash": "5374f203ec"
   },
   {
@@ -125,7 +141,7 @@
      }
     ]
    },
-   "reported_as_of": "Friday, September 25th, 2026 at 07:16 AM",
+   "reported_as_of": "Friday, September 25th, 2026 at 10:53 AM",
    "hash": "5f583f85d4"
   }
  ],

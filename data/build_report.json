@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-25T01:16:13-07:00",
+ "built_at": "2026-09-25T07:18:06-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 1713, column 3"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -59,14 +59,14 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 63,
+  "_digest_meta": "llm",
+  "brief_words": 1294,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Incumbents absent as Delano City Council candidates make their case at forum",
+   "chp_new": 6,
+   "top_story": "Fans line up to meet soccer star Gyasi Zardes at Sportsplex Bakersfield",
    "archive": "2026-09-25"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 0,
+   "wind_mph": 6,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 64,
-   "wind_mph": 0,
+   "temp": 59,
+   "wind_mph": 6,
    "alerts": 0
   },
   "roads": {
@@ -134,8 +134,8 @@
    "isabella_af": 152934,
    "alpr_total": 269,
    "kern_fires": 0,
-   "aqi": 76,
-   "chp_week": 88
+   "aqi": 64,
+   "chp_week": 94
   },
   "letters": {
    "published": 0

@@ -1260,6 +1260,16 @@
   "details": ""
  },
  {
+  "log_id": "260925BF0267",
+  "time": "Sep 25 2026  3:19PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "4404 Pioneer Dr",
+  "area": "Bakersfield",
+  "lat": 35.36874,
+  "lon": -118.936276,
+  "details": ""
+ },
+ {
   "log_id": "260925BF0036",
   "time": "Sep 25 2026  3:42AM",
   "type": "CFIRE-Car Fire",

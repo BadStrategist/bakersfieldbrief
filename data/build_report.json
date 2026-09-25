@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-25T12:47:33-07:00",
+ "built_at": "2026-09-25T16:25:01-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -64,8 +64,8 @@
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
-   "alerts": 0,
-   "chp_new": 0,
+   "alerts": 1,
+   "chp_new": 1,
    "top_story": "Fans line up to meet soccer star Gyasi Zardes at Sportsplex Bakersfield",
    "archive": "2026-09-25"
   },
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 10,
+   "wind_mph": 15,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 79,
-   "wind_mph": 10,
+   "wind_mph": 15,
    "alerts": 0
   },
   "roads": {
@@ -121,9 +121,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 14,
-    "In 1 to 2 weeks": 15,
-    "Later": 110
+    "In the next 7 days": 16,
+    "In 1 to 2 weeks": 16,
+    "Later": 114
    },
    "meetings": 2
   },
@@ -134,8 +134,8 @@
    "isabella_af": 152934,
    "alpr_total": 269,
    "kern_fires": 0,
-   "aqi": 56,
-   "chp_week": 98
+   "aqi": 64,
+   "chp_week": 99
   },
   "letters": {
    "published": 0

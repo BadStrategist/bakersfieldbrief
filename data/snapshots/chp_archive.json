@@ -1280,6 +1280,16 @@
   "details": ""
  },
  {
+  "log_id": "260925BF0301",
+  "time": "Sep 25 2026  4:24PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sr99 S / Airport Dr Onr",
+  "area": "Bakersfield",
+  "lat": 35.399373,
+  "lon": -119.044914,
+  "details": ""
+ },
+ {
   "log_id": "260925BF0045",
   "time": "Sep 25 2026  5:09AM",
   "type": "MZP-Assist CT with Maintenance",

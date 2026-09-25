@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-25T16:41:10-07:00",
+ "built_at": "2026-09-25T16:59:35-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 1,
+   "chp_new": 2,
    "top_story": "Fans line up to meet soccer star Gyasi Zardes at Sportsplex Bakersfield",
    "archive": "2026-09-25"
   },
@@ -135,16 +135,16 @@
    "alpr_total": 269,
    "kern_fires": 0,
    "aqi": 64,
-   "chp_week": 100
+   "chp_week": 102
   },
   "letters": {
    "published": 0
   },
   "overnight": {
-   "published": 45
+   "published": 46
   },
   "map": {
-   "dots": 63
+   "dots": 52
   },
   "sunday_read": {
    "topic": "Public safety",

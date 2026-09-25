@@ -1290,6 +1290,26 @@
   "details": ""
  },
  {
+  "log_id": "260925BF0314",
+  "time": "Sep 25 2026  4:45PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "5907-5951 Niles St",
+  "area": "Bakersfield",
+  "lat": 35.375953,
+  "lon": -118.938201,
+  "details": ""
+ },
+ {
+  "log_id": "260925BF0316",
+  "time": "Sep 25 2026  4:50PM",
+  "type": "1125-Traffic Hazard",
+  "location": "SR58 E / Allen Rd",
+  "area": "Bakersfield",
+  "lat": 35.360945,
+  "lon": -119.145544,
+  "details": ""
+ },
+ {
   "log_id": "260925BF0045",
   "time": "Sep 25 2026  5:09AM",
   "type": "MZP-Assist CT with Maintenance",

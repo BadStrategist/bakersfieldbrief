@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-25T11:02:28-07:00",
+ "built_at": "2026-09-25T11:10:17-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,7 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "Fans line up to meet soccer star Gyasi Zardes at Sportsplex Bakersfield",
    "archive": "2026-09-25"
   },

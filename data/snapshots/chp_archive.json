@@ -1320,6 +1320,16 @@
   "details": ""
  },
  {
+  "log_id": "260925BF0391",
+  "time": "Sep 25 2026  6:45PM",
+  "type": "20001-Hit and Run w/Injuries",
+  "location": "211 Adams St",
+  "area": "Buttonwillow",
+  "lat": 35.153119,
+  "lon": -119.448646,
+  "details": ""
+ },
+ {
   "log_id": "260925BF0070",
   "time": "Sep 25 2026  6:59AM",
   "type": "1125-Traffic Hazard",

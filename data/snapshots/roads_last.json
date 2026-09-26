@@ -57,7 +57,7 @@
      }
     ]
    },
-   "reported_as_of": "Saturday, September 26th, 2026 at 01:03 AM",
+   "reported_as_of": "Saturday, September 26th, 2026 at 06:27 AM",
    "hash": "f053461ce7"
   },
   {
@@ -80,7 +80,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Saturday, September 26th, 2026 at 01:03 AM",
+   "reported_as_of": "Saturday, September 26th, 2026 at 06:27 AM",
    "hash": "5374f203ec"
   },
   {
@@ -93,7 +93,7 @@
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "Is reopened to northbound traffic 3 mi north of the Kern/Tulare Co line at 0438 hrs on 9/26/26 A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "RESTRICTIONS"
     },
     {
@@ -117,8 +117,8 @@
      }
     ]
    },
-   "reported_as_of": "Saturday, September 26th, 2026 at 01:03 AM",
-   "hash": "f97882795e"
+   "reported_as_of": "Saturday, September 26th, 2026 at 06:27 AM",
+   "hash": "34762d586d"
   }
  ],
  "asof": "2026-09-26"

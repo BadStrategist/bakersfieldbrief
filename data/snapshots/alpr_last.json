@@ -3227,14 +3227,26 @@
    "edited": "2026-09-22",
    "start_date": "",
    "camera_type": "public"
+  },
+  {
+   "id": 14220308681,
+   "lat": 35.4040867,
+   "lon": -118.8911823,
+   "manufacturer": "Unspecified",
+   "operator": "",
+   "direction": "",
+   "mapped": "2026-09-26",
+   "edited": "2026-09-26",
+   "start_date": "",
+   "camera_type": "public"
   }
  ],
  "stats": {
-  "total": 269,
+  "total": 270,
   "flock": 240,
-  "new_this_week": 2,
-  "new_this_week_snapshot_diff": 1,
-  "newest_mapped": "2026-09-22"
+  "new_this_week": 3,
+  "new_this_week_snapshot_diff": 2,
+  "newest_mapped": "2026-09-26"
  },
  "asof": "2026-09-26"
 }

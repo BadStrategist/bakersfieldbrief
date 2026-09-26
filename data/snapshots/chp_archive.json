@@ -1280,6 +1280,16 @@
   "details": ""
  },
  {
+  "log_id": "260925BF0444",
+  "time": "Sep 25 2026  8:18PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 Forest Rte-23s16",
+  "area": "Bakersfield",
+  "lat": 35.869992,
+  "lon": -118.543496,
+  "details": ""
+ },
+ {
   "log_id": "260925BF0115",
   "time": "Sep 25 2026  8:48AM",
   "type": "CZP-Assist with Construction",
@@ -1337,6 +1347,36 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260926BF0308",
+  "time": "Sep 26 2026  3:26PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "Quail Creek Rd / Snow Rd",
+  "area": "Bakersfield",
+  "lat": 35.427035,
+  "lon": -119.101192,
+  "details": ""
+ },
+ {
+  "log_id": "260926BF0317",
+  "time": "Sep 26 2026  3:34PM",
+  "type": "1125-Traffic Hazard",
+  "location": "SB I5 at Fort Tejon Rd",
+  "area": "Fort Tejon",
+  "lat": 34.876667,
+  "lon": -118.894722,
+  "details": ""
+ },
+ {
+  "log_id": "260926BF0322",
+  "time": "Sep 26 2026  3:42PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr178 / Yankee Canyon Dr",
+  "area": "Bakersfield",
+  "lat": 35.656855,
+  "lon": -118.440395,
   "details": ""
  },
  {

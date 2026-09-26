@@ -1,0 +1,209 @@
+[
+ {
+  "type": "outside fire",
+  "time": "00:30",
+  "agency": "Kern County Fire Department",
+  "area": "Roberts Lane area north of Bakersfield, near a canal",
+  "notability": 4,
+  "disposition": "multiple fires corralled for lack of water; water shuttled by trunk line; mop-up carried past 1:30 a.m.",
+  "summary": "Crews were sent to an outside fire in the area of Beardsley Junior High at Roberts Lane and found fire burning in trash along a canal side. Crews reported two more fires nearby, one about 100 yards south, and told dispatchers they did not have enough water to put the main body of fire out, so they would try to keep it from spreading until more units arrived. Engines were routed in on dirt roads behind the houses, water was shuttled over a trunk line and the smaller section was knocked down before crews settled into mop-up."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "00:51",
+  "agency": "Kern County Fire Department",
+  "area": "Adobe Road at Teale Road, Kern County",
+  "notability": 3,
+  "disposition": "assigned to the Station 54 area",
+  "summary": "A vehicle fire was reported in the area of Adobe Road and Teale Road, just north of Teale Road, and was assigned to the Station 54 area."
+ },
+ {
+  "type": "outside fire",
+  "time": "00:59",
+  "agency": "Kern County Fire Department",
+  "area": "Roberts Lane area north of Bakersfield",
+  "notability": 2,
+  "disposition": "engine assigned; tied into the same mop-up operation",
+  "summary": "Engine 64 was sent to an outside fire in the area of Beardsley Junior High at Roberts Lane, one of several trash and vegetation fires crews worked along the canal that morning."
+ },
+ {
+  "type": "vehicle theft",
+  "time": "04:04",
+  "agency": "Bakersfield Police Department",
+  "area": "1700 block of 18th Street, downtown Bakersfield",
+  "notability": 3,
+  "disposition": "broadcast to units; direction of travel unknown",
+  "summary": "A silver 2020 Ram 2500 pickup was taken from outside a downtown hotel in the 1700 block of 18th Street. A description of the person involved went out to units, and the vehicle's direction of travel was unknown."
+ },
+ {
+  "type": "pursuit",
+  "time": "22:05",
+  "agency": "Kern County area law enforcement",
+  "area": "Bakersfield area",
+  "notability": 3,
+  "disposition": "subject ejected from the vehicle; units code 4",
+  "summary": "Officers reported a pursuit with speeds around 30 mph and light traffic yielding. Two minutes later the driver had been ejected from the vehicle and units cleared the scene."
+ },
+ {
+  "type": "missing person",
+  "time": "22:45",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Kern County",
+  "notability": 3,
+  "disposition": "units checked the area; not located",
+  "summary": "A missing adult woman was reported to be with two toddlers, ages two and three, and had last been seen about three hours earlier. Family members said they had been unable to reach her, and units in the area reported they had not located anyone."
+ },
+ {
+  "type": "assault",
+  "time": "04:25",
+  "agency": "Bakersfield Police Department",
+  "area": "1800 block of Quincy Street, Bakersfield",
+  "notability": 3,
+  "disposition": "medical aid advised; report taken",
+  "summary": "A victim came to a neighbor's door in the 1800 block of Quincy Street bleeding from the mouth and told the caller she had been assaulted by her boyfriend, who left in an unknown direction. Medical units were advised."
+ },
+ {
+  "type": "weapon",
+  "time": "21:21",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Rosamond Boulevard area, Kern County",
+  "notability": 2,
+  "disposition": "caller declined to be a victim; units responded",
+  "summary": "A caller reported that a 15-year-old boy had waved and then pointed a possible replica firearm at him at a discount store on Rosamond Boulevard. The caller said the incident had happened about five minutes earlier and that he did not want to be a victim."
+ },
+ {
+  "type": "suspicious person",
+  "time": "21:30",
+  "agency": "Bakersfield Police Department",
+  "area": "6500 block of Niles Street at Lynwood Street, Bakersfield",
+  "notability": 2,
+  "disposition": "officers responding",
+  "summary": "Officers were sent to a discount store in the 6500 block of Niles Street for a man in his late 30s reported to be harassing customers in their vehicles in the parking lot."
+ },
+ {
+  "type": "missing person check",
+  "time": "21:34",
+  "agency": "California Highway Patrol",
+  "area": "Northbound Highway 99 at Rosedale Highway",
+  "notability": 2,
+  "disposition": "vehicle run with no returns",
+  "summary": "Units were sent northbound on Highway 99 at Rosedale Highway to check on a missing person. A 2016 coupe out of Bakersfield was run and returned no wants or stops."
+ },
+ {
+  "type": "attempted entry",
+  "time": "21:42",
+  "agency": "Bakersfield Police Department",
+  "area": "Arlington Street area and East Frontage Lane, Bakersfield",
+  "notability": 3,
+  "disposition": "units responding; second call at a second location",
+  "summary": "A caller reported a man and a woman possibly trying to break into a yard and that a gate to the property had been broken. A few minutes later the same area drew a second call reporting that a woman was trying to break down a front door on East Frontage Lane."
+ },
+ {
+  "type": "structure fire",
+  "time": "00:08",
+  "agency": "Bakersfield Fire Department",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "balance canceled; one unit handled it",
+  "summary": "Dispatchers passed word that all occupants had fled a fire. A short time later a battalion canceled the balance after a unit reported it could handle the damage."
+ },
+ {
+  "type": "medical aid",
+  "time": "01:38",
+  "agency": "Kern County Fire Department",
+  "area": "400 block of Water Street, Kern County",
+  "notability": 2,
+  "disposition": "ambulance responding from Lamont",
+  "summary": "A medical aid call went out for a back house in the 400 block of Water Street, with an ambulance responding from Lamont."
+ },
+ {
+  "type": "disturbance",
+  "time": "01:57",
+  "agency": "Bakersfield Police Department",
+  "area": "400 block of Adams Street, Bakersfield",
+  "notability": 2,
+  "disposition": "units en route; earlier call transferred to medical",
+  "summary": "Units were sent to a possible domestic dispute in the 400 block of Adams Street near the railroad tracks, where a caller had earlier reported a subject yelling for help. That earlier call had been transferred to medical without further detail."
+ },
+ {
+  "type": "suspicious person",
+  "time": "02:56",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Kern County",
+  "notability": 3,
+  "disposition": "caller locked herself in a room; units responding",
+  "summary": "A caller reported that a transient man in his 40s or 50s had made his way into her residence and was screaming. The caller said she had locked herself in a room while units responded."
+ },
+ {
+  "type": "medical aid",
+  "time": "02:11",
+  "agency": "Bakersfield Fire Department",
+  "area": "34th Street area, Bakersfield",
+  "notability": 2,
+  "disposition": "all units requested; staged before contact",
+  "summary": "Crews were sent to the 34th Street area for a behavioral health call, with dispatchers asking units to stage before contact."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "02:39",
+  "agency": "Kern County Sheriff's Office",
+  "area": "South Oswell Street, Bakersfield",
+  "notability": 3,
+  "disposition": "caller hung up on 911; units routed in",
+  "summary": "A caller rang 911 from South Oswell Street with what dispatchers described as a verbal disturbance in the background, then stopped answering questions and disconnected. Units were directed in by way of South Fairfax Road and Panama Road."
+ },
+ {
+  "type": "restraining order service",
+  "time": "03:44",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Kern County",
+  "notability": 2,
+  "disposition": "service attempted with move-out and no-contact orders",
+  "summary": "Units were advised that a caller held an unserved domestic violence restraining order granted earlier in the month, and that they would also be serving a move-out order and a no-contact order."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "03:49",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Kern County",
+  "notability": 2,
+  "disposition": "units responding; subject known to carry a firearm",
+  "summary": "A caller returned to 911 and reported that a subject was threatening multiple family members. Units were advised the subject was known to carry a firearm and that he was leaving in a silver sedan."
+ },
+ {
+  "type": "structure fire",
+  "time": "03:37",
+  "agency": "Bakersfield Fire Department",
+  "area": "East Brundage Lane area and South Park Avenue area, Bakersfield",
+  "notability": 2,
+  "disposition": "investigated; nothing showing",
+  "summary": "Battalion 1 and several engines were sent to a structure fire in the city, where crews arrived at a two-story building of about 2,500 square feet and reported nothing showing. Crews investigated while other units staged."
+ },
+ {
+  "type": "medical aid",
+  "time": "04:19",
+  "agency": "Kern County Fire Department",
+  "area": "South Bakersfield",
+  "notability": 2,
+  "disposition": "engine and medical units assigned",
+  "summary": "An engine and medical units were sent to south Bakersfield for a cardiac arrest call, one of several medical calls in the hours before dawn."
+ },
+ {
+  "type": "disturbance",
+  "time": "23:46",
+  "agency": "Bakersfield Police Department",
+  "area": "1900 block of Ming Avenue, Bakersfield",
+  "notability": 2,
+  "disposition": "units responded after subjects were reported code 4",
+  "summary": "Officers were sent to the 1900 block of Ming Avenue for a domestic disturbance after a caller was told the subjects at the location were code 4."
+ },
+ {
+  "type": "disturbance",
+  "time": "23:53",
+  "agency": "Bakersfield Police Department",
+  "area": "Sterling Road at College Avenue, Bakersfield",
+  "notability": 2,
+  "disposition": "neighbor reported the disturbance; units responding",
+  "summary": "A verbal disturbance was reported at a neighbor's residence at Sterling Road and College Avenue, where a caller could only hear a subject yelling and screaming and a juvenile crying."
+ }
+]

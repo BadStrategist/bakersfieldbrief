@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-26T06:28:22-07:00",
+ "built_at": "2026-09-26T06:57:15-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 0,
    "top_story": "Bakersfield police seek help to identify two suspects in forgery investigation - bakersfieldnow.com",
    "archive": "2026-09-26"
   },
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 3,
+   "wind_mph": 0,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 55,
-   "wind_mph": 3,
+   "temp": 53,
+   "wind_mph": 0,
    "alerts": 0
   },
   "roads": {
@@ -141,10 +141,10 @@
    "published": 0
   },
   "overnight": {
-   "published": 46
+   "published": 47
   },
   "map": {
-   "dots": 52
+   "dots": 67
   },
   "sunday_read": {
    "topic": "Public safety",

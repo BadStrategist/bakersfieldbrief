@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-26T10:24:20-07:00",
+ "built_at": "2026-09-26T10:30:40-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,7 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": ""
+   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
   },
   "venues": {
    "ok": true,
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 73,
+   "temp": 74,
    "wind_mph": 2,
    "alerts": 0
   },
@@ -134,7 +134,7 @@
    "isabella_af": 152432,
    "alpr_total": 269,
    "kern_fires": 0,
-   "aqi": 71,
+   "aqi": 62,
    "chp_week": 104
   },
   "letters": {

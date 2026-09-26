@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-26T06:57:15-07:00",
+ "built_at": "2026-09-26T10:01:05-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 5476, column 45"
   },
   "isabella": {
    "ok": true,
@@ -64,7 +64,7 @@
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
-   "alerts": 0,
+   "alerts": 1,
    "chp_new": 0,
    "top_story": "Bakersfield police seek help to identify two suspects in forgery investigation - bakersfieldnow.com",
    "archive": "2026-09-26"
@@ -84,8 +84,8 @@
    ],
    "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 12,
-    "bakersfield-nw": 12,
+    "tehachapi": 0,
+    "bakersfield-nw": 0,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -96,7 +96,7 @@
    "draft": "drafts/weekend-guide-2026-09-26"
   },
   "grapevine": {
-   "i5": "CLOSED",
+   "i5": "RESTRICTIONS",
    "i5_pass": "RESTRICTIONS",
    "log_entries": 60
   },
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 53,
+   "temp": 70,
    "wind_mph": 0,
    "alerts": 0
   },
@@ -121,9 +121,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 15,
-    "In 1 to 2 weeks": 17,
-    "Later": 110
+    "In the next 7 days": 13,
+    "In 1 to 2 weeks": 18,
+    "Later": 109
    },
    "meetings": 1
   },
@@ -134,7 +134,7 @@
    "isabella_af": 152432,
    "alpr_total": 269,
    "kern_fires": 0,
-   "aqi": 60,
+   "aqi": 71,
    "chp_week": 104
   },
   "letters": {

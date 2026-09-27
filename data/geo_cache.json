@@ -192,5 +192,22 @@
  "adams street, Bakersfield, CA": null,
  "east brundage lane area & south park avenue area, Bakersfield, CA": null,
  "1900 block of ming avenue, Bakersfield, Kern County, CA": null,
- "sterling road & college avenue, Bakersfield, CA": null
+ "sterling road & college avenue, Bakersfield, CA": null,
+ "st street & chester avenue, Bakersfield, CA": [
+  35.3782709,
+  -119.0186791
+ ],
+ "10500 block of meacham road, Bakersfield, Kern County, CA": null,
+ "meacham road, Bakersfield, CA": [
+  35.3908107,
+  -119.1083708
+ ],
+ "4500 block of columbus street, Bakersfield, Kern County, CA": null,
+ "400 block of shattuck avenue, Bakersfield, Kern County, CA": null,
+ "shattuck avenue, Bakersfield, CA": [
+  35.406476,
+  -118.9803881
+ ],
+ "6700 block of eucalyptus drive, Bakersfield, Kern County, CA": null,
+ "eucalyptus drive, Bakersfield, CA": null
 }

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-27T01:29:34-07:00",
+ "built_at": "2026-09-27T01:41:38-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -26,8 +26,8 @@
    "error": ""
   },
   "calfire": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ReadTimeout: HTTPSConnectionPool(host='incidents.fire.ca.gov', port=443): Read timed out. (read timeout=30)"
   },
   "chp": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
+   "chp_new": 1,
    "top_story": "Friends and family gather to celebrate lives of Vanessa, Kylie, and Kloie Wetmore",
    "archive": "2026-09-27"
   },
@@ -135,7 +135,7 @@
    "alpr_total": 270,
    "kern_fires": 0,
    "aqi": 70,
-   "chp_week": 114
+   "chp_week": 115
   },
   "letters": {
    "published": 0

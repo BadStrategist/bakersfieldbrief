@@ -1290,6 +1290,16 @@
   "details": ""
  },
  {
+  "log_id": "260927BF0026",
+  "time": "Sep 27 2026  1:30AM",
+  "type": "WW-Wrong Way Driver",
+  "location": "AIRPORT DR ONR / SR99 N",
+  "area": "Bakersfield",
+  "lat": 35.399573,
+  "lon": -119.044702,
+  "details": ""
+ },
+ {
   "log_id": "260927BF0004",
   "time": "Sep 27 2026 12:12AM",
   "type": "1179-Trfc Collision-1141 Enrt",

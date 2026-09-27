@@ -1,0 +1,173 @@
+[
+ {
+  "type": "shooting",
+  "time": "01:33",
+  "agency": "Kern County area law enforcement",
+  "area": "10400 block area, southeast Bakersfield",
+  "notability": 5,
+  "disposition": "one victim wounded; ambulance responded; no suspect description available",
+  "summary": "Units were sent to a shooting southeast of Bakersfield just after 1:30 a.m., where dispatchers relayed that one victim had a gunshot wound to the arm and that there was no suspect description. An ambulance was routed to the scene and units were given the go-ahead to enter. Crews working the call also reported a gas leak inside the structure, and other units were started toward the scene to stage."
+ },
+ {
+  "type": "possible structure fire",
+  "time": "22:29",
+  "agency": "fire crews",
+  "area": "senior living complex, Brookside Drive area, Bakersfield",
+  "notability": 4,
+  "disposition": "smoke investigated; main breaker shut down; crews remained on scene",
+  "summary": "Engines, a truck and a battalion were sent to a senior living complex in the Brookside Drive area after a burnt smell coming from two vents and a fog of smoke inside one of the buildings were reported. Crews reported smoke inside the structure and worked the building, asking that the main breaker for the condenser unit on the east side be shut down while they investigated. About 50 to 60 vehicles remained parked in the lot during the response."
+ },
+ {
+  "type": "strong-arm robbery",
+  "time": "00:58",
+  "agency": "Bakersfield Police Department",
+  "area": "21st Street at Chester Avenue, downtown Bakersfield",
+  "notability": 3,
+  "disposition": "suspect returned to the scene; disturbance still ongoing",
+  "summary": "Downtown units were sent to a strong-arm robbery at 21st Street and Chester Avenue. The person reporting the robbery said a phone was taken from her, and the suspect briefly left in a black SUV before coming back to the scene, where the argument was still going as officers arrived."
+ },
+ {
+  "type": "large fight",
+  "time": "21:55",
+  "agency": "Kern County Sheriff's Office",
+  "area": "park area, Kern County",
+  "notability": 3,
+  "disposition": "multiple units sent; weapons unknown; fire crews canceled from the call",
+  "summary": "Deputies were sent to a park area in the county for a disturbance reported to involve about 20 juveniles with unknown weapons and several subjects arguing near the park. A fire engine that had been started toward the call was canceled."
+ },
+ {
+  "type": "kidnapping report",
+  "time": "23:19",
+  "agency": "Kern County Sheriff's Office",
+  "area": "10500 block of Meacham Road, Kern County",
+  "notability": 3,
+  "disposition": "suspect still outstanding; deputies handling the report",
+  "summary": "Deputies were called to a kidnapping report in the 10500 block of Meacham Road. The person reporting told dispatchers the juveniles involved had gone missing again after entering through a side entrance of the property, and the suspect was still outstanding."
+ },
+ {
+  "type": "missing child",
+  "time": "21:34",
+  "agency": "Bakersfield Police Department",
+  "area": "carnival area, Bakersfield",
+  "notability": 3,
+  "disposition": "units searching the area",
+  "summary": "Units took a report of a missing 6-year-old girl last seen near the kids' carnival, wearing a pink cowboy T-shirt. Deputies were also told that a subject they were looking for was part of a missing juvenile case out of the agency."
+ },
+ {
+  "type": "person on a moving vehicle",
+  "time": "03:51",
+  "agency": "Kern County area law enforcement",
+  "area": "4500 block of Columbus Street, Bakersfield",
+  "notability": 3,
+  "disposition": "units sent on a priority welfare check",
+  "summary": "A priority welfare check in the 4500 block of Columbus Street turned into a report of someone on the hood of a car while the driver moved the vehicle backward, trying to throw her off. Units were sent to the location."
+ },
+ {
+  "type": "domestic violence",
+  "time": "23:40",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Park Drive area, Kern County",
+  "notability": 3,
+  "disposition": "deputies responding; suspect described",
+  "summary": "Deputies were sent to a domestic violence report in the Park Drive area, where a caller said a man 52 years old had kicked her in the ribs and punched her in the face. The caller reported the man was in an RV on the property, and dispatchers passed a description of him to responding units."
+ },
+ {
+  "type": "outdoor fire",
+  "time": "01:27",
+  "agency": "fire crews",
+  "area": "east of a golf course, Kern County",
+  "notability": 2,
+  "disposition": "crews working on access; no structure involved at that point",
+  "summary": "Crews reported they could see what looked like a fire east of a golf course and were working to make access. The man who reported it had already left the area."
+ },
+ {
+  "type": "collision",
+  "time": "00:20",
+  "agency": "California Highway Patrol",
+  "area": "northbound Interstate 5 south of Highway 58",
+  "notability": 2,
+  "disposition": "two vehicles involved; units responding",
+  "summary": "A two-vehicle collision was reported on northbound Interstate 5 just south of Highway 58."
+ },
+ {
+  "type": "traffic hazard",
+  "time": "03:04",
+  "agency": "city crews",
+  "area": "traffic signal, city yard area, Bakersfield",
+  "notability": 2,
+  "disposition": "street crew requested; light hanging by its wires",
+  "summary": "A traffic light that had come loose and was hanging by its wires at an intersection drew a call to city crews. Dispatch clarified that the damaged signal was one of the traffic lights at the intersection, not a street light on the pole."
+ },
+ {
+  "type": "welfare check",
+  "time": "01:28",
+  "agency": "Bakersfield Police Department",
+  "area": "500 block of East 19th Street, Bakersfield",
+  "notability": 2,
+  "disposition": "priority welfare check",
+  "summary": "A caller reported a man in his 30s or 40s sitting or standing in the roadway in the 500 block of East 19th Street and said drivers had nearly hit him. The caller, waiting nearby, reported the man's head was sweaty and that he was not responding."
+ },
+ {
+  "type": "animal complaint",
+  "time": "00:49",
+  "agency": "Kern County area law enforcement",
+  "area": "Sacramento Street area, Bakersfield",
+  "notability": 2,
+  "disposition": "call handled by responding units",
+  "summary": "A German shepherd was reported running loose around the neighborhood in the Sacramento Street area."
+ },
+ {
+  "type": "welfare check",
+  "time": "02:39",
+  "agency": "Kern County Sheriff's Office",
+  "area": "6000 block of Auburn Oaks Drive, Kern County",
+  "notability": 2,
+  "disposition": "call upgraded; units responded",
+  "summary": "A welfare check in the 6000 block of Auburn Oaks Drive was upgraded for a faster response after dispatchers learned the person involved was the caller's husband and was reported not to be making suicidal statements. A description was passed to units."
+ },
+ {
+  "type": "medical aid",
+  "time": "23:11",
+  "agency": "Bakersfield area fire crews",
+  "area": "400 block of Shattuck Avenue, Bakersfield",
+  "notability": 2,
+  "disposition": "translator requested to clarify the call",
+  "summary": "Crews were sent to the 400 block of Shattuck Avenue for an unknown medical aid and requested a translator to get further details."
+ },
+ {
+  "type": "medical aid",
+  "time": "23:37",
+  "agency": "Bakersfield area fire crews",
+  "area": "1000 block of 19th Street, Bakersfield",
+  "notability": 2,
+  "disposition": "patient care handed to medical units",
+  "summary": "A medical aid was dispatched to the 1000 block of 19th Street, suite level, for a person having difficulty breathing."
+ },
+ {
+  "type": "medical aid",
+  "time": "02:10",
+  "agency": "Kern County Fire Department",
+  "area": "McArthur Drive area, Kern County",
+  "notability": 2,
+  "disposition": "engine assigned; county unit pending",
+  "summary": "An engine was assigned to a medical aid in the McArthur Drive area, with a county unit pending on the call."
+ },
+ {
+  "type": "traffic hazard",
+  "time": "03:22",
+  "agency": "California Highway Patrol",
+  "area": "south Chester Avenue on-ramp to eastbound Highway 58",
+  "notability": 2,
+  "disposition": "vehicle disabled on the embankment; traffic control notified",
+  "summary": "A vehicle was reported on the embankment along the south Chester Avenue on-ramp to the eastbound Highway 58 and was unable to move. Dispatchers were asked to notify the appropriate control channel and a tow was requested."
+ },
+ {
+  "type": "brandishing report",
+  "time": "22:32",
+  "agency": "Kern County Sheriff's Office",
+  "area": "6700 block of Eucalyptus Drive, Kern County",
+  "notability": 2,
+  "disposition": "one RP an employee, two clients present; description limited",
+  "summary": "Deputies were sent to the 6700 block of Eucalyptus Drive for a report involving a possible weapon. The person reporting was an employee at the location where two clients were present, and no further description of the person involved was available."
+ }
+]

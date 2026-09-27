@@ -1,135 +1,5 @@
 [
  {
-  "log_id": "260919BF0260",
-  "time": "Sep 19 2026  2:09PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr166 / Short Rd",
-  "area": "Fort Tejon",
-  "lat": 35.058284,
-  "lon": -119.367023,
-  "details": ""
- },
- {
-  "log_id": "260919BF0039",
-  "time": "Sep 19 2026  2:10AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260919BF0276",
-  "time": "Sep 19 2026  2:51PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Sr58 / Superior Rd",
-  "area": "Bakersfield",
-  "lat": 35.354305,
-  "lon": -119.234331,
-  "details": ""
- },
- {
-  "log_id": "260919BF0300",
-  "time": "Sep 19 2026  4:05PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "6000-6199 Norris Rd",
-  "area": "Bakersfield",
-  "lat": 35.419624,
-  "lon": -119.068986,
-  "details": ""
- },
- {
-  "log_id": "260919BF0305",
-  "time": "Sep 19 2026  4:19PM",
-  "type": "WW-Wrong Way Driver",
-  "location": "Eb Sr46 Jeo Kern Co San Luis Co Line",
-  "area": "Buttonwillow",
-  "lat": 35.726111,
-  "lon": -120.193333,
-  "details": ""
- },
- {
-  "log_id": "260919BF0067",
-  "time": "Sep 19 2026  5:39AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "9778-10351 Sr119",
-  "area": "Bakersfield",
-  "lat": 35.267175,
-  "lon": -119.116099,
-  "details": ""
- },
- {
-  "log_id": "260919BF0344",
-  "time": "Sep 19 2026  6:12PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Sr99 N / Houghton Rd Ofr",
-  "area": "Bakersfield",
-  "lat": 35.233981,
-  "lon": -119.014208,
-  "details": ""
- },
- {
-  "log_id": "260919BF0345",
-  "time": "Sep 19 2026  6:14PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "8000 Mm58 W Ker 80.00",
-  "area": "Bakersfield",
-  "lat": 35.243741,
-  "lon": -118.589804,
-  "details": ""
- },
- {
-  "log_id": "260919BF0351",
-  "time": "Sep 19 2026  6:32PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "0 California Ave Onr",
-  "area": "Bakersfield",
-  "lat": 35.367738,
-  "lon": -119.041224,
-  "details": ""
- },
- {
-  "log_id": "260919BF0353",
-  "time": "Sep 19 2026  6:45PM",
-  "type": "1125-Traffic Hazard",
-  "location": "I5 N / Grapevine Rd Ofr",
-  "area": "Fort Tejon",
-  "lat": 34.939994,
-  "lon": -118.930124,
-  "details": ""
- },
- {
-  "log_id": "260919BF0153",
-  "time": "Sep 19 2026 10:15AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sb I5 Jno Lerdo Hwy",
-  "area": "Buttonwillow",
-  "lat": 35.503333,
-  "lon": -119.538889,
-  "details": ""
- },
- {
-  "log_id": "260919BF0438",
-  "time": "Sep 19 2026 10:20PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Mil Potrero Hwy / Tirol Dr",
-  "area": "Fort Tejon",
-  "lat": 34.852657,
-  "lon": -119.136906,
-  "details": ""
- },
- {
-  "log_id": "260919BF0453",
-  "time": "Sep 19 2026 10:53PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Comanche Dr / Buena Vista Blvd",
-  "area": "Bakersfield",
-  "lat": 35.238103,
-  "lon": -118.842515,
-  "details": ""
- },
- {
   "log_id": "260920BF0188",
   "time": "Sep 20 2026  2:06PM",
   "type": "20002-Hit and Run No Injuries",
@@ -1380,6 +1250,16 @@
   "details": ""
  },
  {
+  "log_id": "260926BF0453",
+  "time": "Sep 26 2026  7:41PM",
+  "type": "1144-Fatality",
+  "location": "Sr119 / Harrison St",
+  "area": "Buttonwillow",
+  "lat": 35.187864,
+  "lon": -119.43923,
+  "details": ""
+ },
+ {
   "log_id": "260926BF0111",
   "time": "Sep 26 2026  8:13AM",
   "type": "1179-Trfc Collision-1141 Enrt",
@@ -1397,6 +1277,36 @@
   "area": "Bakersfield",
   "lat": 35.292236,
   "lon": -119.029392,
+  "details": ""
+ },
+ {
+  "log_id": "260927BF0022",
+  "time": "Sep 27 2026  1:07AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "5200-5299 Olive Tree Ct",
+  "area": "Bakersfield",
+  "lat": 35.415914,
+  "lon": -119.059995,
+  "details": ""
+ },
+ {
+  "log_id": "260927BF0004",
+  "time": "Sep 27 2026 12:12AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "I5 N / Hageman Rd",
+  "area": "Buttonwillow",
+  "lat": 35.398856,
+  "lon": -119.396997,
+  "details": ""
+ },
+ {
+  "log_id": "260927BF0012",
+  "time": "Sep 27 2026 12:34AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 Sr178",
+  "area": "Bakersfield",
+  "lat": 35.54022,
+  "lon": -118.620854,
   "details": ""
  }
 ]

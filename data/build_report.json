@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-27T10:40:19-07:00",
+ "built_at": "2026-09-27T10:54:43-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "Friends and family gather to celebrate lives of Vanessa, Kylie, and Kloie Wetmore",
    "archive": "2026-09-27"
   },
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 8,
+   "wind_mph": 6,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 75,
-   "wind_mph": 8,
+   "temp": 77,
+   "wind_mph": 6,
    "alerts": 0
   },
   "roads": {

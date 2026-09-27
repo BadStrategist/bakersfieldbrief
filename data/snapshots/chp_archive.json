@@ -1290,6 +1290,16 @@
   "details": ""
  },
  {
+  "log_id": "260927BF0219",
+  "time": "Sep 27 2026  1:28PM",
+  "type": "1184-Provide Traffic Control",
+  "location": "Browning Rd / Sr155",
+  "area": "Bakersfield",
+  "lat": 35.761378,
+  "lon": -119.223177,
+  "details": ""
+ },
+ {
   "log_id": "260927BF0026",
   "time": "Sep 27 2026  1:30AM",
   "type": "WW-Wrong Way Driver",
@@ -1307,6 +1317,26 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260927BF0249",
+  "time": "Sep 27 2026  2:58PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "Sb I5 Jno Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.836944,
+  "lon": -118.863056,
+  "details": ""
+ },
+ {
+  "log_id": "260927BF0280",
+  "time": "Sep 27 2026  4:04PM",
+  "type": "FIRE-Report of Fire",
+  "location": "35\ufffd31'29.96\"n / 118\ufffd40'07.84\"w",
+  "area": "Bakersfield",
+  "lat": 35.524989,
+  "lon": -118.668845,
   "details": ""
  },
  {

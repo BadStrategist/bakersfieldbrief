@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-28T13:12:01-07:00",
+ "built_at": "2026-09-28T13:20:36-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "Tejon Indian Tribe brings 'Honoring Our Ancestors' Pow Wow back to CSUB",
    "archive": "2026-09-28"
   },

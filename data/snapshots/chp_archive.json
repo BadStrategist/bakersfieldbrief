@@ -1280,6 +1280,36 @@
   "details": ""
  },
  {
+  "log_id": "260928BF0026",
+  "time": "Sep 28 2026  5:20AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "Lake Isabella",
+  "area": "Bakersfield",
+  "lat": 35.626685,
+  "lon": -118.473997,
+  "details": ""
+ },
+ {
+  "log_id": "260928BF0032",
+  "time": "Sep 28 2026  5:52AM",
+  "type": "1125-Traffic Hazard",
+  "location": "214 Adams St",
+  "area": "Buttonwillow",
+  "lat": 35.153167,
+  "lon": -119.448646,
+  "details": ""
+ },
+ {
+  "log_id": "260928BF0037",
+  "time": "Sep 28 2026  6:11AM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "27599 W Lerdo Hwy",
+  "area": "Buttonwillow",
+  "lat": 35.500435,
+  "lon": -119.406386,
+  "details": ""
+ },
+ {
   "log_id": "260928BF0006",
   "time": "Sep 28 2026 12:14AM",
   "type": "TADV-Traffic Advisory",

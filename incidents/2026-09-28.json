@@ -1,0 +1,173 @@
+[
+ {
+  "type": "structure fire",
+  "time": "05:05",
+  "agency": "Bakersfield fire crews",
+  "area": "600 block of Goodman Street, Bakersfield",
+  "notability": 5,
+  "disposition": "fire knocked down; primary search started; crews held the scene",
+  "summary": "A battalion was sent to reports of a house on fire and arriving crews reported smoke showing, then fire coming from the front of a single-story, single-family home. The alarm was reinforced and incoming units were held for assignments while crews worked the fire. Command reported the fire knocked down within a few minutes and started a primary search, with a truck preparing for vertical ventilation."
+ },
+ {
+  "type": "shooting",
+  "time": "03:08",
+  "agency": "Kern County area law enforcement",
+  "area": "21000 block area, King Street, Bakersfield",
+  "notability": 4,
+  "disposition": "victim reported injured; deputies responded",
+  "summary": "Units were started to a shooting call at an address on King Street after fire crews already on a medical aid at the same location relayed that a shooting had occurred there and that the victim had an injury. Deputies were sent to take the scene."
+ },
+ {
+  "type": "shots fired",
+  "time": "03:18",
+  "agency": "Bakersfield Police Department",
+  "area": "south Bakersfield street area",
+  "notability": 3,
+  "disposition": "no victim reported; suspect outstanding",
+  "summary": "Units were sent after a report of a man in his 30s in a white shirt seen on foot firing at a dark gray Toyota SUV. The SUV was last seen northbound. No victim was reported."
+ },
+ {
+  "type": "collision",
+  "time": "04:37",
+  "agency": "Bakersfield fire and police crews",
+  "area": "Calloway Drive at Tuscarora Drive, Bakersfield",
+  "notability": 3,
+  "disposition": "vehicle into a pole; crews cleared the call",
+  "summary": "A truck, two engines and a battalion were sent to a vehicle into a pole at Calloway Drive and Tuscarora Drive. Crews reported the scene and cleared the call."
+ },
+ {
+  "type": "weapon call",
+  "time": "01:02",
+  "agency": "Bakersfield Police Department",
+  "area": "hospital area near Mount Vernon Avenue and the juvenile justice center, Bakersfield",
+  "notability": 3,
+  "disposition": "subject not found; officers cleared the area",
+  "summary": "A report of a transient man with no shirt waving a machete and yelling in the area of a hospital and the juvenile justice center was broadcast for officer safety. Officers checked the parking lot and surrounding area and did not find him."
+ },
+ {
+  "type": "missing juvenile",
+  "time": "21:53",
+  "agency": "Kern County area law enforcement",
+  "area": "fairgrounds area, Bakersfield",
+  "notability": 3,
+  "disposition": "search underway; family waiting at the command post",
+  "summary": "Dispatchers advised all units that family at a command post were trying to find a 13-year-old girl whose phone last exchanged a text message with family about 9:08 p.m. and had not moved since, showing just east of one of the buildings. She was described as wearing a white long-sleeved shirt, dark blue jeans and white shoes, and was thought to be with two other teenagers and their families."
+ },
+ {
+  "type": "assault",
+  "time": "02:36",
+  "agency": "Bakersfield Police Department",
+  "area": "900 block of North Chester Avenue, Bakersfield",
+  "notability": 3,
+  "disposition": "report taken; suspects across the street",
+  "summary": "Officers were sent after a caller reported being assaulted by two females at a location on North Chester Avenue. The caller said the suspects were across the street, and dispatchers noted the call was related to an earlier call for service at the same location."
+ },
+ {
+  "type": "missing juvenile",
+  "time": "00:43",
+  "agency": "Bakersfield Police Department",
+  "area": "Bakersfield",
+  "notability": 3,
+  "disposition": "at-risk missing juvenile reported; search underway",
+  "summary": "Dispatchers put out an at-risk missing juvenile alert for a 13-year-old autistic boy reported as a first-time runaway, last seen westbound on a skateboard wearing a black shirt, tan pants and a tan hat."
+ },
+ {
+  "type": "fire alarm",
+  "time": "01:16",
+  "agency": "Bakersfield fire crews",
+  "area": "residential building, Bakersfield",
+  "notability": 3,
+  "disposition": "heat stayed exterior; residents accounted for; crews cleared",
+  "summary": "Crews at a residential building reported that all residents had been evacuated and accounted for by staff, and a walkthrough with a thermal imaging camera confirmed the heat stayed exterior and never reached the building."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "03:19",
+  "agency": "Bakersfield Police Department",
+  "area": "3000 block of Oak Street, Bakersfield",
+  "notability": 3,
+  "disposition": "priority check welfare; officers responding",
+  "summary": "A priority welfare check was sent to an apartment on Oak Street after a neighbor reported hearing a man yelling at a woman in the unit and saying he was going to hit her again, with the woman crying."
+ },
+ {
+  "type": "possible DUI",
+  "time": "23:19",
+  "agency": "Bakersfield Police Department",
+  "area": "Rosedale area, Bakersfield",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Units were sent to a possible drunken driver in a vehicle sitting in the drive-through of a fast food restaurant in the Rosedale area."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "21:49",
+  "agency": "Kern County area law enforcement",
+  "area": "Bakersfield area residence",
+  "notability": 2,
+  "disposition": "protective order confirmed; deputies responded",
+  "summary": "Deputies were sent to a verbal disturbance between a resident and a roommate. Dispatchers confirmed that an emergency protective order had been approved and was on file."
+ },
+ {
+  "type": "fire call",
+  "time": "03:42",
+  "agency": "Bakersfield fire crews",
+  "area": "500 block of Cypress Street, Bakersfield",
+  "notability": 2,
+  "disposition": "crews dispatched to a report of fire",
+  "summary": "Crews were sent to a residence in the 500 block of Cypress Street for a report of fire."
+ },
+ {
+  "type": "welfare check",
+  "time": "22:02",
+  "agency": "Kern County area law enforcement",
+  "area": "park area off San Fernando Road, Bakersfield",
+  "notability": 2,
+  "disposition": "report taken for a follow-up check",
+  "summary": "A caller reported a man who had been living out of a gray four-door Toyota for more than a month at a park, and said he believed the man may be armed although he had seen no weapons. The caller also reported frequent gunshots heard at night in the area."
+ },
+ {
+  "type": "man down",
+  "time": "21:20",
+  "agency": "Bakersfield Police Department",
+  "area": "Union Avenue, Bakersfield",
+  "notability": 2,
+  "disposition": "medical aid requested",
+  "summary": "Units were sent after a report of a man with no shirt and dark pants lying on the sidewalk on Union Avenue."
+ },
+ {
+  "type": "public intoxication",
+  "time": "21:44",
+  "agency": "Bakersfield Police Department",
+  "area": "Union Avenue parking lot, Bakersfield",
+  "notability": 2,
+  "disposition": "officers responding",
+  "summary": "Officers were sent to a parking lot on Union Avenue for someone reported to be stumbling off vehicles and possibly passed out a few rows from the exit."
+ },
+ {
+  "type": "medical aid",
+  "time": "03:04",
+  "agency": "Kern County area fire crews",
+  "area": "21000 block area, King Street, Bakersfield",
+  "notability": 2,
+  "disposition": "crews responded with a translator",
+  "summary": "An engine was sent for an unknown medical aid and asked for a translator to get further details."
+ },
+ {
+  "type": "medical aid",
+  "time": "03:35",
+  "agency": "Bakersfield fire crews",
+  "area": "10100 block of Marco Polo Avenue, Bakersfield",
+  "notability": 2,
+  "disposition": "ambulance en route",
+  "summary": "Crews were sent to a medical aid, with an ambulance responding."
+ },
+ {
+  "type": "traffic hazard",
+  "time": "23:23",
+  "agency": "Bakersfield fire and police crews",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "pole sheared; lines low but off the ground; crews held the scene",
+  "summary": "Crews at a collision scene reported one pole sheared off with lines hanging low but off the ground, and a pickup involved on the inside. The incident commander held the scene while utility and tow work was arranged."
+ }
+]

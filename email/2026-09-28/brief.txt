@@ -8,11 +8,12 @@ CONDITIONS
 Weather: 75° now, high 80°
 Alerts: Lake Wind Advisory active
 Isabella: 151,374 acre-feet (26.7% full)
-CHP: Unavailable
+CHP: 5 overnight
 Air: AQI 56 · Moderate
 Fires: 0 active in Kern
 
 THE NEWS
+• Kern County could accept $1.85M federal grant to buy new firefighting vehicle for aircrafts (KGET 17) — https://www.kget.com/news/local-news/kern-county-could-accept-1-85m-federal-grant-to-buy-new-firefighting-vehicle-for-aircrafts/
 • Kern County supervisors to consider extending local emergency proclamation for September 2025 flooding (KGET 17) — https://www.kget.com/news/local-news/kern-county-supervisors-to-consider-extending-local-emergency-proclamation-for-september-2025-flooding/
 • Open Door Network proposed to get additional $1M to clean up litter across Kern County (KGET 17) — https://www.kget.com/news/local-news/open-door-network-proposed-to-get-additional-1m-to-clean-up-litter-across-kern-county/
 • Kern County coroner IDs 2 of 3 victims in deadly car crash on State Route 119 in Taft (KGET 17) — https://www.kget.com/news/local-news/kern-county-coroner-ids-2-of-3-victims-in-deadly-car-crash-on-state-route-119-in-taft/
@@ -20,7 +21,6 @@ THE NEWS
 • 3 killed, 1 injured in multi-vehicle Taft Hwy crash: CHP (KGET 17) — https://www.kget.com/news/local-news/3-killed-1-injured-in-multi-vehicle-taft-hwy-crash-chp/
 • 1 arrested on suspicion of DUI after crash on I-5: CHP (KGET 17) — https://www.kget.com/news/local-news/1-arrested-on-suspicion-of-dui-after-crash-on-i-5-chp/
 • At least 1 dead in fiery Hwy 58 crash near Edison Rd (KGET 17) — https://www.kget.com/news/local-news/at-least-1-dead-in-fiery-hwy-58-crash-near-edison-rd/
-• Bakersfield police seeking help locating missing teen last seen near BHS (KGET 17) — https://www.kget.com/news/local-news/bakersfield-police-seeking-help-locating-missing-teen-last-seen-near-bhs/
 
 Headlines link to the original reporting at the outlets named.
 

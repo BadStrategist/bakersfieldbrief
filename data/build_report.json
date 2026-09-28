@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-28T13:05:00-07:00",
+ "built_at": "2026-09-28T13:12:01-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 5436, column 3"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 0,
+   "chp_new": 2,
    "top_story": "Tejon Indian Tribe brings 'Honoring Our Ancestors' Pow Wow back to CSUB",
    "archive": "2026-09-28"
   },
@@ -135,7 +135,7 @@
    "alpr_total": 270,
    "kern_fires": 0,
    "aqi": 56,
-   "chp_week": 7
+   "chp_week": 9
   },
   "letters": {
    "published": 0

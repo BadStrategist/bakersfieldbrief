@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-27T19:14:43-07:00",
+ "built_at": "2026-09-28T01:52:57-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 1136, column 39"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -60,14 +60,14 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1232,
+  "brief_words": 72,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 0,
-   "top_story": "Friends and family gather to celebrate lives of Vanessa, Kylie, and Kloie Wetmore",
-   "archive": "2026-09-27"
+   "chp_new": 4,
+   "top_story": "Tejon Indian Tribe brings 'Honoring Our Ancestors' Pow Wow back to CSUB",
+   "archive": "2026-09-28"
   },
   "cityhall": {
    "upcoming_meetings": 1,
@@ -82,7 +82,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -93,7 +93,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-09-27"
+   "draft": "drafts/weekend-guide-2026-09-28"
   },
   "grapevine": {
    "i5": "RESTRICTIONS",
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 8,
+   "wind_mph": 6,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 72,
-   "wind_mph": 8,
+   "temp": 53,
+   "wind_mph": 6,
    "alerts": 0
   },
   "roads": {
@@ -121,9 +121,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 15,
-    "In 1 to 2 weeks": 15,
-    "Later": 108
+    "In the next 7 days": 17,
+    "In 1 to 2 weeks": 14,
+    "Later": 114
    },
    "meetings": 1
   },
@@ -131,11 +131,11 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 151986,
+   "isabella_af": 151374,
    "alpr_total": 270,
    "kern_fires": 0,
-   "aqi": 48,
-   "chp_week": 125
+   "aqi": 40,
+   "chp_week": 1
   },
   "letters": {
    "published": 0

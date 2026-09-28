@@ -1,175 +1,5 @@
 [
  {
-  "log_id": "260920BF0188",
-  "time": "Sep 20 2026  2:06PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "I5 S / Wheeler Ridge Rd",
-  "area": "Fort Tejon",
-  "lat": 34.986018,
-  "lon": -118.945324,
-  "details": ""
- },
- {
-  "log_id": "260920BF0030",
-  "time": "Sep 20 2026  2:11AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260920BF0201",
-  "time": "Sep 20 2026  3:18PM",
-  "type": "CFIRE-Car Fire",
-  "location": "0 Sr58 W",
-  "area": "Bakersfield",
-  "lat": 35.314657,
-  "lon": -118.78623,
-  "details": ""
- },
- {
-  "log_id": "260920BF0208",
-  "time": "Sep 20 2026  3:33PM",
-  "type": "ANIMAL-Live or Dead Animal",
-  "location": "0 Sr58 W",
-  "area": "Bakersfield",
-  "lat": 35.336361,
-  "lon": -118.834546,
-  "details": ""
- },
- {
-  "log_id": "260920BF0210",
-  "time": "Sep 20 2026  3:39PM",
-  "type": "1125A-Animal Hazard",
-  "location": "Sr178 W Sr204 Con / Sr204",
-  "area": "Bakersfield",
-  "lat": 35.383417,
-  "lon": -119.012683,
-  "details": ""
- },
- {
-  "log_id": "260920BF0234",
-  "time": "Sep 20 2026  4:53PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Rosedale Hwy / Karla St",
-  "area": "Bakersfield",
-  "lat": 35.383419,
-  "lon": -119.120431,
-  "details": ""
- },
- {
-  "log_id": "260920BF0273",
-  "time": "Sep 20 2026  6:21PM",
-  "type": "FIRE-Report of Fire",
-  "location": "Sr65 / Poso Heights Rd",
-  "area": "Bakersfield",
-  "lat": 35.575714,
-  "lon": -119.087898,
-  "details": ""
- },
- {
-  "log_id": "260920BF0272",
-  "time": "Sep 20 2026  6:22PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Riverside St / Poplar Ave",
-  "area": "Buttonwillow",
-  "lat": 35.485368,
-  "lon": -119.296294,
-  "details": ""
- },
- {
-  "log_id": "260920BF0289",
-  "time": "Sep 20 2026  6:35PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "317 Tanner Michael Dr",
-  "area": "Bakersfield",
-  "lat": 35.431752,
-  "lon": -119.026648,
-  "details": ""
- },
- {
-  "log_id": "260920BF0300",
-  "time": "Sep 20 2026  7:12PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Sr99 N / Union Ave Onr",
-  "area": "Bakersfield",
-  "lat": 35.173038,
-  "lon": -119.004226,
-  "details": ""
- },
- {
-  "log_id": "260920BF0304",
-  "time": "Sep 20 2026  7:16PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Nb I5 At 7th Standard Rd",
-  "area": "Buttonwillow",
-  "lat": 35.442222,
-  "lon": -119.456389,
-  "details": ""
- },
- {
-  "log_id": "260920BF0077",
-  "time": "Sep 20 2026  8:07AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "I5 S / Frazier Mountain Park Rd Onr",
-  "area": "Fort Tejon",
-  "lat": 34.813144,
-  "lon": -118.884656,
-  "details": ""
- },
- {
-  "log_id": "260920BF0102",
-  "time": "Sep 20 2026  9:42AM",
-  "type": "ANIMAL-Live or Dead Animal",
-  "location": "SB I5 JNO SR166",
-  "area": "Buttonwillow",
-  "lat": 35.062778,
-  "lon": -119.003056,
-  "details": ""
- },
- {
-  "log_id": "260920BF0389",
-  "time": "Sep 20 2026  9:58PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "0 Sr99 S",
-  "area": "Bakersfield",
-  "lat": 35.163015,
-  "lon": -119.001335,
-  "details": ""
- },
- {
-  "log_id": "260920BF0115",
-  "time": "Sep 20 2026 10:23AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "EB SR58 JWO Oswell St",
-  "area": "Bakersfield",
-  "lat": 35.351944,
-  "lon": -118.953056,
-  "details": ""
- },
- {
-  "log_id": "260920BF0121",
-  "time": "Sep 20 2026 10:30AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr58 E / Mt Vernon Ave Ofr",
-  "area": "Bakersfield",
-  "lat": 35.352393,
-  "lon": -118.973431,
-  "details": ""
- },
- {
-  "log_id": "260920BF0122",
-  "time": "Sep 20 2026 10:36AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "L St / Sr178",
-  "area": "BF",
-  "lat": 35.381182,
-  "lon": -119.01642,
-  "details": ""
- },
- {
   "log_id": "260921BF0224",
   "time": "Sep 21 2026  2:33PM",
   "type": "1182-Trfc Collision-No Inj",
@@ -1350,6 +1180,26 @@
   "details": ""
  },
  {
+  "log_id": "260927BF0359",
+  "time": "Sep 27 2026  6:47PM",
+  "type": "CZP-Assist with Construction",
+  "location": "UNION AVE ONR / SR99 N",
+  "area": "Bakersfield",
+  "lat": 35.173038,
+  "lon": -119.004226,
+  "details": ""
+ },
+ {
+  "log_id": "260927BF0380",
+  "time": "Sep 27 2026  7:40PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Sb I5 At Sr119",
+  "area": "Buttonwillow",
+  "lat": 35.266944,
+  "lon": -119.224722,
+  "details": ""
+ },
+ {
   "log_id": "260927BF0130",
   "time": "Sep 27 2026  9:59AM",
   "type": "1125-Traffic Hazard",
@@ -1367,6 +1217,16 @@
   "area": "Bakersfield",
   "lat": 35.412322,
   "lon": -119.048586,
+  "details": ""
+ },
+ {
+  "log_id": "260927BF0427",
+  "time": "Sep 27 2026 11:12PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Zachary Ave / Sr155",
+  "area": "Bakersfield",
+  "lat": 35.761366,
+  "lon": -119.187368,
   "details": ""
  },
  {
@@ -1417,6 +1277,16 @@
   "area": "Bakersfield",
   "lat": 35.54022,
   "lon": -118.620854,
+  "details": ""
+ },
+ {
+  "log_id": "260928BF0006",
+  "time": "Sep 28 2026 12:14AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
   "details": ""
  }
 ]

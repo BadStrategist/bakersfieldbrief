@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-29T11:33:08-07:00",
+ "built_at": "2026-09-29T11:44:16-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,7 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -59,13 +59,13 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 60,
+  "_digest_meta": "llm",
+  "brief_words": 1460,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "Jay Thomas Manuel makes big splash with Jeff Mouse",
    "archive": "2026-09-29"
   },

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-29T14:36:18-07:00",
+ "built_at": "2026-09-29T16:53:10-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -62,10 +62,10 @@
   "_digest_meta": "deterministic",
   "brief_words": 1460,
   "daily": {
-   "news_headlines": 75,
+   "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 3,
    "top_story": "Jay Thomas Manuel makes big splash with Jeff Mouse",
    "archive": "2026-09-29"
   },
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 16,
+   "wind_mph": null,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 73,
-   "wind_mph": 16,
+   "temp": 72,
+   "wind_mph": null,
    "alerts": 0
   },
   "roads": {
@@ -121,9 +121,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 19,
-    "In 1 to 2 weeks": 13,
-    "Later": 111
+    "In the next 7 days": 17,
+    "In 1 to 2 weeks": 12,
+    "Later": 107
    },
    "meetings": 1
   },
@@ -134,8 +134,8 @@
    "isabella_af": 150931,
    "alpr_total": 270,
    "kern_fires": 0,
-   "aqi": 74,
-   "chp_week": 28
+   "aqi": 84,
+   "chp_week": 31
   },
   "letters": {
    "published": 1

@@ -1310,6 +1310,36 @@
   "details": ""
  },
  {
+  "log_id": "260929BF0247",
+  "time": "Sep 29 2026  4:05PM",
+  "type": "1166-Defective Traffic Signals",
+  "location": "Rosedale Hwy / Gibson St",
+  "area": "Bakersfield",
+  "lat": 35.383192,
+  "lon": -119.052167,
+  "details": ""
+ },
+ {
+  "log_id": "260929BF0250",
+  "time": "Sep 29 2026  4:08PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "2400 Reeder Dr",
+  "area": "Bakersfield",
+  "lat": 35.607687,
+  "lon": -118.489178,
+  "details": ""
+ },
+ {
+  "log_id": "260929BF0263",
+  "time": "Sep 29 2026  4:47PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Frazier Mountain Park Rd / Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.818129,
+  "lon": -118.884715,
+  "details": ""
+ },
+ {
   "log_id": "260929BF0020",
   "time": "Sep 29 2026  5:02AM",
   "type": "MZP-Assist CT with Maintenance",

@@ -1178,3 +1178,4 @@ img.thumb { display: block; width: 100%; height: 130px; object-fit: cover;
 .brief-pager a[rel="next"] { text-align: right; }
 .brief-pager > a:not([rel]) { text-align: center; }
 .ev-more { font-weight: 400; font-size: 13px; color: var(--ink-soft); margin-left: 6px; white-space: nowrap; }
+.op-author .op-avatar { flex-basis: 64px; width: 64px; height: 64px; font-size: 22px; }

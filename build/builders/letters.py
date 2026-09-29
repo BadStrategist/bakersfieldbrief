@@ -104,6 +104,10 @@ def _initials(name: str) -> str:
     return "".join(p[0] for p in (parts[:1] + parts[-1:])).upper() or "BB"
 
 
+def _share_image(l: dict) -> str:
+    return f"{BASE}/{l['share_image']}" if l.get("share_image") else f"{BASE}/assets/img/bakersfield.jpg"
+
+
 def _load() -> list[dict]:
     try:
         letters = json.loads((common.DATA / "letters.json").read_text(encoding="utf-8"))
@@ -135,7 +139,7 @@ def _article_jsonld(l: dict, url: str) -> dict:
         "@type": "OpinionNewsArticle",
         "headline": l.get("headline", ""),
         "description": l.get("description") or l.get("dek", ""),
-        "image": [f"{BASE}/assets/img/bakersfield.jpg"],
+        "image": [_share_image(l)],
         "datePublished": stamp,
         "dateModified": stamp,
         "author": author,
@@ -252,11 +256,15 @@ def _build_one(ctx, l: dict, built_iso: str) -> str:
         title=f"{title} | Bakersfield Daily Brief",
         desc=l.get("description") or l.get("dek", ""),
         og_title=headline, og_desc=l.get("dek") or l.get("description", ""),
-        og_type="article", canonical=canonical, content=body, current="other", rel=rel,
+        og_type="article", og_image=_share_image(l), canonical=canonical, content=body, current="other", rel=rel,
         built=built_iso, statusbar=ctx.statusbar, extra_scripts=_COPY_JS,
         extra_head=(f'<meta property="article:published_time" content="{_esc(l.get("date"))}"/>'
                     f'<meta property="article:section" content="Opinion"/>'
-                    f'<meta name="author" content="{_esc(name)}"/>'),
+                    f'<meta name="author" content="{_esc(name)}"/>'
+                    + ('<meta property="og:image:width" content="1200"/>'
+                       '<meta property="og:image:height" content="630"/>'
+                       f'<meta property="og:image:alt" content="{_esc(headline)}"/>'
+                       if l.get("share_image") else "")),
         jsonld=[_article_jsonld(l, url)])
     out = f"letters/{slug}/index.html"
     common.write(common.SITE / "letters" / slug / "index.html", page)

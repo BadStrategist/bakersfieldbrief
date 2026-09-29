@@ -249,12 +249,15 @@ def build(ctx, sources: dict) -> list[str]:
     <p class="lede">That page doesn&rsquo;t exist &mdash; maybe it moved, or the brief rebuilt
     and the URL changed.</p></div>
     <div class="card"><p>Try the <a href="/">Daily Brief</a>, the
-    <a href="city-hall/">City Hall &amp; County</a> section, or the
-    <a href="trackers/">trackers</a>.</p></div>"""
+    <a href="/city-hall/">City Hall &amp; County</a> section, or the
+    <a href="/trackers/">trackers</a>.</p></div>"""
     common.write(common.SITE / "404.html", page_mod.render(
         title="Page not found | Bakersfield Daily Brief",
         desc="404 — this page does not exist on Bakersfield Daily Brief.",
-        canonical="/404.html", content=body, current="other", rel="",
+        canonical="/404.html", content=body, current="other",
+        # root-relative: the 404 is served at any missing path, e.g. /letters/x/,
+        # where "assets/css/…" would resolve under /letters/x/ and load nothing
+        rel="/",
         robots="noindex, follow",
         built=built_iso, statusbar=ctx.statusbar, jsonld=[]))
     built.append("404.html")

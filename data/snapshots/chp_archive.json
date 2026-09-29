@@ -1283,10 +1283,10 @@
   "log_id": "260929BF0181",
   "time": "Sep 29 2026  1:14PM",
   "type": "1125-Traffic Hazard",
-  "location": "0 I5 S",
+  "location": "SB I5 JNO #4 Turn Thru",
   "area": "Fort Tejon",
-  "lat": 34.914106,
-  "lon": -118.92392,
+  "lat": 34.914069,
+  "lon": -118.92362,
   "details": ""
  },
  {
@@ -1297,6 +1297,16 @@
   "area": "Fort Tejon",
   "lat": 34.795674,
   "lon": -118.858202,
+  "details": ""
+ },
+ {
+  "log_id": "260929BF0210",
+  "time": "Sep 29 2026  2:26PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Edison Hwy / Comanche Dr",
+  "area": "Bakersfield",
+  "lat": 35.341225,
+  "lon": -118.843207,
   "details": ""
  },
  {

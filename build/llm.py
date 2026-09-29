@@ -197,22 +197,35 @@ def _chat(prompt: str, max_tokens: int | None = None,
         print("    [llm] no LLM_API_KEY set — skipping (graceful fallback)", flush=True)
         return None
     to = timeout or TIMEOUT
+    # Reasoning is OFF by default, and this is not cosmetic: DeepSeek V4.1 Flash on
+    # OpenRouter enables reasoning by default, and thinking tokens are billed against
+    # max_tokens. The model spends the whole budget planning and returns an empty
+    # answer with finish_reason=length, which this function correctly treats as a
+    # failed call, so the daily brief body was never written and the social gate
+    # blocked every post (2026-09-28, 2026-09-29). Set LLM_REASONING=on to allow it.
+    _reasoning = (os.environ.get("LLM_REASONING") or "off").strip().lower()
+    extra = ({} if _reasoning in ("on", "enabled", "true", "high", "max")
+             else {"reasoning": {"enabled": False}})
+    budget = max_tokens or MAX_OUTPUT_TOKENS
+    empty_retry = False
     for attempt in range(MAX_RETRIES + 1):
         try:
+            body = {
+                "model": MODEL,
+                "messages": [
+                    {"role": "system", "content": system or SYSTEM},
+                    {"role": "user", "content": prompt},
+                ],
+                "max_tokens": budget,
+                "temperature": 0.3,
+            }
+            body.update(extra)
             r = requests.post(
                 f"{BASE_URL}/chat/completions",
                 headers={"Authorization": f"Bearer {key}",
                          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; "
                                        "x64) AppleWebKit/537.36"},
-                json={
-                    "model": MODEL,
-                    "messages": [
-                        {"role": "system", "content": system or SYSTEM},
-                        {"role": "user", "content": prompt},
-                    ],
-                    "max_tokens": max_tokens or MAX_OUTPUT_TOKENS,
-                    "temperature": 0.3,
-                },
+                json=body,
                 timeout=to,
             )
             if r.status_code in RETRYABLE_STATUS and attempt < MAX_RETRIES:
@@ -228,7 +241,15 @@ def _chat(prompt: str, max_tokens: int | None = None,
             # 2026-09-22 it went live on the home page as "We need to write a digest of 3-5
             # short paragraphs...". An empty answer is a failed call; the caller falls back.
             if not out:
-                print(f"    [llm] empty answer (finish_reason={choice.get('finish_reason')}) — fallback", flush=True)
+                fr = choice.get("finish_reason")
+                if not empty_retry:
+                    empty_retry = True
+                    budget = min(budget * 2, 8000)
+                    print(f"    [llm] empty answer (finish_reason={fr}) — retrying once "
+                          f"with max_tokens={budget}", flush=True)
+                    continue
+                print(f"    [llm] empty answer (finish_reason={fr}) after the bigger "
+                      f"budget — fallback", flush=True)
                 return None
             if looks_like_planning(out):
                 print("    [llm] answer reads like planning notes, not copy — fallback", flush=True)

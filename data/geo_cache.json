@@ -3,6 +3,90 @@
   35.4,
   -119.1
  ],
+ "600 block of goodman street, Bakersfield, Kern County, CA": null,
+ "goodman street, Bakersfield, CA": [
+  35.3923288,
+  -118.9913738
+ ],
+ "calloway drive & tuscarora drive, Bakersfield, CA": null,
+ "hospital area & mount vernon avenue and the juvenile justice center, Bakersfield, CA": null,
+ "3000 block of oak street, Bakersfield, Kern County, CA": null,
+ "oak street, Bakersfield, CA": [
+  35.3631063,
+  -119.0388267
+ ],
+ "500 block of cypress street, Bakersfield, Kern County, CA": null,
+ "cypress street, Bakersfield, CA": [
+  35.3595295,
+  -119.0361076
+ ],
+ "st street & chester avenue, Bakersfield, CA": [
+  35.3782709,
+  -119.0186791
+ ],
+ "10500 block of meacham road, Bakersfield, Kern County, CA": null,
+ "meacham road, Bakersfield, CA": [
+  35.3908107,
+  -119.1083708
+ ],
+ "4500 block of columbus street, Bakersfield, Kern County, CA": null,
+ "columbus street, Bakersfield, CA": [
+  35.4079524,
+  -118.9483806
+ ],
+ "400 block of shattuck avenue, Bakersfield, Kern County, CA": null,
+ "shattuck avenue, Bakersfield, CA": [
+  35.406476,
+  -118.9803881
+ ],
+ "6700 block of eucalyptus drive, Bakersfield, Kern County, CA": null,
+ "eucalyptus drive, Bakersfield, CA": null,
+ "adobe road & teale road, Bakersfield, CA": null,
+ "1800 block of quincy street, Bakersfield, Kern County, CA": null,
+ "quincy street, Bakersfield, CA": [
+  35.3860036,
+  -118.9933556
+ ],
+ "6500 block of niles street, Bakersfield, Kern County, CA": null,
+ "niles street, Bakersfield, CA": [
+  35.3839678,
+  -118.9988713
+ ],
+ "arlington street area & east frontage lane, Bakersfield, CA": null,
+ "400 block of water street, Bakersfield, Kern County, CA": null,
+ "water street, Bakersfield, CA": [
+  35.3957029,
+  -118.9807536
+ ],
+ "400 block of adams street, Bakersfield, Kern County, CA": null,
+ "adams street, Bakersfield, CA": null,
+ "east brundage lane area & south park avenue area, Bakersfield, CA": null,
+ "1900 block of ming avenue, Bakersfield, Kern County, CA": null,
+ "ming avenue, Bakersfield, CA": [
+  35.3398345,
+  -119.0967119
+ ],
+ "sterling road & college avenue, Bakersfield, CA": null,
+ "1000 block of flower street, Bakersfield, Kern County, CA": null,
+ "flower street, Bakersfield, CA": [
+  35.3848187,
+  -118.9836077
+ ],
+ "union avenue & a motel, Bakersfield, CA": null,
+ "oak street & brundage lane, Bakersfield, CA": null,
+ "1000 block of mcdonald way, Bakersfield, Kern County, CA": null,
+ "mcdonald way, Bakersfield, CA": [
+  35.3541716,
+  -119.0522978
+ ],
+ "2700 block of holland street, Bakersfield, Kern County, CA": null,
+ "holland street, Bakersfield, CA": [
+  35.3681801,
+  -119.143676
+ ],
+ "ashe road & panama lane, Bakersfield, CA": null,
+ "4400 block of columbus street, Bakersfield, Kern County, CA": null,
+ "roberts lane & central avenue, Bakersfield, CA": null,
  "2200 block of c street, Bakersfield, Kern County, CA": null,
  "c street, Bakersfield, CA": [
   35.376757,
@@ -33,8 +117,8 @@
  "hageman road & patton way, Bakersfield, CA": null,
  "5000 block of gosford road, Bakersfield, Kern County, CA": null,
  "gosford road, Bakersfield, CA": [
-  35.2997674,
-  -119.0920766
+  35.2802285,
+  -119.0921575
  ],
  "east california avenue & washington street, Bakersfield, CA": null,
  "700 block of height street, Bakersfield, Kern County, CA": null,
@@ -43,10 +127,6 @@
   -118.9698497
  ],
  "4800 block of columbus street, Bakersfield, Kern County, CA": null,
- "columbus street, Bakersfield, CA": [
-  35.3979718,
-  -118.9543416
- ],
  "1400 block of washington street, Bakersfield, Kern County, CA": null,
  "washington street, Bakersfield, CA": [
   35.3576457,
@@ -61,8 +141,8 @@
  "south king street & east california avenue, Bakersfield, CA": null,
  "2700 block of white lane, Bakersfield, Kern County, CA": null,
  "white lane, Bakersfield, CA": [
-  35.3177491,
-  -119.0324144
+  35.324929,
+  -119.1479182
  ],
  "100 block of hart street, Bakersfield, Kern County, CA": null,
  "hart street, Bakersfield, CA": null,
@@ -79,10 +159,6 @@
   -118.9182554
  ],
  "2400 block of ming avenue, Bakersfield, Kern County, CA": null,
- "ming avenue, Bakersfield, CA": [
-  35.3397028,
-  -119.1676048
- ],
  "100 block of montclair street, Bakersfield, Kern County, CA": null,
  "montclair street, Bakersfield, CA": [
   35.3639189,
@@ -90,14 +166,14 @@
  ],
  "2900 block of f street, Bakersfield, Kern County, CA": null,
  "f street, Bakersfield, CA": [
-  35.3821437,
-  -119.0234864
+  35.379461,
+  -119.0235011
  ],
  "flower street & lincoln street, Bakersfield, CA": null,
  "300 block of chester lane, Bakersfield, Kern County, CA": null,
  "chester lane, Bakersfield, CA": [
-  35.3663227,
-  -119.0469922
+  35.3649783,
+  -119.0421989
  ],
  "2100 block of coventry drive, Bakersfield, Kern County, CA": null,
  "coventry drive, Bakersfield, CA": [
@@ -106,125 +182,35 @@
  ],
  "200 block of baker street, Bakersfield, Kern County, CA": null,
  "baker street, Bakersfield, CA": [
-  35.3758508,
-  -118.9932544
+  35.3741892,
+  -118.9938485
  ],
  "3600 block of hale street, Bakersfield, Kern County, CA": null,
  "hale street, Bakersfield, CA": [
   35.3231797,
   -118.9815531
  ],
- "cottonwood road & kennelly road, Bakersfield, CA": null,
- "400 block of irene street, Bakersfield, Kern County, CA": null,
- "irene street, Bakersfield, CA": [
-  35.3933733,
-  -118.9910296
+ "900 block of baker street, Bakersfield, Kern County, CA": null,
+ "auburn street & morning drive, Bakersfield, CA": null,
+ "9500 block of brimhall road, Bakersfield, Kern County, CA": null,
+ "brimhall road, Bakersfield, CA": [
+  35.3689094,
+  -119.1569342
  ],
- "rosedale highway & canal bank area, Bakersfield, CA": null,
- "800 block of exchange street, Bakersfield, Kern County, CA": null,
- "exchange street, Bakersfield, CA": null,
- "east cedar street & franklin field, Bakersfield, CA": null,
- "lincoln street & pierce, Bakersfield, CA": null,
- "edison highway & the railroad tracks, Bakersfield, CA": null,
- "2400 block of boyd street, Bakersfield, Kern County, CA": null,
- "boyd street, Bakersfield, CA": [
-  35.3013385,
-  -119.0287675
+ "westbound westside parkway & truxtun avenue, Bakersfield, CA": null,
+ "red & mooney area, Bakersfield, CA": null,
+ "north of garces highway & wildwood, Bakersfield, CA": null,
+ "olive drive & roberts lane, Bakersfield, CA": null,
+ "1300 block of chamberlain avenue, Bakersfield, Kern County, CA": null,
+ "chamberlain avenue, Bakersfield, CA": null,
+ "21600 block of everett drive, Bakersfield, Kern County, CA": null,
+ "everett drive, Bakersfield, CA": null,
+ "boulevard & wilkins street, Bakersfield, CA": null,
+ "union avenue & east california avenue, Bakersfield, CA": null,
+ "7800 block of rosedale highway, Bakersfield, Kern County, CA": null,
+ "rosedale highway, Bakersfield, CA": [
+  35.3834512,
+  -119.0855801
  ],
- "1300 block of ralston street, Bakersfield, Kern County, CA": null,
- "ralston street, Bakersfield, CA": [
-  35.3630308,
-  -118.9881718
- ],
- "th street west & holladay avenue, Bakersfield, CA": null,
- "2300 block of gibson street, Bakersfield, Kern County, CA": null,
- "gibson street, Bakersfield, CA": [
-  35.3809746,
-  -119.0521276
- ],
- "earthmover court & enos lane, Bakersfield, CA": null,
- "6200 block of victor street, Bakersfield, Kern County, CA": null,
- "victor street, Bakersfield, CA": [
-  35.4092257,
-  -119.0621634
- ],
- "east of haley street & panorama drive, Bakersfield, CA": null,
- "union avenue & panama road, Bakersfield, CA": null,
- "baker street & dolores street, Bakersfield, CA": null,
- "1000 block of flower street, Bakersfield, Kern County, CA": null,
- "flower street, Bakersfield, CA": [
-  35.3848187,
-  -118.9836077
- ],
- "union avenue & a motel, Bakersfield, CA": null,
- "oak street & brundage lane, Bakersfield, CA": null,
- "1000 block of mcdonald way, Bakersfield, Kern County, CA": null,
- "mcdonald way, Bakersfield, CA": [
-  35.345708,
-  -119.0529903
- ],
- "2700 block of holland street, Bakersfield, Kern County, CA": null,
- "holland street, Bakersfield, CA": [
-  35.3681801,
-  -119.143676
- ],
- "ashe road & panama lane, Bakersfield, CA": null,
- "4400 block of columbus street, Bakersfield, Kern County, CA": null,
- "roberts lane & central avenue, Bakersfield, CA": null,
- "adobe road & teale road, Bakersfield, CA": null,
- "1800 block of quincy street, Bakersfield, Kern County, CA": null,
- "quincy street, Bakersfield, CA": [
-  35.3860036,
-  -118.9933556
- ],
- "6500 block of niles street, Bakersfield, Kern County, CA": null,
- "niles street, Bakersfield, CA": [
-  35.3839678,
-  -118.9988713
- ],
- "arlington street area & east frontage lane, Bakersfield, CA": null,
- "400 block of water street, Bakersfield, Kern County, CA": null,
- "water street, Bakersfield, CA": [
-  35.3957029,
-  -118.9807536
- ],
- "400 block of adams street, Bakersfield, Kern County, CA": null,
- "adams street, Bakersfield, CA": null,
- "east brundage lane area & south park avenue area, Bakersfield, CA": null,
- "1900 block of ming avenue, Bakersfield, Kern County, CA": null,
- "sterling road & college avenue, Bakersfield, CA": null,
- "st street & chester avenue, Bakersfield, CA": [
-  35.3782709,
-  -119.0186791
- ],
- "10500 block of meacham road, Bakersfield, Kern County, CA": null,
- "meacham road, Bakersfield, CA": [
-  35.3908107,
-  -119.1083708
- ],
- "4500 block of columbus street, Bakersfield, Kern County, CA": null,
- "400 block of shattuck avenue, Bakersfield, Kern County, CA": null,
- "shattuck avenue, Bakersfield, CA": [
-  35.406476,
-  -118.9803881
- ],
- "6700 block of eucalyptus drive, Bakersfield, Kern County, CA": null,
- "eucalyptus drive, Bakersfield, CA": null,
- "600 block of goodman street, Bakersfield, Kern County, CA": null,
- "goodman street, Bakersfield, CA": [
-  35.3923288,
-  -118.9913738
- ],
- "calloway drive & tuscarora drive, Bakersfield, CA": null,
- "hospital area & mount vernon avenue and the juvenile justice center, Bakersfield, CA": null,
- "3000 block of oak street, Bakersfield, Kern County, CA": null,
- "oak street, Bakersfield, CA": [
-  35.3631063,
-  -119.0388267
- ],
- "500 block of cypress street, Bakersfield, Kern County, CA": null,
- "cypress street, Bakersfield, CA": [
-  35.3595295,
-  -119.0361076
- ]
+ "union avenue & brundage lane, Bakersfield, CA": null
 }

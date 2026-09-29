@@ -1,0 +1,191 @@
+[
+ {
+  "type": "grass fire",
+  "time": "01:46",
+  "agency": "Kern and Tulare county fire crews",
+  "area": "County Line Road east of Road 40, near the Kern-Tulare county line",
+  "notability": 5,
+  "disposition": "fire contained; mutual aid canceled",
+  "summary": "A battalion, engines and patrols were sent to the county line after callers reported a large column of smoke and a glow two to three miles east of Road 40. The incident turned out to be a structure fire that had spread into grass and was pushing north, settled at about five acres with a slow rate of spread. Crews anchored off the road and worked the heel and flanks, and command reported the fire contained and crews cleaning up. Mutual aid that had been requested from Tulare County was canceled."
+ },
+ {
+  "type": "structure fire call",
+  "time": "01:28",
+  "agency": "Bakersfield fire crews",
+  "area": "900 block of Baker Street, Bakersfield",
+  "notability": 4,
+  "disposition": "smoke found on arrival; crews investigating, incoming units staged",
+  "summary": "Crews reported light smoke showing from one side of a building in the 900 block of Baker Street and said they were going in to investigate, with all incoming units staged and an incident commander assigned. A separate alarm at the same block earlier was cleared after a crew walked the building, found no audible alarm and no sign of distress or hazard inside."
+ },
+ {
+  "type": "grass fire",
+  "time": "22:18",
+  "agency": "Bakersfield fire crews",
+  "area": "Auburn Street near Morning Drive, Bakersfield",
+  "notability": 4,
+  "disposition": "multiple reports; full assignment sent",
+  "summary": "A patrol, two engines and a battalion were sent to grass on fire the size of a house near a church off Auburn Street after multiple callers reported it. The full assignment was put on the call for the area."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "00:47",
+  "agency": "Bakersfield Police Department",
+  "area": "9500 block of Brimhall Road, Bakersfield",
+  "notability": 3,
+  "disposition": "priority call; officers responding",
+  "summary": "A priority one domestic call was broadcast for the 9500 block of Brimhall Road, behind a business, with the suspect described as a man in his 30s in all black leaving in a gray pickup and a second man in dark clothing in an unknown sedan."
+ },
+ {
+  "type": "suspicious person with a weapon",
+  "time": "00:52",
+  "agency": "Kern County area law enforcement",
+  "area": "southwest Bakersfield neighborhood",
+  "notability": 3,
+  "disposition": "call held; deputies responding",
+  "summary": "Deputies were sent to a suspicious person call where the caller, through a language barrier, reported a man in his 30s in a black shirt knocking on windows and doors and carrying a firearm."
+ },
+ {
+  "type": "residential burglary in progress",
+  "time": "01:14",
+  "agency": "Kern County area law enforcement",
+  "area": "LaCroix Court area, Bakersfield",
+  "notability": 3,
+  "disposition": "suspect left the area; deputies responding",
+  "summary": "Deputies were sent after a resident reported that a neighbor had come into the home through an unlocked front door, gone to a bedroom door and then crossed the street. The suspect was described as a man 18 to 20 years old in a black shirt and jeans, slim with curly hair."
+ },
+ {
+  "type": "collision",
+  "time": "03:00",
+  "agency": "Bakersfield police and fire crews",
+  "area": "westbound Westside Parkway at Truxtun Avenue, Bakersfield",
+  "notability": 3,
+  "disposition": "vehicle in the center median; ramp closed for crews",
+  "summary": "Crews were sent to a vehicle in the westbound lanes at Westside Parkway and Truxtun Avenue, a car resting in the center median. Units were told to expect the ramp to close momentarily and to use alternate routes."
+ },
+ {
+  "type": "robbery",
+  "time": "03:01",
+  "agency": "Bakersfield Police Department",
+  "area": "central Bakersfield",
+  "notability": 3,
+  "disposition": "one person in custody; victim contacted",
+  "summary": "Multiple units were called to assist after a robbery was reported and officers put one person in custody. The victim was contacted and told officers the robbery happened just east of the location where the stop was made."
+ },
+ {
+  "type": "battery",
+  "time": "00:00",
+  "agency": "Bakersfield Police Department",
+  "area": "Red and Mooney area, Bakersfield",
+  "notability": 3,
+  "disposition": "suspect outstanding; second person fled in a vehicle",
+  "summary": "Officers were sent to an assault call at a street intersection after a report of a man walking away on foot and a woman who left the scene in an unidentified vehicle. A description was broadcast for a man in his 30s to 40s in a white tank top and blue jeans."
+ },
+ {
+  "type": "grass fire",
+  "time": "01:55",
+  "agency": "Kern County area fire crews",
+  "area": "north of Garces Highway near Wildwood, Kern County",
+  "notability": 2,
+  "disposition": "crews sent to check the area",
+  "summary": "A grass fire was called in a mile north of Garces Highway near Wildwood. Units in the area reported nothing visible from their positions."
+ },
+ {
+  "type": "medical aid",
+  "time": "21:19",
+  "agency": "Kern County area fire crews",
+  "area": "Olive Drive and Roberts Lane, north of Bakersfield",
+  "notability": 2,
+  "disposition": "ambulance requested; deputies also responded",
+  "summary": "An engine was sent to a medical aid at Olive Drive and Roberts Lane near the canal, with an ambulance requested and deputies asked to respond."
+ },
+ {
+  "type": "medical aid",
+  "time": "21:13",
+  "agency": "Kern County area fire crews",
+  "area": "6200 block of Cape Cod Avenue, Bakersfield",
+  "notability": 2,
+  "disposition": "ambulance en route",
+  "summary": "An engine was sent to a residence in the 6200 block of Cape Cod Avenue and an ambulance was requested from a nearby station."
+ },
+ {
+  "type": "medical aid",
+  "time": "21:38",
+  "agency": "Kern County area fire crews",
+  "area": "2500 block of North Chester Avenue, Bakersfield",
+  "notability": 2,
+  "disposition": "call cleared by responding crew",
+  "summary": "A crew was sent to a medical aid at a restaurant in the 2500 block of North Chester Avenue and cleared the call after responding."
+ },
+ {
+  "type": "suspicious person",
+  "time": "21:39",
+  "agency": "Bakersfield Police Department",
+  "area": "1300 block of Chamberlain Avenue, Bakersfield",
+  "notability": 2,
+  "disposition": "occupants not home; suspect in a vehicle",
+  "summary": "Officers were sent to the 1300 block of Chamberlain Avenue on second-hand information that a man was in the front yard trying door handles and trying to open the door while the residents were away. He was last seen in a gray pickup."
+ },
+ {
+  "type": "fire alarm",
+  "time": "23:57",
+  "agency": "Bakersfield fire crews",
+  "area": "21600 block of Everett Drive, Bakersfield",
+  "notability": 2,
+  "disposition": "alarm still sounding; crew responding",
+  "summary": "A crew was sent to a fire alarm that was still sounding at a building in the 21600 block of Everett Drive."
+ },
+ {
+  "type": "possible DUI",
+  "time": "04:57",
+  "agency": "Bakersfield Police Department",
+  "area": "Martin Luther King Jr. Boulevard and Wilkins Street, Bakersfield",
+  "notability": 2,
+  "disposition": "officers asked to check the area",
+  "summary": "Units were asked to look for a possible drunken driver reported earlier in the area of Martin Luther King Jr. Boulevard and Wilkins Street."
+ },
+ {
+  "type": "medical aid",
+  "time": "03:52",
+  "agency": "Bakersfield fire crews",
+  "area": "1900 block of East Brundage Lane, Bakersfield",
+  "notability": 2,
+  "disposition": "medical aid requested",
+  "summary": "A crew was sent to a medical aid at the navigation center on East Brundage Lane and asked for an ambulance."
+ },
+ {
+  "type": "fire call",
+  "time": "05:01",
+  "agency": "Bakersfield fire crews",
+  "area": "Union Avenue at East California Avenue, Bakersfield",
+  "notability": 2,
+  "disposition": "crews dispatched",
+  "summary": "Crews were sent to a fire call in the area of Union Avenue and East California Avenue."
+ },
+ {
+  "type": "public service",
+  "time": "03:52",
+  "agency": "Bakersfield fire crews",
+  "area": "7800 block of Rosedale Highway, Bakersfield",
+  "notability": 2,
+  "disposition": "assistance requested at a store",
+  "summary": "A crew was sent to a home improvement store in the 7800 block of Rosedale Highway to help with a sprinkler issue."
+ },
+ {
+  "type": "stolen vehicle recovery",
+  "time": "22:57",
+  "agency": "Bakersfield Police Department",
+  "area": "Union Avenue near Brundage Lane, Bakersfield",
+  "notability": 2,
+  "disposition": "vehicle recovered",
+  "summary": "An officer reported recovering a vehicle in the area of Union Avenue and Brundage Lane."
+ },
+ {
+  "type": "weapon call",
+  "time": "22:38",
+  "agency": "Bakersfield Police Department",
+  "area": "south Bakersfield",
+  "notability": 2,
+  "disposition": "search for the subject under way",
+  "summary": "Officers searched for a woman reported to be carrying a machete, last seen northbound, and security at a nearby property was asked to watch for her."
+ }
+]

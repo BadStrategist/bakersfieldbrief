@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-29T11:49:02-07:00",
+ "built_at": "2026-09-29T12:01:07-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,7 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
+   "error": ""
   },
   "venues": {
    "ok": true,

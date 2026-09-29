@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-28T18:08:51-07:00",
+ "built_at": "2026-09-29T01:51:41-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -22,16 +22,16 @@
    "error": ""
   },
   "airnow": {
-   "ok": false,
-   "error": "AirNow returned no data"
+   "ok": true,
+   "error": ""
   },
   "calfire": {
    "ok": true,
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 5436, column 3"
   },
   "isabella": {
    "ok": true,
@@ -60,14 +60,14 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1166,
+  "brief_words": 63,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
-   "alerts": 1,
-   "chp_new": 2,
-   "top_story": "Tejon Indian Tribe brings 'Honoring Our Ancestors' Pow Wow back to CSUB",
-   "archive": "2026-09-28"
+   "alerts": 0,
+   "chp_new": 0,
+   "top_story": "Clancy holdout juror faced \u2018unimaginable pressure,\u2019 lawyer says; defense requests probe",
+   "archive": "2026-09-29"
   },
   "cityhall": {
    "upcoming_meetings": 1,
@@ -93,22 +93,22 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-09-28"
+   "draft": "drafts/weekend-guide-2026-09-29"
   },
   "grapevine": {
-   "i5": "RESTRICTIONS",
+   "i5": "CLOSED",
    "i5_pass": "RESTRICTIONS",
    "log_entries": 60
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 16,
+   "wind_mph": 6,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 63,
-   "wind_mph": 16,
+   "temp": 54,
+   "wind_mph": 6,
    "alerts": 0
   },
   "roads": {
@@ -121,8 +121,8 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 17,
-    "In 1 to 2 weeks": 14,
+    "In the next 7 days": 18,
+    "In 1 to 2 weeks": 13,
     "Later": 109
    },
    "meetings": 1
@@ -131,10 +131,10 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 151374,
+   "isabella_af": 150931,
    "alpr_total": 270,
    "kern_fires": 0,
-   "aqi": null,
+   "aqi": 64,
    "chp_week": 11
   },
   "letters": {
@@ -174,7 +174,7 @@
   },
   "trackers": {
    "alpr_total": 270,
-   "alpr_new_week": 3,
+   "alpr_new_week": 2,
    "pages": [
     "surveillance",
     "fires",

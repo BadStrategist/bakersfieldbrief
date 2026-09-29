@@ -1,6 +1,14 @@
 [
  {
   "ts": "2026-09-29",
+  "route": "sr58",
+  "route_name": "State Route 58 \u2014 Tehachapi",
+  "from": "updated",
+  "to": "OPEN",
+  "note": "condition text changed"
+ },
+ {
+  "ts": "2026-09-29",
   "route": "sr99",
   "route_name": "State Route 99 \u2014 Central Valley",
   "from": "CLOSED",
@@ -450,12 +458,5 @@
   "route_name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
   "from": "CLOSED",
   "to": "OPEN"
- },
- {
-  "ts": "2026-09-14",
-  "route": "i5",
-  "route_name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
-  "from": "OPEN",
-  "to": "CLOSED"
  }
 ]

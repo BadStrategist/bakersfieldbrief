@@ -1340,6 +1340,26 @@
   "details": ""
  },
  {
+  "log_id": "260929BF0126",
+  "time": "Sep 29 2026 11:13AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Pioneer Dr / Park Dr",
+  "area": "Bakersfield",
+  "lat": 35.368904,
+  "lon": -118.918637,
+  "details": ""
+ },
+ {
+  "log_id": "260929BF0129",
+  "time": "Sep 29 2026 11:17AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr58 W / Hughes Ln",
+  "area": "Bakersfield",
+  "lat": 35.352771,
+  "lon": -119.030107,
+  "details": ""
+ },
+ {
   "log_id": "260929BF0010",
   "time": "Sep 29 2026 12:59AM",
   "type": "TADV-Traffic Advisory",

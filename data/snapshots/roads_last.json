@@ -57,7 +57,7 @@
      }
     ]
    },
-   "reported_as_of": "Tuesday, September 29th, 2026 at 10:09 AM",
+   "reported_as_of": "Tuesday, September 29th, 2026 at 11:33 AM",
    "hash": "7d7e7aaa4b"
   },
   {
@@ -70,7 +70,7 @@
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "No traffic restrictions reported.",
+     "text": "1-way controlled traffic 5.4 mi east of the Jct of US-101 /at Parkhill Rd/ (San Luis Obispo Co) from 0900 hrs to 1400 hrs Tuesday thru Friday thru 10/2/26 - Due to construction - Motorists are subject to delays of up to 10 minutes",
      "status": "OPEN"
     }
    ],
@@ -80,8 +80,8 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Tuesday, September 29th, 2026 at 10:09 AM",
-   "hash": "5374f203ec"
+   "reported_as_of": "Tuesday, September 29th, 2026 at 11:33 AM",
+   "hash": "5e8114d141"
   },
   {
    "number": "99",
@@ -117,7 +117,7 @@
      }
     ]
    },
-   "reported_as_of": "Tuesday, September 29th, 2026 at 10:09 AM",
+   "reported_as_of": "Tuesday, September 29th, 2026 at 11:33 AM",
    "hash": "f97882795e"
   }
  ],

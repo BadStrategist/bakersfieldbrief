@@ -58,11 +58,35 @@ def _read_min(text: str) -> int:
     return max(1, round(_words(text) / 230))
 
 
-def _body_html(body: str) -> str:
+def _figure_html(f: dict, rel: str) -> str:
+    """Inline figure with the credit line CC licenses require (author, license, source)."""
+    src = f.get("src", "")
+    if not src.startswith(("http://", "https://", "/")):
+        src = rel + src
+    dims = f' width="{f["width"]}" height="{f["height"]}"' if f.get("width") and f.get("height") else ""
+    credit = _esc(f.get("credit"))
+    if f.get("source_url"):
+        credit = f'<a href="{_esc(f["source_url"])}" rel="noopener">{credit}</a>'
+    if f.get("license"):
+        lic = _esc(f["license"])
+        if f.get("license_url"):
+            lic = f'<a href="{_esc(f["license_url"])}" rel="noopener license">{lic}</a>'
+        credit += f", {lic}"
+    cls = f' class="op-fig {_esc(f["layout"])}"' if f.get("layout") else ' class="op-fig"'
+    return (f'<figure{cls}><img src="{_esc(src)}" alt="{_esc(f.get("alt"))}" loading="lazy"{dims}>'
+            f'<figcaption>{_esc(f.get("caption"))} <span class="op-credit">{credit}</span></figcaption></figure>')
+
+
+def _body_html(body: str, figures: dict | None = None, rel: str = "") -> str:
     out, first = [], True
     for block in re.split(r"\n\s*\n", (body or "").strip()):
         block = block.strip()
         if not block:
+            continue
+        m = re.fullmatch(r"\{\{fig ([\w-]+)\}\}", block)
+        if m:
+            if (figures or {}).get(m.group(1)):
+                out.append(_figure_html(figures[m.group(1)], rel))
             continue
         if block.startswith("## "):
             out.append(f"<h2>{_inline(block[3:])}</h2>")
@@ -209,7 +233,7 @@ def _build_one(ctx, l: dict, built_iso: str) -> str:
       {disclosure}
       {summary}
       <div class="op-body">
-{_body_html(l.get('body', ''))}
+{_body_html(l.get('body', ''), l.get('figures'), rel)}
       </div>
       <p class="op-end">&mdash; {_esc(name)}{(', ' + _esc(role)) if role else ''}</p>
       {_share(url, headline)}

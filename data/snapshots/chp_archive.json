@@ -1,145 +1,5 @@
 [
  {
-  "log_id": "260921BF0224",
-  "time": "Sep 21 2026  2:33PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "14814 Aloma St",
-  "area": "Buttonwillow",
-  "lat": 35.61464,
-  "lon": -119.65746,
-  "details": ""
- },
- {
-  "log_id": "260921BF0226",
-  "time": "Sep 21 2026  2:36PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "I5 N / Millux Rd",
-  "area": "Buttonwillow",
-  "lat": 35.179985,
-  "lon": -119.130816,
-  "details": ""
- },
- {
-  "log_id": "260921BF0245",
-  "time": "Sep 21 2026  3:25PM",
-  "type": "ANIMAL-Live or Dead Animal",
-  "location": "Sr99 S / Sr58 W",
-  "area": "Bakersfield",
-  "lat": 35.352804,
-  "lon": -119.039621,
-  "details": ""
- },
- {
-  "log_id": "260921BF0032",
-  "time": "Sep 21 2026  5:09AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "9855 Compagnoni St",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260921BF0325",
-  "time": "Sep 21 2026  6:07PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Eastern Ave / Crystal St",
-  "area": "Buttonwillow",
-  "lat": 35.134542,
-  "lon": -119.455028,
-  "details": ""
- },
- {
-  "log_id": "260921BF0340",
-  "time": "Sep 21 2026  6:30PM",
-  "type": "1180-Trfc Collision-Major Inj",
-  "location": "Sr99 S / Panama Ln",
-  "area": "Bakersfield",
-  "lat": 35.295933,
-  "lon": -119.030645,
-  "details": ""
- },
- {
-  "log_id": "260921BF0047",
-  "time": "Sep 21 2026  7:13AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr99 N / 7th Standard Rd Ofr",
-  "area": "Bakersfield",
-  "lat": 35.438373,
-  "lon": -119.08026,
-  "details": ""
- },
- {
-  "log_id": "260921BF0359",
-  "time": "Sep 21 2026  7:14PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Sb Sr99 At Herring Rd",
-  "area": "Bakersfield",
-  "lat": 36.15,
-  "lon": -118.997222,
-  "details": ""
- },
- {
-  "log_id": "260921BF0055",
-  "time": "Sep 21 2026  7:47AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Manor St / China Grade Loop",
-  "area": "Bakersfield",
-  "lat": 35.426705,
-  "lon": -119.012226,
-  "details": ""
- },
- {
-  "log_id": "260921BF0059",
-  "time": "Sep 21 2026  7:48AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Sr178 E / Mt Vernon Ave Ofr",
-  "area": "Bakersfield",
-  "lat": 35.39359,
-  "lon": -118.970517,
-  "details": ""
- },
- {
-  "log_id": "260921BF0389",
-  "time": "Sep 21 2026  8:11PM",
-  "type": "CZP-Assist with Construction",
-  "location": "I5 N / Hageman Rd",
-  "area": "Buttonwillow",
-  "lat": 35.398856,
-  "lon": -119.396997,
-  "details": ""
- },
- {
-  "log_id": "260921BF0154",
-  "time": "Sep 21 2026 11:14AM",
-  "type": "1125A-Animal Hazard",
-  "location": "Sr58 W / Tower Line Rd",
-  "area": "Bakersfield",
-  "lat": 35.329868,
-  "lon": -118.807558,
-  "details": ""
- },
- {
-  "log_id": "260921BF0163",
-  "time": "Sep 21 2026 11:24AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "2406 Edison Hwy",
-  "area": "Bakersfield",
-  "lat": 35.370457,
-  "lon": -118.96498,
-  "details": ""
- },
- {
-  "log_id": "260921BF0003",
-  "time": "Sep 21 2026 12:00AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
   "log_id": "260922BF0265",
   "time": "Sep 22 2026  2:34PM",
   "type": "20002-Hit and Run No Injuries",
@@ -1340,6 +1200,26 @@
   "details": ""
  },
  {
+  "log_id": "260928BF0380",
+  "time": "Sep 28 2026  7:27PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Sb Sr99 Jso South Union Ave",
+  "area": "Bakersfield",
+  "lat": 35.165,
+  "lon": -119.001944,
+  "details": ""
+ },
+ {
+  "log_id": "260928BF0404",
+  "time": "Sep 28 2026  7:57PM",
+  "type": "CZP-Assist with Construction",
+  "location": "I5 N / Sr43",
+  "area": "Buttonwillow",
+  "lat": 35.293548,
+  "lon": -119.252486,
+  "details": ""
+ },
+ {
   "log_id": "260928BF0083",
   "time": "Sep 28 2026  8:50AM",
   "type": "CZP-Assist with Construction",
@@ -1387,6 +1267,16 @@
   "area": "Bakersfield",
   "lat": 35.41362,
   "lon": -119.030269,
+  "details": ""
+ },
+ {
+  "log_id": "260929BF0010",
+  "time": "Sep 29 2026 12:59AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
   "details": ""
  }
 ]

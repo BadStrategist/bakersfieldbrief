@@ -1270,6 +1270,36 @@
   "details": ""
  },
  {
+  "log_id": "260929BF0174",
+  "time": "Sep 29 2026  1:01PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Knudsen Dr / Norris Rd",
+  "area": "Bakersfield",
+  "lat": 35.417788,
+  "lon": -119.060495,
+  "details": ""
+ },
+ {
+  "log_id": "260929BF0181",
+  "time": "Sep 29 2026  1:14PM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 I5 S",
+  "area": "Fort Tejon",
+  "lat": 34.914106,
+  "lon": -118.92392,
+  "details": ""
+ },
+ {
+  "log_id": "260929BF0184",
+  "time": "Sep 29 2026  1:19PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jno Gorman School Rd",
+  "area": "Fort Tejon",
+  "lat": 34.795674,
+  "lon": -118.858202,
+  "details": ""
+ },
+ {
   "log_id": "260929BF0020",
   "time": "Sep 29 2026  5:02AM",
   "type": "MZP-Assist CT with Maintenance",
@@ -1357,6 +1387,16 @@
   "area": "Bakersfield",
   "lat": 35.352771,
   "lon": -119.030107,
+  "details": ""
+ },
+ {
+  "log_id": "260929BF0169",
+  "time": "Sep 29 2026 12:37PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Niles St / Palm Dr",
+  "area": "Bakersfield",
+  "lat": 35.377202,
+  "lon": -118.970953,
   "details": ""
  },
  {

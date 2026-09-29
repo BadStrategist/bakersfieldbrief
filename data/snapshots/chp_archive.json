@@ -1270,6 +1270,36 @@
   "details": ""
  },
  {
+  "log_id": "260929BF0020",
+  "time": "Sep 29 2026  5:02AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260929BF0030",
+  "time": "Sep 29 2026  6:27AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "260929BF0034",
+  "time": "Sep 29 2026  6:50AM",
+  "type": "BREAK-Traffic Break",
+  "location": "Nb Sr99 At County Line Rd",
+  "area": "Bakersfield",
+  "lat": 35.790405,
+  "lon": -119.250693,
+  "details": ""
+ },
+ {
   "log_id": "260929BF0010",
   "time": "Sep 29 2026 12:59AM",
   "type": "TADV-Traffic Advisory",

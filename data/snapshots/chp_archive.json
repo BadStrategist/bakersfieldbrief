@@ -1290,6 +1290,16 @@
   "details": ""
  },
  {
+  "log_id": "260928BF0322",
+  "time": "Sep 28 2026  5:46PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr58 W / Sr223",
+  "area": "Bakersfield",
+  "lat": 35.264298,
+  "lon": -118.658348,
+  "details": ""
+ },
+ {
   "log_id": "260928BF0032",
   "time": "Sep 28 2026  5:52AM",
   "type": "1125-Traffic Hazard",
@@ -1297,6 +1307,16 @@
   "area": "Buttonwillow",
   "lat": 35.153167,
   "lon": -119.448646,
+  "details": ""
+ },
+ {
+  "log_id": "260928BF0328",
+  "time": "Sep 28 2026  5:58PM",
+  "type": "1184-Provide Traffic Control",
+  "location": "Kern River Power House 1",
+  "area": "Bakersfield",
+  "lat": 35.460226,
+  "lon": -118.779062,
   "details": ""
  },
  {

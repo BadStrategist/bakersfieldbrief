@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-30T02:06:23-07:00",
+ "built_at": "2026-09-30T10:07:35-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,13 +60,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 64,
+  "brief_words": 62,
   "daily": {
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "CA Lottery: $7 million Crossword Xtreme scratcher ticket bought at 7-Eleven in Bakersfield",
+   "chp_new": 5,
+   "top_story": "Court docs reveal chilling details of abduction of Bakersfield girl, 11",
    "archive": "2026-09-30"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 5,
+   "wind_mph": 1,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 48,
-   "wind_mph": 5,
+   "temp": 68,
+   "wind_mph": 1,
    "alerts": 0
   },
   "roads": {
@@ -134,8 +134,8 @@
    "isabella_af": 150488,
    "alpr_total": 270,
    "kern_fires": 0,
-   "aqi": 67,
-   "chp_week": 37
+   "aqi": 68,
+   "chp_week": 42
   },
   "letters": {
    "published": 1

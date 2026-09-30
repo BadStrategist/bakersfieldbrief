@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-30T10:07:35-07:00",
+ "built_at": "2026-09-30T11:41:51-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,13 +60,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 62,
+  "brief_words": 64,
   "daily": {
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 5,
-   "top_story": "Court docs reveal chilling details of abduction of Bakersfield girl, 11",
+   "chp_new": 3,
+   "top_story": "House Speaker Mike Johnson to join David Valadao for Bakersfield rally on Wednesday",
    "archive": "2026-09-30"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 1,
+   "wind_mph": 6,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 68,
-   "wind_mph": 1,
+   "temp": 81,
+   "wind_mph": 6,
    "alerts": 0
   },
   "roads": {
@@ -134,8 +134,8 @@
    "isabella_af": 150488,
    "alpr_total": 270,
    "kern_fires": 0,
-   "aqi": 68,
-   "chp_week": 42
+   "aqi": 59,
+   "chp_week": 45
   },
   "letters": {
    "published": 1

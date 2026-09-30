@@ -1158,5 +1158,35 @@
   "lat": 35.299816,
   "lon": -119.076337,
   "details": ""
+ },
+ {
+  "log_id": "260930BF0118",
+  "time": "Sep 30 2026 10:18AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "8740 Spectrum Park Way",
+  "area": "Bakersfield",
+  "lat": 35.440527,
+  "lon": -119.076589,
+  "details": ""
+ },
+ {
+  "log_id": "260930BF0132",
+  "time": "Sep 30 2026 11:00AM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 Sr99 S",
+  "area": "Bakersfield",
+  "lat": 35.637519,
+  "lon": -119.217766,
+  "details": ""
+ },
+ {
+  "log_id": "260930BF0141",
+  "time": "Sep 30 2026 11:22AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Edison Hwy / S Edison Rd",
+  "area": "Bakersfield",
+  "lat": 35.349659,
+  "lon": -118.878701,
+  "details": ""
  }
 ]

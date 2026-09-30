@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-30T11:41:51-07:00",
+ "built_at": "2026-09-30T11:46:24-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 4707, column 3"
   },
   "isabella": {
    "ok": true,
@@ -39,7 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -60,13 +60,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 64,
+  "brief_words": 63,
   "daily": {
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
-   "top_story": "House Speaker Mike Johnson to join David Valadao for Bakersfield rally on Wednesday",
+   "chp_new": 0,
+   "top_story": "2 Pakistani nationals, 1 residing in Bakersfield, charged in Medicare fraud scheme",
    "archive": "2026-09-30"
   },
   "cityhall": {

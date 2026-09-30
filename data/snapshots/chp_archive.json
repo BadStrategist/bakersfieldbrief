@@ -1100,6 +1100,16 @@
   "details": ""
  },
  {
+  "log_id": "260930BF0199",
+  "time": "Sep 30 2026  1:38PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "0 I5 N",
+  "area": "Fort Tejon",
+  "lat": 34.917191,
+  "lon": -118.923986,
+  "details": ""
+ },
+ {
   "log_id": "260930BF0012",
   "time": "Sep 30 2026  2:00AM",
   "type": "TADV-Traffic Advisory",

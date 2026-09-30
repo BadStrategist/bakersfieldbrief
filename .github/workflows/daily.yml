@@ -189,12 +189,14 @@ jobs:
           python scripts/notify_discord.py --header "$HDR" --file /tmp/bb_discord.txt
           echo "ops Discord alert sent for blocked/failed email"
 
-      # Social post: DISABLED 2026-08-19 — API posts are withheld from the
-      # public page on this new account (verified 6/6 held; only manual UI
-      # posts render publicly). The daily kit (reel MP4 + card + caption) is
-      # delivered to the #manual-posting-station Discord thread at 08:00 PT by
-      # the KO manual posting kit cron job; the human posts it via Meta
-      # Business Suite. To re-enable, uncomment this step.
+      # Social post: intentionally NOT run from CI. The 2026-08 "withheld" API
+      # posts were caused by the Meta app being Unpublished (dev mode), fixed
+      # 2026-09-29. Posting now runs LOCALLY in the KO social job
+      # (scripts/brief_reel/publish_social.py -> scripts/social_api.py): Graph
+      # API first for FB+IG reel and story, browser automation as backup. It
+      # stays local because the reel carries real scanner dispatch audio that
+      # only exists on the capture machine; this CI step would post a
+      # music-bed-only reel and pre-empt it. Kept for reference only.
       # - name: Post summary to Facebook
       #   env:
       #     FB_PAGE_TOKEN: ${{ secrets.FB_PAGE_TOKEN }}

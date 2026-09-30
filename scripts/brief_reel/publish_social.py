@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """KO social publish — post the day's reel + story to the Facebook page and Instagram.
 
-Runs AFTER the site build and AFTER the daily email. Both surfaces are published
-through the Meta Business Suite UI in the signed-in agent Chrome profile, because
-the Graph API path for this page is unusable (post withheld) and the Instagram
-token lacks instagram_content_publish.
+Runs AFTER the site build and AFTER the daily email. PRIMARY path (2026-09-29):
+the Graph API via scripts/social_api.py (reel + story to Facebook and Instagram,
+each leg idempotent). The Meta Business Suite UI below is the BACKUP, used only
+for legs the API could not publish. (The old "API posts withheld" problem was the
+Meta app sitting Unpublished; the token now carries instagram_content_publish.)
 
 Pipeline order (deliberate):
     site build (ko_publish 07:00) -> email (bb_email_watchdog 08:10-08:32)
@@ -891,6 +892,27 @@ def ensure_session(port: int = 9222, timeout_s: int = 240) -> str:
     return "unavailable"
 
 
+def api_publish(date: str, reel: Path, caption: str) -> dict:
+    """Publish via the Graph API (scripts/social_api.py), Facebook leg of each
+    pair first; the Instagram twin only when the Facebook one is up. Never
+    raises: an API outage just hands every leg to the browser backup."""
+    try:
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+        import social_api as SA
+        token = PF.get_token()
+        out: dict = {}
+        for fb_leg, ig_leg in (("fb_reel", "ig_reel"), ("fb_story", "ig_story")):
+            out.update(SA.publish_all(token, date, reel, caption, (fb_leg,)))
+            if out[fb_leg].get("ok"):
+                out.update(SA.publish_all(token, date, reel, caption, (ig_leg,)))
+            else:
+                out[ig_leg] = {"ok": False, "error": f"held: {fb_leg} failed, browser posts both"}
+        return out
+    except BaseException as e:  # noqa: BLE001 - incl. SystemExit from get_token
+        log(f"API publish unavailable: {type(e).__name__}: {e}")
+        return {}
+
+
 def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--date", default=None)
@@ -909,6 +931,30 @@ def main(argv: list[str]) -> int:
     assets = build_assets(date)
     if assets is None:
         return 3
+
+    # PRIMARY: Graph API (reel + story to Facebook and Instagram). The browser
+    # below is the BACKUP and only runs for legs the API could not publish.
+    # Pairing rule: the browser posts a reel (or story) to both platforms at
+    # once, so an Instagram leg is only tried via the API once its Facebook
+    # twin is up — otherwise a browser fallback would duplicate Instagram.
+    if not a.verify_only and not a.dry_run:
+        api = api_publish(date, assets[0], assets[2])
+        state["api"] = api
+        state_file.write_text(json.dumps(state, indent=2), encoding="utf-8")
+        if api and all(v.get("ok") for v in api.values()):
+            print("SOCIAL_REPORT")
+            print(f"date={date}")
+            for leg, v in api.items():
+                print(f"{leg}={'ok' if v.get('ok') else 'FAILED'} "
+                      f"{'(already up) ' if v.get('skipped') else ''}{v.get('url', '')}")
+            print("path=api (browser not needed)")
+            print("verify=ok")
+            state["done"] = True
+            state_file.write_text(json.dumps(state, indent=2), encoding="utf-8")
+            return 0
+        log("API left legs unpublished - falling back to the browser for them: "
+            + ", ".join(k for k, v in (api or {}).items() if not v.get("ok")))
+
     s = ensure_session()
     log(f"browser session: {s}")
     if s == "unavailable":

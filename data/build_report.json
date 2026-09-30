@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-30T01:52:06-07:00",
+ "built_at": "2026-09-30T02:06:23-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,7 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": ""
+   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
   },
   "venues": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 1,
    "top_story": "CA Lottery: $7 million Crossword Xtreme scratcher ticket bought at 7-Eleven in Bakersfield",
    "archive": "2026-09-30"
   },
@@ -135,7 +135,7 @@
    "alpr_total": 270,
    "kern_fires": 0,
    "aqi": 67,
-   "chp_week": 36
+   "chp_week": 37
   },
   "letters": {
    "published": 1

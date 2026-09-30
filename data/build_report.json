@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-29T19:41:13-07:00",
+ "built_at": "2026-09-30T01:52:06-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,17 +60,17 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1460,
+  "brief_words": 64,
   "daily": {
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 5,
-   "top_story": "Jay Thomas Manuel makes big splash with Jeff Mouse",
-   "archive": "2026-09-29"
+   "chp_new": 0,
+   "top_story": "CA Lottery: $7 million Crossword Xtreme scratcher ticket bought at 7-Eleven in Bakersfield",
+   "archive": "2026-09-30"
   },
   "cityhall": {
-   "upcoming_meetings": 1,
+   "upcoming_meetings": 3,
    "county_items": 133,
    "drafts_generated": 0
   },
@@ -82,7 +82,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -93,7 +93,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-09-29"
+   "draft": "drafts/weekend-guide-2026-09-30"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 9,
+   "wind_mph": 5,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 63,
-   "wind_mph": 9,
+   "temp": 48,
+   "wind_mph": 5,
    "alerts": 0
   },
   "roads": {
@@ -121,20 +121,20 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 19,
-    "In 1 to 2 weeks": 13,
-    "Later": 112
+    "In the next 7 days": 20,
+    "In 1 to 2 weeks": 15,
+    "Later": 109
    },
-   "meetings": 1
+   "meetings": 3
   },
   "feed": {
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 150931,
+   "isabella_af": 150488,
    "alpr_total": 270,
    "kern_fires": 0,
-   "aqi": 69,
+   "aqi": 67,
    "chp_week": 36
   },
   "letters": {
@@ -174,7 +174,7 @@
   },
   "trackers": {
    "alpr_total": 270,
-   "alpr_new_week": 2,
+   "alpr_new_week": 1,
    "pages": [
     "surveillance",
     "fires",

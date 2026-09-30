@@ -21,8 +21,8 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "No traffic restrictions reported.",
-     "status": "OPEN"
+     "text": "Northbound traffic is reduced to 1 lane at Henley Way /in Hornbrook/ (Siskiyou Co) - Due to a vehicle fire",
+     "status": "RESTRICTIONS"
     }
    ],
    "scope": {
@@ -54,11 +54,19 @@
       "where": "San Joaquin Co",
       "text": "A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
       "region": "CENTRAL CALIFORNIA"
+     },
+     {
+      "status": "RESTRICTIONS",
+      "place": "Hornbrook",
+      "county": "Siskiyou Co",
+      "where": "Hornbrook (Siskiyou Co)",
+      "text": "Northbound traffic is reduced to 1 lane at Henley Way /in Hornbrook/ (Siskiyou Co) - Due to a vehicle fire",
+      "region": "NORTHERN CALIFORNIA"
      }
     ]
    },
-   "reported_as_of": "Tuesday, September 29th, 2026 at 04:53 PM",
-   "hash": "7d7e7aaa4b"
+   "reported_as_of": "Tuesday, September 29th, 2026 at 07:41 PM",
+   "hash": "bd9ecabea8"
   },
   {
    "number": "58",
@@ -80,7 +88,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Tuesday, September 29th, 2026 at 04:53 PM",
+   "reported_as_of": "Tuesday, September 29th, 2026 at 07:41 PM",
    "hash": "5e8114d141"
   },
   {
@@ -117,7 +125,7 @@
      }
     ]
    },
-   "reported_as_of": "Tuesday, September 29th, 2026 at 04:53 PM",
+   "reported_as_of": "Tuesday, September 29th, 2026 at 07:41 PM",
    "hash": "f97882795e"
   }
  ],

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-01T02:15:58-07:00",
+ "built_at": "2026-10-01T02:32:41-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,13 +60,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 67,
+  "brief_words": 59,
   "daily": {
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
-   "top_story": "BPD reports week 1 Kern County Fair stats: 3 arrests, 28 ejections, 20 missing/found kids",
+   "chp_new": 0,
+   "top_story": "DOJ announces new voter fraud indictments in Minnesota",
    "archive": "2026-10-01"
   },
   "cityhall": {
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 54,
+   "temp": 56,
    "wind_mph": 0,
    "alerts": 0
   },
@@ -134,7 +134,7 @@
    "isabella_af": 150046,
    "alpr_total": 270,
    "kern_fires": 1,
-   "aqi": 65,
+   "aqi": 61,
    "chp_week": 58
   },
   "letters": {

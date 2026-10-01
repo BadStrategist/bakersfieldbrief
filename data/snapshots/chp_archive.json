@@ -120,6 +120,66 @@
   "details": ""
  },
  {
+  "log_id": "261001BF0291",
+  "time": "Oct  1 2026  3:21PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "0 Laval Rd Onr",
+  "area": "Fort Tejon",
+  "lat": 34.989384,
+  "lon": -118.945506,
+  "details": ""
+ },
+ {
+  "log_id": "261001BF0296",
+  "time": "Oct  1 2026  3:33PM",
+  "type": "1184-Provide Traffic Control",
+  "location": "2133 Kentucky St",
+  "area": "Bakersfield",
+  "lat": 35.373387,
+  "lon": -118.969383,
+  "details": ""
+ },
+ {
+  "log_id": "261001BF0310",
+  "time": "Oct  1 2026  4:01PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Allen Rd / Rosedale Hwy",
+  "area": "Bakersfield",
+  "lat": 35.383479,
+  "lon": -119.145483,
+  "details": ""
+ },
+ {
+  "log_id": "261001BF0332",
+  "time": "Oct  1 2026  4:33PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sr184 / Segrue Rd",
+  "area": "Bakersfield",
+  "lat": 35.256052,
+  "lon": -118.914438,
+  "details": ""
+ },
+ {
+  "log_id": "261001BF0334",
+  "time": "Oct  1 2026  4:36PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Lost Hills Rd / Lerdo Hwy",
+  "area": "Buttonwillow",
+  "lat": 35.499167,
+  "lon": -119.689792,
+  "details": ""
+ },
+ {
+  "log_id": "261001BF0337",
+  "time": "Oct  1 2026  4:43PM",
+  "type": "CFIRE-Car Fire",
+  "location": "Wb Sr178 Jwo Morning Dr",
+  "area": "Bakersfield",
+  "lat": 35.394167,
+  "lon": -118.9675,
+  "details": ""
+ },
+ {
   "log_id": "261001BF0039",
   "time": "Oct  1 2026  5:11AM",
   "type": "MZP-Assist CT with Maintenance",

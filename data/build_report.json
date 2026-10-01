@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-01T02:32:41-07:00",
+ "built_at": "2026-10-01T10:38:33-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -22,16 +22,16 @@
    "error": ""
   },
   "airnow": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "AirNow returned no data"
   },
   "calfire": {
    "ok": true,
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 1, column 0"
   },
   "isabella": {
    "ok": true,
@@ -60,13 +60,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 59,
+  "brief_words": 57,
   "daily": {
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "DOJ announces new voter fraud indictments in Minnesota",
+   "top_story": "Honoring babies lost too soon: Running with the Angels 5K returns",
    "archive": "2026-10-01"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 0,
+   "wind_mph": 2,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 56,
-   "wind_mph": 0,
+   "temp": 73,
+   "wind_mph": 2,
    "alerts": 0
   },
   "roads": {
@@ -134,7 +134,7 @@
    "isabella_af": 150046,
    "alpr_total": 270,
    "kern_fires": 1,
-   "aqi": 61,
+   "aqi": null,
    "chp_week": 58
   },
   "letters": {

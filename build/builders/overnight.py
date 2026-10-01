@@ -187,6 +187,174 @@ def _top_incident(reps: list) -> str | None:
     return s or None
 
 
+INCIDENTS_DIR = common.ROOT / "incidents"
+_MON_ABBR = ("Jan.", "Feb.", "March", "April", "May", "June", "July", "Aug.",
+             "Sept.", "Oct.", "Nov.", "Dec.")
+
+# Order matters: "vehicle fire" must land in Fires before the traffic bucket sees "vehicle".
+_BUCKETS = (
+    ("Shootings &amp; weapons", ("shoot", "shots", "weapon", "gun", "stab", "brandish")),
+    ("Fires", ("fire", "smoke")),
+    ("Crashes &amp; traffic", ("collision", "crash", "traffic", "vehicle", "hit and run",
+                               "dui", "pursuit")),
+    ("Medical", ("medical", "overdose", "ems")),
+    ("Burglary &amp; theft", ("burgl", "theft", "robbery", "stolen", "alarm")),
+    ("Disturbances &amp; welfare", ("disturb", "domestic", "welfare", "suspicious",
+                                    "assault", "fight")),
+)
+
+
+def _long_date(date_iso: str, abbr: bool = False) -> str:
+    try:
+        d = _date.fromisoformat(date_iso)
+    except ValueError:
+        return date_iso
+    mon = _MON_ABBR[d.month - 1] if abbr else _MONTH[d.month - 1]
+    return f"{mon} {d.day}, {d.year}"
+
+
+def _clip(s: str, n: int) -> str:
+    s = re.sub(r"\s+", " ", s).strip()
+    if len(s) <= n:
+        return s
+    return s[:n].rsplit(" ", 1)[0].rstrip(" ,;:—-") + "…"
+
+
+def _leads(text: str, n: int = 2) -> list[str]:
+    """The night's own incident headlines (bolded leads), in report order.
+    Log entries ("**HH:MM** — …") are not headlines."""
+    out = []
+    for m in re.finditer(r"^\*\*(.+?)\*\*", text, re.M):
+        s = re.sub(r"\s+", " ", m.group(1)).strip(" .:")
+        if s and not re.match(r"\d{1,2}:\d{2}", s) and s not in out:
+            out.append(s)
+        if len(out) >= n:
+            break
+    return out
+
+
+def _opening(text: str) -> str:
+    """The report's opening paragraph (first prose line under the title)."""
+    for line in text.splitlines():
+        line = line.strip()
+        if line and not line.startswith("#") and line != "---":
+            return re.sub(r"\*+", "", line)
+    return ""
+
+
+def _incidents(date_iso: str) -> list[dict]:
+    import json
+    p = INCIDENTS_DIR / f"{date_iso}.json"
+    try:
+        data = json.loads(p.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return []
+    return [i for i in data if isinstance(i, dict)] if isinstance(data, list) else []
+
+
+def _is_shooting(inc: dict) -> bool:
+    t = str(inc.get("type", "")).lower().replace("_", " ")
+    return "shoot" in t or "shots" in t
+
+
+def _night_stats_html(date_iso: str) -> str:
+    """Counts of the night's logged calls by kind, straight from incidents/<date>.json.
+    Nothing is shown when the file is missing — never an invented number."""
+    incs = _incidents(date_iso)
+    if not incs:
+        return ""
+    counts = {label: 0 for label, _ in _BUCKETS}
+    other = 0
+    for inc in incs:
+        t = str(inc.get("type", "")).lower().replace("_", " ")
+        for label, keys in _BUCKETS:
+            if any(k in t for k in keys):
+                counts[label] += 1
+                break
+        else:
+            other += 1
+    tiles = [f'<div class="tile"><strong>{len(incs)}</strong><span>calls logged overnight</span></div>']
+    tiles += [f'<div class="tile"><strong>{n}</strong><span>{label}</span></div>'
+              for label, n in counts.items() if n]
+    if other:
+        tiles.append(f'<div class="tile"><strong>{other}</strong><span>Other calls</span></div>')
+    return ('<p class="sec-head">The night at a glance</p>'
+            f'<div class="link-grid">{"".join(tiles)}</div>'
+            '<p class="note">Counts are the calls our overnight scanner log captured '
+            '(9 PM &ndash; 5 AM, one countywide feed). It is not a complete record of every call.</p>')
+
+
+def _night_title(r: dict) -> str:
+    leads = _leads(r["path"].read_text(encoding="utf-8"), 1)
+    day = _long_date(r["date"], abbr=True)
+    if leads:
+        return f"{_clip(leads[0], 58)} — Bakersfield Overnight, {day}"
+    return f"Bakersfield Overnight Police & Fire Log — {day}"
+
+
+def _night_line(r: dict, href: str) -> str:
+    """One archive row: date + that night's top two incident headlines."""
+    leads = _leads(r["path"].read_text(encoding="utf-8"), 2)
+    what = "; ".join(leads) if leads else "Overnight police, fire and EMS log"
+    return (f'<li><a href="{href}"><strong>{html.escape(_long_date(r["date"], abbr=True))}</strong>'
+            f'</a> &mdash; {html.escape(what)}</li>')
+
+
+def _build_night_pages(reps: list, ctx, built_iso: str, newsletter: str) -> list[str]:
+    """One permanent page per night at /overnight/<date>/ so every report has its
+    own URL, title and NewsArticle block (the hub only ever shows the newest two)."""
+    built = []
+    rel = "../../"
+    for i, r in enumerate(reps):
+        text = r["path"].read_text(encoding="utf-8")
+        newer = reps[i - 1] if i > 0 else None
+        older = reps[i + 1] if i + 1 < len(reps) else None
+        nav = ['<p class="arch-more">']
+        if older:
+            nav.append(f'<a class="btn btn-ghost" href="{rel}overnight/{older["date"]}/">'
+                       f'&larr; {html.escape(_long_date(older["date"], abbr=True))}</a> ')
+        nav.append(f'<a class="btn" href="{rel}overnight/">Latest night</a> ')
+        if newer:
+            nav.append(f'<a class="btn btn-ghost" href="{rel}overnight/{newer["date"]}/">'
+                       f'{html.escape(_long_date(newer["date"], abbr=True))} &rarr;</a>')
+        nav.append("</p>")
+        nav_html = "".join(nav)
+        try:
+            dow = _DOW[_date.fromisoformat(r["date"]).weekday()] + ", "
+        except ValueError:
+            dow = ""
+        long_day = _long_date(r["date"])
+        title = _night_title(r)
+        desc = _clip(_opening(text), 155) or (
+            f"Overnight police, fire and EMS calls in Bakersfield and Kern County for {long_day}.")
+        article = _newsarticle_jsonld(r)
+        article["headline"] = _clip(title, 108)
+        article["description"] = desc
+        article["mainEntityOfPage"] = f"https://bakersfieldbrief.com/overnight/{r['date']}/"
+        body = f"""
+    <div class="pagehead"><div class="hero"><p class="kicker">The Kern Overnight &middot; {html.escape(long_day)}</p>
+    <h1>What happened in Bakersfield overnight: {html.escape(dow + long_day)}</h1>
+    <p class="lede">Police, fire and EMS calls heard on the county&rsquo;s radio overnight, 9 PM &ndash; 5 AM. Preliminary dispatch information; locations are generalized.</p></div></div>
+
+    {nav_html}
+    {_night_stats_html(r["date"])}
+    <div class="ko-reports">{_report_html(r)}</div>
+    {nav_html}
+    {newsletter}
+    <p class="note" style="margin-top:14px">Compiled from preliminary dispatch traffic; details are unconfirmed until an official source reports them, and locations are generalized for privacy. See <a href="{rel}overnight/archive/">every night on file</a>.</p>
+    <p class="note credit" style="margin-top:10px">Audio provided by
+    <a href="https://www.broadcastify.com/listen/feed/14029" rel="noopener nofollow" target="_blank">Broadcastify</a>.
+    Feed archives are used under a Creative Commons Attribution 3.0 United States license.</p>"""
+        page = page_mod.render(
+            title=title, desc=desc, canonical=f"/overnight/{r['date']}/",
+            content=body, current="overnight", rel=rel, built=built_iso,
+            statusbar=ctx.statusbar, og_type="article",
+            jsonld=[page_mod.org_jsonld(), article])
+        common.write(common.SITE / "overnight" / r["date"] / "index.html", page)
+        built.append(f"overnight/{r['date']}/index.html")
+    return built
+
+
 def build(ctx, sources: dict) -> list[str]:
     built = []
     built_iso = common.iso_today()
@@ -199,18 +367,21 @@ def build(ctx, sources: dict) -> list[str]:
         # a dashed rule between the two day cards makes the break unmistakable
         recent = ('<div class="ko-reports">'
                   + '<div class="ko-sep"></div>'.join(parts) + '</div>')
-        all_reports = ('<div class="ko-reports">'
-                       + "".join(_report_html(r) for r in reps) + '</div>')
         n_old = len(reps) - 2
         more_btn = (f'<p class="arch-more" style="margin-top:10px">'
                     f'<a class="btn" href="{rel}overnight/archive/">'
                     f'View previous reports ({n_old})</a></p>'
                     if n_old > 0 else "")
+        recent_nights = ('<p class="sec-head">Recent nights</p><div class="letter"><ul>'
+                         + "".join(_night_line(r, f'{rel}overnight/{r["date"]}/') for r in reps[:14])
+                         + '</ul></div>')
+        stats = _night_stats_html(reps[0]["date"])
     else:
         recent = ('<p class="note">No reports published yet. The pipeline is being '
                   'stood up — first edition coming soon.</p>')
-        all_reports = recent
         more_btn = ""
+        recent_nights = ""
+        stats = ""
 
     explainer = """
     <p class="sec-head">How it works</p>
@@ -230,46 +401,70 @@ def build(ctx, sources: dict) -> list[str]:
 
     top = _top_incident(reps)
     latest_date = reps[0]["date"] if reps else ""
+    latest_long = _long_date(latest_date) if latest_date else ""
     if top:
-        happened_text = (f"On {latest_date}, {top}. Read the full Kern Overnight "
-                         "report for the complete rundown of overnight activity.")
+        happened_text = (f"On the night ending {latest_long}, the biggest call was: {top}. "
+                         "The full overnight log on this page lists the other police, fire "
+                         "and EMS calls, with times and general locations.")
     else:
         happened_text = ("The Kern Overnight publishes a morning summary of overnight "
                          "police, fire, and EMS activity across Bakersfield and Kern "
                          "County, updated daily.")
+    faq = [("What happened in Bakersfield last night?", happened_text)]
+    incs = _incidents(latest_date) if latest_date else []
+    if incs:
+        shots = [i for i in incs if _is_shooting(i)]
+        if shots:
+            first = _clip(str(shots[0].get("summary", "")), 220)
+            shoot_text = (f"Our overnight scanner log for {latest_long} includes {len(shots)} "
+                          f"shooting or shots-fired call{'s' if len(shots) != 1 else ''}. {first} "
+                          "These are preliminary dispatch reports, not confirmed by police.")
+        else:
+            shoot_text = (f"No shooting or shots-fired call appears in our overnight scanner log "
+                          f"for {latest_long}. The log covers one countywide radio feed from 9 PM "
+                          "to 5 AM, so it is not a complete record.")
+        faq.append(("Was there a shooting in Bakersfield last night?", shoot_text))
+    faq += [
+        ("Where can I see Bakersfield police activity from today or last night?",
+         "This page lists the police, sheriff, fire and EMS calls heard on Kern County radio "
+         "between 9 PM and 5 AM, published every morning. Each night also has its own "
+         "permanent page in the archive."),
+        ("Is there a Bakersfield police scanner?",
+         "Yes. The Kern Overnight summarizes overnight police, fire, and EMS dispatch activity "
+         "across Bakersfield and Kern County every morning. For live audio, the Kern County "
+         "feed is available on streaming scanner services like Broadcastify."),
+        ("How accurate is this?",
+         "Everything here is preliminary dispatch information taken from radio traffic. Details "
+         "are unconfirmed until an official source reports them, and locations are generalized "
+         "for privacy."),
+    ]
     faq_jsonld = {
         "@context": "https://schema.org",
         "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "What happened overnight in Bakersfield?",
-                "acceptedAnswer": {"@type": "Answer", "text": happened_text},
-            },
-            {
-                "@type": "Question",
-                "name": "Is there a Bakersfield police scanner?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": ("Yes. The Kern Overnight summarizes overnight police, fire, "
-                             "and EMS dispatch activity across Bakersfield and Kern County "
-                             "every morning. For live audio, the Kern County feed is "
-                             "available on streaming scanner services like Broadcastify."),
-                },
-            },
-        ],
+        "mainEntity": [{"@type": "Question", "name": q,
+                        "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq],
     }
+    faq_html = ('<p class="sec-head">Questions people ask</p><div class="letter">'
+                + "".join(f"<h3>{html.escape(q)}</h3><p>{html.escape(a)}</p>" for q, a in faq)
+                + "</div>")
 
+    updated = f" Updated {html.escape(latest_long)}." if latest_long else ""
     body = f"""
     <div class="pagehead"><div class="hero"><p class="kicker">The Kern Overnight &middot; scanner-to-newsletter</p>
-    <h1>What Happened Overnight in Bakersfield</h1>
-    <p class="lede">We listen to the county&rsquo;s police, fire, and EMS radio all night so you don&rsquo;t have to. Every morning: what happened, what&rsquo;s preliminary, and where.</p></div></div>
+    <h1>What Happened in Bakersfield Last Night</h1>
+    <p class="lede">We listen to the county&rsquo;s police, fire, and EMS radio all night so you don&rsquo;t have to. Every morning: what happened overnight, what&rsquo;s preliminary, and where.{updated}</p></div></div>
 
-    {newsletter}
+    {stats}
 
     <p class="sec-head">Published reports</p>
     {recent}
     {more_btn}
+
+    {recent_nights}
+
+    {newsletter}
+
+    {faq_html}
 
     {explainer}
     <p class="note" style="margin-top:14px">Compiled from preliminary dispatch traffic each morning; details are unconfirmed until an official source reports them, and locations are generalized for privacy.</p>
@@ -277,38 +472,50 @@ def build(ctx, sources: dict) -> list[str]:
     <a href="https://www.broadcastify.com/listen/feed/14029" rel="noopener nofollow" target="_blank">Broadcastify</a>.
     Feed archives are used under a Creative Commons Attribution 3.0 United States license.</p>"""
 
+    title = "What Happened in Bakersfield Last Night? Police, Fire & EMS Log"
+    desc = ("What happened in Bakersfield last night? Overnight police activity, shootings, "
+            "fires and crashes heard on Kern County scanner radio, with times and general "
+            "locations. Updated every morning.")
     page = page_mod.render(
-        title="What Happened Overnight in Bakersfield — Police, Fire & EMS",
-        desc="What happened overnight in Bakersfield? The Kern Overnight summarizes overnight police, fire, and EMS activity across Bakersfield and Kern County every morning — published daily.",
+        title=title, desc=desc,
         canonical="/overnight/",
         content=body, current="overnight", rel=rel,
         built=built_iso, statusbar=ctx.statusbar,
-        jsonld=[page_mod.org_jsonld(), faq_jsonld]
-               + [_newsarticle_jsonld(r) for r in reps[:2]])
+        jsonld=[page_mod.org_jsonld(),
+                page_mod.webpage_jsonld("/overnight/", latest_date or built_iso, title, desc),
+                faq_jsonld])
     common.write(common.SITE / "overnight" / "index.html", page)
     built.append("overnight/index.html")
 
-    # ---- archive page: every report, newest first (feeds trends/monthlies later)
+    # ---- one permanent page per night
+    built += _build_night_pages(reps, ctx, built_iso, newsletter)
+
+    # ---- archive page: an index of every night, newest first, linking to its own page
     archive_rel = "../../"
+    if reps:
+        all_nights = ('<div class="letter"><ul>'
+                      + "".join(_night_line(r, f'{archive_rel}overnight/{r["date"]}/') for r in reps)
+                      + '</ul></div>')
+    else:
+        all_nights = recent
     archive_body = f"""
     <div class="pagehead"><div class="hero"><p class="kicker">Archive</p>
-    <h1>The Kern Overnight — every report</h1>
-    <p class="lede">All published overnight reports, newest first. The full archive stays on file so we can build trends and monthly summaries from it.</p></div></div>
+    <h1>The Kern Overnight — every night on file</h1>
+    <p class="lede">Every published overnight police, fire and EMS report for Bakersfield and Kern County, newest first. Each night has its own page.</p></div></div>
 
+    <p class="arch-more"><a href="{archive_rel}overnight/" class="btn">&larr; Back to the latest reports</a></p>
+    {all_nights}
+    <p class="arch-more"><a href="{archive_rel}overnight/" class="btn">&larr; Back to the latest reports</a></p>
     {newsletter}
-
-    <p class="arch-more"><a href="{archive_rel}overnight/" class="btn">&larr; Back to the latest reports</a></p>
-    {all_reports}
-    <p class="arch-more"><a href="{archive_rel}overnight/" class="btn">&larr; Back to the latest reports</a></p>
     """
 
     archive_page = page_mod.render(
-        title="The Kern Overnight — Archive | Bakersfield Daily Brief",
-        desc="Archive of every Kern Overnight scanner-to-newsletter report for Bakersfield and Kern County.",
+        title="Bakersfield Overnight Police & Fire Log Archive — Every Night | Bakersfield Daily Brief",
+        desc="Archive of every Kern Overnight report: nightly police, fire and EMS scanner activity for Bakersfield and Kern County, one page per night.",
         canonical="/overnight/archive/",
         content=archive_body, current="overnight", rel=archive_rel,
         built=built_iso, statusbar=ctx.statusbar,
-        jsonld=[page_mod.org_jsonld()] + [_newsarticle_jsonld(r) for r in reps])
+        jsonld=[page_mod.org_jsonld()])
     common.write(common.SITE / "overnight" / "archive" / "index.html", archive_page)
     built.append("overnight/archive/index.html")
 

@@ -210,7 +210,7 @@ def _sitemap():
     for u in urls:
         if u.endswith("/thanks/"):
             continue
-        m = re.search(r"/briefs/(\d{4}-\d{2}-\d{2})/$", u)
+        m = re.search(r"/(?:briefs|overnight)/(\d{4}-\d{2}-\d{2})/$", u)
         xml.append(f"  <url><loc>{u}</loc><lastmod>{m.group(1) if m else today}</lastmod></url>")
     xml.append("</urlset>")
     common.write(common.SITE / "sitemap.xml", "\n".join(xml) + "\n")

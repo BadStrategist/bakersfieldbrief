@@ -1,0 +1,218 @@
+[
+ {
+  "type": "shooting",
+  "time": "00:25",
+  "agency": "Bakersfield-area police and fire crews",
+  "area": "east Bakersfield",
+  "notability": 5,
+  "disposition": "one person reported bleeding; suspect vehicle described; area checked",
+  "summary": "Officers and medics were sent after a caller reported a man got out of a white four-door sedan, pointed a gun in the air and fired one round, and that a person was bleeding. A second party was reported to have driven a white four-door to a nearby motel, and units were checking the area."
+ },
+ {
+  "type": "assault with a deadly weapon",
+  "time": "01:19",
+  "agency": "Bakersfield-area police and fire crews",
+  "area": "Chester Avenue near Decatur Street, Bakersfield",
+  "notability": 4,
+  "disposition": "victim walked in; deputies and a fire crew sent",
+  "summary": "A person walked into a business on Chester Avenue with a stab wound, and deputies and a fire crew were sent to the area around Decatur Street and North Chester Avenue."
+ },
+ {
+  "type": "residential burglary in progress",
+  "time": "00:18",
+  "agency": "Bakersfield-area law enforcement",
+  "area": "Millwood Way area, Bakersfield",
+  "notability": 4,
+  "disposition": "units covering the perimeter; audible alarm",
+  "summary": "Units started to an audible burglary alarm at a home on Millwood Way to cover the perimeter and the living room door, with cross streets at Thornwood Drive and Woodcastle Way."
+ },
+ {
+  "type": "collision",
+  "time": "04:33",
+  "agency": "California Highway Patrol and Kern County fire crews",
+  "area": "eastbound Highway 46 west of Interstate 5, Kern County",
+  "notability": 4,
+  "disposition": "two semis stuck together; traffic diverted",
+  "summary": "Two semis collided in the eastbound lanes of Highway 46 west of Interstate 5, a maroon semi with a silver trailer and a Walmart semi, and came to rest stuck together in the roadway. Crews reported a backup and an exit closed while drivers were routed around."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "22:39",
+  "agency": "Kern County fire crews",
+  "area": "westbound Highway 58 west of General Beale Road, Bakersfield",
+  "notability": 3,
+  "disposition": "semi on fire; grass fire in the same stretch knocked down",
+  "summary": "A semi was reported on fire in the westbound lanes of Highway 58 and fire crews from a nearby station responded, with a grass fire in the same stretch brought under control a short time later."
+ },
+ {
+  "type": "robbery alarm",
+  "time": "00:11",
+  "agency": "Bakersfield Police Department",
+  "area": "2900 block of Niles Street, Bakersfield",
+  "notability": 3,
+  "disposition": "video alarm; multiple units sent",
+  "summary": "Multiple units were sent to a Dollar General on Niles Street after a video alarm showed two people inside, both in black tops and jeans, with a possible third person in a white shirt."
+ },
+ {
+  "type": "shots fired",
+  "time": "22:47",
+  "agency": "Bakersfield-area law enforcement",
+  "area": "Hall Road near the Rasmussen Center, Bakersfield",
+  "notability": 3,
+  "disposition": "caller reported shots into a field; area checked",
+  "summary": "A caller reported someone firing shots into a field on the western end of Hall Road near the Rasmussen Center, and a deputy asked to be stopped where the caller believed the shots were fired."
+ },
+ {
+  "type": "collision",
+  "time": "05:12",
+  "agency": "Bakersfield police and fire crews",
+  "area": "East Brundage Lane and Kincaid Street, Bakersfield",
+  "notability": 3,
+  "disposition": "rollover; rescue response; all parties out",
+  "summary": "A silver sedan rolled over in the area of East Brundage Lane and Kincaid Street and a full rescue response was sent. All parties were reported out of the vehicles."
+ },
+ {
+  "type": "field fire",
+  "time": "04:49",
+  "agency": "Bakersfield fire crews",
+  "area": "westbound Highway 58 near 84 Lumber, Bakersfield",
+  "notability": 3,
+  "disposition": "access slowed by railroad crossing; upgraded as a precaution",
+  "summary": "Crews were sent to a fire in the field just west of 84 Lumber on the westbound Highway 58 embankment. Access was slowed because the railroad crossing arms were down, and the call was upgraded to a critical medical aid as a precaution."
+ },
+ {
+  "type": "foot pursuit",
+  "time": "22:17",
+  "agency": "Bakersfield Police Department",
+  "area": "Washington Street near the rail tracks, Bakersfield",
+  "notability": 3,
+  "disposition": "subject ran west across the tracks; perimeter set",
+  "summary": "A person took off on a quad from a unit, ditched it and ran west across the rail tracks, and units set a perimeter while a drone was brought in."
+ },
+ {
+  "type": "traffic hazard",
+  "time": "21:48",
+  "agency": "California Highway Patrol and Kern County fire crews",
+  "area": "northbound Interstate 5 at Gorman",
+  "notability": 3,
+  "disposition": "lanes reopened except the number 1 lane",
+  "summary": "Caltrans asked the CHP to close all but one lane of northbound Interstate 5 at Gorman for traffic exiting at Lebec. Fire crews later gave the go-ahead to reopen all lanes except the number 1 lane at the west ramp."
+ },
+ {
+  "type": "suspicious person with a weapon",
+  "time": "23:49",
+  "agency": "Bakersfield Police Department",
+  "area": "Bakersfield",
+  "notability": 3,
+  "disposition": "threats reported; officers responding",
+  "summary": "Officers were sent after a caller reported a man wrapped in a black blanket who had threatened to shoot people using an ATM and had previously shown a handgun."
+ },
+ {
+  "type": "disturbance",
+  "time": "02:10",
+  "agency": "Bakersfield-area law enforcement",
+  "area": "Hart Street riverbed, Bakersfield",
+  "notability": 2,
+  "disposition": "caller reported a person with weapons",
+  "summary": "Deputies were asked to respond to the riverbed south of Hart Street after a caller reported a person with weapons while he was getting his belongings from an encampment."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "23:31",
+  "agency": "Kern County fire crews",
+  "area": "Panama Road and Cottonwood Road, Bakersfield",
+  "notability": 2,
+  "disposition": "crew sent to a vehicle fire",
+  "summary": "A crew was sent to a vehicle fire just north of Panama Road and Cottonwood Road."
+ },
+ {
+  "type": "stolen vehicle recovery",
+  "time": "02:51",
+  "agency": "Bakersfield Police Department",
+  "area": "1200 block of East 21st Street, Bakersfield",
+  "notability": 2,
+  "disposition": "vehicle located",
+  "summary": "An officer reported a stolen vehicle in the 1200 block of East 21st Street."
+ },
+ {
+  "type": "fire alarm",
+  "time": "04:26",
+  "agency": "Bakersfield police and fire crews",
+  "area": "Taft Highway near Hughes Lane, Bakersfield",
+  "notability": 2,
+  "disposition": "business cleared",
+  "summary": "An alarm company reported a glass break at an auto parts business on Taft Highway near Hughes Lane. Units reported the business had been cleared."
+ },
+ {
+  "type": "medical aid",
+  "time": "21:30",
+  "agency": "Kern County area fire crews",
+  "area": "Ponce de Leon Avenue, Bakersfield",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to a medical aid in the Ponce de Leon Avenue area."
+ },
+ {
+  "type": "medical aid",
+  "time": "21:36",
+  "agency": "Kern County area fire crews",
+  "area": "Primrose Avenue, Bakersfield",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to a medical aid on Primrose Avenue."
+ },
+ {
+  "type": "medical aid",
+  "time": "00:51",
+  "agency": "Bakersfield fire crews",
+  "area": "White Lane and Hughes Lane, Bakersfield",
+  "notability": 2,
+  "disposition": "crew sent to an unknown medical aid",
+  "summary": "A crew was sent to an unknown medical aid at White Lane and Hughes Lane."
+ },
+ {
+  "type": "medical aid",
+  "time": "02:09",
+  "agency": "Bakersfield fire crews",
+  "area": "North King Street, Bakersfield",
+  "notability": 2,
+  "disposition": "engine sent",
+  "summary": "An engine was sent to a medical aid on North King Street."
+ },
+ {
+  "type": "medical aid",
+  "time": "03:47",
+  "agency": "Bakersfield fire crews",
+  "area": "Colton Street, Bakersfield",
+  "notability": 2,
+  "disposition": "crew sent for difficulty breathing",
+  "summary": "A crew was sent to a medical aid on Colton Street for difficulty breathing."
+ },
+ {
+  "type": "welfare check",
+  "time": "04:19",
+  "agency": "Bakersfield-area law enforcement",
+  "area": "Lake Street, Bakersfield",
+  "notability": 2,
+  "disposition": "deputies sent",
+  "summary": "Deputies were sent to a welfare check on Lake Street for a person reported to be in crisis."
+ },
+ {
+  "type": "grass fire",
+  "time": "04:44",
+  "agency": "Kern County fire crews",
+  "area": "south of Grapevine in the center divide",
+  "notability": 2,
+  "disposition": "crews sent to check",
+  "summary": "A caller reported a small fire in the center divide south of Grapevine, and crews were sent to check the area."
+ },
+ {
+  "type": "smoke investigation",
+  "time": "05:37",
+  "agency": "Bakersfield fire crews",
+  "area": "Henry Street and Cherry Street, Bakersfield",
+  "notability": 2,
+  "disposition": "engine sent",
+  "summary": "An engine was sent to investigate smoke at Henry Street and Cherry Street."
+ }
+]

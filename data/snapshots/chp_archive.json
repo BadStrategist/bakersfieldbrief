@@ -1,5 +1,25 @@
 [
  {
+  "log_id": "261001BF0235",
+  "time": "Oct  1 2026  1:44PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "6249 Niles St",
+  "area": "Bakersfield",
+  "lat": 35.375953,
+  "lon": -118.934402,
+  "details": ""
+ },
+ {
+  "log_id": "261001BF0240",
+  "time": "Oct  1 2026  1:56PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sr178 / Mouth Of The Canyon",
+  "area": "BF",
+  "lat": 35.442222,
+  "lon": -118.791944,
+  "details": ""
+ },
+ {
   "log_id": "261001BF0018",
   "time": "Oct  1 2026  2:04AM",
   "type": "1179-Trfc Collision-1141 Enrt",

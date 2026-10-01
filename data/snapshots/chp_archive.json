@@ -1120,6 +1120,66 @@
   "details": ""
  },
  {
+  "log_id": "260930BF0236",
+  "time": "Sep 30 2026  3:03PM",
+  "type": "CFIRE-Car Fire",
+  "location": "Nb I5 Jno Copus Rd",
+  "area": "Buttonwillow",
+  "lat": 35.097222,
+  "lon": -119.039444,
+  "details": ""
+ },
+ {
+  "log_id": "260930BF0262",
+  "time": "Sep 30 2026  4:07PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sr178 / Oak St",
+  "area": "BF",
+  "lat": 35.380978,
+  "lon": -119.038511,
+  "details": ""
+ },
+ {
+  "log_id": "260930BF0280",
+  "time": "Sep 30 2026  4:34PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Fairfax Rd / E Brundage Ln",
+  "area": "Bakersfield",
+  "lat": 35.354264,
+  "lon": -118.93204,
+  "details": ""
+ },
+ {
+  "log_id": "260930BF0283",
+  "time": "Sep 30 2026  4:46PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Wb Sr178 Jeo Union Ave",
+  "area": "Bakersfield",
+  "lat": 35.383611,
+  "lon": -119.001389,
+  "details": ""
+ },
+ {
+  "log_id": "260930BF0290",
+  "time": "Sep 30 2026  4:58PM",
+  "type": "1125-Traffic Hazard",
+  "location": "25514-25883 Old River Rd",
+  "area": "Buttonwillow",
+  "lat": 35.119578,
+  "lon": -119.109751,
+  "details": ""
+ },
+ {
+  "log_id": "260930BF0293",
+  "time": "Sep 30 2026  5:00PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Di Giorgio Rd / S Fairfax Rd",
+  "area": "Bakersfield",
+  "lat": 35.252368,
+  "lon": -118.932088,
+  "details": ""
+ },
+ {
   "log_id": "260930BF0033",
   "time": "Sep 30 2026  5:05AM",
   "type": "MZP-Assist CT with Maintenance",

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-30T14:36:44-07:00",
+ "built_at": "2026-09-30T17:03:50-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,13 +60,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 58,
+  "brief_words": 70,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "Village Flea returns to Kern County Museum",
+   "chp_new": 6,
+   "top_story": "'Best of the best': Kern bull riders, cowboys & more discuss what the rodeo means to them",
    "archive": "2026-09-30"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 16,
+   "wind_mph": 14,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 86,
-   "wind_mph": 16,
+   "temp": 82,
+   "wind_mph": 14,
    "alerts": 0
   },
   "roads": {
@@ -134,8 +134,8 @@
    "isabella_af": 150488,
    "alpr_total": 270,
    "kern_fires": 0,
-   "aqi": 58,
-   "chp_week": 46
+   "aqi": 67,
+   "chp_week": 52
   },
   "letters": {
    "published": 1

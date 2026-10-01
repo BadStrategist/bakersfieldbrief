@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-01T14:05:39-07:00",
+ "built_at": "2026-10-01T15:06:12-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 7,
    "top_story": "Bakersfield PD asking for public's help identifying 2 men accused of burglary on Ming Ave",
    "archive": "2026-10-01"
   },
@@ -121,9 +121,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 18,
-    "In 1 to 2 weeks": 13,
-    "Later": 104
+    "In the next 7 days": 20,
+    "In 1 to 2 weeks": 14,
+    "Later": 109
    },
    "meetings": 4
   },
@@ -135,7 +135,7 @@
    "alpr_total": 270,
    "kern_fires": 1,
    "aqi": null,
-   "chp_week": 65
+   "chp_week": 72
   },
   "letters": {
    "published": 1

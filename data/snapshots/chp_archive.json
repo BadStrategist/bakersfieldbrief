@@ -13,10 +13,10 @@
   "log_id": "261001BF0240",
   "time": "Oct  1 2026  1:56PM",
   "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Sr178 / Mouth Of The Canyon",
-  "area": "BF",
-  "lat": 35.442222,
-  "lon": -118.791944,
+  "location": "SR178 / Democrat Rd",
+  "area": "Bakersfield",
+  "lat": 35.528673,
+  "lon": -118.656665,
   "details": ""
  },
  {
@@ -40,6 +40,66 @@
   "details": ""
  },
  {
+  "log_id": "261001BF0249",
+  "time": "Oct  1 2026  2:18PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Peterson Rd / Browning Rd",
+  "area": "Bakersfield",
+  "lat": 35.703368,
+  "lon": -119.22297,
+  "details": ""
+ },
+ {
+  "log_id": "261001BF0255",
+  "time": "Oct  1 2026  2:29PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb Sr99 Jso Houghton Rd",
+  "area": "Bakersfield",
+  "lat": 35.233611,
+  "lon": -119.014167,
+  "details": ""
+ },
+ {
+  "log_id": "261001BF0267",
+  "time": "Oct  1 2026  2:35PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Dennis Mccarthy Dr / Laval Rd",
+  "area": "Fort Tejon",
+  "lat": 34.990586,
+  "lon": -118.947056,
+  "details": ""
+ },
+ {
+  "log_id": "261001BF0264",
+  "time": "Oct  1 2026  2:38PM",
+  "type": "20001-Hit and Run w/Injuries",
+  "location": "I405 N / W FLORENCE AVE",
+  "area": "LA",
+  "lat": 33.963656,
+  "lon": -118.369816,
+  "details": ""
+ },
+ {
+  "log_id": "261001BF0269",
+  "time": "Oct  1 2026  2:43PM",
+  "type": "1125A-Animal Hazard",
+  "location": "Nb Sr99 Jno Merle Haggard Dr",
+  "area": "Bakersfield",
+  "lat": 35.444722,
+  "lon": -119.090833,
+  "details": ""
+ },
+ {
+  "log_id": "261001BF0274",
+  "time": "Oct  1 2026  2:52PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Edison Hwy / Malaga Rd",
+  "area": "Bakersfield",
+  "lat": 35.345198,
+  "lon": -118.86091,
+  "details": ""
+ },
+ {
   "log_id": "261001BF0024",
   "time": "Oct  1 2026  2:55AM",
   "type": "TADV-Traffic Advisory",
@@ -47,6 +107,16 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261001BF0280",
+  "time": "Oct  1 2026  3:00PM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sb I5 At Sr223",
+  "area": "Buttonwillow",
+  "lat": 35.208889,
+  "lon": -119.163056,
   "details": ""
  },
  {

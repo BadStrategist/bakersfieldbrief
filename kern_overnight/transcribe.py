@@ -32,7 +32,12 @@ from .fetch import _epoch_from_name  # noqa: E402 (block naming helper)
 
 ENGINE = os.environ.get("KO_STT_ENGINE", "faster-whisper")
 MODEL_SIZE = os.environ.get("KO_WHISPER_MODEL",
-                            "mobiuslabsgmbh/faster-whisper-large-v3-turbo")
+                            "Systran/faster-whisper-large-v3")
+# 2026-09-30 GPU A/B (6 blocks, 3 nights): full large-v3 at beam 5 cut junk
+# lines ~90% vs turbo (4 vs 47; turbo melts static into CJK/Cyrillic noise),
+# street MATCH counts tied (16 vs 17), 1.2 vs 0.68 min/block. Turbo was only
+# the right call while this ran on CPU. Beam 1 was likewise a CPU-speed choice.
+BEAM_SIZE = int(os.environ.get("KO_BEAM", "5"))
 # large-v3-turbo (ungated mobiuslabs mirror) beat distil-large-v3 in the
 # Aug-2026 A/B on this workload: 48.6% vs 35.7% street MATCH rate
 # (streetcheck gazetteer) at 9.9 vs 11.3 min/block. Systran's repo is
@@ -46,6 +51,46 @@ MIN_DURATION_S = float(os.environ.get("KO_MIN_SEG_S", "1.0"))
 # wall-clock on 32 cores (RAM, not CPU, is the bottleneck) and eliminates the
 # stalls that actually ran transcription long. Env KO_WORKERS still overrides.
 WORKERS = int(os.environ.get("KO_WORKERS", "2"))  # parallel blocks per night
+
+
+def _cuda_ready() -> bool:
+    """True if the NVIDIA GPU + CUDA 12 cuBLAS/cuDNN 9 DLLs are usable.
+
+    The DLLs come from the nvidia-cublas-cu12 / nvidia-cudnn-cu12 pip wheels
+    (site-packages/nvidia/*/bin); CTranslate2 won't find them on its own, so
+    register them here. Runs at import, i.e. once in every worker process."""
+    if os.name != "nt":
+        return False  # CI/Linux: no GPU path, keep CPU behaviour
+    import ctypes
+    import glob
+    import site
+    try:
+        for sp in site.getsitepackages():
+            for d in glob.glob(os.path.join(sp, "nvidia", "*", "bin")):
+                os.add_dll_directory(d)
+                os.environ["PATH"] = d + os.pathsep + os.environ.get("PATH", "")
+        import ctranslate2
+        if ctranslate2.get_cuda_device_count() < 1:
+            return False
+        ctypes.WinDLL("cublas64_12.dll")
+        ctypes.WinDLL("cudnn64_9.dll")
+        return True
+    except Exception:  # noqa: BLE001 — any failure → CPU
+        return False
+
+
+# Whisper device. Until 2026-09-30 this was hard-coded CPU (int8, 8 threads x
+# 2 workers = half of all 32 threads + ~3GB RAM for 30-90 min). The RTX 4060
+# runs turbo at float16 in ~1.6GB VRAM, far faster, with no CPU/RAM pressure.
+# KO_DEVICE=cpu forces the old path; "auto" falls back to CPU if CUDA is absent.
+# Measured 2026-09-30 on real blocks: CPU ~9.9 min/block, GPU 1 worker 1.7,
+# GPU 2 workers 1.25 with turbo. With large-v3 beam 5, 2 workers hit 7.9 of
+# 8.2 GB VRAM and spilled to shared memory: 8.8 min/block vs ~1.2 for one
+# worker. So the GPU path runs 1 worker unless KO_WORKERS says otherwise.
+_DEV_PREF = os.environ.get("KO_DEVICE", "auto").lower()
+DEVICE = "cuda" if _DEV_PREF in ("auto", "cuda") and _cuda_ready() else "cpu"
+if DEVICE == "cuda" and "KO_WORKERS" not in os.environ:
+    WORKERS = 1
 
 # --- per-process globals for the parallel workers (set by _init_worker)
 _W_ENGINE = ENGINE
@@ -141,19 +186,22 @@ def _load_model():
         raise TranscribeError(
             f"faster-whisper unavailable ({e}). pip install faster-whisper "
             "(pulls CTranslate2; large-v3 runs on CPU at int8).") from e
-    print(f"    [ko-stt] loading {MODEL_SIZE} (this takes a minute)...", flush=True)
+    print(f"    [ko-stt] loading {MODEL_SIZE} on {DEVICE}...", flush=True)
     # Offline by default (cached models only — a HF network check once hung
     # the job for 10+ min). Set HF_HUB_OFFLINE=0 to allow a first-run
     # download of the model.
     local_only = os.environ.get("HF_HUB_OFFLINE", "1") != "0"
     try:
+        if DEVICE == "cuda":
+            return WhisperModel(MODEL_SIZE, device="cuda", compute_type="float16",
+                                local_files_only=local_only)
         return WhisperModel(MODEL_SIZE, device="cpu", compute_type="int8",
                             cpu_threads=8, local_files_only=local_only)
     except Exception as e:  # noqa: BLE001 — cache miss → allow download
         raise TranscribeError(
             "faster-whisper model not in cache. Run once with "
             "HF_HUB_OFFLINE=0 (or `huggingface-cli download "
-            f"Systran/faster-whisper-{MODEL_SIZE}`) to fetch it. ({e})") from e
+            f"{MODEL_SIZE}`) to fetch it. ({e})") from e
 
 
 def _transcribe_wav(model, audio: "np.ndarray", seg: tuple[float, float], vocab: str) -> list[dict]:
@@ -169,7 +217,7 @@ def _transcribe_wav(model, audio: "np.ndarray", seg: tuple[float, float], vocab:
     segs, _info = model.transcribe(
         chunk,
         language="en",
-        beam_size=1,
+        beam_size=BEAM_SIZE,
         vad_filter=False,          # we already VAD'd; keep whisper's own off
         initial_prompt=vocab,      # vocabulary priming (editable vocab.txt)
         condition_on_previous_text=False,
@@ -381,8 +429,10 @@ def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
                 if ENGINE == "deepgram":
                     rows = _transcribe_deepgram(wav, segs, block_epoch, tz, mp3.name)
                 else:
-                    model = _load_model()
-                    rows = _transcribe_whisper(model, wav, segs, block_epoch,
+                    global _W_MODEL
+                    if _W_MODEL is None:  # load once, not once per block
+                        _W_MODEL = _load_model()
+                    rows = _transcribe_whisper(_W_MODEL, wav, segs, block_epoch,
                                                tz, mp3.name, vocab_text)
                 blocks_done += 1
                 for r in rows:

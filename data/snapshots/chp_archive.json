@@ -1190,6 +1190,46 @@
   "details": ""
  },
  {
+  "log_id": "260930BF0348",
+  "time": "Sep 30 2026  7:20PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "0 I5 N",
+  "area": "Fort Tejon",
+  "lat": 34.921723,
+  "lon": -118.923275,
+  "details": ""
+ },
+ {
+  "log_id": "260930BF0354",
+  "time": "Sep 30 2026  7:23PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Sb Sr99 Jso South Union Ave",
+  "area": "Bakersfield",
+  "lat": 35.165,
+  "lon": -119.001944,
+  "details": ""
+ },
+ {
+  "log_id": "260930BF0370",
+  "time": "Sep 30 2026  7:30PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "E Evans Rd / Lakeview Dr",
+  "area": "Bakersfield",
+  "lat": 35.705733,
+  "lon": -118.449764,
+  "details": ""
+ },
+ {
+  "log_id": "260930BF0372",
+  "time": "Sep 30 2026  7:33PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Nb I5 At Sr43",
+  "area": "Buttonwillow",
+  "lat": 35.293333,
+  "lon": -119.252222,
+  "details": ""
+ },
+ {
   "log_id": "260930BF0090",
   "time": "Sep 30 2026  8:57AM",
   "type": "CZP-Assist with Construction",

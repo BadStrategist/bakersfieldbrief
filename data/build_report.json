@@ -1,5 +1,5 @@
 {
- "built_at": "2026-09-30T17:03:50-07:00",
+ "built_at": "2026-09-30T19:46:18-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,13 +60,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 70,
+  "brief_words": 58,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 6,
-   "top_story": "'Best of the best': Kern bull riders, cowboys & more discuss what the rodeo means to them",
+   "chp_new": 4,
+   "top_story": "Christina Scrivner: \"I think it's important we do better for our children\"",
    "archive": "2026-09-30"
   },
   "cityhall": {
@@ -82,7 +82,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 14,
+   "wind_mph": 5,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 82,
-   "wind_mph": 14,
+   "temp": 71,
+   "wind_mph": 5,
    "alerts": 0
   },
   "roads": {
@@ -121,7 +121,7 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 19,
+    "In the next 7 days": 18,
     "In 1 to 2 weeks": 15,
     "Later": 109
    },
@@ -134,8 +134,8 @@
    "isabella_af": 150488,
    "alpr_total": 270,
    "kern_fires": 0,
-   "aqi": 67,
-   "chp_week": 52
+   "aqi": 64,
+   "chp_week": 56
   },
   "letters": {
    "published": 1

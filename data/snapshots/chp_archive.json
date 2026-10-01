@@ -20,6 +20,56 @@
   "details": ""
  },
  {
+  "log_id": "261001BF0024",
+  "time": "Oct  1 2026  2:55AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261001BF0039",
+  "time": "Oct  1 2026  5:11AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261001BF0085",
+  "time": "Oct  1 2026  8:27AM",
+  "type": "CZP-Assist with Construction",
+  "location": "I5 N / Grapevine Rd E",
+  "area": "Fort Tejon",
+  "lat": 34.939285,
+  "lon": -118.929655,
+  "details": ""
+ },
+ {
+  "log_id": "261001BF0150",
+  "time": "Oct  1 2026 10:54AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "3418 Pioneer Dr",
+  "area": "Bakersfield",
+  "lat": 35.368676,
+  "lon": -118.942644,
+  "details": ""
+ },
+ {
+  "log_id": "261001BF0167",
+  "time": "Oct  1 2026 11:36AM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "Petrol Rd / Landings Way",
+  "area": "Bakersfield",
+  "lat": 35.448548,
+  "lon": -119.047528,
+  "details": ""
+ },
+ {
   "log_id": "260924BF0042",
   "time": "Sep 24 2026  4:58AM",
   "type": "1182-Trfc Collision-No Inj",

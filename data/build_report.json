@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-01T12:20:30-07:00",
+ "built_at": "2026-10-01T12:41:47-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,7 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": ""
+   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
   },
   "venues": {
    "ok": true,
@@ -59,11 +59,11 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1287,
   "daily": {
    "news_headlines": 74,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
    "top_story": "Bakersfield PD asking for public's help identifying 2 men accused of burglary on Ming Ave",
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 8,
+   "wind_mph": 9,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 88,
-   "wind_mph": 8,
+   "wind_mph": 9,
    "alerts": 0
   },
   "roads": {

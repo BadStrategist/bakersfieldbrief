@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-01T10:38:33-07:00",
+ "built_at": "2026-10-01T12:04:55-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,7 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": ""
+   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
   },
   "venues": {
    "ok": true,
@@ -60,13 +60,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 57,
+  "brief_words": 63,
   "daily": {
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Honoring babies lost too soon: Running with the Angels 5K returns",
+   "top_story": "Bakersfield PD asking for public's help identifying 2 men accused of burglary on Ming Ave",
    "archive": "2026-10-01"
   },
   "cityhall": {
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 2,
+   "wind_mph": 8,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 73,
-   "wind_mph": 2,
+   "temp": 88,
+   "wind_mph": 8,
    "alerts": 0
   },
   "roads": {
@@ -121,9 +121,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 20,
-    "In 1 to 2 weeks": 14,
-    "Later": 108
+    "In the next 7 days": 18,
+    "In 1 to 2 weeks": 13,
+    "Later": 103
    },
    "meetings": 4
   },

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-01T17:03:06-07:00",
+ "built_at": "2026-10-01T19:49:58-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 1, column 0"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -39,7 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 2,
    "top_story": "Bakersfield PD asking for public's help identifying 2 men accused of burglary on Ming Ave",
    "archive": "2026-10-01"
   },
@@ -82,7 +82,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": null,
+   "wind_mph": 4,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 86,
-   "wind_mph": null,
+   "temp": 73,
+   "wind_mph": 4,
    "alerts": 0
   },
   "roads": {
@@ -135,7 +135,7 @@
    "alpr_total": 270,
    "kern_fires": 1,
    "aqi": null,
-   "chp_week": 78
+   "chp_week": 80
   },
   "letters": {
    "published": 1

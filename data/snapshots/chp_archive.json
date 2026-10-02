@@ -122,7 +122,7 @@
  {
   "log_id": "261001BF0291",
   "time": "Oct  1 2026  3:21PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
+  "type": "1181-Trfc Collision-Minor Inj",
   "location": "0 Laval Rd Onr",
   "area": "Fort Tejon",
   "lat": 34.989384,
@@ -187,6 +187,26 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261001BF0413",
+  "time": "Oct  1 2026  7:01PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sr184 / Paradise Rd",
+  "area": "Bakersfield",
+  "lat": 35.265168,
+  "lon": -118.9143,
+  "details": ""
+ },
+ {
+  "log_id": "261001BF0428",
+  "time": "Oct  1 2026  7:33PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Sr99 S / Union Ave Onr",
+  "area": "Bakersfield",
+  "lat": 35.166369,
+  "lon": -119.002398,
   "details": ""
  },
  {

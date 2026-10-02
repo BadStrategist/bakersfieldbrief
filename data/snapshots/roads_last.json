@@ -11,7 +11,7 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "The southbound connector to northbound I-15 (San Diego Co) is closed from 1900 hrs to 2359 hrs Monday thru Friday thru 10/2/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "The southbound connector to eastbound SR-54 (San Diego Co) is closed at 0456 hrs on 10/2/26 - Due to a traffic collision - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "CLOSED"
     },
     {
@@ -44,7 +44,7 @@
       "place": "",
       "county": "San Diego Co",
       "where": "San Diego Co",
-      "text": "The southbound connector to northbound I-15 (San Diego Co) is closed from 1900 hrs to 2359 hrs Monday thru Friday thru 10/2/26 - Due to construction - Motorists are advised to use an alternate route",
+      "text": "The southbound connector to eastbound SR-54 (San Diego Co) is closed at 0456 hrs on 10/2/26 - Due to a traffic collision - Motorists are advised to use an alternate route",
       "region": "SOUTHERN CALIFORNIA"
      },
      {
@@ -57,8 +57,8 @@
      }
     ]
    },
-   "reported_as_of": "Friday, October 2nd, 2026 at 02:07 AM",
-   "hash": "7d7e7aaa4b"
+   "reported_as_of": "Friday, October 2nd, 2026 at 07:02 AM",
+   "hash": "3a64796132"
   },
   {
    "number": "58",
@@ -80,7 +80,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Friday, October 2nd, 2026 at 02:07 AM",
+   "reported_as_of": "Friday, October 2nd, 2026 at 07:02 AM",
    "hash": "5e8114d141"
   },
   {
@@ -117,7 +117,7 @@
      }
     ]
    },
-   "reported_as_of": "Friday, October 2nd, 2026 at 02:07 AM",
+   "reported_as_of": "Friday, October 2nd, 2026 at 07:02 AM",
    "hash": "f97882795e"
   }
  ],

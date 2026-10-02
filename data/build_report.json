@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-02T02:07:23-07:00",
+ "built_at": "2026-10-02T07:03:59-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -59,14 +59,14 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
-  "brief_words": 71,
+  "_digest_meta": "llm",
+  "brief_words": 1283,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "2 of 3 candidates for Kern's Board of Education met on the KGET debate stage. Here's what the amicable debate entailed.",
+   "top_story": "Steve Hilton faces steep odds in bid for California governor after 20-year GOP drought",
    "archive": "2026-10-02"
   },
   "cityhall": {
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 54,
+   "temp": 52,
    "wind_mph": 0,
    "alerts": 0
   },
@@ -133,7 +133,7 @@
   "numbers": {
    "isabella_af": 149384,
    "alpr_total": 270,
-   "kern_fires": 1,
+   "kern_fires": 0,
    "aqi": null,
    "chp_week": 80
   },
@@ -141,7 +141,7 @@
    "published": 1
   },
   "overnight": {
-   "published": 51
+   "published": 52
   },
   "map": {
    "dots": 52

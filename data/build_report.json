@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-01T16:58:05-07:00",
+ "built_at": "2026-10-01T17:03:06-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 1, column 0"
   },
   "isabella": {
    "ok": true,
@@ -39,7 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": ""
+   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
   },
   "venues": {
    "ok": true,
@@ -59,13 +59,13 @@
   }
  },
  "section": {
-  "_digest_meta": "llm",
+  "_digest_meta": "deterministic",
   "brief_words": 1287,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "llm",
+   "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 6,
+   "chp_new": 0,
    "top_story": "Bakersfield PD asking for public's help identifying 2 men accused of burglary on Ming Ave",
    "archive": "2026-10-01"
   },

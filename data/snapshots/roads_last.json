@@ -6,13 +6,13 @@
    "slug": "i5",
    "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
    "pass": true,
-   "status": "CLOSED",
+   "status": "RESTRICTIONS",
    "pass_status": "RESTRICTIONS",
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "The southbound connector to eastbound SR-54 (San Diego Co) is closed at 0456 hrs on 10/2/26 - Due to a traffic collision - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
-     "status": "CLOSED"
+     "text": "A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "status": "RESTRICTIONS"
     },
     {
      "region": "CENTRAL CALIFORNIA",
@@ -40,14 +40,6 @@
     ],
     "elsewhere": [
      {
-      "status": "CLOSED",
-      "place": "",
-      "county": "San Diego Co",
-      "where": "San Diego Co",
-      "text": "The southbound connector to eastbound SR-54 (San Diego Co) is closed at 0456 hrs on 10/2/26 - Due to a traffic collision - Motorists are advised to use an alternate route",
-      "region": "SOUTHERN CALIFORNIA"
-     },
-     {
       "status": "RESTRICTIONS",
       "place": "",
       "county": "San Joaquin Co",
@@ -57,8 +49,8 @@
      }
     ]
    },
-   "reported_as_of": "Friday, October 2nd, 2026 at 07:02 AM",
-   "hash": "3a64796132"
+   "reported_as_of": "Friday, October 2nd, 2026 at 09:56 AM",
+   "hash": "efa451eb67"
   },
   {
    "number": "58",
@@ -80,7 +72,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Friday, October 2nd, 2026 at 07:02 AM",
+   "reported_as_of": "Friday, October 2nd, 2026 at 09:56 AM",
    "hash": "5e8114d141"
   },
   {
@@ -117,7 +109,7 @@
      }
     ]
    },
-   "reported_as_of": "Friday, October 2nd, 2026 at 07:02 AM",
+   "reported_as_of": "Friday, October 2nd, 2026 at 09:56 AM",
    "hash": "f97882795e"
   }
  ],

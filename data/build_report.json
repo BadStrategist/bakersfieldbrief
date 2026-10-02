@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-02T14:31:07-07:00",
+ "built_at": "2026-10-02T15:44:16-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,12 +65,12 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 5,
+   "chp_new": 4,
    "top_story": "Steve Hilton faces steep odds in bid for California governor after 20-year GOP drought",
    "archive": "2026-10-02"
   },
   "cityhall": {
-   "upcoming_meetings": 6,
+   "upcoming_meetings": 7,
    "county_items": 133,
    "drafts_generated": 0
   },
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 11,
+   "wind_mph": 8,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 88,
-   "wind_mph": 11,
+   "wind_mph": 8,
    "alerts": 0
   },
   "roads": {
@@ -125,7 +125,7 @@
     "In 1 to 2 weeks": 15,
     "Later": 108
    },
-   "meetings": 6
+   "meetings": 7
   },
   "feed": {
    "entries": 30
@@ -135,7 +135,7 @@
    "alpr_total": 270,
    "kern_fires": 0,
    "aqi": null,
-   "chp_week": 91
+   "chp_week": 95
   },
   "letters": {
    "published": 1
@@ -144,7 +144,7 @@
    "published": 52
   },
   "map": {
-   "dots": 52
+   "dots": 51
   },
   "sunday_read": {
    "topic": "Public safety",

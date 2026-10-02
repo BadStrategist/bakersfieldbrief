@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-02T15:44:16-07:00",
+ "built_at": "2026-10-02T16:57:31-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
+   "chp_new": 5,
    "top_story": "Steve Hilton faces steep odds in bid for California governor after 20-year GOP drought",
    "archive": "2026-10-02"
   },
@@ -121,7 +121,7 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 20,
+    "In the next 7 days": 19,
     "In 1 to 2 weeks": 15,
     "Later": 108
    },
@@ -135,7 +135,7 @@
    "alpr_total": 270,
    "kern_fires": 0,
    "aqi": null,
-   "chp_week": 95
+   "chp_week": 100
   },
   "letters": {
    "published": 1

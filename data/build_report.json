@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-02T11:19:17-07:00",
+ "built_at": "2026-10-02T11:36:31-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 4454, column 3"
   },
   "isabella": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 6,
+   "chp_new": 0,
    "top_story": "Steve Hilton faces steep odds in bid for California governor after 20-year GOP drought",
    "archive": "2026-10-02"
   },
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 10,
+   "wind_mph": 13,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 86,
-   "wind_mph": 10,
+   "temp": 85,
+   "wind_mph": 13,
    "alerts": 0
   },
   "roads": {

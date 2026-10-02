@@ -1,0 +1,233 @@
+[
+ {
+  "type": "medical aid",
+  "time": "00:12",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "medical aid, Bakersfield (00:12)",
+  "_src": "Those for an escape yet for medical regarding the AOD from this state, Robert Gonzalez.",
+  "_n": 2
+ },
+ {
+  "type": "probation check",
+  "time": "00:20",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "probation check, Bakersfield (00:20)",
+  "_src": "No stops, negative probation and parole. The 27 is non-issued with priors and RMF.",
+  "_n": 1
+ },
+ {
+  "type": "fire",
+  "time": "00:57",
+  "agency": "Dispatch",
+  "area": "Kentucky Street",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "fire, Kentucky Street (00:57)",
+  "_src": "11, Chevrolet Local Are you available to hand on AOD for a fire? Yes, I am. Before a subject possibly overdosing in fron",
+  "_n": 1
+ },
+ {
+  "type": "fire",
+  "time": "01:58",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "fire, Bakersfield (01:58)",
+  "_src": "There's an RP on line with fire",
+  "_n": 1
+ },
+ {
+  "type": "welfare call",
+  "time": "02:44",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "welfare call, Bakersfield (02:44)",
+  "_src": "That's affirmative, they're en route but they're still requesting CHP to do a welfare check. What trail company do you h",
+  "_n": 1
+ },
+ {
+  "type": "suspicious person report",
+  "time": "02:52",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "suspicious person report, Bakersfield (02:52)",
+  "_src": "10-4, suspicious circumstance at El Portal, cover the additional 415 unrelated.",
+  "_n": 1
+ },
+ {
+  "type": "domestic call",
+  "time": "02:52",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "domestic call, Bakersfield (02:52)",
+  "_src": "Any additional 450 domestic holding at the same location unrelated to your current?",
+  "_n": 1
+ },
+ {
+  "type": "welfare call",
+  "time": "03:06",
+  "agency": "Dispatch",
+  "area": "Wall Street",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "welfare call, Wall Street (03:06)",
+  "_src": "Family Services 1, 10-I-2 Family Services 1, 10-I-2 Check the welfare possible 368 situation, 815 Wallis Street, apartme",
+  "_n": 1
+ },
+ {
+  "type": "medical aid",
+  "time": "03:29",
+  "agency": "Dispatch",
+  "area": "Roberts Lane",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "medical aid, Roberts Lane (03:29)",
+  "_src": "And Roberts Lane for unknown medical cases still on scene, clear to enter.",
+  "_n": 1
+ },
+ {
+  "type": "traffic collision",
+  "time": "03:46",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "traffic collision, Bakersfield (03:46)",
+  "_src": "... white truck is attempting to crash into them. There was a loud 415 in the background.",
+  "_n": 1
+ },
+ {
+  "type": "medical aid",
+  "time": "04:10",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "medical aid, Bakersfield (04:10)",
+  "_src": "Engine 13, we respond for medical aid in the area of Shout Road and Highway 202.",
+  "_n": 2
+ },
+ {
+  "type": "suspicious person report",
+  "time": "21:18",
+  "agency": "Dispatch",
+  "area": "S K Street",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "suspicious person report, S K Street (21:18)",
+  "_src": "12-3-Atom, Metro 3, suspicious person, 2320 South K Street, Apartment 4",
+  "_n": 1
+ },
+ {
+  "type": "fire",
+  "time": "21:25",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "fire, Bakersfield (21:25)",
+  "_src": "Fire to Pond and Beaner for a house on fire.",
+  "_n": 3
+ },
+ {
+  "type": "structure fire",
+  "time": "21:27",
+  "agency": "Dispatch",
+  "area": "Cranbrook Avenue",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "structure fire, Cranbrook Avenue (21:27)",
+  "_src": "Second address, 71-16 Cranbrook Avenue 10-4 1 Battalion 3, Pond Road and Binner Avenue for a report of a structure fire ",
+  "_n": 1
+ },
+ {
+  "type": "fire",
+  "time": "22:25",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "fire, Bakersfield (22:25)",
+  "_src": "I'm being heard in the background. 4-1-2-4, McCree. Metro 3, 3-0. 4-4-3-8-4, Norris. Pressure on copy, good fire.",
+  "_n": 1
+ },
+ {
+  "type": "medical aid",
+  "time": "22:42",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "medical aid, Bakersfield (22:42)",
+  "_src": "Engine 14, coaching medical aid, on highway 14, approximately 3 miles north of Red Rock, Bransburg, for unknown medical ",
+  "_n": 2
+ },
+ {
+  "type": "welfare call",
+  "time": "22:44",
+  "agency": "Dispatch",
+  "area": "Lyn River Court",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "welfare call, Lyn River Court (22:44)",
+  "_src": "1 North 2 and 1 West 50, if you'll continue to the check the welfare on Dunwoody Way, 1 North 1 and 1 West 51, if you'll",
+  "_n": 1
+ },
+ {
+  "type": "domestic call",
+  "time": "23:11",
+  "agency": "Dispatch",
+  "area": "Oakwood Drive",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "domestic call, Oakwood Drive (23:11)",
+  "_src": "10-4, 15 domestic, 24-09, Oakwood Drive, second half will be RP's father, Thomas,",
+  "_n": 2
+ },
+ {
+  "type": "fire",
+  "time": "23:18",
+  "agency": "Dispatch",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "fire, Bakersfield (23:18)",
+  "_src": "Tango 11, control Tango 11 Tango 6, I copy, record 4 Tango 11, Tango 13, units start to 211 at the fire on Harrison and ",
+  "_n": 2
+ },
+ {
+  "type": "assault with a weapon",
+  "time": "23:28",
+  "agency": "Dispatch",
+  "area": "Jefferson Street",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "assault with a weapon, Jefferson Street (23:28)",
+  "_src": "10-4, break 3-4-3, if you can respond to 1204 Jefferson Street for a 14 verbal, it could possibly be related to the stab",
+  "_n": 1
+ },
+ {
+  "type": "medical aid",
+  "time": "23:56",
+  "agency": "Hall Ambulance",
+  "area": "Bakersfield",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "medical aid, Bakersfield (23:56)",
+  "_src": "Affirmative, BPD advised they didn't mean to cancel the entire call, they still want the medical code 2 to the location.",
+  "_n": 2
+ }
+]

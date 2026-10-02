@@ -1,233 +1,227 @@
 [
  {
-  "type": "medical aid",
-  "time": "00:12",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "medical aid, Bakersfield (00:12)",
-  "_src": "Those for an escape yet for medical regarding the AOD from this state, Robert Gonzalez.",
-  "_n": 2
- },
- {
-  "type": "probation check",
-  "time": "00:20",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "probation check, Bakersfield (00:20)",
-  "_src": "No stops, negative probation and parole. The 27 is non-issued with priors and RMF.",
-  "_n": 1
- },
- {
-  "type": "fire",
-  "time": "00:57",
-  "agency": "Dispatch",
-  "area": "Kentucky Street",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "fire, Kentucky Street (00:57)",
-  "_src": "11, Chevrolet Local Are you available to hand on AOD for a fire? Yes, I am. Before a subject possibly overdosing in fron",
-  "_n": 1
- },
- {
-  "type": "fire",
-  "time": "01:58",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "fire, Bakersfield (01:58)",
-  "_src": "There's an RP on line with fire",
-  "_n": 1
- },
- {
-  "type": "welfare call",
-  "time": "02:44",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "welfare call, Bakersfield (02:44)",
-  "_src": "That's affirmative, they're en route but they're still requesting CHP to do a welfare check. What trail company do you h",
-  "_n": 1
- },
- {
-  "type": "suspicious person report",
-  "time": "02:52",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "suspicious person report, Bakersfield (02:52)",
-  "_src": "10-4, suspicious circumstance at El Portal, cover the additional 415 unrelated.",
-  "_n": 1
- },
- {
-  "type": "domestic call",
-  "time": "02:52",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "domestic call, Bakersfield (02:52)",
-  "_src": "Any additional 450 domestic holding at the same location unrelated to your current?",
-  "_n": 1
- },
- {
-  "type": "welfare call",
-  "time": "03:06",
-  "agency": "Dispatch",
-  "area": "Wall Street",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "welfare call, Wall Street (03:06)",
-  "_src": "Family Services 1, 10-I-2 Family Services 1, 10-I-2 Check the welfare possible 368 situation, 815 Wallis Street, apartme",
-  "_n": 1
- },
- {
-  "type": "medical aid",
-  "time": "03:29",
-  "agency": "Dispatch",
-  "area": "Roberts Lane",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "medical aid, Roberts Lane (03:29)",
-  "_src": "And Roberts Lane for unknown medical cases still on scene, clear to enter.",
-  "_n": 1
- },
- {
-  "type": "traffic collision",
-  "time": "03:46",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "traffic collision, Bakersfield (03:46)",
-  "_src": "... white truck is attempting to crash into them. There was a loud 415 in the background.",
-  "_n": 1
- },
- {
-  "type": "medical aid",
-  "time": "04:10",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "medical aid, Bakersfield (04:10)",
-  "_src": "Engine 13, we respond for medical aid in the area of Shout Road and Highway 202.",
-  "_n": 2
- },
- {
-  "type": "suspicious person report",
-  "time": "21:18",
-  "agency": "Dispatch",
-  "area": "S K Street",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "suspicious person report, S K Street (21:18)",
-  "_src": "12-3-Atom, Metro 3, suspicious person, 2320 South K Street, Apartment 4",
-  "_n": 1
- },
- {
-  "type": "fire",
-  "time": "21:25",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 3,
-  "disposition": "active",
-  "summary": "fire, Bakersfield (21:25)",
-  "_src": "Fire to Pond and Beaner for a house on fire.",
-  "_n": 3
- },
- {
   "type": "structure fire",
   "time": "21:27",
-  "agency": "Dispatch",
-  "area": "Cranbrook Avenue",
+  "agency": "Kern County fire crews",
+  "area": "Pond Road and Minner Avenue area, Bakersfield",
+  "notability": 4,
+  "disposition": "multiple structures involved; defensive mode; utility asked to cut power; resident accounted for",
+  "summary": "Fire crews were sent to a report of a house fire near Pond Road and Minner Avenue. A battalion chief reported multiple structures involved and power lines down through the property, and crews went into a defensive mode with water tenders shuttling in. Crews asked for the utility to cut the power lines before they could work the property, and later reported a verbal all clear for the resident."
+ },
+ {
+  "type": "shots fired",
+  "time": "02:57",
+  "agency": "Bakersfield Police Department",
+  "area": "1700 block of Niles Street, Bakersfield",
+  "notability": 4,
+  "disposition": "ShotSpotter activation; officers sent to check the area",
+  "summary": "A ShotSpotter activation reported eight rounds fired in the 1700 block of Niles Street, and officers were sent to check the area."
+ },
+ {
+  "type": "collision",
+  "time": "02:20",
+  "agency": "California Highway Patrol",
+  "area": "southbound Interstate 5 north of Gorman",
   "notability": 3,
-  "disposition": "active",
-  "summary": "structure fire, Cranbrook Avenue (21:27)",
-  "_src": "Second address, 71-16 Cranbrook Avenue 10-4 1 Battalion 3, Pond Road and Binner Avenue for a report of a structure fire ",
-  "_n": 1
+  "disposition": "both trucks stopped; right side damage reported",
+  "summary": "A semi with a dry van trailer and a day cab truck pulling a trash trailer were involved in a crash on southbound Interstate 5 north of Gorman. One truck was reported to have right side damage and the other driver pulled over on the wide shoulder just south of Gorman."
  },
  {
-  "type": "fire",
-  "time": "22:25",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "fire, Bakersfield (22:25)",
-  "_src": "I'm being heard in the background. 4-1-2-4, McCree. Metro 3, 3-0. 4-4-3-8-4, Norris. Pressure on copy, good fire.",
-  "_n": 1
+  "type": "armed robbery",
+  "time": "23:29",
+  "agency": "Kern County Sheriff's Office",
+  "area": "mobile home park, Bakersfield area",
+  "notability": 3,
+  "disposition": "cash taken at gunpoint; two suspects fled on foot",
+  "summary": "Deputies were sent to a mobile home park after a resident who uses a wheelchair reported two men took $200 in cash at gunpoint about 15 minutes earlier and ran off on foot."
  },
  {
-  "type": "medical aid",
-  "time": "22:42",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "medical aid, Bakersfield (22:42)",
-  "_src": "Engine 14, coaching medical aid, on highway 14, approximately 3 miles north of Red Rock, Bransburg, for unknown medical ",
-  "_n": 2
+  "type": "burglary in progress",
+  "time": "00:32",
+  "agency": "Bakersfield Police Department",
+  "area": "400 block of White Lane, Bakersfield",
+  "notability": 3,
+  "disposition": "resident hid in a closet; units checked and found no one",
+  "summary": "Officers were sent to an apartment on the 400 block of White Lane after a resident who lives alone reported someone came in through her front door, that she heard an item fall inside her kitchen, and that she was hiding in her closet. Units checked the apartments near the call and did not find anyone."
  },
  {
-  "type": "welfare call",
-  "time": "22:44",
-  "agency": "Dispatch",
-  "area": "Lyn River Court",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "welfare call, Lyn River Court (22:44)",
-  "_src": "1 North 2 and 1 West 50, if you'll continue to the check the welfare on Dunwoody Way, 1 North 1 and 1 West 51, if you'll",
-  "_n": 1
+  "type": "assault",
+  "time": "21:13",
+  "agency": "Kern County Sheriff's Office and Kern County fire crews",
+  "area": "20 Mule Team Road, Boron",
+  "notability": 3,
+  "disposition": "medical aid started at the scene",
+  "summary": "Deputies and medics were sent to a store on 20 Mule Team Road in Boron for a report of an assault. The caller said the man had facial injuries and was unable to stand, and crews started medical aid."
  },
  {
-  "type": "domestic call",
-  "time": "23:11",
-  "agency": "Dispatch",
-  "area": "Oakwood Drive",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "domestic call, Oakwood Drive (23:11)",
-  "_src": "10-4, 15 domestic, 24-09, Oakwood Drive, second half will be RP's father, Thomas,",
-  "_n": 2
- },
- {
-  "type": "fire",
-  "time": "23:18",
-  "agency": "Dispatch",
-  "area": "Bakersfield",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "fire, Bakersfield (23:18)",
-  "_src": "Tango 11, control Tango 11 Tango 6, I copy, record 4 Tango 11, Tango 13, units start to 211 at the fire on Harrison and ",
-  "_n": 2
- },
- {
-  "type": "assault with a weapon",
+  "type": "stabbing investigation",
   "time": "23:28",
-  "agency": "Dispatch",
-  "area": "Jefferson Street",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "assault with a weapon, Jefferson Street (23:28)",
-  "_src": "10-4, break 3-4-3, if you can respond to 1204 Jefferson Street for a 14 verbal, it could possibly be related to the stab",
-  "_n": 1
+  "agency": "Bakersfield-area law enforcement",
+  "area": "Jefferson Street, Bakersfield",
+  "notability": 3,
+  "disposition": "caller reported a stabbing victim; units sent",
+  "summary": "Units were sent to a home on Jefferson Street after a caller reported a man had been stabbed and pointed officers to a person at the address."
+ },
+ {
+  "type": "robbery",
+  "time": "23:18",
+  "agency": "Bakersfield Police Department",
+  "area": "Harrison Street and 4th Street, Bakersfield",
+  "notability": 3,
+  "disposition": "cash taken from a register; area checked",
+  "summary": "A robbery call at a taco stand near Harrison Street and 4th Street reported cash taken from the register about 10 minutes earlier, and units checked the area."
+ },
+ {
+  "type": "escapee search",
+  "time": "00:10",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Bakersfield",
+  "notability": 3,
+  "disposition": "area checked; suspect in an earlier assault",
+  "summary": "Deputies were told a man had left a facility in Bakersfield about 10 minutes earlier, that he was a suspect in an assault earlier in the week, and that he was last seen heading northwest. Units checked the area."
+ },
+ {
+  "type": "theft",
+  "time": "01:49",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Twin Oaks area off Black Canyon Road, Kern County",
+  "notability": 3,
+  "disposition": "caller could not give clear directions; area checked",
+  "summary": "Deputies checked the Twin Oaks area after a caller reported three people loading stolen generators into a white van. The caller could not give clear directions, only coordinates, and dispatchers worked out whether the spot was along Black Canyon Road toward Caliente or Walker Basin."
  },
  {
   "type": "medical aid",
-  "time": "23:56",
-  "agency": "Hall Ambulance",
+  "time": "00:55",
+  "agency": "Bakersfield-area fire and medical crews",
+  "area": "2000 block of Kentucky Street, Bakersfield",
+  "notability": 3,
+  "disposition": "medics sent; status unclear after the line disconnected",
+  "summary": "Medics and fire crews were sent to the 2000 block of Kentucky Street for an overdose call at a business. The call taker was told the person was breathing before the line disconnected, and the person's condition was not clear to responding units."
+ },
+ {
+  "type": "fire call",
+  "time": "01:59",
+  "agency": "Bakersfield fire crews",
+  "area": "East Hill Terrace west of Dr. Martin Luther King Jr. Boulevard, Bakersfield",
+  "notability": 3,
+  "disposition": "first alarm assignment sent",
+  "summary": "Engines, patrols and a battalion chief were sent to a reported fire on East Hill Terrace just west of Dr. Martin Luther King Jr. Boulevard."
+ },
+ {
+  "type": "reckless driver",
+  "time": "22:11",
+  "agency": "California Highway Patrol",
+  "area": "westbound Highway 58 near Oswell Street, Bakersfield",
+  "notability": 2,
+  "disposition": "units asked to watch for the vehicle",
+  "summary": "A white SUV was reported traveling about 110 mph in the westbound lanes of Highway 58 near Oswell Street."
+ },
+ {
+  "type": "stolen vehicle",
+  "time": "21:58",
+  "agency": "Bakersfield Police Department",
+  "area": "2300 block of Niles Street, Bakersfield",
+  "notability": 2,
+  "disposition": "description broadcast to units",
+  "summary": "A caller reported a car had just been taken from the 2300 block of Niles Street and the description went out to units."
+ },
+ {
+  "type": "disturbance",
+  "time": "21:35",
+  "agency": "Bakersfield Police Department",
+  "area": "Plymouth Avenue, Bakersfield",
+  "notability": 2,
+  "disposition": "caller reported hiding from people at the home",
+  "summary": "Officers were sent after a woman reported hiding from people who live at a home on Plymouth Avenue and said a man in his 20s was in the back alley."
+ },
+ {
+  "type": "suspicious vehicle",
+  "time": "21:18",
+  "agency": "Bakersfield Police Department",
+  "area": "2300 block of South K Street, Bakersfield",
+  "notability": 2,
+  "disposition": "caller report; units sent",
+  "summary": "Callers reported people in a white SUV inhaling from balloons in an apartment complex parking lot on the 2300 block of South K Street."
+ },
+ {
+  "type": "smoke investigation",
+  "time": "22:19",
+  "agency": "Bakersfield fire crews",
+  "area": "10100 block of Rosedale Highway, Bakersfield",
+  "notability": 2,
+  "disposition": "nothing showing; odor of rubber smoke reported",
+  "summary": "Crews checked a smoke investigation on Rosedale Highway near an oil change business. Nothing was showing from the buildings, and a person nearby described smoke that smelled like burning rubber."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "23:11",
+  "agency": "Bakersfield-area law enforcement",
+  "area": "2400 block of Oakwood Drive, Bakersfield",
+  "notability": 2,
+  "disposition": "units sent",
+  "summary": "Deputies were sent to a home on the 2400 block of Oakwood Drive for a disturbance involving a man reported to be trying to fight the caller's husband and brother."
+ },
+ {
+  "type": "person with a gun",
+  "time": "23:20",
+  "agency": "Bakersfield Police Department",
   "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "weapon description broadcast to units",
+  "summary": "Officers were told to watch for a man carrying a silver handgun with a wooden handle."
+ },
+ {
+  "type": "assault",
+  "time": "01:19",
+  "agency": "Bakersfield police and fire crews",
+  "area": "Union Avenue and Brundage Lane area, Bakersfield",
+  "notability": 2,
+  "disposition": "victim contacted; interpreter requested",
+  "summary": "Officers found a person with an injury to the right arm near Union Avenue and Brundage Lane and asked for a Spanish-speaking officer to help with the victim."
+ },
+ {
+  "type": "reckless driving",
+  "time": "00:48",
+  "agency": "Bakersfield Police Department",
+  "area": "Fairfax area, Bakersfield",
+  "notability": 2,
+  "disposition": "caller report; units sent",
+  "summary": "A caller reported three vehicles doing donuts in an intersection in the Fairfax area."
+ },
+ {
+  "type": "traffic hazard",
+  "time": "02:44",
+  "agency": "California Highway Patrol",
+  "area": "Highway 33 north of Highway 46, Kern County",
+  "notability": 2,
+  "disposition": "tow requested; welfare check asked",
+  "summary": "A driver whose car broke down on Highway 33 north of Highway 46 asked the CHP to check on them while a tow was on the way."
+ },
+ {
+  "type": "person down",
+  "time": "04:08",
+  "agency": "Bakersfield Police Department",
+  "area": "Haley Street and Flower Street area, Bakersfield",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "A caller reported a person lying on the sidewalk and not moving near Haley Street and Flower Street."
+ },
+ {
+  "type": "welfare check",
+  "time": "04:39",
+  "agency": "Bakersfield-area law enforcement",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "units sent",
+  "summary": "Deputies were told a woman had broken into a relative's home and was refusing to leave."
+ },
+ {
+  "type": "public service",
+  "time": "03:13",
+  "agency": "Kern County fire crews",
+  "area": "Wasco Avenue, Wasco",
   "notability": 1,
-  "disposition": "active",
-  "summary": "medical aid, Bakersfield (23:56)",
-  "_src": "Affirmative, BPD advised they didn't mean to cancel the entire call, they still want the medical code 2 to the location.",
-  "_n": 2
+  "disposition": "crew sent to help someone up",
+  "summary": "A crew was sent to Wasco Avenue for a public service call to help someone up."
  }
 ]

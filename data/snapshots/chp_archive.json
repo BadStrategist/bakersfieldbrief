@@ -530,6 +530,16 @@
   "details": ""
  },
  {
+  "log_id": "261003BF0212",
+  "time": "Oct  3 2026 10:33AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Niles St / Oswell St",
+  "area": "Bakersfield",
+  "lat": 35.375842,
+  "lon": -118.949615,
+  "details": ""
+ },
+ {
   "log_id": "260926BF0024",
   "time": "Sep 26 2026  1:11AM",
   "type": "TADV-Traffic Advisory",

@@ -480,6 +480,36 @@
   "details": ""
  },
  {
+  "log_id": "261003BF0316",
+  "time": "Oct  3 2026  3:19PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Lucretia Ct / Strebor Dr",
+  "area": "Bakersfield",
+  "lat": 35.362795,
+  "lon": -119.177048,
+  "details": ""
+ },
+ {
+  "log_id": "261003BF0325",
+  "time": "Oct  3 2026  3:45PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Pauls Place Dr / Sr178",
+  "area": "Bakersfield",
+  "lat": 35.663401,
+  "lon": -118.306651,
+  "details": ""
+ },
+ {
+  "log_id": "261003BF0331",
+  "time": "Oct  3 2026  4:13PM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 I5 S",
+  "area": "Fort Tejon",
+  "lat": 34.911143,
+  "lon": -118.923741,
+  "details": ""
+ },
+ {
   "log_id": "261003BF0109",
   "time": "Oct  3 2026  6:43AM",
   "type": "1183-Trfc Collision-Unkn Inj",

@@ -370,6 +370,26 @@
   "details": ""
  },
  {
+  "log_id": "261002BF0417",
+  "time": "Oct  2 2026  7:10PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "White Ln / Ashe Rd",
+  "area": "BF",
+  "lat": 35.318115,
+  "lon": -119.074454,
+  "details": ""
+ },
+ {
+  "log_id": "261002BF0431",
+  "time": "Oct  2 2026  7:22PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "2309 Niles Pt",
+  "area": "Bakersfield",
+  "lat": 35.375764,
+  "lon": -118.966142,
+  "details": ""
+ },
+ {
   "log_id": "261002BF0087",
   "time": "Oct  2 2026  8:22AM",
   "type": "CZP-Assist with Construction",

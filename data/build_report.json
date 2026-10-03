@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-02T19:36:29-07:00",
+ "built_at": "2026-10-03T01:27:30-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,14 +60,14 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1283,
+  "brief_words": 54,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
-   "top_story": "Steve Hilton faces steep odds in bid for California governor after 20-year GOP drought",
-   "archive": "2026-10-02"
+   "chp_new": 1,
+   "top_story": "Two Bakersfield men shot and killed in Porterville",
+   "archive": "2026-10-03"
   },
   "cityhall": {
    "upcoming_meetings": 7,
@@ -82,7 +82,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -93,7 +93,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-10-02"
+   "draft": "drafts/weekend-guide-2026-10-03"
   },
   "grapevine": {
    "i5": "RESTRICTIONS",
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 8,
+   "wind_mph": 0,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 78,
-   "wind_mph": 8,
+   "temp": 60,
+   "wind_mph": 0,
    "alerts": 0
   },
   "roads": {
@@ -121,9 +121,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 17,
-    "In 1 to 2 weeks": 15,
-    "Later": 108
+    "In the next 7 days": 20,
+    "In 1 to 2 weeks": 16,
+    "Later": 103
    },
    "meetings": 7
   },
@@ -131,11 +131,11 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 149384,
+   "isabella_af": 148780,
    "alpr_total": 270,
    "kern_fires": 0,
    "aqi": null,
-   "chp_week": 102
+   "chp_week": 103
   },
   "letters": {
    "published": 1

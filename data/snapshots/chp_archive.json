@@ -450,158 +450,18 @@
   "details": ""
  },
  {
+  "log_id": "261002BF0567",
+  "time": "Oct  2 2026 11:39PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "I5 N / Lerdo Hwy Ofr",
+  "area": "Buttonwillow",
+  "lat": 35.497165,
+  "lon": -119.531506,
+  "details": ""
+ },
+ {
   "log_id": "261002BF0004",
   "time": "Oct  2 2026 12:22AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260925BF0267",
-  "time": "Sep 25 2026  3:19PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "4404 Pioneer Dr",
-  "area": "Bakersfield",
-  "lat": 35.36874,
-  "lon": -118.936276,
-  "details": ""
- },
- {
-  "log_id": "260925BF0036",
-  "time": "Sep 25 2026  3:42AM",
-  "type": "CFIRE-Car Fire",
-  "location": "NB I5 JSO Frazier Mountain Park Rd",
-  "area": "Fort Tejon",
-  "lat": 34.816389,
-  "lon": -118.8825,
-  "details": ""
- },
- {
-  "log_id": "260925BF0301",
-  "time": "Sep 25 2026  4:24PM",
-  "type": "FIRE-Report of Fire",
-  "location": "Sr99 S / Airport Dr Onr",
-  "area": "Bakersfield",
-  "lat": 35.399373,
-  "lon": -119.044914,
-  "details": ""
- },
- {
-  "log_id": "260925BF0314",
-  "time": "Sep 25 2026  4:45PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "5907-5951 Niles St",
-  "area": "Bakersfield",
-  "lat": 35.375953,
-  "lon": -118.938201,
-  "details": ""
- },
- {
-  "log_id": "260925BF0316",
-  "time": "Sep 25 2026  4:50PM",
-  "type": "1125-Traffic Hazard",
-  "location": "SR58 E / Allen Rd",
-  "area": "Bakersfield",
-  "lat": 35.360945,
-  "lon": -119.145544,
-  "details": ""
- },
- {
-  "log_id": "260925BF0045",
-  "time": "Sep 25 2026  5:09AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "9855 Compagnoni St",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260925BF0391",
-  "time": "Sep 25 2026  6:45PM",
-  "type": "20001-Hit and Run w/Injuries",
-  "location": "211 Adams St",
-  "area": "Buttonwillow",
-  "lat": 35.153119,
-  "lon": -119.448646,
-  "details": ""
- },
- {
-  "log_id": "260925BF0070",
-  "time": "Sep 25 2026  6:59AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sb I5 Jso Grapevine Rd",
-  "area": "Fort Tejon",
-  "lat": 34.937778,
-  "lon": -118.930556,
-  "details": ""
- },
- {
-  "log_id": "260925BF0071",
-  "time": "Sep 25 2026  6:59AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Rosedale Hwy / Allen Rd",
-  "area": "Bakersfield",
-  "lat": 35.383479,
-  "lon": -119.145483,
-  "details": ""
- },
- {
-  "log_id": "260925BF0444",
-  "time": "Sep 25 2026  8:18PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "0 Forest Rte-23s16",
-  "area": "Bakersfield",
-  "lat": 35.869992,
-  "lon": -118.543496,
-  "details": ""
- },
- {
-  "log_id": "260925BF0115",
-  "time": "Sep 25 2026  8:48AM",
-  "type": "CZP-Assist with Construction",
-  "location": "1033 Lebec Rd",
-  "area": "Fort Tejon",
-  "lat": 34.825534,
-  "lon": -118.87775,
-  "details": ""
- },
- {
-  "log_id": "260925BF0157",
-  "time": "Sep 25 2026 10:18AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Niles St / Oswell St",
-  "area": "Bakersfield",
-  "lat": 35.375842,
-  "lon": -118.949615,
-  "details": ""
- },
- {
-  "log_id": "260925BF0191",
-  "time": "Sep 25 2026 11:44AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Old River Rd / Herring Rd",
-  "area": "Buttonwillow",
-  "lat": 35.151941,
-  "lon": -119.109881,
-  "details": ""
- },
- {
-  "log_id": "260925BF0193",
-  "time": "Sep 25 2026 11:45AM",
-  "type": "1125-Traffic Hazard",
-  "location": "0 I5 S",
-  "area": "Fort Tejon",
-  "lat": 34.884358,
-  "lon": -118.901748,
-  "details": ""
- },
- {
-  "log_id": "260925BF0011",
-  "time": "Sep 25 2026 12:53AM",
   "type": "TADV-Traffic Advisory",
   "location": "Bakersfield Traffic Advisories",
   "area": "BF",

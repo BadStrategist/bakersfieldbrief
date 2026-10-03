@@ -16,7 +16,7 @@
     },
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "Northbound traffic is reduced to 1 lane 10.4 mi south of the Jct of SR-46 (Kern Co) - Due to vehicle recovery A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
      "status": "RESTRICTIONS"
     },
     {
@@ -42,6 +42,14 @@
      {
       "status": "RESTRICTIONS",
       "place": "",
+      "county": "Kern Co",
+      "where": "Kern Co",
+      "text": "Northbound traffic is reduced to 1 lane 10.4 mi south of the Jct of SR-46 (Kern Co) - Due to vehicle recovery",
+      "region": "CENTRAL CALIFORNIA"
+     },
+     {
+      "status": "RESTRICTIONS",
+      "place": "",
       "county": "San Joaquin Co",
       "where": "San Joaquin Co",
       "text": "A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
@@ -49,8 +57,8 @@
      }
     ]
    },
-   "reported_as_of": "Friday, October 2nd, 2026 at 07:36 PM",
-   "hash": "efa451eb67"
+   "reported_as_of": "Saturday, October 3rd, 2026 at 01:27 AM",
+   "hash": "978d29dfad"
   },
   {
    "number": "58",
@@ -72,7 +80,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Friday, October 2nd, 2026 at 07:36 PM",
+   "reported_as_of": "Saturday, October 3rd, 2026 at 01:27 AM",
    "hash": "5374f203ec"
   },
   {
@@ -109,9 +117,9 @@
      }
     ]
    },
-   "reported_as_of": "Friday, October 2nd, 2026 at 07:36 PM",
+   "reported_as_of": "Saturday, October 3rd, 2026 at 01:27 AM",
    "hash": "f97882795e"
   }
  ],
- "asof": "2026-10-02"
+ "asof": "2026-10-03"
 }

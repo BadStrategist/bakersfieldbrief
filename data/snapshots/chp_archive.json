@@ -493,7 +493,7 @@
   "log_id": "261003BF0174",
   "time": "Oct  3 2026 10:01AM",
   "type": "FIRE-Report of Fire",
-  "location": "Sr65 / Gretlein Rd",
+  "location": "SR65 / Gretlein Rd",
   "area": "Bakersfield",
   "lat": 35.55506,
   "lon": -119.088026,
@@ -507,6 +507,26 @@
   "area": "Bakersfield",
   "lat": 35.329722,
   "lon": -118.8075,
+  "details": ""
+ },
+ {
+  "log_id": "261003BF0195",
+  "time": "Oct  3 2026 10:24AM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sr184 / Redbank Rd",
+  "area": "Bakersfield",
+  "lat": 35.339802,
+  "lon": -118.91428,
+  "details": ""
+ },
+ {
+  "log_id": "261003BF0199",
+  "time": "Oct  3 2026 10:26AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jno Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.945556,
+  "lon": -118.9325,
   "details": ""
  },
  {

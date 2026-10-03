@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-03T10:42:57-07:00",
+ "built_at": "2026-10-03T11:24:56-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 3112, column 10"
   },
   "isabella": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 0,
    "top_story": "BPD: Search for man who allegedly broke into Howard\u2019s Mini Mart through the roof",
    "archive": "2026-10-03"
   },
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": null,
+   "wind_mph": 14,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 82,
-   "wind_mph": null,
+   "temp": 84,
+   "wind_mph": 14,
    "alerts": 0
   },
   "roads": {
@@ -121,8 +121,8 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 20,
-    "In 1 to 2 weeks": 16,
+    "In the next 7 days": 19,
+    "In 1 to 2 weeks": 15,
     "Later": 103
    },
    "meetings": 7

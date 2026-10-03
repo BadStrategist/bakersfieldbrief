@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-03T11:24:56-07:00",
+ "built_at": "2026-10-03T11:58:05-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 14,
+   "wind_mph": 16,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 84,
-   "wind_mph": 14,
+   "wind_mph": 16,
    "alerts": 0
   },
   "roads": {
@@ -121,8 +121,8 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 19,
-    "In 1 to 2 weeks": 15,
+    "In the next 7 days": 18,
+    "In 1 to 2 weeks": 16,
     "Later": 103
    },
    "meetings": 7

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-03T01:27:30-07:00",
+ "built_at": "2026-10-03T01:39:49-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -60,13 +60,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 54,
+  "brief_words": 57,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 1,
-   "top_story": "Two Bakersfield men shot and killed in Porterville",
+   "top_story": "Two Bakersfield men shot and killed in Porterville - bakersfieldnow.com",
    "archive": "2026-10-03"
   },
   "cityhall": {
@@ -107,7 +107,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 60,
+   "temp": 57,
    "wind_mph": 0,
    "alerts": 0
   },
@@ -135,7 +135,7 @@
    "alpr_total": 270,
    "kern_fires": 0,
    "aqi": null,
-   "chp_week": 103
+   "chp_week": 104
   },
   "letters": {
    "published": 1

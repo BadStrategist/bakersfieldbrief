@@ -490,6 +490,26 @@
   "details": ""
  },
  {
+  "log_id": "261003BF0174",
+  "time": "Oct  3 2026 10:01AM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sr65 / Gretlein Rd",
+  "area": "Bakersfield",
+  "lat": 35.55506,
+  "lon": -119.088026,
+  "details": ""
+ },
+ {
+  "log_id": "261003BF0180",
+  "time": "Oct  3 2026 10:02AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Wb Sr58 At Tower Line Rd",
+  "area": "Bakersfield",
+  "lat": 35.329722,
+  "lon": -118.8075,
+  "details": ""
+ },
+ {
   "log_id": "260926BF0024",
   "time": "Sep 26 2026  1:11AM",
   "type": "TADV-Traffic Advisory",

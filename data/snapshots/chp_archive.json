@@ -480,6 +480,16 @@
   "details": ""
  },
  {
+  "log_id": "261003BF0109",
+  "time": "Oct  3 2026  6:43AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "I5 S / Lost Hills Rd",
+  "area": "Buttonwillow",
+  "lat": 35.665979,
+  "lon": -119.690429,
+  "details": ""
+ },
+ {
   "log_id": "260926BF0024",
   "time": "Sep 26 2026  1:11AM",
   "type": "TADV-Traffic Advisory",

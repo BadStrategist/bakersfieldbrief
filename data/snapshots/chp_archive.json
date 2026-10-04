@@ -652,11 +652,41 @@
  {
   "log_id": "261004BF0230",
   "time": "Oct  4 2026  4:20PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Airport Dr / Norris Rd",
+  "type": "1144-Fatality",
+  "location": "Airport Dr / El Tejon Ave",
   "area": "Bakersfield",
-  "lat": 35.419523,
-  "lon": -119.039017,
+  "lat": 35.418065,
+  "lon": -119.039002,
+  "details": ""
+ },
+ {
+  "log_id": "261004BF0237",
+  "time": "Oct  4 2026  4:28PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Wb Sr178 Jwo Mount Vernon Ave",
+  "area": "Bakersfield",
+  "lat": 35.393611,
+  "lon": -118.970278,
+  "details": ""
+ },
+ {
+  "log_id": "261004BF0238",
+  "time": "Oct  4 2026  4:29PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "E Brundage Ln / Sr184",
+  "area": "Bakersfield",
+  "lat": 35.354354,
+  "lon": -118.914067,
+  "details": ""
+ },
+ {
+  "log_id": "261004BF0241",
+  "time": "Oct  4 2026  4:35PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "I5 N / Frazier Mountain Park Rd Onr",
+  "area": "Fort Tejon",
+  "lat": 34.819908,
+  "lon": -118.879387,
   "details": ""
  },
  {

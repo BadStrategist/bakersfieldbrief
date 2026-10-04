@@ -702,11 +702,21 @@
  {
   "log_id": "261004BF0095",
   "time": "Oct  4 2026  8:59AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
+  "type": "1180-Trfc Collision-Major Inj",
   "location": "4674-5501 Sierra Way",
   "area": "Bakersfield",
   "lat": 35.683138,
   "lon": -118.382704,
+  "details": ""
+ },
+ {
+  "log_id": "261004BF0120",
+  "time": "Oct  4 2026 10:45AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jno Fort Tejon Rd",
+  "area": "Fort Tejon",
+  "lat": 34.882222,
+  "lon": -118.900556,
   "details": ""
  },
  {

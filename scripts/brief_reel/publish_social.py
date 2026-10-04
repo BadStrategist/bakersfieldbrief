@@ -145,9 +145,19 @@ def run(cmd: list[str], timeout: int = 900) -> subprocess.CompletedProcess:
 # --------------------------------------------------------------------------- #
 def build_assets(date: str) -> tuple[Path, Path, str] | None:
     """Gate + build reel/soundtrack. Returns (reel, brief_json, caption) or None."""
+    # The CI build (daily.yml) writes data/briefs/<date>.json and pushes it at
+    # ~07:07-07:11 PT, AFTER this machine's last pull (the 07:00 ko_publish job).
+    # Nothing else fetches origin before the 08:45 slot, so the gate below read a
+    # stale working copy and blocked with "brief body missing" on 2026-10-02 and
+    # 2026-10-03. Overlay origin/main's data dirs first (the same fetch + sparse
+    # checkout the Facebook photo path uses), then gate.
+    try:
+        PF._git_pull_latest()
+    except Exception as exc:  # noqa: BLE001
+        log(f"WARN: git fetch/overlay failed ({exc}) - gating on local data")
     gate = PF.gate_check(date)
     if gate is None:
-        log(f"GATE BLOCKED — report for {date} is not complete/ready")
+        log(f"GATE BLOCKED - report for {date} is not complete/ready")
         return None
     brief, overnight = gate
 

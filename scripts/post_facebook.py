@@ -161,6 +161,16 @@ def _git_pull_latest() -> None:
     )
     if r.returncode != 0:
         print(f"  WARN: git checkout of data/ failed ({r.returncode}): {(r.stderr or '')[-200:]}")
+        return
+    # `git checkout <ref> -- <path>` also writes the INDEX, so this overlay left
+    # data/briefs/<date>.json and data/overnight_reports/<date>.md STAGED. On this
+    # box that is a trap: data/ is CI-owned, so the next source commit would sweep
+    # them in. Reset the INDEX only; the worktree keeps origin's content, which is
+    # the whole point of the overlay.
+    subprocess.run(
+        ["git", "reset", "-q", "--", "data/overnight_reports", "data/briefs"],
+        cwd=ROOT, capture_output=True, text=True, timeout=60,
+    )
 
 
 def wait_for_gate(date: str, minutes: float) -> tuple[str, str] | None:

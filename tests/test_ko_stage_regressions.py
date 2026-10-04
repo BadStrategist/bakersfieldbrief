@@ -114,3 +114,33 @@ def test_extract_module_has_main_block():
     """README documents `python -m kern_overnight.extract <date>`."""
     src = (ROOT / "kern_overnight" / "extract.py").read_text(encoding="utf-8")
     assert '__name__ == "__main__"' in src
+
+
+def test_unknown_flag_is_refused_not_silently_ignored(capsys):
+    """An unknown flag used to be IGNORED, so the run fell through to the FULL
+    pipeline. Stage 2 opens the transcript JSONL in mode "w", so a typo wiped a
+    good night's transcript (hit for real 2026-10-03 from a bogus flag). The
+    guard must refuse BEFORE any fetch/transcribe work starts."""
+    from kern_overnight import run as ko_run
+
+    rc = ko_run.main(["prog", "--bogus-phase-flag"])
+    assert rc == 2, "unknown flag must refuse with exit 2, not fall through"
+    err = capsys.readouterr().err
+    assert "unknown flag" in err and "--bogus-phase-flag" in err
+
+
+def test_typo_flag_is_refused(capsys):
+    """The realistic typo: `--phase-1` for `--phase1`."""
+    from kern_overnight import run as ko_run
+
+    assert ko_run.main(["prog", "--phase-1"]) == 2
+    assert "unknown flag" in capsys.readouterr().err
+
+
+def test_known_flags_are_not_rejected_by_the_guard():
+    """The guard must not break the documented flags (pure string check)."""
+    from kern_overnight import run as ko_run
+
+    assert ko_run.KNOWN_FLAGS == {"--phase1", "--phase2", "--extract-only"}
+    assert not [a for a in ("prog", "--phase1", "--phase2", "--extract-only")
+                if a.startswith("--") and a not in ko_run.KNOWN_FLAGS]

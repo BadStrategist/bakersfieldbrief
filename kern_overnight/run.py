@@ -64,7 +64,24 @@ def _usable_rows(transcript: Path) -> list[dict]:
     return rows
 
 
+KNOWN_FLAGS = {"--phase1", "--phase2", "--extract-only"}
+
+
 def main(argv: list[str]) -> int:
+    # An unknown flag used to be IGNORED, so the run fell through to the FULL
+    # pipeline: fetch + transcribe, and the transcribe opens the JSONL in mode
+    # "w" and TRUNCATES it. A typo (`--phase-1`, `--phse1`) therefore silently
+    # wiped a good night's transcript. Hit for real 2026-10-03 from a probe that
+    # passed a bogus flag. Refuse instead of guessing.
+    unknown = [a for a in argv[1:] if a.startswith("--") and a not in KNOWN_FLAGS]
+    if unknown:
+        print(f"[ko] FATAL: unknown flag(s): {' '.join(unknown)}", file=sys.stderr)
+        print(f"[ko] known flags: {' '.join(sorted(KNOWN_FLAGS))} "
+              f"(a positional argument is an ISO date)", file=sys.stderr)
+        print("[ko] refusing to run: unknown flags used to fall through to the "
+              "full pipeline, which truncates the transcript.", file=sys.stderr)
+        return 2
+
     date = dt.date.today()
     phase1 = "--phase1" in argv
     phase2 = "--phase2" in argv

@@ -510,6 +510,26 @@
   "details": ""
  },
  {
+  "log_id": "261003BF0341",
+  "time": "Oct  3 2026  4:39PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr178 Jeo Mouth Of The Canyon",
+  "area": "Bakersfield",
+  "lat": 35.442778,
+  "lon": -118.791667,
+  "details": ""
+ },
+ {
+  "log_id": "261003BF0346",
+  "time": "Oct  3 2026  4:43PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "2628 Mount Vernon Ave",
+  "area": "BF",
+  "lat": 35.392527,
+  "lon": -118.967551,
+  "details": ""
+ },
+ {
   "log_id": "261003BF0109",
   "time": "Oct  3 2026  6:43AM",
   "type": "1183-Trfc Collision-Unkn Inj",

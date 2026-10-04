@@ -1,0 +1,374 @@
+[
+ {
+  "type": "Domestic violence",
+  "time": "21:30",
+  "agency": "BPD",
+  "area": "18th Street at a restaurant, metro Bakersfield",
+  "notability": 3,
+  "disposition": "Both parties on scene; under investigation",
+  "summary": "Officers were sent to a just-occurred domestic violence call at a restaurant on 18th Street. Both parties were on scene when officers arrived."
+ },
+ {
+  "type": "Missing juvenile",
+  "time": "21:41",
+  "agency": "BPD",
+  "area": "Fairgrounds carnival, South P Street",
+  "notability": 3,
+  "disposition": "Report taken; search under way",
+  "summary": "A 13-year-old girl was reported missing from the fairgrounds carnival, last seen near the Bud Pavilion stage."
+ },
+ {
+  "type": "Burning complaint",
+  "time": "21:44",
+  "agency": "KCSO",
+  "area": "Clear Creek Road, Kern River Valley",
+  "notability": 2,
+  "disposition": "Deputies responded to investigate",
+  "summary": "A caller on Clear Creek Road reported someone burning trash in a yard. Deputies went to check."
+ },
+ {
+  "type": "Missing juvenile",
+  "time": "21:50",
+  "agency": "BPD",
+  "area": "Fairgrounds carnival carousel",
+  "notability": 3,
+  "disposition": "Search under way",
+  "summary": "A 2-year-old girl was reported missing from the carousel area of the fairgrounds carnival."
+ },
+ {
+  "type": "Shots fired, unfounded",
+  "time": "21:52",
+  "agency": "BPD",
+  "area": "Fairgrounds carnival, amusement area",
+  "notability": 4,
+  "disposition": "Unfounded; large disturbance instead",
+  "summary": "A report of shots fired in the carnival's amusement area drew a large response. Officers found a large disturbance and no evidence of gunfire. Several subjects ran from the area and were not located."
+ },
+ {
+  "type": "Traffic hazard",
+  "time": "21:55",
+  "agency": "CHP and Fire",
+  "area": "Highway 170 just east of the canyon mouth",
+  "notability": 2,
+  "disposition": "Crews en route",
+  "summary": "Fire crews were sent to a vehicle reported on the side of Highway 170 just east of the mouth of the canyon, with unknown injuries."
+ },
+ {
+  "type": "Missing juvenile",
+  "time": "22:01",
+  "agency": "BPD",
+  "area": "Fairgrounds carnival, Ferris wheel",
+  "notability": 3,
+  "disposition": "Search under way",
+  "summary": "An 11-year-old boy was reported missing from the main carnival area near the Ferris wheel."
+ },
+ {
+  "type": "Welfare check",
+  "time": "22:14",
+  "agency": "BPD",
+  "area": "Buena Vista Road at a pharmacy",
+  "notability": 2,
+  "disposition": "Cleared",
+  "summary": "Officers were asked to check on someone at a pharmacy on Buena Vista Road."
+ },
+ {
+  "type": "Fight",
+  "time": "22:20",
+  "agency": "BPD",
+  "area": "Fairgrounds carnival, north corner",
+  "notability": 3,
+  "disposition": "Units en route",
+  "summary": "Officers were sent to a fight in the north corner of the fairgrounds carnival."
+ },
+ {
+  "type": "Domestic disturbance",
+  "time": "22:24",
+  "agency": "BPD",
+  "area": "Kentucky Street apartment, metro Bakersfield",
+  "notability": 2,
+  "disposition": "Investigation",
+  "summary": "Officers responded to a disturbance at an apartment on Kentucky Street involving a woman in her 20s."
+ },
+ {
+  "type": "Welfare check",
+  "time": "22:28",
+  "agency": "BPD",
+  "area": "Bakersfield",
+  "notability": 3,
+  "disposition": "Investigation",
+  "summary": "Officers were sent to check on a woman reported to be held against her will at a Bakersfield home."
+ },
+ {
+  "type": "Suspicious person",
+  "time": "22:33",
+  "agency": "KCSO",
+  "area": "Wible Road area",
+  "notability": 2,
+  "disposition": "Investigation",
+  "summary": "Deputies were sent to a suspicious person report on Wible Road involving a juvenile riding a bike with another juvenile."
+ },
+ {
+  "type": "Grass fire",
+  "time": "22:37",
+  "agency": "CHP and Fire",
+  "area": "Highway 155 near Old State Road",
+  "notability": 3,
+  "disposition": "Search for a suspect",
+  "summary": "A fire started on the right-hand shoulder of Highway 155 near Old State Road. Crews also searched the frontage road and Highway 99 between Garces and Cecil for a suspect."
+ },
+ {
+  "type": "Collision",
+  "time": "22:39",
+  "agency": "BPD",
+  "area": "Ming Avenue and Allen Road",
+  "notability": 2,
+  "disposition": "Minor injuries",
+  "summary": "Officers handled a collision with minor injuries at Ming Avenue and Allen Road."
+ },
+ {
+  "type": "Suspicious person",
+  "time": "22:40",
+  "agency": "BPD",
+  "area": "Union Avenue at a grocery store, metro Bakersfield",
+  "notability": 2,
+  "disposition": "Contact made",
+  "summary": "Officers went code 33 to a grocery store on Union Avenue for a suspicious person."
+ },
+ {
+  "type": "Medical aid",
+  "time": "22:51",
+  "agency": "Fire and EMS",
+  "area": "Oak Street",
+  "notability": 2,
+  "disposition": "Transport",
+  "summary": "Crews were sent to Oak Street for a first-time seizure."
+ },
+ {
+  "type": "Traffic collision",
+  "time": "22:55",
+  "agency": "CHP and Fire",
+  "area": "Southbound Highway 99 at 7th Standard Road",
+  "notability": 3,
+  "disposition": "Crews en route",
+  "summary": "Fire crews were dispatched to a three-vehicle collision on southbound Highway 99 at 7th Standard Road."
+ },
+ {
+  "type": "Welfare check",
+  "time": "23:04",
+  "agency": "BPD",
+  "area": "South Bakersfield parking lot",
+  "notability": 2,
+  "disposition": "Units checked the area",
+  "summary": "Officers were asked to check on a report of a woman wedged between a fence and a parking lot about 200 yards south of a fast-food restaurant in south Bakersfield."
+ },
+ {
+  "type": "Assault, possible domestic",
+  "time": "23:14",
+  "agency": "BPD",
+  "area": "Monterey Street, metro Bakersfield",
+  "notability": 3,
+  "disposition": "Priority call; investigation",
+  "summary": "Officers were sent to a priority assault call on Monterey Street involving a man and a woman who had been fighting."
+ },
+ {
+  "type": "Impaired driver",
+  "time": "23:15",
+  "agency": "BPD",
+  "area": "Monterey Street and Union Avenue",
+  "notability": 2,
+  "disposition": "Units advised",
+  "summary": "A possible impaired driver was reported in the area of Monterey Street and Union Avenue."
+ },
+ {
+  "type": "Medical aid",
+  "time": "23:17",
+  "agency": "Fire and EMS",
+  "area": "East Bakersfield",
+  "notability": 3,
+  "disposition": "Medical response",
+  "summary": "Crews were sent to a report of a person about 70 years old who was not breathing and not moving."
+ },
+ {
+  "type": "Disturbance",
+  "time": "23:54",
+  "agency": "BPD",
+  "area": "Bakersfield",
+  "notability": 3,
+  "disposition": "Large group on scene; units responding",
+  "summary": "Officers responded to a possible domestic disturbance involving a woman in a black SUV. A large group of people had shown up to the location."
+ },
+ {
+  "type": "Shooting call",
+  "time": "23:56",
+  "agency": "Fire and EMS",
+  "area": "California City Boulevard",
+  "notability": 3,
+  "disposition": "Crews staged; scene cleared to enter",
+  "summary": "Medical crews were sent to California City Boulevard and cleared to enter the scene for a shooting."
+ },
+ {
+  "type": "Hit-and-run collision",
+  "time": "00:03",
+  "agency": "BPD",
+  "area": "South 8th Street, south Bakersfield",
+  "notability": 3,
+  "disposition": "Suspect vehicle fled; BOLO issued",
+  "summary": "A collision on South 8th Street sent officers looking for a silver Honda that left the scene. The car was last seen heading west on Highway 58 from Allen Road."
+ },
+ {
+  "type": "Traffic hazard",
+  "time": "00:04",
+  "agency": "KCSO",
+  "area": "Crest Drive area",
+  "notability": 2,
+  "disposition": "Units advised",
+  "summary": "A caller reported two people riding a white ATV near Crest Drive."
+ },
+ {
+  "type": "Traffic collision",
+  "time": "00:14",
+  "agency": "BPD and Fire",
+  "area": "Taylor Street",
+  "notability": 2,
+  "disposition": "Occupants out of the vehicle; balance cancelled",
+  "summary": "A single vehicle hit a tree on Taylor Street. Occupants were out of the vehicle and one engine company handled the call."
+ },
+ {
+  "type": "Vehicle fire",
+  "time": "00:55",
+  "agency": "CHP and Fire",
+  "area": "Southbound Highway 99 north of Kimberlina Road",
+  "notability": 3,
+  "disposition": "One occupant out of the vehicle",
+  "summary": "A single vehicle off the roadway on southbound Highway 99 north of Kimberlina Road was fully engulfed in flames. The one occupant was out and conscious."
+ },
+ {
+  "type": "Domestic violence",
+  "time": "01:00",
+  "agency": "BPD",
+  "area": "College Avenue",
+  "notability": 3,
+  "disposition": "Suspect left the home",
+  "summary": "Officers were sent to a domestic violence call on College Avenue. A juvenile caller reported his parents were fighting and that his father was bleeding and had left the home."
+ },
+ {
+  "type": "Disturbance",
+  "time": "01:11",
+  "agency": "BPD",
+  "area": "East Brundage Lane",
+  "notability": 2,
+  "disposition": "Units responding",
+  "summary": "Officers were sent to a loud-music disturbance on East Brundage Lane with a report of possible shots heard in the area."
+ },
+ {
+  "type": "Hazardous condition",
+  "time": "01:23",
+  "agency": "Fire",
+  "area": "Palm Avenue",
+  "notability": 3,
+  "disposition": "Crews responded",
+  "summary": "Crews were sent to a gas leak reported in a neighborhood on Palm Avenue."
+ },
+ {
+  "type": "Assault",
+  "time": "01:58",
+  "agency": "BPD",
+  "area": "Edwards Avenue, metro Bakersfield",
+  "notability": 4,
+  "disposition": "Victim hospitalized; suspect fled",
+  "summary": "A just-occurred assault on Edwards Avenue left a victim breathing but unconscious. A second person, a teen girl in a red jacket and blue jeans, was seen running from the scene. The victim was conscious and talking with officers later in the call."
+ },
+ {
+  "type": "Person down",
+  "time": "02:43",
+  "agency": "BPD and EMS",
+  "area": "California Avenue at a restaurant",
+  "notability": 2,
+  "disposition": "Medical response",
+  "summary": "Officers were sent to a man down in his 30s lying next to a bicycle at the driveway entrance of a restaurant on California Avenue."
+ },
+ {
+  "type": "Medical aid",
+  "time": "03:03",
+  "agency": "Fire and EMS",
+  "area": "Fairwood Street",
+  "notability": 2,
+  "disposition": "Medical response",
+  "summary": "Crews were sent to a medical aid on Fairwood Street."
+ },
+ {
+  "type": "Cardiac arrest",
+  "time": "03:28",
+  "agency": "Fire and EMS",
+  "area": "Curtis Drive",
+  "notability": 3,
+  "disposition": "CPR in progress; crews on scene",
+  "summary": "Crews responded to a person not breathing on Curtis Drive with CPR in progress."
+ },
+ {
+  "type": "Medical aid",
+  "time": "03:43",
+  "agency": "Fire and EMS",
+  "area": "Kirkcaldy Drive",
+  "notability": 2,
+  "disposition": "Medical response",
+  "summary": "Crews were sent to a heart problem call on Kirkcaldy Drive; the patient was not alert."
+ },
+ {
+  "type": "Fire alarm",
+  "time": "04:41",
+  "agency": "Fire",
+  "area": "Mount Vernon Avenue",
+  "notability": 2,
+  "disposition": "Crews responded",
+  "summary": "An engine company was sent to a commercial fire alarm at a senior living complex on Mount Vernon Avenue."
+ },
+ {
+  "type": "Rollover",
+  "time": "04:45",
+  "agency": "CHP and Fire",
+  "area": "Edison Highway and Tower Line",
+  "notability": 3,
+  "disposition": "No ejection; two patients conscious",
+  "summary": "Fire and medical crews were sent to a vehicle rollover with a possible ejection at Edison Highway and Tower Line. Crews confirmed there was no ejection and two patients were out of the vehicle, conscious and breathing."
+ },
+ {
+  "type": "Medical aid",
+  "time": "04:49",
+  "agency": "Fire and EMS",
+  "area": "Vancouver Drive",
+  "notability": 2,
+  "disposition": "Medical response",
+  "summary": "Crews were sent to an ill patient on Vancouver Drive."
+ },
+ {
+  "type": "Incident",
+  "time": "22:10",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person with traumatic injury near Stephen Court.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "23:14",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person found unresponsive at Sherwood Lake Ct in Bakersfield.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Shots fired",
+  "time": "00:08",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Hospital request for gunshot wound victim.",
+  "source": "crimeradar"
+ }
+]

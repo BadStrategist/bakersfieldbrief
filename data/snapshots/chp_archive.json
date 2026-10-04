@@ -560,6 +560,16 @@
   "details": ""
  },
  {
+  "log_id": "261003BF0463",
+  "time": "Oct  3 2026  9:50PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "0 Sr178",
+  "area": "Bakersfield",
+  "lat": 35.465544,
+  "lon": -118.756418,
+  "details": ""
+ },
+ {
   "log_id": "261003BF0174",
   "time": "Oct  3 2026 10:01AM",
   "type": "FIRE-Report of Fire",
@@ -647,6 +657,56 @@
   "area": "Bakersfield",
   "lat": 35.393879,
   "lon": -118.979326,
+  "details": ""
+ },
+ {
+  "log_id": "261004BF0076",
+  "time": "Oct  4 2026  7:45AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sr33 / Sr58",
+  "area": "Buttonwillow",
+  "lat": 35.308318,
+  "lon": -119.622231,
+  "details": ""
+ },
+ {
+  "log_id": "261004BF0079",
+  "time": "Oct  4 2026  7:48AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Brentwood Dr / Pioneer Dr",
+  "area": "Bakersfield",
+  "lat": 35.368884,
+  "lon": -118.923108,
+  "details": ""
+ },
+ {
+  "log_id": "261004BF0090",
+  "time": "Oct  4 2026  8:28AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Famoso Porterville Hwy / Cecil Ave",
+  "area": "Bakersfield",
+  "lat": 35.776155,
+  "lon": -119.123746,
+  "details": ""
+ },
+ {
+  "log_id": "261004BF0091",
+  "time": "Oct  4 2026  8:37AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "39582-39699 Sr178",
+  "area": "Bakersfield",
+  "lat": 35.666111,
+  "lon": -118.039324,
+  "details": ""
+ },
+ {
+  "log_id": "261004BF0095",
+  "time": "Oct  4 2026  8:59AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "4674-5501 Sierra Way",
+  "area": "Bakersfield",
+  "lat": 35.683138,
+  "lon": -118.382704,
   "details": ""
  },
  {

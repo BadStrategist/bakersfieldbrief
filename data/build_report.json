@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-03T20:08:38-07:00",
+ "built_at": "2026-10-04T01:39:49-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 3112, column 10"
   },
   "isabella": {
    "ok": true,
@@ -60,19 +60,19 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1543,
+  "brief_words": 61,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
-   "top_story": "BPD: Search for man who allegedly broke into Howard\u2019s Mini Mart through the roof",
-   "archive": "2026-10-03"
+   "chp_new": 0,
+   "top_story": "A Bakersfield nonprofit connects community members with people in ICE detention through pen pal letters",
+   "archive": "2026-10-04"
   },
   "cityhall": {
-   "upcoming_meetings": 7,
+   "upcoming_meetings": 6,
    "county_items": 133,
-   "drafts_generated": 0
+   "drafts_generated": 1
   },
   "places": {
    "places": [
@@ -82,7 +82,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -93,7 +93,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-10-03"
+   "draft": "drafts/weekend-guide-2026-10-04"
   },
   "grapevine": {
    "i5": "RESTRICTIONS",
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 3,
+   "wind_mph": 1,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 78,
-   "wind_mph": 3,
+   "temp": 66,
+   "wind_mph": 1,
    "alerts": 0
   },
   "roads": {
@@ -121,17 +121,17 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 15,
-    "In 1 to 2 weeks": 16,
-    "Later": 104
+    "In the next 7 days": 16,
+    "In 1 to 2 weeks": 18,
+    "Later": 99
    },
-   "meetings": 7
+   "meetings": 6
   },
   "feed": {
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 148780,
+   "isabella_af": 148286,
    "alpr_total": 270,
    "kern_fires": 0,
    "aqi": null,
@@ -174,7 +174,7 @@
   },
   "trackers": {
    "alpr_total": 270,
-   "alpr_new_week": 1,
+   "alpr_new_week": 0,
    "pages": [
     "surveillance",
     "fires",

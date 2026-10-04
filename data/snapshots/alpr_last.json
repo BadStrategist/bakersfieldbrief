@@ -3244,9 +3244,9 @@
  "stats": {
   "total": 270,
   "flock": 240,
-  "new_this_week": 1,
+  "new_this_week": 0,
   "new_this_week_snapshot_diff": 0,
   "newest_mapped": "2026-09-26"
  },
- "asof": "2026-10-03"
+ "asof": "2026-10-04"
 }

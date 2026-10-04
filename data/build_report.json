@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-04T09:04:44-07:00",
+ "built_at": "2026-10-04T10:25:55-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 2777, column 40"
   },
   "isabella": {
    "ok": true,
@@ -65,7 +65,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 6,
+   "chp_new": 0,
    "top_story": "Arvin teen injured in e-scooter crash as data shows child scooter injuries up nearly 700% since 2020",
    "archive": "2026-10-04"
   },
@@ -102,13 +102,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 7,
+   "wind_mph": 18,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 73,
-   "wind_mph": 7,
+   "temp": 79,
+   "wind_mph": 18,
    "alerts": 0
   },
   "roads": {

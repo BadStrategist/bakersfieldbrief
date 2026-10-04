@@ -530,6 +530,16 @@
   "details": ""
  },
  {
+  "log_id": "261003BF0366",
+  "time": "Oct  3 2026  5:54PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sb I5 Jno Lerdo Hwy",
+  "area": "Buttonwillow",
+  "lat": 35.503333,
+  "lon": -119.538889,
+  "details": ""
+ },
+ {
   "log_id": "261003BF0109",
   "time": "Oct  3 2026  6:43AM",
   "type": "1183-Trfc Collision-Unkn Inj",
@@ -537,6 +547,16 @@
   "area": "Buttonwillow",
   "lat": 35.665979,
   "lon": -119.690429,
+  "details": ""
+ },
+ {
+  "log_id": "261003BF0422",
+  "time": "Oct  3 2026  7:33PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Southgate Dr / S P St",
+  "area": "Bakersfield",
+  "lat": 35.335818,
+  "lon": -119.011903,
   "details": ""
  },
  {

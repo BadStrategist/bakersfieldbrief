@@ -4,7 +4,7 @@ its own try/except so one broken source can't stop the site.
 """
 from . import (escribe, kern_board, news_rss, weather, chp, isabella,
                alpr, gnews, airnow, calfire, venues, roads, blocked,
-               tehachapi_weather)
+               tehachapi_weather, alertline)
 
 # name -> module. Order matters only for the build report.
 SOURCES = {
@@ -21,6 +21,7 @@ SOURCES = {
     "venues": venues,          # Venue whitelist (Events page + Weekend Guide)
     "roads": roads,            # Caltrans highway conditions (I-5 Grapevine, 58, 99)
         "tehachapi_weather": tehachapi_weather,  # Tehachapi Pass NWS (KTSP obs, forecast, CAZ334 alerts)
+    "alertline": alertline,    # Kern County school delays/closures (KCSOS AlertLine; needs ALERTLINE_API_KEY)
         # Blocked sources (datacenter IPs / not yet built) — leave stubs:
         "blocked": blocked,
 }

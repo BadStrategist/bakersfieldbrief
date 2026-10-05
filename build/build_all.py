@@ -33,7 +33,8 @@ from build.builders import (daily, cityhall, trackers, static_pages,
                             places, guide, grapevine, events, feed,
                             numbers, letters,
                             overnight, sunday_read, map, fair, tehachapi,
-                            tehachapi_weather, roads, alpr_explorer)  # noqa: E402
+                            tehachapi_weather, roads, alpr_explorer,
+                            fog_delays)  # noqa: E402
 from build.builders import page as page_mod  # noqa: E402
 
 
@@ -84,6 +85,7 @@ def main():
                 ("grapevine", grapevine), ("tehachapi", tehachapi),
                 ("tehachapi_weather", tehachapi_weather),
                 ("roads", roads),
+                ("fog_delays", fog_delays),
                 ("events", events),
                 ("feed", feed), ("numbers", numbers), ("letters", letters),
                 ("overnight", overnight),
@@ -303,6 +305,7 @@ The site is static and rebuilt fresh every morning at 6:00 AM Pacific from publi
 - [Tehachapi Pass conditions](https://bakersfieldbrief.com/tehachapi-pass/): SR-58 road conditions and wind.
 - [Tehachapi weather](https://bakersfieldbrief.com/tehachapi-weather/): pass-level wind and forecast.
 - [Kern road conditions](https://bakersfieldbrief.com/roads/): I-5, SR-58, and SR-99 status in Bakersfield & Kern County.
+- [School fog delays](https://bakersfieldbrief.com/fog-delays/): Kern County school delays and closures posted today, and fog days this school year.
 - [Live Map](https://bakersfieldbrief.com/map/): interactive map of local data.
 
 ## Guides & Places
@@ -481,6 +484,7 @@ def _agentic_sitemap(results: dict) -> None:
         "/grapevine/": "Grapevine / Tejon Pass road conditions — live from Caltrans.",
         "/tehachapi-pass/": "Tehachapi Pass (SR-58) road conditions, wind, and weather — live from Caltrans and NWS.",
         "/tehachapi-weather/": "Tehachapi weather — current conditions and forecast from the National Weather Service.",
+        "/fog-delays/": "Kern County school fog delays and closures posted today, from the Superintendent of Schools' AlertLine, plus fog days this school year.",
         "/roads/": "Bakersfield and Kern County road conditions right now — I-5 Grapevine, SR-58 Tehachapi, and SR-99, live from Caltrans.",
     }
     titles = _page_titles()

@@ -52,6 +52,23 @@ jobs:
           echo "$DISCORD_WEBHOOK_URL" | npx --yes wrangler@3 secret put DISCORD_WEBHOOK_URL --name grapevine-watchdog
           echo "worker secret set"
 
+      # /api/fog-delays is a Pages Function: it reads the AlertLine key when a
+      # visitor loads the page, so the Pages project needs the key as well as the
+      # build. Same shell guard as above. Takes effect on the next Pages deploy.
+      - name: Push the AlertLine key into the Pages project
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          ALERTLINE_API_KEY: ${{ secrets.ALERTLINE_API_KEY }}
+        run: |
+          set -euo pipefail
+          if [ -z "${ALERTLINE_API_KEY:-}" ]; then
+            echo "ALERTLINE_API_KEY is not a GitHub secret yet - skipping."
+            exit 0
+          fi
+          echo "$ALERTLINE_API_KEY" | npx --yes wrangler@3 pages secret put ALERTLINE_API_KEY --project-name=bakersfieldbrief
+          echo "pages secret set"
+
       # Prove the Worker is actually serving, not just that wrangler exited 0.
       # The check is only real if this step fetches the deployed URL and reads
       # the JSON body the fetch handler returns.

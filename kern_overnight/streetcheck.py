@@ -43,6 +43,47 @@ _PATTERNS = [
     re.compile(rf"\b([A-Z][A-Za-z]+(?:\s+[A-Za-z][\w.'-]*?){{0,3}}\s+(?:{_TYPE})\b)", re.I),
 ]
 
+# Street names Whisper reliably mis-hears on the Kern feeds. The gazetteer
+# spelling wins, always. Evidence: 'weibel' 25x and 'wibel' 2x across
+# transcripts/, while the gazetteer holds exactly one entry, 'Wible Road'
+# (Bakersfield). Never add a mapping without counting the occurrences in
+# transcripts/ first.
+#
+# Guard rails, learned the hard way: 'Weibel' is also a local surname
+# ("Megan Weibel" appears in transcripts/2026-08-14.jsonl), so a bare word
+# swap corrupts names. A fold happens only in a street context:
+#   A. after a locational word ("approaching Weibel", "on Weibel,")
+#   B. before a street type word ("Weibel Avenue", "1914 Weibel Road")
+#   C. before an intersection ("Weibel and Bell Terrace")
+# Anything else, including a bare comma-separated mention, is left alone.
+_MISHEARD_BASE = ("weibel", "wibel", "weible")
+_MISHEARD_TYPE = (r"(?:avenue|ave|road|rd|street|st|boulevard|blvd|drive|dr|lane|ln|"
+                  r"court|ct|way|place|pl|terrace|ter|parkway|pkwy)")
+_MISHEARD_PREP = (r"on|at|in|near|off|of|approaching|leaving|passing|crossing|"
+                  r"toward|to|from|between|behind|block of|northbound|southbound|"
+                  r"eastbound|westbound|and")
+_ALT = "|".join(_MISHEARD_BASE)
+_MISHEARD_RE = re.compile(
+    rf"\b(?P<pre>{_MISHEARD_PREP})\s+(?P<a>{_ALT})\b(?:\s+{_MISHEARD_TYPE})?"   # A
+    rf"|\b(?P<b>{_ALT})\b\s+{_MISHEARD_TYPE}\b"                                  # B
+    rf"|\b(?P<c>{_ALT})\b(?=\s+and\b)",                                          # C
+    re.I)
+_MISHEARD_TO = "Wible Road"
+
+
+def _misheard_sub(m: "re.Match[str]") -> str:
+    pre = m.group("pre")
+    return f"{pre} {_MISHEARD_TO}" if pre else _MISHEARD_TO
+
+
+def fix_text(text: str) -> str:
+    """Rewrite known mis-hearings in raw ASR or incident text to the gazetteer
+    spelling, but only in a street context (see the note above). Consumes a
+    wrong type word, so 'Weibel Avenue' becomes 'Wible Road'."""
+    if not text:
+        return text
+    return _MISHEARD_RE.sub(_misheard_sub, text)
+
 
 def load_streets(path: Path = STREETS_FILE) -> list[str]:
     if not path.exists():
@@ -52,10 +93,18 @@ def load_streets(path: Path = STREETS_FILE) -> list[str]:
 
 
 def normalize(name: str) -> str:
-    """Lowercase, drop directionals/ordinal cruft, collapse spaces."""
-    n = re.sub(r"\b(north|south|east|west|n|s|e|w)\b\.?", "", name, flags=re.I)
-    n = re.sub(r"\s+", " ", n).strip(" .,-")
-    return n.lower()
+    """Lowercase, drop directionals/ordinal cruft, collapse spaces, and fold
+    known mis-hearings onto the gazetteer spelling so those names come back as
+    a MATCH instead of a low-confidence fuzzy guess."""
+    n = fix_text(name)
+    n = re.sub(r"\b(north|south|east|west|n|s|e|w)\b\.?", "", n, flags=re.I)
+    n = re.sub(r"\s+", " ", n).strip(" .,-").lower()
+    # A candidate that is nothing but the mis-hearing is a street mention by
+    # construction (callers pass street candidates, never lone surnames), so
+    # fold it even though fix_text() needs a context word.
+    if n in _MISHEARD_BASE:
+        return _MISHEARD_TO.lower()
+    return n
 
 
 def check_name(name: str, streets: list[str], norm: dict[str, str]) -> tuple[str, str]:

@@ -29,6 +29,7 @@ import contextlib
 from pathlib import Path
 
 from .fetch import _epoch_from_name  # noqa: E402 (block naming helper)
+from .streetcheck import fix_text as _fix_text  # noqa: E402 (mis-hearing fold)
 
 ENGINE = os.environ.get("KO_STT_ENGINE", "faster-whisper")
 MODEL_SIZE = os.environ.get("KO_WHISPER_MODEL",
@@ -224,7 +225,10 @@ def _transcribe_wav(model, audio: "np.ndarray", seg: tuple[float, float], vocab:
     )
     rows = []
     for s in segs:
-        text = s.text.strip()
+        # Fold known mis-hearings (e.g. 'Weibel Avenue' -> 'Wible Road') as the
+        # row is written, so every downstream consumer (extract, digest, the
+        # LLM, the report) sees the gazetteer spelling, not just the incidents.
+        text = _fix_text(s.text.strip())
         if not text:
             continue
         conf = float(getattr(s, "avg_logprob", 0.0))

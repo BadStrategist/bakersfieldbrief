@@ -860,6 +860,46 @@
   "details": ""
  },
  {
+  "log_id": "261005BF0230",
+  "time": "Oct  5 2026  3:10PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Nb I5 Jno Sr99,split",
+  "area": "Fort Tejon",
+  "lat": 35.00725,
+  "lon": -118.95158,
+  "details": ""
+ },
+ {
+  "log_id": "261005BF0237",
+  "time": "Oct  5 2026  3:16PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "18074-18485 Caliente Bodfish Rd",
+  "area": "Bakersfield",
+  "lat": 35.330767,
+  "lon": -118.586869,
+  "details": ""
+ },
+ {
+  "log_id": "261005BF0241",
+  "time": "Oct  5 2026  3:21PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Nb I5 Jso Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.9375,
+  "lon": -118.928611,
+  "details": ""
+ },
+ {
+  "log_id": "261005BF0240",
+  "time": "Oct  5 2026  3:21PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "20003-20099 Sr119",
+  "area": "Bakersfield",
+  "lat": 35.267089,
+  "lon": -119.221551,
+  "details": ""
+ },
+ {
   "log_id": "261005BF0033",
   "time": "Oct  5 2026  5:05AM",
   "type": "MZP-Assist CT with Maintenance",

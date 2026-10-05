@@ -61,7 +61,7 @@ def _fmt_time(t: str) -> str:
 def night_key(t: str) -> int:
     """Sort key for an overnight clock time — minutes since NOON.
 
-    The night window runs 21:00 -> 06:00, so a plain ``HH:MM`` sort puts
+    The night window runs 19:00 -> 07:00, so a plain ``HH:MM`` sort puts
     11pm AFTER 1am. Shifting by 12h orders a whole night across midnight
     (23:00 -> 660, 01:00 -> 780). Unparseable times sort last.
     """

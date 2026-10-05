@@ -280,8 +280,10 @@ def _night_stats_html(date_iso: str) -> str:
         tiles.append(f'<div class="tile"><strong>{other}</strong><span>Other calls</span></div>')
     return ('<p class="sec-head">The night at a glance</p>'
             f'<div class="link-grid">{"".join(tiles)}</div>'
-            '<p class="note">Counts are the calls our overnight scanner log captured '
-            '(9 PM &ndash; 5 AM, one countywide feed). It is not a complete record of every call.</p>')
+            '<p class="note">Counts are the calls our overnight log captured '
+            '(7 PM &ndash; 7 AM: the countywide radio feed, plus app-based dispatch '
+            'reports for the hours the feed does not carry). It is not a complete '
+            'record of every call.</p>')
 
 
 def _night_title(r: dict) -> str:
@@ -334,7 +336,7 @@ def _build_night_pages(reps: list, ctx, built_iso: str, newsletter: str) -> list
         body = f"""
     <div class="pagehead"><div class="hero"><p class="kicker">The Kern Overnight &middot; {html.escape(long_day)}</p>
     <h1>What happened in Bakersfield overnight: {html.escape(dow + long_day)}</h1>
-    <p class="lede">Police, fire and EMS calls heard on the county&rsquo;s radio overnight, 9 PM &ndash; 5 AM. Preliminary dispatch information; locations are generalized.</p></div></div>
+    <p class="lede">Police, fire and EMS calls logged across Kern County overnight, 7 PM &ndash; 7 AM. Preliminary dispatch information; locations are generalized.</p></div></div>
 
     {nav_html}
     {_night_stats_html(r["date"])}
@@ -386,7 +388,7 @@ def build(ctx, sources: dict) -> list[str]:
     explainer = """
     <p class="sec-head">How it works</p>
     <div class="link-grid">
-      <div class="tile"><strong>Listen</strong><span>Police, sheriff, fire, and EMS radio overnight, 9 PM &ndash; 5 AM.</span></div>
+      <div class="tile"><strong>Listen</strong><span>Police, sheriff, fire, and EMS calls logged overnight, 7 PM &ndash; 7 AM.</span></div>
       <div class="tile"><strong>Transcribe</strong><span>Radio audio is cleaned and turned into text with local vocabulary tuned for scanner jargon.</span></div>
       <div class="tile"><strong>Extract</strong><span>Incidents are pulled from the transcript under strict privacy rules.</span></div>
       <div class="tile"><strong>Write</strong><span>Each morning&rsquo;s report is drafted from the transcript and published automatically.</span></div>
@@ -420,14 +422,15 @@ def build(ctx, sources: dict) -> list[str]:
                           f"shooting or shots-fired call{'s' if len(shots) != 1 else ''}. {first} "
                           "These are preliminary dispatch reports, not confirmed by police.")
         else:
-            shoot_text = (f"No shooting or shots-fired call appears in our overnight scanner log "
-                          f"for {latest_long}. The log covers one countywide radio feed from 9 PM "
-                          "to 5 AM, so it is not a complete record.")
+            shoot_text = (f"No shooting or shots-fired call appears in our overnight log "
+                          f"for {latest_long}. The log runs 7 PM to 7 AM from a countywide "
+                          "radio feed plus app-based dispatch reports, so it is not a "
+                          "complete record.")
         faq.append(("Was there a shooting in Bakersfield last night?", shoot_text))
     faq += [
         ("Where can I see Bakersfield police activity from today or last night?",
-         "This page lists the police, sheriff, fire and EMS calls heard on Kern County radio "
-         "between 9 PM and 5 AM, published every morning. Each night also has its own "
+         "This page lists the police, sheriff, fire and EMS calls logged across Kern "
+         "County between 7 PM and 7 AM, published every morning. Each night also has its own "
          "permanent page in the archive."),
         ("Is there a Bakersfield police scanner?",
          "Yes. The Kern Overnight summarizes overnight police, fire, and EMS dispatch activity "

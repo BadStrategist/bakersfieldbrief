@@ -1,0 +1,664 @@
+[
+ {
+  "type": "disturbance",
+  "time": "00:09",
+  "agency": "BPD",
+  "area": "Pacheco Road (900 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Neighbor dispute reported in the 900 block of Pacheco Road."
+ },
+ {
+  "type": "domestic violence",
+  "time": "00:17",
+  "agency": "BPD",
+  "area": "Golden West Casino area",
+  "notability": 2,
+  "disposition": "reporting party standing by",
+  "summary": "Domestic violence call in which a woman reportedly threw a firearm from a vehicle while driving from the casino toward her home."
+ },
+ {
+  "type": "disturbance",
+  "time": "00:23",
+  "agency": "KCSO",
+  "area": "Roseman Boulevard mobile home park",
+  "notability": 2,
+  "disposition": "interpreter requested",
+  "summary": "Disturbance at a Roseman Boulevard mobile home park; an interpreter was requested."
+ },
+ {
+  "type": "welfare check",
+  "time": "00:26",
+  "agency": "BPD",
+  "area": "Foothill Drive (2000 block)",
+  "notability": 2,
+  "disposition": "transferred to fire",
+  "summary": "Welfare check on a juvenile in the 2000 block of Foothill Drive; the call was transferred to fire."
+ },
+ {
+  "type": "structure fire",
+  "time": "00:31",
+  "agency": "BFD",
+  "area": "Kern Street (1300 block)",
+  "notability": 3,
+  "disposition": "tapped incident, workers on scene",
+  "summary": "Light smoke reported in the bathroom ventilation of a single-story commercial warehouse in the 1300 block of Kern Street; crews found a tapped incident with workers on scene."
+ },
+ {
+  "type": "traffic hazard",
+  "time": "00:36",
+  "agency": "CHP",
+  "area": "Golden State Highway near Hole Road",
+  "notability": 2,
+  "disposition": "sweeper requested",
+  "summary": "Debris from a trailer scattered across Golden State Highway near Hole Road; a street sweeper and trash truck were requested."
+ },
+ {
+  "type": "weapons call",
+  "time": "00:39",
+  "agency": "BPD",
+  "area": "Oakwood Road (3600 block)",
+  "notability": 2,
+  "disposition": "code response authorized",
+  "summary": "Report of a person with a weapon at a residence in the 3600 block of Oakwood Road."
+ },
+ {
+  "type": "medical aid",
+  "time": "00:44",
+  "agency": "BPD",
+  "area": "south Bakersfield gas station",
+  "notability": 2,
+  "disposition": "medical aid",
+  "summary": "Unresponsive person reported at the wheel of a car at a gas station; medical aid requested."
+ },
+ {
+  "type": "traffic collision",
+  "time": "00:53",
+  "agency": "CHP",
+  "area": "Brundage Lane",
+  "notability": 2,
+  "disposition": "report taken",
+  "summary": "A Dodge pickup backed into a patrol unit on Brundage Lane; no injuries reported."
+ },
+ {
+  "type": "burglary alarm",
+  "time": "01:07",
+  "agency": "BPD",
+  "area": "Baker Street (1800 block)",
+  "notability": 2,
+  "disposition": "checking",
+  "summary": "Burglary alarm activation at a residence in the 1800 block of Baker Street."
+ },
+ {
+  "type": "disturbance",
+  "time": "01:18",
+  "agency": "BPD",
+  "area": "citywide",
+  "notability": 2,
+  "disposition": "pending",
+  "summary": "Verbal disturbance between a man and a woman; the reporting party was not answering."
+ },
+ {
+  "type": "domestic violence",
+  "time": "01:37",
+  "agency": "BPD",
+  "area": "Kenny Street (4200 block)",
+  "notability": 2,
+  "disposition": "under investigation",
+  "summary": "Domestic violence call in the 4200 block of Kenny Street; a male suspect was reported under the influence and assaulting a former partner."
+ },
+ {
+  "type": "theft",
+  "time": "01:42",
+  "agency": "BPD",
+  "area": "retail store, citywide",
+  "notability": 2,
+  "disposition": "suspect fled",
+  "summary": "A male suspect took items from a store and fled on foot."
+ },
+ {
+  "type": "disturbance",
+  "time": "01:45",
+  "agency": "BPD",
+  "area": "Lavina Avenue",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Incomplete 911 call with a woman screaming and a man heard in the background on Lavina Avenue."
+ },
+ {
+  "type": "domestic violence",
+  "time": "01:51",
+  "agency": "BPD",
+  "area": "Castro Street area",
+  "notability": 2,
+  "disposition": "pending",
+  "summary": "Domestic violence call pending in the Castro Street area."
+ },
+ {
+  "type": "brush fire",
+  "time": "02:06",
+  "agency": "KCFD",
+  "area": "South Mount Vernon Avenue (2600 block)",
+  "notability": 3,
+  "disposition": "facility employees assisting",
+  "summary": "Brush fire at a recycling facility in the 2600 block of South Mount Vernon Avenue that spread into a compost pile; facility employees were called in to help."
+ },
+ {
+  "type": "weapons call",
+  "time": "02:21",
+  "agency": "BPD",
+  "area": "River Boulevard (2600 block)",
+  "notability": 2,
+  "disposition": "unfounded, subjects fled",
+  "summary": "Report of a man with an AR-style rifle in a vehicle near a River Boulevard convenience store; it turned out to be a fight among transients with no firearm found and both subjects fled."
+ },
+ {
+  "type": "assault",
+  "time": "02:37",
+  "agency": "BPD",
+  "area": "Oregon Street (3900 block)",
+  "notability": 2,
+  "disposition": "investigating",
+  "summary": "Assault with a metal object reported in the 3900 block of Oregon Street; a suspect reportedly tried to hit the reporting party with a metal pole."
+ },
+ {
+  "type": "traffic collision",
+  "time": "03:11",
+  "agency": "CHP",
+  "area": "College Avenue at Morning Drive",
+  "notability": 3,
+  "disposition": "occupant out of vehicle",
+  "summary": "Single-vehicle rollover at College Avenue and Morning Drive; the occupant was out of the vehicle and breathing when crews arrived."
+ },
+ {
+  "type": "disturbance",
+  "time": "03:25",
+  "agency": "BPD",
+  "area": "Normandy Drive (700 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Unknown verbal disturbance at a residence in the 700 block of Normandy Drive; a subject requested an ambulance for an eye injury."
+ },
+ {
+  "type": "domestic violence",
+  "time": "03:50",
+  "agency": "BPD",
+  "area": "Lincoln Street (1300 block)",
+  "notability": 3,
+  "disposition": "suspect barricaded",
+  "summary": "Domestic violence call in the 1300 block of Lincoln Street; the suspect refused to leave the residence."
+ },
+ {
+  "type": "disturbance",
+  "time": "04:15",
+  "agency": "BPD",
+  "area": "Fruitvale-Norris Park",
+  "notability": 2,
+  "disposition": "checking",
+  "summary": "Man in all black reported banging on bleachers and trash cans at Fruitvale-Norris Park."
+ },
+ {
+  "type": "domestic violence",
+  "time": "04:19",
+  "agency": "BPD",
+  "area": "Lanesborough Avenue (10300 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Domestic disturbance reported in the 10300 block of Lanesborough Avenue."
+ },
+ {
+  "type": "medical aid",
+  "time": "04:25",
+  "agency": "KCFD",
+  "area": "citywide",
+  "notability": 2,
+  "disposition": "upgraded to code 3",
+  "summary": "Cardiac arrest call; the ambulance was upgraded to code 3 and confirmed ALS."
+ },
+ {
+  "type": "hazmat",
+  "time": "04:28",
+  "agency": "BFD",
+  "area": "Beechwood Street (4700 block)",
+  "notability": 2,
+  "disposition": "investigating",
+  "summary": "Carbon monoxide alarm at an apartment complex in the 4700 block of Beechwood Street."
+ },
+ {
+  "type": "suspicious person",
+  "time": "04:33",
+  "agency": "KCSO",
+  "area": "Cottonwood Road near East Pacheco",
+  "notability": 2,
+  "disposition": "subject fled",
+  "summary": "A person was seen leaving a property on a bicycle and fleeing north on Cottonwood Road near East Pacheco, possibly tied to an earlier vehicle theft."
+ },
+ {
+  "type": "suspicious persons",
+  "time": "21:20",
+  "agency": "KCSO",
+  "area": "Bolthouse area near Gate 26",
+  "notability": 2,
+  "disposition": "checking",
+  "summary": "A group of subjects was reported outside a gate near the Bolthouse area, possibly attempting to enter the fairgrounds."
+ },
+ {
+  "type": "disturbance",
+  "time": "21:21",
+  "agency": "KCSO",
+  "area": "Glenwood Drive (1700 block)",
+  "notability": 3,
+  "disposition": "units responding",
+  "summary": "Disturbance in the 1700 block of Glenwood Drive; a woman was reportedly grabbing sharp objects and trying to pull residents out of a home."
+ },
+ {
+  "type": "gas leak",
+  "time": "21:29",
+  "agency": "KCFD",
+  "area": "apartment complex, citywide",
+  "notability": 2,
+  "disposition": "leak shut off",
+  "summary": "Natural gas leak below a meter at an apartment complex; crews shut it off before PG&E arrived."
+ },
+ {
+  "type": "missing juvenile",
+  "time": "21:37",
+  "agency": "KCSO",
+  "area": "countywide",
+  "notability": 2,
+  "disposition": "located with Search and Rescue",
+  "summary": "A 12-year-old believed to be a runaway was located with Search and Rescue."
+ },
+ {
+  "type": "disturbance",
+  "time": "21:46",
+  "agency": "KCSO",
+  "area": "fairgrounds, Gate 25",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Disturbance reported on the street just outside Gate 25 of the fairgrounds."
+ },
+ {
+  "type": "robbery",
+  "time": "21:59",
+  "agency": "BPD",
+  "area": "North Chester Avenue (2400 block)",
+  "notability": 3,
+  "disposition": "suspect fled",
+  "summary": "Attempted strong-arm robbery outside a North Chester Avenue fast-food restaurant; the suspect fled on foot."
+ },
+ {
+  "type": "welfare check",
+  "time": "22:02",
+  "agency": "BPD",
+  "area": "Center Street (3000 block), Sierra Middle School",
+  "notability": 2,
+  "disposition": "medical aid staged",
+  "summary": "Welfare check on an 18-year-old acting erratically at Sierra Middle School; medical aid staged."
+ },
+ {
+  "type": "disturbance",
+  "time": "22:05",
+  "agency": "BPD",
+  "area": "Q Street (900 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Fight between two men reported in the 900 block of Q Street; subjects possibly under the influence."
+ },
+ {
+  "type": "disturbance",
+  "time": "22:15",
+  "agency": "BPD",
+  "area": "Los Padres Drive (3600 block)",
+  "notability": 2,
+  "disposition": "units out",
+  "summary": "Verbal disturbance with a neighbor reported in the 3600 block of Los Padres Drive."
+ },
+ {
+  "type": "fire investigation",
+  "time": "22:16",
+  "agency": "BFD",
+  "area": "Greenacres Drive area",
+  "notability": 2,
+  "disposition": "nothing found",
+  "summary": "Report of a possible fire at a home in the Greenacres Drive area; crews found nothing visible."
+ },
+ {
+  "type": "missing juvenile",
+  "time": "22:19",
+  "agency": "KCSO",
+  "area": "carnival, citywide",
+  "notability": 3,
+  "disposition": "searching",
+  "summary": "A 12-year-old girl was reported missing from a carnival after last being seen 15 minutes earlier."
+ },
+ {
+  "type": "overdose",
+  "time": "22:38",
+  "agency": "BFD",
+  "area": "Union Avenue (10 block)",
+  "notability": 2,
+  "disposition": "medical aid",
+  "summary": "Overdose reported at a Chevron station on Union Avenue."
+ },
+ {
+  "type": "vehicle theft",
+  "time": "22:42",
+  "agency": "BPD",
+  "area": "South MLK Boulevard (900 block)",
+  "notability": 3,
+  "disposition": "tracked by reporting party",
+  "summary": "A semi-truck with a black bed full of hay was taken from the 900 block of South MLK Boulevard and tracked southbound on Cottonwood near White Lane."
+ },
+ {
+  "type": "vehicle pursuit",
+  "time": "22:52",
+  "agency": "CHP",
+  "area": "Weibel Avenue from Pacheco to Panama Lane",
+  "notability": 4,
+  "disposition": "foot pursuit, K9 search",
+  "summary": "A vehicle pursuit ran south on Weibel Avenue from Pacheco to Panama Lane at speeds near 40 mph, ending in a foot pursuit and a K9 search of a rural property with shacks and horse pens near Cottonwood and White Lane."
+ },
+ {
+  "type": "possible fire",
+  "time": "22:59",
+  "agency": "KCFD",
+  "area": "west of Old River",
+  "notability": 2,
+  "disposition": "nothing found",
+  "summary": "A passerby reported a possible fire in an orchard west of Old River; crews found nothing on fire."
+ },
+ {
+  "type": "disturbance",
+  "time": "23:14",
+  "agency": "BPD",
+  "area": "Tiedemann Drive (8100 block)",
+  "notability": 2,
+  "disposition": "refusing to leave",
+  "summary": "A man possibly under the influence refused to leave after getting into a vehicle in the 8100 block of Tiedemann Drive."
+ },
+ {
+  "type": "medical aid",
+  "time": "23:20",
+  "agency": "BFD",
+  "area": "Canyon Chapel Drive",
+  "notability": 2,
+  "disposition": "upgraded to code 3",
+  "summary": "Home delivery call on Canyon Chapel Drive; the ambulance was upgraded to code 3."
+ },
+ {
+  "type": "reckless driving",
+  "time": "23:27",
+  "agency": "CHP",
+  "area": "I-5 at Grapevine Road",
+  "notability": 3,
+  "disposition": "BOL issued",
+  "summary": "An older silver Honda was reported weaving and nearly driving off southbound I-5 at Grapevine Road after starting in the Buttonwillow area."
+ },
+ {
+  "type": "traffic collision",
+  "time": "23:52",
+  "agency": "CHP",
+  "area": "highway north of Fort Tejon",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Two-vehicle crash involving a gray pickup and a gray Toyota just north of Fort Tejon; the pickup ended up in the center divide."
+ },
+ {
+  "type": "weapons call",
+  "time": "23:52",
+  "agency": "BPD",
+  "area": "Oakwood Road (3600 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Report of a firearm inside a residence in the 3600 block of Oakwood Road."
+ },
+ {
+  "type": "disturbance",
+  "time": "23:53",
+  "agency": "BPD",
+  "area": "Wheelan Court",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "A neighbor was reported banging on a resident's door on Wheelan Court."
+ },
+ {
+  "type": "weapons call",
+  "time": "23:57",
+  "agency": "BPD",
+  "area": "California Avenue (3100 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "A man with a knife was reported at a gas station in the 3100 block of California Avenue."
+ },
+ {
+  "type": "Fire",
+  "time": "19:00",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Outlet fire reported at Potomac and Washington.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Vehicle",
+  "time": "19:01",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Reckless driving involving multiple vehicles.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Disturbance",
+  "time": "19:02",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Disturbance reported at carnival’s Whitewater ride.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire",
+  "time": "19:10",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Commercial fire alarm at Kern Radiology.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "19:14",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Child temporarily separated from parents is reunited.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "19:33",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Four-vehicle crash on Mount Vernon Avenue.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire",
+  "time": "19:40",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Reported outlet fire found to be faulty wiring.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Vehicle",
+  "time": "19:47",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Vehicle check for Toyota with expired registration.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "20:32",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Hit-and-run crash at South P Street and Bell Terrace.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic",
+  "time": "20:33",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Traffic stop at 24th Street and Alder Street.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Missing person",
+  "time": "20:36",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Missing person linked to blue pickup near Jameson.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "20:38",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Pedestrian hit in three-vehicle crash on Riverlakes.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "20:41",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Traffic collision on 24th Street with vehicles towed.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "20:46",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Central Ave, Kern County",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Driver runs red light in black Honda Accord.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Assault",
+  "time": "20:49",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Pacheco Rd",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Officers respond to assault suspect on Pacheco Road.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Vehicle",
+  "time": "20:53",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Police pursue vehicle and arrest driver in Bakersfield.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fight",
+  "time": "20:58",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Driver and passenger fight in car on Interstate 5.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "21:17",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "S Chester Ave",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Two-vehicle crash on South Chester Avenue.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "05:45",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Indian Hawthorne St",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Female in cardiac arrest receiving CPR on Indian Hawthorne St.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "05:46",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "S J St",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Welfare check at Tully and J Street area.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "05:51",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Morning Dr &amp; College Ave",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Traffic collision at Morning Drive and College Avenue.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic",
+  "time": "05:53",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Traffic stop on four-door car at Valparaiso exit.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "06:24",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "CA-99, Kern County",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Traffic collision on northbound Highway 99.",
+  "source": "crimeradar"
+ }
+]

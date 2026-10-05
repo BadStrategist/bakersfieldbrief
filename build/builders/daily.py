@@ -630,6 +630,10 @@ def _conditions(weather, chp, isa, airnow, calfire, built_iso, rel="") -> str:
         weather_v = f"{cur}&deg; now &middot; high {hi}&deg;"
     elif hi is not None and lo is not None:
         weather_v = f"high {hi}&deg; &middot; low {lo}&deg;"
+    elif cur is not None:
+        # Evening builds: the forecast has no daytime period left for today, so there is no
+        # high. The observed temperature is still good; it used to be thrown away for "n/a".
+        weather_v = f"{cur}&deg; now" + (f" &middot; low {lo}&deg; tonight" if lo is not None else "")
     else:
         weather_v = "n/a"
     alerts = (weather or {}).get("alerts", [])

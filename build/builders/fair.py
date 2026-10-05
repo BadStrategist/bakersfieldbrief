@@ -11,6 +11,8 @@ Ranking target: "kern county fair 2026", "kern county fair dates",
 """
 from __future__ import annotations
 
+import datetime as dt
+
 from .. import common
 from . import page as page_mod
 
@@ -99,7 +101,8 @@ def _grandstand_list() -> str:
         for name, desc in GRANDSTAND)
 
 
-def _faq_jsonld() -> dict:
+def _faq_jsonld(ended: bool = False) -> dict:
+    runs = "ran" if ended else "runs"
     return {
         "@context": "https://schema.org",
         "@type": "FAQPage",
@@ -109,7 +112,7 @@ def _faq_jsonld() -> dict:
                 "name": "What are the 2026 Kern County Fair dates?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "The 2026 Kern County Fair runs September 23 through October 4, 2026 at the Kern County Fairgrounds, 1142 South P Street, Bakersfield, CA 93307.",
+                    "text": f"The 2026 Kern County Fair {runs} September 23 through October 4, 2026 at the Kern County Fairgrounds, 1142 South P Street, Bakersfield, CA 93307.",
                 },
             },
             {
@@ -217,19 +220,27 @@ def build(ctx, sources: dict) -> list[str]:
     built = []
     built_iso = common.iso_today()
     rel = "../"
+    # After the last day the page is a record of the year, and has to read like one.
+    ended = ctx.today > dt.date.fromisoformat(FAIR_END)
+    runs = "ran" if ended else "runs"
+    ended_box = ("""
+    <div class="card"><p><strong>The 2026 Kern County Fair ended on October 4.</strong> This page
+    is kept as a record of the 2026 dates, concert lineup and prices. For next year&rsquo;s
+    dates, see <a href="https://www.kerncountyfair.com/" rel="noopener" target="_blank">kerncountyfair.com</a>.</p></div>
+    """ if ended else "")
 
     body = f"""
     <div class="pagehead"><div class="hero">
       <p class="kicker">Kern County Fair 2026</p>
       <h1>Kern County Fair 2026 — Dates, Concerts &amp; Tickets</h1>
-      <p class="lede">The 2026 Kern County Fair runs <strong>September 23 &ndash; October 4</strong> at
+      <p class="lede">The 2026 Kern County Fair {runs} <strong>September 23 &ndash; October 4</strong> at
       the Kern County Fairgrounds in Bakersfield. Twelve nights of headline concerts at the Budweiser
       Pavilion, PRCA rodeo, monster trucks, carnival, and the county&rsquo;s biggest food lineup
       &mdash; all here in one place.</p>
       <div class="meta"><span>Updated <span class="updated">{built_iso}</span></span>
       <span class="dot">&bull;</span><span>Source: kerncountyfair.com</span></div>
     </div></div>
-
+    {ended_box}
     <div class="stats">
       <div class="stat"><div class="n">Sept 23</div><div class="l">fair opens</div></div>
       <div class="stat amber"><div class="n">Oct 4</div><div class="l">final day</div></div>
@@ -278,14 +289,17 @@ def build(ctx, sources: dict) -> list[str]:
 
     page = page_mod.render(
         title="Kern County Fair 2026 — Dates, Concert Lineup & Tickets | Bakersfield Daily Brief",
-        desc="2026 Kern County Fair: Sept 23 – Oct 4 in Bakersfield. Full concert lineup at the Budweiser Pavilion, ticket prices, grandstand events, and FAQ — from the official fair site.",
+        desc=("The 2026 Kern County Fair ran Sept 23 – Oct 4 in Bakersfield and has ended. The full "
+              "2026 concert lineup at the Budweiser Pavilion, ticket prices and grandstand events, "
+              "kept as a record.") if ended else
+             "2026 Kern County Fair: Sept 23 – Oct 4 in Bakersfield. Full concert lineup at the Budweiser Pavilion, ticket prices, grandstand events, and FAQ — from the official fair site.",
         canonical="/fair/",
         content=body, current="other", rel=rel, built=built_iso,
         statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         og_image="https://bakersfieldbrief.com/assets/img/fair.jpg",
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(),
                 _breadcrumb_jsonld(),
-                _faq_jsonld(), _fairgrounds_jsonld()] + _events_jsonld())
+                _faq_jsonld(ended), _fairgrounds_jsonld()] + _events_jsonld())
     common.write(common.SITE / "fair" / "index.html", page)
     built.append("fair/index.html")
 

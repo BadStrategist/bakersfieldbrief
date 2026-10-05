@@ -15,10 +15,17 @@ from .. import common
 
 ZIP = "93301"
 DISTANCE = 25
-OBS_URL = ("https://www.airnowapi.org/aq/observation/zipCode/current/"
+# AirNow retired the per-zip and per-lat/long services on 2026-10-01 (they answer 410 with
+# "This web service has been retired"). These are the replacement "ziplatlong" services: same
+# key, different field names (nowcastAQI / aqiCategoryName; forecasts carry dateValid).
+OBS_URL = ("https://www.airnowapi.org/aq/observation/current/ziplatlong/"
            f"?format=application/json&zipCode={ZIP}&distance={DISTANCE}&API_KEY={{key}}")
-FC_URL = ("https://www.airnowapi.org/aq/forecast/zipCode/"
-          f"?format=application/json&zipCode={ZIP}&date={{date}}&distance={DISTANCE}&API_KEY={{key}}")
+FC_URL = ("https://www.airnowapi.org/aq/forecast/current/ziplatlong/"
+          f"?format=application/json&zipCode={ZIP}&distance={DISTANCE}&API_KEY={{key}}")
+
+# The observation service names the category but no longer numbers it.
+CAT_NUM = {"good": 1, "moderate": 2, "unhealthy for sensitive groups": 3,
+           "unhealthy": 4, "very unhealthy": 5, "hazardous": 6}
 
 # EPA category number -> css class
 CAT_CLASS = {1: "aqi-good", 2: "aqi-mod", 3: "aqi-usg", 4: "aqi-unh", 5: "aqi-vunh", 6: "aqi-haz"}
@@ -37,16 +44,17 @@ def run(ctx):
     try:
         r = common.fetch(OBS_URL.format(key=key), timeout=20)
         rows = r.json() if isinstance(r.json(), list) else []
-        rows = [x for x in rows if x.get("AQI") is not None]
+        rows = [x for x in rows if x.get("nowcastAQI") is not None]
         if rows:
-            worst = max(rows, key=lambda x: x["AQI"])
+            worst = max(rows, key=lambda x: x["nowcastAQI"])
+            name = worst.get("aqiCategoryName")
             out.update({
-                "aqi": worst["AQI"],
-                "category": worst.get("Category", {}).get("Name"),
-                "category_num": worst.get("Category", {}).get("Number"),
-                "parameter": worst.get("ParameterName"),
-                "area": worst.get("ReportingArea"),
-                "observed": f"{worst.get('DateObserved', '')} {worst.get('HourObserved', '')}:00",
+                "aqi": worst["nowcastAQI"],
+                "category": name,
+                "category_num": CAT_NUM.get(str(name or "").lower()),
+                "parameter": worst.get("parameterName"),
+                "area": worst.get("reportingAreaName"),
+                "observed": f"{worst.get('dateObserved', '')} {worst.get('hourObserved', '')}".strip(),
             })
     except Exception as e:  # noqa: BLE001
         common.log(f"airnow observation failed: {type(e).__name__}: {e}")
@@ -54,17 +62,17 @@ def run(ctx):
     # today's forecast
     try:
         date = common.iso_today()
-        r = common.fetch(FC_URL.format(date=date, key=key), timeout=20)
+        r = common.fetch(FC_URL.format(key=key), timeout=20)
         rows = r.json() if isinstance(r.json(), list) else []
-        today_rows = [x for x in rows if x.get("AQI") is not None
-                      and str(x.get("DateForecast", ""))[:10] == date]
+        today_rows = [x for x in rows if x.get("aqi") is not None
+                      and str(x.get("dateValid", ""))[:10] == date]
         if today_rows:
-            worst = max(today_rows, key=lambda x: x["AQI"])
+            worst = max(today_rows, key=lambda x: x["aqi"])
             out["forecast"] = {
-                "aqi": worst["AQI"],
-                "category": worst.get("Category", {}).get("Name"),
-                "category_num": worst.get("Category", {}).get("Number"),
-                "parameter": worst.get("ParameterName"),
+                "aqi": worst["aqi"],
+                "category": worst.get("categoryName"),
+                "category_num": worst.get("categoryNumber"),
+                "parameter": worst.get("parameterName"),
             }
     except Exception as e:  # noqa: BLE001
         common.log(f"airnow forecast failed: {type(e).__name__}: {e}")

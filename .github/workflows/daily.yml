@@ -3,6 +3,10 @@ name: Daily Brief (6am PT)
 on:
   push:
     branches: [main]
+    # A handover note or a doc is not a reason to rebuild and redeploy the site.
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
   schedule:
     # Every 3h UTC: cheap LLM-free refreshes so conditions (weather, AQI,
     # active fires, reservoir, CHP) stay current. The 13:00/14:00 UTC pair

@@ -282,6 +282,8 @@ def build(ctx, sources: dict) -> list[str]:
         title="The Oversight File — police accountability records | Bakersfield Daily Brief",
         desc="Reserved mount point for police-accountability records in Kern County: use-of-force data, settlements, and discipline findings from public sources.",
         canonical="/oversight/", content=body, current="other", rel="../",
+        # A placeholder with nothing to report yet: keep it out of search until it has records.
+        robots="noindex, follow",
         built=built_iso, statusbar=ctx.statusbar, jsonld=[]))
     built.append("oversight/index.html")
 

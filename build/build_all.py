@@ -210,7 +210,7 @@ def _sitemap():
     # carries its own date; noindex pages stay out; data pages rebuild with fresh data daily.
     # (Every URL used to say today, and a sitemap where every date is the same gets ignored.)
     for u in urls:
-        if u.endswith("/thanks/"):
+        if u.endswith("/thanks/") or _is_noindex(u):
             continue
         m = re.search(r"/(?:briefs|overnight)/(\d{4}-\d{2}-\d{2})/$", u)
         xml.append(f"  <url><loc>{u}</loc><lastmod>{m.group(1) if m else today}</lastmod></url>")
@@ -223,6 +223,16 @@ def _sitemap():
                  # /surveillance/ is the only ALPR page; the explorer was never a url of its own.
                  "/alpr-explorer  /surveillance/  301\n"
                  "/alpr-explorer/*  /surveillance/  301\n")
+
+
+def _is_noindex(url: str) -> bool:
+    """True when the built page asks not to be indexed; such a page has no place in a sitemap."""
+    path = url.split("bakersfieldbrief.com/", 1)[-1]
+    try:
+        head = (common.SITE / path / "index.html").read_text(encoding="utf-8", errors="replace")[:4000]
+    except OSError:
+        return False
+    return bool(re.search(r'<meta name="robots" content="[^"]*noindex', head))
 
 
 def _page_titles() -> dict:

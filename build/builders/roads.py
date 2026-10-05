@@ -19,6 +19,7 @@ import re
 from .. import common
 from . import images
 from . import page as page_mod
+from ..sources import roads as roads_src
 from .grapevine import (_STATUS_COPY, _TAG_CLS, _report_age_hint, _scope_note,
                         _elsewhere_phrase, NO_PROBLEM_LABEL, NO_PROBLEM_SPOKEN)
 
@@ -128,7 +129,7 @@ def build(ctx, sources: dict) -> list[str]:
 
     # ---- change log
     if log:
-        rows = "".join(f"""<tr><td class="num">{html.escape(e.get('ts',''))}</td>
+        rows = "".join(f"""<tr><td class="num">{html.escape(roads_src.log_when(e))}</td>
         <td>{html.escape(e.get('route_name', e.get('route','')))}</td>
         <td>{html.escape(e.get('from',''))} → <strong>{html.escape(e.get('to',''))}</strong></td></tr>"""
                        for e in log[:12])
@@ -228,6 +229,7 @@ def build(ctx, sources: dict) -> list[str]:
     <section class="block">
       <div class="sign-head"><span class="tab">Log</span><h2>Recent changes</h2></div>
       {log_html}
+      {roads_src.log_note(log)}
     </section>
 
     <section class="block">

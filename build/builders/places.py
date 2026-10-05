@@ -127,6 +127,11 @@ def _place_page(ctx, slug: str, meta: dict, built_iso: str, sources: dict,
     cur, hi, lo = fc.get("current"), fc.get("high"), fc.get("low")
     if hi is not None and lo is not None:
         weather_v = f"high {hi}&deg; &middot; low {lo}&deg;"
+    elif hi is not None:
+        weather_v = f"high {hi}&deg;"
+    elif lo is not None:
+        # Evening builds: today's only remaining forecast period is tonight's low.
+        weather_v = f"low {lo}&deg; tonight"
     elif cur is not None:
         weather_v = f"{cur}&deg;"
     else:

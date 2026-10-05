@@ -9,6 +9,8 @@ import json
 from .. import common
 
 SITE_NAME = "Bakersfield Daily Brief"
+BRAND_SUFFIX = f" | {SITE_NAME}"
+TITLE_MAX = 60
 
 
 def render(*, title: str, desc: str, canonical: str, content: str,
@@ -27,6 +29,10 @@ def render(*, title: str, desc: str, canonical: str, content: str,
     """
     tpl = common.read_template("layout.html")
     og_title = og_title or title
+    # Google cuts a title at about 60 characters and shows the site name on its own line, so a
+    # brand suffix that pushes a title past the cut only costs the words before it.
+    if len(title) > TITLE_MAX and title.endswith(BRAND_SUFFIX):
+        title = title[: -len(BRAND_SUFFIX)]
     og_desc = og_desc or desc
 
     # nav current markers

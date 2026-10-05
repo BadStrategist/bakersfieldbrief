@@ -823,6 +823,10 @@ def build_water(ctx, sources: dict):
                                     "text": (f"The lake elevation is {ev_txt} (full pool is 2605.5 "
                                              f"ft). Elevation is updated from CDEC with each build.")}},
                 {"@type": "Question",
+                 "name": "How deep is Lake Isabella?",
+                 "acceptedAnswer": {"@type": "Answer",
+                                    "text": _depth_answer(below_pool_txt)}},
+                {"@type": "Question",
                  "name": "How much water is flowing into Lake Isabella?",
                  "acceptedAnswer": {"@type": "Answer",
                                     "text": (f"Kern River inflow into Lake Isabella is "
@@ -935,6 +939,19 @@ def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
         extra_scripts=extra_scripts)
     common.write(common.SITE / slug / "index.html", page)
 
+def _depth_answer(below_pool_txt: str) -> str:
+    """Depth, from figures we can stand behind. No agency publishes a live maximum depth, and
+    published dam heights disagree, so this gives the full-lake average (capacity over surface
+    area) and how far today's surface sits from full, and says what it cannot give."""
+    avg = round(568_000 / 11_000)
+    today = (f" Right now the surface is {below_pool_txt}, so every part of the lake is that "
+             f"much shallower than when full." if below_pool_txt else "")
+    return (f"It depends on the water level. When full, Lake Isabella holds 568,000 acre-feet "
+            f"across about 11,000 acres, an average depth of about {avg} feet; the deepest "
+            f"water is in the old Kern River channel near the main dam.{today} The Army Corps "
+            f"of Engineers reports the lake's elevation and storage, not a maximum depth.")
+
+
 # ------------------------------------------------------------------ hub
 def build_hub(ctx, sources: dict) -> list[str]:
     built_iso = common.iso_today()
@@ -990,8 +1007,8 @@ def build_hub(ctx, sources: dict) -> list[str]:
     </section>"""
 
     page = page_mod.render(
-        title="Kern County Trackers: Grapevine, Wildfires, Lake Isabella, Flock Cameras | Bakersfield Daily Brief",
-        desc="Auto-updating data trackers for Kern County: the license plate reader (ALPR) camera map with weekly change log, and Lake Isabella storage levels.",
+        title="Kern County Trackers: Roads, Fog, Fires, Lake & Cameras",
+        desc="Live Kern County trackers: Grapevine and Tehachapi Pass road conditions, school fog delays, active wildfires, the Lake Isabella water level and the Flock camera map.",
         canonical="/trackers/",
         content=body, current="trackers", rel=rel, built=built_iso,
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld()],

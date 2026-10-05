@@ -89,7 +89,7 @@ def run(ctx):
             out["stale_note"] = ("Source (Caltrans) unreachable this build; showing the most "
                                  "recent report with its original timestamp.")
             out["last_good"] = True
-            out["log"] = common.load_snapshot("roads_log", default=[])
+            out["log"] = _load_log()
             return out
         return {"ok": False, "error": "no Caltrans routes parsed"}
 
@@ -104,35 +104,93 @@ def run(ctx):
             out["routes"].append(dict(x, stale=True))
 
     # ---- diff against snapshot + change log (fresh routes only)
+    # The log follows the Kern corridor, not the whole route. It used to follow the statewide
+    # rollup while naming the row "Grapevine (Tejon Pass)", so a closure in Orange County was
+    # logged as the Grapevine closing.
     snap = common.load_snapshot("roads", default={})
-    log = common.load_snapshot("roads_log", default=[])
+    log = _load_log()
+    now = common.now_pacific()
     for rte in fresh_routes:
         prev = snap.get(rte["slug"], {})
-        if prev.get("status") != rte["status"] and prev:
-            log.insert(0, {
-                "ts": common.iso_today(),
-                "route": rte["slug"],
-                "route_name": rte["name"],
-                "from": prev.get("status", "?"),
-                "to": rte["status"],
-            })
-        elif prev.get("hash") != rte["hash"] and prev:
-            log.insert(0, {
-                "ts": common.iso_today(),
-                "route": rte["slug"],
-                "route_name": rte["name"],
-                "from": "updated",
-                "to": rte["status"],
-                "note": "condition text changed",
-            })
+        status, chash = corridor_state(rte)
+        entry = {
+            "ts": now.date().isoformat(),
+            "time": now.strftime("%I:%M %p").lstrip("0"),
+            "route": rte["slug"],
+            "route_name": CORRIDOR_NAME.get(rte["slug"], rte["name"]),
+            "scope": "corridor",
+            "to": status,
+        }
+        # A snapshot from before corridor scoping has no baseline to compare with: record the
+        # baseline now and log from the next change on, rather than invent a change.
+        if "corridor" not in prev:
+            continue
+        if prev["corridor"] != status:
+            log.insert(0, dict(entry, **{"from": prev["corridor"]}))
+        elif prev.get("corridor_hash") != chash:
+            log.insert(0, dict(entry, **{"from": "updated", "note": "condition text changed"}))
     log = log[:60]
     common.save_snapshot("roads_log", log)
-    snap.update({x["slug"]: {"status": x["status"], "hash": x["hash"]} for x in fresh_routes})
+    for x in fresh_routes:
+        status, chash = corridor_state(x)
+        snap[x["slug"]] = {"status": x["status"], "hash": x["hash"],
+                           "corridor": status, "corridor_hash": chash}
     common.save_snapshot("roads", snap)
     # full last-known payload so a later failed fetch can degrade gracefully
     common.save_snapshot("roads_last", out)
     out["log"] = log
     return out
+
+
+# ---------------------------------------------------------------- change log
+CORRIDOR_NAME = {
+    "i5": "I-5 Grapevine (Tejon Pass)",
+    "sr58": "SR-58 Tehachapi Pass",
+    "sr99": "SR-99 in Kern County",
+}
+# What the entries written before corridor scoping actually measured.
+STATEWIDE_NAME = {
+    "i5": "I-5, anywhere in California",
+    "sr58": "SR-58, whole route",
+    "sr99": "SR-99, whole route",
+}
+
+
+def corridor_state(rte: dict) -> tuple[str, str]:
+    """(status, text hash) of the Caltrans items that sit on the Kern corridor.
+
+    No item naming the corridor is Caltrans' way of saying nothing is wrong there, so that
+    reads OPEN and hashes the empty string: advisories elsewhere on the route change neither.
+    """
+    scope = rte.get("scope") or {}
+    items = scope.get("on_pass_items") or []
+    status = scope.get("on_pass", "OPEN") if scope.get("on_pass_reported") else "OPEN"
+    text = " | ".join(i.get("text", "") for i in items)
+    return status, hashlib.md5(text.encode()).hexdigest()[:10]
+
+
+def _load_log() -> list:
+    """The change log, with pre-scoping entries relabelled as the statewide readings they were."""
+    log = common.load_snapshot("roads_log", default=[])
+    for e in log:
+        if "scope" not in e:
+            e["scope"] = "statewide"
+            e["route_name"] = STATEWIDE_NAME.get(e.get("route"), e.get("route_name", ""))
+    return log
+
+
+def log_when(e: dict) -> str:
+    """'2026-10-05 6:33 PM' (entries from before 2026-10-05 carry a date only)."""
+    return f"{e.get('ts', '')} {e.get('time', '')}".strip()
+
+
+def log_note(log: list) -> str:
+    """One line under a change-log table while it still shows statewide entries."""
+    if not any(e.get("scope") == "statewide" for e in log[:12]):
+        return ""
+    return ('<p class="note">Rows marked &ldquo;anywhere in California&rdquo; or &ldquo;whole '
+            'route&rdquo; were logged before October 5, 2026, when this log covered the entire '
+            'highway. They do not mean the pass itself was closed.</p>')
 
 
 # ---------------------------------------------------------------- parse

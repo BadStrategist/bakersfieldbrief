@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-04T16:50:09-07:00",
+ "built_at": "2026-10-04T18:17:36-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 2777, column 40"
   },
   "isabella": {
    "ok": true,
@@ -39,7 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": "ConnectionError: HTTPSConnectionPool(host='overpass-api.de', port=443): Max retries exceeded with url: /api/interpreter (Caused by NewConnectionError(\"HTTPSConnection(host='overpass-api.de', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\"))"
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -53,19 +53,23 @@
    "ok": true,
    "error": ""
   },
+  "alertline": {
+   "ok": true,
+   "error": ""
+  },
   "blocked": {
    "ok": false,
    "error": "stubbed sources (blocked or not built) \u2014 see data/sources/blocked.py"
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
+  "_digest_meta": "llm",
   "brief_words": 1279,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
-   "alerts": 1,
-   "chp_new": 3,
+   "news_digest": "llm",
+   "alerts": 0,
+   "chp_new": 0,
    "top_story": "Arvin teen injured in e-scooter crash as data shows child scooter injuries up nearly 700% since 2020",
    "archive": "2026-10-04"
   },
@@ -82,7 +86,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 7,
@@ -102,13 +106,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 15,
+   "wind_mph": 14,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 86,
-   "wind_mph": 15,
+   "temp": 84,
+   "wind_mph": 14,
    "alerts": 0
   },
   "roads": {
@@ -118,6 +122,11 @@
     "sr99:RESTRICTIONS"
    ],
    "log_entries": 60
+  },
+  "fog_delays": {
+   "ok": true,
+   "alerts": 0,
+   "logged_days": 0
   },
   "events": {
    "groups": {

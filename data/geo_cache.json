@@ -3,6 +3,9 @@
   35.4,
   -119.1
  ],
+ "golden state highway & hole road, Bakersfield, CA": null,
+ "college avenue & morning drive, Bakersfield, CA": null,
+ "cottonwood road & east pacheco, Bakersfield, CA": null,
  "th street & a restaurant, Bakersfield, CA": null,
  "buena vista road & a pharmacy, Bakersfield, CA": null,
  "ming avenue & allen road, Bakersfield, CA": null,
@@ -49,8 +52,8 @@
  "2300 block of niles street, Bakersfield, Kern County, CA": null,
  "10100 block of rosedale highway, Bakersfield, Kern County, CA": null,
  "rosedale highway, Bakersfield, CA": [
-  35.382848,
-  -119.0424741
+  35.3834512,
+  -119.0855801
  ],
  "2400 block of oakwood drive, Bakersfield, Kern County, CA": null,
  "oakwood drive, Bakersfield, CA": [
@@ -70,8 +73,8 @@
  "henry street & cherry street, Bakersfield, CA": null,
  "900 block of baker street, Bakersfield, Kern County, CA": null,
  "baker street, Bakersfield, CA": [
-  35.3833949,
-  -118.9905614
+  35.3741892,
+  -118.9938485
  ],
  "auburn street & morning drive, Bakersfield, CA": null,
  "9500 block of brimhall road, Bakersfield, Kern County, CA": null,
@@ -108,19 +111,10 @@
   35.3595295,
   -119.0361076
  ],
- "st street & chester avenue, Bakersfield, CA": [
-  35.3782709,
-  -119.0186791
- ],
  "10500 block of meacham road, Bakersfield, Kern County, CA": null,
  "meacham road, Bakersfield, CA": [
   35.3908107,
   -119.1083708
- ],
- "4500 block of columbus street, Bakersfield, Kern County, CA": null,
- "columbus street, Bakersfield, CA": [
-  35.3979718,
-  -118.9543416
  ],
  "400 block of shattuck avenue, Bakersfield, Kern County, CA": null,
  "shattuck avenue, Bakersfield, CA": [
@@ -128,16 +122,5 @@
   -118.9803881
  ],
  "6700 block of eucalyptus drive, Bakersfield, Kern County, CA": null,
- "eucalyptus drive, Bakersfield, CA": null,
- "6500 block of niles street, Bakersfield, Kern County, CA": null,
- "arlington street area & east frontage lane, Bakersfield, CA": null,
- "1900 block of ming avenue, Bakersfield, Kern County, CA": null,
- "ming avenue, Bakersfield, CA": [
-  35.3399029,
-  -119.127745
- ],
- "sterling road & college avenue, Bakersfield, CA": null,
- "golden state highway & hole road, Bakersfield, CA": null,
- "college avenue & morning drive, Bakersfield, CA": null,
- "cottonwood road & east pacheco, Bakersfield, CA": null
+ "eucalyptus drive, Bakersfield, CA": null
 }

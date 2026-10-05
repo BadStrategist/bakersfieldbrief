@@ -15,7 +15,8 @@ from pathlib import Path
 
 from .. import common
 
-URL = "https://www.fire.ca.gov/umbraco/api/IncidentApi/List?inactive=false"
+# incidents.fire.ca.gov is where the API lives now; www.fire.ca.gov only redirects to it.
+URL = "https://incidents.fire.ca.gov/umbraco/api/IncidentApi/List?inactive=false"
 
 SNAPSHOT = Path(__file__).resolve().parent.parent.parent / "data" / "snapshots" / "calfire.json"
 

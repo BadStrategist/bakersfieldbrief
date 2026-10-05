@@ -16,7 +16,12 @@
 // and updated timestamp verbatim. If the fetch fails we fail open (return a
 // 503 signal) — we never guess a count or a fire.
 
-const URL = "https://www.fire.ca.gov/umbraco/api/IncidentApi/List?inactive=false";
+// CAL FIRE moved this API to incidents.fire.ca.gov; www.fire.ca.gov now only
+// redirects there, and refuses (403) any request that claims to be a desktop
+// browser. That is why this function failed for weeks while the Python build,
+// which names itself honestly and follows the redirect, kept working.
+const URL = "https://incidents.fire.ca.gov/umbraco/api/IncidentApi/List?inactive=false";
+const UA = "BakersfieldDailyBrief/1.0 (+https://bakersfieldbrief.com; contact: editor@bakersfieldbrief.com)";
 
 // in-flight/result cache: at most one CAL FIRE fetch/60s across all visitors
 let CACHE = { at: 0, data: null };
@@ -71,7 +76,7 @@ export async function onRequestGet(context) {
   try {
     const resp = await fetch(URL, {
       headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36",
+        "User-Agent": UA,
         "Accept": "application/json",
       },
       redirect: "follow",

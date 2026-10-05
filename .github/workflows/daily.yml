@@ -12,10 +12,13 @@ on:
     # active fires, reservoir, CHP) stay current. The 13:00/14:00 UTC pair
     # guarantees a 6:00-PT LLM build year-round (DST-proof). 16:00 UTC is 8:00 PST: in winter
     # no other slot lands on the 8 AM send (15:00 UTC is 7:00 PST, 18:00 UTC is 10:00).
-    - cron: "0 */3 * * *"
-    - cron: "0 13 * * *"
-    - cron: "0 14 * * *"
-    - cron: "0 16 * * *"
+    # Minute 7, not 0: GitHub queues scheduled runs, and the top of the hour is the busiest
+    # slot (the 13:00 run was starting one to four hours late). Still inside the same Pacific
+    # hour, so the 6 AM gate below reads exactly as before.
+    - cron: "7 */3 * * *"
+    - cron: "7 13 * * *"
+    - cron: "7 14 * * *"
+    - cron: "7 16 * * *"
   workflow_dispatch:
 
 permissions:

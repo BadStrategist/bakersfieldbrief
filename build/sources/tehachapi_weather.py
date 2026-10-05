@@ -65,6 +65,7 @@ def _current() -> dict:
             if rh is not None:
                 out["humidity"] = round(rh)
             ts = props.get("timestamp") or ""
+            out["timestamp"] = ts     # the live script only replaces this with a NEWER reading
             if ts:
                 try:
                     out["observed"] = dt.datetime.fromisoformat(ts.replace("Z", "+00:00")).astimezone(

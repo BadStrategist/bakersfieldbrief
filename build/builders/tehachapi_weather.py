@@ -32,7 +32,10 @@ def build(ctx, sources: dict) -> list[str]:
     rel = "../"
 
     # ---- current conditions card
-    cond_html = '<div class="errorbox">Current Tehachapi weather is unavailable this build.</div>'
+    # id="tw-now" / "tw-answer" / "tw-observed" are what assets/js/live-tehachapi-weather.js
+    # rewrites when the station has reported since this build.
+    cond_html = ('<div class="errorbox" id="tw-now">Current Tehachapi weather is unavailable '
+                 'this build.</div>')
     if cur.get("ok"):
         bits = []
         if cur.get("temperature") is not None:
@@ -49,7 +52,8 @@ def build(ctx, sources: dict) -> list[str]:
         obs = cur.get("observed", "")
         station = cur.get("station", "?")
         cond_html = (
-            '<div class="card"><h3>Right now in Tehachapi</h3>'
+            f'<div class="card" id="tw-now" data-ts="{html.escape(cur.get("timestamp", ""))}">'
+            '<h3>Right now in Tehachapi</h3>'
             f'<p class="big-word" style="font-size:2rem">{bits[0]}' +
             (" &middot; " + " &middot; ".join(x for x in bits[1:] + wind) if (bits[1:] or wind) else "") +
             (f" &middot; {cond}" if cond else "") + '</p>'
@@ -84,7 +88,7 @@ def build(ctx, sources: dict) -> list[str]:
 
     # ---- direct quotable answer (Q1-targeted, first text after H1)
     if cur.get("ok"):
-        direct = (f'<p class="answer"><strong>Right now it is {cur.get("temperature", "—")}°F in '
+        direct = (f'<p class="answer" id="tw-answer"><strong>Right now it is {cur.get("temperature", "—")}°F in '
                   f'Tehachapi</strong>'
                   + (f' with {cur["wind_mph"]} mph wind from {cur.get("wind_dir") or "?"}'
                      if cur.get("wind_mph") is not None else '')
@@ -92,7 +96,7 @@ def build(ctx, sources: dict) -> list[str]:
                   + f'. Observed by the NWS {html.escape(cur.get("station", "station"))} at '
                   + f'{html.escape(cur.get("observed", "the latest observation"))}.</p>')
     else:
-        direct = ('<p class="answer">A current Tehachapi reading is unavailable this build — the NWS '
+        direct = ('<p class="answer" id="tw-answer">A current Tehachapi reading is unavailable this build — the NWS '
                   'station did not report. Check back for the live forecast.</p>')
 
     # ---- FAQ (visible + schema). Q1 carries the live reading.
@@ -135,8 +139,8 @@ def build(ctx, sources: dict) -> list[str]:
       <h1>Tehachapi Weather</h1>
       <p class="lede">Live current conditions and forecast for Tehachapi, California (elevation ~4,000 ft)
       — temperature, wind, and alerts from the National Weather Service.</p>
-      <div class="meta"><span>NWS observation: {html.escape(cur.get("observed", "unavailable this build")) if cur.get("ok") else "unavailable this build"}</span>
-      <span class="dot">&bull;</span><span>refreshes 3× daily</span></div></div>
+      <div class="meta"><span>NWS observation: <span id="tw-observed">{html.escape(cur.get("observed", "unavailable this build")) if cur.get("ok") else "unavailable this build"}</span></span>
+      <span class="dot">&bull;</span><span>rechecked while this page is open</span></div></div>
     </div>
 
     {direct}
@@ -183,10 +187,11 @@ def build(ctx, sources: dict) -> list[str]:
 
     page = page_mod.render(
         title="Tehachapi Weather | Current Conditions & Forecast | Bakersfield Daily Brief",
-        desc="Live Tehachapi weather — current temperature, wind, and forecast from the National Weather Service, plus alerts. Updated 3x daily.",
+        desc="Live Tehachapi weather — current temperature, wind, and forecast from the National Weather Service, plus alerts. Rechecked every time you open the page.",
         canonical="/tehachapi-weather/", content=body, current="trackers", rel=rel,
         built=built_iso, statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
-        jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), _faq(live_answer, faq_qa)])
+        jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), _faq(live_answer, faq_qa)],
+        extra_scripts='<script src="{rel}assets/js/live-tehachapi-weather.js" defer></script>'.format(rel=rel))
     common.write(common.SITE / "tehachapi-weather" / "index.html", page)
     built.append("tehachapi-weather/index.html")
 

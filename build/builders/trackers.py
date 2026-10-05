@@ -696,7 +696,7 @@ def build_water(ctx, sources: dict):
         _chg_sentence = (_chg_clause(chg_txt) if chg_txt else
                          "A week-over-week storage comparison is unavailable this build.")
         body = f"""
-        <div class="card"><span class="tag">Lake Isabella</span>
+        <div class="card" id="isb-now" data-reading-date="{html.escape(str(storage.get('date', '')))}"><span class="tag">Lake Isabella</span>
         <h3>Current water level</h3>
         <p><strong>Lake Isabella is at {elev['value']:,} feet elevation</strong>, holding
         {storage['value']:,} acre-feet — {pct}% of its {cap_af:,}-acre-foot full capacity
@@ -919,6 +919,9 @@ def _write_tracker(ctx, slug: str, name: str, lede: str, stat_html: str,
     extra_scripts = (map_scripts
                      + (('<script src="../assets/js/live-fires.js?v=' + _js_ver("live-fires.js") + '" defer></script>')
                         if slug == "fires" else "")
+                     # the lake is reported daily: this only flags a reading newer than the build's
+                     + (('<script src="../assets/js/live-water.js?v=' + _js_ver("live-water.js") + '" defer></script>')
+                        if slug == "water" else "")
                      + (('<script src="../assets/js/webmcp-alpr.js?v=' + _js_ver("webmcp-alpr.js") + '" defer></script>')
                         if slug == "surveillance" else ""))
 

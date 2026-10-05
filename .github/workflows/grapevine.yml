@@ -8,7 +8,9 @@ on:
     # :30, not :00. All five workflows share the "pages" concurrency group, and GitHub keeps only
     # one pending run per group: a grapevine run queued at 13:00 UTC could cancel the daily
     # workflow's 6 AM brief build waiting behind it.
-    - cron: "30 13,20,2 * * *"
+    # Minute 37 for the same reason the daily workflow moved to minute 7: :00 and :30 are
+    # the slots GitHub starts latest.
+    - cron: "37 13,20,2 * * *"
     # SEASONAL — hourly, November through March (snow season on Tejon Pass).
     # To enable, uncomment the line below (and optionally comment the 3x-daily
     # line above; the two overlap harmlessly if both are active, at the cost

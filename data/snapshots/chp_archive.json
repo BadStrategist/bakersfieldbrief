@@ -850,6 +850,16 @@
   "details": ""
  },
  {
+  "log_id": "261005BF0211",
+  "time": "Oct  5 2026  2:35PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "2629 N King St",
+  "area": "Bakersfield",
+  "lat": 35.396809,
+  "lon": -118.985987,
+  "details": ""
+ },
+ {
   "log_id": "261005BF0033",
   "time": "Oct  5 2026  5:05AM",
   "type": "MZP-Assist CT with Maintenance",

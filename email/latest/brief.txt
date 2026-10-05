@@ -8,7 +8,7 @@ CONDITIONS
 Weather: n/a
 Alerts: No active alerts
 Isabella: 148,286 acre-feet (26.1% full)
-CHP: 3 overnight
+CHP: Unavailable
 Air: AQI 112 · Unhealthy for Sensitive Groups
 Fires: 0 active in Kern
 

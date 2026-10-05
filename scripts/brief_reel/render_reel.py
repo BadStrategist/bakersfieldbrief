@@ -235,14 +235,21 @@ def frame(t, cfg, dur):
     # in the outro, and lives in the caption every time.
 
     if t < intro:
-        # 1 second title flash. The reel must open on story 1 inside the first
-        # second, so the masthead is a bug here, not a 4 second curtain.
-        a = prog(t, 0.0, 0.28)
-        draw_logo(im, W / 2, 660, 150 * (0.88 + 0.12 * a), a)
-        text_c(im, d, 880, cfg["date_label"], F["date"], INK, prog(t, 0.10, 0.42))
-        rw = int(220 * prog(t, 0.16, 0.46)); d.line([(W / 2 - rw / 2, 944), (W / 2 + rw / 2, 944)], fill=GOLD, width=5)
-        text_c(im, d, 990, cfg["brand"], F["mast"], INK, prog(t, 0.22, 0.54))
-        text_c(im, d, 1120, cfg["kicker"], F["kick"], RED, prog(t, 0.32, 0.64))
+        # 1 second title flash, COMPLETE FROM FRAME 0. The first frame of a video
+        # is its thumbnail in every preview surface (chat, file browser, social),
+        # and the original fade-in drew frame 0 at alpha 0: bare cream with a top
+        # bar, which is the "blank card" bug. So the card is drawn at full alpha
+        # from t=0 and held for the whole intro, then fades to story 1 as before.
+        # Duration is unchanged, so the soundtrack stays in sync.
+        draw_logo(im, W / 2, 660, 150)
+        text_c(im, d, 880, cfg["date_label"], F["date"], INK)
+        d.line([(W / 2 - 110, 944), (W / 2 + 110, 944)], fill=GOLD, width=5)
+        text_c(im, d, 990, cfg["brand"], F["mast"], INK)
+        text_c(im, d, 1120, cfg["kicker"], F["kick"], RED)
+        y = 1240
+        for ln in wrap(d, stories[0]["headline"], font(66, 600), 900):
+            text_c(im, d, y, ln, font(66, 600), INK)
+            y += 84
         fade_over(im, CREAM, prog(t, 0.72, 1.0))
     elif t < dur - outro:
         k = min(len(stories) - 1, int((t - intro) // card_len)); tl = (t - intro) - card_len * k
@@ -306,10 +313,41 @@ def still_card(cfg):
 
 
 # ---------- main ----------
+def probe_duration(path):
+    """Length in seconds via ffprobe, or None when it cannot be read. Never raises."""
+    try:
+        r = subprocess.run(
+            ["ffprobe", "-v", "error", "-show_entries", "format=duration",
+             "-of", "default=nw=1:nk=1", str(path)],
+            capture_output=True, text=True, timeout=60)
+        return float(r.stdout.strip()) if r.returncode == 0 else None
+    except Exception:
+        return None
+
+
+def resolve_music(src, explicit):
+    """Find the music file without guessing silently.
+
+    An explicit --music is CWD-relative first (what a shell user means) and
+    script-relative second. The brief json's own "music" is script-relative,
+    which is how it has always been written. If neither exists, name BOTH paths
+    that were tried instead of printing one misleading one.
+    """
+    cwd_path = os.path.abspath(src)
+    here_path = os.path.join(HERE, src)
+    if os.path.exists(cwd_path):
+        return cwd_path
+    if explicit and os.path.exists(here_path):
+        return here_path
+    sys.exit(f"music file not found; tried:\n  {cwd_path}\n  {here_path}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("config")
-    ap.add_argument("--out", default="out/reel", help="output path stem (no extension)")
+    ap.add_argument("--out", default=None,
+                    help="output path stem, no extension (CWD-relative; "
+                         "default: <script>/out/reel)")
     ap.add_argument("--duration", type=float, default=30.0)
     ap.add_argument("--fps", type=int, default=24)
     ap.add_argument("--no-card", action="store_true")
@@ -324,23 +362,41 @@ def main():
             sys.exit(f"brief.json missing required key: {k}")
     if not (1 <= len(cfg["stories"]) <= 4):
         sys.exit("stories must have 1-4 items")
-    # Pacing gate, up front: never spawn the encoder (and never leave a stub
-    # mp4 behind) for a reel whose scenes are too short to read. Text is fully
-    # on screen by 2.1 s, so a card under MIN_CARD seconds cannot be read.
+
+    music = resolve_music(args.music or cfg.get("music", "music/bed_dark.mp3"),
+                          bool(args.music))
+    music_dur = probe_duration(music)
+
+    # ffmpeg runs -shortest, so it ends the mux at the end of the audio and
+    # closes the pipe while frames are still being written. That surfaced as a
+    # raw "OSError: [Errno 22] Invalid argument" traceback about 20 s in, with
+    # no explanation. Clamp to the audio and say so instead.
+    if music_dur and args.duration > music_dur + 0.05:
+        print(f"[reel] soundtrack is {music_dur:.2f}s but --duration was "
+              f"{args.duration:.2f}s; rendering {music_dur:.2f}s instead "
+              f"(-shortest stops at the audio and breaks the pipe).",
+              file=sys.stderr)
+        args.duration = round(music_dur, 3)
+
+    # Pacing gate, up front: never spawn the encoder (and never leave a stub mp4
+    # behind) for a reel whose scenes are too short to read. Text is fully on
+    # screen by 2.1 s, so a card under MIN_CARD seconds cannot be read. Runs
+    # AFTER the clamp so it judges the duration actually rendered.
     _card = (args.duration - 1.0 - 4.0) / max(1, len(cfg["stories"]))
     if _card < MIN_CARD:
         sys.exit(
             f"FATAL {len(cfg['stories'])} stories in {args.duration:.0f}s leaves "
             f"{_card:.1f}s per scene; the floor is {MIN_CARD:.1f}s. Drop a story or "
             f"lengthen the soundtrack.")
-    music = args.music or cfg.get("music", "music/bed_dark.mp3")
-    if not os.path.isabs(music):
-        music = os.path.join(HERE, music)
-    if not os.path.exists(music):
-        sys.exit(f"music file not found: {music}")
 
-    stem = args.out if os.path.isabs(args.out) else os.path.join(HERE, args.out)
-    os.makedirs(os.path.dirname(stem), exist_ok=True)
+    # An explicit --out is CWD-relative. It used to resolve against the script
+    # directory, so a repo-relative path silently wrote into scripts/brief_reel/
+    # and the caller looked in the wrong place.
+    stem = (os.path.join(HERE, "out/reel") if args.out is None
+            else os.path.abspath(args.out))
+    _d = os.path.dirname(stem)
+    if _d:
+        os.makedirs(_d, exist_ok=True)
     mp4 = stem + ".mp4"; png = stem + ".png"
 
     if not args.no_card:
@@ -354,7 +410,13 @@ def main():
     p = subprocess.Popen(cmd, stdin=subprocess.PIPE)
     n = int(args.fps * args.duration)
     for i in range(n):
-        p.stdin.write(frame(i / args.fps, cfg, args.duration).tobytes())
+        try:
+            p.stdin.write(frame(i / args.fps, cfg, args.duration).tobytes())
+        except (BrokenPipeError, OSError) as exc:
+            p.stdin.close(); p.wait()
+            sys.exit(f"[reel] the encoder closed the pipe at {i / args.fps:.1f}s of "
+                     f"{args.duration:.1f}s ({exc}). It stopped early; check the "
+                     f"soundtrack length against --duration.")
         if i % (args.fps * 5) == 0:
             print(f"  {i / args.fps:4.0f}s / {args.duration:.0f}s", flush=True)
     p.stdin.close(); p.wait()

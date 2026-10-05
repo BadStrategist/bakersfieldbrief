@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-05T02:35:32-07:00",
+ "built_at": "2026-10-05T03:19:33-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -64,13 +64,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 72,
+  "brief_words": 65,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Hot weather doesn't stop Kern County families from enjoying rides and fun at the final day of the fair",
+   "top_story": "Sen. Bernie Sanders rallies Bakersfield crowd in support of Democratic congressional challenger Randy Villegas",
    "archive": "2026-10-05"
   },
   "cityhall": {
@@ -111,7 +111,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 65,
+   "temp": 55,
    "wind_mph": 0,
    "alerts": 0
   },

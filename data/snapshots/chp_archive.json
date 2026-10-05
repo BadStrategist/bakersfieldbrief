@@ -740,6 +740,16 @@
   "details": ""
  },
  {
+  "log_id": "261004BF0288",
+  "time": "Oct  4 2026  6:48PM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 N / Sr46 Onr",
+  "area": "Buttonwillow",
+  "lat": 35.619478,
+  "lon": -119.655429,
+  "details": ""
+ },
+ {
   "log_id": "261004BF0072",
   "time": "Oct  4 2026  7:09AM",
   "type": "1183-Trfc Collision-Unkn Inj",

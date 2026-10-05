@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-04T18:21:48-07:00",
+ "built_at": "2026-10-04T18:56:13-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -22,16 +22,16 @@
    "error": ""
   },
   "airnow": {
-   "ok": false,
-   "error": "AirNow returned no data"
+   "ok": true,
+   "error": ""
   },
   "calfire": {
    "ok": true,
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 2777, column 40"
   },
   "isabella": {
    "ok": true,
@@ -63,13 +63,13 @@
   }
  },
  "section": {
-  "_digest_meta": "deterministic",
+  "_digest_meta": "llm",
   "brief_words": 1279,
   "daily": {
    "news_headlines": 75,
-   "news_digest": "deterministic",
+   "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 4,
+   "chp_new": 0,
    "top_story": "Arvin teen injured in e-scooter crash as data shows child scooter injuries up nearly 700% since 2020",
    "archive": "2026-10-04"
   },
@@ -86,7 +86,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 7,
@@ -106,13 +106,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 14,
+   "wind_mph": 8,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 84,
-   "wind_mph": 14,
+   "temp": 79,
+   "wind_mph": 8,
    "alerts": 0
   },
   "roads": {
@@ -132,7 +132,7 @@
    "groups": {
     "In the next 7 days": 16,
     "In 1 to 2 weeks": 18,
-    "Later": 99
+    "Later": 100
    },
    "meetings": 6
   },
@@ -143,7 +143,7 @@
    "isabella_af": 148286,
    "alpr_total": 270,
    "kern_fires": 0,
-   "aqi": null,
+   "aqi": 112,
    "chp_week": 138
   },
   "letters": {

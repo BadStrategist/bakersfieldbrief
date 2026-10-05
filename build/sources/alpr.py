@@ -16,6 +16,11 @@ import datetime as dt
 from .. import common
 
 OVERPASS = "https://overpass-api.de/api/interpreter"
+# There is no working mirror to fall back to. Tested from a GitHub runner on 2026-10-05 with
+# this exact query: overpass.private.coffee and overpass.kumi.systems timed out at 60 s,
+# maps.mail.ru answered 504, overpass.osm.jp failed TLS; this server answered in 2.4 s. When
+# it cannot be reached, the last good camera list below is the fallback, and the next build
+# (three hours later) tries again.
 # out meta; → each node carries its real OSM timestamp (creation for most
 # surveillance nodes, which are mapped once and never edited).
 QUERY = ('[out:json];node["man_made"="surveillance"]["surveillance:type"="ALPR"]'

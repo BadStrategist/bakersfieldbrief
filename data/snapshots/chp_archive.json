@@ -830,6 +830,16 @@
   "details": ""
  },
  {
+  "log_id": "261005BF0187",
+  "time": "Oct  5 2026  1:30PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sb I5 At Fort Tejon Rd",
+  "area": "Fort Tejon",
+  "lat": 34.876667,
+  "lon": -118.894722,
+  "details": ""
+ },
+ {
   "log_id": "261005BF0033",
   "time": "Oct  5 2026  5:05AM",
   "type": "MZP-Assist CT with Maintenance",
@@ -867,6 +877,26 @@
   "area": "Bakersfield",
   "lat": 35.352778,
   "lon": -118.960556,
+  "details": ""
+ },
+ {
+  "log_id": "261005BF0094",
+  "time": "Oct  5 2026  9:51AM",
+  "type": "CZP-Assist with Construction",
+  "location": "1033 Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.825534,
+  "lon": -118.87775,
+  "details": ""
+ },
+ {
+  "log_id": "261005BF0155",
+  "time": "Oct  5 2026 11:51AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "SR178 / Democrat Rd",
+  "area": "Bakersfield",
+  "lat": 35.528673,
+  "lon": -118.656665,
   "details": ""
  },
  {

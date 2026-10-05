@@ -277,7 +277,9 @@ class TestData:
             for inc in incs:
                 assert required <= set(inc), f"{day}: missing fields"
                 assert 1 <= inc["notability"] <= 5
-                assert 0 <= int(inc["time"][:2]) <= 6 or int(inc["time"][:2]) >= 21
+                # Report window is 7 PM - 7 AM (19:00 -> 06:59); the emulator
+                # fills the hours the radio feed does not carry.
+                assert 0 <= int(inc["time"][:2]) <= 6 or int(inc["time"][:2]) >= 19
                 blob = json.dumps(inc).lower()
                 assert not re.search(r"\b(hector|luna|raphael|billy|wood)\b", blob)
                 assert not re.search(r"\b\d{3}[a-z]{3}\b|\bxq\d+\b", blob)

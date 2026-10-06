@@ -970,6 +970,16 @@
   "details": ""
  },
  {
+  "log_id": "261006BF0041",
+  "time": "Oct  6 2026  7:24AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "0 Martin Luther King Blvd Onr",
+  "area": "Bakersfield",
+  "lat": 35.353209,
+  "lon": -118.98398,
+  "details": ""
+ },
+ {
   "log_id": "260929BF0174",
   "time": "Sep 29 2026  1:01PM",
   "type": "1125-Traffic Hazard",

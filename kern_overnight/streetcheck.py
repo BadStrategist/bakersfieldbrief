@@ -43,11 +43,18 @@ _PATTERNS = [
     re.compile(rf"\b([A-Z][A-Za-z]+(?:\s+[A-Za-z][\w.'-]*?){{0,3}}\s+(?:{_TYPE})\b)", re.I),
 ]
 
-# Street names Whisper reliably mis-hears on the Kern feeds. The gazetteer
-# spelling wins, always. Evidence: 'weibel' 25x and 'wibel' 2x across
-# transcripts/, while the gazetteer holds exactly one entry, 'Wible Road'
-# (Bakersfield). Never add a mapping without counting the occurrences in
-# transcripts/ first.
+# Street names the Kern feeds get wrong. The OFFICIAL spelling wins, always:
+# every mapping below was verified against Kern County Centerline Roads and the
+# City of Bakersfield Streets layer before it was added.
+#   'weibel' 25x and 'wibel' 2x across transcripts/ -> 'Wible Road', the only
+#   gazetteer entry. Never add a mapping without counting the occurrences in
+#   transcripts/ first.
+#
+# The 2026-10-06 defect ran the other way and is the reason this note exists:
+# streets.txt held the bogus 'Ledgewiew Lane' (0x in transcripts/, 0 records in
+# both official layers; the audio says 'Ledgeview'), and a 'gazetteer wins'
+# pass rewrote a CORRECT published report to the bogus spelling. A gazetteer is
+# only as good as its source. Verify the entry, never trust it.
 #
 # Guard rails, learned the hard way: 'Weibel' is also a local surname
 # ("Megan Weibel" appears in transcripts/2026-08-14.jsonl), so a bare word
@@ -56,24 +63,29 @@ _PATTERNS = [
 #   B. before a street type word ("Weibel Avenue", "1914 Weibel Road")
 #   C. before an intersection ("Weibel and Bell Terrace")
 # Anything else, including a bare comma-separated mention, is left alone.
-_MISHEARD_BASE = ("weibel", "wibel", "weible")
+_MISHEARDS = {
+    "weibel": "Wible Road",
+    "wibel": "Wible Road",
+    "weible": "Wible Road",
+    "ledgewiew": "Ledgeview Lane",
+}
+_MISHEARD_BASE = tuple(_MISHEARDS)
 _MISHEARD_TYPE = (r"(?:avenue|ave|road|rd|street|st|boulevard|blvd|drive|dr|lane|ln|"
                   r"court|ct|way|place|pl|terrace|ter|parkway|pkwy)")
 _MISHEARD_PREP = (r"on|at|in|near|off|of|approaching|leaving|passing|crossing|"
                   r"toward|to|from|between|behind|block of|northbound|southbound|"
                   r"eastbound|westbound|and")
-_ALT = "|".join(_MISHEARD_BASE)
+_ALT = "|".join(_MISHEARDS)
 _MISHEARD_RE = re.compile(
     rf"\b(?P<pre>{_MISHEARD_PREP})\s+(?P<a>{_ALT})\b(?:\s+{_MISHEARD_TYPE})?"   # A
     rf"|\b(?P<b>{_ALT})\b\s+{_MISHEARD_TYPE}\b"                                  # B
     rf"|\b(?P<c>{_ALT})\b(?=\s+and\b)",                                          # C
     re.I)
-_MISHEARD_TO = "Wible Road"
-
-
 def _misheard_sub(m: "re.Match[str]") -> str:
+    base = (m.group("a") or m.group("b") or m.group("c")).lower()
+    to = _MISHEARDS[base]
     pre = m.group("pre")
-    return f"{pre} {_MISHEARD_TO}" if pre else _MISHEARD_TO
+    return f"{pre} {to}" if pre else to
 
 
 def fix_text(text: str) -> str:
@@ -102,8 +114,8 @@ def normalize(name: str) -> str:
     # A candidate that is nothing but the mis-hearing is a street mention by
     # construction (callers pass street candidates, never lone surnames), so
     # fold it even though fix_text() needs a context word.
-    if n in _MISHEARD_BASE:
-        return _MISHEARD_TO.lower()
+    if n in _MISHEARDS:
+            return _MISHEARDS[n].lower()
     return n
 
 

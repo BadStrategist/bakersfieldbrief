@@ -980,6 +980,56 @@
   "details": ""
  },
  {
+  "log_id": "261006BF0094",
+  "time": "Oct  6 2026 10:04AM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "SB I5 JNO Rowlee Rd",
+  "area": "Buttonwillow",
+  "lat": 35.4575,
+  "lon": -119.478056,
+  "details": ""
+ },
+ {
+  "log_id": "261006BF0097",
+  "time": "Oct  6 2026 10:08AM",
+  "type": "CZP-Assist with Construction",
+  "location": "Nb I5 At Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.835556,
+  "lon": -118.863056,
+  "details": ""
+ },
+ {
+  "log_id": "261006BF0121",
+  "time": "Oct  6 2026 11:08AM",
+  "type": "CFIRE-Car Fire",
+  "location": "I5 N / Grapevine Rd E",
+  "area": "Fort Tejon",
+  "lat": 34.939285,
+  "lon": -118.929655,
+  "details": ""
+ },
+ {
+  "log_id": "261006BF0120",
+  "time": "Oct  6 2026 11:10AM",
+  "type": "1125-Traffic Hazard",
+  "location": "1232 Grace St",
+  "area": "Bakersfield",
+  "lat": 35.387433,
+  "lon": -118.980239,
+  "details": ""
+ },
+ {
+  "log_id": "261006BF0123",
+  "time": "Oct  6 2026 11:12AM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 N / West Escape Ramp",
+  "area": "Fort Tejon",
+  "lat": 34.918056,
+  "lon": -118.923889,
+  "details": ""
+ },
+ {
   "log_id": "260929BF0174",
   "time": "Sep 29 2026  1:01PM",
   "type": "1125-Traffic Hazard",

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-06T07:45:46-07:00",
+ "built_at": "2026-10-06T08:18:22-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 2381, column 2"
   },
   "isabella": {
    "ok": true,
@@ -106,13 +106,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 0,
+   "wind_mph": 5,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 55,
-   "wind_mph": 0,
+   "temp": 59,
+   "wind_mph": 5,
    "alerts": 0
   },
   "roads": {

@@ -1,0 +1,254 @@
+[
+ {
+  "type": "disturbance",
+  "time": "21:11",
+  "agency": "BPD",
+  "area": "Delfino Lane (500 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Disturbance between roommates in the 500 block of Delfino Lane."
+ },
+ {
+  "type": "landlord-tenant dispute",
+  "time": "21:24",
+  "agency": "BPD",
+  "area": "Shasta Drive (1300 block)",
+  "notability": 2,
+  "disposition": "reporting party standing by",
+  "summary": "A landlord was reported trying to remove a tenant without an eviction notice in the 1300 block of Shasta Drive."
+ },
+ {
+  "type": "traffic",
+  "time": "21:49",
+  "agency": "CHP",
+  "area": "Westside Parkway at Calloway Drive",
+  "notability": 3,
+  "disposition": "traffic units assigned",
+  "summary": "Roughly 50 vehicles were reported moving eastbound on Westside Parkway approaching Calloway Drive; units tried to identify them as the group split toward the Truxtun Avenue off-ramp and Highway 99."
+ },
+ {
+  "type": "collision",
+  "time": "21:55",
+  "agency": "KCFD",
+  "area": "Kern River valley",
+  "notability": 3,
+  "disposition": "crews on scene",
+  "summary": "A vehicle left the road, went down a ravine and came to rest near downed power lines; the occupants got out and were reported possibly trying to reach the water."
+ },
+ {
+  "type": "welfare check",
+  "time": "22:08",
+  "agency": "KCSO",
+  "area": "Lake of the Woods",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "Deputies checked on four juveniles ages 2 to 7 reported running in and out of the roadway unsupervised in Lake of the Woods, with adults yelling at the children."
+ },
+ {
+  "type": "burglary",
+  "time": "22:59",
+  "agency": "KCSO",
+  "area": "Breckenridge Road",
+  "notability": 4,
+  "disposition": "suspect held at gunpoint, second suspect at large",
+  "summary": "A Breckenridge Road resident reported holding a burglary suspect at gunpoint after an earlier break-in at the home. A second suspect fled in a black GMC, and a neighbor reported the vehicle heading south on Comanche Drive as units searched the area."
+ },
+ {
+  "type": "disturbance",
+  "time": "23:18",
+  "agency": "KCSO",
+  "area": "West Point Drive (1400 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Family disturbance in the 1400 block of West Point Drive in which a man was reported scaring his mother."
+ },
+ {
+  "type": "disturbance",
+  "time": "23:22",
+  "agency": "BPD",
+  "area": "University Avenue (1200 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Family disturbance reported in the 1200 block of University Avenue."
+ },
+ {
+  "type": "weapons call",
+  "time": "23:36",
+  "agency": "KCSO",
+  "area": "Chester Place",
+  "notability": 3,
+  "disposition": "units responding",
+  "summary": "A landlord-tenant dispute on Chester Place in which a man was reported with a foot-long knife about two hours earlier."
+ },
+ {
+  "type": "fight",
+  "time": "23:54",
+  "agency": "BPD",
+  "area": "Niles Street and Sterling Road",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Fight reported in the area of Niles Street and Sterling Road."
+ },
+ {
+  "type": "welfare check",
+  "time": "00:23",
+  "agency": "BPD",
+  "area": "South King Street (100 block)",
+  "notability": 2,
+  "disposition": "transit inspector responding",
+  "summary": "Welfare check on a woman who reported being kicked out and was waiting at a transit stop in the 100 block of South King Street."
+ },
+ {
+  "type": "hit and run",
+  "time": "00:42",
+  "agency": "CHP",
+  "area": "Wible Road (4000 block)",
+  "notability": 2,
+  "disposition": "report taken",
+  "summary": "Hit-and-run reported in the 4000 block of Wible Road involving a white sedan."
+ },
+ {
+  "type": "suspicious person",
+  "time": "00:46",
+  "agency": "BPD",
+  "area": "Lincoln Street and Airport Drive",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Suspicious person reported at a car wash at Lincoln Street and Airport Drive."
+ },
+ {
+  "type": "alarm",
+  "time": "01:04",
+  "agency": "BFD",
+  "area": "District Boulevard (5300 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Audible burglary alarm at a business in the 5300 block of District Boulevard."
+ },
+ {
+  "type": "hit and run",
+  "time": "01:08",
+  "agency": "CHP",
+  "area": "Bakersfield",
+  "notability": 3,
+  "disposition": "driver fled on foot",
+  "summary": "Hit-and-run crash in which the driver fled on foot after a vehicle rolled over."
+ },
+ {
+  "type": "collision",
+  "time": "01:11",
+  "agency": "BPD",
+  "area": "University Avenue (1800 block)",
+  "notability": 3,
+  "disposition": "no patients on scene",
+  "summary": "Three-vehicle collision in the 1800 block of University Avenue; crews found one vehicle against a parked car and one rolled over, with no patients on scene."
+ },
+ {
+  "type": "assault",
+  "time": "01:18",
+  "agency": "BPD",
+  "area": "Newquist Drive (200 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Battery reported in the 200 block of Newquist Drive."
+ },
+ {
+  "type": "welfare check",
+  "time": "01:34",
+  "agency": "BPD",
+  "area": "Kinshaw Court (4800 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Welfare check in the 4800 block of Kinshaw Court for a person known to have firearms; none were seen."
+ },
+ {
+  "type": "disturbance",
+  "time": "01:58",
+  "agency": "BPD",
+  "area": "Newquist Drive (200 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Roommate disturbance in the 200 block of Newquist Drive; one person was refusing to let the other inside."
+ },
+ {
+  "type": "loitering",
+  "time": "02:03",
+  "agency": "BPD",
+  "area": "Union Avenue (1900 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Group of four or five men reported loitering and harassing customers at a store in the 1900 block of Union Avenue."
+ },
+ {
+  "type": "assault with a deadly weapon",
+  "time": "02:21",
+  "agency": "BPD",
+  "area": "south Bakersfield",
+  "notability": 3,
+  "disposition": "suspect at large",
+  "summary": "Assault with a deadly weapon with no injuries; a man reportedly showed a black pistol before fleeing in an early-2000s SUV."
+ },
+ {
+  "type": "missing person",
+  "time": "02:38",
+  "agency": "KCSO",
+  "area": "Bakersfield area",
+  "notability": 3,
+  "disposition": "at-risk alert broadcast",
+  "summary": "An at-risk missing person alert went out after the subject's debit card was used at a Chevron station; the person was believed to be in a Honda CR-V."
+ },
+ {
+  "type": "disturbance",
+  "time": "03:21",
+  "agency": "BPD",
+  "area": "Terra Vista apartments",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "Neighbor dispute over loud stomping and talking reported at a Terra Vista apartment complex."
+ },
+ {
+  "type": "alarm",
+  "time": "03:28",
+  "agency": "BFD",
+  "area": "Truxtun Avenue (400 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Audible alarm at a building in the 400 block of Truxtun Avenue, with activation at the east door."
+ },
+ {
+  "type": "disturbance",
+  "time": "03:50",
+  "agency": "BPD",
+  "area": "Endes Street (1800 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Disturbance in the 1800 block of Endes Street involving a man on parole."
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "04:19",
+  "agency": "KCSO",
+  "area": "Ledgeview Lane (2500 block)",
+  "notability": 3,
+  "disposition": "units responding",
+  "summary": "A woman whispering on the phone told dispatchers she was locked inside a car parked in front of a home in the 2500 block of Ledgeview Lane."
+ },
+ {
+  "type": "collision",
+  "time": "04:28",
+  "agency": "BFD",
+  "area": "East Truxtun Avenue (1100 block)",
+  "notability": 3,
+  "disposition": "driver out, minor to moderate injuries",
+  "summary": "Three-vehicle crash in front of a business in the 1100 block of East Truxtun Avenue with a possible pin-in and a dark-colored SUV; the driver was out of the vehicle with minor to moderate injuries."
+ },
+ {
+  "type": "shots heard",
+  "time": "04:31",
+  "agency": "KCSO",
+  "area": "Coconut Way",
+  "notability": 3,
+  "disposition": "nothing further seen or heard",
+  "summary": "Two shots reported heard at a mobile home park on Coconut Way just north of West Columbus Street; nothing else was seen or heard."
+ }
+]

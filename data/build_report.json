@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-05T18:45:16-07:00",
+ "built_at": "2026-10-06T02:23:28-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 2381, column 2"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -64,19 +64,19 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1323,
+  "brief_words": 63,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Body Xchange acquired by Planet Fitness, locations in Bakersfield close",
-   "archive": "2026-10-05"
+   "chp_new": 1,
+   "top_story": "Two vehicles impounded, multiple citations issued after CHP I-5 crackdown on trucks",
+   "archive": "2026-10-06"
   },
   "cityhall": {
    "upcoming_meetings": 8,
    "county_items": 133,
-   "drafts_generated": 0
+   "drafts_generated": 1
   },
   "places": {
    "places": [
@@ -86,10 +86,10 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 11,
+    "bakersfield-nw": 9,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -97,7 +97,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-10-05"
+   "draft": "drafts/weekend-guide-2026-10-06"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -106,13 +106,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 9,
+   "wind_mph": 1,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 81,
-   "wind_mph": 9,
+   "temp": 67,
+   "wind_mph": 1,
    "alerts": 0
   },
   "roads": {
@@ -130,9 +130,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 16,
-    "In 1 to 2 weeks": 18,
-    "Later": 100
+    "In the next 7 days": 15,
+    "In 1 to 2 weeks": 19,
+    "Later": 99
    },
    "meetings": 8
   },
@@ -140,11 +140,11 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 147739,
+   "isabella_af": 147139,
    "alpr_total": 270,
    "kern_fires": 0,
-   "aqi": 97,
-   "chp_week": 13
+   "aqi": 62,
+   "chp_week": 14
   },
   "letters": {
    "published": 1

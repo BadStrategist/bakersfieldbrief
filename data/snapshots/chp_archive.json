@@ -960,133 +960,13 @@
   "details": ""
  },
  {
-  "log_id": "260928BF0026",
-  "time": "Sep 28 2026  5:20AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "Lake Isabella",
-  "area": "Bakersfield",
-  "lat": 35.626685,
-  "lon": -118.473997,
-  "details": ""
- },
- {
-  "log_id": "260928BF0322",
-  "time": "Sep 28 2026  5:46PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr58 W / Sr223",
-  "area": "Bakersfield",
-  "lat": 35.264298,
-  "lon": -118.658348,
-  "details": ""
- },
- {
-  "log_id": "260928BF0032",
-  "time": "Sep 28 2026  5:52AM",
-  "type": "1125-Traffic Hazard",
-  "location": "214 Adams St",
-  "area": "Buttonwillow",
-  "lat": 35.153167,
-  "lon": -119.448646,
-  "details": ""
- },
- {
-  "log_id": "260928BF0328",
-  "time": "Sep 28 2026  5:58PM",
-  "type": "1184-Provide Traffic Control",
-  "location": "Kern River Power House 1",
-  "area": "Bakersfield",
-  "lat": 35.460226,
-  "lon": -118.779062,
-  "details": ""
- },
- {
-  "log_id": "260928BF0037",
-  "time": "Sep 28 2026  6:11AM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "27599 W Lerdo Hwy",
-  "area": "Buttonwillow",
-  "lat": 35.500435,
-  "lon": -119.406386,
-  "details": ""
- },
- {
-  "log_id": "260928BF0054",
-  "time": "Sep 28 2026  7:24AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "SB I5 JNO #4 Turn Thru",
-  "area": "Fort Tejon",
-  "lat": 34.914069,
-  "lon": -118.92362,
-  "details": ""
- },
- {
-  "log_id": "260928BF0380",
-  "time": "Sep 28 2026  7:27PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Sb Sr99 Jso South Union Ave",
-  "area": "Bakersfield",
-  "lat": 35.165,
-  "lon": -119.001944,
-  "details": ""
- },
- {
-  "log_id": "260928BF0404",
-  "time": "Sep 28 2026  7:57PM",
-  "type": "CZP-Assist with Construction",
-  "location": "I5 N / Sr43",
-  "area": "Buttonwillow",
-  "lat": 35.293548,
-  "lon": -119.252486,
-  "details": ""
- },
- {
-  "log_id": "260928BF0083",
-  "time": "Sep 28 2026  8:50AM",
-  "type": "CZP-Assist with Construction",
-  "location": "Nb I5 At Fort Tejon Rd",
-  "area": "Fort Tejon",
-  "lat": 34.876944,
-  "lon": -118.894722,
-  "details": ""
- },
- {
-  "log_id": "260928BF0116",
-  "time": "Sep 28 2026 10:26AM",
-  "type": "1144-Fatality",
-  "location": "0 Sr58 W",
-  "area": "Bakersfield",
-  "lat": 35.342472,
-  "lon": -118.859901,
-  "details": ""
- },
- {
-  "log_id": "260928BF0150",
-  "time": "Sep 28 2026 12:02PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Di Giorgio Rd / South Union Ave",
-  "area": "Bakersfield",
-  "lat": 35.252246,
-  "lon": -119.002991,
-  "details": ""
- },
- {
-  "log_id": "260928BF0006",
-  "time": "Sep 28 2026 12:14AM",
+  "log_id": "261006BF0005",
+  "time": "Oct  6 2026  1:51AM",
   "type": "TADV-Traffic Advisory",
   "location": "Bakersfield Traffic Advisories",
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260928BF0162",
-  "time": "Sep 28 2026 12:20PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "511 Decatur St",
-  "area": "Bakersfield",
-  "lat": 35.41362,
-  "lon": -119.030269,
   "details": ""
  },
  {

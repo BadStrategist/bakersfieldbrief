@@ -1140,6 +1140,36 @@
   "details": ""
  },
  {
+  "log_id": "261007BF0210",
+  "time": "Oct  7 2026  1:18PM",
+  "type": "1125-Traffic Hazard",
+  "location": "220 Pierce St",
+  "area": "Buttonwillow",
+  "lat": 35.153273,
+  "lon": -119.462652,
+  "details": ""
+ },
+ {
+  "log_id": "261007BF0215",
+  "time": "Oct  7 2026  1:26PM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 N / West Escape Ramp",
+  "area": "Fort Tejon",
+  "lat": 34.918056,
+  "lon": -118.923889,
+  "details": ""
+ },
+ {
+  "log_id": "261007BF0229",
+  "time": "Oct  7 2026  2:05PM",
+  "type": "1125-Traffic Hazard",
+  "location": "2103 Carrere St",
+  "area": "Bakersfield",
+  "lat": 35.425005,
+  "lon": -119.019773,
+  "details": ""
+ },
+ {
   "log_id": "261007BF0020",
   "time": "Oct  7 2026  2:08AM",
   "type": "1179-Trfc Collision-1141 Enrt",

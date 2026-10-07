@@ -1,6 +1,15 @@
 [
  {
   "ts": "2026-10-07",
+  "time": "7:46 AM",
+  "route": "sr99",
+  "route_name": "SR-99 in Kern County",
+  "scope": "corridor",
+  "to": "OPEN",
+  "from": "CLOSED"
+ },
+ {
+  "ts": "2026-10-07",
   "time": "3:09 AM",
   "route": "sr99",
   "route_name": "SR-99 in Kern County",
@@ -508,15 +517,6 @@
  },
  {
   "ts": "2026-09-17",
-  "route": "i5",
-  "route_name": "I-5, anywhere in California",
-  "from": "updated",
-  "to": "RESTRICTIONS",
-  "note": "condition text changed",
-  "scope": "statewide"
- },
- {
-  "ts": "2026-09-16",
   "route": "i5",
   "route_name": "I-5, anywhere in California",
   "from": "updated",

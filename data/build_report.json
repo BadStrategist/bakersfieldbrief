@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-06T13:58:12-07:00",
+ "built_at": "2026-10-06T17:05:35-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 2381, column 2"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -39,7 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -69,7 +69,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 1,
    "top_story": "School book bans hit record high with nearly 12,000 removals, study finds",
    "archive": "2026-10-06"
   },
@@ -89,7 +89,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 9,
+    "bakersfield-nw": 12,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -106,13 +106,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": null,
+   "wind_mph": 13,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 88,
-   "wind_mph": null,
+   "temp": 84,
+   "wind_mph": 13,
    "alerts": 0
   },
   "roads": {
@@ -132,7 +132,7 @@
    "groups": {
     "In the next 7 days": 15,
     "In 1 to 2 weeks": 19,
-    "Later": 99
+    "Later": 104
    },
    "meetings": 10
   },
@@ -143,8 +143,8 @@
    "isabella_af": 147139,
    "alpr_total": 270,
    "kern_fires": 0,
-   "aqi": 80,
-   "chp_week": 20
+   "aqi": 115,
+   "chp_week": 21
   },
   "letters": {
    "published": 1

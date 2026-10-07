@@ -57,7 +57,7 @@
      }
     ]
    },
-   "reported_as_of": "Wednesday, October 7th, 2026 at 02:12 AM",
+   "reported_as_of": "Wednesday, October 7th, 2026 at 03:09 AM",
    "hash": "b723eda6ee"
   },
   {
@@ -80,7 +80,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Wednesday, October 7th, 2026 at 02:12 AM",
+   "reported_as_of": "Wednesday, October 7th, 2026 at 03:09 AM",
    "hash": "5374f203ec"
   },
   {
@@ -88,13 +88,13 @@
    "slug": "sr99",
    "name": "State Route 99 \u2014 Central Valley",
    "pass": false,
-   "status": "RESTRICTIONS",
-   "pass_status": "RESTRICTIONS",
+   "status": "CLOSED",
+   "pass_status": "CLOSED",
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
-     "status": "RESTRICTIONS"
+     "text": "Is closed to southbound traffic 7.6 mi south of the Jct of SR-46 (Kern Co) at 0210 hrs on 10/7/26 - Due to a traffic collision - A detour is available A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "status": "CLOSED"
     },
     {
      "region": "NORTHERN CALIFORNIA",
@@ -103,9 +103,18 @@
     }
    ],
    "scope": {
-    "on_pass": "OPEN",
-    "on_pass_reported": false,
-    "on_pass_items": [],
+    "on_pass": "CLOSED",
+    "on_pass_reported": true,
+    "on_pass_items": [
+     {
+      "status": "CLOSED",
+      "place": "",
+      "county": "Kern Co",
+      "where": "Kern Co",
+      "text": "Is closed to southbound traffic 7.6 mi south of the Jct of SR-46 (Kern Co) at 0210 hrs on 10/7/26 - Due to a traffic collision - A detour is available",
+      "region": "CENTRAL CALIFORNIA"
+     }
+    ],
     "elsewhere": [
      {
       "status": "RESTRICTIONS",
@@ -117,8 +126,8 @@
      }
     ]
    },
-   "reported_as_of": "Wednesday, October 7th, 2026 at 02:12 AM",
-   "hash": "8b7d5f6e76"
+   "reported_as_of": "Wednesday, October 7th, 2026 at 03:09 AM",
+   "hash": "ec113bfe84"
   }
  ],
  "asof": "2026-10-07"

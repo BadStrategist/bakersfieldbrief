@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-07T02:12:39-07:00",
+ "built_at": "2026-10-07T03:09:53-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 3277, column 3"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -69,7 +69,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 3,
    "top_story": "A look inside the race for California's Insurance Commissioner",
    "archive": "2026-10-07"
   },
@@ -111,7 +111,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 64,
+   "temp": 61,
    "wind_mph": 0,
    "alerts": 0
   },
@@ -119,7 +119,7 @@
    "routes": [
     "i5:RESTRICTIONS",
     "sr58:OPEN",
-    "sr99:RESTRICTIONS"
+    "sr99:CLOSED"
    ],
    "log_entries": 60
   },
@@ -143,8 +143,8 @@
    "isabella_af": 146540,
    "alpr_total": 270,
    "kern_fires": 0,
-   "aqi": 79,
-   "chp_week": 30
+   "aqi": 82,
+   "chp_week": 33
   },
   "letters": {
    "published": 1

@@ -93,12 +93,13 @@ jobs:
       - name: Commit generated artifacts
         # scripts/ci_push.sh stages only the CI-owned paths, warns when CI leaves a box-owned path
         # dirty, and flags a failed push (an ::error annotation) instead of a green step with
-        # nothing pushed. It never blocks the deploy or the send, hence continue-on-error.
-        continue-on-error: true
+        # nothing pushed. NO continue-on-error: a masked push is a green run with no
+        # artifacts. Downstream steps carry `if: !cancelled()`.
         run: |
           bash scripts/ci_push.sh "build: $(date -u +%Y-%m-%d) weekly artifacts [skip ci]"
 
       - name: Deploy to Cloudflare Pages
+        if: ${{ !cancelled() }}   # a failed artifact push must not withhold the site
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

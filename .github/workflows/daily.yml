@@ -96,13 +96,20 @@ jobs:
             echo "no overnight report for $TODAY — ping skipped (alert is the correct signal)"
           fi
 
+      # Test suite FIRST: it used to sit after the artifact push, so a broken build had
+      # already pushed a commit to main before the "gate" ran. Now a failure stops the
+      # push, the deploy and the send.
+      - name: Test suite (hard gate before the artifact push and the deploy)
+        run: python -m pytest -q -o addopts="" --tb=short
+
       # Automatic pusher: commit the generated artifacts (email/, drafts/, data/)
       # so the email renderings and review drafts are always in the repo.
       - name: Commit generated artifacts
         # scripts/ci_push.sh: pushes only CI-owned artifacts, fails loudly on an ownership conflict
-        # (an ::error annotation) instead of a green step with nothing pushed. It never blocks the
-        # deploy or the send, hence continue-on-error.
-        continue-on-error: true
+        # (an ::error annotation) instead of a green step with nothing pushed. NO
+        # continue-on-error: masking a failed push as a green step is how a whole day of
+        # artifacts disappears behind a passing run. The steps that must still happen
+        # (deploy, send) carry `if: !cancelled()`.
         run: |
           bash scripts/ci_push.sh "build: $(date -u +%Y-%m-%d) artifacts [skip ci]"
 
@@ -120,10 +127,8 @@ jobs:
       # email is blocked or the send errors — a skipped email must be a RED run
       # a human sees, never a silent green check — and a notification step posts
       # to the ops Discord channel so nobody has to grep run logs.
-      - name: Test suite (hard gate before deploy)
-        run: python -m pytest -q -o addopts="" --tb=short
-
       - name: Set MailerLite Pages secrets (for the newsletter function)
+        if: ${{ !cancelled() }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -135,6 +140,7 @@ jobs:
           echo "$MAILERLITE_GROUP_ID" | npx wrangler pages secret put MAILERLITE_GROUP_ID --project-name=bakersfieldbrief 2>&1 | tail -1
 
       - name: Deploy to Cloudflare Pages
+        if: ${{ !cancelled() }}   # a failed artifact push must not withhold the site
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
@@ -148,7 +154,7 @@ jobs:
       # hold up the site, but NO continue-on-error: a blocked send exits 1 and
       # FAILS the job, so `gh run list` shows RED, not a silent green check.
       - name: Send daily newsletter (MailerLite)
-        if: fromJSON(steps.gate.outputs.hour) >= 8
+        if: ${{ !cancelled() && fromJSON(steps.gate.outputs.hour) >= 8 }}
         id: send
         env:
           MAILERLITE_API_TOKEN: ${{ secrets.MAILERLITE_API_TOKEN }}

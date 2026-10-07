@@ -124,8 +124,11 @@ def main(argv: list[str]) -> int:
     print("[ko] 2/5 transcribe", flush=True)
     transcript.parent.mkdir(parents=True, exist_ok=True)
     vocab = ko_stt.load_vocab(ROOT / "kern_overnight" / "vocab.txt")
+    # BOTH phases are incremental runs: append=False rewrites the file, so a
+    # phase-1 retry on its own would truncate the transcript and delete every
+    # tail row a previous phase-2 run had added.
     n_rows = ko_stt.transcribe(audio_dir, transcript, tz, vocab,
-                               append=phase2)
+                               append=phase1 or phase2)
     print(f"[ko]     {n_rows} transmissions", flush=True)
 
     if phase1 or phase2:

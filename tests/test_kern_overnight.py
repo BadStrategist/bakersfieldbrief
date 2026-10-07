@@ -30,15 +30,62 @@ KERN_BOUNDS = (34.8, 36.0, -120.0, -117.2)  # lat_min, lat_max, lng_min, lng_max
 
 
 @pytest.fixture(scope="session")
-def geo_cache():
-    """Committed Nominatim cache — loaded once per session, shared."""
+def geo_cache(tmp_path_factory):
+    """A COPY of the committed Nominatim cache, redirected to a temp file.
+
+    geo._nominatim calls _save_cache on every lookup, so before this fixture the
+    suite rewrote the committed data/geo_cache.json as it ran (that file is
+    perennially dirty on the build box for exactly this reason) and cached None
+    for every invented name such as "Test Street".
+    """
     from kern_overnight import geo
-    return geo._load_cache()
+    real = geo.CACHE_PATH
+    tmp = tmp_path_factory.mktemp("geocache") / "geo_cache.json"
+    if real.exists():
+        tmp.write_text(real.read_text(encoding="utf-8"), encoding="utf-8")
+    mp = pytest.MonkeyPatch()
+    mp.setattr(geo, "CACHE_PATH", tmp)
+    yield geo._load_cache()
+    mp.undo()
+
+
+@pytest.fixture(autouse=True)
+def no_live_nominatim(monkeypatch):
+    """The suite must not depend on, or hammer, the live Nominatim service.
+
+    A test that needs a response patches geo.requests.get itself, which runs after
+    this fixture and wins.
+    """
+    from kern_overnight import geo
+    monkeypatch.setattr(geo.requests, "get",
+                        lambda *a, **k: pytest.fail("test called live Nominatim"))
+
+
+def _fake_nominatim(monkeypatch, lat=35.381, lon=-119.001, empty=False):
+    """Answer Nominatim deterministically instead of over the network.
+
+    These tests assert OUR logic (block refinement, cross-street precision, the
+    fallback ladder) and used to do it by calling the live service, which also
+    wrote the results into the committed cache.
+    """
+    from kern_overnight import geo
+
+    class _R:
+        status_code = 200
+
+        def raise_for_status(self):
+            pass
+
+        def json(self):
+            return [] if empty else [{"lat": str(lat), "lon": str(lon)}]
+
+    monkeypatch.setattr(geo.requests, "get", lambda *a, **k: _R())
 
 
 # ---------------------------------------------------------------- geocoding
 class TestGeo:
-    def test_block_precision_known_street(self, geo_cache):
+    def test_block_precision_known_street(self, geo_cache, monkeypatch):
+        _fake_nominatim(monkeypatch)
         from kern_overnight import geo
         g = geo.geocode("the 2100 block of Niles Street", geo_cache)
         assert g["precision"] == "block"
@@ -48,13 +95,15 @@ class TestGeo:
         from kern_overnight import geo
         assert geo.geocode("Oildale", geo_cache)["precision"] == "area"
 
-    def test_cross_street_resolves(self, geo_cache):
+    def test_cross_street_resolves(self, geo_cache, monkeypatch):
+        _fake_nominatim(monkeypatch, 35.372, -119.010)
         from kern_overnight import geo
         g = geo.geocode("Williams Street at Eureka Street, East Bakersfield", geo_cache)
         assert g["precision"] != "city"
         assert abs(g["lat"] - 35.37) < 0.03
 
-    def test_city_fallback_unknown(self, geo_cache):
+    def test_city_fallback_unknown(self, geo_cache, monkeypatch):
+        _fake_nominatim(monkeypatch, empty=True)  # “no such place”, not a lookup failure
         from kern_overnight import geo
         g = geo.geocode("the 1400 block of Hops Lane", geo_cache)
         assert g["precision"] in ("city", "street", "block")  # never crashes
@@ -81,7 +130,8 @@ class TestGeo:
                             lambda *a, **k: pytest.fail("network called twice"))
         assert geo._nominatim("Test Street, Bakersfield, CA", cache) == (35.40, -119.10)
 
-    def test_feed_shape_and_privacy(self, geo_cache, tmp_path):
+    def test_feed_shape_and_privacy(self, geo_cache, tmp_path, monkeypatch):
+        _fake_nominatim(monkeypatch, empty=True)
         from kern_overnight import geo
         n = geo.build_feed(ROOT / "incidents", tmp_path / "feed.json", max_age_h=200)
         assert n >= 10
@@ -164,7 +214,7 @@ class TestTranscribe:
             w.setsampwidth(2)
             w.setframerate(16000)
             w.writeframes(b"\x00" * 16000 * 2 * 3)
-        rows = T._transcribe_whisper(FakeModel(), wav, [(0.0, 3.0)], 1786261275,
+        rows, n_failed = T._transcribe_whisper(FakeModel(), wav, [(0.0, 3.0)], 1786261275,
                                      TZ, "f.mp3", "vocab")
         assert set(rows[0]) == {"time_local", "duration", "text", "confidence",
                                 "source_file", "engine"}

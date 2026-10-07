@@ -36,8 +36,12 @@ BOX_PATHS=(
   data/incidents_geo.json
 )
 
+# assets/img/*.jpg are build OUTPUT, not box input: build/weather_card.py and
+# build/tracker_card.py rewrite the tracked cards on every run. Nothing else writes
+# them, so they belong in this commit. Leaving them dirty is what forced every run to
+# autostash (see the pull below), and a stash-pop conflict is silent.
 trees=()
-for t in data email drafts; do
+for t in data email drafts assets/img; do
   [ -e "$t" ] && trees+=("$t")
 done
 if [ "${#trees[@]}" -gt 0 ]; then
@@ -58,8 +62,19 @@ if git diff --cached --quiet; then
 fi
 git commit -q -m "$msg"
 
+# NO --autostash. With it, a stash-pop conflict returns 0, leaves UU files with conflict
+# markers in the worktree and a stash entry behind, and the push then "succeeds"
+# (reproduced on git 2.53): a silent half-merge pushed as data. A clean tree is a
+# precondition, asserted loudly. The commit above is what makes it clean.
+dirty=$(git status --porcelain | grep -vE 'data/(geo_cache\.json|incidents_geo\.json|overnight_reports)' | head -20 || true)
+if [ -n "$dirty" ]; then
+  echo "::error title=Dirty tree::the worktree is dirty after the commit; refusing to pull without a stash:"
+  echo "$dirty"
+  exit 1
+fi
+
 for attempt in 1 2 3; do
-  if ! git pull --rebase origin main --autostash; then
+  if ! git pull --rebase origin main; then
     unmerged=$(git diff --name-only --diff-filter=U)
     git rebase --abort 2>/dev/null || true
     if [ -n "$unmerged" ]; then

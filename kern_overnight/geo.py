@@ -119,8 +119,15 @@ def _nominatim(query: str, cache: dict) -> tuple[float, float] | None:
         rows = r.json()
         hit = rows[0] if rows else None
         cache[query] = [float(hit["lat"]), float(hit["lon"])] if hit else None
-    except Exception:  # noqa: BLE001
-        cache[query] = None
+    except Exception as e:  # noqa: BLE001
+        # Do NOT cache None on a failed lookup. `cache[query] = None` means
+        # "Nominatim answered and has no such place"; a timeout, a DNS blip or an
+        # HTTP 429 is not evidence of a missing street. Writing None here pinning a
+        # real address as unresolvable forever in a cache that ships in the repo,
+        # is how data/geo_cache.json accumulated null entries.
+        print(f"    [geo] nominatim failed for {query!r} ({type(e).__name__}); "
+              "retrying next run", flush=True)
+        return None
     _save_cache(cache)
     time.sleep(1.1)  # polite rate limit
     return (cache[query][0], cache[query][1]) if cache.get(query) else None

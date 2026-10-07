@@ -106,12 +106,14 @@ def _init_worker(engine: str, vocab: str, tz: dt.tzinfo) -> None:
     _W_ENGINE, _W_VOCAB, _W_TZ, _W_MODEL = engine, vocab, tz, None
 
 
-def _block_worker(mp3: Path) -> list[dict]:
-    """Process one block in a worker process → rows in JSONL shape.
+def _block_worker(mp3: Path) -> tuple[list[dict], int]:
+    """Process one block in a worker process → (rows, failed segments).
 
     The whisper model loads lazily on the first block so each worker holds
-    exactly one copy for the whole night. A failed block returns [] — the
-    night is never lost to one corrupt file."""
+    exactly one copy for the whole night. A block never raises out of the pool,
+    but its failures are COUNTED and returned so the caller can fail loudly.
+    It used to return [] with no signal, so a night that transcribed nothing
+    exited 0 and the pipeline called it a success."""
     global _W_MODEL
     try:
         with tempfile.TemporaryDirectory(prefix="ko-w") as td:
@@ -119,10 +121,11 @@ def _block_worker(mp3: Path) -> list[dict]:
             wav = _preprocess(mp3, work)
             segs = _merge_segments(_vad_speech_segments(wav, work))
             if not segs:
-                return []
+                return [], 0
             block_epoch = int(mp3.stem.split("-")[1])
             if _W_ENGINE == "deepgram":
-                return _transcribe_deepgram(wav, segs, block_epoch, _W_TZ, mp3.name)
+                return _transcribe_deepgram(wav, segs, block_epoch, _W_TZ,
+                                            mp3.name), 0
             if _W_MODEL is None:
                 _W_MODEL = _load_model()
             return _transcribe_whisper(_W_MODEL, wav, segs, block_epoch,
@@ -130,7 +133,7 @@ def _block_worker(mp3: Path) -> list[dict]:
     except Exception as e:  # noqa: BLE001
         print(f"    [ko-stt] block {mp3.name} FAILED: {type(e).__name__}: {e}",
               flush=True)
-        return []
+        return [], 1  # a whole block lost is a failure the caller must see
 
 
 class TranscribeError(RuntimeError):
@@ -282,10 +285,14 @@ def _ko_checkpoint(out_jsonl: Path, blocks_done: int, total: int, push: bool = F
         import subprocess
         subprocess.run(["git", "add", "--", str(out_jsonl.resolve())],
                        cwd=root, check=True, capture_output=True, timeout=30)
+        # `-- <path>` is a pathspec: without it a bare `git commit` takes the whole
+        # index, so anything a sibling session had staged rides along in a commit
+        # labelled "transcript checkpoint" (proved: c1d2d725 carried roads.json).
         subprocess.run(
             ["git", "commit", "-q",
              "-m", f"ko: transcript checkpoint ({blocks_done}/{total} blocks) "
-                   "[skip ci]"],
+                   "[skip ci]",
+             "--", str(out_jsonl.resolve())],
             cwd=root, capture_output=True, timeout=30)  # rc 1 = nothing staged, fine
         # [skip ci] keeps transcript-only pushes from triggering a site deploy:
         # the workflow runs only on content-bearing pushes (report/code/data),
@@ -393,6 +400,7 @@ def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
           f"{len(list(audio_dir.glob('*.mp3')))} on disk) "
           f"{'· append mode' if append else ''}", flush=True)
     count = 0
+    failures = 0
     n_workers = (workers or WORKERS)
     parallel = n_workers > 1 and len(mp3s) > 1
     mode = "a" if append else "w"
@@ -407,8 +415,9 @@ def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
                                          initargs=(ENGINE, vocab_text, tz)) as ex:
                     commit_every = max(1, int(os.environ.get("KO_COMMIT_EVERY", "3")))
                     blocks_done = 0
-                    for rows in ex.map(_block_worker, mp3s):
+                    for rows, n_failed in ex.map(_block_worker, mp3s):
                         blocks_done += 1
+                        failures += n_failed
                         for r in rows:
                             if r["confidence"] < MIN_CONFIDENCE and r["duration"] < 3.0:
                                 continue  # low-confidence + short → drop
@@ -418,6 +427,7 @@ def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
                         if blocks_done % commit_every == 0:
                             _ko_checkpoint(out_jsonl, blocks_done, len(mp3s))
             _ko_checkpoint(out_jsonl, len(mp3s), len(mp3s), push=True)
+            _raise_if_incomplete(failures, out_jsonl)
             return count
         # serial fallback (workers == 1 or a single block)
         work = Path(td)
@@ -432,12 +442,14 @@ def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
                 block_epoch = int(mp3.stem.split("-")[1])
                 if ENGINE == "deepgram":
                     rows = _transcribe_deepgram(wav, segs, block_epoch, tz, mp3.name)
+                    block_failed = 0
                 else:
                     global _W_MODEL
                     if _W_MODEL is None:  # load once, not once per block
                         _W_MODEL = _load_model()
-                    rows = _transcribe_whisper(_W_MODEL, wav, segs, block_epoch,
-                                               tz, mp3.name, vocab_text)
+                    rows, block_failed = _transcribe_whisper(
+                        _W_MODEL, wav, segs, block_epoch, tz, mp3.name, vocab_text)
+                failures += block_failed
                 blocks_done += 1
                 for r in rows:
                     if r["confidence"] < MIN_CONFIDENCE and r["duration"] < 3.0:
@@ -448,26 +460,45 @@ def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
                 if blocks_done % commit_every == 0:
                     _ko_checkpoint(out_jsonl, blocks_done, len(mp3s))
         _ko_checkpoint(out_jsonl, len(mp3s), len(mp3s), push=True)
+    _raise_if_incomplete(failures, out_jsonl)
     return count
+
+
+def _raise_if_incomplete(failed: int, out_jsonl: Path) -> None:
+    """Loud exit for a partial transcript.
+
+    A segment that raises is dropped, and a block that raises is dropped, so a
+    night can lose audio silently: the JSONL still looks fine and the run exits
+    0. The rows already written are kept and checkpointed; this only stops the
+    pipeline from CALLING a partial night a success. The 7:30 publish is a
+    separate job, so a re-run signal here never withholds a report.
+    """
+    if failed:
+        raise TranscribeError(
+            f"{failed} segment(s)/block(s) failed to transcribe: {out_jsonl.name} "
+            "is incomplete. Re-run this phase.")
 
 
 def _transcribe_whisper(model, wav: Path, segs: list[tuple[float, float]],
                         block_epoch: int, tz: dt.tzinfo, source_file: str,
                         vocab_text: str) -> list[dict]:
-    """Whisper path: one call per merged segment; rows in JSONL shape."""
+    """Whisper path: one call per merged segment → (rows, failed segments)."""
     import numpy as np
     import wave as wave_mod
     with wave_mod.open(str(wav), "rb") as w:
         raw = w.readframes(w.getnframes())
     audio_arr = (np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768.0)
     rows = []
+    failed = 0
     for (s0, s1) in segs:
         if s1 - s0 < MIN_DURATION_S:
             continue
         try:
             seg_rows = _transcribe_wav(model, audio_arr, (s0, s1), vocab_text)
         except Exception as e:  # noqa: BLE001
-            print(f"    [ko-stt] segment {s0:.1f}s failed: {e}", flush=True)
+            failed += 1
+            print(f"    [ko-stt] segment {s0:.1f}s FAILED: {type(e).__name__}: {e}",
+                  flush=True)
             continue
         for r in seg_rows:
             time_local = (dt.datetime.fromtimestamp(block_epoch, tz) +
@@ -480,7 +511,7 @@ def _transcribe_whisper(model, wav: Path, segs: list[tuple[float, float]],
                 "source_file": source_file,
                 "engine": f"faster-whisper:{MODEL_SIZE}",
             })
-    return rows
+    return rows, failed
 
 
 def _transcribe_deepgram(wav: Path, segs: list[tuple[float, float]],

@@ -54,9 +54,10 @@ jobs:
 
       - name: Commit generated artifacts
         # scripts/ci_push.sh: pushes only CI-owned artifacts, fails loudly on an ownership conflict
-        # (an ::error annotation) instead of a green step with nothing pushed. It never blocks the
-        # deploy or the send, hence continue-on-error.
-        continue-on-error: true
+        # (an ::error annotation) instead of a green step with nothing pushed. NO
+        # continue-on-error: masking a failed push as a green step is how a whole day of
+        # artifacts disappears behind a passing run. The steps that must still happen
+        # (deploy, send) carry `if: !cancelled()`.
         run: |
           bash scripts/ci_push.sh "build: $(date -u +%Y-%m-%d) road conditions [skip ci]"
 
@@ -65,6 +66,7 @@ jobs:
       # build. GitHub secrets cannot be tested in a step-level `if:`, so the guard
       # is in the shell. Never blocks the deploy, hence continue-on-error.
       - name: Push the AlertLine key into the Pages project
+        if: ${{ !cancelled() }}
         continue-on-error: true
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -80,6 +82,7 @@ jobs:
           echo "pages secret set"
 
       - name: Deploy to Cloudflare Pages
+        if: ${{ !cancelled() }}   # a failed artifact push must not withhold the site
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

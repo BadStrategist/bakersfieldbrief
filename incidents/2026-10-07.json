@@ -1,0 +1,227 @@
+[
+ {
+  "type": "collision",
+  "time": "02:14",
+  "agency": "CHP / KCFD",
+  "area": "Southbound Highway 99 near Lerdo Highway",
+  "notability": 5,
+  "disposition": "call upgraded to a rescue; multiple patients",
+  "summary": "Crews were sent to a vehicle versus pedestrian crash on southbound Highway 99 just north of Lerdo Highway, where a vehicle was reported facing the wrong way in the freeway. Dispatchers upgraded the call to a rescue after learning three vehicles were involved and two people were hurt, one of them a pedestrian who was struck. The pedestrian was reported down in the number one lane and possibly in grave condition."
+ },
+ {
+  "type": "collision",
+  "time": "02:55",
+  "agency": "KCFD",
+  "area": "Highway 14 in east Kern County",
+  "notability": 4,
+  "disposition": "single occupant extricated; air ambulance stood down",
+  "summary": "A single vehicle rolled onto its roof on Highway 14 and a Mercy Air helicopter was placed on standby. Crews found one patient who was not pinned in but had limited access, so they worked on an extrication. The air ambulance was later released."
+ },
+ {
+  "type": "fire",
+  "time": "22:06",
+  "agency": "BFD",
+  "area": "Niles Street (2100 block)",
+  "notability": 3,
+  "disposition": "crews on scene; smoke from the rear of the building",
+  "summary": "Fire crews were sent to a commercial building in the 2100 block of Niles Street for smoke coming from the back of a structure that had burned before. Nothing was showing at first, and arriving units reported smoke at the rear of the building."
+ },
+ {
+  "type": "collision",
+  "time": "23:08",
+  "agency": "KCFD",
+  "area": "near East Bear Mountain Boulevard",
+  "notability": 3,
+  "disposition": "occupants out; car blocking traffic",
+  "summary": "A car and a semi collided near East Bear Mountain Boulevard. All occupants were reported out of the vehicles and the car was blocking traffic, and crews reported a single patient to transport."
+ },
+ {
+  "type": "collision",
+  "time": "21:16",
+  "agency": "CHP",
+  "area": "southbound Highway 99 south of Highway 166",
+  "notability": 3,
+  "disposition": "Caltrans notified; heavy smoke reported",
+  "summary": "A semi ran into a guardrail on southbound Highway 99 south of Highway 166, with a visual of heavy smoke in the area. The truck was reported hung up on the guardrail for about 50 feet, and Caltrans was contacted about an immediate road hazard."
+ },
+ {
+  "type": "weapons call",
+  "time": "01:58",
+  "agency": "KCSO",
+  "area": "Hughes Lane (4400 block)",
+  "notability": 3,
+  "disposition": "caller later said no weapon was seen",
+  "summary": "Deputies were sent to the 4400 block of Hughes Lane, first for a woman having a panic attack and then for a report of a man outside a unit with a firearm. The caller later told dispatchers he had never seen anyone and it was unclear how the firearm report started."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "23:12",
+  "agency": "KCFD",
+  "area": "northbound Interstate 5 north of Grapevine",
+  "notability": 2,
+  "disposition": "semi pulled into the scales",
+  "summary": "A semi with brakes on fire was reported northbound on Interstate 5 north of Grapevine, and the driver was able to pull into the scales."
+ },
+ {
+  "type": "fire",
+  "time": "04:58",
+  "agency": "BFD",
+  "area": "Baker Street (900 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "A report of fire against a building in the 900 block of Baker Street drew Engine 2, Engine 4, Truck 1, Rescue 2 and Battalion 1."
+ },
+ {
+  "type": "outside fire",
+  "time": "00:43",
+  "agency": "KCFD",
+  "area": "Chester Avenue and Roberts Lane",
+  "notability": 2,
+  "disposition": "small fire; PG&E requested",
+  "summary": "A crew working near Chester Avenue and Roberts Lane reported an outside fire directly across from their station and asked for PG&E to be dispatched for the electric lines."
+ },
+ {
+  "type": "overdose",
+  "time": "04:09",
+  "agency": "BPD / Hall Ambulance",
+  "area": "Fruitvale Avenue (4300 block)",
+  "notability": 2,
+  "disposition": "medics requested to respond with units",
+  "summary": "Medics were asked to respond with officers to an overdose call involving a suicidal subject in the 4300 block of Fruitvale Avenue."
+ },
+ {
+  "type": "weapons call",
+  "time": "00:28",
+  "agency": "KCSO",
+  "area": "Norris Road (100 block)",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "Deputies were sent to the 100 block of Norris Road for a subject reported with a knife and possibly under the influence; the reporting party said no firearm was seen."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "03:09",
+  "agency": "KCSO",
+  "area": "Burroughs Drive (9000 block)",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "A possible domestic violence call in the 9000 block of Burroughs Drive in south Bakersfield, with the woman reporting her husband had been drinking and then ending the call."
+ },
+ {
+  "type": "vandalism",
+  "time": "01:50",
+  "agency": "BPD",
+  "area": "East 19th Street (3900 block)",
+  "notability": 2,
+  "disposition": "suspects fled in a vehicle",
+  "summary": "Two men were reported breaking the windows of a neighbor's vehicle in the 3900 block of East 19th Street and leaving in a red four-door sedan."
+ },
+ {
+  "type": "DUI",
+  "time": "01:26",
+  "agency": "CHP",
+  "area": "Center Street (2300 block)",
+  "notability": 2,
+  "disposition": "case number issued; tow requested",
+  "summary": "A DUI investigation was opened and a separate case number requested in the 2300 block of Center Street, with a tow ordered with the report."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "22:35",
+  "agency": "KCSO",
+  "area": "Gold Dust Drive (9800 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "A domestic disturbance was reported in the 9800 block of Gold Dust Drive."
+ },
+ {
+  "type": "disturbance",
+  "time": "04:40",
+  "agency": "BPD",
+  "area": "Mount Vernon Avenue south of Quincy Street",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "A verbal disturbance was reported on Mount Vernon Avenue south of Quincy Street involving a woman yelling for someone to give her keys back."
+ },
+ {
+  "type": "welfare check",
+  "time": "23:30",
+  "agency": "KCSO",
+  "area": "Cottonwood Road and East Hosking Avenue",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Deputies checked the welfare of a man reported sitting on the side of the road and crying at Cottonwood Road and East Hosking Avenue."
+ },
+ {
+  "type": "welfare check",
+  "time": "23:37",
+  "agency": "KCSO",
+  "area": "Southgate and Allens Drive",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Deputies were asked to check Southgate and Allens Drive for a person a woman believed may have harmed her."
+ },
+ {
+  "type": "animal bite",
+  "time": "23:07",
+  "agency": "Hall Ambulance",
+  "area": "East Roberts Lane (400 block)",
+  "notability": 2,
+  "disposition": "medical aid",
+  "summary": "Medics were sent to a mobile home park in the 400 block of East Roberts Lane for an animal bite."
+ },
+ {
+  "type": "alarm",
+  "time": "23:58",
+  "agency": "BFD",
+  "area": "Center Street (1900 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "A residential fire alarm was reported at a unit in the 1900 block of Center Street."
+ },
+ {
+  "type": "medical aid",
+  "time": "01:03",
+  "agency": "Hall Ambulance",
+  "area": "Hurrle Avenue (1600 block)",
+  "notability": 2,
+  "disposition": "medical aid",
+  "summary": "A patient with difficulty breathing was reported in the 1600 block of Hurrle Avenue."
+ },
+ {
+  "type": "medical aid",
+  "time": "22:53",
+  "agency": "Hall Ambulance",
+  "area": "Wible Road (1900 block)",
+  "notability": 2,
+  "disposition": "patient not alert",
+  "summary": "Medics were sent to a business in the 1900 block of Wible Road for a patient who was not alert."
+ },
+ {
+  "type": "911 disconnect",
+  "time": "03:48",
+  "agency": "KCFD / Tehachapi police",
+  "area": "East H Street (500 block), Tehachapi",
+  "notability": 2,
+  "disposition": "patient refused aid",
+  "summary": "A female caller gave only an address in the 500 block of East H Street in Tehachapi and hung up. Crews staged for police, then found the patient alert and refusing medical aid."
+ },
+ {
+  "type": "overdose",
+  "time": "04:39",
+  "agency": "BFD",
+  "area": "21st Street (800 block)",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Crews were sent to the 800 block of 21st Street for an overdose."
+ },
+ {
+  "type": "medical aid",
+  "time": "04:17",
+  "agency": "KCFD",
+  "area": "eastbound Highway 58 at Highway 395, Kramer Junction",
+  "notability": 2,
+  "disposition": "call handled near the county line",
+  "summary": "An unknown medical aid was reported on eastbound Highway 58 at Highway 395 in Kramer Junction, near the San Bernardino County line, with CHP on scene."
+ }
+]

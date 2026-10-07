@@ -15,10 +15,10 @@ One page. The Overpass diff runs in CI (`weekly.yml`, Monday) with `--alpr-chang
 
 ## Git (main carries data by design)
 `main` carries source AND generated data. Two writers, disjoint paths:
-- **CI owns** `data/build_report.json`, `data/snapshots/`, `data/change_logs/`, `data/briefs/`, `data/briefs_archive.json`, `data/last_sunday_read.json`, `email/`, `drafts/`. `scripts/ci_push.sh` stages exactly that list and warns when CI leaves anything else dirty.
-- **The box owns** `transcripts/`, `incidents/`, `data/overnight_reports/`, `data/geo_cache.json`, `data/incidents_geo.json`. Its writer is `ko_publish.py`.
+- **CI owns** every path under `data/`, `email/` and `drafts/` EXCEPT the box-owned ones below. `scripts/ci_push.sh` stages by that exclusion, and aborts if a box-owned path reaches the index. It must be an exclusion list, not a fixed list of names: a whitelist silently stopped committing `data/fog_delays/log.json` and `data/last_guide.json` the day after it was written.
+- **The box owns** `transcripts/`, `incidents/`, `data/overnight_reports/`, `data/geo_cache.json`, `data/incidents_geo.json`. Writers: `kern_overnight/transcribe.py` (transcripts), `ko_publish.py` (the nightly report and `incidents/<date>.json`), `kern_overnight/geo.py` (the geocode cache).
 
-Local work commits SOURCE ONLY; never `git add -A`. The six content workflows share the `pages` concurrency group, so CI never races CI. Because the two writers' paths are disjoint, a plain `pull --rebase` should never conflict. If one does, it is an ownership violation: stop and fix the ownership, do not auto-resolve. Scoped recovery for a local rebase conflict on a CI-owned path: `git rebase --abort`, `git checkout origin/main -- <that CI path>`, re-stage, commit source only. Never bulk-checkout the box-owned paths: that reverts an unpushed overnight report.
+Local work commits SOURCE ONLY; never `git add -A`. The five content workflows share the `pages` concurrency group, so CI never races CI. Because the two writers' paths are disjoint, a plain `pull --rebase` should never conflict. If one does, it is an ownership violation: stop and fix the ownership, do not auto-resolve. Scoped recovery for a local rebase conflict on a CI-owned path: `git rebase --abort`, `git checkout origin/main -- <that CI path>`, re-stage, commit source only. Never bulk-checkout the box-owned paths: that reverts an unpushed overnight report.
 
 ## Things that are already correct — don't "fix" them
 - Sender auth: SPF `include:_spf.mlsend.com` + DKIM `litesrv._domainkey` CNAME. Mail lands in the inbox.

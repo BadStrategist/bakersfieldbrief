@@ -64,6 +64,24 @@ jobs:
               stale = alpr.get("stale")
 
           print(f"alpr rows={len(rows)} last={last} today(PT)={today} stale={stale}")
+
+          # A shrunk log means load_change_log hit unreadable JSON, returned [], and the
+          # append then rewrote the history as a single row (this repo has shipped rebase
+          # markers into artifacts before). Compare against the committed version at HEAD.
+          import subprocess
+          try:
+              prev_txt = subprocess.run(
+                  ["git", "show", "HEAD:data/change_logs/alpr.json"],
+                  capture_output=True, text=True, check=True).stdout
+              prev_n = len(json.loads(prev_txt or "[]"))
+              if len(rows) < prev_n:
+                  print(f"ERROR: the change log shrank from {prev_n} rows at HEAD to {len(rows)}: "
+                        "a corrupt or truncated log was rewritten over the history", file=sys.stderr)
+                  sys.exit(1)
+          except subprocess.CalledProcessError as exc:
+              print(f"WARNING: no committed log to compare against (rc={exc.returncode}); "
+                    "the size check was skipped")
+
           if stale:
               print("ERROR: the Overpass/OSM fetch failed and the build reused a stale cache", file=sys.stderr)
               sys.exit(1)
@@ -89,3 +107,21 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy site --project-name=bakersfieldbrief
+
+      # A failed ALPR verify or a failed deploy must reach a human: this Monday run is the
+      # only writer of the change-log row that /surveillance/ renders, so a silent failure
+      # freezes the site's top search page. Without the secret it still fails loudly in the
+      # log (never silent).
+      - name: Notify ops Discord on failure
+        if: failure()
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "!! DISCORD_WEBHOOK_URL secret not set - the weekly tracker run failed and NO Discord alert could be sent. See $RUN_URL"
+            exit 1
+          fi
+          printf 'The weekly tracker run FAILED. The ALPR change-log row may be missing this week.\n' > /tmp/bb_weekly.txt
+          printf 'run: %s\n' "$RUN_URL" >> /tmp/bb_weekly.txt
+          python scripts/notify_discord.py --header "Bakersfield Brief - weekly trackers FAILED (run #$GITHUB_RUN_NUMBER)" --file /tmp/bb_weekly.txt

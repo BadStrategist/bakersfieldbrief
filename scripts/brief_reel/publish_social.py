@@ -942,11 +942,9 @@ def main(argv: list[str]) -> int:
     if assets is None:
         return 3
 
-    # PRIMARY: Graph API (reel + story to Facebook and Instagram). The browser
-    # below is the BACKUP and only runs for legs the API could not publish.
-    # Pairing rule: the browser posts a reel (or story) to both platforms at
-    # once, so an Instagram leg is only tried via the API once its Facebook
-    # twin is up — otherwise a browser fallback would duplicate Instagram.
+    # PRIMARY and ONLY: Graph API (reel + story to Facebook and Instagram).
+    # The Playwright fallback is retired (see the API-failure branch below). The old
+    # pairing rule existed only because the browser posted to both platforms at once.
     if not a.verify_only and not a.dry_run:
         api = api_publish(date, assets[0], assets[2])
         state["api"] = api
@@ -962,8 +960,21 @@ def main(argv: list[str]) -> int:
             state["done"] = True
             state_file.write_text(json.dumps(state, indent=2), encoding="utf-8")
             return 0
-        log("API left legs unpublished - falling back to the browser for them: "
-            + ", ".join(k for k, v in (api or {}).items() if not v.get("ok")))
+        # NO browser fallback. This used to fall through to Playwright: the path with the
+        # duplicate-story and one-sided-story history in its own comments, and the one no
+        # test can exercise without posting for real. The retry slot re-runs THIS API path
+        # and social_api.publish_all skips legs that are already live, so a transient
+        # failure is retried without a second posting engine.
+        bad = ", ".join(k for k, v in (api or {}).items() if not v.get("ok"))
+        print("SOCIAL_REPORT")
+        print(f"date={date}")
+        for leg, v in (api or {}).items():
+            print(f"{leg}=FAILED {v.get('url', '')} {v.get('error', '')}".rstrip())
+        print("path=api")
+        print("verify=failed")
+        log(f"API failed for legs: {bad or '(none reported ok)'} - browser fallback retired, "
+            "the retry slot re-runs the API")
+        return 5
 
     s = ensure_session()
     log(f"browser session: {s}")

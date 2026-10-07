@@ -42,7 +42,7 @@ jobs:
         run: python build/build_all.py --sunday
 
       - name: Commit generated artifacts
-        # scripts/ci_push.sh: keeps THIS run's data on a rebase conflict and flags a failed push
+        # scripts/ci_push.sh: pushes only CI-owned artifacts, fails loudly on an ownership conflict
         # (an ::error annotation) instead of a green step with nothing pushed. It never blocks the
         # deploy or the send, hence continue-on-error.
         continue-on-error: true

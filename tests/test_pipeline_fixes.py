@@ -40,10 +40,22 @@ def test_jsonld_is_script_safe():
 # ---------------------------------------------------------------- change log
 def test_change_log_one_entry_per_date(tmp_path, monkeypatch):
     monkeypatch.setattr(common, "LOGS", tmp_path)
-    assert common.append_change_log("t", {"date": "2026-09-21", "new_count": 3}) is not False
+    assert common.append_change_log("t", {"date": "2026-09-21", "new_count": 3}) is True
     assert common.append_change_log("t", {"date": "2026-09-21", "new_count": 0}) is False
     log = common.load_change_log("t")
     assert [e["new_count"] for e in log] == [3]
+
+
+def test_change_log_return_is_the_snapshot_gate(tmp_path, monkeypatch):
+    """build/sources/alpr.py advances the node snapshot only when this returns True.
+
+    The contract has to be an explicit True: a truthy None here once let the snapshot
+    advance on a refused run, and no test covered it.
+    """
+    monkeypatch.setattr(common, "LOGS", tmp_path)
+    assert common.append_change_log("t", {"date": "2026-09-21", "new_count": 3}) is True
+    assert common.append_change_log("t", {"date": "2026-09-28", "new_count": 0}) is True
+    assert common.append_change_log("t", {"date": "2026-09-28", "new_count": 9}) is False
 
 
 def test_committed_alpr_log_has_no_duplicate_dates():

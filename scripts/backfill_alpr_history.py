@@ -57,7 +57,9 @@ def main():
             "new_count": len(new),
         })
 
-    common.append_change_log("alpr", entries[0])
+    if not common.append_change_log("alpr", entries[0]):
+        raise SystemExit(f"refusing to backfill: a change-log row for {entries[0]['date']} "
+                         "already exists; the live log is authoritative")
     # replace the whole log (idempotent backfill): write entries directly
     log = common.load_change_log("alpr")
     # keep only backfilled entries (drop any test entries from earlier runs)

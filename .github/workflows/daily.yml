@@ -99,7 +99,7 @@ jobs:
       # Automatic pusher: commit the generated artifacts (email/, drafts/, data/)
       # so the email renderings and review drafts are always in the repo.
       - name: Commit generated artifacts
-        # scripts/ci_push.sh: keeps THIS run's data on a rebase conflict and flags a failed push
+        # scripts/ci_push.sh: pushes only CI-owned artifacts, fails loudly on an ownership conflict
         # (an ::error annotation) instead of a green step with nothing pushed. It never blocks the
         # deploy or the send, hence continue-on-error.
         continue-on-error: true
@@ -199,7 +199,8 @@ jobs:
       # posts were caused by the Meta app being Unpublished (dev mode), fixed
       # 2026-09-29. Posting now runs LOCALLY in the KO social job
       # (scripts/brief_reel/publish_social.py -> scripts/social_api.py): Graph
-      # API first for FB+IG reel and story, browser automation as backup. It
+      # API only for FB+IG reel and story (the Playwright fallback was retired
+      # 2026-10-06: the retry slot re-runs the API, which skips live legs). It
       # stays local because the reel carries real scanner dispatch audio that
       # only exists on the capture machine; this CI step would post a
       # music-bed-only reel and pre-empt it. Kept for reference only.

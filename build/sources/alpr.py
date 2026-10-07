@@ -96,17 +96,22 @@ def run(ctx, *, record_change: bool = False):
         }
 
         if record_change:
-            common.append_change_log("alpr", {
+            recorded = common.append_change_log("alpr", {
                 "date": common.iso_today(),
                 "total": len(cameras),
                 "new_ids": new_ids,
                 "gone_ids": gone_ids,
                 "new_count": len(new_ids),
             })
-            # ONLY advance the snapshot when recording the weekly change log.
+            # Advance the snapshot ONLY when the row actually landed.
             # If every build saved it, CI's 3-hourly builds would silently
-            # advance it and the weekly diff would always read 0 new.
-            common.save_snapshot("alpr_nodes", sorted(cur_ids))
+            # advance it and the weekly diff would always read 0 new. And if the
+            # append was refused (this date is already logged, e.g. a manual
+            # dispatch after the Monday cron), advancing anyway swallows the
+            # cameras mapped since: the run that would have reported them never
+            # happens again.
+            if recorded:
+                common.save_snapshot("alpr_nodes", sorted(cur_ids))
         # last good payload: the fallback when Overpass can't be reached (see below)
         common.save_snapshot("alpr_last", {"cameras": cameras, "stats": stats,
                                            "asof": common.iso_today()})

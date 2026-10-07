@@ -43,10 +43,39 @@ jobs:
         # it this build re-ran the daily builder's AI calls again for nothing.
         run: python build/build_all.py --alpr-change --no-llm
 
+      # FAIL LOUDLY if the weekly diff did not land. This Monday run is the only
+      # writer of the ALPR change-log row (the local job is retired), so a silent
+      # skip freezes /surveillance/, the site's top search page. The row is dated
+      # in PACIFIC time; a manual dispatch after 5pm PT must not read as a failure.
+      - name: Verify the ALPR change-log row
+        run: |
+          python - <<'PY'
+          import json, os, sys
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+
+          today = datetime.now(ZoneInfo("America/Los_Angeles")).date().isoformat()
+          rows = json.load(open("data/change_logs/alpr.json", encoding="utf-8")) or []
+          last = (rows[-1] or {}).get("date") if rows else None
+
+          stale = None
+          if os.path.exists("data/source_cache.json"):
+              alpr = (json.load(open("data/source_cache.json", encoding="utf-8")) or {}).get("alpr") or {}
+              stale = alpr.get("stale")
+
+          print(f"alpr rows={len(rows)} last={last} today(PT)={today} stale={stale}")
+          if stale:
+              print("ERROR: the Overpass/OSM fetch failed and the build reused a stale cache", file=sys.stderr)
+              sys.exit(1)
+          if last != today:
+              print(f"ERROR: no ALPR change-log row for the Pacific date {today} (last row is {last})", file=sys.stderr)
+              sys.exit(1)
+          PY
+
       - name: Commit generated artifacts
-        # scripts/ci_push.sh: keeps THIS run's data on a rebase conflict and flags a failed push
-        # (an ::error annotation) instead of a green step with nothing pushed. It never blocks the
-        # deploy or the send, hence continue-on-error.
+        # scripts/ci_push.sh stages only the CI-owned paths, warns when CI leaves a box-owned path
+        # dirty, and flags a failed push (an ::error annotation) instead of a green step with
+        # nothing pushed. It never blocks the deploy or the send, hence continue-on-error.
         continue-on-error: true
         run: |
           bash scripts/ci_push.sh "build: $(date -u +%Y-%m-%d) weekly artifacts [skip ci]"

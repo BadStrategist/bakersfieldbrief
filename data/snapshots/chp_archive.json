@@ -1150,6 +1150,26 @@
   "details": ""
  },
  {
+  "log_id": "261007BF0036",
+  "time": "Oct  7 2026  5:11AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261007BF0106",
+  "time": "Oct  7 2026  9:37AM",
+  "type": "CZP-Assist with Construction",
+  "location": "Nb I5 At Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.835556,
+  "lon": -118.863056,
+  "details": ""
+ },
+ {
   "log_id": "261007BF0005",
   "time": "Oct  7 2026 12:26AM",
   "type": "TADV-Traffic Advisory",
@@ -1157,6 +1177,16 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261007BF0190",
+  "time": "Oct  7 2026 12:39PM",
+  "type": "1166-Defective Traffic Signals",
+  "location": "S Edison Rd / Hermosa Rd",
+  "area": "Bakersfield",
+  "lat": 35.310823,
+  "lon": -118.878555,
   "details": ""
  },
  {

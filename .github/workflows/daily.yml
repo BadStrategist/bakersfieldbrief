@@ -61,13 +61,11 @@ jobs:
           else
             echo "llm=0" >> "$GITHUB_OUTPUT"
           fi
-          # The 7:00 PT run waits for the overnight: phase 2 publishes
-          # ~7:00-7:10 PT (the 6:30 cron + push), so retry the gate for up
-          # to 25 min. Other runs must not burn CI minutes on a report
-          # that hasn't landed yet (6:00) or has long since landed (8:00+).
-          if [ "$H" = "7" ]; then R=25; else R=0; fi
-          echo "retry=$R" >> "$GITHUB_OUTPUT"
-          echo "Pacific hour is $H (LLM build at 6, or 7-9 with no brief yet; FB gate retry $R min)"
+          # The 7:00 PT run used to also carry a 25-minute FB-post retry: it
+                    # waited for the overnight report to land before posting. Social posting
+                    # moved to the local KO job (see the note at the end of this file), so
+                    # that retry fed a step that no longer runs. Removed 2026-10-06.
+                    echo "Pacific hour is $H (LLM build at 6, or 7-9 with no brief yet)"
 
       - name: Install dependencies
         run: |

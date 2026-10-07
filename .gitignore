@@ -33,3 +33,9 @@ kern_overnight/.bcfy_cookie.json
 /transcripts/*.lock
 /Y812BT*
 .wrangler/
+
+# Claude Code local settings (per-machine, not source)
+.claude/
+
+# Reel render + probe output (regenerated on demand)
+scripts/brief_reel/out/

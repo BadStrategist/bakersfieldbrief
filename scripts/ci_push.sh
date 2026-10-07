@@ -19,21 +19,18 @@ if git diff --cached --quiet; then
 fi
 git commit -q -m "$msg"
 
-for i in 1 2 3; do
-  git rebase --abort 2>/dev/null || true
-  if git pull --rebase origin main --autostash; then
-    git push && exit 0
-  else
-    # During a rebase, "theirs" is the commit being replayed: THIS run's artifacts.
-    git checkout --theirs -- data email drafts 2>/dev/null || true
-    git add email drafts data
-    if git -c core.editor=true rebase --continue; then
-      git push && exit 0
-    fi
-    git rebase --abort 2>/dev/null || true
+for attempt in 1 2 3; do
+  # -X theirs during a REBASE keeps the commit being replayed, which is THIS
+  # run's artifacts. Deterministic, so no interactive rebase and no guessing
+  # which side `--ours` means. This script stages only email/drafts/data, so the
+  # strategy option cannot touch a source file.
+  if git pull --rebase -X theirs origin main --autostash && git push; then
+    echo "artifacts pushed (attempt $attempt)"
+    exit 0
   fi
-  echo "push retry $i"
-  sleep 8
+  git rebase --abort 2>/dev/null || true
+  echo "push retry $attempt"
+  sleep $((attempt * 8))
 done
 
 echo "::error title=Artifacts not pushed::three push attempts failed; this run's data/ and email/ changes are not in the repo"

@@ -132,8 +132,29 @@ def load_snapshot(name: str, default=None):
         return default
 
 
+# Run stamps: written into a snapshot on every build, read by nothing. A build
+# that changes nothing else must not dirty the tree, because the CI artifact
+# commit stages data/ and a stamp-only diff produced a commit on every run.
+_VOLATILE_KEYS = {"built_at", "generated_at", "fetched_at", "updated_at", "run_at"}
+
+
+def _strip_volatile(obj):
+    if isinstance(obj, dict):
+        return {k: _strip_volatile(v) for k, v in obj.items() if k not in _VOLATILE_KEYS}
+    if isinstance(obj, list):
+        return [_strip_volatile(v) for v in obj]
+    return obj
+
+
 def save_snapshot(name: str, obj) -> Path:
     p = SNAP / f"{name}.json"
+    if p.exists():
+        try:
+            old = json.loads(p.read_text(encoding="utf-8"))
+            if _strip_volatile(old) == _strip_volatile(obj):
+                return p  # only a run stamp changed: leave the file (and git) alone
+        except Exception:  # noqa: BLE001  unreadable snapshot: fall through and rewrite
+            pass
     p.write_text(json.dumps(obj, indent=1, default=str), encoding="utf-8")
     return p
 

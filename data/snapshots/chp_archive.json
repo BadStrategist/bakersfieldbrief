@@ -1070,6 +1070,16 @@
   "details": ""
  },
  {
+  "log_id": "261006BF0334",
+  "time": "Oct  6 2026  9:12PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "SB I5 JNO Fort Tejon Rd",
+  "area": "Fort Tejon",
+  "lat": 34.882222,
+  "lon": -118.900556,
+  "details": ""
+ },
+ {
   "log_id": "261006BF0094",
   "time": "Oct  6 2026 10:04AM",
   "type": "1181-Trfc Collision-Minor Inj",

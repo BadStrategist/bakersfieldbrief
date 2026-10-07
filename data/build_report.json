@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-06T21:01:08-07:00",
+ "built_at": "2026-10-06T21:53:18-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -69,7 +69,7 @@
    "news_headlines": 75,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 6,
+   "chp_new": 1,
    "top_story": "School book bans hit record high with nearly 12,000 removals, study finds",
    "archive": "2026-10-06"
   },
@@ -106,13 +106,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 3,
+   "wind_mph": 0,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 72,
-   "wind_mph": 3,
+   "temp": 70,
+   "wind_mph": 0,
    "alerts": 0
   },
   "roads": {
@@ -144,7 +144,7 @@
    "alpr_total": 270,
    "kern_fires": 0,
    "aqi": 108,
-   "chp_week": 29
+   "chp_week": 30
   },
   "letters": {
    "published": 1

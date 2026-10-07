@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-06T21:53:18-07:00",
+ "built_at": "2026-10-06T22:30:21-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 3277, column 3"
   },
   "isabella": {
    "ok": true,
@@ -66,10 +66,10 @@
   "_digest_meta": "llm",
   "brief_words": 1442,
   "daily": {
-   "news_headlines": 75,
+   "news_headlines": 74,
    "news_digest": "llm",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 0,
    "top_story": "School book bans hit record high with nearly 12,000 removals, study finds",
    "archive": "2026-10-06"
   },
@@ -106,13 +106,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 0,
+   "wind_mph": 2,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 70,
-   "wind_mph": 0,
+   "temp": 71,
+   "wind_mph": 2,
    "alerts": 0
   },
   "roads": {

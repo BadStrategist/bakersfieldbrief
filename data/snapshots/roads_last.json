@@ -57,7 +57,7 @@
      }
     ]
    },
-   "reported_as_of": "Tuesday, October 6th, 2026 at 10:29 PM",
+   "reported_as_of": "Wednesday, October 7th, 2026 at 02:12 AM",
    "hash": "b723eda6ee"
   },
   {
@@ -80,7 +80,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Tuesday, October 6th, 2026 at 10:29 PM",
+   "reported_as_of": "Wednesday, October 7th, 2026 at 02:12 AM",
    "hash": "5374f203ec"
   },
   {
@@ -93,7 +93,7 @@
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads Southbound traffic is reduced to 1 lane at Prosperity Ave /in Tulare/ (Tulare Co) - Due to a downed tree",
+     "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "RESTRICTIONS"
     },
     {
@@ -114,20 +114,12 @@
       "where": "the Central California area",
       "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
       "region": "CENTRAL CALIFORNIA"
-     },
-     {
-      "status": "RESTRICTIONS",
-      "place": "Tulare",
-      "county": "Tulare Co",
-      "where": "Tulare (Tulare Co)",
-      "text": "Southbound traffic is reduced to 1 lane at Prosperity Ave /in Tulare/ (Tulare Co) - Due to a downed tree",
-      "region": "CENTRAL CALIFORNIA"
      }
     ]
    },
-   "reported_as_of": "Tuesday, October 6th, 2026 at 10:29 PM",
-   "hash": "ffef5aab3d"
+   "reported_as_of": "Wednesday, October 7th, 2026 at 02:12 AM",
+   "hash": "8b7d5f6e76"
   }
  ],
- "asof": "2026-10-06"
+ "asof": "2026-10-07"
 }

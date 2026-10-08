@@ -52,6 +52,22 @@ def dir_text(v) -> str:
                      for a, b in arcs)
 
 
+def facing_words(v) -> str:
+    """Facing for a list row: compass words only. The degrees stay on the camera's record."""
+    return ", ".join(_C16[round(a / 22.5) % 16] if a == b
+                     else f"{_C16[round(a / 22.5) % 16]} to {_C16[round(b / 22.5) % 16]}"
+                     for a, b in dir_arcs(v))
+
+
+def short_date(iso, year) -> str:
+    """A list-row date: "Sep 21", or "Oct 9, 2025" when it is not this year's."""
+    try:
+        d = dt.date.fromisoformat(str(iso)[:10])
+    except ValueError:
+        return str(iso or "")
+    return f"{d:%b} {d.day}" + ("" if str(d.year) == str(year) else f", {d.year}")
+
+
 def short_addr(a) -> str:
     keep = []
     for p in [x.strip() for x in str(a or "").split(",")]:
@@ -96,29 +112,32 @@ def merge_cameras(osm: list[dict], own: dict | None) -> list[dict]:
     return out
 
 
-def _cam_item(c: dict, cutoff: str) -> str:
+def _cam_item(c: dict, cutoff: str, year: str = "") -> str:
     o = c["own"]
     is_new = bool(cutoff and c["mapped"] and c["mapped"] >= cutoff)
     flock = "flock" in c["manu"].lower()
     k = type_key(o.get("otype")) if o else "none"
-    loc = loc_of(o) if o else f"Camera {c['id']} (mapped {c['mapped'] or 'date not stated'})"
-    facing = dir_text(c["dir"])
-    meta = [esc(c["manu"])]
+    # The row is for a reader choosing a camera: street, whose land, then the technical line.
+    # Parcel number, degrees and the full date are on the record the row opens.
+    loc = loc_of(o) if o else "Street not matched yet"
+    facing = facing_words(c["dir"])
+    meta = ["Flock" if flock else ("Maker not stated" if c["manu"] == "Unspecified" else esc(c["manu"]))]
     if facing:
-        meta.append("facing " + esc(facing))
+        meta.append("faces " + esc(facing))
     if c["mapped"]:
-        meta.append("mapped " + esc(c["mapped"]))
+        meta.append("mapped " + esc(short_date(c["mapped"], year)))
     if o:
-        own_line = (f'{esc(relation(o)).capitalize()} parcel {esc(o.get("apn") or "")}: '
-                    f'<b>{esc(o.get("owner") or "no owner name on the roll")}</b>')
+        chip = f' <span class="ax-chip {k}">{TYPE_LABEL[k]}</span>' if k in TYPE_LABEL else ""
+        own_line = (f'{esc(relation(o)).capitalize()} a parcel owned by '
+                    f'<b>{esc(o.get("owner") or "no owner name on the roll")}</b>{chip}')
     else:
-        own_line = "Ownership not joined yet: mapped after the county records snapshot."
+        own_line = "Land owner lookup pending: mapped after the county records snapshot."
     return (f'<li class="ax-item" data-id="{esc(c["id"])}" data-k="{k}"'
             f'{" data-new" if is_new else ""}{" data-flock" if flock else ""}>'
             f'<a href="#camera/{esc(c["id"])}">'
             f'<span class="ax-it">{esc(loc)}{" <em class=ax-new>new</em>" if is_new else ""}</span>'
-            f'<span class="ax-im">{" &middot; ".join(meta)}</span>'
-            f'<span class="ax-io">{own_line}</span></a></li>')
+            f'<span class="ax-io">{own_line}</span>'
+            f'<span class="ax-im">{" &middot; ".join(meta)}</span></a></li>')
 
 
 def _owner_item(o: dict) -> str:
@@ -166,7 +185,7 @@ def explorer_html(osm_cams: list[dict], asof: str, total: int, ok: bool) -> tupl
 
     owners_sorted = sorted(owners, key=lambda o: (-o.get("n", 0), str(o.get("name", ""))))
     parcels_sorted = sorted(parcels, key=lambda p: (-p.get("n", 0), p.get("apn", "")))
-    cam_items = "".join(_cam_item(c, cutoff) for c in cams)
+    cam_items = "".join(_cam_item(c, cutoff, str(asof)[:4]) for c in cams)
     owner_items = "".join(_owner_item(o) for o in owners_sorted)
     parcel_items = "".join(_parcel_item(p, owners) for p in parcels_sorted)
 
@@ -207,10 +226,14 @@ def explorer_html(osm_cams: list[dict], asof: str, total: int, ok: bool) -> tupl
           <p class="ax-legend"><span class="ax-sw flock"></span>Flock Safety <span class="ax-sw other"></span>other ALPR <span class="ax-sw ring"></span>mapped in the last 28 days <span class="ax-cone"></span>facing, at street zoom</p>
         </div>
         <div class="ax-panel" id="ax-panel">
-          <div class="ax-tabs" role="tablist" aria-label="Lists">
-            <button type="button" role="tab" id="ax-t-cams" aria-controls="ax-l-cams" aria-selected="true">Cameras <b>{len(cams)}</b></button>
-            <button type="button" role="tab" id="ax-t-owners" aria-controls="ax-l-owners" aria-selected="false">Owners <b>{len(owners)}</b></button>
-            <button type="button" role="tab" id="ax-t-parcels" aria-controls="ax-l-parcels" aria-selected="false">Parcels <b>{len(parcels)}</b></button>
+          <div class="ax-head">
+            <p class="ax-big"><b>{len(cams)}</b> cameras on this map</p>
+            <p class="ax-how">Pick one to see where it points and whose land it stands at or beside.</p>
+            <div class="ax-tabs" role="tablist" aria-label="Lists">
+              <button type="button" role="tab" id="ax-t-cams" aria-controls="ax-l-cams" aria-selected="true">By camera</button>
+              <button type="button" role="tab" id="ax-t-owners" aria-controls="ax-l-owners" aria-selected="false">By land owner</button>
+              <button type="button" role="tab" id="ax-t-parcels" aria-controls="ax-l-parcels" aria-selected="false">By parcel</button>
+            </div>
           </div>
           <p class="ax-count" id="ax-count" aria-live="polite"></p>
           <div class="ax-scroll" id="ax-scroll">

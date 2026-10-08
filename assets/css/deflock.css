@@ -173,7 +173,7 @@
 .ax-f[aria-pressed="true"] b { color: var(--amber-soft); }
 
 .ax-grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(330px, 1fr); height: clamp(520px, 78vh, 780px); }
-.ax-mapcol { min-width: 0; min-height: 0; border-right: 1px solid var(--line); display: flex; flex-direction: column; }
+.ax-mapcol { min-width: 0; min-height: 0; border-right: 3px solid var(--sign); display: flex; flex-direction: column; }
 .ax-mapbox { position: relative; isolation: isolate; z-index: 0; scroll-margin-top: 60px; flex: 1 1 auto; min-height: 0; }
 #alpr-map.ax-map { height: 100%; width: 100%; background: #E8E4D8; }
 .ax-legend { margin: 0; padding: 8px 14px 10px; font-size: 13px; color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: center; border-top: 1px solid var(--line); }
@@ -185,15 +185,21 @@
 .ax-mapfail { margin: 0; padding: 40px 20px; text-align: center; color: var(--ink-soft); background: var(--paper-2); }
 
 .ax-panel { min-width: 0; min-height: 0; display: flex; flex-direction: column; }
-.ax-tabs { display: flex; gap: 4px; padding: 10px 12px 0; border-bottom: 1px solid var(--line); }
-.ax-tabs button { flex: 1 1 0; font: 700 14px/1 var(--display); text-transform: uppercase; letter-spacing: .07em; color: var(--ink-soft); background: none; border: 0; border-bottom: 3px solid transparent; padding: 10px 4px 11px; min-height: 44px; cursor: pointer; }
-.ax-tabs button b { font-family: var(--mono); font-weight: 500; font-size: 12px; letter-spacing: 0; }
-.ax-tabs button[aria-selected="true"] { color: var(--sign-deep); border-bottom-color: var(--amber); }
-.ax-tabs button:hover { color: var(--sign-deep); }
-.ax-count { margin: 0; padding: 8px 14px; font-size: 13px; color: var(--ink-soft); font-family: var(--mono); border-bottom: 1px dashed var(--line); }
+/* The panel head is the dark band: it is what sets the panel apart from the map. */
+.ax-head { background: var(--sign); color: #fff; padding: 12px 14px; }
+.ax-big { margin: 0; font: 700 19px/1.1 var(--display); text-transform: uppercase; letter-spacing: .06em; }
+.ax-big b { font-size: 32px; letter-spacing: 0; color: var(--amber-soft); margin-right: 4px; }
+.ax-how { margin: 4px 0 10px; font-size: 13.5px; line-height: 1.4; color: #E9E4D6; }
+.ax-tabs { display: flex; gap: 4px; padding: 3px; background: var(--sign-deep); border-radius: 8px; }
+.ax-tabs button { flex: 1 1 0; font: 700 14px/1 var(--display); text-transform: uppercase; letter-spacing: .05em; color: #D9D3C4; background: none; border: 0; border-radius: 6px; padding: 4px; min-height: 40px; cursor: pointer; }
+.ax-tabs button[aria-selected="true"] { color: var(--sign-deep); background: var(--amber); }
+.ax-tabs button:hover { color: #fff; }
+.ax-tabs button[aria-selected="true"]:hover { color: var(--sign-deep); }
+.ax-tabs button:focus-visible { outline: 2px solid #fff; outline-offset: 1px; }
+.ax-count { margin: 0; padding: 8px 14px; font-size: 13px; color: var(--ink-soft); background: var(--paper-2); border-bottom: 1px solid var(--line); }
 .ax-scroll { flex: 1 1 auto; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; }
 .ax-list { list-style: none; margin: 0; padding: 0; }
-.ax-list li { border-bottom: 1px dashed var(--line); }
+.ax-list li { border-bottom: 1px solid var(--line); }
 .ax-list li[hidden], .ax-list[hidden] { display: none; }
 .ax-list a { display: block; padding: 10px 14px; min-height: 44px; color: inherit; text-decoration: none; }
 .ax-list a:hover, .ax-list a:focus-visible { background: #FBF5E6; }
@@ -202,6 +208,18 @@
 .ax-im { display: block; font-size: 13.5px; color: var(--ink-soft); line-height: 1.4; margin-top: 2px; }
 .ax-io { display: block; font-size: 13.5px; color: var(--sign-deep); line-height: 1.4; margin-top: 2px; }
 .ax-io b { font-weight: 600; }
+/* Rows of the three main lists: a chevron says the row opens, and a camera row carries the
+   map's own marker colour (amber Flock, grey other) so the list and the pins read as one. */
+.ax-item a { position: relative; padding: 11px 34px 11px 14px; }
+.ax-item a::after { content: ""; position: absolute; right: 14px; top: 50%; width: 8px; height: 8px; margin-top: -5px; border-right: 2px solid var(--line-strong); border-top: 2px solid var(--line-strong); transform: rotate(45deg); }
+.ax-item a:hover, .ax-item a:focus-visible { box-shadow: inset 4px 0 0 var(--amber); }
+.ax-item a:hover::after, .ax-item a:focus-visible::after { border-color: var(--sign); }
+.ax-item[data-id] a { padding-left: 38px; }
+.ax-item[data-id] a::before { content: ""; position: absolute; left: 14px; top: 15px; width: 12px; height: 12px; border-radius: 3px; background: #7C8B86; border: 1.5px solid #fff; box-shadow: 0 0 0 1px rgba(32,38,28,.3); }
+.ax-item[data-flock] a::before { background: #DC9A1F; }
+.ax-item .ax-io { font-size: 14px; color: var(--ink); margin-top: 3px; }
+.ax-item .ax-io .ax-chip { margin: 0 0 0 2px; vertical-align: 1px; }
+.ax-item .ax-im { font-size: 12.5px; margin-top: 3px; }
 .ax-new { font: 700 11px/1 var(--mono); text-transform: uppercase; letter-spacing: .06em; color: #7a5205; background: #FBEED2; border-radius: 3px; padding: 2px 5px; margin-left: 6px; vertical-align: 2px; }
 .ax-empty { margin: 0; padding: 18px 14px; color: var(--ink-soft); font-size: 14.5px; }
 .ax-more { display: block; width: calc(100% - 28px); margin: 12px 14px 16px; min-height: 44px; font: 700 14px/1 var(--display); text-transform: uppercase; letter-spacing: .07em; color: var(--sign-deep); background: var(--paper); border: 1px solid var(--line-strong); border-radius: 8px; cursor: pointer; }
@@ -273,7 +291,7 @@
   .ax-filters { flex-wrap: nowrap; overflow-x: auto; margin: 0 -12px; padding: 2px 12px 4px; scrollbar-width: none; }
   .ax-filters::-webkit-scrollbar { display: none; }
   .ax-grid { grid-template-columns: 1fr; height: auto; }
-  .ax-mapcol { border-right: 0; border-bottom: 1px solid var(--line); }
+  .ax-mapcol { border-right: 0; border-bottom: 0; }
   #alpr-map.ax-map { height: 56vh; min-height: 320px; max-height: 560px; }
   .ax-panel { height: auto; }
   .ax-scroll { overflow: visible; }
@@ -284,5 +302,5 @@
 }
 @media (max-width: 420px) {
   .ax-legend { font-size: 12.5px; gap: 4px 10px; }
-  .ax-tabs button { font-size: 13px; letter-spacing: .04em; }
+  .ax-tabs button { font-size: 13px; letter-spacing: .03em; }
 }

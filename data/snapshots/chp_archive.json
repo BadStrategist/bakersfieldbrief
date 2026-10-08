@@ -1328,5 +1328,15 @@
   "lat": 35.265234,
   "lon": -119.024794,
   "details": ""
+ },
+ {
+  "log_id": "261008BF0147",
+  "time": "Oct  8 2026 12:16PM",
+  "type": "CFIRE-Car Fire",
+  "location": "Sr58 W / General Beale Rd",
+  "area": "Bakersfield",
+  "lat": 35.292566,
+  "lon": -118.752596,
+  "details": ""
  }
 ]

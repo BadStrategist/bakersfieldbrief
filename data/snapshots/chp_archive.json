@@ -1280,6 +1280,16 @@
   "details": ""
  },
  {
+  "log_id": "261008BF0176",
+  "time": "Oct  8 2026  1:00PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jno Fort Tejon Rd",
+  "area": "Fort Tejon",
+  "lat": 34.882222,
+  "lon": -118.900556,
+  "details": ""
+ },
+ {
   "log_id": "261008BF0032",
   "time": "Oct  8 2026  6:48AM",
   "type": "1182-Trfc Collision-No Inj",
@@ -1407,6 +1417,16 @@
   "area": "Bakersfield",
   "lat": 35.261642,
   "lon": -118.914442,
+  "details": ""
+ },
+ {
+  "log_id": "261008BF0172",
+  "time": "Oct  8 2026 12:48PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "10675 Sr155",
+  "area": "Bakersfield",
+  "lat": 35.728531,
+  "lon": -118.703201,
   "details": ""
  }
 ]

@@ -57,7 +57,7 @@
      }
     ]
    },
-   "reported_as_of": "Wednesday, October 7th, 2026 at 05:23 PM",
+   "reported_as_of": "Wednesday, October 7th, 2026 at 05:57 PM",
    "hash": "b723eda6ee"
   },
   {
@@ -80,7 +80,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Wednesday, October 7th, 2026 at 05:23 PM",
+   "reported_as_of": "Wednesday, October 7th, 2026 at 05:57 PM",
    "hash": "5374f203ec"
   },
   {
@@ -88,13 +88,13 @@
    "slug": "sr99",
    "name": "State Route 99 \u2014 Central Valley",
    "pass": false,
-   "status": "CLOSED",
-   "pass_status": "CLOSED",
+   "status": "RESTRICTIONS",
+   "pass_status": "RESTRICTIONS",
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "Is closed to southbound traffic at San Joaquin Main Canal /in Stockton/ (San Joaquin Co) - Due to a traffic collision - Motorists are advised to use an alternate route A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
-     "status": "CLOSED"
+     "text": "Is reopened to southbound traffic at San Joaquin Main Canal /in Stockton/ (San Joaquin Co) at 1735 hrs on 10/7/26 A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "status": "RESTRICTIONS"
     },
     {
      "region": "NORTHERN CALIFORNIA",
@@ -108,14 +108,6 @@
     "on_pass_items": [],
     "elsewhere": [
      {
-      "status": "CLOSED",
-      "place": "Stockton",
-      "county": "San Joaquin Co",
-      "where": "Stockton (San Joaquin Co)",
-      "text": "Is closed to southbound traffic at San Joaquin Main Canal /in Stockton/ (San Joaquin Co) - Due to a traffic collision - Motorists are advised to use an alternate route",
-      "region": "CENTRAL CALIFORNIA"
-     },
-     {
       "status": "RESTRICTIONS",
       "place": "",
       "county": "",
@@ -125,8 +117,8 @@
      }
     ]
    },
-   "reported_as_of": "Wednesday, October 7th, 2026 at 05:23 PM",
-   "hash": "88cf207735"
+   "reported_as_of": "Wednesday, October 7th, 2026 at 05:57 PM",
+   "hash": "54e822d923"
   }
  ],
  "asof": "2026-10-07"

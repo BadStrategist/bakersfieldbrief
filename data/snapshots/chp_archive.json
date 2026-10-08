@@ -1230,6 +1230,16 @@
   "details": ""
  },
  {
+  "log_id": "261007BF0351",
+  "time": "Oct  7 2026  5:47PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Eb Sr178 Jwo Mount Vernon Ave",
+  "area": "Bakersfield",
+  "lat": 35.393333,
+  "lon": -118.970556,
+  "details": ""
+ },
+ {
   "log_id": "261007BF0106",
   "time": "Oct  7 2026  9:37AM",
   "type": "CZP-Assist with Construction",

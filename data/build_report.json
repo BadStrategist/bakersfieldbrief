@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-07T17:23:37-07:00",
+ "built_at": "2026-10-07T17:57:30-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -69,7 +69,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
+   "chp_new": 1,
    "top_story": "Woman who said she was set on fire at Oildale homeless encampment dies months after suffering severe burns",
    "archive": "2026-10-07"
   },
@@ -106,20 +106,20 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 9,
+   "wind_mph": 6,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 86,
-   "wind_mph": 9,
+   "wind_mph": 6,
    "alerts": 0
   },
   "roads": {
    "routes": [
     "i5:RESTRICTIONS",
     "sr58:OPEN",
-    "sr99:CLOSED"
+    "sr99:RESTRICTIONS"
    ],
    "log_entries": 60
   },
@@ -143,8 +143,8 @@
    "isabella_af": 146540,
    "alpr_total": 270,
    "kern_fires": 0,
-   "aqi": 150,
-   "chp_week": 43
+   "aqi": 147,
+   "chp_week": 44
   },
   "letters": {
    "published": 1

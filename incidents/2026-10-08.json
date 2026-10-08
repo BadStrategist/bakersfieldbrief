@@ -1,0 +1,272 @@
+[
+ {
+  "type": "structure fire",
+  "time": "00:28",
+  "agency": "KCFD",
+  "area": "Silver Saddle Ranch & Club, California City",
+  "notability": 5,
+  "disposition": "second alarm; three buildings fully involved; extensive mop-up",
+  "summary": "Firefighters were sent to the old two-story hotel resort in California City early Thursday for a large commercial structure on fire, and the call went to a second alarm almost immediately. Crews found three buildings fully involved with an exposure to the east and four spot fires in vegetation to the south backing into the wind. The only hydrant on scene was dead, so a water tender and support from Edwards were brought in. Firefighters kept the flames out of the main exposure while a smaller building became the priority, and about an acre to an acre and a half of grass and brush burned around the complex. The initial fire buildings were reported 100 percent involved, and crews settled in for an extensive mop-up as winds turned erratic on one side of the fire."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "21:46",
+  "agency": "CHP / KCFD",
+  "area": "southbound Interstate 5 near Copus Road",
+  "notability": 4,
+  "disposition": "trailer fully involved; lanes blocked; traffic diverted to Highway 99; no injuries",
+  "summary": "A semi caught fire on Interstate 5 near Copus Road, south of the Grapevine, with the trailer still attached. Crews reported the fire near the wheel wells and then the whole trailer engulfed in heavy smoke. The burning rig blocked lanes and units routed traffic off the freeway onto Highway 99 while heavy towing was called in. One lane was expected to reopen within about ten minutes, and the ambulance was cancelled with no one hurt."
+ },
+ {
+  "type": "burglary",
+  "time": "23:33",
+  "agency": "BPD",
+  "area": "the 7000 block of Di Giorgio Road",
+  "notability": 4,
+  "disposition": "forced entry reported; search under way",
+  "summary": "A hysterical caller reported that three people, two men and one woman, forced their way in through the front door of an apartment in the 7000 block of Di Giorgio Road in south Bakersfield. Officers were sent to search the unit and the surrounding area, and medics staged nearby."
+ },
+ {
+  "type": "weapons call",
+  "time": "23:33",
+  "agency": "KCSO",
+  "area": "North Edwards area, east Kern County",
+  "notability": 4,
+  "disposition": "suspect reported in the roadway with a long gun",
+  "summary": "Deputies were sent to the North Edwards area for a man in a black shirt and gray sweatpants standing in the middle of a roadway with a large firearm, possibly a rifle or shotgun. The caller, who was picking up juveniles from a school event, said the man was letting the juveniles cross the street before she left with them and filed a report."
+ },
+ {
+  "type": "kidnapping",
+  "time": "04:34",
+  "agency": "BPD",
+  "area": "the 1800 block of Pacific Street",
+  "notability": 4,
+  "disposition": "vehicle fled the area; suspect not located",
+  "summary": "A caller reported a man in an orange Chevrolet pickup dragging a woman from a residence on Pacific Street, with the woman heard yelling as she was put into the truck and the vehicle left the area. Officers checked the neighborhood and tried to find the truck by its plate and through the license plate readers, but the suspect and the woman were not immediately located."
+ },
+ {
+  "type": "assault",
+  "time": "21:50",
+  "agency": "KCSO",
+  "area": "the 11000 block of Kyte Avenue",
+  "notability": 3,
+  "disposition": "domestic call; firearms reported inside the home",
+  "summary": "Deputies were sent to the 11000 block of Kyte Avenue for a disturbance that escalated into a report of an elderly man striking a 12-year-old with a broom. The caller told dispatchers there were firearms inside the residence. No injuries were confirmed."
+ },
+ {
+  "type": "collision",
+  "time": "21:51",
+  "agency": "BPD / Hall Ambulance",
+  "area": "Pacheco Road and South Union Avenue",
+  "notability": 3,
+  "disposition": "patient reported down in the roadway",
+  "summary": "Medics were sent to Pacheco Road and South Union Avenue for a person reported to have possibly been hit by a vehicle and down on the roadway. Officers were already at the intersection, which had drawn traffic on both streets."
+ },
+ {
+  "type": "burglary",
+  "time": "22:49",
+  "agency": "BPD",
+  "area": "the 2600 block of Mount Vernon Avenue",
+  "notability": 3,
+  "disposition": "business window reported broken; suspect described",
+  "summary": "Officers were sent to a business in the 2600 block of Mount Vernon Avenue for a possible burglary just reported. A caller described a man carrying a broken piece of metal who said he was running from someone trying to hurt him. A white sedan was seen pulling up in front of the store."
+ },
+ {
+  "type": "domestic battery",
+  "time": "22:55",
+  "agency": "KCSO",
+  "area": "Hillcrest Drive",
+  "notability": 3,
+  "disposition": "suspect known to the victim; not located",
+  "summary": "A woman on Hillcrest Drive reported that her adult son shoved her against a wall and threw her into it. She told dispatchers he was known to carry a pocket knife, though none had been seen that day. Deputies responded from the surrounding area and a second report of a battery victim flagged down deputies nearby."
+ },
+ {
+  "type": "domestic violence",
+  "time": "03:45",
+  "agency": "KCSO",
+  "area": "Bakersfield area",
+  "notability": 3,
+  "disposition": "suspect fled on a bicycle; firearm reported inside",
+  "summary": "Deputies were sent to a domestic violence call after a woman reported her ex-boyfriend jumped a fence and forced his way in through the front door and a window. A friend inside the home was reported to have a handgun. The suspect left on a bicycle in an unknown direction and was described as wearing dark clothing and a black baseball cap."
+ },
+ {
+  "type": "medical aid",
+  "time": "21:46",
+  "agency": "Hall Ambulance",
+  "area": "the 6800 block of Foothill Drive",
+  "notability": 2,
+  "disposition": "medical aid",
+  "summary": "Medics were sent to the 6800 block of Foothill Drive for an ill patient."
+ },
+ {
+  "type": "suspicious circumstance",
+  "time": "21:58",
+  "agency": "BPD",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "subject no longer in the area",
+  "summary": "A caller reported that a woman fell out of a vehicle, but she was no longer in the area when officers checked."
+ },
+ {
+  "type": "disturbance",
+  "time": "22:09",
+  "agency": "BPD",
+  "area": "the 1200 block of 40th Street",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "Officers were asked to respond to the 1200 block of 40th Street for four juveniles around 14 and 15 years old smoking on the property."
+ },
+ {
+  "type": "keep the peace",
+  "time": "22:18",
+  "agency": "BPD",
+  "area": "Lake Street",
+  "notability": 2,
+  "disposition": "officers responding",
+  "summary": "Officers were sent to the 7-Eleven on Lake Street to keep the peace over a property dispute."
+ },
+ {
+  "type": "vandalism",
+  "time": "22:19",
+  "agency": "BPD",
+  "area": "the 2100 block of Oildale Drive",
+  "notability": 2,
+  "disposition": "no injuries reported",
+  "summary": "A woman with a hammer was reported at the 2100 block of Oildale Drive after she broke a business window. She was not reported to have hurt anyone."
+ },
+ {
+  "type": "911 disconnect",
+  "time": "23:02",
+  "agency": "BPD",
+  "area": "the 10400 block of Elm Cove",
+  "notability": 2,
+  "disposition": "call back attempted",
+  "summary": "A 911 hang-up call came in from the 10400 block of Elm Cove, and dispatchers were working to call the number back."
+ },
+ {
+  "type": "traffic hazard",
+  "time": "23:19",
+  "agency": "CHP",
+  "area": "northbound Interstate 5 at the Frazier Mountain Park Road off-ramp",
+  "notability": 2,
+  "disposition": "semi disabled at the end of the ramp",
+  "summary": "A semi was reported stopped at the end of the northbound Interstate 5 off-ramp at Frazier Mountain Park Road."
+ },
+ {
+  "type": "fire",
+  "time": "23:38",
+  "agency": "KCFD",
+  "area": "Chester Avenue and West Columbus Street",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Fire crews were sent south of the river off Chester Avenue and West Columbus Street for a single report at a house, with a patrol and a battalion responding."
+ },
+ {
+  "type": "animal attack",
+  "time": "23:42",
+  "agency": "KCFD / Hall Ambulance",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "ambulance only",
+  "summary": "Crews cleared a call for a woman attacked by a dog, which was completed as an ambulance-only response."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "00:57",
+  "agency": "KCSO",
+  "area": "the 2900 block of Catalina Drive",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "A domestic disturbance was reported in the 2900 block of Catalina Drive after a woman's boyfriend left. The caller was still on the move, walking to a relative's house."
+ },
+ {
+  "type": "alarm",
+  "time": "01:43",
+  "agency": "KCFD",
+  "area": "Westwood Drive",
+  "notability": 2,
+  "disposition": "medical alarm; assistance requested",
+  "summary": "A medical alarm activation came in from a senior living community on Westwood Drive for a person requesting assistance, possibly after a fall."
+ },
+ {
+  "type": "outside fire",
+  "time": "01:45",
+  "agency": "KCFD",
+  "area": "Kern County",
+  "notability": 2,
+  "disposition": "half acre; crews on scene",
+  "summary": "A company was sent to a roughly half-acre grass fire in the county and called it the morning incident, with crews on scene holding the spread."
+ },
+ {
+  "type": "medical aid",
+  "time": "01:54",
+  "agency": "Hall Ambulance",
+  "area": "the 2700 block of White Lane",
+  "notability": 2,
+  "disposition": "medical aid",
+  "summary": "Medics were sent to a business in the 2700 block of White Lane for a patient in respiratory distress."
+ },
+ {
+  "type": "public service",
+  "time": "02:21",
+  "agency": "KCFD",
+  "area": "the 8600 block of Lighthouse Drive",
+  "notability": 2,
+  "disposition": "public service call",
+  "summary": "A crew handled a public service call in the 8600 block of Lighthouse Drive."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "02:31",
+  "agency": "KCSO",
+  "area": "the 4400 block of White Lane",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "Deputies were sent to the 4400 block of White Lane for a repeat domestic disturbance after a woman was reported trying to get into an apartment door."
+ },
+ {
+  "type": "disturbance",
+  "time": "03:11",
+  "agency": "BPD",
+  "area": "the 3600 block of Pacer Street",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "A disturbance was reported in the 3600 block of Pacer Street, where four or five people were possibly drinking and playing loud music in the street."
+ },
+ {
+  "type": "suspicious person",
+  "time": "03:12",
+  "agency": "BPD",
+  "area": "the 2200 block of Commercial Avenue",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "A caller reported a partially undressed man standing at a front door in the 2200 block of Commercial Avenue with a laptop, after earlier hearing the screen door rattle."
+ },
+ {
+  "type": "shots heard",
+  "time": "03:22",
+  "agency": "KCSO",
+  "area": "Kern County",
+  "notability": 2,
+  "disposition": "nothing found; no gunshots heard by nearby units",
+  "summary": "A report of possible gunshots was checked in the county, but units that were nearby at the time said they heard nothing and no one was found."
+ },
+ {
+  "type": "overdose",
+  "time": "04:37",
+  "agency": "KCFD / Hall Ambulance",
+  "area": "the 3100 block of Sierra Highway, Rosamond",
+  "notability": 2,
+  "disposition": "ambulance en route from Mojave",
+  "summary": "An overdose call drew an ambulance from Mojave to a senior center in the 3100 block of Sierra Highway in the Rosamond area."
+ },
+ {
+  "type": "medical aid",
+  "time": "04:46",
+  "agency": "KCSO / Hall Ambulance",
+  "area": "south Bakersfield",
+  "notability": 2,
+  "disposition": "medical aid",
+  "summary": "A caller reported a man lying motionless on the ground and got no response when he honked his horn. Medics and deputies responded for an unknown medical aid."
+ }
+]

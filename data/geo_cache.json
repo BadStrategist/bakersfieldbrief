@@ -52,5 +52,36 @@
  "buena vista road & a pharmacy, Bakersfield, CA": null,
  "ming avenue & allen road, Bakersfield, CA": null,
  "union avenue & a grocery store, Bakersfield, CA": null,
- "monterey street & union avenue, Bakersfield, CA": null
+ "monterey street & union avenue, Bakersfield, CA": null,
+ "1800 block of pacific street, Bakersfield, Kern County, CA": null,
+ "pacific street, Bakersfield, CA": [
+  35.3857643,
+  -118.9977401
+ ],
+ "11000 block of kyte avenue, Bakersfield, Kern County, CA": null,
+ "kyte avenue, Bakersfield, CA": null,
+ "pacheco road & south union avenue, Bakersfield, CA": null,
+ "6800 block of foothill drive, Bakersfield, Kern County, CA": null,
+ "foothill drive, Bakersfield, CA": null,
+ "2100 block of oildale drive, Bakersfield, Kern County, CA": null,
+ "oildale drive, Bakersfield, CA": null,
+ "chester avenue & west columbus street, Bakersfield, CA": null,
+ "2900 block of catalina drive, Bakersfield, Kern County, CA": null,
+ "catalina drive, Bakersfield, CA": [
+  35.399419,
+  -118.944876
+ ],
+ "2700 block of white lane, Bakersfield, Kern County, CA": null,
+ "8600 block of lighthouse drive, Bakersfield, Kern County, CA": null,
+ "lighthouse drive, Bakersfield, CA": [
+  35.4094715,
+  -119.0978299
+ ],
+ "4400 block of white lane, Bakersfield, Kern County, CA": null,
+ "3600 block of pacer street, Bakersfield, Kern County, CA": null,
+ "pacer street, Bakersfield, CA": null,
+ "2200 block of commercial avenue, Bakersfield, Kern County, CA": null,
+ "commercial avenue, Bakersfield, CA": null,
+ "3100 block of sierra highway, Bakersfield, Kern County, CA": null,
+ "sierra highway, Bakersfield, CA": null
 }

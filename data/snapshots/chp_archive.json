@@ -1250,6 +1250,16 @@
   "details": ""
  },
  {
+  "log_id": "261007BF0439",
+  "time": "Oct  7 2026  9:42PM",
+  "type": "CFIRE-Car Fire",
+  "location": "0 I5 N",
+  "area": "Buttonwillow",
+  "lat": 35.088993,
+  "lon": -119.030638,
+  "details": ""
+ },
+ {
   "log_id": "261007BF0005",
   "time": "Oct  7 2026 12:26AM",
   "type": "TADV-Traffic Advisory",
@@ -1270,203 +1280,13 @@
   "details": ""
  },
  {
-  "log_id": "260930BF0199",
-  "time": "Sep 30 2026  1:38PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "0 I5 N",
-  "area": "Fort Tejon",
-  "lat": 34.917191,
-  "lon": -118.923986,
-  "details": ""
- },
- {
-  "log_id": "260930BF0012",
-  "time": "Sep 30 2026  2:00AM",
+  "log_id": "261008BF0002",
+  "time": "Oct  8 2026 12:00AM",
   "type": "TADV-Traffic Advisory",
   "location": "Bakersfield Traffic Advisories",
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260930BF0236",
-  "time": "Sep 30 2026  3:03PM",
-  "type": "CFIRE-Car Fire",
-  "location": "Nb I5 Jno Copus Rd",
-  "area": "Buttonwillow",
-  "lat": 35.097222,
-  "lon": -119.039444,
-  "details": ""
- },
- {
-  "log_id": "260930BF0262",
-  "time": "Sep 30 2026  4:07PM",
-  "type": "FIRE-Report of Fire",
-  "location": "Sr178 / Oak St",
-  "area": "BF",
-  "lat": 35.380978,
-  "lon": -119.038511,
-  "details": ""
- },
- {
-  "log_id": "260930BF0280",
-  "time": "Sep 30 2026  4:34PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Fairfax Rd / E Brundage Ln",
-  "area": "Bakersfield",
-  "lat": 35.354264,
-  "lon": -118.93204,
-  "details": ""
- },
- {
-  "log_id": "260930BF0283",
-  "time": "Sep 30 2026  4:46PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Wb Sr178 Jeo Union Ave",
-  "area": "Bakersfield",
-  "lat": 35.383611,
-  "lon": -119.001389,
-  "details": ""
- },
- {
-  "log_id": "260930BF0290",
-  "time": "Sep 30 2026  4:58PM",
-  "type": "1125-Traffic Hazard",
-  "location": "25514-25883 Old River Rd",
-  "area": "Buttonwillow",
-  "lat": 35.119578,
-  "lon": -119.109751,
-  "details": ""
- },
- {
-  "log_id": "260930BF0293",
-  "time": "Sep 30 2026  5:00PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Di Giorgio Rd / S Fairfax Rd",
-  "area": "Bakersfield",
-  "lat": 35.252368,
-  "lon": -118.932088,
-  "details": ""
- },
- {
-  "log_id": "260930BF0033",
-  "time": "Sep 30 2026  5:05AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "9855 Compagnoni St",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "260930BF0348",
-  "time": "Sep 30 2026  7:20PM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "0 I5 N",
-  "area": "Fort Tejon",
-  "lat": 34.921723,
-  "lon": -118.923275,
-  "details": ""
- },
- {
-  "log_id": "260930BF0354",
-  "time": "Sep 30 2026  7:23PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Sb Sr99 Jso South Union Ave",
-  "area": "Bakersfield",
-  "lat": 35.165,
-  "lon": -119.001944,
-  "details": ""
- },
- {
-  "log_id": "260930BF0370",
-  "time": "Sep 30 2026  7:30PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "E Evans Rd / Lakeview Dr",
-  "area": "Bakersfield",
-  "lat": 35.705733,
-  "lon": -118.449764,
-  "details": ""
- },
- {
-  "log_id": "260930BF0372",
-  "time": "Sep 30 2026  7:33PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Nb I5 At Sr43",
-  "area": "Buttonwillow",
-  "lat": 35.293333,
-  "lon": -119.252222,
-  "details": ""
- },
- {
-  "log_id": "260930BF0090",
-  "time": "Sep 30 2026  8:57AM",
-  "type": "CZP-Assist with Construction",
-  "location": "1033 Lebec Rd",
-  "area": "Fort Tejon",
-  "lat": 34.825534,
-  "lon": -118.87775,
-  "details": ""
- },
- {
-  "log_id": "260930BF0100",
-  "time": "Sep 30 2026  9:21AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Nb I5 At #2 Turn Thru",
-  "area": "Fort Tejon",
-  "lat": 34.890111,
-  "lon": -118.91124,
-  "details": ""
- },
- {
-  "log_id": "260930BF0101",
-  "time": "Sep 30 2026  9:23AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Panama Ln / Tulip Field Way",
-  "area": "BF",
-  "lat": 35.296183,
-  "lon": -119.134677,
-  "details": ""
- },
- {
-  "log_id": "260930BF0105",
-  "time": "Sep 30 2026  9:49AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "6625 Baykirk St",
-  "area": "BF",
-  "lat": 35.299816,
-  "lon": -119.076337,
-  "details": ""
- },
- {
-  "log_id": "260930BF0118",
-  "time": "Sep 30 2026 10:18AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "8740 Spectrum Park Way",
-  "area": "Bakersfield",
-  "lat": 35.440527,
-  "lon": -119.076589,
-  "details": ""
- },
- {
-  "log_id": "260930BF0132",
-  "time": "Sep 30 2026 11:00AM",
-  "type": "1125-Traffic Hazard",
-  "location": "0 Sr99 S",
-  "area": "Bakersfield",
-  "lat": 35.637519,
-  "lon": -119.217766,
-  "details": ""
- },
- {
-  "log_id": "260930BF0141",
-  "time": "Sep 30 2026 11:22AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Edison Hwy / S Edison Rd",
-  "area": "Bakersfield",
-  "lat": 35.349659,
-  "lon": -118.878701,
   "details": ""
  }
 ]

@@ -1338,5 +1338,75 @@
   "lat": 35.292566,
   "lon": -118.752596,
   "details": ""
+ },
+ {
+  "log_id": "261008BF0153",
+  "time": "Oct  8 2026 12:23PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "551 Willow Dr",
+  "area": "Bakersfield",
+  "lat": 35.402041,
+  "lon": -119.03112,
+  "details": ""
+ },
+ {
+  "log_id": "261008BF0156",
+  "time": "Oct  8 2026 12:30PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "42810 Frazier Mountain Park Rd",
+  "area": "Fort Tejon",
+  "lat": 34.817708,
+  "lon": -118.884761,
+  "details": ""
+ },
+ {
+  "log_id": "261008BF0159",
+  "time": "Oct  8 2026 12:32PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "2200-2219 Woodland Dr",
+  "area": "Fort Tejon",
+  "lat": 34.846702,
+  "lon": -119.154877,
+  "details": ""
+ },
+ {
+  "log_id": "261008BF0163",
+  "time": "Oct  8 2026 12:39PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Wheeler Ridge Rd / David Rd",
+  "area": "Bakersfield",
+  "lat": 35.092929,
+  "lon": -118.914676,
+  "details": ""
+ },
+ {
+  "log_id": "261008BF0167",
+  "time": "Oct  8 2026 12:47PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr184 / Niles St",
+  "area": "Bakersfield",
+  "lat": 35.376234,
+  "lon": -118.914164,
+  "details": ""
+ },
+ {
+  "log_id": "261008BF0168",
+  "time": "Oct  8 2026 12:47PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jno Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.836944,
+  "lon": -118.863056,
+  "details": ""
+ },
+ {
+  "log_id": "261008BF0171",
+  "time": "Oct  8 2026 12:48PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "10318 Sr184",
+  "area": "Bakersfield",
+  "lat": 35.261642,
+  "lon": -118.914442,
+  "details": ""
  }
 ]

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-08T12:25:46-07:00",
+ "built_at": "2026-10-08T12:55:21-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,7 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter"
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -66,10 +66,10 @@
   "_digest_meta": "deterministic",
   "brief_words": 1543,
   "daily": {
-   "news_headlines": 75,
+   "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 7,
    "top_story": "Ridgecrest police chief says city is amending Flock camera contract based on resident pushback, concerns",
    "overnight_band": {
     "date": "2026-10-08",
@@ -166,13 +166,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 17,
+   "wind_mph": 10,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 88,
-   "wind_mph": 17,
+   "wind_mph": 10,
    "alerts": 0
   },
   "roads": {
@@ -203,8 +203,8 @@
    "isabella_af": 145727,
    "alpr_total": 270,
    "kern_fires": 0,
-   "aqi": 97,
-   "chp_week": 51
+   "aqi": 105,
+   "chp_week": 58
   },
   "letters": {
    "published": 1

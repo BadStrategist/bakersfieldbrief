@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-08T13:05:51-07:00",
+ "built_at": "2026-10-08T13:16:44-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -69,7 +69,7 @@
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "Ridgecrest police chief says city is amending Flock camera contract based on resident pushback, concerns",
    "overnight_band": {
     "date": "2026-10-08",

@@ -1300,6 +1300,26 @@
   "details": ""
  },
  {
+  "log_id": "261008BF0087",
+  "time": "Oct  8 2026  9:28AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "10112 San Emidio St",
+  "area": "Bakersfield",
+  "lat": 35.263589,
+  "lon": -118.921776,
+  "details": ""
+ },
+ {
+  "log_id": "261008BF0097",
+  "time": "Oct  8 2026 10:13AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "I5 N / Ft Tejon Rd Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.874845,
+  "lon": -118.892162,
+  "details": ""
+ },
+ {
   "log_id": "261008BF0002",
   "time": "Oct  8 2026 12:00AM",
   "type": "TADV-Traffic Advisory",

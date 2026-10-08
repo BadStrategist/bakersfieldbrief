@@ -1290,6 +1290,16 @@
   "details": ""
  },
  {
+  "log_id": "261008BF0210",
+  "time": "Oct  8 2026  2:05PM",
+  "type": "FIRE-Report of Fire",
+  "location": "0 I5 S",
+  "area": "Fort Tejon",
+  "lat": 35.020043,
+  "lon": -118.958594,
+  "details": ""
+ },
+ {
   "log_id": "261008BF0032",
   "time": "Oct  8 2026  6:48AM",
   "type": "1182-Trfc Collision-No Inj",

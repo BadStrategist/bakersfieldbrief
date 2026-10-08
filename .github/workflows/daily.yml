@@ -77,6 +77,7 @@ jobs:
           ffmpeg -version | head -1
 
       - name: Build site (fetch sources → bake static HTML)
+        id: build
         run: python build/build_all.py ${{ steps.gate.outputs.llm == '0' && '--no-llm' || '' }}
 
       # UptimeRobot freshness ping: fires ONLY when today's Kern Overnight
@@ -100,6 +101,7 @@ jobs:
       # already pushed a commit to main before the "gate" ran. Now a failure stops the
       # push, the deploy and the send.
       - name: Test suite (hard gate before the artifact push and the deploy)
+        id: tests
         run: python -m pytest -q -o addopts="" --tb=short
 
       # Automatic pusher: commit the generated artifacts (email/, drafts/, data/)
@@ -110,6 +112,7 @@ jobs:
         # continue-on-error: masking a failed push as a green step is how a whole day of
         # artifacts disappears behind a passing run. The steps that must still happen
         # (deploy, send) carry `if: !cancelled()`.
+        id: push
         run: |
           bash scripts/ci_push.sh "build: $(date -u +%Y-%m-%d) artifacts [skip ci]"
 
@@ -128,6 +131,7 @@ jobs:
       # a human sees, never a silent green check — and a notification step posts
       # to the ops Discord channel so nobody has to grep run logs.
       - name: Set MailerLite Pages secrets (for the newsletter function)
+        id: pages_secrets
         if: ${{ !cancelled() }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -140,6 +144,7 @@ jobs:
           echo "$MAILERLITE_GROUP_ID" | npx wrangler pages secret put MAILERLITE_GROUP_ID --project-name=bakersfieldbrief 2>&1 | tail -1
 
       - name: Deploy to Cloudflare Pages
+        id: deploy
         if: ${{ !cancelled() }}   # a failed artifact push must not withhold the site
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -149,6 +154,39 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy site --project-name=bakersfieldbrief
+
+      # FAIL LOUDLY when the camera data on /surveillance/ is not today's. The alpr source
+      # answers a failed Overpass fetch with its last good list and ok=True, so the build
+      # stays green; before this step an outage was invisible until the Monday verify in
+      # weekly.yml. Now it is a red run and an ops Discord alert on the run it happens.
+      # AFTER the deploy on purpose: placed before the push it would skip the artifact push
+      # (and with it every other tracker's data) over a source that already has a correct
+      # fallback. The page itself never mentions any of this: the red run and the alert are
+      # the whole signal.
+      # Only when the build succeeded: a crashed build is its own failure, and its leftover
+      # payload would be reported here as an Overpass outage that never happened.
+      # NO continue-on-error: a stale fallback must never read as green.
+      - name: Verify the ALPR camera data is today's
+        id: alpr_fresh
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: python scripts/check_alpr_fresh.py --alert-file /tmp/bb_alpr.txt
+
+      # The step above cannot report a run that never started (GitHub drops and delays
+      # scheduled runs, and disables schedules on an idle repo). This ping fires ONLY on a
+      # proven-fresh fetch, so a dead-man's-switch check (healthchecks.io, period 1 day) alerts
+      # when a day passes without one, whatever the cause. Setup: scripts/resilience-setup.md,
+      # "ALPR freshness". Until the secret exists the run says so in a notice instead of
+      # skipping in silence.
+      - name: Ping the ALPR freshness heartbeat
+        if: ${{ !cancelled() && steps.alpr_fresh.outcome == 'success' }}
+        env:
+          UP_ALPR_PING_URL: ${{ secrets.UP_ALPR_PING_URL }}
+        run: |
+          if [ -z "$UP_ALPR_PING_URL" ]; then
+            echo "::notice title=ALPR heartbeat not configured::UP_ALPR_PING_URL is not set, so nothing alerts when the daily run does not start at all. The in-run freshness check above is unaffected."
+            exit 0
+          fi
+          curl -fsS -m 20 "$UP_ALPR_PING_URL" && echo "ALPR freshness ping sent"
 
       # Newsletter send — runs AFTER deploy so a blocked/failed email can never
       # hold up the site, but NO continue-on-error: a blocked send exits 1 and
@@ -168,38 +206,61 @@ jobs:
           { echo "BB_SEND_MSG<<EOF"; tail -6 /tmp/bb_send.out; echo "EOF"; } >> "$GITHUB_ENV"
           exit $code
 
-      # A blocked/failed email must reach a human the same morning, not sit in
-      # run logs. Posts to the ops Discord webhook when the send step failed.
-      # `if: failure()` is the reliable GitHub Actions condition (fires when
-      # any prior step in the job failed) — `steps.send.outcome == 'failure'`
-      # proved unreliable and skipped the alert on 2026-09-06. Without the
-      # secret it still fails loudly in the log (never silent).
-      - name: Notify ops Discord if email was blocked/failed
+      # A failed run must reach a human the same morning, not sit in run logs. Posts to the
+      # ops Discord webhook. `if: failure()` is the reliable GitHub Actions condition (fires
+      # when any prior step in the job failed) - `steps.send.outcome == 'failure'` proved
+      # unreliable and skipped the alert on 2026-09-06. Without the secret it still fails
+      # loudly in the log (never silent).
+      # Two alerts, because they are two different jobs for the reader:
+      #  - the ALPR one, when the freshness step failed (its text comes from that step);
+      #  - the build/email one, for everything else. It is skipped only when the ALPR step is
+      #    the ONE failure, which is spelled out step by step below: any step that did not
+      #    plainly succeed keeps the second alert, so a doubt costs a duplicate, not a miss.
+      # The email header used to key on "the send step ran". With a step that can fail while
+      # the send succeeds, that printed "email did NOT send" for an email that went out; it
+      # reads the send step's own outcome now.
+      - name: Notify ops Discord on failure
         if: failure()
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          ALPR_OUTCOME: ${{ steps.alpr_fresh.outcome }}
+          SEND_OUTCOME: ${{ steps.send.outcome }}
+          ALPR_ONLY: ${{ steps.alpr_fresh.outcome == 'failure' && steps.tests.outcome == 'success' && steps.push.outcome == 'success' && steps.pages_secrets.outcome == 'success' && steps.deploy.outcome == 'success' && steps.send.outcome != 'failure' }}
         run: |
           if [ -z "$DISCORD_WEBHOOK_URL" ]; then
-            echo "!! DISCORD_WEBHOOK_URL secret not set - email blocked/failed and NO Discord alert could be sent. See $RUN_URL"
+            echo "!! DISCORD_WEBHOOK_URL secret not set - the run failed (alpr=$ALPR_OUTCOME send=$SEND_OUTCOME) and NO Discord alert could be sent. See $RUN_URL"
             exit 1
           fi
-          printf 'A blocked/failed send is now a RED run - not silent.\n```\n' > /tmp/bb_discord.txt
-          if [ -f /tmp/bb_send.out ]; then
-            tail -6 /tmp/bb_send.out >> /tmp/bb_discord.txt
-          else
-            printf '(send step did not run - an earlier step failed and the email was never attempted)\n' >> /tmp/bb_discord.txt
+          rc=0
+          if [ "$ALPR_OUTCOME" = "failure" ]; then
+            if [ ! -f /tmp/bb_alpr.txt ]; then
+              printf 'The ALPR freshness step failed without writing a reason. Read the run log.\n' > /tmp/bb_alpr.txt
+            fi
+            printf 'See: %s\n' "$RUN_URL" >> /tmp/bb_alpr.txt
+            python scripts/notify_discord.py --header "Bakersfield Brief - ALPR tracker data is NOT fresh (run #$GITHUB_RUN_NUMBER)" --file /tmp/bb_alpr.txt \
+              && echo "ops Discord alert sent for the ALPR tracker" || rc=1
           fi
-          printf '\n```\nSee: %s\n' "$RUN_URL" >> /tmp/bb_discord.txt
-          # Only say the email failed when the send step ran and failed; a test or
-          # deploy failure at 3 AM is not a missed email.
-          if [ -f /tmp/bb_send.out ]; then
-            HDR="Bakersfield Brief - daily email did NOT send (run #$GITHUB_RUN_NUMBER)"
-          else
-            HDR="Bakersfield Brief - daily build failed before the send step (run #$GITHUB_RUN_NUMBER)"
+          if [ "$ALPR_ONLY" != "true" ]; then
+            if [ "$SEND_OUTCOME" = "failure" ]; then
+              HDR="Bakersfield Brief - daily email did NOT send (run #$GITHUB_RUN_NUMBER)"
+              printf 'A blocked/failed send is now a RED run - not silent.\n```\n' > /tmp/bb_discord.txt
+              tail -6 /tmp/bb_send.out >> /tmp/bb_discord.txt
+              printf '\n```\n' >> /tmp/bb_discord.txt
+            elif [ -f /tmp/bb_send.out ]; then
+              # a test, push or deploy failure on a run whose email went out is not a missed email
+              HDR="Bakersfield Brief - daily build had a failed step; the email DID send (run #$GITHUB_RUN_NUMBER)"
+              printf 'A step of the daily run failed. The newsletter send itself succeeded.\n' > /tmp/bb_discord.txt
+            else
+              HDR="Bakersfield Brief - daily build failed before the send step (run #$GITHUB_RUN_NUMBER)"
+              printf 'A step of the daily run failed.\n' > /tmp/bb_discord.txt
+              printf '(send step did not run - not due on this run, or an earlier step failed and the email was never attempted)\n' >> /tmp/bb_discord.txt
+            fi
+            printf 'See: %s\n' "$RUN_URL" >> /tmp/bb_discord.txt
+            python scripts/notify_discord.py --header "$HDR" --file /tmp/bb_discord.txt \
+              && echo "ops Discord alert sent for the failed run" || rc=1
           fi
-          python scripts/notify_discord.py --header "$HDR" --file /tmp/bb_discord.txt
-          echo "ops Discord alert sent for blocked/failed email"
+          exit $rc
 
       # Social post: intentionally NOT run from CI. The 2026-08 "withheld" API
       # posts were caused by the Meta app being Unpublished (dev mode), fixed

@@ -142,6 +142,8 @@ def build_alpr(ctx, sources: dict):
     cameras = data.get("cameras", [])
     asof = (data.get("asof") or "unavailable")
 
+    # Built field by field on purpose: the source's "stale" and "error" keys are for CI
+    # (scripts/check_alpr_fresh.py) and must never reach the page.
     payload = {"cameras": cameras, "stats": stats,
                "change_log": change_log, "asof": asof}
 

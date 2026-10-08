@@ -115,12 +115,18 @@ def run(ctx, *, record_change: bool = False):
         # last good payload: the fallback when Overpass can't be reached (see below)
         common.save_snapshot("alpr_last", {"cameras": cameras, "stats": stats,
                                            "asof": common.iso_today()})
-        return {"ok": True, "cameras": cameras, "stats": stats,
+        # "stale" is written on BOTH paths. scripts/check_alpr_fresh.py passes a run only on an
+        # explicit False, so a payload that lost the flag reads as a failure, never as fresh.
+        return {"ok": True, "stale": False, "cameras": cameras, "stats": stats,
                 "change_log": common.load_change_log("alpr"), "asof": common.iso_today()}
     except Exception as e:  # noqa: BLE001
         # Overpass unreachable from CI for a few minutes (2026-09-22 evening) rebuilt
         # /surveillance/, the site's top search page, with zero cameras. Serve the last good list
         # instead, stamped with ITS date so "Data as of" stays true, and flagged stale.
+        # ok stays True so every surface keeps rendering the cameras; it does NOT mean the run
+        # is healthy. The stale flag is for CI only: the build log and the freshness check
+        # (scripts/check_alpr_fresh.py) read it, and that check fails the run and alerts a
+        # human the same day. No page, card or email reads it, and none may.
         err = f"{type(e).__name__}: {e}"
         last = common.load_snapshot("alpr_last", default={}) or {}
         if last.get("cameras"):

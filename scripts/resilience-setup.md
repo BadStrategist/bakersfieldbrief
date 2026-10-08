@@ -95,6 +95,21 @@ overnight publish silently didn't happen (PC dead), before readers notice.
      /overnight/ would NOT work for this: the old page keeps returning
      200 when stale.)
 
+4. **Monitor 3 — ALPR freshness (the "daily run never started" alarm):**
+   Every `daily.yml` run already fails red and alerts ops Discord when the
+   camera list on /surveillance/ was not fetched from OpenStreetMap on that
+   run (`scripts/check_alpr_fresh.py`). A run that never starts cannot
+   report itself, so this second healthchecks.io check covers that case:
+   - **Add Check** → Name: "ALPR freshness", Period: **1 day**,
+     Grace: **6 hours** → Save.
+   - Store its Ping URL as the GitHub secret `UP_ALPR_PING_URL`.
+   - The workflow pings it **only after the freshness check passed**. A
+     day with no fresh fetch (Overpass down all day, schedule disabled,
+     runs dropped) → no ping → healthchecks.io emails you.
+   - Until the secret exists the step prints a notice on every run and
+     does nothing else; the in-run check and the Discord alert do not
+     depend on it.
+
 ---
 
 ## What each failure mode now does

@@ -74,6 +74,10 @@ def main():
                 res = {"ok": False, "error": f"{type(e).__name__}: {e}"}
             results[name] = res
             status = "ok" if res.get("ok") else ("stub" if name == "blocked" else "FAIL")
+            # The alpr source answers ok with its last good list when Overpass is down. Printing
+            # that as "ok" is how a daily outage stayed invisible until the Monday run.
+            if res.get("ok") and res.get("stale"):
+                status = f"STALE (last good list, {res.get('asof') or 'date unknown'})"
             common.log(f"source {name}: {status}")
         cache_file.write_text(json.dumps(results, indent=1, default=str), encoding="utf-8")
 
@@ -131,7 +135,7 @@ def main():
     report = {
         "built_at": common.now_pacific().isoformat(timespec="seconds"),
         "sources": {k: {"ok": v.get("ok", False), "error": v.get("error", ""),
-                        **({} if v.get("ok") else {})}
+                        **({"stale": True, "asof": v.get("asof", "")} if v.get("stale") else {})}
                     for k, v in results.items()},
         "section": ctx.build_report,
         "builder_failures": builder_failures,

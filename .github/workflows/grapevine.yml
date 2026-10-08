@@ -48,6 +48,7 @@ jobs:
         run: pip install -q -r requirements.txt
 
       - name: Build site (incl. Caltrans road conditions)
+        id: build
         # --no-llm: only the daily brief (daily.yml) and the Sunday Read use the AI writer. Without
         # it this build re-ran the daily builder's AI calls three times a day for nothing.
         run: python build/build_all.py --no-llm
@@ -91,3 +92,36 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy site --project-name=bakersfieldbrief
+
+      # Same gate as daily.yml. This run fetches the camera list and deploys /surveillance/
+      # too, so a fallback to the last good list here has to be red as well, not a green run
+      # that the next daily run happens to correct. After the deploy, so it never withholds
+      # the site. NO continue-on-error: a stale fallback must never read as green.
+      - name: Verify the ALPR camera data is today's
+        id: alpr_fresh
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: python scripts/check_alpr_fresh.py --alert-file /tmp/bb_alpr.txt
+
+      # `if: failure()` and the outcome read in the shell, as in daily.yml: a step-outcome
+      # expression in `if:` skipped an alert there on 2026-09-06. Any other failed step of
+      # this workflow is reported exactly as before (the red run); this alert is the ALPR one.
+      - name: Notify ops Discord when the ALPR data is not fresh
+        if: failure()
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          ALPR_OUTCOME: ${{ steps.alpr_fresh.outcome }}
+        run: |
+          if [ "$ALPR_OUTCOME" != "failure" ]; then
+            echo "the ALPR freshness step did not fail (outcome=$ALPR_OUTCOME) - no ALPR alert"
+            exit 0
+          fi
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "!! DISCORD_WEBHOOK_URL secret not set - the ALPR data is not fresh and NO Discord alert could be sent. See $RUN_URL"
+            exit 1
+          fi
+          if [ ! -f /tmp/bb_alpr.txt ]; then
+            printf 'The ALPR freshness step failed without writing a reason. Read the run log.\n' > /tmp/bb_alpr.txt
+          fi
+          printf 'See: %s\n' "$RUN_URL" >> /tmp/bb_alpr.txt
+          python scripts/notify_discord.py --header "Bakersfield Brief - ALPR tracker data is NOT fresh (grapevine run #$GITHUB_RUN_NUMBER)" --file /tmp/bb_alpr.txt

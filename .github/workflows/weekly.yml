@@ -126,3 +126,29 @@ jobs:
           printf 'The weekly tracker run FAILED. The ALPR change-log row may be missing this week.\n' > /tmp/bb_weekly.txt
           printf 'run: %s\n' "$RUN_URL" >> /tmp/bb_weekly.txt
           python scripts/notify_discord.py --header "Bakersfield Brief - weekly trackers FAILED (run #$GITHUB_RUN_NUMBER)" --file /tmp/bb_weekly.txt
+
+      # The land ownership on /surveillance/ is a hand-researched join made on the local box
+      # (the Flock transparency portals block datacenter IPs), so CI cannot refresh it. The
+      # page prints its date and how many cameras are waiting, but nothing told a human when
+      # it fell behind. This posts a Monday reminder when a refresh is due. It is NOT a
+      # failure of this run and must not be read as one, so it sits after the failure alert
+      # and never marks the change-log row as missing. An undeliverable reminder prints an
+      # ::error annotation and still exits 0: a red Monday has to keep meaning "the change-log
+      # row may be missing", or the signal this step exists to protect gets buried.
+      - name: Remind ops when the land ownership join is due
+        if: ${{ !cancelled() }}
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          rm -f /tmp/bb_own.txt
+          python scripts/check_alpr_fresh.py --ownership --alert-file /tmp/bb_own.txt
+          if [ ! -f /tmp/bb_own.txt ]; then
+            echo "land ownership join is current - no reminder"
+            exit 0
+          fi
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "::error title=Ownership reminder not delivered::DISCORD_WEBHOOK_URL is not set, so the reminder above reached nobody."
+            echo "Not failing this run: this step is a reminder, not the weekly job. Set the secret to deliver it."
+            exit 0
+          fi
+          python scripts/notify_discord.py --header "Bakersfield Brief - ALPR land ownership join is due (reminder, not a failure)" --file /tmp/bb_own.txt

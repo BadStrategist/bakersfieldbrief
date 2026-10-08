@@ -16,8 +16,8 @@
     },
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "Is closed to northbound traffic 22.8 mi north of the Stanislaus/Merced Co line at 0108 hrs on 10/8/26 - Due to an overturned vehicle - Motorists are advised to use an alternate route Is reopened to northbound traffic & reduced to 1 lane at Copus Rd /in Mettler/ (Kern Co) at 0043 hrs on 10/8/26 - Due to a vehicle fire A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
-     "status": "CLOSED"
+     "text": "Is reopened to northbound traffic & reduced to 1 lane 22.8 mi north of the Stanislaus/Merced Co line - Due to an overturned vehicle Is reopened to northbound traffic & reduced to 1 lane at Copus Rd /in Mettler/ (Kern Co) - Due to a vehicle fire A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
+     "status": "RESTRICTIONS"
     },
     {
      "region": "NORTHERN CALIFORNIA",
@@ -48,11 +48,11 @@
       "region": "SOUTHERN CALIFORNIA"
      },
      {
-      "status": "CLOSED",
+      "status": "RESTRICTIONS",
       "place": "Mettler",
       "county": "Kern Co",
       "where": "Mettler (Kern Co)",
-      "text": "use an alternate route Is reopened to northbound traffic & reduced to 1 lane at Copus Rd /in Mettler/ (Kern Co) at 0043 hrs on 10/8/26 - Due to a vehicle fire",
+      "text": "o an overturned vehicle Is reopened to northbound traffic & reduced to 1 lane at Copus Rd /in Mettler/ (Kern Co) - Due to a vehicle fire",
       "region": "CENTRAL CALIFORNIA"
      },
      {
@@ -65,8 +65,8 @@
      }
     ]
    },
-   "reported_as_of": "Thursday, October 8th, 2026 at 03:27 AM",
-   "hash": "2ad04bd394"
+   "reported_as_of": "Thursday, October 8th, 2026 at 07:41 AM",
+   "hash": "1a6d30a020"
   },
   {
    "number": "58",
@@ -88,7 +88,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Thursday, October 8th, 2026 at 03:27 AM",
+   "reported_as_of": "Thursday, October 8th, 2026 at 07:41 AM",
    "hash": "5374f203ec"
   },
   {
@@ -125,7 +125,7 @@
      }
     ]
    },
-   "reported_as_of": "Thursday, October 8th, 2026 at 03:27 AM",
+   "reported_as_of": "Thursday, October 8th, 2026 at 07:41 AM",
    "hash": "54e822d923"
   }
  ],

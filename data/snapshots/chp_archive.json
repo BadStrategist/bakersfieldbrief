@@ -1280,6 +1280,16 @@
   "details": ""
  },
  {
+  "log_id": "261008BF0032",
+  "time": "Oct  8 2026  6:48AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Pond Rd / Zachary Ave",
+  "area": "Bakersfield",
+  "lat": 35.71787,
+  "lon": -119.18719,
+  "details": ""
+ },
+ {
   "log_id": "261008BF0002",
   "time": "Oct  8 2026 12:00AM",
   "type": "TADV-Traffic Advisory",

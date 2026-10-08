@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-08T11:49:38-07:00",
+ "built_at": "2026-10-08T12:16:06-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -69,7 +69,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "Ridgecrest police chief says city is amending Flock camera contract based on resident pushback, concerns",
    "overnight_band": {
     "date": "2026-10-08",
@@ -166,13 +166,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": null,
+   "wind_mph": 12,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 88,
-   "wind_mph": null,
+   "temp": 86,
+   "wind_mph": 12,
    "alerts": 0
   },
   "roads": {

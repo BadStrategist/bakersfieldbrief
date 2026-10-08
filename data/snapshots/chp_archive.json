@@ -1290,6 +1290,16 @@
   "details": ""
  },
  {
+  "log_id": "261008BF0051",
+  "time": "Oct  8 2026  7:39AM",
+  "type": "1125-Traffic Hazard",
+  "location": "SB I5 AT UPPER WATER HOLE",
+  "area": "Fort Tejon",
+  "lat": 34.890827,
+  "lon": -118.914674,
+  "details": ""
+ },
+ {
   "log_id": "261008BF0002",
   "time": "Oct  8 2026 12:00AM",
   "type": "TADV-Traffic Advisory",

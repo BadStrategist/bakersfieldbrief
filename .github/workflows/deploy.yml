@@ -1,0 +1,92 @@
+name: Deploy only
+
+# Ships a source fix by itself. A push to main starts daily.yml: the AI brief build, the
+# artifact commit and, from 8 AM Pacific, the newsletter send. This workflow is the other
+# route: push the fix with [skip ci] in the commit message, then run this by hand
+# (`gh workflow run deploy.yml`). It builds without the AI writer, runs the test suite and
+# deploys. It commits nothing and sends nothing.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Same group as the content workflows, so this never deploys over a run in progress.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    # main only: a dispatch from another branch would put unreviewed work on the live site.
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    env:
+      AIRNOW_API_KEY: ${{ secrets.AIRNOW_API_KEY }}
+      ALERTLINE_API_KEY: ${{ secrets.ALERTLINE_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: |
+          pip install -q -r requirements.txt
+          # same as daily.yml: the test suite below runs against the same tools it has there
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
+      - name: Build site (no AI writer)
+        id: build
+        # --no-llm: today's brief is read from data/briefs/ as the 6 AM run committed it.
+        run: python build/build_all.py --no-llm
+
+      - name: Test suite (hard gate before the deploy)
+        id: tests
+        run: python -m pytest -q -o addopts="" --tb=short
+
+      # No `if:` here, unlike the content workflows: there is no artifact push to outlive, and
+      # a fix that fails its build or its tests must not reach the site.
+      - name: Deploy to Cloudflare Pages
+        id: deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy site --project-name=bakersfieldbrief
+
+      # Same gate as daily.yml. This run fetches the camera list and deploys /surveillance/
+      # too, so a fallback to the last good list here has to be red as well. After the deploy,
+      # so it never withholds the site. NO continue-on-error: a stale fallback must never read
+      # as green.
+      - name: Verify the ALPR camera data is today's
+        id: alpr_fresh
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+        run: python scripts/check_alpr_fresh.py --alert-file /tmp/bb_alpr.txt
+
+      # `if: failure()` and the outcome read in the shell, as in daily.yml. Any other failed
+      # step is reported by the red run, which the person who started it is watching.
+      - name: Notify ops Discord when the ALPR data is not fresh
+        if: failure()
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          ALPR_OUTCOME: ${{ steps.alpr_fresh.outcome }}
+        run: |
+          if [ "$ALPR_OUTCOME" != "failure" ]; then
+            echo "the ALPR freshness step did not fail (outcome=$ALPR_OUTCOME) - no ALPR alert"
+            exit 0
+          fi
+          if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "!! DISCORD_WEBHOOK_URL secret not set - the ALPR data is not fresh and NO Discord alert could be sent. See $RUN_URL"
+            exit 1
+          fi
+          if [ ! -f /tmp/bb_alpr.txt ]; then
+            printf 'The ALPR freshness step failed without writing a reason. Read the run log.\n' > /tmp/bb_alpr.txt
+          fi
+          printf 'See: %s\n' "$RUN_URL" >> /tmp/bb_alpr.txt
+          python scripts/notify_discord.py --header "Bakersfield Brief - ALPR tracker data is NOT fresh (deploy-only run #$GITHUB_RUN_NUMBER)" --file /tmp/bb_alpr.txt

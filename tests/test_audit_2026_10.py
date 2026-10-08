@@ -22,7 +22,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from build import build_all, common  # noqa: E402
-from build.builders import daily, fair, page as page_mod  # noqa: E402
+from build.builders import fair, home, page as page_mod  # noqa: E402
 from build.sources import airnow, roads  # noqa: E402
 
 
@@ -91,9 +91,9 @@ def test_airnow_reads_the_replacement_services(monkeypatch):
 # ---------------------------------------------------------------- evening weather
 def test_evening_build_shows_the_observed_temperature():
     evening = {"ok": True, "alerts": [], "forecast": {"current": 88, "high": None, "low": 61}}
-    card = daily._conditions(evening, {}, {}, {}, {}, "2026-10-04")
-    assert "88&deg; now" in card and "low 61&deg; tonight" in card
-    assert "n/a" not in card.split("Weather alerts")[0]
+    card = home._weather_tile(evening, "2026-10-04")
+    assert "88&deg;" in card and "Low 61&deg; tonight" in card
+    assert "Unavailable" not in card
 
 
 # ---------------------------------------------------------------- fair

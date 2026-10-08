@@ -20,14 +20,14 @@ def render(*, title: str, desc: str, canonical: str, content: str,
            og_desc: str | None = None,
            og_image: str = "https://bakersfieldbrief.com/assets/img/emblem.png",
            statusbar: str = "", og_type: str = "website",
-           robots: str = "index, follow") -> str:
-    """Render a full page from templates/layout.html.
+           robots: str = "index, follow", template: str = "layout.html") -> str:
+    """Render a full page from templates/layout.html (the home page passes home.html).
 
     rel: relative prefix from this page's dir to site root ("" or "../…")
     current: nav section to mark active (index|cityhall|trackers|sunday|other)
     statusbar: pre-built status-bar HTML (see build_statusbar) or ""
     """
-    tpl = common.read_template("layout.html")
+    tpl = common.read_template(template)
     og_title = og_title or title
     # Google cuts a title at about 60 characters and shows the site name on its own line, so a
     # brand suffix that pushes a title past the cut only costs the words before it.
@@ -59,6 +59,7 @@ def render(*, title: str, desc: str, canonical: str, content: str,
         "__YEAR__": _year,
         "__CSSV__": _asset_ver("assets/css/site.css"),
         "__JSV__": _asset_ver("assets/js/main.js"),
+        "__HOMECSSV__": _asset_ver("assets/css/home.css"),
         "__REL__": rel,
         "__CONTENT__": content,
         "__EXTRAHEAD__": extra_head,

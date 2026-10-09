@@ -40,61 +40,65 @@ def _node(nid, mapped_days_ago, manufacturer="Flock Safety"):
             "tags": {"manufacturer": manufacturer, "surveillance": "ALPR"}}
 
 
-def _run_alpr(monkeypatch_elements, snapshot_ids=()):
-    """Run the source offline against a fake Overpass reply."""
+def _run_alpr(monkeypatch, elements, snapshot_ids=()):
+    """Run the source offline against a fake Overpass reply.
+
+    The fakes go through ``monkeypatch`` so they are undone at teardown and
+    never leak into tests that run later in the same session.
+    """
     from build.sources import alpr
     from build import common
-    common.fetch = lambda *a, **k: _Resp(monkeypatch_elements)      # noqa: ARG005
-    common.load_snapshot = lambda *a, **k: list(snapshot_ids)       # noqa: ARG005
-    common.save_snapshot = lambda *a, **k: None                     # noqa: ARG005
+    monkeypatch.setattr(common, "fetch", lambda *a, **k: _Resp(elements))                # noqa: ARG005
+    monkeypatch.setattr(common, "load_snapshot", lambda *a, **k: list(snapshot_ids))    # noqa: ARG005
+    monkeypatch.setattr(common, "save_snapshot", lambda *a, **k: None)                  # noqa: ARG005
     return alpr.run(None, record_change=False)
 
 
 class TestNewThisWeek:
-    def test_counts_rolling_7_days_not_the_snapshot_diff(self):
+    def test_counts_rolling_7_days_not_the_snapshot_diff(self, monkeypatch):
         """2 cameras inside 7 days, 1 outside -> 2 (even with an empty snapshot)."""
-        data = _run_alpr([_node(1, 0), _node(2, 5), _node(3, 10)])
+        data = _run_alpr(monkeypatch, [_node(1, 0), _node(2, 5), _node(3, 10)])
         assert data["ok"], data
         assert data["stats"]["new_this_week"] == 2
         # the snapshot diff would have said 3 — the exact bug that shipped "+0"
         assert data["stats"]["new_this_week_snapshot_diff"] == 3
 
-    def test_does_not_go_to_zero_after_the_snapshot_advances(self):
+    def test_does_not_go_to_zero_after_the_snapshot_advances(self, monkeypatch):
         """The weekly job's ids are already in the snapshot: the badge must hold."""
         ids = [1, 2, 3]
-        data = _run_alpr([_node(1, 1), _node(2, 2), _node(3, 3)], snapshot_ids=ids)
+        data = _run_alpr(monkeypatch, [_node(1, 1), _node(2, 2), _node(3, 3)], snapshot_ids=ids)
         assert data["stats"]["new_this_week_snapshot_diff"] == 0
         assert data["stats"]["new_this_week"] == 3
 
-    def test_eight_day_old_camera_is_out(self):
-        data = _run_alpr([_node(1, 7), _node(2, 8)])
+    def test_eight_day_old_camera_is_out(self, monkeypatch):
+        data = _run_alpr(monkeypatch, [_node(1, 7), _node(2, 8)])
         assert data["stats"]["new_this_week"] == 1
 
 
 class TestEmailSentenceAgrees:
-    def _payload(self, elements):
-        data = _run_alpr(elements)
+    def _payload(self, monkeypatch, elements):
+        data = _run_alpr(monkeypatch, elements)
         return data
 
-    def test_sentence_number_equals_the_badge_number(self):
+    def test_sentence_number_equals_the_badge_number(self, monkeypatch):
         from build.emailer import _flock_update_html
-        data = self._payload([_node(1, 1), _node(2, 3), _node(3, 20)])
+        data = self._payload(monkeypatch, [_node(1, 1), _node(2, 3), _node(3, 20)])
         html = _flock_update_html(data)
         badge = data["stats"]["new_this_week"]
         assert badge == 2
         assert f"<strong>{badge} new cameras mapped this week</strong>" in html
 
-    def test_today_and_week_parts_sum_to_the_badge(self):
+    def test_today_and_week_parts_sum_to_the_badge(self, monkeypatch):
         from build.emailer import _flock_update_html
-        data = self._payload([_node(1, 0), _node(2, 0), _node(3, 4), _node(4, 6)])
+        data = self._payload(monkeypatch, [_node(1, 0), _node(2, 0), _node(3, 4), _node(4, 6)])
         html = _flock_update_html(data)
         assert data["stats"]["new_this_week"] == 4
         assert "2 new cameras mapped today" in html
         assert "2 more this week" in html
 
-    def test_empty_week_says_so(self):
+    def test_empty_week_says_so(self, monkeypatch):
         from build.emailer import _flock_update_html
-        html = _flock_update_html(self._payload([_node(1, 30)]))
+        html = _flock_update_html(self._payload(monkeypatch, [_node(1, 30)]))
         assert "No new cameras mapped in the last 7 days" in html
 
     def test_badge_reads_the_same_stat_field(self):

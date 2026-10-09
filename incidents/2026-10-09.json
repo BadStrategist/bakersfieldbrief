@@ -1,0 +1,317 @@
+[
+ {
+  "type": "shooting",
+  "time": "01:22",
+  "agency": "BPD / KCFD / Hall Ambulance",
+  "area": "the 5400 block of Pembroke Avenue",
+  "notability": 5,
+  "disposition": "two patients reported with gunshot wounds; perimeter set; scene secured",
+  "summary": "Officers and firefighters were sent to a residence in the 5400 block of Pembroke Avenue for a report of a shooting. Crews found two patients with gunshot wounds and set up a perimeter around the block, holding family members back while units went in. Hall Ambulance staged to enter from the east and officers asked firefighters to light up the roof to check it for evidence, with the scene handed to investigators."
+ },
+ {
+  "type": "assault with a deadly weapon",
+  "time": "01:28",
+  "agency": "KCSO",
+  "area": "the 1500 block of Lincoln Street",
+  "notability": 4,
+  "disposition": "suspect found at the back of the property; injuries still being confirmed",
+  "summary": "Deputies were sent to the 1500 block of Lincoln Street for a fight involving a knife. Callers reported a man chasing a woman down the street and attacking others, and traffic indicated his mother was threatened with the knife and a sister put herself in front of it. Deputies found the suspect in a cluttered shed area at the back corner of the property and were still sorting out who was hurt. A separate 911 call nearby reported only a verbal disturbance, and the woman denied anything on callback."
+ },
+ {
+  "type": "stolen vehicle",
+  "time": "00:05",
+  "agency": "BPD",
+  "area": "College Avenue and Flint Ridge area",
+  "notability": 3,
+  "disposition": "four subjects bailed out; one at large",
+  "summary": "Officers picked up a newer white Honda Accord reported stolen and moved to stop it near College Avenue and Flint Ridge. About four people got out and ran into an open garage, which was then pulled shut, and officers ringed the block in case the car started moving again. One man was described running southbound in a gray shirt, black shorts and a face covering toward Culver and Pioneer. A second stolen-vehicle report, a white Honda Accord seen near Niles Road and McCurdy Drive, came in the same night."
+ },
+ {
+  "type": "weapons call",
+  "time": "01:55",
+  "agency": "BPD",
+  "area": "the 6400 block of Niles Street",
+  "notability": 3,
+  "disposition": "man with a knife taken into custody",
+  "summary": "Officers responded to the Food Maxx on Niles Street for a man with a knife, and a negotiator opened a line with him, calling for him to put the weapon down. The man was described as white, in his late thirties, dressed in black and carrying a pocket knife. Units were moved in from Lamont to cover the area while the call was worked."
+ },
+ {
+  "type": "robbery",
+  "time": "22:32",
+  "agency": "KCSO",
+  "area": "the 1500 block of Taft Highway, near the Lowe's Travel Stop",
+  "notability": 3,
+  "disposition": "suspect reported at the bus stop; caller standing by",
+  "summary": "Deputies were sent to the Lowe's Travel Stop on Taft Highway for a strong-arm robbery that had just happened. The suspect was described as a 44-year-old man in a black shirt and gray pants who was still in the area at a bus stop near the Southland RV Park. The caller waited nearby to meet with deputies."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "00:04",
+  "agency": "KCSO",
+  "area": "the 4400 block of Hillsboro Drive",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "A domestic disturbance was reported in the 4400 block of Hillsboro Drive involving a teenage stepdaughter and her mother."
+ },
+ {
+  "type": "burglary alarm",
+  "time": "00:35",
+  "agency": "BPD",
+  "area": "Truxton Avenue and Commerce Drive",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Commercial burglary alarms drew units to a business on Truxton Avenue and then to two addresses on Commerce Drive just south of it."
+ },
+ {
+  "type": "outside fire",
+  "time": "01:12",
+  "agency": "KCFD",
+  "area": "South Mount Vernon Avenue and Planz Road",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "A company was sent to an outside fire at South Mount Vernon Avenue and Planz Road."
+ },
+ {
+  "type": "public service",
+  "time": "01:15",
+  "agency": "KCFD",
+  "area": "the 500 block of Jackson Street",
+  "notability": 2,
+  "disposition": "lift assist",
+  "summary": "A crew handled a public service lift assist on the 500 block of Jackson Street."
+ },
+ {
+  "type": "traffic hazard",
+  "time": "01:21",
+  "agency": "CHP",
+  "area": "the freeway shoulder",
+  "notability": 2,
+  "disposition": "driver put out his own fire; tow requested",
+  "summary": "A semi on the left-hand shoulder had put out a fire on its own but was left disabled and needed a tow to the TA center."
+ },
+ {
+  "type": "alarm",
+  "time": "01:26",
+  "agency": "KCFD",
+  "area": "the Shell station on Stockdale Highway",
+  "notability": 2,
+  "disposition": "audible alarm",
+  "summary": "An audible alarm came in from the Shell station on Stockdale Highway."
+ },
+ {
+  "type": "medical aid",
+  "time": "01:35",
+  "agency": "Hall Ambulance",
+  "area": "the 800 block of West Moyer Avenue",
+  "notability": 2,
+  "disposition": "standby request",
+  "summary": "Medics were asked to stand by for a medical aid on the 800 block of West Moyer Avenue."
+ },
+ {
+  "type": "overdose",
+  "time": "01:48",
+  "agency": "KCFD / Hall Ambulance",
+  "area": "Chester Lane and Lake Adams Street",
+  "notability": 2,
+  "disposition": "CPR in progress",
+  "summary": "Crews were sent to Chester Lane and Lake Adams Street for an overdose; the patient was not breathing and CPR was in progress when the first unit arrived."
+ },
+ {
+  "type": "assault",
+  "time": "02:06",
+  "agency": "BPD",
+  "area": "the 1000 block of Baker Street",
+  "notability": 2,
+  "disposition": "victim contact attempted",
+  "summary": "Officers worked to contact a victim at an apartment building on the 1000 block of Baker Street as part of an ongoing call."
+ },
+ {
+  "type": "alarm",
+  "time": "02:12",
+  "agency": "KCFD",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "all clear; malfunctioning detector",
+  "summary": "Crews checked a facility alarm and found it all clear of smoke and fire, with a malfunctioning detector blamed."
+ },
+ {
+  "type": "disturbance",
+  "time": "02:20",
+  "agency": "KCSO",
+  "area": "the 3000 block of Sierra Highway",
+  "notability": 2,
+  "disposition": "suspect at the complex; call pending",
+  "summary": "Deputies were sent to the 3000 block of Sierra Highway for a man under the influence who was in a shouting match with a neighbor and tried to assault the caller at an apartment complex."
+ },
+ {
+  "type": "DUI",
+  "time": "02:23",
+  "agency": "CHP",
+  "area": "the Valero on Buck Owens Boulevard",
+  "notability": 2,
+  "disposition": "driver reported passed out behind the wheel",
+  "summary": "A caller reported a driver passed out behind the wheel of a black Chevrolet pickup at the Valero on Buck Owens Boulevard, saying he had been sitting there for about three hours and kept nodding off."
+ },
+ {
+  "type": "suspicious circumstance",
+  "time": "02:37",
+  "agency": "KCSO",
+  "area": "the 5000 block of Pamela Street",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Deputies checked a suspicious circumstance on the 5000 block of Pamela Street involving a man in his twenties in a white shirt and jeans."
+ },
+ {
+  "type": "outside fire",
+  "time": "22:07",
+  "agency": "KCFD",
+  "area": "Dr. Martin Luther King Jr. Boulevard",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Firefighters handled an outside fire across from a home on Dr. Martin Luther King Jr. Boulevard that may have started at a transient camp."
+ },
+ {
+  "type": "welfare check",
+  "time": "21:43",
+  "agency": "KCSO",
+  "area": "the 500 block of Castor Lane",
+  "notability": 2,
+  "disposition": "caller uncooperative",
+  "summary": "Deputies checked on a woman who locked herself inside a disabled car on the 500 block of Castor Lane after a man made crude comments to her. She was uncooperative with the call."
+ },
+ {
+  "type": "suspicious person",
+  "time": "21:50",
+  "agency": "BPD",
+  "area": "the 600 block of Columbus Street",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Officers were sent to the 600 block of Columbus Street for an intoxicated man carrying a hammer or mallet, seen on a neighbor's camera."
+ },
+ {
+  "type": "weapons call",
+  "time": "22:00",
+  "agency": "BPD",
+  "area": "near a church off Olive Drive",
+  "notability": 2,
+  "disposition": "search under way",
+  "summary": "Officers searched for a man in a green shirt and shorts who was still holding a knife near a church off Olive Drive."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "22:11",
+  "agency": "KCSO",
+  "area": "the 3100 block of River Boulevard",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "Deputies were sent to the 3100 block of River Boulevard for a domestic disturbance."
+ },
+ {
+  "type": "wanted subject",
+  "time": "22:24",
+  "agency": "KCSO",
+  "area": "the Pyramid Lake area",
+  "notability": 2,
+  "disposition": "broadcast; not located",
+  "summary": "A broadcast went out for an armed and injured suspect wanted on a felony weapons warrant out of another agency, last seen in a white Mercedes sedan near Pyramid Lake."
+ },
+ {
+  "type": "burglary",
+  "time": "23:25",
+  "agency": "KCSO",
+  "area": "Standard Road near Coffee Road",
+  "notability": 2,
+  "disposition": "doors secure; no forced entry found",
+  "summary": "Deputies checked a possible break-in at a business on Standard Road near Coffee Road, where a fence had been cut and tools were left near the entrance, with a power outage in the area. The business doors were found secure with no signs of forced entry."
+ },
+ {
+  "type": "disturbance",
+  "time": "23:33",
+  "agency": "BPD",
+  "area": "the 2000 block of Oscar Avenue",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Officers were sent to the 2000 block of Oscar Avenue for a verbal disturbance reported near a parked GMC."
+ },
+ {
+  "type": "stolen vehicle",
+  "time": "23:47",
+  "agency": "BPD",
+  "area": "the 200 block of East 5th Street",
+  "notability": 2,
+  "disposition": "vehicle recovered; unoccupied",
+  "summary": "Officers recovered a stolen red Hyundai four-door on the 200 block of East 5th Street. The car was unoccupied, though the caller said someone had been getting in and out of it."
+ },
+ {
+  "type": "outside fire",
+  "time": "23:46",
+  "agency": "KCFD",
+  "area": "the 400 block of Shaw Avenue",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "A crew was sent to a grass fire on the 400 block of Shaw Avenue."
+ },
+ {
+  "type": "domestic violence",
+  "time": "23:58",
+  "agency": "KCSO",
+  "area": "the 1000 block of Jeffrey Street",
+  "notability": 2,
+  "disposition": "check requested",
+  "summary": "Deputies were sent to the 1000 block of Jeffrey Street for a domestic violence check."
+ },
+ {
+  "type": "burglary alarm",
+  "time": "03:15",
+  "agency": "BPD",
+  "area": "Easton Drive and Coffee Road",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "An audible burglary alarm drew officers to a business on the 4200 block of Easton Drive, and a second alarm came in at a restaurant on the 6000 block of Coffee Road."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "03:20",
+  "agency": "KCSO",
+  "area": "the 4400 block of Hughes Lane",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "Deputies were sent to the 4400 block of Hughes Lane for a domestic disturbance where a shirtless man was intimidating the caller."
+ },
+ {
+  "type": "welfare check",
+  "time": "03:39",
+  "agency": "KCFD / KCSO",
+  "area": "a fire station on Stockdale Highway",
+  "notability": 2,
+  "disposition": "juvenile taken in; medics and deputies called",
+  "summary": "A 15-year-old girl walked into a fire station on Stockdale Highway upset after leaving a group home, and medics and deputies were called to the station."
+ },
+ {
+  "type": "disturbance",
+  "time": "03:43",
+  "agency": "BPD",
+  "area": "the 1900 block of East Brundage Lane",
+  "notability": 2,
+  "disposition": "units responding",
+  "summary": "Officers were sent to the 1900 block of East Brundage Lane for a verbal disturbance among four people."
+ },
+ {
+  "type": "welfare check",
+  "time": "03:57",
+  "agency": "BPD",
+  "area": "the 900 block of Olive Drive",
+  "notability": 2,
+  "disposition": "subject refusing to leave",
+  "summary": "A man in a hospital gown was dropped off by a gray SUV that sped away on the 900 block of Olive Drive and then refused to leave the area."
+ },
+ {
+  "type": "medical aid",
+  "time": "04:06",
+  "agency": "Hall Ambulance",
+  "area": "the 500 block of Oildale Drive",
+  "notability": 2,
+  "disposition": "medical aid",
+  "summary": "Medics were sent to an apartment on the 500 block of Oildale Drive for difficulty breathing."
+ }
+]

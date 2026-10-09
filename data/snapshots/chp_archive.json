@@ -1360,6 +1360,26 @@
   "details": ""
  },
  {
+  "log_id": "261009BF0163",
+  "time": "Oct  9 2026 12:04PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Howard Ave / Arvin St",
+  "area": "Bakersfield",
+  "lat": 35.423205,
+  "lon": -119.023445,
+  "details": ""
+ },
+ {
+  "log_id": "261009BF0167",
+  "time": "Oct  9 2026 12:24PM",
+  "type": "1184-Provide Traffic Control",
+  "location": "Sr223 / Sr58",
+  "area": "Bakersfield",
+  "lat": 35.264167,
+  "lon": -118.658367,
+  "details": ""
+ },
+ {
   "log_id": "261009BF0009",
   "time": "Oct  9 2026 12:32AM",
   "type": "TADV-Traffic Advisory",

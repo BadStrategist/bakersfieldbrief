@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-09T02:36:27-07:00",
+ "built_at": "2026-10-09T03:25:20-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,9 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter",
-   "stale": true,
-   "asof": "2026-10-08"
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -71,7 +69,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "ALL I-5 lanes impacted near Smokey Bear Road due to fire, evacuation warnings issued",
    "overnight_band": {
     "date": "2026-10-08",
@@ -138,7 +136,7 @@
   "cityhall": {
    "upcoming_meetings": 7,
    "county_items": 109,
-   "drafts_generated": 1
+   "drafts_generated": 0
   },
   "places": {
    "places": [
@@ -168,13 +166,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 0,
+   "wind_mph": 5,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 57,
-   "wind_mph": 0,
+   "wind_mph": 5,
    "alerts": 0
   },
   "roads": {

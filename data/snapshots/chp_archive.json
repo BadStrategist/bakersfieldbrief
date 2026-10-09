@@ -1290,6 +1290,66 @@
   "details": ""
  },
  {
+  "log_id": "261009BF0103",
+  "time": "Oct  9 2026  9:44AM",
+  "type": "CZP-Assist with Construction",
+  "location": "I5 N / Lebec Rd Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.831001,
+  "lon": -118.867853,
+  "details": ""
+ },
+ {
+  "log_id": "261009BF0123",
+  "time": "Oct  9 2026 10:34AM",
+  "type": "SLIDE-Mud/Dirt/Rock",
+  "location": "16 Mm178 E Ker 16.00",
+  "area": "Bakersfield",
+  "lat": 35.460888,
+  "lon": -118.769165,
+  "details": ""
+ },
+ {
+  "log_id": "261009BF0131",
+  "time": "Oct  9 2026 10:50AM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sr99 N / Hosking Rd Onr",
+  "area": "Bakersfield",
+  "lat": 35.283059,
+  "lon": -119.027001,
+  "details": ""
+ },
+ {
+  "log_id": "261009BF0129",
+  "time": "Oct  9 2026 10:50AM",
+  "type": "CFIRE-Car Fire",
+  "location": "Magnolia Ave / Pond Rd",
+  "area": "Bakersfield",
+  "lat": 35.717643,
+  "lon": -119.36601,
+  "details": ""
+ },
+ {
+  "log_id": "261009BF0130",
+  "time": "Oct  9 2026 10:51AM",
+  "type": "1125-Traffic Hazard",
+  "location": "South Union Ave / Amador Ave",
+  "area": "Bakersfield",
+  "lat": 35.343059,
+  "lon": -119.003071,
+  "details": ""
+ },
+ {
+  "log_id": "261009BF0139",
+  "time": "Oct  9 2026 11:16AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 Jno #3 Turn Thru",
+  "area": "Fort Tejon",
+  "lat": 34.895731,
+  "lon": -118.91372,
+  "details": ""
+ },
+ {
   "log_id": "261009BF0009",
   "time": "Oct  9 2026 12:32AM",
   "type": "TADV-Traffic Advisory",

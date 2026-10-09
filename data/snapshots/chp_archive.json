@@ -1300,6 +1300,46 @@
   "details": ""
  },
  {
+  "log_id": "261008BF0266",
+  "time": "Oct  8 2026  3:40PM",
+  "type": "SILVER-Missing Elderly",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261008BF0275",
+  "time": "Oct  8 2026  4:13PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Nb I5 Jno Sr138",
+  "area": "Fort Tejon",
+  "lat": 34.771389,
+  "lon": -118.803611,
+  "details": ""
+ },
+ {
+  "log_id": "261008BF0286",
+  "time": "Oct  8 2026  4:19PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "S Martin Luther King Blvd / Cheatham Ave",
+  "area": "Bakersfield",
+  "lat": 35.342571,
+  "lon": -118.985442,
+  "details": ""
+ },
+ {
+  "log_id": "261008BF0322",
+  "time": "Oct  8 2026  5:27PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Schuster Rd / Stradley Ave",
+  "area": "Bakersfield",
+  "lat": 35.732234,
+  "lon": -119.258383,
+  "details": ""
+ },
+ {
   "log_id": "261008BF0032",
   "time": "Oct  8 2026  6:48AM",
   "type": "1182-Trfc Collision-No Inj",

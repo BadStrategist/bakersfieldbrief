@@ -23,6 +23,14 @@ Usage:
 
 Env: CR_ADB (adb path), CR_DEVICE (default emulator-5554),
      CR_DISCORD_WEBHOOK / DISCORD_WEBHOOK_URL to post alerts.
+
+Exit codes: 0 ok, 1 verify/reel error, 2 device offline, 4 the app is on screen
+but shows no cards (poll) or History has no row in the window (emit), 5 the
+read path failed some other way, 6 emulator busy, 7 a system dialog covers the
+screen, 8 the screen cannot be read (keyguard, black screen, another app on
+top), 9 the app is not showing the Kern feed. Every alarm says what was on
+screen; none guesses at a cause. An --emit also writes
+work/crimeradar/emit_status_<date>.json on every exit.
 """
 from __future__ import annotations
 
@@ -192,8 +200,101 @@ def release_lock() -> None:
             pass
 
 
+# --------------------------------------------------------------- screen guard
+# A read that fails says WHAT was on screen. On 2026-10-06..09 three different
+# faults (a System UI ANR dialog, a keyguard, the app set to Mendocino County)
+# all surfaced as "the app UI has likely changed", which sent the diagnosis the
+# wrong way for three days. Each now has its own exception and exit code.
+class ScreenError(RuntimeError):
+    """The screen is not one this run can use. `code` is the exit code."""
+    code = 5
+
+
+class SystemDialog(ScreenError):
+    """An Android dialog (ANR, crash) owns the screen: every tap would hit it."""
+    code = 7
+
+
+class Unreadable(ScreenError):
+    """No usable dump: keyguard, black screen, or another app on top."""
+    code = 8
+
+
+class WrongFeed(ScreenError):
+    """The app is readable but is not showing the Kern feed."""
+    code = 9
+
+
+def on_screen(xml: str) -> dict:
+    """What a dump actually shows: {package, title, texts}."""
+    nodes = list(_nodes(xml))
+    pkgs: dict[str, int] = {}
+    for n in nodes:
+        if n.get("package"):
+            pkgs[n["package"]] = pkgs.get(n["package"], 0) + 1
+    texts = [html.unescape(n["text"]) for n in nodes if n.get("text")]
+    title = ""
+    for rid in ("alertTitle", "toolbar_title"):
+        n = _by_id(xml, rid)
+        if n and n.get("text"):
+            title = html.unescape(n["text"])
+            break
+    return {"package": max(pkgs, key=pkgs.get) if pkgs else "",
+            "title": title or (texts[0] if texts else ""), "texts": texts[:6]}
+
+
+def describe(screen: dict) -> str:
+    return (f"package {screen['package'] or 'unknown'}, title \"{screen['title']}\", "
+            f"text: {' | '.join(screen['texts']) or '(none)'}")
+
+
+def system_dialog(xml: str) -> str | None:
+    """The title of an Android ANR/crash dialog covering the screen, or None."""
+    if not (_by_id(xml, "aerr_wait") or _by_id(xml, "aerr_close")
+            or _by_id(xml, "aerr_restart")):
+        return None
+    return on_screen(xml)["title"] or "untitled system dialog"
+
+
+def device_state() -> dict:
+    """Foreground package and keyguard flag from the system itself, no UI dump."""
+    out = {"package": "", "keyguard": None}
+    try:
+        m = re.search(r"topResumedActivity=ActivityRecord\{\S+ \S+ ([\w.]+)/",
+                      adb("shell", "dumpsys", "activity", "activities").stdout or "")
+        if m:
+            out["package"] = m.group(1)
+        m = re.search(r"isKeyguardShowing=(true|false)",
+                      adb("shell", "dumpsys", "window").stdout or "")
+        if m:
+            out["keyguard"] = m.group(1) == "true"
+    except Exception:  # noqa: BLE001
+        pass
+    return out
+
+
+def alarm_text(e: Exception) -> str:
+    """The alarm line for a failed read.
+
+    uiautomator returns nothing at all on a locked or black screen, so for an
+    unreadable one the system's own view (foreground package, keyguard) is added.
+    """
+    msg = str(e)
+    if isinstance(e, Unreadable):
+        st = device_state()
+        kg = {True: "showing", False: "not showing"}.get(st["keyguard"], "unknown")
+        msg += (f". The system reports foreground package "
+                f"{st['package'] or 'unknown'}, keyguard {kg}")
+    return msg
+
+
 def dump_ui(tag: str = "cr", tries: int = 3) -> str:
-    """uiautomator dump -> pull -> local XML text (Windows-safe destination)."""
+    """uiautomator dump -> pull -> local XML text (Windows-safe destination).
+
+    Raises SystemDialog when the dump is an Android ANR/crash dialog (callers
+    tap right after a dump, and the tap would land on the dialog) and Unreadable
+    when no dump can be had.
+    """
     OUT.mkdir(parents=True, exist_ok=True)
     remote = f"/sdcard/{tag}.xml"
     local = OUT / f"{tag}.xml"
@@ -213,10 +314,15 @@ def dump_ui(tag: str = "cr", tries: int = 3) -> str:
         if local.exists() and local.stat().st_size > 0:
             xml = local.read_text(encoding="utf-8", errors="replace")
             if "<hierarchy" in xml:
+                dialog = system_dialog(xml)
+                if dialog:
+                    raise SystemDialog(f"a system dialog covers the screen: \"{dialog}\" "
+                                       f"(package {on_screen(xml)['package']}); no tap was sent")
                 return xml
         why = (d.stderr or d.stdout or r.stderr or r.stdout or "").strip()[:200]
         time.sleep(1.5)
-    raise RuntimeError(f"uiautomator dump failed after {tries} tries: {why}")
+    raise Unreadable(f"the screen cannot be read: uiautomator dump failed after "
+                     f"{tries} tries ({why or 'no output'})")
 
 
 def screencap(dest: Path) -> Path:
@@ -292,6 +398,55 @@ def normalise_feed() -> None:
 
 
 _NODE = re.compile(r'<node[^>]*?text="([^"]*)"[^>]*?bounds="\[(\d+),(\d+)\]\[(\d+),(\d+)\]"')
+
+
+# ------------------------------------------------------------ feed identity
+# The app serves whatever region its own location picker holds. The guest GPS
+# does not change it (verified 2026-10-09: every provider had last location=null
+# while the app sat on a Mendocino County address and served Ukiah and Willits
+# rows). So the region is read off the screen on every run and never assumed.
+KERN_CHIP = "Bakersfield"
+
+
+def home_feed(xml: str) -> tuple[str, bool]:
+    """(location chip text, is it the selected tab) on the Home screen.
+
+    The chip is one of two tabs, the other being Nationwide, so it only names
+    the feed on screen while it is the selected one.
+    """
+    n = _by_id(xml, "txt_location_feed_tab")
+    if not n:
+        return "", False
+    return html.unescape(n.get("text", "")), n.get("selected") == "true"
+
+
+def replay_feeds(xml: str) -> list[dict]:
+    """The feeds the Replay page offers, as printed: [{name, location}]."""
+    out, name = [], ""
+    for n in _nodes(xml):
+        rid, text = n.get("resource-id", ""), html.unescape(n.get("text", ""))
+        if rid.endswith(":id/title") and text:
+            name = text
+        elif rid.endswith(":id/location") and text:
+            out.append({"name": name, "location": text})
+    return out
+
+
+def history_feed(xml: str, replay: list[dict]) -> dict:
+    """The feed a History list belongs to, as printed: {name, location}.
+
+    The list opens under its own hero card, which prints both. Scrolled, the
+    hero collapses into a toolbar title that carries the name only; the location
+    is then the one the Replay page printed under that same name.
+    """
+    name, loc = _by_id(xml, "top_feeds_hero_title"), _by_id(xml, "top_feeds_hero_location")
+    if name and name.get("text"):
+        return {"name": html.unescape(name["text"]),
+                "location": html.unescape((loc or {}).get("text", ""))}
+    bar = _by_id(xml, "toolbar_title")
+    name = html.unescape(bar.get("text", "")) if bar else ""
+    return {"name": name, "location": next(
+        (f["location"] for f in replay if f["name"] == name), "")}
 
 
 def parse_feed(xml: str) -> list[dict]:
@@ -682,8 +837,8 @@ def tap_id(rid: str, tag: str = "crt", dy: int = 0) -> bool:
     return True
 
 
-def goto_history() -> bool:
-    """Replay tab -> History list.
+def goto_history() -> list[dict]:
+    """Replay tab -> History list. Returns the feeds the Replay page named.
 
     The History control sits in the 'Latest Incidents' header row, which is only
     on screen after the Replay page is scrolled, so scroll until it appears.
@@ -692,18 +847,21 @@ def goto_history() -> bool:
     time.sleep(1)
     adb("shell", "input", "tap", "360", "1430")     # Replay tab
     time.sleep(3)
+    feeds, xml = [], ""
     for _ in range(6):
         dismiss_overlays()          # a tip or paywall sheet can appear at any time
         xml = dump_ui("crr")
+        feeds += [f for f in replay_feeds(xml) if f not in feeds]
         node = _by_id(xml, "history_label")
         if node:
             c = _center(node)
             adb("shell", "input", "tap", str(c[0]), str(c[1]))
             time.sleep(3)
-            return True
+            return feeds
         adb("shell", "input", "swipe", "360", "1100", "360", "700", "300")
         time.sleep(2)
-    return False
+    raise RuntimeError("could not reach Replay > History. On screen: "
+                       + describe(on_screen(xml)))
 
 
 def parse_history(xml: str) -> list[dict]:
@@ -731,18 +889,36 @@ def parse_history(xml: str) -> list[dict]:
     return rows
 
 
+# What the screen said the last History sweep was reading: {name, location}
+# (see history_feed). Empty until a sweep has read them.
+SWEPT_FEED: dict = {}
+
+
 def history_sweep(max_scrolls: int = 60) -> list[dict]:
     """Scroll the History list to its floor and return every distinct row.
 
-    Raises when it reads nothing: an empty History is a broken read path (the
-    app's UI moved), never a quiet day.
+    Raises WrongFeed, before reading a row, unless the screen names the Kern
+    feed. Raises when it reads nothing: an empty History is a broken read path,
+    never a quiet day.
     """
-    if not goto_history():
-        raise RuntimeError("could not reach Replay > History")
-    seen, rows, dry = set(), [], 0
+    global SWEPT_FEED
+    SWEPT_FEED = {}
+    feeds = goto_history()
+    seen, rows, dry, xml = set(), [], 0, ""
     for i in range(max_scrolls):
+        xml = dump_ui("crh")
+        if i == 0:
+            SWEPT_FEED = history_feed(xml, feeds)
+            if not mc.is_kern_feed(SWEPT_FEED):
+                adb("shell", "input", "keyevent", "4")
+                time.sleep(1)
+                adb("shell", "input", "keyevent", "4")
+                raise WrongFeed(
+                    f"History is for \"{SWEPT_FEED['name'] or 'an unnamed feed'}\" "
+                    f"({SWEPT_FEED['location'] or 'no location shown'}), not "
+                    f"\"{mc.FEED_NAME}\" ({mc.FEED_LOCATION}). No row was read from it")
         new = 0
-        for r in parse_history(dump_ui("crh")):
+        for r in parse_history(xml):
             k = f"{r['when']}|{r['title']}"
             if k not in seen:
                 seen.add(k)
@@ -764,7 +940,8 @@ def history_sweep(max_scrolls: int = 60) -> list[dict]:
     time.sleep(1)
     adb("shell", "input", "keyevent", "4")
     if not rows:
-        raise RuntimeError("History parsed 0 rows: the app UI has likely changed")
+        raise RuntimeError("History parsed 0 rows. On screen at the last read: "
+                           + describe(on_screen(xml)))
     return rows
 
 
@@ -858,6 +1035,7 @@ def verify_report(date_iso: str) -> dict:
     return {"date": date_iso, "window": f"{lo:%Y-%m-%d %H:%M} → {hi:%Y-%m-%d %H:%M}",
             "app_rows": len(rows), "in_window": len(covered) + len(misses),
             "have_incidents": src.exists(), "ours": len(transcript),
+            "feed": dict(SWEPT_FEED),
             "newest": f"{max(times):%Y-%m-%d %H:%M}" if times else "",
             "oldest": f"{min(times):%Y-%m-%d %H:%M}" if times else "",
             # False = the History list did not scroll back to the window start,
@@ -869,7 +1047,7 @@ def verify_report(date_iso: str) -> dict:
             "high_gap": [m for m in misses if m["tier"] <= 2 and m["gap"]]}
 
 
-FEED_NAME = "Bakersfield Police, Fire and EMS"   # the feed the app itself credits
+FEED_NAME = mc.FEED_NAME   # the feed the app itself credits
 
 # A History row carries only a clock time and a one-line title, so the report's
 # "type" has to come from the wording. First match wins, so keep the specific
@@ -1010,22 +1188,30 @@ def emit_incidents(date_iso: str, dry: bool = False) -> dict:
     A History row carries no detail text, so the summary is the app's own
     one-line title and the location is recovered from the feed card for the same
     headline, else from the street gazetteer (see _area_for).
+
+    Nothing is staged unless the sweep verified the Kern feed, and every staged
+    row carries the feed name the screen printed, not a constant.
     """
     v = verify_report(date_iso)
+    feed = v.get("feed") or {}
+    if not mc.is_kern_feed(feed):
+        return {"error": f"the History sweep did not verify the Kern feed (the "
+                         f"screen said {feed!r}); nothing staged",
+                "alarm": True, "wrong_feed": True, "feed": feed}
     rows = sorted(v["covered"] + v["missed"], key=lambda r: r["at"])
     if not rows:
         # Never overwrite a good staging file with nothing: an empty window means
         # the sweep read the wrong screen or stopped short, not a silent night.
         return {"error": f"History has no rows inside {v['window']} "
                          f"({v['app_rows']} rows read, newest {v['newest'] or 'n/a'}); "
-                         "staging left untouched", "alarm": True}
+                         "staging left untouched", "alarm": True, "feed": feed}
     poll_places = _poll_places(date_iso)
     rows_out = []
     for r in rows:
         rows_out.append({
             "type": _type_of(r["title"]),
             "time": r["at"][11:16],
-            "agency": FEED_NAME,
+            "agency": feed["name"],
             "area": _area_for(r["title"], poll_places),
             "notability": TIER_NOTABILITY.get(r.get("tier", 3), 2),
             "disposition": "",
@@ -1036,6 +1222,7 @@ def emit_incidents(date_iso: str, dry: bool = False) -> dict:
     _write_atomic(stage, json.dumps(
         {"date": date_iso, "window": v["window"],
          "generated": dt.datetime.now().isoformat(timespec="seconds"),
+         "feed": feed,
          "history_newest": v["newest"], "history_oldest": v["oldest"],
          "history_complete": v["complete"], "incidents": rows_out},
         indent=1, ensure_ascii=False))
@@ -1047,6 +1234,7 @@ def emit_incidents(date_iso: str, dry: bool = False) -> dict:
         pass
     plan = mc.plan(rows_out, ours if isinstance(ours, list) else [])
     return {"date": date_iso, "staged": len(rows_out), "stage": str(stage),
+            "feed": feed,
             "have_incidents": v["have_incidents"], "would_merge": plan["keep"],
             "covered": len(plan["covered"]), "private": len(plan["private"]),
             "newest": v["newest"], "oldest": v["oldest"], "complete": v["complete"]}
@@ -1183,21 +1371,35 @@ def post_discord(text: str) -> bool:
 def poll(detail: bool = False, do_diff: str | None = None, as_json: bool = False,
          discord: bool = False, audio: bool = False) -> int:
     normalise_feed()
-    cards = parse_feed(dump_ui("cr"))
+    xml = dump_ui("cr")
+    cards = parse_feed(xml)
     if not cards:
-        # Canary: the feed always renders cards, so zero means the app's UI moved
-        # (a Play Store update renaming resource-ids, a changed layout). Without
-        # this the monitor would report "0 new" and exit 0 forever: a SILENT
-        # short report. Retry once, then alarm with a distinct exit code.
+        # Canary: the feed always renders cards, so zero is a broken read path.
+        # Without this the monitor would report "0 new" and exit 0 forever: a
+        # SILENT short report. Retry once, then alarm with a distinct exit code
+        # and what the screen showed. The cause is not guessed at.
         normalise_feed()
         dismiss_overlays("crc", rounds=2)
         time.sleep(2)
-        cards = parse_feed(dump_ui("cr"))
+        xml = dump_ui("cr")
+        cards = parse_feed(xml)
         if not cards:
-            print("[cr] ALARM: feed parsed 0 cards after a retry - the app UI has "
-                  "likely changed (Play Store update?). The read path is broken; "
-                  "this is NOT a quiet night.", file=sys.stderr)
+            screen = on_screen(xml)
+            if screen["package"] != PKG:
+                raise Unreadable(f"the screen is not the app: {describe(screen)}")
+            print(f"[cr] ALARM: feed parsed 0 cards after a retry. On screen: "
+                  f"{describe(screen)}. The read path is broken; this is NOT a "
+                  "quiet night.", file=sys.stderr)
             return 4
+    chip, selected = home_feed(xml)
+    if chip != KERN_CHIP or not selected:
+        # Refuse before anything is recorded: a poll record feeds the staged
+        # rows' streets and the reel's clips.
+        raise WrongFeed(
+            f"the Home location chip reads \"{chip or '(not on screen)'}\""
+            f"{'' if selected else ' and is not the selected tab'}, not "
+            f"\"{KERN_CHIP}\". No poll record was written; on screen: "
+            + describe(on_screen(xml)))
     now = dt.datetime.now()
     stamp = now.strftime("%Y%m%d-%H%M%S")
     seen = load_seen()
@@ -1251,7 +1453,7 @@ def poll(detail: bool = False, do_diff: str | None = None, as_json: bool = False
             normalise_feed()
 
     OUT.mkdir(parents=True, exist_ok=True)
-    row = {"ts": stamp, "device": DEVICE, "n_cards": len(cards),
+    row = {"ts": stamp, "device": DEVICE, "feed": chip, "n_cards": len(cards),
            "new": len(fresh), "high": len(high), "cards": cards}
     with (OUT / f"polls_{now.date().isoformat()}.jsonl").open("a", encoding="utf-8") as fh:
         fh.write(json.dumps(row, ensure_ascii=False) + "\n")
@@ -1319,10 +1521,50 @@ def main() -> int:
     ap.add_argument("--dry", action="store_true",
                     help="accepted for old callers; --emit never writes incidents/")
     a = ap.parse_args()
+    status: dict = {}
+    rc = 5
+    try:
+        rc = _guarded(a, status)
+        return rc
+    except BaseException as e:
+        status.setdefault("reason", f"{type(e).__name__}: {e}")
+        raise
+    finally:
+        if a.emit:
+            write_emit_status(a.emit, rc, status)
+
+
+EMIT_OUTCOME = {0: "staged", 2: "device_offline", 4: "empty_window", 5: "read_failed",
+                6: "busy", 7: "system_dialog", 8: "unreadable", 9: "wrong_feed"}
+
+
+def write_emit_status(date_iso: str, rc: int, status: dict) -> None:
+    """Record how an emit ended, on EVERY exit, as emit_status_<date>.json.
+
+    Without it a failed emit and an emit that never ran both look like "no
+    staging file", which the publish used to read as "nothing to do". Writing
+    it must never change the exit code.
+    """
+    try:
+        _write_atomic(OUT / f"emit_status_{date_iso}.json", json.dumps({
+            "date": date_iso, "ran": dt.datetime.now().isoformat(timespec="seconds"),
+            "rc": rc, "ok": rc == 0, "outcome": EMIT_OUTCOME.get(rc, "failed"),
+            "reason": status.get("reason", ""), "feed": status.get("feed"),
+            "staged": status.get("staged", 0),
+            "history_complete": status.get("complete"),
+            "history_newest": status.get("newest", ""),
+            "history_oldest": status.get("oldest", ""),
+            "stage": status.get("stage", "")}, indent=1, ensure_ascii=False))
+    except Exception as e:  # noqa: BLE001
+        print(f"[cr] could not write emit_status_{date_iso}.json: {e}", file=sys.stderr)
+
+
+def _guarded(a, status: dict) -> int:
+    """Lock, device check, dispatch. Every failure leaves its reason in `status`."""
     # --reel on its own only reads poll records; everything else drives the app.
     needs_emulator = bool(a.verify or a.emit or a.history or a.rebuild) or not a.reel
     if not needs_emulator:
-        return _dispatch(a)
+        return _dispatch(a, status)
     is_poll = not (a.verify or a.emit or a.history or a.rebuild or a.reel)
     # A poll yields to a run already in progress (the next one is 15 min away);
     # the once-a-morning jobs wait for it instead.
@@ -1330,7 +1572,8 @@ def main() -> int:
         if is_poll:
             print("[cr] skipped: another run is driving the emulator")
             return 0
-        print("[cr] ALARM: emulator still busy after 15 min; giving up", file=sys.stderr)
+        status["reason"] = "emulator still busy after 15 min; giving up"
+        print(f"[cr] ALARM: {status['reason']}", file=sys.stderr)
         return 6
     try:
         for _ in range(6):          # an emulator just restarted by the preflight
@@ -1338,18 +1581,24 @@ def main() -> int:
                 break
             time.sleep(10)
         else:
-            print(f"[cr] device {DEVICE} not online (adb {ADB})", file=sys.stderr)
+            status["reason"] = f"device {DEVICE} not online (adb {ADB})"
+            print(f"[cr] {status['reason']}", file=sys.stderr)
             return 2
-        return _dispatch(a)
+        return _dispatch(a, status)
     except (RuntimeError, subprocess.TimeoutExpired) as e:
-        # A broken read path must be loud and distinct, never a quiet success.
-        print(f"[cr] ALARM: {e}", file=sys.stderr)
-        return 5
+        # A broken read path must be loud and distinct, never a quiet success:
+        # the exit code names the kind of failure, the text what was on screen.
+        status["reason"] = alarm_text(e)
+        if SWEPT_FEED:
+            status["feed"] = dict(SWEPT_FEED)
+        print(f"[cr] ALARM: {status['reason']}", file=sys.stderr)
+        return getattr(e, "code", 5)
     finally:
         release_lock()
 
 
-def _dispatch(a) -> int:
+def _dispatch(a, status: dict | None = None) -> int:
+    status = {} if status is None else status
     if a.verify or a.reel or a.emit:
         rc = 0
         if a.verify:
@@ -1392,9 +1641,12 @@ def _dispatch(a) -> int:
                     print(f"  {c['file']}  {c['seconds']}s  {c['category']} — {c['title']}")
         if a.emit:
             e = emit_incidents(a.emit, dry=a.dry)
+            status.update({k: e[k] for k in ("feed", "staged", "stage", "complete",
+                                             "newest", "oldest") if k in e})
             if e.get("error"):
+                status["reason"] = e["error"]
                 print(f"[cr] ALARM: {e['error']}", file=sys.stderr)
-                rc = 4
+                rc = WrongFeed.code if e.get("wrong_feed") else 4
             else:
                 print(f"[cr] emit {e['date']}: {e['staged']} rows staged "
                       f"(History {e['oldest']} to {e['newest']}) -> {e['stage']}")
@@ -1436,7 +1688,7 @@ def _dispatch(a) -> int:
             try:
                 poll(a.detail, a.diff, a.json, a.discord, a.audio)
             except (RuntimeError, subprocess.TimeoutExpired) as e:
-                print(f"[cr] ALARM: {e}", file=sys.stderr)
+                print(f"[cr] ALARM: {alarm_text(e)}", file=sys.stderr)
             time.sleep(a.interval)
     return poll(a.detail, a.diff, a.json, a.discord, a.audio)
 

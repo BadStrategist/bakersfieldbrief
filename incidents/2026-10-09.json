@@ -313,5 +313,175 @@
   "notability": 2,
   "disposition": "medical aid",
   "summary": "Medics were sent to an apartment on the 500 block of Oildale Drive for difficulty breathing."
+ },
+ {
+  "type": "Incident",
+  "time": "19:13",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Semi truck on its side partially blocking freeway.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "19:19",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Suspicious towing of white pickup truck.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "19:31",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Stalled pickup blocking lanes on southbound I-5.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "19:36",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Report of suspicious person on Buckhorn Road.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Vehicle",
+  "time": "20:34",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Vehicle blocking roadway near Highway 99.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic",
+  "time": "20:50",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Traffic stop involving two Lexus vehicles.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "20:52",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Reckless driver in white pickup near Mountain Park.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Assault",
+  "time": "20:54",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Assault with knife in alley on Water Street.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Assault",
+  "time": "21:11",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Assault leaves woman with eye injury at apartment.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "22:40",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Unconscious person found in Wasco police lobby.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Vehicle",
+  "time": "05:45",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Man throwing rocks at vehicles near Empire Drive.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "05:45",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Traffic collision involving silver SUV on Volke Canyon.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:24",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Welfare check at residence on Meade Avenue.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:28",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Black SUV continues safely on highway.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:28",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Audible alarm reported on Fox Highway.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic",
+  "time": "06:33",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Traffic stop of Honda sedan on Market Street.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:36",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Person needing lift assist at Rosewood Garden Tower.",
+  "source": "crimeradar"
  }
 ]

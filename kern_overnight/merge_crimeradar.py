@@ -23,11 +23,22 @@ does the transcript's incident list exist. Rules:
     (MIN_NOTABILITY, 3) are merged;
   * with no transcript incidents on disk it merges NOTHING: a report must never
     be built from emulator rows alone;
+  * a staging file that does not carry the Kern feed the screen showed merges
+    NOTHING: the app follows its own location picker, and on 2026-10-09 it was
+    serving Mendocino County;
   * nothing here may raise. It runs inside the publish's critical path.
+
+readiness() answers a different question from merge(): is there a verified
+second source for this report at all? The publish gate asks it (gate(), which
+also honours the human release file). Exit codes of --ready / --gate:
+0 ready (or released), 10 absent, 11 stale, 12 wrong feed, 13 History did not
+reach the window start.
 
 Deterministic, no emulator needed.
 
 Usage: python kern_overnight/merge_crimeradar.py YYYY-MM-DD
+       python kern_overnight/merge_crimeradar.py --ready YYYY-MM-DD
+       python kern_overnight/merge_crimeradar.py --gate YYYY-MM-DD
 """
 from __future__ import annotations
 
@@ -43,6 +54,25 @@ INCIDENTS = ROOT / "incidents"
 STAGE = ROOT / "work" / "crimeradar"
 
 SOURCE = "crimeradar"
+
+# The one feed this report may take rows from, as the app's Replay tab names it.
+# The monitor stamps what the screen actually said; nothing here assumes it.
+FEED_NAME = "Bakersfield Police, Fire and EMS"
+FEED_LOCATION = "Kern, California"
+
+READY, ABSENT, STALE, WRONG_FEED, INCOMPLETE = 0, 10, 11, 12, 13
+# The emit runs at 07:15 and the app aggregates with a lag, so a good staging
+# file is written after the night ends and its newest row is from the small
+# hours. One written before 06:30, or whose newest row is older than 04:00, did
+# not see the end of the night (2026-10-09: the guest had lost its network).
+EMIT_EARLY_MIN = 30
+NEWEST_LAG_MIN = 180
+
+
+def is_kern_feed(feed) -> bool:
+    """Did the screen say this is the Kern feed? Anything else is not."""
+    return (isinstance(feed, dict) and feed.get("name") == FEED_NAME
+            and feed.get("location") == FEED_LOCATION)
 
 # Words too common in dispatch headlines to prove two rows are the same event.
 STOP = {
@@ -265,6 +295,10 @@ def merge(date_iso: str, incidents_dir: Path = INCIDENTS,
             out["note"] = "staging file malformed; merging nothing"
             return out
         out["staged"] = len(staged)
+        if not is_kern_feed(doc.get("feed")):
+            out["note"] = (f"staging file is not stamped with the Kern feed "
+                           f"(feed: {doc.get('feed')!r}); merging nothing")
+            return out
         if not dest.exists():
             out["note"] = f"{dest.name} does not exist yet; merging nothing"
             return out
@@ -295,9 +329,113 @@ def merge(date_iso: str, incidents_dir: Path = INCIDENTS,
     return out
 
 
+def _when(text) -> dt.datetime | None:
+    try:
+        return dt.datetime.fromisoformat(str(text))
+    except ValueError:
+        return None
+
+
+def readiness(date_iso: str, stage_dir: Path = STAGE) -> dict:
+    """Is there a verified second source for the report dated <date_iso>?
+
+    `code` is READY (0) or the first reason it is not: ABSENT, STALE,
+    WRONG_FEED, INCOMPLETE. Never raises. When the staging file is missing, the
+    reason quotes emit_status_<date>.json so a failed emit reads differently
+    from an emit that never ran.
+    """
+    out = {"date": date_iso, "code": ABSENT, "ok": False, "reason": "", "feed": None}
+    try:
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date_iso or ""):
+            out["reason"] = "bad date"
+            return out
+        src = Path(stage_dir) / f"emulator_incidents_{date_iso}.json"
+        if not src.exists():
+            why = "the emit left no status file, so it never reached the monitor"
+            try:
+                st = json.loads((Path(stage_dir) / f"emit_status_{date_iso}.json")
+                                .read_text(encoding="utf-8"))
+                why = (f"the emit at {st.get('ran', '?')} exited {st.get('rc', '?')} "
+                       f"({st.get('outcome', '?')}): {st.get('reason', '')}")
+            except Exception:  # noqa: BLE001
+                pass
+            out["reason"] = f"no staged emulator incidents; {why}"
+            return out
+        try:
+            doc = json.loads(src.read_text(encoding="utf-8"))
+        except Exception as exc:  # noqa: BLE001
+            out["reason"] = f"staging file unreadable ({exc})"
+            return out
+        if not isinstance(doc, dict) or not isinstance(doc.get("incidents"), list):
+            out["reason"] = "staging file malformed"
+            return out
+        out["feed"] = doc.get("feed")
+        if not is_kern_feed(doc.get("feed")):
+            out.update(code=WRONG_FEED, reason=(
+                f"staged rows are not from the Kern feed (the screen said "
+                f"{doc.get('feed')!r})"))
+            return out
+        end = dt.datetime.combine(dt.date.fromisoformat(date_iso), dt.time(7, 0))
+        made, newest = _when(doc.get("generated")), _when(doc.get("history_newest"))
+        if doc.get("date") != date_iso or made is None or made.date() != end.date() \
+                or made < end - dt.timedelta(minutes=EMIT_EARLY_MIN):
+            out.update(code=STALE, reason=(
+                f"staging file was generated {doc.get('generated')!r} for "
+                f"{doc.get('date')!r}, not after the night of {date_iso} ended"))
+            return out
+        if newest is None or newest < end - dt.timedelta(minutes=NEWEST_LAG_MIN):
+            out.update(code=STALE, reason=(
+                f"newest History row is {doc.get('history_newest')!r}; the app "
+                "had stopped updating before the night ended"))
+            return out
+        if doc.get("history_complete") is not True:
+            out.update(code=INCOMPLETE, reason=(
+                f"History only reached back to {doc.get('history_oldest')!r}; "
+                "the start of the night is not staged"))
+            return out
+        out.update(code=READY, ok=True, reason=(
+            f"{len(doc['incidents'])} rows staged from {FEED_NAME}, "
+            f"History {doc.get('history_oldest')} to {doc.get('history_newest')}"))
+    except Exception as exc:  # noqa: BLE001
+        out.update(code=ABSENT, ok=False, reason=f"readiness check failed ({exc})")
+    return out
+
+
+def gate(date_iso: str, stage_dir: Path = STAGE) -> dict:
+    """May the report dated <date_iso> be pushed? readiness(), or a human release.
+
+    The release is a non-empty file work/crimeradar/release_<date>.txt (say who
+    and why in it). It is scoped to one date, so yesterday's release never
+    carries a later report out. Never raises.
+    """
+    r = readiness(date_iso, stage_dir)
+    r["released_by"] = "second source" if r["ok"] else ""
+    if not r["ok"]:
+        try:
+            flag = Path(stage_dir) / f"release_{date_iso}.txt"
+            if re.fullmatch(r"\d{4}-\d{2}-\d{2}", date_iso or "") \
+                    and flag.read_text(encoding="utf-8").strip():
+                r["released_by"] = flag.name
+        except Exception:  # noqa: BLE001
+            pass
+    r["release"] = bool(r["released_by"])
+    return r
+
+
 def main() -> int:
+    if len(sys.argv) >= 3 and sys.argv[1] in ("--ready", "--gate"):
+        r = (gate if sys.argv[1] == "--gate" else readiness)(sys.argv[2])
+        if r["ok"]:
+            print(f"[cr] second source ready for {r['date']}: {r['reason']}")
+            return READY
+        print(f"[cr] second source NOT ready for {r['date']} "
+              f"(code {r['code']}): {r['reason']}")
+        if r.get("release"):
+            print(f"[cr] released by a human: {r['released_by']}")
+            return READY
+        return r["code"]
     if len(sys.argv) < 2:
-        print("usage: merge_crimeradar.py YYYY-MM-DD", file=sys.stderr)
+        print("usage: merge_crimeradar.py [--ready|--gate] YYYY-MM-DD", file=sys.stderr)
         return 2
     r = merge(sys.argv[1])
     print(f"[cr] merge {r['date']}: {r['staged']} staged, {r['merged']} merged "

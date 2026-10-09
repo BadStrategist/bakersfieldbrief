@@ -14,6 +14,21 @@ the pipeline or could have published something wrong:
   * the reel matcher accepted a clip on time alone and misread AM/PM times;
   * a failed clip capture was never retried.
 
+And the guard set added after the 2026-10-06..09 outage, when the second source
+was down for three nights and then came back serving Mendocino County:
+
+  * a system ANR dialog and a keyguard were both reported as "the app UI has
+    likely changed";
+  * every staged row was stamped with the Bakersfield feed whatever the screen
+    showed, so a Mendocino state would have staged Willits rows as Kern;
+  * a failed emit left nothing behind, so it looked like "nothing to do";
+  * the publish pushed the report with no second source and nobody was told.
+
+The XML under tests/fixtures/crimeradar/ is captured from the emulator, not
+written by hand: anr_system_ui / anr_app (the two ANR dialogs), home_kern,
+replay_kern / history_kern, replay_mendocino / history_mendocino (2026-10-09,
+the wrong-region state).
+
 Run:  .venv/Scripts/python.exe -m pytest tests/test_crimeradar.py -q
 Fully offline: no emulator, no adb, no network.
 """
@@ -36,6 +51,14 @@ import merge_crimeradar as mc  # noqa: E402
 import make_dispatch_audio as mda  # noqa: E402
 
 DATE = "2026-10-04"
+FIX = ROOT / "tests" / "fixtures" / "crimeradar"
+KERN = {"name": mc.FEED_NAME, "location": mc.FEED_LOCATION}
+MENDOCINO = {"name": "Mendocino County Sheriff, Fire, EMS, Cal Fire and CHP",
+             "location": "Mendocino, California"}
+
+
+def fx(name):
+    return (FIX / f"{name}.xml").read_text(encoding="utf-8")
 
 TRANSCRIPT = [
     {"type": "pursuit and crash", "time": "00:04", "agency": "CHP",
@@ -60,9 +83,13 @@ def dirs(tmp_path):
     return inc, stage
 
 
-def put_stage(stage, rows):
+def put_stage(stage, rows, **doc):
+    # the header a real 07:15 emit wrote for this date (Oct 4), plus the feed
+    doc = {"date": DATE, "generated": f"{DATE}T07:16:46", "feed": KERN,
+           "history_newest": f"{DATE} 05:24", "history_oldest": "2026-10-03 10:27",
+           "history_complete": True, "incidents": rows, **doc}
     (stage / f"emulator_incidents_{DATE}.json").write_text(
-        json.dumps({"date": DATE, "incidents": rows}), encoding="utf-8")
+        json.dumps(doc), encoding="utf-8")
 
 
 def put_inc(inc, rows):
@@ -173,6 +200,7 @@ def monitor(tmp_path, monkeypatch):
             {"when": "Oct 3, 2026 9:30 PM", "title": "Shots fired near park", "cy": 3},
             {"when": "Oct 3, 2026 6:00 PM", "title": "Out of window row", "cy": 4}]
     monkeypatch.setattr(cr, "history_sweep", lambda *a, **k: [dict(r) for r in rows])
+    monkeypatch.setattr(cr, "SWEPT_FEED", dict(KERN))   # what a Kern sweep leaves
     return out, inc
 
 
@@ -408,3 +436,329 @@ def test_every_gap_row_in_the_report_came_from_the_emulator(dirs):
     # and the radio hours are untouched by the gap rule
     assert all(i.get("source") != "crimeradar"
                for i in after if i.get("time") in ("00:04", "02:10"))
+
+
+# ------------------------------------------------ what was actually on screen
+def fake_adb(xml=None, fail="", activity="", window=""):
+    """An adb whose `pull` delivers this dump (or whose dump fails with `fail`)."""
+    def adb(*args, **kw):
+        out = ""
+        if args[0] == "pull" and xml is not None:
+            Path(args[2]).write_text(xml, encoding="utf-8")
+        elif args[:3] == ("shell", "dumpsys", "activity"):
+            out = activity
+        elif args[:3] == ("shell", "dumpsys", "window"):
+            out = window
+        return subprocess.CompletedProcess(args, 1 if fail else 0, out, fail)
+    return adb
+
+
+@pytest.mark.parametrize("dump,title", [
+    ("anr_system_ui", "System UI isn't responding"),
+    ("anr_app", "CrimeRadar isn't responding"),
+])
+def test_a_system_dialog_is_named_with_its_own_exit_code(tmp_path, monkeypatch, dump, title):
+    assert cr.system_dialog(fx(dump)) == title
+    assert cr.system_dialog(fx("home_kern")) is None
+    monkeypatch.setattr(cr, "OUT", tmp_path)
+    monkeypatch.setattr(cr.time, "sleep", lambda s: None)
+    monkeypatch.setattr(cr, "adb", fake_adb(fx(dump)))
+    with pytest.raises(cr.SystemDialog) as ei:
+        cr.dump_ui("cr")
+    assert ei.value.code == 7
+    text = cr.alarm_text(ei.value)
+    assert title in text and "package android" in text
+    assert "likely changed" not in text and "Play Store" not in text
+
+
+def test_a_locked_screen_is_reported_as_a_keyguard(tmp_path, monkeypatch):
+    """2026-10-09: a keyguard gave "null root node", reported as a UI change."""
+    monkeypatch.setattr(cr, "OUT", tmp_path)
+    monkeypatch.setattr(cr.time, "sleep", lambda s: None)
+    monkeypatch.setattr(cr, "adb", fake_adb(
+        fail="ERROR: null root node returned by UiTestAutomationBridge.",
+        activity="  topResumedActivity=ActivityRecord{5804e16 u0 "
+                 "com.newsbreak.crimeradar/com.particlemedia.feature.home.RadarHomeActivity t25}",
+        window="    isKeyguardShowing=true\n"))
+    with pytest.raises(cr.Unreadable) as ei:
+        cr.dump_ui("cr")
+    assert ei.value.code == 8
+    text = cr.alarm_text(ei.value)
+    assert "null root node" in text and "keyguard showing" in text
+    assert "foreground package com.newsbreak.crimeradar" in text
+    assert "likely changed" not in text
+
+
+@pytest.fixture
+def poller(tmp_path, monkeypatch):
+    """poll() against one fixed screen, no emulator."""
+    monkeypatch.setattr(cr, "OUT", tmp_path)
+    monkeypatch.setattr(cr.time, "sleep", lambda s: None)
+    monkeypatch.setattr(cr, "normalise_feed", lambda: None)
+    monkeypatch.setattr(cr, "dismiss_overlays", lambda *a, **k: [])
+
+    def show(xml):
+        monkeypatch.setattr(cr, "dump_ui", lambda *a, **k: xml)
+    return tmp_path, show
+
+
+def app_screen(*texts, package=cr.PKG):
+    nodes = "".join(f'<node index="0" text="{t}" resource-id="" package="{package}" '
+                    f'bounds="[0,{i * 40}][700,{i * 40 + 40}]" />'
+                    for i, t in enumerate(texts))
+    return f"<hierarchy rotation=\"0\">{nodes}</hierarchy>"
+
+
+def test_zero_cards_alarm_says_what_was_on_screen(poller, capsys):
+    """2026-10-09: the app showed "Couldn't load updates"; the alarm blamed a UI change."""
+    _, show = poller
+    show(app_screen("Bakersfield", "Couldn't load updates", "Retry"))
+    assert cr.poll() == 4
+    err = capsys.readouterr().err
+    assert "Couldn't load updates" in err and f"package {cr.PKG}" in err
+    assert "likely changed" not in err and "Play Store" not in err
+
+
+def test_zero_cards_under_another_app_is_unreadable_not_a_ui_change(poller):
+    _, show = poller
+    show(app_screen("Phone", "Messages", package="com.google.android.apps.nexuslauncher"))
+    with pytest.raises(cr.Unreadable) as ei:
+        cr.poll()
+    assert ei.value.code == 8 and "nexuslauncher" in str(ei.value)
+
+
+# ------------------------------------------------------------- the wrong feed
+def test_feed_identity_is_read_off_the_screen():
+    assert cr.home_feed(fx("home_kern")) == ("Bakersfield", True)
+    assert cr.replay_feeds(fx("replay_kern")) == [KERN]
+    assert cr.replay_feeds(fx("replay_mendocino")) == [MENDOCINO]
+    assert cr.history_feed(fx("history_kern"), []) == KERN
+    # scrolled: the name is the toolbar title, the location comes from Replay
+    assert cr.history_feed(fx("history_mendocino"),
+                           cr.replay_feeds(fx("replay_mendocino"))) == MENDOCINO
+    assert mc.is_kern_feed(KERN) and not mc.is_kern_feed(MENDOCINO)
+    # a name with no location on screen is not verified
+    assert not mc.is_kern_feed(cr.history_feed(fx("history_mendocino"), []))
+    assert not mc.is_kern_feed({"name": mc.FEED_NAME, "location": ""})
+    assert not mc.is_kern_feed(None)
+
+
+def test_poll_record_carries_the_feed_the_screen_showed(poller):
+    out, show = poller
+    show(fx("home_kern"))
+    assert cr.poll() == 0
+    recs = [json.loads(line) for f in out.glob("polls_*.jsonl")
+            for line in f.read_text(encoding="utf-8").splitlines()]
+    assert len(recs) == 1 and recs[0]["feed"] == "Bakersfield" and recs[0]["n_cards"] > 0
+
+
+CHIP = 'text="Bakersfield" resource-id="com.newsbreak.crimeradar:id/txt_location_feed_tab"'
+
+
+@pytest.mark.parametrize("old,new,says", [
+    # the 2026-10-09 state: the app's picker sat on a Mendocino County address
+    (CHIP, CHIP.replace("Bakersfield", "5000 Vista Del Lago Rd"), "5000 Vista Del Lago Rd"),
+    # the chip is a tab: with Nationwide selected it no longer names the feed
+    ('selected="true" bounds="[83,169][248,241]"',
+     'selected="false" bounds="[83,169][248,241]"', "not the selected tab"),
+])
+def test_poll_refuses_a_feed_that_is_not_kern(poller, old, new, says):
+    out, show = poller
+    xml = fx("home_kern")
+    assert xml.count(old) == 1
+    show(xml.replace(old, new))
+    with pytest.raises(cr.WrongFeed) as ei:
+        cr.poll()
+    assert ei.value.code == 9 and says in str(ei.value)
+    assert not list(out.glob("polls_*.jsonl"))      # nothing recorded
+    assert not (out / "seen.json").exists()
+
+
+@pytest.fixture
+def sweeper(tmp_path, monkeypatch):
+    """The real History sweep and main(), driven by captured screens."""
+    out, inc = tmp_path / "work", tmp_path / "incidents"
+    out.mkdir(); inc.mkdir()
+    monkeypatch.setattr(cr, "OUT", out)
+    monkeypatch.setattr(cr, "INCIDENTS", inc)
+    monkeypatch.setattr(cr, "LOCK", out / "emulator.lock")
+    monkeypatch.setattr(cr, "_HAVE_LOCK", False)
+    monkeypatch.setattr(cr, "SWEPT_FEED", {})
+    monkeypatch.setattr(cr.time, "sleep", lambda s: None)
+    monkeypatch.setattr(cr, "device_online", lambda: True)
+    monkeypatch.setattr(cr, "adb", fake_adb())
+
+    def show(region):
+        monkeypatch.setattr(cr, "goto_history",
+                            lambda: cr.replay_feeds(fx(f"replay_{region}")))
+        monkeypatch.setattr(cr, "dump_ui", lambda *a, **k: fx(f"history_{region}"))
+    return out, show
+
+
+def run_main(monkeypatch, *argv):
+    monkeypatch.setattr(sys, "argv", ["crimeradar_monitor.py", *argv])
+    return cr.main()
+
+
+def emit_status(out):
+    return json.loads((out / f"emit_status_{DATE}.json").read_text(encoding="utf-8"))
+
+
+def test_history_sweep_reads_kern_and_refuses_mendocino(sweeper):
+    _, show = sweeper
+    show("kern")
+    rows = cr.history_sweep()
+    assert rows and cr.SWEPT_FEED == KERN
+    show("mendocino")
+    with pytest.raises(cr.WrongFeed) as ei:
+        cr.history_sweep()
+    assert ei.value.code == 9 and "Mendocino" in str(ei.value)
+    assert cr.SWEPT_FEED == MENDOCINO
+
+
+def test_emit_on_the_wrong_feed_stages_nothing_and_says_why(sweeper, monkeypatch, capsys):
+    """The Willits-rows-as-Bakersfield fault: exit 9, no staging file, a status file."""
+    out, show = sweeper
+    show("mendocino")
+    assert run_main(monkeypatch, "--emit", DATE) == 9
+    assert not (out / f"emulator_incidents_{DATE}.json").exists()
+    st = emit_status(out)
+    assert (st["rc"], st["ok"], st["outcome"]) == (9, False, "wrong_feed")
+    assert st["feed"] == MENDOCINO and "Mendocino" in st["reason"]
+    assert "Mendocino" in capsys.readouterr().err
+    assert not (out / "emulator.lock").exists()
+
+
+def test_emit_stamps_rows_and_status_with_the_verified_feed(monitor, monkeypatch):
+    out, _ = monitor
+    monkeypatch.setattr(cr, "LOCK", out / "emulator.lock")
+    monkeypatch.setattr(cr, "_HAVE_LOCK", False)
+    monkeypatch.setattr(cr, "device_online", lambda: True)
+    assert run_main(monkeypatch, "--emit", DATE) == 0
+    doc = json.loads((out / f"emulator_incidents_{DATE}.json").read_text(encoding="utf-8"))
+    assert doc["feed"] == KERN
+    assert {i["agency"] for i in doc["incidents"]} == {KERN["name"]}
+    st = emit_status(out)
+    assert (st["rc"], st["ok"], st["outcome"], st["staged"]) == (0, True, "staged", 3)
+    assert st["feed"] == KERN and st["history_complete"] is True
+
+
+@pytest.mark.parametrize("swept", [{}, MENDOCINO, {"name": mc.FEED_NAME, "location": ""}])
+def test_emit_never_stages_an_unverified_feed(monitor, monkeypatch, swept):
+    """Belt and braces: even a sweep that returned rows stages nothing unverified."""
+    out, _ = monitor
+    monkeypatch.setattr(cr, "SWEPT_FEED", dict(swept))
+    e = cr.emit_incidents(DATE)
+    assert e.get("wrong_feed") and e.get("alarm")
+    assert not (out / f"emulator_incidents_{DATE}.json").exists()
+
+
+def test_every_failed_emit_leaves_a_status_file(monitor, monkeypatch):
+    out, _ = monitor
+    monkeypatch.setattr(cr, "LOCK", out / "emulator.lock")
+    monkeypatch.setattr(cr, "_HAVE_LOCK", False)
+    monkeypatch.setattr(cr.time, "sleep", lambda s: None)
+    # the device is offline
+    monkeypatch.setattr(cr, "device_online", lambda: False)
+    assert run_main(monkeypatch, "--emit", DATE) == 2
+    assert emit_status(out)["outcome"] == "device_offline"
+    # History has no row in the window
+    monkeypatch.setattr(cr, "device_online", lambda: True)
+    monkeypatch.setattr(cr, "history_sweep", lambda *a, **k: [
+        {"when": "Oct 3, 2026 6:00 PM", "title": "Out of window row", "cy": 4}])
+    assert run_main(monkeypatch, "--emit", DATE) == 4
+    st = emit_status(out)
+    assert st["outcome"] == "empty_window" and "no rows inside" in st["reason"]
+    # a system dialog covers the screen
+
+    def dialog(*a, **k):
+        raise cr.SystemDialog('a system dialog covers the screen: "System UI isn\'t responding"')
+    monkeypatch.setattr(cr, "history_sweep", dialog)
+    assert run_main(monkeypatch, "--emit", DATE) == 7
+    st = emit_status(out)
+    assert st["outcome"] == "system_dialog" and "System UI" in st["reason"]
+    # a bug nobody planned for still leaves a record
+    monkeypatch.setattr(cr, "history_sweep", lambda *a, **k: 1 / 0)
+    with pytest.raises(ZeroDivisionError):
+        run_main(monkeypatch, "--emit", DATE)
+    st = emit_status(out)
+    assert st["ok"] is False and "ZeroDivisionError" in st["reason"]
+    assert not (out / f"emulator_incidents_{DATE}.json").exists()
+
+
+# ------------------------------------------------ readiness + the publish gate
+def test_merge_refuses_rows_that_are_not_stamped_kern(dirs):
+    inc, stage = dirs
+    put_inc(inc, TRANSCRIPT)
+    for feed in (None, MENDOCINO):
+        put_stage(stage, [staged("05:00", "Fatality reported on Highway 20 in Willits.")],
+                  feed=feed)
+        r = mc.merge(DATE, inc, stage)
+        assert r["merged"] == 0 and r["changed"] is False and "Kern feed" in r["note"]
+        assert read_inc(inc) == TRANSCRIPT
+
+
+def test_readiness_is_zero_only_for_a_verified_fresh_complete_kern_night(dirs):
+    _, stage = dirs
+    rows = [staged("05:00", "Fight at Marriott.")]
+    put_stage(stage, rows)
+    r = mc.readiness(DATE, stage)
+    assert (r["code"], r["ok"]) == (mc.READY, True)
+    for doc, code in [
+        ({"feed": MENDOCINO}, mc.WRONG_FEED),
+        ({"feed": None}, mc.WRONG_FEED),                 # staged before the stamp existed
+        ({"generated": "2026-10-03T07:16:46"}, mc.STALE),        # another morning's run
+        ({"generated": f"{DATE}T02:00:00"}, mc.STALE),           # before the night ended
+        ({"date": "2026-10-03"}, mc.STALE),
+        ({"history_newest": f"{DATE} 01:10"}, mc.STALE),         # the app had stopped updating
+        ({"history_newest": ""}, mc.STALE),
+        ({"history_complete": False}, mc.INCOMPLETE),
+    ]:
+        put_stage(stage, rows, **doc)
+        r = mc.readiness(DATE, stage)
+        assert (r["code"], r["ok"]) == (code, False), doc
+        assert r["reason"]
+
+
+def test_readiness_tells_a_failed_emit_from_one_that_never_ran(dirs):
+    _, stage = dirs
+    r = mc.readiness(DATE, stage)
+    assert r["code"] == mc.ABSENT and "never reached the monitor" in r["reason"]
+    (stage / f"emit_status_{DATE}.json").write_text(json.dumps(
+        {"ran": f"{DATE}T07:19:02", "rc": 9, "outcome": "wrong_feed",
+         "reason": "History is for Mendocino"}), encoding="utf-8")
+    r = mc.readiness(DATE, stage)
+    assert r["code"] == mc.ABSENT
+    assert "exited 9" in r["reason"] and "History is for Mendocino" in r["reason"]
+
+
+@pytest.mark.parametrize("bad", ["{not json", '{"incidents": 7}', "[]", "", "null"])
+def test_readiness_never_raises(dirs, bad):
+    _, stage = dirs
+    (stage / f"emulator_incidents_{DATE}.json").write_text(bad, encoding="utf-8")
+    assert mc.readiness(DATE, stage)["code"] == mc.ABSENT
+    assert mc.readiness("not-a-date", stage)["code"] == mc.ABSENT
+    assert mc.readiness(None, stage)["ok"] is False
+
+
+def test_gate_holds_without_a_second_source_until_a_human_releases_that_date(dirs):
+    _, stage = dirs
+    g = mc.gate(DATE, stage)
+    assert g["release"] is False and g["code"] == mc.ABSENT
+    (stage / "release_2026-10-03.txt").write_text("owner: ship it", encoding="utf-8")
+    assert mc.gate(DATE, stage)["release"] is False          # another day's release
+    (stage / f"release_{DATE}.txt").write_text("  \n", encoding="utf-8")
+    assert mc.gate(DATE, stage)["release"] is False          # an empty file says nothing
+    (stage / f"release_{DATE}.txt").write_text("owner: radio-only is fine today",
+                                               encoding="utf-8")
+    g = mc.gate(DATE, stage)
+    assert g["release"] is True and g["released_by"] == f"release_{DATE}.txt"
+    assert g["ok"] is False                                  # released, still not ready
+
+
+def test_gate_opens_on_its_own_when_the_second_source_is_ready(dirs):
+    _, stage = dirs
+    put_stage(stage, [staged("05:00", "Fight at Marriott.")])
+    g = mc.gate(DATE, stage)
+    assert g["release"] is True and g["released_by"] == "second source"
+

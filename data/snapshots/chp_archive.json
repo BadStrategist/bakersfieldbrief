@@ -1260,6 +1260,36 @@
   "details": ""
  },
  {
+  "log_id": "261009BF0036",
+  "time": "Oct  9 2026  5:36AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261009BF0057",
+  "time": "Oct  9 2026  7:06AM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 N / West Escape Ramp",
+  "area": "Fort Tejon",
+  "lat": 34.918056,
+  "lon": -118.923889,
+  "details": ""
+ },
+ {
+  "log_id": "261009BF0065",
+  "time": "Oct  9 2026  7:36AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Zerker Rd / Fruitvale Oil Fld",
+  "area": "BF",
+  "lat": 35.435004,
+  "lon": -119.154001,
+  "details": ""
+ },
+ {
   "log_id": "261009BF0009",
   "time": "Oct  9 2026 12:32AM",
   "type": "TADV-Traffic Advisory",

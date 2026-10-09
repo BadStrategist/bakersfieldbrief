@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-09T11:49:24-07:00",
+ "built_at": "2026-10-09T11:58:40-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -14,7 +14,7 @@
    "error": ""
   },
   "gnews": {
-   "ok": false,
+   "ok": true,
    "error": ""
   },
   "weather": {
@@ -66,10 +66,10 @@
   "_digest_meta": "deterministic",
   "brief_words": 1599,
   "daily": {
-   "news_headlines": 50,
+   "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 0,
    "top_story": "Heavy KCSO presence seen in NW Bakersfield Friday",
    "overnight_band": {
     "date": "2026-10-09",
@@ -137,11 +137,11 @@
    ],
    "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 0,
-    "bakersfield-nw": 0,
-    "bakersfield-sw": 0,
-    "bakersfield-east": 0,
-    "bakersfield-central": 0
+    "tehachapi": 12,
+    "bakersfield-nw": 12,
+    "bakersfield-sw": 12,
+    "bakersfield-east": 12,
+    "bakersfield-central": 12
    }
   },
   "guide": {
@@ -155,13 +155,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 13,
+   "wind_mph": 8,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 86,
-   "wind_mph": 13,
+   "wind_mph": 8,
    "alerts": 0
   },
   "roads": {
@@ -179,7 +179,7 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 17,
+    "In the next 7 days": 16,
     "In 1 to 2 weeks": 21,
     "Later": 100
    },

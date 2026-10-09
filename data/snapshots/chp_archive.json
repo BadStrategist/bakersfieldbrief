@@ -1,245 +1,5 @@
 [
  {
-  "log_id": "261001BF0235",
-  "time": "Oct  1 2026  1:44PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "6249 Niles St",
-  "area": "Bakersfield",
-  "lat": 35.375953,
-  "lon": -118.934402,
-  "details": ""
- },
- {
-  "log_id": "261001BF0240",
-  "time": "Oct  1 2026  1:56PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "SR178 / Democrat Rd",
-  "area": "Bakersfield",
-  "lat": 35.528673,
-  "lon": -118.656665,
-  "details": ""
- },
- {
-  "log_id": "261001BF0018",
-  "time": "Oct  1 2026  2:04AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Roberts Ln / Airport Dr",
-  "area": "Bakersfield",
-  "lat": 35.408549,
-  "lon": -119.03875,
-  "details": ""
- },
- {
-  "log_id": "261001BF0019",
-  "time": "Oct  1 2026  2:11AM",
-  "type": "FIRE-Report of Fire",
-  "location": "0 I5 N",
-  "area": "Fort Tejon",
-  "lat": 34.936823,
-  "lon": -118.927978,
-  "details": ""
- },
- {
-  "log_id": "261001BF0249",
-  "time": "Oct  1 2026  2:18PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Peterson Rd / Browning Rd",
-  "area": "Bakersfield",
-  "lat": 35.703368,
-  "lon": -119.22297,
-  "details": ""
- },
- {
-  "log_id": "261001BF0255",
-  "time": "Oct  1 2026  2:29PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Nb Sr99 Jso Houghton Rd",
-  "area": "Bakersfield",
-  "lat": 35.233611,
-  "lon": -119.014167,
-  "details": ""
- },
- {
-  "log_id": "261001BF0267",
-  "time": "Oct  1 2026  2:35PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Dennis Mccarthy Dr / Laval Rd",
-  "area": "Fort Tejon",
-  "lat": 34.990586,
-  "lon": -118.947056,
-  "details": ""
- },
- {
-  "log_id": "261001BF0264",
-  "time": "Oct  1 2026  2:38PM",
-  "type": "20001-Hit and Run w/Injuries",
-  "location": "I405 N / W FLORENCE AVE",
-  "area": "LA",
-  "lat": 33.963656,
-  "lon": -118.369816,
-  "details": ""
- },
- {
-  "log_id": "261001BF0269",
-  "time": "Oct  1 2026  2:43PM",
-  "type": "1125A-Animal Hazard",
-  "location": "Nb Sr99 Jno Merle Haggard Dr",
-  "area": "Bakersfield",
-  "lat": 35.444722,
-  "lon": -119.090833,
-  "details": ""
- },
- {
-  "log_id": "261001BF0274",
-  "time": "Oct  1 2026  2:52PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Edison Hwy / Malaga Rd",
-  "area": "Bakersfield",
-  "lat": 35.345198,
-  "lon": -118.86091,
-  "details": ""
- },
- {
-  "log_id": "261001BF0024",
-  "time": "Oct  1 2026  2:55AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "261001BF0280",
-  "time": "Oct  1 2026  3:00PM",
-  "type": "1125A-Animal Hazard",
-  "location": "Sb I5 At Sr223",
-  "area": "Buttonwillow",
-  "lat": 35.208889,
-  "lon": -119.163056,
-  "details": ""
- },
- {
-  "log_id": "261001BF0291",
-  "time": "Oct  1 2026  3:21PM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "0 Laval Rd Onr",
-  "area": "Fort Tejon",
-  "lat": 34.989384,
-  "lon": -118.945506,
-  "details": ""
- },
- {
-  "log_id": "261001BF0296",
-  "time": "Oct  1 2026  3:33PM",
-  "type": "1184-Provide Traffic Control",
-  "location": "2133 Kentucky St",
-  "area": "Bakersfield",
-  "lat": 35.373387,
-  "lon": -118.969383,
-  "details": ""
- },
- {
-  "log_id": "261001BF0310",
-  "time": "Oct  1 2026  4:01PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Allen Rd / Rosedale Hwy",
-  "area": "Bakersfield",
-  "lat": 35.383479,
-  "lon": -119.145483,
-  "details": ""
- },
- {
-  "log_id": "261001BF0332",
-  "time": "Oct  1 2026  4:33PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Sr184 / Segrue Rd",
-  "area": "Bakersfield",
-  "lat": 35.256052,
-  "lon": -118.914438,
-  "details": ""
- },
- {
-  "log_id": "261001BF0334",
-  "time": "Oct  1 2026  4:36PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Lost Hills Rd / Lerdo Hwy",
-  "area": "Buttonwillow",
-  "lat": 35.499167,
-  "lon": -119.689792,
-  "details": ""
- },
- {
-  "log_id": "261001BF0337",
-  "time": "Oct  1 2026  4:43PM",
-  "type": "CFIRE-Car Fire",
-  "location": "Wb Sr178 Jwo Morning Dr",
-  "area": "Bakersfield",
-  "lat": 35.394167,
-  "lon": -118.9675,
-  "details": ""
- },
- {
-  "log_id": "261001BF0039",
-  "time": "Oct  1 2026  5:11AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "9855 Compagnoni St",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "261001BF0413",
-  "time": "Oct  1 2026  7:01PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Sr184 / Paradise Rd",
-  "area": "Bakersfield",
-  "lat": 35.265168,
-  "lon": -118.9143,
-  "details": ""
- },
- {
-  "log_id": "261001BF0428",
-  "time": "Oct  1 2026  7:33PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Sr99 S / Union Ave Onr",
-  "area": "Bakersfield",
-  "lat": 35.166369,
-  "lon": -119.002398,
-  "details": ""
- },
- {
-  "log_id": "261001BF0085",
-  "time": "Oct  1 2026  8:27AM",
-  "type": "CZP-Assist with Construction",
-  "location": "I5 N / Grapevine Rd E",
-  "area": "Fort Tejon",
-  "lat": 34.939285,
-  "lon": -118.929655,
-  "details": ""
- },
- {
-  "log_id": "261001BF0150",
-  "time": "Oct  1 2026 10:54AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "3418 Pioneer Dr",
-  "area": "Bakersfield",
-  "lat": 35.368676,
-  "lon": -118.942644,
-  "details": ""
- },
- {
-  "log_id": "261001BF0167",
-  "time": "Oct  1 2026 11:36AM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "Petrol Rd / Landings Way",
-  "area": "Bakersfield",
-  "lat": 35.448548,
-  "lon": -119.047528,
-  "details": ""
- },
- {
   "log_id": "261002BF0214",
   "time": "Oct  2 2026  1:31PM",
   "type": "1183-Trfc Collision-Unkn Inj",
@@ -1360,6 +1120,16 @@
   "details": ""
  },
  {
+  "log_id": "261008BF0352",
+  "time": "Oct  8 2026  7:03PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Sb Sr99 Jso South Union Ave",
+  "area": "Bakersfield",
+  "lat": 35.165,
+  "lon": -119.001944,
+  "details": ""
+ },
+ {
   "log_id": "261008BF0051",
   "time": "Oct  8 2026  7:39AM",
   "type": "1125-Traffic Hazard",
@@ -1487,6 +1257,16 @@
   "area": "Bakersfield",
   "lat": 35.728531,
   "lon": -118.703201,
+  "details": ""
+ },
+ {
+  "log_id": "261009BF0009",
+  "time": "Oct  9 2026 12:32AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
   "details": ""
  }
 ]

@@ -14,7 +14,7 @@ import re
 import sys
 from pathlib import Path
 
-from . import llm
+from . import llm, regions
 
 SYSTEM = (
     "You are the writer of 'The Kern Overnight', a morning brief for Bakersfield "
@@ -26,7 +26,11 @@ SYSTEM = (
     "context. Attribute everything as preliminary ('crews were sent to', 'a caller "
     "reported', 'units responded to'). Never assert confirmed outcomes beyond the "
     "given disposition. Keep location generalization exactly as provided; never "
-    "sharpen it. No names, ever. Target 600-1000 words through fuller narrative "
+    "sharpen it. Name a part of town (southwest Bakersfield, east Bakersfield "
+    "and the like) ONLY when the incident carries a 'region' field, and "
+    "then use that exact phrase; an incident with no 'region' gets its street "
+    "and no part of town. Never work out a part of town from a street name. "
+    "No names, ever. Target 600-1000 words through fuller narrative "
     "on real incidents, never fabrication or padding; a thin night may run under "
     "600 words — say so plainly if the night was quiet."
 )
@@ -160,6 +164,10 @@ def write_brief(incidents: list[dict], date: dt.date) -> str:
     around = (by_note[4] + by_note[3])[:8]
     log = by_note[2][:25]
 
+    # The part of town is looked up, never written from memory: the 2026-10-09
+    # report put Pembroke Avenue in "southwest Bakersfield" (it is north).
+    incidents = [dict(i) for i in incidents]
+    regions.annotate(incidents)
     payload = json.dumps(incidents, indent=1, ensure_ascii=False)
     prompt = (
         f"Write 'The Kern Overnight — {_fmt_date_long(date)}'. Markdown.\n\n"
@@ -180,6 +188,9 @@ def write_brief(incidents: list[dict], date: dt.date) -> str:
         f"INCIDENTS:\n{payload}"
     )
     body = llm.chat_text(prompt, SYSTEM, max_tokens=2200)
+    body, wrong = regions.check(body, incidents)
+    for w in wrong:
+        print(f"[write] part of town corrected: {w}", flush=True)
     body = _insert_log(body.rstrip(), render_log_section(incidents))
     return body.rstrip() + FOOTER
 

@@ -10,6 +10,9 @@
 ## STT
 faster-whisper `large-v3` on this PC (`KO_WHISPER_MODEL`, default `Systran/faster-whisper-large-v3`). The vocab priming cap is 224 tokens, and Whisper silently cuts overflow from the FRONT, so the highest-value terms go LAST in `vocab.txt`. Street names are verified against `kern_overnight/streets.txt` (6,275 entries).
 
+## Parts of town
+A part of town ("southwest Bakersfield") is a looked-up fact, never the writer's guess: the 2026-10-09 lead put Pembroke Avenue in the southwest, and it is north of the river. `kern_overnight/regions.py annotate incidents/<date>.json` sets a `region` on each incident it is sure of; the report names a part of town only from that field. `regions.py check <report> <incidents> --fix` corrects a claim the street contradicts. Unknown street, split street with no block number, or another town: no `region`, and the copy names none. The six parts and the lines between them are in `scripts/build_street_regions.py` (City of Bakersfield Streets layer, Census places, the Kern River); change a line there and rebuild `street_regions.json`.
+
 ## ALPR (/surveillance/)
 One page. The Overpass diff runs in CI (`weekly.yml`, Monday) with `--alpr-change`: it appends the change-log row, advances the node snapshot, commits the artifacts, deploys, and fails loudly if the row for the Pacific date did not land. The local `~/AppData/Local/hermes/scripts/alpr_weekly.sh` is retired (it needed the box awake, and Overpass 406s from this machine). Never add a second Monday writer: the date guard in `append_change_log` refuses the twin row.
 

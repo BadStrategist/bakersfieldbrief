@@ -1350,6 +1350,16 @@
   "details": ""
  },
  {
+  "log_id": "261009BF0154",
+  "time": "Oct  9 2026 11:36AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Nb I5 Jso Fort Tejon Rd",
+  "area": "Fort Tejon",
+  "lat": 34.876389,
+  "lon": -118.894167,
+  "details": ""
+ },
+ {
   "log_id": "261009BF0009",
   "time": "Oct  9 2026 12:32AM",
   "type": "TADV-Traffic Advisory",

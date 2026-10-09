@@ -1260,6 +1260,26 @@
   "details": ""
  },
  {
+  "log_id": "261009BF0190",
+  "time": "Oct  9 2026  1:15PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "I5 N / Grapevine Rd E",
+  "area": "Fort Tejon",
+  "lat": 34.939285,
+  "lon": -118.929655,
+  "details": ""
+ },
+ {
+  "log_id": "261009BF0200",
+  "time": "Oct  9 2026  1:36PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "I5 N / Lebec Rd Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.831001,
+  "lon": -118.867853,
+  "details": ""
+ },
+ {
   "log_id": "261009BF0036",
   "time": "Oct  9 2026  5:36AM",
   "type": "MZP-Assist CT with Maintenance",

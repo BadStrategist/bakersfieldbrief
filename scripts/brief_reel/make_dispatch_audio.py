@@ -369,12 +369,16 @@ def main():
         blk = r["source_file"]
         bp = os.path.join(audir, blk)
         bs = blocks.get(blk)
-        hint = None
-        if bs:
-            # Blocks are named by their start instant, so a row's offset is a
-            # clock-time difference. The clock time carries only minutes, which
-            # can read a few seconds "before" the block start, and a night runs
-            # across midnight, so handle both.
+        # `offset_s` is the row's own seconds into its block, written by the
+        # transcribe step, so the cut lands on the transmission itself. Only a
+        # row from an older transcript falls back to the clock, which carries
+        # minutes and can read a few seconds "before" the block start.
+        off = r.get("offset_s")
+        hint, hint_source = None, "offset_s"
+        if isinstance(off, (int, float)) and off >= 0:
+            hint = float(off)
+        elif bs:
+            hint_source = "clock"
             hm = datetime.strptime(r["time_local"], "%H:%M")
             hint = (hm.hour * 3600 + hm.minute * 60) - (bs.hour * 3600 + bs.minute * 60 + bs.second)
             if hint < -120:
@@ -382,8 +386,8 @@ def main():
             if hint < 0:
                 hint = 0.0
         if hint is None or hint < 0:
-            hint = 0.0
-        rec.update({"block": blk, "hint": round(hint, 1),
+            hint, hint_source = 0.0, "block-start"
+        rec.update({"block": blk, "hint": round(hint, 1), "hint_source": hint_source,
                     "matched_text": (r.get("text") or "")[:180]})
 
         # One probe around the matched moment. Transmission boundaries ARE the

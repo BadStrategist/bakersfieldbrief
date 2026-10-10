@@ -1119,8 +1119,8 @@ def verify_report(date_iso: str) -> dict:
     merged earlier (source: crimeradar) never count as coverage, so a re-run
     cannot talk itself into "covered".
 
-    incidents/<date>.json may not exist yet (the 07:15 emit runs before the
-    publish creates it): every in-window row is then reported as missed.
+    incidents/<date>.json may not exist yet (the 06:50 and 07:10 emits run
+    before the publish creates it): every in-window row is then missed.
     """
     rows = history_sweep()
     src = INCIDENTS / f"{date_iso}.json"

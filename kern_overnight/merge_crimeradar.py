@@ -105,12 +105,27 @@ GAP_NOTABILITY = int(os.environ.get("CR_MERGE_GAP_NOTABILITY", "2"))
 # One RadioReference archive block: 30.5 minutes, measured across a night.
 BLOCK_SECONDS = 1829
 
-# The night is local Pacific. This mirrors fetch.PACIFIC (a fixed -7 offset; the
-# runner adjusts for DST) so this module stays importable on its own, which is
-# how the monitor and the tests load it.
-PACIFIC = dt.timezone(dt.timedelta(hours=-7), "PDT")
-
 TRANSCRIPTS = ROOT / "transcripts"
+
+
+def _nth_sunday(year: int, month: int, n: int) -> dt.date:
+    d = dt.date(year, month, 1)
+    while d.weekday() != 6:
+        d += dt.timedelta(days=1)
+    return d + dt.timedelta(weeks=n - 1)
+
+
+def _pacific(day: dt.date) -> dt.tzinfo:
+    """The Pacific offset for a day (PST -8 / PDT -7).
+
+    Mirrors kern_overnight.run.pacific_tz, which the rest of the pipeline uses,
+    and is inlined here so this module keeps loading flat, which is how the
+    monitor and the tests import it. A fixed -7 would place every staged row an
+    hour early from the first Sunday in November, moving both edges of each span.
+    """
+    if _nth_sunday(day.year, 3, 2) <= day < _nth_sunday(day.year, 11, 1):
+        return dt.timezone(dt.timedelta(hours=-7), "PDT")
+    return dt.timezone(dt.timedelta(hours=-8), "PST")
 
 
 def _block_epoch(source_file) -> int | None:
@@ -152,7 +167,7 @@ def _night_instant(hhmm: str, date_iso: str) -> float | None:
     night = dt.date.fromisoformat(date_iso) - dt.timedelta(days=1)
     h, mi = divmod(m, 60)
     d = night if h >= 19 else night + dt.timedelta(days=1)
-    return dt.datetime.combine(d, dt.time(h, mi), PACIFIC).timestamp()
+    return dt.datetime.combine(d, dt.time(h, mi), _pacific(d)).timestamp()
 
 
 def in_radio(hhmm: str, spans: list[tuple[int, int]] | None,

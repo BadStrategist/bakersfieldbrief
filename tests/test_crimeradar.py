@@ -111,7 +111,7 @@ def _night_epoch(date_iso: str, hhmm: str) -> int:
     d = dt.date.fromisoformat(date_iso) - dt.timedelta(days=1)
     h, m = int(hhmm[:2]), int(hhmm[3:5])
     day = d if h >= 12 else d + dt.timedelta(days=1)
-    return int(dt.datetime.combine(day, dt.time(h, m), mc.PACIFIC).timestamp())
+    return int(dt.datetime.combine(day, dt.time(h, m), mc._pacific(day)).timestamp())
 
 
 def write_transcript(tdir, date_iso: str, block_starts):
@@ -460,6 +460,19 @@ def test_no_transcript_means_no_radio_hours(tmp_path):
     """No readable transcript: no radio hours, every hour is a gap hour."""
     assert mc.radio_spans(DATE, tmp_path / "empty") == []
     assert mc.in_radio("23:00", [], DATE) is False
+
+
+def test_the_offset_follows_the_day_not_a_fixed_seven():
+    """Pacific is PST -8 from the first Sunday in November, never a constant."""
+    assert mc._pacific(dt.date(2026, 10, 31)).utcoffset(None) == dt.timedelta(hours=-7)
+    assert mc._pacific(dt.date(2026, 11, 1)).utcoffset(None) == dt.timedelta(hours=-8)
+    # the switch days belong to the new offset: 3/8 is the second Sunday, 11/1
+    # the first Sunday (same day-based rule as kern_overnight.run.pacific_tz)
+    assert mc._pacific(dt.date(2026, 3, 7)).utcoffset(None) == dt.timedelta(hours=-8)
+    assert mc._pacific(dt.date(2026, 3, 8)).utcoffset(None) == dt.timedelta(hours=-7)
+    # and the instant it places moves with it
+    assert (mc._night_instant("23:00", "2026-11-02") -
+            mc._night_instant("22:00", "2026-11-02")) == 3600
 
 
 def test_radio_spans_ignores_rows_that_name_no_block(tmp_path):

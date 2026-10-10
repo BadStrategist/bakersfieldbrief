@@ -77,6 +77,77 @@ class TestRenderLogSection:
         assert got.endswith("…") and not got.endswith("wor…")
 
 
+class TestLogIsEveryIncidentNotToldAsAParagraph:
+    """The log is a partition of the night, not a notability cut.
+
+    A notability-3 row that misses the eight 'Around the county' slots used to
+    appear nowhere on the page: render_log_section took notability 2 only, so the
+    2026-10-10 page was whole only because the 07:30 agent logged six of them by
+    hand, against its own step 4.
+    """
+
+    INCS = [
+        {"time": "19:10", "notability": 4, "type": "the big one",
+         "area": "Bakersfield", "summary": "The lead incident."},
+        {"time": "20:20", "notability": 3, "type": "third", "area": "",
+         "summary": "Told as a paragraph."},
+        {"time": "21:30", "notability": 3, "type": "fourth", "area": "",
+         "summary": "Also a paragraph."},
+        {"time": "22:06", "notability": 2, "type": "stolen vehicle",
+         "area": "Baker Street", "summary": "A stolen vehicle was reported."},
+        {"time": "22:06", "notability": 2, "type": "vehicle stop",
+         "area": "", "summary": "A vehicle stop on the app feed."},
+        {"time": "23:40", "notability": 1, "type": "extra patrol",
+         "area": "", "summary": "An extra patrol was requested."},
+    ]
+
+    def test_paragraphs_and_rows_partition_the_night(self):
+        from kern_overnight.write import (incident_key, log_rows,
+                                          paragraph_incidents, log_lines,
+                                          render_log_section)
+        told = paragraph_incidents(self.INCS)
+        rows = log_rows(self.INCS, skip=told)
+        body = "# T\n\nOpening.\n\n## Night notes\n\nNotes.\n"
+        out = render_log_section(self.INCS, skip=told)
+        assert len(told) + len(rows) == len(self.INCS)
+        assert len(log_lines(out)) == len(rows)
+        # every non-paragraph incident is a row, in night order
+        assert [r.split("**")[1] for r in rows] == \
+            ["10:06 p.m.", "10:06 p.m.", "11:40 p.m."]
+        # the two 22:06 rows are different incidents and both survive
+        assert incident_key(self.INCS[3]) != incident_key(self.INCS[4])
+        again = log_rows(self.INCS, skip=paragraph_incidents(self.INCS))
+        assert again == rows
+        assert body  # keeps the linter honest about the unused local
+
+    def test_insert_log_lines_keeps_the_writers_lines(self):
+        from kern_overnight.write import insert_log_lines, log_lines, log_rows, \
+            paragraph_incidents
+        # the writer's body: one row, in its own shape, plus a 22:06 row
+        body = ("# T\n\nOpening.\n\n## The log\n\n"
+                "- **10:06 p.m.**: a stolen vehicle was reported.\n\n"
+                "## Night notes\n\nNotes.\n")
+        rows = log_rows(self.INCS, skip=paragraph_incidents(self.INCS))
+        out, added = insert_log_lines(body, rows)
+        assert added == 2                      # the second 22:06 row and 11:40
+        kept = log_lines(out)
+        assert len(kept) == 3
+        assert "a stolen vehicle was reported" in kept[0]   # writer's line intact
+        assert kept[0].startswith("- **10:06 p.m.**:")
+        # night order holds across the insert
+        times = [r.split("**")[1] for r in kept]
+        assert times == ["10:06 p.m.", "10:06 p.m.", "11:40 p.m."]
+
+    def test_insert_log_lines_is_idempotent(self):
+        from kern_overnight.write import insert_log_lines, log_rows, \
+            paragraph_incidents, render_log_section
+        rows = log_rows(self.INCS, skip=paragraph_incidents(self.INCS))
+        body = "# T\n\nOpening.\n\n" + render_log_section(
+            self.INCS, skip=paragraph_incidents(self.INCS)) + "## Night notes\n\nN.\n"
+        out, added = insert_log_lines(body, rows)
+        assert added == 0 and out == body
+
+
 class TestInsertLog:
     def test_replaces_llm_written_log(self):
         """An LLM '## The log' (no times) must be swapped, not duplicated."""

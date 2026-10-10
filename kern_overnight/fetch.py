@@ -2,7 +2,7 @@
 """Stage 1 — FETCH: last night's Broadcastify archives for feed 14029.
 
 Feed 14029 = "Bakersfield Police, Fire and EMS" (RadioReference).
-Overnight window: 21:00 previous evening through 06:00 local (Pacific).
+Overnight window: 19:00 previous evening through 07:00 local (Pacific).
 Blocks are ~30-minute MP3s; archive filenames embed the block start as a
 unix epoch, e.g. 14029-1786329296.mp3.
 
@@ -28,6 +28,11 @@ FEED_ID = "14029"
 # no fire or EMS). Used only when the primary feed yields no blocks for the window.
 BACKUP_FEED_ID = os.environ.get("KO_BACKUP_FEED", "47440")
 BLOCK_SECONDS = 30 * 60
+# The overnight window is defined ONCE, here: 19:00 the previous evening to
+# 07:00 local. Broadcastify holds the 19:00-21:00 and 05:30-07:00 hours; the
+# code simply never asked for them.
+WINDOW_START = dt.time(19, 0)
+WINDOW_END = dt.time(7, 0)
 ROOT = Path(__file__).resolve().parent.parent
 
 
@@ -45,13 +50,30 @@ def _epoch_from_name(name: str, feed_id: str | None = None) -> int | None:
     return int(m.group(2))
 
 
+def window_bounds(date: dt.date, tz: dt.tzinfo) -> tuple[int, int]:
+    """(w_start, w_end) epochs of the night that belongs to `date`."""
+    return (int(dt.datetime.combine(date - dt.timedelta(days=1),
+                                    WINDOW_START, tz).timestamp()),
+            int(dt.datetime.combine(date, WINDOW_END, tz).timestamp()))
+
+
+def in_window(start_epoch: int, w_start: int, w_end: int) -> bool:
+    """True if a block belongs to the night. OVERLAP, not containment.
+
+    The archive's first evening block starts at 19:16 or 18:58, so
+    `w_start <= startTs < w_end` dropped the block that straddles 19:00 and
+    the 19:00-21:00 hours were never fetched at all.
+    """
+    return start_epoch + BLOCK_SECONDS > w_start and start_epoch < w_end
+
+
 def overnight_blocks(date: dt.date, tz: dt.tzinfo) -> list[tuple[int, int]]:
     """(start_epoch, end_epoch) for each ~30-min block in the overnight window.
 
-    Window: 21:00 previous evening through 06:00 of `date`, aligned to
+    Window: 19:00 previous evening through 07:00 of `date`, aligned to
     BLOCK_SECONDS boundaries."""
-    start = dt.datetime.combine(date - dt.timedelta(days=1), dt.time(21, 0), tz)
-    end = dt.datetime.combine(date, dt.time(6, 0), tz)
+    start = dt.datetime.combine(date - dt.timedelta(days=1), WINDOW_START, tz)
+    end = dt.datetime.combine(date, WINDOW_END, tz)
     blocks = []
     t = start
     while t < end:
@@ -172,12 +194,12 @@ def _audio_url(archive_id: str) -> str:
 def _download_archive(archive_id: str, start_ts: int, audio_dir: Path,
                       feed_id: str = FEED_ID) -> Path:
     """Download one archive to audio_dir/<feedId>-<startTs>.mp3 (epoch name)."""
+    dest = audio_dir / f"{feed_id}-{start_ts}.mp3"
+    if dest.exists() and dest.stat().st_size > 50_000:
+        return dest          # already held: never spend a play.php call on it
     url = _audio_url(archive_id)
     ua = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
           "(KHTML, like Gecko) Chrome/126.0 Safari/537.36")
-    dest = audio_dir / f"{feed_id}-{start_ts}.mp3"
-    if dest.exists() and dest.stat().st_size > 50_000:
-        return dest
     r = requests.get(url, headers={"user-agent": ua}, timeout=180, stream=True)
     r.raise_for_status()
     with open(dest, "wb") as f:
@@ -191,7 +213,7 @@ def _collect(audio_dir: Path, w_start: int, w_end: int, feed_id: str) -> list[Pa
     out: list[Path] = []
     for p in sorted(audio_dir.glob(f"{feed_id}-*.mp3")):
         e = _epoch_from_name(p.name)
-        if e is not None and w_start <= e < w_end and p.stat().st_size > 50_000:
+        if e is not None and in_window(e, w_start, w_end) and p.stat().st_size > 50_000:
             out.append(p)
     return out
 
@@ -203,8 +225,7 @@ def fetch(date: dt.date, audio_dir: Path, tz: dt.tzinfo) -> list[Path]:
     if not blocks:
         raise FetchError("no overnight blocks computed for {date}")
     span = sorted({dt.datetime.fromtimestamp(b[0], tz).date() for b in blocks})
-    w_start = int(dt.datetime.combine(date - dt.timedelta(days=1), dt.time(21, 0), tz).timestamp())
-    w_end = int(dt.datetime.combine(date, dt.time(6, 0), tz).timestamp())
+    w_start, w_end = window_bounds(date, tz)
 
     # Prefer broadcastify-cli when present (handles premium auth + retries).
     cli = shutil.which("broadcastify-cli")
@@ -218,7 +239,7 @@ def fetch(date: dt.date, audio_dir: Path, tz: dt.tzinfo) -> list[Path]:
         # Live archives API with the premium session cookie (verified Aug 2026).
         for d in span:
             for entry in _archive_entries(d):
-                if not (w_start <= entry["startTs"] < w_end):
+                if not in_window(entry["startTs"], w_start, w_end):
                     continue  # skip out-of-window archives (saves bandwidth)
                 try:
                     p = _download_archive(entry["id"], entry["startTs"], audio_dir)
@@ -240,7 +261,7 @@ def fetch(date: dt.date, audio_dir: Path, tz: dt.tzinfo) -> list[Path]:
                 print(f"    [ko-fetch] backup listing for {d} failed: {e}", flush=True)
                 continue
             for entry in entries:
-                if not (w_start <= entry["startTs"] < w_end):
+                if not in_window(entry["startTs"], w_start, w_end):
                     continue
                 try:
                     p = _download_archive(entry["id"], entry["startTs"], audio_dir,

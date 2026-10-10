@@ -260,10 +260,15 @@ def _merge_segments(segs: list[tuple[float, float]], gap_s: float = 10.0) -> lis
 
 
 def _in_overnight_window(epoch: int, date: dt.date, tz: dt.tzinfo) -> bool:
-    """True if `epoch` falls in the 21:00→06:00 overnight window for `date`."""
-    w_start = int(dt.datetime.combine(date - dt.timedelta(days=1), dt.time(21, 0), tz).timestamp())
-    w_end = int(dt.datetime.combine(date, dt.time(6, 0), tz).timestamp())
-    return w_start <= epoch < w_end
+    """True if `epoch` is a block of the 19:00→07:00 night that owns `date`.
+
+    Overlap, not containment: the first evening block starts after 19:00
+    (19:16, 18:58), and containment dropped it, so 19:00-21:00 was never
+    fetched or transcribed. The rule lives in fetch.in_window so the window
+    has exactly one definition.
+    """
+    from kern_overnight import fetch
+    return fetch.in_window(epoch, *fetch.window_bounds(date, tz))
 
 
 def _ko_checkpoint(out_jsonl: Path, blocks_done: int, total: int, push: bool = False) -> None:

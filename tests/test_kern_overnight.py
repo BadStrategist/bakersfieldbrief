@@ -164,17 +164,22 @@ class TestTranscribe:
         if blocks is None:  # overnight_blocks lives in fetch
             from kern_overnight import fetch
             blocks = fetch.overnight_blocks(dt.date(2026, 8, 9), TZ)
-        assert len(blocks) == 18
+        assert len(blocks) == 24
         first = dt.datetime.fromtimestamp(blocks[0][0], TZ)
         last_end = dt.datetime.fromtimestamp(blocks[-1][1], TZ)
-        assert (first.strftime("%H:%M"), last_end.strftime("%H:%M")) == ("21:00", "06:00")
+        assert (first.strftime("%H:%M"), last_end.strftime("%H:%M")) == ("19:00", "07:00")
 
     def test_in_overnight_window(self):
         from kern_overnight import transcribe as T
-        inside = int(dt.datetime(2026, 8, 8, 23, 30, tzinfo=TZ).timestamp())
-        outside = int(dt.datetime(2026, 8, 9, 12, 0, tzinfo=TZ).timestamp())
-        assert T._in_overnight_window(inside, dt.date(2026, 8, 9), TZ)
-        assert not T._in_overnight_window(outside, dt.date(2026, 8, 9), TZ)
+        def at(h, m=0, day=8):
+            return int(dt.datetime(2026, 8, day, h, m, tzinfo=TZ).timestamp())
+
+        # the night that owns Aug 9 runs Aug 8 19:00 to Aug 9 07:00
+        for h, m, day in ((19, 0, 8), (19, 16, 8), (23, 30, 8),
+                          (5, 30, 9), (6, 45, 9)):
+            assert T._in_overnight_window(at(h, m, day), dt.date(2026, 8, 9), TZ), (h, m, day)
+        for h, m, day in ((18, 0, 8), (12, 0, 9), (7, 0, 9), (20, 0, 9)):
+            assert not T._in_overnight_window(at(h, m, day), dt.date(2026, 8, 9), TZ), (h, m, day)
 
     def test_transcribe_wav_slice_and_kwargs(self):
         np = pytest.importorskip("numpy")  # heavy PC-only dep; skip in CI
@@ -294,9 +299,16 @@ class TestFetch:
         from kern_overnight import fetch
         in_ts = int(dt.datetime(2026, 8, 8, 23, 0, tzinfo=TZ).timestamp())
         out_ts = int(dt.datetime(2026, 8, 9, 12, 0, tzinfo=TZ).timestamp())
+        # starts 15 min before 19:00, so it carries the first quarter hour of
+        # the night: it belongs to the window. The old containment rule
+        # (w_start <= startTs) dropped exactly this block every night.
+        straddle_ts = int(dt.datetime(2026, 8, 8, 18, 45, tzinfo=TZ).timestamp())
+        early_ts = int(dt.datetime(2026, 8, 8, 18, 0, tzinfo=TZ).timestamp())
         monkeypatch.setattr(fetch, "_archive_entries",
                             lambda d: [{"id": f"14029-{in_ts}", "startTs": in_ts},
-                                       {"id": f"14029-{out_ts}", "startTs": out_ts}])
+                                       {"id": f"14029-{out_ts}", "startTs": out_ts},
+                                       {"id": f"14029-{straddle_ts}", "startTs": straddle_ts},
+                                       {"id": f"14029-{early_ts}", "startTs": early_ts}])
 
         def fake_download(archive_id, start_ts, audio_dir):
             p = audio_dir / f"14029-{start_ts}.mp3"
@@ -305,8 +317,21 @@ class TestFetch:
 
         monkeypatch.setattr(fetch, "_download_archive", fake_download)
         got = fetch.fetch(dt.date(2026, 8, 9), tmp_path, TZ)
-        assert len(got) == 1
-        assert str(in_ts) in got[0].name
+        assert sorted(p.name for p in got) == sorted([f"14029-{in_ts}.mp3",
+                                                     f"14029-{straddle_ts}.mp3"])
+
+    def test_a_block_already_on_disk_costs_no_play_call(self, tmp_path, monkeypatch):
+        """Never spend a play.php call (or a login) on a block we hold."""
+        from kern_overnight import fetch
+        ts = int(dt.datetime(2026, 8, 8, 23, 0, tzinfo=TZ).timestamp())
+        p = tmp_path / f"14029-{ts}.mp3"
+        p.write_bytes(b"\x00" * 60_000)
+
+        def boom(archive_id):
+            raise AssertionError("_audio_url called for a block already on disk")
+
+        monkeypatch.setattr(fetch, "_audio_url", boom)
+        assert fetch._download_archive(f"14029-{ts}", ts, tmp_path) == p
 
 
 # --------------------------------------------------------------------- data

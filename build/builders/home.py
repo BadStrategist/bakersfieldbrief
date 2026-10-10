@@ -236,9 +236,8 @@ def _night(rel, chp, built_iso) -> tuple[str, dict]:
         head = f'<span class="num">{len(incs)}</span> <span class="say">{say}</span>'
         lis = "".join(f"\n      <li><b>{n}</b><span>{_e(label)}</span></li>" for label, n in chips)
         body = f"""
-    <ul class="chips" aria-label="Calls by type">{lis}
-    </ul>
-    <p class="note t13 muted">Source: police, fire and EMS radio traffic for Bakersfield and Kern County, plus app-based dispatch reports for the hours the radio feed does not carry. Not a complete record of every call.</p>"""
+            <ul class="chips" aria-label="Calls by type">{lis}
+            </ul>"""
     else:
         head = f'<span class="say">{_e(rep["title"])}</span>'
         body = '\n    <p class="note t13 muted">Call counts for this report are not available.</p>'

@@ -226,6 +226,43 @@ class TestTranscribe:
         assert rows[0]["engine"].startswith("faster-whisper:")
         assert rows[0]["time_local"]  # anchored to block epoch
 
+    def test_deepgram_rows_get_the_same_window_rule(self, tmp_path, monkeypatch):
+        """Both engines share one trim: the row before 19:00 is dropped."""
+        import wave as wave_mod
+        from kern_overnight import transcribe as T
+        from kern_overnight import deepgram
+
+        wav = tmp_path / "d.wav"
+        with wave_mod.open(str(wav), "wb") as w:
+            w.setnchannels(1)
+            w.setsampwidth(2)
+            w.setframerate(16000)
+            w.writeframes(b"\x00" * 16000 * 2 * 70)
+
+        def fake_transcribe(seg_audio, block_epoch, tz, source_file):
+            return [{"duration": 2.0, "text": "before", "confidence": 0.8,
+                     "source_file": source_file, "engine": "deepgram:nova-3",
+                     "offset_s": 5.0},
+                    {"duration": 2.0, "text": "after", "confidence": 0.8,
+                     "source_file": source_file, "engine": "deepgram:nova-3",
+                     "offset_s": 62.0}]
+
+        monkeypatch.setattr(deepgram, "transcribe_segments", fake_transcribe)
+        block = int(dt.datetime(2026, 10, 8, 18, 59, 0, tzinfo=TZ).timestamp())
+        rows = T._transcribe_deepgram(wav, [(0.0, 3.0)], block, TZ, "14029-d.mp3")
+        assert [r["text"] for r in rows] == ["after"]
+        assert rows[0]["time_local"] == "19:00"
+        assert rows[0]["offset_s"] == 62.0
+
+    def test_deepgram_segment_offset_is_added_back(self):
+        """A segment's timestamps are relative to that segment, not the block."""
+        from kern_overnight import deepgram
+
+        rows = deepgram._segment_rows(
+            [{"transcript": "copy", "confidence": 0.9, "start": 1.0, "end": 3.0}],
+            0, TZ, "14029-x.mp3", base_s=780.0)
+        assert rows[0]["offset_s"] == 781.0
+
     def test_a_straddling_block_keeps_only_the_window_and_records_the_offset(self, tmp_path):
         """A block that starts before 19:00 contributes only after it (5.1, 5.2)."""
         import wave as wave_mod
@@ -296,7 +333,9 @@ class TestDeepgram:
         rows = deepgram._segment_rows(
             [{"transcript": "medical aid", "confidence": 0.9,
               "start": 10.0, "end": 12.5}], 1786261275, TZ, "f.mp3")
-        assert set(rows[0]) == {"time_local", "duration", "text", "confidence",
+        # time_local is stamped by the window rule, the only place that knows
+        # whether a row belongs to the night (transcribe._trim_to_window)
+        assert set(rows[0]) == {"offset_s", "duration", "text", "confidence",
                                 "source_file", "engine"}
         assert rows[0]["engine"] == "deepgram:nova-3"
         assert rows[0]["duration"] == 2.5

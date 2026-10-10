@@ -42,24 +42,31 @@ def _key() -> str:
 
 
 def _segment_rows(segments: list[dict], block_epoch: int,
-                  tz: dt.tzinfo, source_file: str) -> list[dict]:
-    """Map Deepgram utterance timestamps → the shared row shape."""
+                  tz: dt.tzinfo, source_file: str,
+                  base_s: float = 0.0) -> list[dict]:
+    """Map Deepgram utterance timestamps → the shared row shape.
+
+    `base_s` is the offset of this segment inside the block. Deepgram reports
+    timestamps relative to the audio that was POSTed, so without `base_s` every
+    row of every segment after the first landed at the wrong time. The row now
+    carries `offset_s` into the block and leaves `time_local` to the caller's
+    window rule, which stamps it from that offset.
+    """
     rows = []
     for s in segments:
         text = (s.get("transcript") or "").strip()
         if not text:
             continue
         conf = float(s.get("confidence", 0.0) or 0.0)
-        start, end = float(s.get("start", 0.0)), float(s.get("end", 0.0))
-        time_local = (dt.datetime.fromtimestamp(block_epoch, tz) +
-                      dt.timedelta(seconds=start)).strftime("%H:%M")
+        start = base_s + float(s.get("start", 0.0))
+        end = base_s + float(s.get("end", 0.0))
         rows.append({
-            "time_local": time_local,
             "duration": round(max(end - start, 0.1), 2),
             "text": text,
             "confidence": round(conf, 3),
             "source_file": source_file,
             "engine": f"deepgram:{MODEL}",
+            "offset_s": round(start, 1),
         })
     return rows
 
@@ -71,7 +78,8 @@ def transcribe_segments(segments_wavs: list[tuple[float, float, bytes]],
 
     segments_wavs: [(start_s, end_s, wav_bytes), ...] — the caller slices
     speech out of the preprocessed block so billing stays on real audio.
-    Returns JSONL-style rows with time_local anchored to the block epoch.
+    Returns JSONL-style rows carrying `offset_s` into the block; the
+    caller's window rule stamps `time_local` from that offset.
     """
     api_key = _key()
     params = {
@@ -91,5 +99,6 @@ def transcribe_segments(segments_wavs: list[tuple[float, float, bytes]],
         r.raise_for_status()
         res = r.json()
         utterances = ((res.get("results") or {}).get("utterances") or [])
-        all_rows += _segment_rows(utterances, block_epoch, tz, source_file)
+        all_rows += _segment_rows(utterances, block_epoch, tz, source_file,
+                                  base_s=start_s)
     return all_rows

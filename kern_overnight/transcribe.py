@@ -392,7 +392,7 @@ def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
     """Transcribe the overnight-window MP3s in audio_dir → out_jsonl.
 
     When `date` is given, only blocks whose epoch falls in that night's
-    21:00→06:00 window are processed — the audio dir may hold extra
+    19:00→07:00 window are processed — the audio dir may hold extra
     out-of-window archives (the fetch listings return the whole calendar
     days). `workers` > 1 processes blocks in parallel (one model per
     worker process). `append` keeps existing rows and skips blocks already
@@ -499,6 +499,30 @@ def _raise_if_incomplete(failed: int, out_jsonl: Path) -> None:
             "is incomplete. Re-run this phase.")
 
 
+def _trim_to_window(rows: list[dict], block_epoch: int, tz: dt.tzinfo) -> list[dict]:
+    """Keep only the rows inside the night, and stamp each one's time.
+
+    One rule for both engines. A row is located by `block_epoch + offset_s`, so
+    an engine that writes no offset contributes nothing rather than a guessed
+    time. The block that straddles 19:00 therefore keeps its later minutes and
+    loses the minutes that belong to the previous report.
+    """
+    from kern_overnight import fetch
+
+    w_start, w_end = fetch.window_bounds(_report_date_for(block_epoch, tz), tz)
+    kept = []
+    for r in rows:
+        off = r.get("offset_s")
+        if off is None:
+            continue
+        instant = block_epoch + float(off)
+        if not (w_start <= instant < w_end):
+            continue
+        r["time_local"] = dt.datetime.fromtimestamp(instant, tz).strftime("%H:%M")
+        kept.append(r)
+    return kept
+
+
 def _transcribe_whisper(model, wav: Path, segs: list[tuple[float, float]],
                         block_epoch: int, tz: dt.tzinfo, source_file: str,
                         vocab_text: str) -> list[dict]:
@@ -511,7 +535,6 @@ def _transcribe_whisper(model, wav: Path, segs: list[tuple[float, float]],
     audio_arr = (np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768.0)
     rows = []
     failed = 0
-    w_start, w_end = fetch.window_bounds(_report_date_for(block_epoch, tz), tz)
     for (s0, s1) in segs:
         if s1 - s0 < MIN_DURATION_S:
             continue
@@ -523,12 +546,7 @@ def _transcribe_whisper(model, wav: Path, segs: list[tuple[float, float]],
                   flush=True)
             continue
         for r in seg_rows:
-            instant = block_epoch + r["start"]
-            if not (w_start <= instant < w_end):
-                continue        # the block that straddles 19:00: its earlier
-                                # minutes belong to the previous report
             rows.append({
-                "time_local": dt.datetime.fromtimestamp(instant, tz).strftime("%H:%M"),
                 "duration": round(r["end"] - r["start"], 2),
                 "text": r["text"],
                 "confidence": round(r["confidence"], 3),
@@ -538,7 +556,7 @@ def _transcribe_whisper(model, wav: Path, segs: list[tuple[float, float]],
                 # this offset instead of guessing from the clock minute
                 "offset_s": round(r["start"], 1),
             })
-    return rows, failed
+    return _trim_to_window(rows, block_epoch, tz), failed
 
 
 def _transcribe_deepgram(wav: Path, segs: list[tuple[float, float]],
@@ -566,7 +584,8 @@ def _transcribe_deepgram(wav: Path, segs: list[tuple[float, float]],
             wo.setframerate(sr)
             wo.writeframes(chunk)
         seg_audio.append((s0, s1, buf.getvalue()))
-    return deepgram.transcribe_segments(seg_audio, block_epoch, tz, source_file)
+    rows = deepgram.transcribe_segments(seg_audio, block_epoch, tz, source_file)
+    return _trim_to_window(rows, block_epoch, tz)
 
 
 def load_vocab(path: Path) -> str:

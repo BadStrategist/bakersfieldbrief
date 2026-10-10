@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-10T01:56:31-07:00",
+ "built_at": "2026-10-10T08:33:41-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 4669, column 44"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -54,8 +54,8 @@
    "error": ""
   },
   "alertline": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ALERTLINE_API_KEY not set (free key at alertline.kern.org/thirdparty)"
   },
   "blocked": {
    "ok": false,
@@ -69,59 +69,56 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 2,
    "top_story": "1 injured after being struck by vehicle in south Bakersfield, police say",
    "overnight_band": {
-    "date": "2026-10-09",
-    "count": 52,
+    "date": "2026-10-10",
+    "count": 23,
     "chips": [
      [
       "Crashes and traffic",
-      5
+      1
      ],
      [
       "Disturbances and welfare",
-      10
+      4
      ],
      [
       "Fires",
-      3
+      5
      ],
      [
       "Medical aid",
-      2
-     ],
-     [
-      "Overdose",
       1
      ],
      [
       "Weapons",
-      4
-     ],
-     [
-      "Assault and fights",
-      3
-     ],
-     [
-      "Burglary and theft",
-      4
-     ],
-     [
-      "Suspicious activity",
       2
      ],
      [
-      "Incident",
-      10
+      "Assault and fights",
+      1
      ],
      [
-      "Other: burglary alarm, alarm, vehicle, public service, wanted subject",
-      8
+      "Burglary and theft",
+      2
+     ],
+     [
+      "Suspicious activity",
+      1
+     ],
+     [
+      "Multi-vehicle crash",
+      2
+     ],
+     [
+      "Other: fire alarm, forced entry threat, public service",
+      4
      ]
     ],
     "unmapped": [
-     "wanted subject"
+     "multi-vehicle crash",
+     "forced entry threat"
     ]
    },
    "archive": "2026-10-10"
@@ -129,7 +126,7 @@
   "cityhall": {
    "upcoming_meetings": 5,
    "county_items": 109,
-   "drafts_generated": 2
+   "drafts_generated": 0
   },
   "places": {
    "places": [
@@ -141,7 +138,7 @@
    ],
    "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 12,
+    "tehachapi": 0,
     "bakersfield-nw": 12,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
@@ -159,13 +156,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 0,
+   "wind_mph": 7,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 55,
-   "wind_mph": 0,
+   "temp": 63,
+   "wind_mph": 7,
    "alerts": 0
   },
   "roads": {
@@ -177,7 +174,7 @@
    "log_entries": 60
   },
   "fog_delays": {
-   "ok": true,
+   "ok": false,
    "alerts": 0,
    "logged_days": 0
   },
@@ -196,17 +193,17 @@
    "isabella_af": 144485,
    "alpr_total": 270,
    "kern_fires": 1,
-   "aqi": 44,
-   "chp_week": 87
+   "aqi": 66,
+   "chp_week": 94
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 59
+   "published": 60
   },
   "map": {
-   "dots": 100
+   "dots": 115
   },
   "sunday_read": {
    "topic": "Public safety",

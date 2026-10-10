@@ -1,0 +1,217 @@
+[
+ {
+  "type": "multi-vehicle crash",
+  "time": "02:23",
+  "agency": "KCFD / CHP / Hall Ambulance",
+  "area": "northbound Interstate 5, about two miles south of Taft Highway",
+  "notability": 4,
+  "disposition": "vehicle fully involved; fire knocked down; second ambulance requested",
+  "summary": "Callers reported a crash with a vehicle catching fire on northbound Interstate 5 south of Taft Highway, with one caller reporting from the southbound side and another from the northbound side. The first crew on scene found a single vehicle fully involved and another vehicle off the shoulder. Reports put as many as four vehicles in the wreckage, with the car ending up in the center divider. A second ambulance was sent from Lamont and firefighters knocked the fire down."
+ },
+ {
+  "type": "multi-vehicle crash",
+  "time": "19:01",
+  "agency": "KCFD / Hall Ambulance",
+  "area": "a Kern County roadway",
+  "notability": 4,
+  "disposition": "two patients pinned; extrication requested",
+  "summary": "Responders reported a multi-vehicle crash in which two patients, one critical and one moderate, were pinned inside a single car. The people in the other vehicles were gone by the time units arrived. A second ambulance was kept coming and crews called for one more engine to free the two patients from the wreckage."
+ },
+ {
+  "type": "weapons call",
+  "time": "23:51",
+  "agency": "CHP / BPD",
+  "area": "Highway 99 at Ming Avenue",
+  "notability": 4,
+  "disposition": "officer safety broadcast; no arrest reported",
+  "summary": "Officers broadcast an officer safety warning after CHP passed along a report of a man with a silver rifle in the area of Highway 99 at Ming Avenue. The report was tied to a white Honda SUV and came from an incident that had happened about five minutes earlier. The man was described as Hispanic, in his twenties with short hair."
+ },
+ {
+  "type": "assault with a deadly weapon",
+  "time": "00:05",
+  "agency": "BPD",
+  "area": "north Chester Avenue",
+  "notability": 4,
+  "disposition": "no injuries; no arrest reported",
+  "summary": "A caller reported being the victim of an assault with a firearm behind a business on north Chester Avenue. Dispatchers were told a man had a handgun and fired it, with no one hurt, and that the people who called had left the area before officers arrived. The suspect was described as a thin Hispanic man in a gray shirt.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "20:55",
+  "agency": "BPD / Hall Ambulance",
+  "area": "an apartment complex in the city",
+  "notability": 4,
+  "disposition": "highest priority response; care transferred to medics",
+  "summary": "Police and medics were sent to an apartment for a young child reported not breathing after what was described as a possible bathtub accident. The call went out at the highest priority and an engine and an ambulance responded together."
+ },
+ {
+  "type": "suspicious vehicle",
+  "time": "01:35",
+  "agency": "BPD",
+  "area": "north Chester Avenue from Auburn Street",
+  "notability": 3,
+  "disposition": "units responded to sort out the parties",
+  "summary": "A caller reported being followed by another driver on north Chester Avenue from Auburn Street, and a second vehicle was reported running red lights behind them. Officers headed that way to sort out who was involved."
+ },
+ {
+  "type": "assault",
+  "time": "22:00",
+  "agency": "BPD",
+  "area": "Niles Street and Alta Vista Drive",
+  "notability": 3,
+  "disposition": "victim waiting to meet officers",
+  "summary": "A woman told police she went back to collect her purse and credit cards and was hit with a cane near Niles Street and Alta Vista Drive. She was not badly hurt and waited to meet an officer.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "forced entry threat",
+  "time": "04:43",
+  "agency": "KCSO",
+  "area": "the 8100 block of Fuller Drive, near Weedpatch Highway",
+  "notability": 3,
+  "disposition": "deputies responded",
+  "summary": "Deputies were sent to the 8100 block of Fuller Drive near Weedpatch Highway after a caller said five people in an unknown vehicle were trying to force their way into her home. The woman told dispatchers she was armed and would shoot anyone who came in."
+ },
+ {
+  "type": "grass fire",
+  "time": "05:29",
+  "agency": "KCFD",
+  "area": "Weedpatch Highway at the eastbound Highway 58 off-ramp",
+  "notability": 3,
+  "disposition": "held at about half an acre",
+  "summary": "A single passerby reported flames along the freeway at Weedpatch Highway. The first crew on scene found about a half acre of grass burning on the westbound off-ramp between the highway and the ramp, and patrol units stayed with it."
+ },
+ {
+  "type": "grass fire",
+  "time": "05:11",
+  "agency": "KCFD",
+  "area": "the Ridgecrest landfill on Bowman Road",
+  "notability": 3,
+  "disposition": "crews responded with heavy equipment",
+  "summary": "Firefighters were sent to the Ridgecrest landfill for a fire reported at the top of the dump, roughly 50 feet tall in piles of material. A dozer assignment and patrol units were part of the call."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "05:50",
+  "agency": "KCFD",
+  "area": "Highway 43 at Highway 46",
+  "notability": 3,
+  "disposition": "vehicle fully involved",
+  "summary": "A solo vehicle crashed and caught fire just north of the Highway 43 and Highway 46 junction. The first engine on scene reported the car fully involved and additional engines were started for water."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "03:56",
+  "agency": "KCFD",
+  "area": "Whistler Road near Pozo Creek, west of South Garzoli Avenue",
+  "notability": 2,
+  "disposition": "single engine response",
+  "summary": "Crews were sent to a vehicle fire on Whistler Road near Pozo Creek, a couple of miles west of South Garzoli Avenue."
+ },
+ {
+  "type": "fire alarm",
+  "time": "03:53",
+  "agency": "KCFD",
+  "area": "the 6200 block of Calabria Drive",
+  "notability": 2,
+  "disposition": "crew responded",
+  "summary": "An engine was sent to a residential fire alarm on the 6200 block of Calabria Drive.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "public service",
+  "time": "00:34",
+  "agency": "BPD",
+  "area": "the 400 block of Buck Owens Boulevard",
+  "notability": 2,
+  "disposition": "dispatchers worked to get more detail",
+  "summary": "An open 911 line brought officers to a business on the 400 block of Buck Owens Boulevard, where a man could be heard asking for an ambulance. Dispatchers worked to get more information while units responded."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "00:47",
+  "agency": "KCFD",
+  "area": "Highway 58",
+  "notability": 2,
+  "disposition": "fire out a short time later",
+  "summary": "Firefighters were sent to a small vehicle fire on Highway 58 and reported it out a short time later."
+ },
+ {
+  "type": "disturbance",
+  "time": "01:30",
+  "agency": "BPD",
+  "area": "the 2900 block of Virginia Avenue",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "Officers were sent to an apartment on the 2900 block of Virginia Avenue where a man was reported banging on a front door and refusing to leave.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "00:09",
+  "agency": "BPD",
+  "area": "the 4300 block of Pebble Creek Drive",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "A domestic disturbance was reported at an address on the 4300 block of Pebble Creek Drive.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "stolen vehicle",
+  "time": "22:06",
+  "agency": "BPD",
+  "area": "35th Street and S H Street",
+  "notability": 2,
+  "disposition": "vehicle stopped",
+  "summary": "A stolen black Toyota Corolla was reported moving through the area of 35th Street and S H Street on the east side, and officers stopped it a short time later."
+ },
+ {
+  "type": "welfare check",
+  "time": "22:13",
+  "agency": "KCSO",
+  "area": "the 400 block of Warren Avenue, Oildale",
+  "notability": 2,
+  "disposition": "deputies responded",
+  "summary": "Deputies checked on a man in his forties reported acting erratically on the 400 block of Warren Avenue in Oildale. He had cuts on his wrist.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "juvenile disturbance",
+  "time": "22:21",
+  "agency": "BPD",
+  "area": "the 1400 block of Jefferson Street",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "Several callers reported a group of juveniles drinking and smoking in the area of the 1400 block of Jefferson Street, and a separate caller said three shots had been fired nearby a few minutes earlier.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "traffic hazard",
+  "time": "03:44",
+  "agency": "CHP",
+  "area": "Frazier Mountain Park Road east of Cuddy Canyon",
+  "notability": 2,
+  "disposition": "Caltrans notified",
+  "summary": "A unit stopped on Frazier Mountain Park Road just east of Cuddy Canyon for debris in the roadway and asked that Caltrans be notified about a barrier that had shifted."
+ },
+ {
+  "type": "theft",
+  "time": "03:24",
+  "agency": "KCSO",
+  "area": "the 24500 block of Florida Highway",
+  "notability": 2,
+  "disposition": "deputies responded",
+  "summary": "A caller reported four people in a vehicle taking pomegranates from a property off Florida Highway south of the packing house."
+ },
+ {
+  "type": "fire alarm",
+  "time": "05:52",
+  "agency": "KCFD",
+  "area": "the 10800 block of Rosedale Highway",
+  "notability": 2,
+  "disposition": "alarm cancelled",
+  "summary": "An engine was sent to a commercial fire alarm at a restaurant on the 10800 block of Rosedale Highway and the alarm was cancelled without a fire.",
+  "region": "northwest Bakersfield"
+ }
+]

@@ -167,16 +167,6 @@
   "summary": "A stolen black Toyota Corolla was reported moving through the area of 35th Street and S H Street on the east side, and officers stopped it a short time later."
  },
  {
-  "type": "welfare check",
-  "time": "22:13",
-  "agency": "KCSO",
-  "area": "the 400 block of Warren Avenue, Oildale",
-  "notability": 2,
-  "disposition": "deputies responded",
-  "summary": "Deputies checked on a man in his forties reported acting erratically on the 400 block of Warren Avenue in Oildale. He had cuts on his wrist.",
-  "region": "north Bakersfield"
- },
- {
   "type": "juvenile disturbance",
   "time": "22:21",
   "agency": "BPD",
@@ -296,16 +286,6 @@
  },
  {
   "type": "Traffic collision",
-  "time": "01:01",
-  "agency": "Bakersfield Police, Fire and EMS",
-  "area": "",
-  "notability": 3,
-  "disposition": "",
-  "summary": "Traffic collision reported south of Avenue A.",
-  "source": "crimeradar"
- },
- {
-  "type": "Traffic collision",
   "time": "01:06",
   "agency": "Bakersfield Police, Fire and EMS",
   "area": "",
@@ -332,16 +312,6 @@
   "notability": 3,
   "disposition": "",
   "summary": "Disabled vehicle facing wrong way on highway ramp.",
-  "source": "crimeradar"
- },
- {
-  "type": "Traffic collision",
-  "time": "03:25",
-  "agency": "Bakersfield Police, Fire and EMS",
-  "area": "",
-  "notability": 3,
-  "disposition": "",
-  "summary": "Crash reported on Old Road in California.",
   "source": "crimeradar"
  },
  {
@@ -382,16 +352,6 @@
   "notability": 2,
   "disposition": "",
   "summary": "Disturbance at residence on Cortez Court.",
-  "source": "crimeradar"
- },
- {
-  "type": "Incident",
-  "time": "06:56",
-  "agency": "Bakersfield Police, Fire and EMS",
-  "area": "",
-  "notability": 3,
-  "disposition": "",
-  "summary": "Woman falls and injures ankle on northbound I-5.",
   "source": "crimeradar"
  },
  {

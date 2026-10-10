@@ -138,14 +138,23 @@ def paragraph_incidents(incidents: list[dict]) -> list[dict]:
 
 
 def _log_row(inc: dict) -> str:
-    """One log bullet: time first, then type and area, then the summary."""
-    typ = " ".join(str(inc.get("type") or "incident").split())
-    typ = typ[:1].upper() + typ[1:]
+    """One log bullet: time first, then type and area, then the summary.
+
+    The type head is dropped when the row has no real type ("Incident") or when
+    the summary already opens with it. Without that, a row reads
+    "Fight. Fight reported at ..." (2026-10-10 rows 1:01 a.m. and 3:25 a.m. are
+    the same shape: "Traffic collision. Traffic collision reported ...").
+    """
+    typ = " ".join(str(inc.get("type") or "").split())
     area = " ".join(str(inc.get("area") or "").split())
     what = _one_line(inc.get("summary") or inc.get("disposition") or "")
-    head = f"{typ}, {area}" if area else typ
-    line = f"- **{fmt_time_long(inc.get('time', ''))}** — {head}."
-    return f"{line} {what}".rstrip()
+    head = ""
+    if typ and typ.lower() != "incident" and not what.lower().startswith(typ.lower()):
+        typ = typ[:1].upper() + typ[1:]
+        head = f"{typ}, {area}." if area else f"{typ}."
+    clock = fmt_time_long(inc.get("time", ""))
+    tail = " ".join(x for x in (head, what) if x).rstrip()
+    return f"- **{clock}** — {tail}".rstrip()
 
 
 def log_rows(incidents: list[dict], limit: int = 40,
@@ -232,15 +241,15 @@ def insert_log_lines(body: str, rows: list[str], limit: int = 40) -> tuple[str, 
     if not rows:
         return body, 0
     existing = log_lines(body)
-    left: dict[str, int] = {}
-    for line in existing:
-        t = ROW_LINE.match(line).group(1)
-        left[t] = left.get(t, 0) + 1
     merged, added = list(existing), 0
+    used: set[int] = set()
     for row in rows:
-        t = ROW_LINE.match(row).group(1)
-        if left.get(t):
-            left[t] -= 1
+        hit = next((i for i, line in enumerate(merged)
+                    if i not in used
+                    and ROW_LINE.match(line).group(1) == ROW_LINE.match(row).group(1)
+                    and _same_telling(line, row)), None)
+        if hit is not None:
+            used.add(hit)
             continue
         merged.append(row)
         added += 1
@@ -253,6 +262,20 @@ def insert_log_lines(body: str, rows: list[str], limit: int = 40) -> tuple[str, 
     merged.sort(key=lambda ln: night_key(_line_clock(ln)))
     section = "\n".join(["## The log", ""] + merged + [""])
     return _insert_log(body, section), added
+
+
+def _same_telling(line: str, row: str) -> bool:
+    """Do an existing line and a code row describe the SAME incident?
+
+    The writer's lines are shaped differently from code rows ("**10:00 p.m.**:
+    a stolen vehicle was reported" vs "**10:00 p.m.** — Theft, ...; Stolen
+    vehicle"), so identity is by the words: two or more distinct words of four
+    or more letters in common. Consuming a time slot on the clock alone would
+    let a writer's line for one incident hide a missing row at the same minute.
+    """
+    a = {w for w in re.findall(r"[a-z]{4,}", (line or "").lower())}
+    b = {w for w in re.findall(r"[a-z]{4,}", (row or "").lower())}
+    return len(a & b) >= 2
 
 
 def _line_clock(line: str) -> str:

@@ -76,6 +76,8 @@ _SKIP_TEXT = re.compile(
     r"\bpatrol(?:ing)?\b|\bchecking (?:on|the) (?:alley|area)\b|"
     r"\bphone (?:number|calls?)\b|\b(?:cell|work) phone\b", re.I)
 
+from kern_overnight.privacy import ALWAYS_PRIVATE  # noqa: E402  one rule, one place
+
 # privacy: rows carrying names/numbers/plates are skipped as sources
 _PRIVACY = re.compile(
     r"\b\d{3}[-.) ]?\d{3}[-.) ]?\d{4}\b|"           # phone
@@ -90,6 +92,11 @@ def _extract_row(row: dict, streets: list[str]) -> dict | None:
     if len(text) < 25:
         return None
     if _SKIP_TEXT.search(text) or _PRIVACY.search(text):
+        return None
+    # The same hard rule the app rows get. A radio row carried a wrist wound
+    # with a block address on 2026-10-10 and nothing screened it, because the
+    # rule only ran over the emulator feed.
+    if ALWAYS_PRIVATE.search(text):
         return None
 
     typ = next((t for p, t in TYPE_RULES if p.search(text)), None)

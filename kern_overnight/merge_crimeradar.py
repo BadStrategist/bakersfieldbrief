@@ -188,21 +188,20 @@ def in_radio(hhmm: str, spans: list[tuple[int, int]] | None,
 # that breaks them is dropped rather than rewritten. Editorial rule (owner,
 # 2026-10-04): most medical calls stay out; a SEVERE one is news and stays in.
 #
-# Never published, however serious: self-harm, mental-health and maternity calls.
-ALWAYS_PRIVATE = re.compile(
-    r"\b(suicid\w*|self[- ]harm\w*|psychiatric|mental health|5150|delusion\w*|"
-    r"maternity|pregnan\w*|in labor)\b", re.I)
-# Routine medical traffic: out unless the same headline is also SEVERE.
-MEDICAL = re.compile(
-    r"\b(patient|hospital|ambulance|medical|overdos\w*|seizure\w*|cardiac|"
-    r"breathing|unresponsive|unconscious|cpr|pain|traumatic|ill|sick|fainted|"
-    r"mercy|memorial|adventist|kaiser|dignity health|kern medical)\b", re.I)
-SEVERE = re.compile(
-    r"\b(cpr|unconscious|unresponsive|not breathing|cardiac arrest|drown\w*|"
-    r"fatal\w*|dead|deceased|doa|life[- ]threatening|critical(?:ly)?|"
-    r"major injur\w*|traumatic injur\w*|shot|gunshot|stabb\w*|electrocut\w*|"
-    r"burn(?:ed|s)? victim)\b", re.I)
-
+# The rules themselves live in kern_overnight/privacy.py so the radio path can
+# screen with the same ones (a radio row leaked a wrist wound on 2026-10-10).
+from kern_overnight.privacy import (  # noqa: E402  re-exported for callers/tests
+    ALWAYS_PRIVATE, FALL, MEDICAL, SEVERE, is_private, is_severe)
+# Rows the app placed OUTSIDE Kern County, dropped rather than published as Kern
+# news. "Avenue A" to "Avenue T" is the Antelope Valley grid on the Los Angeles
+# side of the line, "The Old Road" is the I-5 frontage in Santa Clarita, and a
+# bare "in California" is the app failing to place the row at all. Not a general
+# street whitelist: streets.txt is Bakersfield-only, so requiring a known street
+# would drop every legitimate east Kern row and every unlocated one (2026-10-10
+# rows 1:01 a.m. and 3:25 a.m.).
+# "in California City" is a KERN town (incidents/2026-10-08.json has a real fire
+# there), so the "in California" arm must not match it.
+OUTSIDE = re.compile(r"\b(?:in California(?! City)\b|Avenue\s+[A-T]\b|Old Road\b)", re.I)
 # "1234 Main St" -> "Main St": exact addresses are generalised, never published.
 HOUSE_NO = re.compile(r"\b\d{2,5}\s+(?=(?:[NSEW]\.?\s+)?[A-Z][a-z])")
 
@@ -267,22 +266,6 @@ def covered_by(hhmm: str, title: str, transcript: list[dict],
     return None
 
 
-def is_severe(text: str) -> bool:
-    return bool(SEVERE.search(text or ""))
-
-
-def is_private(text: str, medical: bool = False) -> bool:
-    """Must this headline stay out of the report and the reels?
-
-    `medical` marks a row the app itself filed as a medical emergency, for
-    headlines that carry no medical word ("Person down near park").
-    """
-    text = text or ""
-    if ALWAYS_PRIVATE.search(text):
-        return True
-    return bool(medical or MEDICAL.search(text)) and not is_severe(text)
-
-
 def scrub(text: str) -> str:
     return HOUSE_NO.sub("", text or "")
 
@@ -306,10 +289,14 @@ def plan(staged: list, ours: list, spans: list[tuple[int, int]] | None = None,
     transcript = [i for i in ours
                   if not (isinstance(i, dict) and i.get("source") == SOURCE)]
     keep, covered, private, invalid, minor, gap, seen = [], [], [], [], [], [], set()
+    outside: list = []
     for r in staged:
         if not isinstance(r, dict) or minutes(r.get("time", "")) is None \
                 or not str(r.get("summary") or "").strip():
             invalid.append(r)
+            continue
+        if OUTSIDE.search(str(r.get("summary") or "")):
+            outside.append(r)
             continue
         if is_private(r["summary"]):
             private.append(r)
@@ -337,7 +324,8 @@ def plan(staged: list, ours: list, spans: list[tuple[int, int]] | None = None,
         if not hot:
             gap.append(row)
     return {"transcript": transcript, "keep": keep, "covered": covered,
-            "private": private, "invalid": invalid, "minor": minor, "gap": gap}
+            "private": private, "outside": outside, "invalid": invalid,
+            "minor": minor, "gap": gap}
 
 
 def merge(date_iso: str, incidents_dir: Path = INCIDENTS,
@@ -345,7 +333,7 @@ def merge(date_iso: str, incidents_dir: Path = INCIDENTS,
           transcript_dir: Path | None = None) -> dict:
     """Rebuild the emulator section of incidents/<date>.json. Never raises."""
     out = {"date": date_iso, "staged": 0, "merged": 0, "covered": 0,
-           "private": 0, "gap": 0, "changed": False, "note": ""}
+           "private": 0, "outside": 0, "gap": 0, "changed": False, "note": ""}
     try:
         if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date_iso or ""):
             out["note"] = "bad date"
@@ -383,7 +371,7 @@ def merge(date_iso: str, incidents_dir: Path = INCIDENTS,
         spans = radio_spans(date_iso, transcript_dir or TRANSCRIPTS)
         p = plan(staged, ours, spans, date_iso)
         out.update(covered=len(p["covered"]), private=len(p["private"]),
-                   gap=len(p["gap"]))
+                   outside=len(p["outside"]), gap=len(p["gap"]))
         if not p["transcript"]:
             out["note"] = (f"{dest.name} has no transcript incidents; refusing to "
                            "build a report from emulator rows alone")
@@ -512,6 +500,7 @@ def main() -> int:
     print(f"[cr] merge {r['date']}: {r['staged']} staged, {r['merged']} merged "
           f"({r['gap']} of them filling hours the radio feed does not carry), "
           f"{r['covered']} already covered, {r['private']} withheld (privacy), "
+          f"{r['outside']} dropped (outside Kern), "
           f"{'file updated' if r['changed'] else 'file unchanged'} - {r['note']}")
     return 0
 

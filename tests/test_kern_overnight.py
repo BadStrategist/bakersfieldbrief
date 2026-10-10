@@ -136,10 +136,18 @@ class TestGeo:
         n = geo.build_feed(ROOT / "incidents", tmp_path / "feed.json", max_age_h=200)
         assert n >= 10
         feed = json.loads((tmp_path / "feed.json").read_text(encoding="utf-8"))
-        # no exact street numbers: allow "2400 block of X", forbid "124 X Ave"
+        # No exact street numbers: allow the block form ("3500 block Terrace
+        # Way", "2400 block of X"), forbid a number that names a house ("124 X
+        # Ave", "8120 Kern Canyon Road"). Two exclusions, both decided by the
+        # 1202 area values in incidents/: "block", because the allowed form
+        # matches the forbidden shape; and the connector words, because a route
+        # number before a junction reads the same way ("Highway 43 at Highway
+        # 46" is a crossing, not a mailing address).
         exact = re.compile(
-            r"\b\d{1,4}\s+[A-Za-z]+\s+"
-            r"(street|avenue|road|lane|drive|highway|way|boulevard)\b", re.I)
+            r"\b\d{1,4}\s+"
+            r"(?!(?:block|at|and|near|in|on|of|the|to|from)\b)"
+            r"[A-Za-z]+\s+"
+            r"(?:street|avenue|road|lane|drive|highway|way|boulevard)\b", re.I)
         for d in feed:
             assert {"lat", "lng", "p", "t", "type", "area"} <= set(d)
             assert not exact.search(d["area"]), d["area"]

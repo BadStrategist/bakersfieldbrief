@@ -169,7 +169,27 @@ def touch_lock() -> None:
 
 
 def _pid_alive(pid: int) -> bool:
-    """Is this pid running? Never os.kill(pid, 0): on Windows that TERMINATES it."""
+    """Is this pid running? Never os.kill(pid, 0): on Windows that TERMINATES it.
+
+    The Windows probe is behind a platform guard because kernel32 does not exist
+    on the Linux CI runner, where the two lock tests would otherwise die with
+    "module 'ctypes' has no attribute 'WinDLL'" (the 2026-10-10 red run).
+    """
+    if int(pid) <= 0:
+        return False
+    if os.name != "nt":
+        # POSIX: signal 0 is a pure existence probe. It is only dangerous on
+        # Windows (there it terminates), which is why this branch is not taken
+        # there.
+        try:
+            os.kill(int(pid), 0)
+        except ProcessLookupError:
+            return False
+        except PermissionError:
+            return True                 # exists, just not ours to signal
+        except OSError:
+            return False
+        return True
     k = ctypes.WinDLL("kernel32", use_last_error=True)
     h = k.OpenProcess(0x1000, False, int(pid))      # PROCESS_QUERY_LIMITED_INFORMATION
     if not h:

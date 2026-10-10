@@ -238,7 +238,7 @@ def _night(rel, chp, built_iso) -> tuple[str, dict]:
         body = f"""
     <ul class="chips" aria-label="Calls by type">{lis}
     </ul>
-    <p class="note t13 muted">Source: police, fire and EMS radio traffic for Bakersfield and Kern County, plus app-based dispatch reports for the hours the radio feed does not carry. Not a complete record of every call. The total and the counts by type are counted from one file, the incident records of the {_md(night)} report.</p>"""
+    <p class="note t13 muted">Source: police, fire and EMS radio traffic for Bakersfield and Kern County, plus app-based dispatch reports for the hours the radio feed does not carry. Not a complete record of every call.</p>"""
     else:
         head = f'<span class="say">{_e(rep["title"])}</span>'
         body = '\n    <p class="note t13 muted">Call counts for this report are not available.</p>'

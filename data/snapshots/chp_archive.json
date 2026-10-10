@@ -1320,6 +1320,16 @@
   "details": ""
  },
  {
+  "log_id": "261009BF0294",
+  "time": "Oct  9 2026  5:25PM",
+  "type": "1184-Provide Traffic Control",
+  "location": "Cyrus Canyon Rd / Sierra Way",
+  "area": "Bakersfield",
+  "lat": 35.703724,
+  "lon": -118.422857,
+  "details": ""
+ },
+ {
   "log_id": "261009BF0036",
   "time": "Oct  9 2026  5:36AM",
   "type": "MZP-Assist CT with Maintenance",

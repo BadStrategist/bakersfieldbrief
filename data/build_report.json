@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-09T17:21:31-07:00",
+ "built_at": "2026-10-09T17:44:20-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,9 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter",
-   "stale": true,
-   "asof": "2026-10-09"
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -71,7 +69,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
+   "chp_new": 1,
    "top_story": "Heavy KCSO presence seen in NW Bakersfield Friday",
    "overnight_band": {
     "date": "2026-10-09",
@@ -181,7 +179,7 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 16,
+    "In the next 7 days": 17,
     "In 1 to 2 weeks": 21,
     "Later": 100
    },
@@ -194,8 +192,8 @@
    "isabella_af": 145078,
    "alpr_total": 270,
    "kern_fires": 1,
-   "aqi": 90,
-   "chp_week": 86
+   "aqi": 97,
+   "chp_week": 87
   },
   "letters": {
    "published": 1

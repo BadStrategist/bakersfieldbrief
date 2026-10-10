@@ -64,9 +64,17 @@ def _chat(prompt: str, system: str, max_tokens: int = 2000,
                 time.sleep(min(30 * (attempt + 1), 90))
                 continue
             r.raise_for_status()
-            out = r.json()["choices"][0]["message"]["content"].strip()
+            choice = (r.json().get("choices") or [{}])[0]
+            msg = choice.get("message") or {}
+            out = (msg.get("content") or "").strip()
             if not out:
-                raise LLMError("empty completion from model")
+                # A null content is deterministic for this payload (the model
+                # spent its budget on reasoning, or answered in another field),
+                # so fail fast instead of sleeping through four retries.
+                raise LLMError(
+                    "empty completion from model "
+                    f"(content={msg.get('content')!r}, "
+                    f"finish_reason={choice.get('finish_reason')!r})")
             return out
         except LLMError:
             raise

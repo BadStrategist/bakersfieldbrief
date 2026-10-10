@@ -1099,10 +1099,11 @@ def hist_dt(when: str) -> dt.datetime | None:
 def report_window(date_iso: str, start_hour: int = 19, end_hour: int = 7) -> tuple[dt.datetime, dt.datetime]:
     """The night a report dated <date_iso> covers: previous day 19:00 -> that day 07:00.
 
-    The report window is 7 PM -> 7 AM. The radio feed the transcript comes from
-    only carries about 21:00 -> 05:30, so the emulator owns 19:00-21:00 and
-    05:30-07:00 outright and fills them with its own rows and clips. A report
-    dated Oct 3 therefore covers the night of Oct 2 19:00 through Oct 3 07:00.
+    The report window is 7 PM -> 7 AM. Which hours inside it the radio feed
+    carries is whatever the transcript's own blocks cover (see
+    merge_crimeradar.radio_spans), so the emulator owns only the hours that
+    really have no radio audio. A report dated Oct 3 therefore covers the night
+    of Oct 2 19:00 through Oct 3 07:00.
     """
     d = dt.date.fromisoformat(date_iso)
     return (dt.datetime.combine(d - dt.timedelta(days=1), dt.time(start_hour, 0)),
@@ -1133,6 +1134,8 @@ def verify_report(date_iso: str) -> dict:
         ours = []
     transcript = [i for i in ours
                   if isinstance(i, dict) and i.get("source") != mc.SOURCE]
+    # the radio hours of THIS night are the spans its transcript covers
+    spans = mc.radio_spans(date_iso)
     lo, hi = report_window(date_iso)
     covered, misses, outside, times = [], [], [], []
     for r in rows:
@@ -1152,10 +1155,11 @@ def verify_report(date_iso: str) -> dict:
             if t < tier and pat.search(r["title"]):
                 tier = t
                 break
-        # The radio feed only carries about 21:00 -> 05:30. A row outside those
-        # hours cannot be "missed by the transcript": the emulator is its only
-        # source, so it is reported separately instead of as a coverage failure.
-        row = {**r, "tier": tier, "gap": not mc.in_radio_hours(when.strftime("%H:%M")),
+        # A row outside the spans the transcript's own blocks cover cannot be
+        # "missed by the transcript": the emulator is its only source, so it is
+        # reported separately instead of as a coverage failure.
+        row = {**r, "tier": tier,
+               "gap": not mc.in_radio(when.strftime("%H:%M"), spans, date_iso),
                "matched": f"{hit.get('time', '')} {hit.get('type', '')}" if hit else ""}
         (covered if hit else misses).append(row)
     return {"date": date_iso, "window": f"{lo:%Y-%m-%d %H:%M} → {hi:%Y-%m-%d %H:%M}",

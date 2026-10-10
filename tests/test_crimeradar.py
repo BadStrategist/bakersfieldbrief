@@ -101,6 +101,50 @@ def read_inc(inc):
     return json.loads((inc / f"{DATE}.json").read_text(encoding="utf-8"))
 
 
+def _night_epoch(date_iso: str, hhmm: str) -> int:
+    """The epoch of a clock time in the night of report <date_iso>.
+
+    The night opens at 19:00 and closes at 07:00, so every evening hour (and a
+    block that starts early, like 18:47) is on the opening day, and only the
+    small hours are on the report's own date.
+    """
+    d = dt.date.fromisoformat(date_iso) - dt.timedelta(days=1)
+    h, m = int(hhmm[:2]), int(hhmm[3:5])
+    day = d if h >= 12 else d + dt.timedelta(days=1)
+    return int(dt.datetime.combine(day, dt.time(h, m), mc.PACIFIC).timestamp())
+
+
+def write_transcript(tdir, date_iso: str, block_starts):
+    """A transcript whose rows name `block_starts` as the blocks they came from."""
+    tdir.mkdir(parents=True, exist_ok=True)
+    rows = [{"time_local": s, "text": "copy", "duration": 2.0, "confidence": 0.9,
+             "engine": "faster-whisper:large-v3",
+             "source_file": f"14029-{_night_epoch(date_iso, s)}.mp3"}
+            for s in block_starts]
+    (tdir / f"{date_iso}.jsonl").write_text(
+        "".join(json.dumps(r) + "\n" for r in rows), encoding="utf-8")
+    return tdir
+
+
+def feed_hour_blocks(date_iso: str):
+    """Block starts that tile 21:00 -> 05:30, the hours the feed carries."""
+    return [f"{(21 * 60 + 30 * step) // 60 % 24:02d}:{30 * step % 60:02d}"
+            for step in range(0, 17)]
+
+
+@pytest.fixture(autouse=True)
+def night_transcript(tmp_path_factory, monkeypatch):
+    """Every test runs with the transcript a real night would have.
+
+    The spans are read from it, so without one there are no radio hours at all.
+    A test that needs that case passes a directory with no file for the date.
+    """
+    tdir = write_transcript(tmp_path_factory.mktemp("transcripts"), DATE,
+                            feed_hour_blocks(DATE))
+    monkeypatch.setattr(mc, "TRANSCRIPTS", tdir)
+    return tdir
+
+
 # ------------------------------------------------------------------- merge
 def test_merge_adds_uncovered_and_is_idempotent(dirs):
     inc, stage = dirs
@@ -388,15 +432,57 @@ def test_report_window_is_seven_pm_to_seven_am():
 
 
 @pytest.mark.parametrize("hhmm,radio", [
-    # the radio feed's own hours
+    # the hours the night's blocks cover
     ("21:00", True), ("23:59", True), ("00:00", True), ("05:29", True),
+    # the 05:00 block runs to 05:30:29, so 05:30 is a covered minute
+    ("05:30", True),
     # the hours only the emulator covers
-    ("19:00", False), ("20:59", False), ("05:30", False), ("06:59", False),
+    ("19:00", False), ("20:59", False), ("06:15", False), ("06:59", False),
     # unreadable times take the stricter rule
     ("", True), ("nonsense", True), ("25:00", True),
 ])
-def test_in_radio_hours(hhmm, radio):
-    assert mc.in_radio_hours(hhmm) is radio
+def test_in_radio_follows_the_night_transcript(hhmm, radio, night_transcript):
+    """The spans are the transcript's own blocks; no constant decides this."""
+    spans = mc.radio_spans(DATE, night_transcript)
+    assert mc.in_radio(hhmm, spans, DATE) is radio
+
+
+def test_the_shoulders_become_radio_hours_when_their_blocks_arrive(tmp_path):
+    """A transcript that reaches back to 19:00 makes the evening a radio hour."""
+    tdir = write_transcript(tmp_path / "t", DATE, ["19:05", "19:35", "20:05"])
+    spans = mc.radio_spans(DATE, tdir)
+    assert mc.in_radio("19:20", spans, DATE) is True
+    assert mc.in_radio("20:15", spans, DATE) is True
+    assert mc.in_radio("03:00", spans, DATE) is False
+
+
+def test_no_transcript_means_no_radio_hours(tmp_path):
+    """No readable transcript: no radio hours, every hour is a gap hour."""
+    assert mc.radio_spans(DATE, tmp_path / "empty") == []
+    assert mc.in_radio("23:00", [], DATE) is False
+
+
+def test_radio_spans_ignores_rows_that_name_no_block(tmp_path):
+    """A row that names no archive block tells us nothing about coverage."""
+    tdir = tmp_path / "t"
+    tdir.mkdir()
+    (tdir / f"{DATE}.jsonl").write_text(
+        '{"text": "copy", "source_file": "live-stream"}\n', encoding="utf-8")
+    assert mc.radio_spans(DATE, tdir) == []
+
+
+def test_a_straddling_18_47_block_makes_19_05_a_radio_hour(dirs, tmp_path):
+    """The block that starts at 18:47 carries 19:00-19:17, so 19:05 is covered."""
+    inc, stage = dirs
+    put_inc(inc, TRANSCRIPT)
+    put_stage(stage, [staged("19:05", "Traffic stop on Rosedale Highway.",
+                             notability=2)])
+    # with no transcript on disk every hour is a gap hour: the routine row stays
+    assert mc.merge(DATE, inc, stage, tmp_path / "nothing")["merged"] == 1
+    put_inc(inc, TRANSCRIPT)                    # back to the transcript alone
+    tdir = write_transcript(tmp_path / "t", DATE, ["18:47"])
+    r = mc.merge(DATE, inc, stage, tdir)
+    assert (r["merged"], r["gap"]) == (0, 0)    # inside the span: serious only
 
 
 def test_gap_hours_merge_routine_rows_and_radio_hours_do_not(dirs):
@@ -424,14 +510,16 @@ def test_gap_hours_merge_routine_rows_and_radio_hours_do_not(dirs):
     assert r["merged"] == 4
 
 
-def test_every_gap_row_in_the_report_came_from_the_emulator(dirs):
+def test_every_gap_row_in_the_report_came_from_the_emulator(dirs,
+                                                             night_transcript):
     """The gap hours have no other source: nothing is invented to fill them."""
     inc, stage = dirs
     put_inc(inc, TRANSCRIPT)
     put_stage(stage, [staged("19:05", "Traffic stop on Coffee Road.", notability=2)])
-    mc.merge(DATE, inc, stage)
+    mc.merge(DATE, inc, stage, night_transcript)
     after = read_inc(inc)
-    gap_rows = [i for i in after if not mc.in_radio_hours(i["time"])]
+    spans = mc.radio_spans(DATE, night_transcript)
+    gap_rows = [i for i in after if not mc.in_radio(i["time"], spans, DATE)]
     assert gap_rows
     assert all(i.get("source") == "crimeradar" for i in gap_rows)
     # and the radio hours are untouched by the gap rule

@@ -16,11 +16,14 @@ does the transcript's incident list exist. Rules:
   * a staged row is dropped when a transcript incident near the same time shares
     its distinctive words (already covered), or when it trips the privacy rules
     the report enforces (patient / hospital / self-harm traffic);
-  * the notability floor depends on the clock. The radio feed only carries about
-    21:00 -> 05:30, so rows outside those hours are the ONLY source for that part
-    of the night and merge at GAP_NOTABILITY (2 = every row, routine calls
-    included). Inside radio hours the transcript leads and only the serious rows
-    (MIN_NOTABILITY, 3) are merged;
+  * the notability floor depends on what the transcript covers. The radio window
+    is not a constant: it is the spans the transcript's own blocks give
+    (radio_spans), so the evening and morning shoulders count as radio hours the
+    moment their blocks arrive. Rows outside those spans are the ONLY source for
+    that part of the night and merge at GAP_NOTABILITY (2 = every row, routine
+    calls included). Inside them the transcript leads and only the serious rows
+    (MIN_NOTABILITY, 3) are merged. No readable transcript: no radio hours at
+    all, so every hour is a gap hour;
   * with no transcript incidents on disk it merges NOTHING: a report must never
     be built from emulator rows alone;
   * a staging file that does not carry the Kern feed the screen showed merges
@@ -91,30 +94,79 @@ STOP = {
 # serious rows; 2 would also merge routine ones (traffic stops) as log lines.
 MIN_NOTABILITY = int(os.environ.get("CR_MERGE_MIN_NOTABILITY", "3"))
 
-# The report window is 19:00 -> 07:00, but the RADIO feed the transcript comes
-# from only carries roughly 21:00 -> 05:30. Outside those hours the emulator is
-# the ONLY source, so its rows merge at GAP_NOTABILITY (2 = everything,
-# including the routine calls that fill the log section) instead of the
-# serious-only MIN_NOTABILITY. Inside radio hours the transcript leads and the
-# higher floor keeps the emulator from padding the report.
-RADIO_START = dt.time(21, 0)
-RADIO_END = dt.time(5, 30)
+# The report window is 19:00 -> 07:00. Which of those hours the RADIO feed
+# actually carries is not a constant anywhere: it is whatever the transcript for
+# this report covers. The spans are therefore read from the transcript's own rows
+# (radio_spans), never assumed. Outside them the emulator is the ONLY source, so
+# its rows merge at GAP_NOTABILITY (2 = everything, including the routine calls
+# that fill the log section) instead of the serious-only MIN_NOTABILITY.
 GAP_NOTABILITY = int(os.environ.get("CR_MERGE_GAP_NOTABILITY", "2"))
 
+# One RadioReference archive block: 30.5 minutes, measured across a night.
+BLOCK_SECONDS = 1829
 
-def in_radio_hours(hhmm: str) -> bool:
-    """Is this clock time inside the hours the radio feed actually carries?
+# The night is local Pacific. This mirrors fetch.PACIFIC (a fixed -7 offset; the
+# runner adjusts for DST) so this module stays importable on its own, which is
+# how the monitor and the tests load it.
+PACIFIC = dt.timezone(dt.timedelta(hours=-7), "PDT")
 
-    The night crosses midnight, so radio hours are 21:00-23:59 and 00:00-05:29.
-    An unreadable time is treated as radio hours: the stricter rule.
+TRANSCRIPTS = ROOT / "transcripts"
+
+
+def _block_epoch(source_file) -> int | None:
+    """The epoch a transcript row's `source_file` names: `<feed>-<epoch>.mp3`."""
+    m = re.search(r"-(\d{9,11})\.\w+$", str(source_file or ""))
+    return int(m.group(1)) if m else None
+
+
+def radio_spans(date_iso: str,
+                transcript_dir: Path = TRANSCRIPTS) -> list[tuple[int, int]]:
+    """The stretches of the night the radio transcript for <date> covers.
+
+    Read from the transcript itself: every row names the block it came from
+    (`<feed>-<epoch>.mp3`), and those epochs are the only honest statement of
+    which blocks arrived. A block is BLOCK_SECONDS long. No transcript, or no
+    parseable epochs: an empty list, which makes every hour a gap hour.
     """
-    m = re.match(r"^\s*(\d{1,2}):(\d{2})", str(hhmm or ""))
-    if not m:
+    spans = set()
+    try:
+        lines = (Path(transcript_dir) / f"{date_iso}.jsonl").read_text(
+            encoding="utf-8").splitlines()
+    except Exception:  # noqa: BLE001
+        return []
+    for line in lines:
+        try:
+            epoch = _block_epoch(json.loads(line).get("source_file"))
+        except Exception:  # noqa: BLE001
+            continue
+        if epoch is not None:
+            spans.add((epoch, epoch + BLOCK_SECONDS))
+    return sorted(spans)
+
+
+def _night_instant(hhmm: str, date_iso: str) -> float | None:
+    """The instant a clock time names in the night of report <date_iso>."""
+    m = minutes(hhmm)
+    if m is None or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date_iso or ""):
+        return None
+    night = dt.date.fromisoformat(date_iso) - dt.timedelta(days=1)
+    h, mi = divmod(m, 60)
+    d = night if h >= 19 else night + dt.timedelta(days=1)
+    return dt.datetime.combine(d, dt.time(h, mi), PACIFIC).timestamp()
+
+
+def in_radio(hhmm: str, spans: list[tuple[int, int]] | None,
+             date_iso: str = "") -> bool:
+    """Is this clock time inside a stretch the transcript actually covers?
+
+    No spans means no readable transcript, so nothing is radio: every hour is a
+    gap hour and the emulator merges at GAP_NOTABILITY. An unreadable time is
+    treated as radio: the stricter floor.
+    """
+    instant = _night_instant(hhmm, date_iso)
+    if instant is None:
         return True
-    h, mi = int(m.group(1)), int(m.group(2))
-    if h > 23 or mi > 59:
-        return True
-    return dt.time(h, mi) >= RADIO_START or dt.time(h, mi) < RADIO_END
+    return any(a <= instant < b for a, b in (spans or []))
 
 # The report's privacy HARD RULES: no patient details, nothing from
 # ambulance-to-hospital traffic. An app headline is published as-is, so a row
@@ -226,13 +278,15 @@ def _write_atomic(dest: Path, data) -> None:
     os.replace(tmp, dest)
 
 
-def plan(staged: list, ours: list) -> dict:
+def plan(staged: list, ours: list, spans: list[tuple[int, int]] | None = None,
+         date_iso: str = "") -> dict:
     """Split staged rows into kept / covered / private / invalid / minor. Pure.
 
-    The notability floor depends on the clock: serious-only inside the radio
-    hours, everything outside them (see GAP_NOTABILITY). Kept rows outside the
-    radio hours are reported separately as `gap` so the log stays honest about
-    where the report had no radio feed to fall back on.
+    The notability floor depends on the spans the radio transcript covers:
+    serious-only inside them, everything outside them (see GAP_NOTABILITY). With
+    no spans every hour is a gap hour. Kept rows outside the spans are reported
+    separately as `gap` so the log stays honest about where the report had no
+    radio feed to fall back on.
     """
     transcript = [i for i in ours
                   if not (isinstance(i, dict) and i.get("source") == SOURCE)]
@@ -245,8 +299,8 @@ def plan(staged: list, ours: list) -> dict:
         if is_private(r["summary"]):
             private.append(r)
             continue
-        radio = in_radio_hours(r["time"])
-        floor = MIN_NOTABILITY if radio else GAP_NOTABILITY
+        hot = in_radio(r["time"], spans, date_iso)
+        floor = MIN_NOTABILITY if hot else GAP_NOTABILITY
         try:
             if int(r.get("notability", 2)) < floor:
                 minor.append(r)
@@ -265,14 +319,15 @@ def plan(staged: list, ours: list) -> dict:
         row["area"] = scrub(str(row.get("area") or ""))
         row["source"] = SOURCE
         keep.append(row)
-        if not radio:
+        if not hot:
             gap.append(row)
     return {"transcript": transcript, "keep": keep, "covered": covered,
             "private": private, "invalid": invalid, "minor": minor, "gap": gap}
 
 
 def merge(date_iso: str, incidents_dir: Path = INCIDENTS,
-          stage_dir: Path = STAGE) -> dict:
+          stage_dir: Path = STAGE,
+          transcript_dir: Path | None = None) -> dict:
     """Rebuild the emulator section of incidents/<date>.json. Never raises."""
     out = {"date": date_iso, "staged": 0, "merged": 0, "covered": 0,
            "private": 0, "gap": 0, "changed": False, "note": ""}
@@ -310,7 +365,8 @@ def merge(date_iso: str, incidents_dir: Path = INCIDENTS,
         if not isinstance(ours, list):
             out["note"] = f"{dest.name} is not a list; merging nothing"
             return out
-        p = plan(staged, ours)
+        spans = radio_spans(date_iso, transcript_dir or TRANSCRIPTS)
+        p = plan(staged, ours, spans, date_iso)
         out.update(covered=len(p["covered"]), private=len(p["private"]),
                    gap=len(p["gap"]))
         if not p["transcript"]:

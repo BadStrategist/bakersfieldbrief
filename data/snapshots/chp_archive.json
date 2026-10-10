@@ -1230,6 +1230,46 @@
   "details": ""
  },
  {
+  "log_id": "261010BF0153",
+  "time": "Oct 10 2026  1:42PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "SOUTHGATE DR / S CHESTER AVE",
+  "area": "Bakersfield",
+  "lat": 35.335782,
+  "lon": -119.01637,
+  "details": ""
+ },
+ {
+  "log_id": "261010BF0165",
+  "time": "Oct 10 2026  2:13PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Nb Sr99 Jso Lerdo Hwy",
+  "area": "Bakersfield",
+  "lat": 35.496227,
+  "lon": -119.159603,
+  "details": ""
+ },
+ {
+  "log_id": "261010BF0164",
+  "time": "Oct 10 2026  2:13PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Eb Sr58 At Edison Rd",
+  "area": "Bakersfield",
+  "lat": 35.345278,
+  "lon": -118.878611,
+  "details": ""
+ },
+ {
+  "log_id": "261010BF0167",
+  "time": "Oct 10 2026  2:32PM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 I5 S",
+  "area": "Fort Tejon",
+  "lat": 34.921393,
+  "lon": -118.925495,
+  "details": ""
+ },
+ {
   "log_id": "261010BF0048",
   "time": "Oct 10 2026  6:29AM",
   "type": "20002-Hit and Run No Injuries",

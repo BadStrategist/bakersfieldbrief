@@ -1330,6 +1330,16 @@
   "details": ""
  },
  {
+  "log_id": "261010BF0122",
+  "time": "Oct 10 2026 11:11AM",
+  "type": "DOT-Request CalTrans Notify",
+  "location": "Rosedale Hwy Onr / Sr99 S",
+  "area": "Bakersfield",
+  "lat": 35.379221,
+  "lon": -119.044566,
+  "details": ""
+ },
+ {
   "log_id": "261010BF0002",
   "time": "Oct 10 2026 12:07AM",
   "type": "TADV-Traffic Advisory",

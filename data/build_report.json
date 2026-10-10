@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-10T14:35:17-07:00",
+ "built_at": "2026-10-10T16:48:35-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -69,7 +69,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
+   "chp_new": 1,
    "top_story": "1 injured after being struck by vehicle in south Bakersfield, police say",
    "overnight_band": {
     "date": "2026-10-10",
@@ -165,13 +165,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 6,
+   "wind_mph": 13,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 72,
-   "wind_mph": 6,
+   "wind_mph": 13,
    "alerts": 0
   },
   "roads": {
@@ -202,8 +202,8 @@
    "isabella_af": 144485,
    "alpr_total": 270,
    "kern_fires": 1,
-   "aqi": 47,
-   "chp_week": 106
+   "aqi": 49,
+   "chp_week": 107
   },
   "letters": {
    "published": 1

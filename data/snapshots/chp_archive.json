@@ -1270,6 +1270,16 @@
   "details": ""
  },
  {
+  "log_id": "261010BF0204",
+  "time": "Oct 10 2026  4:29PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Allen Rd / Brimhall Rd",
+  "area": "BF",
+  "lat": 35.368867,
+  "lon": -119.145425,
+  "details": ""
+ },
+ {
   "log_id": "261010BF0048",
   "time": "Oct 10 2026  6:29AM",
   "type": "20002-Hit and Run No Injuries",

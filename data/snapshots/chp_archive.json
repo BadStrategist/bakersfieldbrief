@@ -1310,6 +1310,26 @@
   "details": ""
  },
  {
+  "log_id": "261010BF0113",
+  "time": "Oct 10 2026 10:50AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb Sr99 Jso Olive Dr",
+  "area": "Bakersfield",
+  "lat": 35.411944,
+  "lon": -119.054722,
+  "details": ""
+ },
+ {
+  "log_id": "261010BF0114",
+  "time": "Oct 10 2026 10:54AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Eb Sr58 At Fairfax Rd",
+  "area": "Bakersfield",
+  "lat": 35.351944,
+  "lon": -118.931944,
+  "details": ""
+ },
+ {
   "log_id": "261010BF0002",
   "time": "Oct 10 2026 12:07AM",
   "type": "TADV-Traffic Advisory",

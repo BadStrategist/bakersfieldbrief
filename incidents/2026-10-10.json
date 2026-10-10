@@ -213,5 +213,195 @@
   "disposition": "alarm cancelled",
   "summary": "An engine was sent to a commercial fire alarm at a restaurant on the 10800 block of Rosedale Highway and the alarm was cancelled without a fire.",
   "region": "northwest Bakersfield"
+ },
+ {
+  "type": "Fight",
+  "time": "19:51",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Fight reported involving juveniles possibly armed with knives near Jefferson Park.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "21:02",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Unresponsive driver in semi truck on southbound Highway 99.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Weapons",
+  "time": "22:06",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Vehicle stop with suspected weapons, two detained.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Assault",
+  "time": "22:33",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Reported assault with baseball bat near Godbey Dr and Camino Real.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire",
+  "time": "22:40",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Report of possible brush fire near Highway 58.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "22:57",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Search finds no injured person near Tucker Road.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire",
+  "time": "23:05",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Commercial fire alarm at farm business.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "23:13",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person in cardiac arrest receiving CPR near Bakersfield.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "01:01",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Traffic collision reported south of Avenue A.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "01:06",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Driver flees crash on Hwy 14; black BMW stopped at 100+.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fight",
+  "time": "02:03",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Multiple people injured in fight on High Street.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Vehicle",
+  "time": "03:23",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Disabled vehicle facing wrong way on highway ramp.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "03:25",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Crash reported on Old Road in California.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Overdose",
+  "time": "03:33",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person unconscious after reported overdose.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "04:21",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Disabled vehicle on shoulder after possible collision.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:26",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Car rolls over into field on Fairbank Lane.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Disturbance",
+  "time": "06:54",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Disturbance at residence on Cortez Court.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:56",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Woman falls and injures ankle on northbound I-5.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:58",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Hazardous condition at Village Apartments.",
+  "source": "crimeradar"
  }
 ]

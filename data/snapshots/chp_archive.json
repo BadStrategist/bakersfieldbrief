@@ -1273,10 +1273,10 @@
   "log_id": "261010BF0072",
   "time": "Oct 10 2026  8:19AM",
   "type": "20002-Hit and Run No Injuries",
-  "location": "Sr58 E / Bena Rd Onr",
+  "location": "EB SR58 JEO Gen Beale Rd",
   "area": "Bakersfield",
-  "lat": 35.263672,
-  "lon": -118.630958,
+  "lat": 35.289722,
+  "lon": -118.746389,
   "details": ""
  },
  {
@@ -1287,6 +1287,16 @@
   "area": "Bakersfield",
   "lat": 35.314052,
   "lon": -119.035101,
+  "details": ""
+ },
+ {
+  "log_id": "261010BF0091",
+  "time": "Oct 10 2026  9:26AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sr178 / Mouth Of The Canyon",
+  "area": "BF",
+  "lat": 35.442222,
+  "lon": -118.791944,
   "details": ""
  },
  {

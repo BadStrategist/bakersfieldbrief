@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-10T08:33:41-07:00",
+ "built_at": "2026-10-10T10:04:19-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -54,8 +54,8 @@
    "error": ""
   },
   "alertline": {
-   "ok": false,
-   "error": "ALERTLINE_API_KEY not set (free key at alertline.kern.org/thirdparty)"
+   "ok": true,
+   "error": ""
   },
   "blocked": {
    "ok": false,
@@ -64,31 +64,35 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 63,
+  "brief_words": 1228,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 1,
    "top_story": "1 injured after being struck by vehicle in south Bakersfield, police say",
    "overnight_band": {
     "date": "2026-10-10",
-    "count": 23,
+    "count": 42,
     "chips": [
      [
       "Crashes and traffic",
-      1
-     ],
-     [
-      "Disturbances and welfare",
-      4
-     ],
-     [
-      "Fires",
       5
      ],
      [
+      "Disturbances and welfare",
+      5
+     ],
+     [
+      "Fires",
+      7
+     ],
+     [
       "Medical aid",
+      1
+     ],
+     [
+      "Overdose",
       1
      ],
      [
@@ -97,7 +101,7 @@
      ],
      [
       "Assault and fights",
-      1
+      4
      ],
      [
       "Burglary and theft",
@@ -108,17 +112,18 @@
       1
      ],
      [
-      "Multi-vehicle crash",
-      2
+      "Incident",
+      6
      ],
      [
-      "Other: fire alarm, forced entry threat, public service",
-      4
+      "Other: multi-vehicle crash, fire alarm, forced entry threat, public service, weapons, vehicle",
+      8
      ]
     ],
     "unmapped": [
      "multi-vehicle crash",
-     "forced entry threat"
+     "forced entry threat",
+     "weapons"
     ]
    },
    "archive": "2026-10-10"
@@ -138,7 +143,7 @@
    ],
    "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 0,
+    "tehachapi": 12,
     "bakersfield-nw": 12,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
@@ -156,13 +161,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 7,
+   "wind_mph": 10,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 63,
-   "wind_mph": 7,
+   "temp": 68,
+   "wind_mph": 10,
    "alerts": 0
   },
   "roads": {
@@ -174,7 +179,7 @@
    "log_entries": 60
   },
   "fog_delays": {
-   "ok": false,
+   "ok": true,
    "alerts": 0,
    "logged_days": 0
   },
@@ -193,8 +198,8 @@
    "isabella_af": 144485,
    "alpr_total": 270,
    "kern_fires": 1,
-   "aqi": 66,
-   "chp_week": 94
+   "aqi": 68,
+   "chp_week": 95
   },
   "letters": {
    "published": 1

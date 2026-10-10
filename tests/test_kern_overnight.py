@@ -222,9 +222,50 @@ class TestTranscribe:
         rows, n_failed = T._transcribe_whisper(FakeModel(), wav, [(0.0, 3.0)], 1786261275,
                                      TZ, "f.mp3", "vocab")
         assert set(rows[0]) == {"time_local", "duration", "text", "confidence",
-                                "source_file", "engine"}
+                                "source_file", "engine", "offset_s"}
         assert rows[0]["engine"].startswith("faster-whisper:")
         assert rows[0]["time_local"]  # anchored to block epoch
+
+    def test_a_straddling_block_keeps_only_the_window_and_records_the_offset(self, tmp_path):
+        """A block that starts before 19:00 contributes only after it (5.1, 5.2)."""
+        import wave as wave_mod
+        from kern_overnight import transcribe as T
+
+        class FakeModel:
+            def __init__(self, starts):
+                self.starts = list(starts)
+
+            def transcribe(self, audio, **kw):
+                s = self.starts.pop(0)
+                return ([type("S", (), {"text": "copy", "start": s, "end": s + 2.0,
+                                        "avg_logprob": -0.3})()], None)
+
+        wav = tmp_path / "s.wav"
+        with wave_mod.open(str(wav), "wb") as w:
+            w.setnchannels(1)
+            w.setsampwidth(2)
+            w.setframerate(16000)
+            w.writeframes(b"\x00" * 16000 * 2 * 63)   # 63 s, room for a 60 s offset
+
+        # a block that starts one minute before the window opens: its first
+        # minute belongs to the previous report and must not appear
+        block = int(dt.datetime(2026, 10, 8, 18, 59, 0, tzinfo=TZ).timestamp())
+        rows, failed = T._transcribe_whisper(FakeModel([0.0, 0.0]), wav,
+                                             [(0.0, 3.0), (60.0, 63.0)], block,
+                                             TZ, "14029-straddle.mp3", "vocab")
+        assert failed == 0
+        assert len(rows) == 1                       # 18:59:00 dropped, 19:00:00 kept
+        assert rows[0]["time_local"] == "19:00"
+        assert rows[0]["offset_s"] == 60.0
+        assert rows[0]["source_file"] == "14029-straddle.mp3"
+
+        # a block well inside the night keeps its rows, as before
+        inside = int(dt.datetime(2026, 10, 8, 23, 0, tzinfo=TZ).timestamp())
+        rows2, _ = T._transcribe_whisper(FakeModel([0.5]), wav, [(0.0, 3.0)], inside,
+                                         TZ, "14029-inside.mp3", "vocab")
+        assert rows2[0]["time_local"] == "23:00"
+        assert len(rows2) == 1
+        assert rows2[0]["offset_s"] == 0.5
 
     def test_engine_dispatch_default_and_override(self, monkeypatch):
         import importlib

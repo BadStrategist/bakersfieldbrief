@@ -259,6 +259,21 @@ def _merge_segments(segs: list[tuple[float, float]], gap_s: float = 10.0) -> lis
     return [(a, b) for a, b in merged]
 
 
+def _report_date_for(instant: float, tz: dt.tzinfo) -> dt.date:
+    """The report date that owns an instant: after 07:00 it is tomorrow's report.
+
+    A night runs 19:00 to 07:00, so an instant at 18:47, 21:00 or 23:00
+    belongs to the NEXT day's report, and an instant at 03:00 or 06:43
+    belongs to its own day's. The cutoff is 07:00, not 19:00: a block that
+    starts at 18:47 is the first block of the next night, and treating it as
+    the previous night's put every one of its rows outside the window.
+    Used to trim rows without threading the report date through the worker
+    pool.
+    """
+    local = dt.datetime.fromtimestamp(instant, tz)
+    return local.date() + dt.timedelta(days=1) if local.hour >= 7 else local.date()
+
+
 def _in_overnight_window(epoch: int, date: dt.date, tz: dt.tzinfo) -> bool:
     """True if `epoch` is a block of the 19:00→07:00 night that owns `date`.
 
@@ -490,11 +505,13 @@ def _transcribe_whisper(model, wav: Path, segs: list[tuple[float, float]],
     """Whisper path: one call per merged segment → (rows, failed segments)."""
     import numpy as np
     import wave as wave_mod
+    from kern_overnight import fetch
     with wave_mod.open(str(wav), "rb") as w:
         raw = w.readframes(w.getnframes())
     audio_arr = (np.frombuffer(raw, dtype=np.int16).astype(np.float32) / 32768.0)
     rows = []
     failed = 0
+    w_start, w_end = fetch.window_bounds(_report_date_for(block_epoch, tz), tz)
     for (s0, s1) in segs:
         if s1 - s0 < MIN_DURATION_S:
             continue
@@ -506,15 +523,20 @@ def _transcribe_whisper(model, wav: Path, segs: list[tuple[float, float]],
                   flush=True)
             continue
         for r in seg_rows:
-            time_local = (dt.datetime.fromtimestamp(block_epoch, tz) +
-                          dt.timedelta(seconds=r["start"])).strftime("%H:%M")
+            instant = block_epoch + r["start"]
+            if not (w_start <= instant < w_end):
+                continue        # the block that straddles 19:00: its earlier
+                                # minutes belong to the previous report
             rows.append({
-                "time_local": time_local,
+                "time_local": dt.datetime.fromtimestamp(instant, tz).strftime("%H:%M"),
                 "duration": round(r["end"] - r["start"], 2),
                 "text": r["text"],
                 "confidence": round(r["confidence"], 3),
                 "source_file": source_file,
                 "engine": f"faster-whisper:{MODEL_SIZE}",
+                # seconds into the source block: the reel cuts its clip at
+                # this offset instead of guessing from the clock minute
+                "offset_s": round(r["start"], 1),
             })
     return rows, failed
 

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-10T10:04:19-07:00",
+ "built_at": "2026-10-10T10:19:07-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -166,7 +166,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 68,
+   "temp": 72,
    "wind_mph": 10,
    "alerts": 0
   },
@@ -185,9 +185,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 18,
-    "In 1 to 2 weeks": 20,
-    "Later": 97
+    "In the next 7 days": 19,
+    "In 1 to 2 weeks": 22,
+    "Later": 107
    },
    "meetings": 5
   },
@@ -199,7 +199,7 @@
    "alpr_total": 270,
    "kern_fires": 1,
    "aqi": 68,
-   "chp_week": 95
+   "chp_week": 96
   },
   "letters": {
    "published": 1

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-10T10:58:14-07:00",
+ "built_at": "2026-10-10T11:16:54-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -69,19 +69,19 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "1 injured after being struck by vehicle in south Bakersfield, police say",
    "overnight_band": {
     "date": "2026-10-10",
-    "count": 42,
+    "count": 38,
     "chips": [
      [
       "Crashes and traffic",
-      5
+      3
      ],
      [
       "Disturbances and welfare",
-      5
+      4
      ],
      [
       "Fires",
@@ -113,11 +113,15 @@
      ],
      [
       "Incident",
-      6
+      5
      ],
      [
-      "Other: multi-vehicle crash, fire alarm, forced entry threat, public service, weapons, vehicle",
-      8
+      "Multi-vehicle crash",
+      2
+     ],
+     [
+      "Other: fire alarm, forced entry threat, public service, weapons, vehicle",
+      6
      ]
     ],
     "unmapped": [

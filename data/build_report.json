@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-10T10:19:07-07:00",
+ "built_at": "2026-10-10T10:47:41-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -69,7 +69,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 0,
    "top_story": "1 injured after being struck by vehicle in south Bakersfield, police say",
    "overnight_band": {
     "date": "2026-10-10",
@@ -155,26 +155,26 @@
    "draft": "drafts/weekend-guide-2026-10-10"
   },
   "grapevine": {
-   "i5": "CLOSED",
+   "i5": "RESTRICTIONS",
    "i5_pass": "RESTRICTIONS",
    "log_entries": 60
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 10,
+   "wind_mph": 8,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 72,
-   "wind_mph": 10,
+   "temp": 70,
+   "wind_mph": 8,
    "alerts": 0
   },
   "roads": {
    "routes": [
     "i5:RESTRICTIONS",
     "sr58:OPEN",
-    "sr99:CLOSED"
+    "sr99:RESTRICTIONS"
    ],
    "log_entries": 60
   },
@@ -185,9 +185,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 19,
-    "In 1 to 2 weeks": 22,
-    "Later": 107
+    "In the next 7 days": 18,
+    "In 1 to 2 weeks": 20,
+    "Later": 97
    },
    "meetings": 5
   },
@@ -198,7 +198,7 @@
    "isabella_af": 144485,
    "alpr_total": 270,
    "kern_fires": 1,
-   "aqi": 68,
+   "aqi": 64,
    "chp_week": 96
   },
   "letters": {

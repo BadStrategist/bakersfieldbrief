@@ -36,6 +36,7 @@ from __future__ import annotations
 
 import datetime as dt
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -762,3 +763,88 @@ def test_gate_opens_on_its_own_when_the_second_source_is_ready(dirs):
     g = mc.gate(DATE, stage)
     assert g["release"] is True and g["released_by"] == "second source"
 
+
+# ------------------------------------------- getting back to History from anywhere
+# Verified 2026-10-09: the 07:15 emit failed four mornings in a row with
+# "could not reach Replay > History" while a "System UI isn't responding" dialog
+# sat over the app. The old nav sent one unconditional BACK and then tapped a
+# literal 360,1430, so the dialog was unreadable and unrecoverable.
+
+
+def test_the_tab_bar_and_the_replay_selection_are_read_from_the_dump():
+    assert cr._tab_bar(fx("home_kern")) is True
+    assert cr._tab_bar(fx("replay_kern")) is True
+    assert cr._tab_bar(fx("anr_system_ui")) is False
+    assert cr._replay_selected(fx("replay_kern")) is True
+    assert cr._replay_selected(fx("home_kern")) is False
+
+
+def test_goto_history_recovers_from_a_system_dialog(tmp_path, monkeypatch):
+    """ANR dialog -> tap Wait -> Home -> Replay -> History, all offline."""
+    seen = []
+
+    def adb(*args, **kw):
+        seen.append(args)
+        if args[0] == "pull":
+            Path(args[2]).write_text(dumps[min(n["i"], len(dumps) - 1)], encoding="utf-8")
+            n["i"] += 1
+        return subprocess.CompletedProcess(args, 0, "", "")
+
+    n = {"i": 0}
+    dumps = [fx("anr_system_ui"), fx("home_kern"), fx("replay_kern")]
+
+    monkeypatch.setattr(cr, "OUT", tmp_path)
+    monkeypatch.setattr(cr, "adb", adb)
+    monkeypatch.setattr(cr.time, "sleep", lambda s: None)
+    monkeypatch.setattr(cr, "dismiss_overlays", lambda *a, **k: [])
+
+    feeds = cr.goto_history()
+    assert feeds, "the Replay page's feeds should have been read"
+
+    taps = [a for a in seen if a[:2] == ("shell", "input") and a[2] == "tap"]
+    wait = cr._center(cr._by_id(fx("anr_system_ui"), "aerr_wait"))
+    assert (str(wait[0]), str(wait[1])) in [(t[3], t[4]) for t in taps], \
+        "the ANR dialog must be cleared by tapping Wait"
+    label = cr._center(cr._by_id(fx("replay_kern"), "history_label"))
+    assert (str(label[0]), str(label[1])) == (taps[-1][3], taps[-1][4]), \
+        "the last tap must land on history_label, not a fixed coordinate"
+
+
+def test_goto_history_says_what_it_saw_when_the_tab_bar_never_appears(tmp_path, monkeypatch):
+    monkeypatch.setattr(cr, "OUT", tmp_path)
+    monkeypatch.setattr(cr.time, "sleep", lambda s: None)
+    monkeypatch.setattr(cr, "dismiss_overlays", lambda *a, **k: [])
+    monkeypatch.setattr(cr, "adb", fake_adb(fx("anr_system_ui")))
+    with pytest.raises(cr.ScreenError) as ei:
+        cr.goto_history()
+    assert "no tab bar" in str(ei.value) or "system dialog" in str(ei.value)
+    assert ei.value.code == 7
+
+
+# ------------------------------------------------------------------- the lock
+def _dead_pid():
+    """A pid that has certainly exited."""
+    p = subprocess.run([sys.executable, "-c", "pass"])
+    return p.pid if hasattr(p, "pid") and p.pid else 999999
+
+
+def test_the_lock_is_reclaimable_when_its_owner_is_gone(tmp_path, monkeypatch):
+    lock = tmp_path / "emulator.lock"
+    monkeypatch.setattr(cr, "LOCK", lock)
+    monkeypatch.setattr(cr, "OUT", tmp_path)
+
+    lock.write_text(f"{os.getpid()} 2026-10-09T16:11:00", encoding="utf-8")
+    assert cr.lock_reclaimable() is False
+    assert cr.reclaim_lock_cli() == 1
+    assert lock.exists(), "a live owner's lock must survive"
+
+    lock.write_text(f"{_dead_pid()} 2026-10-09T16:11:00", encoding="utf-8")
+    assert cr.lock_reclaimable() is True
+    assert cr.reclaim_lock_cli() == 0
+    assert not lock.exists(), "a dead owner's lock must be reclaimed"
+
+    lock.write_text("not-a-pid", encoding="utf-8")
+    assert cr.lock_reclaimable() is False, "an unparseable fresh lock counts as held"
+
+    lock.unlink()
+    assert cr.reclaim_lock_cli() == 0

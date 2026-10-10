@@ -35,6 +35,7 @@ work/crimeradar/emit_status_<date>.json on every exit.
 from __future__ import annotations
 
 import argparse
+import ctypes
 import datetime as dt
 import hashlib
 import html
@@ -167,6 +168,62 @@ def touch_lock() -> None:
             pass
 
 
+def _pid_alive(pid: int) -> bool:
+    """Is this pid running? Never os.kill(pid, 0): on Windows that TERMINATES it."""
+    k = ctypes.WinDLL("kernel32", use_last_error=True)
+    h = k.OpenProcess(0x1000, False, int(pid))      # PROCESS_QUERY_LIMITED_INFORMATION
+    if not h:
+        return ctypes.get_last_error() == 5          # access denied => it exists
+    try:
+        code = ctypes.c_ulong()
+        return bool(k.GetExitCodeProcess(h, ctypes.byref(code))) and code.value == 259
+    finally:
+        k.CloseHandle(h)
+
+
+def lock_reclaimable() -> bool:
+    """A lock is reclaimable when it is old, or its recorded owner is gone.
+
+    The heartbeat rule alone is not enough: a run killed mid-capture (a timeout,
+    a reboot, a closed console) leaves a lock with a fresh mtime, and the next
+    ten minutes of runs then refuse to touch the screen for a process that no
+    longer exists. Verified 2026-10-09: a cut-off poll left `53776 <iso>` behind
+    and the emit refused with "busy: a capture touched emulator.lock 46s ago".
+    An unparseable fresh lock still counts as held, because the owner may be
+    between create and write.
+    """
+    try:
+        age = time.time() - LOCK.stat().st_mtime
+    except OSError:
+        return False
+    if age > LOCK_STALE:
+        return True
+    try:
+        pid = int(LOCK.read_text(encoding="utf-8", errors="replace").split()[0])
+    except (OSError, ValueError, IndexError):
+        return False
+    return not _pid_alive(pid)
+
+
+def reclaim_lock_cli() -> int:
+    """--lock-reclaim: drop a reclaimable lock. 0 = no live owner, 1 = held."""
+    if not LOCK.exists():
+        print("[cr] no lock file")
+        return 0
+    pid = (LOCK.read_text(encoding="utf-8", errors="replace").split() or [""])[0]
+    age = time.time() - LOCK.stat().st_mtime
+    if not lock_reclaimable():
+        print(f"[cr] lock is held by a live owner (pid {pid}, heartbeat {age:.0f}s ago)")
+        return 1
+    try:
+        LOCK.unlink()
+    except OSError as e:
+        print(f"[cr] lock is stale but could not be removed: {e}")
+        return 1
+    print(f"[cr] reclaimed a stale lock (pid {pid} is gone, heartbeat {age:.0f}s old)")
+    return 0
+
+
 def acquire_lock(wait_s: int = 0) -> bool:
     global _HAVE_LOCK
     OUT.mkdir(parents=True, exist_ok=True)
@@ -179,11 +236,11 @@ def acquire_lock(wait_s: int = 0) -> bool:
             _HAVE_LOCK = True
             return True
         except FileExistsError:
-            try:
-                if time.time() - LOCK.stat().st_mtime > LOCK_STALE:
+            if lock_reclaimable():
+                try:
                     LOCK.unlink()
-                    continue
-            except OSError:
+                except OSError:
+                    pass
                 continue
         if time.time() >= deadline:
             return False
@@ -837,31 +894,100 @@ def tap_id(rid: str, tag: str = "crt", dy: int = 0) -> bool:
     return True
 
 
+def _tab_bar(xml: str) -> bool:
+    """The bottom tab bar is present: a main screen, not inside one."""
+    return _by_id(xml, "bottom_vp") is not None
+
+
+def _replay_selected(xml: str) -> bool:
+    n = _by_id(xml, "menu_replay_item")
+    return bool(n) and n.get("selected") == "true"
+
+
+def clear_system_dialog(tag: str = "crs") -> str:
+    """Dump; if an ANR dialog covers the screen, tap Wait once and dump again.
+
+    Verified 2026-10-09: this dialog is what failed four 07:15 emits in a row
+    (the 06:45 dump held "System UI isn't responding"). dump_ui raising
+    SystemDialog (exit 7) is right for a capture, where a tap would land on the
+    dialog, but the History read must RECOVER: tap Wait, keep the app's state,
+    read again. A second dialog raises.
+    """
+    try:
+        return dump_ui(tag)
+    except SystemDialog:
+        xml = (OUT / f"{tag}.xml").read_text(encoding="utf-8", errors="replace")
+        c = _center(_by_id(xml, "aerr_wait")) or _center(_by_id(xml, "aerr_close"))
+        if not c:
+            raise
+        adb("shell", "input", "tap", str(c[0]), str(c[1]))
+        time.sleep(3)
+        return dump_ui(tag)
+
+
+def ensure_tab_bar() -> str:
+    """Reach a screen that shows the bottom tab bar, from any state."""
+    saw: list[str] = []
+    for _ in range(5):
+        clear_system_dialog()
+        dismiss_overlays()
+        xml = dump_ui("crn")
+        if _tab_bar(xml):
+            return xml
+        scr = on_screen(xml)
+        saw.append(describe(scr))
+        if scr["package"] != PKG:
+            adb("shell", "monkey", "-p", PKG, "-c", "android.intent.category.LAUNCHER", "1")
+            time.sleep(5)
+        else:
+            adb("shell", "input", "keyevent", "4")
+            time.sleep(2)
+    adb("shell", "am", "force-stop", PKG)
+    adb("shell", "monkey", "-p", PKG, "-c", "android.intent.category.LAUNCHER", "1")
+    for _ in range(12):                 # a cold start needs 25-45 s to render
+        time.sleep(5)
+        xml = clear_system_dialog()
+        if _tab_bar(xml):
+            return xml
+    raise ScreenError("no tab bar after 5 steps and one relaunch. Saw: " + " -> ".join(saw))
+
+
 def goto_history() -> list[dict]:
     """Replay tab -> History list. Returns the feeds the Replay page named.
 
-    The History control sits in the 'Latest Incidents' header row, which is only
-    on screen after the Replay page is scrolled, so scroll until it appears.
+    Reached from ANY screen. The old version sent one unconditional BACK and then
+    tapped a literal 360,1430, so an ANR dialog or a foreign screen became
+    "could not reach Replay > History" with nothing on screen to explain it. The
+    tab is now tapped by resource-id and its selected state is read back.
     """
-    adb("shell", "input", "keyevent", "4")
-    time.sleep(1)
-    adb("shell", "input", "tap", "360", "1430")     # Replay tab
-    time.sleep(3)
-    feeds, xml = [], ""
+    xml = ensure_tab_bar()
+    for _ in range(3):
+        if _replay_selected(xml):
+            break
+        c = _center(_by_id(xml, "menu_replay_item"))
+        if not c:
+            raise ScreenError("tab bar has no menu_replay_item. On screen: "
+                              + describe(on_screen(xml)))
+        adb("shell", "input", "tap", str(c[0]), str(c[1]))
+        time.sleep(3)
+        xml = dump_ui("crr")
+    else:
+        raise ScreenError("the Replay tab would not select. On screen: "
+                          + describe(on_screen(xml)))
+    feeds: list[dict] = []
     for _ in range(6):
-        dismiss_overlays()          # a tip or paywall sheet can appear at any time
+        dismiss_overlays()
         xml = dump_ui("crr")
         feeds += [f for f in replay_feeds(xml) if f not in feeds]
-        node = _by_id(xml, "history_label")
-        if node:
-            c = _center(node)
+        c = _center(_by_id(xml, "history_label"))
+        if c:
             adb("shell", "input", "tap", str(c[0]), str(c[1]))
             time.sleep(3)
             return feeds
         adb("shell", "input", "swipe", "360", "1100", "360", "700", "300")
         time.sleep(2)
-    raise RuntimeError("could not reach Replay > History. On screen: "
-                       + describe(on_screen(xml)))
+    raise ScreenError("Replay is selected but history_label never appeared in 6 swipes. "
+                      "On screen: " + describe(on_screen(xml)))
 
 
 def parse_history(xml: str) -> list[dict]:
@@ -1520,7 +1646,11 @@ def main() -> int:
                     help="stage the app's in-window incidents for the publish to merge")
     ap.add_argument("--dry", action="store_true",
                     help="accepted for old callers; --emit never writes incidents/")
+    ap.add_argument("--lock-reclaim", action="store_true", dest="lock_reclaim",
+                    help="drop emulator.lock if its owner is gone; 0 if free, 1 if held")
     a = ap.parse_args()
+    if a.lock_reclaim:
+        return reclaim_lock_cli()
     status: dict = {}
     rc = 5
     try:

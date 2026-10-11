@@ -1350,6 +1350,16 @@
   "details": ""
  },
  {
+  "log_id": "261010BF0321",
+  "time": "Oct 10 2026  9:56PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Edwards Ave / Manley Ave",
+  "area": "Bakersfield",
+  "lat": 35.385322,
+  "lon": -118.962568,
+  "details": ""
+ },
+ {
   "log_id": "261010BF0108",
   "time": "Oct 10 2026 10:12AM",
   "type": "1182-Trfc Collision-No Inj",

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-10T16:48:35-07:00",
+ "built_at": "2026-10-10T22:37:52-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -76,59 +76,44 @@
     "count": 38,
     "chips": [
      [
-      "Crashes and traffic",
-      3
-     ],
-     [
-      "Disturbances and welfare",
-      4
+      "Weapons and assaults",
+      7
      ],
      [
       "Fires",
       7
      ],
      [
-      "Medical aid",
-      1
+      "Crashes and traffic",
+      5
      ],
      [
-      "Overdose",
-      1
-     ],
-     [
-      "Weapons",
+      "Medical and overdose",
       2
      ],
      [
-      "Assault and fights",
+      "Disturbances and welfare",
       4
      ],
      [
       "Burglary and theft",
-      2
+      3
      ],
      [
       "Suspicious activity",
       1
      ],
      [
-      "Incident",
-      5
-     ],
-     [
-      "Multi-vehicle crash",
+      "Alarms",
       2
      ],
      [
-      "Other: fire alarm, forced entry threat, public service, weapons, vehicle",
-      6
+      "Other calls",
+      7
      ]
     ],
-    "unmapped": [
-     "multi-vehicle crash",
-     "forced entry threat",
-     "weapons"
-    ]
+    "other": "5 incident, 1 public service, 1 vehicle",
+    "unmapped": []
    },
    "archive": "2026-10-10"
   },
@@ -145,7 +130,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -164,20 +149,20 @@
    "log_entries": 60
   },
   "tehachapi": {
-   "sr58": "OPEN",
-   "wind_mph": 13,
+   "sr58": "RESTRICTIONS",
+   "wind_mph": 0,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 72,
-   "wind_mph": 13,
+   "temp": 63,
+   "wind_mph": 0,
    "alerts": 0
   },
   "roads": {
    "routes": [
     "i5:RESTRICTIONS",
-    "sr58:OPEN",
+    "sr58:RESTRICTIONS",
     "sr99:RESTRICTIONS"
    ],
    "log_entries": 60
@@ -189,9 +174,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 18,
+    "In the next 7 days": 16,
     "In 1 to 2 weeks": 20,
-    "Later": 97
+    "Later": 98
    },
    "meetings": 5
   },
@@ -203,7 +188,7 @@
    "alpr_total": 270,
    "kern_fires": 1,
    "aqi": 49,
-   "chp_week": 107
+   "chp_week": 108
   },
   "letters": {
    "published": 1

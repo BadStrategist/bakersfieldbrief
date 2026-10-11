@@ -1300,6 +1300,26 @@
   "details": ""
  },
  {
+  "log_id": "261011BF0139",
+  "time": "Oct 11 2026 11:54AM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sb I5 Jno Sr99",
+  "area": "Fort Tejon",
+  "lat": 35.00725,
+  "lon": -118.95158,
+  "details": ""
+ },
+ {
+  "log_id": "261011BF0147",
+  "time": "Oct 11 2026 11:59AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr99 S / Rosedale Hwy Ofr",
+  "area": "Bakersfield",
+  "lat": 35.387281,
+  "lon": -119.044619,
+  "details": ""
+ },
+ {
   "log_id": "261011BF0002",
   "time": "Oct 11 2026 12:00AM",
   "type": "TADV-Traffic Advisory",

@@ -1,0 +1,4 @@
+# The CrimeRadar leg scripts run under Git Bash on the box and under Linux bash
+# in CI's tests. LF everywhere: a CRLF checkout breaks the shebang on Linux.
+scripts/crimeradar/*.sh text eol=lf
+scripts/crimeradar/*.py text eol=lf

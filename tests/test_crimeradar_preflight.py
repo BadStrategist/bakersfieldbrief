@@ -14,15 +14,17 @@
     passed. The other crimeradar tests import from the repo root, where that
     import always resolves, so none of them could see it.
 
-The preflight lives outside the repo, in %LOCALAPPDATA%/hermes/scripts, so its
-tests run on the box and skip anywhere the script is not installed (CI). They
-run the real script against a scripted adb: no emulator, no adb, no network.
+The leg scripts live in scripts/crimeradar/ (the hermes/scripts/<name> files the
+cron jobs point at are shims that exec them), so these run wherever the suite
+runs, CI included. They run the real preflight against a scripted adb: no
+emulator, no adb, no network.
 
 Run:  .venv/Scripts/python.exe -m pytest tests/test_crimeradar_preflight.py -q
 """
 from __future__ import annotations
 
 import os
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -30,13 +32,20 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parent.parent
+LEG = ROOT / "scripts" / "crimeradar"
+LEG_SCRIPTS = ("crimeradar_preflight.sh", "crimeradar_emit.sh", "crimeradar_health.sh",
+               "crimeradar_health_jobs.py", "crimeradar_set_region.sh", "crimeradar_emu_stop.sh",
+               "crimeradar_memguard.sh", "crimeradar_night.sh", "crimeradar_morning.sh",
+               "adb_bounded.sh")
 PKG = "com.newsbreak.crimeradar"
 GOOD = "UI hierchary dumped to: /sdcard/.cr_probe.xml"
 IDLE = "ERROR: could not get idle state."
 
 # Answers every call the preflight makes on its ready path. `uiautomator dump`
 # replays FAKE_DUMPS one word per call ("ok" or "fail") and repeats the last.
+# Every call is logged, so a test can prove the script never reached adb.
 FAKE_ADB = r"""#!/usr/bin/env bash
+echo "$*" >>"$FAKE_STATE/calls"
 [ "${1:-}" = "-s" ] && shift 2
 case "$*" in
   devices) printf 'List of devices attached\nemulator-5554\tdevice\n' ;;
@@ -71,36 +80,50 @@ def _bash() -> str | None:
 
 
 def _preflight() -> Path:
-    return Path(os.environ.get("CR_PREFLIGHT") or Path(
-        os.environ.get("LOCALAPPDATA", "")) / "hermes" / "scripts" / "crimeradar_preflight.sh")
+    return Path(os.environ.get("CR_PREFLIGHT") or LEG / "crimeradar_preflight.sh")
 
 
-def run_preflight(tmp_path: Path, dumps: str) -> subprocess.CompletedProcess:
+def _stub(path: Path, text: str) -> Path:
+    path.write_text(text, encoding="utf-8", newline="\n")
+    path.chmod(0o755)       # Linux runs these by their mode; Git Bash by the shebang
+    return path
+
+
+def run_preflight(tmp_path: Path, dumps: str, **overrides: str) -> subprocess.CompletedProcess:
     script, bash = _preflight(), _bash()
-    if not script.is_file() or not bash:
-        pytest.skip("the hermes preflight script (or Git Bash) is not on this machine")
-    # Without this override the script would drive the real adb, and the real
-    # emulator's screen with it.
-    assert "${ADB_BIN:-" in script.read_text(encoding="utf-8"), \
-        f"{script} ignores ADB_BIN; refusing to run it against the real adb"
+    assert script.is_file(), f"{script} is missing from the repo"
+    if not bash:
+        pytest.skip("no bash on this machine (Git Bash on Windows)")
+    # Without these overrides the script would drive the real adb, and the real
+    # emulator's screen with it, or start the real AVD.
+    text = script.read_text(encoding="utf-8")
+    for knob in ("ADB_BIN", "CR_EMU"):
+        assert "${%s:-" % knob in text, \
+            f"{script} ignores {knob}; refusing to run it against the real one"
     bindir = tmp_path / "bin"
     bindir.mkdir()
     state = tmp_path / "state"
     state.mkdir()
     (tmp_path / "work" / "crimeradar").mkdir(parents=True)
-    (bindir / "adb").write_text(FAKE_ADB, encoding="utf-8", newline="\n")
+    adb = _stub(bindir / "adb", FAKE_ADB)
     # The script's waits are real seconds; none of them is under test.
-    (bindir / "sleep").write_text("#!/usr/bin/env bash\nexit 0\n", encoding="utf-8", newline="\n")
-    (bindir / "setreg").write_text("#!/usr/bin/env bash\necho 'Bakersfield, CA'\nexit 0\n",
-                                   encoding="utf-8", newline="\n")
+    _stub(bindir / "sleep", "#!/usr/bin/env bash\nexit 0\n")
+    setreg = _stub(bindir / "setreg", "#!/usr/bin/env bash\necho 'Bakersfield, CA'\nexit 0\n")
+    emu = _stub(bindir / "emulator",
+                '#!/usr/bin/env bash\necho started >"$FAKE_STATE/emulator"\nexit 0\n')
     env = dict(os.environ,
                PATH=str(bindir) + os.pathsep + os.environ["PATH"],
-               ADB_BIN=(bindir / "adb").as_posix(),
+               ADB_BIN=adb.as_posix(),
+               CR_EMU=emu.as_posix(),
                CR_REPO=tmp_path.as_posix(),
-               CR_SETREG=(bindir / "setreg").as_posix(),
+               CR_SETREG=setreg.as_posix(),
                FAKE_STATE=state.as_posix(), FAKE_DUMPS=dumps)
-    return subprocess.run([bash, script.as_posix()], env=env, stdin=subprocess.DEVNULL,
-                          capture_output=True, text=True, timeout=120)
+    env.pop("CR_SCRIPTS", None)
+    env.update(overrides)
+    r = subprocess.run([bash, script.as_posix()], env=env, stdin=subprocess.DEVNULL,
+                       capture_output=True, text=True, timeout=120)
+    assert not (state / "emulator").exists(), "the preflight tried to start the emulator"
+    return r
 
 
 def test_one_good_dump_is_readable_even_when_the_next_would_fail(tmp_path):
@@ -126,6 +149,40 @@ def test_an_unreadable_screen_exits_5_with_what_uiautomator_said(tmp_path):
     assert "isKeyguardShowing=false" in line and "mWakefulness=Awake" in line
     # Six tries and no seventh: a failed read is not retried past its budget.
     assert (tmp_path / "state" / "n").read_text().strip() == "6"
+
+
+def test_a_missing_repo_fails_before_any_adb_call(tmp_path):
+    r = run_preflight(tmp_path, "ok", CR_REPO=(tmp_path / "gone").as_posix())
+    assert r.returncode == 13, r.stdout + r.stderr
+    assert "repo missing" in r.stdout and "gone" in r.stdout
+    assert not (tmp_path / "state" / "calls").exists()
+
+
+def test_a_missing_sibling_script_fails_before_any_adb_call(tmp_path):
+    empty = tmp_path / "no_scripts"
+    empty.mkdir()
+    r = run_preflight(tmp_path, "ok", CR_SCRIPTS=empty.as_posix())
+    assert r.returncode == 13, r.stdout + r.stderr
+    assert "script missing" in r.stdout and "adb_bounded.sh" in r.stdout
+    assert not (tmp_path / "state" / "calls").exists()
+
+
+def test_the_leg_scripts_are_in_the_repo_and_name_no_other_copy():
+    """All ten are versioned here, parse, and reach each other only by $SCRIPTS."""
+    bash = _bash()
+    for name in LEG_SCRIPTS:
+        path = LEG / name
+        assert path.is_file(), f"{path} is missing"
+        raw = path.read_bytes()
+        assert b"\r" not in raw, f"{name} has CRLF line ends; Linux bash cannot run it"
+        code = "\n".join(ln for ln in raw.decode("utf-8").splitlines()
+                         if not ln.lstrip().startswith("#"))
+        assert not re.search(r"hermes[/\\]+scripts|BakersfieldBrief\.com", code), \
+            f"{name} hard-codes a path to another copy of the leg scripts or the repo"
+        if name.endswith(".sh") and bash:
+            r = subprocess.run([bash, "-n", path.as_posix()],
+                               capture_output=True, text=True, timeout=60)
+            assert r.returncode == 0, f"{name}: {r.stderr}"
 
 
 def test_the_monitor_starts_the_way_the_leg_scripts_start_it(tmp_path):

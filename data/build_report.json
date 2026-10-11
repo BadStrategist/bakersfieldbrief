@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-10T22:37:52-07:00",
+ "built_at": "2026-10-11T02:16:58-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 1731, column 43"
   },
   "isabella": {
    "ok": true,
@@ -64,13 +64,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1228,
+  "brief_words": 64,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "1 injured after being struck by vehicle in south Bakersfield, police say",
+   "chp_new": 0,
+   "top_story": "Dozens gather to celebrate the 50th anniversary of Colonel Allensworth State Historic Park",
    "overnight_band": {
     "date": "2026-10-10",
     "count": 38,
@@ -115,7 +115,7 @@
     "other": "5 incident, 1 public service, 1 vehicle",
     "unmapped": []
    },
-   "archive": "2026-10-10"
+   "archive": "2026-10-11"
   },
   "cityhall": {
    "upcoming_meetings": 5,
@@ -130,7 +130,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -141,7 +141,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-10-10"
+   "draft": "drafts/weekend-guide-2026-10-11"
   },
   "grapevine": {
    "i5": "RESTRICTIONS",
@@ -150,13 +150,13 @@
   },
   "tehachapi": {
    "sr58": "RESTRICTIONS",
-   "wind_mph": 0,
+   "wind_mph": 5,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 63,
-   "wind_mph": 0,
+   "temp": 61,
+   "wind_mph": 5,
    "alerts": 0
   },
   "roads": {
@@ -174,9 +174,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 16,
-    "In 1 to 2 weeks": 20,
-    "Later": 98
+    "In the next 7 days": 20,
+    "In 1 to 2 weeks": 19,
+    "Later": 93
    },
    "meetings": 5
   },
@@ -184,10 +184,10 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 144485,
+   "isabella_af": 144162,
    "alpr_total": 270,
    "kern_fires": 1,
-   "aqi": 49,
+   "aqi": 46,
    "chp_week": 108
   },
   "letters": {
@@ -197,7 +197,7 @@
    "published": 60
   },
   "map": {
-   "dots": 115
+   "dots": 44
   },
   "sunday_read": {
    "topic": "Public safety",

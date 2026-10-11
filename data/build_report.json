@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-11T11:10:51-07:00",
+ "built_at": "2026-10-11T11:30:17-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,9 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": "ConnectionError: HTTPSConnectionPool(host='overpass-api.de', port=443): Max retries exceeded with url: /api/interpreter (Caused by NewConnectionError(\"HTTPSConnection(host='overpass-api.de', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\"))",
-   "stale": true,
-   "asof": "2026-10-11"
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -147,13 +145,13 @@
   },
   "tehachapi": {
    "sr58": "RESTRICTIONS",
-   "wind_mph": 10,
+   "wind_mph": 6,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 63,
-   "wind_mph": 10,
+   "temp": 66,
+   "wind_mph": 6,
    "alerts": 0
   },
   "roads": {

@@ -1300,6 +1300,56 @@
   "details": ""
  },
  {
+  "log_id": "261011BF0218",
+  "time": "Oct 11 2026  2:58PM",
+  "type": "WIND Advisory",
+  "location": "1033 Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.825534,
+  "lon": -118.87775,
+  "details": ""
+ },
+ {
+  "log_id": "261011BF0230",
+  "time": "Oct 11 2026  3:43PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Jewetta Ave / Rosedale Service Rd",
+  "area": "Bakersfield",
+  "lat": 35.384357,
+  "lon": -119.127871,
+  "details": ""
+ },
+ {
+  "log_id": "261011BF0231",
+  "time": "Oct 11 2026  3:51PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jno Lebec Rest Area",
+  "area": "Fort Tejon",
+  "lat": 34.830754,
+  "lon": -118.868495,
+  "details": ""
+ },
+ {
+  "log_id": "261011BF0239",
+  "time": "Oct 11 2026  4:12PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Descanso St / Kentucky St",
+  "area": "Bakersfield",
+  "lat": 35.373182,
+  "lon": -118.954149,
+  "details": ""
+ },
+ {
+  "log_id": "261011BF0252",
+  "time": "Oct 11 2026  4:49PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Nb I5 Jso Lost Hills Rd",
+  "area": "Buttonwillow",
+  "lat": 35.663056,
+  "lon": -119.687778,
+  "details": ""
+ },
+ {
   "log_id": "261011BF0139",
   "time": "Oct 11 2026 11:54AM",
   "type": "FIRE-Report of Fire",

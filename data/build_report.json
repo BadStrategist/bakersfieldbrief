@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-11T13:14:58-07:00",
+ "built_at": "2026-10-11T16:57:07-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -57,6 +57,10 @@
    "ok": true,
    "error": ""
   },
+  "cameras": {
+   "ok": true,
+   "error": ""
+  },
   "blocked": {
    "ok": false,
    "error": "stubbed sources (blocked or not built) \u2014 see data/sources/blocked.py"
@@ -69,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 5,
    "top_story": "3rd annual Cultura Fest brings Bakersfield families together to celebrate heritage and support education",
    "overnight_band": {
     "date": "2026-10-11",
@@ -145,13 +149,13 @@
   },
   "tehachapi": {
    "sr58": "RESTRICTIONS",
-   "wind_mph": null,
+   "wind_mph": 13,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 66,
-   "wind_mph": null,
+   "temp": 64,
+   "wind_mph": 13,
    "alerts": 0
   },
   "roads": {
@@ -167,11 +171,17 @@
    "alerts": 0,
    "logged_days": 0
   },
+  "traffic_cameras": {
+   "ok": true,
+   "cameras": 44,
+   "in_service": 43,
+   "stale": false
+  },
   "events": {
    "groups": {
-    "In the next 7 days": 21,
-    "In 1 to 2 weeks": 20,
-    "Later": 103
+    "In the next 7 days": 19,
+    "In 1 to 2 weeks": 19,
+    "Later": 94
    },
    "meetings": 5
   },
@@ -183,7 +193,7 @@
    "alpr_total": 270,
    "kern_fires": 1,
    "aqi": 48,
-   "chp_week": 115
+   "chp_week": 120
   },
   "letters": {
    "published": 1

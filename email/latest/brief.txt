@@ -8,7 +8,7 @@ CONDITIONS
 Weather: 70° now, high 79°
 Alerts: No active alerts
 Isabella: 144,162 acre-feet (25.4% full)
-CHP: Unavailable
+CHP: 3 overnight
 Air: AQI 51 · Moderate
 Fires: 1 active in Kern
 

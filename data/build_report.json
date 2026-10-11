@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-11T10:40:31-07:00",
+ "built_at": "2026-10-11T11:10:51-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 1731, column 43"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -39,7 +39,9 @@
   },
   "alpr": {
    "ok": true,
-   "error": ""
+   "error": "ConnectionError: HTTPSConnectionPool(host='overpass-api.de', port=443): Max retries exceeded with url: /api/interpreter (Caused by NewConnectionError(\"HTTPSConnection(host='overpass-api.de', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\"))",
+   "stale": true,
+   "asof": "2026-10-11"
   },
   "venues": {
    "ok": true,

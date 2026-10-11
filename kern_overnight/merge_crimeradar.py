@@ -190,6 +190,15 @@ def in_radio(hhmm: str, spans: list[tuple[int, int]] | None,
 #
 # The rules themselves live in kern_overnight/privacy.py so the radio path can
 # screen with the same ones (a radio row leaked a wrist wound on 2026-10-10).
+#
+# This module is imported two ways: as `kern_overnight.merge_crimeradar` (module
+# mode, and by the tests) and as a bare `import merge_crimeradar` from
+# scripts/crimeradar_monitor.py, which puts ONLY kern_overnight/ on sys.path. The
+# package-qualified import below then cannot resolve, which is what killed the
+# 2026-10-11 emit and made the publish gate die and hold the report. Put the repo
+# root on the path first, so both callers work.
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 from kern_overnight.privacy import (  # noqa: E402  re-exported for callers/tests
     ALWAYS_PRIVATE, FALL, MEDICAL, SEVERE, is_private, is_severe)
 # Rows the app placed OUTSIDE Kern County, dropped rather than published as Kern

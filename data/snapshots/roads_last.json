@@ -49,7 +49,7 @@
      }
     ]
    },
-   "reported_as_of": "Sunday, October 11th, 2026 at 02:16 AM",
+   "reported_as_of": "Sunday, October 11th, 2026 at 05:40 AM",
    "hash": "efa451eb67"
   },
   {
@@ -81,7 +81,7 @@
      }
     ]
    },
-   "reported_as_of": "Sunday, October 11th, 2026 at 02:16 AM",
+   "reported_as_of": "Sunday, October 11th, 2026 at 05:40 AM",
    "hash": "c08348f817"
   },
   {
@@ -94,7 +94,7 @@
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "Is reopened to northbound traffic 7.8 mi south of the Jct of SR-46 (Kern Co) at 0255 hrs on 10/11/26 A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "RESTRICTIONS"
     },
     {
@@ -118,8 +118,8 @@
      }
     ]
    },
-   "reported_as_of": "Sunday, October 11th, 2026 at 02:16 AM",
-   "hash": "f97882795e"
+   "reported_as_of": "Sunday, October 11th, 2026 at 05:40 AM",
+   "hash": "b99aa948fd"
   }
  ],
  "asof": "2026-10-11"

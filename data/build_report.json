@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-11T02:16:58-07:00",
+ "built_at": "2026-10-11T05:40:44-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 1731, column 43"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -69,7 +69,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 2,
    "top_story": "Dozens gather to celebrate the 50th anniversary of Colonel Allensworth State Historic Park",
    "overnight_band": {
     "date": "2026-10-10",
@@ -150,13 +150,13 @@
   },
   "tehachapi": {
    "sr58": "RESTRICTIONS",
-   "wind_mph": 5,
+   "wind_mph": 8,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 61,
-   "wind_mph": 5,
+   "temp": 54,
+   "wind_mph": 8,
    "alerts": 0
   },
   "roads": {
@@ -187,8 +187,8 @@
    "isabella_af": 144162,
    "alpr_total": 270,
    "kern_fires": 1,
-   "aqi": 46,
-   "chp_week": 108
+   "aqi": 49,
+   "chp_week": 110
   },
   "letters": {
    "published": 1

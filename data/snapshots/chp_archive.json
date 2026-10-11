@@ -1,155 +1,5 @@
 [
  {
-  "log_id": "261003BF0035",
-  "time": "Oct  3 2026  1:29AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "261003BF0316",
-  "time": "Oct  3 2026  3:19PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Lucretia Ct / Strebor Dr",
-  "area": "Bakersfield",
-  "lat": 35.362795,
-  "lon": -119.177048,
-  "details": ""
- },
- {
-  "log_id": "261003BF0325",
-  "time": "Oct  3 2026  3:45PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Pauls Place Dr / Sr178",
-  "area": "Bakersfield",
-  "lat": 35.663401,
-  "lon": -118.306651,
-  "details": ""
- },
- {
-  "log_id": "261003BF0331",
-  "time": "Oct  3 2026  4:13PM",
-  "type": "1125-Traffic Hazard",
-  "location": "0 I5 S",
-  "area": "Fort Tejon",
-  "lat": 34.911143,
-  "lon": -118.923741,
-  "details": ""
- },
- {
-  "log_id": "261003BF0341",
-  "time": "Oct  3 2026  4:39PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr178 Jeo Mouth Of The Canyon",
-  "area": "Bakersfield",
-  "lat": 35.442778,
-  "lon": -118.791667,
-  "details": ""
- },
- {
-  "log_id": "261003BF0346",
-  "time": "Oct  3 2026  4:43PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "2628 Mount Vernon Ave",
-  "area": "BF",
-  "lat": 35.392527,
-  "lon": -118.967551,
-  "details": ""
- },
- {
-  "log_id": "261003BF0366",
-  "time": "Oct  3 2026  5:54PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Sb I5 Jno Lerdo Hwy",
-  "area": "Buttonwillow",
-  "lat": 35.503333,
-  "lon": -119.538889,
-  "details": ""
- },
- {
-  "log_id": "261003BF0109",
-  "time": "Oct  3 2026  6:43AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "I5 S / Lost Hills Rd",
-  "area": "Buttonwillow",
-  "lat": 35.665979,
-  "lon": -119.690429,
-  "details": ""
- },
- {
-  "log_id": "261003BF0422",
-  "time": "Oct  3 2026  7:33PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Southgate Dr / S P St",
-  "area": "Bakersfield",
-  "lat": 35.335818,
-  "lon": -119.011903,
-  "details": ""
- },
- {
-  "log_id": "261003BF0463",
-  "time": "Oct  3 2026  9:50PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "0 Sr178",
-  "area": "Bakersfield",
-  "lat": 35.465544,
-  "lon": -118.756418,
-  "details": ""
- },
- {
-  "log_id": "261003BF0174",
-  "time": "Oct  3 2026 10:01AM",
-  "type": "FIRE-Report of Fire",
-  "location": "SR65 / Gretlein Rd",
-  "area": "Bakersfield",
-  "lat": 35.55506,
-  "lon": -119.088026,
-  "details": ""
- },
- {
-  "log_id": "261003BF0180",
-  "time": "Oct  3 2026 10:02AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Wb Sr58 At Tower Line Rd",
-  "area": "Bakersfield",
-  "lat": 35.329722,
-  "lon": -118.8075,
-  "details": ""
- },
- {
-  "log_id": "261003BF0195",
-  "time": "Oct  3 2026 10:24AM",
-  "type": "FIRE-Report of Fire",
-  "location": "Sr184 / Redbank Rd",
-  "area": "Bakersfield",
-  "lat": 35.339802,
-  "lon": -118.91428,
-  "details": ""
- },
- {
-  "log_id": "261003BF0199",
-  "time": "Oct  3 2026 10:26AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sb I5 Jno Grapevine Rd",
-  "area": "Fort Tejon",
-  "lat": 34.945556,
-  "lon": -118.9325,
-  "details": ""
- },
- {
-  "log_id": "261003BF0212",
-  "time": "Oct  3 2026 10:33AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Niles St / Oswell St",
-  "area": "Bakersfield",
-  "lat": 35.375842,
-  "lon": -118.949615,
-  "details": ""
- },
- {
   "log_id": "261004BF0021",
   "time": "Oct  4 2026  1:56AM",
   "type": "TADV-Traffic Advisory",
@@ -1437,6 +1287,26 @@
   "area": "Bakersfield",
   "lat": 35.352222,
   "lon": -119.005833,
+  "details": ""
+ },
+ {
+  "log_id": "261011BF0039",
+  "time": "Oct 11 2026  2:26AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sr99 N / Lerdo Hwy Ofr",
+  "area": "Bakersfield",
+  "lat": 35.496227,
+  "lon": -119.159603,
+  "details": ""
+ },
+ {
+  "log_id": "261011BF0002",
+  "time": "Oct 11 2026 12:00AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
   "details": ""
  }
 ]

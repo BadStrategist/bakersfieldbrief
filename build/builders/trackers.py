@@ -973,6 +973,8 @@ def build_hub(ctx, sources: dict) -> list[str]:
          "Highway 58 conditions between Bakersfield and Mojave, plus wind on the pass."),
         ("roads", "", "Roads", "Kern County road conditions",
          "I-5, SR-58 and SR-99 in one place, with each Caltrans report time."),
+        ("traffic-cameras", "", "Roads", "Bakersfield traffic cameras",
+         "Every Caltrans traffic camera in Kern County, with the time of each picture."),
         ("fog-delays", "amber", "Schools", "School fog delays",
          "Kern County school delays and closures posted today, and fog days this school year."),
         ("fires", "red", "Wildfire", TRACKERS["fires"]["name"], TRACKERS["fires"]["lede"]),

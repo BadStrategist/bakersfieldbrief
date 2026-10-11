@@ -34,7 +34,7 @@ from build.builders import (daily, cityhall, trackers, static_pages,
                             numbers, letters,
                             overnight, sunday_read, map, fair, tehachapi,
                             tehachapi_weather, roads, alpr_explorer,
-                            fog_delays)  # noqa: E402
+                            fog_delays, traffic_cameras)  # noqa: E402
 from build.builders import page as page_mod  # noqa: E402
 
 
@@ -90,6 +90,7 @@ def main():
                 ("tehachapi_weather", tehachapi_weather),
                 ("roads", roads),
                 ("fog_delays", fog_delays),
+                ("traffic_cameras", traffic_cameras),
                 ("events", events),
                 ("feed", feed), ("numbers", numbers), ("letters", letters),
                 ("overnight", overnight),
@@ -319,6 +320,7 @@ The site is static and rebuilt fresh every morning at 6:00 AM Pacific from publi
 - [Tehachapi Pass conditions](https://bakersfieldbrief.com/tehachapi-pass/): SR-58 road conditions and wind.
 - [Tehachapi weather](https://bakersfieldbrief.com/tehachapi-weather/): pass-level wind and forecast.
 - [Kern road conditions](https://bakersfieldbrief.com/roads/): I-5, SR-58, and SR-99 status in Bakersfield & Kern County.
+- [Bakersfield traffic cameras](https://bakersfieldbrief.com/traffic-cameras/): every Caltrans traffic camera in Kern County, with the current road status for I-5, SR-58 and SR-99.
 - [School fog delays](https://bakersfieldbrief.com/fog-delays/): Kern County school delays and closures posted today, and fog days this school year.
 - [Live Map](https://bakersfieldbrief.com/map/): interactive map of local data.
 
@@ -393,6 +395,15 @@ def _llms_full(results: dict) -> None:
         teh = "Tehachapi Pass SR-58 road conditions from Caltrans; data unavailable this build."
         roads_all = "Kern County road conditions from Caltrans; data unavailable this build."
 
+    # --- traffic cameras (counts from the Caltrans list this build read, never typed) ---
+    _cams = results.get("cameras", {})
+    if _cams.get("cameras"):
+        cams_line = (traffic_cameras.count_sentence(_cams["cameras"])
+                     + " Still pictures from Caltrans District 6 and District 9. "
+                     + traffic_cameras.frequency_sentence(_cams["cameras"]))
+    else:
+        cams_line = "Caltrans traffic cameras in Kern County; the camera list was unavailable this build."
+
     # --- tehachapi weather ---
     tw = results.get("tehachapi_weather", {})
     tcur = tw.get("current", {})
@@ -452,6 +463,8 @@ https://bakersfieldbrief.com/tehachapi-weather/ — {tehwx}
 
 https://bakersfieldbrief.com/roads/ — {roads_all}
 
+https://bakersfieldbrief.com/traffic-cameras/ — {cams_line}
+
 https://bakersfieldbrief.com/fires/ — {fires}
 
 ## Recent daily briefs
@@ -500,6 +513,7 @@ def _agentic_sitemap(results: dict) -> None:
         "/tehachapi-weather/": "Tehachapi weather — current conditions and forecast from the National Weather Service.",
         "/fog-delays/": "Kern County school fog delays and closures posted today, from the Superintendent of Schools' AlertLine, plus fog days this school year.",
         "/roads/": "Bakersfield and Kern County road conditions right now — I-5 Grapevine, SR-58 Tehachapi, and SR-99, live from Caltrans.",
+        "/traffic-cameras/": "Bakersfield and Kern County traffic cameras: every Caltrans camera on I-5, SR-58, SR-99 and the other state highways, with the current Caltrans road status.",
     }
     titles = _page_titles()
     pages = [(f"https://bakersfieldbrief.com{p}", curated.get(p) or titles[p]) for p in sorted(titles)]

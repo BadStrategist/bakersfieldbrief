@@ -41,6 +41,8 @@ _STATUS_COPY = {
 
 
 def build(ctx, sources: dict) -> list[str]:
+    # imported here: traffic_cameras reads this package's road wording, so a top-level import is a cycle
+    from . import traffic_cameras
     built = []
     built_iso = common.iso_today()
     roads = sources.get("roads", {})
@@ -282,6 +284,8 @@ def build(ctx, sources: dict) -> list[str]:
 
     {big}
 
+    {traffic_cameras.block(sources, rel, "tehachapi")}
+
         {images.figure("tehachapi", rel)}
 
         <div class="grid cols-2">
@@ -362,7 +366,8 @@ def build(ctx, sources: dict) -> list[str]:
         canonical="/tehachapi-pass/", content=body, current="trackers", rel=rel,
         built=built_iso, statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), _faq(live_answer, faq_qa)],
-        extra_scripts='<script src="{rel}assets/js/live-pass.js" defer></script>'.format(rel=rel))
+        extra_scripts='<script src="{rel}assets/js/live-pass.js" defer></script>'.format(rel=rel)
+        + traffic_cameras.scripts(rel))
     common.write(common.SITE / "tehachapi-pass" / "index.html", page)
     built.append("tehachapi-pass/index.html")
 

@@ -51,7 +51,35 @@ def _kern_status(r: dict) -> str:
     return r.get("pass_status") or r.get("status", "OPEN")
 
 
+def spoken_status(r: dict) -> str:
+    """One route's status as words that finish the sentence "<route> is ...".
+
+    The Grapevine page's spoken forms, so every page that states a road status says it the
+    same way (/traffic-cameras/ reads this too).
+    """
+    sc = r.get("scope")
+    if sc is None:
+        return _STATUS_COPY.get(_kern_status(r), _STATUS_COPY["OPEN"])[3]
+    if sc.get("on_pass_reported"):
+        return _STATUS_COPY.get(sc.get("on_pass", _kern_status(r)), _STATUS_COPY["OPEN"])[3]
+    # No Caltrans item names this corridor: say that, never a bare OPEN/CLOSED
+    return NO_PROBLEM_SPOKEN
+
+
+def spoken_parts(routes: list) -> list[str]:
+    """["I-5 over Tejon Pass is open with restrictions", ...] for the routes this site tracks."""
+    parts = []
+    for r in routes:
+        meta = _ROUTE_META.get(r["slug"])
+        if not meta:
+            continue
+        parts.append(f"{_ROUTE_PROSE.get(r['slug'], meta[0])} is {spoken_status(r)}")
+    return parts
+
+
 def build(ctx, sources: dict) -> list[str]:
+    # imported here: traffic_cameras reads this package's road wording, so a top-level import is a cycle
+    from . import traffic_cameras
     built = []
     built_iso = common.iso_today()
     data = sources.get("roads", {})
@@ -64,22 +92,7 @@ def build(ctx, sources: dict) -> list[str]:
     if routes:
         # Spoken form, not raw status words: "I5 RESTRICTIONS" is unquotable,
         # "I-5 (Tejon Pass) is open with restrictions" is what an answer engine repeats.
-        _numbers = {"i5": "I-5", "sr58": "SR-58", "sr99": "SR-99"}
-        parts = []
-        for r in routes:
-            meta = _ROUTE_META.get(r["slug"])
-            if not meta:
-                continue
-            sc = r.get("scope")
-            if sc is None:
-                spoken = _STATUS_COPY.get(_kern_status(r), _STATUS_COPY["OPEN"])[3]
-            elif sc.get("on_pass_reported"):
-                spoken = _STATUS_COPY.get(sc.get("on_pass", _kern_status(r)),
-                                          _STATUS_COPY["OPEN"])[3]
-            else:
-                # No Caltrans item names this corridor: say that, never a bare OPEN/CLOSED
-                spoken = NO_PROBLEM_SPOKEN
-            parts.append(f"{_ROUTE_PROSE.get(r['slug'], meta[0])} is {spoken}")
+        parts = spoken_parts(routes)
         statuses = "; ".join(parts)
         asof = next((r.get("reported_as_of") for r in routes if r.get("reported_as_of")), data.get("asof", "the latest Caltrans report"))
         direct = (f'<p class="answer"><strong>As of {html.escape(asof)}, Caltrans reports: '
@@ -226,6 +239,8 @@ def build(ctx, sources: dict) -> list[str]:
 
     <div class="grid cols-2">{cards}</div>
 
+    {traffic_cameras.block(sources, rel, "roads")}
+
     <section class="block">
       <div class="sign-head"><span class="tab">Log</span><h2>Recent changes</h2></div>
       {log_html}
@@ -255,7 +270,8 @@ def build(ctx, sources: dict) -> list[str]:
         canonical="/roads/", content=body, current="trackers", rel=rel,
         built=built_iso, statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), _faq_jsonld(faq_qa, live_answer)],
-        extra_scripts='<script src="{rel}assets/js/live-roads.js" defer></script>'.format(rel=rel))
+        extra_scripts='<script src="{rel}assets/js/live-roads.js" defer></script>'.format(rel=rel)
+        + traffic_cameras.scripts(rel))
     common.write(common.SITE / "roads" / "index.html", page)
     built.append("roads/index.html")
 

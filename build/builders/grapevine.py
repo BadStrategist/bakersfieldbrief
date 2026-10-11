@@ -101,6 +101,8 @@ def _report_age_hint(reported_as_of: str) -> str:
 
 
 def build(ctx, sources: dict) -> list[str]:
+    # imported here: traffic_cameras reads this package's road wording, so a top-level import is a cycle
+    from . import traffic_cameras
     built = []
     built_iso = common.iso_today()
     data = sources.get("roads", {})
@@ -261,6 +263,8 @@ def build(ctx, sources: dict) -> list[str]:
 
     {big}
 
+    {traffic_cameras.block(sources, rel, "grapevine")}
+
     <div class="grid cols-2">{cards}</div>
 
     <section class="block">
@@ -318,7 +322,8 @@ def build(ctx, sources: dict) -> list[str]:
                 canonical="/grapevine/", content=body, current="trackers", rel=rel,
                 built=built_iso, statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
                         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(), _faq_jsonld(faq_qa)],
-                extra_scripts='<script src="{rel}assets/js/live-pass.js" defer></script>'.format(rel=rel))
+                extra_scripts='<script src="{rel}assets/js/live-pass.js" defer></script>'.format(rel=rel)
+                + traffic_cameras.scripts(rel))
     common.write(common.SITE / "grapevine" / "index.html", page)
     built.append("grapevine/index.html")
 

@@ -281,7 +281,9 @@ def build(ctx, sources: dict) -> list[str]:
     </section>
 
     <p class="note">Driving in fog? See <a href="../roads/">Kern County road conditions</a> for
-    I-5, Highway 58 and Highway 99. This page reports what districts post and is not a
+    I-5, Highway 58 and Highway 99, and the
+    <a href="../traffic-cameras/">Caltrans traffic cameras</a> to see the fog on the road itself.
+    This page reports what districts post and is not a
     substitute for your school's own notice.</p>"""
 
     page = page_mod.render(

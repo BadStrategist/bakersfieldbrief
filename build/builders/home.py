@@ -196,6 +196,7 @@ def _night(rel, chp, built_iso) -> tuple[str, dict]:
     links = f"""<p class="links">
       <a href="{rel}map/">Live map</a>
       <a href="{rel}overnight/archive/">Past nights</a>
+      <a href="{rel}traffic-cameras/">Traffic cameras</a>
       <a href="https://quickmap.dot.ca.gov/" rel="noopener">Caltrans QuickMap</a>
     </p>
     <a class="btn go" href="{rel}overnight/">Read the full overnight log {_ARROW}</a>"""

@@ -277,23 +277,45 @@
     });
   }
 
-  // ---------- a newer Caltrans road report than the one this page was built with
+  // ---------- has Caltrans changed its road report since this page was built?
+  // Caltrans restamps its report every few minutes whether or not anything changed, so the
+  // time cannot answer that. The page carries a hash of each route's report text
+  // (traffic_cameras.report_fingerprint); the same hash of the live text is compared here.
   var answer = document.getElementById("road-answer");
   var newer = document.getElementById("road-newer");
-  if (answer && newer && answer.dataset.asof) {
+  var NAMES = { i5: "I-5", sr58: "SR-58", sr99: "SR-99" };
+
+  function fingerprint(rte) {
+    var text = (rte.sections || []).map(function (s) { return s.region + ":" + s.text; }).join("|");
+    var bytes = new TextEncoder().encode(text.toLowerCase().replace(/[^a-z0-9]/g, ""));
+    return crypto.subtle.digest("SHA-256", bytes).then(function (buf) {
+      return Array.prototype.map.call(new Uint8Array(buf), function (x) {
+        return ("0" + x.toString(16)).slice(-2);
+      }).join("").slice(0, 16);
+    });
+  }
+
+  if (answer && newer && answer.dataset.report && window.crypto && crypto.subtle && window.TextEncoder) {
+    var built = {};
+    try { built = JSON.parse(answer.dataset.report) || {}; } catch (e) { built = {}; }
     fetch("/api/pass-conditions", { headers: { "Accept": "application/json" } })
       .then(function (r) { return r.json(); })
       .then(function (data) {
-        if (!data || !data.ok || !Array.isArray(data.routes)) return;
-        var live = "";
-        data.routes.forEach(function (rte) { if (!live && rte.reported_as_of) live = rte.reported_as_of; });
-        if (!live || live === answer.dataset.asof) return;
-        newer.textContent = "Caltrans has posted a newer road report (" + live + ") than the one above. ";
-        var a = el("a", "", "See current Kern County road conditions");
-        a.href = "/roads/";
-        newer.appendChild(a);
-        newer.appendChild(document.createTextNode("."));
-        newer.hidden = false;
+        if (!data || !data.ok || !Array.isArray(data.routes)) return null;
+        var routes = data.routes.filter(function (rte) { return built[rte.slug]; });
+        return Promise.all(routes.map(fingerprint)).then(function (prints) {
+          var changed = routes.filter(function (rte, i) { return prints[i] !== built[rte.slug]; });
+          if (!changed.length) return;
+          var names = changed.map(function (rte) { return NAMES[rte.slug] || rte.slug; });
+          var when = changed[0].reported_as_of ? " (its report of " + changed[0].reported_as_of + ")" : "";
+          newer.textContent = "Caltrans has changed what it reports for " + names.join(" and ")
+            + " since the status above was written" + when + ". ";
+          var a = el("a", "", "See current Kern County road conditions");
+          a.href = "/roads/";
+          newer.appendChild(a);
+          newer.appendChild(document.createTextNode("."));
+          newer.hidden = false;
+        });
       })
       .catch(function () { /* the built status stays as it is */ });
   }

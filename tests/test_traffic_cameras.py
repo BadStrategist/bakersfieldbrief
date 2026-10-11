@@ -274,6 +274,22 @@ def test_chain_control_is_named_only_when_caltrans_names_it_on_a_corridor(monkey
     assert "Chain control: Caltrans names chains on I-5 over Tejon Pass" in _text(_main(chains))
 
 
+def test_report_fingerprint_follows_the_words_not_the_spacing_or_the_time(monkeypatch, tmp_path):
+    """The page tells a reader the status is out of date only when Caltrans' words changed."""
+    wind = "A high wind advisory is in effect from Lebec to Grapevine /in Lebec/ (Kern Co)."
+    a = traffic_cameras.report_fingerprint(_route("i5", wind))
+    assert a == traffic_cameras.report_fingerprint(_route("i5", wind.replace(" ", "  ").upper()))
+    assert a != traffic_cameras.report_fingerprint(_route("i5", wind.replace("wind", "snow")))
+    page, _ = _build(monkeypatch, tmp_path, roads=_roads(i5=wind))
+    carried = json.loads(html.unescape(re.search(r'data-report="([^"]*)"', page).group(1)))
+    assert carried == {"i5": a, "sr58": traffic_cameras.report_fingerprint(_route("sr58", QUIET)),
+                       "sr99": traffic_cameras.report_fingerprint(_route("sr99", QUIET))}
+    # the browser hashes the same letters and digits, of the same region:text join
+    js = (ROOT / "assets/js/cameras.js").read_text(encoding="utf-8")
+    assert 'return s.region + ":" + s.text; }).join("|")' in js
+    assert 'toLowerCase().replace(/[^a-z0-9]/g, "")' in js and '.slice(0, 16)' in js
+
+
 def test_road_report_unreadable_claims_no_status_and_keeps_the_cameras(monkeypatch, tmp_path):
     page, _ = _build(monkeypatch, tmp_path, roads={"ok": False, "error": "boom"})
     main = _main(page)

@@ -16,7 +16,9 @@ Rules this page keeps:
 """
 from __future__ import annotations
 
+import hashlib
 import html
+import json
 import re
 
 from .. import common
@@ -263,6 +265,17 @@ def _fog_line(weather: dict, rel: str) -> str:
     return f"<li><strong>Fog:</strong> the National Weather Service has posted: {items}. {link}</li>"
 
 
+def report_fingerprint(route: dict) -> str:
+    """A short hash of one route's Caltrans text, letters and digits only.
+
+    assets/js/cameras.js computes the same hash from the live report. Caltrans restamps its
+    report every few minutes whether or not anything changed, so the time alone cannot say
+    that the status above is out of date; the words can.
+    """
+    text = "|".join(f"{s.get('region', '')}:{s.get('text', '')}" for s in route.get("sections", []))
+    return hashlib.sha256(re.sub(r"[^a-z0-9]", "", text.lower()).encode()).hexdigest()[:16]
+
+
 def _road_status(sources: dict, rel: str) -> tuple[str, str, str]:
     """(answer paragraph, detail card, Caltrans report time) from the same data /roads/ reads."""
     data = sources.get("roads") or {}
@@ -279,7 +292,10 @@ def _road_status(sources: dict, rel: str) -> tuple[str, str, str]:
     stale = (" Caltrans could not be reached on the latest check, so this is the most recent "
              "report and may be out of date." if data.get("stale") else "")
     lead = f"As of {_e(ts)}, Caltrans reports: " if ts else "Caltrans reports: "
-    answer = (f'<p class="answer" id="road-answer" data-asof="{_e(ts)}"><strong>{lead}{said}.'
+    prints = html.escape(json.dumps({r["slug"]: report_fingerprint(r) for r in route_list
+                                    if not r.get("stale")}))
+    answer = (f'<p class="answer" id="road-answer" data-asof="{_e(ts)}" data-report="{prints}">'
+              f'<strong>{lead}{said}.'
               f'</strong>{stale} The camera pictures below are the newest Caltrans has.</p>')
     rows = "".join(_route_row(slug, routes.get(slug), rel) for slug in _ROUTE_LINK)
     detail = (f'<div class="card road-now"><ul class="hl">{rows}'

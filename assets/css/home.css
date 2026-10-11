@@ -99,11 +99,16 @@ h2.sec{font:700 20px/1.25 var(--serif);padding-bottom:8px;border-bottom:2px soli
 .notable b{display:block;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:var(--rust-dk)}
 .notable a{display:flex;align-items:center;min-height:44px;padding:4px 0;font-weight:700;line-height:1.3}
 .notable span{display:block;padding-bottom:8px;font-size:13px;line-height:1.4;color:var(--ink2)}
-.chips{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px;margin-top:14px}
-.chips li:last-child{grid-column:1 / -1}
-.chips li{display:flex;align-items:center;gap:10px;min-width:0;min-height:48px;padding:6px 14px;background:var(--card);border:1px solid var(--ink);border-radius:var(--r)}
-.chips b{flex:none;min-width:1.1em;font:800 24px/1 var(--sans);font-variant-numeric:tabular-nums}
-.chips span{min-width:0;font-size:15px;line-height:1.2;font-weight:600}
+/* Calls by type: one card, one row per type, most serious first. Counts sit in one right-aligned
+   column and labels in another, so the eye runs straight down. One column at every width. */
+.types-h{margin-top:14px;font:700 13px/1.4 var(--sans);letter-spacing:.04em;text-transform:uppercase;color:var(--rust-dk)}
+.types{margin-top:6px;background:var(--card);border:1px solid var(--ink);border-radius:var(--r);overflow:hidden}
+.types li{display:grid;grid-template-columns:28px minmax(0,1fr);column-gap:10px;align-items:center;min-height:40px;padding:6px 14px}
+.types li + li{border-top:1px solid var(--line)}
+.types b{font:800 20px/1 var(--sans);font-variant-numeric:tabular-nums;text-align:right}
+.types span{min-width:0;font-size:16px;line-height:1.25;font-weight:600}
+/* The breakdown of the last row: Other names every type inside it. */
+.types small{grid-column:2;padding-top:2px;font-size:13px;line-height:1.4;font-weight:400;color:var(--ink2)}
 .night .note{margin-top:12px}
 .night .chp{margin-top:8px}
 .night .links{margin-top:4px}
@@ -216,8 +221,7 @@ h2.sec{font:700 20px/1.25 var(--serif);padding-bottom:8px;border-bottom:2px soli
   .days{grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
   .ftr ul{grid-template-columns:repeat(4,minmax(0,1fr))}
   .lead h2{font-size:30px}
-  .chips{grid-template-columns:repeat(4,minmax(0,1fr))}
-  .chips li:last-child{grid-column:span 2}
+  .types{max-width:560px}
 }
 /* 1000px and up: desktop nav, wider band, two-column lower page */
 @media (min-width:1000px){
@@ -242,11 +246,7 @@ h2.sec{font:700 20px/1.25 var(--serif);padding-bottom:8px;border-bottom:2px soli
   .night h2 .say{max-width:6em}
   .notable{margin-top:0;padding:14px 18px 8px}
   .notable a{font-size:20px}
-  .chips{margin-top:24px}
-  .chips{grid-template-columns:repeat(8,minmax(0,1fr))}
-  .chips li:last-child{grid-column:span 2}
-  .chips li{flex-direction:column;align-items:flex-start;justify-content:center;gap:6px;padding:14px}
-  .chips b{font-size:34px}
+  .types-h{margin-top:24px}
   .night .note,.night .chp{max-width:820px}
   .split{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:32px;align-items:start;margin-top:44px}
   .split section{margin-top:0}

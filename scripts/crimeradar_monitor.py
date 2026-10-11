@@ -1201,20 +1201,32 @@ FEED_NAME = mc.FEED_NAME   # the feed the app itself credits
 
 # A History row carries only a clock time and a one-line title, so the report's
 # "type" has to come from the wording. First match wins, so keep the specific
-# patterns above the general ones.
+# patterns above the general ones: "fire alarm" above "fire", "cardiac arrest"
+# above the fallback, "disabled vehicle" above "vehicle". An alarm is named by
+# its full phrase only, because "two-alarm fire" is a fire.
 TYPE_HINTS = [
     ("shots fired", "Shots fired"), ("shooting", "Shooting"), ("shot ", "Shots fired"),
     ("stab", "Stabbing"), ("homicide", "Homicide"), ("fatality", "Fatality"),
+    ("fire alarm", "Fire alarm"), ("burglar alarm", "Burglary alarm"),
+    ("burglary alarm", "Burglary alarm"), ("robbery alarm", "Robbery alarm"),
+    ("panic alarm", "Alarm"), ("audible alarm", "Alarm"), ("alarm activation", "Alarm"),
     ("assault", "Assault"), ("fight", "Fight"), ("robbery", "Robbery"),
     ("weapon", "Weapons"), ("armed", "Weapons"), ("hostage", "Hostage"),
     ("barricade", "Barricade"), ("kidnap", "Kidnapping"), ("pursuit", "Pursuit"),
     ("chase", "Pursuit"), ("structure fire", "Structure fire"), ("fire", "Fire"),
     ("collision", "Traffic collision"), ("crash", "Traffic collision"),
-    ("hit and run", "Hit and run"), ("traffic", "Traffic"), ("vehicle", "Vehicle"),
+    ("rollover", "Rollover"), ("rolls over", "Rollover"), ("rolled over", "Rollover"),
+    ("hit and run", "Hit and run"), ("traffic", "Traffic"),
+    ("disabled vehicle", "Disabled vehicle"), ("vehicle", "Vehicle"),
     ("missing", "Missing person"), ("domestic", "Domestic dispute"),
-    ("medical", "Medical emergency"), ("overdose", "Overdose"), ("drowning", "Drowning"),
+    ("overdose", "Overdose"), ("cardiac arrest", "Cardiac arrest"),
+    ("cpr", "Cardiac arrest"), ("medical", "Medical emergency"),
+    ("cardiac", "Medical emergency"), ("unresponsive", "Medical emergency"),
+    ("unconscious", "Medical emergency"), ("not breathing", "Medical emergency"),
+    ("seizure", "Medical emergency"), ("drowning", "Drowning"),
     ("theft", "Theft"), ("burglar", "Burglary"), ("vandal", "Vandalism"),
     ("trespass", "Trespassing"), ("disturbance", "Disturbance"),
+    ("hazardous condition", "Hazardous condition"),
 ]
 # A History row is one unverified line with no disposition, so it never outranks
 # "Around the county" (3) and a routine one is a log line (2). It must not be

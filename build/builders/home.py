@@ -178,7 +178,7 @@ def _lead(top, today, rel, built_iso) -> str:
 
 # ---------------------------------------------------------------- 2. overnight band
 def _check_band(band: str) -> None:
-    """Read the numbers back out of the rendered band. The chips must sum to the headline."""
+    """Read the numbers back out of the rendered band. The rows must sum to the headline."""
     m = re.search(r'<span class="num">(\d+)</span>', band)
     shown = [int(n) for n in re.findall(r"<li><b>(\d+)</b>", band)]
     if m and shown and sum(shown) != int(m.group(1)):
@@ -228,15 +228,21 @@ def _night(rel, chp, built_iso) -> tuple[str, dict]:
         <span>From the overnight report. Details are preliminary until an official source confirms them.</span>
       </p>"""
 
-    info = {"date": rep["date"], "count": len(incs) or None, "chips": [], "unmapped": []}
+    info = {"date": rep["date"], "count": len(incs) or None, "chips": [], "other": "",
+            "unmapped": []}
     if incs:
-        chips, unmapped = night_counts.chips(incs)
-        info.update(chips=chips, unmapped=unmapped)
+        chips, inside, unmapped = night_counts.chips(incs)
+        info.update(chips=chips, other=inside, unmapped=unmapped)
         say = "call while Kern slept" if len(incs) == 1 else "calls while Kern slept"
         head = f'<span class="num">{len(incs)}</span> <span class="say">{say}</span>'
-        lis = "".join(f"\n      <li><b>{n}</b><span>{_e(label)}</span></li>" for label, n in chips)
+        # The Other row carries its own breakdown, so no call is hidden behind the word.
+        lis = "".join(
+            f"\n      <li><b>{n}</b><span>{_e(label)}</span>"
+            + (f"<small>{_e(inside)}</small>" if label == night_counts.OTHER else "") + "</li>"
+            for label, n in chips)
         body = f"""
-            <ul class="chips" aria-label="Calls by type">{lis}
+            <p class="types-h">Calls by type, most serious first</p>
+            <ul class="types" aria-label="Calls by type">{lis}
             </ul>"""
     else:
         head = f'<span class="say">{_e(rep["title"])}</span>'

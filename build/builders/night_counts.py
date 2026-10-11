@@ -18,13 +18,43 @@ from collections import Counter
 
 from .. import common
 
-OTHER = "Other"
+OTHER = "Other calls"
 
-# Chip order is display order. Judgement calls, the owner's to change: an alarm is not a fire
-# or a burglary until someone confirms it, so every alarm is in Other. Robbery is in Burglary
-# and theft. A call with a weapon in its label is in Weapons, not in Assault and fights.
+# Row order is display order: most serious first, danger to people at the top, and the same
+# order every morning. Judgement calls, the owner's to change: an alarm is not a fire or a
+# burglary until someone confirms it, so every alarm is in Alarms. Robbery is in Burglary and
+# theft, and so is a forced entry threat. Weapons calls, assaults and fights are one row.
 # "incident" and "vehicle" say nothing about the call, so they are in Other.
 MAP = {
+    "Weapons and assaults": (
+        "weapons call", "weapon call", "weapon", "weapon disturbance", "weapons offense",
+        "shooting", "shooting call", "reported shooting", "shots fired",
+        "shots fired, unfounded", "shots heard", "gunshot wound", "stabbing",
+        "stabbing investigation", "assault with a deadly weapon", "assault with deadly weapon",
+        "assault with a weapon", "armed subject", "armed subject / officer safety",
+        "brandishing firearm", "brandishing report", "disturbance with firearm",
+        "firearms incident", "person with a gun", "person with knife",
+        "road rage with a firearm", "suspicious person with a weapon",
+        "kidnapping / assault with a firearm", "stolen firearms search",
+        "weapons", "homicide",
+        "assault", "assault, possible domestic", "fight", "large fight",
+        "assault call and standoff", "assault investigation", "assault medical staging",
+        "assault report involving a child", "assault threats disturbance",
+        "assault with injury", "battery", "battery reported", "casino assault report",
+        "domestic assault", "domestic battery report",
+    ),
+    "Fires": (
+        "fire", "outside fire", "vehicle fire", "brush fire", "grass fire", "structure fire",
+        "possible fire", "fire investigation", "burning complaint", "backyard fire",
+        "building fire", "camp fire", "car fire", "commercial fire", "dumpster fire",
+        "electrical fire", "field fire", "fire call", "fire cause investigation",
+        "fire report", "fire response", "illegal burning", "kitchen fire", "outdoor fire",
+        "possible structure fire", "refuse fire", "rubbish fire", "shed fire", "small fire",
+        "smoke investigation", "structure fire call", "structure fire investigation",
+        "structure fire report", "trash fire", "vegetation fire", "vegetation fire check",
+        "vehicle fire check", "vehicle fire possible occupant", "vehicle fires", "wildfire",
+        "working fire", "attempted arson", "suspicious fires arson",
+    ),
     "Crashes and traffic": (
         "collision", "traffic collision", "hit and run", "hit and run collision",
         "hit-and-run collision", "multi vehicle crash", "rollover", "vehicle rollover",
@@ -42,6 +72,17 @@ MAP = {
         "vehicle stuck on railroad tracks", "train vs pedestrian", "pedestrian in traffic",
         "pedestrian on highway", "person on a moving vehicle",
         "search after possible collision into a building",
+        "multi-vehicle crash",
+    ),
+    "Medical and overdose": (
+        "medical aid", "cardiac arrest", "person down", "man down", "medical aid welfare",
+        "medical aid with fire report", "water rescue", "water rescue / medical",
+        "medical emergency", "drowning",
+        "overdose", "overdose response",
+    ),
+    "Missing persons": (
+        "missing juvenile", "missing person", "missing child", "missing children",
+        "missing person check", "missing person search", "runaway juvenile",
     ),
     "Disturbances and welfare": (
         "disturbance", "domestic disturbance", "domestic violence", "welfare check",
@@ -53,41 +94,7 @@ MAP = {
         "mental health", "mental health crisis", "mental health hold", "large gathering",
         "fireworks complaint", "public intoxication", "threats", "criminal threats",
         "call for help", "pedestrian check",
-    ),
-    "Fires": (
-        "fire", "outside fire", "vehicle fire", "brush fire", "grass fire", "structure fire",
-        "possible fire", "fire investigation", "burning complaint", "backyard fire",
-        "building fire", "camp fire", "car fire", "commercial fire", "dumpster fire",
-        "electrical fire", "field fire", "fire call", "fire cause investigation",
-        "fire report", "fire response", "illegal burning", "kitchen fire", "outdoor fire",
-        "possible structure fire", "refuse fire", "rubbish fire", "shed fire", "small fire",
-        "smoke investigation", "structure fire call", "structure fire investigation",
-        "structure fire report", "trash fire", "vegetation fire", "vegetation fire check",
-        "vehicle fire check", "vehicle fire possible occupant", "vehicle fires", "wildfire",
-        "working fire", "attempted arson", "suspicious fires arson",
-    ),
-    "Medical aid": (
-        "medical aid", "cardiac arrest", "person down", "man down", "medical aid welfare",
-        "medical aid with fire report", "water rescue", "water rescue / medical",
-    ),
-    "Overdose": ("overdose", "overdose response"),
-    "Weapons": (
-        "weapons call", "weapon call", "weapon", "weapon disturbance", "weapons offense",
-        "shooting", "shooting call", "reported shooting", "shots fired",
-        "shots fired, unfounded", "shots heard", "gunshot wound", "stabbing",
-        "stabbing investigation", "assault with a deadly weapon", "assault with deadly weapon",
-        "assault with a weapon", "armed subject", "armed subject / officer safety",
-        "brandishing firearm", "brandishing report", "disturbance with firearm",
-        "firearms incident", "person with a gun", "person with knife",
-        "road rage with a firearm", "suspicious person with a weapon",
-        "kidnapping / assault with a firearm", "stolen firearms search",
-    ),
-    "Assault and fights": (
-        "assault", "assault, possible domestic", "fight", "large fight",
-        "assault call and standoff", "assault investigation", "assault medical staging",
-        "assault report involving a child", "assault threats disturbance",
-        "assault with injury", "battery", "battery reported", "casino assault report",
-        "domestic assault", "domestic battery report",
+        "domestic dispute",
     ),
     "Burglary and theft": (
         "burglary", "theft", "vehicle theft", "robbery", "armed robbery",
@@ -96,10 +103,7 @@ MAP = {
         "commercial burglary", "residential burglary in progress", "copper theft",
         "grand theft auto", "shoplifting", "stolen vehicle", "stolen vehicle recovery",
         "theft from vehicle", "theft in progress", "theft report",
-    ),
-    "Missing persons": (
-        "missing juvenile", "missing person", "missing child", "missing children",
-        "missing person check", "missing person search", "runaway juvenile",
+        "forced entry threat",
     ),
     "Suspicious activity": (
         "suspicious circumstances", "suspicious circumstance",
@@ -107,9 +111,11 @@ MAP = {
         "suspicious subjects", "suspicious vehicle", "suspicious vehicle report",
         "suspicious prowler video", "prowler", "loitering", "loitering complaint",
     ),
-    OTHER: (
+    "Alarms": (
         "alarm", "burglary alarm", "audible alarm", "commercial alarm", "commercial fire alarm",
         "emergency alarm", "fire alarm", "medical alarm", "residential alarm", "robbery alarm",
+    ),
+    OTHER: (
         "vandalism", "animal bite", "animal complaint", "911 disconnect", "911 hang-up",
         "open-line call", "gas leak", "gas odor", "hazmat", "hazardous condition",
         "downed power lines", "flooding", "loud explosion report", "incident", "vehicle",
@@ -138,12 +144,14 @@ def normalize(typ) -> str:
     return re.sub(r"\s+", " ", str(typ or "incident").replace("_", " ")).strip().lower()
 
 
-def chips(incs: list[dict]) -> tuple[list[tuple[str, int]], list[str]]:
-    """Rows of one night's file -> ([(chip label, count), ...] in display order, unmapped labels).
+def chips(incs: list[dict]) -> tuple[list[tuple[str, int]], str, list[str]]:
+    """Rows of one night's file -> ([(row label, count), ...] in display order, the breakdown
+    of the Other row, unmapped labels).
 
     Every row lands in exactly one chip, so the counts sum to len(incs); that is checked here
-    and again on the rendered band. The Other chip names every type inside it. When Other is
-    more than a fifth of the night, its largest type gets a chip of its own.
+    and again on the rendered band. The breakdown names every type inside Other with its count
+    ("5 incident, 1 public service"). When Other is more than a fifth of the night, its largest
+    type gets a row of its own, just above it.
 
     A label that is not in MAP is counted in Other under its own name and logged. Set
     KO_STRICT_TYPES=1 to stop the build on it instead.
@@ -166,7 +174,7 @@ def chips(incs: list[dict]) -> tuple[list[tuple[str, int]], list[str]]:
         msg = f"night_counts: incident type not in the map: {unmapped}"
         if os.environ.get("KO_STRICT_TYPES") == "1":
             raise NightCountError(msg)
-        common.log(f"WARNING {msg} (counted in Other, named on the chip)")
+        common.log(f"WARNING {msg} (counted in Other, named under the row)")
 
     total = len(incs)
     out = [(chip, by_chip[chip]) for chip in MAP if by_chip[chip]]
@@ -174,11 +182,12 @@ def chips(incs: list[dict]) -> tuple[list[tuple[str, int]], list[str]]:
         label, n = other.most_common(1)[0]
         del other[label]
         out.append((label[:1].upper() + label[1:], n))
+    inside = ""
     if other:
-        names = ", ".join(label for label, _ in other.most_common())
-        out.append((f"{OTHER}: {names}", sum(other.values())))
+        inside = ", ".join(f"{n} {label}" for label, n in other.most_common())
+        out.append((OTHER, sum(other.values())))
 
     if sum(n for _, n in out) != total:
         raise NightCountError(
             f"night_counts: chips sum to {sum(n for _, n in out)}, the night has {total} calls")
-    return out, unmapped
+    return out, inside, unmapped

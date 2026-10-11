@@ -949,3 +949,21 @@ def test_the_lock_is_reclaimable_when_its_owner_is_gone(tmp_path, monkeypatch):
 
     lock.unlink()
     assert cr.reclaim_lock_cli() == 0
+
+
+def test_type_of_names_the_call_not_the_first_word_it_recognises():
+    """2026-10-10: a cardiac arrest was staged as "Incident" and a commercial fire
+    alarm as "Fire", so the home page counted one in Other and one in Fires."""
+    for title, want in (
+            ("Person in cardiac arrest receiving CPR near Bakersfield", "Cardiac arrest"),
+            ("Commercial fire alarm at farm business", "Fire alarm"),
+            ("Unresponsive driver in semi truck on southbound Highway 99", "Medical emergency"),
+            ("Car rolls over into field on Fairbank Lane", "Rollover"),
+            ("Disabled vehicle facing wrong way on highway ramp", "Disabled vehicle"),
+            # unchanged: the specific fix must not bend these
+            ("Two-alarm fire at warehouse", "Fire"),
+            ("Report of possible brush fire near Highway 58", "Fire"),
+            ("Person unconscious after reported overdose", "Overdose"),
+            ("Disabled vehicle on shoulder after possible collision", "Traffic collision"),
+            ("Search finds no injured person near Tucker Road", "Incident")):
+        assert cr._type_of(title) == want, title

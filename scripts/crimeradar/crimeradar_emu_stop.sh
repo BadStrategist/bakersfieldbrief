@@ -68,6 +68,14 @@ for _ in $(seq 1 20); do
   sleep 15
 done
 
+# The healthy baseline: what a guest that got to its stop looks like, to read a
+# failure's snapshot against. `lastanr` lasts until the guest goes, so this also
+# catches an ANR the monitor recovered from. Not on the wedge recycle: the
+# preflight took that snapshot itself, and that guest does not answer.
+if [ "${CR_WEDGE_RETRY:-0}" != "1" ] && [ -f "$SCRIPTS/crimeradar_diag.sh" ]; then
+  bash "$SCRIPTS/crimeradar_diag.sh" "stop" </dev/null || true
+fi
+
 "$ADB" -s "$DEV" emu kill >/dev/null 2>&1
 for _ in $(seq 1 12); do
   sleep 5

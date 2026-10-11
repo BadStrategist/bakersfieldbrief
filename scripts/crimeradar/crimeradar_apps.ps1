@@ -14,16 +14,32 @@
 # Prints one line. Exit codes:
 #   running  0 running, 1 not running
 #   stop     0 stopped, 1 was not running, 2 still running after the stop, 3 refused
-#   start    0 running now, 2 did not come up, 4 nothing to start it with
+#   start    0 seen running, 2 launched but not seen within the wait, 4 nothing to start it with
+#
+# start answers 0 only for a process it saw, on two looks in a row, and its line
+# says when: "verified 23:05:41, 12 s after the launch: ...". A launch is not a
+# running app. Discord is started through its updater, which can hold the client
+# back for longer than a fixed sleep (2026-10-11: a count taken straight after
+# the launch read "not reopened" for an app that was on its way up). The wait is
+# CR_APPS_START_WAIT seconds, default 90.
+#
+# `selftest` is not an app. tests/test_crimeradar_apps.py runs this file's real
+# stop and start against a throwaway executable: CR_APPS_SELFTEST_EXE is its full
+# path and CR_APPS_SELFTEST_START the script that launches it. crimeradar_apps.sh
+# never asks for it.
 param(
   [Parameter(Mandatory = $true)][ValidateSet('running', 'stop', 'start')][string]$Verb,
-  [Parameter(Mandatory = $true)][ValidateSet('discord', 'claude-desktop')][string]$App
+  [Parameter(Mandatory = $true)][ValidateSet('discord', 'claude-desktop', 'selftest')][string]$App
 )
 $ErrorActionPreference = 'Stop'
 
 $Roots = @{
   'discord'        = @{ Name = 'Discord.exe'; Like = (Join-Path $env:LOCALAPPDATA 'Discord\app-*\Discord.exe') }
   'claude-desktop' = @{ Name = 'claude.exe';  Like = '*\WindowsApps\Claude_*\app\claude.exe' }
+}
+if ($App -eq 'selftest') {
+  if (-not $env:CR_APPS_SELFTEST_EXE) { Write-Output 'selftest needs CR_APPS_SELFTEST_EXE'; exit 4 }
+  $Roots['selftest'] = @{ Name = (Split-Path $env:CR_APPS_SELFTEST_EXE -Leaf); Like = $env:CR_APPS_SELFTEST_EXE }
 }
 $Hermes = (Join-Path $env:LOCALAPPDATA 'hermes') + '\*'
 
@@ -85,8 +101,16 @@ if ($Verb -eq 'stop') {
 
 # start. Start-Process goes through the shell, so the app inherits none of this
 # run's handles: a cron job's captured output never waits on the app it opened.
-if ($found.Tree.Count -gt 0) { Write-Output ('already running: ' + (Get-Size $found.Tree)); exit 0 }
-if ($App -eq 'discord') {
+if ($found.Tree.Count -gt 0) {
+  Write-Output ('already running at {0:HH:mm:ss}: {1}' -f (Get-Date), (Get-Size $found.Tree)); exit 0
+}
+$wait = 90
+if ($env:CR_APPS_START_WAIT -match '^\d+$') { $wait = [int]$env:CR_APPS_START_WAIT }
+$launched = Get-Date
+if ($App -eq 'selftest') {
+  if (-not $env:CR_APPS_SELFTEST_START) { Write-Output 'selftest needs CR_APPS_SELFTEST_START'; exit 4 }
+  Start-Process -FilePath $env:CR_APPS_SELFTEST_START -WindowStyle Hidden
+} elseif ($App -eq 'discord') {
   $upd = Join-Path $env:LOCALAPPDATA 'Discord\Update.exe'
   if (-not (Test-Path $upd)) { Write-Output "no launcher at $upd"; exit 4 }
   # Discord's own start-up line, with its own "start minimised" switch.
@@ -96,9 +120,25 @@ if ($App -eq 'discord') {
   if (-not $pkg) { Write-Output 'the Claude package is not installed for this user'; exit 4 }
   Start-Process -FilePath ('shell:AppsFolder\' + $pkg.PackageFamilyName + '!Claude')
 }
-for ($i = 0; $i -lt 60; $i++) {
-  Start-Sleep -Milliseconds 500
+# Poll until the process is there on two looks in a row (a launcher's first child
+# can exit as it hands over), or the wait runs out.
+$seen = $false
+while (((Get-Date) - $launched).TotalSeconds -lt $wait) {
+  Start-Sleep -Milliseconds 1000
   $now = (Get-Tree).Tree
-  if ($now.Count -gt 0) { Write-Output (Get-Size $now); exit 0 }
+  if ($now.Count -eq 0) { $seen = $false; continue }
+  if ($seen) {
+    $at = Get-Date
+    Write-Output ('verified {0:HH:mm:ss}, {1} s after the launch: {2}' -f $at, [int]($at - $launched).TotalSeconds, (Get-Size $now))
+    exit 0
+  }
+  $seen = $true
 }
-Write-Output 'started, but no process appeared within 30 s'; exit 2
+$why = ''
+if ($App -eq 'discord') {
+  $updPath = Join-Path $env:LOCALAPPDATA 'Discord\Update.exe'
+  $busy = @(Get-CimInstance Win32_Process -Filter "Name = 'Update.exe'" | Where-Object { $_.ExecutablePath -eq $updPath })
+  if ($busy.Count -gt 0) { $why = "; Discord's updater is still running, so the client may yet appear" }
+}
+Write-Output ('launched {0:HH:mm:ss}, no process seen by {1:HH:mm:ss} ({2} s){3}' -f $launched, (Get-Date), $wait, $why)
+exit 2

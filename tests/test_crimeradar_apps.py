@@ -19,8 +19,10 @@ Run:  .venv/Scripts/python.exe -m pytest tests/test_crimeradar_apps.py -q
 from __future__ import annotations
 
 import os
+import re
 import shutil
 import subprocess
+import time
 from pathlib import Path
 
 import pytest
@@ -28,6 +30,8 @@ import pytest
 from test_crimeradar_preflight import LEG, _bash, _stub, run_preflight
 
 APPS = ("discord", "claude-desktop")
+IN_HOURS = "7 2130"        # CR_APPS_NOW: weekday 1-7 (Mon-Sun), then HHMM
+LATE = "7 1000"            # Sunday 10:00, after the 08:05 stop
 
 # An app is "running" while $FAKE_APPS/<app> exists. FAKE_STOP_<APP> and
 # FAKE_START_<APP> (dash as underscore) force that verb's exit code.
@@ -39,8 +43,12 @@ if [ -n "${!forced:-}" ]; then echo "forced ${!forced}"; exit "${!forced}"; fi
 case "$verb" in
   stop)  [ -f "$FAKE_APPS/$app" ] || { echo "not running"; exit 1; }
          rm -f "$FAKE_APPS/$app"; echo "6 process(es), 1255 MB private"; exit 0 ;;
-  start) [ -f "$FAKE_APPS/$app" ] && { echo "already running: 6 process(es), 1255 MB private"; exit 0; }
-         : >"$FAKE_APPS/$app"; echo "6 process(es), 300 MB private"; exit 0 ;;
+  start) [ -f "$FAKE_APPS/$app" ] && { echo "already running at 23:05:01: 6 process(es), 1255 MB private"; exit 0; }
+         sleep "${FAKE_START_SLEEP:-0}"
+         : >"$FAKE_APPS/$app"
+         echo "verified 23:05:14, 12 s after the launch: 6 process(es), 300 MB private"; exit 0 ;;
+  running) [ -f "$FAKE_APPS/$app" ] || { echo "not running"; exit 1; }
+         echo "6 process(es), 1255 MB private"; exit 0 ;;
 esac
 exit 9
 """
@@ -58,9 +66,11 @@ class Box:
         self.driver = _stub(tmp_path / "driver", FAKE_DRIVER)
 
     def env(self, **extra: str) -> dict[str, str]:
-        env = dict(os.environ, CR_REPO=self.root.as_posix(),
+        # The clock is Sunday 21:30, inside the evening burst; the late-run tests set their own.
+        env = dict(os.environ, CR_REPO=self.root.as_posix(), CR_APPS_NOW=IN_HOURS,
                    CR_APPS_DRIVER=self.driver.as_posix(), FAKE_APPS=self.apps.as_posix())
-        for knob in ("CR_LEG_APPS", "CR_SCRIPTS", "CR_WEDGE_RETRY"):
+        for knob in ("CR_LEG_APPS", "CR_SCRIPTS", "CR_WEDGE_RETRY", "CR_DIAG",
+                     "CR_APPS_START_WAIT", "CR_APPS_LOCK_TRIES"):
             env.pop(knob, None)
         env.update(extra)
         return env
@@ -169,7 +179,9 @@ def test_a_reopen_that_fails_is_tried_again_by_the_next_stop(box):
     box.open(*APPS)
     box.run("close")
     r = box.run("reopen", FAKE_START_DISCORD="2")
-    assert r.returncode == 0 and "could not reopen discord" in r.stdout
+    assert r.returncode == 0 and "discord was launched but not seen running" in r.stdout
+    assert "reopened discord" not in r.stdout          # launched is not reopened
+    assert "reopen discord UNVERIFIED" in (box.work / "leg_apps.log").read_text()
     assert box.recorded() == ["discord"] and box.running() == {"claude-desktop"}
     box.run("reopen")
     assert box.running() == set(APPS) and box.recorded() == []
@@ -196,6 +208,7 @@ def test_the_off_switch_and_a_missing_work_directory_touch_nothing(box):
 
 def _preflight(box: Box, dumps: str, **extra: str) -> subprocess.CompletedProcess:
     shutil.rmtree(box.root / "work")       # run_preflight builds its own scratch repo here
+    extra.setdefault("CR_APPS_NOW", IN_HOURS)
     return run_preflight(box.root, dumps, CR_LEG_APPS="1", CR_APPS_DRIVER=box.driver.as_posix(),
                          FAKE_APPS=box.apps.as_posix(), **extra)
 
@@ -224,6 +237,103 @@ def test_the_preflight_runs_without_the_apps_script(box):
     r = _preflight(box, "ok", CR_SCRIPTS=scripts.as_posix())
     assert r.returncode == 0, r.stdout + r.stderr
     assert "crimeradar_apps.sh is missing" in r.stdout
+
+
+# ---- a late run. Hermes runs a missed schedule once, immediately, and the
+# morning pass has no clock guard: before this, a 07:50 pass that fired after the
+# 08:05 stop closed both apps with nothing due to reopen them until 23:05.
+def test_a_late_run_closes_nothing(box):
+    box.open(*APPS)
+    r = box.run("close", CR_APPS_NOW=LATE)
+    assert r.returncode == 0, r.stdout + r.stderr
+    assert "outside the leg's hours" in r.stdout and "stay open" in r.stdout
+    assert box.running() == set(APPS) and box.recorded() == []
+    assert box.calls() == []               # the driver is not even asked
+
+
+def test_a_late_run_reopens_what_an_earlier_leg_left_closed(box):
+    """The state file already holds both apps: the 08:05 stop never ran, or lost
+    them. The late run must not leave them shut until 23:05."""
+    (box.work / "leg_apps.state").write_text("discord\nclaude-desktop\n")
+    assert box.running() == set()
+    r = box.run("close", CR_APPS_NOW=LATE)
+    assert r.returncode == 0, r.stdout + r.stderr
+    assert box.running() == set(APPS)      # both back, in this run
+    assert box.recorded() == []
+    assert "reopened discord (verified" in r.stdout
+    assert "reopened claude-desktop (verified" in r.stdout
+    assert not any(c.startswith("stop ") for c in box.calls())
+
+
+def test_a_late_morning_pass_leaves_them_open_through_the_real_preflight(box):
+    box.open(*APPS)
+    r = _preflight(box, "ok", CR_APPS_NOW=LATE)
+    assert r.returncode == 0, r.stdout + r.stderr      # the pass itself still runs
+    assert "outside the leg's hours" in r.stdout
+    assert box.running() == set(APPS) and box.recorded() == []
+
+
+@pytest.mark.parametrize("now, closes", [
+    ("7 0459", False), ("7 0500", True), ("3 0655", True), ("3 0750", True),
+    ("3 0804", True), ("3 0805", False), ("3 1200", False), ("3 2059", False),
+    ("4 2100", True), ("4 2304", True), ("4 2305", False),
+    ("5 2130", False),     # Friday evening: no burst, and no 23:05 stop
+    ("6 2130", False),
+    ("6 0030", True), ("7 0104", True), ("7 0105", False),
+    ("2 0030", False),     # a weeknight after midnight: no 01:05 stop
+])
+def test_a_close_happens_only_when_a_stop_job_follows(box, now, closes):
+    box.open("discord")
+    box.run("close", CR_APPS_NOW=now)
+    assert (box.running() == set()) is closes, now
+    assert (box.recorded() == ["discord"]) is closes, now
+
+
+# ---- one run at a time. 2026-10-11 12:17: a stop job's reopen and a preflight's
+# close overlapped, the reopen rewrote the record from its stale copy, and Discord
+# stayed shut with nothing on the record.
+def test_a_close_that_overlaps_a_reopen_waits_for_it(box):
+    box.open(*APPS)
+    box.run("close")
+    slow = subprocess.Popen([_bash(), (LEG / "crimeradar_apps.sh").as_posix(), "reopen"],
+                            env=box.env(FAKE_START_SLEEP="2"), stdin=subprocess.DEVNULL,
+                            stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+    deadline = time.time() + 30
+    while not (box.work / "leg_apps.lock").exists() and time.time() < deadline:
+        time.sleep(0.05)
+    r = box.run("close")                   # the preflight of the next run, mid-reopen
+    out, _ = slow.communicate(timeout=60)
+    assert slow.returncode == 0 and "reopened claude-desktop" in out, out
+    assert r.returncode == 0, r.stdout + r.stderr
+    assert box.running() == set()          # closed again, after the reopen finished
+    assert box.recorded() == list(APPS)    # and both are on the record
+    assert not (box.work / "leg_apps.lock").exists()
+
+
+def test_a_held_lock_means_nothing_is_touched_and_a_dead_one_is_taken(box):
+    box.open(*APPS)
+    lock = box.work / "leg_apps.lock"
+    lock.mkdir()
+    r = box.run("close", CR_APPS_LOCK_TRIES="1")
+    assert r.returncode == 0 and "nothing touched" in r.stdout
+    assert box.running() == set(APPS) and box.calls() == []
+    old = time.time() - 700                # over the 10-minute bound: its run died
+    os.utime(lock, (old, old))
+    r = box.run("close", CR_APPS_LOCK_TRIES="2")
+    assert box.running() == set() and box.recorded() == list(APPS)
+    assert not lock.exists()
+
+
+def test_status_says_what_is_running_and_what_is_owed_and_touches_nothing(box):
+    box.open("discord")
+    box.run("close")                       # only discord was open, so only it is owed
+    box.open("claude-desktop")
+    r = box.run("status", CR_APPS_NOW=LATE)
+    assert r.returncode == 0, r.stdout + r.stderr
+    assert "discord not running; closed by the leg, reopen still owed" in r.stdout
+    assert ("claude-desktop running (6 process(es), 1255 MB private); "
+            "not on the leg's record") in r.stdout
+    assert box.recorded() == ["discord"] and box.running() == {"claude-desktop"}
 
 
 def _stop(box: Box, devices: str, **extra: str) -> subprocess.CompletedProcess:
@@ -276,6 +386,54 @@ def test_the_driver_finds_apps_by_path_and_guards_its_caller():
     assert "refused: this run is inside" in text and "refused: a hermes process" in text
     code = "\n".join(ln for ln in text.splitlines() if not ln.lstrip().startswith("#"))
     assert "Get-Process" not in code and "taskkill" not in code     # both match by name
+
+
+def _driver(verb: str, env: dict[str, str]) -> subprocess.CompletedProcess:
+    return subprocess.run([shutil.which("powershell"), "-NoProfile", "-ExecutionPolicy", "Bypass",
+                           "-File", str(LEG / "crimeradar_apps.ps1"), verb, "selftest"],
+                          env=env, stdin=subprocess.DEVNULL, capture_output=True, text=True,
+                          timeout=120)
+
+
+def test_the_real_driver_reports_a_slow_launch_only_once_it_has_seen_the_process(tmp_path):
+    """The driver's own start and stop, against a throwaway executable whose
+    launcher holds it back five seconds, the way Discord's updater does."""
+    if os.name != "nt" or not shutil.which("powershell"):
+        pytest.skip("the process driver is Windows PowerShell")
+    exe = tmp_path / "cr_selftest_app.exe"
+    shutil.copy(Path(os.environ["SystemRoot"]) / "System32" / "PING.EXE", exe)
+    launcher = tmp_path / "launch.cmd"
+    launcher.write_text("@echo off\r\nping -n 6 127.0.0.1 >nul\r\n"
+                        f'start "" /b "{exe}" -n 120 127.0.0.1 >nul\r\n')
+    env = dict(os.environ, CR_APPS_SELFTEST_EXE=str(exe), CR_APPS_SELFTEST_START=str(launcher))
+    def up() -> bool:
+        return _driver("running", env).returncode == 0
+
+    try:
+        assert not up()
+        # Waited for: it comes up late, and the answer is the sighting, with its time.
+        r = _driver("start", dict(env, CR_APPS_START_WAIT="60"))
+        assert r.returncode == 0, r.stdout + r.stderr
+        seen = re.search(r"verified \d\d:\d\d:\d\d, (\d+) s after the launch: 1 process", r.stdout)
+        assert seen and int(seen.group(1)) >= 4, r.stdout
+        assert up()
+        r = _driver("start", env)              # a second stop job: nothing is launched twice
+        assert r.returncode == 0 and "already running at" in r.stdout, r.stdout + r.stderr
+        r = _driver("stop", env)
+        assert r.returncode == 0 and not up(), r.stdout + r.stderr
+        # Too short a wait: launched, not seen. That is exit 2 and never "verified".
+        r = _driver("start", dict(env, CR_APPS_START_WAIT="2"))
+        assert r.returncode == 2, r.stdout + r.stderr
+        assert "no process seen by" in r.stdout and "verified" not in r.stdout
+        deadline = time.time() + 30            # and it does come up, after the report
+        while not up() and time.time() < deadline:
+            time.sleep(0.5)
+        assert up()
+    finally:
+        for _ in range(5):
+            if _driver("stop", env).returncode == 1:
+                break
+    assert not up()
 
 
 def test_the_real_driver_answers_running_without_touching_anything():

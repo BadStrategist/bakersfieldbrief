@@ -19,6 +19,10 @@
 #     disturbed;
 #   * the floor and the window are overridable for a dry run (see below).
 #
+# It is also the leg's RAM gauge: every call, from the night, emit and morning
+# scripts alike, records free memory to work/crimeradar/host_ram.log before the
+# two tests above decide whether anything is closed.
+#
 # Dry run (nothing is killed):
 #   CR_MEM_DRY=1 CR_MEM_WINDOW=13 CR_MEM_FLOOR_MB=999999 bash crimeradar_memguard.sh
 #
@@ -39,12 +43,15 @@ REPO="${CR_REPO:-$(cd "$HERE/../.." && { pwd -W 2>/dev/null || pwd; })}"
 LOG="$REPO/work/crimeradar/memguard.log"
 [ -d "$REPO" ] || { echo "[cr] FAILED: repo missing: $REPO (CR_REPO overrides)"; exit 13; }
 
-HOUR=$(date +%H)
-FOUND=0
-for h in $WINDOW; do
-  [ "$HOUR" = "$h" ] && FOUND=1
-done
-[ "$FOUND" = "1" ] || exit 0
+# Every call records the reading, whatever it then does: one line on stdout (the
+# job's own log) and one in host_ram.log. Until 2026-10-11 a reading existed
+# only when this closed something, and the emit and the morning pass never came
+# here, so that day's 06:55 and 07:54 failures have no RAM figure at all. $1
+# names the step that asked (night, emit, morning). Recording changes nothing
+# about what is closed: the window, the floor and the two apps are as they were.
+STEP="${1:-leg}"
+RAMLOG="$REPO/work/crimeradar/host_ram.log"
+record() { printf '%s %s %s\n' "$(date '+%F %T')" "$STEP" "$1" >>"$RAMLOG" 2>/dev/null || true; }
 
 free_mb() {
   powershell -NoProfile -Command \
@@ -52,8 +59,28 @@ free_mb() {
 }
 
 BEFORE=$(free_mb)
-[ -n "$BEFORE" ] || exit 0
-[ "$BEFORE" -ge "$FLOOR_MB" ] && exit 0
+case "$BEFORE" in
+  ''|*[!0-9]*)
+    echo "[cr] host RAM: no reading before the $STEP step (powershell gave none)"
+    record "no reading"
+    exit 0 ;;
+esac
+
+HOUR=$(date +%H)
+FOUND=0
+for h in $WINDOW; do
+  [ "$HOUR" = "$h" ] && FOUND=1
+done
+if [ "$FOUND" != "1" ]; then
+  echo "[cr] host RAM ${BEFORE} MB free before the $STEP step (floor ${FLOOR_MB} MB; outside the memguard's hours, so nothing is closed)"
+  record "free=${BEFORE}MB floor=${FLOOR_MB}MB outside-hours"
+  exit 0
+fi
+if [ "$BEFORE" -ge "$FLOOR_MB" ]; then
+  echo "[cr] host RAM ${BEFORE} MB free before the $STEP step (floor ${FLOOR_MB} MB)"
+  record "free=${BEFORE}MB floor=${FLOOR_MB}MB ok"
+  exit 0
+fi
 
 echo "[cr] host RAM ${BEFORE} MB free, below ${FLOOR_MB} MB; checking the apps the owner named"
 
@@ -84,6 +111,7 @@ done
 sleep 3
 AFTER=$(free_mb)
 echo "[cr] host RAM now ${AFTER:-unknown} MB free"
+record "free=${BEFORE}MB floor=${FLOOR_MB}MB below-floor after=${AFTER:-unknown}MB"
 if [ -n "${AFTER:-}" ] && [ "$AFTER" -lt "$FLOOR_MB" ]; then
   echo "[cr] WARNING: still below ${FLOOR_MB} MB; the leg may ANR. Consider moving this leg to a bigger box."
 fi

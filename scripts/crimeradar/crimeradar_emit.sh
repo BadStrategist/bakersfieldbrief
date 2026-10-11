@@ -52,6 +52,18 @@ else
   exit 0
 fi
 
+# Record free host RAM before the emulator is touched. The 2026-10-11 06:55 and
+# 07:54 failures came through the emit and the morning pass and left no reading
+# at all, because only the night script called the memguard. It closes nothing
+# outside its own night window or above its own floor; from 07:00 it is a
+# measurement only. It never fails the run, and a missing script is a line, not
+# exit 13.
+if [ -f "$SCRIPTS/crimeradar_memguard.sh" ]; then
+  bash "$SCRIPTS/crimeradar_memguard.sh" emit </dev/null || true
+else
+  echo "[cr] host RAM: $SCRIPTS/crimeradar_memguard.sh is missing; no reading"
+fi
+
 bash "$SCRIPTS/crimeradar_preflight.sh" </dev/null
 rc=$?
 if [ "$rc" -ne 0 ]; then
@@ -64,4 +76,14 @@ fi
 
 # </dev/null: the Hermes cron runner hands scripts an invalid stdin, which makes
 # every child process the monitor spawns fail on Windows.
-exec ./.venv/Scripts/python.exe scripts/crimeradar_monitor.py --emit "$(date +%F)" </dev/null
+# CR_PYTHON is overridable so tests/test_crimeradar_leg.py can run this against a
+# scripted monitor. No scheduled job sets it.
+PY="${CR_PYTHON:-./.venv/Scripts/python.exe}"
+"$PY" scripts/crimeradar_monitor.py --emit "$(date +%F)" </dev/null
+rc=$?
+# 4 no rows, 5 the read path failed, 7 a system dialog, 8 unreadable: the codes
+# where the guest was up and the screen was not usable. Keep what it looked like.
+case "$rc" in
+  4|5|7|8) [ -f "$SCRIPTS/crimeradar_diag.sh" ] && bash "$SCRIPTS/crimeradar_diag.sh" "emit: monitor exit $rc" </dev/null ;;
+esac
+exit "$rc"

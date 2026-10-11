@@ -43,7 +43,7 @@ esac
 # every tap lands on it, so the leg dies looking like an app UI change. Only the
 # two apps the owner named, only in the night window, only when free RAM is under
 # the floor. It never fails the run.
-bash "$SCRIPTS/crimeradar_memguard.sh" </dev/null || true
+bash "$SCRIPTS/crimeradar_memguard.sh" night </dev/null || true
 
 # adb is only a transport: if the emulator process is gone there is nothing to
 # talk to. Bring it up (and the app to the foreground) before polling.
@@ -57,5 +57,15 @@ if [ "$rc" -ne 0 ]; then
   exit "$rc"
 fi
 
+# CR_PYTHON is overridable so tests/test_crimeradar_leg.py can run this against a
+# scripted monitor. No scheduled job sets it.
+PY="${CR_PYTHON:-./.venv/Scripts/python.exe}"
 # </dev/null: the Hermes cron runner hands scripts an invalid stdin.
-exec ./.venv/Scripts/python.exe scripts/crimeradar_monitor.py --once --audio --json </dev/null
+"$PY" scripts/crimeradar_monitor.py --once --audio --json </dev/null
+rc=$?
+# 4 no cards, 5 the read path failed, 7 a system dialog, 8 unreadable: the codes
+# where the guest was up and the screen was not usable. Keep what it looked like.
+case "$rc" in
+  4|5|7|8) [ -f "$SCRIPTS/crimeradar_diag.sh" ] && bash "$SCRIPTS/crimeradar_diag.sh" "night: monitor exit $rc" </dev/null ;;
+esac
+exit "$rc"

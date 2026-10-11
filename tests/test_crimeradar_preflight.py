@@ -36,7 +36,8 @@ LEG = ROOT / "scripts" / "crimeradar"
 LEG_SCRIPTS = ("crimeradar_preflight.sh", "crimeradar_emit.sh", "crimeradar_health.sh",
                "crimeradar_health_jobs.py", "crimeradar_set_region.sh", "crimeradar_emu_stop.sh",
                "crimeradar_memguard.sh", "crimeradar_night.sh", "crimeradar_morning.sh",
-               "crimeradar_apps.sh", "crimeradar_apps.ps1", "adb_bounded.sh")
+               "crimeradar_apps.sh", "crimeradar_apps.ps1", "crimeradar_diag.sh",
+               "adb_bounded.sh")
 PKG = "com.newsbreak.crimeradar"
 GOOD = "UI hierchary dumped to: /sdcard/.cr_probe.xml"
 IDLE = "ERROR: could not get idle state."
@@ -48,7 +49,13 @@ FAKE_ADB = r"""#!/usr/bin/env bash
 echo "$*" >>"$FAKE_STATE/calls"
 [ "${1:-}" = "-s" ] && shift 2
 case "$*" in
-  devices) printf 'List of devices attached\nemulator-5554\tdevice\n' ;;
+  devices)
+    if [ -f "$FAKE_STATE/offline_once" ]; then
+      rm -f "$FAKE_STATE/offline_once"; printf 'List of devices attached\n'
+    else
+      printf 'List of devices attached\nemulator-5554\tdevice\n'
+    fi ;;
+  "shell getprop sys.boot_completed") echo 1 ;;
   "shell uiautomator dump "*)
     n=$(cat "$FAKE_STATE/n" 2>/dev/null || echo 0)
     echo $((n + 1)) >"$FAKE_STATE/n"
@@ -89,7 +96,8 @@ def _stub(path: Path, text: str) -> Path:
     return path
 
 
-def run_preflight(tmp_path: Path, dumps: str, **overrides: str) -> subprocess.CompletedProcess:
+def run_preflight(tmp_path: Path, dumps: str, offline_once: bool = False,
+                  **overrides: str) -> subprocess.CompletedProcess:
     script, bash = _preflight(), _bash()
     assert script.is_file(), f"{script} is missing from the repo"
     if not bash:
@@ -113,7 +121,10 @@ def run_preflight(tmp_path: Path, dumps: str, **overrides: str) -> subprocess.Co
     _stub(bindir / "sleep", "#!/usr/bin/env bash\nexit 0\n")
     setreg = _stub(bindir / "setreg", "#!/usr/bin/env bash\necho 'Bakersfield, CA'\nexit 0\n")
     emu = _stub(bindir / "emulator",
-                '#!/usr/bin/env bash\necho started >"$FAKE_STATE/emulator"\nexit 0\n')
+                '#!/usr/bin/env bash\necho "$*" >"$FAKE_STATE/emulator"\n'
+                'echo "emulator: fake boot line"\nexit 0\n')
+    if offline_once:        # the first `adb devices` lists nothing, so the script boots the AVD
+        (state / "offline_once").write_text("")
     env = dict(os.environ,
                PATH=str(bindir) + os.pathsep + os.environ["PATH"],
                ADB_BIN=adb.as_posix(),
@@ -126,7 +137,8 @@ def run_preflight(tmp_path: Path, dumps: str, **overrides: str) -> subprocess.Co
     env.update(overrides)
     r = subprocess.run([bash, script.as_posix()], env=env, stdin=subprocess.DEVNULL,
                        capture_output=True, text=True, timeout=120)
-    assert not (state / "emulator").exists(), "the preflight tried to start the emulator"
+    assert offline_once or not (state / "emulator").exists(), \
+        "the preflight tried to start the emulator"
     return r
 
 

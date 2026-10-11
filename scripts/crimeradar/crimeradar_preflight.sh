@@ -48,6 +48,15 @@ done
 
 online() { "$ADB" devices | grep -q "^$DEV[[:space:]]*device"; }
 
+# A snapshot of the guest and the host on the exits that say the guest is not
+# usable (3, 5, 12) and before a wedge recycle: crimeradar_diag.sh says what it
+# keeps and how to read it. It never fails the run, and a missing script is not
+# exit 13: the leg does not depend on it.
+diag() {
+  [ -f "$SCRIPTS/crimeradar_diag.sh" ] && bash "$SCRIPTS/crimeradar_diag.sh" "$@" </dev/null
+  return 0
+}
+
 # The owner's rule (2026-10-11): Discord and Claude Desktop are closed while the
 # leg runs. Here, because every path that starts the emulator comes through this
 # script, and before the boot, because the RAM is wanted for it. The stop script
@@ -75,7 +84,21 @@ if ! online; then
   # fastboot.forceFastBoot=yes, so a restart restored a snapshot whose app state
   # and GPS were wrong, and the guest looked healthy while the read path was
   # dead. A cold boot is the point.
-  nohup "$EMU" -avd "$AVD" $WIN -no-snapshot-save -no-snapshot-load >/dev/null 2>&1 &
+  # The emulator's own output is kept, not discarded: the graphics backend it
+  # chose and any EGL or GL error are the first thing a GPU fault would leave
+  # behind, and until 2026-10-11 they went to /dev/null. -verbose is its
+  # init-time debug output; how much that writes over a session is not measured
+  # yet, so `diag --tidy` cuts a log over its cap and says so, and
+  # CR_EMU_VERBOSE=0 drops the flag and keeps the redirect.
+  EMULOG=/dev/null
+  if [ "${CR_DIAG:-1}" != "0" ] && mkdir -p "$REPO/work/crimeradar/emu" 2>/dev/null; then
+    diag --tidy
+    EMULOG="$REPO/work/crimeradar/emu/emulator_$(date +%F_%H%M%S).log"
+    echo "[cr] emulator log: $EMULOG"
+  fi
+  VERBOSE="-verbose"
+  [ "${CR_EMU_VERBOSE:-1}" = "0" ] && VERBOSE=""
+  nohup "$EMU" -avd "$AVD" $WIN -no-snapshot-save -no-snapshot-load $VERBOSE >"$EMULOG" 2>&1 &
   disown 2>/dev/null || true
   for _ in $(seq 1 60); do
     sleep 5
@@ -86,6 +109,7 @@ fi
 
 if ! online; then
   echo "[cr] FAILED to bring $DEV online (AVD $AVD)"
+  diag "preflight exit 3: the device did not come online"
   exit 3
 fi
 
@@ -99,9 +123,11 @@ fi
 if ! "$ADB" -s "$DEV" shell true >/dev/null 2>&1; then
   if [ "${CR_WEDGE_RETRY:-0}" = "1" ]; then
     echo "[cr] FAILED: $DEV still does not answer its shell after a cold boot; the guest is wedged"
+    diag "preflight exit 12: wedged after a cold boot"
     exit 12
   fi
   echo "[cr] $DEV is online but its shell does not answer (adb timed out); recycling the emulator"
+  diag "preflight: wedged guest, before the recycle"
   CR_WEDGE_RETRY=1 bash "$SCRIPTS/crimeradar_emu_stop.sh" >/dev/null 2>&1
   sleep 5
   CR_WEDGE_RETRY=1 exec bash "$0"
@@ -221,6 +247,7 @@ if [ "$READABLE" != "1" ]; then
   KG="$("$ADB" -s "$DEV" shell dumpsys window 2>/dev/null | grep -m1 -oE 'isKeyguardShowing=(true|false)')"
   WAKE="$("$ADB" -s "$DEV" shell dumpsys power 2>/dev/null | grep -m1 -oE 'mWakefulness=[A-Za-z]+')"
   echo "[cr] FAILED: $DEV is online but the screen cannot be read; uiautomator said: '${DUMP_SAID:-nothing (no answer within 45 s)}'; foreground is '$(focus)', ${KG:-isKeyguardShowing=unknown}, ${WAKE:-mWakefulness=unknown}"
+  diag "preflight exit 5: the screen cannot be read"
   exit 5
 fi
 

@@ -27,8 +27,10 @@ CATEGORY = {
 }
 COLORS = {"fire": "#E53935", "police": "#DC9A1F", "medical": "#2E7D32",
           "traffic": "#64748B", "other": "#475569"}
+# No "city": a row the geocoder could not place is not a dot. Feeds written
+# before 2026-10-10 still carry such rows, all at one point downtown.
 PRECISION_LABEL = {"block": "block / cross-street", "street": "street-level",
-                   "area": "neighborhood", "city": "general area"}
+                   "area": "neighborhood"}
 
 
 def _load_feed() -> list[dict]:
@@ -48,6 +50,7 @@ def build(ctx, sources: dict) -> list[str]:
     feed = _load_feed()
     dots = []
     counts = {}
+    feed = [d for d in feed if d.get("p") in PRECISION_LABEL]
     for d in feed:
         cat = CATEGORY.get(d.get("type", "").lower(), "other")
         counts[cat] = counts.get(cat, 0) + 1
@@ -55,7 +58,7 @@ def build(ctx, sources: dict) -> list[str]:
             "lat": d["lat"], "lng": d["lng"],
             "type": d.get("type", "incident"), "cat": cat,
             "time": d.get("t", ""), "area": d.get("area", ""),
-            "prec": PRECISION_LABEL.get(d.get("p", "city"), "general area"),
+            "prec": PRECISION_LABEL[d["p"]],
             "nb": int(d.get("nb", 2)),
         })
     dots_json = common.script_json(dots)
@@ -97,7 +100,8 @@ def build(ctx, sources: dict) -> list[str]:
       </div>
       <p class="note">Dots are placed from overnight police, sheriff, fire, and EMS dispatch traffic. Locations are
       generalized to block or cross-street level &mdash; the map never shows an exact address &mdash; and
-      everything is preliminary until confirmed. Archives lag live airwaves by up to ~30 minutes, so the
+      everything is preliminary until confirmed. A call with no street we could place is left off the
+      map, never dotted at a guess; it is still in the morning report. Archives lag live airwaves by up to ~30 minutes, so the
       map is a rolling picture, not instantaneous.</p>
     </div>
 

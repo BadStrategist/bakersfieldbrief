@@ -1049,12 +1049,94 @@ def test_area_for_gives_another_town_nothing(capsys):
     assert cr._area_for("Overdose at Lamont residence on Union Avenue", {}) == ""
     # a Bakersfield street named for a town is still a Bakersfield street
     assert cr._area_for("Crash fire south of Taft Hwy", {}) == "Taft Highway"
+    # the card can say the town when the headline does not
+    title = "Traffic incident at Zerker and 7th Standard"
+    assert cr._area_for(title, {title: "7th Standard Rd &amp; Zerker Rd, Shafter"}) == ""
+    # a town followed by a type word is a street only when it is one
+    assert cr._area_for("Crash on Grapevine Road", {}) == ""
 
 
 def test_area_for_logs_a_failure_instead_of_swallowing_it(monkeypatch, capsys):
     def boom(*a, **k):
         raise RuntimeError("gazetteer gone")
-    monkeypatch.setattr(cr.streetcheck, "scan", boom)
+    monkeypatch.setattr(cr, "_gazetteer", boom)
     assert cr._area_for("Person down on White Lane", {}) == ""
     err = capsys.readouterr().err
     assert "area lookup failed" in err and "gazetteer gone" in err
+
+
+def test_area_for_keeps_the_compass_word_the_headline_wrote(capsys):
+    """Measured over every title on disk, 2026-10-10: ten rows lost theirs.
+    'South Chester Avenue' came back as 'Chester Avenue', which is downtown."""
+    assert cr._area_for("Two-vehicle crash on South Chester Avenue", {}) == "S Chester Avenue"
+    assert cr._area_for("Dumpster fire on North Chester Avenue", {}) == "N Chester Avenue"
+    assert cr._area_for("DUI driver reported on East White Lane", {}) == "E White Lane"
+    assert cr._area_for("Person having difficulty breathing near S Haley St", {}) == "S Haley Street"
+    assert cr._area_for("Crash on Chester Avenue", {}) == "Chester Avenue"
+    # a compass word the gazetteer does not have is not dropped to make a match
+    assert cr._area_for("Person bleeding heavily near West D Street", {}) == ""
+    assert "not in the gazetteer" in capsys.readouterr().err
+    # and none is added: the gazetteer has only S J Street, the headline said J Street
+    title = "Welfare check at Tully and J Street area"
+    assert cr._area_for(title, {}) == ""
+    assert "no compass word" in capsys.readouterr().err
+    assert cr._area_for(title, {title: "S J St"}) == "S J Street"  # the card said it
+
+
+def test_area_for_never_takes_part_of_a_name(capsys):
+    # the old lookup dropped a compass word from the middle of a name too
+    assert cr._area_for("Fire on North Fork Road", {}) == ""
+    assert cr._area_for("Crash on Vista del Mar Drive", {}) == "Vista del Mar Drive"
+    assert cr._area_for("Crash near Mountain View Road", {}) == "Mountain View Road"
+    assert cr._area_for("Crash near Zzyzx View Road", {}) == ""
+    # a type word that is only a noun here does not end the name
+    assert cr._area_for("Fight at Union Avenue corner store", {}) == "Union Avenue"
+    # the gazetteer's own shorthand: Beckenham Pkwy, China Grade Lp
+    assert cr._area_for("Crash on Beckenham Parkway", {}) == "Beckenham Pkwy"
+    assert cr._area_for("Fire on China Grade Loop", {}) == "China Grade Lp"
+    assert cr._area_for("Crash on Jewetta Avenue W", {}) == "Jewetta Avenue W"
+    # "a street" is not A Street
+    assert cr._area_for("Officer stops silver Honda at A Street address", {}) == "A Street"
+    assert cr._area_for("Person yelling on a street corner", {}) == ""
+    assert cr._area_for("Crash on e street", {}) == ""
+
+
+def test_area_for_reads_the_streets_the_old_scan_skipped(capsys):
+    """Eight staged rows got no area and no log line: the transcript scanner
+    skips a phrase that starts with 'possible', 'two' or 'with'."""
+    assert cr._area_for("Officers check possible trespassers near Union Avenue", {}) == "Union Avenue"
+    assert cr._area_for("Officer contacts two people on Hosking Avenue", {}) == "Hosking Avenue"
+    assert cr._area_for("Traffic collision on 24th Street with vehicles towed", {}) == "24th Street"
+    assert capsys.readouterr().err == ""
+    # a numbered highway is not a gazetteer street, and the row says so
+    assert cr._area_for("Semi truck reportedly swerving on Highway 99", {}) == ""
+    assert "no street name read" in capsys.readouterr().err
+
+
+def test_area_for_two_streets_is_no_area_and_is_logged(capsys):
+    assert cr._area_for("Traffic collision at Morning Drive and College Avenue", {}) == ""
+    err = capsys.readouterr().err
+    assert "matches 2 streets" in err and "Morning Drive" in err and "College Avenue" in err
+    # one gazetteer street and one that is not: the one that is
+    assert cr._area_for("Hit-and-run crash at South P Street and Bell Terrace", {}) == "S P Street"
+
+
+def test_area_for_takes_a_card_only_as_one_gazetteer_street(capsys):
+    """The card's place line went into the area as written: of the 36 staged
+    rows that had one, none was a gazetteer name ('Beechwood St Apt 125',
+    'Arkwood St &amp; Hosking Ave', 'Central Ave, Kern County')."""
+    def area(title, place):
+        return cr._area_for(title, {title: place})
+    assert area("Man reportedly assaulting woman in store parking lot", "Ming Ave") == "Ming Avenue"
+    assert area("Carbon monoxide alarm at Beechwood Street apartment",
+                "Beechwood St Apt 125") == "Beechwood Street"  # from the headline
+    assert area("Fight reported between two women on Arkwood", "Arkwood St &amp; Hosking Ave") == ""
+    assert area("Driver runs red light in black Honda Accord", "Central Ave, Kern County") == ""
+    assert area("Disturbance involving intoxicated teen at residence", "Lincoln St q") == ""
+    assert "card not" in capsys.readouterr().err
+    # the card is the more exact of two that agree
+    assert area("Traffic stop of black Hyundai on Niles Street", "W Niles St") == "W Niles Street"
+    # and nothing when they do not: 'E St' is a clipped 'East Charles Street'
+    assert area("Person with psychiatric issues near East Charles Street", "E St") == ""
+    assert area("Illegal trash fire in backyard on Oakley Drive", "Oakley St") == ""
+    assert "the card says" in capsys.readouterr().err

@@ -102,11 +102,71 @@ class TestGeo:
         assert g["precision"] != "city"
         assert abs(g["lat"] - 35.37) < 0.03
 
-    def test_city_fallback_unknown(self, geo_cache, monkeypatch):
+    def test_a_place_that_cannot_be_found_gets_no_point(self, monkeypatch):
+        """It used to get the city centre with precision 'city': 71 of the 115
+        dots on the 2026-10-10 map were that one point."""
         _fake_nominatim(monkeypatch, empty=True)  # “no such place”, not a lookup failure
         from kern_overnight import geo
-        g = geo.geocode("the 1400 block of Hops Lane", geo_cache)
-        assert g["precision"] in ("city", "street", "block")  # never crashes
+        assert geo.geocode("the 1400 block of Hops Lane", {}) is None
+        assert geo.geocode("the 3100 block of Sierra Highway, Rosamond", {}) is None
+        assert geo.geocode("Bakersfield", {}) is None
+
+    def test_a_map_key_matches_whole_words_only(self):
+        """78 of the 389 rows the table had placed were placed by part of a
+        word: '18th Street' by 'h street', 'Main Street' by 'n street'."""
+        from kern_overnight import geo
+        for area in ("18th Street", "Main Street block, Maricopa", "Park Street",
+                     "Jefferson Street", "Wyoming Street", "Elm Street"):
+            assert geo.geocode(area, {}) is None, area
+        assert geo._street_hit("h street at 18th street")[0] == "h street"
+        assert geo._street_hit("ming avenue")[0] == "ming avenue"
+        # a town key is the town, not the street named for it
+        assert geo.geocode("Arvin Street", {}) is None
+        assert geo.geocode("Shafter Road", {}) is None
+        assert geo.geocode("Shafter", {})["precision"] == "area"
+
+    def test_no_area_gets_no_point_and_no_lookup(self):
+        from kern_overnight import geo
+        for empty in ("", "   ", None):
+            assert geo.geocode(empty, {}) is None  # no_live_nominatim fails a lookup
+
+    def test_feed_leaves_unplaced_rows_off(self, tmp_path, monkeypatch, capsys):
+        _fake_nominatim(monkeypatch, empty=True)
+        from kern_overnight import geo
+        monkeypatch.setattr(geo, "_load_cache", lambda: {})
+        monkeypatch.setattr(geo, "_save_cache", lambda cache: None)
+        monkeypatch.setattr(geo.time, "sleep", lambda s: None)
+        day = dt.datetime.now(dt.timezone.utc).date()
+        rows = [{"time": "00:01", "type": "shooting", "area": ""},
+                {"time": "00:02", "type": "alarm", "area": "the 1400 block of Hops Lane"},
+                {"time": "00:03", "type": "fire", "area": "White Lane"}]
+        (tmp_path / "inc").mkdir()
+        (tmp_path / "inc" / f"{day.isoformat()}.json").write_text(
+            json.dumps(rows), encoding="utf-8")
+        assert geo.build_feed(tmp_path / "inc", tmp_path / "feed.json") == 1
+        feed = json.loads((tmp_path / "feed.json").read_text(encoding="utf-8"))
+        assert [d["area"] for d in feed] == ["White Lane"]
+        assert all(d["p"] != "city" for d in feed)
+        assert "1 with no area, 1 with an area that could not be placed" in capsys.readouterr().out
+
+    def test_map_page_drops_city_rows_of_an_older_feed(self, monkeypatch):
+        from types import SimpleNamespace
+        from build import common
+        from build.builders import map as map_mod
+        old = [{"t": "2026-10-10 00:01", "type": "shooting", "nb": 4, "area": "",
+                "p": "city", "lat": 35.3733, "lng": -119.0187},
+               {"t": "2026-10-10 00:03", "type": "fire", "nb": 2, "area": "White Lane",
+                "p": "street", "lat": 35.32, "lng": -119.02}]
+        pages = {}
+        monkeypatch.setattr(map_mod, "_load_feed", lambda: old)
+        monkeypatch.setattr(common, "write", lambda path, html: pages.update({str(path): html}))
+        ctx = SimpleNamespace(statusbar="", build_report={})
+        map_mod.build(ctx, {})
+        (html,) = pages.values()
+        dots = json.loads(re.search(r"var feed = (\[.*?\]);", html, re.S).group(1))
+        assert [d["area"] for d in dots] == ["White Lane"]
+        assert ctx.build_report["map"] == {"dots": 1}
+        assert "general area" not in html
 
     def test_nominatim_result_is_cached(self, tmp_path, monkeypatch):
         from kern_overnight import geo
@@ -134,8 +194,8 @@ class TestGeo:
         _fake_nominatim(monkeypatch, empty=True)
         from kern_overnight import geo
         n = geo.build_feed(ROOT / "incidents", tmp_path / "feed.json", max_age_h=200)
-        assert n >= 10
         feed = json.loads((tmp_path / "feed.json").read_text(encoding="utf-8"))
+        assert n == len(feed)  # no floor: an unplaced row is left off
         # No exact street numbers: allow the block form ("3500 block Terrace
         # Way", "2400 block of X"), forbid a number that names a house ("124 X
         # Ave", "8120 Kern Canyon Road"). Two exclusions, both decided by the
@@ -450,7 +510,9 @@ class TestData:
     def test_map_feed_schema(self):
         feed = json.loads((ROOT / "data" / "incidents_geo.json")
                           .read_text(encoding="utf-8"))
-        assert len(feed) >= 10
+        # No floor of ten any more: a row that cannot be placed is left off, so
+        # a short list is honest output and must not turn the daily run red.
+        assert feed
         for d in feed:
             assert {"lat", "lng", "p", "t", "type", "area"} <= set(d)
             assert KERN_BOUNDS[0] <= d["lat"] <= KERN_BOUNDS[1]

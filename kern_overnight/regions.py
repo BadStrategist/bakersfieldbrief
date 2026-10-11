@@ -72,13 +72,23 @@ _ELSEWHERE = re.compile(
     r"lake isabella|kernville|wofford heights|bodfish|frazier park|lebec|"
     r"buttonwillow|lost hills|tupman|edison|keene|caliente|inyokern|"
     r"pine mountain club|stallion springs|bear valley|golden hills|"
-    r"grapevine|gorman|glennville|woody)\b(?! (?:highway|hwy|road|rd|street|st|avenue|ave)\b)",
+    r"grapevine|gorman|glennville|woody)\b(?: (highway|hwy|road|rd|street|st|avenue|ave)\b)?",
     re.I)
 
 
 def names_another_town(text: str) -> bool:
-    """Does the text place itself in a Kern town that is not Bakersfield?"""
-    return bool(_ELSEWHERE.search(text or ""))
+    """Does the text place itself in a Kern town that is not Bakersfield?
+
+    A town's name on a street of the Bakersfield layer is that street, not the
+    town: Taft Highway, Edison Highway, Arvin Street. Only a street the table
+    holds is let through. Any type word after a town used to be enough, and
+    "Frazier Park Street" came back as north Bakersfield (it read Park Street)
+    and Grapevine Road as no town at all.
+    """
+    for m in _ELSEWHERE.finditer(text or ""):
+        if not (m.group(1) and " ".join(_tokens(m.group(0))) in table()):
+            return True
+    return False
 
 
 # What the copy can claim, and the parts of town that make the claim true.
@@ -153,7 +163,7 @@ def _codes(key: str, num: int | None) -> set[str]:
 
 def region_code(area: str) -> str | None:
     """'the 5400 block of Pembroke Avenue' -> 'N'. None unless certain."""
-    if not area or _ELSEWHERE.search(area):
+    if not area or names_another_town(area):
         return None
     found = _find(_tokens(area))
     if not found:
@@ -197,7 +207,7 @@ def _street_regions(incidents: list[dict]) -> dict[str, set[str]]:
 
 
 def _resolved(text: str, known: dict[str, set[str]]) -> set[str]:
-    if _ELSEWHERE.search(text):
+    if names_another_town(text):
         return set()
     out: set[str] = set()
     for key, num in _find(_tokens(text)):

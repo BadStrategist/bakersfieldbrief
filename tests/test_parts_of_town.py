@@ -118,6 +118,32 @@ def test_writer_hands_the_model_the_region(monkeypatch):
     assert "region" not in incs[0]  # the caller's list is not touched
 
 
+def test_a_town_name_is_a_street_only_when_the_table_holds_that_street():
+    # streets of the Bakersfield layer that carry a town's name
+    for street in ("Taft Highway", "Taft Hwy", "Edison Highway", "Edison Rd",
+                   "Weedpatch Highway", "Arvin Street", "Caliente St", "Shafter Road"):
+        assert not R.names_another_town(f"Crash on {street}"), street
+    # any type word after a town used to be enough
+    for text in ("Crash on Frazier Park Street", "the 300 block of Bear Valley Street",
+                 "I-5 at Grapevine Road", "Crash on Woody Road", "Fire on Lost Hills Road",
+                 "Crash on Maricopa Highway", "Stop on Tehachapi Boulevard"):
+        assert R.names_another_town(text), text
+        assert R.region_of(text) is None, text
+    # the town itself still wins, wherever it sits in the sentence
+    for text in ("Crash on Taft Highway in Taft", "Taft police at a crash on Taft Highway",
+                 "Crash on Edison Highway, Edison", "Shafter crash on Shafter Road"):
+        assert R.names_another_town(text), text
+        assert R.region_of(text) is None, text
+
+
+def test_taft_highway_is_a_part_of_town_only_by_its_block():
+    assert R.region_of("Taft Highway") is None  # it crosses a line
+    assert R.region_of("the 1500 block of Taft Highway") == "south Bakersfield"
+    # the table stops at the metro box; the road goes on to Taft
+    assert R.region_of("the 40000 block of Taft Highway") is None
+    assert R.region_of("Shafter Road") is None  # outside all six
+
+
 def test_table_shape():
     table = json.loads(Path(R.TABLE_FILE).read_text(encoding="utf-8"))
     assert len(table) > 8000

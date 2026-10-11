@@ -9,7 +9,10 @@ Strategy (fast → slow, all cached):
   1. Local Bakersfield gazetteer: known streets/neighborhoods → centroid.
   2. Nominatim (OSM) for block/interpolation and intersections, cached in
      data/geo_cache.json (1 req/s polite rate limit).
-  3. City centroid fallback (still labelled 'area').
+  3. Nothing. A place that cannot be found gets no dot: a dot at the city
+     centre is a location claim, and 71 of the 115 dots on the 2026-10-10 map
+     were that one point (17 rows with no area, 54 the lookups above missed,
+     among them a Rosamond block and Interstate 5 at Frazier Park).
 """
 from __future__ import annotations
 
@@ -24,7 +27,6 @@ import requests
 
 ROOT = Path(__file__).resolve().parent.parent
 CACHE_PATH = ROOT / "data" / "geo_cache.json"
-CITY = (35.3733, -119.0187)  # Bakersfield center
 
 # ----------------------------------------------------------------- gazetteer
 # Representative points for the streets/areas most likely to appear on the
@@ -133,27 +135,41 @@ def _nominatim(query: str, cache: dict) -> tuple[float, float] | None:
     return (cache[query][0], cache[query][1]) if cache.get(query) else None
 
 
+_TOWN_STREET = r"(?! (?:highway|hwy|road|rd|street|st|avenue|ave|boulevard|blvd|drive|dr|lane|ln|court|ct|way|place)\b)"
+
+
 def _street_hit(text: str) -> tuple[str, tuple[float, float], bool] | None:
-    """Find a known street/area in the text → (name, point, is_area)."""
+    """Find a known street/area in the text → (name, point, is_area).
+
+    Whole words only. A plain substring put "18th Street" on H Street, "Main
+    Street block, Maricopa" on N Street and "Park Street" on K Street: 78 of
+    the 389 rows this table had placed by 2026-10-10. And a town key is the
+    town, not a street named for it: "Arvin Street" is in Oildale.
+    """
     t = text.lower()
     for name, pt in sorted(STREETS.items(), key=lambda kv: -len(kv[0])):
-        if name in t:
-            return name, pt, name in AREA_KEYS
+        is_area = name in AREA_KEYS
+        if re.search(rf"(?<![a-z0-9]){re.escape(name)}(?![a-z0-9])"
+                     + (_TOWN_STREET if is_area else ""), t):
+            return name, pt, is_area
     return None
 
 
 _BLOCK_RE = re.compile(r"(\d{3,5})(?:00)?\s*(?:block of|block|of)?\s*([a-z]+\s(?:avenue|street|road|lane|drive|highway|way|boulevard|place))", re.I)
 
 
-def geocode(place: str, cache: dict | None = None) -> dict:
-    """Geocode a generalized place string → {lat, lng, precision, label}.
+def geocode(place: str, cache: dict | None = None) -> dict | None:
+    """Geocode a generalized place string → {lat, lng, precision, label},
+    or None when the place is empty or cannot be found. Never a default point.
 
     precision: 'block' (Nominatim interpolation or street point when the
                input carries a block number) | 'street' (gazetteer centroid)
-               | 'area' (neighborhood/town) | 'city' (fallback).
+               | 'area' (neighborhood/town).
     """
     cache = cache if cache is not None else _load_cache()
-    label = re.sub(r"\s+", " ", place.strip())
+    label = re.sub(r"\s+", " ", (place or "").strip())
+    if not label:
+        return None
     t = label.lower()
 
     # 1. block pattern ("2400 block of Chester Ave") — Nominatim refinement,
@@ -192,18 +208,20 @@ def geocode(place: str, cache: dict | None = None) -> dict:
                 "precision": "area" if is_area else "street",
                 "label": label}
 
-    # 4. city fallback
-    return {"lat": CITY[0], "lng": CITY[1], "precision": "city",
-            "label": label}
+    # 4. not found: no point at all (see the module docstring)
+    return None
 
 
 def build_feed(incidents_dir: Path, out: Path, max_age_h: float = 72.0) -> int:
     """Incidents JSON → compact map feed (data/incidents_geo.json).
 
-    One dot per incident, newest first, within max_age_h. Exact street
-    numbers are never included — only the generalized area label."""
+    One dot per incident that geocode() can place, newest first, within
+    max_age_h. An incident with no area, or an area that cannot be found, is
+    left off the map and counted in the log line; it is still in the report.
+    Exact street numbers are never included — only the generalized area label."""
     cache = _load_cache()
     feed: list[dict] = []
+    no_area = not_found = 0
     now = dt.datetime.now(dt.timezone.utc)
     for f in sorted(incidents_dir.glob("*.json"), reverse=True):
         try:
@@ -218,7 +236,14 @@ def build_feed(incidents_dir: Path, out: Path, max_age_h: float = 72.0) -> int:
             age_h = (now - ts).total_seconds() / 3600
             if age_h > max_age_h:
                 continue
-            g = geocode(inc.get("area", ""), cache)
+            area = str(inc.get("area") or "")
+            g = geocode(area, cache)
+            if g is None:
+                if area.strip():
+                    not_found += 1
+                else:
+                    no_area += 1
+                continue
             feed.append({
                 "t": ts.strftime("%Y-%m-%d %H:%M"),
                 "type": inc.get("type", "incident"),
@@ -231,4 +256,6 @@ def build_feed(incidents_dir: Path, out: Path, max_age_h: float = 72.0) -> int:
     feed.sort(key=lambda d: d["t"], reverse=True)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(feed, ensure_ascii=False), encoding="utf-8")
+    print(f"    [geo] {len(feed)} dots; left off the map: {no_area} with no area, "
+          f"{not_found} with an area that could not be placed", flush=True)
     return len(feed)

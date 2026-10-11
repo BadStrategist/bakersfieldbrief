@@ -1306,104 +1306,191 @@ def _poll_places(date_iso: str) -> dict:
     return out
 
 
-_STREETS: list[str] | None = None
-_STREET_NORM: dict[str, list[str]] = {}
+_EXACT: dict[str, str] = {}
+_TWINS: dict[str, list[str]] = {}
 # "Jefferson St" and "Jefferson Street" are one street: the type word is spelled
-# out before the gazetteer lookup. Nothing else about a name is ever bent.
+# out on both sides of the gazetteer lookup (the gazetteer itself writes
+# "Beckenham Pkwy" and "China Grade Lp"), and "South" is the gazetteer's "S".
+# Nothing else about a name is ever bent.
 _TYPE_LONG = {
     "st": "street", "ave": "avenue", "av": "avenue", "rd": "road", "dr": "drive",
     "blvd": "boulevard", "ln": "lane", "ct": "court", "pl": "place",
     "cir": "circle", "ter": "terrace", "pkwy": "parkway", "hwy": "highway",
+    "lp": "loop",
 }
+_TYPE_WORDS = set(streetcheck._TYPE_WORDS.split("|")) | set(_TYPE_LONG)
+# A phrase that ends in one of these is a whole street name: "Mountain View
+# Road" is never cut back to a "Mountain View" that happens to exist. The
+# other type words double as plain nouns ("Union Avenue corner store").
+_TYPE_CORE = set(_TYPE_LONG.values()) - {"loop"} | {"way"}
+_COMPASS = {"north": "n", "south": "s", "east": "e", "west": "w",
+            "n": "n", "s": "s", "e": "e", "w": "w"}
+_LETTERS = ("N", "S", "E", "W")
+# A street name starts after one of these, or at the start of the headline.
+_BOUNDARY = {"on", "at", "near", "of", "in", "to", "from", "along", "off",
+             "outside", "behind", "and", "&"}
 
 
-def _street_norm() -> dict[str, list[str]]:
-    """normalized name -> every gazetteer spelling of it, loaded once."""
-    global _STREETS
-    if _STREETS is None:
-        _STREETS = streetcheck.load_streets()
-        for s in _STREETS:
-            _STREET_NORM.setdefault(streetcheck.normalize(s), []).append(s)
-    return _STREET_NORM
+def _street_key(words: list[str]) -> str:
+    """Lowercase, with the type word spelled out. The type word is the last
+    word, or the one before a compass letter the gazetteer writes last
+    ("Jewetta Avenue W")."""
+    low = [w.rstrip(".").lower() for w in words]
+    i = len(low) - 2 if len(low) > 2 and low[-1] in ("n", "s", "e", "w") else len(low) - 1
+    low[i] = _TYPE_LONG.get(low[i], low[i])
+    return " ".join(low)
 
 
-_LOCATIVE = re.compile(r"\b(?:on|at|near|of|in|to|from|along|off|outside|behind)\s+", re.I)
+def _gazetteer() -> dict[str, str]:
+    """name key -> the gazetteer's spelling of it, loaded once.
+
+    _TWINS holds, for a name without its compass letter ("chester avenue"),
+    every spelling that carries one ("N Chester Avenue", "S Chester Avenue")."""
+    if not _EXACT:
+        for s in streetcheck.load_streets():
+            _EXACT[_street_key(s.split())] = s
+            head, _, rest = s.partition(" ")
+            if head in _LETTERS and len(rest.split()) > 1:
+                _TWINS.setdefault(_street_key(rest.split()), []).append(s)
+    return _EXACT
 
 
-_DIRECTION = re.compile(r"^(?:north|south|east|west|[nsew])\.?\s+", re.I)
+def _gazetteer_street(words: list[str]) -> tuple[str, str]:
+    """(the gazetteer street these words name, "") or ("", why not).
 
-
-def _gazetteer_street(phrase: str, norm: dict[str, list[str]]) -> str:
-    """The gazetteer street a scanned phrase names, or "".
-
-    scan() hands back the words before the street too ("black Toyota on
-    Wilmington Way"), so the name is what follows the last locative word, and
-    that whole name must be in the gazetteer. Never a shorter tail of it:
-    "Hayden Hill Street" is not in the gazetteer and "Hill Street" is, and they
-    are two streets.
-
-    The lookup ignores a compass prefix, so "Baker St" finds both "Baker
-    Street" and "S Baker Street". The headline did not say which, so the
-    answer carries no direction unless the headline wrote one.
+    The whole name must be in the gazetteer, letter for letter once the type
+    word is spelled out. Never a shorter tail of it: "Zzyzx Hill Street" is not
+    "Hill Street". A compass word is part of the name. "South Chester Avenue"
+    is "S Chester Avenue" or it is nothing: Chester Avenue is downtown and S
+    Chester Avenue is not. A headline that wrote none gets the plain name when
+    the gazetteer has it and nothing when the gazetteer has only "S J Street":
+    the headline did not say which, and the gazetteer is not every street. A
+    one-letter street has to be written as a capital: "a street" is not A
+    Street.
     """
-    name = _LOCATIVE.split(phrase)[-1].strip()
-    words = name.split()
-    if len(words) < 2:
-        return ""
-    last = words[-1].rstrip(".").lower()
-    words[-1] = _TYPE_LONG.get(last, words[-1])
-    name = " ".join(words)
-    spellings = norm.get(streetcheck.normalize(name)) or []
-    for sp in spellings:
-        if sp.lower() == name.lower():
-            return sp
-    if len(spellings) == 1 and (_DIRECTION.match(name) or not _DIRECTION.match(spellings[0])):
-        return spellings[0]
-    return _DIRECTION.sub("", spellings[0]) if spellings else ""
+    exact = _gazetteer()
+    name = " ".join(w.rstrip(".") for w in words)
+    key = _street_key(words)
+    compass = _COMPASS.get(words[0].rstrip(".").lower()) if len(words) > 2 else None
+    letter = words[0]
+    if key not in exact and compass:
+        key = f"{compass} " + key.split(" ", 1)[1]
+        letter = words[1]
+    if len(letter) == 1 and letter.isalpha() and not letter.isupper():
+        return "", f"a one-letter street not written as a capital [{name!r}]"
+    if key in exact:
+        return exact[key], ""
+    twins = _TWINS.get(key) or []
+    if twins:
+        return "", (f"no compass word in the headline and the gazetteer has only "
+                    f"{', '.join(twins)} [{name!r}]")
+    return "", f"not in the gazetteer [{name!r}]"
+
+
+def _headline_streets(title: str) -> tuple[list[str], list[str]]:
+    """(gazetteer streets the headline names, why each other phrase is not one).
+
+    A candidate is the run of words from a boundary word ("on", "near", "and")
+    up to a street type word, at least two words long.
+    """
+    found: list[str] = []
+    passed: list[str] = []
+    runs: list[list[str]] = [[]]
+    for raw in title.replace("/", " / ").split():
+        word = raw.strip("\"'()[]").rstrip(",;:!?")
+        if word.lower() in _BOUNDARY or word in ("/", ""):
+            runs.append([])
+            continue
+        runs[-1].append(word)
+        if raw.rstrip("\"')]").endswith((",", ";", ":", "!", "?")):
+            runs.append([])
+    for run in runs:
+        ends = [j for j, w in enumerate(run)
+                if j and w.rstrip(".").lower() in _TYPE_WORDS]
+        street = why_not = ""
+        for j in reversed(ends):  # the longest phrase first
+            street = ""
+            if run[j + 1:j + 2] and run[j + 1] in _LETTERS:
+                street, _ = _gazetteer_street(run[:j + 2])  # "Jewetta Avenue W"
+            if not street:
+                street, why = _gazetteer_street(run[:j + 1])
+                why_not = why_not or why
+            last = run[j].rstrip(".").lower()
+            if street or _TYPE_LONG.get(last, last) in _TYPE_CORE:
+                break
+        if street and street not in found:
+            found.append(street)
+        elif ends and not street:
+            passed.append(why_not)
+    return found, passed
+
+
+def _card_street(place: str) -> tuple[str, str]:
+    """(the gazetteer street a feed card's place line names, "") or ("", why not).
+
+    The line is the app's free text, not a street name: "Beechwood St Apt 125",
+    "Lincoln St q", "Arkwood St &amp; Hosking Ave", "Central Ave, Kern County".
+    Only a line that is one gazetteer street and nothing else is taken.
+    """
+    words = html.unescape(place).split()
+    if len(words) < 2 or any(c in place for c in ",&/"):
+        return "", f"not one street [{place!r}]"
+    return _gazetteer_street(words)
 
 
 def _area_for(title: str, poll_places: dict) -> str:
     """Recover a History row's location, or "" when it cannot be known.
 
-    A History row carries only a time and a one-line title. Order of recovery:
-    the feed card for the same headline (its exact street), then a scan of the
-    headline against the project's street gazetteer ("...on White Lane").
+    A History row carries only a time and a one-line title. Two sources: the
+    feed card for the same headline (its place line) and the headline itself
+    ("...on White Lane"), each read against the project's street gazetteer.
 
-    Only an exact gazetteer MATCH is a location. A fuzzy suggestion is a
-    different street ("Gilbert Street" -> "Alberta Street", 0.86, 2026-10-10).
-    A headline that names another town gets nothing at all: the gazetteer is
-    Bakersfield's, and a bare "Hollywood Ave" from a Shafter row is geocoded
-    as Bakersfield. Whatever is dropped is logged, never swallowed.
+    Only an exact gazetteer name is a location, from either source. A fuzzy
+    suggestion is a different street ("Gilbert Street" -> "Alberta Street",
+    0.86, 2026-10-10), and a card's place line used as written put "Beechwood
+    St Apt 125" and "Arkwood St &amp; Hosking Ave" into the area field. A
+    headline or a card that names another town gets nothing at all: the
+    gazetteer is Bakersfield's, and a bare "Hollywood Ave" from a Shafter row
+    is geocoded as Bakersfield. Two streets get nothing either: the area field
+    holds one gazetteer name, and picking one side of a crossing is a guess.
+    Whatever is dropped is logged, never swallowed.
     """
     title = title.strip()
-    if regions.names_another_town(title):
-        print(f"[cr] area dropped, headline names another town: {title!r}",
-              file=sys.stderr)
+    place = (poll_places.get(title) or "").strip()
+    if regions.names_another_town(title) or regions.names_another_town(html.unescape(place)):
+        print(f"[cr] area dropped, names another town: {title!r}"
+              + (f" (card: {place!r})" if place else ""), file=sys.stderr)
         return ""
-    hit = poll_places.get(title)
-    if hit:
-        return hit
     try:
-        norm = _street_norm()
-        found, passed = [], []
-        for _status, cand, _detail in streetcheck.scan(title, _STREETS):
-            street = _gazetteer_street(cand, norm)
-            if street and street not in found:
-                found.append(street)
-            elif not street:
-                passed.append(cand)
+        found, passed = _headline_streets(title)
+        card, card_why = _card_street(place) if place else ("", "")
     except Exception as e:  # noqa: BLE001
         print(f"[cr] area lookup failed for {title!r}: {type(e).__name__}: {e}",
               file=sys.stderr)
         return ""
+    if card:
+        # The card decides when the headline names no street, the same street,
+        # or the same street without its compass letter ("J Street" under a
+        # card that says "S J St"). Anything else is two sources that disagree.
+        plain = card[2:] if card[:1] in _LETTERS and card[1:2] == " " else card
+        said = found + [w[w.rindex("[") + 2:-2] for w in passed]
+        same = {_street_key(card.split()), _street_key(plain.split())}
+        if all(_street_key(n.split()) in same for n in said):
+            return card
+        print(f"[cr] area dropped, the card says {card!r} and the headline says "
+              f"{said}: {title!r}", file=sys.stderr)
+        return ""
+    if card_why:
+        passed.append("card " + card_why)
     if len(found) == 1:
         return found[0]
     if found:
         print(f"[cr] area dropped, headline matches {len(found)} streets "
               f"{found}: {title!r}", file=sys.stderr)
     elif passed:
-        print(f"[cr] area dropped, not in the gazetteer {passed}: {title!r}",
-              file=sys.stderr)
+        print(f"[cr] area dropped, {'; '.join(passed)}: {title!r}", file=sys.stderr)
+    elif any(w.strip(".,;:").lower() in _TYPE_WORDS for w in title.split()):
+        print(f"[cr] area dropped, no street name read: {title!r}", file=sys.stderr)
     return ""
 
 

@@ -31,6 +31,10 @@ Two alerts on a failed run, in this order: `scripts/notify_issue.py` comments on
 ## Locations on the report
 An incident's `area` is an exact match in `kern_overnight/streets.txt` or it is empty. Never a fuzzy match, never a default city, and nothing at all when the text names another Kern town (`regions.names_another_town`). An empty area is correct output: the copy names no place.
 
+The same rule one layer down, on the map: `geo.geocode` returns `None` for an empty area or one it cannot find, and `build_feed` leaves that row off (it logs how many). There is no city-centre fallback: 71 of the 115 dots on 2026-10-10 were that one point. The map's own street table matches whole words only ("18th Street" is not H Street).
+
+For the app's History rows (`crimeradar_monitor._area_for`): a compass word the headline wrote is part of the name ("South Chester Avenue" is `S Chester Avenue` or nothing) and none is ever added; a feed card's place line counts only when it is one gazetteer street and the headline does not say otherwise; two streets in one headline is no area, logged. A town name is a street only when the region table holds that street (`Taft Highway` yes, `Grapevine Road` no). Change any of this and re-measure against every title in `work/crimeradar/` and every name in `streets.txt`, never a sample.
+
 ## Things that are already correct — don't "fix" them
 - Sender auth: SPF `include:_spf.mlsend.com` + DKIM `litesrv._domainkey` CNAME. Mail lands in the inbox.
 - SEO: single-topic posts only.

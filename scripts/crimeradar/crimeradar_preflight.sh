@@ -48,6 +48,20 @@ done
 
 online() { "$ADB" devices | grep -q "^$DEV[[:space:]]*device"; }
 
+# The owner's rule (2026-10-11): Discord and Claude Desktop are closed while the
+# leg runs. Here, because every path that starts the emulator comes through this
+# script, and before the boot, because the RAM is wanted for it. The stop script
+# reopens what this closed. It never fails the run, and a missing script is a
+# line in the log, not exit 13: the leg does not depend on it. Not on the wedge
+# re-exec: the first pass already closed them.
+if [ "${CR_WEDGE_RETRY:-0}" != "1" ]; then
+  if [ -f "$SCRIPTS/crimeradar_apps.sh" ]; then
+    bash "$SCRIPTS/crimeradar_apps.sh" close </dev/null || true
+  else
+    echo "[cr] leg apps: $SCRIPTS/crimeradar_apps.sh is missing; Discord and Claude Desktop stay open"
+  fi
+fi
+
 if ! online; then
   # Headless by default so it survives unattended. Set CR_EMU_WINDOW=1 to see it.
   WIN=""

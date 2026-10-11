@@ -36,7 +36,7 @@ LEG = ROOT / "scripts" / "crimeradar"
 LEG_SCRIPTS = ("crimeradar_preflight.sh", "crimeradar_emit.sh", "crimeradar_health.sh",
                "crimeradar_health_jobs.py", "crimeradar_set_region.sh", "crimeradar_emu_stop.sh",
                "crimeradar_memguard.sh", "crimeradar_night.sh", "crimeradar_morning.sh",
-               "adb_bounded.sh")
+               "crimeradar_apps.sh", "crimeradar_apps.ps1", "adb_bounded.sh")
 PKG = "com.newsbreak.crimeradar"
 GOOD = "UI hierchary dumped to: /sdcard/.cr_probe.xml"
 IDLE = "ERROR: could not get idle state."
@@ -100,6 +100,9 @@ def run_preflight(tmp_path: Path, dumps: str, **overrides: str) -> subprocess.Co
     for knob in ("ADB_BIN", "CR_EMU"):
         assert "${%s:-" % knob in text, \
             f"{script} ignores {knob}; refusing to run it against the real one"
+    # And without this one it would close the real Discord and Claude Desktop.
+    assert "${CR_LEG_APPS:-" in (LEG / "crimeradar_apps.sh").read_text(encoding="utf-8"), \
+        "crimeradar_apps.sh ignores CR_LEG_APPS; refusing to run the preflight on this machine"
     bindir = tmp_path / "bin"
     bindir.mkdir()
     state = tmp_path / "state"
@@ -117,6 +120,7 @@ def run_preflight(tmp_path: Path, dumps: str, **overrides: str) -> subprocess.Co
                CR_EMU=emu.as_posix(),
                CR_REPO=tmp_path.as_posix(),
                CR_SETREG=setreg.as_posix(),
+               CR_LEG_APPS="0",
                FAKE_STATE=state.as_posix(), FAKE_DUMPS=dumps)
     env.pop("CR_SCRIPTS", None)
     env.update(overrides)
@@ -168,7 +172,7 @@ def test_a_missing_sibling_script_fails_before_any_adb_call(tmp_path):
 
 
 def test_the_leg_scripts_are_in_the_repo_and_name_no_other_copy():
-    """All ten are versioned here, parse, and reach each other only by $SCRIPTS."""
+    """All of them are versioned here, parse, and reach each other only by $SCRIPTS."""
     bash = _bash()
     for name in LEG_SCRIPTS:
         path = LEG / name

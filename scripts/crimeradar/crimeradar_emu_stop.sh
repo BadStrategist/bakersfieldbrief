@@ -24,11 +24,28 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && { pwd -W 2>/dev/null || pwd; })"
 SCRIPTS="${CR_SCRIPTS:-$HERE}"
 REPO="${CR_REPO:-$(cd "$HERE/../.." && { pwd -W 2>/dev/null || pwd; })}"
 
-ADB_BIN="C:/Users/tscac/Android/Sdk/platform-tools/adb.exe"
+# ADB_BIN is overridable so tests/test_crimeradar_apps.py can run this against a
+# scripted adb. No scheduled job sets it.
+ADB_BIN="${ADB_BIN:-C:/Users/tscac/Android/Sdk/platform-tools/adb.exe}"
 export ADB_BIN
 ADB="$SCRIPTS/adb_bounded.sh"     # bounded: a wedged guest must fail, never hang
 DEV="${CR_DEVICE:-emulator-5554}"
 [ -d "$REPO" ] || { echo "[cr] FAILED: repo missing: $REPO (CR_REPO overrides)"; exit 13; }
+
+# The stop is the end of the leg, so this is where Discord and Claude Desktop
+# come back (only the ones the preflight closed; crimeradar_apps.sh keeps the
+# record). On EXIT, so every way out reaches it: already stopped, stopped, still
+# up. A leg that died early never stopped anything itself, and the next
+# scheduled stop lands here all the same. Not on the
+# preflight's wedge recycle (CR_WEDGE_RETRY=1): that stop is mid-leg, and the
+# emulator is coming straight back. It never changes this script's exit code.
+reopen_apps() {
+  [ "${CR_WEDGE_RETRY:-0}" = "1" ] && return 0
+  [ -f "$SCRIPTS/crimeradar_apps.sh" ] || return 0
+  bash "$SCRIPTS/crimeradar_apps.sh" reopen </dev/null || true
+}
+trap 'rc=$?; reopen_apps; exit $rc' EXIT
+
 [ -f "$ADB" ] || { echo "[cr] FAILED: script missing: $ADB (CR_SCRIPTS overrides the directory)"; exit 13; }
 
 up() { "$ADB" devices 2>/dev/null | grep -q "^$DEV[[:space:]]*device"; }

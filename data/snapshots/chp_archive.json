@@ -1348,5 +1348,15 @@
   "lat": 34.918056,
   "lon": -118.923889,
   "details": ""
+ },
+ {
+  "log_id": "261011BF0167",
+  "time": "Oct 11 2026 12:58PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sr58 E / Mohawk St",
+  "area": "Bakersfield",
+  "lat": 35.37132,
+  "lon": -119.066154,
+  "details": ""
  }
 ]

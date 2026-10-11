@@ -496,14 +496,17 @@ const feeds = {
   "https://cwwp2.dot.ca.gov/data/d9/cctv/cctvStatusD09.json": readFileSync(d9Path, "utf8"),
 };
 const asked = [];
+const modes = [];
 const store = new Map();
 globalThis.caches = { default: {
   match: async (req) => { const hit = store.get(req.url); return hit ? hit.clone() : undefined; },
   put: async (req, resp) => { store.set(req.url, resp.clone()); },
 } };
-globalThis.fetch = async (url) => {
+globalThis.fetch = async (url, init) => {
   url = String(url);
+  if (scenario === "old_runtime" && init && init.cache) throw new TypeError("The 'cache' field is not implemented");
   asked.push(url);
+  modes.push((init && init.cache) || (init && init.cf ? "cf:" + init.cf.cacheTtl : "default"));
   if (feeds[url]) {
     if (scenario === "feeds_down") throw new Error("down");
     return new Response(feeds[url], { status: 200, headers: { "Content-Type": "application/json" } });
@@ -536,6 +539,7 @@ out.dead = await call("?img=sr58cameronroad");
 out.unknown = await call("?img=notacamera");
 out.bad = await call("?img=../../etc/passwd");
 out.feed_requests = asked.filter((u) => feeds[u]).length;
+out.modes = [...new Set(modes)];
 console.log(JSON.stringify(out));
 """
 
@@ -573,6 +577,17 @@ def test_function_fetches_exactly_the_address_caltrans_published(tmp_path):
     # the second request inside the minute is served from the edge, not from Caltrans
     assert out["again"]["status"] == 200 and out["image_requests_after_second_call"] == 1
     assert out["feed_requests"] == 2                      # both feeds read once, then held
+
+
+def test_function_never_reads_caltrans_through_the_edge_cache(tmp_path):
+    """A Worker's own fetch is cached by Cloudflare: a .jpg with no Cache-Control sat there for
+    hours and the live page showed pictures eight minutes old. Every upstream read skips it."""
+    out = _run_function(tmp_path, "ok")
+    assert out["modes"] == ["no-store"]
+    # a runtime without the option still gets its picture, from a copy that expires at once
+    old = _run_function(tmp_path, "old_runtime")
+    assert old["good"]["status"] == 200 and old["modes"] == ["cf:0"]
+    assert old["list"]["body"]["count"] == 44
 
 
 def test_function_gives_no_picture_for_a_dead_unknown_or_malformed_camera(tmp_path):

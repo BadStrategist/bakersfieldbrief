@@ -29,6 +29,19 @@ const LIST_KEEP = 86400;                // and keep the last good list this long
 const IMG_TTL = 60;
 const FAIL_TTL = 30;
 
+// A Worker's fetch() passes through Cloudflare's own cache, and Caltrans sends its JPEGs with
+// no Cache-Control, so the edge kept each one for hours: the page showed 4:22 PM pictures at
+// 4:30 PM while Caltrans had newer ones. "no-store" skips that cache in both directions. The
+// 60 s hold this function wants is the explicit cache.put() below, and nothing else.
+// Runtimes that predate the option throw on it; those get an edge copy that expires at once.
+async function fetchFresh(url, headers) {
+  try {
+    return await fetch(url, { headers, cache: "no-store" });
+  } catch (e) {
+    return fetch(url, { headers, cf: { cacheTtl: 0 } });
+  }
+}
+
 function clean(v) {
   return String(v == null ? "" : v).replace(/\s+/g, " ").trim();
 }
@@ -102,7 +115,7 @@ async function loadList(context) {
   for (const feed of FEEDS) {
     let rows = null;
     try {
-      const resp = await fetch(feed.url, { headers: { "Accept": "application/json", "User-Agent": UA } });
+      const resp = await fetchFresh(feed.url, { "Accept": "application/json", "User-Agent": UA });
       if (resp.ok) rows = kern(await resp.json());
     } catch (e) {
       rows = null;
@@ -165,7 +178,7 @@ async function image(context, id) {
 
   let reason = "";
   try {
-    const up = await fetch(cam.image_url, { headers: { "Accept": "image/jpeg,image/*", "User-Agent": UA } });
+    const up = await fetchFresh(cam.image_url, { "Accept": "image/jpeg,image/*", "User-Agent": UA });
     const type = up.headers.get("Content-Type") || "";
     if (!up.ok) reason = "http_" + up.status;
     else if (!type.toLowerCase().startsWith("image/")) reason = "not_an_image";

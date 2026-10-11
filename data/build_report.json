@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-11T05:40:44-07:00",
+ "built_at": "2026-10-11T10:40:31-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 1731, column 43"
   },
   "isabella": {
    "ok": true,
@@ -64,28 +64,28 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 64,
+  "brief_words": 1205,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
-   "top_story": "Dozens gather to celebrate the 50th anniversary of Colonel Allensworth State Historic Park",
+   "chp_new": 0,
+   "top_story": "3rd annual Cultura Fest brings Bakersfield families together to celebrate heritage and support education",
    "overnight_band": {
-    "date": "2026-10-10",
-    "count": 38,
+    "date": "2026-10-11",
+    "count": 27,
     "chips": [
      [
       "Weapons and assaults",
-      7
+      8
      ],
      [
       "Fires",
-      7
+      5
      ],
      [
       "Crashes and traffic",
-      5
+      2
      ],
      [
       "Medical and overdose",
@@ -93,27 +93,22 @@
      ],
      [
       "Disturbances and welfare",
-      4
+      6
      ],
      [
       "Burglary and theft",
-      3
-     ],
-     [
-      "Suspicious activity",
       1
      ],
      [
-      "Alarms",
-      2
-     ],
-     [
       "Other calls",
-      7
+      3
      ]
     ],
-    "other": "5 incident, 1 public service, 1 vehicle",
-    "unmapped": []
+    "other": "1 pedestrian on freeway, 1 crash, 1 incident",
+    "unmapped": [
+     "pedestrian on freeway",
+     "crash"
+    ]
    },
    "archive": "2026-10-11"
   },
@@ -150,13 +145,13 @@
   },
   "tehachapi": {
    "sr58": "RESTRICTIONS",
-   "wind_mph": 8,
+   "wind_mph": 10,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 54,
-   "wind_mph": 8,
+   "temp": 63,
+   "wind_mph": 10,
    "alerts": 0
   },
   "roads": {
@@ -187,17 +182,17 @@
    "isabella_af": 144162,
    "alpr_total": 270,
    "kern_fires": 1,
-   "aqi": 49,
+   "aqi": 51,
    "chp_week": 110
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 60
+   "published": 61
   },
   "map": {
-   "dots": 44
+   "dots": 39
   },
   "sunday_read": {
    "topic": "Public safety",

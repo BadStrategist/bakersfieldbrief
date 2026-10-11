@@ -240,11 +240,16 @@ def _night(rel, chp, built_iso) -> tuple[str, dict]:
             f"\n      <li><b>{n}</b><span>{_e(label)}</span>"
             + (f"<small>{_e(inside)}</small>" if label == night_counts.OTHER else "") + "</li>"
             for label, n in chips)
+        # Desktop sets the list beside the head (night-cols); without a list there is one column.
+        cols = " night-cols"
         body = f"""
-            <p class="types-h">Calls by type, most serious first</p>
-            <ul class="types" aria-label="Calls by type">{lis}
-            </ul>"""
+    <div class="night-list">
+      <p class="types-h">Calls by type, most serious first</p>
+      <ul class="types" aria-label="Calls by type">{lis}
+      </ul>
+    </div>"""
     else:
+        cols = ""
         head = f'<span class="say">{_e(rep["title"])}</span>'
         body = '\n    <p class="note t13 muted">Call counts for this report are not available.</p>'
 
@@ -259,15 +264,17 @@ def _night(rel, chp, built_iso) -> tuple[str, dict]:
                     f'as the calls above.</p>')
 
     band = f"""<section class="night" aria-labelledby="h-night">
-  <div class="wrap">
+  <div class="wrap{cols}">
     <div class="night-head">
       <div>
         <p class="night-tag">The Kern Overnight</p>
         <h2 id="h-night">{head}</h2>
         <p class="when">{_e(when)}</p>
       </div>{notable}
-    </div>{body}{chp_line}
+    </div>{body}
+    <div class="night-foot">{chp_line}
     {links}
+    </div>
   </div>
 </section>"""
     _check_band(band)

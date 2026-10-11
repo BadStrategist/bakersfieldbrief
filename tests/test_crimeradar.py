@@ -996,15 +996,65 @@ def test_every_staged_type_is_a_row_on_the_home_page():
     its own name with a build warning nobody reads at 7:30. Held together here,
     so a new label fails before it ships instead.
 
-    PENDING are the five the owner has not placed in a row yet. Placing one
-    means adding it to night_counts.MAP and deleting it here: this set may only
-    shrink.
+    Nothing is pending. The last five were settled on 2026-10-10: barricade,
+    hostage and kidnapping are in Weapons and assaults, trespassing is in
+    Suspicious activity, and "Fatality" was retired as a type. A new label has
+    no waiting room: it gets a row in night_counts.MAP or this fails.
     """
     from build.builders import night_counts
-    pending = {"barricade", "fatality", "hostage", "kidnapping", "trespassing"}
     labels = {night_counts.normalize(label) for _, label in cr.TYPE_HINTS}
     labels.add(night_counts.normalize(cr._type_of("no hint matches this")))
     unknown = {x for x in labels if x not in night_counts.CHIP_OF}
-    assert unknown == pending, (
-        f"not in night_counts.MAP: {sorted(unknown - pending)}; "
-        f"placed, so drop from PENDING: {sorted(pending - unknown)}")
+    assert not unknown, f"not in night_counts.MAP: {sorted(unknown)}"
+    for label in ("barricade", "hostage", "kidnapping"):
+        assert night_counts.CHIP_OF[label] == "Weapons and assaults"
+    assert night_counts.CHIP_OF["trespassing"] == "Suspicious activity"
+
+
+def test_fatality_is_not_a_type():
+    """The word does not say what killed someone, so it types nothing: the
+    rest of the headline does, and a headline with nothing else is an Incident."""
+    assert "Fatality" not in {label for _, label in cr.TYPE_HINTS}
+    assert cr._type_of("Fatality reported after crash on Highway 99") == "Traffic collision"
+    assert cr._type_of("Fatality reported on Highway 20") == "Incident"
+
+
+def test_area_for_works_on_every_row_not_only_the_first(capsys):
+    """The streetcheck import sat inside `if _STREETS is None`, so the second
+    call raised UnboundLocalError into a bare `except: pass` and at most one row
+    of a night could carry a street."""
+    for _ in range(3):
+        assert cr._area_for("Person down on White Lane", {}) == "White Lane"
+    assert cr._area_for("Shots heard on Jefferson St", {}) == "Jefferson Street"
+    assert cr._area_for("Crash on Stockdale Highway", {}) == "Stockdale Highway"
+
+
+def test_area_for_takes_an_exact_gazetteer_match_only(capsys):
+    # the fuzzy matcher reads Gilbert Street as Alberta Street (0.86)
+    assert cr._area_for("Suspicious person reported at Gilbert Street apartment", {}) == ""
+    assert "not in the gazetteer" in capsys.readouterr().err
+    # a longer name is never cut down to a shorter street that does exist
+    assert cr._area_for("Alarm near Zzyzx Hill Street", {}) == ""
+    # the headline did not say which side of town, so neither does the row
+    assert cr._area_for("Juveniles at liquor store near Baker St", {}) == "Baker Street"
+
+
+def test_area_for_gives_another_town_nothing(capsys):
+    """2026-10-10 21:37: a Shafter row must not be handed a bare 'Hollywood
+    Ave' that the geocoder reads as Bakersfield, from the scan or from a card."""
+    title = "Possible failure-to-yield near Hollywood Ave in the Shafter area"
+    assert cr._area_for(title, {}) == ""
+    assert cr._area_for(title, {title: "Hollywood Ave"}) == ""
+    assert "names another town" in capsys.readouterr().err
+    assert cr._area_for("Overdose at Lamont residence on Union Avenue", {}) == ""
+    # a Bakersfield street named for a town is still a Bakersfield street
+    assert cr._area_for("Crash fire south of Taft Hwy", {}) == "Taft Highway"
+
+
+def test_area_for_logs_a_failure_instead_of_swallowing_it(monkeypatch, capsys):
+    def boom(*a, **k):
+        raise RuntimeError("gazetteer gone")
+    monkeypatch.setattr(cr.streetcheck, "scan", boom)
+    assert cr._area_for("Person down on White Lane", {}) == ""
+    err = capsys.readouterr().err
+    assert "area lookup failed" in err and "gazetteer gone" in err

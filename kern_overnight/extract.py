@@ -107,18 +107,14 @@ def _extract_row(row: dict, streets: list[str]) -> dict | None:
                      default=1)
     disp = next((d for d, p in DISP_RULES if p.search(text)), "active")
 
-    area = ""
+    # The area is a gazetteer MATCH or it is empty. A fuzzy suggestion is a
+    # different street ("Gilbert Street" -> "Alberta Street", 0.86), and the
+    # old "Bakersfield" default put a city on calls from Shafter and Mojave.
+    # An empty area is a fact: the copy names no place for that row.
     from . import streetcheck as SC  # local import: gazetteer is heavy
-    res = SC.scan(text, streets)
-    for status, cand, detail in res:
-        if status == "MATCH":
-            area = detail
-            break
-        if status == "FUZZY":
-            area = detail.split(" -> ")[-1].split(" (")[0]
-            break
-    if not area:
-        area = "Bakersfield"
+    area = next((detail for status, _cand, detail in SC.scan(text, streets)
+                 if status == "MATCH"), "")
+    where = f", {area}" if area else ""
 
     return {
         "type": typ,
@@ -127,7 +123,7 @@ def _extract_row(row: dict, streets: list[str]) -> dict | None:
         "area": area,
         "notability": notability,
         "disposition": disp,
-        "summary": f"{typ}, {area} ({row.get('time_local', '')})",
+        "summary": f"{typ}{where} ({row.get('time_local', '')})",
         "_src": row.get("text", "")[:120],
     }
 

@@ -606,6 +606,28 @@ class TestData:
         assert not any("plate" in i.get("summary", "") for i in incs)  # privacy
         assert incs[0]["notability"] == 4             # merged update raised it
 
+    def test_extractor_never_invents_an_area(self):
+        """No street found is an empty area, not "Bakersfield" (a Shafter call
+        was handed the city), and a fuzzy match is not a street: 'Gilbert
+        Street' scores 0.86 against 'Alberta Street' and was taken as it."""
+        from kern_overnight import extract as EX
+        streets = ["Alberta Street", "White Lane"]
+        rows = [
+            {"time_local": "01:00", "text": "structure fire reported in the "
+             "Shafter area, multiple engines responding now"},
+            {"time_local": "02:00", "text": "vehicle fire reported at Gilbert "
+             "Street, engine 41 responding to the scene"},
+            {"time_local": "03:00", "text": "brush fire reported at White "
+             "Lane, engine 52 responding to the scene"},
+        ]
+        by_time = {i["time"]: i for i in EX.extract(rows, streets)}
+        assert by_time["01:00"]["area"] == ""
+        assert by_time["02:00"]["area"] == ""
+        assert by_time["03:00"]["area"] == "White Lane"
+        assert "Bakersfield" not in json.dumps(list(by_time.values()))
+        # the summary does not print a comma before an area that is not there
+        assert ", (" not in by_time["01:00"]["summary"]
+
     def test_brief_lede_never_double_escapes(self, tmp_path, monkeypatch):
         """REGRESSION (2026-08-14 live incident): the brief lede must never
         render literal '&lt;p&gt;' / '&lt;strong&gt;' — the fallback greeting

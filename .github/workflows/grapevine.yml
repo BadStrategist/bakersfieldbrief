@@ -23,6 +23,7 @@ permissions:
   contents: write
   pages: write
   id-token: write
+  issues: write
 
 concurrency:
   group: "pages"
@@ -101,6 +102,22 @@ jobs:
         id: alpr_fresh
         if: ${{ !cancelled() && steps.build.outcome == 'success' }}
         run: python scripts/check_alpr_fresh.py --alert-file /tmp/bb_alpr.txt
+
+      # The alert that needs no secret. The Discord step below depends on DISCORD_WEBHOOK_URL;
+      # without it a failed run told nobody. This comments on the pinned ops issue with the
+      # run's own token (`issues: write`; the repo is private, so nothing is published).
+      # It reports a run that is already red and must never be why one is, or change which
+      # step a reader blames: the script always exits 0, and if it cannot even start (a failed
+      # checkout) the step says so in an annotation and still passes.
+      - name: Comment on the ops issue on failure
+        if: failure()
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          STEPS_JSON: ${{ toJSON(steps) }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python scripts/notify_issue.py --header "Bakersfield Brief - grapevine run #$GITHUB_RUN_NUMBER failed" --file /tmp/bb_alpr.txt \
+            || echo "::error title=ops issue alert not delivered::scripts/notify_issue.py could not run"
 
       # `if: failure()` and the outcome read in the shell, as in daily.yml: a step-outcome
       # expression in `if:` skipped an alert there on 2026-09-06. Any other failed step of

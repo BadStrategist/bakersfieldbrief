@@ -147,19 +147,90 @@ class TestLogIsEveryIncidentNotToldAsAParagraph:
         out, added = insert_log_lines(body, rows)
         assert added == 0 and out == body
 
-    def test_insert_log_lines_caps_after_sorting(self):
-        """Over the cap, the rows kept are the earliest of the night. The cut
-        used to run before the sort, so an inserted 7 p.m. row was the one
-        dropped and a 6 a.m. line stayed."""
+    def test_insert_log_lines_sorts_and_drops_nothing(self):
+        """An inserted row lands in night order and no line is cut to make
+        room. There was a 40-row cap here, and before that the cut ran ahead
+        of the sort, so an inserted 7 p.m. row was the one dropped."""
         from kern_overnight.write import insert_log_lines, log_lines
         body = ("# T\n\n## The log\n\n"
                 "- **5:10 a.m.** — Alarm on Oak Street was checked.\n"
                 "- **6:10 a.m.** — Alarm on Elm Street was checked.\n\n"
                 "## Night notes\n\nN.\n")
         out, added = insert_log_lines(
-            body, ["- **7:15 p.m.** — Fight reported near Jefferson Park."], limit=2)
+            body, ["- **7:15 p.m.** — Fight reported near Jefferson Park."])
         assert added == 1
-        assert [r.split("**")[1] for r in log_lines(out)] == ["7:15 p.m.", "5:10 a.m."]
+        assert [r.split("**")[1] for r in log_lines(out)] == \
+            ["7:15 p.m.", "5:10 a.m.", "6:10 a.m."]
+
+    def test_a_busy_night_logs_every_row(self):
+        """121 app rows came in on 2026-10-10. The log used to stop at 40 and
+        say so only on stdout, while the docstring promised every incident."""
+        from kern_overnight.write import (insert_log_lines, log_lines, log_rows,
+                                          paragraph_incidents, render_log_section)
+        night = [{"time": f"{19 + n // 60:02d}:{n % 60:02d}", "notability": 2,
+                  "type": "alarm", "area": "",
+                  "summary": f"Alarm number {n} was checked at a business."}
+                 for n in range(130)]
+        told = paragraph_incidents(night)
+        rows = log_rows(night, skip=told)
+        assert len(told) + len(rows) == len(night) == 130
+        assert len(log_lines(render_log_section(night, skip=told))) == 130
+        out, added = insert_log_lines("# T\n\n## Night notes\n\nN.\n", rows)
+        assert added == 130 and len(log_lines(out)) == 130
+
+
+class TestToldPicks:
+    """paragraph_incidents() is what the writer was asked to tell. The log used
+    to skip all of it unchecked, so a pick the writer left out was in neither
+    the prose nor the log."""
+    PICKS = [
+        {"time": "01:12", "notability": 4, "type": "structure fire",
+         "area": "Niles Street", "summary": "Crews fought a garage fire that "
+         "spread to a fence on Niles Street."},
+        {"time": "02:40", "notability": 3, "type": "pursuit",
+         "area": "Union Avenue", "summary": "A stolen pickup was chased down "
+         "Union Avenue until it stopped at a canal."},
+        {"time": "03:05", "notability": 3, "type": "missing person",
+         "area": "", "summary": "A family reported a teenager missing from a "
+         "campground near the river."},
+    ]
+    BODY = ("# The Kern Overnight — October 10, 2026\n\n"
+            "A garage fire and a chase down Union Avenue led a busy night, and "
+            "a teenager was reported missing from a campground.\n\n"
+            "## The big one\n\n"
+            "Crews were sent at 1:12 a.m. to a garage fire on Niles Street. "
+            "A caller reported it had spread to a fence.\n\n"
+            "## Around the county\n\n"
+            "A stolen pickup was chased down Union Avenue and stopped at a "
+            "canal, units reported.\n\n"
+            "## Night notes\n\nThe teenager missing from the campground near "
+            "the river was the night's open thread.\n")
+
+    def test_a_skipped_pick_is_logged(self):
+        from kern_overnight.write import (_insert_log, log_lines,
+                                          render_log_section, told_incidents)
+        told = told_incidents(self.BODY, self.PICKS)
+        # the missing teenager is named in the opening and in the notes, and
+        # told in neither: only a paragraph under a section is a telling
+        assert [i["time"] for i in told] == ["01:12", "02:40"]
+        out = _insert_log(self.BODY, render_log_section(self.PICKS, skip=told))
+        rows = log_lines(out)
+        assert len(rows) == 1 and rows[0].startswith("- **3:05 a.m.**")
+        assert "teenager missing" in rows[0]
+
+    def test_a_writer_that_tells_nothing_logs_everything(self):
+        from kern_overnight.write import told_incidents
+        assert told_incidents("# T\n\nA quiet night.\n\n## Night notes\n\nN.\n",
+                              self.PICKS) == []
+
+    def test_write_brief_logs_the_pick_the_writer_dropped(self, monkeypatch, capsys):
+        import datetime as dt
+        from kern_overnight import write
+        monkeypatch.setattr(write.llm, "chat_text", lambda *a, **k: self.BODY)
+        out = write.write_brief(self.PICKS, dt.date(2026, 10, 10))
+        rows = write.log_lines(out)
+        assert [r.split("**")[1] for r in rows] == ["3:05 a.m."]
+        assert "pick not told as a paragraph" in capsys.readouterr().out
 
 
 class TestInsertLog:

@@ -72,8 +72,14 @@ _ELSEWHERE = re.compile(
     r"lake isabella|kernville|wofford heights|bodfish|frazier park|lebec|"
     r"buttonwillow|lost hills|tupman|edison|keene|caliente|inyokern|"
     r"pine mountain club|stallion springs|bear valley|golden hills|"
-    r"grapevine|gorman|glennville|woody)\b(?! (?:highway|road|street|avenue))",
+    r"grapevine|gorman|glennville|woody)\b(?! (?:highway|hwy|road|rd|street|st|avenue|ave)\b)",
     re.I)
+
+
+def names_another_town(text: str) -> bool:
+    """Does the text place itself in a Kern town that is not Bakersfield?"""
+    return bool(_ELSEWHERE.search(text or ""))
+
 
 # What the copy can claim, and the parts of town that make the claim true.
 # The loose ones ("north", "south", "west") accept either neighbor.

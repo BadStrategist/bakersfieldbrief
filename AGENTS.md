@@ -25,6 +25,12 @@ Daily freshness: every `daily.yml` run ends with `scripts/check_alpr_fresh.py`, 
 
 Local work commits SOURCE ONLY; never `git add -A`. The five content workflows and `deploy.yml` share the `pages` concurrency group, so CI never races CI. To ship a source fix without the daily run (AI brief build, artifact commit, newsletter from 8 AM Pacific): put `[skip ci]` in the commit message, push, then `gh workflow run deploy.yml`. It builds `--no-llm`, runs the tests and deploys; it commits nothing and sends nothing. Because the two writers' paths are disjoint, a plain `pull --rebase` should never conflict. If one does, it is an ownership violation: stop and fix the ownership, do not auto-resolve. Scoped recovery for a local rebase conflict on a CI-owned path: `git rebase --abort`, `git checkout origin/main -- <that CI path>`, re-stage, commit source only. Never bulk-checkout the box-owned paths: that reverts an unpushed overnight report.
 
+## CI alerts
+Two alerts on a failed run, in this order: `scripts/notify_issue.py` comments on the pinned issue "Ops alerts: failed CI runs" (#1) with the run's own `GITHUB_TOKEN`, then the ops Discord step. The issue comment needs no secret, so it still arrives when `DISCORD_WEBHOOK_URL` is missing. It always exits 0 and carries no `continue-on-error`: it reports a red run and is never the reason for one. Keep the issue open and pinned; if it is closed the next failed run opens a new one.
+
+## Locations on the report
+An incident's `area` is an exact match in `kern_overnight/streets.txt` or it is empty. Never a fuzzy match, never a default city, and nothing at all when the text names another Kern town (`regions.names_another_town`). An empty area is correct output: the copy names no place.
+
 ## Things that are already correct — don't "fix" them
 - Sender auth: SPF `include:_spf.mlsend.com` + DKIM `litesrv._domainkey` CNAME. Mail lands in the inbox.
 - SEO: single-topic posts only.

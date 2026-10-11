@@ -137,6 +137,69 @@ def paragraph_incidents(incidents: list[dict]) -> list[dict]:
     return out
 
 
+# Words every dispatch line shares: they cannot show a paragraph is about one
+# incident rather than another.
+_TOLD_STOP = {
+    "reported", "report", "reports", "units", "unit", "responded", "responding",
+    "were", "sent", "with", "from", "that", "this", "near", "after", "into",
+    "bakersfield", "kern", "county", "street", "avenue", "road", "drive", "lane",
+    "boulevard", "highway", "block", "caller", "police", "deputies", "officers",
+    "crews", "call", "possible", "person", "scene", "area",
+}
+_SECTION_HEAD = re.compile(r"^[ \t]*#{2,6}[ \t]*(.+?)[ \t]*$", re.M)
+
+
+def _told_words(text: str) -> set[str]:
+    return {w for w in re.findall(r"[a-z]{4,}", (text or "").lower())
+            if w not in _TOLD_STOP}
+
+
+def _prose_paragraphs(body: str) -> list[str]:
+    """The paragraphs under the body's own sections, less the log and the notes.
+
+    The title and the opening are not a telling: the opening names the night's
+    themes ("a crash on Union Avenue led the night") without telling any one
+    incident, so only text under a '##' heading counts.
+    """
+    out: list[str] = []
+    heads = list(_SECTION_HEAD.finditer(body or ""))
+    for n, h in enumerate(heads):
+        name = h.group(1).lower()
+        if name.startswith("the log") or name.startswith("night notes"):
+            continue
+        end = heads[n + 1].start() if n + 1 < len(heads) else len(body)
+        out += [" ".join(p.split())
+                for p in re.split(r"\n[ \t]*\n", body[h.end():end]) if p.strip()]
+    return out
+
+
+def _tells(paragraph: str, inc: dict) -> bool:
+    """Is this paragraph about this incident?
+
+    Its clock time and one of its own words, or three of its own words (all of
+    them when it has fewer). Strict on purpose: a miss here prints the incident
+    twice, once as prose and once as a log row. A false hit prints it nowhere.
+    """
+    own = _told_words(f"{inc.get('summary') or ''} {inc.get('area') or ''}")
+    shared = len(own & _told_words(paragraph))
+    clock = fmt_time_long(inc.get("time", ""))
+    if clock != "Time not logged" and clock in paragraph and shared >= 1:
+        return True
+    return len(own) >= 2 and shared >= min(3, len(own))
+
+
+def told_incidents(body: str, picks: list[dict]) -> list[dict]:
+    """The picks the written body really tells as a paragraph.
+
+    paragraph_incidents() is what the writer was ASKED to tell. A writer that
+    skips one, or runs out of tokens before the eighth, used to lose it: the
+    log left it out as "told" and the prose never had it. The log skips only
+    what this returns.
+    """
+    paras = _prose_paragraphs(body)
+    return [inc for inc in picks if any(_tells(p, inc) for p in paras)]
+
+
 def _log_row(inc: dict) -> str:
     """One log bullet: time first, then type and area, then the summary.
 
@@ -157,25 +220,24 @@ def _log_row(inc: dict) -> str:
     return f"- **{clock}** — {tail}".rstrip()
 
 
-def log_rows(incidents: list[dict], limit: int = 40,
-             skip: list[dict] | None = None) -> list[str]:
+def log_rows(incidents: list[dict], skip: list[dict] | None = None) -> list[str]:
     """The log bullets: every incident NOT told as a paragraph, in night order.
 
     The rule is a partition, not a notability cut. The old rule took notability
     2 only, so a 3 that missed the eight "Around the county" slots appeared
     nowhere on the page at all, and the 2026-10-10 page was whole only because
     the 07:30 agent logged six of them by hand.
+
+    There is no cap. A 40-row cut used to drop the latest rows of a busy night
+    with a line on stdout nobody read, which is the same hole by another door.
     """
     skipped = {incident_key(i) for i in (skip or [])}
     items = [i for i in incidents if incident_key(i) not in skipped]
     items.sort(key=lambda i: night_key(i.get("time", "")))
-    if len(items) > limit:
-        print(f"[write] log capped at {limit}: {len(items) - limit} row(s) past "
-              "the cap are not on the page", flush=True)
-    return [_log_row(inc) for inc in items[:limit]]
+    return [_log_row(inc) for inc in items]
 
 
-def render_log_section(incidents: list[dict], limit: int = 40,
+def render_log_section(incidents: list[dict],
                        skip: list[dict] | None = None) -> str:
     """The '## The log' section, built in CODE: time first, chronological.
 
@@ -187,7 +249,7 @@ def render_log_section(incidents: list[dict], limit: int = 40,
     deterministic, so a reader can always scan the night in the order it
     happened. Returns "" when there is nothing to log.
     """
-    rows = log_rows(incidents, limit, skip)
+    rows = log_rows(incidents, skip)
     if not rows:
         return ""
     return "\n".join(["## The log", ""] + rows + [""])
@@ -225,7 +287,7 @@ def log_lines(body: str) -> list[str]:
     return [ln.rstrip() for ln in block.splitlines() if ROW_LINE.match(ln)]
 
 
-def insert_log_lines(body: str, rows: list[str], limit: int = 40) -> tuple[str, int]:
+def insert_log_lines(body: str, rows: list[str]) -> tuple[str, int]:
     """Add the rows the body's log is missing, keeping the night in order.
 
     This is how the RELEASE path closes the second-source gap. A body written
@@ -255,14 +317,8 @@ def insert_log_lines(body: str, rows: list[str], limit: int = 40) -> tuple[str, 
         added += 1
     if not added:
         return body, 0
-    # Sort BEFORE the cap. The new rows are appended, so cutting first dropped
-    # exactly the rows this function exists to add, whatever their time, while
-    # the message said "earliest".
+    # No cap: every row handed in lands (see log_rows).
     merged.sort(key=lambda ln: night_key(_line_clock(ln)))
-    if len(merged) > limit:
-        print(f"[write] log would hold {len(merged)} rows, over the {limit} cap: "
-              f"keeping the earliest {limit}", flush=True)
-        merged = merged[:limit]
     section = "\n".join(["## The log", ""] + merged + [""])
     return _insert_log(body, section), added
 
@@ -303,7 +359,7 @@ def _clock_from_display(display: str) -> str:
 def write_brief(incidents: list[dict], date: dt.date) -> str:
     if not incidents:
         raise RuntimeError("no incidents to write (refusing empty brief)")
-    told = paragraph_incidents(incidents)
+    picks = paragraph_incidents(incidents)
 
     # The part of town is looked up, never written from memory: the 2026-10-09
     # report put Pembroke Avenue in "southwest Bakersfield" (it is north).
@@ -335,6 +391,13 @@ def write_brief(incidents: list[dict], date: dt.date) -> str:
     body, wrong = regions.check(body, incidents)
     for w in wrong:
         print(f"[write] part of town corrected: {w}", flush=True)
+    told = told_incidents(body, picks)
+    kept = {incident_key(i) for i in told}
+    for inc in picks:
+        if incident_key(inc) not in kept:
+            print(f"[write] pick not told as a paragraph, logged as a row instead: "
+                  f"{inc.get('time', '')} {_one_line(inc.get('summary') or '')[:80]}",
+                  flush=True)
     body = _insert_log(body.rstrip(),
                        render_log_section(incidents, skip=told))
     return body.rstrip() + FOOTER

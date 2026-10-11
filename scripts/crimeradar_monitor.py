@@ -51,6 +51,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "kern_overnight"))
 import merge_crimeradar as mc  # noqa: E402  (coverage + privacy rules live there)
+import regions  # noqa: E402
+import streetcheck  # noqa: E402
 OUT = ROOT / "work" / "crimeradar"
 INCIDENTS = ROOT / "incidents"
 
@@ -1210,11 +1212,12 @@ FEED_NAME = mc.FEED_NAME   # the feed the app itself credits
 # "unarmed" as Weapons and "purchase" as a Pursuit.
 # Every label here must be a row in build/builders/night_counts.py MAP, or the
 # home page counts it in Other: tests/test_crimeradar.py holds the two together.
+# There is no "Fatality" label: the word does not say crash or homicide, so a
+# row is typed by the other words of its headline ("Fatal crash" is a crash).
 TYPE_HINTS = [(re.compile(pat, re.I), label) for pat, label in (
     (r"\bshots? fired", "Shots fired"), (r"\bshooting", "Shooting"),
     (r"shots?\b", "Shots fired"),   # no leading \b: "gunshot" is one
     (r"\bstab(?:s|bed|bing)?\b", "Stabbing"), (r"\bhomicide", "Homicide"),
-    (r"\bfatality", "Fatality"),
     (r"\bfire alarm", "Fire alarm"), (r"\bburglar alarm", "Burglary alarm"),
     (r"\bburglary alarm", "Burglary alarm"), (r"\brobbery alarm", "Robbery alarm"),
     (r"\bpanic alarm", "Alarm"), (r"\baudible alarm", "Alarm"),
@@ -1303,11 +1306,60 @@ def _poll_places(date_iso: str) -> dict:
     return out
 
 
-_STREETS: list | None = None
-_STREET_SUFFIX = re.compile(
-    r"\b(St|Street|Ave|Avenue|Rd|Road|Dr|Drive|Blvd|Boulevard|Ln|Lane|Way|Hwy|Highway"
-    r"|Ct|Court|Pl|Place|Cir|Circle|Ter|Terrace|Pkwy|Parkway|Trl|Trail|Loop|Aly)\.?$",
-    re.I)
+_STREETS: list[str] | None = None
+_STREET_NORM: dict[str, list[str]] = {}
+# "Jefferson St" and "Jefferson Street" are one street: the type word is spelled
+# out before the gazetteer lookup. Nothing else about a name is ever bent.
+_TYPE_LONG = {
+    "st": "street", "ave": "avenue", "av": "avenue", "rd": "road", "dr": "drive",
+    "blvd": "boulevard", "ln": "lane", "ct": "court", "pl": "place",
+    "cir": "circle", "ter": "terrace", "pkwy": "parkway", "hwy": "highway",
+}
+
+
+def _street_norm() -> dict[str, list[str]]:
+    """normalized name -> every gazetteer spelling of it, loaded once."""
+    global _STREETS
+    if _STREETS is None:
+        _STREETS = streetcheck.load_streets()
+        for s in _STREETS:
+            _STREET_NORM.setdefault(streetcheck.normalize(s), []).append(s)
+    return _STREET_NORM
+
+
+_LOCATIVE = re.compile(r"\b(?:on|at|near|of|in|to|from|along|off|outside|behind)\s+", re.I)
+
+
+_DIRECTION = re.compile(r"^(?:north|south|east|west|[nsew])\.?\s+", re.I)
+
+
+def _gazetteer_street(phrase: str, norm: dict[str, list[str]]) -> str:
+    """The gazetteer street a scanned phrase names, or "".
+
+    scan() hands back the words before the street too ("black Toyota on
+    Wilmington Way"), so the name is what follows the last locative word, and
+    that whole name must be in the gazetteer. Never a shorter tail of it:
+    "Hayden Hill Street" is not in the gazetteer and "Hill Street" is, and they
+    are two streets.
+
+    The lookup ignores a compass prefix, so "Baker St" finds both "Baker
+    Street" and "S Baker Street". The headline did not say which, so the
+    answer carries no direction unless the headline wrote one.
+    """
+    name = _LOCATIVE.split(phrase)[-1].strip()
+    words = name.split()
+    if len(words) < 2:
+        return ""
+    last = words[-1].rstrip(".").lower()
+    words[-1] = _TYPE_LONG.get(last, words[-1])
+    name = " ".join(words)
+    spellings = norm.get(streetcheck.normalize(name)) or []
+    for sp in spellings:
+        if sp.lower() == name.lower():
+            return sp
+    if len(spellings) == 1 and (_DIRECTION.match(name) or not _DIRECTION.match(spellings[0])):
+        return spellings[0]
+    return _DIRECTION.sub("", spellings[0]) if spellings else ""
 
 
 def _area_for(title: str, poll_places: dict) -> str:
@@ -1316,32 +1368,42 @@ def _area_for(title: str, poll_places: dict) -> str:
     A History row carries only a time and a one-line title. Order of recovery:
     the feed card for the same headline (its exact street), then a scan of the
     headline against the project's street gazetteer ("...on White Lane").
+
+    Only an exact gazetteer MATCH is a location. A fuzzy suggestion is a
+    different street ("Gilbert Street" -> "Alberta Street", 0.86, 2026-10-10).
+    A headline that names another town gets nothing at all: the gazetteer is
+    Bakersfield's, and a bare "Hollywood Ave" from a Shafter row is geocoded
+    as Bakersfield. Whatever is dropped is logged, never swallowed.
     """
-    global _STREETS
-    hit = poll_places.get(title.strip())
+    title = title.strip()
+    if regions.names_another_town(title):
+        print(f"[cr] area dropped, headline names another town: {title!r}",
+              file=sys.stderr)
+        return ""
+    hit = poll_places.get(title)
     if hit:
         return hit
     try:
-        import sys as _sys
-        if _STREETS is None:
-            _sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "kern_overnight"))
-            import streetcheck  # type: ignore
-            _STREETS = streetcheck.load_streets()
-        cands = []
-        for tup in streetcheck.scan(title, _STREETS):
-            if not tup or not tup[0]:
-                continue
-            name = (tup[2] if len(tup) > 2 and tup[2] else tup[0]).strip()
-            if not name:
-                continue
-            # scan() also yields scanned phrases ("pain at Bank St"), so prefer a
-            # candidate that ends in a street suffix, then the shortest one.
-            cands.append(((0 if _STREET_SUFFIX.search(name) else 1), len(name), name))
-        if cands:
-            cands.sort()
-            return cands[0][2]
-    except Exception:
-        pass
+        norm = _street_norm()
+        found, passed = [], []
+        for _status, cand, _detail in streetcheck.scan(title, _STREETS):
+            street = _gazetteer_street(cand, norm)
+            if street and street not in found:
+                found.append(street)
+            elif not street:
+                passed.append(cand)
+    except Exception as e:  # noqa: BLE001
+        print(f"[cr] area lookup failed for {title!r}: {type(e).__name__}: {e}",
+              file=sys.stderr)
+        return ""
+    if len(found) == 1:
+        return found[0]
+    if found:
+        print(f"[cr] area dropped, headline matches {len(found)} streets "
+              f"{found}: {title!r}", file=sys.stderr)
+    elif passed:
+        print(f"[cr] area dropped, not in the gazetteer {passed}: {title!r}",
+              file=sys.stderr)
     return ""
 
 

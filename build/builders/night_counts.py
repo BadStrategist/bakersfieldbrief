@@ -25,6 +25,10 @@ OTHER = "Other calls"
 # burglary until someone confirms it, so every alarm is in Alarms. Robbery is in Burglary and
 # theft, and so is a forced entry threat. Weapons calls, assaults and fights are one row.
 # "incident" and "vehicle" say nothing about the call, so they are in Other.
+# A barricade, a hostage call and a kidnapping are danger to a person, so they
+# are in Weapons and assaults; trespassing is Suspicious activity. "Fatality" is
+# not a type: it does not say whether a crash or a homicide killed someone, so
+# the monitor no longer stages it and the row is typed by what happened.
 MAP = {
     "Weapons and assaults": (
         "weapons call", "weapon call", "weapon", "weapon disturbance", "weapons offense",
@@ -36,7 +40,7 @@ MAP = {
         "firearms incident", "person with a gun", "person with knife",
         "road rage with a firearm", "suspicious person with a weapon",
         "kidnapping / assault with a firearm", "stolen firearms search",
-        "weapons", "homicide",
+        "weapons", "homicide", "barricade", "hostage", "kidnapping",
         "assault", "assault, possible domestic", "fight", "large fight",
         "assault call and standoff", "assault investigation", "assault medical staging",
         "assault report involving a child", "assault threats disturbance",
@@ -110,6 +114,7 @@ MAP = {
         "suspicious circumstances at a school", "suspicious person", "suspicious persons",
         "suspicious subjects", "suspicious vehicle", "suspicious vehicle report",
         "suspicious prowler video", "prowler", "loitering", "loitering complaint",
+        "trespassing",
     ),
     "Alarms": (
         "alarm", "burglary alarm", "audible alarm", "commercial alarm", "commercial fire alarm",

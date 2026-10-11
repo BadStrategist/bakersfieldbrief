@@ -1204,30 +1204,41 @@ FEED_NAME = mc.FEED_NAME   # the feed the app itself credits
 # patterns above the general ones: "fire alarm" above "fire", "cardiac arrest"
 # above the fallback, "disabled vehicle" above "vehicle". An alarm is named by
 # its full phrase only, because "two-alarm fire" is a fire.
-TYPE_HINTS = [
-    ("shots fired", "Shots fired"), ("shooting", "Shooting"), ("shot ", "Shots fired"),
-    ("stab", "Stabbing"), ("homicide", "Homicide"), ("fatality", "Fatality"),
-    ("fire alarm", "Fire alarm"), ("burglar alarm", "Burglary alarm"),
-    ("burglary alarm", "Burglary alarm"), ("robbery alarm", "Robbery alarm"),
-    ("panic alarm", "Alarm"), ("audible alarm", "Alarm"), ("alarm activation", "Alarm"),
-    ("assault", "Assault"), ("fight", "Fight"), ("robbery", "Robbery"),
-    ("weapon", "Weapons"), ("armed", "Weapons"), ("hostage", "Hostage"),
-    ("barricade", "Barricade"), ("kidnap", "Kidnapping"), ("pursuit", "Pursuit"),
-    ("chase", "Pursuit"), ("structure fire", "Structure fire"), ("fire", "Fire"),
-    ("collision", "Traffic collision"), ("crash", "Traffic collision"),
-    ("rollover", "Rollover"), ("rolls over", "Rollover"), ("rolled over", "Rollover"),
-    ("hit and run", "Hit and run"), ("traffic", "Traffic"),
-    ("disabled vehicle", "Disabled vehicle"), ("vehicle", "Vehicle"),
-    ("missing", "Missing person"), ("domestic", "Domestic dispute"),
-    ("overdose", "Overdose"), ("cardiac arrest", "Cardiac arrest"),
-    ("cpr", "Cardiac arrest"), ("medical", "Medical emergency"),
-    ("cardiac", "Medical emergency"), ("unresponsive", "Medical emergency"),
-    ("unconscious", "Medical emergency"), ("not breathing", "Medical emergency"),
-    ("seizure", "Medical emergency"), ("drowning", "Drowning"),
-    ("theft", "Theft"), ("burglar", "Burglary"), ("vandal", "Vandalism"),
-    ("trespass", "Trespassing"), ("disturbance", "Disturbance"),
-    ("hazardous condition", "Hazardous condition"),
-]
+# Every pattern is a regex anchored on a word start, never a bare substring:
+# "Teen reported with firearm" was staged as a Fire (2026-10-05), and the same
+# substring test reads "firefighters" as a Fight, "stable" as a Stabbing,
+# "unarmed" as Weapons and "purchase" as a Pursuit.
+# Every label here must be a row in build/builders/night_counts.py MAP, or the
+# home page counts it in Other: tests/test_crimeradar.py holds the two together.
+TYPE_HINTS = [(re.compile(pat, re.I), label) for pat, label in (
+    (r"\bshots? fired", "Shots fired"), (r"\bshooting", "Shooting"),
+    (r"shots?\b", "Shots fired"),   # no leading \b: "gunshot" is one
+    (r"\bstab(?:s|bed|bing)?\b", "Stabbing"), (r"\bhomicide", "Homicide"),
+    (r"\bfatality", "Fatality"),
+    (r"\bfire alarm", "Fire alarm"), (r"\bburglar alarm", "Burglary alarm"),
+    (r"\bburglary alarm", "Burglary alarm"), (r"\brobbery alarm", "Robbery alarm"),
+    (r"\bpanic alarm", "Alarm"), (r"\baudible alarm", "Alarm"),
+    (r"\balarm activation", "Alarm"),
+    (r"\bassault", "Assault"), (r"\bfight", "Fight"), (r"\brobbery", "Robbery"),
+    (r"\bweapon", "Weapons"), (r"\barmed\b", "Weapons"), (r"\bhostage", "Hostage"),
+    (r"\bbarricade", "Barricade"), (r"\bkidnap", "Kidnapping"),
+    (r"\bpursuit", "Pursuit"), (r"\bchase", "Pursuit"),
+    (r"\bstructure fire", "Structure fire"), (r"(?:\b|wild|brush)fires?\b", "Fire"),
+    (r"\bcollision", "Traffic collision"), (r"\bcrash", "Traffic collision"),
+    (r"\brollover", "Rollover"), (r"\brolls over", "Rollover"),
+    (r"\brolled over", "Rollover"),
+    (r"\bhit and run", "Hit and run"), (r"\btraffic", "Traffic"),
+    (r"\bdisabled vehicle", "Disabled vehicle"), (r"\bvehicle", "Vehicle"),
+    (r"\bmissing", "Missing person"), (r"\bdomestic", "Domestic dispute"),
+    (r"\boverdose", "Overdose"), (r"\bcardiac arrest", "Cardiac arrest"),
+    (r"\bcpr\b", "Cardiac arrest"), (r"\bmedical", "Medical emergency"),
+    (r"\bcardiac", "Medical emergency"), (r"\bunresponsive", "Medical emergency"),
+    (r"\bunconscious", "Medical emergency"), (r"\bnot breathing", "Medical emergency"),
+    (r"\bseizure", "Medical emergency"), (r"\bdrowning", "Drowning"),
+    (r"\btheft", "Theft"), (r"\bburglar", "Burglary"), (r"\bvandal", "Vandalism"),
+    (r"\btrespass", "Trespassing"), (r"\bdisturbance", "Disturbance"),
+    (r"\bhazardous condition", "Hazardous condition"),
+)]
 # A History row is one unverified line with no disposition, so it never outranks
 # "Around the county" (3) and a routine one is a log line (2). It must not be
 # able to become "The big one" (4+).
@@ -1235,9 +1246,8 @@ TIER_NOTABILITY = {1: 3, 2: 3, 3: 2}
 
 
 def _type_of(title: str) -> str:
-    t = title.lower()
     for pat, label in TYPE_HINTS:
-        if pat in t:
+        if pat.search(title):
             return label
     return "Incident"
 

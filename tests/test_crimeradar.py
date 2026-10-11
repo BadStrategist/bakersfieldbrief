@@ -967,3 +967,44 @@ def test_type_of_names_the_call_not_the_first_word_it_recognises():
             ("Disabled vehicle on shoulder after possible collision", "Traffic collision"),
             ("Search finds no injured person near Tucker Road", "Incident")):
         assert cr._type_of(title) == want, title
+
+
+def test_type_of_matches_words_not_substrings():
+    """2026-10-05: "Teen reported with firearm" was staged as a Fire. The hints
+    were bare substrings, so a firefighter was a Fight and "stable" a Stabbing."""
+    for title, want in (
+            ("Teen reported with firearm on Southport Street", "Incident"),
+            ("Firefighters respond to brush fire", "Fire"),
+            ("Firefighters free trapped driver", "Incident"),
+            ("Patient stable after fall", "Incident"),
+            ("Unarmed man detained", "Incident"),
+            ("Shoplifter fled after purchase dispute", "Incident"),
+            ("Fireworks complaint", "Incident"),
+            # still caught: plurals, compounds and the gunshot that has no space
+            ("Underage drinking and gunshots reported on Jefferson St", "Shots fired"),
+            ("Single gunshot detected on Oregon Street", "Shots fired"),
+            ("Wildfire near Lebec", "Fire"),
+            ("Woman stabbed", "Stabbing"),
+            ("Fight reported between two women on Arkwood", "Fight"),
+            ("Search for armed suspect in white Mercedes sedan", "Weapons")):
+        assert cr._type_of(title) == want, title
+
+
+def test_every_staged_type_is_a_row_on_the_home_page():
+    """The monitor types the app rows and night_counts sorts them into rows of
+    the home page band. A label only one of them knows is counted in Other under
+    its own name with a build warning nobody reads at 7:30. Held together here,
+    so a new label fails before it ships instead.
+
+    PENDING are the five the owner has not placed in a row yet. Placing one
+    means adding it to night_counts.MAP and deleting it here: this set may only
+    shrink.
+    """
+    from build.builders import night_counts
+    pending = {"barricade", "fatality", "hostage", "kidnapping", "trespassing"}
+    labels = {night_counts.normalize(label) for _, label in cr.TYPE_HINTS}
+    labels.add(night_counts.normalize(cr._type_of("no hint matches this")))
+    unknown = {x for x in labels if x not in night_counts.CHIP_OF}
+    assert unknown == pending, (
+        f"not in night_counts.MAP: {sorted(unknown - pending)}; "
+        f"placed, so drop from PENDING: {sorted(pending - unknown)}")

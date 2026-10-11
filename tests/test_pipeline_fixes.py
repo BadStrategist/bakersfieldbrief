@@ -276,3 +276,19 @@ def test_overpass_outage_serves_last_good_list(monkeypatch):
     r = alpr.run(types.SimpleNamespace(today=dt.date.today()))
     assert r["ok"] is True and r["stale"] is True
     assert r["asof"] == "2026-09-21" and len(r["cameras"]) == 1
+
+
+def test_fetch_waits_between_attempts_and_not_after_the_last(monkeypatch):
+    """Overpass answered 504 on 2026-10-10 and the three attempts were over in under five
+    seconds. The wait is the caller's to set, and none is spent once there is no retry left."""
+    waits, calls = [], []
+
+    def down(method, url, **kw):
+        calls.append(url)
+        raise RuntimeError("504 Gateway Timeout")
+
+    monkeypatch.setattr(common.requests, "request", down)
+    monkeypatch.setattr(common.time, "sleep", waits.append)
+    with pytest.raises(RuntimeError):
+        common.fetch("https://example.invalid/", backoff=20)
+    assert len(calls) == 3 and waits == [20, 40]

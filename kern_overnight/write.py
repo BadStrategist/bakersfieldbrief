@@ -255,11 +255,14 @@ def insert_log_lines(body: str, rows: list[str], limit: int = 40) -> tuple[str, 
         added += 1
     if not added:
         return body, 0
+    # Sort BEFORE the cap. The new rows are appended, so cutting first dropped
+    # exactly the rows this function exists to add, whatever their time, while
+    # the message said "earliest".
+    merged.sort(key=lambda ln: night_key(_line_clock(ln)))
     if len(merged) > limit:
         print(f"[write] log would hold {len(merged)} rows, over the {limit} cap: "
               f"keeping the earliest {limit}", flush=True)
         merged = merged[:limit]
-    merged.sort(key=lambda ln: night_key(_line_clock(ln)))
     section = "\n".join(["## The log", ""] + merged + [""])
     return _insert_log(body, section), added
 

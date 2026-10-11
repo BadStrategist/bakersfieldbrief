@@ -30,7 +30,10 @@ QUERY = ('[out:json];node["man_made"="surveillance"]["surveillance:type"="ALPR"]
 def run(ctx, *, record_change: bool = False):
     """record_change=True on the weekly job → append a change-log entry."""
     try:
-        r = common.fetch(OVERPASS, method="POST", data={"data": QUERY}, timeout=90)
+        # backoff=20: retries at 20 s and 40 s. The default (1.5 s, 3 s) gave a busy
+        # Overpass under five seconds to recover, and its 504 on 2026-10-10 turned a deploy
+        # red that a retry a minute later passed.
+        r = common.fetch(OVERPASS, method="POST", data={"data": QUERY}, timeout=90, backoff=20)
         j = r.json()
         elements = j.get("elements", [])
         # Overpass answers a timeout or memory error with HTTP 200, a "remark" and an empty or

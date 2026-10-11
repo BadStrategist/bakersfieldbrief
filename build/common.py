@@ -103,8 +103,10 @@ def wind_mph(node) -> int | None:
 
 # ---------------------------------------------------------------- http
 def fetch(url: str, *, timeout: int = 30, retries: int = 2, method: str = "GET",
-          headers: dict | None = None, **kwargs) -> requests.Response:
-    """GET/POST with a polite UA, timeout and 2 retries. Raises on failure."""
+          headers: dict | None = None, backoff: float = 1.5, **kwargs) -> requests.Response:
+    """GET/POST with a polite UA, timeout and 2 retries. Raises on failure.
+
+    The wait before retry n is backoff * n seconds. There is no wait after the last attempt."""
     h = {"User-Agent": UA}
     if headers:
         h.update(headers)
@@ -116,7 +118,8 @@ def fetch(url: str, *, timeout: int = 30, retries: int = 2, method: str = "GET",
             return r
         except Exception as e:  # noqa: BLE001 - any failure → retry
             last_err = e
-            time.sleep(1.5 * (attempt + 1))
+            if attempt < retries:
+                time.sleep(backoff * (attempt + 1))
     raise last_err
 
 

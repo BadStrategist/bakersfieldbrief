@@ -147,6 +147,20 @@ class TestLogIsEveryIncidentNotToldAsAParagraph:
         out, added = insert_log_lines(body, rows)
         assert added == 0 and out == body
 
+    def test_insert_log_lines_caps_after_sorting(self):
+        """Over the cap, the rows kept are the earliest of the night. The cut
+        used to run before the sort, so an inserted 7 p.m. row was the one
+        dropped and a 6 a.m. line stayed."""
+        from kern_overnight.write import insert_log_lines, log_lines
+        body = ("# T\n\n## The log\n\n"
+                "- **5:10 a.m.** — Alarm on Oak Street was checked.\n"
+                "- **6:10 a.m.** — Alarm on Elm Street was checked.\n\n"
+                "## Night notes\n\nN.\n")
+        out, added = insert_log_lines(
+            body, ["- **7:15 p.m.** — Fight reported near Jefferson Park."], limit=2)
+        assert added == 1
+        assert [r.split("**")[1] for r in log_lines(out)] == ["7:15 p.m.", "5:10 a.m."]
+
 
 class TestInsertLog:
     def test_replaces_llm_written_log(self):

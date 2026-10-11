@@ -2,3 +2,4 @@
 # in CI's tests. LF everywhere: a CRLF checkout breaks the shebang on Linux.
 scripts/crimeradar/*.sh text eol=lf
 scripts/crimeradar/*.py text eol=lf
+scripts/crimeradar/*.ps1 text eol=lf

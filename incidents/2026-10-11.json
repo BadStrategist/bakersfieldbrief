@@ -1,0 +1,259 @@
+[
+ {
+  "type": "armed robbery",
+  "time": "02:54",
+  "agency": "BPD / KCSO",
+  "area": "Union Avenue",
+  "notability": 4,
+  "disposition": "suspects fled; no arrests reported",
+  "summary": "Officers were working a robbery in which the weapon was a pocket knife. The suspects were described as a group of eight to ten people, and the loss was food items taken from a store. One vehicle, a newer red Hyundai, fled northbound on Union Avenue, and a second vehicle, an older white Hyundai, fled southbound on Union Avenue."
+ },
+ {
+  "type": "vegetation fire",
+  "time": "00:29",
+  "agency": "KCFD",
+  "area": "off Mid Oil, west of Fellows",
+  "notability": 3,
+  "disposition": "held at roughly two to three acres",
+  "summary": "Crews were sent to a smoke report off Mid Oil and found roughly two to three acres burning in brush and grass west of the oil field. The fire, run under the name Kirby, was reported to have roots running on three sides. Several battalions, water tenders and a helicopter were assigned."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "20:34",
+  "agency": "KCFD / CHP",
+  "area": "Grapevine Road just off the northbound Interstate 5 exit",
+  "notability": 3,
+  "disposition": "northbound ramps closed; fire knocked down",
+  "summary": "A truck caught fire on Grapevine Road just off the northbound Interstate 5 exit. The occupants got out before crews arrived, and the tire that blew was reported to have failed from heat from the brakes. Firefighters held the fire and the northbound on and off ramps were closed."
+ },
+ {
+  "type": "shots fired",
+  "time": "23:17",
+  "agency": "BPD",
+  "area": "near Lowe's on Columbus Street",
+  "notability": 3,
+  "disposition": "no injuries reported",
+  "summary": "Officers were sent to the area of Lowe's on Columbus Street after a report of shots heard. No one was reported hurt, and the call was being checked against a separate report of a suspicious person in the same parking lot."
+ },
+ {
+  "type": "pedestrian on freeway",
+  "time": "22:20",
+  "agency": "CHP",
+  "area": "northbound Interstate 5 north of Laval Road",
+  "notability": 2,
+  "disposition": "units responded",
+  "summary": "A pedestrian was reported trying to cross northbound Interstate 5 north of Laval Road, moving from the right shoulder toward the center divider in dark clothing. Officers headed that way to find the person."
+ },
+ {
+  "type": "weapons call",
+  "time": "19:59",
+  "agency": "BPD",
+  "area": "East California Avenue at Baker Street, near MLK Park",
+  "notability": 3,
+  "disposition": "call just occurred; units responded",
+  "summary": "A caller reported a brandishing that had just happened at East California Avenue and Baker Street near MLK Park. The caller said a man in a green shirt was in possession of a firearm and running toward the caller, who was in a car.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "crash",
+  "time": "19:09",
+  "agency": "CHP / KCFD",
+  "area": "Highway 58 at Jameson Road",
+  "notability": 2,
+  "disposition": "one patient assessed; lanes partly blocked",
+  "summary": "A semi truck rolled in the center divide on Highway 58 at Jameson Road. One patient was out of the vehicle and alert, and the left lanes were reported partly blocked while crews worked the scene."
+ },
+ {
+  "type": "weapons call",
+  "time": "03:57",
+  "agency": "KCSO",
+  "area": "the 400 block of Lisa Ann Drive",
+  "notability": 2,
+  "disposition": "deputies responded",
+  "summary": "Deputies were sent to the 400 block of Lisa Ann Drive for a large party with several juveniles. Callers reported a verbal argument and a person waving a black object in the air that the caller believed was a firearm."
+ },
+ {
+  "type": "domestic violence",
+  "time": "02:15",
+  "agency": "BPD",
+  "area": "the 1100 block of Haley Street",
+  "notability": 2,
+  "disposition": "suspect still at the residence when units were sent",
+  "summary": "A caller reported that an ex-boyfriend struck her with a stick with a red shaft and a black handle and threatened to stab her. The caller said the man was still at the residence when officers were sent.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "structure fire",
+  "time": "05:40",
+  "agency": "KCFD",
+  "area": "a Kern County address",
+  "notability": 2,
+  "disposition": "crews en route",
+  "summary": "Fire crews were dispatched to a structure fire in Kern County in the pre-dawn hours, with radio traffic run on a temporary patch between two channels."
+ },
+ {
+  "type": "disturbance",
+  "time": "00:04",
+  "agency": "BPD",
+  "area": "the 4600 block of Pioneer Drive",
+  "notability": 2,
+  "disposition": "no active fight found",
+  "summary": "Officers were sent to the 4600 block of Pioneer Drive for a large party reported to involve as many as 40 people. A fire alarm at the same address turned out to be false, and there was no active fight reported.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "assault",
+  "time": "21:01",
+  "agency": "BPD",
+  "area": "the 100 block of Price Street",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "Officers were sent to the 100 block of Price Street near South Union Avenue after a caller reported an assault of an unknown type.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "fight",
+  "time": "20:19",
+  "agency": "BPD",
+  "area": "the 6600 block of Tallman Avenue",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "Officers were sent to the 6600 block of Tallman Avenue for a fight between two people reported to have been arguing before it turned physical.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "overdose",
+  "time": "21:15",
+  "agency": "KCFD / KCSO",
+  "area": "the 5900 block of East Brundage Lane",
+  "notability": 2,
+  "disposition": "medics responded",
+  "summary": "An engine and truck were sent to the 5900 block of East Brundage Lane for an overdose, with a sheriff's unit already on scene.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "19:33",
+  "agency": "KCFD",
+  "area": "the 100 block of East Hillary Avenue",
+  "notability": 2,
+  "disposition": "crews responded",
+  "summary": "An engine was sent to the 100 block of East Hillary Avenue for a person in cardiac arrest."
+ },
+ {
+  "type": "welfare check",
+  "time": "04:12",
+  "agency": "KCSO",
+  "area": "the 800 block of Sanford Street near McKinley",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "Deputies were sent to the 800 block of Sanford Street near McKinley on a second-hand report of someone making suicidal statements and threatening to jump into the canal."
+ },
+ {
+  "type": "welfare check",
+  "time": "00:26",
+  "agency": "KCSO",
+  "area": "North Edwards",
+  "notability": 2,
+  "disposition": "units responded to clear the residence",
+  "summary": "A resident in North Edwards came home to find the front door unlocked and asked deputies to clear the house."
+ },
+ {
+  "type": "welfare check",
+  "time": "22:21",
+  "agency": "BPD",
+  "area": "Wilson Park on Wilson Road",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "Officers were sent to Wilson Park on Wilson Road for a check on a person reported to be in crisis."
+ },
+ {
+  "type": "vegetation fire",
+  "time": "04:00",
+  "agency": "KCFD",
+  "area": "a Kern County address",
+  "notability": 2,
+  "disposition": "crews en route",
+  "summary": "A vegetation fire assignment went out in Kern County before dawn with fire, ambulance and dispatch working it together."
+ },
+ {
+  "type": "DUI",
+  "time": "03:40",
+  "agency": "CHP",
+  "area": "the 2300 block of Castro Lane",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "A possible DUI driver was reported at the 2300 block of Castro Lane in the valley.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "Fight",
+  "time": "21:01",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person in fight while carrying a knife.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire",
+  "time": "21:36",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Semi truck fire and crash on westbound 58.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Hostage",
+  "time": "21:47",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Welfare check for possible hostage situation at Bakersfield unit.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Assault",
+  "time": "22:25",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Ongoing assault with injured man near Citation Way.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "22:39",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Single-vehicle crash on Highway 99 near Rosedale.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "02:43",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Two cars collide on I-10, no injuries reported.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Domestic dispute",
+  "time": "06:48",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Domestic dispute over entry to residence.",
+  "source": "crimeradar"
+ }
+]

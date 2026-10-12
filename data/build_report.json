@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-12T02:43:37-07:00",
+ "built_at": "2026-10-12T03:40:26-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,7 +39,9 @@
   },
   "alpr": {
    "ok": true,
-   "error": ""
+   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter",
+   "stale": true,
+   "asof": "2026-10-12"
   },
   "venues": {
    "ok": true,
@@ -73,7 +75,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
+   "chp_new": 0,
    "top_story": "Bakersfield's Greek Food Festival closes 3-day run; organizers hope to surpass last year's 8,000 attendees",
    "overnight_band": {
     "date": "2026-10-11",
@@ -149,13 +151,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 8,
+   "wind_mph": 0,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 48,
-   "wind_mph": 8,
+   "temp": 46,
+   "wind_mph": 0,
    "alerts": 0
   },
   "roads": {
@@ -192,7 +194,7 @@
    "isabella_af": 143786,
    "alpr_total": 270,
    "kern_fires": 1,
-   "aqi": 47,
+   "aqi": 41,
    "chp_week": 0
   },
   "letters": {

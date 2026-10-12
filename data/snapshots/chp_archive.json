@@ -1258,5 +1258,55 @@
   "lat": 35.37132,
   "lon": -119.066154,
   "details": ""
+ },
+ {
+  "log_id": "261012BF0010",
+  "time": "Oct 12 2026  1:57AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261012BF0037",
+  "time": "Oct 12 2026  6:14AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "316 Minner Ave",
+  "area": "Bakersfield",
+  "lat": 35.418906,
+  "lon": -119.026012,
+  "details": ""
+ },
+ {
+  "log_id": "261012BF0049",
+  "time": "Oct 12 2026  7:13AM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sr178 / Pauls Place Dr",
+  "area": "Bakersfield",
+  "lat": 35.663401,
+  "lon": -118.306651,
+  "details": ""
+ },
+ {
+  "log_id": "261012BF0053",
+  "time": "Oct 12 2026  7:32AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Curnow Rd / Compagnoni St",
+  "area": "Bakersfield",
+  "lat": 35.259552,
+  "lon": -119.025735,
+  "details": ""
+ },
+ {
+  "log_id": "261012BF0054",
+  "time": "Oct 12 2026  7:33AM",
+  "type": "ANIMAL-Live or Dead Animal",
+  "location": "Sb I5 At Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.835556,
+  "lon": -118.863611,
+  "details": ""
  }
 ]

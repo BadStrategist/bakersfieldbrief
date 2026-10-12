@@ -1,5 +1,6 @@
 /* Bakersfield Daily Brief: alpr-explorer.js
-   The Flock & ALPR camera map and land ownership explorer on /surveillance/.
+   The Flock & ALPR camera map and land ownership explorer on /surveillance/ and on each town
+   page under it (/surveillance/<town>/, which inlines only that town's cameras).
 
    Progressive enhancement. The page already carries every camera, owner and parcel as HTML lists
    (crawlable, and readable with JavaScript off). This script adds:
@@ -7,7 +8,7 @@
        clusters, a "new in 28 days" ring and facing cones at street zoom;
      - filters that drive the lists and the map together;
      - full records at #camera/<id>, #owner/<n>, #parcel/<n>, opened from the data file named in
-       #explorer[data-src]. Hash routes are not pages: /surveillance/ is the only ALPR url.
+       #explorer[data-src]. Hash routes are not pages.
    Wheel zoom is off so a wheel over the map scrolls the page; Ctrl (or Cmd) + wheel zooms.
    Copy rule: a camera stands "at or beside" an owner's land. Never "the parcel under it".
 */
@@ -42,12 +43,19 @@
     CAM[id] = cam; CAM_LIST.push(cam);
   });
 
-  var OWN = null, OWN_CAM = {};
+  // NOREC: cameras that were looked up and have no roll record to join. Not the same as a
+  // camera nobody has looked up, and the record says which.
+  var OWN = null, OWN_CAM = {}, NOREC = {};
   var src = root.getAttribute("data-src");
   var ownReady = (src && window.fetch)
     ? fetch(src, { credentials: "same-origin" })
         .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
-        .then(function (d) { OWN = d; (d.cams || []).forEach(function (c) { OWN_CAM[String(c.id)] = c; }); return d; })
+        .then(function (d) {
+          OWN = d;
+          (d.cams || []).forEach(function (c) { OWN_CAM[String(c.id)] = c; });
+          (d.norecord || []).forEach(function (x) { NOREC[String(x.id)] = x; });
+          return d;
+        })
         .catch(function () { return null; })
     : Promise.resolve(null);
 
@@ -92,8 +100,21 @@
     return keep.join(", ");
   }
   function locOf(id) {
-    var o = OWN_CAM[id];
+    var o = OWN_CAM[id] || NOREC[id];
     return (o && (o.loc || shortAddr(o.addr))) || "Camera " + id;
+  }
+  // Same words as alpr_page.norecord_line.
+  function norecLine(x) {
+    if (x.reason === "apn_not_on_roll") {
+      return "Beside " + (x.apn ? "parcel " + x.apn + ", which" : "a parcel that") + " has no owner on the county tax roll.";
+    }
+    return "In a road or right of way: no titled parcel within 60 meters.";
+  }
+  // The city or Census place the point is inside. Older data carries only Bakersfield's limits.
+  function placeChip(o) {
+    if (o.place) return '<span class="ax-chip">' + esc(o.place_kind === "city" ? "in " + o.place + " city limits" : o.place + ", unincorporated") + "</span>";
+    if (o.place === "") return '<span class="ax-chip">unincorporated Kern County</span>';
+    return o.incity ? '<span class="ax-chip">in city limits</span>' : '<span class="ax-chip">outside city limits</span>';
   }
   function kindOf(t) {
     t = String(t || "").toLowerCase();
@@ -368,7 +389,7 @@
         '<p>' + esc(c.manu) + (dirText(c.dir) ? " &middot; facing " + esc(dirText(c.dir)) : "") +
         (c.mapped ? " &middot; mapped " + esc(c.mapped) : "") + "</p>" +
         (o ? "<p>" + esc(relation(o)).replace(/^./, function (x) { return x.toUpperCase(); }) + " parcel " + esc(o.apn) +
-             ": <b>" + esc(o.owner) + "</b></p>" : "<p>Ownership not joined yet.</p>") +
+             ": <b>" + esc(o.owner) + "</b></p>" : "<p>" + (NOREC[id] ? esc(norecLine(NOREC[id])) : "Ownership not joined yet.") + "</p>") +
         '<a class="ax-btn" href="#camera/' + esc(id) + '">Full record</a>';
       peek.hidden = false;
       peek.querySelector(".ax-x").addEventListener("click", hidePeek);
@@ -461,7 +482,7 @@
     var lat = c.lat != null ? c.lat : o && o.lat, lon = c.lon != null ? c.lon : o && o.lon;
     var h = '<h4 class="ax-d-title">' + esc(locOf(id)) + "</h4>" +
       '<div class="ax-chips"><span class="ax-chip b">' + esc(c.manu || (o && o.manu) || "Unspecified") + "</span>" +
-      (o ? (o.incity ? '<span class="ax-chip">in city limits</span>' : '<span class="ax-chip">outside city limits</span>') : "") +
+      (o ? placeChip(o) : "") +
       (c.isNew ? '<span class="ax-chip new">mapped in the last 28 days</span>' : "") + "</div>" +
       kv([
         facing ? ["Facing", '<span class="ax-arrow" style="transform:rotate(' + arc.a + 'deg)"></span>' + esc(facing) + " <span class=ax-dim>(the amber cone at street zoom)</span>"] : ["Facing", "not tagged in OpenStreetMap"],
@@ -471,9 +492,16 @@
         ["OSM node", link("https://www.openstreetmap.org/node/" + id, "node " + id)]
       ]) +
       '<button type="button" class="ax-btn ghost ax-onlyphone" data-showmap>Show on the map</button>';
+    if (!o && NOREC[id]) {
+      var nr = NOREC[id];
+      return h + sec("Whose land this is", '<p class="ax-d-m">' + esc(norecLine(nr)) + " " +
+        (nr.reason === "apn_not_on_roll" ? "The county parcel map draws the parcel and the tax roll names nobody for it."
+          : "The nearest titled parcel is " + (nr.nearest_m != null ? esc(Math.round(nr.nearest_m)) + " meters away" : "more than 400 meters away") +
+            ", too far to say the camera stands at or beside it.") + "</p>");
+    }
     if (!o) {
-      return h + sec("Whose land this is", '<p class="ax-d-m">This camera was mapped after the county records snapshot, ' +
-        "so it is not joined to a parcel yet. It joins at the next records refresh.</p>");
+      return h + sec("Whose land this is", '<p class="ax-d-m">This camera is not joined to a parcel yet, ' +
+        "so its record has no land owner.</p>");
     }
     var owner = OWN.owners[o.oid], parcel = o.pid != null ? OWN.parcels[o.pid] : null;
     var land = (owner ? '<a class="ax-ownercard" href="#owner/' + owner.oid + '"><span class="ax-it">' + esc(owner.name) + "</span>" +
@@ -509,7 +537,7 @@
     var h = '<h4 class="ax-d-title">' + esc(o.name) + "</h4>" +
       '<div class="ax-chips">' + kindChip(o.type) + ((o.phone || o.email) ? '<span class="ax-chip ok">contact published</span>' : "") +
       (o.value ? '<span class="ax-chip">' + money(o.value) + " total assessed</span>" : "") + "</div>" +
-      '<p class="ax-d-m"><b>' + plural(o.n, "camera") + "</b> at or beside their land in Bakersfield, across " + plural(o.nparcel, "parcel") + ". " +
+      '<p class="ax-d-m"><b>' + plural(o.n, "camera") + "</b> at or beside their land, across " + plural(o.nparcel, "parcel") + ". " +
       "Each camera is joined to the nearest tax-roll parcel. Where a camera stands in a street or right of way, that parcel is " +
       "only the nearest one, not land the owner holds, so read the match line on each camera.</p>" +
       (o.withheld ? '<p class="ax-d-m">This owner is a private ' + (String(o.type).toLowerCase() === "trust" ? "trust" : "individual") +
@@ -539,7 +567,7 @@
       '<button type="button" class="ax-btn ghost ax-onlyphone" data-showmap>Show on the map</button>';
     var owners = (p.owners || []).map(function (nm, i) {
       var oid = (p.oids || [])[i], o = oid != null ? OWN.owners[oid] : null;
-      return o ? row("#owner/" + oid, esc(nm), KIND_LABEL[kindOf(o.type)] + " &middot; " + plural(o.n, "camera") + " in Bakersfield")
+      return o ? row("#owner/" + oid, esc(nm), KIND_LABEL[kindOf(o.type)] + " &middot; " + plural(o.n, "camera") + " on the county map")
         : "<li>" + esc(nm) + "</li>";
     }).join("");
     var cams = p.cams.map(function (id) {
@@ -580,6 +608,11 @@
     }
     var sos = x.sos || (owner && owner.sos), off = x.officers || (owner && owner.officers), agent = x.agent || (owner && owner.agent);
     if (t === "government") return '<p class="ax-d-m">A public agency. It answers through its own offices, listed on this record.</p>';
+    // not_researched: the tax roll was read and nothing past it. Say that, never "no match".
+    if ((x.cstat || (owner && owner.cstat)) === "not_researched") {
+      return '<p class="ax-d-m">The company record for this owner has not been looked up yet. The name is as the tax roll states it.</p>' +
+        kv([["State record", link("https://bizfileonline.sos.ca.gov/search/business", "California business search") + ", entered exactly as shown"]]);
+    }
     if (!sos && !off && !agent) {
       return '<p class="ax-d-m">No registry page matched this name as written. The assessor roll copies the owner name from the ' +
         "recorded deed character for character, and registries index by the registered name, so one added or dropped word " +
@@ -611,6 +644,12 @@
         mail ? ["Mailing", esc(mail)] : null,
         ["Route", "A public agency: use the department and elected-office lines on this record. They answer for the land and the camera program."]
       ]);
+    }
+    if (x.cstat === "not_researched" && !ph && !em && !mail) {
+      return '<p class="ax-d-m">Contact routes for this owner have not been researched yet. The recorded deed' +
+        (x.docs ? " (document " + esc(String(x.docs).split(/[; ]+/)[0]) + ")" : "") +
+        " names the address used at signing, and the " + link("https://www.kcttc.co.kern.ca.us/", "treasurer-tax collector") +
+        " mails the tax bill to the address on file" + (x.taxnum ? " (tax number " + esc(x.taxnum) + ")" : "") + ".</p>";
     }
     var out = kv([
       ["Phone", ph ? tel(ph) + (x.plabel === "company office" ? " (company office, not a local line)" : "") : "not published"],

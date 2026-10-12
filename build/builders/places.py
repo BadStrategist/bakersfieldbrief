@@ -196,7 +196,7 @@ def _place_page(ctx, slug: str, meta: dict, built_iso: str, sources: dict,
         <p><strong>{len(cams)} license plate readers</strong> mapped in this area by OpenStreetMap volunteers.</p>
         <ul class="newest-list">{newest}</ul>
         <p class="note" style="margin-top:8px">Mapping is crowdsourced &mdash; mapped dates are not installation dates.
-        <a href="{rel}surveillance/">Full map &rarr;</a></p>"""
+        {_camera_map_link(slug, name, rel)}</p>"""
     elif not (alpr or {}).get("ok"):
         alpr_html = '<p class="note">Camera data did not load for this build.</p>'
     else:
@@ -360,6 +360,15 @@ def _nearby_chp(chp: dict, meta: dict) -> list:
             if any(a in hay for a in meta["aliases"]):
                 out.append(i)
     return out
+
+
+def _camera_map_link(slug: str, name: str, rel: str) -> str:
+    """The town's own camera page when this build wrote one (alpr_towns runs first), else the
+    county map."""
+    if (common.SITE / "surveillance" / slug / "index.html").exists():
+        return (f'<a href="{rel}surveillance/{slug}/">{html.escape(name)} camera map, with the '
+                f'owner of record for each &rarr;</a>')
+    return f'<a href="{rel}surveillance/">Full map &rarr;</a>'
 
 
 def _cameras_near(alpr: dict, meta: dict) -> list:

@@ -1,12 +1,15 @@
 {
- "cameras": 268,
- "owners": 174,
- "parcels": 212,
- "in_city": 198,
+ "cameras": 455,
+ "owners": 316,
+ "parcels": 375,
+ "in_city": 200,
  "contact_owners": 92,
- "multi_owner": 39,
- "private_parcel": 161,
- "street_row": 75,
- "city_owned": 32,
- "built": "2026-09-22"
+ "multi_owner": 63,
+ "private_parcel": 256,
+ "street_row": 124,
+ "city_owned": 33,
+ "public_parcel": 42,
+ "no_record": 0,
+ "unresearched_owners": 131,
+ "built": "2026-10-12"
 }

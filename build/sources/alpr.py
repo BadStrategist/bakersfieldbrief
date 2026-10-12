@@ -1,8 +1,18 @@
 #!/usr/bin/env python3
 """ALPR cameras — OpenStreetMap via Overpass API. Free, no key.
 
-Query: node["man_made"="surveillance"]["surveillance:type"="ALPR"]
-bbox 35.20,-119.25,35.55,-118.80  (~246 nodes Aug 2026; mostly Flock Safety).
+Query: node["man_made"="surveillance"]["surveillance:type"="ALPR"] inside the Kern County
+boundary (455 nodes on 2026-10-12, 416 of them Flock Safety).
+
+Until 2026-10-12 the query was the box 35.20,-119.25,35.55,-118.80, the Bakersfield metro, under
+a heading that said Kern County. Measured that day: 270 in the box, 455 in the county. The 185
+the box left out were Delano 31, McFarland 25, Shafter 20, Wasco 10, Ridgecrest 34, Mojave,
+Rosamond and California City 17, Tehachapi 15, Taft and Maricopa 13, the Grapevine 10.
+
+The tag filter is right as it is. Every node in the county tagged surveillance:type=ALPR is a
+man_made=surveillance node, and no other surveillance node mentions a plate reader in any tag.
+Do not add manufacturer~Flock: the 68 Flock nodes it would bring in are all Condor video domes
+(surveillance:type=camera, camera:type=dome), which read no plates.
 
 License: © OpenStreetMap contributors, ODbL. See site attribution.
 
@@ -11,6 +21,7 @@ Weekly change log: node IDs diffed against the previous snapshot
 """
 from __future__ import annotations
 
+import collections
 import datetime as dt
 
 from .. import common
@@ -30,12 +41,74 @@ BACKENDS = ("https://lambert.openstreetmap.de/api/interpreter",
 # away at the door: "Dispatcher_Client::request_read_and_idx::timeout. The server is probably
 # too busy to handle your request." Alternated in the same minutes on 2026-10-12, the
 # unbudgeted query got through 4 times in 26 and this one every time it was not rate limited.
-# The whole reply is about 133 KB.
+# The whole reply is about 225 KB.
 # out meta; → each node carries its real OSM timestamp (creation for most
 # surveillance nodes, which are mapped once and never edited).
+#
+# The area is Kern County's own boundary, OSM relation 396494 (Overpass addresses a relation as
+# an area at 3600000000 + its id). By id, not by name: a renamed relation still answers. A box
+# cannot stand in for it: the box that holds the county (34.78,-120.30,35.85,-117.55) also holds
+# 6 cameras in Tulare and Los Angeles counties.
+KERN_AREA = 3600396494
 QUERY = ('[out:json][timeout:25][maxsize:33554432];'
          'node["man_made"="surveillance"]["surveillance:type"="ALPR"]'
-         "(35.20,-119.25,35.55,-118.80);out meta;")
+         f"(area:{KERN_AREA});out meta;")
+# What the camera list covers. Every change-log row carries it, and a row written under another
+# scope makes the next weekly run a re-baseline (see _weekly_row).
+SCOPE = "kern-county"
+OLD_SCOPE = "bakersfield-metro"   # rows before 2026-10-12 carry no scope: they are this one
+# The box the query used to be. It is the "Bakersfield" in the page's own questions ("How many
+# Flock cameras are in Bakersfield?"), so the answer can still be about Bakersfield.
+METRO_BOX = (35.20, -119.25, 35.55, -118.80)
+# A 0.2 degree cell (about 22 km by 18 km) that held this many cameras and now holds none is a
+# part of the county missing from the reply, not mappers at work.
+CELL_MIN = 5
+
+
+def in_metro(c: dict) -> bool:
+    lat, lon = c.get("lat"), c.get("lon")
+    return (lat is not None and lon is not None
+            and METRO_BOX[0] <= lat <= METRO_BOX[2] and METRO_BOX[1] <= lon <= METRO_BOX[3])
+
+
+def metro_counts(cameras: list) -> tuple[int, int]:
+    """(cameras, Flock cameras) inside the Bakersfield metro box, from the same list as the total."""
+    metro = [c for c in cameras if in_metro(c)]
+    return len(metro), sum(1 for c in metro if "flock" in (c.get("manufacturer") or "").lower())
+
+
+def _cells(points: list) -> collections.Counter:
+    return collections.Counter((round(p["lat"] * 5), round(p["lon"] * 5)) for p in points
+                               if p.get("lat") is not None and p.get("lon") is not None)
+
+
+def _lost_cells(elements: list) -> list[str]:
+    """Parts of the last good list that the new reply has no camera in at all."""
+    last = (common.load_snapshot("alpr_last", default={}) or {})
+    before = _cells(last.get("cameras") or []) if isinstance(last, dict) else {}
+    now = _cells(elements)
+    return [f"{n} near {la / 5:.1f},{lo / 5:.1f}" for (la, lo), n in sorted(before.items())
+            if n >= CELL_MIN and not now.get((la, lo))]
+
+
+def _weekly_row(cameras: list, new_ids: list, gone_ids: list) -> dict:
+    """This week's change-log row.
+
+    "New" is the diff against last Monday's snapshot. That only means "newly mapped" while both
+    lists cover the same ground. When the last row was written under another scope, the diff is
+    mostly cameras the old query never asked for, so that one week a camera is new only if it was
+    first mapped on or after the last row's date. The rest go on the row as "widened": a count
+    of cameras the wider map brought in, never as new ones.
+    """
+    row = {"date": common.iso_today(), "total": len(cameras), "new_ids": new_ids,
+           "gone_ids": gone_ids, "new_count": len(new_ids), "scope": SCOPE}
+    log = common.load_change_log("alpr")
+    if log and (log[-1].get("scope") or OLD_SCOPE) != SCOPE:
+        since = str(log[-1].get("date") or "")[:10]
+        mapped = {c["id"]: c["mapped"] for c in cameras}
+        new = [i for i in new_ids if since and mapped.get(i, "") >= since]
+        row.update(new_ids=new, new_count=len(new), widened=len(new_ids) - len(new))
+    return row
 
 
 def _fetch_elements() -> list:
@@ -72,6 +145,12 @@ def run(ctx, *, record_change: bool = False):
         prev_n = len(common.load_snapshot("alpr_nodes", default=[]) or [])
         if prev_n >= 50 and len(elements) < prev_n * 0.6:
             raise RuntimeError(f"Overpass returned {len(elements)} nodes, last snapshot had {prev_n}")
+        # The count above can hold while a whole town drops out (Ridgecrest is 34 of 455). The
+        # page keeps the last good list and the run goes red, the same as any failed fetch.
+        lost = _lost_cells(elements)
+        if lost:
+            raise RuntimeError("Overpass reply has no camera where the last good list had "
+                               + "; ".join(lost[:6]))
         first_mapped = _first_mapped(elements)
         cameras = []
         for e in elements:
@@ -139,13 +218,7 @@ def run(ctx, *, record_change: bool = False):
                     f"{len(undated)} newly mapped camera(s) could not be dated after the OSM "
                     f"history lookups, so the weekly row was not written: nodes "
                     + ", ".join(str(i) for i in undated[:10]))
-            recorded = common.append_change_log("alpr", {
-                "date": common.iso_today(),
-                "total": len(cameras),
-                "new_ids": new_ids,
-                "gone_ids": gone_ids,
-                "new_count": len(new_ids),
-            })
+            recorded = common.append_change_log("alpr", _weekly_row(cameras, new_ids, gone_ids))
             # Advance the snapshot ONLY when the row actually landed.
             # If every build saved it, CI's 3-hourly builds would silently
             # advance it and the weekly diff would always read 0 new. And if the

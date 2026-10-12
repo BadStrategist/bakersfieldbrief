@@ -28,6 +28,7 @@ from PIL import Image, ImageDraw, ImageFont
 import requests
 
 from . import common
+from .sources import alpr as alpr_source
 
 # ------------------------------------------------------------- live-page colors
 FLOCK = (220, 154, 31)        # #DC9A1F amber
@@ -135,14 +136,17 @@ def render_tracker_card(alpr: dict, out_path=None):
     if not cameras:
         raise ValueError("no camera data to render tracker card")
 
-    # center on the mean of camera positions (dense metro)
-    center_lat = sum(c["lat"] for c in cameras) / len(cameras)
-    center_lon = sum(c["lon"] for c in cameras) / len(cameras)
+    # The list is the whole county since 2026-10-12, and a county-wide frame on a card this size
+    # turns Bakersfield into one dot. The picture stays on the dense metro (the frame it always
+    # had); the numbers above it are the county's. Every camera inside the frame is still drawn.
+    frame = [c for c in cameras if alpr_source.in_metro(c)] or cameras
+    center_lat = sum(c["lat"] for c in frame) / len(frame)
+    center_lon = sum(c["lon"] for c in frame) / len(frame)
     # choose zoom so the camera cloud fills ~80% of the map rect
     zoom = 11
     mw, mh = W, H - HEADER_H - 70
     for z in range(10, 14):
-        pts = [_ll_to_wm(c["lat"], c["lon"], z) for c in cameras]
+        pts = [_ll_to_wm(c["lat"], c["lon"], z) for c in frame]
         xs = [p[0] for p in pts]; ys = [p[1] for p in pts]
         cx, cy = _ll_to_wm(center_lat, center_lon, z)
         span_w = (max(xs) - min(xs)) / mw

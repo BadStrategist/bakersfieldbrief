@@ -4,11 +4,15 @@ Every camera, owner and parcel is written into the page's own HTML, so the recor
 readable without JavaScript. assets/js/alpr-explorer.js enhances the same markup: the map, the
 filters and the full records at #camera/<id>, #owner/<n> and #parcel/<n>. There is no search box
 on this page (removed 2026-09-22 at the owner's request, and the data-q index went with it). Hash
-routes are not urls of
-their own: /surveillance/ stays the only ALPR page.
+routes are not urls of their own. The same section, given one town's cameras, is the map on
+/surveillance/<town>/ (alpr_towns.py).
 
 Copy rule: a camera stands "at or beside" an owner's land, or the parcel is "the nearest parcel".
 Never "the parcel under it": most cameras stand in a street or setback beside the joined parcel.
+
+Coverage rule: how many cameras are joined, how many have no roll record to join and how many
+are not looked up yet are counted from the data on every build (coverage_sentence). No number
+of them is ever typed, and no reason is given for a camera that has not been looked up.
 """
 from __future__ import annotations
 
@@ -16,6 +20,7 @@ import datetime as dt
 import html
 import re
 
+from .. import places_kern
 from . import alpr_explorer
 
 esc = html.escape
@@ -99,6 +104,7 @@ def merge_cameras(osm: list[dict], own: dict | None) -> list[dict]:
     """OSM is the live camera list (weekly). Ownership is a dated research snapshot. Join by node id;
     a camera mapped after the snapshot is listed and mapped, marked as not yet joined."""
     by_id = {str(c["id"]): c for c in (own or {}).get("cams", [])}
+    no_rec = alpr_explorer.norecord() if own else {}
     out = []
     for c in osm:
         cid = str(c.get("id"))
@@ -108,18 +114,50 @@ def merge_cameras(osm: list[dict], own: dict | None) -> list[dict]:
             "manu": c.get("manufacturer") or (o or {}).get("manu") or "Unspecified",
             "op": c.get("operator") or "", "dir": c.get("direction") or "",
             "mapped": c.get("mapped") or "", "own": o,
+            # looked up, and the roll has no record to join (never both this and "own")
+            "nr": None if o else no_rec.get(cid),
+            # the city or Census place the point is inside, from the boundary, or None
+            "place": places_kern.place_of(c.get("lat"), c.get("lon")),
         })
     return out
 
 
+def norecord_line(nr: dict) -> str:
+    """What the lookup found for a camera with no roll record to join."""
+    if nr.get("reason") == "apn_not_on_roll":
+        which = f"parcel {nr['apn']}, which" if nr.get("apn") else "a parcel that"
+        return f"Beside {which} has no owner on the county tax roll."
+    return "In a road or right of way: no titled parcel within 60 meters."
+
+
+def coverage(cams: list[dict]) -> dict:
+    """joined / norecord / pending over merged cameras. The three always sum to len(cams)."""
+    joined = sum(1 for c in cams if c["own"])
+    norec = sum(1 for c in cams if c.get("nr"))
+    return {"joined": joined, "norecord": norec, "pending": len(cams) - joined - norec}
+
+
+def coverage_tail(cov: dict) -> str:
+    """The cameras that are not joined, in a clause each. Empty when every camera is joined."""
+    parts = []
+    n = cov["norecord"]
+    if n:
+        parts.append(f"{n} stand{'s' if n == 1 else ''} where the tax roll has no parcel to join")
+    n = cov["pending"]
+    if n:
+        parts.append(f"{n} {'has' if n == 1 else 'have'} not been looked up yet")
+    return " and ".join(parts)
+
+
 def _cam_item(c: dict, cutoff: str, year: str = "") -> str:
     o = c["own"]
+    nr = c.get("nr")
     is_new = bool(cutoff and c["mapped"] and c["mapped"] >= cutoff)
     flock = "flock" in c["manu"].lower()
     k = type_key(o.get("otype")) if o else "none"
     # The row is for a reader choosing a camera: street, whose land, then the technical line.
     # Parcel number, degrees and the full date are on the record the row opens.
-    loc = loc_of(o) if o else "Street not matched yet"
+    loc = loc_of(o) if o else (loc_of(nr) if nr else "Street not matched yet")
     facing = facing_words(c["dir"])
     meta = ["Flock" if flock else ("Maker not stated" if c["manu"] == "Unspecified" else esc(c["manu"]))]
     if facing:
@@ -130,8 +168,11 @@ def _cam_item(c: dict, cutoff: str, year: str = "") -> str:
         chip = f' <span class="ax-chip {k}">{TYPE_LABEL[k]}</span>' if k in TYPE_LABEL else ""
         own_line = (f'{esc(relation(o)).capitalize()} a parcel owned by '
                     f'<b>{esc(o.get("owner") or "no owner name on the roll")}</b>{chip}')
+    elif nr:
+        own_line = esc(norecord_line(nr))
     else:
-        own_line = "Land owner lookup pending: mapped after the county records snapshot."
+        # No reason is given because none is known here.
+        own_line = "Land owner not looked up yet."
     return (f'<li class="ax-item" data-id="{esc(c["id"])}" data-k="{k}"'
             f'{" data-new" if is_new else ""}{" data-flock" if flock else ""}>'
             f'<a href="#camera/{esc(c["id"])}">'
@@ -162,8 +203,17 @@ def _parcel_item(p: dict, owners: list[dict]) -> str:
             f'<span class="ax-io">{esc(", ".join(p.get("owners", [])))}</span></a></li>')
 
 
-def explorer_html(osm_cams: list[dict], asof: str, total: int, ok: bool) -> tuple[str, dict]:
-    """The explorer section. Returns (html, facts) where facts feed the copy around it."""
+def explorer_html(osm_cams: list[dict], asof: str, total: int, ok: bool, *,
+                  where: str = "Kern County", scoped: bool = False,
+                  scope_note: str = "") -> tuple[str, dict]:
+    """The explorer section. Returns (html, facts) where facts feed the copy around it.
+
+    scoped=True is a town page: osm_cams is that town's cameras, and the owner and parcel tabs
+    list only owners and parcels with one of those cameras at or beside them.
+
+    scope_note names the split when the section covers more than the page's own count, which is
+    a town page carrying the cameras just outside its limits. Without it the panel would say a
+    larger total than the page's own headline and the two numbers would not reconcile."""
     own = alpr_explorer.load()
     cams = merge_cameras(osm_cams, own)
     cams.sort(key=lambda c: (c["mapped"] or ""), reverse=True)
@@ -171,9 +221,14 @@ def explorer_html(osm_cams: list[dict], asof: str, total: int, ok: bool) -> tupl
         cutoff = (dt.date.fromisoformat(str(asof)[:10]) - dt.timedelta(days=28)).isoformat()
     except ValueError:
         cutoff = ""
-    owners = (own or {}).get("owners", [])
-    parcels = (own or {}).get("parcels", [])
-    joined = sum(1 for c in cams if c["own"])
+    all_owners = (own or {}).get("owners", [])
+    owners, parcels = all_owners, (own or {}).get("parcels", [])
+    if scoped:
+        here = {c["id"] for c in cams}
+        owners = [o for o in owners if here & {str(x) for x in o.get("cams", [])}]
+        parcels = [p for p in parcels if here & {str(x) for x in p.get("cams", [])}]
+    cov = coverage(cams)
+    joined = cov["joined"]
     counts = {"all": len(cams),
               "new": sum(1 for c in cams if cutoff and c["mapped"] >= cutoff),
               "flock": sum(1 for c in cams if "flock" in c["manu"].lower())}
@@ -181,35 +236,39 @@ def explorer_html(osm_cams: list[dict], asof: str, total: int, ok: bool) -> tupl
         counts[key] = sum(1 for c in cams if c["own"] and type_key(c["own"].get("otype")) == key)
     built = (own or {}).get("meta", {}).get("built", "")
     facts = {"joined": joined, "owners": len(owners), "parcels": len(parcels), "built": built,
-             "counts": counts, "own": own}
+             "counts": counts, "own": own, "cams": cams, "coverage": cov}
 
     owners_sorted = sorted(owners, key=lambda o: (-o.get("n", 0), str(o.get("name", ""))))
     parcels_sorted = sorted(parcels, key=lambda p: (-p.get("n", 0), p.get("apn", "")))
     cam_items = "".join(_cam_item(c, cutoff, str(asof)[:4]) for c in cams)
     owner_items = "".join(_owner_item(o) for o in owners_sorted)
-    parcel_items = "".join(_parcel_item(p, owners) for p in parcels_sorted)
+    parcel_items = "".join(_parcel_item(p, all_owners) for p in parcels_sorted)
 
     def chip(f, label):
         return (f'<button type="button" class="ax-f" data-f="{f}" aria-pressed="{"true" if f == "all" else "false"}">'
                 f'{label} <b>{counts[f]}</b></button>')
 
+    head = f"{esc(scope_note)}, " if scope_note else ""
+    lead = "each" if scope_note else f"All {total} mapped cameras, each"
     if not ok:
         sub = "The camera source (OpenStreetMap) did not load this build."
     elif own and joined == total:
-        sub = (f"All {total} mapped cameras, each joined to the owner of record for the land at or beside "
-               f"it (Kern County tax roll, {esc(built)}). Tap a camera to open its record.")
+        sub = (f"{head}{lead} joined to the "
+               f"owner of record for the land at or beside it (Kern County tax roll, {esc(built)}). "
+               f"Tap a camera to open its record.")
     elif own:
-        sub = (f"{total} cameras on the map. {joined} are joined to the owner of record for the land at "
-               f"or beside them (Kern County tax roll, {esc(built)}); newer cameras join at the next "
-               f"records refresh.")
+        # Counted from this build's data, clause by clause: nothing here is a typed number.
+        sub = (f"{head}{total} cameras on the map. {joined} {'is' if joined == 1 else 'are'} joined to "
+               f"the owner of record for the land at or beside {'it' if joined == 1 else 'them'} "
+               f"(Kern County tax roll, {esc(built)}); {coverage_tail(cov)}.")
     else:
-        sub = f"{total} cameras on the map. Land ownership records are unavailable this build."
+        sub = f"{head}{total} cameras on the map. Land ownership records are unavailable this build."
 
     html_out = f"""
     <section class="ax" id="explorer" aria-labelledby="ax-h">
       <div class="ax-top">
         <div class="ax-title">
-          <h3 id="ax-h">Flock &amp; ALPRs <span>&middot; Kern County</span></h3>
+          <h3 id="ax-h">Flock &amp; ALPRs <span>&middot; {esc(where)}</span></h3>
           <p class="ax-sub">{sub}</p>
         </div>
         <div class="ax-filters" role="group" aria-label="Show cameras">
@@ -266,9 +325,13 @@ def ownership_html(facts: dict, total: int) -> str:
         f'their land, across {o.get("nparcel", 0)} parcel{"s" if o.get("nparcel", 0) != 1 else ""}</li>'
         for o in top)
     joined = facts["joined"]
-    gap = total - joined
-    gap_note = (f" The {gap} camera{'s' if gap != 1 else ''} mapped since then {'join' if gap != 1 else 'joins'} "
-                f"at the next records refresh." if gap > 0 else "")
+    tail = coverage_tail(facts["coverage"])
+    gap_note = f" Of the rest, {tail}." if tail else ""
+    # Written by the county join only: land the roll gives to an agency, which the older label
+    # counted under "privately titled".
+    pub = st.get("public_parcel")
+    public_li = (f"<li><strong>{pub} camera{'s' if pub != 1 else ''}</strong> on or beside a parcel "
+                 f"the tax roll gives to a public agency.</li>" if isinstance(pub, int) and pub else "")
     private_note = ("" if alpr_explorer.PUBLISH_PRIVATE_NAMES else
                     " Private individuals and family trusts are not named on this page: their records keep"
                     " the camera, the parcel and the public sources, and the name stays with the county.")
@@ -283,6 +346,7 @@ def ownership_html(facts: dict, total: int) -> str:
       <p>Where the cameras stand, as the assessor roll has it:</p>
       <ul>
         <li><strong>{st['private_parcel']} cameras</strong> on or beside a privately titled parcel, with the owner on the tax roll.</li>
+        {public_li}
         <li><strong>{st['street_row']} cameras</strong> in a street, right of way or setback. The parcel named is the
         nearest one, not land the camera stands on.</li>
         <li><strong>{st['city_owned']} cameras</strong> on or beside land with a City of Bakersfield interest. The
@@ -303,6 +367,11 @@ def sources_html(facts: dict, total: int) -> str:
     owners = own.get("owners", [])
     with_sos = sum(1 for o in owners if o.get("sos"))
     weak = sum(1 for c in own.get("cams", []) if "weak" in (c.get("match") or ""))
+    # Owners nobody has researched past the tax roll. Said once, here; their records say it too.
+    todo = sum(1 for o in owners if o.get("cstat") == "not_researched")
+    todo_li = (f"<li>For {todo} of the {len(owners)} owners, the company record and the contact "
+               f"routes have not been researched yet. Those records carry the tax-roll facts and "
+               f"say that the rest has not been looked up.</li>" if todo else "")
     return f"""
     <section class="card ax-sources" id="sources">
       <span class="tag">Sources</span>
@@ -320,6 +389,7 @@ def sources_html(facts: dict, total: int) -> str:
         <li>{facts['joined']} of {total} cameras have a parcel, an owner of record and an assessed value.</li>
         <li>{with_sos} of {len(owners)} owners carry a California registration number. Officer names come from
         registry mirrors, so read them as reported, not state certified.</li>
+        {todo_li}
         <li>A camera is joined to the nearest parcel within 60 meters. {weak} join{"s are" if weak != 1 else " is a"} weak
         match{"es" if weak != 1 else ""}, 30 to 60 meters away, and the record says so.</li>
         <li>This map holds the cameras volunteers have mapped. Flock&rsquo;s own

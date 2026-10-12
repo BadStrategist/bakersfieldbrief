@@ -320,6 +320,111 @@ class TestSingleWriter:
         assert common.load_snapshot("alpr_nodes") == [100, 101, 102]
 
 
+# ---------------------------------------------------------------- what the list covers
+def _at(node, lat, lon):
+    return {**node, "lat": lat, "lon": lon}
+
+
+RIDGECREST = (35.62, -117.67)
+DELANO = (35.77, -119.25)
+
+
+class TestCountyScope:
+    """Until 2026-10-12 the query was a box around the Bakersfield metro under a heading that
+    said Kern County: 270 cameras where the county had 455. The query is the county boundary
+    now, and the week the list grew must not read as 185 cameras "newly mapped"."""
+
+    def test_query_is_the_county_boundary_not_a_box(self):
+        assert f"(area:{alpr.KERN_AREA});" in alpr.QUERY
+        assert alpr.KERN_AREA == 3600396494          # OSM relation 396494, Kern County
+        assert "35.20,-119.25" not in alpr.QUERY
+        assert '["man_made"="surveillance"]["surveillance:type"="ALPR"]' in alpr.QUERY
+        # a maker is not a camera type: Flock's Condor video domes read no plates
+        assert "manufacturer" not in alpr.QUERY
+
+    def test_metro_counts_come_from_the_same_list(self):
+        cams = [_camera(1), _camera(2), {**_camera(3), "manufacturer": "Unspecified"},
+                {**_camera(4), "lat": RIDGECREST[0], "lon": RIDGECREST[1]}]
+        assert alpr.metro_counts(cams) == (3, 2)
+
+    def _old_log(self, date="2026-10-12", total=1):
+        """A row from before the widening: no scope key."""
+        common.append_change_log("alpr", {"date": date, "total": total, "new_ids": [],
+                                          "gone_ids": [], "new_count": 0})
+
+    def test_the_week_the_map_widens_logs_a_baseline_not_new_cameras(self, box):
+        self._old_log()
+        common.save_snapshot("alpr_nodes", [1])
+        box.today = "2026-10-19"
+        box.reply = {"elements": [
+            _node(1),
+            _at(_node(2, "2025-06-16"), *RIDGECREST),      # there all along, never asked for
+            _at(_node(3, "2026-03-02"), *DELANO),
+            _at(_node(4, "2026-10-14"), *DELANO),          # mapped this week
+        ]}
+        data = alpr.run(None, record_change=True)
+        assert data["stale"] is False
+        row = common.load_change_log("alpr")[-1]
+        assert (row["date"], row["total"], row["new_ids"], row["new_count"]) == ("2026-10-19", 4, [4], 1)
+        assert row["widened"] == 2 and row["scope"] == alpr.SCOPE
+        assert common.load_snapshot("alpr_nodes") == [1, 2, 3, 4]
+        # the page counters never saw the baseline as new either
+        assert data["stats"]["new_this_week"] == 1
+
+    def test_the_week_after_is_an_ordinary_diff_again(self, box):
+        self._old_log()
+        common.save_snapshot("alpr_nodes", [1])
+        box.today = "2026-10-19"
+        box.reply = {"elements": [_node(1), _at(_node(2, "2025-06-16"), *RIDGECREST)]}
+        alpr.run(None, record_change=True)
+        box.today = "2026-10-26"
+        # camera 3 carries an old date (a node whose history says 2026-01-05): the snapshot diff
+        # is what makes it new in an ordinary week, exactly as before the widening
+        box.reply["elements"].append(_at(_node(3, "2026-01-05"), *RIDGECREST))
+        alpr.run(None, record_change=True)
+        rows = common.load_change_log("alpr")[-2:]
+        assert [(r["new_ids"], r.get("widened")) for r in rows] == [([], 1), ([3], None)]
+        assert all(r["scope"] == alpr.SCOPE for r in rows)
+
+    def test_a_first_ever_row_is_not_a_widening(self, box):
+        box.today = "2026-10-12"
+        common.save_snapshot("alpr_nodes", [1])
+        box.reply = {"elements": [_node(1), _node(2)]}
+        alpr.run(None, record_change=True)
+        row = common.load_change_log("alpr")[-1]
+        assert row["new_ids"] == [2] and "widened" not in row
+
+    def test_daily_runs_after_the_widening_do_not_write_the_baseline(self, box):
+        self._old_log()
+        common.save_snapshot("alpr_nodes", [1])
+        box.reply = {"elements": [_node(1), _at(_node(2, "2025-06-16"), *RIDGECREST)]}
+        data = alpr.run(None)
+        assert data["stats"]["total"] == 2 and data["stats"]["new_this_week"] == 0
+        assert len(common.load_change_log("alpr")) == 1
+        assert common.load_snapshot("alpr_nodes") == [1]
+
+    def test_a_town_missing_from_the_reply_is_a_failed_fetch(self, box):
+        """34 of 455 cameras are in Ridgecrest. A reply without them passes the 60 percent
+        count guard and would publish a county map with a town gone."""
+        metro = [_node(i) for i in range(1, 21)]
+        town = [_at(_node(100 + i), *RIDGECREST) for i in range(alpr.CELL_MIN)]
+        box.reply = {"elements": metro + town}
+        assert alpr.run(None)["stats"]["total"] == 20 + alpr.CELL_MIN
+        box.today = "2026-10-08"
+        box.reply = {"elements": metro}
+        data = alpr.run(None)
+        assert data["stale"] is True and data["asof"] == TODAY
+        assert "no camera where the last good list had" in data["error"]
+        assert len(data["cameras"]) == 20 + alpr.CELL_MIN      # the page keeps the whole list
+
+    def test_a_few_cameras_removed_by_mappers_is_not_an_outage(self, box):
+        few = [_at(_node(100 + i), *RIDGECREST) for i in range(alpr.CELL_MIN - 1)]
+        box.reply = {"elements": [_node(1), _node(2)] + few}
+        alpr.run(None)
+        box.reply = {"elements": [_node(1), _node(2)]}
+        assert alpr.run(None)["stale"] is False
+
+
 # ---------------------------------------------------------------- the daily gate
 def _fresh(asof=TODAY, **over):
     p = {"ok": True, "stale": False, "asof": asof, "cameras": [_camera(1)], "stats": {"total": 1}}

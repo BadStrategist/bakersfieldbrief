@@ -21,7 +21,8 @@ import html
 import json
 
 from .. import common
-from . import alpr_explorer, alpr_page
+from ..sources import alpr as alpr_source
+from . import alpr_explorer, alpr_page, alpr_towns
 from . import images
 from . import page as page_mod
 
@@ -183,19 +184,36 @@ def build_alpr(ctx, sources: dict):
     # The land ownership explorer IS the map on this page: every camera from OSM on a Leaflet map,
     # each joined to the owner of record for the land at or beside it. Lists are server-rendered
     # (crawlable, readable without JS); alpr-explorer.js adds the map, the filters and full records.
-    # /surveillance/ is the only ALPR url: records live at #camera/<id>, not on pages of their own.
+    # Records live at #camera/<id>, not on pages of their own. The only other ALPR urls are the
+    # town pages under /surveillance/ (alpr_towns.py), linked from the "by town" block below.
     total_n = stats.get("total", 0)
     flock_n = stats.get("flock", 0)
     explorer, facts = alpr_page.explorer_html(cameras, asof, total_n, bool(data.get("ok")))
     own_ok = bool(facts.get("own"))
 
+    # The Bakersfield metro share of the same list. The page's title and its first two questions
+    # are about Bakersfield; the list is the county's.
+    metro_n, metro_flock_n = alpr_source.metro_counts(cameras)
+
     # change log table
+    def _ids_cell(e):
+        ids = e.get("new_ids", [])
+        txt = html.escape(", ".join(map(str, ids[:4]))) + ("…" if len(ids) > 4 else "")
+        # The week the map grew from the Bakersfield metro to the county: the jump in the total
+        # is the wider map, and the row says so in place of counting those cameras as new.
+        if e.get("widened"):
+            n = e["widened"]
+            wide = (f"Map widened to all of Kern County: {n} camera{'s' if n != 1 else ''} already "
+                    f"mapped outside the Bakersfield metro added to the total")
+            return wide + (f". Newly mapped: {txt}" if txt else "")
+        return txt or "—"
+
     if change_log:
         rows = "".join(f"""
         <tr><td>{html.escape(str(e.get('date', '')))}</td>
         <td class="num">{e.get('total', '—')}</td>
         <td class="num {'hot' if e.get('new_count') else ''}">+{e.get('new_count', 0)}</td>
-        <td>{html.escape(', '.join(map(str, e.get('new_ids', [])[:4]))) or '—'}{'…' if len(e.get('new_ids', [])) > 4 else ''}</td></tr>"""
+        <td>{_ids_cell(e)}</td></tr>"""
                        for e in reversed(change_log[-14:]))
         log_table = f"""
         <div class="table-wrap"><table class="data">
@@ -221,6 +239,8 @@ def build_alpr(ctx, sources: dict):
 
     {alpr_page.ownership_html(facts, total_n)}
 
+    {alpr_towns.hub_links_html(alpr_towns.plan(sources))}
+
     <div class="brief-grid" style="margin-top:6px">
       <div class="brief-main">
         <p class="sec-head">Change log <span class="unit">weekly snapshots, last 14 weeks</span></p>
@@ -245,7 +265,7 @@ def build_alpr(ctx, sources: dict):
       <h3>What this tracker shows</h3>
       <p>Bakersfield is one of the most camera-dense cities in California for automated license
       plate readers. This page maps every ALPR camera that volunteers have recorded in
-      OpenStreetMap inside the Bakersfield metro, most of which are Flock Safety units. The map
+      OpenStreetMap in Kern County, most of which are Flock Safety units. The map
       updates weekly; tap any camera for its manufacturer, operator, facing direction, the date the
       node was mapped, and the owner of record for the land at or beside it. At street zoom the map
       draws an amber cone showing the direction each camera faces.</p>
@@ -269,18 +289,19 @@ def build_alpr(ctx, sources: dict):
     ok = bool(data.get("ok"))
     questions = [
         ("How many Flock cameras are in Bakersfield?",
-         (f"Based on volunteer-mapped OpenStreetMap data, {flock_n} Flock Safety "
-          f"cameras are mapped in Bakersfield and Kern County, out of {total_n} "
-          f"total license plate reader (ALPR) cameras, as of {asof}.")
+         (f"Based on volunteer-mapped OpenStreetMap data, {metro_flock_n} Flock Safety "
+          f"license plate reader cameras are mapped in the Bakersfield metro, out of {metro_n} "
+          f"plate readers (ALPR) of any make there, as of {asof}. Across all of Kern County the "
+          f"map holds {flock_n} Flock Safety plate readers out of {total_n}.")
          if ok else
          ("A current count is unavailable because the camera data source "
           "(OpenStreetMap) did not load this build. Use the map and stats once "
           "data is restored.")),
         ("Where are the Flock cameras in Bakersfield?",
          (f"This page shows a live map of all {total_n} mapped license plate reader "
-          f"cameras in the Bakersfield metro, {flock_n} of which are Flock Safety "
-          f"units. Each camera marker shows its manufacturer, operator, and facing "
-          f"direction.")
+          f"cameras in Kern County, {metro_n} of them in the Bakersfield metro. {flock_n} of "
+          f"the {total_n} are Flock Safety units. Each camera marker shows its manufacturer, "
+          f"operator, and facing direction.")
          if ok else
          ("The camera map cannot be shown right now because the data source "
           "(OpenStreetMap) did not load this build. Check back once data is restored.")),
@@ -307,7 +328,8 @@ def build_alpr(ctx, sources: dict):
               f"its owner of record: {facts['joined']} of the {total_n} mapped cameras, "
               f"{facts['owners']} owners of record and {facts['parcels']} parcels, from county records "
               f"as of {facts['built']}. {est['private_parcel']} cameras stand on or beside a privately "
-              f"titled parcel, {est['street_row']} stand in a street or right of way where the named "
+              f"titled parcel, {est['public_parcel']} on or beside a parcel the roll gives to a public "
+              f"agency, {est['street_row']} stand in a street or right of way where the named "
               f"parcel is only the nearest one, and {est['city_owned']} stand on or beside land with a "
               f"City of Bakersfield interest. Every record prints the public source behind it.")),
             ("Which owners have the most license plate cameras at or beside their land?",
@@ -338,16 +360,14 @@ def build_alpr(ctx, sources: dict):
     if data.get("ok"):
         body = (
             f'<p class="callout"><strong>{flock_n} Flock Safety cameras and {total_n} total '
-            f'license-plate readers</strong> are mapped in Bakersfield and Kern County as of '
-            f'{asof}. See them on the map below. Count reflects ALPR cameras mapped in '
-            f'OpenStreetMap within the Bakersfield metro area as of {asof} — a smaller scope '
-            f'than some commercial maps.</p>'
+            f'license-plate readers</strong> are mapped in Kern County as of {asof}, '
+            f'{metro_n} of them in the Bakersfield metro. See them on the map below.</p>'
         ) + body
 
     # on-page lede + meta description — never assert "0 cameras" on a fetch failure
     if data.get("ok"):
-        desc = (f"See every license plate reader in Bakersfield on a live map — {flock_n} "
-                f"Flock Safety cameras and {total_n} total ALPR units mapped in the metro, "
+        desc = (f"See every mapped license plate reader in Bakersfield and Kern County on a live "
+                f"map — {flock_n} Flock Safety cameras and {total_n} total ALPR units, "
                 f"with facing direction, newest-camera highlights, and a weekly change log "
                 f"from OpenStreetMap."
                 + (" Tap any camera for the owner of record of the land at or beside it."
@@ -369,16 +389,17 @@ def build_alpr(ctx, sources: dict):
     if own_ok:
         extra_ld.append({
             "@context": "https://schema.org", "@type": "Dataset",
-            "name": "Bakersfield license plate camera land ownership",
-            "description": (f"Automated license plate reader cameras mapped in Bakersfield, California, "
-                            f"each joined to the nearest Kern County tax-roll parcel and its owner of "
-                            f"record: {facts['joined']} cameras, {facts['owners']} owners of record, "
-                            f"{facts['parcels']} parcels, with the public source for each value."),
+            "name": "Kern County license plate camera land ownership",
+            "description": (f"Automated license plate reader cameras mapped in Bakersfield and the "
+                            f"rest of Kern County, California, joined to the nearest Kern County "
+                            f"tax-roll parcel and its owner of record: {facts['joined']} cameras, "
+                            f"{facts['owners']} owners of record, {facts['parcels']} parcels, with "
+                            f"the public source for each value."),
             "url": "https://bakersfieldbrief.com/surveillance/",
             "isAccessibleForFree": True,
             "creator": {"@type": "NewsMediaOrganization", "name": "Bakersfield Daily Brief",
                         "url": "https://bakersfieldbrief.com/"},
-            "spatialCoverage": {"@type": "Place", "name": "Bakersfield, Kern County, California"},
+            "spatialCoverage": {"@type": "Place", "name": "Kern County, California"},
             "dateModified": facts["built"] or asof,
             "isBasedOn": ["https://www.openstreetmap.org/", "https://www.kerndata.com/"],
         })
@@ -1032,7 +1053,7 @@ def build_hub(ctx, sources: dict) -> list[str]:
 
 # register in dependency order (hub reads TRACKERS)
 register("surveillance", "Flock & ALPR Tracker",
-         "Every automated license plate reader mapped in the Bakersfield metro, each one joined to its tax-roll parcel and owner of record: weekly map, facing direction, newest-camera highlights and a real 13-week change log.", build_alpr)
+         "Every automated license plate reader mapped in Kern County, with the tax-roll parcel and owner of record for the joined ones: weekly map, facing direction, newest-camera highlights and a real 13-week change log.", build_alpr)
 register("fires", "Kern County Fire Tracker",
          "Active wildfires in Kern County and California, live from the official CAL FIRE feed — map, acres, containment, and automatic updates.", build_fires)
 register("water", "Lake Isabella Water Level",

@@ -30,10 +30,14 @@ git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 # This is an EXCLUSION list on purpose: a whitelist of "paths CI writes" drifts and
 # drops paths silently (it dropped data/fog_delays/log.json and data/last_guide.json
 # within a day of being written), while a new tracker path is picked up for free.
+# data/alpr is box-owned because the land ownership join is a box job (county_join.py,
+# work/alpr_ownership): it reads the assessor parcel layer and the tax roll, which CI must
+# never do. CI reads those files to build the page and the map asset; it never writes them.
 BOX_PATHS=(
   data/overnight_reports
   data/geo_cache.json
   data/incidents_geo.json
+  data/alpr
 )
 
 # assets/img/*.jpg are build OUTPUT, not box input: build/weather_card.py and
@@ -50,7 +54,7 @@ fi
 git reset -q -- "${BOX_PATHS[@]}" 2>/dev/null || true
 
 # Invariant: no box-owned path may be staged. If one is, the reset above missed it.
-leak=$(git diff --cached --name-only | grep -E '^(data/overnight_reports|data/geo_cache\.json|data/incidents_geo\.json)(/|$)' || true)
+leak=$(git diff --cached --name-only | grep -E '^(data/overnight_reports|data/geo_cache\.json|data/incidents_geo\.json|data/alpr)(/|$)' || true)
 if [ -n "$leak" ]; then
   echo "::error title=Ownership leak::CI staged a box-owned path:$leak"
   exit 1
@@ -66,7 +70,7 @@ git commit -q -m "$msg"
 # markers in the worktree and a stash entry behind, and the push then "succeeds"
 # (reproduced on git 2.53): a silent half-merge pushed as data. A clean tree is a
 # precondition, asserted loudly. The commit above is what makes it clean.
-dirty=$(git status --porcelain | grep -vE 'data/(geo_cache\.json|incidents_geo\.json|overnight_reports)' | head -20 || true)
+dirty=$(git status --porcelain | grep -vE 'data/(geo_cache\.json|incidents_geo\.json|overnight_reports|alpr)' | head -20 || true)
 if [ -n "$dirty" ]; then
   echo "::error title=Dirty tree::the worktree is dirty after the commit; refusing to pull without a stash:"
   echo "$dirty"

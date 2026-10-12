@@ -1,10 +1,11 @@
-"""ALPR land ownership data for /surveillance/.
+"""ALPR land ownership data for /surveillance/ and its town pages.
 
-/surveillance/ is the only ALPR page on this site. The land ownership explorer lives inside it: the
-camera, owner and parcel lists are rendered into the page's own HTML (so a crawler and a reader
-without JavaScript get every record), and assets/js/alpr-explorer.js opens the full records from a
-data file served at /assets/alpr/ownership.json. That file is an asset, not a page: no HTML, no
-canonical, nothing in the sitemap.
+/surveillance/ is the county's ALPR page and /surveillance/<town>/ are its spokes
+(alpr_towns.py). The land ownership explorer lives inside each: the camera, owner and parcel
+lists are rendered into the page's own HTML (so a crawler and a reader without JavaScript get
+every record), and assets/js/alpr-explorer.js opens the full records from a data file served at
+/assets/alpr/ownership.json. That file is an asset, not a page: no HTML, no canonical, nothing
+in the sitemap. A record (#camera/<id>) is never a url of its own.
 
 The data is researched on the local box (work/alpr_ownership/, gitignored) and committed as
 data/alpr/explorer_data.json by work/alpr_ownership/rebuild_all.py, already through publish_filter.
@@ -105,6 +106,14 @@ def load() -> dict | None:
         common.log(f"alpr_explorer: ownership data unavailable ({type(e).__name__}: {e})")
         _cache = {}
     return _cache or None
+
+
+def norecord() -> dict:
+    """Camera id -> what the lookup found, for cameras that were looked up and have no roll
+    record to join: no titled parcel within 60 m, or a nearest parcel the roll does not hold.
+    They are not "not looked up yet", and the page must not say so."""
+    return {str(x.get("id")): x for x in (load() or {}).get("norecord") or []
+            if isinstance(x, dict)}
 
 
 def stats() -> dict:

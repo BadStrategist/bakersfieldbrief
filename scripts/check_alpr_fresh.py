@@ -124,9 +124,16 @@ def ownership_status(alpr, own, today: str) -> dict:
         age = (dt.date.fromisoformat(today) - dt.date.fromisoformat(built)).days
     except ValueError:
         age = None
+    # A camera that was looked up and has no roll record to join (own["norecord"]) is done:
+    # counting it as waiting would make this reminder fire every Monday for good.
     joined_ids = {str(c.get("id")) for c in own["cams"]}
+    joined_ids |= {str(x.get("id")) for x in own.get("norecord") or [] if isinstance(x, dict)}
     unjoined = (None if not cams else
                 sorted(str(c.get("id")) for c in cams if str(c.get("id")) not in joined_ids))
+    # Owners with roll facts and no company or contact research. Enrichment, so it never makes
+    # the join "due" on its own; it rides along on the reminder when one is going out anyway.
+    unresearched = sum(1 for o in own.get("owners") or []
+                       if isinstance(o, dict) and o.get("cstat") == "not_researched")
     reasons = []
     if age is None:
         reasons.append("the ownership data carries no readable build date")
@@ -138,7 +145,7 @@ def ownership_status(alpr, own, today: str) -> dict:
         if age > OWN_MAX_AGE_DAYS:
             reasons.append(f"the tax-roll copy is {age} days old (limit is {OWN_MAX_AGE_DAYS})")
     return {"due": bool(reasons), "built": built, "age_days": age,
-            "unjoined": unjoined, "reasons": reasons}
+            "unjoined": unjoined, "unresearched": unresearched, "reasons": reasons}
 
 
 def _write_alert(path: str, text: str) -> None:
@@ -165,15 +172,19 @@ def main(argv=None, *, now: dt.datetime | None = None) -> int:
         st = ownership_status(alpr, _load(Path(args.own)), today)
         n = "unknown" if st["unjoined"] is None else len(st["unjoined"])
         print(f"alpr ownership: built={st['built'] or 'unknown'} age_days={st['age_days']} "
-              f"unjoined={n} due={st['due']}")
+              f"unjoined={n} unresearched_owners={st.get('unresearched', 0)} due={st['due']}")
         if st["due"]:
             lines = ["The land ownership join on /surveillance/ is due for a refresh:"]
             lines += [f"- {r}" for r in st["reasons"]]
+            if st.get("unresearched"):
+                lines.append(f"also open: {st['unresearched']} owners of record have no company "
+                             f"or contact research yet (their records say so)")
             if st["unjoined"]:
                 lines.append("unjoined OSM nodes: " + ", ".join(st["unjoined"][:20])
                              + (" ..." if len(st["unjoined"]) > 20 else ""))
-            lines.append("It is a manual job on the local box: work/alpr_ownership/rebuild_all.py, "
-                         "then commit data/alpr/explorer_data.json and explorer_stats.json.")
+            lines.append("It is a manual job on the local box: work/alpr_ownership/county_join.py "
+                         "all, then verify, then rebuild_all.py, then commit "
+                         "data/alpr/explorer_data.json and explorer_stats.json.")
             text = "\n".join(lines) + "\n"
             print(text, end="")
             _write_alert(args.alert_file, text)

@@ -90,6 +90,28 @@ def test_last4_honest_fallback_on_failure(tmp_path, monkeypatch):
     assert "Overpass/OSM data unavailable this build." in raw
 
 
+def test_widening_row_is_not_printed_as_new_cameras(tmp_path, monkeypatch):
+    """The week the map grew from the Bakersfield metro to the county: the row carries the jump
+    in the total as a widening, and its New column counts only cameras mapped that week."""
+    data = _alpr_ok(["2026-08-11", "2026-05-01"], asof="2026-10-19")
+    data["cameras"].append({**data["cameras"][0], "id": 7, "lat": 35.62, "lon": -117.67,
+                            "manufacturer": "Axis Communications"})
+    data["stats"].update(total=3, flock=2)
+    data["change_log"] = [
+        {"date": "2026-10-12", "total": 270, "new_ids": [], "new_count": 0},
+        {"date": "2026-10-19", "total": 456, "new_ids": [14213015999], "new_count": 1,
+         "scope": "kern-county", "widened": 185}]
+    raw = _render({"alpr": data}, tmp_path, monkeypatch)
+    row = re.search(r"<tr><td>2026-10-19</td>.*?</tr>", raw, re.S).group(0)
+    assert "+1<" in row and "+185" not in raw and "+186" not in raw
+    assert "Map widened to all of Kern County: 185 cameras already mapped" in row
+    assert "Newly mapped: 14213015999" in row
+    # Bakersfield's own answer is the metro share of the same list; the county figure is the total
+    assert "2 Flock Safety license plate reader cameras are mapped in the Bakersfield metro, out of 2" in raw
+    assert "the map holds 2 Flock Safety plate readers out of 3" in raw
+    assert "Flock &amp; ALPRs <span>&middot; Kern County</span>" in raw
+
+
 def test_overlay_last4_matches_stat(tmp_path, monkeypatch):
     """The map's 'New, last 28 days' filter must agree with the stat card.
 

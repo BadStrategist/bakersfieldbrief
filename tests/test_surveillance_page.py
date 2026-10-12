@@ -1,8 +1,9 @@
-"""Guards for /surveillance/, the only ALPR page on the site.
+"""Guards for /surveillance/, the county's ALPR page and the hub of the town pages under it.
 
 The page carries a ranking we do not want to lose: its title, h1, h2, h3s, the four original FAQ
 questions and their schema twins, the canonical and the social tags. The land ownership explorer
-lives inside it; nothing may publish the explorer as a second url or link to one.
+lives inside it; nothing may publish the explorer as a second url or link to one. The town pages
+(/surveillance/<town>/) are guarded in tests/test_alpr_towns.py.
 
 Runs against the built site/ (CI runs pytest after build_all.py). A checkout with no build skips.
 """

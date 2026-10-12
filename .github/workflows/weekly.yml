@@ -59,10 +59,11 @@ jobs:
           rows = json.load(open("data/change_logs/alpr.json", encoding="utf-8")) or []
           last = (rows[-1] or {}).get("date") if rows else None
 
-          stale = None
+          stale, why = None, ""
           if os.path.exists("data/source_cache.json"):
               alpr = (json.load(open("data/source_cache.json", encoding="utf-8")) or {}).get("alpr") or {}
               stale = alpr.get("stale")
+              why = " ".join(str(alpr.get("error") or "").split())[:400]
 
           print(f"alpr rows={len(rows)} last={last} today(PT)={today} stale={stale}")
 
@@ -84,7 +85,9 @@ jobs:
                     "the size check was skipped")
 
           if stale:
-              print("ERROR: the Overpass/OSM fetch failed and the build reused a stale cache", file=sys.stderr)
+              # Either Overpass could not be reached, or a newly mapped camera could not be
+              # dated and the source refused the row. The reason is the source's own text.
+              print(f"ERROR: the Overpass/OSM fetch failed and the build reused a stale cache: {why}", file=sys.stderr)
               sys.exit(1)
           if last != today:
               print(f"ERROR: no ALPR change-log row for the Pacific date {today} (last row is {last})", file=sys.stderr)

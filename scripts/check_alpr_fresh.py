@@ -17,6 +17,7 @@ unless ALL of these hold:
   - "stale" is explicitly False (a missing flag is a failure, not a pass)
   - it carries cameras
   - "asof" is the Pacific date of the run
+A camera on a fresh list with no first-mapped date is a ::warning annotation and still exit 0.
 
 --ownership reports on the land ownership join instead. That join is researched by hand on the
 local box (the Flock transparency portals block datacenter IPs), so CI cannot refresh it and
@@ -99,6 +100,15 @@ def problems(alpr, dates: list[str]) -> list[str]:
     return out
 
 
+def undated(alpr) -> list[str]:
+    """Ids of cameras on the list with no first-mapped date: an edited node whose OSM history
+    lookup failed. A warning, never a failure here: the list is the day's, the camera is on the
+    page, and it is only missing from "new this week" until a later build dates it. The weekly
+    run is the strict one (build/sources/alpr.py refuses the change-log row)."""
+    cams = alpr.get("cameras") if isinstance(alpr, dict) else None
+    return [str(c.get("id")) for c in cams or [] if isinstance(c, dict) and not c.get("mapped")]
+
+
 def ownership_status(alpr, own, today: str) -> dict:
     """How far the land ownership join is behind the camera list.
 
@@ -175,6 +185,12 @@ def main(argv=None, *, now: dt.datetime | None = None) -> int:
     a = alpr if isinstance(alpr, dict) else {}
     print(f"alpr freshness: ok={a.get('ok')} stale={a.get('stale')} asof={a.get('asof')} "
           f"cameras={len(a.get('cameras') or [])} run_date(PT)={'|'.join(dates)} built_at={built_at}")
+    blank = undated(alpr)
+    if blank:
+        print(f"::warning title=ALPR camera with no first-mapped date::{len(blank)} camera(s) on "
+              "the list could not be dated from the OSM history and are left out of the new this "
+              f"week count until a later build dates them: nodes {', '.join(blank[:20])}"
+              + (" ..." if len(blank) > 20 else ""))
     if not found:
         print("alpr freshness: OK, the camera list was fetched from OpenStreetMap on this run")
         return 0

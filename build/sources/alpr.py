@@ -16,32 +16,59 @@ import datetime as dt
 from .. import common
 
 OVERPASS = "https://overpass-api.de/api/interpreter"
-# There is no working mirror to fall back to. Tested from a GitHub runner on 2026-10-05 with
-# this exact query: overpass.private.coffee and overpass.kumi.systems timed out at 60 s,
-# maps.mail.ru answered 504, overpass.osm.jp failed TLS; this server answered in 2.4 s. When
-# it cannot be reached, the last good camera list below is the fallback, and the next build
-# (three hours later) tries again.
+# The two servers behind overpass-api.de, asked directly when the front door refuses. Measured
+# 2026-10-12 with the budget below (and a plain `out;`), from this box and from a GitHub
+# runner: lambert 11 of 12 (the miss was a 429 on the probe's own IP), gall 12 of 12. The third-party mirrors are not
+# here because none of them works: tested from a runner on 2026-10-05, overpass.private.coffee
+# and overpass.kumi.systems timed out at 60 s, maps.mail.ru answered 504, overpass.osm.jp
+# failed TLS. When all three refuse, the last good camera list below is the fallback, and the
+# next build (three hours later) tries again.
+BACKENDS = ("https://lambert.openstreetmap.de/api/interpreter",
+            "https://gall.openstreetmap.de/api/interpreter")
+# [timeout:25][maxsize:32 MB] is the fix for the 504s of 2026-10-10 to 2026-10-12. A query that
+# declares no budget asks for the defaults (180 s, 512 MB), and a loaded server turns that
+# away at the door: "Dispatcher_Client::request_read_and_idx::timeout. The server is probably
+# too busy to handle your request." Alternated in the same minutes on 2026-10-12, the
+# unbudgeted query got through 4 times in 26 and this one every time it was not rate limited.
+# The whole reply is about 133 KB.
 # out meta; → each node carries its real OSM timestamp (creation for most
 # surveillance nodes, which are mapped once and never edited).
-QUERY = ('[out:json];node["man_made"="surveillance"]["surveillance:type"="ALPR"]'
+QUERY = ('[out:json][timeout:25][maxsize:33554432];'
+         'node["man_made"="surveillance"]["surveillance:type"="ALPR"]'
          "(35.20,-119.25,35.55,-118.80);out meta;")
+
+
+def _fetch_elements() -> list:
+    """The camera nodes from the first Overpass server that gives a whole answer."""
+    errors = []
+    for i, url in enumerate((OVERPASS, *BACKENDS)):
+        try:
+            # backoff=20: retries at 20 s and 40 s. The default (1.5 s, 3 s) gave a busy
+            # Overpass under five seconds to recover, and its 504 on 2026-10-10 turned a deploy
+            # red that a retry a minute later passed. The backends get one try each.
+            if i == 0:
+                r = common.fetch(url, method="POST", data={"data": QUERY}, timeout=90, backoff=20)
+            else:
+                r = common.fetch(url, method="POST", data={"data": QUERY}, timeout=60, retries=0)
+            j = r.json()
+            # Overpass answers a timeout or memory error with HTTP 200, a "remark" and an empty
+            # or partial element list. Taken at face value that is "0 cameras", and on the weekly
+            # run it would log every camera as gone. Treat it as the failure it is.
+            remark = str(j.get("remark") or "")
+            if remark and ("error" in remark.lower() or "timed out" in remark.lower()):
+                raise RuntimeError(f"Overpass remark: {remark[:160]}")
+            if errors:
+                common.log(f"alpr: answered by {url.split('/')[2]} after {'; '.join(errors)[:200]}")
+            return j.get("elements", [])
+        except Exception as e:  # noqa: BLE001 - the next server is the retry
+            errors.append(f"{url.split('/')[2]}: {type(e).__name__}: {e}")
+    raise RuntimeError("; ".join(errors))
 
 
 def run(ctx, *, record_change: bool = False):
     """record_change=True on the weekly job → append a change-log entry."""
     try:
-        # backoff=20: retries at 20 s and 40 s. The default (1.5 s, 3 s) gave a busy
-        # Overpass under five seconds to recover, and its 504 on 2026-10-10 turned a deploy
-        # red that a retry a minute later passed.
-        r = common.fetch(OVERPASS, method="POST", data={"data": QUERY}, timeout=90, backoff=20)
-        j = r.json()
-        elements = j.get("elements", [])
-        # Overpass answers a timeout or memory error with HTTP 200, a "remark" and an empty or
-        # partial element list. Taken at face value that is "0 cameras", and on the weekly run it
-        # would log every camera as gone. Treat it as the failure it is.
-        remark = str(j.get("remark") or "")
-        if remark and ("error" in remark.lower() or "timed out" in remark.lower()):
-            raise RuntimeError(f"Overpass remark: {remark[:160]}")
+        elements = _fetch_elements()
         prev_n = len(common.load_snapshot("alpr_nodes", default=[]) or [])
         if prev_n >= 50 and len(elements) < prev_n * 0.6:
             raise RuntimeError(f"Overpass returned {len(elements)} nodes, last snapshot had {prev_n}")
@@ -99,6 +126,19 @@ def run(ctx, *, record_change: bool = False):
         }
 
         if record_change:
+            # A newly mapped camera with no first-mapped date stops the weekly row. Once the row
+            # lands, _first_mapped lets the row's own date stand in for the missing one, and the
+            # camera then counts as "new this week" on a date nobody looked up. Raising here
+            # takes the fallback path below: no row, the snapshot stays put, the run is red
+            # (weekly.yml fails on stale), and a re-run logs these cameras once they can be
+            # dated. On a daily build the same gap is a warning from check_alpr_fresh.py.
+            fresh = set(new_ids)
+            undated = [c["id"] for c in cameras if c["id"] in fresh and not c["mapped"]]
+            if undated:
+                raise RuntimeError(
+                    f"{len(undated)} newly mapped camera(s) could not be dated after the OSM "
+                    f"history lookups, so the weekly row was not written: nodes "
+                    + ", ".join(str(i) for i in undated[:10]))
             recorded = common.append_change_log("alpr", {
                 "date": common.iso_today(),
                 "total": len(cameras),
@@ -133,7 +173,7 @@ def run(ctx, *, record_change: bool = False):
         err = f"{type(e).__name__}: {e}"
         last = common.load_snapshot("alpr_last", default={}) or {}
         if last.get("cameras"):
-            common.log(f"alpr: fetch failed ({err[:120]}); serving last good list from {last.get('asof')}")
+            common.log(f"alpr: run failed ({err[:200]}); serving last good list from {last.get('asof')}")
             return {"ok": True, "stale": True, "error": err, "cameras": last["cameras"],
                     "stats": last.get("stats", {}), "change_log": common.load_change_log("alpr"),
                     "asof": last.get("asof", "")}

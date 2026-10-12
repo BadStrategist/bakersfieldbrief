@@ -55,8 +55,9 @@ class _Resp:
         return self._body
 
 
-def _node(nid, stamp="2026-09-01"):
+def _node(nid, stamp="2026-09-01", version=1):
     return {"id": nid, "lat": 35.37, "lon": -119.02, "timestamp": f"{stamp}T00:00:00Z",
+            "version": version,
             "tags": {"manufacturer": "Flock Safety", "surveillance:type": "ALPR"}}
 
 
@@ -78,15 +79,25 @@ def box(tmp_path, monkeypatch):
     for name, fn in _REAL.items():
         monkeypatch.setattr(common, name, fn)
     state = types.SimpleNamespace(today=TODAY, reply={"elements": []}, calls=[],
-                                  snap=snap, logs=logs)
+                                  snap=snap, logs=logs, by_url={}, v1={})
     monkeypatch.setattr(common, "today_pacific", lambda: dt.date.fromisoformat(state.today))
 
     def fake_fetch(url, **kw):
+        """box.reply answers every Overpass server; box.by_url[url] overrides one of them.
+        box.v1[node id] is the creation date the OSM history API gives (absent: it fails)."""
         state.calls.append(url)
-        assert url == alpr.OVERPASS, f"a test reached for the network: {url}"
-        if isinstance(state.reply, Exception):
-            raise state.reply
-        return _Resp(state.reply)
+        prefix = alpr.OSM_V1.split("{id}")[0]
+        if url.startswith(prefix):
+            nid = int(url[len(prefix):].split("/")[0])
+            if nid not in state.v1:
+                raise ConnectionError("api.openstreetmap.org down")
+            return _Resp({"elements": [{"id": nid, "version": 1,
+                                        "timestamp": f"{state.v1[nid]}T00:00:00Z"}]})
+        assert url in (alpr.OVERPASS, *alpr.BACKENDS), f"a test reached for the network: {url}"
+        reply = state.by_url.get(url, state.reply)
+        if isinstance(reply, Exception):
+            raise reply
+        return _Resp(reply)
 
     monkeypatch.setattr(common, "fetch", fake_fetch)
     return state
@@ -154,6 +165,100 @@ class TestSource:
         box.reply = {"elements": [_node(i) for i in range(40)]}      # under 60% of 100
         data = alpr.run(None)
         assert data["stale"] is True and data["asof"] == YESTERDAY
+
+
+# ---------------------------------------------------------------- the fetch itself
+class TestFetch:
+    """2026-10-10 to 2026-10-12: a query with no declared budget asked a busy Overpass for the
+    defaults (180 s, 512 MB) and was refused at the door with a 504, run after run."""
+
+    def test_query_declares_a_small_budget_and_keeps_the_node_metadata(self):
+        assert alpr.QUERY.startswith("[out:json][timeout:25][maxsize:33554432];")
+        # the first-mapped logic reads version and timestamp from `out meta`
+        assert alpr.QUERY.endswith("out meta;")
+
+    def test_a_refusing_front_door_fails_over_to_its_backends_in_order(self, box):
+        box.by_url[alpr.OVERPASS] = ConnectionError("504 Gateway Timeout")
+        box.by_url[alpr.BACKENDS[0]] = ConnectionError("429 Too Many Requests")
+        box.reply = {"elements": [_node(1), _node(2)]}
+        data = alpr.run(None)
+        assert data["stale"] is False and data["asof"] == TODAY and data["stats"]["total"] == 2
+        assert box.calls == [alpr.OVERPASS, *alpr.BACKENDS]
+
+    def test_a_healthy_front_door_is_the_only_server_asked(self, box):
+        box.reply = {"elements": [_node(1)]}
+        alpr.run(None)
+        assert box.calls == [alpr.OVERPASS]
+
+    def test_a_timeout_remark_fails_over_too(self, box):
+        box.by_url[alpr.OVERPASS] = {"elements": [], "remark": "runtime error: Query timed out"}
+        box.reply = {"elements": [_node(1)]}
+        data = alpr.run(None)
+        assert data["stale"] is False and data["stats"]["total"] == 1
+
+    def test_every_server_down_names_each_one_in_the_error(self, box):
+        _seed_last(box)
+        box.reply = ConnectionError("down")
+        data = alpr.run(None)
+        assert data["stale"] is True
+        for url in (alpr.OVERPASS, *alpr.BACKENDS):
+            assert url.split("/")[2] in data["error"]
+
+
+# ---------------------------------------------------------------- a camera with no date
+class TestUndated:
+    """An edited node's first-mapped date comes from the OSM history API. When that lookup
+    fails: a warning on a daily run (the list is the day's), a red run on the weekly one (the
+    row would otherwise lend the camera its own date)."""
+
+    def test_daily_run_keeps_the_camera_and_leaves_its_date_blank(self, box):
+        common.save_snapshot("alpr_nodes", [1])
+        box.reply = {"elements": [_node(1), _node(2, "2026-10-06", version=2)]}
+        data = alpr.run(None)
+        assert data["stale"] is False and data["asof"] == TODAY
+        assert {c["id"]: c["mapped"] for c in data["cameras"]} == {1: "2026-09-01", 2: ""}
+        assert data["stats"]["new_this_week"] == 0       # never the edit date
+
+    def test_weekly_run_refuses_the_row_for_an_undated_new_camera(self, box):
+        box.today = "2026-10-12"
+        _seed_last(box, asof="2026-10-11")
+        common.save_snapshot("alpr_nodes", [1])
+        box.reply = {"elements": [_node(1), _node(2, "2026-10-06", version=2)]}
+        data = alpr.run(None, record_change=True)
+        assert data["stale"] is True and data["asof"] == "2026-10-11"
+        assert "could not be dated" in data["error"] and "nodes 2" in data["error"]
+        assert common.load_change_log("alpr") == []
+        assert common.load_snapshot("alpr_nodes") == [1]
+        # the re-run, with the history API back, logs it under its real date
+        box.v1[2] = "2026-10-05"
+        data = alpr.run(None, record_change=True)
+        assert data["stale"] is False
+        assert [e["new_ids"] for e in common.load_change_log("alpr")] == [[2]]
+        assert {c["id"]: c["mapped"] for c in data["cameras"]}[2] == "2026-10-05"
+
+    def test_weekly_run_is_not_stopped_by_an_undated_camera_that_is_not_new(self, box):
+        """An old gap is the daily warning's business; the row only vouches for its new ids."""
+        box.today = "2026-10-12"
+        common.save_snapshot("alpr_nodes", [1, 2])
+        box.reply = {"elements": [_node(1), _node(2, "2026-10-06", version=2), _node(3)]}
+        data = alpr.run(None, record_change=True)
+        assert data["stale"] is False
+        assert [e["new_ids"] for e in common.load_change_log("alpr")] == [[3]]
+
+    def test_gate_warns_and_passes(self, box, tmp_path, capsys):
+        box.reply = {"elements": [_node(1), _node(2, "2026-10-06", version=2)]}
+        args = _write_run(tmp_path, alpr.run(None))
+        assert chk.main(args, now=NOW) == 0
+        out = capsys.readouterr().out
+        warns = [ln for ln in out.splitlines() if ln.startswith("::warning")]
+        assert len(warns) == 1 and "nodes 2" in warns[0] and "1 camera(s)" in warns[0]
+        assert "::error" not in out
+        assert not (tmp_path / "alert.txt").exists()
+
+    def test_gate_is_silent_when_every_camera_is_dated(self, box, tmp_path, capsys):
+        box.reply = {"elements": [_node(1), _node(2)]}
+        assert chk.main(_write_run(tmp_path, alpr.run(None)), now=NOW) == 0
+        assert "::warning" not in capsys.readouterr().out
 
 
 # ---------------------------------------------------------------- one writer for the change log
@@ -399,6 +504,11 @@ class TestWorkflowWiring:
     def test_heartbeat_fires_only_on_a_passed_gate(self):
         ping = next(s for s in _steps("daily.yml") if "secrets.UP_ALPR_PING_URL" in s["text"])
         assert "steps.alpr_fresh.outcome == 'success'" in ping["if"]
+
+    def test_a_red_gate_does_not_withhold_the_newsletter(self):
+        send = next(s for s in _steps("daily.yml") if s["id"] == "send")
+        assert "!cancelled()" in send["if"]
+        assert "alpr_fresh" not in send["if"]
 
     def test_only_the_weekly_job_writes_the_change_log(self):
         """A second --alpr-change writer is the twin-row bug. The daily build must not pass it."""

@@ -1300,6 +1300,16 @@
   "details": ""
  },
  {
+  "log_id": "261012BF0192",
+  "time": "Oct 12 2026  2:36PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Rosedale Hwy / Fruitvale Ave",
+  "area": "Bakersfield",
+  "lat": 35.383246,
+  "lon": -119.074105,
+  "details": ""
+ },
+ {
   "log_id": "261012BF0037",
   "time": "Oct 12 2026  6:14AM",
   "type": "20002-Hit and Run No Injuries",

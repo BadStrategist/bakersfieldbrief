@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-11T16:57:07-07:00",
+ "built_at": "2026-10-11T17:28:44-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 5,
+   "chp_new": 3,
    "top_story": "3rd annual Cultura Fest brings Bakersfield families together to celebrate heritage and support education",
    "overnight_band": {
     "date": "2026-10-11",
@@ -149,13 +149,13 @@
   },
   "tehachapi": {
    "sr58": "RESTRICTIONS",
-   "wind_mph": 13,
+   "wind_mph": 8,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 64,
-   "wind_mph": 13,
+   "wind_mph": 8,
    "alerts": 0
   },
   "roads": {
@@ -193,7 +193,7 @@
    "alpr_total": 270,
    "kern_fires": 1,
    "aqi": 48,
-   "chp_week": 120
+   "chp_week": 123
   },
   "letters": {
    "published": 1

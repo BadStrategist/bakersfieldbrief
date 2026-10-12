@@ -1350,6 +1350,36 @@
   "details": ""
  },
  {
+  "log_id": "261011BF0255",
+  "time": "Oct 11 2026  5:10PM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 I5 S",
+  "area": "Fort Tejon",
+  "lat": 34.909988,
+  "lon": -118.924095,
+  "details": ""
+ },
+ {
+  "log_id": "261011BF0262",
+  "time": "Oct 11 2026  5:19PM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 S / Laval Rd W Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.989012,
+  "lon": -118.946272,
+  "details": ""
+ },
+ {
+  "log_id": "261011BF0263",
+  "time": "Oct 11 2026  5:27PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 Jno Lebec Curve",
+  "area": "Fort Tejon",
+  "lat": 34.841944,
+  "lon": -118.864444,
+  "details": ""
+ },
+ {
   "log_id": "261011BF0139",
   "time": "Oct 11 2026 11:54AM",
   "type": "FIRE-Report of Fire",

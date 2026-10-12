@@ -6,7 +6,7 @@
    "slug": "i5",
    "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
    "pass": true,
-   "status": "RESTRICTIONS",
+   "status": "CLOSED",
    "pass_status": "RESTRICTIONS",
    "sections": [
     {
@@ -21,8 +21,8 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "No traffic restrictions reported.",
-     "status": "OPEN"
+     "text": "Is closed to southbound traffic 23.5 mi south of the Jc tof SR-36 (Tehama Co) - Due to a traffic collision - Motorists are advised to use an alternate route",
+     "status": "CLOSED"
     }
    ],
    "scope": {
@@ -46,11 +46,19 @@
       "where": "San Joaquin Co",
       "text": "A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
       "region": "CENTRAL CALIFORNIA"
+     },
+     {
+      "status": "CLOSED",
+      "place": "",
+      "county": "Tehama Co",
+      "where": "Tehama Co",
+      "text": "Is closed to southbound traffic 23.5 mi south of the Jc tof SR-36 (Tehama Co) - Due to a traffic collision - Motorists are advised to use an alternate route",
+      "region": "NORTHERN CALIFORNIA"
      }
     ]
    },
-   "reported_as_of": "Monday, October 12th, 2026 at 02:15 PM",
-   "hash": "efa451eb67"
+   "reported_as_of": "Monday, October 12th, 2026 at 02:42 PM",
+   "hash": "2fb45c7d7d"
   },
   {
    "number": "58",
@@ -72,7 +80,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Monday, October 12th, 2026 at 02:15 PM",
+   "reported_as_of": "Monday, October 12th, 2026 at 02:42 PM",
    "hash": "5374f203ec"
   },
   {
@@ -109,7 +117,7 @@
      }
     ]
    },
-   "reported_as_of": "Monday, October 12th, 2026 at 02:15 PM",
+   "reported_as_of": "Monday, October 12th, 2026 at 02:42 PM",
    "hash": "f97882795e"
   }
  ],

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-12T07:44:48-07:00",
+ "built_at": "2026-10-12T07:50:07-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,9 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": "HTTPError: 504 Server Error: Gateway Timeout for url: https://overpass-api.de/api/interpreter",
-   "stale": true,
-   "asof": "2026-10-12"
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -75,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 5,
+   "chp_new": 3,
    "top_story": "Kyiv says Russian strikes on energy facilities continue despite Trump's 'energy ceasefire'",
    "overnight_band": {
     "date": "2026-10-12",
@@ -214,7 +212,7 @@
    "published": 62
   },
   "map": {
-   "dots": 39
+   "dots": 35
   },
   "sunday_read": {
    "topic": "Public safety",

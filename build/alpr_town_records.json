@@ -1,0 +1,89 @@
+{
+  "about": "Public records about license plate readers in Kern County towns, for /surveillance/<town>/. Every quote is copied from the linked document, word for word, and was read on the 'checked' date. 'units' is the number the record names and 'scope' is the Census place that number is for: the page prints the mapped count for the same place next to it. 'point' is a coordinate the record gives: the page shows the record only when that point is inside one of the town's places. Add a record only after you read the document. Never type a number that the document does not print.",
+  "checked": "2026-10-12",
+  "records": [
+    {
+      "towns": ["tehachapi"],
+      "agency": "Tehachapi Police Department",
+      "doc": "application to the Organized Retail Theft Prevention Grant Program",
+      "when": "July 6, 2023",
+      "source": "California Board of State and Community Corrections",
+      "url": "https://www.bscc.ca.gov/wp-content/uploads/102-Tehachapi-Police-Dept.pdf",
+      "units": 16,
+      "scope": "Tehachapi",
+      "quotes": [
+        "The Tehachapi Police Department is to install 16 Automatic License Plate Readers (ALPR) throughout the city along high traffic areas in and out of our retail and services districts.",
+        "Tehachapi has 3 Highway 58 ramps to the north of town, and 2 other two lane roads that take you out of the city.",
+        "Additionally, 2 ALPRs will be installed at the primary intersection centered in the business district"
+      ],
+      "note": "This is an application. The board's summaries of the projects it funded do not name the department.",
+      "note_url": "https://www.bscc.ca.gov/wp-content/uploads/E-3-ORT-Prevention-Summaries.pdf",
+      "note_label": "Funded project summaries (Attachment E-3)"
+    },
+    {
+      "towns": ["tehachapi"],
+      "agency": "Kern County Sheriff's Office",
+      "doc": "Notice of Exemption, State Clearinghouse number 2026040438",
+      "when": "April 9, 2026",
+      "source": "CEQAnet, California State Clearinghouse",
+      "url": "https://ceqanet.lci.ca.gov/2026040438",
+      "point": [35.1242142, -118.4946404],
+      "point_label": "W Valley Blvd @ Woodford Tehachapi Rd",
+      "quotes": [
+        "The project consists of the installation of a Flock Safety automated license plate reading (ALPR) camera on behalf of the Kern County Sheriff's Office."
+      ]
+    },
+    {
+      "towns": ["delano"],
+      "agency": "Delano Police Department",
+      "doc": "Organized Retail Theft Prevention Grant Program, funded project summaries (Attachment E-3)",
+      "when": "2023",
+      "source": "California Board of State and Community Corrections",
+      "url": "https://www.bscc.ca.gov/wp-content/uploads/E-3-ORT-Prevention-Summaries.pdf",
+      "units": 25,
+      "scope": "Delano",
+      "quotes": [
+        "The City of Delano and the Delano Police Department (DPD) seek funding to install 25 Flock cameras at retail locations throughout the city. The DPD will also purchase two patrol vehicles equipped with license plate readers"
+      ]
+    },
+    {
+      "towns": ["ridgecrest"],
+      "agency": "Ridgecrest Police Department",
+      "doc": "Atlas of Surveillance entry, from Ridgecrest City Council meeting documents",
+      "when": "February 2024",
+      "source": "Atlas of Surveillance, Electronic Frontier Foundation",
+      "url": "https://www.atlasofsurveillance.org/a/CA0150600ALPR",
+      "units": 24,
+      "scope": "Ridgecrest",
+      "quotes": [
+        "The Ridgecrest Police Department received authorization to install 24 Flock Safety automated license plate readers in February 2024."
+      ]
+    },
+    {
+      "towns": ["ridgecrest"],
+      "agency": "KGET 17",
+      "doc": "news report on the Ridgecrest Police Department's Flock contract",
+      "when": "in our brief of October 8, 2026",
+      "source": "KGET 17",
+      "url": "https://www.kget.com/news/local-news/ridgecrest-police-chief-says-city-is-amending-flock-camera-contract-based-on-resident-pushback-concerns/",
+      "headline": true,
+      "quotes": [
+        "Ridgecrest police chief says city is amending Flock camera contract based on resident pushback, concerns"
+      ],
+      "brief": "2026-10-08"
+    },
+    {
+      "towns": ["shafter"],
+      "agency": "Shafter Police Department",
+      "doc": "Atlas of Surveillance entry, from reports in the Wasco Tribune and The Shafter Press",
+      "when": "2024",
+      "source": "Atlas of Surveillance, Electronic Frontier Foundation",
+      "url": "https://www.atlasofsurveillance.org/a/CA0150700ALPR",
+      "units": 25,
+      "scope": "Shafter",
+      "quotes": [
+        "The Shafter Police Department installed 25 Flock Safety automated license plate readers in 2024."
+      ]
+    }
+  ]
+}

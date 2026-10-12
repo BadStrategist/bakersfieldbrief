@@ -290,6 +290,134 @@ def test_town_page_says_what_was_found_for_a_camera_with_no_roll_record(site):
     assert "not looked up yet" not in t.lower()
 
 
+# ------------------------------------------------------------------ what a search needs
+def _blocks(raw):
+    return [json.loads(b) for b in re.findall(r'<script type="application/ld\+json">(.*?)</script>', raw, re.S)]
+
+
+def test_town_page_headings_skip_no_level(site):
+    raw = _town_page(site)
+    main = raw[raw.index("<h1"):raw.index('<section class="card" id="more">')]
+    levels = [int(n) for n in re.findall(r"<h([1-6])\b", main)]
+    assert levels[0] == 1 and levels.count(1) == 1
+    assert all(b - a <= 1 for a, b in zip(levels, levels[1:])), levels
+    # the explorer title is an h2 here and stays an h3 on the hub, whose headings are pinned
+    assert '<h2 id="ax-h">' in raw and '<h3 id="ax-h">' not in raw
+    assert '<h3 id="ax-h">' in alpr_page.explorer_html([], "2026-10-14", 0, True)[0]
+
+
+def test_town_meta_description_is_shown_whole():
+    for name, n in (("Ridgecrest", 31), ("McFarland", 19), ("Wasco", 10), ("Shafter", 132)):
+        d = alpr_towns._desc(n, n, name, False)
+        assert len(d) <= 160 and f"{n} license plate readers in {name}" in d, d
+    d = alpr_towns._desc(12, 12, "Tehachapi", True)
+    assert len(d) <= 160 and "in and around Tehachapi" in d
+
+
+def test_town_questions_are_on_the_page_and_in_the_schema_and_agree(site):
+    raw = _town_page(site)
+    faq = next(b for b in _blocks(raw) if b.get("@type") == "FAQPage")
+    block = re.search(r'<section class="card ax-faq" id="questions">.*?</section>', raw, re.S).group(0)
+    seen = [(_text(q), _text(a)) for q, a in re.findall(r"<h3>(.*?)</h3><p>(.*?)</p>", block, re.S)]
+    assert seen == [(q["name"], q["acceptedAnswer"]["text"]) for q in faq["mainEntity"]]
+    got = dict(seen)
+    assert got["Does Tehachapi have Flock cameras?"].startswith(
+        "Yes. 9 Flock Safety license plate readers are mapped in Tehachapi and Stallion Springs as of 2026-10-14.")
+    assert "1 more stands just outside the Tehachapi city limits and is not in that count." in \
+        got["Does Tehachapi have Flock cameras?"]
+    how = got["How many license plate readers are in Tehachapi?"]
+    assert "9 are mapped as of 2026-10-14: 7 in Tehachapi and 2 in Stallion Springs." in how
+    assert ("A record at California Board of State and Community Corrections names 16 for the "
+            "Tehachapi Police Department.") in how
+    assert "Where are the Flock cameras in Tehachapi?" in got
+    assert "9 of the 9 cameras are joined" in got["Who owns the land under the cameras in Tehachapi?"]
+    # every node the page had before is still there
+    assert {"WebPage", "Dataset", "BreadcrumbList", "NewsMediaOrganization", "WebSite"} <= \
+        {b.get("@type") for b in _blocks(raw)}
+
+
+def test_every_public_record_is_a_quote_with_a_source():
+    recs = alpr_towns.load_records()
+    assert recs
+    names = {p["name"] for p in places_kern.load()}
+    for r in recs:
+        assert set(r["towns"]) <= set(alpr_towns.TOWNS), r["towns"]
+        assert r["url"].startswith("https://") and r["quotes"] and all(q.strip() for q in r["quotes"])
+        for k in ("agency", "doc", "when", "source"):
+            assert r[k].strip(), k
+        assert chr(8212) not in json.dumps(r, ensure_ascii=False)
+        if "units" in r:
+            # the number the page prints is in the words it quotes, and is for a real place
+            assert str(r["units"]) in " ".join(r["quotes"]) and r["scope"] in names
+            assert all(r["scope"] in alpr_towns.TOWNS[t]["places"] for t in r["towns"])
+        if "point" in r:
+            assert places_kern.place_of(*r["point"]) is not None and r["point_label"]
+
+
+def test_town_page_prints_its_records_and_counts_the_map_beside_them(site):
+    raw = _town_page(site)
+    block = re.search(r'<section class="card ax-records" id="records">.*?</section>', raw, re.S).group(0)
+    t = _text(block)
+    assert "Tehachapi Police Department: application to the Organized Retail Theft Prevention Grant Program" in t
+    assert "is to install 16 Automatic License Plate Readers (ALPR)" in t
+    # 7 is counted from the fixture's cameras inside the city, not typed
+    assert "The record names 16. This map holds 7 inside Tehachapi." in t
+    assert "This is an application." in t
+    # the sheriff's notice is here because its pole is inside Golden Hills, a place of this town
+    assert "Its coordinates are inside Golden Hills." in t
+    assert 'href="https://www.bscc.ca.gov/wp-content/uploads/102-Tehachapi-Police-Dept.pdf"' in block
+    assert 'href="https://ceqanet.lci.ca.gov/2026040438"' in block
+    # another town's record is not on this page
+    assert "Ridgecrest Police Department" not in raw
+    who = dict((q["name"], q["acceptedAnswer"]["text"]) for q in
+               next(b for b in _blocks(raw) if b.get("@type") == "FAQPage")["mainEntity"])
+    assert who["Who operates the license plate readers in Tehachapi?"] == (
+        "OpenStreetMap names no operator for these cameras. The public records on this page name "
+        "the Kern County Sheriff's Office and Tehachapi Police Department.")
+
+
+def test_a_record_with_a_point_outside_the_town_is_not_shown(site, monkeypatch):
+    rec = {"towns": ["tehachapi"], "agency": "A", "doc": "d", "when": "2026", "source": "S",
+           "url": "https://example.org/", "quotes": ["q"], "point": list(GRAPEVINE), "point_label": "x"}
+    monkeypatch.setattr(alpr_towns, "load_records", lambda: [rec])
+    assert 'id="records"' not in _town_page(site)
+    monkeypatch.setattr(alpr_towns, "load_records", lambda: [dict(rec, point=list(STALLION))])
+    assert "Its coordinates are inside Stallion Springs." in _text(_town_page(site))
+    # a record with no number for the town and no pole in it names no operator for the town
+    monkeypatch.setattr(alpr_towns, "load_records", lambda: [{k: v for k, v in rec.items() if "point" not in k}])
+    raw = _town_page(site)
+    assert 'id="records"' in raw and "Who operates the license plate readers" not in raw
+
+
+def test_a_town_with_no_record_has_no_records_block_and_names_the_osm_operators(site, monkeypatch):
+    monkeypatch.setattr(alpr_towns, "load_records", lambda: [])
+    cams = _county()
+    for c in cams[:5]:
+        c["operator"] = "Ridgecrest Police Department"
+    site.install(_ownership(cams))
+    alpr_towns.build(_ctx(), _sources(cams))
+    raw = (site.root / "surveillance" / "ridgecrest" / "index.html").read_text(encoding="utf-8")
+    assert 'id="records"' not in raw
+    assert ("OpenStreetMap names an operator for 5 of the 12 mapped cameras: Ridgecrest Police "
+            "Department, 5.") in _text(raw)
+    teh = (site.root / "surveillance" / "tehachapi" / "index.html").read_text(encoding="utf-8")
+    assert "Who operates the license plate readers" not in teh
+
+
+def test_a_brief_links_a_town_map_only_when_one_paragraph_names_the_town_and_a_camera():
+    from build.builders import daily
+    towns = {"ridgecrest": "Ridgecrest", "delano": "Delano"}
+    story = "<p>Ridgecrest's police chief says the city is amending its Flock camera contract.</p>"
+    other = "<p>Delano opens a new park on Saturday.</p>"
+    assert daily._town_camera_links(story + other, towns) == [
+        ("surveillance/ridgecrest/", "Ridgecrest Flock camera map")]
+    assert daily._town_camera_links(other + "<p>Flock cameras are on the agenda.</p>", towns) == []
+    assert daily._town_camera_links(story, {}) == [] and daily._town_camera_links(story, None) == []
+    out = daily._related_trackers("../../", story + other, towns)
+    assert out.index('href="../../surveillance/ridgecrest/"') < out.index('href="../../surveillance/"')
+    assert "delano" not in out
+
+
 # ------------------------------------------------------------------ the hub follows the data
 def _hub(site, cams, own):
     site.install(own)

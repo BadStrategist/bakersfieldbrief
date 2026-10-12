@@ -745,10 +745,41 @@ _BRIEF_TOPICS = (
 )
 
 
-def _related_trackers(rel: str, content_html: str) -> str:
+_ALPR_WORDS = _BRIEF_TOPICS[1][0]
+
+
+def _camera_towns(alpr: dict) -> dict:
+    """slug -> name for the town camera maps this build writes. The briefs are built before
+    those pages, so this asks the same plan the pages are built from."""
+    from . import alpr_towns
+    try:
+        return {s: p["town"]["name"] for s, p in alpr_towns.plan({"alpr": alpr}).items()}
+    except Exception as e:  # noqa: BLE001 - a brief is never lost to a link
+        common.log(f"daily: town camera links skipped ({type(e).__name__}: {e})")
+        return {}
+
+
+def _town_camera_links(content_html: str, towns: dict | None) -> list[tuple[str, str]]:
+    """The town camera maps a brief should link: a town with a page this build (towns is
+    slug -> name) that one paragraph or list item names together with a plate-reader word.
+    A town named in one story and a camera in another is no link."""
+    picked = []
+    for block in re.split(r"</p>|</li>|</h[1-6]>", content_html):
+        text = _plain(block).lower()
+        if not any(k in text for k in _ALPR_WORDS):
+            continue
+        for slug, name in (towns or {}).items():
+            row = (f"surveillance/{slug}/", f"{name} Flock camera map")
+            if re.search(rf"\b{re.escape(name.lower())}\b", text) and row not in picked:
+                picked.append(row)
+    return picked
+
+
+def _related_trackers(rel: str, content_html: str, towns: dict | None = None) -> str:
     """Give every brief page a job: a path into the evergreen trackers that
     actually earn clicks. Chosen by what the day's brief mentions, topped up to
-    at least three so a quiet news day still links somewhere useful."""
+    at least three so a quiet news day still links somewhere useful. A brief on a
+    town's plate readers also links that town's camera map, first."""
     text = _plain(content_html).lower()
     scored = []
     for kws, href, label in _BRIEF_TOPICS:
@@ -762,6 +793,7 @@ def _related_trackers(rel: str, content_html: str) -> str:
             break
         if (href, label) not in picked:
             picked.append((href, label))
+    picked = _town_camera_links(content_html, towns) + picked
     rows = "".join(f"""
     <li class="arch-row"><span class="arch-date">tracker</span>
     <span class="arch-head"><a href="{rel}{href}">{html.escape(label)}</a></span></li>"""
@@ -785,6 +817,7 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
     """
     built = []
     rel = "../../"  # briefs/<date>/index.html is 2 levels below site root
+    towns = _camera_towns(alpr)
     content = _article_lead(top, headlines, weather, airnow, calfire,
                             escribe, events or [], today, rel, ctx)
     content += _upcoming_meetings(rel, escribe, board, today)
@@ -797,7 +830,7 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
         title=_brief_title(headline, today),
         desc=dated_desc,
         canonical=f"/briefs/{built_iso}/",
-        content=(_h2ify(content) + _related_trackers(rel, content)
+        content=(_h2ify(content) + _related_trackers(rel, content, towns)
                  + _brief_pager(built_iso, [str(e.get("date", "")) for e in _load_archive()] + [built_iso], rel)),
         current="index", rel=rel, built=built_iso,
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(),
@@ -871,7 +904,7 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
         ],
     }
 
-    hub_body = (f"{_h2ify(hub_content)}\n\n{_related_trackers(index_rel, hub_content)}"
+    hub_body = (f"{_h2ify(hub_content)}\n\n{_related_trackers(index_rel, hub_content, towns)}"
                 f"\n\n{archive_section}")
     common.write(common.SITE / "briefs" / "index.html", page_mod.render(
         title="Bakersfield News Today — Daily Brief for Kern County",
@@ -901,7 +934,7 @@ def _archive(ctx, today, built_iso, top, news, weather, chp, isa,
             past_desc = _brief_lede(stored) or (
                 f"The {_fmt_date(d)} Bakersfield Daily Brief: Kern County news, "
                 "weather, conditions, and public meetings.")
-            past_body = (_h2ify(stored) + _related_trackers(past_rel, stored)
+            past_body = (_h2ify(stored) + _related_trackers(past_rel, stored, towns)
                          + _upcoming_meetings(past_rel, escribe, board, d))
         else:
             past_desc = (f"The Bakersfield Daily Brief for {_fmt_date(d)}: Kern County news, "

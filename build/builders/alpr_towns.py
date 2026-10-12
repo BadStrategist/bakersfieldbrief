@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import collections
 import html
+import json
 import re
 
 from .. import common, places_kern
@@ -283,6 +284,161 @@ def _streets(cams: list) -> str:
     return _words([f"{k} on {s}" for s, k in top]) if top else ""
 
 
+# ------------------------------------------------------------------ public records
+RECORDS_FILE = common.ROOT / "build" / "alpr_town_records.json"
+
+
+def load_records() -> list[dict]:
+    """The reviewed public records (build/alpr_town_records.json). A missing or broken file is
+    no records: the block and its questions are left off, and the page still builds."""
+    try:
+        return json.loads(RECORDS_FILE.read_text(encoding="utf-8")).get("records") or []
+    except (OSError, ValueError):
+        return []
+
+
+def records_for(p: dict) -> list[dict]:
+    """The records for one town page. A record with a point is the town's only when that point is
+    inside one of the town's places: the same lookup that puts a camera on the page. "mapped" is
+    the cameras the map holds inside the place the record's number is for."""
+    out = []
+    for r in load_records():
+        if p["slug"] not in (r.get("towns") or []):
+            continue
+        r = dict(r)
+        if r.get("point"):
+            pl = places_kern.place_of(*r["point"])
+            if not pl or pl["name"] not in p["town"]["places"]:
+                continue
+            r["point_place"] = pl["name"]
+        if r.get("units") and r.get("scope"):
+            r["mapped"] = sum(1 for c in p["cams"] if c["place"]["name"] == r["scope"])
+        out.append(r)
+    return out
+
+
+def _operators(cams: list) -> list[tuple[str, int]]:
+    """The operators OpenStreetMap names on the town's cameras, with the count for each."""
+    n = collections.Counter(c["op"] for c in cams if c.get("op"))
+    return sorted(n.items(), key=lambda x: (-x[1], x[0]))
+
+
+def _records_html(p: dict, recs: list[dict], rel: str) -> str:
+    if not recs:
+        return ""
+    name, n = p["town"]["name"], len(p["cams"])
+    items = []
+    for r in recs:
+        quotes = "".join(f"<blockquote>&ldquo;{esc(q)}&rdquo;</blockquote>" for q in r["quotes"])
+        lines = []
+        if "mapped" in r:
+            lines.append(f"The record names {r['units']}. This map holds {r['mapped']} inside "
+                         f"{esc(r['scope'])}.")
+        if r.get("point_place"):
+            lines.append(f"The notice names a pole at {esc(r['point_label'])}. Its coordinates "
+                         f"are inside {esc(r['point_place'])}.")
+        if r.get("note"):
+            link = (f' <a href="{esc(r["note_url"])}" rel="noopener">{esc(r["note_label"])}</a>.'
+                    if r.get("note_url") else "")
+            lines.append(esc(r["note"]) + link)
+        if r.get("brief") and _has_brief(r["brief"]):
+            lines.append(f'<a href="{rel}briefs/{esc(r["brief"])}/">Our brief for '
+                         f'{esc(r["brief"])}</a> carried this report.')
+        what = "Headline" if r.get("headline") else "Record"
+        items.append(
+            f'<li><h3>{esc(r["agency"])}: {esc(r["doc"])}, {esc(r["when"])}</h3>{quotes}'
+            + "".join(f"<p>{x}</p>" for x in lines)
+            + f'<p><a href="{esc(r["url"])}" rel="noopener">{what} at {esc(r["source"])}</a></p></li>')
+    ops = _operators(p["cams"])
+    named = sum(k for _, k in ops)
+    op_p = ""
+    if ops:
+        rest = n - named
+        op_p = (f"<p>OpenStreetMap names an operator for {named} of the {n} mapped cameras: "
+                + esc(_words([f"{o}, {k}" for o, k in ops])) + "."
+                + (f" The other {rest} carr{'y' if rest != 1 else 'ies'} no operator tag." if rest else "")
+                + "</p>")
+    return f"""
+    <section class="card ax-records" id="records">
+      <h2>Public records on {esc(name)}&rsquo;s license plate readers</h2>
+      <p>A record gives the number an agency asked for, was authorized to install or reported.
+      The map gives the cameras that volunteers have found and mapped, for any operator. The two
+      numbers measure different things.</p>
+      {op_p}
+      <ul class="ax-reclist">{"".join(items)}</ul>
+    </section>"""
+
+
+def _has_brief(iso: str) -> bool:
+    """True when the archive holds a brief for that date, so the link has a page to open."""
+    try:
+        entries = json.loads((common.DATA / "briefs_archive.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return False
+    return any(str(e.get("date")) == iso for e in entries)
+
+
+def questions(p: dict, recs: list[dict], land: list[str], streets: str, where: str,
+              limits: str) -> list[tuple[str, str]]:
+    """The questions people type about one town's cameras, each answered from this build's
+    data. One list feeds the visible block and the FAQPage node, so the two cannot differ."""
+    name, cams, near = p["town"]["name"], p["cams"], p["near"]
+    n, flock, asof = len(cams), p["flock"], p["asof"]
+    by_place = collections.Counter(c["place"]["name"] for c in cams)
+    split = _words([f"{by_place[pl]} in {pl}" for pl in p["town"]["places"] if by_place[pl]])
+    outside = (f" {len(near)} more stand{'s' if len(near) == 1 else ''} just outside the {limits} "
+               f"and {'is' if len(near) == 1 else 'are'} not in that count." if near else "")
+    qs = []
+    if flock:
+        qs.append((f"Does {name} have Flock cameras?",
+                   f"Yes. {flock} Flock Safety license plate readers are mapped in {where} as of "
+                   f"{asof}" + (f", out of {n} plate readers (ALPR) of any make" if flock != n else "")
+                   + f".{outside} The points come from OpenStreetMap, where volunteers map them."))
+    counted = "".join(f" A record at {r['source']} names {r['units']} for the {r['agency']}."
+                      for r in recs if "mapped" in r)
+    qs.append((f"How many license plate readers are in {name}?",
+               (f"{n} are mapped as of {asof}: {split}" if len(by_place) > 1 else
+                f"{n} are mapped in {name} as of {asof}") + f".{outside}{counted}"))
+    qs.append((f"Where are the Flock cameras in {name}?",
+               (f"The streets with the most are: {streets}. " if streets else "")
+               + f"The table on this page lists all {n} by street, and the map shows each point "
+                 f"and the direction it faces."))
+    ops = _operators(cams)
+    # only a record about this town's own cameras names an agency here: one with a number for a
+    # place of the town, or a pole inside it
+    agencies = sorted({r["agency"] for r in recs if "mapped" in r or r.get("point_place")})
+    if ops or agencies:
+        named = sum(k for _, k in ops)
+        a = (f"OpenStreetMap names an operator for {named} of the {n} mapped cameras: "
+             + _words([f"{o}, {k}" for o, k in ops]) + "." if ops else
+             "OpenStreetMap names no operator for these cameras.")
+        if agencies:
+            a += f" The public records on this page name the {_words(agencies)}."
+        qs.append((f"Who operates the license plate readers in {name}?", a))
+    if land:
+        qs.append((f"Who owns the land under the cameras in {name}?",
+                   f"{p['coverage']['joined']} of the {n} cameras are joined to the Kern County "
+                   f"tax-roll parcel at or beside them: {_words(land)}. The table gives the owner "
+                   f"of record, the land use and the assessed value for each one."))
+    return qs
+
+
+def _questions_html(name: str, qs: list[tuple[str, str]]) -> str:
+    rows = "".join(f"<h3>{esc(q)}</h3><p>{esc(a)}</p>" for q, a in qs)
+    return f"""
+    <section class="card ax-faq" id="questions">
+      <h2>{esc(name)} Flock camera questions</h2>
+      {rows}
+    </section>"""
+
+
+def _desc(n: int, flock: int, name: str, grouped: bool) -> str:
+    """The meta description, short enough to be shown whole (160 characters)."""
+    place = f"in and around {name}" if grouped else f"in {name}"
+    return (f"Map of the {n} license plate readers {place}, {flock} of them Flock Safety "
+            f"cameras, each with the owner of record for the land at or beside it.")
+
+
 def _page(ctx, p: dict, plans: dict) -> str:
     rel = "../../"
     slug, town, cams, near = p["slug"], p["town"], p["cams"], p["near"]
@@ -305,6 +461,9 @@ def _page(ctx, p: dict, plans: dict) -> str:
         scoped=True, scope_note=note)
     explorer = explorer.replace('<section class="ax" id="explorer"',
                                 f'<section class="ax" id="explorer" data-src="{alpr_explorer.asset_url(rel)}"', 1)
+    # On the hub this title is an h3 under the hub's own headings. Here it is the first heading
+    # after the h1, so it is an h2: no level is skipped.
+    explorer = re.sub(r'<h3 id="ax-h">(.*?)</h3>', r'<h2 id="ax-h">\1</h2>', explorer, count=1, flags=re.S)
 
     counts = collections.Counter(alpr_page.type_key(c["own"].get("otype")) for c in cams if c["own"])
     land = [f"{counts[k]} at or beside {w}" for k, w in (("agency", "public agency land"),
@@ -336,9 +495,11 @@ def _page(ctx, p: dict, plans: dict) -> str:
       {_table(near, near=True, limits=limits)}
     </section>"""
 
-    others = "".join(f'<li><a href="{rel}surveillance/{s}/">{esc(o["town"]["name"])}</a> '
-                     f'<span class="ax-dim">{len(o["cams"])} cameras</span></li>'
+    others = "".join(f'<li><a href="{rel}surveillance/{s}/">{esc(o["town"]["name"])} Flock camera map '
+                     f'<span class="ax-dim">{len(o["cams"])} cameras</span></a></li>'
                      for s, o in plans.items() if s != slug)
+    recs = records_for(p)
+    qs = questions(p, recs, land, streets, where, limits)
     place_link = (f' Local conditions, incidents and headlines are on the '
                   f'<a href="{rel}places/{slug}/">{esc(name)} page</a>.'
                   if _has_place_page(slug) else "")
@@ -368,11 +529,14 @@ def _page(ctx, p: dict, plans: dict) -> str:
       {_table(cams, places=grouped)}
     </section>
     {near_html}
+    {_records_html(p, recs, rel)}
+    {_questions_html(name, qs)}
 
     <section class="card" id="more">
       <h2>More of the county map</h2>
       <p><a href="{rel}surveillance/">Every mapped license plate reader in Kern County</a>, with
-      the weekly change log and the owners with the most cameras at or beside their land.{place_link}</p>
+      the weekly change log and the owners with the most cameras at or beside their land. The
+      <a href="{rel}surveillance/#towns">count for every city and town</a> is on that page.{place_link}</p>
       <ul class="ax-townlinks">{others}</ul>
     </section>
 
@@ -384,9 +548,10 @@ def _page(ctx, p: dict, plans: dict) -> str:
 
     <script type="application/json" id="tracker-data">{common.script_json(_payload(cams + near, asof))}</script>"""
 
-    desc = (f"Map of all {n} license plate readers in {name}, {flock} of them Flock Safety "
-            f"cameras. Each one is listed with the owner of record for the land at or beside "
-            f"it, the assessed value, the land use and the county supervisor district.")
+    desc = _desc(n, flock, name, grouped)
+    faq = {"@context": "https://schema.org", "@type": "FAQPage",
+           "mainEntity": [{"@type": "Question", "name": q,
+                           "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qs]}
     w, s, e, nn = primary.get("bbox") or (0, 0, 0, 0)
     dataset = {
         "@context": "https://schema.org", "@type": "Dataset",
@@ -412,7 +577,7 @@ def _page(ctx, p: dict, plans: dict) -> str:
         content=body, current="alpr", rel=rel, built=common.iso_today(),
         jsonld=[page_mod.org_jsonld(), page_mod.website_jsonld(),
                 page_mod.webpage_jsonld(f"/surveillance/{slug}/", common.iso_today(),
-                                        name=f"{name} Flock Camera Map", desc=desc), dataset],
+                                        name=f"{name} Flock Camera Map", desc=desc), dataset, faq],
         statusbar=ctx.statusbar if hasattr(ctx, "statusbar") else "",
         extra_head=(f'<link rel="stylesheet" href="{rel}assets/vendor/leaflet.css">'
                     f'<link rel="stylesheet" href="{rel}{css}?v={page_mod._asset_ver(css)}">'),

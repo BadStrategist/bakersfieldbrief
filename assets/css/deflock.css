@@ -286,6 +286,21 @@
 .ax-own, .ax-sources { margin: 18px 0; }
 .newest-list .n-date { font-weight: 700; }
 
+/* town pages: the explorer title is the first heading after the h1, so it is an h2 there */
+.ax-title h2 { font-family: var(--display); text-transform: uppercase; letter-spacing: .08em; font-size: 19px; color: var(--sign); margin: 0; line-height: 1.15; }
+.ax-title h2 span { color: var(--ink-soft); font-weight: 500; }
+/* town pages: links to the other town maps, the public records and the questions */
+.ax-townlinks { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0 16px; }
+.ax-townlinks a { display: flex; flex-wrap: wrap; align-items: center; gap: 2px 8px; min-height: 44px; padding: 6px 0; font-weight: 700; }
+.ax-townlinks .ax-dim { font-weight: 400; }
+.ax-reclist { list-style: none; margin: 0; padding: 0; }
+.ax-reclist li { padding: 12px 0; border-top: 1px solid var(--line); }
+.ax-reclist h3, .ax-faq h3 { font-family: inherit; font-size: 16.5px; font-weight: 700; text-transform: none; letter-spacing: 0; line-height: 1.3; margin: 0 0 6px; color: var(--ink); }
+.ax-faq h3 { margin-top: 14px; }
+.ax-reclist blockquote { margin: 6px 0 8px; padding: 2px 0 2px 12px; border-left: 3px solid var(--line-strong); font-size: 15.5px; line-height: 1.5; color: var(--ink); }
+.ax-reclist p a { display: inline-flex; align-items: center; min-height: 44px; overflow-wrap: anywhere; }
+.ax-records, .ax-faq { overflow-wrap: break-word; }
+
 @media (max-width: 959px) {
   .ax-top { grid-template-columns: 1fr; padding: 12px 12px 10px; }
   .ax-filters { flex-wrap: nowrap; overflow-x: auto; margin: 0 -12px; padding: 2px 12px 4px; scrollbar-width: none; }

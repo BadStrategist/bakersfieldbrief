@@ -1290,6 +1290,16 @@
   "details": ""
  },
  {
+  "log_id": "261012BF0179",
+  "time": "Oct 12 2026  1:58PM",
+  "type": "20001-Hit and Run w/Injuries",
+  "location": "1000 Olive Dr",
+  "area": "Bakersfield",
+  "lat": 35.412271,
+  "lon": -119.042828,
+  "details": ""
+ },
+ {
   "log_id": "261012BF0180",
   "time": "Oct 12 2026  2:04PM",
   "type": "1125A-Animal Hazard",
@@ -1317,6 +1327,16 @@
   "area": "Fort Tejon",
   "lat": 34.894303,
   "lon": -118.918933,
+  "details": ""
+ },
+ {
+  "log_id": "261012BF0202",
+  "time": "Oct 12 2026  3:08PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Nb Sr99 Jso Airport Dr",
+  "area": "Bakersfield",
+  "lat": 35.393056,
+  "lon": -119.044444,
   "details": ""
  },
  {

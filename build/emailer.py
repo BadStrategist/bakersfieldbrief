@@ -15,7 +15,7 @@ from __future__ import annotations
 
 import html as H
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from . import common
 
@@ -67,6 +67,82 @@ def _card_open(accent: str = SIGN) -> str:
 
 def _card_close() -> str:
     return "</td></tr></table>"
+
+
+# ------------------------------------------------- the overnight card (home band)
+def _overnight_card(chp: dict) -> tuple[str, str]:
+    """The home page's overnight band as an email-safe card, plus its plain-text twin.
+
+    Same rows, same labels, same order as the home band and /overnight/, because all three
+    read night_counts.MAP. No published report, or no call file for it, means no card:
+    a count is never invented here. The CHP line shows only when its own reading is of the
+    same morning as the report.
+    """
+    try:
+        from .builders import night_counts, overnight
+    except Exception as e:  # noqa: BLE001
+        common.log(f"overnight card skipped: {type(e).__name__}: {e}")
+        return "", ""
+    reps = overnight._published_reports()
+    if not reps:
+        common.log("overnight card skipped: no published report")
+        return "", ""
+    rep = reps[0]
+    incs = overnight._incidents(rep["date"])
+    if not incs:
+        common.log(f"overnight card skipped: no call file for {rep['date']}")
+        return "", ""
+    rows, inside, _unmapped = night_counts.chips(incs)
+    night = datetime.fromisoformat(rep["date"])
+    eve = night - timedelta(days=1)
+    when = (f"7 PM {eve.strftime('%A')} to 7 AM {night.strftime('%A')}, "
+            f"{night.strftime('%b')} {night.day}")
+    say = "call while Kern slept" if len(incs) == 1 else "calls while Kern slept"
+
+    chp_line = ""
+    if (chp or {}).get("ok") and str(chp.get("asof", ""))[:10] == rep["date"]:
+        cn = len(chp.get("overnight", []) or [])
+        logged = ("no road incidents" if cn == 0 else
+                  "1 road incident" if cn == 1 else f"{cn} road incidents")
+        chp_line = (f'<p style="margin:8px 0 0;font-family:{SANS};font-size:11px;line-height:1.5;'
+                    f'color:{INK_SOFT}">A separate count from a different source: CHP logged '
+                    f'{logged} overnight (Caltrans QuickMap). Some can be the same events as the '
+                    f'calls above.</p>')
+
+    trs = "".join(
+        f'<tr><td style="padding:7px 0 7px;border-top:1px solid {LINE};width:42px;'
+        f'font-family:{SERIF};font-size:16px;font-weight:700;color:{INK};vertical-align:top">{n}</td>'
+        f'<td style="padding:7px 0 7px;border-top:1px solid {LINE};font-family:{SANS};font-size:13px;'
+        f'line-height:1.4;color:{INK};vertical-align:top">{H.escape(label)}'
+        + (f'<br><span style="font-size:11px;color:{INK_SOFT}">{H.escape(inside)}</span>'
+           if label == night_counts.OTHER else "")
+        + "</td></tr>"
+        for label, n in rows)
+
+    html_card = (
+        f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" '
+        f'style="margin:12px 0 4px;background:{PAPER2};border:1px solid {LINE};border-radius:6px">'
+        f'<tr><td style="padding:12px 14px 2px">'
+        f'<p style="margin:0;font-family:{SERIF};font-size:28px;line-height:1.15;color:{INK}">'
+        f'<strong>{len(incs)}</strong>'
+        f'<span style="font-family:{SANS};font-size:14px;color:{INK_SOFT}"> {say}</span></p>'
+        f'<p style="margin:3px 0 0;font-family:{MONO};font-size:11px;color:{INK_SOFT}">'
+        f'{H.escape(when)}</p>'
+        f'<p style="margin:12px 0 0;font-family:{DISPLAY};font-size:11px;font-weight:600;'
+        f'letter-spacing:2px;text-transform:uppercase;color:{RED}">Calls by type, most serious first</p>'
+        f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" '
+        f'style="margin:4px 0 0">{trs}</table>'
+        f'{chp_line}'
+        f'<p style="margin:12px 0 10px"><a href="{BASE_URL}/overnight/" '
+        f'style="display:inline-block;background:{RED};color:#ffffff;font-family:{DISPLAY};'
+        f'font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;'
+        f'text-decoration:none;padding:8px 16px;border-radius:4px">Read the full overnight log</a></p>'
+        f'</td></tr></table>')
+
+    txt_rows = "\n".join(f"  {n} {label}" for label, n in rows)
+    txt_card = (f"{len(incs)} {say} ({when})\n{txt_rows}"
+                + (f"\n  other calls: {inside}" if inside else ""))
+    return html_card, txt_card
 
 
 def _brief_sections(date) -> dict:
@@ -466,6 +542,10 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
     overnight_full = strip_log_section(sections.get("overnight", ""))
     overnight_html = _md_para(_chunk_paragraphs(overnight_full)) if overnight_full else ""
 
+    # ---- the home page's overnight card: the counts by type, same rows as the home
+    # band and /overnight/. It sits above the narrative so the numbers land first.
+    overnight_card, overnight_txt = _overnight_card(chp)
+
     # ---- Today's Weather (bold the leading line, then the rest)
     weather_full = sections.get("weather", "")
     weather_html = ""
@@ -536,12 +616,13 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
 <tr><td style="padding:6px 20px 2px">
   {_card_open(SIGN)}
     {_kicker("The Kern Overnight")}
-    <p style="margin:0 0 4px;font-family:{MONO};font-size:11px;letter-spacing:1px;text-transform:uppercase;color:{INK_SOFT}">Scanner brief from 9pm to 5am</p>
+    <p style="margin:0 0 4px;font-family:{MONO};font-size:11px;letter-spacing:1px;text-transform:uppercase;color:{INK_SOFT}">Logged 7pm to 7am by the countywide radio feed</p>
     {('' if not (ko and ko.get('headline')) else f'<p style="margin:8px 0 2px;font-family:{SERIF};font-size:18px;color:{INK}"><a href="{BASE_URL}/overnight/" style="color:{INK};text-decoration:none">What happened overnight: {H.escape(ko["headline"])}</a></p>')}
     {('' if not ko else f'<p style="margin:2px 0 10px;font-family:{SANS};font-size:12px;color:{INK_SOFT}">{ko["count"]} incidents tracked overnight · locations generalized &nbsp;'
      f'<a href="{BASE_URL}/overnight/" style="display:inline-block;background:{RED};color:#ffffff;'
      f'font-family:{DISPLAY};font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;'
      f'text-decoration:none;padding:6px 14px;border-radius:4px">Full Report</a></p>')}
+    {overnight_card}
     {overnight_html}
   {_card_close()}
 </td></tr>
@@ -604,6 +685,7 @@ Bakersfield & Kern County
 
 THE KERN OVERNIGHT
 {('What happened overnight: ' + ko['headline'] + ' — ') if (ko and ko.get('headline')) else ''}{(str(ko['count']) + ' incidents tracked overnight — ') if ko else ''}full report: {BASE_URL}/overnight/ (locations generalized)
+{overnight_txt}
 
 CONDITIONS
 {chr(10).join(f"{k}: {v}" for k, v in conds)}

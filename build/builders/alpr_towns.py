@@ -100,13 +100,7 @@ def plan(sources: dict) -> dict:
     # Cameras in no place, measured to the nearest place of any kind. One goes on a town's
     # "just outside" list only when that nearest place is the town itself.
     near = collections.defaultdict(list)
-    for c in cams:
-        if c.get("place"):
-            continue
-        hit = places_kern.nearest(c.get("lat"), c.get("lon"), NEAR_KM)
-        if not hit:
-            continue
-        pl, km = hit
+    for c, pl, km in _near_hits(cams):
         slug = owner_slug.get(pl["name"])
         if slug and TOWNS[slug]["near"] and pl["name"] == TOWNS[slug]["places"][0]:
             near[slug].append(dict(c, near_km=km, near_kind=pl["kind"]))
@@ -124,22 +118,83 @@ def plan(sources: dict) -> dict:
     return out
 
 
-def hub_links_html(plans: dict) -> str:
-    """The "by town" block on /surveillance/. Empty when no town page was built."""
+def _near_hits(cams: list) -> list[tuple]:
+    """(camera, place, km) for each camera in no place whose nearest place boundary of any kind
+    is within NEAR_KM."""
+    out = []
+    for c in cams:
+        if c.get("place"):
+            continue
+        hit = places_kern.nearest(c.get("lat"), c.get("lon"), NEAR_KM)
+        if hit:
+            out.append((c, hit[0], hit[1]))
+    return out
+
+
+def place_rows(sources: dict) -> list[dict]:
+    """Every mapped camera counted once, by the place its point is inside.
+
+    One row for each incorporated city (a city with no mapped camera is a row of 0, so every
+    city has its answer on the hub and none needs a page to give it), one for each
+    unincorporated community holding a camera, and a last row, name None, for the cameras in
+    no place. The "n" of the rows sums to the camera list. "near" is the cameras just outside
+    the limits, for cities only: the same measurement the town pages print."""
+    alpr = sources.get("alpr") or {}
+    cams = alpr_page.merge_cameras(alpr.get("cameras") or [], alpr_explorer.load())
+    inside = collections.Counter((c.get("place") or {}).get("name") for c in cams)
+    near = collections.Counter(pl["name"] for _, pl, _ in _near_hits(cams) if pl["kind"] == "city")
+    rows = [{"name": p["name"], "kind": p["kind"], "n": inside[p["name"]],
+             "near": near[p["name"]] if p["kind"] == "city" else None}
+            for p in places_kern.load() if p["kind"] == "city" or inside[p["name"]]]
+    rows.sort(key=lambda r: (-r["n"], r["name"]))
+    if inside[None]:
+        rows.append({"name": None, "kind": None, "n": inside[None], "near": None})
+    return rows
+
+
+def hub_links_html(plans: dict, sources: dict) -> str:
+    """The "by town" block on /surveillance/: the county's cameras counted by city and
+    community, with a link on each place that has a town page. Empty when no town page was
+    built."""
     if not plans:
         return ""
-    lis = "".join(
-        f'<li><a href="{slug}/">{esc(p["town"]["name"])} Flock camera map</a>: '
-        f'<b>{len(p["cams"])}</b> license plate readers, with the owner of record for each</li>'
-        for slug, p in plans.items())
+    page_of = {pl: slug for slug, p in plans.items() for pl in p["town"]["places"]}
+    rows = place_rows(sources)
+
+    def name_cell(r: dict) -> str:
+        if r["name"] is None:
+            return "In no city or Census place"
+        kind = "city" if r["kind"] == "city" else "unincorporated"
+        slug = page_of.get(r["name"])
+        town = plans[slug]["town"] if slug else None
+        if town and town["places"][0] == r["name"]:
+            return (f'<a href="{slug}/">{esc(town["name"])} Flock camera map</a> '
+                    f'<span class="ax-dim">{kind}</span>')
+        on = f', on the <a href="{slug}/">{esc(town["name"])} map</a>' if town else ""
+        return f'{esc(r["name"])} <span class="ax-dim">{kind}{on}</span>'
+
+    trs = "".join(f'<tr><td>{name_cell(r)}</td><td class="num">{r["n"]}</td>'
+                  f'<td class="num">{"" if r["near"] is None else r["near"]}</td></tr>'
+                  for r in rows)
+    cities = sum(1 for r in rows if r["kind"] == "city")
     return f"""
     <section class="card ax-towns" id="towns">
       <span class="tag">By town</span>
-      <h3>Flock camera maps by town</h3>
-      <p>The map above is all of Kern County. These pages are one town each: its cameras, and
-      for every one the owner of record, the assessed value, the land use and the county
-      supervisor district.</p>
-      <ul>{lis}</ul>
+      <h3>Flock cameras by city and town in Kern County</h3>
+      <p>Each camera on the map above is counted in the city or Census place its point is
+      inside. All {cities} incorporated cities in Kern County are listed, and every
+      unincorporated community with a mapped camera. A linked town has a page of its own: its
+      cameras, and for every one the owner of record, the assessed value, the land use and the
+      county supervisor district.</p>
+      <div class="table-wrap"><table class="data">
+        <thead><tr><th>City or community</th><th class="num">Cameras inside</th>
+        <th class="num">Just outside the city limits</th></tr></thead>
+        <tbody>{trs}</tbody>
+        <tfoot><tr><td>Kern County</td><td class="num">{sum(r["n"] for r in rows)}</td><td></td></tr></tfoot>
+      </table></div>
+      <p>The last column counts cameras in unincorporated county land within
+      {NEAR_KM / KM_PER_MILE:.0f} miles of a city&rsquo;s limits. They are not in that
+      city&rsquo;s count.</p>
     </section>"""
 
 

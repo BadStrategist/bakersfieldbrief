@@ -164,7 +164,7 @@ def test_no_town_page_until_the_join_covers_the_county(site):
     assert alpr_towns.plan(src) == {}
     assert alpr_towns.build(_ctx(), src) == []
     assert not list((site.root / "surveillance").rglob("index.html"))
-    assert alpr_towns.hub_links_html(alpr_towns.plan(src)) == ""
+    assert alpr_towns.hub_links_html(alpr_towns.plan(src), src) == ""
 
 
 def test_the_september_join_builds_no_town_page_even_when_every_camera_is_joined(site):
@@ -325,11 +325,37 @@ def test_hub_links_the_town_pages_it_built_and_no_others(site):
     cams = _county()
     raw = _hub(site, cams, _ownership(cams))
     block = re.search(r'<section class="card ax-towns" id="towns">.*?</section>', raw, re.S).group(0)
-    assert re.findall(r'href="([^"]+)"', block) == ["ridgecrest/", "tehachapi/"]
-    assert "12 license plate readers" in _text(block)
+    # Ridgecrest, Tehachapi, then Stallion Springs, which is on the Tehachapi page
+    assert re.findall(r'href="([^"]+)"', block) == ["ridgecrest/", "tehachapi/", "tehachapi/"]
     # before the county join there is no block at all
     raw = _hub(site, cams, _ownership(cams[:12]))
     assert 'id="towns"' not in raw
+
+
+def test_hub_counts_every_camera_once_by_place_and_lists_every_city(site):
+    """Every city has its answer on the hub, the ones with no page and the ones with no camera
+    too, and the column sums to the camera list."""
+    cams = _county()
+    own = _ownership(cams)
+    site.install(own)
+    rows = alpr_towns.place_rows(_sources(cams))
+    assert sum(r["n"] for r in rows) == len(cams) == 27
+    got = {r["name"]: (r["n"], r["near"]) for r in rows}
+    assert {n for n, r in zip(got, rows) if r["kind"] == "city"} == {
+        "Arvin", "Bakersfield", "California City", "Delano", "Maricopa", "McFarland",
+        "Ridgecrest", "Shafter", "Taft", "Tehachapi", "Wasco"}
+    assert got["Ridgecrest"] == (12, 0) and got["Tehachapi"] == (7, 1)
+    assert got["Maricopa"] == (3, 0) and got["Arvin"] == (0, 0)
+    # a community is listed only when it holds a camera, and has no "just outside" count
+    assert got["Stallion Springs"] == (2, None) and "Golden Hills" not in got
+    # the Grapevine pair and the one outside Tehachapi are in no place, and are the last row
+    assert rows[-1] == {"name": None, "kind": None, "n": 3, "near": None}
+    block = _text(re.search(r'<section class="card ax-towns" id="towns">.*?</section>',
+                            _hub(site, cams, own), re.S).group(0))
+    assert "All 11 incorporated cities in Kern County are listed" in block
+    assert "Maricopa city 3 0" in block and "Arvin city 0 0" in block
+    assert "Stallion Springs unincorporated, on the Tehachapi map 2" in block
+    assert "In no city or Census place 3" in block and "Kern County 27" in block
 
 
 def test_unresearched_owner_count_is_stated_once_from_the_data(site):

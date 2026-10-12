@@ -239,7 +239,7 @@ def build_alpr(ctx, sources: dict):
 
     {alpr_page.ownership_html(facts, total_n)}
 
-    {alpr_towns.hub_links_html(alpr_towns.plan(sources))}
+    {alpr_towns.hub_links_html(alpr_towns.plan(sources), sources)}
 
     <div class="brief-grid" style="margin-top:6px">
       <div class="brief-main">

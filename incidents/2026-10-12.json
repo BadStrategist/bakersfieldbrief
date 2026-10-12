@@ -1,0 +1,305 @@
+[
+ {
+  "type": "robbery",
+  "time": "20:19",
+  "agency": "BPD",
+  "area": "the 2600 block of Mount Vernon Avenue, at the Dollar Tree",
+  "notability": 4,
+  "disposition": "two suspects fled on foot; no arrests reported",
+  "summary": "Officers were sent to a robbery in progress at the Dollar Tree on Mount Vernon Avenue in which a machete was used. Two suspects were last seen on foot heading toward the fast-food lot next door, and units were working the area."
+ },
+ {
+  "type": "crash",
+  "time": "00:03",
+  "agency": "CHP / Hall Ambulance",
+  "area": "southbound Interstate 5 north of the rest area",
+  "notability": 3,
+  "disposition": "traffic held; two patients ejected",
+  "summary": "A crash on southbound Interstate 5 north of the rest area left two people ejected from a vehicle. Traffic was held while crews worked the scene, and one patient was moved by air with the other taken by ground."
+ },
+ {
+  "type": "search and rescue",
+  "time": "20:53",
+  "agency": "KCFD / KCSO",
+  "area": "the 2100 block of Lancer Drive",
+  "notability": 3,
+  "disposition": "search under way",
+  "summary": "A caller reported that her husband and four of his friends had gone dirt biking in the area and none of them had returned or answered their phones. Crews were sent to the Lancer Drive area for a possible search and rescue."
+ },
+ {
+  "type": "crash",
+  "time": "21:33",
+  "agency": "CHP / KCFD",
+  "area": "Jenkins Road and Rosedale Highway",
+  "notability": 3,
+  "disposition": "rollover; a second reported vehicle not found",
+  "summary": "A vehicle rolled over on northbound Rosedale Highway just north of Jenkins Road. Crews checked the area, and a reported black or blue sedan on the right shoulder could not be located.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "crash",
+  "time": "20:57",
+  "agency": "KCFD / Wasco PD",
+  "area": "Wasco",
+  "notability": 3,
+  "disposition": "driver detained; one patient",
+  "summary": "Wasco police handled a crash in which the driver tried to flee and was detained. There were no people pinned, and the driver complained of generalized pain."
+ },
+ {
+  "type": "structure fire",
+  "time": "23:06",
+  "agency": "KCFD",
+  "area": "a Kern County address",
+  "notability": 3,
+  "disposition": "crews on scene; hotspots checked",
+  "summary": "Firefighters were sent to a house fire in the county. Crews reported several places inside showing heat but no hazard to anyone, and units were released from the call."
+ },
+ {
+  "type": "vehicle vs pedestrian",
+  "time": "20:06",
+  "agency": "BPD",
+  "area": "Panama Lane and Pebble Point",
+  "notability": 3,
+  "disposition": "units responded",
+  "summary": "Officers were sent to Panama Lane and Pebble Point for a vehicle against a pedestrian, with a person reported in the roadway on the southbound side."
+ },
+ {
+  "type": "domestic violence",
+  "time": "20:14",
+  "agency": "BPD",
+  "area": "Yuma Way",
+  "notability": 3,
+  "disposition": "caller disconnected; units responded",
+  "summary": "A woman called 911 to report that she had been strangled and then disconnected. Officers were sent to Yuma Way to check on her.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "weapons call",
+  "time": "19:35",
+  "agency": "BPD",
+  "area": "the Walmart on North Chester Avenue",
+  "notability": 3,
+  "disposition": "units responded",
+  "summary": "Officers were sent to the Walmart on North Chester Avenue after a report of a person with a firearm. A man was reported in a black Kia with a juvenile female in the vehicle.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "22:51",
+  "agency": "KCSO",
+  "area": "the 12900 block of Poppy Lane",
+  "notability": 3,
+  "disposition": "second party reported armed; deputies responded",
+  "summary": "A caller said a neighbor came to her door saying his brother was trying to kill him. Deputies were sent to the 12900 block of Poppy Lane, where the other man was reported to have a firearm."
+ },
+ {
+  "type": "crash",
+  "time": "23:52",
+  "agency": "KCFD",
+  "area": "Interstate 5 just north of Stockdale Highway",
+  "notability": 3,
+  "disposition": "rollover",
+  "summary": "Crews were sent to a vehicle rollover on Interstate 5 just north of Stockdale Highway."
+ },
+ {
+  "type": "wrong-way driver",
+  "time": "01:42",
+  "agency": "CHP",
+  "area": "westbound Highway 58 just west of Highway 184",
+  "notability": 3,
+  "disposition": "single call; no vehicle description",
+  "summary": "A wrong-way driver was reported going eastbound in the westbound lanes of Highway 58 just west of Highway 184, with hazard lights on and running in the fast lane."
+ },
+ {
+  "type": "vehicle theft",
+  "time": "03:16",
+  "agency": "BPD",
+  "area": "the 4300 block of el Sereno Drive",
+  "notability": 3,
+  "disposition": "just occurred; vehicle entered as stolen",
+  "summary": "A green 1995 Toyota pickup was reported taken from the 4300 block of el Sereno Drive just before the call came in."
+ },
+ {
+  "type": "crash",
+  "time": "05:27",
+  "agency": "CHP",
+  "area": "southbound Interstate 5 south of Grapevine",
+  "notability": 3,
+  "disposition": "car pulled to the right shoulder",
+  "summary": "A tire thrown from a semi struck a car on southbound Interstate 5 south of Grapevine. The driver pulled to the right shoulder and reported no one hurt."
+ },
+ {
+  "type": "child endangerment",
+  "time": "21:56",
+  "agency": "KCFD / BPD",
+  "area": "the 2700 block of Bernard Street",
+  "notability": 3,
+  "disposition": "medics and officers responded",
+  "summary": "Fire and police were sent to an apartment on Bernard Street for a baby left unattended who was reported to be covered in nail glue.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "vegetation fire",
+  "time": "22:56",
+  "agency": "KCFD",
+  "area": "Kern County",
+  "notability": 3,
+  "disposition": "multiple spots burning; dozers and a helicopter assigned",
+  "summary": "A single call reported multiple spots with active flames north of an earlier fire. Patrols, two dozers, a water tender and a helicopter were assigned."
+ },
+ {
+  "type": "fight",
+  "time": "23:42",
+  "agency": "BPD",
+  "area": "the 4300 block of California Spring Drive",
+  "notability": 3,
+  "disposition": "units responded",
+  "summary": "A caller reported two women fighting, with one dragging the other into a residence. Units were sent to the 4300 block of California Spring Drive."
+ },
+ {
+  "type": "welfare check",
+  "time": "05:04",
+  "agency": "BPD",
+  "area": "South Chester Avenue and 23rd Street",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "A cell caller reported a prowler on South Chester Avenue. The subject, described as a bald man in a hooded sweater, was reported walking west on 23rd Street on foot."
+ },
+ {
+  "type": "campfire",
+  "time": "21:17",
+  "agency": "KCFD",
+  "area": "Kern County",
+  "notability": 2,
+  "disposition": "crews responded",
+  "summary": "A campfire at a homeless camp was reported to be spreading into grass, and crews were sent to put it out."
+ },
+ {
+  "type": "overdose",
+  "time": "21:21",
+  "agency": "BPD / Hall Ambulance",
+  "area": "a Wingstop parking lot",
+  "notability": 2,
+  "disposition": "medics responded",
+  "summary": "A man was reported not breathing and possibly overdosing in a vehicle in a Wingstop parking lot, and medics were sent to the scene."
+ },
+ {
+  "type": "theft report",
+  "time": "19:26",
+  "agency": "BPD",
+  "area": "the 3400 block of Mall View Road",
+  "notability": 2,
+  "disposition": "call pending",
+  "summary": "Officers were sent to the 3400 block of Mall View Road for a theft in progress, reported as five juveniles loading Nerf guns into suitcases.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "19:01",
+  "agency": "KCSO",
+  "area": "the 1300 block of Princeton Avenue",
+  "notability": 2,
+  "disposition": "call holding; a criminal protective order was on file",
+  "summary": "Deputies were sent to the 1300 block of Princeton Avenue for a domestic disturbance, with a criminal protective order listing the caller as a protected party.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "crash",
+  "time": "05:13",
+  "agency": "KCFD",
+  "area": "southbound Interstate 5",
+  "notability": 2,
+  "disposition": "single occupant out and not injured",
+  "summary": "A vehicle rolled over on southbound Interstate 5. The single occupant was out of the vehicle, conscious and breathing, and reported no injuries."
+ },
+ {
+  "type": "medical aid",
+  "time": "00:42",
+  "agency": "KCFD",
+  "area": "the 12300 block of Rodeo Avenue",
+  "notability": 2,
+  "disposition": "medics responded",
+  "summary": "An engine was sent to the 12300 block of Rodeo Avenue for a seizure.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "05:43",
+  "agency": "KCFD",
+  "area": "the 5800 block of Winter Ridge Drive",
+  "notability": 2,
+  "disposition": "medics responded",
+  "summary": "Medics were sent to the 5800 block of Winter Ridge Drive for a person having difficulty breathing.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "Medical emergency",
+  "time": "19:04",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Manchester Lane",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Man on bicycle found unconscious, bleeding at Manchester Lane.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Vehicle",
+  "time": "19:06",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Vehicle strikes pedestrian on Main Avenue.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Vehicle",
+  "time": "19:10",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Pedestrian struck by vehicle on Beechwood Way.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Cardiac arrest",
+  "time": "19:52",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person overdosing receives CPR near Bakersfield.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Vehicle",
+  "time": "21:13",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Vehicle strikes pedestrian at Panama and Pebble Point.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Cardiac arrest",
+  "time": "01:55",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Belvedere Avenue",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Cardiac arrest call on Belvedere Avenue.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "02:04",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Glenwood Drive",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Traumatic injury at Glenwood Dr with upset family present.",
+  "source": "crimeradar"
+ }
+]

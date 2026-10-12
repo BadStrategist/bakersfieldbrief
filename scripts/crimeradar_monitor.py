@@ -49,6 +49,12 @@ import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+# The repo root FIRST: merge_crimeradar does `from kern_overnight.privacy import ...`,
+# and this file gets started from cron wrappers and adb scripts where the working
+# directory is not the repo. Started as `python scripts/crimeradar_monitor.py` only
+# scripts/ lands on the path, which failed the 2026-10-11 weekend burst with
+# ModuleNotFoundError: No module named 'kern_overnight'.
+sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "kern_overnight"))
 import merge_crimeradar as mc  # noqa: E402  (coverage + privacy rules live there)
 import regions  # noqa: E402
@@ -485,6 +491,19 @@ _NODE = re.compile(r'<node[^>]*?text="([^"]*)"[^>]*?bounds="\[(\d+),(\d+)\]\[(\d
 # while the app sat on a Mendocino County address and served Ukiah and Willits
 # rows). So the region is read off the screen on every run and never assumed.
 KERN_CHIP = "Bakersfield"
+
+# The chip printed the bare city until 2026-10-12 and now prints "Bakersfield, CA"
+# for the same place, which failed every poll with exit 9 overnight (2026-10-11:
+# "the Home location chip reads \"Bakersfield, CA\", not \"Bakersfield\""). Only the
+# state suffix is forgiven: another city, or the same city name in another state,
+# still trips the guard.
+_CHIP_STATE = re.compile(r",\s*(?:CA|Calif\.?|California)$", re.I)
+
+
+def chip_names_kern(chip: str) -> bool:
+    """Does the Home chip name the Kern feed's city, state suffix and case aside?"""
+    core = _CHIP_STATE.sub("", (chip or "").strip()).strip()
+    return core.casefold() == KERN_CHIP.casefold()
 
 
 def home_feed(xml: str) -> tuple[str, bool]:
@@ -1713,7 +1732,7 @@ def poll(detail: bool = False, do_diff: str | None = None, as_json: bool = False
                   "quiet night.", file=sys.stderr)
             return 4
     chip, selected = home_feed(xml)
-    if chip != KERN_CHIP or not selected:
+    if not chip_names_kern(chip) or not selected:
         # Refuse before anything is recorded: a poll record feeds the staged
         # rows' streets and the reel's clips.
         raise WrongFeed(

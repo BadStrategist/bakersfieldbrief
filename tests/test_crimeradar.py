@@ -676,6 +676,33 @@ def test_poll_refuses_a_feed_that_is_not_kern(poller, old, new, says):
     assert not (out / "seen.json").exists()
 
 
+def test_home_chip_tolerates_the_state_suffix_the_app_now_prints(poller):
+    """2026-10-12: the chip prints "Bakersfield, CA" for the same Kern place.
+
+    The guard is about the city, not its punctuation. Another city, and the same
+    city name in another state, still refuse with exit 9 and record nothing.
+    """
+    out, show = poller
+    xml = fx("home_kern")
+    assert xml.count(CHIP) == 1
+    show(xml.replace(CHIP, CHIP.replace('text="Bakersfield"', 'text="Bakersfield, CA"')))
+    assert cr.poll() == 0
+    recs = [json.loads(line) for f in out.glob("polls_*.jsonl")
+            for line in f.read_text(encoding="utf-8").splitlines()]
+    # the record keeps the raw on-screen text, so a later reader sees what was shown
+    assert recs and recs[-1]["feed"] == "Bakersfield, CA"
+    for wrong in ("Ukiah, CA", "Bakersfield, TX"):
+        for f in out.glob("polls_*.jsonl"):
+            f.unlink()
+        show(xml.replace(CHIP, CHIP.replace('text="Bakersfield"', 'text="%s"' % wrong)))
+        with pytest.raises(cr.WrongFeed) as ei:
+            cr.poll()
+        assert ei.value.code == 9 and wrong in str(ei.value)
+        assert not list(out.glob("polls_*.jsonl"))   # a refusal still records nothing
+    # the accepted poll did record its state, which is what later polls dedupe against
+    assert (out / "seen.json").exists()
+
+
 @pytest.fixture
 def sweeper(tmp_path, monkeypatch):
     """The real History sweep and main(), driven by captured screens."""

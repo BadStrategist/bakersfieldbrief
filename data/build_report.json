@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-12T07:50:07-07:00",
+ "built_at": "2026-10-12T08:40:03-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
+   "chp_new": 2,
    "top_story": "Kyiv says Russian strikes on energy facilities continue despite Trump's 'energy ceasefire'",
    "overnight_band": {
     "date": "2026-10-12",
@@ -159,13 +159,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 1,
+   "wind_mph": 7,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 44,
-   "wind_mph": 1,
+   "temp": 45,
+   "wind_mph": 7,
    "alerts": 0
   },
   "roads": {
@@ -202,8 +202,8 @@
    "isabella_af": 143786,
    "alpr_total": 270,
    "kern_fires": 1,
-   "aqi": 44,
-   "chp_week": 5
+   "aqi": 50,
+   "chp_week": 6
   },
   "letters": {
    "published": 1

@@ -1308,5 +1308,15 @@
   "lat": 34.835556,
   "lon": -118.863611,
   "details": ""
+ },
+ {
+  "log_id": "261012BF0069",
+  "time": "Oct 12 2026  8:29AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Terrace Way / Loch Lomond Dr",
+  "area": "Bakersfield",
+  "lat": 35.350303,
+  "lon": -119.033374,
+  "details": ""
  }
 ]

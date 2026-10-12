@@ -450,6 +450,9 @@ def test_the_real_driver_answers_running_without_touching_anything():
 
 def test_the_memguard_keeps_its_own_apps_and_its_own_floor():
     text = (LEG / "crimeradar_memguard.sh").read_text(encoding="utf-8")
-    assert "for NAME in RuneLite chrome; do" in text
+    assert 'APPS_NIGHT="${CR_MEM_APPS_NIGHT:-RuneLite chrome}"' in text
+    assert 'APPS_MORNING="${CR_MEM_APPS_MORNING:-JagexLauncher}"' in text
+    assert "for NAME in $TARGETS; do" in text
+    assert 'MORNING_WINDOW="${CR_MEM_MORNING_WINDOW:-06 07 08 09}"' in text
     assert 'FLOOR_MB="${CR_MEM_FLOOR_MB:-1500}"' in text
     assert "crimeradar_apps" not in text

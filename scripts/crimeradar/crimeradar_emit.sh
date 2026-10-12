@@ -55,9 +55,9 @@ fi
 # Record free host RAM before the emulator is touched. The 2026-10-11 06:55 and
 # 07:54 failures came through the emit and the morning pass and left no reading
 # at all, because only the night script called the memguard. It closes nothing
-# outside its own night window or above its own floor; from 07:00 it is a
-# measurement only. It never fails the run, and a missing script is a line, not
-# exit 13.
+# outside its own windows or above its own floor; before 07:00 that is RuneLite,
+# Chrome and the Jagex Launcher, and from 07:00 the Jagex Launcher alone. It
+# never fails the run, and a missing script is a line, not exit 13.
 if [ -f "$SCRIPTS/crimeradar_memguard.sh" ]; then
   bash "$SCRIPTS/crimeradar_memguard.sh" emit </dev/null || true
 else

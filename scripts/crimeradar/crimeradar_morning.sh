@@ -28,9 +28,10 @@ cd "$REPO" || { echo "[cr] repo missing: $REPO"; exit 2; }
 [ -f "$SCRIPTS/crimeradar_preflight.sh" ] || { echo "[cr] FAILED: script missing: $SCRIPTS/crimeradar_preflight.sh (CR_SCRIPTS overrides the directory)"; exit 13; }
 
 # Record free host RAM before the emulator is touched (see crimeradar_emit.sh:
-# the 2026-10-11 07:54 failure came through here with no reading at all). At
-# this hour the memguard is outside its own window, so it measures and closes
-# nothing. It never fails the run, and a missing script is a line, not exit 13.
+# the 2026-10-11 07:54 failure came through here with no reading at all). From
+# 07:00 the memguard closes nothing but the Jagex Launcher: RuneLite and Chrome
+# stay night-only, because the 09:15 social push drives the Chrome profile on
+# port 9223. It never fails the run, and a missing script is a line, not exit 13.
 if [ -f "$SCRIPTS/crimeradar_memguard.sh" ]; then
   bash "$SCRIPTS/crimeradar_memguard.sh" morning </dev/null || true
 else

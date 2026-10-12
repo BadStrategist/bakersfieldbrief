@@ -1260,6 +1260,26 @@
   "details": ""
  },
  {
+  "log_id": "261012BF0161",
+  "time": "Oct 12 2026  1:22PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jso Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.937778,
+  "lon": -118.930556,
+  "details": ""
+ },
+ {
+  "log_id": "261012BF0174",
+  "time": "Oct 12 2026  1:44PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Nb I5 Jno Fort Tejon Rd",
+  "area": "Fort Tejon",
+  "lat": 34.882222,
+  "lon": -118.899444,
+  "details": ""
+ },
+ {
   "log_id": "261012BF0010",
   "time": "Oct 12 2026  1:57AM",
   "type": "TADV-Traffic Advisory",
@@ -1267,6 +1287,16 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261012BF0180",
+  "time": "Oct 12 2026  2:04PM",
+  "type": "1125A-Animal Hazard",
+  "location": "Nb Sr99 Jso Hosking Rd",
+  "area": "Bakersfield",
+  "lat": 35.280556,
+  "lon": -119.026389,
   "details": ""
  },
  {
@@ -1317,6 +1347,26 @@
   "area": "Bakersfield",
   "lat": 35.350303,
   "lon": -119.033374,
+  "details": ""
+ },
+ {
+  "log_id": "261012BF0089",
+  "time": "Oct 12 2026  9:23AM",
+  "type": "CZP-Assist with Construction",
+  "location": "NB I5 at Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.939167,
+  "lon": -118.929444,
+  "details": ""
+ },
+ {
+  "log_id": "261012BF0135",
+  "time": "Oct 12 2026 11:59AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr166 / S Sabodan St",
+  "area": "Fort Tejon",
+  "lat": 35.059336,
+  "lon": -118.975892,
   "details": ""
  }
 ]

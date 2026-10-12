@@ -69,7 +69,8 @@ def test_case_and_underscore_variants_are_one_label():
 
 
 def test_no_substring_matching():
-    # the live /overnight/ buckets count an alarm as a burglary and would count this as a fire
+    # the /overnight/ page kept keyword buckets until 2026-10-12: they counted an alarm as a
+    # burglary and "firearms incident" as a fire. Both pages read this map now.
     assert night_counts.CHIP_OF["alarm"] == "Alarms"
     assert night_counts.CHIP_OF["burglary alarm"] == "Alarms"
     assert night_counts.CHIP_OF["fire alarm"] == "Alarms"
@@ -107,3 +108,28 @@ def test_rendered_band_must_add_up():
 def test_feed_text_prints_no_long_dashes():
     assert home._e("Heat stays put \u2014 high of 99") == "Heat stays put, high of 99"
     assert "\u2013" not in home._e("Sept 23\u2013Oct 4")
+
+
+def test_a_bare_crash_label_is_a_crash():
+    """2026-10-12: the radio leg typed six rows "crash", a label this map did not know, and
+    "campfire" is not "camp fire". The home band then printed a bare "Crash 6" row beside
+    "Crashes and traffic 2" while the overnight page said 11 crashes for the same file."""
+    chips, inside, unmapped = night_counts.chips(
+        _rows({"crash": 6, "campfire": 1, "collision": 2}))
+    assert chips == [("Fires", 1), ("Crashes and traffic", 8)]
+    assert (inside, unmapped) == ("", [])
+
+
+def test_the_overnight_glance_reads_the_same_table_as_the_home_band(monkeypatch):
+    """The /overnight/ page counted the night with its own keyword buckets, so one file was
+    "1 Shootings & weapons" there and "2 Weapons and assaults" on the home band, and its
+    "fire" keyword also caught "firearms incident" (2026-10-12)."""
+    from build.builders import overnight
+    rows = _rows({"weapons call": 1, "fight": 1, "firearms incident": 1,
+                  "crash": 6, "medical aid": 1})
+    monkeypatch.setattr(overnight, "_incidents", lambda _d: rows)
+    html = overnight._night_stats_html("2026-10-12")
+    for label, n in night_counts.chips(rows)[0]:
+        assert f"<strong>{n}</strong><span>{label}</span>" in html, label
+    assert "calls logged overnight" in html
+    assert "Shootings" not in html and "Fires" not in html

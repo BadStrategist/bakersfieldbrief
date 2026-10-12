@@ -14,6 +14,7 @@ from datetime import date as _date
 from pathlib import Path
 
 from .. import common
+from . import night_counts
 from . import page as page_mod
 
 REPORTS_DIR = Path(common.DATA) / "overnight_reports"
@@ -191,17 +192,10 @@ INCIDENTS_DIR = common.ROOT / "incidents"
 _MON_ABBR = ("Jan.", "Feb.", "March", "April", "May", "June", "July", "Aug.",
              "Sept.", "Oct.", "Nov.", "Dec.")
 
-# Order matters: "vehicle fire" must land in Fires before the traffic bucket sees "vehicle".
-_BUCKETS = (
-    ("Shootings &amp; weapons", ("shoot", "shots", "weapon", "gun", "stab", "brandish")),
-    ("Fires", ("fire", "smoke")),
-    ("Crashes &amp; traffic", ("collision", "crash", "traffic", "vehicle", "hit and run",
-                               "dui", "pursuit")),
-    ("Medical", ("medical", "overdose", "ems")),
-    ("Burglary &amp; theft", ("burgl", "theft", "robbery", "stolen", "alarm")),
-    ("Disturbances &amp; welfare", ("disturb", "domestic", "welfare", "suspicious",
-                                    "assault", "fight")),
-)
+# This page used to carry its own keyword buckets, so one night's file was counted twice
+# and printed twice: "1 Shootings & weapons" here against "2 Weapons and assaults" on the
+# home band (2026-10-12), and the keyword "fire" also matched "firearms incident". The
+# rows now come from night_counts.MAP, the one table the home band and the wall read.
 
 
 def _long_date(date_iso: str, abbr: bool = False) -> str:
@@ -259,31 +253,28 @@ def _is_shooting(inc: dict) -> bool:
 
 def _night_stats_html(date_iso: str) -> str:
     """Counts of the night's logged calls by kind, straight from incidents/<date>.json.
-    Nothing is shown when the file is missing — never an invented number."""
+    Nothing is shown when the file is missing, never an invented number.
+
+    The rows, their order and their labels come from night_counts, the same table the
+    home band and the wall read, so one night cannot show two sets of numbers.
+    """
     incs = _incidents(date_iso)
     if not incs:
         return ""
-    counts = {label: 0 for label, _ in _BUCKETS}
-    other = 0
-    for inc in incs:
-        t = str(inc.get("type", "")).lower().replace("_", " ")
-        for label, keys in _BUCKETS:
-            if any(k in t for k in keys):
-                counts[label] += 1
-                break
-        else:
-            other += 1
-    tiles = [f'<div class="tile"><strong>{len(incs)}</strong><span>calls logged overnight</span></div>']
+    rows, inside, _unmapped = night_counts.chips(incs)
+    tiles = [f'<div class="tile"><strong>{len(incs)}</strong>'
+             '<span>calls logged overnight</span></div>']
     tiles += [f'<div class="tile"><strong>{n}</strong><span>{label}</span></div>'
-              for label, n in counts.items() if n]
-    if other:
-        tiles.append(f'<div class="tile"><strong>{other}</strong><span>Other calls</span></div>')
-    return ('<p class="sec-head">The night at a glance</p>'
-            f'<div class="link-grid">{"".join(tiles)}</div>'
-            '<p class="note">Counts are the calls our overnight log captured '
+              for label, n in rows]
+    note = ('Counts are the calls our overnight log captured '
             '(7 PM &ndash; 7 AM: the countywide radio feed, plus app-based dispatch '
             'reports for the hours the feed does not carry). It is not a complete '
-            'record of every call.</p>')
+            'record of every call.')
+    if inside:
+        note += f' The {night_counts.OTHER} row is {inside}.'
+    return ('<p class="sec-head">The night at a glance</p>'
+            f'<div class="link-grid">{"".join(tiles)}</div>'
+            f'<p class="note">{note}</p>')
 
 
 def _night_title(r: dict) -> str:

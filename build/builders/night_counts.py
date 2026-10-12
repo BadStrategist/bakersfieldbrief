@@ -50,7 +50,7 @@ MAP = {
     "Fires": (
         "fire", "outside fire", "vehicle fire", "brush fire", "grass fire", "structure fire",
         "possible fire", "fire investigation", "burning complaint", "backyard fire",
-        "building fire", "camp fire", "car fire", "commercial fire", "dumpster fire",
+        "building fire", "camp fire", "campfire", "car fire", "commercial fire", "dumpster fire",
         "electrical fire", "field fire", "fire call", "fire cause investigation",
         "fire report", "fire response", "illegal burning", "kitchen fire", "outdoor fire",
         "possible structure fire", "refuse fire", "rubbish fire", "shed fire", "small fire",
@@ -61,6 +61,10 @@ MAP = {
     ),
     "Crashes and traffic": (
         "collision", "traffic collision", "hit and run", "hit and run collision",
+        # "crash" on its own: the radio leg stages it on 6 rows in one night (2026-10-12),
+        # and the bare label used to fall out of the map as a row of its own.
+        "crash", "crashes", "car crash", "vehicle crash", "traffic crash", "auto crash",
+        "single car crash", "single vehicle crash", "multi car crash",
         "hit-and-run collision", "multi vehicle crash", "rollover", "vehicle rollover",
         "dui", "dui arrest", "dui crash", "dui driver", "dui report", "possible dui",
         "impaired driver", "impaired driver report", "reckless driving", "reckless driver",

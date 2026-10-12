@@ -1310,6 +1310,16 @@
   "details": ""
  },
  {
+  "log_id": "261012BF0200",
+  "time": "Oct 12 2026  3:03PM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 I5 S",
+  "area": "Fort Tejon",
+  "lat": 34.894303,
+  "lon": -118.918933,
+  "details": ""
+ },
+ {
   "log_id": "261012BF0037",
   "time": "Oct 12 2026  6:14AM",
   "type": "20002-Hit and Run No Injuries",

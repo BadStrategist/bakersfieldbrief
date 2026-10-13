@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-13T12:57:33-07:00",
+ "built_at": "2026-10-13T13:15:13-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 4745, column 51"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 1,
    "top_story": "Todd Lee returns to CSUB with a goal of bringing Bakersfield back to Roadrunners basketball",
    "overnight_band": {
     "date": "2026-10-13",
@@ -204,7 +204,7 @@
    "alpr_total": 455,
    "kern_fires": 1,
    "aqi": 53,
-   "chp_week": 22
+   "chp_week": 23
   },
   "letters": {
    "published": 1

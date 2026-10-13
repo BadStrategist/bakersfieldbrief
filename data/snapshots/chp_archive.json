@@ -1330,6 +1330,16 @@
   "details": ""
  },
  {
+  "log_id": "261013BF0118",
+  "time": "Oct 13 2026  1:12PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sb Sr99 Jno California Ave",
+  "area": "Bakersfield",
+  "lat": 35.369722,
+  "lon": -119.0425,
+  "details": ""
+ },
+ {
   "log_id": "261013BF0014",
   "time": "Oct 13 2026  1:48AM",
   "type": "TADV-Traffic Advisory",

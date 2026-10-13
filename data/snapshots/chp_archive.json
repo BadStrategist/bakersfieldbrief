@@ -1340,6 +1340,26 @@
   "details": ""
  },
  {
+  "log_id": "261013BF0129",
+  "time": "Oct 13 2026  1:47PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "3254-3467 Alfred Harrell Hwy",
+  "area": "Bakersfield",
+  "lat": 35.411698,
+  "lon": -118.972757,
+  "details": ""
+ },
+ {
+  "log_id": "261013BF0131",
+  "time": "Oct 13 2026  1:47PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "I5 N / Rowlee Rd",
+  "area": "Buttonwillow",
+  "lat": 35.45561,
+  "lon": -119.474776,
+  "details": ""
+ },
+ {
   "log_id": "261013BF0014",
   "time": "Oct 13 2026  1:48AM",
   "type": "TADV-Traffic Advisory",
@@ -1347,6 +1367,36 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261013BF0132",
+  "time": "Oct 13 2026  1:51PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "China Grade Loop / Round Mountain Rd",
+  "area": "Bakersfield",
+  "lat": 35.42777,
+  "lon": -118.967734,
+  "details": ""
+ },
+ {
+  "log_id": "261013BF0138",
+  "time": "Oct 13 2026  2:03PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Wb Sr58 Jeo General Beale Rd",
+  "area": "Bakersfield",
+  "lat": 35.290556,
+  "lon": -118.747778,
+  "details": ""
+ },
+ {
+  "log_id": "261013BF0140",
+  "time": "Oct 13 2026  2:06PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Wb Sr58 Jwo Sr223",
+  "area": "Bakersfield",
+  "lat": 35.264722,
+  "lon": -118.661667,
   "details": ""
  },
  {

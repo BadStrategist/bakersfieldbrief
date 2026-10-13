@@ -15,12 +15,15 @@ by make_brief_json.pick_stories), this:
      matched row itself. No anchor, no clip. A dramatic word on its own never
      picks a window,
   4. cuts it, then checks the cut three ways: it holds audible speech (measured,
-     not transcribed), it re-transcribes to readable text, and that text is the
-     beat that was picked. A clip that fails any of them is DROPPED, never
-     mixed, and the reel is re-paced over the clips that are left,
-  5. assembles  1 s lead + N clips + 4 s outro  with the house music bed mixed
-     underneath, and normalises the finished mix to a measured loudness (the
-     numbers are in reel_audio_gate.py).
+     not transcribed) for a fair share of its slot, it re-transcribes to
+     readable text, and that text is the beat that was picked. Then it is
+     trimmed to the voice level and measured there. A clip that fails any of
+     them is DROPPED, never mixed, and the reel is re-paced over the clips that
+     are left,
+  5. assembles  1 s lead + N slots + 4 s outro  with the house music bed mixed
+     underneath, each clip padded to its slot so it starts under its own scene,
+     and normalises the finished mix to a measured loudness and a measured
+     length (the numbers are in reel_audio_gate.py).
 
 Output: an MP3 whose length matches the reel duration, plus a JSON audit log
 recording every offset, every verified transcript line and the `outcome`.
@@ -55,7 +58,7 @@ if HERE not in sys.path:
 import reel_audio_gate as RAG  # noqa: E402
 
 STORY_LEN = 6.0        # minimum seconds of dispatch audio per story
-LEAD, TAIL = 1.0, 4.0  # reel intro and outro
+LEAD, TAIL = RAG.LEAD_S, RAG.TAIL_S  # reel intro and outro
 TARGET = 30.0          # reel length rule: about 30 s
 MIN_TOTAL = 25.0       # never under 25 s
 MIN_STORY, MAX_STORY = 6.0, 12.0
@@ -405,17 +408,31 @@ def level_to(src, dst, target):
     The chain's single-pass loudnorm undershoots on sparse speech (clips shipped
     at -25 and -28 LUFS next to clips at -16), so the level is measured and
     trimmed. The lift is capped: dead air is not turned up, it is dropped by the
-    speech check. Returns the measured loudness of dst, or None."""
+    speech check. The limiter can take back some of a lift, so a result that is
+    off the target gets one more trim by what it missed. Returns the measured
+    loudness of dst with the gain that produced it, or None. The caller decides
+    whether that level is close enough to mix (check_clip)."""
     lv = RAG.loudness(src)
     if lv is None:
         return None
-    gain = max(-RAG.MAX_VOICE_GAIN, min(RAG.MAX_VOICE_GAIN, target - lv["lufs"]))
-    r = run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", src,
-             "-af", f"volume={gain:.2f}dB,{_limiter()}",
-             "-c:a", "pcm_s16le", "-ar", "16000", "-ac", "1", dst])
-    if r.returncode != 0:
-        return None
-    return RAG.loudness(dst)
+    want = target - lv["lufs"]
+    out, gain = None, 0.0
+    for _ in range(2):
+        gain = max(-RAG.MAX_VOICE_GAIN, min(RAG.MAX_VOICE_GAIN, want))
+        r = run(["ffmpeg", "-y", "-hide_banner", "-loglevel", "error", "-i", src,
+                 "-af", f"volume={gain:.2f}dB,{_limiter()}",
+                 "-c:a", "pcm_s16le", "-ar", "16000", "-ac", "1", dst])
+        if r.returncode != 0:
+            return None
+        out = RAG.loudness(dst)
+        if out is None:
+            return None
+        miss = target - out["lufs"]
+        if abs(miss) <= RAG.CLIP_TOLERANCE / 2 or abs(want) >= RAG.MAX_VOICE_GAIN:
+            break
+        want = gain + miss
+    return {"lufs": out["lufs"], "peak": out["peak"], "gain_db": round(gain, 2),
+            "from_lufs": lv["lufs"]}
 
 
 def find_beat(story, row_text, probe, lo, hint, length):
@@ -450,7 +467,12 @@ def check_clip(pick, story_len, scratch):
     Returns the path of the levelled piece, or None. Fills pick["rec"] with what
     was measured and, on a refusal, `verify_reason`. Three checks, all must pass:
     audible speech in the cut, a readable re-transcription of the cut, and that
-    re-transcription being the beat that was picked."""
+    re-transcription being the beat that was picked. Then the level: a clip that
+    does not measure at RAG.VOICE_LUFS after its trim is refused like the rest.
+
+    `story_len` is the SLOT, the seconds the scene plan gives this story. The
+    cut can come back shorter (the block ended, or an emulator clip is short);
+    the mix pads it to the slot, so the speech is judged against the slot."""
     i, s, rec = pick["i"], pick["story"], pick["rec"]
     start = max(0.0, pick["start"] - PRE_ROLL)
     proc = os.path.join(scratch, f"s{i}_proc.wav")
@@ -469,13 +491,24 @@ def check_clip(pick, story_len, scratch):
 
     if not rec["cut_ok"]:
         return refuse("ffmpeg could not cut the clip")
+    cut_s = RAG.duration(proc)
+    if cut_s is None:
+        return refuse("the length of the cut could not be measured")
+    rec["cut_s"] = round(cut_s, 2)
+    rec["pad_s"] = round(max(0.0, story_len - cut_s), 2)
     speech = RAG.speech_seconds(proc)
     rec["speech_s"] = None if speech is None else round(speech, 2)
     if speech is None:
         return refuse("the speech in the cut could not be measured")
+    share = speech / story_len
+    rec["speech_share"] = round(share, 2)
     if speech < RAG.MIN_SPEECH_S:
-        return refuse(f"{rec['speech_s']} s of audible speech in a {story_len:.1f} s cut "
-                      f"(floor {RAG.MIN_SPEECH_S} s)")
+        return refuse(f"{rec['speech_s']} s of audible speech in a {story_len:.1f} s slot: "
+                      f"no usable audio (floor {RAG.MIN_SPEECH_S} s)")
+    if speech < RAG.speech_floor(story_len):
+        return refuse(f"{rec['speech_s']} s of audible speech is {share:.0%} of a "
+                      f"{story_len:.1f} s slot: mostly dead air (floor "
+                      f"{RAG.MIN_SPEECH_SHARE:.0%}, {RAG.speech_floor(story_len):.1f} s)")
 
     # Verify the actual cut, not the probe, on the raw audio. Two ASR passes
     # over the same seconds of narrowband radio do not always agree, and a
@@ -517,6 +550,14 @@ def check_clip(pick, story_len, scratch):
     if lv is None:
         return refuse("the clip's loudness could not be measured")
     rec["piece_lufs"] = lv["lufs"]
+    rec["piece_gain_db"] = lv.get("gain_db")
+    if abs(lv["lufs"] - RAG.VOICE_LUFS) > RAG.CLIP_TOLERANCE:
+        # The cap is what stops it: a cut that needs more than MAX_VOICE_GAIN is
+        # noise with a voice somewhere under it, and turned up it is loud noise.
+        return refuse(f"the clip measures {lv['lufs']:.1f} LUFS after a "
+                      f"{lv.get('gain_db', 0.0):+.1f} dB trim, outside "
+                      f"{RAG.VOICE_LUFS:.0f} +/- {RAG.CLIP_TOLERANCE:.0f} (the trim is "
+                      f"capped at {RAG.MAX_VOICE_GAIN:.0f} dB: dead air is not turned up)")
     rec["verify_ok"] = True
     return piece
 
@@ -549,8 +590,18 @@ class MixError(Exception):
     """The finished mix is not fit to publish. No soundtrack is left on disk."""
 
 
-def mix_soundtrack(pieces, bed, out, scratch, no_bed=False):
+def mix_soundtrack(pieces, slot, bed, out, scratch, no_bed=False):
     """lead + pieces + tail with the bed under it, normalised and MEASURED.
+
+    Every piece is laid into a slot of exactly `slot` seconds: padded with
+    silence when it is shorter, trimmed when it is longer. The render cuts the
+    picture to LEAD + n x slot + TAIL, so a piece that was simply concatenated
+    at its own length pulled every later clip off its scene. Reproduced on the
+    2026-10-12 audio with a dispatch 6.2 s before the end of its block: the
+    build exited 0 and logged 30.0 s, the track was 27.82 s, the render would
+    have split 28 s into three scenes, and clip 2 started 1.5 s before its own.
+    The length of what was written is measured against the plan, and a mix that
+    is off it is refused.
 
     The old mix set the bed with `volume=-18dB` and trusted the voice to carry
     the level. With no voice in the clips the result was the bed alone at
@@ -575,11 +626,20 @@ def mix_soundtrack(pieces, bed, out, scratch, no_bed=False):
     for f in ins:
         cmd += ["-i", f]
     n = len(ins)
-    fc = "".join(f"[{i}:a]" for i in range(n)) + f"concat=n={n}:v=0:a=1[out]"
+    fit = (f"aresample=44100,apad=whole_dur={slot:.6f},atrim=end={slot:.6f},"
+           "asetpts=PTS-STARTPTS")
+    fc = ";".join(f"[{i}:a]{fit if 0 < i < n - 1 else 'anull'}[a{i}]" for i in range(n))
+    fc += ";" + "".join(f"[a{i}]" for i in range(n)) + f"concat=n={n}:v=0:a=1[out]"
     r = run(cmd + ["-filter_complex", fc, "-map", "[out]", "-c:a", "pcm_s16le",
                    "-ar", "44100", voice])
     if r.returncode != 0:
         raise MixError("concat failed: " + r.stderr[:300])
+    plan = RAG.plan_seconds(len(pieces), slot)
+    voice_s = RAG.duration(voice)
+    if voice_s is None or abs(voice_s - plan) > 0.05:
+        raise MixError(f"the voice track runs {voice_s} s and the clip plan is "
+                       f"{plan:.2f} s ({len(pieces)} x {slot:.2f} s): the clips "
+                       f"would not sit under their scenes")
 
     info = {"bed_lufs": None, "bed_gain_db": None}
     if no_bed:
@@ -614,9 +674,13 @@ def mix_soundtrack(pieces, bed, out, scratch, no_bed=False):
         raise MixError("normalise failed: " + r.stderr[:300])
 
     final = RAG.loudness(out)
+    out_s = RAG.duration(out)
     problem = None
-    if final is None:
+    if final is None or out_s is None:
         problem = "the finished soundtrack could not be measured"
+    elif abs(out_s - plan) > RAG.PLAN_TOLERANCE:
+        problem = (f"the finished soundtrack runs {out_s:.2f} s and the clip plan "
+                   f"is {plan:.2f} s")
     elif abs(final["lufs"] - RAG.MIX_LUFS) > RAG.MIX_TOLERANCE:
         problem = (f"the finished soundtrack measures {final['lufs']:.1f} LUFS, "
                    f"outside {RAG.MIX_LUFS:.0f} +/- {RAG.MIX_TOLERANCE:.0f}")
@@ -627,7 +691,8 @@ def mix_soundtrack(pieces, bed, out, scratch, no_bed=False):
         if os.path.exists(out):
             os.remove(out)
         raise MixError(problem)
-    info.update({"mix_lufs": final["lufs"], "mix_peak_db": final["peak"]})
+    info.update({"mix_lufs": final["lufs"], "mix_peak_db": final["peak"],
+                 "plan_s": round(plan, 3), "measured_s": round(out_s, 3)})
     return info
 
 
@@ -839,6 +904,8 @@ def main():
         print(f"[{p['i']}] {p['story']['headline']}")
         print(f"     {p['label']} @ {p['start']:.1f}s  score={rec.get('window_score')}  "
               f"{story_len:.1f}s  speech={rec.get('speech_s')}s  {rec.get('piece_lufs')} LUFS")
+        if (rec.get("pad_s") or 0) >= 0.05:
+            print(f"     the cut is {rec['cut_s']} s: padded {rec['pad_s']} s to fill its slot")
         for line in rec.get("verified_transcript", []):
             print(f"       > {line}")
 
@@ -863,15 +930,16 @@ def main():
         sys.exit(EXIT_HELD)
 
     try:
-        log["mix"] = mix_soundtrack([piece for _p, piece in kept], bed, args.out,
-                                    scratch, no_bed=args.no_bed)
+        log["mix"] = mix_soundtrack([piece for _p, piece in kept], story_len, bed,
+                                    args.out, scratch, no_bed=args.no_bed)
     except MixError as exc:
         finish("held", f"mix refused: {exc}")
         print(f"HELD: {exc}. No soundtrack was written. Audit log: {logp}",
               file=sys.stderr)
         sys.exit(EXIT_MIX)
 
-    dur = LEAD + story_len * len(kept) + TAIL
+    # The plan, which the mix has just measured the written file against.
+    dur = RAG.plan_seconds(len(kept), story_len)
     log["duration"] = dur
     finish("degraded" if missing else "ok")
     print(f"\nsoundtrack: {args.out}  ({dur:.1f}s = {LEAD:.0f}s + "

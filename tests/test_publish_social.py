@@ -59,10 +59,19 @@ def test_all_legs_ok_returns_zero_without_the_browser(tmp_path, monkeypatch):
 def _audit(**over):
     """A clean two-story audit log, as make_dispatch_audio writes it."""
     a = {"date": DATE, "outcome": "ok", "reel_indices": [0, 1],
+         "story_len": 12.0, "duration": 29.0,
          "stories": [{"index": 1, "headline": "Robbery on Mount Vernon Avenue",
                       "verify_ok": True},
                      {"index": 2, "headline": "Crash on Interstate 5", "verify_ok": True}]}
     a.update(over)
+    return a
+
+
+def _degraded():
+    """Story 2 lost its clip: one clip in a 20 s slot, a 25 s reel."""
+    a = _audit(outcome="degraded", reel_indices=[0], story_len=20.0, duration=25.0)
+    a["stories"][1] = {"index": 2, "headline": "Crash on Interstate 5", "verify_ok": False,
+                       "dropped": True, "verify_reason": "re-transcription came back empty"}
     return a
 
 
@@ -83,17 +92,25 @@ AUDIT_1012 = {
 
 @pytest.fixture
 def day(tmp_path, monkeypatch):
-    """A date directory with an audit log, and a reel whose loudness is `lufs`."""
-    box = {"lufs": -16.2, "dir": tmp_path / DATE}
+    """A date directory with an audit log and a brief of `scenes` stories, and a
+    reel whose loudness is `lufs` and whose length is `reel_s`. The defaults are
+    the clean two-story day: two scenes, two 12 s clips, 29 s."""
+    box = {"lufs": -16.2, "reel_s": 29.0, "dir": tmp_path / DATE}
     box["dir"].mkdir()
     monkeypatch.setattr(PS, "STATE_DIR", tmp_path)
     monkeypatch.setattr(PS, "log", lambda *a, **k: None)
     monkeypatch.setattr(PS.RAG, "loudness",
                         lambda p: None if box["lufs"] is None
                         else {"lufs": box["lufs"], "peak": -1.5})
+    monkeypatch.setattr(PS.RAG, "duration", lambda p: box["reel_s"])
 
-    def write(audit):
+    def write(audit, scenes=None):
         (box["dir"] / "soundtrack.json").write_text(json.dumps(audit), encoding="utf-8")
+        if scenes is None:
+            scenes = len(audit.get("reel_indices") or [])
+        (box["dir"] / "brief.json").write_text(
+            json.dumps({"stories": [{"headline": f"story {n}"} for n in range(scenes)]}),
+            encoding="utf-8")
     box["write"] = write
     box["state"] = lambda: json.loads((tmp_path / f"{DATE}.json").read_text(encoding="utf-8"))
     return box
@@ -143,13 +160,36 @@ def test_the_gate_never_passes_what_it_cannot_vouch_for(day, case):
 
 
 def test_a_dropped_story_is_degraded_not_ok(day):
-    a = _audit(outcome="degraded", reel_indices=[0])
-    a["stories"][1] = {"index": 2, "headline": "Crash on Interstate 5", "verify_ok": False,
-                       "dropped": True, "verify_reason": "re-transcription came back empty"}
-    day["write"](a)
+    day["write"](_degraded())
+    day["reel_s"] = 25.0
     g = PS.audio_gate(DATE, Path("reel.mp4"))
     assert g["ok"] is True and g["outcome"] == "degraded"
     assert g["dropped"] == ["story 2 (Crash on Interstate 5): re-transcription came back empty"]
+
+
+@pytest.mark.parametrize("case,says", [
+    ("unpruned brief", "3 scenes and the soundtrack 2 clips"),
+    ("short soundtrack", "the reel runs 27.00 s and the clip plan is 29.00 s"),
+    ("no brief", "brief.json could not be read"),
+    ("unmeasurable length", "length of the reel could not be measured"),
+    ("no plan in the audit", "no clip plan"),
+])
+def test_the_gate_holds_a_reel_whose_scenes_are_not_on_their_clips(day, case, says):
+    """Verified clips at a listening level, and the picture is cut to another
+    plan: a dropped story kept its scene, or the audio came out short."""
+    audit = _audit()
+    if case == "no plan in the audit":
+        del audit["story_len"]
+    day["write"](audit, scenes=3 if case == "unpruned brief" else None)
+    if case == "short soundtrack":
+        day["reel_s"] = 27.0
+    elif case == "no brief":
+        (day["dir"] / "brief.json").write_text("{not json", encoding="utf-8")
+    elif case == "unmeasurable length":
+        day["reel_s"] = None
+    g = PS.audio_gate(DATE, Path("reel.mp4"))
+    assert g["ok"] is False and g["outcome"] == "held"
+    assert len(g["problems"]) == 1 and says in g["problems"][0]
 
 
 # --------------------------------------------------------------------------- #
@@ -196,10 +236,8 @@ def test_a_dry_run_is_gated_too(day, monkeypatch):
 
 def test_a_degraded_reel_is_published_and_the_run_still_fails_loudly(
         day, monkeypatch, capsys):
-    a = _audit(outcome="degraded", reel_indices=[0])
-    a["stories"][1] = {"index": 2, "headline": "Crash on Interstate 5", "verify_ok": False,
-                       "dropped": True, "verify_reason": "re-transcription came back empty"}
-    day["write"](a)
+    day["write"](_degraded())
+    day["reel_s"] = 25.0
     posted = []
     monkeypatch.setattr(PS, "build_assets", lambda d: (Path("reel.mp4"), {}, "caption"))
     monkeypatch.setattr(PS, "api_publish",

@@ -258,13 +258,15 @@ def audio_gate(date: str, reel: Path) -> dict:
     """Is this reel's audio fit to publish? Asked on the publish path, of the
     artifact that is about to be posted, every run.
 
-    Two independent questions, and both must pass:
+    Three independent questions, and all must pass:
       * does the builder's audit log vouch for every clip in the reel
         (RAG.audit_problems)? This catches a clip that was mixed unverified.
       * does reel.mp4 itself measure at a listening level? This catches
         everything the audit cannot know: a soundtrack reused from an earlier
         build, a render that lost the audio, a mix that is only the bed.
-    The 2026-10-12 reel fails both (verify_ok false twice, -35.6 LUFS).
+      * is each scene on its own clip (RAG.timeline_problems)? One scene per
+        clip, and a reel as long as the clip plan.
+    The 2026-10-12 reel fails the first two (verify_ok false twice, -35.6 LUFS).
 
     outcome: 'ok' | 'degraded' (publishable, a story was dropped) | 'held'.
     """
@@ -289,6 +291,16 @@ def audio_gate(date: str, reel: Path) -> dict:
                 f"{reel.name} measures {lv['lufs']:.1f} LUFS, under the "
                 f"{RAG.MIN_MIX_LUFS:.0f} LUFS floor (a normal reel is about "
                 f"{RAG.MIX_LUFS:.0f})")
+    # The third question: is the picture cut to the plan the audio was laid to?
+    # _prune_brief_to_audio only warns when it cannot write brief.json, and the
+    # render then gives a dropped story a scene and every clip the wrong one.
+    try:
+        scenes = len(json.loads((STATE_DIR / date / "brief.json").read_text(
+            encoding="utf-8"))["stories"])
+    except Exception:  # noqa: BLE001
+        scenes = None
+    if audit.get("reel_indices"):       # with no clip at all, that is already said
+        out["problems"] += RAG.timeline_problems(audit, scenes, RAG.duration(reel))
     if not out["problems"]:
         out["ok"] = True
         out["outcome"] = "degraded" if out["dropped"] else "ok"

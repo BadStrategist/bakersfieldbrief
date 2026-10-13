@@ -100,6 +100,65 @@ def fade_over(im, color, a):
 
 
 # ---------- scenes ----------
+def lead_card(im, d, cfg, s, total, tl, card_len, fade_out=True):
+    """Story 1 as the cold opener. Time, event and place are COMPLETE FROM
+    FRAME 0 (frame 0 is the thumbnail), all of it above the bottom 35 percent
+    that the caption bar covers. What moves in the first second is the live
+    dot, the rule and the subhead, which arrives a word at a time."""
+    C_HEAD, C_SUB = CREAM, (235, 230, 220)
+    text_c(im, d, 150, cfg["kicker"], F["kick"], (196, 90, 66))
+    text_c(im, d, 205, f"1 / {total}", F["num"], (200, 195, 185))
+
+    y = 300
+    when = s.get("time", "")
+    if when:
+        fw = font(64, 600)
+        tw = d.textlength(when, font=fw)
+        x0 = (W - tw) / 2 + 26
+        d.text((x0, y), when, font=fw, fill=GOLD)
+        # Live dot: pulses about once a second so the frame is never still.
+        r = 13 + 4 * abs(((tl * 1.1) % 1.0) * 2 - 1)
+        d.ellipse([x0 - 52 - r, y + 44 - r, x0 - 52 + r, y + 44 + r], fill=(214, 72, 48))
+        y += 104
+
+    label = s.get("label") or s["headline"]
+    size = 124
+    while size > 72 and len(wrap(d, label, font(size, 700), 960)) > 2:
+        size -= 8
+    fl = font(size, 700)
+    for ln in wrap(d, label, fl, 960):
+        text_c(im, d, y, ln, fl, C_HEAD)
+        y += int(size * 1.12)
+    where = s.get("where", "") if s.get("label") else ""
+    if where:
+        y += 14
+        fw2 = font(58, 500)
+        for ln in wrap(d, where, fw2, 940):
+            text_c(im, d, y, ln, fw2, GOLD)
+            y += 72
+
+    rw = int(300 * prog(tl, 0.0, 0.5))
+    if rw > 0:
+        d.line([(W / 2 - rw / 2, y + 30), (W / 2 + rw / 2, y + 30)], fill=GOLD, width=5)
+
+    # Subhead: one word every 1/14 s from 0.25 s, each line laid out at its
+    # full width so no word moves once it is drawn.
+    fs = font(50, 400)
+    lines = wrap(d, s.get("subhead", ""), fs, 900)[:4]
+    shown = int(max(0.0, tl - 0.25) * 14)
+    yy = y + 78
+    for ln in lines:
+        words = ln.split()
+        if shown <= 0 or yy + 64 > H * 0.65:
+            break
+        x = (W - d.textlength(ln, font=fs)) / 2
+        d.text((x, yy), " ".join(words[:shown]), font=fs, fill=C_SUB)
+        shown -= len(words)
+        yy += 64
+    if fade_out:
+        fade_over(im, (0, 0, 0), prog(tl, card_len - 0.5, card_len))
+
+
 def story_card(im, d, cfg, s, idx, total, tl, card_len, dark=False, fade_out=True):
     C_HEAD = CREAM if dark else INK
     C_SUB = (215, 210, 200) if dark else GREY
@@ -234,7 +293,15 @@ def frame(t, cfg, dur):
     # caption bar, the audio chip and the story reply box. The URL ships once,
     # in the outro, and lives in the caption every time.
 
-    if t < intro:
+    # "hook": "cold" in brief.json: no title card. Story 1 opens the reel on its
+    # own background and keeps the intro second, so every later card and the
+    # soundtrack stay exactly where they were.
+    cold = cfg.get("hook") == "cold"
+
+    def start(n):
+        return 0.0 if (cold and n == 0) else intro + card_len * n
+
+    if t < intro and not cold:
         # 1 second title flash, COMPLETE FROM FRAME 0. The first frame of a video
         # is its thumbnail in every preview surface (chat, file browser, social),
         # and the original fade-in drew frame 0 at alpha 0: bare cream with a top
@@ -252,7 +319,8 @@ def frame(t, cfg, dur):
             y += 84
         fade_over(im, CREAM, prog(t, 0.72, 1.0))
     elif t < dur - outro:
-        k = min(len(stories) - 1, int((t - intro) // card_len)); tl = (t - intro) - card_len * k
+        k = max(0, min(len(stories) - 1, int((t - intro) // card_len)))
+        tl = t - start(k); this_len = start(k + 1) - start(k)
         # Two stories in a row with the same scene are ONE continuous shot: same
         # variant, the drift keeps running and there is no fade to black between
         # them. Fading between two copies of the same picture is what read as
@@ -267,15 +335,19 @@ def frame(t, cfg, dur):
         bg = story_bg(cfg, stories[k], kk)
         dark = bg is not None
         if dark:
-            drift = tl + (k - kk) * card_len
-            im.paste(bg_at(bg_variant(bg, kk), drift, card_len * group), (0, 0))
+            im.paste(bg_at(bg_variant(bg, kk), t - start(kk),
+                           start(kk + group) - start(kk)), (0, 0))
             d = ImageDraw.Draw(im)
             d.rectangle([0, 0, W, 14], fill=(60, 55, 45)); d.rectangle([0, 0, int(W * t / dur), 14], fill=GOLD)
             # (bottom URL band removed: unusable on every 9:16 surface)
         draw_logo(im, 92, 90, 46)
         d.text((155, 66), cfg["brand"], font=F["brand_sm"], fill=CREAM if dark else INK)
-        story_card(im, d, cfg, stories[k], k, len(stories), tl, card_len, dark=dark,
-                   fade_out=not same_next)
+        if cold and k == 0 and dark:
+            lead_card(im, d, cfg, stories[0], len(stories), tl, this_len,
+                      fade_out=not same_next)
+        else:
+            story_card(im, d, cfg, stories[k], k, len(stories), tl, this_len, dark=dark,
+                       fade_out=not same_next)
     else:
         tl = t - (dur - outro)
         draw_logo(im, W / 2, 700, 170, prog(tl, 0.0, 0.8))

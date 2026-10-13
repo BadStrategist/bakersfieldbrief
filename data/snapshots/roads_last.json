@@ -11,7 +11,7 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "The southbound connector to eastbound SR-52 /in San Diego/ (San Diego Co) is reopened at 0500 hrs on 10/13/26 A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "RESTRICTIONS"
     },
     {
@@ -57,31 +57,40 @@
      }
     ]
    },
-   "reported_as_of": "Tuesday, October 13th, 2026 at 07:48 AM",
-   "hash": "c8ce776add"
+   "reported_as_of": "Tuesday, October 13th, 2026 at 09:55 AM",
+   "hash": "b651c5bf12"
   },
   {
    "number": "58",
    "slug": "sr58",
    "name": "State Route 58 \u2014 Tehachapi",
    "pass": false,
-   "status": "OPEN",
-   "pass_status": "OPEN",
+   "status": "RESTRICTIONS",
+   "pass_status": "RESTRICTIONS",
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "No traffic restrictions reported.",
-     "status": "OPEN"
+     "text": "A high wind advisory is in effect from 15 mi west of the Tehachapi to the Kern/San Bernardino Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "status": "RESTRICTIONS"
     }
    ],
    "scope": {
-    "on_pass": "OPEN",
-    "on_pass_reported": false,
-    "on_pass_items": [],
+    "on_pass": "RESTRICTIONS",
+    "on_pass_reported": true,
+    "on_pass_items": [
+     {
+      "status": "RESTRICTIONS",
+      "place": "",
+      "county": "",
+      "where": "the Central California area",
+      "text": "A high wind advisory is in effect from 15 mi west of the Tehachapi to the Kern/San Bernardino Co Line - Travel is not recommended for campers, trailers, or permit loads",
+      "region": "CENTRAL CALIFORNIA"
+     }
+    ],
     "elsewhere": []
    },
-   "reported_as_of": "Tuesday, October 13th, 2026 at 07:48 AM",
-   "hash": "5374f203ec"
+   "reported_as_of": "Tuesday, October 13th, 2026 at 09:55 AM",
+   "hash": "b144bffee7"
   },
   {
    "number": "99",
@@ -117,7 +126,7 @@
      }
     ]
    },
-   "reported_as_of": "Tuesday, October 13th, 2026 at 07:48 AM",
+   "reported_as_of": "Tuesday, October 13th, 2026 at 09:55 AM",
    "hash": "0923f03423"
   }
  ],

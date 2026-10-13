@@ -1338,5 +1338,15 @@
   "lat": 35.265234,
   "lon": -119.024794,
   "details": ""
+ },
+ {
+  "log_id": "261013BF0060",
+  "time": "Oct 13 2026  9:24AM",
+  "type": "CZP-Assist with Construction",
+  "location": "NB I5 JNO Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.836389,
+  "lon": -118.862778,
+  "details": ""
  }
 ]

@@ -1226,13 +1226,13 @@
   },
   {
    "id": 13311215201,
-   "lat": 35.6223501,
-   "lon": -117.6490608,
+   "lat": 35.6223,
+   "lon": -117.6490849,
    "manufacturer": "Flock Safety",
    "operator": "Ridgecrest Police Department",
    "direction": "57",
    "mapped": "2025-11-17",
-   "edited": "2026-08-02",
+   "edited": "2026-10-13",
    "start_date": "",
    "camera_type": "public"
   },
@@ -5468,5 +5468,5 @@
   "new_this_week_snapshot_diff": 0,
   "newest_mapped": "2026-10-09"
  },
- "asof": "2026-10-12"
+ "asof": "2026-10-13"
 }

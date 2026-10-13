@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-12T19:12:00-07:00",
+ "built_at": "2026-10-13T02:43:41-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 4745, column 51"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -68,13 +68,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1268,
+  "brief_words": 67,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Kyiv says Russian strikes on energy facilities continue despite Trump's 'energy ceasefire'",
+   "chp_new": 3,
+   "top_story": "Graffiti vandalism hits Bear Mountain Park, forcing partial closure as cleanup crews work to remove damage",
    "overnight_band": {
     "date": "2026-10-12",
     "count": 32,
@@ -114,12 +114,12 @@
      "child endangerment"
     ]
    },
-   "archive": "2026-10-12"
+   "archive": "2026-10-13"
   },
   "cityhall": {
-   "upcoming_meetings": 5,
+   "upcoming_meetings": 3,
    "county_items": 109,
-   "drafts_generated": 0
+   "drafts_generated": 2
   },
   "places": {
    "places": [
@@ -129,7 +129,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -140,22 +140,22 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-10-12"
+   "draft": "drafts/weekend-guide-2026-10-13"
   },
   "grapevine": {
-   "i5": "RESTRICTIONS",
+   "i5": "CLOSED",
    "i5_pass": "RESTRICTIONS",
    "log_entries": 60
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 16,
+   "wind_mph": 8,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 48,
-   "wind_mph": 16,
+   "temp": 45,
+   "wind_mph": 8,
    "alerts": 0
   },
   "roads": {
@@ -179,21 +179,21 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 21,
-    "In 1 to 2 weeks": 20,
-    "Later": 92
+    "In the next 7 days": 22,
+    "In 1 to 2 weeks": 21,
+    "Later": 90
    },
-   "meetings": 5
+   "meetings": 3
   },
   "feed": {
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 143786,
+   "isabella_af": 143464,
    "alpr_total": 455,
    "kern_fires": 1,
-   "aqi": 47,
-   "chp_week": 18
+   "aqi": 57,
+   "chp_week": 21
   },
   "letters": {
    "published": 1

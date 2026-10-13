@@ -1,135 +1,5 @@
 [
  {
-  "log_id": "261005BF0187",
-  "time": "Oct  5 2026  1:30PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Sb I5 At Fort Tejon Rd",
-  "area": "Fort Tejon",
-  "lat": 34.876667,
-  "lon": -118.894722,
-  "details": ""
- },
- {
-  "log_id": "261005BF0198",
-  "time": "Oct  5 2026  1:45PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Mohawk St / Rosedale Hwy",
-  "area": "Bakersfield",
-  "lat": 35.383247,
-  "lon": -119.065406,
-  "details": ""
- },
- {
-  "log_id": "261005BF0211",
-  "time": "Oct  5 2026  2:35PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "2629 N King St",
-  "area": "Bakersfield",
-  "lat": 35.396809,
-  "lon": -118.985987,
-  "details": ""
- },
- {
-  "log_id": "261005BF0230",
-  "time": "Oct  5 2026  3:10PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Nb I5 Jno Sr99,split",
-  "area": "Fort Tejon",
-  "lat": 35.00725,
-  "lon": -118.95158,
-  "details": ""
- },
- {
-  "log_id": "261005BF0237",
-  "time": "Oct  5 2026  3:16PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "18074-18485 Caliente Bodfish Rd",
-  "area": "Bakersfield",
-  "lat": 35.330767,
-  "lon": -118.586869,
-  "details": ""
- },
- {
-  "log_id": "261005BF0241",
-  "time": "Oct  5 2026  3:21PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Nb I5 Jso Grapevine Rd",
-  "area": "Fort Tejon",
-  "lat": 34.9375,
-  "lon": -118.928611,
-  "details": ""
- },
- {
-  "log_id": "261005BF0240",
-  "time": "Oct  5 2026  3:21PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "20003-20099 Sr119",
-  "area": "Bakersfield",
-  "lat": 35.267089,
-  "lon": -119.221551,
-  "details": ""
- },
- {
-  "log_id": "261005BF0033",
-  "time": "Oct  5 2026  5:05AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "9855 Compagnoni St",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "261005BF0034",
-  "time": "Oct  5 2026  5:21AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "0 I5 S",
-  "area": "Fort Tejon",
-  "lat": 34.841516,
-  "lon": -118.864562,
-  "details": ""
- },
- {
-  "log_id": "261005BF0044",
-  "time": "Oct  5 2026  6:09AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "0 Merced Ave Onr",
-  "area": "Bakersfield",
-  "lat": 35.529922,
-  "lon": -119.188374,
-  "details": ""
- },
- {
-  "log_id": "261005BF0053",
-  "time": "Oct  5 2026  7:14AM",
-  "type": "1125A-Animal Hazard",
-  "location": "Wb Sr58 Jeo Mount Vernon Ave",
-  "area": "Bakersfield",
-  "lat": 35.352778,
-  "lon": -118.960556,
-  "details": ""
- },
- {
-  "log_id": "261005BF0094",
-  "time": "Oct  5 2026  9:51AM",
-  "type": "CZP-Assist with Construction",
-  "location": "1033 Lebec Rd",
-  "area": "Fort Tejon",
-  "lat": 34.825534,
-  "lon": -118.87775,
-  "details": ""
- },
- {
-  "log_id": "261005BF0155",
-  "time": "Oct  5 2026 11:51AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "SR178 / Democrat Rd",
-  "area": "Bakersfield",
-  "lat": 35.528673,
-  "lon": -118.656665,
-  "details": ""
- },
- {
   "log_id": "261006BF0005",
   "time": "Oct  6 2026  1:51AM",
   "type": "TADV-Traffic Advisory",
@@ -1380,6 +1250,16 @@
   "details": ""
  },
  {
+  "log_id": "261012BF0291",
+  "time": "Oct 12 2026  7:12PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Sr99 S / Union Ave Onr",
+  "area": "Bakersfield",
+  "lat": 35.172725,
+  "lon": -119.004403,
+  "details": ""
+ },
+ {
   "log_id": "261012BF0049",
   "time": "Oct 12 2026  7:13AM",
   "type": "1125A-Animal Hazard",
@@ -1410,6 +1290,16 @@
   "details": ""
  },
  {
+  "log_id": "261012BF0304",
+  "time": "Oct 12 2026  7:42PM",
+  "type": "ESCORT for Road Conditions",
+  "location": "Sr119 / I5 N Sr119 Con",
+  "area": "Buttonwillow",
+  "lat": 35.267089,
+  "lon": -119.221851,
+  "details": ""
+ },
+ {
   "log_id": "261012BF0069",
   "time": "Oct 12 2026  8:29AM",
   "type": "20002-Hit and Run No Injuries",
@@ -1437,6 +1327,16 @@
   "area": "Fort Tejon",
   "lat": 35.059336,
   "lon": -118.975892,
+  "details": ""
+ },
+ {
+  "log_id": "261013BF0014",
+  "time": "Oct 13 2026  1:48AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
   "details": ""
  }
 ]

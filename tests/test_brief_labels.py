@@ -86,3 +86,72 @@ def test_stories_carry_the_label_and_place_the_cold_opener_needs():
     without = mbj.story_json({"type": "Robbery", "area": "", "summary": "x",
                               "time": "01:20"})
     assert without["where"] == ""
+
+
+@pytest.mark.parametrize("raw, expected", [
+    # A hedge the caller wrote stays. "Shots fired, unfounded" read as "Shots
+    # fired" claims more than the call did (review, 2026-10-12).
+    ("Shots fired, unfounded", "Shots fired, unfounded"),
+    ("Assault, possible domestic", "Assault, possible domestic"),
+    ("reported shooting", "Reported shooting"),
+    ("Possible burglary", "Possible burglary"),
+    # A compound type with no hedge still keeps only its first part.
+    ("structure fire, second alarm", "Structure fire"),
+    ("kidnapping / assault with a firearm", "Kidnapping"),
+])
+def test_a_hedge_is_never_dropped_while_naming_an_event(raw, expected):
+    assert mbj.label_for(raw) == expected
+
+
+@pytest.mark.parametrize("raw, expected", [
+    ("possible DUI", "Possible DUI"),
+    ("possible_dui", "Possible DUI"),
+    ("dui_report", "DUI report"),
+    ("Reckless driver", "Reckless driver"),
+])
+def test_a_lower_cased_acronym_stays_an_acronym(raw, expected):
+    assert mbj.label_for(raw) == expected
+
+
+@pytest.mark.parametrize("area, expected", [
+    # A place that carries its own locator is never given a second one.
+    ("near Lynwood and Height streets", "near Lynwood and Height streets"),
+    ("south of Kelso Creek", "south of Kelso Creek"),
+    ("off King Street, east Kern", "off King Street, east Kern"),
+    # Everything else keeps the preposition it always had.
+    ("Mount Vernon Avenue", "on Mount Vernon Avenue"),
+    ("Union Avenue", "on Union Avenue"),
+    ("Delano", "in Delano"),
+    ("", ""),
+])
+def test_a_place_never_gets_two_locators(area, expected):
+    assert mbj._place_phrase(area) == expected
+
+
+def test_no_type_on_disk_loses_a_hedge_or_lower_cases_an_acronym():
+    """Re-measured over every type in incidents/, never a sample: 346 distinct
+    types over 1,214 rows. A generic label claims nothing, so it is exempt."""
+    import glob
+    import json
+    import re
+    hedge = re.compile(r"\b(unfounded|unconfirmed|possible|reported|alleged|"
+                       r"suspicious|unknown|attempted)\b", re.I)
+    acro = re.compile(r"\b(dui|dwi|k9|atv|suv|chp|kcso|bpd|fbi|swat|emt)\b")
+    files = glob.glob(str(ROOT / "incidents" / "*.json"))
+    if not files:
+        pytest.skip("no incidents/ data on this checkout")
+    types = set()
+    for f in files:
+        data = json.loads(Path(f).read_text(encoding="utf-8"))
+        rows = data if isinstance(data, list) else (
+            data.get("incidents") or data.get("stories") or [])
+        for row in rows:
+            if isinstance(row, dict) and row.get("type"):
+                types.add(str(row["type"]).strip())
+    assert len(types) > 100, len(types)
+    for t in sorted(types):
+        label = mbj.label_for(t)
+        if label == "Incident reported":
+            continue
+        assert not (hedge.search(t) and not hedge.search(label)), (t, label)
+        assert not acro.search(label), (t, label)

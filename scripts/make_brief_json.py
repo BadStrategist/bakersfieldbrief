@@ -64,7 +64,7 @@ def music_for_date(date: str) -> str:
 # fall back to a generic label + the 'city' scene.
 TYPE_LABEL = {
     "shooting": "Shots fired",
-    "reported_shooting": "Shots fired",
+    "reported_shooting": "Reported shooting",
     "domestic_violence": "Domestic violence in progress",
     "domestic_call": "Domestic violence call",
     "domestic_violence_with_injury": "Domestic violence with injury",
@@ -183,6 +183,9 @@ VAGUE_TYPES = {"", "incident", "vehicle", "traffic", "traffic_incident",
 REPORTED_TYPES = {"kidnapping": "Reported kidnapping",
                   "kidnapping_report": "Reported kidnapping",
                   "hostage": "Reported hostage situation"}
+# A caller's hedge is part of what the call said, so a label never drops one.
+HEDGE_RE = re.compile(r"\b(unfounded|unconfirmed|possible|alleged|reported|"
+                      r"suspicious|unknown|in progress|attempted)\b", re.I)
 
 
 def label_for(raw_type: str) -> str:
@@ -199,10 +202,36 @@ def label_for(raw_type: str) -> str:
         return "Incident reported"
     if t in REPORTED_TYPES:
         return REPORTED_TYPES[t]
-    words = re.split(r"\s*[/,]\s*", t.replace("_", " "))[0].strip()
+    body = t.replace("_", " ").strip()
+    # A hedge the caller wrote stays in the label. "Shots fired, unfounded" read
+    # as "Shots fired" claims more than the call did, and the compound rule
+    # below is what dropped it (found by review 2026-10-12).
+    words = body if HEDGE_RE.search(body) else re.split(r"\s*[/,]\s*", body)[0].strip()
     if not words or len(words.split()) > 6:
         return "Incident reported"
-    return words[:1].upper() + words[1:]
+    return _sentence_case(words, raw_type)
+
+
+# Acronyms that turn up lower-cased in the type field ('possible_dui'), which no
+# capitalisation rule can recover on its own.
+ACRONYMS = {"dui", "dwi", "k9", "atv", "suv", "atf", "fbi", "chp", "kcso", "bpd",
+            "swat", "emt"}
+
+
+def _sentence_case(text: str, raw: str) -> str:
+    """Sentence case, keeping a token the source spelled in capitals:
+    'possible DUI' keeps its acronym ('Possible dui' was wrong)."""
+    caps = ({w.upper() for w in re.split(r"[^A-Za-z0-9]+", raw or "")
+             if len(w) >= 2 and w.isupper()}
+            | {a.upper() for a in ACRONYMS})
+    out = []
+    for i, w in enumerate(text.split()):
+        core = w.strip(",.;:")
+        if core.upper() in caps:
+            out.append(w.upper())
+        else:
+            out.append(w if i else w[:1].upper() + w[1:])
+    return " ".join(out)
 
 
 # Hook test: the opener alternates by date inside the window and is the title
@@ -255,6 +284,26 @@ def _preposition(area: str) -> str:
     if a in CITY_WORDS:
         return "in"
     return "near"
+
+
+# A place that already carries its locator keeps it: "Shots fired near Lynwood
+# and Height streets" reads, "on near Lynwood and Height streets" does not. 22 of
+# the 1,033 areas on disk start this way ("south of Kelso Creek", "off King
+# Street, east Kern").
+LOCATOR_RE = re.compile(
+    r"^(near|at|on|off|in|inside|outside|between|behind|along|across|"
+    r"(just\s+)?(south|north|east|west)\s+of)\b", re.I)
+
+
+def _place_phrase(area: str) -> str:
+    """The label-to-place phrase: 'on Oak Street', 'in Delano', or the area's own
+    words when it already carries the locator."""
+    a = (area or "").strip()
+    if not a:
+        return ""
+    if LOCATOR_RE.match(a):
+        return a
+    return f"{_preposition(a)} {a}".strip()
 
 
 # Trailing function words that make a truncated clause read as machine-cut
@@ -464,7 +513,7 @@ def story_json(inc: dict) -> dict:
     # showed the identical image (reported 2026-09-20: "keeps flashing the
     # same black highway image").
     return {
-        "headline": _no_em_dash(_cut_words(f"{label} {_preposition(head_area)} {head_area}", 120)),
+        "headline": _no_em_dash(_cut_words(f"{label} {_place_phrase(head_area)}", 120)),
         "subhead": _no_em_dash(sub),
         "time": _fmt_time(inc.get("time", "")),
         "place": _no_em_dash(_cut_words(area.upper(), 60)),
@@ -472,7 +521,7 @@ def story_json(inc: dict) -> dict:
         # The cold opener sets the event and the place as two lines. No area
         # on the incident means no place line, never a default city.
         "label": label,
-        "where": (_no_em_dash(_cut_words(f"{_preposition(head_area)} {head_area}", 80))
+        "where": (_no_em_dash(_cut_words(_place_phrase(head_area), 80))
                   if _clean_area(inc.get("area", "")) else ""),
     }
 

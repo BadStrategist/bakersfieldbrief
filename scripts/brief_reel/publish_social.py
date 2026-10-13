@@ -25,11 +25,20 @@ Idempotent: work/social/<date>.json records what is already published, so a retr
 after a timeout never double-posts. Refuses to publish anything when the audio
 pick or the render fails.
 
+The audio gate (audio_gate, 2026-10-12): nothing is posted until the builder's
+audit log vouches for every clip in the reel AND the finished reel.mp4 measures
+at a real listening level. A reel with no verified dispatch audio is HELD: no
+reel, no story, exit 6, and the report says why. A reel that lost a story but
+kept at least one verified clip is published and the run still exits non-zero
+(7), so a dropped clip is seen the same morning.
+
 Usage
 -----
   python publish_social.py [--date YYYY-MM-DD] [--verify-only] [--dry-run] [--force]
 
-Exit: 0 = published/verified, 1 = failure, 3 = gate blocked (nothing published).
+Exit: 0 = published/verified, 1 = failure, 3 = gate blocked (nothing published),
+      5 = an API leg failed, 6 = reel HELD on the audio gate (nothing published),
+      7 = published, but the audio is degraded (a story was dropped).
 """
 from __future__ import annotations
 
@@ -47,6 +56,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
 from scripts import post_facebook as PF  # noqa: E402
+from scripts.brief_reel import reel_audio_gate as RAG  # noqa: E402
 
 # Advisory Jev screener (see jev_decide.py). Deliberately optional: if it cannot be
 # imported, or the key/network/model is unavailable, the pipeline must behave exactly
@@ -74,6 +84,11 @@ COMPOSER = f"https://business.facebook.com/latest/reels_composer/?asset_id={PAGE
 STORY_COMPOSER = f"https://business.facebook.com/latest/story_composer/?asset_id={PAGE_ID}&business_id={BIZ_ID}"
 CONTENT = f"https://business.facebook.com/latest/content?asset_id={PAGE_ID}&business_id={BIZ_ID}"
 STATE_DIR = ROOT / "work" / "social"
+EXIT_HELD, EXIT_DEGRADED = 6, 7
+
+
+class ReelHeld(Exception):
+    """The reel has no usable dispatch audio and must not be published."""
 
 
 def _head_of(caption: str, n: int = 40) -> str:
@@ -172,13 +187,24 @@ def build_assets(date: str) -> tuple[Path, Path, str] | None:
 
     soundtrack = out / "soundtrack.mp3"
     if not soundtrack.exists():
+        # A build that already HELD today is not repeated: the builder is
+        # deterministic, so the retry slot would spend five minutes to reach the
+        # same answer. A crashed build leaves no held audit and does run again.
+        held = _held_audit(out)
+        if held:
+            raise ReelHeld(f"{held} (held by an earlier run; --force rebuilds)")
         rc = run([PY, ROOT / "scripts" / "brief_reel" / "make_dispatch_audio.py",
                   "--date", date, "--brief", brief_json, "--out", soundtrack], timeout=1800)
-        log(rc.stdout.strip()[-300:] or rc.stderr.strip()[-300:])
-    if not soundtrack.exists():
-        log("FATAL dispatch soundtrack failed — refusing to publish a reel "
-            "without the agreed audio (bed + dispatch clips)")
-        return None
+        log(f"dispatch audio builder exit {rc.returncode}")
+        log(rc.stdout.strip()[-300:])
+        if rc.stderr.strip():
+            # The builder names every dropped clip on stderr. This used to be
+            # logged only when stdout was empty, which it never was.
+            log("builder said: " + rc.stderr.strip()[-700:])
+        if not soundtrack.exists():
+            raise ReelHeld(_held_audit(out) or
+                           f"the dispatch audio builder wrote no soundtrack "
+                           f"(exit {rc.returncode})")
 
     # The reel's scenes must match the dispatch clips that actually made it into
     # the soundtrack; otherwise the picture drifts from the audio and the reel
@@ -214,6 +240,83 @@ def build_assets(date: str) -> tuple[Path, Path, str] | None:
 
     caption = PF.compose_post(date, brief, overnight)
     return reel, brief_json, caption
+
+
+def _held_audit(out: Path) -> str | None:
+    """The reason the builder held this date's soundtrack, if it did."""
+    try:
+        audit = json.loads((out / "soundtrack.json").read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        return None
+    if audit.get("outcome") != "held":
+        return None
+    why = audit.get("held_reason") or "the builder held the soundtrack"
+    return "; ".join([why] + RAG.dropped_stories(audit))
+
+
+def audio_gate(date: str, reel: Path) -> dict:
+    """Is this reel's audio fit to publish? Asked on the publish path, of the
+    artifact that is about to be posted, every run.
+
+    Two independent questions, and both must pass:
+      * does the builder's audit log vouch for every clip in the reel
+        (RAG.audit_problems)? This catches a clip that was mixed unverified.
+      * does reel.mp4 itself measure at a listening level? This catches
+        everything the audit cannot know: a soundtrack reused from an earlier
+        build, a render that lost the audio, a mix that is only the bed.
+    The 2026-10-12 reel fails both (verify_ok false twice, -35.6 LUFS).
+
+    outcome: 'ok' | 'degraded' (publishable, a story was dropped) | 'held'.
+    """
+    out: dict = {"ok": False, "outcome": "held", "problems": [], "dropped": [],
+                 "lufs": None}
+    audit_path = STATE_DIR / date / "soundtrack.json"
+    try:
+        audit = json.loads(audit_path.read_text(encoding="utf-8"))
+    except Exception as exc:  # noqa: BLE001
+        out["problems"].append(f"no readable audit log ({audit_path.name}: "
+                               f"{type(exc).__name__})")
+        return out
+    out["problems"] += RAG.audit_problems(audit)
+    out["dropped"] = RAG.dropped_stories(audit)
+    lv = RAG.loudness(reel)
+    if lv is None:
+        out["problems"].append(f"the loudness of {reel.name} could not be measured")
+    else:
+        out["lufs"] = lv["lufs"]
+        if lv["lufs"] < RAG.MIN_MIX_LUFS:
+            out["problems"].append(
+                f"{reel.name} measures {lv['lufs']:.1f} LUFS, under the "
+                f"{RAG.MIN_MIX_LUFS:.0f} LUFS floor (a normal reel is about "
+                f"{RAG.MIX_LUFS:.0f})")
+    if not out["problems"]:
+        out["ok"] = True
+        out["outcome"] = "degraded" if out["dropped"] else "ok"
+    return out
+
+
+def report_held(date: str, state: dict, state_file: Path, problems: list[str],
+                dropped: list[str] | None = None) -> int:
+    """The explicit outcome for a reel with no usable voice track: nothing is
+    posted, the state file says so, and the report is loud. Held, not skipped:
+    exit 6 is its own code so it can never read as 'gate blocked'."""
+    state.update({"date": date, "done": False, "held": True,
+                  "held_reasons": problems, "held_dropped": dropped or [],
+                  "held_at": datetime.now(ZoneInfo("America/Los_Angeles")).isoformat(
+                      timespec="seconds")})
+    state_file.write_text(json.dumps(state, indent=2), encoding="utf-8")
+    print("SOCIAL_REPORT")
+    print(f"date={date}")
+    print("audio=HELD")
+    for p in problems:
+        print(f"audio_problem={p}")
+    for d in dropped or []:
+        print(f"audio_dropped={d}")
+    print("path=none (the reel and the story were NOT posted)")
+    print("verify=held")
+    log(f"REEL HELD for {date}: no usable dispatch audio. Nothing was posted. "
+        f"Audit: work/social/{date}/soundtrack.json")
+    return EXIT_HELD
 
 
 def _prune_brief_to_audio(brief_json: Path, soundtrack: Path) -> None:
@@ -938,9 +1041,37 @@ def main(argv: list[str]) -> int:
     state_file = STATE_DIR / f"{date}.json"
     state = json.loads(state_file.read_text(encoding="utf-8")) if state_file.exists() else {}
 
-    assets = build_assets(date)
+    if a.force and _held_audit(STATE_DIR / date):
+        (STATE_DIR / date / "soundtrack.json").unlink()   # --force rebuilds a held day
+
+    try:
+        assets = build_assets(date)
+    except ReelHeld as exc:
+        return report_held(date, state, state_file, [str(exc)])
     if assets is None:
         return 3
+
+    # THE AUDIO GATE. Every path below posts assets[0]; none of them is reached
+    # with a reel whose audio is not vouched for and measured. --verify-only
+    # posts nothing, so it is the one run that does not ask.
+    degraded: list[str] = []
+    audio: dict = {}
+    if not a.verify_only:
+        audio = audio_gate(date, assets[0])
+        state["audio"] = audio
+        if not audio["ok"]:
+            return report_held(date, state, state_file, audio["problems"],
+                               audio["dropped"])
+        degraded = audio["dropped"]
+        for d in degraded:
+            log(f"AUDIO DEGRADED - not in the reel: {d}")
+
+    def audio_lines() -> None:
+        if a.verify_only:
+            return
+        print(f"audio={'DEGRADED' if degraded else 'ok'} {audio.get('lufs')} LUFS")
+        for d in degraded:
+            print(f"audio_dropped={d}")
 
     # PRIMARY and ONLY: Graph API (reel + story to Facebook and Instagram).
     # The Playwright fallback is retired (see the API-failure branch below). The old
@@ -955,11 +1086,15 @@ def main(argv: list[str]) -> int:
             for leg, v in api.items():
                 print(f"{leg}={'ok' if v.get('ok') else 'FAILED'} "
                       f"{'(already up) ' if v.get('skipped') else ''}{v.get('url', '')}")
+            audio_lines()
             print("path=api (browser not needed)")
             print("verify=ok")
             state["done"] = True
             state_file.write_text(json.dumps(state, indent=2), encoding="utf-8")
-            return 0
+            # Published and live, so `done` is true and no slot posts again. The
+            # exit code is still non-zero: a story lost its audio and someone
+            # should hear about it today, not find it by hand tomorrow.
+            return EXIT_DEGRADED if degraded else 0
         # NO browser fallback. This used to fall through to Playwright: the path with the
         # duplicate-story and one-sided-story history in its own comments, and the one no
         # test can exercise without posting for real. The retry slot re-runs THIS API path
@@ -970,6 +1105,7 @@ def main(argv: list[str]) -> int:
         print(f"date={date}")
         for leg, v in (api or {}).items():
             print(f"{leg}=FAILED {v.get('url', '')} {v.get('error', '')}".rstrip())
+        audio_lines()
         print("path=api")
         print("verify=failed")
         log(f"API failed for legs: {bad or '(none reported ok)'} - browser fallback retired, "
@@ -1137,6 +1273,9 @@ def main(argv: list[str]) -> int:
               "slot re-checks with a fresh browser")
     else:
         print(f"verify={'ok' if ok else 'PARTIAL'}")
+    audio_lines()
+    if ok and degraded:
+        return EXIT_DEGRADED
     return 0 if ok else 1
 
 

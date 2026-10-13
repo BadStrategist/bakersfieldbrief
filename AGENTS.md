@@ -41,6 +41,14 @@ The same rule one layer down, on the map: `geo.geocode` returns `None` for an em
 
 For the app's History rows (`crimeradar_monitor._area_for`): a compass word the headline wrote is part of the name ("South Chester Avenue" is `S Chester Avenue` or nothing) and none is ever added; a feed card's place line counts only when it is one gazetteer street and the headline does not say otherwise; two streets in one headline is no area, logged. A town name is a street only when the region table holds that street (`Taft Highway` yes, `Grapevine Road` no). Change any of this and re-measure against every title in `work/crimeradar/` and every name in `streets.txt`, never a sample.
 
+## Reel audio (scripts/brief_reel)
+A dispatch clip is in the reel only when it verified: audible speech measured in the cut (1.5 s or more), a readable re-transcription of the cut, and that text being the beat that was picked. A clip that fails is dropped and the reel is re-paced over the rest; it is never mixed. The 2026-10-12 reel mixed two clips of dead air and went out at -35.6 LUFS, bed only.
+
+- A cut starts on a word's own time, from a probe transcribed with the voice detector on. Never on a Whisper segment stamp: a 30 s chunk that opens on silence comes back stamped 0.00 to 29.98.
+- A window is the story's only when it carries an anchor: the street, the house or block number, or the words of the matched transcript row. "Fire", "medic" and the like pick nothing on their own (2026-10-09: a Pembroke Avenue shooting card played a brake fire).
+- Levels are measured, never assumed (`reel_audio_gate.py`): each clip and the finished mix at -16 LUFS, the bed at -36 LUFS, peak under -1 dBTP. A mix that would need more than +12 dB has no voice in it and is refused.
+- `make_dispatch_audio.py` exits 0 clean, 2 degraded (a story dropped), 4 held (no clip verified, no soundtrack written), 5 mix refused. `publish_social.py` asks `audio_gate` on the publish path every run: it reads the audit log AND measures `reel.mp4`. Held is exit 6, nothing posted, never a bed-only reel. Degraded publishes and exits 7. Neither is ever exit 0 or 3.
+
 ## Things that are already correct — don't "fix" them
 - Sender auth: SPF `include:_spf.mlsend.com` + DKIM `litesrv._domainkey` CNAME. Mail lands in the inbox.
 - SEO: single-topic posts only.

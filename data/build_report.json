@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-12T16:16:15-07:00",
+ "built_at": "2026-10-12T19:12:00-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 4745, column 51"
   },
   "isabella": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "Kyiv says Russian strikes on energy facilities continue despite Trump's 'energy ceasefire'",
    "overnight_band": {
     "date": "2026-10-12",
@@ -129,7 +129,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -143,19 +143,19 @@
    "draft": "drafts/weekend-guide-2026-10-12"
   },
   "grapevine": {
-   "i5": "CLOSED",
+   "i5": "RESTRICTIONS",
    "i5_pass": "RESTRICTIONS",
    "log_entries": 60
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 15,
+   "wind_mph": 16,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 50,
-   "wind_mph": 15,
+   "temp": 48,
+   "wind_mph": 16,
    "alerts": 0
   },
   "roads": {
@@ -192,7 +192,7 @@
    "isabella_af": 143786,
    "alpr_total": 455,
    "kern_fires": 1,
-   "aqi": 51,
+   "aqi": 47,
    "chp_week": 18
   },
   "letters": {

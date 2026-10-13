@@ -176,6 +176,52 @@ def _norm_type(t: str) -> str:
     return re.sub(r"\s+", "_", (t or "").strip().lower())
 
 
+# Types that say nothing on their own. Only these keep the generic label.
+VAGUE_TYPES = {"", "incident", "vehicle", "traffic", "traffic_incident",
+               "weapon", "weapons", "domestic", "call", "other", "unknown"}
+# A caller's word for a grave crime is a report, and the label says so.
+REPORTED_TYPES = {"kidnapping": "Reported kidnapping",
+                  "kidnapping_report": "Reported kidnapping",
+                  "hostage": "Reported hostage situation"}
+
+
+def label_for(raw_type: str) -> str:
+    """Reel label for an incident type. A type the table does not hold is
+    shown in its own words ('armed robbery' -> 'Armed robbery'), never as
+    'Incident reported': the type field is free text, 221 distinct types were
+    off the table by 2026-10-12, and 13 of 22 reels led with a headline that
+    named no event. A compound type keeps its first part
+    ('kidnapping / assault with a firearm' -> 'Kidnapping')."""
+    t = _norm_type(raw_type)
+    if t in TYPE_LABEL:
+        return TYPE_LABEL[t]
+    if t in VAGUE_TYPES:
+        return "Incident reported"
+    if t in REPORTED_TYPES:
+        return REPORTED_TYPES[t]
+    words = re.split(r"\s*[/,]\s*", t.replace("_", " "))[0].strip()
+    if not words or len(words.split()) > 6:
+        return "Incident reported"
+    return words[:1].upper() + words[1:]
+
+
+# Hook test: the opener alternates by date inside the window and is the title
+# card outside it. Twelve days is two full cycles of opener x music bed (2 x 3),
+# so each opener runs twice on each bed.
+HOOK_TEST = ("2026-10-14", "2026-10-25")
+
+
+def hook_for_date(date: str) -> str:
+    """'cold' (story 1 from frame 0) or 'title' (the 1 s title card)."""
+    if not (HOOK_TEST[0] <= date <= HOOK_TEST[1]):
+        return "title"
+    try:
+        d = datetime.strptime(date, "%Y-%m-%d")
+    except ValueError:
+        return "title"
+    return "cold" if d.toordinal() % 2 == 0 else "title"
+
+
 def today_iso() -> str:
     return datetime.now(ZoneInfo("America/Los_Angeles")).strftime("%Y-%m-%d")
 
@@ -408,7 +454,7 @@ def story_json(inc: dict) -> dict:
     area = _clean_area(inc.get("area", "")) or "Bakersfield"
     head_area = area.split(",")[0].strip()  # 'Coffee Road, Bank of America' -> 'Coffee Road'
     t = _norm_type(inc.get("type", ""))
-    label = TYPE_LABEL.get(t, "Incident reported")
+    label = label_for(inc.get("type", ""))
     summary = inc.get("summary", "") or ""
     sub = _first_sentence(summary)
     scene = TYPE_SCENE.get(t, "")
@@ -423,6 +469,11 @@ def story_json(inc: dict) -> dict:
         "time": _fmt_time(inc.get("time", "")),
         "place": _no_em_dash(_cut_words(area.upper(), 60)),
         "scene": scene,
+        # The cold opener sets the event and the place as two lines. No area
+        # on the incident means no place line, never a default city.
+        "label": label,
+        "where": (_no_em_dash(_cut_words(f"{_preposition(head_area)} {head_area}", 80))
+                  if _clean_area(inc.get("area", "")) else ""),
     }
 
 
@@ -454,6 +505,7 @@ def build(date: str) -> dict:
         "cta": CTA,
         "music": music_for_date(date),
         "backgrounds": "auto",
+        "hook": hook_for_date(date),
         "stories": stories,
     }
 

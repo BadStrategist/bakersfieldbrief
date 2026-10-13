@@ -11,7 +11,7 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "The southbound connector to eastbound SR-52 /in San Diego/ (San Diego Co) from 210 hrs on 10/12/26 to 0500 hrs on 10/13/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "The southbound connector to eastbound SR-52 /in San Diego/ (San Diego Co) is reopened at 0500 hrs on 10/13/26 A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "RESTRICTIONS"
     },
     {
@@ -57,8 +57,8 @@
      }
     ]
    },
-   "reported_as_of": "Tuesday, October 13th, 2026 at 02:43 AM",
-   "hash": "1818d3b133"
+   "reported_as_of": "Tuesday, October 13th, 2026 at 07:48 AM",
+   "hash": "c8ce776add"
   },
   {
    "number": "58",
@@ -80,7 +80,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Tuesday, October 13th, 2026 at 02:43 AM",
+   "reported_as_of": "Tuesday, October 13th, 2026 at 07:48 AM",
    "hash": "5374f203ec"
   },
   {
@@ -117,7 +117,7 @@
      }
     ]
    },
-   "reported_as_of": "Tuesday, October 13th, 2026 at 02:43 AM",
+   "reported_as_of": "Tuesday, October 13th, 2026 at 07:48 AM",
    "hash": "0923f03423"
   }
  ],

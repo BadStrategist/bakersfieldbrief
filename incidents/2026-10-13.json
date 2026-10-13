@@ -1,0 +1,266 @@
+[
+ {
+  "type": "crash",
+  "time": "19:19",
+  "agency": "CHP / KCFD / Hall Ambulance",
+  "area": "southbound Highway 204 at the connector onto Highway 99",
+  "notability": 4,
+  "disposition": "four patients tagged green; a second ambulance was started",
+  "summary": "A vehicle rollover on the southbound Highway 204 connector onto Highway 99 brought a full fire assignment. Crews reported four patients, all tagged green, and a second ambulance was started to the scene while one engine was canceled."
+ },
+ {
+  "type": "structure fire",
+  "time": "23:05",
+  "agency": "KCFD",
+  "area": "the 5500 block of Valpredo Avenue, at a cold storage building",
+  "notability": 3,
+  "disposition": "no visible fire; crews got inside the room",
+  "summary": "Firefighters were sent to a structure fire response at a cold storage building on Valpredo Avenue. Truck 54 reported water flowing from one room and nothing from another, and crews laddered the building looking for a heat source. They got into the room and found nothing visible."
+ },
+ {
+  "type": "crash",
+  "time": "19:40",
+  "agency": "CHP / KCFD / Hall Ambulance",
+  "area": "northbound Highway 155 north of Boulder Gulch, in the Kern River canyon",
+  "notability": 3,
+  "disposition": "patient condition unknown; cell contact poor",
+  "summary": "A vehicle hit the front of the mountain and rolled over on northbound Highway 155 about a mile south of Hungry Gulch. Radio traffic described poor cell phone reception with the patient, and the wrecked vehicle was reported blocking the roadway."
+ },
+ {
+  "type": "weapon",
+  "time": "02:16",
+  "agency": "BPD",
+  "area": "Beardsley Avenue",
+  "notability": 3,
+  "disposition": "subject fled eastbound; not located",
+  "summary": "Officers were sent to Beardsley Avenue for a disturbance involving a man on a motorized bike who was reported to be carrying a machete. He was last seen fleeing eastbound on the bike with a checkered backpack.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "vegetation fire",
+  "time": "21:13",
+  "agency": "KCFD / Bakersfield Fire",
+  "area": "eastbound Highway 58 near South Union Avenue",
+  "notability": 3,
+  "disposition": "city and county crews sent",
+  "summary": "Multiple callers reported brush burning along eastbound Highway 58 near South Union Avenue. County engines were joined by city equipment sent to the grass fire."
+ },
+ {
+  "type": "fire",
+  "time": "19:32",
+  "agency": "KCFD",
+  "area": "Wasco",
+  "notability": 2,
+  "disposition": "one additional engine requested; power lines in the area",
+  "summary": "Firefighters in Wasco found a large debris pile burning. Crews expected to knock most of the heat down themselves but called for one additional engine, and reported power lines in the area that did not appear to be affected."
+ },
+ {
+  "type": "disturbance",
+  "time": "02:17",
+  "agency": "BPD",
+  "area": "the 5300 block of Cherry Creek Lane",
+  "notability": 2,
+  "disposition": "man with a knife; mental health call",
+  "summary": "Officers were sent to Cherry Creek Lane for a disturbance involving a man who had been drinking, was bleeding after punching a wall, and was reported to be in possession of a knife. A possible mental health episode was noted, and he was advised to disarm himself when units returned.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "assault",
+  "time": "22:15",
+  "agency": "BPD",
+  "area": "North Chester Avenue",
+  "notability": 2,
+  "disposition": "suspect fled in a pickup",
+  "summary": "A caller reported that a man battered a woman and took a juvenile into a vehicle, then fled in a white pickup.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "shots heard",
+  "time": "19:47",
+  "agency": "BPD",
+  "area": "the 1100 block of California Avenue",
+  "notability": 2,
+  "disposition": "single caller; nothing further reported",
+  "summary": "Units were told to broadcast for officer safety after one caller reported hearing a single shot in the area of California Avenue."
+ },
+ {
+  "type": "missing person",
+  "time": "20:42",
+  "agency": "BPD",
+  "area": "Bakersfield",
+  "notability": 2,
+  "disposition": "missing adult; on foot",
+  "summary": "A missing-person report went out for an adult described as gravely disabled and last seen on foot around 7 p.m."
+ },
+ {
+  "type": "welfare check",
+  "time": "21:43",
+  "agency": "KCSO",
+  "area": "the 9900 block of Tungsten Street",
+  "notability": 2,
+  "disposition": "deputies sent for a welfare check",
+  "summary": "Deputies were sent to Tungsten Street for a welfare check on a juvenile who was reported to be texting family members with threats toward them.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "22:06",
+  "agency": "KCSO",
+  "area": "the 4300 block of Long Canyon Road",
+  "notability": 2,
+  "disposition": "check requested; further information available",
+  "summary": "Deputies were sent to Long Canyon Road to check on a juvenile reported to be having thoughts of harming themselves."
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "23:52",
+  "agency": "BPD",
+  "area": "the 5000 block of East Commerce Way",
+  "notability": 2,
+  "disposition": "no forced entry; business secured",
+  "summary": "Officers checked a door found unsecured at a business on East Commerce Way. There was no forced entry, and patrol units were still en route to secure the building."
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "01:20",
+  "agency": "KCSO",
+  "area": "the 1800 block of Glenmont Drive",
+  "notability": 2,
+  "disposition": "no answer at the door",
+  "summary": "A caller reported a garage door standing wide open at a home on Glenmont Drive with no vehicles outside, saying the house was occupied. Nobody answered the doorbell or a knock at the door.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "vandalism",
+  "time": "01:12",
+  "agency": "BPD",
+  "area": "the 6300 block of White Lane",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 6300 block of White Lane for a vandalism call with spray paint reported."
+ },
+ {
+  "type": "stolen vehicle",
+  "time": "02:45",
+  "agency": "BPD",
+  "area": "South Martin Luther King Jr Boulevard",
+  "notability": 2,
+  "disposition": "emergency traffic; stolen out of Los Angeles",
+  "summary": "Officers moved to emergency traffic on a green 1997 Toyota pickup that a Los Angeles agency reported stolen, with a driver and a passenger reported inside."
+ },
+ {
+  "type": "fire alarm",
+  "time": "02:58",
+  "agency": "KCFD",
+  "area": "the 1100 block of 34th Street",
+  "notability": 2,
+  "disposition": "nothing showing; building locked down",
+  "summary": "Firefighters were sent to a report of a building on fire on 34th Street. Nothing hazardous was showing from the outside, the building was locked down, and the alarm company was contacted.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "03:02",
+  "agency": "BPD",
+  "area": "Westwind Drive",
+  "notability": 2,
+  "disposition": "vehicle fled; area checked",
+  "summary": "Officers looked for a newer dark gray sedan with silver rims that left the area after a caller reported impact sounds at a building on Westwind Drive. The vehicle was reported fleeing toward 21st Street and Oak Street.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "trespass",
+  "time": "03:46",
+  "agency": "BPD",
+  "area": "a community park on Buckingham Way",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a community park on Buckingham Way for a report of someone living under the pavilion.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "04:14",
+  "agency": "BPD",
+  "area": "the 6500 block of Wilson Road",
+  "notability": 2,
+  "disposition": "caller heard a loud noise; officers sent",
+  "summary": "A caller on Wilson Road reported a loud noise coming from a detached garage, and officers were sent to check the property."
+ },
+ {
+  "type": "vegetation fire",
+  "time": "04:19",
+  "agency": "KCFD",
+  "area": "East Brundage Lane and Oswell Street",
+  "notability": 2,
+  "disposition": "small grass fire; crews responded",
+  "summary": "Firefighters were sent to East Brundage Lane and Oswell Street for a small grass fire burning near an auto parts store."
+ },
+ {
+  "type": "trespass",
+  "time": "04:38",
+  "agency": "KCSO",
+  "area": "Highway 14 north of Joplin Canyon Road",
+  "notability": 2,
+  "disposition": "deputies sent; vehicle checked",
+  "summary": "Deputies were sent to a trespass call on Highway 14 north of Joplin Canyon Road and checked for a white Toyota pickup."
+ },
+ {
+  "type": "medical aid",
+  "time": "05:40",
+  "agency": "Hall Ambulance",
+  "area": "the 2400 block of Williams Court",
+  "notability": 2,
+  "disposition": "medics sent",
+  "summary": "Medics were sent to Williams Court for a traumatic injury."
+ },
+ {
+  "type": "outside fire",
+  "time": "06:11",
+  "agency": "KCFD",
+  "area": "Roberts Lane and Airport Drive",
+  "notability": 2,
+  "disposition": "crews sent",
+  "summary": "Fire crews were sent to an outside fire burning on the curb at Roberts Lane and Airport Drive.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "road rage",
+  "time": "00:20",
+  "agency": "CHP",
+  "area": "eastbound Highway 166 east of Elkhorn Grade",
+  "notability": 2,
+  "disposition": "windshield damaged; semi broadcast",
+  "summary": "A driver on eastbound Highway 166 east of Elkhorn Grade reported that a semi driver threw an object at her vehicle after passing, damaging her windshield. A broadcast went out for the semi with a red or maroon cab pulling a white trailer."
+ },
+ {
+  "type": "Incident",
+  "time": "21:15",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Unstable van and trailer reported on I-5.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Medical emergency",
+  "time": "22:44",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Man found unconscious at panda express in bakersfield.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire",
+  "time": "00:57",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "N Kern Street",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Light smoke from house fire on North Kern Street.",
+  "source": "crimeradar"
+ }
+]

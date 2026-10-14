@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-14T00:59:48-07:00",
+ "built_at": "2026-10-14T04:43:51-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 4,
    "top_story": "Rosedale Teachers Union implores school district to renegotiate health benefits with talks at an impasse",
    "overnight_band": {
     "date": "2026-10-13",
@@ -130,7 +130,7 @@
   "cityhall": {
    "upcoming_meetings": 5,
    "county_items": 109,
-   "drafts_generated": 1
+   "drafts_generated": 0
   },
   "places": {
    "places": [
@@ -160,13 +160,13 @@
   },
   "tehachapi": {
    "sr58": "RESTRICTIONS",
-   "wind_mph": 0,
+   "wind_mph": 5,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 36,
-   "wind_mph": 0,
+   "wind_mph": 5,
    "alerts": 0
   },
   "roads": {
@@ -200,11 +200,11 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 143464,
+   "isabella_af": 142982,
    "alpr_total": 455,
    "kern_fires": 1,
    "aqi": 56,
-   "chp_week": 34
+   "chp_week": 38
   },
   "letters": {
    "published": 1

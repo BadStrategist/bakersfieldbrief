@@ -13,6 +13,7 @@ Delivery wiring is deliberately out of scope until launch.
 """
 from __future__ import annotations
 
+import hashlib
 import html as H
 import re
 from datetime import datetime, timedelta
@@ -471,6 +472,10 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
         try:
             from .tracker_card import render_tracker_card
             render_tracker_card(alpr, None)
+            # Rebuild AFTER the redraw: the cache-buster in this markup is the
+            # card file's own hash, so it has to be read once the new bytes are
+            # on disk. Without this the email would pin yesterday's picture.
+            flock_html = _flock_update_html(alpr)
         except Exception as e:  # noqa: BLE001
             common.log(f"tracker card redraw failed — dropping flock card: {e}")
             flock_html = ""
@@ -835,11 +840,23 @@ def _flock_update_html(alpr: dict) -> str:
 
     tracker = f"{BASE_URL}/surveillance/"
     asof = alpr.get("asof", "")
+    # Cache-buster: the card is embedded as a LIVE url, so subscribers' mail
+    # clients (Gmail's image proxy above all) serve whatever they cached under
+    # that exact url. The 2026-10-14 clip fix was invisible in the email for
+    # that reason: the file on the site was new, the picture in the inbox was
+    # not. The query is the card's own bytes, so the url changes exactly when
+    # the picture does, and it never churns when nothing changed.
+    bust = ""
+    try:
+        _card = common.ROOT / "assets" / "img" / "tracker-map-card.jpg"
+        bust = f"?v={hashlib.sha256(_card.read_bytes()).hexdigest()[:8]}"
+    except OSError:
+        bust = ""
     return f"""<table role="presentation" width="100%" cellpadding="0" cellspacing="0"
   style="margin:8px 0 4px;border:1px solid {LINE};border-radius:6px;overflow:hidden">
   <tr><td>
     <a href="{tracker}" style="display:block;text-decoration:none">
-      <img src="{BASE_URL}/assets/img/tracker-map-card.jpg" width="100%" alt="Live Flock &amp; ALPR camera map for Kern County"
+      <img src="{BASE_URL}/assets/img/tracker-map-card.jpg{bust}" width="100%" alt="Live Flock &amp; ALPR camera map for Kern County"
            style="display:block;width:100%;height:auto;border:0">
     </a>
   </td></tr>

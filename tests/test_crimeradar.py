@@ -1167,3 +1167,40 @@ def test_area_for_takes_a_card_only_as_one_gazetteer_street(capsys):
     assert area("Person with psychiatric issues near East Charles Street", "E St") == ""
     assert area("Illegal trash fire in backyard on Oakley Drive", "Oakley St") == ""
     assert "the card says" in capsys.readouterr().err
+
+def test_a_merged_area_never_carries_a_house_number():
+    """2026-10-14: "25 Union Avenue" reached incidents/ and then the feed.
+
+    The published rule is that an area is an exact streets.txt name or empty.
+    The map publishes no house number and the privacy test refuses one, and the
+    row that carried this one turned every daily run red until the value was
+    corrected. The merge drops the number; the block form is published as
+    written; a value with no leading number is returned untouched.
+    """
+    f = mc.area_without_house_number
+    # the number goes, the street the call named stays
+    assert f("25 Union Avenue") == "Union Avenue"
+    assert f("  25   Union Avenue  ") == "Union Avenue"
+    # the block form is the published form
+    assert f("1900 block of West Wilson Avenue") == "1900 block of West Wilson Avenue"
+    assert f("3500 block Terrace Way") == "3500 block Terrace Way"
+    # no leading number: untouched
+    assert f("Union Avenue") == "Union Avenue"
+    assert f("") == ""
+    # a number in front of a street the gazetteer does not hold is still a house
+    # number, so the field goes empty rather than carrying it
+    assert f("25 Nonexistent Boulevard") == ""
+    # and a value that is not a number at all is never rewritten
+    assert f("Highway 58 overpass at South Union Avenue") == "Highway 58 overpass at South Union Avenue"
+    assert f("Beechwood St Apt 125") == "Beechwood St Apt 125"
+
+
+def test_merge_drops_a_house_number_from_a_staged_area(dirs):
+    """The chokepoint: whatever a staged row's area says, the file gets a street."""
+    inc, stage = dirs
+    put_inc(inc, TRANSCRIPT)
+    put_stage(stage, [staged("04:00", "Outside fire behind a building on Union Avenue.",
+                             area="25 Union Avenue")])
+    assert mc.merge(DATE, inc, stage)["merged"] == 1
+    kept = [i for i in read_inc(inc) if i.get("source") == "crimeradar"]
+    assert kept[0]["area"] == "Union Avenue"

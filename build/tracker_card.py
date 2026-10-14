@@ -123,6 +123,40 @@ def _render_map(cameras, center_lat, center_lon, zoom, mw, mh):
     return canvas, cx, cy
 
 
+def _marker_layer(placed: list, newest_set: set, mw: int, mh: int):
+    """Draw every marker on a transparent layer the size of the map rect and return it.
+
+    Never draw markers straight onto the card. The camera list is county-wide while the zoom
+    frame is the metro, so a marker north of the frame has a negative y, and on 2026-10-13
+    clusters landed on the header copy: on "Live Camera Tracker", on the standfirst and on the
+    "416" stat. A layer this size clips any marker to the map rect, so the header and the
+    footer strip can never take one, whatever the camera list holds.
+    """
+    layer = Image.new("RGBA", (mw, mh), (0, 0, 0, 0))
+    od = ImageDraw.Draw(layer)
+    for item in placed:
+        px, py = item[0], item[1]
+        mx, my = int(round(px)), int(round(py))
+        if len(item) == 4:  # cluster
+            n = item[3]
+            size = 26 + min(18, n // 3)
+            od.ellipse([mx - size // 2, my - size // 2, mx + size // 2, my + size // 2], fill=CLUSTER)
+            od.text((mx, my), str(n), font=_font(int(size * 0.5), bold=True), fill=(255, 255, 255), anchor="mm")
+        else:
+            c = item[2]
+            is_flock = "flock" in (c.get("manufacturer") or "").lower()
+            col = FLOCK if is_flock else OTHER
+            lens = FLOCK_LENS if is_flock else OTHER_LENS
+            is_new = c.get("id") in newest_set
+            if is_new:
+                od.ellipse([mx - 15, my - 15, mx + 15, my + 15], outline=RING, width=2)
+            # camera glyph (body + lens)
+            od.rounded_rectangle([mx - 9, my - 7, mx + 11, my + 7], radius=2, fill=col)
+            od.ellipse([mx + 1, my - 3, mx + 8, my + 3], fill=lens)
+            od.rectangle([mx - 11, my - 5, mx - 9, my + 5], fill=col)
+    return layer
+
+
 def render_tracker_card(alpr: dict, out_path=None):
     """Redraw the Flock/ALPR card image (Voyager light map) from live data.
 
@@ -165,8 +199,9 @@ def render_tracker_card(alpr: dict, out_path=None):
     img.paste(map_img, (0, HEADER_H))
     d = ImageDraw.Draw(img)
 
-    # header panel
-    d.rectangle([0, 0, W, HEADER_H], fill=CARD)
+    # header panel: rows 0 to HEADER_H - 1. PIL's rectangle includes its end row, and row HEADER_H
+    # is the map's first row, where the marker layer starts.
+    d.rectangle([0, 0, W, HEADER_H - 1], fill=CARD)
     d.rectangle([0, 0, W, 4], fill=AMBER_RULE)
     d.text((28, 22), "FLOCK & ALPR  ·  KERN COUNTY", font=_font(20), fill=(179, 71, 47))
     d.text((28, 50), "Live Camera Tracker", font=_font(40), fill=TEXT)
@@ -216,26 +251,8 @@ def render_tracker_card(alpr: dict, out_path=None):
             px, py = _ll_to_wm(clat, clon, zoom)
             placed.append((px - top_px_x, py - top_px_y, None, len(group)))
 
-    for item in placed:
-        px, py = item[0], item[1]
-        mx, my = int(round(px)), int(round(py)) + HEADER_H
-        if len(item) == 4:  # cluster
-            n = item[3]
-            size = 26 + min(18, n // 3)
-            d.ellipse([mx - size // 2, my - size // 2, mx + size // 2, my + size // 2], fill=CLUSTER)
-            d.text((mx, my), str(n), font=_font(int(size * 0.5), bold=True), fill=(255, 255, 255), anchor="mm")
-        else:
-            c = item[2]
-            is_flock = "flock" in (c.get("manufacturer") or "").lower()
-            col = FLOCK if is_flock else OTHER
-            lens = FLOCK_LENS if is_flock else OTHER_LENS
-            is_new = c.get("id") in newest_set
-            if is_new:
-                d.ellipse([mx - 15, my - 15, mx + 15, my + 15], outline=RING, width=2)
-            # camera glyph (body + lens)
-            d.rounded_rectangle([mx - 9, my - 7, mx + 11, my + 7], radius=2, fill=col)
-            d.ellipse([mx + 1, my - 3, mx + 8, my + 3], fill=lens)
-            d.rectangle([mx - 11, my - 5, mx - 9, my + 5], fill=col)
+    layer = _marker_layer(placed, newest_set, W, mh)
+    img.paste(layer, (0, HEADER_H), layer)
 
     # attribution + freshness footer strip
     d.rectangle([0, MAP_BOTTOM, W, H], fill=CARD)
@@ -247,6 +264,9 @@ def render_tracker_card(alpr: dict, out_path=None):
 
     out = Path(out_path) if out_path else common.ROOT / "assets" / "img" / "tracker-map-card.jpg"
     out.parent.mkdir(parents=True, exist_ok=True)
-    img.save(out, "JPEG", quality=88)
+    if out.suffix.lower() == ".png":  # tests read pixels back; JPEG would smear them
+        img.save(out, "PNG")
+    else:
+        img.save(out, "JPEG", quality=88)
     common.log(f"tracker card rendered: {out} ({total} cams, {flock} flock, asof {asof})")
     return out

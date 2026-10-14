@@ -716,6 +716,33 @@ class TestPageDisclosure:
         assert "secret-host" not in stale
         assert stale == _flock_update_html(_page_payload(asof="2026-10-04"))
 
+    def test_the_email_card_url_changes_when_the_card_does(self, tmp_path, monkeypatch):
+        """The card is embedded as a LIVE url, so the inbox serves what it cached.
+
+        The 2026-10-14 clip fix reached the site and never reached the reader for
+        that reason. The query is the card's own bytes: it changes when the
+        picture changes and never churns when nothing did.
+        """
+        import hashlib
+        from build import common, emailer
+        payload = _page_payload(asof="2026-10-14")
+        # no card on disk: a plain url, never a broken one
+        monkeypatch.setattr(common, "ROOT", tmp_path)
+        assert "tracker-map-card.jpg?" not in emailer._flock_update_html(payload)
+        card = tmp_path / "assets" / "img" / "tracker-map-card.jpg"
+        card.parent.mkdir(parents=True)
+        card.write_bytes(b"one")
+        marker = "tracker-map-card.jpg?v="
+        first = emailer._flock_update_html(payload)
+        assert marker in first
+        version = first.split(marker)[1][:8]
+        assert version == hashlib.sha256(b"one").hexdigest()[:8]
+        # the same picture is the same url; a new picture is a new url
+        assert version in emailer._flock_update_html(payload)
+        card.write_bytes(b"two")
+        assert version not in emailer._flock_update_html(payload)
+
+
     def test_no_builder_reads_the_ci_flag(self):
         """The flag has one reader outside the source: CI. A builder that branches on it is how
         page copy comes back, on a surface the byte-for-byte tests above do not render."""

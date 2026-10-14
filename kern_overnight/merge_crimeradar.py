@@ -285,6 +285,38 @@ def _write_atomic(dest: Path, data) -> None:
     os.replace(tmp, dest)
 
 
+# An incident's `area` is an exact streets.txt name or it is empty. App rows
+# arrive as free text, and one path handed the field a house number: "25 Union
+# Avenue" (2026-10-14) reached the feed, failed the privacy test and turned
+# every daily run red. Only that one shape is rewritten here, and only when a
+# gazetteer street stands behind the number, so no legitimate area can be lost.
+_AREA_KEYS: set | None = None
+
+
+def area_without_house_number(value: str) -> str:
+    """Drop a leading house number when an exact gazetteer street follows it."""
+    global _AREA_KEYS
+    v = " ".join(str(value or "").split())
+    if not v:
+        return ""
+    m = re.match(r"^\d{1,4}\s+(block\s+(?:of\s+)?)?(.+)$", v, re.I)
+    if not m or m.group(1):        # no leading number, or the published block form
+        return v
+    from kern_overnight.streetcheck import load_streets, normalize
+    if _AREA_KEYS is None:
+        _AREA_KEYS = {normalize(s) for s in load_streets()}
+    tail = m.group(2)
+    if normalize(tail) in _AREA_KEYS:
+        print(f"[cr] area: house number dropped, {v!r} -> {tail!r}", file=sys.stderr)
+        return tail
+    # A number in front of a street the gazetteer does not hold is still a house
+    # number, and the map and the privacy test refuse both. Empty is correct
+    # output here, and it is logged, never swallowed.
+    print(f"[cr] area: dropped, {v!r} (a house number, and {tail!r} is no street)",
+          file=sys.stderr)
+    return ""
+
+
 def plan(staged: list, ours: list, spans: list[tuple[int, int]] | None = None,
          date_iso: str = "") -> dict:
     """Split staged rows into kept / covered / private / invalid / minor. Pure.
@@ -327,7 +359,7 @@ def plan(staged: list, ours: list, spans: list[tuple[int, int]] | None = None,
         seen.add(k)
         row = dict(r)
         row["summary"] = scrub(row["summary"])
-        row["area"] = scrub(str(row.get("area") or ""))
+        row["area"] = area_without_house_number(scrub(str(row.get("area") or "")))
         row["source"] = SOURCE
         keep.append(row)
         if not hot:

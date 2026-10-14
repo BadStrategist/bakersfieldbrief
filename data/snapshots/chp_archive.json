@@ -1290,6 +1290,16 @@
   "details": ""
  },
  {
+  "log_id": "261014BF0173",
+  "time": "Oct 14 2026  1:41PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "315 Fairfax Rd",
+  "area": "Bakersfield",
+  "lat": 35.363386,
+  "lon": -118.932023,
+  "details": ""
+ },
+ {
   "log_id": "261014BF0024",
   "time": "Oct 14 2026  1:56AM",
   "type": "TADV-Traffic Advisory",
@@ -1297,6 +1307,36 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261014BF0190",
+  "time": "Oct 14 2026  2:07PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Nb Sr99 At Sr46",
+  "area": "Bakersfield",
+  "lat": 35.59792,
+  "lon": -119.21012,
+  "details": ""
+ },
+ {
+  "log_id": "261014BF0201",
+  "time": "Oct 14 2026  2:10PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr99 N / Lerdo Hwy Ofr",
+  "area": "Bakersfield",
+  "lat": 35.496227,
+  "lon": -119.159603,
+  "details": ""
+ },
+ {
+  "log_id": "261014BF0215",
+  "time": "Oct 14 2026  2:22PM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 I5 S",
+  "area": "Fort Tejon",
+  "lat": 34.921393,
+  "lon": -118.925495,
   "details": ""
  },
  {

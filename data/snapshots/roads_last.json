@@ -11,7 +11,7 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "The northbound connector to northbound SR-55 /in Santa Ana/ (Orange Co) is closed from 2300 hrs each night to 700 hrs each morning Monday thru Friday thru 10/16/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "Closed to northbound traffic at Shledon St /in Los Angeles/ (Los Angeles Co) - Due to a traffic collision - A detour is available The northbound connector to northbound SR-55 /in Santa Ana/ (Orange Co) is closed from 2300 hrs each night to 700 hrs each morning Monday thru Friday thru 10/16/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "CLOSED"
     },
     {
@@ -40,6 +40,14 @@
     ],
     "elsewhere": [
      {
+      "status": "RESTRICTIONS",
+      "place": "Los Angeles",
+      "county": "Los Angeles Co",
+      "where": "Los Angeles (Los Angeles Co)",
+      "text": "Closed to northbound traffic at Shledon St /in Los Angeles/ (Los Angeles Co) - Due to a traffic collision - A detour is available",
+      "region": "SOUTHERN CALIFORNIA"
+     },
+     {
       "status": "CLOSED",
       "place": "Santa Ana",
       "county": "Orange Co",
@@ -65,8 +73,8 @@
      }
     ]
    },
-   "reported_as_of": "Wednesday, October 14th, 2026 at 11:10 AM",
-   "hash": "201b7dd4a9"
+   "reported_as_of": "Wednesday, October 14th, 2026 at 02:37 PM",
+   "hash": "c71f308888"
   },
   {
    "number": "58",
@@ -88,7 +96,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Wednesday, October 14th, 2026 at 11:10 AM",
+   "reported_as_of": "Wednesday, October 14th, 2026 at 02:37 PM",
    "hash": "5374f203ec"
   },
   {
@@ -125,7 +133,7 @@
      }
     ]
    },
-   "reported_as_of": "Wednesday, October 14th, 2026 at 11:10 AM",
+   "reported_as_of": "Wednesday, October 14th, 2026 at 02:37 PM",
    "hash": "0923f03423"
   }
  ],

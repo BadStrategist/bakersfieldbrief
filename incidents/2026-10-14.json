@@ -1,0 +1,364 @@
+[
+ {
+  "type": "outside fire",
+  "time": "19:25",
+  "agency": "Bakersfield Fire Department",
+  "area": "near Beale Park",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Firefighters were sent to a small outside fire near Beale Park, possibly started by a transient."
+ },
+ {
+  "type": "weapons",
+  "time": "19:29",
+  "agency": "Bakersfield Police Department",
+  "area": "4000 block of Niles Street",
+  "notability": 2,
+  "disposition": "suspect on foot, not located",
+  "summary": "Officers were sent to the 4000 block of Niles Street for a report of a man carrying a knife in his left rear pocket. He was described as on foot, northbound on McCurdy Road toward Oregon Street.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "19:38",
+  "agency": "Bakersfield Police Department",
+  "area": "grocery store on Roseman Boulevard",
+  "notability": 3,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to the Albertsons on Roseman Boulevard for a woman in her 20s, reported to be under the influence, pushing a shopping cart into vehicles in the lot."
+ },
+ {
+  "type": "shooting",
+  "time": "19:52",
+  "agency": "Bakersfield Police Department",
+  "area": "2700 block of White Lane",
+  "notability": 4,
+  "disposition": "vehicle fled; investigation ongoing",
+  "summary": "Officers broadcast a shooting call in the 2700 block of White Lane. A green Chevrolet Tahoe left the area westbound on White Lane, and the vehicle had been gone about 18 minutes when the call went out."
+ },
+ {
+  "type": "shots fired",
+  "time": "20:38",
+  "agency": "Bakersfield Police Department",
+  "area": "Gosford Road and White Lane",
+  "notability": 3,
+  "disposition": "code 3 response",
+  "summary": "Officers were sent code 3 to Gosford Road and White Lane for a report of a person with a firearm, an incident that had happened about 10 minutes earlier.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "person in crisis",
+  "time": "20:42",
+  "agency": "Bakersfield Police Department / CHP / KCFD",
+  "area": "Highway 58 overpass at South Union Avenue",
+  "notability": 4,
+  "disposition": "freeway lanes stopped; subject brought down",
+  "summary": "Crews responded to a person on the Highway 58 overpass at South Union Avenue. CHP stopped the westbound lanes while firefighters stayed in contact with the person and called for a rescue cushion."
+ },
+ {
+  "type": "disturbance",
+  "time": "20:42",
+  "agency": "Bakersfield Police Department",
+  "area": "100 block of Hart Street",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Officers were sent to the 100 block of Hart Street, near the riverbed, for a report of a man screaming at a woman.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "domestic violence",
+  "time": "21:34",
+  "agency": "Bakersfield Police Department",
+  "area": "100 block of West Wilson Avenue",
+  "notability": 3,
+  "disposition": "suspect fled on foot",
+  "summary": "Officers were sent to the 100 block of West Wilson Avenue for a domestic violence call with a female victim. The male suspect, wearing a hooded sweatshirt, was last seen westbound on Wilson Avenue or Robertson Road.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "weapons",
+  "time": "21:55",
+  "agency": "Bakersfield Police Department",
+  "area": "1300 block of Elkhorn Avenue",
+  "notability": 3,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to the 1300 block of Elkhorn Avenue for a welfare check after someone was heard saying to wake a person up and that they had guns."
+ },
+ {
+  "type": "outside fire",
+  "time": "21:58",
+  "agency": "Bakersfield Fire Department",
+  "area": "end of a cul-de-sac",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "A fire crew found a large old drum burning with light smoke at the end of a cul-de-sac."
+ },
+ {
+  "type": "burglary in progress",
+  "time": "22:01",
+  "agency": "Bakersfield Police Department",
+  "area": "2500 block of Gateway Avenue",
+  "notability": 2,
+  "disposition": "searched, not located",
+  "summary": "Officers were sent to a business in the 2500 block of Gateway Avenue after an alarm and a report of someone in a hooded sweatshirt inside a welding shop behind the main building. A search of the rail cars on the property did not find the subject.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "vegetation fire",
+  "time": "22:27",
+  "agency": "Kern County Fire Department",
+  "area": "a field north of Highway 178",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "County crews were sent to a field reported on fire north of Highway 178."
+ },
+ {
+  "type": "disturbance",
+  "time": "22:31",
+  "agency": "Bakersfield Police Department",
+  "area": "15th Street West at Richfield Road",
+  "notability": 2,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to 15th Street West at Richfield Road for a report of a man and a woman yelling at each other; the man was reported to have chased the woman toward an apartment.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "22:43",
+  "agency": "Bakersfield Police Department",
+  "area": "5200 block of Olive Tree Court",
+  "notability": 2,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to the 5200 block of Olive Tree Court for a disturbance involving a man and a woman with two dogs.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "burglary",
+  "time": "23:20",
+  "agency": "Bakersfield Police Department",
+  "area": "3100 block of Sunset Avenue",
+  "notability": 2,
+  "disposition": "cleared as mistaken identity",
+  "summary": "Officers were sent to the 3100 block of Sunset Avenue for a possible burglary to a garage. A man seen in the garage turned out not to be the suspect, and units cleared the property.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "traffic",
+  "time": "23:27",
+  "agency": "Bakersfield Police Department",
+  "area": "Harris Road and Silvergate Street",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Officers were sent to Harris Road and Silvergate Street for a report of a man riding a dirt bike with a juvenile passenger in his lap and no helmet.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "outside fire",
+  "time": "23:59",
+  "agency": "Bakersfield Fire Department",
+  "area": "25 Union Avenue",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Firefighters were sent to an outside fire behind a building on Union Avenue, where a group of transients had a fire burning within about 10 feet of the building.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "outside fire",
+  "time": "00:03",
+  "agency": "Bakersfield Fire Department",
+  "area": "3800 block of Wible Road",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Crews on scene at the 3800 block of Wible Road found an additional trash fire burning.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "trespassing",
+  "time": "00:17",
+  "agency": "Bakersfield Police Department",
+  "area": "3200 block of Presada Court",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Officers were sent to the 3200 block of Presada Court for a report of two women and two men trespassing at a red-tagged residence."
+ },
+ {
+  "type": "wrong-way driver",
+  "time": "01:00",
+  "agency": "Bakersfield Police Department",
+  "area": "24th Street and Oak Street",
+  "notability": 2,
+  "disposition": "broadcast",
+  "summary": "A wrong-way driver was broadcast at 24th Street and Oak Street, a gray Ford sedan with yellow headlights heading against traffic.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "01:12",
+  "agency": "Bakersfield Police Department",
+  "area": "7400 block of Birch Avenue",
+  "notability": 3,
+  "disposition": "handled",
+  "summary": "Officers were sent to the 7400 block of Birch Avenue for a welfare check on a woman who reported feeling unsafe and having thoughts of self-harm."
+ },
+ {
+  "type": "industrial fire",
+  "time": "01:19",
+  "agency": "Bakersfield Fire Department",
+  "area": "South Union Avenue and Pacheco Road",
+  "notability": 5,
+  "disposition": "knocked down; arson investigator requested",
+  "summary": "Multiple callers reported a large fire at an industrial yard on South Union Avenue at Pacheco Road. Crews found two or three semi tractors burning at a trucking school with the building uninvolved. With no hydrants inside the facility, engines ran on tank water and protected the third tractor as an exposure. Arson was requested to the scene."
+ },
+ {
+  "type": "domestic violence",
+  "time": "02:20",
+  "agency": "Bakersfield Police Department",
+  "area": "1200 block of Texas Street",
+  "notability": 3,
+  "disposition": "suspect fled on foot",
+  "summary": "Officers were sent to the 1200 block of Texas Street for a domestic violence call in which a man was reported bleeding and a woman was reported to be in danger. The man fled on foot, described as shirtless and in pajama pants.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "prowling",
+  "time": "02:28",
+  "agency": "Bakersfield Police Department",
+  "area": "1600 block of Lotus Lane",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Officers were sent to the 1600 block of Lotus Lane for a report of two people in dark clothing on the property.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "person in crisis",
+  "time": "02:35",
+  "agency": "Bakersfield Police Department",
+  "area": "500 block of Robert Street",
+  "notability": 3,
+  "disposition": "handled",
+  "summary": "Officers were sent to the 500 block of Robert Street for an 86-year-old woman who was hitting her head on the walls and trying to get a knife, which her son had removed."
+ },
+ {
+  "type": "assault",
+  "time": "02:38",
+  "agency": "Bakersfield Police Department",
+  "area": "300 block of Bell Avenue",
+  "notability": 3,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to the 300 block of Bell Avenue for a report of an assault with a stick, and the victim was waiting for contact at Bell Avenue and Plymouth Street."
+ },
+ {
+  "type": "vegetation fire",
+  "time": "03:03",
+  "agency": "Kern County Fire Department",
+  "area": "bike trail near River Run Boulevard",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "A county battalion was sent to a grass fire off the bike trail near River Run Boulevard.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "reckless driving",
+  "time": "03:47",
+  "agency": "CHP",
+  "area": "southbound Highway 99 south of Highway 223",
+  "notability": 2,
+  "disposition": "broadcast",
+  "summary": "A reckless driver was broadcast southbound on Highway 99 south of Highway 223 in a silver or gold sedan."
+ },
+ {
+  "type": "burglary",
+  "time": "03:56",
+  "agency": "Bakersfield Police Department",
+  "area": "1200 block of Chamberlain Avenue",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "Officers were sent to the 1200 block of Chamberlain Avenue after a resident reported hearing someone possibly breaking in from the rear of the property.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "burglary",
+  "time": "04:30",
+  "agency": "Bakersfield Police Department",
+  "area": "Brundage Lane at a recycling business",
+  "notability": 2,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to a recycling business on Brundage Lane, where video surveillance showed three people cutting a fence."
+ },
+ {
+  "type": "crash",
+  "time": "04:42",
+  "agency": "CHP",
+  "area": "northbound Interstate 5 north of Highway 223",
+  "notability": 3,
+  "disposition": "tow requested",
+  "summary": "A two-vehicle crash was reported on northbound Interstate 5 north of Highway 223, a Corolla and a semi, both pulled to the right-hand side, and a tow was started."
+ },
+ {
+  "type": "vegetation fire",
+  "time": "04:57",
+  "agency": "Kern County Fire Department",
+  "area": "canal off Arrow and Select",
+  "notability": 3,
+  "disposition": "handled",
+  "summary": "County crews were sent to a fire and staged to enter through the canal on Arrow and North Select."
+ },
+ {
+  "type": "reckless driving",
+  "time": "05:38",
+  "agency": "CHP",
+  "area": "northbound Interstate 5 south of the escape ramp",
+  "notability": 2,
+  "disposition": "broadcast",
+  "summary": "A semi hauling double trailers was broadcast northbound on Interstate 5 south of the escape ramp, cutting off other vehicles."
+ },
+ {
+  "type": "public service",
+  "time": "06:00",
+  "agency": "Bakersfield Fire Department",
+  "area": "Pizza Hut on Niles Street",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Firefighters were sent to help a person off the roof at the Pizza Hut on Niles Street."
+ },
+ {
+  "type": "Fire alarm",
+  "time": "21:40",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Commercial fire alarm at Crestwood facility canceled.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Disturbance",
+  "time": "23:51",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Man disarmed after disturbance with knife.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Vehicle",
+  "time": "01:49",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Man found unconscious in vehicle at 7-Eleven.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Assault",
+  "time": "01:53",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "New Horizon Boulevard",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Assault with knife reported on New Horizon Boulevard.",
+  "source": "crimeradar"
+ }
+]

@@ -1400,6 +1400,56 @@
   "details": ""
  },
  {
+  "log_id": "261013BF0224",
+  "time": "Oct 13 2026  7:00PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Sb Sr99 Jso South Union Ave",
+  "area": "Bakersfield",
+  "lat": 35.165,
+  "lon": -119.001944,
+  "details": ""
+ },
+ {
+  "log_id": "261013BF0240",
+  "time": "Oct 13 2026  8:35PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "Famoso Porterville Hwy / Sr155",
+  "area": "Bakersfield",
+  "lat": 35.761554,
+  "lon": -119.132783,
+  "details": ""
+ },
+ {
+  "log_id": "261013BF0239",
+  "time": "Oct 13 2026  8:39PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jso Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.937778,
+  "lon": -118.930556,
+  "details": ""
+ },
+ {
+  "log_id": "261013BF0245",
+  "time": "Oct 13 2026  9:14PM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sr46 / Kurt Rd",
+  "area": "Buttonwillow",
+  "lat": 35.601341,
+  "lon": -119.571479,
+  "details": ""
+ },
+ {
+  "log_id": "261013BF0244",
+  "time": "Oct 13 2026  9:14PM",
+  "type": "ANIMAL-Live or Dead Animal",
+  "location": "Sr166 / Soda Lake Rd",
+  "area": "Buttonwillow",
+  "lat": 34.963178,
+  "lon": -119.446101,
+  "details": ""
+ },
+ {
   "log_id": "261013BF0060",
   "time": "Oct 13 2026  9:24AM",
   "type": "CZP-Assist with Construction",

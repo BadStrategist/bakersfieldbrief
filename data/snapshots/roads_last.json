@@ -16,7 +16,7 @@
     },
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads Southbound traffic is reduced to 1 lane at the Jct of SR-33 (Fresno Co) - Due to an overturned vehicle",
+     "text": "A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
      "status": "RESTRICTIONS"
     },
     {
@@ -48,14 +48,6 @@
       "region": "CENTRAL CALIFORNIA"
      },
      {
-      "status": "RESTRICTIONS",
-      "place": "",
-      "county": "Fresno Co",
-      "where": "Fresno Co",
-      "text": "Southbound traffic is reduced to 1 lane at the Jct of SR-33 (Fresno Co) - Due to an overturned vehicle",
-      "region": "CENTRAL CALIFORNIA"
-     },
-     {
       "status": "CLOSED",
       "place": "Sacramento",
       "county": "Yolo Co",
@@ -65,8 +57,8 @@
      }
     ]
    },
-   "reported_as_of": "Tuesday, October 13th, 2026 at 04:51 PM",
-   "hash": "15f2d804b0"
+   "reported_as_of": "Tuesday, October 13th, 2026 at 09:44 PM",
+   "hash": "b651c5bf12"
   },
   {
    "number": "58",
@@ -97,7 +89,7 @@
     ],
     "elsewhere": []
    },
-   "reported_as_of": "Tuesday, October 13th, 2026 at 04:51 PM",
+   "reported_as_of": "Tuesday, October 13th, 2026 at 09:44 PM",
    "hash": "b144bffee7"
   },
   {
@@ -134,7 +126,7 @@
      }
     ]
    },
-   "reported_as_of": "Tuesday, October 13th, 2026 at 04:51 PM",
+   "reported_as_of": "Tuesday, October 13th, 2026 at 09:44 PM",
    "hash": "0923f03423"
   }
  ],

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-14T04:43:51-07:00",
+ "built_at": "2026-10-14T11:10:42-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,48 +68,40 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 66,
+  "brief_words": 62,
   "daily": {
-   "news_headlines": 75,
+   "news_headlines": 72,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
-   "top_story": "Rosedale Teachers Union implores school district to renegotiate health benefits with talks at an impasse",
+   "chp_new": 3,
+   "top_story": "Suspected DUI driver in crash south of Arvin arrested, identified: CHP",
    "overnight_band": {
-    "date": "2026-10-13",
-    "count": 28,
+    "date": "2026-10-14",
+    "count": 38,
     "chips": [
      [
       "Weapons and assaults",
-      3
-     ],
-     [
-      "Fires",
       6
      ],
      [
+      "Fires",
+      7
+     ],
+     [
       "Crashes and traffic",
-      3
-     ],
-     [
-      "Medical and overdose",
-      2
-     ],
-     [
-      "Missing persons",
-      1
+      5
      ],
      [
       "Disturbances and welfare",
-      3
+      8
      ],
      [
       "Burglary and theft",
-      1
+      4
      ],
      [
       "Suspicious activity",
-      4
+      1
      ],
      [
       "Alarms",
@@ -117,12 +109,14 @@
      ],
      [
       "Other calls",
-      4
+      6
      ]
     ],
-    "other": "2 trespass, 1 vandalism, 1 incident",
+    "other": "2 person in crisis, 1 industrial fire, 1 prowling, 1 public service, 1 vehicle",
     "unmapped": [
-     "trespass"
+     "person in crisis",
+     "industrial fire",
+     "prowling"
     ]
    },
    "archive": "2026-10-14"
@@ -159,20 +153,20 @@
    "log_entries": 60
   },
   "tehachapi": {
-   "sr58": "RESTRICTIONS",
-   "wind_mph": 5,
+   "sr58": "OPEN",
+   "wind_mph": 11,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 36,
-   "wind_mph": 5,
+   "temp": 63,
+   "wind_mph": 11,
    "alerts": 0
   },
   "roads": {
    "routes": [
     "i5:RESTRICTIONS",
-    "sr58:RESTRICTIONS",
+    "sr58:OPEN",
     "sr99:RESTRICTIONS"
    ],
    "log_entries": 60
@@ -201,19 +195,19 @@
   },
   "numbers": {
    "isabella_af": 142982,
-   "alpr_total": 455,
+   "alpr_total": 456,
    "kern_fires": 1,
-   "aqi": 56,
-   "chp_week": 38
+   "aqi": 84,
+   "chp_week": 41
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 63
+   "published": 64
   },
   "map": {
-   "dots": 32
+   "dots": 40
   },
   "sunday_read": {
    "topic": "Public safety",
@@ -242,8 +236,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 455,
-   "alpr_new_week": 2,
+   "alpr_total": 456,
+   "alpr_new_week": 3,
    "pages": [
     "surveillance",
     "fires",

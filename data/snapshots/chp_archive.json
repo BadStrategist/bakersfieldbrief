@@ -1320,6 +1320,36 @@
   "details": ""
  },
  {
+  "log_id": "261014BF0044",
+  "time": "Oct 14 2026  5:16AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261014BF0087",
+  "time": "Oct 14 2026  9:35AM",
+  "type": "CZP-Assist with Construction",
+  "location": "Nb I5 At Lebec Curve",
+  "area": "Fort Tejon",
+  "lat": 34.839444,
+  "lon": -118.863056,
+  "details": ""
+ },
+ {
+  "log_id": "261014BF0105",
+  "time": "Oct 14 2026 10:50AM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 Breckenridge Rd",
+  "area": "Bakersfield",
+  "lat": 35.411514,
+  "lon": -118.750861,
+  "details": ""
+ },
+ {
   "log_id": "261014BF0010",
   "time": "Oct 14 2026 12:55AM",
   "type": "1182-Trfc Collision-No Inj",

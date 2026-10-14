@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-14T14:37:16-07:00",
+ "built_at": "2026-10-14T16:25:48-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,13 +68,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 67,
+  "brief_words": 60,
   "daily": {
    "news_headlines": 72,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
-   "top_story": "Rafael Estrada pleads no contest to 2nd-degree murder in wife's stabbing death in Bakersfield",
+   "chp_new": 3,
+   "top_story": "1 wounded, 1 arrested after stabbing in downtown Bakersfield",
    "overnight_band": {
     "date": "2026-10-14",
     "count": 38,
@@ -154,13 +154,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 11,
+   "wind_mph": 9,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 68,
-   "wind_mph": 11,
+   "wind_mph": 9,
    "alerts": 0
   },
   "roads": {
@@ -198,7 +198,7 @@
    "alpr_total": 456,
    "kern_fires": 1,
    "aqi": 58,
-   "chp_week": 45
+   "chp_week": 48
   },
   "letters": {
    "published": 1

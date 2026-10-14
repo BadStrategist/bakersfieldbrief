@@ -1,185 +1,5 @@
 [
  {
-  "log_id": "261006BF0005",
-  "time": "Oct  6 2026  1:51AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "261006BF0234",
-  "time": "Oct  6 2026  4:55PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Belle Ter / Wible Rd",
-  "area": "Bakersfield",
-  "lat": 35.346694,
-  "lon": -119.038853,
-  "details": ""
- },
- {
-  "log_id": "261006BF0239",
-  "time": "Oct  6 2026  5:03PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Hermosa Rd / S Edison Rd",
-  "area": "Bakersfield",
-  "lat": 35.310823,
-  "lon": -118.878555,
-  "details": ""
- },
- {
-  "log_id": "261006BF0245",
-  "time": "Oct  6 2026  5:20PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Valpredo Rd / Mettler Frontage Rd W",
-  "area": "Bakersfield",
-  "lat": 35.076107,
-  "lon": -118.974628,
-  "details": ""
- },
- {
-  "log_id": "261006BF0284",
-  "time": "Oct  6 2026  7:03PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Sb Sr99 At South Union Ave",
-  "area": "Bakersfield",
-  "lat": 35.1725,
-  "lon": -119.004167,
-  "details": ""
- },
- {
-  "log_id": "261006BF0041",
-  "time": "Oct  6 2026  7:24AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "0 Martin Luther King Blvd Onr",
-  "area": "Bakersfield",
-  "lat": 35.353209,
-  "lon": -118.98398,
-  "details": ""
- },
- {
-  "log_id": "261006BF0292",
-  "time": "Oct  6 2026  7:37PM",
-  "type": "1125-Traffic Hazard",
-  "location": "West Escape Ramp",
-  "area": "Fort Tejon",
-  "lat": 34.918056,
-  "lon": -118.923889,
-  "details": ""
- },
- {
-  "log_id": "261006BF0309",
-  "time": "Oct  6 2026  8:16PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Sr99 N / Sr155 Ofr",
-  "area": "Bakersfield",
-  "lat": 35.764388,
-  "lon": -119.249658,
-  "details": ""
- },
- {
-  "log_id": "261006BF0316",
-  "time": "Oct  6 2026  8:35PM",
-  "type": "1013-Road/Weather Conditions",
-  "location": "Sb Sr99 Jso Sr166",
-  "area": "Fort Tejon",
-  "lat": 35.05,
-  "lon": -118.965556,
-  "details": ""
- },
- {
-  "log_id": "261006BF0320",
-  "time": "Oct  6 2026  8:46PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Warren Ave / N Chester Ave",
-  "area": "Bakersfield",
-  "lat": 35.412146,
-  "lon": -119.020977,
-  "details": ""
- },
- {
-  "log_id": "261006BF0323",
-  "time": "Oct  6 2026  8:49PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Sb Sr99 Jso Ming Ave",
-  "area": "BF",
-  "lat": 35.336389,
-  "lon": -119.039444,
-  "details": ""
- },
- {
-  "log_id": "261006BF0326",
-  "time": "Oct  6 2026  8:51PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "0 I5 S",
-  "area": "Fort Tejon",
-  "lat": 34.917566,
-  "lon": -118.925147,
-  "details": ""
- },
- {
-  "log_id": "261006BF0334",
-  "time": "Oct  6 2026  9:12PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "SB I5 JNO Fort Tejon Rd",
-  "area": "Fort Tejon",
-  "lat": 34.882222,
-  "lon": -118.900556,
-  "details": ""
- },
- {
-  "log_id": "261006BF0094",
-  "time": "Oct  6 2026 10:04AM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "SB I5 JNO Rowlee Rd",
-  "area": "Buttonwillow",
-  "lat": 35.4575,
-  "lon": -119.478056,
-  "details": ""
- },
- {
-  "log_id": "261006BF0097",
-  "time": "Oct  6 2026 10:08AM",
-  "type": "CZP-Assist with Construction",
-  "location": "Nb I5 At Lebec Rd",
-  "area": "Fort Tejon",
-  "lat": 34.835556,
-  "lon": -118.863056,
-  "details": ""
- },
- {
-  "log_id": "261006BF0121",
-  "time": "Oct  6 2026 11:08AM",
-  "type": "CFIRE-Car Fire",
-  "location": "I5 N / Grapevine Rd E",
-  "area": "Fort Tejon",
-  "lat": 34.939285,
-  "lon": -118.929655,
-  "details": ""
- },
- {
-  "log_id": "261006BF0120",
-  "time": "Oct  6 2026 11:10AM",
-  "type": "1125-Traffic Hazard",
-  "location": "1232 Grace St",
-  "area": "Bakersfield",
-  "lat": 35.387433,
-  "lon": -118.980239,
-  "details": ""
- },
- {
-  "log_id": "261006BF0123",
-  "time": "Oct  6 2026 11:12AM",
-  "type": "1125-Traffic Hazard",
-  "location": "I5 N / West Escape Ramp",
-  "area": "Fort Tejon",
-  "lat": 34.918056,
-  "lon": -118.923889,
-  "details": ""
- },
- {
   "log_id": "261007BF0210",
   "time": "Oct  7 2026  1:18PM",
   "type": "1125-Traffic Hazard",
@@ -1457,6 +1277,16 @@
   "area": "Fort Tejon",
   "lat": 34.836389,
   "lon": -118.862778,
+  "details": ""
+ },
+ {
+  "log_id": "261013BF0248",
+  "time": "Oct 13 2026  9:47PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "24068-26499 Sr58",
+  "area": "Buttonwillow",
+  "lat": 35.354496,
+  "lon": -119.278264,
   "details": ""
  }
 ]

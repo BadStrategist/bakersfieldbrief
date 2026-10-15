@@ -1340,6 +1340,26 @@
   "details": ""
  },
  {
+  "log_id": "261015BF0226",
+  "time": "Oct 15 2026  3:22PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Crestmont Dr / Horace Mann Ave",
+  "area": "Bakersfield",
+  "lat": 35.377693,
+  "lon": -118.954108,
+  "details": ""
+ },
+ {
+  "log_id": "261015BF0238",
+  "time": "Oct 15 2026  3:53PM",
+  "type": "CFIRE-Car Fire",
+  "location": "I5 S / Fort Tejon Rd Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.874188,
+  "lon": -118.891777,
+  "details": ""
+ },
+ {
   "log_id": "261015BF0033",
   "time": "Oct 15 2026  5:24AM",
   "type": "MZP-Assist CT with Maintenance",

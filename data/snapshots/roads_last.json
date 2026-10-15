@@ -65,7 +65,7 @@
      }
     ]
    },
-   "reported_as_of": "Thursday, October 15th, 2026 at 02:19 PM",
+   "reported_as_of": "Thursday, October 15th, 2026 at 04:16 PM",
    "hash": "201b7dd4a9"
   },
   {
@@ -73,32 +73,23 @@
    "slug": "sr58",
    "name": "State Route 58 \u2014 Tehachapi",
    "pass": false,
-   "status": "RESTRICTIONS",
-   "pass_status": "RESTRICTIONS",
+   "status": "OPEN",
+   "pass_status": "OPEN",
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "Eastbound traffic is reduced to 1 lane from 1 mi east to 2.6 mi east of Old San Bunker (Kern Co) - Due to emergency repairs",
-     "status": "RESTRICTIONS"
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
     }
    ],
    "scope": {
     "on_pass": "OPEN",
     "on_pass_reported": false,
     "on_pass_items": [],
-    "elsewhere": [
-     {
-      "status": "RESTRICTIONS",
-      "place": "",
-      "county": "Kern Co",
-      "where": "Kern Co",
-      "text": "Eastbound traffic is reduced to 1 lane from 1 mi east to 2.6 mi east of Old San Bunker (Kern Co) - Due to emergency repairs",
-      "region": "CENTRAL CALIFORNIA"
-     }
-    ]
+    "elsewhere": []
    },
-   "reported_as_of": "Thursday, October 15th, 2026 at 02:19 PM",
-   "hash": "c679f240fc"
+   "reported_as_of": "Thursday, October 15th, 2026 at 04:16 PM",
+   "hash": "5374f203ec"
   },
   {
    "number": "99",
@@ -134,7 +125,7 @@
      }
     ]
    },
-   "reported_as_of": "Thursday, October 15th, 2026 at 02:19 PM",
+   "reported_as_of": "Thursday, October 15th, 2026 at 04:16 PM",
    "hash": "0923f03423"
   }
  ],

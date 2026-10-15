@@ -13,7 +13,6 @@ Delivery wiring is deliberately out of scope until launch.
 """
 from __future__ import annotations
 
-import hashlib
 import html as H
 import re
 from datetime import datetime, timedelta
@@ -144,6 +143,33 @@ def _overnight_card(chp: dict) -> tuple[str, str]:
     txt_card = (f"{len(incs)} {say} ({when})\n{txt_rows}"
                 + (f"\n  other calls: {inside}" if inside else ""))
     return html_card, txt_card
+
+
+def _overnight_src(today, ko, keyless: bool) -> str:
+    """The provenance stamp: which night's report and call file the overnight numbers read.
+
+    The card and the header read the newest report on disk and its call file; the
+    keyless prose reads today's. All three must be the same night, or one email
+    carries two nights' numbers; a disagreement is logged and the card's night is
+    stamped. Each file is named by its git blob sha1, 'none' when it was not there,
+    so the send can hold an email built from bytes origin/main does not have.
+    """
+    from .builders import overnight
+    from .email_gate import INCIDENTS_PATH, REPORT_PATH, blob_sha, format_stamp
+    iso = today.isoformat() if hasattr(today, "isoformat") else str(today)
+    reps = sorted(overnight.REPORTS_DIR.glob("*.md"), reverse=True)
+    reads = {"card": reps[0].stem if reps else None,
+             "header": (ko or {}).get("date"),
+             "prose": iso if keyless else None}
+    dates = {k: d for k, d in reads.items() if d}
+    if len(set(dates.values())) > 1:
+        common.log("WARNING overnight sources disagree on the night: "
+                   + ", ".join(f"{k}={d}" for k, d in dates.items()))
+    date = next(iter(dates.values()), None)
+    if not date:
+        return format_stamp(None, None, None)
+    return format_stamp(date, blob_sha(common.ROOT / REPORT_PATH.format(date=date)),
+                        blob_sha(common.ROOT / INCIDENTS_PATH.format(date=date)))
 
 
 def _brief_sections(date) -> dict:
@@ -472,10 +498,6 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
         try:
             from .tracker_card import render_tracker_card
             render_tracker_card(alpr, None)
-            # Rebuild AFTER the redraw: the cache-buster in this markup is the
-            # card file's own hash, so it has to be read once the new bytes are
-            # on disk. Without this the email would pin yesterday's picture.
-            flock_html = _flock_update_html(alpr)
         except Exception as e:  # noqa: BLE001
             common.log(f"tracker card redraw failed — dropping flock card: {e}")
             flock_html = ""
@@ -518,6 +540,7 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
     # so the email always ships with genuine content. Deterministic < LLM prose,
     # but a factual no-LLM email beats no email. The card-style sections (weather
     # graphic, Flock tracker, headline links) already survive LLM death.
+    keyless_overnight = not (sections.get("overnight") or "").strip()
     if not (sections.get("overnight") or "").strip() or \
        not (sections.get("weather") or "").strip() or \
        not (sections.get("something_good") or "").strip():
@@ -550,6 +573,7 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
     # ---- the home page's overnight card: the counts by type, same rows as the home
     # band and /overnight/. It sits above the narrative so the numbers land first.
     overnight_card, overnight_txt = _overnight_card(chp)
+    src_stamp = _overnight_src(today, ko, keyless_overnight)
 
     # ---- Today's Weather (bold the leading line, then the rest)
     weather_full = sections.get("weather", "")
@@ -603,7 +627,8 @@ def render_brief(ctx, sources: dict, today, rel: str = "") -> list[str]:
     html_doc = f"""<!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bakersfield Daily Brief — {H.escape(date_label)}{(' — Overnight: ' + H.escape(ko['headline'])) if ko and ko.get('headline') else ''}</title></head>
+<title>Bakersfield Daily Brief — {H.escape(date_label)}{(' — Overnight: ' + H.escape(ko['headline'])) if ko and ko.get('headline') else ''}</title>
+<!-- {src_stamp} --></head>
 <body style="margin:0;padding:0;background:{PAPER}">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:{PAPER}"><tr><td align="center">
 <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background:{PAPER}">
@@ -720,6 +745,7 @@ Headlines link to the original reporting at the outlets named.
         (latest / name).write_text(content, encoding="utf-8")
         built.append(f"email/{today.isoformat()}/{name}")
     common.log(f"email brief rendered: {len(html_doc)} html chars, {len(txt_doc)} txt chars")
+    print(src_stamp, flush=True)
     return built
 
 
@@ -840,23 +866,11 @@ def _flock_update_html(alpr: dict) -> str:
 
     tracker = f"{BASE_URL}/surveillance/"
     asof = alpr.get("asof", "")
-    # Cache-buster: the card is embedded as a LIVE url, so subscribers' mail
-    # clients (Gmail's image proxy above all) serve whatever they cached under
-    # that exact url. The 2026-10-14 clip fix was invisible in the email for
-    # that reason: the file on the site was new, the picture in the inbox was
-    # not. The query is the card's own bytes, so the url changes exactly when
-    # the picture does, and it never churns when nothing changed.
-    bust = ""
-    try:
-        _card = common.ROOT / "assets" / "img" / "tracker-map-card.jpg"
-        bust = f"?v={hashlib.sha256(_card.read_bytes()).hexdigest()[:8]}"
-    except OSError:
-        bust = ""
     return f"""<table role="presentation" width="100%" cellpadding="0" cellspacing="0"
   style="margin:8px 0 4px;border:1px solid {LINE};border-radius:6px;overflow:hidden">
   <tr><td>
     <a href="{tracker}" style="display:block;text-decoration:none">
-      <img src="{BASE_URL}/assets/img/tracker-map-card.jpg{bust}" width="100%" alt="Live Flock &amp; ALPR camera map for Kern County"
+      <img src="{BASE_URL}/assets/img/tracker-map-card.jpg" width="100%" alt="Live Flock &amp; ALPR camera map for Kern County"
            style="display:block;width:100%;height:auto;border:0">
     </a>
   </td></tr>

@@ -8,17 +8,108 @@ brief, so this logic lives in ONE module instead of two drifting copies — the
 2026-09-01 degraded email shipped because the overnight narrative was checked
 in neither path.
 
-Pure stdlib only (re, pathlib, zoneinfo, datetime) so any Python >= 3.10 can
-import it: the watchdog runs under Hermes's python, the send gate under the
-repo's venv python. No repo dependencies are pulled in.
+Pure stdlib only (re, pathlib, zoneinfo, datetime, hashlib, subprocess) so any
+Python >= 3.10 can import it: the watchdog runs under Hermes's python, the send
+gate under the repo's venv python. No repo dependencies are pulled in.
+
+The second gate, source_mismatch, holds an email whose overnight numbers were
+built from files that are not origin/main's: on 2026-10-15 the watchdog rebuilt
+the email from the box's unpushed 28-incident report while the site showed 37.
 """
 
 from __future__ import annotations
 
+import hashlib
 import re
+import subprocess
 from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo
+
+# ------------------------------------------------- provenance of the overnight numbers
+STAMP = "bb-overnight-src"
+REPORT_PATH = "data/overnight_reports/{date}.md"
+INCIDENTS_PATH = "incidents/{date}.json"
+_STAMP_RE = re.compile(
+    r"<!--\s*" + STAMP + r"\s+date=(\S+)\s+report=(\S+)\s+incidents=(\S+)\s*-->")
+
+
+def blob_sha(p) -> str:
+    """git's blob sha1 of a file as git stores it, 'none' when there is no file.
+
+    CRLF is folded to LF first: this box checks out with core.autocrlf=true, so
+    the bytes on disk carry CRLF while the committed blob (and CI's checkout)
+    carry LF. Hashing the raw bytes made an unchanged incidents file look edited.
+    """
+    try:
+        b = Path(p).read_bytes()
+    except OSError:
+        return "none"
+    b = b.replace(b"\r\n", b"\n")
+    return hashlib.sha1(b"blob %d\0" % len(b) + b).hexdigest()
+
+
+def format_stamp(date, report, incidents) -> str:
+    return f"{STAMP} date={date or 'none'} report={report or 'none'} incidents={incidents or 'none'}"
+
+
+def read_stamp(html_path) -> dict | None:
+    """The {date, report, incidents} stamp the emailer wrote into brief.html, or None."""
+    try:
+        text = Path(html_path).read_text(encoding="utf-8", errors="replace")
+    except OSError:
+        return None
+    m = _STAMP_RE.search(text)
+    if not m:
+        return None
+    return {"date": m.group(1), "report": m.group(2), "incidents": m.group(3)}
+
+
+def _git(repo, *args, timeout: int = 60) -> subprocess.CompletedProcess:
+    return subprocess.run(["git", "-C", str(repo), *args], capture_output=True,
+                          text=True, timeout=timeout)
+
+
+def _origin_blob(repo, path: str) -> str:
+    r = _git(repo, "rev-parse", "-q", "--verify", f"origin/main:{path}")
+    return r.stdout.strip() if r.returncode == 0 and r.stdout.strip() else "none"
+
+
+def _origin_latest_report(repo) -> str:
+    """The date of origin/main's newest overnight report: the one the site's card shows."""
+    r = _git(repo, "ls-tree", "--name-only", "origin/main", "data/overnight_reports/")
+    if r.returncode != 0:
+        raise RuntimeError(f"git ls-tree origin/main failed: {r.stderr.strip()[:200]}")
+    dates = sorted(Path(n).stem for n in r.stdout.splitlines() if n.endswith(".md"))
+    return dates[-1] if dates else "none"
+
+
+def source_mismatch(html_path, repo, fetch: bool = True) -> str | None:
+    """None when the email's overnight numbers come from origin/main's bytes, else why not.
+
+    The site is built from origin/main, so an email whose stamp names origin/main's
+    newest report and the same report and incidents blobs cannot disagree with it.
+    Fetches origin main first (fetch=False checks against the last fetch). Fails
+    closed: no stamp, or git that cannot answer, is a reason, never None.
+    """
+    got = read_stamp(html_path)
+    if got is None:
+        return f"no {STAMP} stamp in {html_path} (built by code that does not stamp its source)"
+    try:
+        if fetch:
+            r = _git(repo, "fetch", "-q", "origin", "main", timeout=120)
+            if r.returncode != 0:
+                return f"could not fetch origin main: {r.stderr.strip()[:200]}"
+        date = _origin_latest_report(repo)
+        want = {"date": date,
+                "report": "none" if date == "none" else _origin_blob(repo, REPORT_PATH.format(date=date)),
+                "incidents": "none" if date == "none" else _origin_blob(repo, INCIDENTS_PATH.format(date=date))}
+    except (OSError, subprocess.SubprocessError, RuntimeError) as e:
+        return f"could not read origin/main: {type(e).__name__}: {e}"
+    if got != want:
+        return (f"built from {format_stamp(**got)}, "
+                f"origin/main has {format_stamp(**want)}")
+    return None
 
 
 def content_is_degraded(html_path) -> list[str]:
@@ -33,6 +124,8 @@ def content_is_degraded(html_path) -> list[str]:
     if not p.exists():
         return ["no rendered brief"]
     text = p.read_text(encoding="utf-8", errors="replace")
+    # The provenance stamp carries today's ISO date; it must not satisfy the date check.
+    text = _STAMP_RE.sub("", text)
 
     now = datetime.now(ZoneInfo("America/Los_Angeles"))
     human = f"{now.strftime('%B')} {now.day}, {now.year}"

@@ -36,7 +36,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from build import common  # noqa: E402
-from build.email_gate import content_is_degraded  # noqa: E402
+from build.email_gate import content_is_degraded, format_stamp, read_stamp, source_mismatch  # noqa: E402
 
 HTML = ROOT / "email" / "latest" / "brief.html"
 TXT = ROOT / "email" / "latest" / "brief.txt"
@@ -157,6 +157,16 @@ def main() -> int:
         print("The email was NOT sent. Fix the build (check LLM_BASE_URL/LLM_MODEL),")
         print("rebuild, verify email/latest/brief.html, then send manually.")
         return 1
+
+    # HARD GATE: the overnight numbers must be the site's. The email stamps the report and
+    # call file it read; origin/main is what the site is built from. 2026-10-15 sent 28 calls
+    # from an unpushed local report while the site said 37.
+    mismatch = source_mismatch(HTML, ROOT)
+    if mismatch:
+        print(f"BLOCKED send: {mismatch}")
+        print("The email was NOT sent. Rebuild it from origin/main (a fresh checkout), then send.")
+        return 1
+    print("source: " + format_stamp(**read_stamp(HTML)))
 
     txt = TXT.read_text(encoding="utf-8") if TXT.exists() else ""
     html = HTML.read_text(encoding="utf-8")

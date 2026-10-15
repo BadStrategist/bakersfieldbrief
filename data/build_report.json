@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-15T10:45:01-07:00",
+ "built_at": "2026-10-15T10:54:00-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 739, column 21"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 3,
    "top_story": "Structure fire prompts road closures in southeast Bakersfield",
    "overnight_band": {
     "date": "2026-10-15",
@@ -210,7 +210,7 @@
    "alpr_total": 456,
    "kern_fires": 1,
    "aqi": 78,
-   "chp_week": 51
+   "chp_week": 54
   },
   "letters": {
    "published": 1

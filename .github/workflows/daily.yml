@@ -99,9 +99,14 @@ jobs:
           fi
 
       # Test suite FIRST: it used to sit after the artifact push, so a broken build had
-      # already pushed a commit to main before the "gate" ran. Now a failure stops the
-      # push, the deploy and the send.
-      - name: Test suite (hard gate before the artifact push and the deploy)
+      # already pushed a commit to main before the "gate" ran. A failure stops the push.
+      # It does NOT stop the deploy and the send (both carry `if: !cancelled()`): on
+      # 2026-10-14 and 2026-10-15 a red test was enough to skip the artifact push while
+      # the site still deployed, so data/briefs/<date>.json never landed, the 09:15
+      # social gate refused both slots, and the day posted nothing with every alarm
+      # green. The push now runs whenever the build succeeded, and the run still goes
+      # red, which is the signal that was missing.
+      - name: Test suite (hard gate before the artifact push)
         id: tests
         run: python -m pytest -q -o addopts="" --tb=short
 
@@ -111,8 +116,12 @@ jobs:
         # scripts/ci_push.sh: pushes only CI-owned artifacts, fails loudly on an ownership conflict
         # (an ::error annotation) instead of a green step with nothing pushed. NO
         # continue-on-error: masking a failed push as a green step is how a whole day of
-        # artifacts disappears behind a passing run. The steps that must still happen
-        # (deploy, send) carry `if: !cancelled()`.
+        # artifacts disappears behind a passing run.
+        # The condition matches the deploy: a red TEST must not withhold the artifacts,
+        # because the same build has already been deployed to the live site and the
+        # social/email legs read the committed brief. Not running is only correct when
+        # the BUILD failed and there is nothing trustworthy to commit.
+        if: ${{ !cancelled() && steps.build.outcome == 'success' }}
         id: push
         run: |
           bash scripts/ci_push.sh "build: $(date -u +%Y-%m-%d) artifacts [skip ci]"

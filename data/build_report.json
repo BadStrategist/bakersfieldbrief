@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-15T08:49:44-07:00",
+ "built_at": "2026-10-15T09:53:08-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,9 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": "RuntimeError: overpass-api.de: HTTPError: 502 Server Error: Bad Gateway for url: https://overpass-api.de/api/interpreter; lambert.openstreetmap.de: HTTPError: 502 Server Error: Bad Gateway for url: https://lambert.openstreetmap.de/api/interpreter; gall.openstreetmap.de: HTTPError: 502 Server Error: Bad Gateway for url: https://gall.openstreetmap.de/api/interpreter",
-   "stale": true,
-   "asof": "2026-10-15"
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -72,7 +70,7 @@
   "_digest_meta": "deterministic",
   "brief_words": 214,
   "daily": {
-   "news_headlines": 72,
+   "news_headlines": 73,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
@@ -168,13 +166,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 13,
+   "wind_mph": 14,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 64,
-   "wind_mph": 13,
+   "temp": 68,
+   "wind_mph": 14,
    "alerts": 0
   },
   "roads": {
@@ -211,7 +209,7 @@
    "isabella_af": 142341,
    "alpr_total": 456,
    "kern_fires": 1,
-   "aqi": 69,
+   "aqi": 79,
    "chp_week": 51
   },
   "letters": {

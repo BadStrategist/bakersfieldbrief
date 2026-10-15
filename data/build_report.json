@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-15T04:20:58-07:00",
+ "built_at": "2026-10-15T08:49:44-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 739, column 21"
   },
   "isabella": {
    "ok": true,
@@ -39,7 +39,9 @@
   },
   "alpr": {
    "ok": true,
-   "error": ""
+   "error": "RuntimeError: overpass-api.de: HTTPError: 502 Server Error: Bad Gateway for url: https://overpass-api.de/api/interpreter; lambert.openstreetmap.de: HTTPError: 502 Server Error: Bad Gateway for url: https://lambert.openstreetmap.de/api/interpreter; gall.openstreetmap.de: HTTPError: 502 Server Error: Bad Gateway for url: https://gall.openstreetmap.de/api/interpreter",
+   "stale": true,
+   "asof": "2026-10-15"
   },
   "venues": {
    "ok": true,
@@ -68,55 +70,67 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 65,
+  "brief_words": 214,
   "daily": {
    "news_headlines": 72,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "1 shot and killed in an officer-involved shooting near Monitor Street and Pacheco Road",
+   "chp_new": 0,
+   "top_story": "Structure fire prompts road closures in southeast Bakersfield",
    "overnight_band": {
-    "date": "2026-10-14",
-    "count": 38,
+    "date": "2026-10-15",
+    "count": 37,
     "chips": [
      [
       "Weapons and assaults",
-      6
-     ],
-     [
-      "Fires",
-      7
-     ],
-     [
-      "Crashes and traffic",
-      5
-     ],
-     [
-      "Disturbances and welfare",
-      8
-     ],
-     [
-      "Burglary and theft",
-      4
-     ],
-     [
-      "Suspicious activity",
       1
      ],
      [
-      "Alarms",
+      "Fires",
+      5
+     ],
+     [
+      "Crashes and traffic",
+      3
+     ],
+     [
+      "Medical and overdose",
+      4
+     ],
+     [
+      "Disturbances and welfare",
+      9
+     ],
+     [
+      "Burglary and theft",
+      3
+     ],
+     [
+      "Suspicious activity",
+      3
+     ],
+     [
+      "Shooting at officers",
+      1
+     ],
+     [
+      "Standoff",
       1
      ],
      [
       "Other calls",
-      6
+      7
      ]
     ],
-    "other": "2 person in crisis, 1 industrial fire, 1 prowling, 1 public service, 1 vehicle",
+    "other": "1 person in crisis, 1 carjacking, 1 apartment fire, 1 pallet yard fire, 1 person with a weapon, 1 911 hang-up, 1 incident",
     "unmapped": [
+     "shooting at officers",
+     "standoff",
      "person in crisis",
-     "industrial fire",
-     "prowling"
+     "carjacking",
+     "apartment fire",
+     "pallet yard fire",
+     "person with a weapon"
     ]
    },
    "archive": "2026-10-15"
@@ -154,13 +168,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 0,
+   "wind_mph": 13,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 39,
-   "wind_mph": 0,
+   "temp": 64,
+   "wind_mph": 13,
    "alerts": 0
   },
   "roads": {
@@ -197,17 +211,17 @@
    "isabella_af": 142341,
    "alpr_total": 456,
    "kern_fires": 1,
-   "aqi": 60,
+   "aqi": 69,
    "chp_week": 51
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 64
+   "published": 65
   },
   "map": {
-   "dots": 40
+   "dots": 55
   },
   "sunday_read": {
    "topic": "Public safety",

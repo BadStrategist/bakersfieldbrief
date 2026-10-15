@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-15T11:39:05-07:00",
+ "built_at": "2026-10-15T12:52:44-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -70,10 +70,10 @@
   "_digest_meta": "deterministic",
   "brief_words": 214,
   "daily": {
-   "news_headlines": 74,
+   "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 2,
    "top_story": "Structure fire prompts road closures in southeast Bakersfield",
    "overnight_band": {
     "date": "2026-10-15",
@@ -166,13 +166,13 @@
   },
   "tehachapi": {
    "sr58": "RESTRICTIONS",
-   "wind_mph": 10,
+   "wind_mph": 17,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 72,
-   "wind_mph": 10,
+   "temp": 75,
+   "wind_mph": 17,
    "alerts": 0
   },
   "roads": {
@@ -198,7 +198,7 @@
    "groups": {
     "In the next 7 days": 23,
     "In 1 to 2 weeks": 18,
-    "Later": 89
+    "Later": 88
    },
    "meetings": 4
   },
@@ -210,7 +210,7 @@
    "alpr_total": 456,
    "kern_fires": 1,
    "aqi": 74,
-   "chp_week": 55
+   "chp_week": 57
   },
   "letters": {
    "published": 1

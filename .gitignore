@@ -39,3 +39,13 @@ kern_overnight/.bcfy_cookie.json
 
 # Reel render + probe output (regenerated on demand)
 scripts/brief_reel/out/
+
+# Ad kit media: render inputs (source stills, music beds) and the big MP4 cuts
+# stay on this disk. 83 MB of video in a site repo bloats every clone and every
+# CI checkout, and the generated ads are re-renderable from the .py files here.
+data/ad_kit/*.mp4
+data/ad_kit/*.wav
+data/ad_kit/shot*.png
+data/ad_kit/v2_*.png
+data/ad_kit/f_*.png
+data/ad_kit/fonts/

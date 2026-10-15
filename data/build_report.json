@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-15T09:53:08-07:00",
+ "built_at": "2026-10-15T10:45:01-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -70,7 +70,7 @@
   "_digest_meta": "deterministic",
   "brief_words": 214,
   "daily": {
-   "news_headlines": 73,
+   "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
@@ -165,7 +165,7 @@
    "log_entries": 60
   },
   "tehachapi": {
-   "sr58": "OPEN",
+   "sr58": "RESTRICTIONS",
    "wind_mph": 14,
    "alerts": 0,
    "stale": false
@@ -178,7 +178,7 @@
   "roads": {
    "routes": [
     "i5:RESTRICTIONS",
-    "sr58:OPEN",
+    "sr58:RESTRICTIONS",
     "sr99:RESTRICTIONS"
    ],
    "log_entries": 60
@@ -209,7 +209,7 @@
    "isabella_af": 142341,
    "alpr_total": 456,
    "kern_fires": 1,
-   "aqi": 79,
+   "aqi": 78,
    "chp_week": 51
   },
   "letters": {

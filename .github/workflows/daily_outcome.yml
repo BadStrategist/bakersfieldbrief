@@ -1,0 +1,130 @@
+name: Daily outcome check (off-box, 10:40 PT)
+
+# The only check that still runs when the box is off, asleep, or logged out.
+#
+# On 2026-10-14 the day posted nothing: CI's test step failed, the artifact push
+# was skipped while the deploy still went out, data/briefs/2026-10-14.json never
+# landed, and the 09:15 social gate refused both slots. Every box-side alarm that
+# day either could not see the reel (the 08:15 card) or reported nothing because
+# the box itself was fine.
+#
+# This workflow asks the day's outcome from OUTSIDE the box, from committed data
+# and public/live services. It does not post, send, or write anything.
+on:
+  schedule:
+    - cron: '40 17 * * *'      # 10:40 PT (PDT), after the 09:15 slot, the 09:30 retry and the 10:15 watchdog
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: daily-outcome
+  cancel-in-progress: false
+
+jobs:
+  outcome:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the day's outcome from data and live services
+        id: outcome
+        env:
+          MAILERLITE_API_TOKEN: ${{ secrets.MAILERLITE_API_TOKEN }}
+        run: |
+          set -o pipefail   # without this the tee would mask the python exit code and the step would pass
+          python3 - <<'PY' | tee "$RUNNER_TEMP/outcome.txt"
+          import json, os, pathlib, sys, urllib.request, urllib.error
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+
+          date = datetime.now(ZoneInfo("America/Los_Angeles")).strftime("%Y-%m-%d")
+          fails, notes = [], []
+
+          # 1. The overnight report must be on origin/main (box-owned, pushed by ko_publish).
+          rep = pathlib.Path(f"data/overnight_reports/{date}.md")
+          if not rep.is_file():
+              fails.append(f"data/overnight_reports/{date}.md is not on origin/main (the box's publish did not land)")
+          elif len(rep.read_text(encoding="utf-8", errors="replace")) < 300:
+              fails.append(f"the {date} report is committed but too short to be a full report")
+          else:
+              notes.append(f"report on origin ({rep.stat().st_size} bytes)")
+
+          # 2. The brief BODY is what the social gate reads. Its absence on 2026-10-14
+          #    was the single cause of a silent zero-post day.
+          brf = pathlib.Path(f"data/briefs/{date}.json")
+          if not brf.is_file():
+              fails.append(f"data/briefs/{date}.json is NOT on origin/main - the social gate refuses, nothing posts today")
+          else:
+              try:
+                  body = (json.loads(brf.read_text(encoding="utf-8")) or {}).get("body", "")
+              except Exception as exc:
+                  body = ""
+                  fails.append(f"data/briefs/{date}.json is not readable JSON ({exc})")
+              if not body.strip():
+                  fails.append(f"data/briefs/{date}.json holds no brief body")
+              else:
+                  notes.append(f"brief body on origin ({len(body)} chars)")
+
+          # 3. The live brief page and the overnight hub.
+          # Cloudflare answers 403 to "Python-urllib/3.11" (measured 2026-10-15). Identify the
+          # caller instead of pretending to be a browser: a named UA passes and is honest.
+          ua = {"User-Agent": "BakersfieldBrief-outcome-check/1.0 (+https://bakersfieldbrief.com)"}
+          for url, want in ((f"https://bakersfieldbrief.com/briefs/{date}/", date),
+                            ("https://bakersfieldbrief.com/overnight/", date)):
+              try:
+                  with urllib.request.urlopen(urllib.request.Request(url, headers=ua), timeout=30) as r:
+                      text = r.read().decode("utf-8", "replace")
+                  if r.status != 200:
+                      fails.append(f"{url} answered {r.status}")
+                  elif want not in text:
+                      fails.append(f"{url} is live but does not carry {want}")
+                  else:
+                      notes.append(f"{url} live and carries the date")
+              except urllib.error.URLError as exc:
+                  fails.append(f"{url} unreachable ({exc})")
+
+          # 4. The newsletter really went out (MailerLite: status must be sent).
+          tok = os.environ.get("MAILERLITE_API_TOKEN", "")
+          if not tok:
+              notes.append("MAILERLITE_API_TOKEN absent: newsletter NOT checked")
+          else:
+              req = urllib.request.Request(
+                  "https://connect.mailerlite.com/api/campaigns?filter[status]=sent&limit=50",
+                  headers={"Authorization": f"Bearer {tok}", "Accept": "application/json"})
+              try:
+                  with urllib.request.urlopen(req, timeout=30) as r:
+                      data = json.load(r)
+                  names = [c.get("name", "") for c in data.get("data", [])]
+                  hit = [n for n in names if date in n]
+                  if hit:
+                      notes.append(f"newsletter sent ({hit[0]})")
+                  else:
+                      fails.append(f"no SENT MailerLite campaign named for {date} (a held or skipped morning brief)")
+              except Exception as exc:
+                  fails.append(f"could not read MailerLite campaigns ({exc})")
+
+          print(f"DAILY OUTCOME {date}")
+          for n in notes:
+              print(f"  ok   {n}")
+          for f in fails:
+              print(f"  FAIL {f}")
+          if fails:
+              print("")
+              print(f"::error::Daily outcome check failed for {date}: {len(fails)} problem(s)")
+              sys.exit(1)
+          print("")
+          print("All checked outcomes are in place.")
+          PY
+
+      - name: Comment on the ops issue when the day's outcome is broken
+        if: failure()
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python scripts/notify_issue.py --header "Bakersfield Brief - daily OUTCOME check failed" \
+            --file "$RUNNER_TEMP/outcome.txt" \
+            || echo "::error title=ops issue alert not delivered::scripts/notify_issue.py could not run"

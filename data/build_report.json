@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-14T16:25:48-07:00",
+ "built_at": "2026-10-14T21:27:17-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,13 +68,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 60,
+  "brief_words": 54,
   "daily": {
    "news_headlines": 72,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
-   "top_story": "1 wounded, 1 arrested after stabbing in downtown Bakersfield",
+   "chp_new": 2,
+   "top_story": "Wrongful death trial begins 7 years after Demi Dominguez's death",
    "overnight_band": {
     "date": "2026-10-14",
     "count": 38,
@@ -134,7 +134,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -154,13 +154,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 9,
+   "wind_mph": 1,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 68,
-   "wind_mph": 9,
+   "temp": 52,
+   "wind_mph": 1,
    "alerts": 0
   },
   "roads": {
@@ -184,7 +184,7 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 21,
+    "In the next 7 days": 20,
     "In 1 to 2 weeks": 20,
     "Later": 90
    },
@@ -197,8 +197,8 @@
    "isabella_af": 142982,
    "alpr_total": 456,
    "kern_fires": 1,
-   "aqi": 58,
-   "chp_week": 48
+   "aqi": 67,
+   "chp_week": 50
   },
   "letters": {
    "published": 1

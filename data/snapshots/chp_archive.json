@@ -1400,6 +1400,26 @@
   "details": ""
  },
  {
+  "log_id": "261014BF0338",
+  "time": "Oct 14 2026  7:29PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Sb Sr99 At South Union Ave",
+  "area": "Bakersfield",
+  "lat": 35.1725,
+  "lon": -119.004167,
+  "details": ""
+ },
+ {
+  "log_id": "261014BF0364",
+  "time": "Oct 14 2026  8:50PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sr184 / E Brundage Ln",
+  "area": "Bakersfield",
+  "lat": 35.354354,
+  "lon": -118.914067,
+  "details": ""
+ },
+ {
   "log_id": "261014BF0087",
   "time": "Oct 14 2026  9:35AM",
   "type": "CZP-Assist with Construction",

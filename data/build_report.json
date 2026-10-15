@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-14T21:27:17-07:00",
+ "built_at": "2026-10-15T00:44:00-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,12 +68,12 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 54,
+  "brief_words": 63,
   "daily": {
    "news_headlines": 72,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "Wrongful death trial begins 7 years after Demi Dominguez's death",
    "overnight_band": {
     "date": "2026-10-14",
@@ -119,12 +119,12 @@
      "prowling"
     ]
    },
-   "archive": "2026-10-14"
+   "archive": "2026-10-15"
   },
   "cityhall": {
-   "upcoming_meetings": 5,
+   "upcoming_meetings": 4,
    "county_items": 109,
-   "drafts_generated": 0
+   "drafts_generated": 1
   },
   "places": {
    "places": [
@@ -134,7 +134,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -145,7 +145,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-10-14"
+   "draft": "drafts/weekend-guide-2026-10-15"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -154,13 +154,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 1,
+   "wind_mph": 0,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 52,
-   "wind_mph": 1,
+   "temp": 41,
+   "wind_mph": 0,
    "alerts": 0
   },
   "roads": {
@@ -184,11 +184,11 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 20,
-    "In 1 to 2 weeks": 20,
-    "Later": 90
+    "In the next 7 days": 23,
+    "In 1 to 2 weeks": 18,
+    "Later": 89
    },
-   "meetings": 5
+   "meetings": 4
   },
   "feed": {
    "entries": 30
@@ -197,7 +197,7 @@
    "isabella_af": 142982,
    "alpr_total": 456,
    "kern_fires": 1,
-   "aqi": 67,
+   "aqi": 65,
    "chp_week": 50
   },
   "letters": {

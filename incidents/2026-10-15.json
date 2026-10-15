@@ -1,0 +1,358 @@
+[
+ {
+  "type": "outside fire",
+  "time": "19:10",
+  "agency": "Bakersfield Fire Department",
+  "area": "600 block of Richards Avenue",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Firefighters were sent to an outside fire in the alley behind the 600 block of Richards Avenue, where a transient was setting wood on fire.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "19:24",
+  "agency": "Bakersfield Police Department",
+  "area": "10400 block of Main Street",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Officers were sent to the 10400 block of Main Street for a welfare check on a young woman reported to be in crisis."
+ },
+ {
+  "type": "theft",
+  "time": "19:27",
+  "agency": "Bakersfield Police Department",
+  "area": "6100 block of Niles Street",
+  "notability": 2,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to a business in the 6100 block of Niles Street for a theft in progress, a woman reported to be leaving with items she had not paid for.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "outside fire",
+  "time": "19:45",
+  "agency": "Bakersfield Fire Department",
+  "area": "Miller Street and East California Avenue",
+  "notability": 2,
+  "disposition": "out on arrival",
+  "summary": "A caller reported a fire at Miller Street and East California Avenue and told dispatchers the flames were out, saying they believed someone had told the person to put it out.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "20:28",
+  "agency": "Bakersfield Police Department",
+  "area": "1500 block of Locust Ravine",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Officers were sent to the 1500 block of Locust Ravine for a verbal disturbance involving an elderly woman said to have a weapon, though none was seen."
+ },
+ {
+  "type": "suspicious person",
+  "time": "20:40",
+  "agency": "Bakersfield Police Department",
+  "area": "Chester Avenue",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Officers were sent to Chester Avenue for a report of a person who appeared to be under the influence."
+ },
+ {
+  "type": "welfare check",
+  "time": "21:04",
+  "agency": "Bakersfield Police Department",
+  "area": "Hughes Lane and White Lane",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Officers were sent to Hughes Lane and White Lane for a welfare check on a 7-year-old reported to be in the company of a transient adult."
+ },
+ {
+  "type": "domestic violence",
+  "time": "21:04",
+  "agency": "Bakersfield Police Department",
+  "area": "200 block of Fairfax Road",
+  "notability": 2,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to the 200 block of Fairfax Road for a domestic violence call that came in second-hand."
+ },
+ {
+  "type": "shooting at officers",
+  "time": "21:15",
+  "agency": "Bakersfield Police Department",
+  "area": "Monitor Street at Pacheco Road",
+  "notability": 5,
+  "disposition": "one person down; complex and neighborhood searched, no other arrests",
+  "summary": "Officers working at Monitor Street and Pacheco Road reported that a subject had fired about five shots at them, and the man was down with a gun still in his hand. A second person in a black hoodie ran northbound through the apartment complex just west of the scene, and police said three other people may have gone into the neighborhood to the north. A drone and a Bearcat were brought in, officers cleared a parking area by hand and searched the buildings and carports, then reported the complex and the neighborhood to the west clear.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "21:25",
+  "agency": "Bakersfield Police Department",
+  "area": "200 block of Dogwood Lane",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Officers were sent to the 200 block of Dogwood Lane for a welfare check on a man who wanted to be picked up.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "standoff",
+  "time": "21:37",
+  "agency": "Bakersfield Police Department",
+  "area": "1200 block of Quincy Street",
+  "notability": 3,
+  "disposition": "suspect fled on foot",
+  "summary": "Officers were sent to a standoff call in the 1200 block of Quincy Street with arguing heard in the background. The man in the residence had a warrant, and officers said he fled on foot and was under the influence of methamphetamine.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "person in crisis",
+  "time": "21:48",
+  "agency": "Bakersfield Police Department",
+  "area": "800 block of Roberts Lane",
+  "notability": 3,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to the 800 block of Roberts Lane after a crisis line relayed a report of a person in crisis with access to a firearm inside an apartment. The information was second-hand and the person was not armed at the time of the call.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "crash",
+  "time": "21:58",
+  "agency": "Bakersfield Police Department / Bakersfield Fire Department",
+  "area": "Truxtun Avenue east of Westside Parkway",
+  "notability": 4,
+  "disposition": "patients transported; investigation ongoing",
+  "summary": "A vehicle crash was reported on Truxtun Avenue east of Westside Parkway, and police advised that a pedestrian had also been struck at the location. Medics tagged four patients and a couple of people were taken to the hospital by ambulance."
+ },
+ {
+  "type": "welfare check",
+  "time": "22:33",
+  "agency": "Bakersfield Police Department",
+  "area": "100 block of Elton Avenue",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Officers were sent to the 100 block of Elton Avenue after a report of a 7-year-old outside a residence calling for her mother."
+ },
+ {
+  "type": "disturbance",
+  "time": "22:56",
+  "agency": "Bakersfield Police Department",
+  "area": "1200 block of Quincy Street",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Officers were sent to the 1200 block of Quincy Street after a neighbor reported a woman yelling and the sound of a disturbance inside an apartment.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "fire",
+  "time": "23:20",
+  "agency": "Kern County Fire Department",
+  "area": "Lerdo Justice Facility on Industrial Farm Road",
+  "notability": 3,
+  "disposition": "handled",
+  "summary": "County crews were sent to the Lerdo Justice Facility on Industrial Farm Road for a fire in the jail infirmary."
+ },
+ {
+  "type": "carjacking",
+  "time": "00:28",
+  "agency": "Bakersfield Police Department",
+  "area": "8th Street at Maurice Avenue",
+  "notability": 3,
+  "disposition": "vehicle recovered; suspect at large",
+  "summary": "Officers took a carjacking report and recovered the vehicle, which was left at the scene. The suspect fled in a white older-model Honda Accord southbound on 8th Street from Maurice Avenue and was reported to possibly have a handgun."
+ },
+ {
+  "type": "fire",
+  "time": "00:49",
+  "agency": "Bakersfield Fire Department",
+  "area": "Stockdale Highway",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "Firefighters were sent to a fire on Stockdale Highway reported to be larger than a vehicle."
+ },
+ {
+  "type": "vegetation fire",
+  "time": "00:55",
+  "agency": "Bakersfield Fire Department",
+  "area": "Calloway Drive",
+  "notability": 2,
+  "disposition": "handled",
+  "summary": "A small grass fire was reported off Calloway Drive, and one engine handled it.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "apartment fire",
+  "time": "01:06",
+  "agency": "Bakersfield Fire Department",
+  "area": "400 block of Niles Street",
+  "notability": 4,
+  "disposition": "knocked down; three uninvolved units kept habitable",
+  "summary": "Multiple callers reported a small apartment complex on fire in the 400 block of Niles Street, with reports of people trying to save children and children screaming inside. Crews found heavy smoke venting from a second-story window of a middle unit, pulled attack lines and checked the adjacent structure to the delta side. A reconnaissance group evacuated the units next to the fire, and PG&E was asked to isolate power to the single unit. The three units not involved were found habitable, which kept those families from being displaced."
+ },
+ {
+  "type": "suspicious person",
+  "time": "01:59",
+  "agency": "Bakersfield Police Department",
+  "area": "4000 block of Ming Avenue",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "Officers were sent to a business in the 4000 block of Ming Avenue for a suspicious person report.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "attempted burglary",
+  "time": "02:29",
+  "agency": "Bakersfield Police Department",
+  "area": "1900 block of Chester Avenue",
+  "notability": 2,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to a business in the 1900 block of Chester Avenue after a report of a man trying to break a window with a large rock."
+ },
+ {
+  "type": "welfare check",
+  "time": "02:49",
+  "agency": "Bakersfield Police Department",
+  "area": "200 block of Bighorn Meadow Drive",
+  "notability": 3,
+  "disposition": "woman contacted by phone",
+  "summary": "Officers were sent to the 200 block of Bighorn Meadow Drive after a man reported that a rideshare driver had locked his girlfriend inside the vehicle and driven off. Officers later reached the woman by phone.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "pallet yard fire",
+  "time": "03:17",
+  "agency": "Kern County Fire Department / Bakersfield Fire Department",
+  "area": "Kernita Road",
+  "notability": 5,
+  "disposition": "reinforced; fire reached the storage business",
+  "summary": "Crews went to a large stack of pallets burning in a yard off Kernita Road, with adjacent buildings and high-tension power lines in the path of the fire. Battalion 4 took command and made the power lines the priority, water was stretched from a hydrant to the west, and the response was reinforced when the fire reached the Public Storage on the property. Police were asked to shut the street down in both directions while hose lines were laid through the aisles of the storage yard."
+ },
+ {
+  "type": "disturbance",
+  "time": "03:33",
+  "agency": "Bakersfield Police Department",
+  "area": "600 block of Water Street",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "Officers were sent to the 600 block of Water Street for an open line between a man and a woman with what a dispatcher described as a possible struggle.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "person with a weapon",
+  "time": "03:38",
+  "agency": "Bakersfield Police Department",
+  "area": "7000 block of Eucalyptus Drive",
+  "notability": 3,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to the 7000 block of Eucalyptus Drive for a report of a 65-year-old man alone in an apartment and in possession of a knife. The caller had separated himself from the man before officers arrived.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "traffic hazard",
+  "time": "04:08",
+  "agency": "Bakersfield Police Department",
+  "area": "12800 block of South Union Avenue",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "Officers were sent to the 12800 block of South Union Avenue for a man standing in the middle of the roadway."
+ },
+ {
+  "type": "suspicious person",
+  "time": "04:46",
+  "agency": "Bakersfield Police Department",
+  "area": "6100 block of Niles Street",
+  "notability": 2,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to a business in the 6100 block of Niles Street for a man with a screwdriver reported to be walking through the parking lot and looking into vehicles.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "stolen vehicle",
+  "time": "05:04",
+  "agency": "Bakersfield Police Department",
+  "area": "Panama Lane and Buena Vista Road",
+  "notability": 2,
+  "disposition": "at large",
+  "summary": "Police broadcast a stolen vehicle last seen heading east from Panama Lane and Buena Vista Road.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "911 hang-up",
+  "time": "05:16",
+  "agency": "Bakersfield Police Department",
+  "area": "1900 block of East California Avenue",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "Officers were sent to the 1900 block of East California Avenue for a 911 hang-up.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "Medical emergency",
+  "time": "19:03",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Mount Vernon Avenue",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Patient found unresponsive at Mount Vernon Avenue.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Cardiac arrest",
+  "time": "20:01",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "el Camino Avenue",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person in cardiac arrest at El Camino Avenue.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "22:07",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Driver reportedly brandished handgun on I-5.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Weapons",
+  "time": "22:13",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Police investigate man claiming warrant and weapon.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Medical emergency",
+  "time": "22:35",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Man overdosing on fentanyl, not breathing.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Medical emergency",
+  "time": "01:14",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Unconscious person found at Sue's Tavern in Frazier Park.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "06:47",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Enos Lane",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Two-vehicle crash at Road and Enos Lane.",
+  "source": "crimeradar"
+ }
+]

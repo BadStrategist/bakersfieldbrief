@@ -1310,6 +1310,16 @@
   "details": ""
  },
  {
+  "log_id": "261015BF0178",
+  "time": "Oct 15 2026  1:15PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "6929 Lockwood Valley Rd",
+  "area": "Fort Tejon",
+  "lat": 34.818376,
+  "lon": -119.003335,
+  "details": ""
+ },
+ {
   "log_id": "261015BF0008",
   "time": "Oct 15 2026  1:49AM",
   "type": "TADV-Traffic Advisory",
@@ -1317,6 +1327,16 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261015BF0196",
+  "time": "Oct 15 2026  2:13PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr178 / Borel Rd",
+  "area": "Bakersfield",
+  "lat": 35.590869,
+  "lon": -118.522597,
   "details": ""
  },
  {

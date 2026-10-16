@@ -1260,6 +1260,36 @@
   "details": ""
  },
  {
+  "log_id": "261016BF0089",
+  "time": "Oct 16 2026  9:03AM",
+  "type": "1125A-Animal Hazard",
+  "location": "3300 Mm178 W Ker R33.00",
+  "area": "Bakersfield",
+  "lat": 35.559624,
+  "lon": -118.603571,
+  "details": ""
+ },
+ {
+  "log_id": "261016BF0090",
+  "time": "Oct 16 2026  9:08AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr58 E / Oswell St Ofr",
+  "area": "Bakersfield",
+  "lat": 35.352325,
+  "lon": -118.955515,
+  "details": ""
+ },
+ {
+  "log_id": "261016BF0093",
+  "time": "Oct 16 2026  9:20AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Lake Isabella Blvd / Nugget Ave",
+  "area": "Bakersfield",
+  "lat": 35.626685,
+  "lon": -118.473997,
+  "details": ""
+ },
+ {
   "log_id": "261016BF0005",
   "time": "Oct 16 2026 12:26AM",
   "type": "1125-Traffic Hazard",

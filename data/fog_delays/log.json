@@ -15,6 +15,16 @@
     "category": "Custom",
     "description": "Custom",
     "fog": false,
+    "info": "Correction: Power Outage. No school today at Wallace Elementary and Wallace Middle School. Kernville Elementary remain open and unaffected.",
+    "kind": "closure",
+    "severity": 99,
+    "site": "Kernville Union School District",
+    "updated_at": "2026-10-16 09:12:14"
+   },
+   {
+    "category": "Custom",
+    "description": "Custom",
+    "fog": false,
     "info": "PSPS - ALL SCHOOLS VLOSED",
     "kind": "closure",
     "severity": 99,

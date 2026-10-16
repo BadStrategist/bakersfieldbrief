@@ -11,13 +11,13 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "The northbound connector to northbound SR-55 /in Santa Ana/ (Orange Co) is closed from 2300 hrs each night to 700 hrs each morning Monday thru Friday thru 10/16/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "The northbound connector to northbound SR-55 /in Santa Ana/ (Orange Co) is closed from 2300 hrs each night to 700 hrs each morning Monday thru Friday thru 10/16/26 - Due to construction - Motorists are advised to use an alternate route Northbound traffic is reduced to 1 lane at Jamboree Rd /in Irvine/ (Orange Co) - Due to a traffic collision A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "CLOSED"
     },
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
-     "status": "RESTRICTIONS"
+     "text": "Is closed to southbound traffic at the Jct of SR-145 (Fresno Co) at 0122 hrs on 10/16/26 - Due to a semi fire - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
+     "status": "CLOSED"
     },
     {
      "region": "NORTHERN CALIFORNIA",
@@ -49,24 +49,32 @@
      },
      {
       "status": "RESTRICTIONS",
+      "place": "Irvine",
+      "county": "Orange Co",
+      "where": "Irvine (Orange Co)",
+      "text": "Northbound traffic is reduced to 1 lane at Jamboree Rd /in Irvine/ (Orange Co) - Due to a traffic collision",
+      "region": "SOUTHERN CALIFORNIA"
+     },
+     {
+      "status": "CLOSED",
+      "place": "",
+      "county": "Fresno Co",
+      "where": "Fresno Co",
+      "text": "Is closed to southbound traffic at the Jct of SR-145 (Fresno Co) at 0122 hrs on 10/16/26 - Due to a semi fire - Motorists are advised to use an alternate route",
+      "region": "CENTRAL CALIFORNIA"
+     },
+     {
+      "status": "RESTRICTIONS",
       "place": "",
       "county": "San Joaquin Co",
       "where": "San Joaquin Co",
       "text": "A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
       "region": "CENTRAL CALIFORNIA"
-     },
-     {
-      "status": "CLOSED",
-      "place": "Sacramento",
-      "county": "Yolo Co",
-      "where": "Sacramento (Yolo Co)",
-      "text": "Is closed to northbound traffic from Old River Rd to County Rd 102 /in Sacramento/ (Yolo Co) from 2100 hrs each night to 0400 hrs each morning Monday thru Friday thru 10/16/26 - Due to construction - Motorists are...",
-      "region": "NORTHERN CALIFORNIA"
      }
     ]
    },
-   "reported_as_of": "Friday, October 16th, 2026 at 12:31 AM",
-   "hash": "201b7dd4a9"
+   "reported_as_of": "Friday, October 16th, 2026 at 04:15 AM",
+   "hash": "b258f79063"
   },
   {
    "number": "58",
@@ -88,7 +96,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Friday, October 16th, 2026 at 12:31 AM",
+   "reported_as_of": "Friday, October 16th, 2026 at 04:15 AM",
    "hash": "5374f203ec"
   },
   {
@@ -125,7 +133,7 @@
      }
     ]
    },
-   "reported_as_of": "Friday, October 16th, 2026 at 12:31 AM",
+   "reported_as_of": "Friday, October 16th, 2026 at 04:15 AM",
    "hash": "0923f03423"
   }
  ],

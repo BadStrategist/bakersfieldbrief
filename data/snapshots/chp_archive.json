@@ -1230,6 +1230,16 @@
   "details": ""
  },
  {
+  "log_id": "261016BF0197",
+  "time": "Oct 16 2026  1:31PM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 N / 7th Standard Rd",
+  "area": "Buttonwillow",
+  "lat": 35.442268,
+  "lon": -119.456484,
+  "details": ""
+ },
+ {
   "log_id": "261016BF0061",
   "time": "Oct 16 2026  7:57AM",
   "type": "1183-Trfc Collision-Unkn Inj",

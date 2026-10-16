@@ -1,9 +1,11 @@
 # BakersfieldBrief.com — overnight Kern County scanner pipeline
 
 ## Pipeline (kern_overnight)
-`--phase1` early fetch+transcribe (cron 03:00) → `--phase2` tail transcribe (cron 05:20) → `--extract-only` → write brief → publish (cron 07:30, backstop 07:40). Full solo run: `.venv\Scripts\python.exe -m kern_overnight.run`.
+`--phase1` early fetch+transcribe (03:00) → `--phase2` tail transcribe (05:20, 06:20) → CrimeRadar emit (06:50, 07:10) → write + publish (07:30, `ko_publish.py` backstop) → newsletter (08:10) → social (09:15). Full solo run: `.venv\Scripts\python.exe -m kern_overnight.run`.
 
-- Cron jobs are **no_agent scripts** now (`ko_phase1_cron.py`, `ko_phase2_cron.py` in `~/AppData/Local/hermes/scripts`). They spawn the project venv detached and wait. Each writes a `.lock` next to itself — never run two phases at once.
+- **Since 2026-10-15 the whole morning is ONE ordered runner**, not separate Hermes cron jobs: Windows task "BB Morning Runner" runs `C:\Users\tscac\bb-pipeline\runner.py` (02:40 + at sign-in; each time above is not-before, a late start runs the rest in order and resumes after a reboot). Windows task "BB Morning Report" (09:50) sends the only daily status message. The old Hermes BB morning jobs are paused; do not resume them or add new morning cron jobs. See `C:\Users\tscac\bb-pipeline\README.md`.
+
+- The phase steps are **no_agent scripts** (`ko_phase1_cron.py`, `ko_phase2_cron.py` in `~/AppData/Local/hermes/scripts`), called by the runner. They spawn the project venv detached and wait. Each writes a `.lock` next to itself — never run two phases at once.
 - **Never re-run fetch/extraction when a transcript already exists** — use `--extract-only`. Re-fetching with a transcript on disk caused a ~60-minute hang.
 - Nothing auto-publishes. Drafts are delivered for human review.
 

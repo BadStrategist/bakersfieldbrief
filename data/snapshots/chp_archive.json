@@ -1300,6 +1300,36 @@
   "details": ""
  },
  {
+  "log_id": "261016BF0123",
+  "time": "Oct 16 2026 10:45AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "5101 Montecito Dr",
+  "area": "Bakersfield",
+  "lat": 35.386625,
+  "lon": -118.948957,
+  "details": ""
+ },
+ {
+  "log_id": "261016BF0132",
+  "time": "Oct 16 2026 10:55AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 Jso Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.9375,
+  "lon": -118.928611,
+  "details": ""
+ },
+ {
+  "log_id": "261016BF0133",
+  "time": "Oct 16 2026 10:58AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Grapevine Rd E / Edmonston Pumping Plant Rd",
+  "area": "Fort Tejon",
+  "lat": 34.941143,
+  "lon": -118.929083,
+  "details": ""
+ },
+ {
   "log_id": "261016BF0005",
   "time": "Oct 16 2026 12:26AM",
   "type": "1125-Traffic Hazard",

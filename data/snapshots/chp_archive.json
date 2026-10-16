@@ -1230,6 +1230,36 @@
   "details": ""
  },
  {
+  "log_id": "261016BF0061",
+  "time": "Oct 16 2026  7:57AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sr99 N / Hosking Ave",
+  "area": "Bakersfield",
+  "lat": 35.281409,
+  "lon": -119.026561,
+  "details": ""
+ },
+ {
+  "log_id": "261016BF0064",
+  "time": "Oct 16 2026  8:03AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb Sr99 At Merced Ave",
+  "area": "Bakersfield",
+  "lat": 35.52612,
+  "lon": -119.18826,
+  "details": ""
+ },
+ {
+  "log_id": "261016BF0069",
+  "time": "Oct 16 2026  8:11AM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sr99 N / Hosking Ave",
+  "area": "Bakersfield",
+  "lat": 35.281409,
+  "lon": -119.026561,
+  "details": ""
+ },
+ {
   "log_id": "261016BF0005",
   "time": "Oct 16 2026 12:26AM",
   "type": "1125-Traffic Hazard",

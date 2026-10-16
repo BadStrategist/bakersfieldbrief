@@ -1,0 +1,27 @@
+{
+ "days": {
+  "2026-10-16": [
+   {
+    "category": "Custom",
+    "description": "Custom",
+    "fog": false,
+    "info": "2 hour delay \" Due to power outage\"",
+    "kind": "closure",
+    "severity": 99,
+    "site": "Kern Valley High School - (KHSD)",
+    "updated_at": "2026-10-16 07:25:38"
+   },
+   {
+    "category": "Custom",
+    "description": "Custom",
+    "fog": false,
+    "info": "PSPS - ALL SCHOOLS VLOSED",
+    "kind": "closure",
+    "severity": 99,
+    "site": "Tehachapi Unified School District",
+    "updated_at": "2026-10-16 07:43:44"
+   }
+  ]
+ },
+ "started": "2026-10-16"
+}

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-16T04:15:43-07:00",
+ "built_at": "2026-10-16T08:19:23-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,16 +68,16 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 63,
+  "brief_words": 1183,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 4,
    "top_story": "Bakersfield high schooler founds nonprofit bringing educational opportunities to foster, underserved youth",
    "overnight_band": {
-    "date": "2026-10-15",
-    "count": 37,
+    "date": "2026-10-16",
+    "count": 44,
     "chips": [
      [
       "Weapons and assaults",
@@ -85,11 +85,11 @@
      ],
      [
       "Fires",
-      5
+      4
      ],
      [
       "Crashes and traffic",
-      3
+      6
      ],
      [
       "Medical and overdose",
@@ -97,7 +97,7 @@
      ],
      [
       "Disturbances and welfare",
-      9
+      7
      ],
      [
       "Burglary and theft",
@@ -105,30 +105,40 @@
      ],
      [
       "Suspicious activity",
+      1
+     ],
+     [
+      "Alarms",
+      1
+     ],
+     [
+      "Person with a weapon",
       3
      ],
      [
-      "Shooting at officers",
-      1
+      "Person in crisis",
+      3
      ],
      [
-      "Standoff",
-      1
+      "Incident",
+      3
      ],
      [
       "Other calls",
-      7
+      8
      ]
     ],
-    "other": "1 person in crisis, 1 carjacking, 1 apartment fire, 1 pallet yard fire, 1 person with a weapon, 1 911 hang-up, 1 incident",
+    "other": "1 rollover crash, 1 crash with blood found, 1 person down on railroad tracks, 1 missing at-risk person, 1 juvenile in crisis, 1 attempted vehicle burglary, 1 burglar alarm, 1 vehicle",
     "unmapped": [
-     "shooting at officers",
-     "standoff",
+     "person with a weapon",
+     "rollover crash",
+     "crash with blood found",
+     "person down on railroad tracks",
      "person in crisis",
-     "carjacking",
-     "apartment fire",
-     "pallet yard fire",
-     "person with a weapon"
+     "missing at-risk person",
+     "juvenile in crisis",
+     "attempted vehicle burglary",
+     "burglar alarm"
     ]
    },
    "archive": "2026-10-16"
@@ -166,13 +176,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 11,
+   "wind_mph": 18,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 63,
-   "wind_mph": 11,
+   "temp": 64,
+   "wind_mph": 18,
    "alerts": 0
   },
   "roads": {
@@ -185,8 +195,8 @@
   },
   "fog_delays": {
    "ok": true,
-   "alerts": 0,
-   "logged_days": 0
+   "alerts": 2,
+   "logged_days": 1
   },
   "traffic_cameras": {
    "ok": true,
@@ -209,17 +219,17 @@
    "isabella_af": 141755,
    "alpr_total": 456,
    "kern_fires": 1,
-   "aqi": 69,
-   "chp_week": 65
+   "aqi": 73,
+   "chp_week": 68
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 65
+   "published": 66
   },
   "map": {
-   "dots": 55
+   "dots": 67
   },
   "sunday_read": {
    "topic": "Public safety",

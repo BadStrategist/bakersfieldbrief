@@ -1,0 +1,428 @@
+[
+ {
+  "type": "burglary",
+  "time": "19:03",
+  "agency": "Bakersfield Police Department",
+  "area": "900 block of James Road",
+  "notability": 2,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to a vacant mobile home in the 900 block of James Road, where a caller reported two people in a black pickup truck were taking items from the property.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "19:04",
+  "agency": "Bakersfield Police Department",
+  "area": "3900 block of Harris Road",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "Officers were sent to the 3900 block of Harris Road after a caller who kept repeating that he was dying hung up.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "person with a weapon",
+  "time": "20:17",
+  "agency": "Bakersfield Police Department",
+  "area": "Panorama Drive",
+  "notability": 3,
+  "disposition": "checked; no weapon seen",
+  "summary": "Officers were sent to a transit bus on Panorama Drive after a passenger was reported to have a firearm and to have threatened anyone who stepped onto the bus. A Spanish-speaking unit was requested, and the man was eventually heard yelling that he had a firearm, though none was seen.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "family disturbance",
+  "time": "20:28",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "under investigation",
+  "summary": "A caller reported that a juvenile and her mother had assaulted the grandmother inside a residence, and that there were multiple firearms on the property, including a handgun, a shotgun and bear spray. Officers were told the parties had separated."
+ },
+ {
+  "type": "attempted burglary",
+  "time": "20:38",
+  "agency": "Bakersfield Police Department",
+  "area": "700 block of Terrace Way",
+  "notability": 2,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to the 700 block of Terrace Way after a caller reported adults breaking windows to get into an apartment.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "rollover crash",
+  "time": "21:05",
+  "agency": "California Highway Patrol / Kern County Fire Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "patients transported; diesel contained",
+  "summary": "A rollover left a vehicle upside down off the roadway with several patients and several injuries. About 15 gallons of diesel from a fuel tank was diked in the gutter and environmental health was notified."
+ },
+ {
+  "type": "person with a weapon",
+  "time": "21:45",
+  "agency": "Bakersfield Police Department",
+  "area": "1300 block of Niles Street",
+  "notability": 3,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to a residence in the 1300 block of Niles Street for a family disturbance in which a person was said to possibly have a firearm.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "smoke investigation",
+  "time": "21:57",
+  "agency": "Bakersfield Fire Department",
+  "area": "600 block of Minnatree Lane",
+  "notability": 2,
+  "disposition": "nothing showing",
+  "summary": "Crews were sent to the 600 block of Minnatree Lane for smoke inside a structure. Engine 47 found a single-story home with nothing showing and the occupants outside.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "22:04",
+  "agency": "Bakersfield Fire Department",
+  "area": "1900 block of East Brundage Lane",
+  "notability": 2,
+  "disposition": "transported",
+  "summary": "Crews were sent to the Navigation Center in the 1900 block of East Brundage Lane for a person having trouble breathing."
+ },
+ {
+  "type": "crash with blood found",
+  "time": "22:15",
+  "agency": "California Highway Patrol / Kern County Fire Department / Kern County Sheriff's Office",
+  "area": "East Bear Mountain Boulevard and General Beale Road, Lamont",
+  "notability": 5,
+  "disposition": "no victims found; search for ejected occupants; under investigation",
+  "summary": "Crews and Lamont-area deputies were sent to East Bear Mountain Boulevard and General Beale Road for a two-vehicle crash, and the first units on scene found a large amount of blood on both vehicles and in one of them but no injured people. Deputies said the people involved claimed no one else had been in the cars, and the wreckage was searched for anyone who may have been thrown out. A sheriff's helicopter was sent to help look over the area."
+ },
+ {
+  "type": "structure fire",
+  "time": "22:26",
+  "agency": "Bakersfield Fire Department",
+  "area": "200 block of Oswell Street",
+  "notability": 4,
+  "disposition": "knocked down; occupants out; street closed",
+  "summary": "Callers reported a house on fire in the 200 block of Oswell Street. Battalion 4 found a single-wide mobile home with moderate smoke showing, assigned Engine 41 to pull a line as fire attack, and reported a knockdown a few minutes later. Traffic was shut down in both directions on Oswell while crews worked."
+ },
+ {
+  "type": "welfare check",
+  "time": "22:38",
+  "agency": "California Highway Patrol",
+  "area": "Buttonwillow rest area, southbound Interstate 5",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "A caller asked for a welfare check on a truck driver who had been sitting in a semi with a trailer at the Buttonwillow rest area for two days with no contact."
+ },
+ {
+  "type": "structure fire",
+  "time": "22:48",
+  "agency": "Bakersfield Fire Department",
+  "area": "1400 block of Ridgeview Street",
+  "notability": 3,
+  "disposition": "reinforced; under control",
+  "summary": "A second full assignment was sent to the 1400 block of Ridgeview Street for a report of a house on fire in Station 42's area, and the extra battalion was cancelled once crews had the fire under control.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "person down on railroad tracks",
+  "time": "22:53",
+  "agency": "Bakersfield Police Department / Bakersfield Fire Department",
+  "area": "Truxtun Avenue approaching Baker Street",
+  "notability": 4,
+  "disposition": "responding; under investigation",
+  "summary": "A person was reported down on the railroad tracks on Truxtun Avenue approaching Baker Street, and a crew reported the person was still on the tracks as they came through the area at speed. Officers and medics were sent to find the person and work out how long they had been there.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "burglary",
+  "time": "22:59",
+  "agency": "Bakersfield Police Department",
+  "area": "1000 block of Baker Street",
+  "notability": 3,
+  "disposition": "one person detained",
+  "summary": "Security at an apartment complex in the 1000 block of Baker Street detained a person caught breaking into a vacant apartment and taking items. A person was also reported to have assaulted employees there.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "person in crisis",
+  "time": "23:06",
+  "agency": "Bakersfield Police Department",
+  "area": "2300 block of South Union Avenue",
+  "notability": 2,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to an apartment complex in the 2300 block of South Union Avenue for a person in crisis, and crews were told to stage until police arrived.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "missing at-risk person",
+  "time": "23:18",
+  "agency": "Bakersfield Police Department",
+  "area": "6200 block of Tudor Way",
+  "notability": 3,
+  "disposition": "search under way",
+  "summary": "Officers were sent to the 6200 block of Tudor Way for a missing person at risk because of dementia, an elderly woman who uses a walker and was last seen in a burgundy hat, a black jacket and burgundy pajama pants. A helicopter was requested to help search.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "juvenile in crisis",
+  "time": "23:40",
+  "agency": "Bakersfield Police Department",
+  "area": "7700 block of Parsons Way",
+  "notability": 3,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to the 7700 block of Parsons Way for a juvenile with a razor blade who had a history of cutting herself and was no longer where she was supposed to be. A second juvenile at a nearby address had also locked herself in a bathroom with a blade."
+ },
+ {
+  "type": "medical aid",
+  "time": "23:49",
+  "agency": "Bakersfield Fire Department",
+  "area": "1500 block of Lotus Lane",
+  "notability": 2,
+  "disposition": "transported",
+  "summary": "An ambulance was requested in the 1500 block of Lotus Lane for a 12-year-old.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "assault investigation",
+  "time": "23:51",
+  "agency": "Bakersfield Police Department",
+  "area": "3400 block of Granada Avenue",
+  "notability": 4,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to the 3400 block of Granada Avenue after a man arrived at his residence with blood on his hands, and the call went out as a possible assault. Medics were asked to respond and there were numerous people outside the address when units arrived.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "person in crisis",
+  "time": "00:20",
+  "agency": "Bakersfield Police Department",
+  "area": "Dunlap Street",
+  "notability": 2,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to Dunlap Street on a mobile crisis call that came in through 988.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "01:53",
+  "agency": "Bakersfield Police Department",
+  "area": "Pacheco Road",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "Officers were sent to the Pacheco Road area for a report of more than 20 people drinking in a parking area."
+ },
+ {
+  "type": "disturbance",
+  "time": "02:14",
+  "agency": "Bakersfield Police Department",
+  "area": "West Columbus Street",
+  "notability": 2,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to an apartment complex on West Columbus Street for a fight involving four women.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "suspicious person",
+  "time": "03:12",
+  "agency": "Bakersfield Police Department",
+  "area": "1600 block of Chester Avenue",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "Officers were sent to the 1600 block of Chester Avenue for a suspicious person who was seen climbing a fence into the back lot on the west side of a building. He was described as wearing a work jacket and blue jeans and carrying a backpack."
+ },
+ {
+  "type": "traffic collision",
+  "time": "03:23",
+  "agency": "Kern County Fire Department / California Highway Patrol",
+  "area": "1600 block of Petrol Road",
+  "notability": 2,
+  "disposition": "investigated; scene turned over to CHP",
+  "summary": "A traffic collision drew an engine and a Metro squad to the 1600 block of Petrol Road, and a woman who had been in the area was reported to have left southbound with another person.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "03:41",
+  "agency": "Bakersfield Police Department",
+  "area": "2400 block of Claire Street",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "Officers were sent to the 2400 block of Claire Street for a neighbor dispute involving a 45-year-old man."
+ },
+ {
+  "type": "medical aid",
+  "time": "04:05",
+  "agency": "Bakersfield Fire Department / Hall Ambulance",
+  "area": "White Lane and Buena Vista Road",
+  "notability": 4,
+  "disposition": "CPR in progress; upgraded response",
+  "summary": "A driver was found not responsive behind the wheel of a car at White Lane and Buena Vista Road, and CPR was in progress when the call was upgraded to a life-threatening medical aid. The car ended up partly in the eastbound lanes.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "crash",
+  "time": "04:15",
+  "agency": "California Highway Patrol / Bakersfield Police Department",
+  "area": "Rosedale Highway and Fruitvale Avenue",
+  "notability": 3,
+  "disposition": "under investigation",
+  "summary": "A two-vehicle crash was reported at Rosedale Highway and Fruitvale Avenue, where a blue van had airbags out and at least one tire was sparking. Crews were asked to confirm which corner of the intersection the vehicles were on."
+ },
+ {
+  "type": "person with a weapon",
+  "time": "04:32",
+  "agency": "Bakersfield Police Department",
+  "area": "1400 block of Calcutta Drive",
+  "notability": 4,
+  "disposition": "woman at large; under investigation",
+  "summary": "Officers were sent to the 1400 block of Calcutta Drive for a woman who swung an ax at a man, then stayed in the parking lot still holding it. There were no injuries. A woman on foot was later reported northbound with the ax, wearing a plaid shirt and brown sweatpants.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "person in crisis",
+  "time": "04:53",
+  "agency": "Bakersfield Police Department",
+  "area": "700 block of Vermillion Drive",
+  "notability": 3,
+  "disposition": "contact attempted",
+  "summary": "Officers were sent to the 700 block of Vermillion Drive after a caller reported that an ex-girlfriend had called him making statements about harming herself.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "attempted vehicle burglary",
+  "time": "05:02",
+  "agency": "Bakersfield Police Department",
+  "area": "Verdugo Lane",
+  "notability": 2,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to Verdugo Lane east of an intersection for a suspicious circumstance, where two people were seen going through a parked car with its doors open.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "crash",
+  "time": "05:20",
+  "agency": "Kern County Fire Department / California Highway Patrol",
+  "area": "Campus Park and Old River Road",
+  "notability": 3,
+  "disposition": "occupants out; one engine handled",
+  "summary": "A single vehicle was reported into a tree at Campus Park and Old River Road. Engine 15 found a vehicle against a wall with the occupants already out, and the rest of the response was cancelled.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "burglar alarm",
+  "time": "05:22",
+  "agency": "Bakersfield Police Department",
+  "area": "2200 block of Chester Avenue",
+  "notability": 2,
+  "disposition": "under investigation",
+  "summary": "A commercial alarm at the 2200 block of Chester Avenue was passed on by a key holder who said there was an unknown person on site. Officers found about five people in the area and no sign that anyone had got inside the business."
+ },
+ {
+  "type": "domestic violence",
+  "time": "05:38",
+  "agency": "Bakersfield Police Department",
+  "area": "Norris Road",
+  "notability": 3,
+  "disposition": "under investigation",
+  "summary": "Officers were sent to an apartment on Norris Road, where a neighbor reported hearing a woman yelling that she was being choked."
+ },
+ {
+  "type": "structure fire",
+  "time": "05:42",
+  "agency": "Bakersfield Fire Department",
+  "area": "34th Street and San Dimas Street",
+  "notability": 3,
+  "disposition": "responding; second alarm held",
+  "summary": "Four engines, two trucks and two battalions were sent to 34th Street and San Dimas Street for a report of a building on fire on a second-alarm assignment.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "traffic hazard",
+  "time": "05:44",
+  "agency": "California Highway Patrol",
+  "area": "Interstate 5 north of Utica Avenue",
+  "notability": 2,
+  "disposition": "monitored",
+  "summary": "A white semi pulling a white trailer was reported moving southbound on Interstate 5 north of Utica with the trailer door wide open and swinging."
+ },
+ {
+  "type": "commercial fire alarm",
+  "time": "06:13",
+  "agency": "Bakersfield Fire Department",
+  "area": "8200 block of Stockdale Highway",
+  "notability": 2,
+  "disposition": "responding",
+  "summary": "Crews were sent to a commercial fire alarm in the 8200 block of Stockdale Highway.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "Medical emergency",
+  "time": "19:00",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Brundage Lane",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person having seizure and unconscious at Brundage Lane.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Vehicle",
+  "time": "19:22",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Panama Lane",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Vehicle hits pedestrian at Panama Lane and South H.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "20:26",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Vehicle and motorbike crash blocks traffic on Beale.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "21:03",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Pedestrian in black coat reported near Highway 43.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "23:09",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Oakwood Drive",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Traumatic injury reported near Oakwood Drive in Bakersfield.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "00:57",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Truman Avenue",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person with traumatic injury near Truman Avenue.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "04:14",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Officer conducts traffic stop after curb collision.",
+  "source": "crimeradar"
+ }
+]

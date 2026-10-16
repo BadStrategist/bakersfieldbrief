@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-15T16:17:01-07:00",
+ "built_at": "2026-10-15T21:23:03-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -146,7 +146,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -166,13 +166,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": null,
+   "wind_mph": 15,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 77,
-   "wind_mph": null,
+   "temp": 70,
+   "wind_mph": 15,
    "alerts": 0
   },
   "roads": {
@@ -196,9 +196,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 23,
+    "In the next 7 days": 22,
     "In 1 to 2 weeks": 18,
-    "Later": 88
+    "Later": 90
    },
    "meetings": 4
   },
@@ -209,8 +209,8 @@
    "isabella_af": 142341,
    "alpr_total": 456,
    "kern_fires": 1,
-   "aqi": 84,
-   "chp_week": 61
+   "aqi": 74,
+   "chp_week": 63
   },
   "letters": {
    "published": 1

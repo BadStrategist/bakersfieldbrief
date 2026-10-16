@@ -1370,6 +1370,26 @@
   "details": ""
  },
  {
+  "log_id": "261015BF0327",
+  "time": "Oct 15 2026  7:35PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Sb Sr99 At South Union Ave",
+  "area": "Bakersfield",
+  "lat": 35.1725,
+  "lon": -119.004167,
+  "details": ""
+ },
+ {
+  "log_id": "261015BF0356",
+  "time": "Oct 15 2026  9:15PM",
+  "type": "1125-Traffic Hazard",
+  "location": "SR99 S / LERDO HWY OFR",
+  "area": "Bakersfield",
+  "lat": 35.502194,
+  "lon": -119.167791,
+  "details": ""
+ },
+ {
   "log_id": "261015BF0090",
   "time": "Oct 15 2026  9:27AM",
   "type": "20001-Hit and Run w/Injuries",

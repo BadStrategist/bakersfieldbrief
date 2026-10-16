@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-15T21:23:03-07:00",
+ "built_at": "2026-10-16T00:31:28-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,13 +68,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 214,
+  "brief_words": 63,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 2,
-   "top_story": "Structure fire prompts road closures in southeast Bakersfield",
+   "top_story": "Bakersfield high schooler founds nonprofit bringing educational opportunities to foster, underserved youth",
    "overnight_band": {
     "date": "2026-10-15",
     "count": 37,
@@ -131,12 +131,12 @@
      "person with a weapon"
     ]
    },
-   "archive": "2026-10-15"
+   "archive": "2026-10-16"
   },
   "cityhall": {
-   "upcoming_meetings": 4,
+   "upcoming_meetings": 3,
    "county_items": 109,
-   "drafts_generated": 0
+   "drafts_generated": 1
   },
   "places": {
    "places": [
@@ -146,7 +146,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -157,7 +157,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-10-15"
+   "draft": "drafts/weekend-guide-2026-10-16"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -171,7 +171,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 70,
+   "temp": 68,
    "wind_mph": 15,
    "alerts": 0
   },
@@ -196,11 +196,11 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 22,
+    "In the next 7 days": 23,
     "In 1 to 2 weeks": 18,
-    "Later": 90
+    "Later": 89
    },
-   "meetings": 4
+   "meetings": 3
   },
   "feed": {
    "entries": 30
@@ -209,8 +209,8 @@
    "isabella_af": 142341,
    "alpr_total": 456,
    "kern_fires": 1,
-   "aqi": 74,
-   "chp_week": 63
+   "aqi": 84,
+   "chp_week": 65
   },
   "letters": {
    "published": 1
@@ -249,7 +249,7 @@
   },
   "trackers": {
    "alpr_total": 456,
-   "alpr_new_week": 3,
+   "alpr_new_week": 2,
    "pages": [
     "surveillance",
     "fires",

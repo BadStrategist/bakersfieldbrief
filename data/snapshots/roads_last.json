@@ -21,7 +21,7 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "Is closed to northbound traffic from Old River Rd to County Rd 102 /in Sacramento/ (Yolo Co) from 2100 hrs each night to 0400 hrs each morning Monday thru Friday thru 10/16/26 - Due to construction - Motorists are advised to use an alternate route Is closed at Adobe Rd /in Red Bluff/ (Tehama Co) - Due to a traffic collision - Motorists are advised to use an alternate route",
+     "text": "Is closed to northbound traffic from Old River Rd to County Rd 102 /in Sacramento/ (Yolo Co) from 2100 hrs each night to 0400 hrs each morning Monday thru Friday thru 10/16/26 - Due to construction - Motorists are advised to use an alternate route",
      "status": "CLOSED"
     }
    ],
@@ -65,8 +65,8 @@
      }
     ]
    },
-   "reported_as_of": "Thursday, October 15th, 2026 at 09:22 PM",
-   "hash": "c639b2dc3b"
+   "reported_as_of": "Friday, October 16th, 2026 at 12:31 AM",
+   "hash": "201b7dd4a9"
   },
   {
    "number": "58",
@@ -88,7 +88,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Thursday, October 15th, 2026 at 09:22 PM",
+   "reported_as_of": "Friday, October 16th, 2026 at 12:31 AM",
    "hash": "5374f203ec"
   },
   {
@@ -125,9 +125,9 @@
      }
     ]
    },
-   "reported_as_of": "Thursday, October 15th, 2026 at 09:22 PM",
+   "reported_as_of": "Friday, October 16th, 2026 at 12:31 AM",
    "hash": "0923f03423"
   }
  ],
- "asof": "2026-10-15"
+ "asof": "2026-10-16"
 }

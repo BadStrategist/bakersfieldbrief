@@ -1,225 +1,5 @@
 [
  {
-  "log_id": "261008BF0176",
-  "time": "Oct  8 2026  1:00PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sb I5 Jno Fort Tejon Rd",
-  "area": "Fort Tejon",
-  "lat": 34.882222,
-  "lon": -118.900556,
-  "details": ""
- },
- {
-  "log_id": "261008BF0210",
-  "time": "Oct  8 2026  2:05PM",
-  "type": "FIRE-Report of Fire",
-  "location": "0 I5 S",
-  "area": "Fort Tejon",
-  "lat": 35.020043,
-  "lon": -118.958594,
-  "details": ""
- },
- {
-  "log_id": "261008BF0266",
-  "time": "Oct  8 2026  3:40PM",
-  "type": "SILVER-Missing Elderly",
-  "location": "9855 Compagnoni St",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "261008BF0275",
-  "time": "Oct  8 2026  4:13PM",
-  "type": "FIRE-Report of Fire",
-  "location": "Nb I5 Jno Sr138",
-  "area": "Fort Tejon",
-  "lat": 34.771389,
-  "lon": -118.803611,
-  "details": ""
- },
- {
-  "log_id": "261008BF0286",
-  "time": "Oct  8 2026  4:19PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "S Martin Luther King Blvd / Cheatham Ave",
-  "area": "Bakersfield",
-  "lat": 35.342571,
-  "lon": -118.985442,
-  "details": ""
- },
- {
-  "log_id": "261008BF0322",
-  "time": "Oct  8 2026  5:27PM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "Schuster Rd / Stradley Ave",
-  "area": "Bakersfield",
-  "lat": 35.732234,
-  "lon": -119.258383,
-  "details": ""
- },
- {
-  "log_id": "261008BF0329",
-  "time": "Oct  8 2026  5:41PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "1931 Haley St",
-  "area": "Bakersfield",
-  "lat": 35.386065,
-  "lon": -118.977894,
-  "details": ""
- },
- {
-  "log_id": "261008BF0032",
-  "time": "Oct  8 2026  6:48AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Pond Rd / Zachary Ave",
-  "area": "Bakersfield",
-  "lat": 35.71787,
-  "lon": -119.18719,
-  "details": ""
- },
- {
-  "log_id": "261008BF0352",
-  "time": "Oct  8 2026  7:03PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Sb Sr99 Jso South Union Ave",
-  "area": "Bakersfield",
-  "lat": 35.165,
-  "lon": -119.001944,
-  "details": ""
- },
- {
-  "log_id": "261008BF0051",
-  "time": "Oct  8 2026  7:39AM",
-  "type": "1125-Traffic Hazard",
-  "location": "SB I5 AT UPPER WATER HOLE",
-  "area": "Fort Tejon",
-  "lat": 34.890827,
-  "lon": -118.914674,
-  "details": ""
- },
- {
-  "log_id": "261008BF0087",
-  "time": "Oct  8 2026  9:28AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "10112 San Emidio St",
-  "area": "Bakersfield",
-  "lat": 35.263589,
-  "lon": -118.921776,
-  "details": ""
- },
- {
-  "log_id": "261008BF0097",
-  "time": "Oct  8 2026 10:13AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "I5 N / Ft Tejon Rd Ofr",
-  "area": "Fort Tejon",
-  "lat": 34.874845,
-  "lon": -118.892162,
-  "details": ""
- },
- {
-  "log_id": "261008BF0002",
-  "time": "Oct  8 2026 12:00AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "261008BF0147",
-  "time": "Oct  8 2026 12:16PM",
-  "type": "CFIRE-Car Fire",
-  "location": "Sr58 W / General Beale Rd",
-  "area": "Bakersfield",
-  "lat": 35.292566,
-  "lon": -118.752596,
-  "details": ""
- },
- {
-  "log_id": "261008BF0153",
-  "time": "Oct  8 2026 12:23PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "551 Willow Dr",
-  "area": "Bakersfield",
-  "lat": 35.402041,
-  "lon": -119.03112,
-  "details": ""
- },
- {
-  "log_id": "261008BF0156",
-  "time": "Oct  8 2026 12:30PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "42810 Frazier Mountain Park Rd",
-  "area": "Fort Tejon",
-  "lat": 34.817708,
-  "lon": -118.884761,
-  "details": ""
- },
- {
-  "log_id": "261008BF0159",
-  "time": "Oct  8 2026 12:32PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "2200-2219 Woodland Dr",
-  "area": "Fort Tejon",
-  "lat": 34.846702,
-  "lon": -119.154877,
-  "details": ""
- },
- {
-  "log_id": "261008BF0163",
-  "time": "Oct  8 2026 12:39PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Wheeler Ridge Rd / David Rd",
-  "area": "Bakersfield",
-  "lat": 35.092929,
-  "lon": -118.914676,
-  "details": ""
- },
- {
-  "log_id": "261008BF0167",
-  "time": "Oct  8 2026 12:47PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Sr184 / Niles St",
-  "area": "Bakersfield",
-  "lat": 35.376234,
-  "lon": -118.914164,
-  "details": ""
- },
- {
-  "log_id": "261008BF0168",
-  "time": "Oct  8 2026 12:47PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sb I5 Jno Lebec Rd",
-  "area": "Fort Tejon",
-  "lat": 34.836944,
-  "lon": -118.863056,
-  "details": ""
- },
- {
-  "log_id": "261008BF0171",
-  "time": "Oct  8 2026 12:48PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "10318 Sr184",
-  "area": "Bakersfield",
-  "lat": 35.261642,
-  "lon": -118.914442,
-  "details": ""
- },
- {
-  "log_id": "261008BF0172",
-  "time": "Oct  8 2026 12:48PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "10675 Sr155",
-  "area": "Bakersfield",
-  "lat": 35.728531,
-  "lon": -118.703201,
-  "details": ""
- },
- {
   "log_id": "261009BF0190",
   "time": "Oct  9 2026  1:15PM",
   "type": "1182-Trfc Collision-No Inj",
@@ -1420,6 +1200,16 @@
   "details": ""
  },
  {
+  "log_id": "261015BF0395",
+  "time": "Oct 15 2026 11:30PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Belle Ter / S Real Rd",
+  "area": "Bakersfield",
+  "lat": 35.346744,
+  "lon": -119.043419,
+  "details": ""
+ },
+ {
   "log_id": "261015BF0170",
   "time": "Oct 15 2026 12:39PM",
   "type": "1125-Traffic Hazard",
@@ -1437,6 +1227,16 @@
   "area": "Bakersfield",
   "lat": 35.376199,
   "lon": -119.18098,
+  "details": ""
+ },
+ {
+  "log_id": "261016BF0005",
+  "time": "Oct 16 2026 12:26AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr99 N / Sr223 Ofr",
+  "area": "Bakersfield",
+  "lat": 35.205022,
+  "lon": -119.009598,
   "details": ""
  }
 ]

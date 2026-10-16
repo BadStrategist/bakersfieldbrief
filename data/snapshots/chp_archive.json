@@ -1330,6 +1330,26 @@
   "details": ""
  },
  {
+  "log_id": "261016BF0148",
+  "time": "Oct 16 2026 11:17AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "132 Maricopa Pl",
+  "area": "Buttonwillow",
+  "lat": 35.133537,
+  "lon": -119.464187,
+  "details": ""
+ },
+ {
+  "log_id": "261016BF0147",
+  "time": "Oct 16 2026 11:19AM",
+  "type": "WIND Advisory",
+  "location": "I5 N / Grapevine Rd E",
+  "area": "Fort Tejon",
+  "lat": 34.939285,
+  "lon": -118.929655,
+  "details": ""
+ },
+ {
   "log_id": "261016BF0005",
   "time": "Oct 16 2026 12:26AM",
   "type": "1125-Traffic Hazard",
@@ -1337,6 +1357,16 @@
   "area": "Bakersfield",
   "lat": 35.205022,
   "lon": -119.009598,
+  "details": ""
+ },
+ {
+  "log_id": "261016BF0171",
+  "time": "Oct 16 2026 12:26PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jso Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.937778,
+  "lon": -118.930556,
   "details": ""
  }
 ]

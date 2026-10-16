@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-16T11:02:13-07:00",
+ "built_at": "2026-10-16T12:33:59-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -144,7 +144,7 @@
    "archive": "2026-10-16"
   },
   "cityhall": {
-   "upcoming_meetings": 3,
+   "upcoming_meetings": 5,
    "county_items": 109,
    "drafts_generated": 0
   },
@@ -170,7 +170,7 @@
    "draft": "drafts/weekend-guide-2026-10-16"
   },
   "grapevine": {
-   "i5": "RESTRICTIONS",
+   "i5": "CLOSED",
    "i5_pass": "RESTRICTIONS",
    "log_entries": 60
   },
@@ -208,9 +208,9 @@
    "groups": {
     "In the next 7 days": 23,
     "In 1 to 2 weeks": 18,
-    "Later": 89
+    "Later": 90
    },
-   "meetings": 3
+   "meetings": 5
   },
   "feed": {
    "entries": 30
@@ -219,8 +219,8 @@
    "isabella_af": 141755,
    "alpr_total": 456,
    "kern_fires": 1,
-   "aqi": 88,
-   "chp_week": 75
+   "aqi": 75,
+   "chp_week": 78
   },
   "letters": {
    "published": 1

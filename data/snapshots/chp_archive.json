@@ -1240,6 +1240,46 @@
   "details": ""
  },
  {
+  "log_id": "261016BF0232",
+  "time": "Oct 16 2026  3:01PM",
+  "type": "20001-Hit and Run w/Injuries",
+  "location": "201 E Roberts Ln",
+  "area": "Bakersfield",
+  "lat": 35.408615,
+  "lon": -119.018714,
+  "details": ""
+ },
+ {
+  "log_id": "261016BF0249",
+  "time": "Oct 16 2026  3:32PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Rosedale Hwy / Jenkins Rd",
+  "area": "Bakersfield",
+  "lat": 35.38349,
+  "lon": -119.154354,
+  "details": ""
+ },
+ {
+  "log_id": "261016BF0256",
+  "time": "Oct 16 2026  3:41PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Eb Sr58 At Bealeville Rd",
+  "area": "Bakersfield",
+  "lat": 35.263611,
+  "lon": -118.633056,
+  "details": ""
+ },
+ {
+  "log_id": "261016BF0259",
+  "time": "Oct 16 2026  3:42PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb I5 At Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.939167,
+  "lon": -118.929444,
+  "details": ""
+ },
+ {
   "log_id": "261016BF0061",
   "time": "Oct 16 2026  7:57AM",
   "type": "1183-Trfc Collision-Unkn Inj",

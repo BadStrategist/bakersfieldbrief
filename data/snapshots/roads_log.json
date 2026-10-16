@@ -1,5 +1,14 @@
 [
  {
+  "ts": "2026-10-16",
+  "time": "4:01 PM",
+  "route": "sr58",
+  "route_name": "SR-58 Tehachapi Pass",
+  "scope": "corridor",
+  "to": "RESTRICTIONS",
+  "from": "OPEN"
+ },
+ {
   "ts": "2026-10-14",
   "time": "11:10 AM",
   "route": "sr58",
@@ -491,15 +500,6 @@
  },
  {
   "ts": "2026-09-18",
-  "route": "i5",
-  "route_name": "I-5, anywhere in California",
-  "from": "updated",
-  "to": "CLOSED",
-  "note": "condition text changed",
-  "scope": "statewide"
- },
- {
-  "ts": "2026-09-17",
   "route": "i5",
   "route_name": "I-5, anywhere in California",
   "from": "updated",

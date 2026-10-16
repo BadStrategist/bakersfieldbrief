@@ -6,10 +6,10 @@
   "corridor_hash": "8ef4962509"
  },
  "sr58": {
-  "status": "OPEN",
-  "hash": "5374f203ec",
-  "corridor": "OPEN",
-  "corridor_hash": "d41d8cd98f"
+  "status": "RESTRICTIONS",
+  "hash": "ff3b799983",
+  "corridor": "RESTRICTIONS",
+  "corridor_hash": "26c1b023e5"
  },
  "sr99": {
   "status": "RESTRICTIONS",

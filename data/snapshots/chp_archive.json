@@ -1262,11 +1262,11 @@
  {
   "log_id": "261016BF0256",
   "time": "Oct 16 2026  3:41PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Eb Sr58 At Bealeville Rd",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "WB SR58 JEO Bealeville Rd",
   "area": "Bakersfield",
   "lat": 35.263611,
-  "lon": -118.633056,
+  "lon": -118.630833,
   "details": ""
  },
  {
@@ -1277,6 +1277,26 @@
   "area": "Fort Tejon",
   "lat": 34.939167,
   "lon": -118.929444,
+  "details": ""
+ },
+ {
+  "log_id": "261016BF0277",
+  "time": "Oct 16 2026  4:06PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "1741 Cheatham Ave",
+  "area": "Bakersfield",
+  "lat": 35.342558,
+  "lon": -118.984695,
+  "details": ""
+ },
+ {
+  "log_id": "261016BF0282",
+  "time": "Oct 16 2026  4:16PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 At Twisselman Rd",
+  "area": "Buttonwillow",
+  "lat": 35.731667,
+  "lon": -119.739444,
   "details": ""
  },
  {

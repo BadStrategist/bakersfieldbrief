@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-16T16:01:12-07:00",
+ "built_at": "2026-10-16T16:30:50-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
+   "chp_new": 2,
    "top_story": "Bakersfield high schooler founds nonprofit bringing educational opportunities to foster, underserved youth",
    "overnight_band": {
     "date": "2026-10-16",
@@ -220,7 +220,7 @@
    "alpr_total": 457,
    "kern_fires": 1,
    "aqi": 78,
-   "chp_week": 83
+   "chp_week": 85
   },
   "letters": {
    "published": 1

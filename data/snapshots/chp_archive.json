@@ -1290,6 +1290,16 @@
   "details": ""
  },
  {
+  "log_id": "261016BF0100",
+  "time": "Oct 16 2026  9:41AM",
+  "type": "CZP-Assist with Construction",
+  "location": "29449 Stockdale Hwy",
+  "area": "Buttonwillow",
+  "lat": 35.354792,
+  "lon": -119.33073,
+  "details": ""
+ },
+ {
   "log_id": "261016BF0005",
   "time": "Oct 16 2026 12:26AM",
   "type": "1125-Traffic Hazard",

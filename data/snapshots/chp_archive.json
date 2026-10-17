@@ -1340,6 +1340,16 @@
   "details": ""
  },
  {
+  "log_id": "261017BF0133",
+  "time": "Oct 17 2026 11:12AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Sterling Rd / Hillburn Rd",
+  "area": "Bakersfield",
+  "lat": 35.379605,
+  "lon": -118.940756,
+  "details": ""
+ },
+ {
   "log_id": "261017BF0002",
   "time": "Oct 17 2026 12:01AM",
   "type": "TADV-Traffic Advisory",

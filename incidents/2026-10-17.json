@@ -1,0 +1,183 @@
+[
+ {
+  "type": "assault",
+  "time": "20:41",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "under investigation",
+  "summary": "A caller reported her mother's boyfriend held her down and took her phone before leaving on foot. A second caller told officers the woman was dressed in black and had threatened to stab the boy."
+ },
+ {
+  "type": "stolen vehicle",
+  "time": "21:05",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "under investigation",
+  "summary": "A caller reported a blue sedan had just been stolen from a parking area."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "22:26",
+  "agency": "Bakersfield Police Department",
+  "area": "7000 block of Willis Avenue",
+  "notability": 3,
+  "disposition": "responded",
+  "summary": "Officers were sent to a domestic disturbance in the 7000 block of Willis Avenue after a caller said her boyfriend had a gun."
+ },
+ {
+  "type": "foot pursuit",
+  "time": "22:53",
+  "agency": "Bakersfield Police Department",
+  "area": "1200 block of Lincoln Street",
+  "notability": 3,
+  "disposition": "one person detained",
+  "summary": "A foot chase ended near Lincoln and Robinson streets, and Air 1 directed units to one person detained on the 1200 block of Lincoln Street.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "apartment fire",
+  "time": "23:24",
+  "agency": "Kern County Fire Department",
+  "area": "3400 block of Wible Road",
+  "notability": 4,
+  "disposition": "fire attack; knocked down",
+  "summary": "Multiple callers reported smoke coming from an apartment window in the 3400 block of Wible Road. Truck 7, Truck 1 and two battalion companies were assigned to apartment 26.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "reckless driving",
+  "time": "23:40",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "Callers reported a muscle car doing burnouts in the roadway and illegal fireworks nearby."
+ },
+ {
+  "type": "person with a weapon",
+  "time": "23:43",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 2,
+  "disposition": "responded",
+  "summary": "Deputies were sent to 46th Street and Buford for a person in a black hoodie screaming, talking to herself and swinging a bat."
+ },
+ {
+  "type": "vegetation fire",
+  "time": "23:47",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "Crews responded to a second grass fire reported near Cottonwood and Bradshaw. Companies drove the area and could not find any fire."
+ },
+ {
+  "type": "structure fire",
+  "time": "01:15",
+  "agency": "Bakersfield Fire Department",
+  "area": "Union Avenue",
+  "notability": 5,
+  "disposition": "knocked down; primary search clear",
+  "summary": "A commercial building near 30th Street and Union Avenue caught fire before dawn. Crews found a loading dock involved and power lines down along one corner, set up a command post at 30th and Union and closed the northbound side of the road. Firefighters knocked the fire down outside and inside the building and reported the primary search clear."
+ },
+ {
+  "type": "welfare check",
+  "time": "01:37",
+  "agency": "Kern County Sheriff's Office",
+  "area": "South Granite Road",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "Deputies checked South Granite Road near Round Mountain Road for a person in a blue tank top seen walking northbound who appeared disoriented.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "02:29",
+  "agency": "Bakersfield Police Department",
+  "area": "6500 block of White Lane",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "Neighbors reported hearing a man and a woman arguing and banging on a wall at an apartment in the 6500 block of White Lane."
+ },
+ {
+  "type": "welfare check",
+  "time": "03:30",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "Officers and medics were sent to a welfare check for a man in crisis."
+ },
+ {
+  "type": "Fire alarm",
+  "time": "21:00",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Commercial fire alarm at hotel on East Brundage.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Pursuit",
+  "time": "21:02",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Officers search for Nissan after pursuit in Arvin.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "22:30",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Semi truck driving wrong way with bright headlights.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Medical emergency",
+  "time": "22:34",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Man found unresponsive on shoulder of Highway 58.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "00:43",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Vehicles blocking road after crash at 18th and H.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "00:43",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Vehicles stranded after crash at H and 18th.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "06:43",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Mohawk Street",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Single-car crash with two injured on Mohawk Street.",
+  "source": "crimeradar"
+ }
+]

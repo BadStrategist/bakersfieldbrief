@@ -1300,6 +1300,26 @@
   "details": ""
  },
  {
+  "log_id": "261017BF0061",
+  "time": "Oct 17 2026  7:56AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "27532-27637 Sr119",
+  "area": "Buttonwillow",
+  "lat": 35.208274,
+  "lon": -119.407236,
+  "details": ""
+ },
+ {
+  "log_id": "261017BF0070",
+  "time": "Oct 17 2026  8:22AM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 S / Gorman Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.795674,
+  "lon": -118.858202,
+  "details": ""
+ },
+ {
   "log_id": "261017BF0002",
   "time": "Oct 17 2026 12:01AM",
   "type": "TADV-Traffic Advisory",

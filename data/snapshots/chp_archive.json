@@ -1300,6 +1300,56 @@
   "details": ""
  },
  {
+  "log_id": "261017BF0191",
+  "time": "Oct 17 2026  1:03PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "22752-22759 Sr33",
+  "area": "Fort Tejon",
+  "lat": 34.646326,
+  "lon": -119.37665,
+  "details": ""
+ },
+ {
+  "log_id": "261017BF0239",
+  "time": "Oct 17 2026  2:52PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr178 W / Fairfax Rd Ofr",
+  "area": "Bakersfield",
+  "lat": 35.396749,
+  "lon": -118.92588,
+  "details": ""
+ },
+ {
+  "log_id": "261017BF0244",
+  "time": "Oct 17 2026  3:02PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "42810 Frazier Mountain Park Rd",
+  "area": "Fort Tejon",
+  "lat": 34.817708,
+  "lon": -118.884761,
+  "details": ""
+ },
+ {
+  "log_id": "261017BF0252",
+  "time": "Oct 17 2026  3:22PM",
+  "type": "1125-Traffic Hazard",
+  "location": "1121 Mcnew Ct",
+  "area": "Bakersfield",
+  "lat": 35.34939,
+  "lon": -118.988415,
+  "details": ""
+ },
+ {
+  "log_id": "261017BF0255",
+  "time": "Oct 17 2026  3:26PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "1338 South Union Ave",
+  "area": "Bakersfield",
+  "lat": 35.340143,
+  "lon": -119.00292,
+  "details": ""
+ },
+ {
   "log_id": "261017BF0061",
   "time": "Oct 17 2026  7:56AM",
   "type": "1183-Trfc Collision-Unkn Inj",

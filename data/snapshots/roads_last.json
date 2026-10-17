@@ -6,13 +6,13 @@
    "slug": "i5",
    "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
    "pass": true,
-   "status": "CLOSED",
+   "status": "RESTRICTIONS",
    "pass_status": "RESTRICTIONS",
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "Is closed frin 0.4 mi north of the Jct of SR-76 /at Harbor Dr/ (San Diego Co)to 1 mi south of the San Deigo/Orange Co Line /at Basilone Rd/ - Due to wildfire - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads Southbound traffic is reduced to 2 lanes 5.6 mi south of the San Diego/OrangeCo line - Due to a brush fire",
-     "status": "CLOSED"
+     "text": "A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "status": "RESTRICTIONS"
     },
     {
      "region": "CENTRAL CALIFORNIA",
@@ -40,22 +40,6 @@
     ],
     "elsewhere": [
      {
-      "status": "CLOSED",
-      "place": "",
-      "county": "San Diego Co",
-      "where": "San Diego Co",
-      "text": "Is closed frin 0.4 mi north of the Jct of SR-76 /at Harbor Dr/ (San Diego Co)to 1 mi south of the San Deigo/Orange Co Line /at Basilone Rd/ - Due to wildfire - Motorists are advised to use an alternate route",
-      "region": "SOUTHERN CALIFORNIA"
-     },
-     {
-      "status": "RESTRICTIONS",
-      "place": "",
-      "county": "",
-      "where": "the Southern California area",
-      "text": "Southbound traffic is reduced to 2 lanes 5.6 mi south of the San Diego/OrangeCo line - Due to a brush fire",
-      "region": "SOUTHERN CALIFORNIA"
-     },
-     {
       "status": "RESTRICTIONS",
       "place": "",
       "county": "San Joaquin Co",
@@ -65,8 +49,8 @@
      }
     ]
    },
-   "reported_as_of": "Friday, October 16th, 2026 at 04:30 PM",
-   "hash": "1de8112b76"
+   "reported_as_of": "Friday, October 16th, 2026 at 09:15 PM",
+   "hash": "efa451eb67"
   },
   {
    "number": "58",
@@ -97,7 +81,7 @@
     ],
     "elsewhere": []
    },
-   "reported_as_of": "Friday, October 16th, 2026 at 04:30 PM",
+   "reported_as_of": "Friday, October 16th, 2026 at 09:15 PM",
    "hash": "ff3b799983"
   },
   {
@@ -134,7 +118,7 @@
      }
     ]
    },
-   "reported_as_of": "Friday, October 16th, 2026 at 04:30 PM",
+   "reported_as_of": "Friday, October 16th, 2026 at 09:15 PM",
    "hash": "f97882795e"
   }
  ],

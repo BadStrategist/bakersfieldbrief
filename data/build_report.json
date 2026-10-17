@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-17T00:11:29-07:00",
+ "built_at": "2026-10-17T03:34:27-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
+   "chp_new": 0,
    "top_story": "Scores: Week 9 of the high school football season in Bakersfield, Kern County",
    "overnight_band": {
     "date": "2026-10-16",
@@ -176,13 +176,13 @@
   },
   "tehachapi": {
    "sr58": "RESTRICTIONS",
-   "wind_mph": 13,
+   "wind_mph": 1,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 64,
-   "wind_mph": 13,
+   "temp": 58,
+   "wind_mph": 1,
    "alerts": 0
   },
   "roads": {
@@ -216,10 +216,10 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 141755,
+   "isabella_af": 141330,
    "alpr_total": 458,
    "kern_fires": 1,
-   "aqi": 57,
+   "aqi": 74,
    "chp_week": 93
   },
   "letters": {

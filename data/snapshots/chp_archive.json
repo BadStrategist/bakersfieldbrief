@@ -1320,6 +1320,26 @@
   "details": ""
  },
  {
+  "log_id": "261017BF0091",
+  "time": "Oct 17 2026  9:33AM",
+  "type": "20001-Hit and Run w/Injuries",
+  "location": "2112 Kentucky St",
+  "area": "Bakersfield",
+  "lat": 35.373549,
+  "lon": -118.970142,
+  "details": ""
+ },
+ {
+  "log_id": "261017BF0098",
+  "time": "Oct 17 2026  9:57AM",
+  "type": "SLIDE-Mud/Dirt/Rock",
+  "location": "1600 Mm178 E Ker 16.00",
+  "area": "Bakersfield",
+  "lat": 35.460897,
+  "lon": -118.769091,
+  "details": ""
+ },
+ {
   "log_id": "261017BF0002",
   "time": "Oct 17 2026 12:01AM",
   "type": "TADV-Traffic Advisory",

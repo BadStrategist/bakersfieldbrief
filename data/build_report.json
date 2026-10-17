@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-17T03:34:27-07:00",
+ "built_at": "2026-10-17T07:40:22-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 4365, column 42"
   },
   "isabella": {
    "ok": true,
@@ -68,16 +68,16 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 64,
+  "brief_words": 1354,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Scores: Week 9 of the high school football season in Bakersfield, Kern County",
+   "top_story": "East Bakersfield-Foothill football game stopped due to medical emergency on sideline",
    "overnight_band": {
-    "date": "2026-10-16",
-    "count": 44,
+    "date": "2026-10-17",
+    "count": 19,
     "chips": [
      [
       "Weapons and assaults",
@@ -85,26 +85,22 @@
      ],
      [
       "Fires",
-      4
+      2
      ],
      [
       "Crashes and traffic",
-      6
+      5
      ],
      [
       "Medical and overdose",
-      4
+      1
      ],
      [
       "Disturbances and welfare",
-      7
+      4
      ],
      [
       "Burglary and theft",
-      3
-     ],
-     [
-      "Suspicious activity",
       1
      ],
      [
@@ -112,33 +108,18 @@
       1
      ],
      [
-      "Person with a weapon",
-      3
-     ],
-     [
-      "Person in crisis",
-      3
-     ],
-     [
-      "Incident",
-      3
+      "Foot pursuit",
+      1
      ],
      [
       "Other calls",
-      8
+      3
      ]
     ],
-    "other": "1 rollover crash, 1 crash with blood found, 1 person down on railroad tracks, 1 missing at-risk person, 1 juvenile in crisis, 1 attempted vehicle burglary, 1 burglar alarm, 1 vehicle",
+    "other": "1 apartment fire, 1 person with a weapon, 1 incident",
     "unmapped": [
-     "person with a weapon",
-     "rollover crash",
-     "crash with blood found",
-     "person down on railroad tracks",
-     "person in crisis",
-     "missing at-risk person",
-     "juvenile in crisis",
-     "attempted vehicle burglary",
-     "burglar alarm"
+     "apartment fire",
+     "person with a weapon"
     ]
    },
    "archive": "2026-10-17"
@@ -176,13 +157,13 @@
   },
   "tehachapi": {
    "sr58": "RESTRICTIONS",
-   "wind_mph": 1,
+   "wind_mph": 19,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 58,
-   "wind_mph": 1,
+   "temp": 66,
+   "wind_mph": 19,
    "alerts": 0
   },
   "roads": {
@@ -219,17 +200,17 @@
    "isabella_af": 141330,
    "alpr_total": 458,
    "kern_fires": 1,
-   "aqi": 74,
+   "aqi": 65,
    "chp_week": 93
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 66
+   "published": 67
   },
   "map": {
-   "dots": 67
+   "dots": 58
   },
   "sunday_read": {
    "topic": "Public safety",

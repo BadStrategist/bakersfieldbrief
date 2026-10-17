@@ -5500,9 +5500,9 @@
  "stats": {
   "total": 458,
   "flock": 419,
-  "new_this_week": 4,
+  "new_this_week": 3,
   "new_this_week_snapshot_diff": 3,
   "newest_mapped": "2026-10-17"
  },
- "asof": "2026-10-16"
+ "asof": "2026-10-17"
 }

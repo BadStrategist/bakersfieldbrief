@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-16T21:15:39-07:00",
+ "built_at": "2026-10-17T00:11:29-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,13 +68,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1183,
+  "brief_words": 64,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 4,
-   "top_story": "Bakersfield high schooler founds nonprofit bringing educational opportunities to foster, underserved youth",
+   "top_story": "Scores: Week 9 of the high school football season in Bakersfield, Kern County",
    "overnight_band": {
     "date": "2026-10-16",
     "count": 44,
@@ -141,7 +141,7 @@
      "burglar alarm"
     ]
    },
-   "archive": "2026-10-16"
+   "archive": "2026-10-17"
   },
   "cityhall": {
    "upcoming_meetings": 5,
@@ -156,7 +156,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -167,7 +167,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-10-16"
+   "draft": "drafts/weekend-guide-2026-10-17"
   },
   "grapevine": {
    "i5": "RESTRICTIONS",
@@ -176,13 +176,13 @@
   },
   "tehachapi": {
    "sr58": "RESTRICTIONS",
-   "wind_mph": 11,
+   "wind_mph": 13,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 66,
-   "wind_mph": 11,
+   "temp": 64,
+   "wind_mph": 13,
    "alerts": 0
   },
   "roads": {
@@ -195,7 +195,7 @@
   },
   "fog_delays": {
    "ok": true,
-   "alerts": 3,
+   "alerts": 0,
    "logged_days": 1
   },
   "traffic_cameras": {
@@ -206,9 +206,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 20,
-    "In 1 to 2 weeks": 18,
-    "Later": 90
+    "In the next 7 days": 23,
+    "In 1 to 2 weeks": 17,
+    "Later": 86
    },
    "meetings": 5
   },
@@ -219,8 +219,8 @@
    "isabella_af": 141755,
    "alpr_total": 458,
    "kern_fires": 1,
-   "aqi": 71,
-   "chp_week": 89
+   "aqi": 57,
+   "chp_week": 93
   },
   "letters": {
    "published": 1
@@ -259,7 +259,7 @@
   },
   "trackers": {
    "alpr_total": 458,
-   "alpr_new_week": 4,
+   "alpr_new_week": 3,
    "pages": [
     "surveillance",
     "fires",

@@ -1,205 +1,5 @@
 [
  {
-  "log_id": "261009BF0190",
-  "time": "Oct  9 2026  1:15PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "I5 N / Grapevine Rd E",
-  "area": "Fort Tejon",
-  "lat": 34.939285,
-  "lon": -118.929655,
-  "details": ""
- },
- {
-  "log_id": "261009BF0200",
-  "time": "Oct  9 2026  1:36PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "I5 N / Lebec Rd Ofr",
-  "area": "Fort Tejon",
-  "lat": 34.831001,
-  "lon": -118.867853,
-  "details": ""
- },
- {
-  "log_id": "261009BF0255",
-  "time": "Oct  9 2026  4:04PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Nb I5 Jso Lebec Rd",
-  "area": "Fort Tejon",
-  "lat": 34.831001,
-  "lon": -118.867853,
-  "details": ""
- },
- {
-  "log_id": "261009BF0266",
-  "time": "Oct  9 2026  4:32PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "South Union Ave / Sr223",
-  "area": "Bakersfield",
-  "lat": 35.208583,
-  "lon": -119.003073,
-  "details": ""
- },
- {
-  "log_id": "261009BF0273",
-  "time": "Oct  9 2026  4:48PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "6250-6499 E Panama Ln",
-  "area": "Bakersfield",
-  "lat": 35.295949,
-  "lon": -118.932152,
-  "details": ""
- },
- {
-  "log_id": "261009BF0280",
-  "time": "Oct  9 2026  5:04PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Edison Hwy / Exchange St",
-  "area": "Bakersfield",
-  "lat": 35.370488,
-  "lon": -118.965119,
-  "details": ""
- },
- {
-  "log_id": "261009BF0294",
-  "time": "Oct  9 2026  5:25PM",
-  "type": "1184-Provide Traffic Control",
-  "location": "Cyrus Canyon Rd / Sierra Way",
-  "area": "Bakersfield",
-  "lat": 35.703724,
-  "lon": -118.422857,
-  "details": ""
- },
- {
-  "log_id": "261009BF0036",
-  "time": "Oct  9 2026  5:36AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "9855 Compagnoni St",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "261009BF0057",
-  "time": "Oct  9 2026  7:06AM",
-  "type": "1125-Traffic Hazard",
-  "location": "I5 N / West Escape Ramp",
-  "area": "Fort Tejon",
-  "lat": 34.918056,
-  "lon": -118.923889,
-  "details": ""
- },
- {
-  "log_id": "261009BF0065",
-  "time": "Oct  9 2026  7:36AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Zerker Rd / Fruitvale Oil Fld",
-  "area": "BF",
-  "lat": 35.435004,
-  "lon": -119.154001,
-  "details": ""
- },
- {
-  "log_id": "261009BF0103",
-  "time": "Oct  9 2026  9:44AM",
-  "type": "CZP-Assist with Construction",
-  "location": "I5 N / Lebec Rd Ofr",
-  "area": "Fort Tejon",
-  "lat": 34.831001,
-  "lon": -118.867853,
-  "details": ""
- },
- {
-  "log_id": "261009BF0123",
-  "time": "Oct  9 2026 10:34AM",
-  "type": "SLIDE-Mud/Dirt/Rock",
-  "location": "16 Mm178 E Ker 16.00",
-  "area": "Bakersfield",
-  "lat": 35.460888,
-  "lon": -118.769165,
-  "details": ""
- },
- {
-  "log_id": "261009BF0131",
-  "time": "Oct  9 2026 10:50AM",
-  "type": "1125A-Animal Hazard",
-  "location": "Sr99 N / Hosking Rd Onr",
-  "area": "Bakersfield",
-  "lat": 35.283059,
-  "lon": -119.027001,
-  "details": ""
- },
- {
-  "log_id": "261009BF0129",
-  "time": "Oct  9 2026 10:50AM",
-  "type": "CFIRE-Car Fire",
-  "location": "Magnolia Ave / Pond Rd",
-  "area": "Bakersfield",
-  "lat": 35.717643,
-  "lon": -119.36601,
-  "details": ""
- },
- {
-  "log_id": "261009BF0130",
-  "time": "Oct  9 2026 10:51AM",
-  "type": "1125-Traffic Hazard",
-  "location": "South Union Ave / Amador Ave",
-  "area": "Bakersfield",
-  "lat": 35.343059,
-  "lon": -119.003071,
-  "details": ""
- },
- {
-  "log_id": "261009BF0139",
-  "time": "Oct  9 2026 11:16AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Nb I5 Jno #3 Turn Thru",
-  "area": "Fort Tejon",
-  "lat": 34.895731,
-  "lon": -118.91372,
-  "details": ""
- },
- {
-  "log_id": "261009BF0154",
-  "time": "Oct  9 2026 11:36AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Nb I5 Jso Fort Tejon Rd",
-  "area": "Fort Tejon",
-  "lat": 34.876389,
-  "lon": -118.894167,
-  "details": ""
- },
- {
-  "log_id": "261009BF0163",
-  "time": "Oct  9 2026 12:04PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Howard Ave / Arvin St",
-  "area": "Bakersfield",
-  "lat": 35.423205,
-  "lon": -119.023445,
-  "details": ""
- },
- {
-  "log_id": "261009BF0167",
-  "time": "Oct  9 2026 12:24PM",
-  "type": "1184-Provide Traffic Control",
-  "location": "Sr223 / Sr58",
-  "area": "Bakersfield",
-  "lat": 35.264167,
-  "lon": -118.658367,
-  "details": ""
- },
- {
-  "log_id": "261009BF0009",
-  "time": "Oct  9 2026 12:32AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
   "log_id": "261010BF0153",
   "time": "Oct 10 2026  1:42PM",
   "type": "1183-Trfc Collision-Unkn Inj",
@@ -1440,6 +1240,16 @@
   "details": ""
  },
  {
+  "log_id": "261016BF0409",
+  "time": "Oct 16 2026 11:13PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jno Sr138",
+  "area": "Fort Tejon",
+  "lat": 34.771389,
+  "lon": -118.804167,
+  "details": ""
+ },
+ {
   "log_id": "261016BF0148",
   "time": "Oct 16 2026 11:17AM",
   "type": "1182-Trfc Collision-No Inj",
@@ -1460,6 +1270,16 @@
   "details": ""
  },
  {
+  "log_id": "261016BF0417",
+  "time": "Oct 16 2026 11:50PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "E Belle Ter / Bunting Dr",
+  "area": "Bakersfield",
+  "lat": 35.346687,
+  "lon": -118.998543,
+  "details": ""
+ },
+ {
   "log_id": "261016BF0005",
   "time": "Oct 16 2026 12:26AM",
   "type": "1125-Traffic Hazard",
@@ -1477,6 +1297,26 @@
   "area": "Fort Tejon",
   "lat": 34.937778,
   "lon": -118.930556,
+  "details": ""
+ },
+ {
+  "log_id": "261017BF0002",
+  "time": "Oct 17 2026 12:01AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261017BF0004",
+  "time": "Oct 17 2026 12:06AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sb Sr99 At Sr119",
+  "area": "BF",
+  "lat": 35.266667,
+  "lon": -119.022778,
   "details": ""
  }
 ]

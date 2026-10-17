@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-17T11:27:13-07:00",
+ "built_at": "2026-10-17T13:31:19-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 5283, column 45"
   },
   "isabella": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 0,
    "top_story": "East Bakersfield-Foothill football game stopped due to medical emergency on sideline",
    "overnight_band": {
     "date": "2026-10-17",
@@ -157,13 +157,13 @@
   },
   "tehachapi": {
    "sr58": "RESTRICTIONS",
-   "wind_mph": 10,
+   "wind_mph": 16,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 72,
-   "wind_mph": 10,
+   "temp": 73,
+   "wind_mph": 16,
    "alerts": 0
   },
   "roads": {
@@ -200,7 +200,7 @@
    "isabella_af": 141330,
    "alpr_total": 458,
    "kern_fires": 1,
-   "aqi": 74,
+   "aqi": 56,
    "chp_week": 98
   },
   "letters": {

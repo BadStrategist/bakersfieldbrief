@@ -1270,6 +1270,26 @@
   "details": ""
  },
  {
+  "log_id": "261018BF0202",
+  "time": "Oct 18 2026  2:54PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr58 W / General Beale Rd",
+  "area": "Bakersfield",
+  "lat": 35.292566,
+  "lon": -118.752596,
+  "details": ""
+ },
+ {
+  "log_id": "261018BF0216",
+  "time": "Oct 18 2026  3:10PM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 I5 S",
+  "area": "Fort Tejon",
+  "lat": 34.898007,
+  "lon": -118.921944,
+  "details": ""
+ },
+ {
   "log_id": "261018BF0053",
   "time": "Oct 18 2026  6:54AM",
   "type": "20002-Hit and Run No Injuries",

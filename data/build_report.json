@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-18T13:34:44-07:00",
+ "built_at": "2026-10-18T15:35:31-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
+   "chp_new": 2,
    "top_story": "Boil water notice issued for parts of Bear Valley Springs amid power shutoff issues",
    "overnight_band": {
     "date": "2026-10-18",
@@ -146,13 +146,13 @@
   },
   "tehachapi": {
    "sr58": "RESTRICTIONS",
-   "wind_mph": 7,
+   "wind_mph": 11,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 73,
-   "wind_mph": 7,
+   "wind_mph": 11,
    "alerts": 0
   },
   "roads": {
@@ -176,9 +176,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 21,
+    "In the next 7 days": 22,
     "In 1 to 2 weeks": 16,
-    "Later": 86
+    "Later": 85
    },
    "meetings": 5
   },
@@ -189,8 +189,8 @@
    "isabella_af": 140906,
    "alpr_total": 458,
    "kern_fires": 1,
-   "aqi": 50,
-   "chp_week": 117
+   "aqi": 58,
+   "chp_week": 119
   },
   "letters": {
    "published": 1

@@ -1290,6 +1290,36 @@
   "details": ""
  },
  {
+  "log_id": "261018BF0235",
+  "time": "Oct 18 2026  3:42PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Sr58 / Sr43",
+  "area": "Bakersfield",
+  "lat": 35.35415,
+  "lon": -119.252019,
+  "details": ""
+ },
+ {
+  "log_id": "261018BF0236",
+  "time": "Oct 18 2026  3:43PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "0 Unnamed Street",
+  "area": "Fort Tejon",
+  "lat": 34.678009,
+  "lon": -118.982115,
+  "details": ""
+ },
+ {
+  "log_id": "261018BF0239",
+  "time": "Oct 18 2026  3:53PM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 S / Hageman Rd",
+  "area": "Buttonwillow",
+  "lat": 35.398884,
+  "lon": -119.397587,
+  "details": ""
+ },
+ {
   "log_id": "261018BF0053",
   "time": "Oct 18 2026  6:54AM",
   "type": "20002-Hit and Run No Injuries",

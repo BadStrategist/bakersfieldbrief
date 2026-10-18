@@ -1,0 +1,319 @@
+[
+ {
+  "type": "public intoxication",
+  "time": "19:23",
+  "agency": "Bakersfield Police Department",
+  "area": "the 2200 block of Niles Street",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "Officers were sent to a man lying on the ground in front of a dentist's office, under the influence and refusing to leave.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "19:40",
+  "agency": "Bakersfield Police Department",
+  "area": "the 400 block of Willow Drive",
+  "notability": 3,
+  "disposition": "checked",
+  "summary": "A caller asked officers to check on a 13-year-old who had been left alone for a week.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "foot pursuit",
+  "time": "20:40",
+  "agency": "Bakersfield Police Department",
+  "area": "Lincoln Street and Baker Street",
+  "notability": 3,
+  "disposition": "one detained; search continued",
+  "summary": "Officers chased a person on foot and searched the alleys between Lincoln, Quincy and Baker streets. One person was taken into custody while units held a perimeter for another.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "structure fire",
+  "time": "20:46",
+  "agency": "Bakersfield Fire Department",
+  "area": "the 1000 block of Sumner Street",
+  "notability": 3,
+  "disposition": "responded",
+  "summary": "Crews were sent to a structure fire reported behind a home in the 1000 block of Sumner Street.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "traffic collision",
+  "time": "21:14",
+  "agency": "California Highway Patrol",
+  "area": "Heath Road and Johnson Road",
+  "notability": 2,
+  "disposition": "CHP handled",
+  "summary": "Two vehicles collided at Heath Road and Johnson Road, and the California Highway Patrol took the call.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "21:46",
+  "agency": "Bakersfield Police Department",
+  "area": "the 400 block of Jeffrey Street",
+  "notability": 3,
+  "disposition": "checked",
+  "summary": "Officers were called to a family disturbance at a home in the 400 block of Jeffrey Street, where a caller could not get inside. Two young children were hiding in a bedroom and a grandmother was in the house.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "prowler",
+  "time": "22:04",
+  "agency": "Bakersfield Police Department",
+  "area": "the 1200 block of Virginia Avenue",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "A caller reported a man in the backyard of a home in the 1200 block of Virginia Avenue.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "fight",
+  "time": "22:33",
+  "agency": "Bakersfield Police Department",
+  "area": "the 2700 block of Whitley Drive",
+  "notability": 3,
+  "disposition": "responded",
+  "summary": "Officers were sent to a fight reported in front of a home in the 2700 block of Whitley Drive, with a caller reporting about 40 juveniles. One person had a cut above an eyebrow, and a neighbor reported ATVs, fireworks and possible gunshots in the area.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "assault",
+  "time": "22:46",
+  "agency": "Bakersfield Police Department",
+  "area": "the 1000 block of Quincy Street",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "A caller told officers that juveniles had assaulted her in the 1000 block of Quincy Street.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "assault",
+  "time": "22:59",
+  "agency": "Bakersfield Police Department",
+  "area": "the 900 block of Meredith Drive",
+  "notability": 3,
+  "disposition": "responded",
+  "summary": "Officers were called to a care facility on Meredith Drive where a juvenile had stabbed another with a fork.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "23:02",
+  "agency": "Bakersfield Police Department",
+  "area": "the 2300 block of Wible Road",
+  "notability": 3,
+  "disposition": "responded",
+  "summary": "Both parties in a domestic fight in a parking lot in the 2300 block of Wible Road were reported to be fighting each other, and one of them had been drinking.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "assault",
+  "time": "23:17",
+  "agency": "Bakersfield Police Department",
+  "area": "Magnolia Avenue and Burbank Street",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "Officers were called to an assault at Magnolia Avenue and Burbank Street, where a 19-year-old woman reported her brother had assaulted her.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "23:20",
+  "agency": "Bakersfield Police Department",
+  "area": "the 400 block of Highland Drive",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "About ten people were reported gathered over loud music in an alley behind a home in the 400 block of Highland Drive.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "23:23",
+  "agency": "Bakersfield Police Department",
+  "area": "the 1100 block of Altus Street",
+  "notability": 2,
+  "disposition": "one detained",
+  "summary": "A man who had been throwing bottles at a home in the 1100 block of Altus Street was detained by the property owner.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "vegetation fire",
+  "time": "23:40",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "contained",
+  "summary": "Crews were sent to a grass fire east of Wasco Pond and found about an eighth of an acre burning at a slow rate of spread."
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "23:42",
+  "agency": "Bakersfield Police Department",
+  "area": "the 1900 block of Lotus Lane",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "A caller reported a former tenant had returned to a property in the 1900 block of Lotus Lane and believed he had a gun, though none was seen.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "disabled vehicle",
+  "time": "23:48",
+  "agency": "Bakersfield Police Department",
+  "area": "Truxtun Avenue and Westwind Drive",
+  "notability": 2,
+  "disposition": "tow requested",
+  "summary": "A call about a crash at Truxtun Avenue and Westwind Drive turned out to be a disabled car with only three wheels on it, and a flatbed tow was requested.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "vehicle versus pedestrian",
+  "time": "00:10",
+  "agency": "Bakersfield Police Department",
+  "area": "the 1600 block of Fremont Street",
+  "notability": 3,
+  "disposition": "responded",
+  "summary": "Officers and medics were sent to a vehicle against a pedestrian in the 1600 block of Fremont Street.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "shots fired",
+  "time": "00:32",
+  "agency": "Bakersfield Police Department",
+  "area": "the 900 block of Karma Court",
+  "notability": 4,
+  "disposition": "casings found; suspects at large",
+  "summary": "Officers were sent to Karma Court after shots were heard in the area, and a shell casing was found on the north side of the court. A witness told officers two men had left on foot to the north.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "outside fire",
+  "time": "00:54",
+  "agency": "Kern County Fire Department",
+  "area": "Airport Drive and Olive Drive",
+  "notability": 2,
+  "disposition": "responded",
+  "summary": "A crew was sent to an outside fire in the center divider just north of Airport Drive and Olive Drive.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "prowler",
+  "time": "02:10",
+  "agency": "Bakersfield Police Department",
+  "area": "the 3000 block of Cedarwood Drive",
+  "notability": 2,
+  "disposition": "checked",
+  "summary": "A woman locked herself in a room with a child after hearing someone in her backyard, and reported seeing a person leave with a backpack.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "robbery",
+  "time": "02:35",
+  "agency": "Bakersfield Police Department",
+  "area": "the 3300 block of Wible Road",
+  "notability": 3,
+  "disposition": "under investigation",
+  "summary": "Officers were called to a robbery at a mini mart on the 3300 block of Wible Road. The suspect, a man in a white shirt and red pants, fled on foot with cash and a metal rod, and officers contacted a person nearby.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "fight",
+  "time": "03:41",
+  "agency": "Bakersfield Police Department",
+  "area": "the 1200 block of Smith Street",
+  "notability": 3,
+  "disposition": "dispersed",
+  "summary": "Officers were sent to a fight among about 20 juveniles in the 1200 block of Smith Street. A caller mentioned firearms, but none were seen, and the group dispersed.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "stabbing",
+  "time": "04:01",
+  "agency": "Kern County Fire Department",
+  "area": "Childress Street",
+  "notability": 3,
+  "disposition": "responded",
+  "summary": "Medics were sent to a reported stabbing on Childress Street.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "outside fire",
+  "time": "04:59",
+  "agency": "Kern County Fire Department",
+  "area": "Edison Highway and Fairfax Road",
+  "notability": 3,
+  "disposition": "responded",
+  "summary": "A crew was sent to an outside fire under the overpass at Edison Highway and Fairfax Road."
+ },
+ {
+  "type": "structure fire",
+  "time": "05:07",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 4,
+  "disposition": "nothing showing; command established",
+  "summary": "Crews were sent to a structure fire at a 1,500-square-foot single-story home on West Moyer Avenue in Ridgecrest. The first engine found nothing showing and took command, and a second engine was diverted from a call on Highway 14 to help."
+ },
+ {
+  "type": "Traffic collision",
+  "time": "20:13",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Injury crash involving car with infant and toddler.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "01:11",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Four people with traumatic injuries at mobile home park.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Burglary",
+  "time": "06:03",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Guard shack burglary at water facility in Bakersfield.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire",
+  "time": "06:36",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Small fire in empty lot at Miles and Brentwood.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic",
+  "time": "06:52",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Officer traffic contact at 24th and Alder streets.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire",
+  "time": "06:58",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Pacheco Road",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Small fire reported on Pacheco Road.",
+  "source": "crimeradar"
+ }
+]

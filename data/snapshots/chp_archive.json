@@ -1380,6 +1380,26 @@
   "details": ""
  },
  {
+  "log_id": "261017BF0375",
+  "time": "Oct 17 2026  9:12PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Camino Primavera / College Ave",
+  "area": "Bakersfield",
+  "lat": 35.383083,
+  "lon": -118.955029,
+  "details": ""
+ },
+ {
+  "log_id": "261017BF0371",
+  "time": "Oct 17 2026  9:12PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Heath Rd / Johnson Rd",
+  "area": "Bakersfield",
+  "lat": 35.361662,
+  "lon": -119.180984,
+  "details": ""
+ },
+ {
   "log_id": "261017BF0091",
   "time": "Oct 17 2026  9:33AM",
   "type": "20001-Hit and Run w/Injuries",

@@ -1,215 +1,5 @@
 [
  {
-  "log_id": "261010BF0153",
-  "time": "Oct 10 2026  1:42PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "SOUTHGATE DR / S CHESTER AVE",
-  "area": "Bakersfield",
-  "lat": 35.335782,
-  "lon": -119.01637,
-  "details": ""
- },
- {
-  "log_id": "261010BF0165",
-  "time": "Oct 10 2026  2:13PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Nb Sr99 Jso Lerdo Hwy",
-  "area": "Bakersfield",
-  "lat": 35.496227,
-  "lon": -119.159603,
-  "details": ""
- },
- {
-  "log_id": "261010BF0164",
-  "time": "Oct 10 2026  2:13PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Eb Sr58 At Edison Rd",
-  "area": "Bakersfield",
-  "lat": 35.345278,
-  "lon": -118.878611,
-  "details": ""
- },
- {
-  "log_id": "261010BF0167",
-  "time": "Oct 10 2026  2:32PM",
-  "type": "1125-Traffic Hazard",
-  "location": "0 I5 S",
-  "area": "Fort Tejon",
-  "lat": 34.921393,
-  "lon": -118.925495,
-  "details": ""
- },
- {
-  "log_id": "261010BF0204",
-  "time": "Oct 10 2026  4:29PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Allen Rd / Brimhall Rd",
-  "area": "BF",
-  "lat": 35.368867,
-  "lon": -119.145425,
-  "details": ""
- },
- {
-  "log_id": "261010BF0048",
-  "time": "Oct 10 2026  6:29AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Corcoran Rd / Sr46",
-  "area": "Buttonwillow",
-  "lat": 35.607363,
-  "lon": -119.580324,
-  "details": ""
- },
- {
-  "log_id": "261010BF0055",
-  "time": "Oct 10 2026  7:31AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "7th Standard Rd / Cherry Ave",
-  "area": "Bakersfield",
-  "lat": 35.441643,
-  "lon": -119.243507,
-  "details": ""
- },
- {
-  "log_id": "261010BF0058",
-  "time": "Oct 10 2026  7:35AM",
-  "type": "1125A-Animal Hazard",
-  "location": "Sr58 E / Sr184 Ofr",
-  "area": "Bakersfield",
-  "lat": 35.352217,
-  "lon": -118.919531,
-  "details": ""
- },
- {
-  "log_id": "261010BF0065",
-  "time": "Oct 10 2026  8:11AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Sb Sr99 Jso Ming Ave",
-  "area": "BF",
-  "lat": 35.336389,
-  "lon": -119.039444,
-  "details": ""
- },
- {
-  "log_id": "261010BF0072",
-  "time": "Oct 10 2026  8:19AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "EB SR58 JEO Gen Beale Rd",
-  "area": "Bakersfield",
-  "lat": 35.289722,
-  "lon": -118.746389,
-  "details": ""
- },
- {
-  "log_id": "261010BF0073",
-  "time": "Oct 10 2026  8:27AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Nb Sr99 At White Ln",
-  "area": "Bakersfield",
-  "lat": 35.314052,
-  "lon": -119.035101,
-  "details": ""
- },
- {
-  "log_id": "261010BF0091",
-  "time": "Oct 10 2026  9:26AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Sr178 / Mouth Of The Canyon",
-  "area": "BF",
-  "lat": 35.442222,
-  "lon": -118.791944,
-  "details": ""
- },
- {
-  "log_id": "261010BF0321",
-  "time": "Oct 10 2026  9:56PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Edwards Ave / Manley Ave",
-  "area": "Bakersfield",
-  "lat": 35.385322,
-  "lon": -118.962568,
-  "details": ""
- },
- {
-  "log_id": "261010BF0108",
-  "time": "Oct 10 2026 10:12AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Lencioni Ave / Quinn Rd",
-  "area": "Bakersfield",
-  "lat": 35.447324,
-  "lon": -119.082897,
-  "details": ""
- },
- {
-  "log_id": "261010BF0113",
-  "time": "Oct 10 2026 10:50AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sb Sr99 Jso Olive Dr",
-  "area": "Bakersfield",
-  "lat": 35.411944,
-  "lon": -119.054722,
-  "details": ""
- },
- {
-  "log_id": "261010BF0114",
-  "time": "Oct 10 2026 10:54AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Eb Sr58 At Fairfax Rd",
-  "area": "Bakersfield",
-  "lat": 35.351944,
-  "lon": -118.931944,
-  "details": ""
- },
- {
-  "log_id": "261010BF0122",
-  "time": "Oct 10 2026 11:11AM",
-  "type": "DOT-Request CalTrans Notify",
-  "location": "Rosedale Hwy Onr / Sr99 S",
-  "area": "Bakersfield",
-  "lat": 35.379221,
-  "lon": -119.044566,
-  "details": ""
- },
- {
-  "log_id": "261010BF0141",
-  "time": "Oct 10 2026 12:05PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Old River Rd / I5 N",
-  "area": "Buttonwillow",
-  "lat": 35.161682,
-  "lon": -119.110629,
-  "details": ""
- },
- {
-  "log_id": "261010BF0002",
-  "time": "Oct 10 2026 12:07AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "261010BF0144",
-  "time": "Oct 10 2026 12:32PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Old River Rd / I5 N",
-  "area": "Buttonwillow",
-  "lat": 35.161682,
-  "lon": -119.110629,
-  "details": ""
- },
- {
-  "log_id": "261010BF0145",
-  "time": "Oct 10 2026 12:51PM",
-  "type": "FIRE-Report of Fire",
-  "location": "Eb Sr58 Jwo S Union Ave",
-  "area": "Bakersfield",
-  "lat": 35.352222,
-  "lon": -119.005833,
-  "details": ""
- },
- {
   "log_id": "261011BF0039",
   "time": "Oct 11 2026  2:26AM",
   "type": "1179-Trfc Collision-1141 Enrt",
@@ -1447,6 +1237,26 @@
   "area": "BF",
   "lat": 35.266667,
   "lon": -119.022778,
+  "details": ""
+ },
+ {
+  "log_id": "261018BF0006",
+  "time": "Oct 18 2026 12:08AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Sr99 S / Woollomes Ave Ofr",
+  "area": "Bakersfield",
+  "lat": 35.750392,
+  "lon": -119.245367,
+  "details": ""
+ },
+ {
+  "log_id": "261018BF0003",
+  "time": "Oct 18 2026 12:08AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "E Panama Ln / S Fairfax Rd",
+  "area": "Bakersfield",
+  "lat": 35.295949,
+  "lon": -118.931977,
   "details": ""
  }
 ]

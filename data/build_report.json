@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-17T21:20:31-07:00",
+ "built_at": "2026-10-18T00:26:20-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,13 +68,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1354,
+  "brief_words": 68,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 2,
-   "top_story": "East Bakersfield-Foothill football game stopped due to medical emergency on sideline",
+   "top_story": "'No Kings' vote-early event draws hundreds to Bakersfield's Liberty Bell ahead of election",
    "overnight_band": {
     "date": "2026-10-17",
     "count": 19,
@@ -122,7 +122,7 @@
      "person with a weapon"
     ]
    },
-   "archive": "2026-10-17"
+   "archive": "2026-10-18"
   },
   "cityhall": {
    "upcoming_meetings": 5,
@@ -137,7 +137,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -148,7 +148,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-10-17"
+   "draft": "drafts/weekend-guide-2026-10-18"
   },
   "grapevine": {
    "i5": "RESTRICTIONS",
@@ -162,7 +162,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 60,
+   "temp": 55,
    "wind_mph": 0,
    "alerts": 0
   },
@@ -187,9 +187,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 19,
-    "In 1 to 2 weeks": 17,
-    "Later": 87
+    "In the next 7 days": 21,
+    "In 1 to 2 weeks": 16,
+    "Later": 86
    },
    "meetings": 5
   },
@@ -200,8 +200,8 @@
    "isabella_af": 141330,
    "alpr_total": 458,
    "kern_fires": 1,
-   "aqi": 49,
-   "chp_week": 106
+   "aqi": 40,
+   "chp_week": 108
   },
   "letters": {
    "published": 1

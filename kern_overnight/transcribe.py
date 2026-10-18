@@ -287,43 +287,28 @@ def _in_overnight_window(epoch: int, date: dt.date, tz: dt.tzinfo) -> bool:
 
 
 def _ko_checkpoint(out_jsonl: Path, blocks_done: int, total: int, push: bool = False) -> None:
-    """Commit the transcript JSONL to git so partial-night data reaches the
+    """Push the transcript JSONL to origin/main so partial-night data reaches the
     cloud even if this PC dies mid-pipeline (Tier-2 resilience).
 
-    Commits ONLY the transcript file (never `git add -A`, so sibling-session
-    artifacts are never swept in). A plain `git push` is attempted once at
-    the end; failures are tolerated silently — the morning agent's
-    stash/rebase push resolves any divergence. Skipped when the output file
-    is not inside the repo (e.g. pytest temp dirs).
+    Pushes from a dedicated worktree (kern_overnight/boxpush.py) and never
+    commits in the box's checkout. The old way committed here and pushed once
+    at the end; that push lost the race with CI's artifact commits, nothing
+    retried it once the morning agent was retired, and on 2026-10-17 the box
+    sat 12 ahead / 24 behind, which the drift guard cannot fast-forward.
+    `push` marks a run's final checkpoint, which retries a rejected push; a
+    mid-run checkpoint tries once (the next one carries the whole file).
+    [skip ci] keeps transcript-only pushes from triggering a site deploy.
+    Skipped when the output file is not inside the repo (pytest temp dirs).
     """
     try:
-        root = Path(__file__).resolve().parent.parent
-        try:
-            rel = out_jsonl.resolve().relative_to((root / "transcripts").resolve())
-        except ValueError:
-            return  # not a repo transcript (tests / temp dirs)
-        import subprocess
-        subprocess.run(["git", "add", "--", str(out_jsonl.resolve())],
-                       cwd=root, check=True, capture_output=True, timeout=30)
-        # `-- <path>` is a pathspec: without it a bare `git commit` takes the whole
-        # index, so anything a sibling session had staged rides along in a commit
-        # labelled "transcript checkpoint" (proved: c1d2d725 carried roads.json).
-        subprocess.run(
-            ["git", "commit", "-q",
-             "-m", f"ko: transcript checkpoint ({blocks_done}/{total} blocks) "
-                   "[skip ci]",
-             "--", str(out_jsonl.resolve())],
-            cwd=root, capture_output=True, timeout=30)  # rc 1 = nothing staged, fine
-        # [skip ci] keeps transcript-only pushes from triggering a site deploy:
-        # the workflow runs only on content-bearing pushes (report/code/data),
-        # which saves the private-repo Actions-minute budget while keeping the
-        # per-block cloud pushes fully intact (Tier-2 crash safety unchanged).
-        if push:
-            r = subprocess.run(["git", "push", "-q", "origin", "main"],
-                               cwd=root, capture_output=True, timeout=120)
-            if r.returncode != 0:
-                print("    [ko-stt] checkpoint push deferred (will be pushed "
-                      "by the morning agent)", flush=True)
+        from kern_overnight import boxpush
+        ok = boxpush.push_transcript(
+            out_jsonl,
+            f"ko: transcript checkpoint ({blocks_done}/{total} blocks) [skip ci]",
+            attempts=3 if push else 1)
+        if push and not ok and boxpush.in_repo_transcripts(out_jsonl):
+            print("    [ko-stt] checkpoint push failed (the 02:45 drift guard "
+                  "pushes it on its next run)", flush=True)
     except Exception as e:  # noqa: BLE001 — never break transcription for git
         print(f"    [ko-stt] checkpoint skipped: {type(e).__name__}", flush=True)
 

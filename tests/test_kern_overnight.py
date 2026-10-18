@@ -589,35 +589,24 @@ class TestData:
         _ko_checkpoint(tmp_path / "out.jsonl", 3, 3, push=True)
         assert calls == []
 
-    def test_checkpoint_commits_repo_transcripts(self, monkeypatch):
-        """Tier-2: for a repo transcript, checkpoint does git add (only that
-        file) + commit + optional push, and tolerates push failure."""
+    def test_checkpoint_pushes_via_worktree_not_box_commit(self, monkeypatch):
+        """Tier-2: a repo transcript goes to boxpush (worktree push, [skip ci]),
+        the final checkpoint retries, and a failed push never raises. No git
+        runs in the box's checkout (local commits made it drift, 2026-10-17)."""
         import subprocess
-
-        class FakeCompleted:
-            def __init__(self, rc):
-                self.returncode = rc
-
-        calls = []
-        def fake_run(cmd, **k):
-            calls.append(cmd)
-            rc = 0
-            if cmd[:2] == ["git", "push"]:
-                rc = 128  # simulate non-fast-forward — must be tolerated
-            return FakeCompleted(rc)
-
-        monkeypatch.setattr(subprocess, "run", fake_run)
+        from kern_overnight import boxpush
+        seen = []
+        monkeypatch.setattr(boxpush, "push_transcript",
+                            lambda p, msg, attempts=3, **k: seen.append((p, msg, attempts)) or False)
+        monkeypatch.setattr(subprocess, "run",
+                            lambda *a, **k: pytest.fail(f"git ran in the box: {a}"))
         from kern_overnight.transcribe import _ko_checkpoint
-        _ko_checkpoint(ROOT / "transcripts" / "2026-08-11.jsonl", 3, 18, push=True)
-        adds = [c for c in calls if c[:2] == ["git", "add"]]
-        assert adds, "git add must run for repo transcripts"
-        assert "transcripts" in str(adds[0][-1])
-        assert str(adds[0][-1]).endswith("2026-08-11.jsonl")
-        assert any(c[:2] == ["git", "push"] for c in calls)
-        # transcript-only pushes must carry [skip ci] so they never trigger
-        # a site deploy (private-repo Actions-minute budget protection)
-        commits = [c for c in calls if c[:2] == ["git", "commit"]]
-        assert commits and "[skip ci]" in " ".join(str(x) for x in commits[0])
+        path = ROOT / "transcripts" / "2026-08-11.jsonl"
+        _ko_checkpoint(path, 3, 18)
+        _ko_checkpoint(path, 18, 18, push=True)
+        assert [s[2] for s in seen] == [1, 3]
+        assert all(s[0] == path and "[skip ci]" in s[1] for s in seen)
+        assert "(18/18 blocks)" in seen[1][1]
 
     def test_street_gazetteer_loaded(self):
         """The Bakersfield street gazetteer must exist, be large, and

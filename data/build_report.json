@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-18T10:21:07-07:00",
+ "built_at": "2026-10-18T10:33:35-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 5283, column 45"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -146,13 +146,13 @@
   },
   "tehachapi": {
    "sr58": "RESTRICTIONS",
-   "wind_mph": 9,
+   "wind_mph": 1,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 66,
-   "wind_mph": 9,
+   "temp": 69,
+   "wind_mph": 1,
    "alerts": 0
   },
   "roads": {
@@ -189,7 +189,7 @@
    "isabella_af": 140906,
    "alpr_total": 458,
    "kern_fires": 1,
-   "aqi": 45,
+   "aqi": 41,
    "chp_week": 113
   },
   "letters": {
@@ -204,8 +204,8 @@
   "sunday_read": {
    "topic": "Public safety",
    "source": "llm",
-   "words": 1117,
-   "asof": "2026-10-11"
+   "words": 1024,
+   "asof": "2026-10-18"
   },
   "fair": {
    "year": "2026",

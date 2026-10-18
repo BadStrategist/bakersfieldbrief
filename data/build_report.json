@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-18T03:59:21-07:00",
+ "built_at": "2026-10-18T07:55:04-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -14,7 +14,7 @@
    "error": ""
   },
   "gnews": {
-   "ok": false,
+   "ok": true,
    "error": ""
   },
   "weather": {
@@ -68,59 +68,48 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 68,
+  "brief_words": 1424,
   "daily": {
-   "news_headlines": 50,
+   "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 2,
-   "top_story": "'No Kings' vote-early event draws hundreds to Bakersfield's Liberty Bell ahead of election",
+   "top_story": "Boil water notice issued for parts of Bear Valley Springs amid power shutoff issues",
    "overnight_band": {
-    "date": "2026-10-17",
-    "count": 19,
+    "date": "2026-10-18",
+    "count": 32,
     "chips": [
      [
       "Weapons and assaults",
-      1
+      7
      ],
      [
       "Fires",
-      2
+      7
      ],
      [
       "Crashes and traffic",
       5
      ],
      [
-      "Medical and overdose",
-      1
-     ],
-     [
       "Disturbances and welfare",
-      4
+      6
      ],
      [
       "Burglary and theft",
-      1
+      2
      ],
      [
-      "Alarms",
-      1
-     ],
-     [
-      "Foot pursuit",
-      1
+      "Suspicious activity",
+      3
      ],
      [
       "Other calls",
-      3
+      2
      ]
     ],
-    "other": "1 apartment fire, 1 person with a weapon, 1 incident",
-    "unmapped": [
-     "apartment fire",
-     "person with a weapon"
-    ]
+    "other": "1 foot pursuit, 1 incident",
+    "unmapped": []
    },
    "archive": "2026-10-18"
   },
@@ -139,11 +128,11 @@
    ],
    "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 0,
-    "bakersfield-nw": 0,
-    "bakersfield-sw": 0,
-    "bakersfield-east": 0,
-    "bakersfield-central": 0
+    "tehachapi": 12,
+    "bakersfield-nw": 12,
+    "bakersfield-sw": 12,
+    "bakersfield-east": 12,
+    "bakersfield-central": 12
    }
   },
   "guide": {
@@ -157,13 +146,13 @@
   },
   "tehachapi": {
    "sr58": "RESTRICTIONS",
-   "wind_mph": 0,
+   "wind_mph": null,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 54,
-   "wind_mph": 0,
+   "temp": 43,
+   "wind_mph": null,
    "alerts": 0
   },
   "roads": {
@@ -200,17 +189,17 @@
    "isabella_af": 140906,
    "alpr_total": 458,
    "kern_fires": 1,
-   "aqi": 39,
-   "chp_week": 110
+   "aqi": 38,
+   "chp_week": 112
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 67
+   "published": 68
   },
   "map": {
-   "dots": 58
+   "dots": 60
   },
   "sunday_read": {
    "topic": "Public safety",

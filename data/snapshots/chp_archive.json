@@ -1250,6 +1250,26 @@
   "details": ""
  },
  {
+  "log_id": "261018BF0053",
+  "time": "Oct 18 2026  6:54AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Sr99 S / County Line Rd Onr",
+  "area": "Bakersfield",
+  "lat": 35.787511,
+  "lon": -119.250391,
+  "details": ""
+ },
+ {
+  "log_id": "261018BF0055",
+  "time": "Oct 18 2026  7:04AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "NB I5 JNO #4 Turn Thru",
+  "area": "Fort Tejon",
+  "lat": 34.914069,
+  "lon": -118.92362,
+  "details": ""
+ },
+ {
   "log_id": "261018BF0006",
   "time": "Oct 18 2026 12:08AM",
   "type": "20002-Hit and Run No Injuries",

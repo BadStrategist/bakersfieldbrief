@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-18T00:26:20-07:00",
+ "built_at": "2026-10-18T03:59:21-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -14,7 +14,7 @@
    "error": ""
   },
   "gnews": {
-   "ok": true,
+   "ok": false,
    "error": ""
   },
   "weather": {
@@ -70,7 +70,7 @@
   "_digest_meta": "deterministic",
   "brief_words": 68,
   "daily": {
-   "news_headlines": 75,
+   "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 2,
@@ -139,11 +139,11 @@
    ],
    "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 12,
-    "bakersfield-nw": 12,
-    "bakersfield-sw": 12,
-    "bakersfield-east": 12,
-    "bakersfield-central": 12
+    "tehachapi": 0,
+    "bakersfield-nw": 0,
+    "bakersfield-sw": 0,
+    "bakersfield-east": 0,
+    "bakersfield-central": 0
    }
   },
   "guide": {
@@ -162,7 +162,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 55,
+   "temp": 54,
    "wind_mph": 0,
    "alerts": 0
   },
@@ -197,11 +197,11 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 141330,
+   "isabella_af": 140906,
    "alpr_total": 458,
    "kern_fires": 1,
-   "aqi": 40,
-   "chp_week": 108
+   "aqi": 39,
+   "chp_week": 110
   },
   "letters": {
    "published": 1

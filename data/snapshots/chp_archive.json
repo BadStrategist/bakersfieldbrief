@@ -1240,6 +1240,16 @@
   "details": ""
  },
  {
+  "log_id": "261018BF0036",
+  "time": "Oct 18 2026  1:55AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "2207 Edison Hwy",
+  "area": "Bakersfield",
+  "lat": 35.371053,
+  "lon": -118.967398,
+  "details": ""
+ },
+ {
   "log_id": "261018BF0006",
   "time": "Oct 18 2026 12:08AM",
   "type": "20002-Hit and Run No Injuries",
@@ -1257,6 +1267,16 @@
   "area": "Bakersfield",
   "lat": 35.295949,
   "lon": -118.931977,
+  "details": ""
+ },
+ {
+  "log_id": "261018BF0018",
+  "time": "Oct 18 2026 12:44AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
   "details": ""
  }
 ]

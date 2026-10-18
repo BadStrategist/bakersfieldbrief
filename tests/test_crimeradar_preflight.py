@@ -56,6 +56,9 @@ case "$*" in
       printf 'List of devices attached\nemulator-5554\tdevice\n'
     fi ;;
   "shell getprop sys.boot_completed") echo 1 ;;
+  # The stop script falls back to Stop-Process on the REAL qemu by name when the
+  # device stays listed, so a kill must make the fake go away for one listing.
+  "emu kill") : >"$FAKE_STATE/offline_once" ;;
   "shell uiautomator dump "*)
     n=$(cat "$FAKE_STATE/n" 2>/dev/null || echo 0)
     echo $((n + 1)) >"$FAKE_STATE/n"
@@ -81,7 +84,15 @@ def _bash() -> str | None:
     if os.name != "nt":
         return "/bin/bash"
     local = Path(os.environ.get("LOCALAPPDATA", ""))
-    found = sorted(local.glob("hermes/tools/git-*/usr/bin/bash.exe"))
+    # The MSYS runtime the BB Morning Runner uses (bb-pipeline/common.py BASH is
+    # hermes/git/bin/bash.exe) first, as its raw usr/bin bash. Verified 2026-10-17:
+    #   * hermes/tools/git-* bash finds `timeout` and friends from hermes/git on
+    #     PATH, two MSYS runtimes in one chain, and that mix rewrites /sdcard paths
+    #     even with MSYS_NO_PATHCONV=1, so it failed tests the runner passes;
+    #   * hermes/git/bin/bash.exe is Git's launcher, which puts /usr/bin ahead of
+    #     the tests' stub directory, so a stubbed `date` never ran.
+    found = [p for p in (local / "hermes" / "git" / "usr" / "bin" / "bash.exe",) if p.exists()]
+    found += sorted(local.glob("hermes/tools/git-*/usr/bin/bash.exe"))
     found += [p for p in (Path(r"C:\Program Files\Git\usr\bin\bash.exe"),) if p.exists()]
     return str(found[0]) if found else None
 
@@ -96,7 +107,22 @@ def _stub(path: Path, text: str) -> Path:
     return path
 
 
+# A region setter that fails its first (ok_at - 1) set attempts. `--print`
+# reads Bakersfield only once a set attempt has succeeded.
+SETREG_FLAKY = r"""#!/usr/bin/env bash
+if [ "${1:-}" = "--print" ]; then
+  [ -f "$FAKE_STATE/region_ok" ] && { echo 'Bakersfield, CA'; exit 0; }
+  echo unknown; exit 1
+fi
+n=$(( $(cat "$FAKE_STATE/sets" 2>/dev/null || echo 0) + 1 ))
+echo $n >"$FAKE_STATE/sets"
+[ "$n" -ge "${FAKE_SET_OK_AT:-1}" ] && { : >"$FAKE_STATE/region_ok"; exit 0; }
+echo "[cr] FAILED: the location picker did not open"; exit 11
+"""
+
+
 def run_preflight(tmp_path: Path, dumps: str, offline_once: bool = False,
+                  setreg_text: str | None = None,
                   **overrides: str) -> subprocess.CompletedProcess:
     script, bash = _preflight(), _bash()
     assert script.is_file(), f"{script} is missing from the repo"
@@ -119,7 +145,8 @@ def run_preflight(tmp_path: Path, dumps: str, offline_once: bool = False,
     adb = _stub(bindir / "adb", FAKE_ADB)
     # The script's waits are real seconds; none of them is under test.
     _stub(bindir / "sleep", "#!/usr/bin/env bash\nexit 0\n")
-    setreg = _stub(bindir / "setreg", "#!/usr/bin/env bash\necho 'Bakersfield, CA'\nexit 0\n")
+    setreg = _stub(bindir / "setreg", setreg_text
+                   or "#!/usr/bin/env bash\necho 'Bakersfield, CA'\nexit 0\n")
     emu = _stub(bindir / "emulator",
                 '#!/usr/bin/env bash\necho "$*" >"$FAKE_STATE/emulator"\n'
                 'echo "emulator: fake boot line"\nexit 0\n')
@@ -208,3 +235,71 @@ def test_the_monitor_starts_the_way_the_leg_scripts_start_it(tmp_path):
                        cwd=tmp_path, env=env, stdin=subprocess.DEVNULL,
                        capture_output=True, text=True, timeout=120)
     assert r.returncode == 0, r.stderr[-800:]
+
+
+def test_device_paths_reach_adb_as_written_whatever_the_callers_environment(tmp_path):
+    """2026-10-16: every emit exited 11 under the BB Morning Runner.
+
+    adb.exe is a native program, so MSYS rewrote `/sdcard/.cr_region.xml` into a
+    path under the Git install before adb saw it, and every screen read came back
+    empty. Claude Code and Hermes export MSYS_NO_PATHCONV=1, so every manual run
+    worked; the scheduled task exports nothing. The scripted adb above is a bash
+    script, which MSYS never rewrites for, so it could not see this: the stand-in
+    here is a native program (this Python), started with the variables removed.
+    On Linux nothing is rewritten and this passes trivially.
+    """
+    bash = _bash()
+    if not bash:
+        pytest.skip("no bash on this machine (Git Bash on Windows)")
+    echo = tmp_path / "argv.py"
+    echo.write_text("import sys\nprint(*sys.argv[1:])\n", encoding="utf-8")
+    env = {k: v for k, v in os.environ.items()
+           if k not in ("MSYS_NO_PATHCONV", "MSYS2_ARG_CONV_EXCL")}
+    env["ADB_BIN"] = Path(sys.executable).as_posix()
+    r = subprocess.run([bash, (LEG / "adb_bounded.sh").as_posix(), echo.as_posix(),
+                        "shell", "cat", "/sdcard/.cr_region.xml"],
+                       env=env, stdin=subprocess.DEVNULL,
+                       capture_output=True, text=True, timeout=60)
+    assert r.returncode == 0, r.stderr[-800:]
+    assert r.stdout.split() == ["shell", "cat", "/sdcard/.cr_region.xml"], r.stdout
+
+
+def _region_run(tmp_path, ok_at: int):
+    # CR_DIAG=0: the snapshot runs dozens of adb calls and writes into the real
+    # repo's work/crimeradar/emu, and none of it is under test here.
+    r = run_preflight(tmp_path, "ok", setreg_text=SETREG_FLAKY, FAKE_SET_OK_AT=str(ok_at),
+                      CR_DIAG="0")
+    state = tmp_path / "state"
+    calls = (state / "calls").read_text(encoding="utf-8")
+    sets = int((state / "sets").read_text())
+    return r, calls, sets
+
+
+def test_a_region_the_taps_set_needs_no_recovery(tmp_path):
+    r, calls, sets = _region_run(tmp_path, 1)
+    assert r.returncode == 0, r.stdout + r.stderr
+    assert sets == 1 and "am force-stop" not in calls and "emu kill" not in calls
+
+
+def test_a_region_that_fails_once_is_set_after_an_app_restart(tmp_path):
+    """2026-10-13/14/16: the 07:10 retries re-ran the same taps and failed the same way."""
+    r, calls, sets = _region_run(tmp_path, 2)
+    assert r.returncode == 0, r.stdout + r.stderr
+    assert "restarting the app" in r.stdout
+    assert sets == 2 and "am force-stop com.newsbreak.crimeradar" in calls
+    assert "emu kill" not in calls
+
+
+def test_a_region_that_survives_an_app_restart_gets_one_emulator_recycle(tmp_path):
+    r, calls, sets = _region_run(tmp_path, 3)
+    assert r.returncode == 0, r.stdout + r.stderr
+    assert "recycling the emulator" in r.stdout
+    assert sets == 3 and calls.count("emu kill") == 1
+
+
+def test_a_region_that_never_sets_exits_11_after_exactly_one_recycle(tmp_path):
+    r, calls, sets = _region_run(tmp_path, 99)
+    assert r.returncode == 11, r.stdout + r.stderr
+    assert "emulator recycle all tried" in r.stdout
+    # two set attempts per pass, two passes, one recycle between them: bounded
+    assert sets == 4 and calls.count("emu kill") == 1

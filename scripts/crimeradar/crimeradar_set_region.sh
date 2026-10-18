@@ -112,7 +112,9 @@ select_local_tab() {
 
 # A picker left open by an earlier run must not be mistaken for the feed.
 if picker_open; then
-  echo "[cr] the location picker was already open; closing it"
+  # stderr: on stdout this line became the chip that `--print` reported
+  # (2026-10-14 06:54: "the region is '[cr] the location picker was already open...'").
+  echo "[cr] the location picker was already open; closing it" >&2
   "$ADB" -s "$DEV" shell input keyevent 4 >/dev/null 2>&1
   sleep 3
 fi
@@ -171,6 +173,10 @@ for _ in 1 2; do
   [ -n "$line" ] || line="$(node_by_id txt_location_feed_tab)"
   if [ -n "$line" ]; then
     tap_node "$line"
+  elif [ -z "$(dump | grep -m1 -F 'resource-id=')" ]; then
+    # Not the same fault: nothing was read at all. 2026-10-16 printed "not on
+    # screen" over a screen that showed the chip, and the hunt began at the UI.
+    echo "[cr] the screen dump came back empty (the chip may well be there)"
   else
     echo "[cr] the location chip is not on screen"
   fi
@@ -188,9 +194,25 @@ fi
 # 2. The picker lists the city; the history row holds "Bakersfield, CA". Match
 #    the exact text: "Bakersfield*" alone would also match the search box once it
 #    contains the typed city.
-row="$(dump | grep -F "resource-id=\"$ID/place_name_txt\"" | grep -F 'text="Bakersfield, CA"' | head -1)"
+#    The same text is also on the "Current Location" card at the top (inside
+#    location_vp), and tapping that card does nothing: the picker stays open.
+#    Verified live 2026-10-16 08:08: head -1 took the card, the chip read came
+#    from the picker screen and found no chip, and the 07:55 emit exited 11.
+#    Take a row below the card, and check the picker closed.
+P="$(dump)"
+vp_bottom="$(printf '%s\n' "$P" | grep -F "resource-id=\"$ID/location_vp\"" | head -1 \
+  | grep -oE 'bounds="\[[0-9]+,[0-9]+\]\[[0-9]+,[0-9]+\]"' | grep -oE '[0-9]+' | sed -n 4p)"
+row=""
+while IFS= read -r cand; do
+  top="$(printf '%s\n' "$cand" | grep -oE 'bounds="\[[0-9]+,[0-9]+\]' | grep -oE '[0-9]+' | sed -n 2p)"
+  [ -n "$top" ] && [ "$top" -ge "${vp_bottom:-0}" ] && { row="$cand"; break; }
+done <<EOF
+$(printf '%s\n' "$P" | grep -F "resource-id=\"$ID/place_name_txt\"" | grep -F 'text="Bakersfield, CA"')
+EOF
 if [ -n "$row" ]; then
   tap_node "$row" && echo "[cr] chose 'Bakersfield, CA' from the picker"
+  sleep 3
+  picker_open && echo "[cr] the picker is still open after the row was tapped"
 else
   # 3. No such row: type the city into the picker's own search box.
   echo "[cr] no 'Bakersfield, CA' row; typing the city into the search box"

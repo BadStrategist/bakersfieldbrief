@@ -265,9 +265,34 @@ if [ "$SRC" = "0" ]; then
   echo "[cr] region: ${CHIP:-unknown}"
 else
   echo "[cr] region is '${CHIP:-unknown}' (set_region code $SRC); setting it to Bakersfield"
+  # Escalate, never repeat. The runner's 07:10 retries used to re-run the same
+  # taps over the same parked screen and fail the same way (2026-10-13, -14, -16
+  # all exited 11 three times). So: the taps; then a fresh app (BACK out of
+  # whatever it is parked on, force-stop, relaunch) and the taps again; then one
+  # emulator recycle and the whole preflight again. Only after all three, 11.
   if ! bash "$SETREG" </dev/null; then
-    echo "[cr] FAILED: the region is '$(bash "$SETREG" --print 2>/dev/null | head -n 1)' and could not be set to Bakersfield"
-    exit 11
+    echo "[cr] region not set; restarting the app and trying again"
+    for _ in 1 2 3; do "$ADB" -s "$DEV" shell input keyevent 4 >/dev/null 2>&1; sleep 1; done
+    "$ADB" -s "$DEV" shell am force-stop "$PKG" >/dev/null 2>&1
+    sleep 3
+    "$ADB" -s "$DEV" shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1
+    sleep 12    # the feed loads after the launch; the chip is not there before it
+    if ! bash "$SETREG" </dev/null; then
+      if [ "${CR_REGION_RETRY:-0}" != "1" ]; then
+        echo "[cr] region still not set after an app restart; recycling the emulator and starting again"
+        diag "preflight: region unset after an app restart, before the recycle"
+        # CR_WEDGE_RETRY=1 for the same reasons as the wedge recycle above: the
+        # stop is mid-leg (no app reopen, no second diag) and the leg apps are
+        # already closed. It also means a wedge on the second pass exits 12
+        # rather than recycling again, which is the bound wanted here too.
+        CR_WEDGE_RETRY=1 bash "$SCRIPTS/crimeradar_emu_stop.sh" >/dev/null 2>&1
+        sleep 5
+        CR_WEDGE_RETRY=1 CR_REGION_RETRY=1 exec bash "$0"
+      fi
+      echo "[cr] FAILED: the region is '$(bash "$SETREG" --print 2>/dev/null | head -n 1)' and could not be set to Bakersfield (taps, app restart and emulator recycle all tried)"
+      diag "preflight exit 11: region unset after the emulator recycle"
+      exit 11
+    fi
   fi
   echo "[cr] region set: $(bash "$SETREG" --print 2>/dev/null | head -n 1)"
 fi

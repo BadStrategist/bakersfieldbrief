@@ -1280,6 +1280,16 @@
   "details": ""
  },
  {
+  "log_id": "261018BF0119",
+  "time": "Oct 18 2026 11:06AM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 N / Rowlee Rd",
+  "area": "Buttonwillow",
+  "lat": 35.45561,
+  "lon": -119.474776,
+  "details": ""
+ },
+ {
   "log_id": "261018BF0006",
   "time": "Oct 18 2026 12:08AM",
   "type": "20002-Hit and Run No Injuries",

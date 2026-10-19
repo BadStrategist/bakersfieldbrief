@@ -1290,6 +1290,16 @@
   "details": ""
  },
  {
+  "log_id": "261019BF0182",
+  "time": "Oct 19 2026  1:28PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "0 California Ave Onr",
+  "area": "Bakersfield",
+  "lat": 35.368076,
+  "lon": -119.042422,
+  "details": ""
+ },
+ {
   "log_id": "261019BF0038",
   "time": "Oct 19 2026  6:00AM",
   "type": "1181-Trfc Collision-Minor Inj",

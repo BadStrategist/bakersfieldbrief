@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-19T12:16:09-07:00",
+ "built_at": "2026-10-19T12:29:23-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -70,10 +70,10 @@
   "_digest_meta": "deterministic",
   "brief_words": 1037,
   "daily": {
-   "news_headlines": 75,
+   "news_headlines": 50,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "Shafter remembers Ronald Pierce, Minter Field Air Museum chairman who spent decades preserving its history",
    "overnight_band": {
     "date": "2026-10-19",

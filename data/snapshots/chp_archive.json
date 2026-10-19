@@ -1330,6 +1330,16 @@
   "details": ""
  },
  {
+  "log_id": "261018BF0313",
+  "time": "Oct 18 2026  6:57PM",
+  "type": "CZP-Assist with Construction",
+  "location": "SB SR99 at SR166",
+  "area": "Bakersfield",
+  "lat": 35.057778,
+  "lon": -118.968056,
+  "details": ""
+ },
+ {
   "log_id": "261018BF0055",
   "time": "Oct 18 2026  7:04AM",
   "type": "1179-Trfc Collision-1141 Enrt",
@@ -1337,6 +1347,26 @@
   "area": "Fort Tejon",
   "lat": 34.914069,
   "lon": -118.92362,
+  "details": ""
+ },
+ {
+  "log_id": "261018BF0356",
+  "time": "Oct 18 2026  8:58PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "Fiorito St / Joanne Ave",
+  "area": "Bakersfield",
+  "lat": 35.349577,
+  "lon": -119.056297,
+  "details": ""
+ },
+ {
+  "log_id": "261018BF0357",
+  "time": "Oct 18 2026  8:59PM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "SR178 / M St",
+  "area": "Bakersfield",
+  "lat": 35.381189,
+  "lon": -119.01537,
   "details": ""
  },
  {

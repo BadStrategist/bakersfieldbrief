@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-19T01:16:38-07:00",
+ "built_at": "2026-10-19T05:59:58-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,7 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": "RuntimeError: overpass-api.de: ConnectionError: HTTPSConnectionPool(host='overpass-api.de', port=443): Max retries exceeded with url: /api/interpreter (Caused by NewConnectionError(\"HTTPSConnection(host='overpass-api.de', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\")); lambert.openstreetmap.de: ConnectionError: HTTPSConnectionPool(host='lambert.openstreetmap.de', port=443): Max retries exceeded with url: /api/interpreter (Caused by NewConnectionError(\"HTTPSConnection(host='lambert.openstreetmap.de', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\")); gall.openstreetmap.de: ConnectionError: HTTPSConnectionPool(host='gall.openstreetmap.de', port=443): Max retries exceeded with url: /api/interpreter (Caused by NewConnectionError(\"HTTPSConnection(host='gall.openstreetmap.de', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\"))",
+   "error": "RuntimeError: overpass-api.de: HTTPError: 502 Server Error: Bad Gateway for url: https://overpass-api.de/api/interpreter; lambert.openstreetmap.de: HTTPError: 502 Server Error: Bad Gateway for url: https://lambert.openstreetmap.de/api/interpreter; gall.openstreetmap.de: HTTPError: 502 Server Error: Bad Gateway for url: https://gall.openstreetmap.de/api/interpreter",
    "stale": true,
    "asof": "2026-10-18"
   },
@@ -70,13 +70,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 65,
+  "brief_words": 66,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 7,
-   "top_story": "Felicita Park renovations finished in Arvin, bringing solar lights, exercise equipment and new benches",
+   "chp_new": 0,
+   "top_story": "Shafter remembers Ronald Pierce, Minter Field Air Museum chairman who spent decades preserving its history",
    "overnight_band": {
     "date": "2026-10-18",
     "count": 32,
@@ -148,20 +148,20 @@
   },
   "tehachapi": {
    "sr58": "RESTRICTIONS",
-   "wind_mph": 3,
+   "wind_mph": 0,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 45,
-   "wind_mph": 3,
+   "temp": 49,
+   "wind_mph": 0,
    "alerts": 0
   },
   "roads": {
    "routes": [
     "i5:RESTRICTIONS",
     "sr58:RESTRICTIONS",
-    "sr99:CLOSED"
+    "sr99:RESTRICTIONS"
    ],
    "log_entries": 60
   },
@@ -188,10 +188,10 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 140906,
+   "isabella_af": 140536,
    "alpr_total": 458,
    "kern_fires": 0,
-   "aqi": 62,
+   "aqi": 53,
    "chp_week": 3
   },
   "letters": {

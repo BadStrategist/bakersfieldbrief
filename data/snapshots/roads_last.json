@@ -49,7 +49,7 @@
      }
     ]
    },
-   "reported_as_of": "Monday, October 19th, 2026 at 07:33 AM",
+   "reported_as_of": "Monday, October 19th, 2026 at 12:16 PM",
    "hash": "efa451eb67"
   },
   {
@@ -57,32 +57,23 @@
    "slug": "sr58",
    "name": "State Route 58 \u2014 Tehachapi",
    "pass": false,
-   "status": "RESTRICTIONS",
-   "pass_status": "RESTRICTIONS",
+   "status": "OPEN",
+   "pass_status": "OPEN",
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "A high wind advisory is in effect from 15 mi west of Tehachapi (Kern Co) to the Kern/San Bernardino Co Line - Travel is not recommended for campers, trailers, or permit loads",
-     "status": "RESTRICTIONS"
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
     }
    ],
    "scope": {
-    "on_pass": "RESTRICTIONS",
-    "on_pass_reported": true,
-    "on_pass_items": [
-     {
-      "status": "RESTRICTIONS",
-      "place": "",
-      "county": "Kern Co",
-      "where": "Kern Co",
-      "text": "A high wind advisory is in effect from 15 mi west of Tehachapi (Kern Co) to the Kern/San Bernardino Co Line - Travel is not recommended for campers, trailers, or permit loads",
-      "region": "CENTRAL CALIFORNIA"
-     }
-    ],
+    "on_pass": "OPEN",
+    "on_pass_reported": false,
+    "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Monday, October 19th, 2026 at 07:33 AM",
-   "hash": "ff3b799983"
+   "reported_as_of": "Monday, October 19th, 2026 at 12:16 PM",
+   "hash": "5374f203ec"
   },
   {
    "number": "99",
@@ -118,7 +109,7 @@
      }
     ]
    },
-   "reported_as_of": "Monday, October 19th, 2026 at 07:33 AM",
+   "reported_as_of": "Monday, October 19th, 2026 at 12:16 PM",
    "hash": "f97882795e"
   }
  ],

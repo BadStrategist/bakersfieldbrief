@@ -49,7 +49,7 @@
      }
     ]
    },
-   "reported_as_of": "Sunday, October 18th, 2026 at 09:32 PM",
+   "reported_as_of": "Monday, October 19th, 2026 at 01:16 AM",
    "hash": "efa451eb67"
   },
   {
@@ -81,7 +81,7 @@
     ],
     "elsewhere": []
    },
-   "reported_as_of": "Sunday, October 18th, 2026 at 09:32 PM",
+   "reported_as_of": "Monday, October 19th, 2026 at 01:16 AM",
    "hash": "ff3b799983"
   },
   {
@@ -89,13 +89,13 @@
    "slug": "sr99",
    "name": "State Route 99 \u2014 Central Valley",
    "pass": false,
-   "status": "RESTRICTIONS",
-   "pass_status": "RESTRICTIONS",
+   "status": "CLOSED",
+   "pass_status": "CLOSED",
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
-     "status": "RESTRICTIONS"
+     "text": "Is closed to southbound traffic at the Tulare/Fresno Co Line to Merced St /in Fowler/ (Fresno Co) from 2100 hrs to 0400 hrs Sunday thru Monday thru 10/19/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "status": "CLOSED"
     },
     {
      "region": "NORTHERN CALIFORNIA",
@@ -109,6 +109,14 @@
     "on_pass_items": [],
     "elsewhere": [
      {
+      "status": "CLOSED",
+      "place": "Fowler",
+      "county": "Fresno Co",
+      "where": "Fowler (Fresno Co)",
+      "text": "Is closed to southbound traffic at the Tulare/Fresno Co Line to Merced St /in Fowler/ (Fresno Co) from 2100 hrs to 0400 hrs Sunday thru Monday thru 10/19/26 - Due to construction - Motorists are advised to use an...",
+      "region": "CENTRAL CALIFORNIA"
+     },
+     {
       "status": "RESTRICTIONS",
       "place": "",
       "county": "",
@@ -118,9 +126,9 @@
      }
     ]
    },
-   "reported_as_of": "Sunday, October 18th, 2026 at 09:32 PM",
-   "hash": "f97882795e"
+   "reported_as_of": "Monday, October 19th, 2026 at 01:16 AM",
+   "hash": "3b79e288c6"
   }
  ],
- "asof": "2026-10-18"
+ "asof": "2026-10-19"
 }

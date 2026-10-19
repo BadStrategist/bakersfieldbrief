@@ -1,185 +1,5 @@
 [
  {
-  "log_id": "261011BF0039",
-  "time": "Oct 11 2026  2:26AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Sr99 N / Lerdo Hwy Ofr",
-  "area": "Bakersfield",
-  "lat": 35.496227,
-  "lon": -119.159603,
-  "details": ""
- },
- {
-  "log_id": "261011BF0218",
-  "time": "Oct 11 2026  2:58PM",
-  "type": "WIND Advisory",
-  "location": "1033 Lebec Rd",
-  "area": "Fort Tejon",
-  "lat": 34.825534,
-  "lon": -118.87775,
-  "details": ""
- },
- {
-  "log_id": "261011BF0230",
-  "time": "Oct 11 2026  3:43PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Jewetta Ave / Rosedale Service Rd",
-  "area": "Bakersfield",
-  "lat": 35.384357,
-  "lon": -119.127871,
-  "details": ""
- },
- {
-  "log_id": "261011BF0231",
-  "time": "Oct 11 2026  3:51PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sb I5 Jno Lebec Rest Area",
-  "area": "Fort Tejon",
-  "lat": 34.830754,
-  "lon": -118.868495,
-  "details": ""
- },
- {
-  "log_id": "261011BF0239",
-  "time": "Oct 11 2026  4:12PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Descanso St / Kentucky St",
-  "area": "Bakersfield",
-  "lat": 35.373182,
-  "lon": -118.954149,
-  "details": ""
- },
- {
-  "log_id": "261011BF0252",
-  "time": "Oct 11 2026  4:49PM",
-  "type": "FIRE-Report of Fire",
-  "location": "Nb I5 Jso Lost Hills Rd",
-  "area": "Buttonwillow",
-  "lat": 35.663056,
-  "lon": -119.687778,
-  "details": ""
- },
- {
-  "log_id": "261011BF0255",
-  "time": "Oct 11 2026  5:10PM",
-  "type": "1125-Traffic Hazard",
-  "location": "0 I5 S",
-  "area": "Fort Tejon",
-  "lat": 34.909988,
-  "lon": -118.924095,
-  "details": ""
- },
- {
-  "log_id": "261011BF0262",
-  "time": "Oct 11 2026  5:19PM",
-  "type": "1125-Traffic Hazard",
-  "location": "I5 S / Laval Rd W Ofr",
-  "area": "Fort Tejon",
-  "lat": 34.989012,
-  "lon": -118.946272,
-  "details": ""
- },
- {
-  "log_id": "261011BF0263",
-  "time": "Oct 11 2026  5:27PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Nb I5 Jno Lebec Curve",
-  "area": "Fort Tejon",
-  "lat": 34.841944,
-  "lon": -118.864444,
-  "details": ""
- },
- {
-  "log_id": "261011BF0272",
-  "time": "Oct 11 2026  5:57PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Sr184 / Redbank Rd",
-  "area": "Bakersfield",
-  "lat": 35.339802,
-  "lon": -118.91428,
-  "details": ""
- },
- {
-  "log_id": "261011BF0271",
-  "time": "Oct 11 2026  5:57PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Round Mountain Rd / Granite Rd",
-  "area": "Bakersfield",
-  "lat": 35.530085,
-  "lon": -118.962156,
-  "details": ""
- },
- {
-  "log_id": "261011BF0274",
-  "time": "Oct 11 2026  6:04PM",
-  "type": "WIND Advisory",
-  "location": "Buttonwillow",
-  "area": "Buttonwillow",
-  "lat": 35.399696,
-  "lon": -119.467512,
-  "details": ""
- },
- {
-  "log_id": "261011BF0139",
-  "time": "Oct 11 2026 11:54AM",
-  "type": "FIRE-Report of Fire",
-  "location": "Sb I5 Jno Sr99",
-  "area": "Fort Tejon",
-  "lat": 35.00725,
-  "lon": -118.95158,
-  "details": ""
- },
- {
-  "log_id": "261011BF0147",
-  "time": "Oct 11 2026 11:59AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr99 S / Rosedale Hwy Ofr",
-  "area": "Bakersfield",
-  "lat": 35.387281,
-  "lon": -119.044619,
-  "details": ""
- },
- {
-  "log_id": "261011BF0002",
-  "time": "Oct 11 2026 12:00AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "261011BF0154",
-  "time": "Oct 11 2026 12:18PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Nb I5 Jno Lebec Rd",
-  "area": "Fort Tejon",
-  "lat": 34.836389,
-  "lon": -118.862778,
-  "details": ""
- },
- {
-  "log_id": "261011BF0156",
-  "time": "Oct 11 2026 12:24PM",
-  "type": "1125-Traffic Hazard",
-  "location": "I5 N / West Escape Ramp",
-  "area": "Fort Tejon",
-  "lat": 34.918056,
-  "lon": -118.923889,
-  "details": ""
- },
- {
-  "log_id": "261011BF0167",
-  "time": "Oct 11 2026 12:58PM",
-  "type": "FIRE-Report of Fire",
-  "location": "Sr58 E / Mohawk St",
-  "area": "Bakersfield",
-  "lat": 35.37132,
-  "lon": -119.066154,
-  "details": ""
- },
- {
   "log_id": "261012BF0161",
   "time": "Oct 12 2026  1:22PM",
   "type": "1125-Traffic Hazard",
@@ -1380,6 +1200,16 @@
   "details": ""
  },
  {
+  "log_id": "261018BF0369",
+  "time": "Oct 18 2026  9:49PM",
+  "type": "CZP-Assist with Construction",
+  "location": "NB I5 at Lebec School Rd",
+  "area": "Fort Tejon",
+  "lat": 34.866389,
+  "lon": -118.883611,
+  "details": ""
+ },
+ {
   "log_id": "261018BF0119",
   "time": "Oct 18 2026 11:06AM",
   "type": "1125-Traffic Hazard",
@@ -1387,6 +1217,36 @@
   "area": "Buttonwillow",
   "lat": 35.45561,
   "lon": -119.474776,
+  "details": ""
+ },
+ {
+  "log_id": "261018BF0382",
+  "time": "Oct 18 2026 11:11PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "522 Decatur St",
+  "area": "Bakersfield",
+  "lat": 35.413617,
+  "lon": -119.030517,
+  "details": ""
+ },
+ {
+  "log_id": "261018BF0398",
+  "time": "Oct 18 2026 11:50PM",
+  "type": "CFIRE-Car Fire",
+  "location": "Mayer Ave / Sullivan Rd",
+  "area": "Buttonwillow",
+  "lat": 35.412746,
+  "lon": -119.287505,
+  "details": ""
+ },
+ {
+  "log_id": "261018BF0400",
+  "time": "Oct 18 2026 11:56PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "900 Pico St",
+  "area": "Buttonwillow",
+  "lat": 35.135782,
+  "lon": -119.453815,
   "details": ""
  },
  {
@@ -1427,6 +1287,36 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261019BF0002",
+  "time": "Oct 19 2026 12:00AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261019BF0005",
+  "time": "Oct 19 2026 12:05AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Mettler Frontage Rd W / Copus Rd",
+  "area": "Bakersfield",
+  "lat": 35.095062,
+  "lon": -118.981298,
+  "details": ""
+ },
+ {
+  "log_id": "261019BF0012",
+  "time": "Oct 19 2026 12:47AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Nb Sr99 At Olive Dr",
+  "area": "Bakersfield",
+  "lat": 35.412222,
+  "lon": -119.054722,
   "details": ""
  }
 ]

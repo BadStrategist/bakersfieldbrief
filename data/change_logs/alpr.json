@@ -319,5 +319,17 @@
   "new_count": 2,
   "scope": "kern-county",
   "widened": 183
+ },
+ {
+  "date": "2026-10-19",
+  "total": 458,
+  "new_ids": [
+   14284258301,
+   14291305501,
+   14291939501
+  ],
+  "gone_ids": [],
+  "new_count": 3,
+  "scope": "kern-county"
  }
 ]

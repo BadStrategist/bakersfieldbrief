@@ -1300,6 +1300,26 @@
   "details": ""
  },
  {
+  "log_id": "261019BF0186",
+  "time": "Oct 19 2026  1:48PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb Sr99 Jso Kimberlina Rd",
+  "area": "Bakersfield",
+  "lat": 35.558477,
+  "lon": -119.197166,
+  "details": ""
+ },
+ {
+  "log_id": "261019BF0190",
+  "time": "Oct 19 2026  1:51PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sr223 Ofr / Sr99 N",
+  "area": "Bakersfield",
+  "lat": 35.205022,
+  "lon": -119.009598,
+  "details": ""
+ },
+ {
   "log_id": "261019BF0038",
   "time": "Oct 19 2026  6:00AM",
   "type": "1181-Trfc Collision-Minor Inj",
@@ -1352,7 +1372,7 @@
  {
   "log_id": "261019BF0154",
   "time": "Oct 19 2026 12:09PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
+  "type": "1180-Trfc Collision-Major Inj",
   "location": "2406 Edison Hwy",
   "area": "Bakersfield",
   "lat": 35.370457,

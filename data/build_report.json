@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-19T05:59:58-07:00",
+ "built_at": "2026-10-19T07:34:42-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,9 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": "RuntimeError: overpass-api.de: HTTPError: 502 Server Error: Bad Gateway for url: https://overpass-api.de/api/interpreter; lambert.openstreetmap.de: HTTPError: 502 Server Error: Bad Gateway for url: https://lambert.openstreetmap.de/api/interpreter; gall.openstreetmap.de: HTTPError: 502 Server Error: Bad Gateway for url: https://gall.openstreetmap.de/api/interpreter",
-   "stale": true,
-   "asof": "2026-10-18"
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -70,48 +68,55 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 66,
+  "brief_words": 1037,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 2,
    "top_story": "Shafter remembers Ronald Pierce, Minter Field Air Museum chairman who spent decades preserving its history",
    "overnight_band": {
-    "date": "2026-10-18",
-    "count": 32,
+    "date": "2026-10-19",
+    "count": 42,
     "chips": [
      [
       "Weapons and assaults",
-      7
+      4
      ],
      [
       "Fires",
-      7
+      11
      ],
      [
       "Crashes and traffic",
+      6
+     ],
+     [
+      "Medical and overdose",
       5
      ],
      [
       "Disturbances and welfare",
-      6
-     ],
-     [
-      "Burglary and theft",
       2
      ],
      [
-      "Suspicious activity",
-      3
+      "Probation check",
+      4
+     ],
+     [
+      "Welfare call",
+      4
      ],
      [
       "Other calls",
-      2
+      6
      ]
     ],
-    "other": "1 foot pursuit, 1 incident",
-    "unmapped": []
+    "other": "2 suspicious person report, 2 officer assist, 1 warrant service, 1 incident",
+    "unmapped": [
+     "welfare call",
+     "suspicious person report"
+    ]
    },
    "archive": "2026-10-19"
   },
@@ -153,7 +158,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 49,
+   "temp": 48,
    "wind_mph": 0,
    "alerts": 0
   },
@@ -191,14 +196,14 @@
    "isabella_af": 140536,
    "alpr_total": 458,
    "kern_fires": 0,
-   "aqi": 53,
-   "chp_week": 3
+   "aqi": 52,
+   "chp_week": 5
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 68
+   "published": 69
   },
   "map": {
    "dots": 60

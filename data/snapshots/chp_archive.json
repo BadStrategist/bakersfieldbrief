@@ -1290,6 +1290,26 @@
   "details": ""
  },
  {
+  "log_id": "261019BF0038",
+  "time": "Oct 19 2026  6:00AM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "Nb Sr99 Jno Sr223",
+  "area": "Bakersfield",
+  "lat": 35.20993,
+  "lon": -119.010374,
+  "details": ""
+ },
+ {
+  "log_id": "261019BF0049",
+  "time": "Oct 19 2026  7:11AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Elk Hills Rd / Skyline Rd",
+  "area": "Buttonwillow",
+  "lat": 35.278454,
+  "lon": -119.467246,
+  "details": ""
+ },
+ {
   "log_id": "261019BF0002",
   "time": "Oct 19 2026 12:00AM",
   "type": "TADV-Traffic Advisory",

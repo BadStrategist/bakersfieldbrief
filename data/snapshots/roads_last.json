@@ -16,7 +16,7 @@
     },
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "A high wind advisory is in effect from the Los Angeles/Kern Co Line to 5 mi south of the Jct of SR-99 /at Grapevine Rd/ (Kern Co) /the Grapevine/ - Travel is not recommended for campers, trailers, or permit loads A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
      "status": "RESTRICTIONS"
     },
     {
@@ -36,6 +36,14 @@
       "where": "the Southern California area",
       "text": "A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
       "region": "SOUTHERN CALIFORNIA"
+     },
+     {
+      "status": "RESTRICTIONS",
+      "place": "",
+      "county": "Kern Co",
+      "where": "Kern Co",
+      "text": "A high wind advisory is in effect from the Los Angeles/Kern Co Line to 5 mi south of the Jct of SR-99 /at Grapevine Rd/ (Kern Co) /the Grapevine/ - Travel is not recommended for campers, trailers, or permit loads",
+      "region": "CENTRAL CALIFORNIA"
      }
     ],
     "elsewhere": [
@@ -73,8 +81,8 @@
      }
     ]
    },
-   "reported_as_of": "Tuesday, October 20th, 2026 at 04:23 PM",
-   "hash": "3fc1bbcb81"
+   "reported_as_of": "Tuesday, October 20th, 2026 at 04:49 PM",
+   "hash": "7cb9d17da9"
   },
   {
    "number": "58",
@@ -96,7 +104,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Tuesday, October 20th, 2026 at 04:23 PM",
+   "reported_as_of": "Tuesday, October 20th, 2026 at 04:49 PM",
    "hash": "5374f203ec"
   },
   {
@@ -133,7 +141,7 @@
      }
     ]
    },
-   "reported_as_of": "Tuesday, October 20th, 2026 at 04:23 PM",
+   "reported_as_of": "Tuesday, October 20th, 2026 at 04:49 PM",
    "hash": "f97882795e"
   }
  ],

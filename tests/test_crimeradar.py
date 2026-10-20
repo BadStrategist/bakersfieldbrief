@@ -1251,3 +1251,43 @@ def test_merge_drops_a_house_number_from_a_staged_area(dirs):
     assert mc.merge(DATE, inc, stage)["merged"] == 1
     kept = [i for i in read_inc(inc) if i.get("source") == "crimeradar"]
     assert kept[0]["area"] == "Union Avenue"
+
+
+# ------------------------------------------- report window edge + sweep union
+def test_merge_drops_a_row_stamped_on_the_7am_edge(dirs):
+    """2026-10-18: the emit staged a 07:00 cardiac arrest. The window is 19:00-06:59,
+    the box's own tests refuse anything outside it, and the publish was HELD. The
+    merge now drops (and counts) such a row instead."""
+    inc, stage = dirs
+    put_inc(inc, TRANSCRIPT)
+    put_stage(stage, [staged("07:00", "Cardiac arrest at a home."),
+                      staged("05:00", "Fight at Marriott.")])
+    r = mc.merge(DATE, inc, stage)
+    assert (r["merged"], r["late"]) == (1, 1)
+    times = [i["time"] for i in read_inc(inc) if i.get("source") == "crimeradar"]
+    assert times == ["05:00"]
+    assert mc.in_report_window("06:59") and mc.in_report_window("19:00")
+    assert not mc.in_report_window("07:00") and not mc.in_report_window("18:59")
+
+
+def test_emit_never_stages_a_row_at_exactly_7am(monitor, monkeypatch):
+    out, _ = monitor
+    rows = [{"when": "Oct 4, 2026 7:00 AM", "title": "Cardiac arrest", "cy": 1},
+            {"when": "Oct 4, 2026 5:00 AM", "title": "Fight at Marriott", "cy": 2}]
+    monkeypatch.setattr(cr, "history_sweep", lambda *a, **k: [dict(r) for r in rows])
+    cr.emit_incidents(DATE)
+    doc = json.loads((out / f"emulator_incidents_{DATE}.json").read_text(encoding="utf-8"))
+    assert [i["time"] for i in doc["incidents"]] == ["05:00"]
+
+
+def test_a_shorter_later_sweep_keeps_the_earlier_sweeps_rows(monitor, monkeypatch):
+    """The app's History holds a bounded number of rows, so the 07:10 sweep can see
+    fewer calls than the 06:50 one. Overwriting the staging file lost those calls;
+    the emit now keeps the union, keyed on time + summary."""
+    out, _ = monitor
+    assert cr.emit_incidents(DATE)["staged"] == 3
+    shorter = [{"when": "Oct 4, 2026 5:00 AM", "title": "Fight at Marriott", "cy": 1}]
+    monkeypatch.setattr(cr, "history_sweep", lambda *a, **k: [dict(r) for r in shorter])
+    cr.emit_incidents(DATE)
+    doc = json.loads((out / f"emulator_incidents_{DATE}.json").read_text(encoding="utf-8"))
+    assert sorted(i["time"] for i in doc["incidents"]) == ["02:14", "05:00", "21:30"]

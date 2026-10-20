@@ -1187,7 +1187,12 @@ def verify_report(date_iso: str) -> dict:
         r["at"] = when.isoformat(sep=" ") if when else ""
         if when is not None:
             times.append(when)
-        if when is None or not (lo <= when <= hi):
+        # The window is half-open: 19:00 <= when < 07:00. A row at exactly 07:00
+        # belongs to the morning, not the night, and the box's own tests refuse
+        # an incident outside 19:00-06:59 (2026-10-18: an inclusive `<= hi` here
+        # staged a 07:00 cardiac arrest, which failed the test and HELD the
+        # publish).
+        if when is None or not (lo <= when < hi):
             outside.append(r)
             continue
         hit = mc.covered_by(when.strftime("%H:%M"), r["title"], transcript)
@@ -1559,6 +1564,25 @@ def emit_incidents(date_iso: str, dry: bool = False) -> dict:
             "source": mc.SOURCE,
         })
     stage = OUT / f"emulator_incidents_{date_iso}.json"
+    # A later sweep can see a shorter History list than an earlier one (the app
+    # holds a bounded number of rows), so overwriting would drop calls the
+    # earlier sweep already had. Keep the union, keyed on time + title.
+    try:
+        prev = json.loads(stage.read_text(encoding="utf-8"))
+    except Exception:  # noqa: BLE001
+        prev = None
+    if isinstance(prev, dict) and prev.get("incidents"):
+        seen = {(r.get("time"), r.get("summary")) for r in rows_out}
+        extra = [r for r in prev["incidents"]
+                 if (r.get("time"), r.get("summary")) not in seen]
+        if extra:
+            rows_out = rows_out + extra
+            print(f"[cr] kept {len(extra)} row(s) from the earlier sweep "
+                  f"({prev.get('generated', 'n/a')})")
+        if prev.get("history_newest") and (not v.get("newest") or prev["history_newest"] > v["newest"]):
+            v["newest"] = prev["history_newest"]
+        if prev.get("history_oldest") and (not v.get("oldest") or prev["history_oldest"] < v["oldest"]):
+            v["oldest"] = prev["history_oldest"]
     _write_atomic(stage, json.dumps(
         {"date": date_iso, "window": v["window"],
          "generated": dt.datetime.now().isoformat(timespec="seconds"),

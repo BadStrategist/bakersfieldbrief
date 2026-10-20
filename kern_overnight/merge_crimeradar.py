@@ -5,7 +5,7 @@ and REWRITES the file. Anything written into it earlier is lost. So the emulator
 rows are staged first (crimeradar_monitor.py --emit) and merged here, after the
 extraction, as an explicit step.
 
-The staging file carries EVERY app row in the report window (19:00 -> 07:00).
+The staging file carries EVERY app row in the report window (19:00 -> 06:59).
 This step decides which of them the transcript already covers, because only now
 does the transcript's incident list exist. Rules:
 
@@ -283,6 +283,28 @@ def gap(a: str, b: str) -> int | None:
     return min(d, 1440 - d)
 
 
+# The report window, as tests/test_kern_overnight.py enforces it: every incident
+# is stamped 19:00-06:59 (hour <= 6 or >= 19). The 07:15 emit sweeps History
+# after the night ends, so its newest rows sit on the 07:00 edge, and the app's
+# own clock stamp lands there exactly (2026-10-18 staged a 07:00 cardiac arrest).
+# A row outside the window is dropped HERE, where it is counted and printed,
+# rather than at the publish gate, where the box's own tests hold the report.
+WINDOW_START_MIN = 19 * 60
+WINDOW_END_MIN = 6 * 60 + 59
+
+
+def in_report_window(hhmm: str) -> bool:
+    """Is this clock time inside the report window (19:00 -> 06:59)?
+
+    Half-open: 7:00 a.m. belongs to the morning, not the night. An unreadable
+    time answers True; plan() has already sent those to `invalid`.
+    """
+    m = minutes(hhmm)
+    if m is None:
+        return True
+    return m >= WINDOW_START_MIN or m <= WINDOW_END_MIN
+
+
 def covered_by(hhmm: str, title: str, transcript: list[dict],
                wide: int = 60, tight: int = 15) -> dict | None:
     """The transcript incident that already covers this app row, or None.
@@ -362,10 +384,14 @@ def plan(staged: list, ours: list, spans: list[tuple[int, int]] | None = None,
                   if not (isinstance(i, dict) and i.get("source") == SOURCE)]
     keep, covered, private, invalid, minor, gap, seen = [], [], [], [], [], [], set()
     outside: list = []
+    late: list = []
     for r in staged:
         if not isinstance(r, dict) or minutes(r.get("time", "")) is None \
                 or not str(r.get("summary") or "").strip():
             invalid.append(r)
+            continue
+        if not in_report_window(r["time"]):
+            late.append(r)
             continue
         if OUTSIDE.search(str(r.get("summary") or "")):
             outside.append(r)
@@ -397,7 +423,7 @@ def plan(staged: list, ours: list, spans: list[tuple[int, int]] | None = None,
             gap.append(row)
     return {"transcript": transcript, "keep": keep, "covered": covered,
             "private": private, "outside": outside, "invalid": invalid,
-            "minor": minor, "gap": gap}
+            "minor": minor, "gap": gap, "late": late}
 
 
 def merge(date_iso: str, incidents_dir: Path = INCIDENTS,
@@ -405,7 +431,8 @@ def merge(date_iso: str, incidents_dir: Path = INCIDENTS,
           transcript_dir: Path | None = None) -> dict:
     """Rebuild the emulator section of incidents/<date>.json. Never raises."""
     out = {"date": date_iso, "staged": 0, "merged": 0, "covered": 0,
-           "private": 0, "outside": 0, "gap": 0, "changed": False, "note": ""}
+           "private": 0, "outside": 0, "gap": 0, "late": 0, "changed": False,
+           "note": ""}
     try:
         if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date_iso or ""):
             out["note"] = "bad date"
@@ -443,7 +470,8 @@ def merge(date_iso: str, incidents_dir: Path = INCIDENTS,
         spans = radio_spans(date_iso, transcript_dir or TRANSCRIPTS)
         p = plan(staged, ours, spans, date_iso)
         out.update(covered=len(p["covered"]), private=len(p["private"]),
-                   outside=len(p["outside"]), gap=len(p["gap"]))
+                   outside=len(p["outside"]), gap=len(p["gap"]),
+                   late=len(p["late"]))
         if not p["transcript"]:
             out["note"] = (f"{dest.name} has no transcript incidents; refusing to "
                            "build a report from emulator rows alone")
@@ -591,6 +619,7 @@ def main() -> int:
           f"({r['gap']} of them filling hours the radio feed does not carry), "
           f"{r['covered']} already covered, {r['private']} withheld (privacy), "
           f"{r['outside']} dropped (outside Kern), "
+          f"{r.get('late', 0)} dropped (outside the 19:00-06:59 window), "
           f"{'file updated' if r['changed'] else 'file unchanged'} - {r['note']}")
     return 0
 

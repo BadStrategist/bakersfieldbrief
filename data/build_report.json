@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-20T11:28:41-07:00",
+ "built_at": "2026-10-20T12:11:16-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 381, column 15"
   },
   "isabella": {
    "ok": true,
@@ -148,13 +148,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 15,
+   "wind_mph": 18,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 68,
-   "wind_mph": 15,
+   "temp": 69,
+   "wind_mph": 18,
    "alerts": 0
   },
   "roads": {

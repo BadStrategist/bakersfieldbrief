@@ -144,13 +144,22 @@ def build(ctx, sources: dict) -> list[str]:
       <p>We use <a href="https://www.goatcounter.com/">GoatCounter</a>, a privacy-respecting,
       cookieless analytics tool that counts page views without cookies, tracking scripts, or
       personal data. We do not receive your name, email address, or identity through it.</p>
+      <p>If you arrive by tapping one of our Facebook or Instagram ads, your browser stores a
+      small first-party note on this site (a flag and a date, no ID or personal data) so we can
+      count, in aggregate, whether ad visitors read further, subscribe, or come back later. It
+      never leaves your browser except as those anonymous counts, and clearing your site data
+      removes it.</p>
+      <p>If you tap &ldquo;OK, show ads&rdquo; on our consent bar, we also load the Meta pixel,
+      which tells Meta that you viewed a page or signed up for the newsletter so we can measure
+      our Facebook and Instagram ads. It never loads without that consent, or if your browser
+      sends a Global Privacy Control signal. Meta&rsquo;s own privacy policy governs that data.</p>
       <h2>Children</h2>
       <p>This site does not target children under 13 and does not knowingly collect any
       information from them.</p>
       <h2>Contact</h2>
       <p>Privacy questions: use the <a href="../contact/">contact page</a>. We respond to
       privacy inquiries within 30 days.</p>
-      <p class="note">Last updated: <strong>September 22, 2026</strong>.</p>
+      <p class="note">Last updated: <strong>October 20, 2026</strong>.</p>
     </div>"""
     common.write(common.SITE / "privacy" / "index.html", page_mod.render(
         title="Privacy Policy | Bakersfield Daily Brief",

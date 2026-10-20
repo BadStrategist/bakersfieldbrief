@@ -61,6 +61,22 @@
     document.head.appendChild(sc);
   }
 
+  /* Meta pixel: same consent as ads, and never when the browser sends
+     Global Privacy Control. "" = not set up yet; the loader stays dormant. */
+  var META_PIXEL_ID = "";
+  function loadMetaPixel() {
+    if (!META_PIXEL_ID || window.fbq || navigator.globalPrivacyControl) return;
+    /* eslint-disable */
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    /* eslint-enable */
+    window.fbq("init", META_PIXEL_ID);
+    window.fbq("track", "PageView");
+  }
+
   function consentGranted() {
     try { return localStorage.getItem(CONSENT_KEY) === "granted"; }
     catch (e) { return false; }
@@ -77,7 +93,8 @@
     bar.style.cssText = "position:fixed;bottom:0;left:0;right:0;background:#20262C;color:#fff;" +
       "padding:12px 18px;z-index:999;font-size:14px;display:flex;gap:14px;align-items:center;" +
       "justify-content:space-between;flex-wrap:wrap;";
-    bar.innerHTML = "<span>This site shows ads only with your consent. We never sell your data. " +
+    bar.innerHTML = "<span>This site shows ads and uses Meta ad measurement only with your consent. " +
+      "We never sell your data. " +
       "<a href=\"privacy/\" style=\"color:#F3C76E\">Privacy policy</a></span>";
     var btnWrap = document.createElement("span");
     btnWrap.style.cssText = "display:flex;gap:8px;";
@@ -90,6 +107,7 @@
       bar.remove();
       document.body.style.paddingBottom = "";
       loadAdsense();   // enables Auto Ads (dashboard-configured) post-consent
+      loadMetaPixel();
       injectSlots();
     });
     // a dismiss that persists, so visitors who decline aren't re-prompted on
@@ -152,7 +170,7 @@
   if (ADSENSE_CLIENT) {
     consentBanner();
     window.addEventListener("load", function () {
-      if (consentGranted()) loadAdsense();  // returning consenting visitors
+      if (consentGranted()) { loadAdsense(); loadMetaPixel(); }  // returning consenting visitors
       injectSlots();
     });
   }
@@ -230,6 +248,7 @@
 
       // POST to the Cloudflare Pages Function (proxies to MailerLite with the
       // server-side token). No navigation; show the thank-you modal on success.
+      if (window.fbq) window.fbq("track", "Lead");  // only present with consent
       var xhr = new XMLHttpRequest();
       xhr.open("POST", "/api/newsletter", true);
       xhr.setRequestHeader("Content-Type", "application/json");
@@ -250,6 +269,95 @@
     modal.addEventListener("click", function (e) {
       if (e.target === modal) closeModal();
     });
+  })();
+
+  /* ---------- ad-visitor funnel (GoatCounter events) ----------
+     Meta appends ?fbclid= to every ad click. A visitor who lands with it is
+     an ad visitor; we remember that in first-party storage (a flag and a
+     date, no ID) and count, in aggregate, what ad visitors do next. Each
+     event fires at most once per tab session ("returned" once per browser):
+       ad/landed        arrived from a Facebook/Instagram ad
+       ad/stayed-30s    page open and visible for 30 seconds
+       ad/scrolled-75   scrolled three quarters of the way down
+       ad/2nd-page      opened another page on the site
+       ad/subscribed    submitted the newsletter form
+       ad/returned      came back on a later day without clicking an ad
+     Read them on the GoatCounter dashboard (kulture), or per event at
+     https://kulture.goatcounter.com/counter/ad%2F<name>.json */
+  (function () {
+    var ss, ls;
+    try { ss = window.sessionStorage; ls = window.localStorage; } catch (e) { return; }
+    if (!ss || !ls) return;
+
+    function get(s, k) { try { return s.getItem(k); } catch (e) { return null; } }
+    function set(s, k, v) { try { s.setItem(k, v); } catch (e) {} }
+
+    // Mark an event as sent only once it really went out, so a visitor who
+    // leaves before count.js loads is counted on their next page instead.
+    function send(name, store, key) {
+      var tries = 0;
+      (function go() {
+        var gc = window.goatcounter;
+        if (get(store, key)) return;
+        if (gc && gc.count) {
+          set(store, key, "1");
+          gc.count({ path: "ad/" + name, title: location.pathname, event: true });
+        } else if (++tries < 20) {
+          setTimeout(go, 500);  // count.js loads async
+        }
+      })();
+    }
+    function once(name) { send(name, ss, "bb_ad_" + name); }
+
+    var today = new Date().toISOString().slice(0, 10);
+    var fromAd = /[?&]fbclid=/.test(location.search);
+
+    if (fromAd) {
+      if (!get(ls, "bb_ad_day")) set(ls, "bb_ad_day", today);
+      // a second ad click in the same tab session is not a new landing
+      if (!get(ss, "bb_ad")) {
+        set(ss, "bb_ad", "1");
+        set(ss, "bb_ad_first", location.pathname);
+      }
+    } else if (get(ls, "bb_ad_day")) {
+      if (get(ss, "bb_ad")) {
+        if (location.pathname !== get(ss, "bb_ad_first")) once("2nd-page");
+      } else if (get(ls, "bb_ad_day") < today) {
+        send("returned", ls, "bb_ad_returned");
+      }
+    }
+
+    if (!get(ss, "bb_ad")) return;
+    once("landed");  // no-op once sent; retries here if the first page closed too soon
+
+    // 30 seconds of visible time on this page
+    var seen = 0, last = document.hidden ? 0 : Date.now();
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) { if (last) seen += Date.now() - last; last = 0; }
+      else last = Date.now();
+    });
+    var timer = setInterval(function () {
+      var t = seen + (last ? Date.now() - last : 0);
+      if (t >= 30000) { clearInterval(timer); once("stayed-30s"); }
+    }, 2000);
+
+    function onScroll() {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      if (h > 0 && window.scrollY / h >= 0.75) {
+        window.removeEventListener("scroll", onScroll);
+        once("scrolled-75");
+      }
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    Array.prototype.forEach.call(
+      document.querySelectorAll('form.nl-form[action="/api/newsletter"]'),
+      function (f) {
+        f.addEventListener("submit", function () {
+          var email = f.querySelector('input[name="email"]');
+          if (email && email.value && email.checkValidity()) once("subscribed");
+        });
+      });
   })();
 
   // pages pass build date via <html data-built>; expose for meta

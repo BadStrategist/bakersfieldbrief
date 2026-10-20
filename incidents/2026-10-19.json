@@ -1,223 +1,32 @@
 [
  {
-  "type": "fire",
-  "time": "00:13",
+  "type": "court order",
+  "time": "19:28",
   "agency": "Dispatch",
-  "area": "S Chester Avenue",
+  "area": "Peerless Avenue",
   "notability": 1,
-  "disposition": "active",
-  "summary": "fire, S Chester Avenue (00:13)",
-  "_src": "Anyone outside, fire across the street from the Valley Strong at Chester Avenue and 24th Street for a trash can on fire.",
-  "_n": 1
- },
- {
-  "type": "probation check",
-  "time": "00:38",
-  "agency": "Dispatch",
-  "area": "",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "probation check (00:38)",
-  "_src": "8-6-3-7-2-6-6, last name rope, Kimmel, Vizcarra, Lipscomb, Queens, Union, Idaho, Ocean, Zebra, Zebra, Charles, Adam, Rob",
-  "_n": 1
- },
- {
-  "type": "domestic call",
-  "time": "01:06",
-  "agency": "Dispatch",
-  "area": "",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "domestic call (01:06)",
-  "_src": "4-4-5-2, domestic, possible, 368, 3505, Springford, Quartz, second half will be RP, sister, Felicia, Hispanic, female, 2",
-  "_n": 1
- },
- {
-  "type": "probation check",
-  "time": "01:14",
-  "agency": "Dispatch",
-  "area": "",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "probation check (01:14)",
-  "_src": "1-0-2, copy. Is the second subject on probation or parole?",
-  "_n": 1
- },
- {
-  "type": "probation check",
-  "time": "01:45",
-  "agency": "Dispatch",
-  "area": "",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "probation check (01:45)",
-  "_src": "I'll be a Hispanic male, last name of Carza, George Adam, Robert Zebra Adam, first name of Michael, common spelling, dat",
-  "_n": 1
- },
- {
-  "type": "fire",
-  "time": "02:08",
-  "agency": "Dispatch",
-  "area": "",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "fire (02:08)",
-  "_src": "10-6, second half, start, end fire, opal.",
-  "_n": 2
- },
- {
-  "type": "welfare call",
-  "time": "02:16",
-  "agency": "Dispatch",
-  "area": "Meadow Rise Court",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "welfare call, Meadow Rise Court (02:16)",
-  "_src": "Metro 6, control Metro 6 Metro 6, 4-6-6 Adams, check the welfare at 63 Meadow Rise Court We have checked the welfare for",
-  "_n": 1
- },
- {
-  "type": "suspicious person report",
-  "time": "02:46",
-  "agency": "Dispatch",
-  "area": "W Columbus Street",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "suspicious person report, W Columbus Street (02:46)",
-  "_src": "Prior to suspicious circumstance on the hill, 3524 Columbus Street, RP believes someone was in the attic, could hear foo",
-  "_n": 1
- },
- {
-  "type": "fire",
-  "time": "03:06",
-  "agency": "Dispatch",
-  "area": "",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "fire (03:06)",
-  "_src": "KCFD, could there come an encampment burning a fire just on airport just south of Decatur?",
-  "_n": 1
- },
- {
-  "type": "fire",
-  "time": "03:56",
-  "agency": "Dispatch",
-  "area": "Lake Street",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "fire, Lake Street (03:56)",
-  "_src": "Fire, Station 2's area, Engine 2, Engine 4, Truck 1, Battalion 1, across the street from 711 Lake Street for a U-Haul on",
-  "_n": 1
- },
- {
-  "type": "probation check",
-  "time": "04:18",
-  "agency": "Dispatch",
-  "area": "",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "probation check (04:18)",
-  "_src": "1, Central 1, 1, Central 1, 1, Central 1, no stop, City, County, NCIC, negative probation, parole, 10-27, returns valid,",
-  "_n": 1
- },
- {
-  "type": "structure fire",
-  "time": "04:25",
-  "agency": "Dispatch",
-  "area": "",
-  "notability": 3,
   "disposition": "cleared",
-  "summary": "structure fire (04:25)",
-  "_src": "KCFD, Kern County Fire, Hall Ambulance, Metro Dispatch, code 3, code 4, 10-4, en route, structure fire,",
-  "_n": 1
+  "summary": "Report of a court order violation on Peerless Avenue; deputies found no violation.",
+  "region": "north Bakersfield"
  },
  {
-  "type": "medical aid",
-  "time": "05:00",
-  "agency": "Hall Ambulance",
-  "area": "E California Avenue",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "medical aid, E California Avenue (05:00)",
-  "_src": "Engine 3, code 2, medical aid to the front of A.M.P.M., 3125, California Avenue, send a medical aid, you're more request",
-  "_n": 1
- },
- {
-  "type": "reckless driver",
-  "time": "05:02",
+  "type": "court order",
+  "time": "19:41",
   "agency": "Dispatch",
-  "area": "",
+  "area": "Oregon Street",
   "notability": 2,
-  "disposition": "active",
-  "summary": "reckless driver (05:02)",
-  "_src": "Sight units, reckless driver in the area of Columbus and RP advising on white, four-door sedan driving blacked out, almo",
-  "_n": 1
- },
- {
-  "type": "fire",
-  "time": "05:20",
-  "agency": "Dispatch",
-  "area": "",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "fire (05:20)",
-  "_src": "Region 1 out by fire off of Elm Street and Golden State Frontage Road.",
-  "_n": 3
- },
- {
-  "type": "officer assist",
-  "time": "19:00",
-  "agency": "Dispatch",
-  "area": "Water Street",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "officer assist, Water Street (19:00)",
-  "_src": "We're code 33 on Metro for the two zone at 209 Water Street.",
-  "_n": 1
- },
- {
-  "type": "medical aid",
-  "time": "19:07",
-  "agency": "Dispatch",
-  "area": "",
-  "notability": 2,
-  "disposition": "active",
-  "summary": "medical aid (19:07)",
-  "_src": "667, code 2, medical aid, Cherry Acres, 4011, Regis Avenue, for a traumatic injury, enter from the north side",
-  "_n": 1
- },
- {
-  "type": "structure fire",
-  "time": "19:37",
-  "agency": "Dispatch",
-  "area": "",
-  "notability": 3,
   "disposition": "cleared",
-  "summary": "structure fire (19:37)",
-  "_src": "KCFD, Kern County Fire, Hall Ambulance, Metro Dispatch, code 3, code 4, 10-4, en route, structure fire,",
-  "_n": 2
+  "summary": "Court order call on Oregon Street drew about 15 people; no weapons were seen and no violation was confirmed.",
+  "region": "east Bakersfield"
  },
  {
-  "type": "medical aid",
-  "time": "19:44",
-  "agency": "Dispatch",
-  "area": "Futura Rose Avenue",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "medical aid, Futura Rose Avenue (19:44)",
-  "_src": "Engine 13, go to medical aid, 3409 Futura Rose Avenue, and then medical aid stage.",
-  "_n": 1
- },
- {
-  "type": "fire",
+  "type": "traffic collision",
   "time": "19:49",
-  "agency": "Dispatch",
-  "area": "S Bliss Street",
-  "notability": 2,
-  "disposition": "active",
-  "summary": "fire, S Bliss Street (19:49)",
-  "_src": "Code 41, City Battalion 1, Bliss Street and Texas Street, for a mini-bike versus a vehicle, possibly two patients, assig",
-  "_n": 1
+  "agency": "KCFD",
+  "area": "Bliss Street",
+  "notability": 3,
+  "disposition": "transported",
+  "summary": "Mini-bike and vehicle collided at Bliss and Texas streets; two people were hurt, one of them in the roadway."
  },
  {
   "type": "traffic collision",
@@ -225,153 +34,194 @@
   "agency": "Dispatch",
   "area": "",
   "notability": 2,
-  "disposition": "active",
-  "summary": "traffic collision (20:03)",
-  "_src": "We have a two-vehicle collision, vehicles blocking the roadway. 20-02.",
-  "_n": 1
+  "disposition": "cleared",
+  "summary": "Two-vehicle crash left the roadway blocked."
  },
  {
-  "type": "welfare call",
-  "time": "20:18",
+  "type": "assault",
+  "time": "20:35",
   "agency": "Dispatch",
-  "area": "Wiseman Street",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "welfare call, Wiseman Street (20:18)",
-  "_src": "Cultivate 4, 2-4-4, 13, check the welfare at 217 Wiseman Street",
-  "_n": 1
+  "area": "California Avenue",
+  "notability": 3,
+  "disposition": "reported",
+  "summary": "Assault reported in the 1300 block of California Avenue; the victim was in a wheelchair and the other man left on foot."
  },
  {
-  "type": "structure fire",
-  "time": "20:44",
+  "type": "standoff",
+  "time": "21:00",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 5,
+  "disposition": "cleared",
+  "summary": "Man armed with a knife refused to drop it during a standoff. Officers held the scene and detained him about 35 minutes later; charges including assault with a deadly weapon were requested."
+ },
+ {
+  "type": "shots fired",
+  "time": "21:03",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 4,
+  "disposition": "reported",
+  "summary": "Caller reported five people shooting firearms into the air on Pond Road, with a gray Volkswagen, a black truck and a red Chevrolet seen leaving."
+ },
+ {
+  "type": "traffic collision",
+  "time": "21:15",
   "agency": "Dispatch",
   "area": "",
   "notability": 3,
   "disposition": "cleared",
-  "summary": "structure fire (20:44)",
-  "_src": "KCFD, Kern County Fire, Hall Ambulance, Metro Dispatch, code 3, code 4, 10-4, en route, structure fire, vegetation fire,",
-  "_n": 1
+  "summary": "A driver suspected of being under the influence tried to run from a crash; witnesses held him on the sidewalk until officers arrived."
  },
  {
-  "type": "shooting",
-  "time": "21:03",
-  "agency": "Dispatch",
-  "area": "",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "shooting (21:03)",
-  "_src": "5-0-5-9-1, shots fired at 26-3-3-2 Pond Road, RP advised of possibly five subjects that are possibly HPD occupying a gra",
-  "_n": 1
- },
- {
-  "type": "warrant service",
-  "time": "21:23",
-  "agency": "Dispatch",
-  "area": "",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "warrant service (21:23)",
-  "_src": "Stay my call to a warrant, and I will be 10-16 with one to alert them.",
-  "_n": 1
- },
- {
-  "type": "medical aid",
-  "time": "21:24",
-  "agency": "Dispatch",
-  "area": "",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "medical aid (21:24)",
-  "_src": "This is not going to be a code 2 medical aid response.",
-  "_n": 1
- },
- {
-  "type": "officer assist",
-  "time": "21:27",
+  "type": "shots fired",
+  "time": "22:03",
   "agency": "Dispatch",
   "area": "",
   "notability": 3,
-  "disposition": "active",
-  "summary": "officer assist (21:27)",
-  "_src": "That's our code 6-1-1, we're on code 3-3 for the Rose units at 28-48, KCFD, code 33 for Rose units",
-  "_n": 2
- },
- {
-  "type": "welfare call",
-  "time": "21:55",
-  "agency": "Dispatch",
-  "area": "",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "welfare call (21:55)",
-  "_src": "On 2-6, I'll be en route to the check-in welfare from River and Goodman.",
-  "_n": 3
+  "disposition": "reported",
+  "summary": "Shots heard behind a Chevron on the 11,000 block of Highway 178; callers put five to seven people on ATVs."
  },
  {
   "type": "medical aid",
-  "time": "22:15",
+  "time": "22:07",
   "agency": "Dispatch",
-  "area": "",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "medical aid (22:15)",
-  "_src": "1-0-2, medical aid in 10.2, however, we still need a facet unit.",
-  "_n": 1
+  "area": "Mount Vernon Avenue",
+  "notability": 2,
+  "disposition": "transported",
+  "summary": "Driver found slumped and unresponsive but breathing in a car at a Mount Vernon Avenue store."
  },
  {
-  "type": "suspicious person report",
-  "time": "22:24",
-  "agency": "Dispatch",
+  "type": "airport security",
+  "time": "22:39",
+  "agency": "Airport Police",
   "area": "",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "suspicious person report (22:24)",
-  "_src": "10-4, suspicious person, 2400 block, it's Bruce",
-  "_n": 1
+  "notability": 4,
+  "disposition": "cleared",
+  "summary": "Airport police called for extra units at Meadows Field over a report of a possible firearm; a man in a black hoodie walked toward employee parking. The terminal was held and cleared within minutes."
  },
  {
-  "type": "domestic call",
-  "time": "23:09",
+  "type": "assault",
+  "time": "22:49",
   "agency": "Dispatch",
-  "area": "",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "domestic call (23:09)",
-  "_src": "10-4, 15 domestic, wind chill 3",
-  "_n": 1
- },
- {
-  "type": "shooting",
-  "time": "23:16",
-  "agency": "Dispatch",
-  "area": "",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "shooting (23:16)",
-  "_src": "Phone 4, check the welfare of the RP, we're shooting on a Medicaid shell, 406 East Number 11",
-  "_n": 1
- },
- {
-  "type": "welfare call",
-  "time": "23:16",
-  "agency": "Dispatch",
-  "area": "Oregon Street",
-  "notability": 1,
-  "disposition": "active",
-  "summary": "welfare call, Oregon Street (23:16)",
-  "_src": "2-6-6, 2-6-6, check the welfare of 1914 Oregon Street",
-  "_n": 1
+  "area": "Center Street",
+  "notability": 3,
+  "disposition": "reported",
+  "summary": "Man reported hitting windows on Center Street with a machete he kept in his vehicle.",
+  "region": "east Bakersfield"
  },
  {
   "type": "fire",
   "time": "23:22",
-  "agency": "Dispatch",
+  "agency": "KCFD",
+  "area": "Calloway Drive",
+  "notability": 3,
+  "disposition": "cleared",
+  "summary": "Juveniles were lighting items on fire in front of the Jamison Children's Center on Calloway Drive.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "traffic collision",
+  "time": "23:26",
+  "agency": "KCFD",
   "area": "",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "A semi struck a fire hydrant at a Dennis McCarthy Drive store, sending water across the lot."
+ },
+ {
+  "type": "fire",
+  "time": "23:52",
+  "agency": "KCFD",
+  "area": "Mayer Avenue",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "Vehicle fire on Mayer Avenue just south of Sullivan Road."
+ },
+ {
+  "type": "fire",
+  "time": "00:13",
+  "agency": "KCFD",
+  "area": "S Chester Avenue",
   "notability": 1,
-  "disposition": "active",
-  "summary": "fire (23:22)",
-  "_src": "We're juvenile lighting items on fire, case is still pending",
-  "_n": 2
+  "disposition": "cleared",
+  "summary": "Trash can fire across from a store at Chester Avenue and 24th Street.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "vegetation fire",
+  "time": "00:30",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 3,
+  "disposition": "cleared",
+  "summary": "Multiple callers reported a fire larger than a vehicle near Tuscan Villas Drive and Alfred Harrell Highway."
+ },
+ {
+  "type": "suspicious person",
+  "time": "02:46",
+  "agency": "Dispatch",
+  "area": "Columbus Street",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "Resident on Columbus Street heard footsteps in the attic and believed someone pushed a door closed."
+ },
+ {
+  "type": "medical aid",
+  "time": "03:18",
+  "agency": "Dispatch",
+  "area": "Kern Canyon Road",
+  "notability": 2,
+  "disposition": "transported",
+  "summary": "Woman found in the roadway on Kern Canyon Road, apparently under the influence and asleep.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "fire",
+  "time": "03:56",
+  "agency": "KCFD",
+  "area": "Lake Street",
+  "notability": 3,
+  "disposition": "cleared",
+  "summary": "U-Haul truck burned across from an address on Lake Street.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "smoke investigation",
+  "time": "03:58",
+  "agency": "KCFD",
+  "area": "Niles Street",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "Smoke reported on Niles Street just east of Fairfax Road."
+ },
+ {
+  "type": "structure fire",
+  "time": "04:25",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "Structure fire assignment went out with fire and ambulance units responding."
+ },
+ {
+  "type": "fire",
+  "time": "05:20",
+  "agency": "KCFD",
+  "area": "Elm Street",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "Fire reported near Elm Street and the Golden State frontage road.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "traffic collision",
+  "time": "05:53",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 3,
+  "disposition": "transported",
+  "summary": "Single-vehicle rollover at a travel stop on East Tehachapi Boulevard; an air ambulance was placed on standby."
  },
  {
   "type": "Fight",
@@ -401,17 +251,8 @@
   "notability": 3,
   "disposition": "",
   "summary": "Crash involving Nissan on Harris Road.",
-  "source": "crimeradar"
- },
- {
-  "type": "Assault",
-  "time": "23:34",
-  "agency": "Bakersfield Police, Fire and EMS",
-  "area": "",
-  "notability": 3,
-  "disposition": "",
-  "summary": "Assault reported at Navigation Center; knife possibly used.",
-  "source": "crimeradar"
+  "source": "crimeradar",
+  "region": "southwest Bakersfield"
  },
  {
   "type": "Fire",
@@ -451,6 +292,7 @@
   "notability": 3,
   "disposition": "",
   "summary": "Officers respond to crash on Gosford Road.",
-  "source": "crimeradar"
+  "source": "crimeradar",
+  "region": "southwest Bakersfield"
  }
 ]

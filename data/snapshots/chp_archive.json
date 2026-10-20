@@ -1270,6 +1270,16 @@
   "details": ""
  },
  {
+  "log_id": "261019BF0361",
+  "time": "Oct 19 2026  8:34PM",
+  "type": "CFIRE-Car Fire",
+  "location": "Nb I5 At Copus Rd",
+  "area": "Buttonwillow",
+  "lat": 35.095,
+  "lon": -119.036944,
+  "details": ""
+ },
+ {
   "log_id": "261019BF0394",
   "time": "Oct 19 2026  9:35PM",
   "type": "MZP-Assist CT with Maintenance",

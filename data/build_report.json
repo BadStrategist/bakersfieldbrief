@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-19T17:16:53-07:00",
+ "built_at": "2026-10-19T18:06:56-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -73,43 +73,43 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 4,
    "top_story": "Shafter remembers Ronald Pierce, Minter Field Air Museum chairman who spent decades preserving its history",
    "overnight_band": {
     "date": "2026-10-19",
-    "count": 42,
+    "count": 31,
     "chips": [
      [
       "Weapons and assaults",
-      4
-     ],
-     [
-      "Fires",
-      11
-     ],
-     [
-      "Crashes and traffic",
-      6
-     ],
-     [
-      "Medical and overdose",
       5
      ],
      [
-      "Disturbances and welfare",
-      6
+      "Fires",
+      9
      ],
      [
-      "Suspicious activity",
+      "Crashes and traffic",
+      9
+     ],
+     [
+      "Medical and overdose",
       2
      ],
      [
+      "Suspicious activity",
+      1
+     ],
+     [
       "Other calls",
-      8
+      5
      ]
     ],
-    "other": "4 probation check, 2 officer assist, 1 warrant service, 1 incident",
-    "unmapped": []
+    "other": "2 court order, 1 standoff, 1 airport security, 1 incident",
+    "unmapped": [
+     "court order",
+     "standoff",
+     "airport security"
+    ]
    },
    "archive": "2026-10-19"
   },
@@ -126,7 +126,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -189,8 +189,8 @@
    "isabella_af": 140536,
    "alpr_total": 458,
    "kern_fires": 0,
-   "aqi": 61,
-   "chp_week": 17
+   "aqi": 71,
+   "chp_week": 21
   },
   "letters": {
    "published": 1
@@ -199,7 +199,7 @@
    "published": 69
   },
   "map": {
-   "dots": 60
+   "dots": 31
   },
   "sunday_read": {
    "topic": "Public safety",

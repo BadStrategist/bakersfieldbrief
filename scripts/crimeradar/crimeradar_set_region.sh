@@ -52,6 +52,25 @@ dump() {
   "$ADB" -s "$DEV" shell cat /sdcard/.cr_region.xml 2>/dev/null | tr '<' '\n'
 }
 
+# Evidence for a region failure: the screen as the app showed it. The log line
+# "the location chip is not on screen" says what was NOT there; on 2026-10-20 no
+# run could say what WAS (no dump was kept), so nobody could fix it. Saves the
+# layout, a screenshot and the top activity to work/crimeradar/emu/region_fail_*.
+# Best effort and bounded: evidence must never be why a run fails or hangs.
+EVIDENCE_DIR="${CR_EVIDENCE_DIR:-$(cd "$HERE/../.." 2>/dev/null && { pwd -W 2>/dev/null || pwd; })/work/crimeradar/emu}"
+evidence() {   # $1 = a short reason, used in the file name
+  local ts base
+  ts="$(date +%Y-%m-%d_%H%M%S)"
+  base="$EVIDENCE_DIR/region_fail_${ts}_$1"
+  mkdir -p "$EVIDENCE_DIR" 2>/dev/null || return 0
+  dump > "$base.xml" 2>/dev/null
+  { echo "reason: $1"; echo "top: $(top_activity)"; } > "$base.txt" 2>/dev/null
+  "$ADB" -s "$DEV" shell screencap -p /sdcard/.cr_region.png >/dev/null 2>&1 \
+    && "$ADB_BIN" -s "$DEV" pull /sdcard/.cr_region.png "$base.png" >/dev/null 2>&1
+  echo "[cr] evidence: $base.{xml,png,txt}" >&2
+  return 0
+}
+
 top_activity() {
   "$ADB" -s "$DEV" shell dumpsys activity activities 2>/dev/null \
     | grep -m1 -oE 'topResumedActivity=ActivityRecord\{[^ ]+ [^ ]+ [^ ]+' | awk '{print $NF}'
@@ -179,6 +198,7 @@ for _ in 1 2; do
     echo "[cr] the screen dump came back empty (the chip may well be there)"
   else
     echo "[cr] the location chip is not on screen"
+    evidence chip_missing
   fi
   for _ in $(seq 1 4); do
     sleep 2
@@ -188,6 +208,7 @@ for _ in 1 2; do
 done
 if [ "$OPENED" != "1" ]; then
   echo "[cr] FAILED: the location picker did not open (top is '$(top_activity)')"
+  evidence picker_closed
   exit $RID
 fi
 
@@ -249,4 +270,5 @@ case "$C" in
     ;;
 esac
 echo "[cr] FAILED: the chip still reads '${C:-unknown}', not Bakersfield"
+evidence still_unset
 exit $RID

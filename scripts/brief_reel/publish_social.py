@@ -187,42 +187,29 @@ def build_assets(date: str) -> tuple[Path, Path, str] | None:
 
     soundtrack = out / "soundtrack.mp3"
     if not soundtrack.exists():
-        # A build that already HELD today is not repeated: the builder is
-        # deterministic, so the retry slot would spend five minutes to reach the
-        # same answer. A crashed build leaves no held audit and does run again.
-        held = _held_audit(out)
-        if held:
-            raise ReelHeld(f"{held} (held by an earlier run; --force rebuilds)")
-        rc = run([PY, ROOT / "scripts" / "brief_reel" / "make_dispatch_audio.py",
-                  "--date", date, "--brief", brief_json, "--out", soundtrack], timeout=1800)
-        log(f"dispatch audio builder exit {rc.returncode}")
-        log(rc.stdout.strip()[-300:])
-        if rc.stderr.strip():
-            # The builder names every dropped clip on stderr. This used to be
-            # logged only when stdout was empty, which it never was.
-            log("builder said: " + rc.stderr.strip()[-700:])
-        if not soundtrack.exists():
-            raise ReelHeld(_held_audit(out) or
-                           f"the dispatch audio builder wrote no soundtrack "
-                           f"(exit {rc.returncode})")
+        _build_soundtrack(date, out, brief_json, soundtrack)
 
     # The reel's scenes must match the dispatch clips that actually made it into
     # the soundtrack; otherwise the picture drifts from the audio and the reel
     # runs short (a 3-story brief with 2 clips rendered 17 s of 4 s scenes).
     _prune_brief_to_audio(brief_json, soundtrack)
 
+    # Read-along captions, and the check the clip builder cannot make: is each
+    # clip about ITS story? A mismatch swaps in the next story and rebuilds.
+    render_brief, render_audio = _caption_reel(date, out, brief_json, soundtrack)
+
     reel = out / "reel.mp4"
     rebuild = True
     sound_dur = _duration(soundtrack)
     if reel.exists() and reel.stat().st_size > 100_000:
-        rebuild = reel.stat().st_mtime < soundtrack.stat().st_mtime
+        rebuild = reel.stat().st_mtime < render_audio.stat().st_mtime
         # Length is the contract: a reel is about 30 s, never under 25.
         if abs(_duration(reel) - sound_dur) > 1.0:
             rebuild = True
     if rebuild:
         dur = sound_dur
-        rc = run([PY, ROOT / "scripts" / "brief_reel" / "render_reel.py", brief_json,
-                  "--out", reel.with_suffix(""), "--music", soundtrack,
+        rc = run([PY, ROOT / "scripts" / "brief_reel" / "render_reel.py", render_brief,
+                  "--out", reel.with_suffix(""), "--music", render_audio,
                   "--duration", str(dur)], timeout=1800)
         if rc.returncode != 0 or not reel.exists() or reel.stat().st_size <= 100_000:
             log(f"FATAL reel render failed: {rc.stderr.strip()[:300]}")
@@ -238,8 +225,95 @@ def build_assets(date: str) -> tuple[Path, Path, str] | None:
             f"count in {brief_json.name}.")
         return None
 
-    caption = PF.compose_post(date, brief, overnight)
+    # The caption describes the stories IN the reel, never the 6 AM brief's night.
+    try:
+        reel_stories = json.loads(Path(render_brief).read_text(encoding="utf-8"))["stories"]
+        caption = PF.compose_reel_post(reel_stories)
+    except Exception as exc:  # noqa: BLE001
+        log(f"WARN reel caption from stories failed ({exc}); using the brief caption")
+        caption = PF.compose_post(date, brief, overnight)
     return reel, brief_json, caption
+
+
+def _build_soundtrack(date: str, out: Path, brief_json: Path, soundtrack: Path) -> None:
+    """Cut and mix the dispatch clips for brief_json's stories into soundtrack."""
+    # A build that already HELD today is not repeated: the builder is
+    # deterministic, so the retry slot would spend five minutes to reach the
+    # same answer. A crashed build leaves no held audit and does run again.
+    held = _held_audit(out)
+    if held:
+        raise ReelHeld(f"{held} (held by an earlier run; --force rebuilds)")
+    rc = run([PY, ROOT / "scripts" / "brief_reel" / "make_dispatch_audio.py",
+              "--date", date, "--brief", brief_json, "--out", soundtrack], timeout=1800)
+    log(f"dispatch audio builder exit {rc.returncode}")
+    log(rc.stdout.strip()[-300:])
+    if rc.stderr.strip():
+        # The builder names every dropped clip on stderr. This used to be
+        # logged only when stdout was empty, which it never was.
+        log("builder said: " + rc.stderr.strip()[-700:])
+    if not soundtrack.exists():
+        raise ReelHeld(_held_audit(out) or
+                       f"the dispatch audio builder wrote no soundtrack "
+                       f"(exit {rc.returncode})")
+
+
+CAPTIONS = ROOT / "scripts" / "brief_reel" / "build_captions.py"
+
+
+def _caption_reel(date: str, out: Path, brief_json: Path, soundtrack: Path) -> tuple[Path, Path]:
+    """(brief, audio) for the render: captioned and with house numbers muted.
+
+    build_captions.py exits 3 when a clip's words carry nothing of its story (no
+    street, no "shots"/"knife"/...), which is how the 2026-10-20 reel aired a
+    seizure call on Buck Owens under "Assault on Terrace Way". Then the story is
+    swapped for the next one in the ranking (brief "alternates") and the
+    soundtrack rebuilt; on a second mismatch the story is dropped; with nothing
+    left the reel is HELD, because the wrong call must never air. Captions must
+    never be the reason a reel does not post, so if the caption step itself
+    breaks, the reel renders without them and the log says so.
+    """
+    captioned, muted = out / "brief_captioned.json", out / "soundtrack_muted.mp3"
+    report = out / "captions_report.json"
+    for attempt in range(3):
+        if (captioned.exists() and muted.exists()
+                and captioned.stat().st_mtime >= soundtrack.stat().st_mtime):
+            return captioned, muted
+        rc = run([PY, CAPTIONS, "--brief", brief_json, "--soundtrack", soundtrack,
+                  "--audit", soundtrack.with_suffix(".json"), "--out", captioned,
+                  "--muted-out", muted, "--report", report, "--strict"], timeout=1800)
+        log("captions: " + (rc.stdout.strip()[-600:] or f"exit {rc.returncode}"))
+        if rc.returncode == 0 and captioned.exists() and muted.exists():
+            return captioned, muted
+        if rc.returncode != 3:
+            log(f"ALERT captions step failed (exit {rc.returncode}): "
+                f"{rc.stderr.strip()[-300:]} - rendering without captions")
+            return brief_json, soundtrack
+        try:
+            bad = [r["story"] - 1 for r in json.loads(report.read_text(encoding="utf-8"))["stories"]
+                   if not r["match"]]
+            cfg = json.loads(brief_json.read_text(encoding="utf-8"))
+        except Exception as exc:  # noqa: BLE001
+            log(f"ALERT captions report unreadable ({exc}) - rendering without captions")
+            return brief_json, soundtrack
+        stories, alts = cfg["stories"], cfg.get("alternates") or []
+        for i in sorted({i for i in bad if 0 <= i < len(stories)}, reverse=True):
+            gone = stories[i]
+            if attempt == 0 and alts:
+                stories[i] = alts.pop(0)
+                log(f"clip for {gone.get('label') or gone['headline']!r} is about another call: "
+                    f"swapped in {stories[i].get('label') or stories[i]['headline']!r}")
+            else:
+                stories.pop(i)
+                log(f"clip for {gone.get('label') or gone['headline']!r} is about another call: dropped")
+        if not stories:
+            raise ReelHeld("no story's dispatch clip is about that story")
+        cfg["stories"], cfg["alternates"] = stories, alts
+        brief_json.write_text(json.dumps(cfg, indent=2, ensure_ascii=False), encoding="utf-8")
+        for f in (soundtrack, soundtrack.with_suffix(".json"), captioned, muted):
+            f.unlink(missing_ok=True)
+        _build_soundtrack(date, out, brief_json, soundtrack)
+        _prune_brief_to_audio(brief_json, soundtrack)
+    raise ReelHeld("dispatch clips still do not match their stories after two rebuilds")
 
 
 def _held_audit(out: Path) -> str | None:

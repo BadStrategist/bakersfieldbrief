@@ -241,14 +241,10 @@ HOOK_TEST = ("2026-10-14", "2026-10-25")
 
 
 def hook_for_date(date: str) -> str:
-    """'cold' (story 1 from frame 0) or 'title' (the 1 s title card)."""
-    if not (HOOK_TEST[0] <= date <= HOOK_TEST[1]):
-        return "title"
-    try:
-        d = datetime.strptime(date, "%Y-%m-%d")
-    except ValueError:
-        return "title"
-    return "cold" if d.toordinal() % 2 == 0 else "title"
+    """Always 'cold': story 1 from frame 0, so the thumbnail is the lead story.
+    The cold/title A/B test (2026-10-14 to 10-25) ended early on 2026-10-20 when
+    the owner judged the title card unprofessional."""
+    return "cold"
 
 
 def today_iso() -> str:
@@ -431,72 +427,83 @@ def most_serious_paragraph(brief: str, overnight: str) -> str:
     return brief.strip()[:300]
 
 
-def pick_stories(date: str, brief: str, overnight: str) -> list[dict]:
-    """Ordered stories for the reel: [most-serious, next notable, next notable].
+def _severity(inc: dict) -> int:
+    """night_counts.severity: the one ranking the night card and the post use."""
+    root = str(Path(__file__).resolve().parents[1])
+    if root not in sys.path:
+        sys.path.insert(0, root)
+    from build.builders import night_counts
+    return night_counts.severity(inc)
 
-    Story 1 is the incident whose area appears in the brief's most-serious
-    paragraph (fallback: highest notability). Stories 2-3 are the remaining
-    incidents by (notability desc, time asc). Scene variety is a LAST-SLOT
-    tiebreaker only: never skip a higher-notability incident to avoid a
-    repeated background, but if the 3rd pick would duplicate a scene already
-    used, prefer a different-scene incident of the same (or better) notability.
+
+def pick_stories(date: str, brief: str, overnight: str, n: int = 3) -> list[dict]:
+    """Ordered stories for the reel, most serious first: n to render, then the
+    rest of the ranking (the publisher swaps one in when a story's radio clip
+    turns out to be about some other call).
+
+    Owner rule 2026-10-20: lead with the serious events, never a fire when a
+    person was in danger. So the order is night_counts.severity first; the
+    brief's framing (the incident named in its most-serious paragraph) and
+    notability only break ties inside a tier. Incidents that came only from the
+    CrimeRadar app have no radio audio, so they never make the reel: the clip
+    builder would cut whatever other call was on the air at that minute
+    (2026-10-20: the Terrace Way assault aired a seizure call on Buck Owens Blvd).
+    Scene variety stays a LAST-SLOT tiebreaker inside the same tier.
     """
-    incidents = load_incidents(date)
+    incidents = [i for i in load_incidents(date) if i.get("source") != "crimeradar"]
     if not incidents:
         return []
 
     serious_para = most_serious_paragraph(brief, overnight)
-    # The brief's editorial framing lives in the FIRST sentence of the
-    # most-serious paragraph ("The night's most serious call ... was
-    # reported on Monterey Street."). Later sentences of the same paragraph
-    # name lesser calls — matching against them lets a lesser call steal the
-    # lead (an Animas Court DV once beat the Monterey brandishing this way).
-    # Try the first sentence first; fall back to the whole paragraph (and
-    # then to highest notability) only if it names nothing.
     serious_first = _first_sentence_full(serious_para).lower()
     serious_all = serious_para.lower()
-    lead = None
-    for inc in sorted(incidents, key=lambda x: (-(x.get("notability") or 0),
-                                                x.get("time") or "")):
-        area = _clean_area(inc.get("area", "")).lower()
-        if area and area.split(",")[0] in serious_first:
-            lead = inc
-            break
-    if lead is None:
-        for inc in sorted(incidents, key=lambda x: (-(x.get("notability") or 0),
-                                                    x.get("time") or "")):
-            area = _clean_area(inc.get("area", "")).lower()
-            if area and area.split(",")[0] in serious_all:
-                lead = inc
-                break
-    if lead is None and incidents:
-        lead = max(incidents, key=lambda x: (x.get("notability") or 0))
 
-    rest = [x for x in incidents if x is not lead]
-    rest.sort(key=lambda x: (-(x.get("notability") or 0), x.get("time") or ""))
-    chosen = [lead]
-    used = {TYPE_SCENE.get(_norm_type(lead.get("type", "")), DEFAULT_SCENE)}
-    for inc in rest:
-        if len(chosen) >= 3:
+    def named(inc: dict) -> int:
+        area = _clean_area(inc.get("area", "")).lower().split(",")[0]
+        if area and area in serious_first:
+            return 0
+        if area and area in serious_all:
+            return 1
+        return 2
+
+    ranked = sorted(incidents, key=lambda x: (_severity(x), named(x),
+                                              -(x.get("notability") or 0),
+                                              x.get("time") or ""))
+    chosen, used = [], set()
+    for inc in ranked:
+        if len(chosen) >= n:
             break
+        if inc in chosen:
+            continue
         scene = TYPE_SCENE.get(_norm_type(inc.get("type", "")), DEFAULT_SCENE)
-        if len(chosen) == 2 and scene in used:
-            # last slot: prefer a different scene, but only if it doesn't
-            # cost notability — a same-scene incident with HIGHER notability
-            # still wins over a prettier-but-lesser background. NEVER pick an
-            # incident that is already in the reel (a duplicate story shipped
-            # on 2026-08-18 when the alt search re-picked the 2nd story).
-            alt = next((r for r in rest if r is not inc and r not in chosen and
-                        TYPE_SCENE.get(_norm_type(r.get("type", "")), DEFAULT_SCENE) != scene
-                        and (r.get("notability") or 0) >= (inc.get("notability") or 0)),
-                       None)
+        if len(chosen) == n - 1 and scene in used:
+            # last slot: a different scene of the SAME tier and no lower
+            # notability may take it; never a less serious call for a prettier
+            # background, and never a story already in the reel.
+            alt = next((r for r in ranked if r not in chosen and r is not inc
+                        and TYPE_SCENE.get(_norm_type(r.get("type", "")), DEFAULT_SCENE) != scene
+                        and _severity(r) == _severity(inc)
+                        and (r.get("notability") or 0) >= (inc.get("notability") or 0)), None)
             if alt is not None:
-                chosen.append(alt)
-                used.add(TYPE_SCENE.get(_norm_type(alt.get("type", "")), DEFAULT_SCENE))
-                continue
+                inc = alt
         chosen.append(inc)
-        used.add(scene)
-    return chosen[:3]
+        used.add(TYPE_SCENE.get(_norm_type(inc.get("type", "")), DEFAULT_SCENE))
+    return chosen + [r for r in ranked if r not in chosen]
+
+
+_WEAPON_LABELS = (("machetes", "Machetes reported"), ("machete", "Machete reported"),
+                  ("knife", "Knife reported"), ("knives", "Knives reported"),
+                  ("taser", "Taser reported"), ("firearm", "Gun reported"),
+                  ("handgun", "Gun reported"), ("rifle", "Gun reported"), ("gun", "Gun reported"))
+
+
+def _weapon_label(summary: str) -> str:
+    """'weapons' says nothing on screen; the weapon the caller named does."""
+    low = (summary or "").lower()
+    for word, label in _WEAPON_LABELS:
+        if re.search(rf"\b{word}\b", low):
+            return label
+    return "Weapons call"
 
 
 def story_json(inc: dict) -> dict:
@@ -504,6 +511,8 @@ def story_json(inc: dict) -> dict:
     head_area = area.split(",")[0].strip()  # 'Coffee Road, Bank of America' -> 'Coffee Road'
     t = _norm_type(inc.get("type", ""))
     label = label_for(inc.get("type", ""))
+    if t.startswith("weapon"):
+        label = _weapon_label(inc.get("summary", ""))
     summary = inc.get("summary", "") or ""
     sub = _first_sentence(summary)
     scene = TYPE_SCENE.get(t, "")
@@ -536,11 +545,12 @@ def build(date: str) -> dict:
     if len(brief) < 200 or len(overnight) < 300:
         raise SystemExit(f"SKIP {date}: brief/overnight too short")
 
-    stories = [story_json(s) for s in pick_stories(date, brief, overnight)]
+    ranked = [story_json(s) for s in pick_stories(date, brief, overnight)]
+    stories, alternates = ranked[:3], ranked[3:6]
     if not stories:
         raise SystemExit(f"SKIP {date}: no incidents to build a reel from")
     # drop empty time/place keys the renderer can't use
-    for s in stories:
+    for s in stories + alternates:
         for k in ("time", "place"):
             if not s[k]:
                 del s[k]
@@ -555,7 +565,14 @@ def build(date: str) -> dict:
         "music": music_for_date(date),
         "backgrounds": "auto",
         "hook": hook_for_date(date),
+        # Every story on the dark night card (the plain cream title flash read as
+        # "horrible and unprofessional", owner 2026-10-20), with read-along
+        # captions added by build_captions.py.
+        "style": "night",
         "stories": stories,
+        # Next in the ranking: the publisher swaps one in for a story whose
+        # radio clip is not about that story. Never rendered.
+        "alternates": alternates,
     }
 
 

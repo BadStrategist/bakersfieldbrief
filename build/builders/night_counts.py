@@ -40,7 +40,7 @@ MAP = {
         "firearms incident", "person with a gun", "person with knife",
         "road rage with a firearm", "suspicious person with a weapon",
         "kidnapping / assault with a firearm", "stolen firearms search",
-        "weapons", "homicide", "barricade", "hostage", "kidnapping",
+        "weapons", "homicide", "barricade", "hostage", "kidnapping", "standoff",
         "assault", "assault, possible domestic", "fight", "large fight",
         "assault call and standoff", "assault investigation", "assault medical staging",
         "assault report involving a child", "assault threats disturbance",
@@ -142,6 +142,43 @@ for _chip, _labels in MAP.items():
         if _label in CHIP_OF:
             raise RuntimeError(f"night_counts: label in two chips: {_label!r}")
         CHIP_OF[_label] = _chip
+
+
+# What leads: the reel's first story, the night card's top calls, the post caption.
+# Owner rule 2026-10-20: "always lead with the serious events, not a stupid fire."
+# Danger to a person outranks everything; a fire leads only on a night when no one
+# was threatened. Lower is more serious. The tier is read from the type first and
+# then the summary, so a "weapons" call is tier 1 whatever its notability says
+# (the pipeline's notability scored a bare "shooting" below an officer assist).
+_TIER0 = re.compile(r"shoot|shots|gunshot|gunfire|stabb|homicide|hostage|kidnap|barricade|standoff")
+_WEAPON_TYPE = re.compile(r"weapon|armed|brandish|robbery")
+_WEAPON_WORD = re.compile(r"\b(knife|knives|machetes?|guns?|firearms?|rifle|pistol|handgun|taser|bat|crowbar)\b")
+_ASSAULT = re.compile(r"assault|battery|fight|violence")
+_HOME_FIRE = re.compile(r"structure|house|home|apartment|building|vehicle fire|car fire|garage")
+
+
+def severity(inc: dict) -> int:
+    """0 gunfire, stabbings, standoffs; 1 any call with a weapon (a weapons type,
+    or an assault whose summary names a knife, gun, machete...); 2 assaults and
+    fights, domestic violence; 3 burglary, theft, pursuits, missing people; 4 fires at a home or a
+    vehicle; 5 other fires, crashes, medical; 6 everything else."""
+    typ = normalize(inc.get("type"))
+    summ = str(inc.get("summary") or "").lower()
+    chip = CHIP_OF.get(typ)
+    if _TIER0.search(typ):
+        return 0
+    violent = chip == "Weapons and assaults" or _WEAPON_TYPE.search(typ) or _ASSAULT.search(typ)
+    if violent and (_WEAPON_TYPE.search(typ) or _WEAPON_WORD.search(summ)):
+        return 1
+    if violent:
+        return 2
+    if chip in ("Burglary and theft", "Missing persons") or re.search(r"pursuit|burglar|theft", typ):
+        return 3
+    if chip == "Fires" and _HOME_FIRE.search(f"{typ} {summ}"):
+        return 4
+    if chip in ("Fires", "Crashes and traffic", "Medical and overdose"):
+        return 5
+    return 6
 
 
 class NightCountError(RuntimeError):

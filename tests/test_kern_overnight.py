@@ -848,14 +848,16 @@ class TestBriefJson:
             assert s.get("scene") in mbj.TYPE_SCENE.values()
 
     def test_lead_is_the_most_serious_incident(self):
-        """The brief's own editorial framing ('most serious') must drive which
-        incident leads the reel — here the Monterey Street firearm brandishing
-        (notability 4) leads, not a lesser call."""
+        """Seriousness leads the reel (owner rule 2026-10-20), and the brief's
+        framing only breaks ties inside a tier. On 2026-08-17 the shots-fired call
+        with a possible victim (tier 0) leads; the Monterey Street brandishing the
+        brief named first is the most serious weapons call, so it comes next."""
         import scripts.make_brief_json as mbj
         cfg = mbj.build("2026-08-17")
-        lead = cfg["stories"][0]
-        assert "Monterey" in lead["headline"]
-        assert lead["time"] == "11:00 PM"
+        assert cfg["stories"][0]["label"].lower().startswith("shots fired")             or "shoot" in cfg["stories"][0]["headline"].lower()
+        assert cfg["stories"][0]["time"] == "9:38 PM"
+        assert "Monterey" in cfg["stories"][1]["headline"]
+        assert cfg["stories"][1]["time"] == "11:00 PM"
 
     def test_stories_never_duplicate(self):
         """A story may never appear twice in the reel — the scene-variety

@@ -286,36 +286,36 @@ def _clock(t) -> str:
     return f"{(h % 12) or 12}:{mm} {'AM' if h < 12 else 'PM'}"
 
 
-def _top_rank(inc: dict) -> int | None:
-    """Which calls lead the card. The pipeline's notability score rates a bare 'shooting'
-    below an officer assist (2026-10-19), so the order here is by what happened: shootings,
-    stabbings and homicides; then other weapons calls and assaults; then structure and
-    vehicle fires. Nothing else is a top call. Lower is first."""
-    typ = night_counts.normalize(inc.get("type"))
-    text = f"{typ} {str(inc.get('summary', '')).lower()}"
-    chip = night_counts.CHIP_OF.get(typ)
-    if _is_shooting(inc) or re.search(r"\b(stabbing|homicide|gunshot)\b", typ):
-        return 0
-    if chip == "Weapons and assaults" and re.search(
-            r"assault|weapon|armed|brandish|knife|gun|firearm|battery", typ):
-        return 1
-    if chip == "Fires" and re.search(
-            r"structure|building|house|home|vehicle fire|car fire", text):
-        return 2
-    return None
-
-
 def _top_calls(incs: list[dict], n: int = 4) -> list[dict]:
-    """Up to n top calls, printed in the order they happened. Within a rank, a call the
-    log describes beats one that is only a type and a time."""
+    """Up to n top calls, printed in the order they happened.
+
+    Picked by night_counts.severity, the one ranking the reel and the post caption
+    also use: danger to a person first, a fire only when it hit a home or a
+    vehicle, and nothing below that (2026-10-20: four minor weapons calls crowded
+    out nothing, but the old rank let a fire-heavy night's semi fire lead the
+    social post). Within a tier: higher notability, then a call the log
+    describes over one that is only a type and a time, then the earlier call.
+    Calls that put a person in danger (tiers 0-2) are never capped; below that,
+    at most two from any one category, so a run of fires cannot fill the list.
+    """
     ranked = []
     for k, inc in enumerate(incs):
-        rank = _top_rank(inc)
-        if rank is None:
+        tier = night_counts.severity(inc)
+        if tier > 4:
             continue
         bare = _BARE_SUMMARY.match(str(inc.get("summary", ""))) is not None
-        ranked.append((rank, bare, _night_minute(inc.get("time")) or 0, k))
-    picked = [incs[row[-1]] for row in sorted(ranked)[:n]]
+        ranked.append((tier, -int(inc.get("notability") or 0), bare,
+                       _night_minute(inc.get("time")) or 0, k))
+    picked, per_chip = [], {}
+    for row in sorted(ranked):
+        inc = incs[row[-1]]
+        chip = night_counts.CHIP_OF.get(night_counts.normalize(inc.get("type")), night_counts.OTHER)
+        if row[0] >= 3 and per_chip.get(chip, 0) >= 2:
+            continue
+        per_chip[chip] = per_chip.get(chip, 0) + 1
+        picked.append(inc)
+        if len(picked) >= n:
+            break
     return sorted(picked, key=lambda i: _night_minute(i.get("time")) or 0)
 
 

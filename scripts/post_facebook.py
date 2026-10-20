@@ -370,6 +370,44 @@ def compose_post(date: str, brief: str, overnight: str) -> str:
     )
 
 
+def compose_reel_post(stories: list[dict]) -> str:
+    """Caption for the overnight reel, built from the reel's OWN stories.
+
+    compose_post reads the daily brief, which the 6 AM build writes before the
+    07:30 overnight report exists, so on 2026-10-20 the reel showed Tuesday
+    night's calls under Monday night's standoff. The stories here are the ones
+    in the video, in the video's order (most serious first), so the text can
+    never describe a different night than the picture.
+    """
+    def phrase(s: dict) -> str:
+        label = (s.get("label") or s.get("headline") or "").strip()
+        where = (s.get("where") or "").strip()
+        text = f"{label} {where}".strip()
+        return text[:1].lower() + text[1:] if text else ""
+
+    parts = [p for p in (phrase(s) for s in stories) if p]
+    if not parts:
+        lead = "What happened overnight in Bakersfield and Kern County."
+    elif len(parts) == 1:
+        lead = f"Overnight in Kern County: {parts[0]}."
+    else:
+        lead = f"Overnight in Kern County: {', '.join(parts[:-1])} and {parts[-1]}."
+    details = []
+    for s in stories:
+        when = (s.get("time") or "").strip()
+        sub = (s.get("subhead") or "").strip()
+        if sub:
+            details.append(f"{when}: {sub}" if when else sub)
+    body = "\n".join(details)
+    return (
+        f"🌅 {lead}\n\n"
+        + (f"{body}\n\n" if body else "")
+        + f"Preliminary dispatch information; locations generalized.\n\n"
+        f"📰 Full overnight report: {SITE_OVERNIGHT_URL}\n\n"
+        f"{HASHTAGS}"
+    )
+
+
 def post_photo(token: str, image_path: str, message: str) -> str:
     """Upload the daily card as a photo post with caption (photo posts get
     more reach than text-only on Facebook)."""

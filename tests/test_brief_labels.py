@@ -56,24 +56,11 @@ def test_no_type_in_the_table_ever_reaches_the_generic_label():
         assert mbj.label_for(t) == label
 
 
-def test_the_hook_window_is_inert_before_it_opens():
-    for date in ("2026-10-12", "2026-10-13"):
-        assert mbj.hook_for_date(date) == "title"
-    for date in ("2026-10-26", "2026-11-01"):
-        assert mbj.hook_for_date(date) == "title"
-
-
-def test_the_hook_window_alternates_and_covers_both_arms():
-    days = [mbj.hook_for_date(f"2026-10-{d:02d}") for d in range(14, 26)]
-    assert set(days) == {"cold", "title"}, days
-    # Twelve days is two full cycles of opener x bed (2 x 3), so each opener runs
-    # twice on each of the three beds.
-    assert days.count("cold") == 6 and days.count("title") == 6, days
-    assert all(a != b for a, b in zip(days, days[1:])), days
-
-
-def test_an_unparseable_date_falls_back_to_the_title_card():
-    assert mbj.hook_for_date("not-a-date") == "title"
+def test_the_reel_always_opens_cold_on_the_lead_story():
+    """The cold/title A/B test ended 2026-10-20: the owner judged the cream title
+    flash unprofessional, so every reel opens on story 1 from frame 0."""
+    for date in ("2026-10-13", "2026-10-14", "2026-10-15", "2026-10-26", "not-a-date"):
+        assert mbj.hook_for_date(date) == "cold"
 
 
 def test_stories_carry_the_label_and_place_the_cold_opener_needs():

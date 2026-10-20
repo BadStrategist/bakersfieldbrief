@@ -13,7 +13,7 @@ Requires: Python 3.9+, Pillow, numpy, ffmpeg on PATH. Nothing else. No network.
 Backgrounds: set "backgrounds": "auto" | "none" | "<scene>" in brief.json; per-story "scene" or "image" override.
 See README.md for the JSON schema and how to drive it from cron / another LLM.
 """
-import argparse, json, os, subprocess, sys, shutil
+import argparse, json, os, re, subprocess, sys, shutil
 
 from PIL import Image, ImageDraw, ImageFont
 import backgrounds as BG
@@ -100,14 +100,16 @@ def fade_over(im, color, a):
 
 
 # ---------- scenes ----------
-def lead_card(im, d, cfg, s, total, tl, card_len, fade_out=True):
-    """Story 1 as the cold opener. Time, event and place are COMPLETE FROM
-    FRAME 0 (frame 0 is the thumbnail), all of it above the bottom 35 percent
-    that the caption bar covers. What moves in the first second is the live
-    dot, the rule and the subhead, which arrives a word at a time."""
+def lead_card(im, d, cfg, s, total, tl, card_len, fade_out=True, idx=0, sub_lines=4):
+    """The night card. Story 1 is the cold opener, and with "style": "night" every
+    story uses it. Time, event and place are COMPLETE FROM FRAME 0 (frame 0 is
+    the thumbnail), all of it above the bottom 35 percent that the caption bar
+    covers. What moves in the first second is the live dot, the rule and the
+    subhead, which arrives a word at a time. With read-along captions the
+    subhead is held to two lines so the caption panel has room above that 35%."""
     C_HEAD, C_SUB = CREAM, (235, 230, 220)
     text_c(im, d, 150, cfg["kicker"], F["kick"], (196, 90, 66))
-    text_c(im, d, 205, f"1 / {total}", F["num"], (200, 195, 185))
+    text_c(im, d, 205, f"{idx + 1} / {total}", F["num"], (200, 195, 185))
 
     y = 300
     when = s.get("time", "")
@@ -143,18 +145,34 @@ def lead_card(im, d, cfg, s, total, tl, card_len, fade_out=True):
 
     # Subhead: one word every 1/14 s from 0.25 s, each line laid out at its
     # full width so no word moves once it is drawn.
-    fs = font(50, 400)
-    lines = wrap(d, s.get("subhead", ""), fs, 900)[:4]
-    shown = int(max(0.0, tl - 0.25) * 14)
+    # Fit the subhead WHOLE into the room it has: above the caption panel when
+    # there are captions, above the bottom 35% otherwise. Try smaller sizes, then
+    # drop trailing sentences; never cut a sentence partway ("...and was gone
+    # when", 2026-10-20) and never draw under the panel.
     yy = y + 78
+    limit = (CAP_Y - 28) if cfg.get("captions") else H * 0.65
+    sentences = re.split(r"(?<=[.!?])\s+", (s.get("subhead") or "").strip())
+    fs, lines, lh = None, [], 0
+    while sentences and fs is None:
+        text = " ".join(sentences)
+        for size in (50, 46, 42):
+            f_try = font(size, 400)
+            ls = wrap(d, text, f_try, 900)
+            step = int(size * 1.28)
+            if len(ls) <= sub_lines and yy + len(ls) * step <= limit:
+                fs, lines, lh = f_try, ls, step
+                break
+        if fs is None:
+            sentences = sentences[:-1]
+    shown = int(max(0.0, tl - 0.25) * 14)
     for ln in lines:
         words = ln.split()
-        if shown <= 0 or yy + 64 > H * 0.65:
+        if shown <= 0:
             break
         x = (W - d.textlength(ln, font=fs)) / 2
         d.text((x, yy), " ".join(words[:shown]), font=fs, fill=C_SUB)
         shown -= len(words)
-        yy += 64
+        yy += lh
     if fade_out:
         fade_over(im, (0, 0, 0), prog(tl, card_len - 0.5, card_len))
 
@@ -215,6 +233,71 @@ def story_card(im, d, cfg, s, idx, total, tl, card_len, dark=False, fade_out=Tru
             im.alpha_composite(ov)
     if fade_out:
         fade_over(im, (0, 0, 0) if dark else CREAM, prog(tl, card_len - 0.5, card_len))
+
+
+CAP_FONT_PATH = os.path.join(HERE, "fonts", "Inter-Variable.ttf")
+
+
+def cap_font(size, weight=600):
+    f = ImageFont.truetype(CAP_FONT_PATH, size)
+    try:
+        f.set_variation_by_axes([min(32, size), weight])
+    except Exception:
+        pass
+    return f
+
+
+CAP_Y, CAP_H = 1000, 236          # panel ends at 1236, above the bottom 35% (1248)
+CAP_LABEL = cap_font(26, 700)
+CAP_TEXT = cap_font(46, 640)
+
+
+def caption_panel(im, cfg, t):
+    """Read-along captions for the scanner audio: the words of the clip under
+    this scene, a phrase at a time, karaoke style. Spoken words are white, the
+    word being said is gold, words still to come are dim, so a viewer with the
+    sound off can follow the radio. Cues come from build_captions.py, which
+    times them to the mixed soundtrack and blanks anything the report's privacy
+    rules forbid (house numbers, plates, phone numbers) before they get here."""
+    cues = cfg.get("captions") or []
+    cue = next((c for c in cues if c["s"] - 0.15 <= t <= c["e"] + 0.45), None)
+    if cue is None:
+        return
+    a = min(prog(t, cue["s"] - 0.15, cue["s"] + 0.1), 1.0 - prog(t, cue["e"] + 0.2, cue["e"] + 0.45))
+    if a <= 0:
+        return
+    ov = Image.new("RGBA", im.size, (0, 0, 0, 0)); od = ImageDraw.Draw(ov)
+    od.rounded_rectangle([90, CAP_Y, W - 90, CAP_Y + CAP_H], radius=26,
+                         fill=(10, 12, 15, int(215 * a)), outline=GOLD + (int(90 * a),), width=2)
+    # Label: a red "on air" dot and SCANNER AUDIO, so nobody reads the radio as our words.
+    od.ellipse([130, CAP_Y + 34, 146, CAP_Y + 50], fill=(214, 72, 48, int(255 * a)))
+    od.text((160, CAP_Y + 26), "SCANNER AUDIO", font=CAP_LABEL, fill=(214, 180, 120, int(255 * a)))
+    # Lay the words out once (no word moves while it is on screen), two lines max.
+    maxw, x0, y = W - 2 * 130, 130, CAP_Y + 82
+    sp = od.textlength(" ", font=CAP_TEXT)
+    lines, cur, cw = [], [], 0.0
+    for wd in cue["words"]:
+        ww = od.textlength(wd["w"], font=CAP_TEXT)
+        if cur and cw + sp + ww > maxw:
+            lines.append(cur); cur, cw = [], 0.0
+        cur.append((wd, ww)); cw += (sp if cw else 0) + ww
+    if cur:
+        lines.append(cur)
+    for ln in lines[:2]:
+        x = x0
+        for wd, ww in ln:
+            if t >= wd["e"]:
+                col = (248, 245, 238)
+            elif t >= wd["s"]:
+                col = GOLD
+            else:
+                col = (130, 134, 138)
+            if wd.get("redacted"):
+                col = (150, 120, 70)
+            od.text((x, y), wd["w"], font=CAP_TEXT, fill=col + (int(255 * a),))
+            x += ww + sp
+        y += 64
+    im.alpha_composite(ov)
 
 
 _BG_CACHE = {}
@@ -342,12 +425,15 @@ def frame(t, cfg, dur):
             # (bottom URL band removed: unusable on every 9:16 surface)
         draw_logo(im, 92, 90, 46)
         d.text((155, 66), cfg["brand"], font=F["brand_sm"], fill=CREAM if dark else INK)
-        if cold and k == 0 and dark:
-            lead_card(im, d, cfg, stories[0], len(stories), tl, this_len,
-                      fade_out=not same_next)
+        night = cfg.get("style") == "night"
+        if dark and ((cold and k == 0) or night):
+            lead_card(im, d, cfg, stories[k], len(stories), tl, this_len,
+                      fade_out=not same_next, idx=k,
+                      sub_lines=2 if cfg.get("captions") else 4)
         else:
             story_card(im, d, cfg, stories[k], k, len(stories), tl, this_len, dark=dark,
                        fade_out=not same_next)
+        caption_panel(im, cfg, t)
     else:
         tl = t - (dur - outro)
         draw_logo(im, W / 2, 700, 170, prog(tl, 0.0, 0.8))

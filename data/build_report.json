@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-20T13:00:25-07:00",
+ "built_at": "2026-10-20T16:23:32-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -72,7 +72,7 @@
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
-   "alerts": 0,
+   "alerts": 1,
    "chp_new": 0,
    "top_story": "Honor Flight Kern County completes trip weeks after first-ever flight cancellation",
    "overnight_band": {
@@ -148,14 +148,14 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 20,
-   "alerts": 0,
+   "wind_mph": 10,
+   "alerts": 1,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 72,
-   "wind_mph": 20,
-   "alerts": 0
+   "wind_mph": 10,
+   "alerts": 1
   },
   "roads": {
    "routes": [
@@ -178,9 +178,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 22,
+    "In the next 7 days": 21,
     "In 1 to 2 weeks": 15,
-    "Later": 87
+    "Later": 88
    },
    "meetings": 6
   },

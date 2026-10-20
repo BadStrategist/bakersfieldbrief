@@ -71,6 +71,37 @@ READY, ABSENT, STALE, WRONG_FEED, INCOMPLETE = 0, 10, 11, 12, 13
 EMIT_EARLY_MIN = 30
 NEWEST_LAG_MIN = 180
 
+# The report must never go stale. Today ko_publish held it all day when the emit
+# failed, so one emulator fault meant an empty overnight page until the next night.
+# At 08:00 on the report's own morning the second-source gate releases on its own.
+# The box-data / privacy gate is NOT part of this: ko_publish still asks it, and a
+# failure there still holds the report.
+DEADLINE_HOUR = 8
+
+
+def pacific_now() -> dt.datetime:
+    """Now in Pacific time. A seam, so the deadline tests can pin the clock."""
+    utc = dt.datetime.now(dt.timezone.utc)
+    day = (utc + dt.timedelta(hours=-8)).date()   # never a day ahead of Pacific
+    return utc.astimezone(_pacific(day))
+
+
+def deadline_passed(date_iso: str, now: dt.datetime | None = None) -> bool:
+    """Is it 08:00 or later on the morning this report belongs to?
+
+    Scoped to that one day on purpose: the runner only ever publishes today's report,
+    and a release that outlived its morning would quietly ship yesterday's file.
+    """
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", date_iso or ""):
+        return False
+    try:
+        day = dt.date.fromisoformat(date_iso)
+    except ValueError:
+        return False
+    now = now or pacific_now()
+    return now.date() == day and now.hour >= DEADLINE_HOUR
+
+
 
 def is_kern_feed(feed) -> bool:
     """Did the screen say this is the Kern feed? Anything else is not."""
@@ -502,11 +533,15 @@ def readiness(date_iso: str, stage_dir: Path = STAGE) -> dict:
 
 
 def gate(date_iso: str, stage_dir: Path = STAGE) -> dict:
-    """May the report dated <date_iso> be pushed? readiness(), or a human release.
+    """May the report dated <date_iso> be pushed? readiness(), or a release.
 
-    The release is a non-empty file work/crimeradar/release_<date>.txt (say who
-    and why in it). It is scoped to one date, so yesterday's release never
-    carries a later report out. Never raises.
+    Two releases, both scoped to one date:
+      * a human release: a non-empty file work/crimeradar/release_<date>.txt (say who
+        and why in it). Yesterday's release never carries a later report out;
+      * the deadline: at 08:00 on the report's own morning the second-source check
+        stops holding it, because a report that never ships is worse than one that
+        ships without a second source. That morning only: a later run never releases
+        an older report. Never raises.
     """
     r = readiness(date_iso, stage_dir)
     r["released_by"] = "second source" if r["ok"] else ""
@@ -516,6 +551,18 @@ def gate(date_iso: str, stage_dir: Path = STAGE) -> dict:
             if re.fullmatch(r"\d{4}-\d{2}-\d{2}", date_iso or "") \
                     and flag.read_text(encoding="utf-8").strip():
                 r["released_by"] = flag.name
+        except Exception:  # noqa: BLE001
+            pass
+    if not r["ok"] and not r["released_by"] and deadline_passed(date_iso):
+        r["released_by"] = f"deadline {DEADLINE_HOUR:02d}:00"
+        r["deadline_release"] = True
+        # A record anyone can read later, without re-deriving the clock: report.py
+        # says "published without second source (deadline release)" off this file.
+        try:
+            (Path(stage_dir) / f"deadline_release_{date_iso}.txt").write_text(
+                f"{pacific_now().isoformat(timespec='seconds')} no second source by "
+                f"{DEADLINE_HOUR:02d}:00, so the report was released without one: "
+                f"{r['reason']}\n", encoding="utf-8")
         except Exception:  # noqa: BLE001
             pass
     r["release"] = bool(r["released_by"])
@@ -531,7 +578,9 @@ def main() -> int:
         print(f"[cr] second source NOT ready for {r['date']} "
               f"(code {r['code']}): {r['reason']}")
         if r.get("release"):
-            print(f"[cr] released by a human: {r['released_by']}")
+            how = ("the 08:00 deadline (no second source was staged)"
+                   if r.get("deadline_release") else f"a human: {r['released_by']}")
+            print(f"[cr] released by {how}")
             return READY
         return r["code"]
     if len(sys.argv) < 2:

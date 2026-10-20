@@ -892,6 +892,53 @@ def test_gate_opens_on_its_own_when_the_second_source_is_ready(dirs):
     assert g["release"] is True and g["released_by"] == "second source"
 
 
+# The report must never go stale: at 08:00 on its own morning the second-source gate
+# releases by itself, so one emulator fault cannot leave the overnight page empty all
+# day. Scoped to that morning, and it never touches the box-data gate.
+def _pin_clock(monkeypatch, hh, mm=0, day="2026-10-04"):
+    d = dt.date.fromisoformat(day)
+    monkeypatch.setattr(mc, "pacific_now",
+                        lambda: dt.datetime(d.year, d.month, d.day, hh, mm,
+                                            tzinfo=mc._pacific(d)))
+
+
+def test_gate_is_held_before_eight_on_the_reports_own_morning(dirs, monkeypatch):
+    _, stage = dirs
+    _pin_clock(monkeypatch, 7, 59)
+    g = mc.gate(DATE, stage)
+    assert g["release"] is False and g["code"] == mc.ABSENT
+    assert not (stage / f"deadline_release_{DATE}.txt").exists()
+
+
+def test_gate_releases_at_eight_on_the_reports_own_morning(dirs, monkeypatch):
+    _, stage = dirs
+    _pin_clock(monkeypatch, 8, 0)
+    g = mc.gate(DATE, stage)
+    assert g["release"] is True and g["deadline_release"] is True
+    assert g["released_by"] == "deadline 08:00"
+    assert g["ok"] is False          # released, still no second source
+    note = (stage / f"deadline_release_{DATE}.txt").read_text(encoding="utf-8")
+    assert "released without one" in note and "no staged emulator incidents" in note
+
+
+def test_deadline_never_releases_another_mornings_report(dirs, monkeypatch):
+    """The runner only ever publishes today's report; a stale date must stay held."""
+    _, stage = dirs
+    _pin_clock(monkeypatch, 9, 0, day="2026-10-05")     # the morning after DATE
+    g = mc.gate(DATE, stage)
+    assert g["release"] is False and g["released_by"] == ""
+
+
+def test_deadline_release_is_reported_by_the_command_line(dirs, monkeypatch, capsys):
+    _, stage = dirs
+    _pin_clock(monkeypatch, 8, 30)
+    monkeypatch.setattr(sys, "argv", ["merge_crimeradar.py", "--gate", DATE])
+    monkeypatch.setattr(mc, "STAGE", stage)
+    assert mc.main() == mc.READY
+    out = capsys.readouterr().out
+    assert "the 08:00 deadline" in out
+
+
 # ------------------------------------------- getting back to History from anywhere
 # Verified 2026-10-09: the 07:15 emit failed four mornings in a row with
 # "could not reach Replay > History" while a "System UI isn't responding" dialog

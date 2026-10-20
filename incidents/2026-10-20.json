@@ -1,0 +1,296 @@
+[
+ {
+  "type": "fire",
+  "time": "19:35",
+  "agency": "KCFD",
+  "area": "Potomac Avenue",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "An outside fire was reported in a field at Washington Street and Potomac Avenue.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "traffic collision",
+  "time": "19:35",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "Two vehicles crashed with nobody pinned in, and one of the vehicles left before officers arrived."
+ },
+ {
+  "type": "vandalism",
+  "time": "19:53",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "Three vehicles were reported doing donuts and tearing up equipment on high-speed rail property north of Highway 46; an air unit relayed the location to deputies on the ground."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "20:52",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 4,
+  "disposition": "reported",
+  "summary": "A semi with a box trailer burned on northbound Interstate 5 at the Copus Road off-ramp. The trailer was about 75 percent involved and a fuel line was leaking; firefighters started a second engine for water supply and called for environmental health because of the trailer's load."
+ },
+ {
+  "type": "structure fire",
+  "time": "21:05",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "Firefighters went to a two-story house and found nothing showing; the first engine on scene handled it."
+ },
+ {
+  "type": "weapons",
+  "time": "21:07",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "A caller reported two people with machetes taking copper wire from a property."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "22:08",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 3,
+  "disposition": "cleared",
+  "summary": "A vehicle went off the roadway and burned completely in the Dustin Acres area, with a small amount of grass burning alongside it."
+ },
+ {
+  "type": "shots fired",
+  "time": "22:10",
+  "agency": "Dispatch",
+  "area": "Grace Street",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "Two loud bangs were reported in the area of Grace Street near Jefferson Park Court and a call was broadcast for service.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "fire",
+  "time": "22:17",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "A trash barrel was burning under a mobile home overhang about three feet from the structure; crews arriving found a smoldering barrel to the front of the property and no threat to the building."
+ },
+ {
+  "type": "vehicle theft",
+  "time": "22:28",
+  "agency": "Dispatch",
+  "area": "Jeffrey Street",
+  "notability": 3,
+  "disposition": "reported",
+  "summary": "A man called in his own stolen car and followed it after a 2006 Ford Coupe was taken from Jeffrey Street near Waco Avenue; deputies set a perimeter."
+ },
+ {
+  "type": "assault",
+  "time": "22:33",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "A caller said he was being chased by a man with a Taser who was already a suspect in an earlier assault."
+ },
+ {
+  "type": "traffic",
+  "time": "22:52",
+  "agency": "Dispatch",
+  "area": "Brundage Lane",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "A possible drunk driver in a white pickup was reported heading east on Brundage Lane at Mount Vernon Avenue."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "23:07",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "An electric vehicle burned fully involved; a second engine was started for water supply and traffic was moved around the scene."
+ },
+ {
+  "type": "weapons",
+  "time": "23:57",
+  "agency": "Dispatch",
+  "area": "Lincoln Street",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "A man described as a possible transient and carrying a large kitchen knife followed a resident through the gate of a Lincoln Street apartment complex and was gone when officers looked.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "suspicious circumstance",
+  "time": "02:04",
+  "agency": "Dispatch",
+  "area": "Duck Pond Lane",
+  "notability": 1,
+  "disposition": "reported",
+  "summary": "Someone reported an alarm going off at the community mailboxes on Duck Pond Lane, with a person possibly getting into them.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "burglary",
+  "time": "02:43",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "reported",
+  "summary": "Deputies searched a storage facility after two people in sweatshirts and masks got in. One of them went over the back wall and was last seen heading southeast toward the railroad tracks, and a perimeter was set south of the line."
+ },
+ {
+  "type": "vegetation fire",
+  "time": "03:08",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 3,
+  "disposition": "reported",
+  "summary": "A large brush fire was reported in a field north of the railroad tracks and appeared to be spreading toward the property."
+ },
+ {
+  "type": "assault",
+  "time": "04:30",
+  "agency": "Dispatch",
+  "area": "White Lane",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "A woman was reported slapping a man at a White Lane apartment."
+ },
+ {
+  "type": "suspicious person",
+  "time": "04:47",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "Two men in ski masks were reported hiding beside a motel room door and knocking on it while the caller stayed inside with the door locked."
+ },
+ {
+  "type": "attempt to locate",
+  "time": "05:11",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "Officers broadcast information on an assault from about an hour earlier; the suspect vehicle was a gray Jeep Wrangler with custom black rims."
+ },
+ {
+  "type": "Traffic collision",
+  "time": "20:06",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Semi and SUV crash injures driver on Highway 65.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Medical emergency",
+  "time": "02:23",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Wilson Avenue",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Medical aid provided for traumatic injury near Wilson Avenue Bakersfield.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Rollover",
+  "time": "04:04",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Valpredo Avenue",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Single vehicle rollover on dirt road near Valpredo Ave.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:19",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Terrace Way",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Person hit with object at Terrace Way apartment.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:52",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Reckless semi reported on Highway 166 near Cuyama.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire",
+  "time": "06:53",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Vegetation fire of about 10 acres near CA-119.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire",
+  "time": "22:48",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Jackson Street",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Garage fire response on Jackson Street.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Cardiac arrest",
+  "time": "23:29",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Cardiac arrest reported near Brimley Avenue.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Assault",
+  "time": "01:20",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Terrace Way",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Assault with injured man at Terrace Way apartment.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "02:12",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "E 6th Street",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person with traumatic injury near E 6th Street.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire",
+  "time": "06:01",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Kentucky Street",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Trash can and back house fire on Kentucky Street.",
+  "source": "crimeradar"
+ }
+]

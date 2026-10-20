@@ -1330,6 +1330,16 @@
   "details": ""
  },
  {
+  "log_id": "261020BF0026",
+  "time": "Oct 20 2026  5:00AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr99 S / Panama Ln Ofr",
+  "area": "Bakersfield",
+  "lat": 35.299222,
+  "lon": -119.031487,
+  "details": ""
+ },
+ {
   "log_id": "261020BF0002",
   "time": "Oct 20 2026 12:00AM",
   "type": "TADV-Traffic Advisory",

@@ -1380,6 +1380,16 @@
   "details": ""
  },
  {
+  "log_id": "261019BF0268",
+  "time": "Oct 19 2026  5:02PM",
+  "type": "SLIDE-Mud/Dirt/Rock",
+  "location": "Kern River Power House 1",
+  "area": "Bakersfield",
+  "lat": 35.460226,
+  "lon": -118.779062,
+  "details": ""
+ },
+ {
   "log_id": "261019BF0038",
   "time": "Oct 19 2026  6:00AM",
   "type": "1181-Trfc Collision-Minor Inj",

@@ -102,7 +102,7 @@ MAP = {
         "mental health", "mental health crisis", "mental health hold", "large gathering",
         "fireworks complaint", "public intoxication", "threats", "criminal threats",
         "call for help", "pedestrian check",
-        "domestic dispute",
+        "domestic dispute", "welfare call",
     ),
     "Burglary and theft": (
         "burglary", "theft", "vehicle theft", "robbery", "armed robbery",
@@ -118,7 +118,7 @@ MAP = {
         "suspicious circumstances at a school", "suspicious person", "suspicious persons",
         "suspicious subjects", "suspicious vehicle", "suspicious vehicle report",
         "suspicious prowler video", "prowler", "loitering", "loitering complaint",
-        "trespassing",
+        "trespassing", "suspicious person report",
     ),
     "Alarms": (
         "alarm", "burglary alarm", "audible alarm", "commercial alarm", "commercial fire alarm",

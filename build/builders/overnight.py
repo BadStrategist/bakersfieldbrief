@@ -251,9 +251,91 @@ def _is_shooting(inc: dict) -> bool:
     return "shoot" in t or "shots" in t
 
 
+# The card's tile colours, one per night_counts row. A row the map does not name (a type
+# promoted out of Other) takes the Other colour.
+_CHIP_CLASS = {
+    "Weapons and assaults": "weap", "Fires": "fire", "Crashes and traffic": "crash",
+    "Medical and overdose": "med", "Missing persons": "miss",
+    "Disturbances and welfare": "welf", "Burglary and theft": "theft",
+    "Suspicious activity": "susp", "Alarms": "alarm",
+}
+# Shorter tile labels for phones. The rows and counts are night_counts'; only the words change.
+_CHIP_SHORT = {
+    "Weapons and assaults": "Weapons &amp; assaults", "Crashes and traffic": "Crashes",
+    "Medical and overdose": "Medical", "Disturbances and welfare": "Disturbance &amp; welfare",
+    "Burglary and theft": "Burglary &amp; theft", "Suspicious activity": "Suspicious",
+}
+_HOUR_LABELS = ("7 PM", "8 PM", "9 PM", "10 PM", "11 PM", "12 AM",
+                "1 AM", "2 AM", "3 AM", "4 AM", "5 AM", "6 AM")
+_BARE_SUMMARY = re.compile(r"^[^.]*\(\d{1,2}:\d{2}\)\s*$")
+
+
+def _night_minute(t) -> int | None:
+    """'HH:MM' -> minutes after 7 PM, so 19:00 is 0 and 05:20 is 620. None if unreadable."""
+    m = re.match(r"^\s*(\d{1,2}):(\d{2})", str(t or ""))
+    if not m:
+        return None
+    return ((int(m.group(1)) - 19) % 24) * 60 + int(m.group(2))
+
+
+def _clock(t) -> str:
+    m = re.match(r"^\s*(\d{1,2}):(\d{2})", str(t or ""))
+    if not m:
+        return ""
+    h, mm = int(m.group(1)), m.group(2)
+    return f"{(h % 12) or 12}:{mm} {'AM' if h < 12 else 'PM'}"
+
+
+def _top_rank(inc: dict) -> int | None:
+    """Which calls lead the card. The pipeline's notability score rates a bare 'shooting'
+    below an officer assist (2026-10-19), so the order here is by what happened: shootings,
+    stabbings and homicides; then other weapons calls and assaults; then structure and
+    vehicle fires. Nothing else is a top call. Lower is first."""
+    typ = night_counts.normalize(inc.get("type"))
+    text = f"{typ} {str(inc.get('summary', '')).lower()}"
+    chip = night_counts.CHIP_OF.get(typ)
+    if _is_shooting(inc) or re.search(r"\b(stabbing|homicide|gunshot)\b", typ):
+        return 0
+    if chip == "Weapons and assaults" and re.search(
+            r"assault|weapon|armed|brandish|knife|gun|firearm|battery", typ):
+        return 1
+    if chip == "Fires" and re.search(
+            r"structure|building|house|home|vehicle fire|car fire", text):
+        return 2
+    return None
+
+
+def _top_calls(incs: list[dict], n: int = 4) -> list[dict]:
+    """Up to n top calls, printed in the order they happened. Within a rank, a call the
+    log describes beats one that is only a type and a time."""
+    ranked = []
+    for k, inc in enumerate(incs):
+        rank = _top_rank(inc)
+        if rank is None:
+            continue
+        bare = _BARE_SUMMARY.match(str(inc.get("summary", ""))) is not None
+        ranked.append((rank, bare, _night_minute(inc.get("time")) or 0, k))
+    picked = [incs[row[-1]] for row in sorted(ranked)[:n]]
+    return sorted(picked, key=lambda i: _night_minute(i.get("time")) or 0)
+
+
+def _top_call_html(inc: dict) -> str:
+    typ = night_counts.normalize(inc.get("type"))
+    chip = night_counts.CHIP_OF.get(typ, night_counts.OTHER)
+    tag = "Shooting" if _is_shooting(inc) else typ[:1].upper() + typ[1:]
+    summary = re.sub(r"\s+", " ", str(inc.get("summary", ""))).strip()
+    if not summary or _BARE_SUMMARY.match(summary):
+        # The log has only the type and the time; the tag already says what it was.
+        summary = "Reported to dispatch; no further detail in the log."
+    return (f'<li><time>{_clock(inc.get("time"))}</time><p>'
+            f'<span class="nc-tag nc-{_CHIP_CLASS.get(chip, "other")}">{html.escape(tag)}</span>'
+            f'{html.escape(summary)}</p></li>')
+
+
 def _night_stats_html(date_iso: str) -> str:
-    """Counts of the night's logged calls by kind, straight from incidents/<date>.json.
-    Nothing is shown when the file is missing, never an invented number.
+    """The night card: the total, calls per hour, the rows by kind and the top calls,
+    straight from incidents/<date>.json. Nothing is shown when the file is missing,
+    never an invented number.
 
     The rows, their order and their labels come from night_counts, the same table the
     home band and the wall read, so one night cannot show two sets of numbers.
@@ -262,19 +344,82 @@ def _night_stats_html(date_iso: str) -> str:
     if not incs:
         return ""
     rows, inside, _unmapped = night_counts.chips(incs)
-    tiles = [f'<div class="tile"><strong>{len(incs)}</strong>'
-             '<span>calls logged overnight</span></div>']
-    tiles += [f'<div class="tile"><strong>{n}</strong><span>{label}</span></div>'
-              for label, n in rows]
+    total = len(incs)
+
+    hours = [0] * 12
+    times = []
+    for inc in incs:
+        m = _night_minute(inc.get("time"))
+        if m is None:
+            continue
+        times.append((m, inc.get("time")))
+        if m < 720:
+            hours[m // 60] += 1
+    peak = max(hours)
+    bars = []
+    for k, c in enumerate(hours):
+        cls = ' class="peak"' if peak and c == peak else ""
+        pct = round(100 * c / peak) if peak else 0
+        bars.append(f'<i{cls} style="height:{pct}%" title="{_HOUR_LABELS[k]}: {c}"></i>')
+    facts = []
+    if peak:
+        k = hours.index(peak)
+        start = _HOUR_LABELS[k]
+        end = _HOUR_LABELS[k + 1] if k < 11 else "7 AM"
+        if start[-2:] == end[-2:]:
+            start = start.split()[0]
+        facts.append(("Busiest hour", f"<strong>{start}&ndash;{end}</strong> &middot; "
+                                      f"{peak} call{'s' if peak != 1 else ''}"))
+    facts.append(("Shooting calls", f"<strong>{sum(_is_shooting(i) for i in incs)}</strong>"))
+    if times:
+        facts.append(("First call", f"<strong>{_clock(min(times)[1])}</strong>"))
+        facts.append(("Last call", f"<strong>{_clock(max(times)[1])}</strong>"))
+    facts_html = "".join(f"<div><dt>{k}</dt><dd>{v}</dd></div>" for k, v in facts)
+
+    mix = "".join(f'<span class="nc-{_CHIP_CLASS.get(label, "other")}" style="flex:{n}"></span>'
+                  for label, n in rows)
+    tiles = "".join(
+        f'<li class="nc-{_CHIP_CLASS.get(label, "other")}"><b>{n}</b>'
+        f'<small>{_CHIP_SHORT.get(label, html.escape(label))}</small></li>'
+        for label, n in rows)
+    top = _top_calls(incs)
+    top_html = (f'<section class="nc-top"><h2>Last night&rsquo;s top calls</h2>'
+                '<ol>' + "".join(_top_call_html(i) for i in top) + '</ol></section>' if top else "")
+
     note = ('Counts are the calls our overnight log captured '
             '(7 PM &ndash; 7 AM: the countywide radio feed, plus app-based dispatch '
             'reports for the hours the feed does not carry). It is not a complete '
             'record of every call.')
     if inside:
         note += f' The {night_counts.OTHER} row is {inside}.'
-    return ('<p class="sec-head">The night at a glance</p>'
-            f'<div class="link-grid">{"".join(tiles)}</div>'
-            f'<p class="note">{note}</p>')
+    try:
+        d = _date.fromisoformat(date_iso)
+        when = f"{_DOW[d.weekday()][:3]} &middot; {_MONTH[d.month - 1][:3]} {d.day}"
+    except ValueError:
+        when = html.escape(date_iso)
+    plural = "s" if total != 1 else ""
+    bars_html = "".join(bars)
+
+    return f"""
+    <article class="night-card" aria-label="Overnight summary for {html.escape(_long_date(date_iso))}">
+      <div class="nc-side">
+        <div class="nc-when"><span>{when}</span><span>7 PM &ndash; 7 AM</span></div>
+        <div class="nc-total"><b>{total}</b><span>notable call{plural}<br>overnight</span></div>
+        <div class="nc-chart"><div class="nc-hours" role="img" aria-label="Calls per hour, 7 PM to 7 AM">{bars_html}</div>
+          <div class="nc-axis"><span>7p</span><span>11p</span><span>3a</span><span>7a</span></div></div>
+        <dl class="nc-facts">{facts_html}</dl>
+      </div>
+      <div class="nc-main">
+        <div class="nc-mix" aria-hidden="true">{mix}</div>
+        <ul class="nc-cats">{tiles}</ul>
+        {top_html}
+        <div class="nc-cta">
+          <p><strong>Get this in your inbox every morning.</strong> Free, one email, no spam.</p>
+          <form class="nl-form nc-form" action="/api/newsletter" method="POST"><input type="email" name="email" placeholder="you@email.com" required aria-label="Your email"/><button type="submit">Sign up</button></form>
+          <details class="nc-fine"><summary>About these numbers</summary><p>{note}</p></details>
+        </div>
+      </div>
+    </article>"""
 
 
 def _night_title(r: dict) -> str:

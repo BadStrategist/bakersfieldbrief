@@ -130,6 +130,34 @@ def test_the_overnight_glance_reads_the_same_table_as_the_home_band(monkeypatch)
     monkeypatch.setattr(overnight, "_incidents", lambda _d: rows)
     html = overnight._night_stats_html("2026-10-12")
     for label, n in night_counts.chips(rows)[0]:
-        assert f"<strong>{n}</strong><span>{label}</span>" in html, label
-    assert "calls logged overnight" in html
-    assert "Shootings" not in html and "Fires" not in html
+        short = overnight._CHIP_SHORT.get(label, label)
+        assert f"<b>{n}</b><small>{short}</small>" in html, label
+    assert f"<b>{len(rows)}</b><span>notable calls" in html
+    assert "Shootings" not in html and ">Fires<" not in html
+
+
+def test_the_night_card_counts_hours_and_ranks_top_calls(monkeypatch):
+    """The card's hour bars, facts and top calls come from the same file as the tiles.
+    A bare 'shooting (21:03)' row outranks a described officer assist, and its line
+    adds nothing the log does not say (2026-10-19)."""
+    from build.builders import overnight
+    rows = [
+        {"type": "officer assist", "time": "19:00", "summary": "officer assist (19:00)", "notability": 3},
+        {"type": "shooting", "time": "21:03", "summary": "shooting (21:03)", "notability": 2},
+        {"type": "Assault", "time": "23:34", "summary": "Assault reported; knife possibly used.", "notability": 3},
+        {"type": "structure fire", "time": "04:25", "summary": "structure fire (04:25)", "notability": 3},
+        {"type": "Fire", "time": "00:49", "summary": "Car fire after crash near Olive Drive.", "notability": 3},
+        {"type": "medical aid", "time": "19:30", "summary": "medical aid (19:30)", "notability": 2},
+    ]
+    monkeypatch.setattr(overnight, "_incidents", lambda _d: rows)
+    html = overnight._night_stats_html("2026-10-19")
+    top = [i["time"] for i in overnight._top_calls(rows)]
+    assert top == ["21:03", "23:34", "00:49", "04:25"]  # night order, officer assist left out
+    assert "shooting (21:03)" not in html
+    assert "Reported to dispatch; no further detail in the log." in html
+    assert "<dt>Shooting calls</dt><dd><strong>1</strong></dd>" in html
+    assert "<dt>Busiest hour</dt><dd><strong>7&ndash;8 PM</strong> &middot; 2 calls" in html
+    assert "<dt>First call</dt><dd><strong>7:00 PM</strong></dd>" in html
+    assert "<dt>Last call</dt><dd><strong>4:25 AM</strong></dd>" in html
+    assert html.count('class="peak"') == 1
+    assert 'action="/api/newsletter"' in html

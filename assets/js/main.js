@@ -165,6 +165,9 @@
      the XHR. */
   (function () {
     var form = document.getElementById("nl-form");
+    // Every signup form on the page (the footer block and the overnight card) posts here.
+    var forms = document.querySelectorAll('form.nl-form[action="/api/newsletter"]');
+    if (!form && forms.length) form = forms[0];
     var modal = document.getElementById("nl-modal");
 
     // If JS is unavailable, the form action (/api/newsletter) is the fallback.
@@ -220,9 +223,9 @@
       }
     }
 
-    form.addEventListener("submit", function (e) {
+    function onSubmit(e) {
       e.preventDefault();
-      var email = form.querySelector('input[name="email"]');
+      var email = e.currentTarget.querySelector('input[name="email"]');
       if (!email || !email.value || !email.checkValidity()) { email.reportValidity(); return; }
 
       // POST to the Cloudflare Pages Function (proxies to MailerLite with the
@@ -238,7 +241,8 @@
         openModal();  // network hiccup — still show the thank-you card
       };
       xhr.send(JSON.stringify({ email: email.value }));
-    });
+    }
+    Array.prototype.forEach.call(forms, function (f) { f.addEventListener("submit", onSubmit); });
 
     modal.querySelectorAll("[data-nl-close]").forEach(function (btn) {
       btn.addEventListener("click", closeModal);

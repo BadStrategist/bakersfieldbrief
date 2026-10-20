@@ -35,6 +35,7 @@
 # so either app list can be exercised at any time of day:
 #   CR_MEM_DRY=1 CR_MEM_WINDOW=13 CR_MEM_FLOOR_MB=999999 bash crimeradar_memguard.sh
 #   CR_MEM_DRY=1 CR_MEM_MORNING_WINDOW=13 CR_MEM_FLOOR_MB=999999 bash crimeradar_memguard.sh
+#   CR_MEM_HOUR=23 ... bash crimeradar_memguard.sh   # pin the clock for a test
 #
 # Exit codes: always 0. This must never fail a poll: it is a helper, and the
 # monitor's own guards decide whether the night is usable. The one exception is
@@ -84,7 +85,7 @@ case "$BEFORE" in
     exit 0 ;;
 esac
 
-HOUR=$(date +%H)
+HOUR="${CR_MEM_HOUR:-$(date +%H)}"
 TARGETS=""
 for h in $WINDOW; do
   [ "$HOUR" = "$h" ] && TARGETS="$TARGETS $APPS_NIGHT"

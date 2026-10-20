@@ -125,7 +125,11 @@ THIS_HOUR = time.strftime("%H")
 
 # ---- the memguard as the leg's RAM gauge
 def test_a_reading_is_recorded_outside_the_memguards_hours_and_nothing_is_closed(leg):
-    r = leg.run("crimeradar_memguard.sh", "morning", FAKE_FREE_MB="900")
+    # Pin the hour: the memguard reads the wall clock, so 07:50 PT is inside the
+    # 06-09 morning window as soon as CI runs in UTC and this test went red on
+    # 2026-10-20 at 08:25Z. 13:00 is outside both windows at any timezone.
+    r = leg.run("crimeradar_memguard.sh", "morning",
+                CR_MEM_HOUR="13", FAKE_FREE_MB="900")
     assert r.returncode == 0, r.stdout + r.stderr
     assert "host RAM 900 MB free before the morning step" in r.stdout
     assert "nothing is closed" in r.stdout
@@ -135,20 +139,34 @@ def test_a_reading_is_recorded_outside_the_memguards_hours_and_nothing_is_closed
 
 
 def test_a_reading_is_recorded_when_ram_is_fine(leg):
-    r = leg.run("crimeradar_memguard.sh", "night", CR_MEM_WINDOW=THIS_HOUR, FAKE_FREE_MB="3600")
+    r = leg.run("crimeradar_memguard.sh", "night",
+                CR_MEM_HOUR="23", CR_MEM_WINDOW="23", FAKE_FREE_MB="3600")
     assert "host RAM 3600 MB free before the night step" in r.stdout
     assert leg.reclaims() == []
     assert " night free=3600MB floor=1500MB ok" in leg.ram_log()[0]
 
 
 def test_below_the_floor_in_its_hours_it_still_names_only_its_two_apps(leg):
-    r = leg.run("crimeradar_memguard.sh", "night", CR_MEM_WINDOW=THIS_HOUR, FAKE_FREE_MB="1321")
+    # Pinned to a night hour, and to the night window only, so the 06-09 morning
+    # window cannot add JagexLauncher and turn this into a 3-call assertion.
+    r = leg.run("crimeradar_memguard.sh", "night",
+                CR_MEM_HOUR="23", CR_MEM_WINDOW="23", FAKE_FREE_MB="1321")
     assert r.returncode == 0, r.stdout + r.stderr
     assert "below 1500 MB" in r.stdout
     calls = leg.reclaims()
     assert len(calls) == 2 and "'RuneLite'" in calls[0] and "'chrome'" in calls[1]
     assert not any(name in " ".join(calls) for name in ("Discord", "claude", "Predator"))
     assert "free=1321MB floor=1500MB below-floor after=1321MB" in leg.ram_log()[0]
+
+
+def test_the_hour_knob_pins_the_morning_window(leg):
+    # Regression guard for the 2026-10-20 red gate: with the hour pinned to 08 the
+    # morning window must open and name ONE app, whatever the real clock says.
+    r = leg.run("crimeradar_memguard.sh", "morning",
+                CR_MEM_HOUR="08", CR_MEM_WINDOW="none", FAKE_FREE_MB="1321")
+    assert r.returncode == 0, r.stdout + r.stderr
+    calls = leg.reclaims()
+    assert len(calls) == 1 and "'JagexLauncher'" in calls[0], calls
 
 
 def test_no_reading_is_recorded_as_no_reading(leg):

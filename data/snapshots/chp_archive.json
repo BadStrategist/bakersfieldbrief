@@ -1340,6 +1340,26 @@
   "details": ""
  },
  {
+  "log_id": "261020BF0042",
+  "time": "Oct 20 2026  7:01AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Pond Rd / Sr43",
+  "area": "Bakersfield",
+  "lat": 35.71767,
+  "lon": -119.33044,
+  "details": ""
+ },
+ {
+  "log_id": "261020BF0044",
+  "time": "Oct 20 2026  7:08AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb Sr99 Jno Whisler Rd",
+  "area": "Bakersfield",
+  "lat": 35.646431,
+  "lon": -119.221801,
+  "details": ""
+ },
+ {
   "log_id": "261020BF0002",
   "time": "Oct 20 2026 12:00AM",
   "type": "TADV-Traffic Advisory",

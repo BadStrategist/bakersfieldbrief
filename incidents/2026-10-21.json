@@ -1,0 +1,390 @@
+[
+ {
+  "type": "vehicle versus pedestrian",
+  "time": "19:01",
+  "agency": "KCFD",
+  "area": "Almond Grove Lane",
+  "notability": 4,
+  "disposition": "reported",
+  "summary": "A vehicle versus pedestrian call brought an engine, a truck and a battalion chief to Almond Grove Lane.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "traffic hazard",
+  "time": "19:02",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "A go-kart complaint came in from the Trentino neighborhood."
+ },
+ {
+  "type": "person with knife",
+  "time": "19:07",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "reported",
+  "summary": "Officers were sent to a bar where a man with a knife in his pocket was reported threatening a customer."
+ },
+ {
+  "type": "outside fire",
+  "time": "19:18",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "An outside fire was reported at south Edison Road and David Road."
+ },
+ {
+  "type": "medical aid",
+  "time": "19:18",
+  "agency": "KCFD",
+  "area": "Beale Avenue",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "A medical aid call came in on Beale Avenue.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "search for a suspect",
+  "time": "19:30",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 4,
+  "disposition": "cleared",
+  "summary": "Deputies set a perimeter around an apartment complex and flew a drone over it after a suspect wanted on firearm and gang charges ran from a residence. Discarded clothing was found in a breezeway, patrol units were posted on the streets around the complex, and the search was called off a little after 8:30 p.m."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "19:56",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 4,
+  "disposition": "cleared",
+  "summary": "A tractor-trailer rig burned, with Engine 6 taking command and crews drawing tank water from a hydrant on the north side of the Brundage bridge. The trailer held nothing but produce, and a bystander was checked for possible smoke inhalation."
+ },
+ {
+  "type": "traffic collision",
+  "time": "20:00",
+  "agency": "KCFD",
+  "area": "E Belle Terrace",
+  "notability": 4,
+  "disposition": "cleared",
+  "summary": "A transit bus went off the road at Belle Terrace and South Washington and six passengers reported pain; a third ambulance was started.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "traffic collision",
+  "time": "20:32",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "cleared",
+  "summary": "Two vehicles crashed on northbound Interstate 5 after another driver brake-checked traffic; the driver who caused it left before officers arrived and a no-contact hit-and-run report was taken."
+ },
+ {
+  "type": "shots fired",
+  "time": "20:49",
+  "agency": "Dispatch",
+  "area": "22nd Street",
+  "notability": 3,
+  "disposition": "reported",
+  "summary": "A single gunshot was reported in the area of 22nd Street, with nothing else seen or heard.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "traffic hazard",
+  "time": "21:07",
+  "agency": "Dispatch",
+  "area": "E Belle Terrace",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "A right-turn-only sign was knocked down at the dead end of East Belle Terrace at South Washington, and the city yard was asked to respond overnight.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "brush fire",
+  "time": "21:14",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 4,
+  "disposition": "cleared",
+  "summary": "A brush fire on Highway 33 drew a wildland response with two dozers, a helicopter, water tenders and several patrols."
+ },
+ {
+  "type": "structure fire",
+  "time": "21:24",
+  "agency": "KCFD",
+  "area": "Delwood Avenue",
+  "notability": 3,
+  "disposition": "cleared",
+  "summary": "Firefighters found smoke coming from the garage of a house on Delwood Avenue; the occupants were already out, the fire was knocked down and crews stayed for overhaul.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "grass fire",
+  "time": "21:32",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "A grass fire about 10 feet by 20 feet was handled by a single engine."
+ },
+ {
+  "type": "assault",
+  "time": "21:44",
+  "agency": "Dispatch",
+  "area": "S Union Avenue",
+  "notability": 3,
+  "disposition": "reported",
+  "summary": "A man who stole from a South Union business assaulted the person who confronted him, and a caller thought he had a weapon on him."
+ },
+ {
+  "type": "fireworks complaint",
+  "time": "22:11",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "A caller reported hearing shots in the area; officers found people setting off aerial fireworks and cleared the call."
+ },
+ {
+  "type": "person with a gun",
+  "time": "22:48",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "reported",
+  "summary": "Deputies were sent to an address where three or four people were reported walking around with a shotgun."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "22:52",
+  "agency": "Dispatch",
+  "area": "Starlight Peak Drive",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "Deputies went to a domestic disturbance on Starlight Peak Drive and found the subject on the back patio.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "reckless driving",
+  "time": "23:02",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "A reckless driving report came in from Elm Street west of Harrison in Ford City: high beams, high speed and no plate."
+ },
+ {
+  "type": "brush fire",
+  "time": "23:59",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 4,
+  "disposition": "cleared",
+  "summary": "A grass fire on Elk Hills Road drew a wildland response with two dozers, a water tender and several patrols. Crews had to go in through oil field gates, and the company opened one for them. Battalion 2 kept three engines and the equipment on the fire and cancelled the rest of the response."
+ },
+ {
+  "type": "missing person",
+  "time": "00:09",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "A missing person call was worked out of the city; the person was standing by with the reporting party."
+ },
+ {
+  "type": "public intoxication",
+  "time": "00:17",
+  "agency": "Dispatch",
+  "area": "Linda Vista Drive",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "A nude, intoxicated man was reported causing a disturbance on Linda Vista Drive.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "weapons call",
+  "time": "01:05",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "reported",
+  "summary": "Deputies were sent to an apartment complex where a man had threatened a resident and a roommate and then left with a handgun in a black backpack."
+ },
+ {
+  "type": "shooting",
+  "time": "01:12",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 5,
+  "disposition": "reported",
+  "summary": "A man was shot in the head at a store on Highway 58 in Mojave and was unresponsive when deputies got there; they locked the business down. Witnesses reported a burgundy car with a disabled plate leaving, and two people ran toward nearby apartments."
+ },
+ {
+  "type": "alarm",
+  "time": "01:38",
+  "agency": "KCFD",
+  "area": "Teal Street",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "An engine was sent to a carbon monoxide alarm on Teal Street.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "01:45",
+  "agency": "KCFD",
+  "area": "Union Avenue",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "Two men were reported fighting at a Union Avenue gas station."
+ },
+ {
+  "type": "impaired driver",
+  "time": "02:22",
+  "agency": "Dispatch",
+  "area": "Rosedale Highway",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "A caller reported an impaired driver on Rosedale Highway at the north end of town."
+ },
+ {
+  "type": "pursuit",
+  "time": "02:48",
+  "agency": "Dispatch",
+  "area": "Stockdale Highway",
+  "notability": 3,
+  "disposition": "cleared",
+  "summary": "A driver went the wrong way on Stockdale Highway and then southbound on Gosford Road. Officers lost sight of the car and reported that no unit was following it."
+ },
+ {
+  "type": "medical aid",
+  "time": "03:11",
+  "agency": "KCFD",
+  "area": "S Chester Avenue",
+  "notability": 3,
+  "disposition": "cleared",
+  "summary": "A person with traumatic injuries was found near South Chester Avenue and an ambulance was sent.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "structure fire",
+  "time": "03:15",
+  "agency": "KCFD",
+  "area": "Monterey Street",
+  "notability": 4,
+  "disposition": "cleared",
+  "summary": "Multiple callers reported a fire in an apartment on Monterey Street and a rescue was started. The Red Cross was called in for three women and two men who were displaced.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "traffic collision",
+  "time": "04:22",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 3,
+  "disposition": "cleared",
+  "summary": "Two vehicles crashed at Highway 119 and Tupman Road and both ended up in the roadway, one of them smoking with the driver still inside. The highway patrol was notified, the cars were pushed clear and both lanes were back open before 5 a.m."
+ },
+ {
+  "type": "structure fire",
+  "time": "04:35",
+  "agency": "KCFD",
+  "area": "Angela Way",
+  "notability": 4,
+  "disposition": "cleared",
+  "summary": "A reinforced response went to a house fire on Angela Way in the Station 8 area. Crews found the house charged with smoke on the east side and fire showing at a rear corner, and a contents fire in the garage was knocked down with the gas and electric secured.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "vehicle fire",
+  "time": "05:23",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 3,
+  "disposition": "cleared",
+  "summary": "A vehicle burned fully involved out in a field near Mojave; no grass caught and the call went to the highway patrol."
+ },
+ {
+  "type": "criminal threats",
+  "time": "05:33",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "A woman was reported yelling threats to kill someone and saying she had a firearm."
+ },
+ {
+  "type": "Medical emergency",
+  "time": "21:26",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Planz Road",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Infant reported not breathing at apartment near Planz Rd.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Cardiac arrest",
+  "time": "00:23",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Austin Street",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person with cardiac arrest near Austin Street.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "00:33",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Vehicle collision with multiple injured people.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Vehicle",
+  "time": "05:53",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Deer injured in roadway and loaded into vehicle.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Trespassing",
+  "time": "06:59",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Man repeatedly trespassing and taking items.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:33",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Man in wheelchair rambling near Bakersfield.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic",
+  "time": "06:36",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Traffic stop on silver Lexus in Bakersfield.",
+  "source": "crimeradar"
+ }
+]

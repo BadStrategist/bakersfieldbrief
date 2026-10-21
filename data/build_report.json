@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-21T04:40:45-07:00",
+ "built_at": "2026-10-21T07:52:04-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,16 +68,16 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 72,
+  "brief_words": 1471,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
    "chp_new": 2,
-   "top_story": "TCSO: Search for four men accused of robbing truck stop in Delano and stealing register",
+   "top_story": "New poll shows Becerra with wide lead over Hilton in California governor race",
    "overnight_band": {
-    "date": "2026-10-20",
-    "count": 31,
+    "date": "2026-10-21",
+    "count": 41,
     "chips": [
      [
       "Weapons and assaults",
@@ -85,33 +85,39 @@
      ],
      [
       "Fires",
-      10
+      9
      ],
      [
       "Crashes and traffic",
-      4
+      11
      ],
      [
       "Medical and overdose",
-      2
+      4
      ],
      [
-      "Burglary and theft",
-      2
+      "Missing persons",
+      1
+     ],
+     [
+      "Disturbances and welfare",
+      5
      ],
      [
       "Suspicious activity",
-      2
+      1
+     ],
+     [
+      "Alarms",
+      1
      ],
      [
       "Other calls",
-      5
+      3
      ]
     ],
-    "other": "3 incident, 1 vandalism, 1 attempt to locate",
-    "unmapped": [
-     "attempt to locate"
-    ]
+    "other": "1 search for a suspect, 1 vehicle, 1 incident",
+    "unmapped": []
    },
    "archive": "2026-10-21"
   },
@@ -148,13 +154,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 3,
+   "wind_mph": 9,
    "alerts": 1,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 60,
-   "wind_mph": 3,
+   "temp": 55,
+   "wind_mph": 9,
    "alerts": 1
   },
   "roads": {
@@ -191,17 +197,17 @@
    "isabella_af": 139902,
    "alpr_total": 458,
    "kern_fires": 0,
-   "aqi": 68,
-   "chp_week": 37
+   "aqi": 59,
+   "chp_week": 39
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 70
+   "published": 71
   },
   "map": {
-   "dots": 31
+   "dots": 30
   },
   "sunday_read": {
    "topic": "Public safety",

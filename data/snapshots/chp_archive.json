@@ -1318,5 +1318,25 @@
   "lat": 35.26582,
   "lon": -119.311948,
   "details": ""
+ },
+ {
+  "log_id": "261021BF0038",
+  "time": "Oct 21 2026  7:36AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Wb Sr178 Jeo Sr204",
+  "area": "Bakersfield",
+  "lat": 35.382222,
+  "lon": -119.009722,
+  "details": ""
+ },
+ {
+  "log_id": "261021BF0042",
+  "time": "Oct 21 2026  7:43AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Chester Ave / E Beardsley Ave",
+  "area": "Bakersfield",
+  "lat": 35.404928,
+  "lon": -119.020854,
+  "details": ""
  }
 ]

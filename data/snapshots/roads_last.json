@@ -11,7 +11,7 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "The southbound connector to eastbound SR-22 /in Santa Ana/ (Orange Co) is closed - Due to a traffic collision - Motorists are advised to use an alternate route The northbound connector to northbound SR-14 (Los Angeles Co) is closed from 2000 hrs each night to 0600 hrs each morning Monday thru Friday thru 10/23/26 - Due to construction - Motorists are advised to use an alternate route The southbound connector to northbound SR-14 (Los Angeles Co) is closed from 2100 hrs each night to 0500 hrs each morning Monday thru Friday thru 10/23/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "The northbound connector to northbound SR-14 (Los Angeles Co) is closed from 2000 hrs each night to 0600 hrs each morning Monday thru Friday thru 10/23/26 - Due to construction - Motorists are advised to use an alternate route The southbound connector to northbound SR-14 (Los Angeles Co) is closed from 2100 hrs each night to 0500 hrs each morning Monday thru Friday thru 10/23/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "CLOSED"
     },
     {
@@ -49,14 +49,6 @@
     "elsewhere": [
      {
       "status": "CLOSED",
-      "place": "Santa Ana",
-      "county": "Orange Co",
-      "where": "Santa Ana (Orange Co)",
-      "text": "The southbound connector to eastbound SR-22 /in Santa Ana/ (Orange Co) is closed - Due to a traffic collision - Motorists are advised to use an alternate route",
-      "region": "SOUTHERN CALIFORNIA"
-     },
-     {
-      "status": "CLOSED",
       "place": "",
       "county": "Los Angeles Co",
       "where": "Los Angeles Co",
@@ -78,11 +70,19 @@
       "where": "San Joaquin Co",
       "text": "A high wind advisory is in effect from the Jct of I-580 to the Jct of I-205 (San Joaquin Co) - Travel is not recommended for campers, trailers, or permit loads",
       "region": "CENTRAL CALIFORNIA"
+     },
+     {
+      "status": "CLOSED",
+      "place": "",
+      "county": "",
+      "where": "the Northern California area",
+      "text": "Is closed to northbound traffic from 0.5 mi north to 5.5 mi north of the Sacramento/Yolo Co Line /at County Rd 102/ from 2100 hrs each night to 0400 hrs each morning Monday thru Saturday thru 10/24/26 - Due to...",
+      "region": "NORTHERN CALIFORNIA"
      }
     ]
    },
-   "reported_as_of": "Tuesday, October 20th, 2026 at 09:34 PM",
-   "hash": "298bffa216"
+   "reported_as_of": "Wednesday, October 21st, 2026 at 12:59 AM",
+   "hash": "1e30fc2e0f"
   },
   {
    "number": "58",
@@ -104,7 +104,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Tuesday, October 20th, 2026 at 09:34 PM",
+   "reported_as_of": "Wednesday, October 21st, 2026 at 12:59 AM",
    "hash": "5374f203ec"
   },
   {
@@ -122,7 +122,7 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "No traffic restrictions reported.",
+     "text": "1-way controlled traffic at various locations from the Butte/Tehama Co Line to Vina Rd /in Los Molinos/ (Tehama Co) from 1800 hrs each night to 0600 hrs each morning Tuesday thru Saturday thru 10/23/26 - Due to construction",
      "status": "OPEN"
     }
    ],
@@ -141,9 +141,9 @@
      }
     ]
    },
-   "reported_as_of": "Tuesday, October 20th, 2026 at 09:34 PM",
-   "hash": "f97882795e"
+   "reported_as_of": "Wednesday, October 21st, 2026 at 12:59 AM",
+   "hash": "c5cf47f6fd"
   }
  ],
- "asof": "2026-10-20"
+ "asof": "2026-10-21"
 }

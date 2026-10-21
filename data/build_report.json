@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-21T00:59:38-07:00",
+ "built_at": "2026-10-21T04:40:45-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,13 +68,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 71,
+  "brief_words": 72,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 0,
-   "top_story": "Labor Secretary Keith Sonderling visits Kern County, highlights push for tech skills in agriculture",
+   "chp_new": 2,
+   "top_story": "TCSO: Search for four men accused of robbing truck stop in Delano and stealing register",
    "overnight_band": {
     "date": "2026-10-20",
     "count": 31,
@@ -118,7 +118,7 @@
   "cityhall": {
    "upcoming_meetings": 3,
    "county_items": 109,
-   "drafts_generated": 3
+   "drafts_generated": 0
   },
   "places": {
    "places": [
@@ -148,20 +148,20 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 9,
+   "wind_mph": 3,
    "alerts": 1,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 63,
-   "wind_mph": 9,
+   "temp": 60,
+   "wind_mph": 3,
    "alerts": 1
   },
   "roads": {
    "routes": [
     "i5:RESTRICTIONS",
     "sr58:OPEN",
-    "sr99:RESTRICTIONS"
+    "sr99:CLOSED"
    ],
    "log_entries": 60
   },
@@ -188,11 +188,11 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 140166,
+   "isabella_af": 139902,
    "alpr_total": 458,
    "kern_fires": 0,
-   "aqi": 78,
-   "chp_week": 35
+   "aqi": 68,
+   "chp_week": 37
   },
   "letters": {
    "published": 1

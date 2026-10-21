@@ -81,7 +81,7 @@
      }
     ]
    },
-   "reported_as_of": "Wednesday, October 21st, 2026 at 12:59 AM",
+   "reported_as_of": "Wednesday, October 21st, 2026 at 04:40 AM",
    "hash": "1e30fc2e0f"
   },
   {
@@ -104,7 +104,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Wednesday, October 21st, 2026 at 12:59 AM",
+   "reported_as_of": "Wednesday, October 21st, 2026 at 04:40 AM",
    "hash": "5374f203ec"
   },
   {
@@ -112,8 +112,8 @@
    "slug": "sr99",
    "name": "State Route 99 \u2014 Central Valley",
    "pass": false,
-   "status": "RESTRICTIONS",
-   "pass_status": "RESTRICTIONS",
+   "status": "CLOSED",
+   "pass_status": "CLOSED",
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
@@ -122,8 +122,8 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "1-way controlled traffic at various locations from the Butte/Tehama Co Line to Vina Rd /in Los Molinos/ (Tehama Co) from 1800 hrs each night to 0600 hrs each morning Tuesday thru Saturday thru 10/23/26 - Due to construction",
-     "status": "OPEN"
+     "text": "The northbound connector to westbound US-50 /in Sacramento/ (Sacramento Co) is closed from 2300 hrs each night to 0500 hrs each morning Monday thru Friday thru 10/23/26 1-way controlled traffic at various locations from the Butte/Tehama Co Line to Vina Rd /in Los Molinos/ (Tehama Co) from 1800 hrs each night to 0600 hrs each morning Tuesday thru Saturday thru 10/23/26 - Due to construction",
+     "status": "CLOSED"
     }
    ],
    "scope": {
@@ -138,11 +138,19 @@
       "where": "the Central California area",
       "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
       "region": "CENTRAL CALIFORNIA"
+     },
+     {
+      "status": "CLOSED",
+      "place": "Sacramento",
+      "county": "Sacramento Co",
+      "where": "Sacramento (Sacramento Co)",
+      "text": "The northbound connector to westbound US-50 /in Sacramento/ (Sacramento Co) is closed from 2300 hrs each night to 0500 hrs each morning Monday thru Friday thru 10/23/26 1-way controlled traffic at various locations from...",
+      "region": "NORTHERN CALIFORNIA"
      }
     ]
    },
-   "reported_as_of": "Wednesday, October 21st, 2026 at 12:59 AM",
-   "hash": "c5cf47f6fd"
+   "reported_as_of": "Wednesday, October 21st, 2026 at 04:40 AM",
+   "hash": "11559b225c"
   }
  ],
  "asof": "2026-10-21"

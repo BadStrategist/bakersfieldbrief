@@ -63,7 +63,7 @@
 
   /* Meta pixel: same consent as ads, and never when the browser sends
      Global Privacy Control. "" = not set up yet; the loader stays dormant. */
-  var META_PIXEL_ID = "";
+  var META_PIXEL_ID = "28770726319252312";
   function loadMetaPixel() {
     if (!META_PIXEL_ID || window.fbq || navigator.globalPrivacyControl) return;
     /* eslint-disable */

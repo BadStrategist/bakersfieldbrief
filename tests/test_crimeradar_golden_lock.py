@@ -59,6 +59,10 @@ def box(tmp_path):
     (repo / "work" / "crimeradar" / "emea").mkdir(exist_ok=True)
     adb = tmp_path / "adb.sh"
     adb.write_text(STUB_ADB.replace("\n", "\n"), encoding="utf-8")
+    # adb_bounded.sh execs the stub. Git Bash on the box runs any shebang file, but
+    # Linux (the CI runner) needs the execute bit: without it every adb call failed,
+    # the guest read as offline, and `check` skipped the version gate (exit 0, not 4).
+    adb.chmod(0o755)
     # The golden snapshot directory the check looks for.
     snap = tmp_path / "avd" / "CrimeRadar.avd" / "snapshots" / "golden"
     snap.mkdir(parents=True)
@@ -136,6 +140,15 @@ def test_the_lock_records_the_holder_it_was_given(box):
 
 
 # -- golden: check states ----------------------------------------------------
+
+def test_the_stub_device_answers(box):
+    """Every check state below assumes the scripted guest is reachable. If it is not,
+    `check` treats the guest as offline and skips the version gate, so a green run
+    here would prove nothing."""
+    repo, env = box
+    p = run(GOLDEN, "version", env=env)
+    assert p.stdout.strip() == "26.39.0", p.stdout + p.stderr
+
 
 def test_no_snapshot_is_exit_2(box):
     repo, env = box

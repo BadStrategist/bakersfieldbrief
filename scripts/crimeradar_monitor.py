@@ -163,7 +163,11 @@ def device_online() -> bool:
 # One emulator, one screen: two runs driving it at once tap each other's pages.
 # The lock is a file with a heartbeat (every adb call touches it), so a run that
 # died cannot hold it: it goes stale after LOCK_STALE seconds of silence.
-LOCK = OUT / "emulator.lock"
+# CR_EMU_LOCK: the same lock as the bash side (crimeradar_lock.sh), even when the
+# script and the repo disagree about where work/ is (a worktree, a CR_REPO override).
+# Two names for one lock is the bug this line removes: the helper asked the monitor
+# about the repo's lock while the caller held a different file.
+LOCK = Path(os.environ.get("CR_EMU_LOCK") or (OUT / "emulator.lock"))
 LOCK_STALE = 600
 _HAVE_LOCK = False
 
@@ -373,6 +377,22 @@ def alarm_text(e: Exception) -> str:
     return msg
 
 
+def _app_tip(xml: str) -> dict | None:
+    """The app's own coach-mark card (tip_card), or None.
+
+    2026-10-20: the "Play Local Dispatch Feeds" tip arrives with the Replay >
+    History screen and sits in a clickable full-screen scrim. Its "Got it" is a
+    text match that overlay_label would take, but the tip lands AFTER
+    dismiss_overlays has run, on the same dump the sweep is about to read: the
+    sweep then read the tip's window as History ("an unnamed feed", exit 9) and
+    the morning pass was lost. So the dump itself clears it, by resource-id.
+    """
+    card = _by_id(xml, "tip_card")
+    if not card:
+        return None
+    return _by_id(xml, "action_button") or card
+
+
 def dump_ui(tag: str = "cr", tries: int = 3) -> str:
     """uiautomator dump -> pull -> local XML text (Windows-safe destination).
 
@@ -384,7 +404,10 @@ def dump_ui(tag: str = "cr", tries: int = 3) -> str:
     remote = f"/sdcard/{tag}.xml"
     local = OUT / f"{tag}.xml"
     why = ""
-    for attempt in range(tries):
+    tip_rounds = 0
+    attempt = 0
+    while attempt < tries:
+        attempt += 1
         # Remove BOTH copies first. uiautomator fails routinely (no idle state
         # while audio plays), and the previous dump would otherwise still be on
         # the device and on disk: the caller would parse an old screen as if it
@@ -403,6 +426,15 @@ def dump_ui(tag: str = "cr", tries: int = 3) -> str:
                 if dialog:
                     raise SystemDialog(f"a system dialog covers the screen: \"{dialog}\" "
                                        f"(package {on_screen(xml)['package']}); no tap was sent")
+                tip = _app_tip(xml)
+                if tip and tip_rounds < 2:
+                    c = _center(tip)
+                    if c:
+                        adb("shell", "input", "tap", str(c[0]), str(c[1]))
+                        tip_rounds += 1
+                        time.sleep(2)
+                        attempt -= 1    # a tip is not a failed dump: do not spend a try
+                        continue
                 return xml
         why = (d.stderr or d.stdout or r.stderr or r.stdout or "").strip()[:200]
         time.sleep(1.5)
@@ -1732,6 +1764,71 @@ def post_discord(text: str) -> bool:
         return False
 
 
+# -- region self-heal (2026-10-20) -------------------------------------------
+#
+# A poll that finds the wrong location chip used to stop there, and at night nobody
+# was watching: the 19:00 leg lost the whole window. Anything that can set the chip
+# is now tried once, in order, before the poll gives up:
+#
+#   1. crimeradar_set_region.sh (tip dismissal, picker search, app restart, recycle);
+#   2. `python runner.py --region-claude`: the same boxed Claude session the morning
+#      uses (emit_leg.py only, 40 inputs, no settings screens), 20 minutes at most,
+#      and its own emulator lock keeps the next poll from tapping over it.
+#
+# Both are bounded and both fail quietly with the reason attached to the exception,
+# so a broken repair still reports exactly what the screen was. CR_SELFHEAL=0 turns
+# it off (for a manual, unassisted read).
+SCRIPTS_DIR = ROOT / "scripts" / "crimeradar"
+SETREG_SH = SCRIPTS_DIR / "crimeradar_set_region.sh"
+RUNNER_PY = Path(os.environ.get("CR_RUNNER")
+                 or Path(os.environ.get("CR_BB_PIPELINE") or r"C:/Users/tscac/bb-pipeline"))
+BASH_BIN = Path(os.environ.get("CR_BASH") or r"C:/Users/tscac/AppData/Local/hermes/git/bin/bash.exe")
+
+
+def _sh(args, timeout: int) -> tuple[int, str]:
+    """Run one helper with no stdin, no window, and a hard timeout."""
+    try:
+        r = subprocess.run([str(a) for a in args], stdin=subprocess.DEVNULL,
+                           stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True,
+                           encoding="utf-8", errors="replace", timeout=timeout,
+                           creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+        return r.returncode, r.stdout or ""
+    except (OSError, subprocess.TimeoutExpired) as e:
+        return 124, f"{type(e).__name__}: {e}"
+
+
+def region_ready() -> bool:
+    code, _out = _sh([BASH_BIN, SETREG_SH, "--print"], 300)
+    return code == 0
+
+
+def region_selfheal(why: str, claude_budget: int = 20) -> tuple[bool, str]:
+    """Try to put the chip back on Bakersfield. Returns (ready, what happened)."""
+    if os.environ.get("CR_SELFHEAL", "1") == "0":
+        return False, "self-heal disabled (CR_SELFHEAL=0)"
+    if not SETREG_SH.exists():
+        return False, f"missing {SETREG_SH}"
+    print(f"[cr] self-heal: {why}", file=sys.stderr)
+    code, out = _sh([BASH_BIN, SETREG_SH], 420)
+    tail = (out.strip().splitlines() or [""])[-1][:160]
+    print(f"[cr] self-heal: set_region exit {code}: {tail}", file=sys.stderr)
+    if code == 0 and region_ready():
+        return True, f"set_region fixed it (exit {code})"
+    if os.environ.get("CR_SELFHEAL_CLAUDE", "1") == "0":
+        return False, f"set_region exit {code}; Claude disabled (CR_SELFHEAL_CLAUDE=0)"
+    runner = RUNNER_PY / "runner.py"
+    if not runner.exists():
+        return False, f"set_region exit {code}; no {runner} for the Claude leg"
+    ccode, cout = _sh([sys.executable, str(runner), "--region-claude",
+                       "--minutes", str(claude_budget)], (claude_budget + 5) * 60)
+    ctail = (cout.strip().splitlines() or [""])[-1][:160]
+    print(f"[cr] self-heal: region_claude exit {ccode}: {ctail}", file=sys.stderr)
+    if ccode == 0 and region_ready():
+        return True, f"region_claude fixed it: {ctail}"
+    return False, (f"set_region exit {code}, region_claude exit {ccode} "
+                   f"({ctail}); the chip is still wrong")
+
+
 def poll(detail: bool = False, do_diff: str | None = None, as_json: bool = False,
          discord: bool = False, audio: bool = False) -> int:
     normalise_feed()
@@ -1756,6 +1853,14 @@ def poll(detail: bool = False, do_diff: str | None = None, as_json: bool = False
                   "quiet night.", file=sys.stderr)
             return 4
     chip, selected = home_feed(xml)
+    if not chip_names_kern(chip) or not selected:
+        # One repair attempt before refusing: at night this poll IS the leg, and a
+        # wrong chip used to mean the whole window (2026-10-20).
+        ready, how = region_selfheal(f"the chip read {chip!r}"
+                                     f"{'' if selected else ' (not selected)'} before the poll")
+        if ready:
+            xml = dump_ui("cr")
+            chip, selected = home_feed(xml)
     if not chip_names_kern(chip) or not selected:
         # Refuse before anything is recorded: a poll record feeds the staged
         # rows' streets and the reel's clips.

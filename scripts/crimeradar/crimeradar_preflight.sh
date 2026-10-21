@@ -71,6 +71,72 @@ if [ "${CR_WEDGE_RETRY:-0}" != "1" ]; then
   fi
 fi
 
+LOCKSH="$SCRIPTS/crimeradar_lock.sh"
+# A missing lock helper is a warning, not a dead morning (same rule as the apps
+# script): without it the preflight still sets the region, it just cannot exclude a
+# concurrent run. The schedule always ships it; a partial copy keeps working.
+if [ ! -f "$LOCKSH" ]; then
+  echo "[cr] WARN: $LOCKSH is missing; running without the emulator lock"
+  LOCKSH=""
+fi
+
+# One emulator, one owner (2026-10-20). The monitor has always held
+# work/crimeradar/emulator.lock; this leg now takes that same lock for the whole
+# run (boot, launch, region, tabs), so a poll, an emit and this preflight cannot
+# tap each other's pages. It is acquired BEFORE the boot: a preflight that boots
+# over a running capture is the same fault as a tap over it.
+# A nested call (set_region, the golden helpers) inherits CR_LOCK_HELD=1 and
+# returns at once. EXIT releases it, so every way out of this script is covered,
+# including the exec'd retries (exec keeps the pid, and the lock is the pid's).
+if [ -n "$LOCKSH" ] && [ "${CR_LOCK_HELD:-0}" != "1" ]; then
+  if ! bash "$LOCKSH" acquire --pid $$ --label "preflight $$" --wait "${CR_LOCK_WAIT:-180}" </dev/null; then
+    TOP="$("$ADB" -s "$DEV" shell dumpsys activity activities 2>/dev/null \
+            | grep -m1 -oE 'topResumedActivity=ActivityRecord\{[^ ]+ [^ ]+ [^ ]+' \
+            | awk '{print $NF}' | cut -d/ -f1)"
+    if [ "$TOP" = "$PKG" ]; then
+      echo "[cr] $DEV busy: another run owns emulator.lock and $PKG is in front; leaving the screen alone"
+      exit 0
+    fi
+    echo "[cr] FAILED: another run owns emulator.lock and the foreground app is '${TOP:-unknown}', not $PKG"
+    exit 4
+  fi
+  export CR_LOCK_HELD=1
+  trap 'bash "$LOCKSH" release --pid $$ >/dev/null 2>&1 || true' EXIT
+fi
+
+SNAP="golden"
+BOOT_MODE=cold
+GOLDEN_SH="$SCRIPTS/crimeradar_golden.sh"
+golden_usable() {
+  [ "${CR_GOLDEN:-1}" = "0" ] && return 1
+  [ -f "$GOLDEN_SH" ] || return 1
+  bash "$GOLDEN_SH" check </dev/null >/dev/null 2>&1
+}
+
+boot_emu() {   # $1 = golden|cold; 0 = online and boot_completed
+  local args i
+  if [ "$1" = "golden" ]; then
+    args="-snapshot $SNAP -no-snapshot-save"
+    echo "[cr] $DEV offline: starting AVD $AVD ${WIN:-with window} from the golden snapshot"
+  else
+    args="-no-snapshot-save -no-snapshot-load"
+    echo "[cr] $DEV offline: starting AVD $AVD ${WIN:-with window}"
+  fi
+  nohup "$EMU" -avd "$AVD" $WIN $args $VERBOSE >"$EMULOG" 2>&1 &
+  disown 2>/dev/null || true
+  for i in $(seq 1 60); do
+    sleep 5
+    online || continue
+    [ "$("$ADB" -s "$DEV" shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = "1" ] && {
+      # The boot marker, so a later step in this window can say how this emulator
+      # came up instead of guessing (the report line needs golden|cold).
+      printf '%s %s\n' "$1" "$(date -Iseconds)" >"$REPO/work/crimeradar/emu/boot_mode" 2>/dev/null
+      return 0
+    }
+  done
+  return 1
+}
+
 if ! online; then
   # Headless by default so it survives unattended. Set CR_EMU_WINDOW=1 to see it.
   WIN=""
@@ -98,18 +164,50 @@ if ! online; then
   fi
   VERBOSE="-verbose"
   [ "${CR_EMU_VERBOSE:-1}" = "0" ] && VERBOSE=""
-  nohup "$EMU" -avd "$AVD" $WIN -no-snapshot-save -no-snapshot-load $VERBOSE >"$EMULOG" 2>&1 &
-  disown 2>/dev/null || true
-  for _ in $(seq 1 60); do
-    sleep 5
-    online || continue
-    [ "$("$ADB" -s "$DEV" shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = "1" ] && break
-  done
+  # Golden first, cold boot as the fallback (2026-10-20). The snapshot was saved
+  # from a proven-good screen, and -no-snapshot-save makes the load read-only: no
+  # run can write a bad state back into it. A golden load that does not reach
+  # boot_completed is killed here and retried cold, so a corrupt snapshot can
+  # never cost the morning twice.
+  if [ -f "$GOLDEN_SH" ] && golden_usable; then
+    if boot_emu golden; then
+      BOOT_MODE=golden
+    else
+      echo "[cr] the golden snapshot did not come up; falling back to a cold boot"
+      diag "preflight: golden did not boot, before the cold fallback"
+      "$ADB" -s "$DEV" emu kill >/dev/null 2>&1
+      sleep 8
+      BOOT_MODE=cold-after-golden
+      boot_emu cold || true
+    fi
+  else
+    BOOT_MODE=cold
+    # Not usable: cold-boot now, and ask for a rebuild in a window with room for it
+    # (expired, or the app moved past the build the snapshot holds). The request is
+    # a line in golden.json, so nothing here waits for a rebuild.
+    if [ -f "$GOLDEN_SH" ]; then
+      bash "$GOLDEN_SH" check </dev/null >/dev/null 2>&1
+      GC=$?
+      case "$GC" in
+        3|4) bash "$GOLDEN_SH" request "preflight: golden check exit $GC" </dev/null >/dev/null 2>&1 || true ;;
+      esac
+    fi
+    boot_emu cold || true
+  fi
+else
+  # Already online: a step earlier in this window booted it (or the owner did).
+  # Report the mode that boot recorded, not a guess.
+  BM="$(head -1 "$REPO/work/crimeradar/emu/boot_mode" 2>/dev/null | tr -d '\r')"
+  case "${BM%% *}" in
+    golden) BOOT_MODE=golden ;;
+    cold) BOOT_MODE=cold ;;
+  esac
 fi
 
 if ! online; then
   echo "[cr] FAILED to bring $DEV online (AVD $AVD)"
   diag "preflight exit 3: the device did not come online"
+  health "${BOOT_MODE:-cold}" failed
   exit 3
 fi
 
@@ -130,7 +228,7 @@ if ! "$ADB" -s "$DEV" shell true >/dev/null 2>&1; then
   diag "preflight: wedged guest, before the recycle"
   CR_WEDGE_RETRY=1 bash "$SCRIPTS/crimeradar_emu_stop.sh" >/dev/null 2>&1
   sleep 5
-  CR_WEDGE_RETRY=1 exec bash "$0"
+  CR_WEDGE_RETRY=1 CR_GOLDEN=0 exec bash "$0"
 fi
 
 # A cold boot leaves the app stopped, and normalise_feed's tab taps would then
@@ -160,35 +258,12 @@ focus() { "$ADB" -s "$DEV" shell dumpsys activity activities 2>/dev/null \
             | grep -m1 -oE 'topResumedActivity=ActivityRecord\{[^ ]+ [^ ]+ [^ ]+' \
             | awk '{print $NF}' | cut -d/ -f1; }
 
-# Do not touch the screen while a capture is running.
-# Claude's review, 2026-10-09: the launch, the keyguard keys, the uiautomator
-# probe and the volume keys all reach the screen, and a run playing a clip
-# cannot survive them. The probe can also fail during playback ("could not get
-# idle state"), which turned a benign overlap into "emulator unavailable". The
-# monitor holds emulator.lock with a heartbeat, so a fresh lock means another run
-# owns the screen. The heartbeat alone is not enough: a run killed mid-capture
-# leaves a fresh mtime behind for a process that is already gone, and the next
-# ten minutes of runs then refuse to touch the screen. Verified 2026-10-09: a
-# cut-off poll left `53776 <iso>` behind and the emit refused with
-# "busy ... 46s ago". The monitor owns that rule (pid liveness, not age alone),
-# so ask it instead of testing the mtime here.
-if [ -f "$LOCK" ]; then
-  if ( cd "$REPO" && ./.venv/Scripts/python.exe scripts/crimeradar_monitor.py --lock-reclaim </dev/null ); then
-    :                                  # no live owner: the lock is gone, carry on
-  else
-    NOW=$(date +%s)
-    MT=$(stat -c %Y "$LOCK" 2>/dev/null || echo 0)
-    AGE=$((NOW - MT))
-    TOP="$(focus)"
-    if [ "$TOP" = "$PKG" ]; then
-      echo "[cr] $DEV busy: a capture holds emulator.lock (${AGE}s), leaving the screen alone"
-      exit 0
-    fi
-    echo "[cr] FAILED: a capture holds emulator.lock but the foreground app is '${TOP:-unknown}', not $PKG"
-    exit 4
-  fi
-fi
-
+# The lock is already ours: it was acquired before the boot (see the top of this
+# script), and the monitor's own --lock-reclaim rule decided whether it was free.
+# This block used to be a second copy of that test; with the lock held by this
+# process it would now find our own live pid and refuse the screen to itself.
+# The rule it enforced is unchanged: a live owner means this run does not act.
+#
 # An unattended emulator must hold no keyguard and keep its screen on, and this
 # must happen BEFORE the launch. Verified 2026-10-09 on a cold boot: the guest
 # came up locked with the LAUNCHER in front, and starting the app behind a live
@@ -259,11 +334,21 @@ fi
 # RAM all day for one saved setting.
 # Exit 11 = the region could not be set. Not 7: the monitor owns 7 (system
 # dialog) and 9 (wrong feed), and this script owns 3/4/5/6.
+REGION_STATE=ok
+ver_now() { "$ADB" -s "$DEV" shell dumpsys package "$PKG" 2>/dev/null \
+              | grep -m1 -oE 'versionName=[^ ]+' | cut -d= -f2 | tr -d '\r'; }
+health() {   # $1 = boot mode, $2 = region state
+  [ -n "${GOLDEN_SH:-}" ] && [ -f "$GOLDEN_SH" ] || return 0
+  bash "$GOLDEN_SH" health --step preflight --boot "$1" --region "$2" \
+       --app "$(ver_now)" </dev/null >>"$REPO/work/crimeradar/health.log" 2>&1 || true
+}
+
 OUT="$(bash "$SETREG" --print 2>/dev/null)"; SRC=$?
 CHIP="$(printf '%s\n' "$OUT" | head -n 1)"
 if [ "$SRC" = "0" ]; then
   echo "[cr] region: ${CHIP:-unknown}"
 else
+  REGION_STATE=fixed-by-script
   echo "[cr] region is '${CHIP:-unknown}' (set_region code $SRC); setting it to Bakersfield"
   # Escalate, never repeat. The runner's 07:10 retries used to re-run the same
   # taps over the same parked screen and fail the same way (2026-10-13, -14, -16
@@ -287,10 +372,11 @@ else
         # rather than recycling again, which is the bound wanted here too.
         CR_WEDGE_RETRY=1 bash "$SCRIPTS/crimeradar_emu_stop.sh" >/dev/null 2>&1
         sleep 5
-        CR_WEDGE_RETRY=1 CR_REGION_RETRY=1 exec bash "$0"
+        CR_WEDGE_RETRY=1 CR_REGION_RETRY=1 CR_GOLDEN=0 exec bash "$0"
       fi
       echo "[cr] FAILED: the region is '$(bash "$SETREG" --print 2>/dev/null | head -n 1)' and could not be set to Bakersfield (taps, app restart and emulator recycle all tried)"
       diag "preflight exit 11: region unset after the emulator recycle"
+      health "$BOOT_MODE" failed
       exit 11
     fi
   fi
@@ -342,3 +428,5 @@ fi
 
 HIDE="$("$ADB" -s "$DEV" shell settings get global hide_error_dialogs 2>/dev/null | tr -d '\r')"
 echo "[cr] $DEV ready, $PKG foregrounded, screen readable, hide_error_dialogs=${HIDE:-unset}, network=$NET"
+# The report's emulator line reads the newest health.jsonl entry (2026-10-20).
+health "$BOOT_MODE" "$REGION_STATE"

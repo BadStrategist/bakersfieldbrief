@@ -32,6 +32,21 @@ ADB="$SCRIPTS/adb_bounded.sh"     # bounded: a wedged guest must fail, never han
 DEV="${CR_DEVICE:-emulator-5554}"
 [ -d "$REPO" ] || { echo "[cr] FAILED: repo missing: $REPO (CR_REPO overrides)"; exit 13; }
 
+# One emulator, one owner (2026-10-20): a stop is an input as far as a poll is
+# concerned, so it takes the same lock. Short wait and no fight: if another run
+# owns the device, this stop does NOT kill it under that run, it reports and
+# leaves (the end-of-leg stop is a cleanup, never a repair). A caller that already
+# holds the lock (golden cycles, the preflight's recycle) inherits CR_LOCK_HELD.
+LOCKSH="$SCRIPTS/crimeradar_lock.sh"
+if [ "${CR_LOCK_HELD:-0}" != "1" ] && [ -f "$LOCKSH" ]; then
+  if ! bash "$LOCKSH" acquire --pid $$ --label "emu_stop $$" --wait "${CR_STOP_LOCK_WAIT:-90}" </dev/null; then
+    echo "[cr] emu_stop: busy (another run owns emulator.lock); leaving the device up"
+    exit 0
+  fi
+  export CR_LOCK_HELD=1
+  CR_LOCK_TAKEN=1
+fi
+
 # The stop is the end of the leg, so this is where Discord and Claude Desktop
 # come back (only the ones the preflight closed; crimeradar_apps.sh keeps the
 # record). On EXIT, so every way out reaches it: already stopped, stopped, still
@@ -44,7 +59,10 @@ reopen_apps() {
   [ -f "$SCRIPTS/crimeradar_apps.sh" ] || return 0
   bash "$SCRIPTS/crimeradar_apps.sh" reopen </dev/null || true
 }
-trap 'rc=$?; reopen_apps; exit $rc' EXIT
+# The lock release rides on the SAME trap as the app restore (a second `trap ...
+# EXIT` would silently drop the first). CR_LOCK_TAKEN is 1 only when this process
+# acquired it: an inherited CR_LOCK_HELD belongs to the caller and is not ours.
+trap 'rc=$?; [ "${CR_LOCK_TAKEN:-0}" = 1 ] && bash "$LOCKSH" release --pid $$ >/dev/null 2>&1; reopen_apps; exit $rc' EXIT
 
 [ -f "$ADB" ] || { echo "[cr] FAILED: script missing: $ADB (CR_SCRIPTS overrides the directory)"; exit 13; }
 

@@ -1,0 +1,18 @@
+<hierarchy rotation="0">
+  <!-- Extracted from work/crimeradar/emu/repro/boot2_after_morning.xml,
+     the 2026-10-20 07:50 screen that lost the morning: the app's own
+     "Play Local Dispatch Feeds" tip_card sits in a full-screen clickable
+     scrim over an otherwise correct Bakersfield header. The chip under the
+     scrim is the one the sweep could not reach. -->
+  <node index="1" text="" resource-id="" class="android.widget.FrameLayout" package="com.newsbreak.crimeradar" content-desc="" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" bounds="[0,0][720,1560]">
+    <node index="0" text="" resource-id="com.newsbreak.crimeradar:id/tip_card" class="android.widget.LinearLayout" package="com.newsbreak.crimeradar" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" bounds="[73,615][647,919]">
+      <node index="2" text="Got it" resource-id="com.newsbreak.crimeradar:id/action_button" class="android.widget.TextView" package="com.newsbreak.crimeradar" content-desc="" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" bounds="[105,807][615,887]" />
+    </node>
+  </node>
+  <node index="0" text="" resource-id="com.newsbreak.crimeradar:id/location_feed_tab_container" class="android.widget.FrameLayout" package="com.newsbreak.crimeradar" content-desc="" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" scrollable="false" long-clickable="false" password="false" selected="true" bounds="[32,169][348,241]">
+    <node index="0" text="Bakersfield" resource-id="com.newsbreak.crimeradar:id/txt_location_feed_tab" class="android.widget.TextView" package="com.newsbreak.crimeradar" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="true" bounds="[83,169][248,241]" />
+  </node>
+  <node index="1" text="" resource-id="com.newsbreak.crimeradar:id/national_feed_tab_container" class="android.widget.FrameLayout" package="com.newsbreak.crimeradar" content-desc="" checkable="false" checked="false" clickable="true" enabled="true" focusable="true" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" bounds="[372,169][688,241]">
+    <node index="0" text="Nationwide" resource-id="com.newsbreak.crimeradar:id/txt_national_feed_tab" class="android.widget.TextView" package="com.newsbreak.crimeradar" content-desc="" checkable="false" checked="false" clickable="false" enabled="true" focusable="false" focused="false" scrollable="false" long-clickable="false" password="false" selected="false" bounds="[372,169][688,241]" />
+  </node>
+</hierarchy>

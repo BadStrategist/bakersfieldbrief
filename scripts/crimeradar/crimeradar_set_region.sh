@@ -78,6 +78,42 @@ top_activity() {
 picker_open() { case "$(top_activity)" in *MapLocationListActivity*) return 0 ;; esac; return 1; }
 
 node_by_id() { dump | grep -F "resource-id=\"$ID/$1\"" | head -1; }
+
+# The app's coach-mark is a full-screen blocker, and it was the 07:50 failure.
+# 2026-10-20 17:15, reproducing the morning's second cold boot (-no-snapshot-load,
+# then the 07:50 pass): the Home header was intact underneath (chip
+# location_feed_tab_container selected, text "Bakersfield"), but tip_card
+# [73,615][647,919] ("Play Local Dispatch Feeds" / "Got it") sat inside a
+# CLICKABLE scrim [0,0][720,1560]. Every tap on the chip landed on the scrim, so
+# the picker never opened, and the monitor read the tip's window as History:
+# "History is for 'an unnamed feed' (no location shown)" and exit 9. Tapping the
+# tip's own action_button dismissed it and `--print` then read Bakersfield at
+# once. Earlier runs saw the same screen as "the location chip is not on screen"
+# and a chip reading "Set location": the dump of a modal window does not always
+# carry the feed behind it.
+# By resource-id only: the button's text ("Got it") is the kind of bare-text tap
+# that picked the Nationwide tab on 2026-10-09.
+dismiss_tip() {
+  local d btn n=0
+  while [ "$n" -lt 3 ]; do
+    n=$((n + 1))
+    d="$(dump)"
+    printf '%s\n' "$d" | grep -q "resource-id=\"$ID/tip_card\"" || return 0
+    btn="$(printf '%s\n' "$d" | grep -F "resource-id=\"$ID/action_button\"" | head -1)"
+    if [ -n "$btn" ]; then
+      tap_node "$btn"
+    else
+      tap_node "$(printf '%s\n' "$d" | grep -F "resource-id=\"$ID/tip_card\"" | head -1)"
+    fi
+    echo "[cr] dismissed the app's coach-mark (tip_card); it covers the feed with a clickable scrim" >&2
+    sleep 2
+    if ! printf '%s\n' "$(dump)" | grep -q "resource-id=\"$ID/tip_card\""; then
+      return 0
+    fi
+  done
+  echo "[cr] the coach-mark (tip_card) is still on screen after 3 taps" >&2
+  return 1
+}
 text_of()    { printf '%s\n' "$1" | grep -oE 'text="[^"]*"' | head -1 | sed 's/^text="//;s/"$//'; }
 center() {   # $1 = a node line; prints "x y" of its centre
   local b n
@@ -130,6 +166,7 @@ select_local_tab() {
 # line found by resource-id.)
 
 # A picker left open by an earlier run must not be mistaken for the feed.
+dismiss_tip || true
 if picker_open; then
   # stderr: on stdout this line became the chip that `--print` reported
   # (2026-10-14 06:54: "the region is '[cr] the location picker was already open...'").
@@ -178,6 +215,7 @@ echo "[cr] region is '${C:-unknown}', not Bakersfield; setting it"
 # The app must be forward for the tap to land on the feed.
 "$ADB" -s "$DEV" shell monkey -p "$PKG" -c android.intent.category.LAUNCHER 1 >/dev/null 2>&1
 sleep 4
+dismiss_tip || true
 
 if ! local_tab_selected; then
   echo "[cr] the Nationwide tab is selected; selecting the local feed first"
@@ -256,6 +294,8 @@ fi
 
 # The feed reloads after a location change; give it time before judging it.
 sleep 10
+# The coach-mark can arrive with the reload (it did at 17:15 on 2026-10-20).
+dismiss_tip || true
 C="$(chip)"
 case "$C" in
   Bakersfield*)

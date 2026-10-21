@@ -1330,6 +1330,16 @@
   "details": ""
  },
  {
+  "log_id": "261020BF0267",
+  "time": "Oct 20 2026  4:35PM",
+  "type": "WIND Advisory",
+  "location": "I5 N / Grapevine Rd E",
+  "area": "Fort Tejon",
+  "lat": 34.939285,
+  "lon": -118.929655,
+  "details": ""
+ },
+ {
   "log_id": "261020BF0026",
   "time": "Oct 20 2026  5:00AM",
   "type": "1125-Traffic Hazard",
@@ -1360,6 +1370,16 @@
   "details": ""
  },
  {
+  "log_id": "261020BF0329",
+  "time": "Oct 20 2026  7:13PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Sb Sr99 At South Union Ave",
+  "area": "Bakersfield",
+  "lat": 35.1725,
+  "lon": -119.004167,
+  "details": ""
+ },
+ {
   "log_id": "261020BF0052",
   "time": "Oct 20 2026  7:51AM",
   "type": "CZP-Assist with Construction",
@@ -1367,6 +1387,36 @@
   "area": "Fort Tejon",
   "lat": 34.876944,
   "lon": -118.894722,
+  "details": ""
+ },
+ {
+  "log_id": "261020BF0363",
+  "time": "Oct 20 2026  8:22PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Nb I5 At Fort Tejon Rd",
+  "area": "Fort Tejon",
+  "lat": 34.876944,
+  "lon": -118.894722,
+  "details": ""
+ },
+ {
+  "log_id": "261020BF0382",
+  "time": "Oct 20 2026  9:09PM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "Sr178 / M St",
+  "area": "Bakersfield",
+  "lat": 35.380034,
+  "lon": -119.015309,
+  "details": ""
+ },
+ {
+  "log_id": "261020BF0387",
+  "time": "Oct 20 2026  9:26PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Alfred Harrell Hwy / Sr178",
+  "area": "Bakersfield",
+  "lat": 35.407579,
+  "lon": -118.859633,
   "details": ""
  },
  {

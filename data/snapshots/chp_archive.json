@@ -1192,7 +1192,7 @@
  {
   "log_id": "261020BF0267",
   "time": "Oct 20 2026  4:35PM",
-  "type": "WIND Advisory",
+  "type": "1013-Road/Weather Conditions",
   "location": "I5 N / Grapevine Rd E",
   "area": "Fort Tejon",
   "lat": 34.939285,
@@ -1300,6 +1300,16 @@
   "details": ""
  },
  {
+  "log_id": "261021BF0134",
+  "time": "Oct 21 2026  1:29PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "E Casa Loma Dr / Madison St",
+  "area": "Bakersfield",
+  "lat": 35.339443,
+  "lon": -118.994229,
+  "details": ""
+ },
+ {
   "log_id": "261021BF0012",
   "time": "Oct 21 2026  1:53AM",
   "type": "TADV-Traffic Advisory",
@@ -1310,6 +1320,26 @@
   "details": ""
  },
  {
+  "log_id": "261021BF0164",
+  "time": "Oct 21 2026  3:23PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Wb Sr178 At Fairfax Rd",
+  "area": "Bakersfield",
+  "lat": 35.396667,
+  "lon": -118.929722,
+  "details": ""
+ },
+ {
+  "log_id": "261021BF0167",
+  "time": "Oct 21 2026  3:27PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Nb I5 Jno Sr119",
+  "area": "Buttonwillow",
+  "lat": 35.269722,
+  "lon": -119.227222,
+  "details": ""
+ },
+ {
   "log_id": "261021BF0022",
   "time": "Oct 21 2026  4:18AM",
   "type": "1179-Trfc Collision-1141 Enrt",
@@ -1317,6 +1347,16 @@
   "area": "Buttonwillow",
   "lat": 35.26582,
   "lon": -119.311948,
+  "details": ""
+ },
+ {
+  "log_id": "261021BF0187",
+  "time": "Oct 21 2026  4:34PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr178 / Yankee Canyon Dr",
+  "area": "Bakersfield",
+  "lat": 35.656855,
+  "lon": -118.440395,
   "details": ""
  },
  {

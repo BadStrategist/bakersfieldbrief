@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-21T13:59:45-07:00",
+ "built_at": "2026-10-21T14:36:31-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 1376, column 28"
   },
   "isabella": {
    "ok": true,
@@ -197,7 +197,7 @@
    "isabella_af": 139902,
    "alpr_total": 458,
    "kern_fires": 0,
-   "aqi": 60,
+   "aqi": 47,
    "chp_week": 39
   },
   "letters": {

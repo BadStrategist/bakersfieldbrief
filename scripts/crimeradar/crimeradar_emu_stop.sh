@@ -78,13 +78,18 @@ fi
 # but a slow poll or a manual run must not be truncated mid-capture. A stale lock
 # (over 600 s, the monitor's own LOCK_STALE) is ignored.
 LOCK="$REPO/work/crimeradar/emulator.lock"
-for _ in $(seq 1 20); do
-  [ -f "$LOCK" ] || break
-  age=$(( $(date +%s) - $(stat -c %Y "$LOCK" 2>/dev/null || echo 0) ))
-  [ "$age" -gt 600 ] && break
-  echo "[cr] a capture holds the lock (${age}s old); waiting for it to finish"
-  sleep 15
-done
+# This process already took the lock above, so the file it would wait for is its
+# own: on 2026-10-20 19:48 the wait loop cost the stop five minutes doing nothing,
+# and looked like a hang. Only an owner that did NOT take the lock waits here.
+if [ "${CR_LOCK_TAKEN:-0}" != 1 ] && [ "${CR_LOCK_HELD:-0}" != 1 ]; then
+  for _ in $(seq 1 20); do
+    [ -f "$LOCK" ] || break
+    age=$(( $(date +%s) - $(stat -c %Y "$LOCK" 2>/dev/null || echo 0) ))
+    [ "$age" -gt 600 ] && break
+    echo "[cr] a capture holds the lock (${age}s old); waiting for it to finish"
+    sleep 15
+  done
+fi
 
 # The healthy baseline: what a guest that got to its stop looks like, to read a
 # failure's snapshot against. `lastanr` lasts until the guest goes, so this also

@@ -88,11 +88,13 @@ def test_a_weapons_call_is_labelled_by_its_weapon():
 
 
 # ------------------------------------------------------------------ captions
-def test_house_numbers_plates_and_phone_pieces_are_blanked():
-    assert BC.redact("724")[1] and BC.redact("1313,") == ("•••,", True)
-    assert BC.redact("7ABC123")[1]
-    assert BC.redact("30")[1] is False                # an age stays
-    assert BC.redact("Grace")[1] is False
+def test_house_numbers_plates_and_call_signs_air():
+    """Owner's rule, 2026-10-21: the dispatch radio is already public, and a caption
+    full of bullets is irritating rather than informative."""
+    assert BC.redact("724") == ("724", False)
+    assert BC.redact("1313,") == ("1313,", False)
+    assert BC.redact("7ABC123") == ("7ABC123", False)
+    assert BC.redact("3-4-6") == ("3-4-6", False)
 
 
 def test_misheard_story_words_are_corrected_but_others_are_left_alone():
@@ -136,19 +138,20 @@ def test_a_clip_about_another_call_is_a_mismatch_and_gets_no_captions(tmp_path, 
     assert code == 3
     assert [r["match"] for r in report] == [True, False]
     shown = " ".join(w["w"] for c in cap["captions"] for w in c["words"])
-    assert "Buck" not in shown and "2627" not in shown and "724" not in shown
-    assert "Grace" in shown and "•••" in shown
+    assert "Buck" not in shown and "2627" not in shown      # the other call never airs
+    assert "724 Grace" in shown and "•••" not in shown      # the call's own number airs
     assert cap["style"] == "night"
 
 
-def test_spoken_numbers_are_blanked_too(tmp_path, monkeypatch):
+def test_spoken_number_words_air(tmp_path, monkeypatch):
     stories = [{"headline": "Knife reported on Lincoln Street", "label": "Knife reported",
                 "where": "on Lincoln Street", "subhead": "A man with a knife."}]
     by_slot = {1.0: "weapons possession thirteen thirteen Lincoln Street".split()}
     code, cap, _ = _run_captions(tmp_path, monkeypatch, stories, by_slot)
     assert code == 0
     words = [w for c in cap["captions"] for w in c["words"]]
-    assert [w["w"] for w in words if w.get("redacted")] == ["•••"] * 2
+    assert not [w for w in words if w.get("redacted")]
+    assert "thirteen thirteen Lincoln Street" in " ".join(w["w"] for w in words)
     assert all(w["e"] <= 9.0 for w in words)          # never past its own slot
 
 
@@ -262,13 +265,73 @@ def test_person_names_are_blanked_but_streets_named_after_people_are_kept():
     def run(text, story=()):
         ws = [{"w": t} for t in text.split()]
         BC.redact_names(ws, set(story))
-        return " ".join(w["w"] for w in ws)
-    dot = "\u2022\u2022\u2022"
-    assert "Robertson" not in run("attempting further with Sam Robertson, Taser.")
+        return " ".join(w["w"] for w in ws if w["w"])
+    # a name is dropped, never drawn as a bullet: no "•••" in any caption
     assert "Sam" not in run("attempting further with Sam Robertson, Taser.")
-    assert run("the RP is Maria Garcia, she is at Robertson Road").count(dot) == 2
-    assert "Robertson Road" in run("she is at Robertson Road")
+    assert "Robertson" not in run("attempting further with Sam Robertson, Taser.")
+    text = run("the RP is Maria Garcia, she is at Robertson Road")
+    assert "Maria" not in text and "Garcia" not in text and "•••" not in text
+    assert "Robertson Road" in text
     assert run("724 Grace Street, near Jefferson Park Court.", ("Grace", "Jefferson")) \
         == "724 Grace Street, near Jefferson Park Court."
     assert "Lincoln Street" in run("Weapons Possession, 1313 Lincoln Street", ("Lincoln",))
     assert "Adam" in run("Adam 12 copy, subject John Smith fled")
+
+
+# 2026-10-21: the reel read "3 -4 -6 •••, ••• -4 -6 Prior 2 for a ••• ••• South Union"
+# and "making ••• towards CRP, ••• •••." Words below are Whisper's, from that reel.
+def _words(text):
+    return [{"w": t, "s": float(k), "e": k + 0.9} for k, t in enumerate(text.split())]
+
+
+def test_digits_read_one_at_a_time_join_and_air():
+    ws = BC.join_spoken_digits(_words("3 -4 -6 Adams, 242 -2572 South Union"))
+    assert [w["w"] for w in ws] == ["3-4-6", "Adams,", "242", "2572", "South", "Union"]
+    assert ws[0]["e"] == 2.9
+    assert BC.redact("3-4-6") == ("3-4-6", False)
+    assert BC.redact("1-3-1-3,") == ("1-3-1-3,", False)
+
+
+def test_a_street_after_a_number_or_a_compass_word_is_kept():
+    def run(text):
+        ws = [{"w": t} for t in text.split()]
+        BC.redact_names(ws, set())
+        return " ".join(w["w"] for w in ws if w["w"])
+    assert run("3-4-6 Adams, there") == "3-4-6 Adams, there"
+    assert run("towards CRP, East Edmonton.") == "towards CRP, East Edmonton."
+    # a name before a street word is still a name: "Maria Garcia is at Robertson Road"
+    assert "Robertson Road" in run("Maria Garcia is at Robertson Road")
+    assert "Maria" not in run("Maria Garcia is at Robertson Road")
+
+
+def test_a_run_of_blanks_is_one_bullet_and_cues_end_on_a_comma():
+    ws = _words("for a ••• ••• South Union")
+    ws[2]["redacted"] = ws[3]["redacted"] = True
+    out = BC.collapse_blanks(ws)
+    assert [w["w"] for w in out] == ["for", "a", "•••", "South", "Union"]
+    assert (out[2]["s"], out[2]["e"]) == (2.0, 3.9)
+    text = ("Multiple units, current two in route, second will be a ••• man, currently "
+            "inside of the bar, there's a medicinal Hispanic male with dark hair,")
+    ws = [{"w": t, "s": k * 0.2, "e": k * 0.2 + 0.18} for k, t in enumerate(text.split())]
+    cues = [" ".join(w["w"] for w in c["words"]) for c in BC.cues_for(ws)]
+    assert " ".join(cues) == text
+    assert all(c.endswith(",") for c in cues[:-1]), cues
+
+
+def test_the_panel_never_drops_the_end_of_a_long_cue():
+    import render_reel as RR
+    long = ("a cue that nobody cut for the panel runs on for three full lines of text "
+            "and its final words must still be drawn").split()
+    assert len(RR.caption_lines(long)) > RR.CAP_LINES
+    cfg = {"captions": [{"s": 0.0, "e": 9.0, "words": [
+        {"w": t, "s": 0.0, "e": 0.1} for t in long]}]}
+    from PIL import Image
+    im = Image.new("RGBA", (RR.W, RR.H), (0, 0, 0, 255))
+    RR.caption_panel(im, cfg, 5.0)
+    # the last line is inside the panel, not cut off or drawn below it
+    band = im.crop((130, RR.CAP_Y + 82, RR.W - 130, RR.CAP_Y + RR.CAP_H - 4)).convert("L")
+    rows = [y for y in range(band.height) if band.crop((0, y, band.width, y + 1)).getextrema()[1] > 200]
+    bands = sum(1 for k, y in enumerate(rows) if k == 0 or y - rows[k - 1] > 1)
+    assert bands == 3                           # three lines drawn (lines[:2] drew two)
+    below = im.crop((0, RR.CAP_Y + RR.CAP_H + 2, RR.W, RR.CAP_Y + RR.CAP_H + 80)).convert("L")
+    assert below.getextrema()[1] < 30

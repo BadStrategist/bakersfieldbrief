@@ -3,9 +3,15 @@
 
 Transcribes the FINISHED soundtrack (so every caption is timed to what the
 viewer actually hears), keeps the words that fall inside each story's slot,
-blanks what the report's privacy rules forbid, fixes misheard place names
-against the story's own words, and groups the words into short cues that
-render_reel.caption_panel draws karaoke style.
+withholds a person's name, fixes misheard place names against the story's own
+words, and groups the words into short cues that render_reel.caption_panel draws
+karaoke style.
+
+Privacy policy (owner's rule, 2026-10-21): the dispatch radio is already public,
+so the caption shows what it says. House and block numbers, plates, call codes
+and unit call signs all air. The one exception is a person's name: the word is
+dropped from the caption and its audio is muted, never shown as "•••", because
+a run of bullets tells the viewer nothing and reads as a broken caption.
 
 It also answers the question the clip builder's own check cannot: does this
 clip talk about THIS story? A clip whose words carry none of the story's
@@ -27,7 +33,6 @@ import sys
 
 LEAD_S = 1.0
 GAP_BREAK = 0.55        # a pause this long starts a new cue
-CUE_CHARS = 58          # about two lines in the caption panel
 
 # Words that say what happened. A clip must share one with its story, or the
 # story's street, to count as the right call.
@@ -45,21 +50,42 @@ STOP = {"the", "and", "with", "near", "from", "that", "this", "was", "were",
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 STREET_WORDS = {"Street", "Avenue", "Road", "Drive", "Lane", "Court", "Way", "Boulevard", "Highway"}
 NAME_CUES = re.compile(r"^(named|name|subject|rp|reporting|party)$", re.I)
-_NUM = ("zero|oh|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|"
-        "fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|"
-        "sixty|seventy|eighty|ninety|hundred|thousand")
-NUMBER_WORD = re.compile(rf"^(({_NUM})(-({_NUM}))?|\d+)$")
-
-
 def redact(word: str) -> tuple[str, bool]:
-    """Blank a token the report may not carry: house numbers and other long
-    numbers, plates (letters mixed with digits), phone-number pieces."""
-    core = re.sub(r"[^\w-]", "", word)
-    if re.search(r"\d{3,}", core) or (re.search(r"\d", core) and re.search(r"[A-Za-z]", core)
-                                      and len(core) >= 5):
-        trail = word[len(word.rstrip(".,?!;:")):]
-        return "•••" + trail, True
+    """Nothing numeric is withheld (owner's rule, 2026-10-21): house and block
+    numbers, plates, call codes and unit call signs are public radio and they air.
+    Kept as a named hook so a future rule has one place to live."""
     return word, False
+
+
+def join_spoken_digits(words: list) -> list:
+    """Whisper writes a unit spoken digit by digit ("three-four-six") as "3", "-4",
+    "-6"; joined with spaces that read as "3 -4 -6". Put the pieces back together.
+    Only single digits are joined, so "242", "-2572" stay two numbers."""
+    out = []
+    for w in words:
+        if out and re.fullmatch(r"-\d[.,]?", w["w"]) and re.fullmatch(r"\d(-\d)*", out[-1]["w"]):
+            out[-1] = {**out[-1], "w": out[-1]["w"] + w["w"], "e": w["e"]}
+        else:
+            out.append(dict(w))
+    # Whisper writes a number it heard as one breath ("-2572"); a leading hyphen
+    # is not part of the number and reads like a typo on screen.
+    for w in out:
+        if re.fullmatch(r"-\d[\d,.]*", w["w"]):
+            w["w"] = w["w"].lstrip("-")
+    return out
+
+
+def collapse_blanks(words: list) -> list:
+    """One "•••" for a run of blanked words: "for a ••• ••• South" reads as two
+    things withheld; it is one (a code and a block number)."""
+    out = []
+    for w in words:
+        if out and w.get("redacted") and out[-1].get("redacted") \
+                and not out[-1]["w"].endswith((",", ".", "?", "!", ";", ":")):
+            out[-1] = {**out[-1], "w": w["w"], "e": w["e"]}
+        else:
+            out.append(w)
+    return out
 
 
 # ---- person names -------------------------------------------------------------
@@ -153,18 +179,24 @@ def redact_names(words: list, story_words: set) -> None:
         if nxt in STREET_TYPES or (is_proper(words[i + 1]["w"], story_words) and nxt2 in STREET_TYPES
                                    if i + 1 < len(words) else False):
             continue                              # "Ellis Court", "Buck Owens Blvd"
+        prev_w = words[i - 1]["w"] if i > 0 else ""
+        if _core(w["w"]).lower() in _street_words() and \
+                _core(prev_w).lower() in {"on", "at", "near", "of", "off", "from", "to",
+                                          "north", "south", "east", "west"}:
+            continue                              # "near Jefferson", "East Edmonton": a place
         if _core(w["w"]).lower() in _street_words() and i > 0 and \
-                _core(words[i - 1]["w"]).lower() in {"on", "at", "near", "of", "off", "from", "to"}:
-            continue                              # "near Jefferson": a place, not a person
-        trail = w["w"][len(w["w"].rstrip(".,?!;:")):]
-        w.update(w="•••" + trail, redacted=True)
+                (words[i - 1].get("number") or re.search(r"\d", prev_w)):
+            continue                              # "••• Adams": the street of an address
+        # Drop the word, do not draw a bullet: the viewer sees a clean sentence and
+        # hears a short gap, instead of "a ••• man" (owner's rule, 2026-10-21).
+        w.update(w="", redacted=True)
         prev = words[i - 1] if i > 0 else None
         # "Sam Robertson": a capitalized word right before a name is part of it,
         # unless it starts the phrase or is itself a street type.
         if prev and not prev.get("redacted") and re.match(r"^[A-Z][a-z]+$", _core(prev["w"])) \
                 and _core(prev["w"]).lower() not in STREET_TYPES and i - 1 > 0 \
                 and not words[i - 2]["w"].endswith((".", "?", "!")):
-            prev.update(w="•••", redacted=True)
+            prev.update(w="", redacted=True)
 
 
 def anchors_of(story: dict) -> tuple[set, set]:
@@ -229,12 +261,26 @@ def from_audit(rec: dict, t0: float, t1: float) -> list[dict]:
             for k, w in enumerate(text)]
 
 
+def _fits(words: list[dict]) -> bool:
+    """Whether a cue fits the caption panel, measured with the panel's own font and
+    width (a character count let cues end mid-phrase: "...South Union" | "Trucking")."""
+    import render_reel as RR
+    return len(RR.caption_lines([w["w"] for w in words])) <= RR.CAP_LINES
+
+
 def cues_for(words: list[dict]) -> list[dict]:
     cues, cur = [], []
     for w in words:
-        if cur and (w["s"] - cur[-1]["e"] > GAP_BREAK
-                    or len(" ".join(x["w"] for x in cur + [w])) > CUE_CHARS):
+        if cur and w["s"] - cur[-1]["e"] > GAP_BREAK:
             cues.append(cur); cur = []
+        elif cur and not _fits(cur + [w]):
+            # Full: end the cue at its last comma, if one sits past its first third,
+            # and carry the rest over, so a phrase is not split across two cues.
+            j = max((k for k, x in enumerate(cur) if x["w"].endswith((",", ";", ":"))), default=-1)
+            if j >= len(cur) // 3 and j < len(cur) - 1 and _fits(cur[j + 1:] + [w]):
+                cues.append(cur[:j + 1]); cur = cur[j + 1:]
+            else:
+                cues.append(cur); cur = []
         cur.append(w)
         if w["w"].endswith((".", "?", "!")) and len(" ".join(x["w"] for x in cur)) > 18:
             cues.append(cur); cur = []
@@ -267,7 +313,7 @@ def main() -> int:
     slot = float(audit["story_len"])
     stories = brief["stories"]
 
-    all_cues, report, bad = [], [], 0
+    all_cues, report, bad, muted_words = [], [], 0, []
     verified = [s for s in audit.get("stories", []) if s.get("verify_ok") and s.get("cut_ok")]
     for i, story in enumerate(stories):
         t0, t1 = LEAD_S + i * slot, LEAD_S + (i + 1) * slot
@@ -292,41 +338,20 @@ def main() -> int:
         if not ok:
             bad += 1
             continue
-        out_words, prev = [], ""
-        for w in mine:
-            text = fix_place(w["w"], fix_words)
-            text, red = redact(text)
-            if NAME_CUES.match(re.sub(r"[^\w]", "", prev)) and re.match(r"^[A-Z][a-z]+", text):
-                text, red = "•••", True      # a name after "subject", "named", ...
-            out_words.append({"w": text, "s": round(w["s"], 3), "e": round(w["e"], 3),
-                              **({"redacted": True} if red else {})})
-            prev = w["w"]
+        mine = join_spoken_digits(mine)
+        out_words = [{"w": fix_place(w["w"], fix_words), "s": round(w["s"], 3), "e": round(w["e"], 3)}
+                     for w in mine]
+        # Only a person's name is withheld. Numbers, plates, call codes and call signs
+        # all air (owner's rule, 2026-10-21).
         redact_names(out_words, set(fix_words))
-        # A number the transcriber split ("4 ,300") is one house number: a digit
-        # token next to a blanked one goes with it.
-        for k, x in enumerate(out_words):
-            if not x.get("redacted") and re.fullmatch(r"[\d,.]+", x["w"].strip(",. ")) and any(
-                    0 <= j < len(out_words) and out_words[j].get("redacted") for j in (k - 1, k + 1)):
-                x.update(w="•••", redacted=True)
-        # Numbers spoken as words ("seven twenty-four Grace") are a house number too.
-        k = 0
-        while k < len(out_words):
-            j = k
-            while j < len(out_words) and NUMBER_WORD.match(re.sub(r"[^\w-]", "", out_words[j]["w"]).lower()):
-                j += 1
-            if j - k >= 2:
-                for x in out_words[k:j]:
-                    trail = x["w"][len(x["w"].rstrip(".,?!;:")):]
-                    x.update(w="•••" + trail, redacted=True)
-            k = max(j, k + 1)
-        for c in cues_for(out_words):
+        muted_words.extend(w for w in out_words if w.get("redacted"))
+        for c in cues_for([w for w in out_words if w["w"]]):
             c["e"] = min(c["e"], t1 - 0.05)
             all_cues.append(c)
 
-    # The radio says house numbers out loud ("724 Grace Street"). Blanking them on
-    # screen is not enough: mute the same spans in the audio the viewer hears.
-    spans = [(max(0.0, w["s"] - 0.06), w["e"] + 0.06)
-             for c in all_cues for w in c["words"] if w.get("redacted")]
+    # A withheld name is dropped from the caption, so mute the same span in the
+    # audio: the viewer hears a short gap where the name would have been.
+    spans = [(max(0.0, w["s"] - 0.06), w["e"] + 0.06) for w in muted_words]
     if a.muted_out:
         import subprocess
         if spans:

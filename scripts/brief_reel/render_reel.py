@@ -250,6 +250,23 @@ def cap_font(size, weight=600):
 CAP_Y, CAP_H = 1000, 236          # panel ends at 1236, above the bottom 35% (1248)
 CAP_LABEL = cap_font(26, 700)
 CAP_TEXT = cap_font(46, 640)
+CAP_LINES, CAP_MAXW = 2, W - 2 * 130
+_CAP_MEASURE = ImageDraw.Draw(Image.new("RGBA", (8, 8)))
+
+
+def caption_lines(texts, f=CAP_TEXT):
+    """The panel's line layout for one cue: [[(index, width), ...], ...]. build_captions
+    cuts its cues with this same measure, so a cue always fits in CAP_LINES lines."""
+    sp = _CAP_MEASURE.textlength(" ", font=f)
+    lines, cur, cw = [], [], 0.0
+    for k, txt in enumerate(texts):
+        ww = _CAP_MEASURE.textlength(txt, font=f)
+        if cur and cw + sp + ww > CAP_MAXW:
+            lines.append(cur); cur, cw = [], 0.0
+        cur.append((k, ww)); cw += (sp if cw else 0) + ww
+    if cur:
+        lines.append(cur)
+    return lines
 
 
 def caption_panel(im, cfg, t):
@@ -273,19 +290,20 @@ def caption_panel(im, cfg, t):
     od.ellipse([130, CAP_Y + 34, 146, CAP_Y + 50], fill=(214, 72, 48, int(255 * a)))
     od.text((160, CAP_Y + 26), "SCANNER AUDIO", font=CAP_LABEL, fill=(214, 180, 120, int(255 * a)))
     # Lay the words out once (no word moves while it is on screen), two lines max.
-    maxw, x0, y = W - 2 * 130, 130, CAP_Y + 82
-    sp = od.textlength(" ", font=CAP_TEXT)
-    lines, cur, cw = [], [], 0.0
-    for wd in cue["words"]:
-        ww = od.textlength(wd["w"], font=CAP_TEXT)
-        if cur and cw + sp + ww > maxw:
-            lines.append(cur); cur, cw = [], 0.0
-        cur.append((wd, ww)); cw += (sp if cw else 0) + ww
-    if cur:
-        lines.append(cur)
-    for ln in lines[:2]:
+    # A cue that needs a third line (one not cut by build_captions) is drawn
+    # smaller, never cut: lines[:2] used to drop its last words without a trace.
+    words, x0, y = cue["words"], 130, CAP_Y + 82
+    f, size = CAP_TEXT, 46
+    lines = caption_lines([wd["w"] for wd in words], f)
+    while len(lines) > CAP_LINES and size > 34:
+        size -= 2
+        f = cap_font(size, 640)
+        lines = caption_lines([wd["w"] for wd in words], f)
+    sp = od.textlength(" ", font=f)
+    for ln in lines:
         x = x0
-        for wd, ww in ln:
+        for k, ww in ln:
+            wd = words[k]
             if t >= wd["e"]:
                 col = (248, 245, 238)
             elif t >= wd["s"]:
@@ -294,9 +312,9 @@ def caption_panel(im, cfg, t):
                 col = (130, 134, 138)
             if wd.get("redacted"):
                 col = (150, 120, 70)
-            od.text((x, y), wd["w"], font=CAP_TEXT, fill=col + (int(255 * a),))
+            od.text((x, y), wd["w"], font=f, fill=col + (int(255 * a),))
             x += ww + sp
-        y += 64
+        y += 64 if len(lines) <= CAP_LINES else int(128 / len(lines))
     im.alpha_composite(ov)
 
 

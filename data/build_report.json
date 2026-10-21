@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-21T07:52:04-07:00",
+ "built_at": "2026-10-21T08:18:16-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 1376, column 28"
   },
   "isabella": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "New poll shows Becerra with wide lead over Hilton in California governor race",
    "overnight_band": {
     "date": "2026-10-21",
@@ -154,13 +154,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 9,
+   "wind_mph": 7,
    "alerts": 1,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 55,
-   "wind_mph": 9,
+   "temp": 57,
+   "wind_mph": 7,
    "alerts": 1
   },
   "roads": {

@@ -10,6 +10,7 @@ clip is about its own story, and the captions never air what the report may not.
 No network, no whisper model, no ffmpeg: the transcription is stubbed.
 """
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -139,20 +140,99 @@ def test_a_clip_about_another_call_is_a_mismatch_and_gets_no_captions(tmp_path, 
     assert [r["match"] for r in report] == [True, False]
     shown = " ".join(w["w"] for c in cap["captions"] for w in c["words"])
     assert "Buck" not in shown and "2627" not in shown      # the other call never airs
-    assert "724 Grace" in shown and "•••" not in shown      # the call's own number airs
-    assert cap["style"] == "night"
+    assert shown == "Shots reported near Jefferson Park."   # the record's own words
+    assert cap["style"] == "night" and cap["caption_label"] == "ON THE SCANNER"
 
 
-def test_spoken_number_words_air(tmp_path, monkeypatch):
+def test_the_caption_is_a_sentence_from_the_record_inside_its_slot(tmp_path, monkeypatch):
     stories = [{"headline": "Knife reported on Lincoln Street", "label": "Knife reported",
-                "where": "on Lincoln Street", "subhead": "A man with a knife."}]
+                "where": "on Lincoln Street", "subhead": "A man with a knife who was seen "
+                "near the corner store by a caller and then left before officers arrived there."}]
     by_slot = {1.0: "weapons possession thirteen thirteen Lincoln Street".split()}
-    code, cap, _ = _run_captions(tmp_path, monkeypatch, stories, by_slot)
+    code, cap, report = _run_captions(tmp_path, monkeypatch, stories, by_slot)
     assert code == 0
     words = [w for c in cap["captions"] for w in c["words"]]
-    assert not [w for w in words if w.get("redacted")]
-    assert "thirteen thirteen Lincoln Street" in " ".join(w["w"] for w in words)
-    assert all(w["e"] <= 9.0 for w in words)          # never past its own slot
+    assert " ".join(w["w"] for w in words) == "Knife reported on Lincoln Street."
+    assert report[0]["caption"] == "Knife reported on Lincoln Street."
+    assert all(1.0 <= w["s"] < w["e"] <= 9.0 for w in words)          # never past its own slot
+    assert all(a["e"] <= b["s"] for a, b in zip(words, words[1:]))   # karaoke only moves forward
+
+
+# ------------------------------------------------- the sentence builder (2026-10-22)
+# The 2026-10-21 cue read "3-4-6 Adams, 3-4-6 Prior 2 for a 242 2572 South Union
+# Trucking Company,". The owner: readable by humans, not dots and dashes and numbers.
+ASSAULT = {"headline": "Assault on S Union Avenue", "label": "Assault", "where": "on S Union Avenue",
+           "place": "S UNION AVENUE", "subhead": "A man who stole from a South Union business "
+           "assaulted the person who confronted him, and a caller thought …"}
+KNIFE = {"headline": "Person with knife in Bakersfield", "label": "Person with knife", "where": "",
+         "place": "BAKERSFIELD", "subhead": "Officers were sent to a bar where a man with a knife "
+         "in his pocket was reported threatening a customer."}
+
+
+def test_label_and_place_make_the_sentence_and_a_cut_subhead_is_never_used():
+    assert BC.build_sentence(ASSAULT, 11.0) == "Assault reported on South Union Avenue."
+
+
+def test_a_record_with_no_where_names_only_the_town_it_holds():
+    assert BC.build_sentence(KNIFE, 11.0) == "Person with knife in Bakersfield."
+    no_place = {**KNIFE, "headline": "", "place": ""}
+    assert BC.build_sentence(no_place, 11.0) == "Person with knife reported."
+    street_place = {**KNIFE, "headline": "", "place": "S UNION AVENUE"}
+    assert "Union" not in BC.build_sentence(street_place, 11.0)   # no guessed preposition
+
+
+def test_label_only():
+    assert BC.build_sentence({"label": "Structure fire"}, 6.0) == "Structure fire reported."
+    assert BC.build_sentence({"label": "Shots heard"}, 6.0) == "Shots heard."
+
+
+def test_a_short_whole_subhead_is_the_sentence():
+    assert BC.build_sentence({"subhead": "Two deputies searched the area."}, 11.0) \
+        == "Two deputies searched the area."
+    # label and place come first: they are the fact the clip is about
+    assert BC.build_sentence({**ASSAULT, "subhead": "Bangs."}, 11.0) \
+        == "Assault reported on South Union Avenue."
+
+
+def test_no_digit_code_dash_or_initial_ever_reaches_a_sentence():
+    for bad in ("415 call", "Hit-and-run", "Assault/battery", "J. Smith", "Crash …"):
+        assert not BC.readable(bad + ".")
+    s = BC.build_sentence({"label": "Crash", "where": "on Highway 58", "headline": "Crash on Highway 58"}, 6.0)
+    assert s == "Crash reported."
+    assert BC.build_sentence({"label": "Hit-and-run"}, 6.0) == "Hit and run reported."
+    assert BC.readable("Fire reported on H Street.")
+
+
+def test_the_sentence_fits_two_lines_or_a_shorter_one_is_used():
+    import render_reel as RR
+    long_where = "on " + " ".join(["Panorama"] * 14) + " Drive"
+    s = BC.build_sentence({"label": "Assault", "where": long_where}, 11.0)
+    assert s == "Assault reported."
+    for st in (ASSAULT, KNIFE):
+        assert len(RR.caption_lines(BC.build_sentence(st, 11.0).split())) <= RR.CAP_LINES
+
+
+def test_a_short_speech_span_takes_fewer_words_never_a_squeeze():
+    assert BC.build_sentence(ASSAULT, 0.8) == "Assault reported."
+    assert BC.build_sentence(ASSAULT, 0.2) is None
+
+
+def test_sentence_timing_is_monotonic_and_inside_the_span():
+    cue = BC.sentence_cue("Assault reported on South Union Avenue.", 1.4, 12.9)
+    ws = cue["words"]
+    assert ws[0]["s"] == 1.4 and ws[-1]["e"] <= 12.9
+    assert all(w["s"] < w["e"] for w in ws)
+    assert all(a["e"] <= b["s"] for a, b in zip(ws, ws[1:]))
+
+
+def test_fallback_strips_digits_dashes_and_codes(tmp_path, monkeypatch):
+    stories = [{"headline": "", "label": "", "where": "on Grace Street", "subhead": ""}]
+    by_slot = {1.0: "3-4-6 copy, 242 -2572 shots on Grace Street".split()}
+    code, cap, report = _run_captions(tmp_path, monkeypatch, stories, by_slot)
+    assert code == 0 and report[0]["caption"] is None
+    shown = " ".join(w["w"] for c in cap["captions"] for w in c["words"])
+    assert shown == "Copy, shots on Grace Street"
+    assert not re.search(r"[0-9\-•…]", shown)
 
 
 def test_captions_fall_back_to_the_verified_transcript(tmp_path, monkeypatch):
@@ -171,7 +251,7 @@ def test_captions_fall_back_to_the_verified_transcript(tmp_path, monkeypatch):
                                       "--audit", str(audit), "--out", str(out), "--strict"])
     assert BC.main() == 0
     cues = json.loads(out.read_text(encoding="utf-8"))["captions"]
-    assert " ".join(w["w"] for c in cues for w in c["words"]).startswith("Shots heard")
+    assert " ".join(w["w"] for c in cues for w in c["words"]) == "Shots reported on Grace Street."
 
 
 # ------------------------------------------------- publisher: swap, rebuild, hold

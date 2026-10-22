@@ -288,7 +288,7 @@ def caption_panel(im, cfg, t):
                          fill=(10, 12, 15, int(215 * a)), outline=GOLD + (int(90 * a),), width=2)
     # Label: a red "on air" dot and SCANNER AUDIO, so nobody reads the radio as our words.
     od.ellipse([130, CAP_Y + 34, 146, CAP_Y + 50], fill=(214, 72, 48, int(255 * a)))
-    od.text((160, CAP_Y + 26), "SCANNER AUDIO", font=CAP_LABEL, fill=(214, 180, 120, int(255 * a)))
+    od.text((160, CAP_Y + 26), cfg.get("caption_label") or "SCANNER AUDIO", font=CAP_LABEL, fill=(214, 180, 120, int(255 * a)))
     # Lay the words out once (no word moves while it is on screen), two lines max.
     # A cue that needs a third line (one not cut by build_captions) is drawn
     # smaller, never cut: lines[:2] used to drop its last words without a trace.

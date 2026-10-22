@@ -295,6 +295,142 @@ def cues_for(words: list[dict]) -> list[dict]:
     return [{"s": c[0]["s"], "e": c[-1]["e"], "words": c} for c in cues]
 
 
+# ---- the caption sentence ---------------------------------------------------
+# Owner's rule, 2026-10-22: the panel reads as plain English, not radio. The
+# verbatim cue "3-4-6 Adams, 3-4-6 Prior 2 for a 242 2572 South Union Trucking
+# Company," is the right call and unreadable. Each story's caption is one short
+# sentence built ONLY from the story's verified fields (label, headline, where,
+# place, subhead): nothing is added that the record does not say, no digits, no
+# codes, no dashes, no initials, two lines at the panel's own size. The words are
+# spread over the clip's measured speech. When no such sentence can be built, the
+# old verbatim cue airs with every digit, dash and code stripped (clean_verbatim).
+COMPASS = {"N": "North", "S": "South", "E": "East", "W": "West"}
+ABBREV = {"ave": "Avenue", "st": "Street", "rd": "Road", "blvd": "Boulevard", "dr": "Drive",
+          "ln": "Lane", "ct": "Court", "hwy": "Highway", "pkwy": "Parkway", "pl": "Place"}
+TOWN_NAMES = {"bakersfield", "oildale", "delano", "shafter", "arvin", "lamont", "tehachapi",
+              "wasco", "mcfarland", "taft", "ridgecrest", "frazier park", "lebec", "rosedale",
+              "maricopa", "california city", "lake isabella", "mojave", "buttonwillow"}
+MIN_WORD_S = 0.2        # a highlight faster than this is a squeeze: use fewer words
+
+
+def _expand_place(text: str) -> str:
+    """'on S Union Ave' -> 'on South Union Avenue'. A lone compass letter is expanded
+    only before a capitalized word, a street abbreviation only after one."""
+    toks = text.split()
+    out = []
+    for k, t in enumerate(toks):
+        core = t.rstrip(".,")
+        nxt = toks[k + 1] if k + 1 < len(toks) else ""
+        if core in COMPASS and nxt[:1].isupper():
+            t = COMPASS[core] + t[len(core):].lstrip(".")
+        elif core.lower() in ABBREV and out and out[-1][:1].isupper():
+            t = ABBREV[core.lower()] + t[len(core):].lstrip(".")
+        out.append(t)
+    return " ".join(out)
+
+
+def _clean_field(text: str) -> str:
+    text = re.sub(r"\s+", " ", (text or "").strip())
+    if text.isupper():
+        text = " ".join(w if len(w) == 1 else w.capitalize() for w in text.split())
+    return _expand_place(text)
+
+
+def readable(sentence: str) -> bool:
+    """English a viewer can read: no digits, no slash, no bullets, no ellipsis, no
+    hyphen or dash anywhere, no initials ("J." or a lone letter that is not a
+    lettered street such as "H Street")."""
+    if not sentence or re.search(r"[0-9/•…\-–—_#@&*]|\.\.", sentence):
+        return False
+    toks = sentence.split()
+    for k, t in enumerate(toks):
+        core = re.sub(r"[^A-Za-z]", "", t)
+        if len(core) == 1 and core not in ("a", "A", "I"):
+            nxt = re.sub(r"[^A-Za-z]", "", toks[k + 1]) if k + 1 < len(toks) else ""
+            if not (core.isupper() and nxt in ("Street", "Avenue", "Road") and not t.endswith(".")):
+                return False
+    return True
+
+
+def _sentence(text: str) -> str:
+    text = text.strip().rstrip(".,;:")
+    return text[:1].upper() + text[1:] + "."
+
+
+def sentence_candidates(story: dict) -> list[str]:
+    """Sentences that say what the story record says, longest first. Every word is
+    the record's own, plus 'reported' (the report's own verb for a call) and 'in'
+    before a town the record names."""
+    label = _clean_field(story.get("label") or "")
+    label = re.sub(r"(?<=[A-Za-z])-(?=[A-Za-z])", " ", label)      # "hit-and-run" -> "hit and run"
+    where = _clean_field(story.get("where") or "")
+    place = _clean_field(story.get("place") or "")
+    headline = _clean_field(story.get("headline") or "")
+    subhead = (story.get("subhead") or "").strip()
+    out = []
+    verb = "" if re.search(r"\b(reported|heard|fired|found|seen)\b", label, re.I) else " reported"
+    if label and where:
+        out.append(_sentence(f"{label}{verb} {where}"))
+    if headline:
+        out.append(_sentence(headline))
+    # A subhead is used whole or not at all: a cut one ("...and a caller thought …")
+    # leaves the viewer with half a fact.
+    if subhead and subhead.endswith((".", "!", "?")) and not re.search(r"…|\.\.\.", subhead) \
+            and subhead.count(".") == 1:
+        out.append(subhead)
+    if label and not where and place.lower() in TOWN_NAMES:
+        out.append(_sentence(f"{label}{verb} in {place}"))
+    if label:
+        out.append(_sentence(f"{label}{verb}"))
+    seen, uniq = set(), []
+    for s in out:
+        if s not in seen:
+            seen.add(s); uniq.append(s)
+    return uniq
+
+
+def _fits_text(text: str) -> bool:
+    return _fits([{"w": w} for w in text.split()])
+
+
+def build_sentence(story: dict, span_s: float) -> str | None:
+    """The first candidate that reads as English, fits two lines and leaves each word
+    MIN_WORD_S of highlight in the clip's speech span. None when there is none."""
+    for s in sentence_candidates(story):
+        if readable(s) and _fits_text(s) and span_s / len(s.split()) >= MIN_WORD_S:
+            return s
+    return None
+
+
+def sentence_cue(sentence: str, s0: float, s1: float) -> dict:
+    """One cue: the sentence's words spread evenly over [s0, s1], each word's start
+    after the last one's end, so the karaoke highlight only ever moves forward."""
+    words = sentence.split()
+    step = (s1 - s0) / len(words)
+    ws = [{"w": w, "s": round(s0 + k * step, 3), "e": round(s0 + (k + 0.92) * step, 3)}
+          for k, w in enumerate(words)]
+    return {"s": ws[0]["s"], "e": ws[-1]["e"], "words": ws}
+
+
+def clean_verbatim(words: list[dict]) -> list[dict]:
+    """The fallback cue's words with every digit, code and dash gone: a token holding
+    a digit is dropped (a unit, an address, a radio code), a dash is stripped, and a
+    word left with no letters is dropped."""
+    out = []
+    for w in words:
+        if not w["w"] or re.search(r"\d", w["w"]):
+            continue
+        t = re.sub(r"[-–—•…/]+", " ", w["w"]).strip()
+        t = re.sub(r"\s+", " ", t)
+        if not re.search(r"[A-Za-z]", t):
+            continue
+        out.append({**w, "w": t})
+    # A comma left hanging at the front of what remains reads as a typo.
+    if out:
+        out[0]["w"] = out[0]["w"].lstrip(",. ")
+    return [w for w in out if w["w"]]
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--brief", required=True)
@@ -345,7 +481,18 @@ def main() -> int:
         # all air (owner's rule, 2026-10-21).
         redact_names(out_words, set(fix_words))
         muted_words.extend(w for w in out_words if w.get("redacted"))
-        for c in cues_for([w for w in out_words if w["w"]]):
+        # The caption is a sentence from the record, timed over the clip's speech.
+        spoken = [w for w in out_words if w["w"] or w.get("redacted")]
+        s0 = max(t0, spoken[0]["s"]) if spoken else t0
+        s1 = min(t1 - 0.05, spoken[-1]["e"]) if spoken else t1 - 0.05
+        sentence = build_sentence(story, s1 - s0) if s1 > s0 else None
+        report[-1]["caption"] = sentence
+        if sentence:
+            all_cues.append(sentence_cue(sentence, s0, s1))
+            continue
+        print(f"WARN story {i + 1}: no readable sentence from the record; verbatim "
+              f"caption with digits, dashes and codes stripped", file=sys.stderr)
+        for c in cues_for(clean_verbatim([w for w in out_words if w["w"]])):
             c["e"] = min(c["e"], t1 - 0.05)
             all_cues.append(c)
 
@@ -364,6 +511,8 @@ def main() -> int:
         print(f"muted {len(spans)} span(s) -> {a.muted_out}")
 
     brief["captions"] = all_cues
+    # The panel no longer quotes the radio, so it must not say it does.
+    brief["caption_label"] = "ON THE SCANNER"
     brief["style"] = "night"
     json.dump(brief, open(a.out, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
     for r in report:

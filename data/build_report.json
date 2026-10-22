@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-22T14:30:33-07:00",
+ "built_at": "2026-10-22T16:34:35-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 4795, column 3"
   },
   "isabella": {
    "ok": true,
@@ -72,8 +72,8 @@
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
-   "alerts": 2,
-   "chp_new": 1,
+   "alerts": 1,
+   "chp_new": 0,
    "top_story": "Bakersfield sets aside $4M for jail bed pilot targeting repeat offenders, but calls for further discussion",
    "overnight_band": {
     "date": "2026-10-22",
@@ -199,9 +199,9 @@
   },
   "numbers": {
    "isabella_af": 140008,
-   "alpr_total": 458,
+   "alpr_total": 459,
    "kern_fires": 0,
-   "aqi": 36,
+   "aqi": 43,
    "chp_week": 57
   },
   "letters": {
@@ -240,8 +240,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 458,
-   "alpr_new_week": 2,
+   "alpr_total": 459,
+   "alpr_new_week": 3,
    "pages": [
     "surveillance",
     "fires",

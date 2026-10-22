@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-22T11:32:01-07:00",
+ "built_at": "2026-10-22T11:48:28-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 4795, column 3"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,

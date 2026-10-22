@@ -13,8 +13,8 @@
  },
  "sr99": {
   "status": "CLOSED",
-  "hash": "6238850d72",
-  "corridor": "OPEN",
-  "corridor_hash": "d41d8cd98f"
+  "hash": "0cbc24ef64",
+  "corridor": "CLOSED",
+  "corridor_hash": "5ca83fc55c"
  }
 }

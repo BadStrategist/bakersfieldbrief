@@ -1,0 +1,483 @@
+[
+ {
+  "type": "assault",
+  "time": "19:10",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Washington Avenue",
+  "notability": 2,
+  "disposition": "caller asked for an assault report; two people left in a gold sedan",
+  "summary": "A caller asked officers to take an assault report on Washington Avenue, and the two people involved had left in a gold sedan before units arrived.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "hazardous condition",
+  "time": "19:13",
+  "agency": "KCFD",
+  "area": "Los Robles Drive",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "Engine 41 was sent to a hazard on Los Robles Drive where a power pole was reported damaged.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "vehicle pursuit",
+  "time": "19:35",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Shellmacher Avenue",
+  "notability": 4,
+  "disposition": "stopped on its own; occupants compliant, one detained",
+  "summary": "A traffic stop on Fairfax Road turned into a pursuit that ran south on Madison Street and then through southeast Bakersfield on Watts, Lotus and Cottonwood before the driver pulled over westbound at Shellmacher Avenue. Three people were in the car and all were compliant.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "19:52",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Belvedere Avenue",
+  "notability": 2,
+  "disposition": "ambulance requested",
+  "summary": "A man was found unconscious behind the wheel of a parked SUV at a gas station on Belvedere Avenue and an ambulance was called.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "20:02",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 2,
+  "disposition": "ambulance sent; traumatic injuries",
+  "summary": "An ambulance was called to Jackson Park for a person with traumatic injuries."
+ },
+ {
+  "type": "outside fire",
+  "time": "20:21",
+  "agency": "KCFD",
+  "area": "Palm Street",
+  "notability": 2,
+  "disposition": "handled by one engine",
+  "summary": "Engine 3 put out a trash can fire near the stadium at Beach Park on Palm Street."
+ },
+ {
+  "type": "vehicle into power pole",
+  "time": "20:29",
+  "agency": "KCFD",
+  "area": "Hageman Road",
+  "notability": 3,
+  "disposition": "lines down; utility notified",
+  "summary": "A vehicle hit a power pole on the north side of Hageman Road and sheared it, leaving lines down across the roadway. A power outage ran along Haley Street from Columbus Street and the utility put its repair about 30 minutes out."
+ },
+ {
+  "type": "overdose",
+  "time": "21:02",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Dorrance Street",
+  "notability": 3,
+  "disposition": "engine sent; medics requested",
+  "summary": "Crews were sent to a possible overdose on Dorrance Street and an engine was started that way with medics.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "vehicle vs bicycle",
+  "time": "22:01",
+  "agency": "KCFD",
+  "area": "Oildale Drive",
+  "notability": 3,
+  "disposition": "medical response; bicyclist down",
+  "summary": "A bicyclist was reported down in the roadway on Oildale Drive north of El Cajon and a Metro fire crew was sent.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "attempted entry",
+  "time": "22:36",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Barlow Street",
+  "notability": 2,
+  "disposition": "units sent",
+  "summary": "A caller reported someone trying to get into a business through the rear door on Barlow Street.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "traffic hazard",
+  "time": "22:58",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 2,
+  "disposition": "broadcast to units",
+  "summary": "Drivers reported a white laser being aimed at traffic on southbound Highway 99 and units were advised."
+ },
+ {
+  "type": "disturbance",
+  "time": "23:01",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Tulip Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a disturbance on Tulip Street where a man was reported under the influence and throwing things.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "assault",
+  "time": "23:03",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Jackson Street",
+  "notability": 2,
+  "disposition": "suspect gone on arrival",
+  "summary": "An assault was reported in the alley behind a business on Jackson Street and the suspect was gone when officers arrived.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "weapons call",
+  "time": "23:10",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 3,
+  "disposition": "units sent",
+  "summary": "Deputies were sent to the 2nd and 3rd street area for juveniles who were reported to possibly have a weapon."
+ },
+ {
+  "type": "overdose",
+  "time": "23:47",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "ambulance and fire sent",
+  "summary": "Crews were sent to a parking lot on Spectrum Parkway for a possible fentanyl overdose and the patient was taken by ambulance."
+ },
+ {
+  "type": "shots heard",
+  "time": "00:00",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Barrington Street",
+  "notability": 3,
+  "disposition": "two callers; area checked",
+  "summary": "Two callers reported hearing two shots in the area of Ming Avenue and Barrington Street and officers were sent to check.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "suspicious person",
+  "time": "00:06",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Pico Avenue",
+  "notability": 2,
+  "disposition": "one unit handled it",
+  "summary": "Officers checked a report of someone in a backyard on Pico Avenue.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "00:11",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Oregon Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a welfare check on Oregon Street for a person reported to be screaming inside a home and making threats.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "shots heard",
+  "time": "00:35",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "River Boulevard",
+  "notability": 4,
+  "disposition": "four to eight shots reported",
+  "summary": "Four to eight shots were reported heard in the area of River Boulevard and Panorama Drive and officers were sent to look.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "assault with a deadly weapon",
+  "time": "01:07",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Harrington Street",
+  "notability": 4,
+  "disposition": "no injuries; deputies sent",
+  "summary": "Deputies were sent to an assault with a deadly weapon on Harrington Street where a man was reported swinging a metal pole at a woman. Nobody was hurt.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "01:23",
+  "agency": "KCFD",
+  "area": "Arkansas Avenue",
+  "notability": 2,
+  "disposition": "crews cleared",
+  "summary": "Crews were sent to a medical aid on Arkansas Avenue for a man who was combative with responders; the call was cleared a short time later.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "gas odor",
+  "time": "01:34",
+  "agency": "KCFD",
+  "area": "Jasmine Park Drive",
+  "notability": 2,
+  "disposition": "alarm cancelled; faulty stove knob",
+  "summary": "A gas odor call on Jasmine Park Drive was traced to a faulty stove knob and the response was cancelled.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "traffic signal outage",
+  "time": "02:04",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Brundage Lane",
+  "notability": 2,
+  "disposition": "crew requested",
+  "summary": "Traffic signals went dark at Brundage Lane and Chester Avenue and a city crew was asked to respond."
+ },
+ {
+  "type": "flooding",
+  "time": "02:08",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "water company called; road closed",
+  "summary": "A water main broke in the roadway and a bus was caught in it. The water company was called and the road had to be shut down, and a possible sinkhole was being checked with the water district a short time later."
+ },
+ {
+  "type": "grand theft auto",
+  "time": "02:30",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Olive Drive",
+  "notability": 4,
+  "disposition": "vehicle entered as stolen; two suspects",
+  "summary": "A white Chevrolet Tahoe was reported taken from a convenience store lot on Olive Drive about 20 minutes earlier, with two men in it."
+ },
+ {
+  "type": "electrical fire",
+  "time": "02:40",
+  "agency": "KCFD",
+  "area": "Quincy Street",
+  "notability": 3,
+  "disposition": "utility notified",
+  "summary": "A transformer caught fire on a pole on Quincy Street just west of Mount Vernon Avenue, and a second power pole was reported leaning in a driveway.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "commercial fire alarm",
+  "time": "03:32",
+  "agency": "KCFD",
+  "area": "District Boulevard",
+  "notability": 2,
+  "disposition": "smoke detector and water flow in a building",
+  "summary": "A commercial fire alarm at a cold storage plant on District Boulevard came from a smoke detector and a water flow alarm in one building.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "residential alarm",
+  "time": "04:36",
+  "agency": "KCFD",
+  "area": "Candlewood Drive",
+  "notability": 2,
+  "disposition": "engine sent; cancelled",
+  "summary": "A residential fire alarm brought an engine to Candlewood Drive and the call was cancelled.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "grand theft auto",
+  "time": "04:51",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Wilson Avenue",
+  "notability": 4,
+  "disposition": "pursuit westbound; under investigation",
+  "summary": "A black Kia Optima was reported taken from a delivery driver on Wilson Avenue, and officers went after it westbound on Wilson Avenue with a white Honda Civic reported running with it.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "hazardous condition",
+  "time": "05:38",
+  "agency": "KCFD",
+  "area": "Actis Street",
+  "notability": 4,
+  "disposition": "occupants told to get out; building damaged",
+  "summary": "Rain brought part of a roof down at an apartment on Actis Street and water was running inside the unit. Crews told the occupants to get out.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "Medical emergency",
+  "time": "20:05",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person not breathing on I Street in Mojave.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire alarm",
+  "time": "20:47",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Commercial fire alarm at South Valley Farms.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "23:41",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Vehicle and pedestrian collision at 24th and Oak.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Rollover",
+  "time": "00:28",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Airport Drive",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Non-injury vehicle rollover near Airport Drive.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "00:32",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Pedestrians walking on highway shoulder.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Cardiac arrest",
+  "time": "04:22",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person receiving CPR after cardiac arrest at home.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Stabbing",
+  "time": "04:32",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "K Street",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Stabbing reported near K Street and Lake Queen.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "05:07",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Two-car crash on northbound Highway 99.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "05:22",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person with butter knife at back house reported.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire alarm",
+  "time": "06:29",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Pegasus Drive",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Commercial fire alarm near Pegasus Drive in Bakersfield.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:39",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Pegasus Drive",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Smoke in commercial building at Pegasus Drive.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:44",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Officer checks Range Rover on Interstate 5.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "06:47",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Olive Drive",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Single car crash off Highway 99 near Olive Drive.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic",
+  "time": "06:52",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Traffic stop for expired registration on Toyota.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "22:19",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Crash at North N Street and Panamint Street.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "22:28",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Single vehicle crash north of Keyesville Road.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "03:54",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "E 18th Street",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person injured near East 18th Street and Canyon Drive.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Vehicle",
+  "time": "06:39",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Vehicle registration check on Dodge van.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "06:47",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Single-car crash on northbound Highway 99.",
+  "source": "crimeradar"
+ }
+]

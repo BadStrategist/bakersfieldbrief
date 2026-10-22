@@ -1318,5 +1318,15 @@
   "lat": 35.616695,
   "lon": -118.486539,
   "details": ""
+ },
+ {
+  "log_id": "261022BF0127",
+  "time": "Oct 22 2026  8:16AM",
+  "type": "CZP-Assist with Construction",
+  "location": "Nb I5 At Fort Tejon Rd",
+  "area": "Fort Tejon",
+  "lat": 34.876944,
+  "lon": -118.894722,
+  "details": ""
  }
 ]

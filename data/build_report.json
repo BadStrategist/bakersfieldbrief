@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-22T07:54:23-07:00",
+ "built_at": "2026-10-22T10:06:36-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 4795, column 3"
   },
   "isabella": {
    "ok": true,
@@ -39,9 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": "RuntimeError: overpass-api.de: ConnectionError: HTTPSConnectionPool(host='overpass-api.de', port=443): Max retries exceeded with url: /api/interpreter (Caused by NewConnectionError(\"HTTPSConnection(host='overpass-api.de', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\")); lambert.openstreetmap.de: ConnectionError: HTTPSConnectionPool(host='lambert.openstreetmap.de', port=443): Max retries exceeded with url: /api/interpreter (Caused by NewConnectionError(\"HTTPSConnection(host='lambert.openstreetmap.de', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\")); gall.openstreetmap.de: ConnectionError: HTTPSConnectionPool(host='gall.openstreetmap.de', port=443): Max retries exceeded with url: /api/interpreter (Caused by NewConnectionError(\"HTTPSConnection(host='gall.openstreetmap.de', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\"))",
-   "stale": true,
-   "asof": "2026-10-22"
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -75,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 10,
+   "chp_new": 0,
    "top_story": "Bakersfield sets aside $4M for jail bed pilot targeting repeat offenders, but calls for further discussion",
    "overnight_band": {
     "date": "2026-10-22",
@@ -203,7 +201,7 @@
    "isabella_af": 140008,
    "alpr_total": 458,
    "kern_fires": 0,
-   "aqi": 33,
+   "aqi": 37,
    "chp_week": 53
   },
   "letters": {

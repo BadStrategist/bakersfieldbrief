@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-22T13:02:16-07:00",
+ "built_at": "2026-10-22T14:30:33-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 2,
-   "chp_new": 2,
+   "chp_new": 1,
    "top_story": "Bakersfield sets aside $4M for jail bed pilot targeting repeat offenders, but calls for further discussion",
    "overnight_band": {
     "date": "2026-10-22",
@@ -201,8 +201,8 @@
    "isabella_af": 140008,
    "alpr_total": 458,
    "kern_fires": 0,
-   "aqi": 37,
-   "chp_week": 56
+   "aqi": 36,
+   "chp_week": 57
   },
   "letters": {
    "published": 1

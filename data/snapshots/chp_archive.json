@@ -1240,6 +1240,16 @@
   "details": ""
  },
  {
+  "log_id": "261022BF0222",
+  "time": "Oct 22 2026  2:17PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Eb Sr58 Jwo Vineland Rd",
+  "area": "Bakersfield",
+  "lat": 35.350556,
+  "lon": -118.8975,
+  "details": ""
+ },
+ {
   "log_id": "261022BF0069",
   "time": "Oct 22 2026  4:12AM",
   "type": "FLOOD-Roadway Flooding",

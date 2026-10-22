@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-22T04:56:05-07:00",
+ "built_at": "2026-10-22T07:54:23-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 1376, column 28"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -39,7 +39,9 @@
   },
   "alpr": {
    "ok": true,
-   "error": ""
+   "error": "RuntimeError: overpass-api.de: ConnectionError: HTTPSConnectionPool(host='overpass-api.de', port=443): Max retries exceeded with url: /api/interpreter (Caused by NewConnectionError(\"HTTPSConnection(host='overpass-api.de', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\")); lambert.openstreetmap.de: ConnectionError: HTTPSConnectionPool(host='lambert.openstreetmap.de', port=443): Max retries exceeded with url: /api/interpreter (Caused by NewConnectionError(\"HTTPSConnection(host='lambert.openstreetmap.de', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\")); gall.openstreetmap.de: ConnectionError: HTTPSConnectionPool(host='gall.openstreetmap.de', port=443): Max retries exceeded with url: /api/interpreter (Caused by NewConnectionError(\"HTTPSConnection(host='gall.openstreetmap.de', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\"))",
+   "stale": true,
+   "asof": "2026-10-22"
   },
   "venues": {
    "ok": true,
@@ -68,40 +70,40 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 73,
+  "brief_words": 1414,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 0,
+   "chp_new": 10,
    "top_story": "Bakersfield sets aside $4M for jail bed pilot targeting repeat offenders, but calls for further discussion",
    "overnight_band": {
-    "date": "2026-10-21",
-    "count": 41,
+    "date": "2026-10-22",
+    "count": 49,
     "chips": [
      [
       "Weapons and assaults",
-      6
+      7
      ],
      [
       "Fires",
-      9
+      2
      ],
      [
       "Crashes and traffic",
-      11
+      13
      ],
      [
       "Medical and overdose",
-      4
-     ],
-     [
-      "Missing persons",
-      1
+      7
      ],
      [
       "Disturbances and welfare",
-      5
+      2
+     ],
+     [
+      "Burglary and theft",
+      3
      ],
      [
       "Suspicious activity",
@@ -109,14 +111,18 @@
      ],
      [
       "Alarms",
-      1
+      4
+     ],
+     [
+      "Incident",
+      5
      ],
      [
       "Other calls",
-      3
+      5
      ]
     ],
-    "other": "1 search for a suspect, 1 vehicle, 1 incident",
+    "other": "2 hazardous condition, 1 gas odor, 1 flooding, 1 vehicle",
     "unmapped": []
    },
    "archive": "2026-10-22"
@@ -154,13 +160,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 5,
+   "wind_mph": 0,
    "alerts": 1,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 50,
-   "wind_mph": 5,
+   "temp": 46,
+   "wind_mph": 0,
    "alerts": 1
   },
   "roads": {
@@ -197,17 +203,17 @@
    "isabella_af": 140008,
    "alpr_total": 458,
    "kern_fires": 0,
-   "aqi": 30,
-   "chp_week": 43
+   "aqi": 33,
+   "chp_week": 53
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 71
+   "published": 72
   },
   "map": {
-   "dots": 30
+   "dots": 17
   },
   "sunday_read": {
    "topic": "Public safety",

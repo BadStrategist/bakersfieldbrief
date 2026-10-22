@@ -21,7 +21,7 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "Is closed to northbound traffic from 0.5 mi north to 5.5 mi north of the Sacramento/Yolo Co Line /at County Rd 102/ from 2100 hrs each night to 0400 hrs each morning Monday thru Saturday thru 10/24/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from Weed to Yreka (Siskiyou Co) - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "Is closed to northbound traffic from 0.5 mi north to 5.5 mi north of the Sacramento/Yolo Co Line /at County Rd 102/ from 2100 hrs each night to 0400 hrs each morning Monday thru Saturday thru 10/24/26 - Due to construction - Motorists are advised to use an alternate route",
      "status": "CLOSED"
     }
    ],
@@ -73,8 +73,8 @@
      }
     ]
    },
-   "reported_as_of": "Thursday, October 22nd, 2026 at 04:56 AM",
-   "hash": "8b57345019"
+   "reported_as_of": "Thursday, October 22nd, 2026 at 07:53 AM",
+   "hash": "66299e542c"
   },
   {
    "number": "58",
@@ -96,7 +96,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Thursday, October 22nd, 2026 at 04:56 AM",
+   "reported_as_of": "Thursday, October 22nd, 2026 at 07:53 AM",
    "hash": "5374f203ec"
   },
   {
@@ -150,7 +150,7 @@
      }
     ]
    },
-   "reported_as_of": "Thursday, October 22nd, 2026 at 04:56 AM",
+   "reported_as_of": "Thursday, October 22nd, 2026 at 07:53 AM",
    "hash": "0cbc24ef64"
   }
  ],

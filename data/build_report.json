@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-21T21:33:08-07:00",
+ "built_at": "2026-10-22T00:57:52-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,13 +68,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1471,
+  "brief_words": 73,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
    "chp_new": 0,
-   "top_story": "New poll shows Becerra with wide lead over Hilton in California governor race",
+   "top_story": "Bakersfield sets aside $4M for jail bed pilot targeting repeat offenders, but calls for further discussion",
    "overnight_band": {
     "date": "2026-10-21",
     "count": 41,
@@ -119,12 +119,12 @@
     "other": "1 search for a suspect, 1 vehicle, 1 incident",
     "unmapped": []
    },
-   "archive": "2026-10-21"
+   "archive": "2026-10-22"
   },
   "cityhall": {
-   "upcoming_meetings": 3,
+   "upcoming_meetings": 0,
    "county_items": 109,
-   "drafts_generated": 0
+   "drafts_generated": 3
   },
   "places": {
    "places": [
@@ -134,7 +134,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -145,7 +145,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-10-21"
+   "draft": "drafts/weekend-guide-2026-10-22"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -154,13 +154,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 11,
+   "wind_mph": 13,
    "alerts": 1,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 52,
-   "wind_mph": 11,
+   "wind_mph": 13,
    "alerts": 1
   },
   "roads": {
@@ -184,11 +184,11 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 20,
+    "In the next 7 days": 18,
     "In 1 to 2 weeks": 15,
-    "Later": 88
+    "Later": 87
    },
-   "meetings": 3
+   "meetings": 0
   },
   "feed": {
    "entries": 30
@@ -197,7 +197,7 @@
    "isabella_af": 139902,
    "alpr_total": 458,
    "kern_fires": 0,
-   "aqi": 52,
+   "aqi": 55,
    "chp_week": 43
   },
   "letters": {
@@ -237,7 +237,7 @@
   },
   "trackers": {
    "alpr_total": 458,
-   "alpr_new_week": 3,
+   "alpr_new_week": 2,
    "pages": [
     "surveillance",
     "fires",

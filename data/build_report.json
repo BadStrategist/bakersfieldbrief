@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-21T16:36:45-07:00",
+ "built_at": "2026-10-21T21:33:08-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 1376, column 28"
   },
   "isabella": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 4,
+   "chp_new": 0,
    "top_story": "New poll shows Becerra with wide lead over Hilton in California governor race",
    "overnight_band": {
     "date": "2026-10-21",
@@ -134,7 +134,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": true,
+   "tehachapi_forecast": false,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -154,13 +154,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 6,
+   "wind_mph": 11,
    "alerts": 1,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 56,
-   "wind_mph": 6,
+   "temp": 52,
+   "wind_mph": 11,
    "alerts": 1
   },
   "roads": {
@@ -184,9 +184,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 21,
+    "In the next 7 days": 20,
     "In 1 to 2 weeks": 15,
-    "Later": 87
+    "Later": 88
    },
    "meetings": 3
   },
@@ -197,7 +197,7 @@
    "isabella_af": 139902,
    "alpr_total": 458,
    "kern_fires": 0,
-   "aqi": 35,
+   "aqi": 52,
    "chp_week": 43
   },
   "letters": {

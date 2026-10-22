@@ -1328,5 +1328,25 @@
   "lat": 34.876944,
   "lon": -118.894722,
   "details": ""
+ },
+ {
+  "log_id": "261022BF0195",
+  "time": "Oct 22 2026 12:37PM",
+  "type": "1125-Traffic Hazard",
+  "location": "SR99 N / SR58 W",
+  "area": "Bakersfield",
+  "lat": 35.352805,
+  "lon": -119.0394,
+  "details": ""
+ },
+ {
+  "log_id": "261022BF0197",
+  "time": "Oct 22 2026 12:43PM",
+  "type": "1125A-Animal Hazard",
+  "location": "Nb I5 Jso Millux Rd",
+  "area": "Buttonwillow",
+  "lat": 35.179167,
+  "lon": -119.130278,
+  "details": ""
  }
 ]

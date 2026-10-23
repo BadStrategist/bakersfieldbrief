@@ -73,7 +73,7 @@
      }
     ]
    },
-   "reported_as_of": "Thursday, October 22nd, 2026 at 09:38 PM",
+   "reported_as_of": "Friday, October 23rd, 2026 at 12:55 AM",
    "hash": "d61fdfbfd7"
   },
   {
@@ -96,7 +96,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Thursday, October 22nd, 2026 at 09:38 PM",
+   "reported_as_of": "Friday, October 23rd, 2026 at 12:55 AM",
    "hash": "5374f203ec"
   },
   {
@@ -109,8 +109,8 @@
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "The southbound connector to SR-204 (Kern Co) is closed - Due to flooding - Motorists are advised to use an alternate route A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
-     "status": "CLOSED"
+     "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "status": "RESTRICTIONS"
     },
     {
      "region": "NORTHERN CALIFORNIA",
@@ -119,18 +119,9 @@
     }
    ],
    "scope": {
-    "on_pass": "CLOSED",
-    "on_pass_reported": true,
-    "on_pass_items": [
-     {
-      "status": "CLOSED",
-      "place": "",
-      "county": "Kern Co",
-      "where": "Kern Co",
-      "text": "The southbound connector to SR-204 (Kern Co) is closed - Due to flooding - Motorists are advised to use an alternate route",
-      "region": "CENTRAL CALIFORNIA"
-     }
-    ],
+    "on_pass": "OPEN",
+    "on_pass_reported": false,
+    "on_pass_items": [],
     "elsewhere": [
      {
       "status": "RESTRICTIONS",
@@ -150,9 +141,9 @@
      }
     ]
    },
-   "reported_as_of": "Thursday, October 22nd, 2026 at 09:38 PM",
-   "hash": "0cbc24ef64"
+   "reported_as_of": "Friday, October 23rd, 2026 at 12:55 AM",
+   "hash": "07809bb9fc"
   }
  ],
- "asof": "2026-10-22"
+ "asof": "2026-10-23"
 }

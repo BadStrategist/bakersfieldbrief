@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-22T21:38:21-07:00",
+ "built_at": "2026-10-23T00:55:40-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,13 +68,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1414,
+  "brief_words": 70,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
-   "top_story": "Bakersfield sets aside $4M for jail bed pilot targeting repeat offenders, but calls for further discussion",
+   "chp_new": 2,
+   "top_story": "Family questions local high school's security after man allegedly sneaks on campus, steals teen's belongings",
    "overnight_band": {
     "date": "2026-10-22",
     "count": 49,
@@ -123,7 +123,7 @@
     "other": "2 hazardous condition, 1 gas odor, 1 flooding, 1 vehicle",
     "unmapped": []
    },
-   "archive": "2026-10-22"
+   "archive": "2026-10-23"
   },
   "cityhall": {
    "upcoming_meetings": 0,
@@ -138,7 +138,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -149,7 +149,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-10-22"
+   "draft": "drafts/weekend-guide-2026-10-23"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -158,13 +158,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 6,
+   "wind_mph": 10,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 48,
-   "wind_mph": 6,
+   "wind_mph": 10,
    "alerts": 0
   },
   "roads": {
@@ -188,9 +188,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 19,
+    "In the next 7 days": 20,
     "In 1 to 2 weeks": 15,
-    "Later": 88
+    "Later": 87
    },
    "meetings": 0
   },
@@ -201,8 +201,8 @@
    "isabella_af": 140008,
    "alpr_total": 459,
    "kern_fires": 0,
-   "aqi": 30,
-   "chp_week": 60
+   "aqi": 23,
+   "chp_week": 62
   },
   "letters": {
    "published": 1

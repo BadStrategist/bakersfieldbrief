@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-23T07:48:56-07:00",
+ "built_at": "2026-10-23T08:31:37-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 4795, column 3"
   },
   "isabella": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
+   "chp_new": 0,
    "top_story": "Family questions local high school's security after man allegedly sneaks on campus, steals teen's belongings",
    "overnight_band": {
     "date": "2026-10-23",
@@ -93,7 +93,7 @@
      ],
      [
       "Medical and overdose",
-      9
+      10
      ],
      [
       "Disturbances and welfare",
@@ -113,10 +113,10 @@
      ],
      [
       "Other calls",
-      6
+      5
      ]
     ],
-    "other": "2 vandalism, 2 foot pursuit, 1 bush fire, 1 incident",
+    "other": "2 vandalism, 2 foot pursuit, 1 bush fire",
     "unmapped": [
      "bush fire"
     ]
@@ -186,9 +186,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 20,
-    "In 1 to 2 weeks": 15,
-    "Later": 87
+    "In the next 7 days": 17,
+    "In 1 to 2 weeks": 13,
+    "Later": 84
    },
    "meetings": 0
   },

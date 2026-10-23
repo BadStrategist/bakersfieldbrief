@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-23T14:21:14-07:00",
+ "built_at": "2026-10-23T16:27:55-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -72,8 +72,8 @@
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
-   "alerts": 0,
-   "chp_new": 0,
+   "alerts": 1,
+   "chp_new": 3,
    "top_story": "Family questions local high school's security after man allegedly sneaks on campus, steals teen's belongings",
    "overnight_band": {
     "date": "2026-10-23",
@@ -156,13 +156,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 11,
+   "wind_mph": 10,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 50,
-   "wind_mph": 11,
+   "wind_mph": 10,
    "alerts": 0
   },
   "roads": {
@@ -186,7 +186,7 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 20,
+    "In the next 7 days": 19,
     "In 1 to 2 weeks": 15,
     "Later": 87
    },
@@ -199,8 +199,8 @@
    "isabella_af": 139797,
    "alpr_total": 459,
    "kern_fires": 0,
-   "aqi": 39,
-   "chp_week": 75
+   "aqi": 40,
+   "chp_week": 78
   },
   "letters": {
    "published": 1

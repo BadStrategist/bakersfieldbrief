@@ -1260,6 +1260,36 @@
   "details": ""
  },
  {
+  "log_id": "261023BF0231",
+  "time": "Oct 23 2026  3:59PM",
+  "type": "1125-Traffic Hazard",
+  "location": "N Chester Ave / Roberts Ln",
+  "area": "Bakersfield",
+  "lat": 35.408601,
+  "lon": -119.020929,
+  "details": ""
+ },
+ {
+  "log_id": "261023BF0233",
+  "time": "Oct 23 2026  4:02PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Rocky Rd / S Alpine St",
+  "area": "Bakersfield",
+  "lat": 35.578947,
+  "lon": -118.465972,
+  "details": ""
+ },
+ {
+  "log_id": "261023BF0236",
+  "time": "Oct 23 2026  4:09PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "SB I5 JNO Fort Tejon Rd",
+  "area": "Fort Tejon",
+  "lat": 34.882222,
+  "lon": -118.900556,
+  "details": ""
+ },
+ {
   "log_id": "261023BF0035",
   "time": "Oct 23 2026  6:33AM",
   "type": "20001-Hit and Run w/Injuries",

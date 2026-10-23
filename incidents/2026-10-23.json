@@ -1,0 +1,456 @@
+[
+ {
+  "type": "suspicious person",
+  "time": "19:12",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "E California Avenue",
+  "notability": 2,
+  "disposition": "caller reported the man was in the laundry room; units sent",
+  "summary": "Officers were sent to a residence on East California Avenue at Bates Avenue for a report of a man squatting in the laundry room at the back of the property, with a large dog.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "19:19",
+  "agency": "KCFD",
+  "area": "Ming Avenue",
+  "notability": 2,
+  "disposition": "code 2 medical aid",
+  "summary": "Crews were sent to a code 2 medical aid at the Starbucks on Ming Avenue."
+ },
+ {
+  "type": "disturbance",
+  "time": "19:27",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Dixon Avenue",
+  "notability": 2,
+  "disposition": "gone on arrival",
+  "summary": "Officers were sent to a disturbance at a residence on Dixon Avenue at Colton Street, where a man was reported to be bringing other people into the home. Nobody was found.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "domestic violence",
+  "time": "19:47",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "N Chester Avenue",
+  "notability": 3,
+  "disposition": "caller disconnected; officers sent",
+  "summary": "Officers were sent to an apartment in the 2700 block of North Chester Avenue where a woman reported her boyfriend battered her, then hung up.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "20:02",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Brahma Street",
+  "notability": 3,
+  "disposition": "second-hand report; area checked",
+  "summary": "Officers were sent to the 6200 block of Brahma Street for a second-hand report of two men in masks and all black chasing a woman, and units were asked to patrol the area.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "overdose",
+  "time": "20:04",
+  "agency": "KCFD",
+  "area": "Chester Lane",
+  "notability": 2,
+  "disposition": "priority ambulance requested",
+  "summary": "A priority ambulance was requested on Chester Lane for an overdose."
+ },
+ {
+  "type": "weapons call",
+  "time": "20:17",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Worthington Avenue",
+  "notability": 3,
+  "disposition": "subject at large; units sent",
+  "summary": "Officers were sent to Worthington Avenue and Lowell Drive for a woman reported to be hitting vehicles with a baton style stun gun and screaming; she was last described in a black hoodie.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "battery",
+  "time": "20:21",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Bernard Street",
+  "notability": 3,
+  "disposition": "suspect left on foot",
+  "summary": "Officers were sent to a battery report near Bernard Street, where a woman said a man battered her before walking off.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "overdose",
+  "time": "20:24",
+  "agency": "KCFD",
+  "area": "Panama Lane",
+  "notability": 2,
+  "disposition": "ambulance requested",
+  "summary": "An ambulance was sent to the auto parts store on Panama Lane for a man reported to be overdosing."
+ },
+ {
+  "type": "shed fire",
+  "time": "20:31",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 2,
+  "disposition": "held to one engine and a truck, then cancelled",
+  "summary": "Crews were sent to a small shed fire in a backyard that was threatening nearby trees, and the response was scaled back once it was knocked down."
+ },
+ {
+  "type": "vandalism",
+  "time": "20:35",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "caller had video",
+  "summary": "Officers were sent to a report of a neighbor spraying an unknown substance at a resident's security cameras, and the caller had video."
+ },
+ {
+  "type": "assault",
+  "time": "20:36",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Kentucky Street",
+  "notability": 3,
+  "disposition": "police cleared the scene for medics to enter",
+  "summary": "Medics were held at the 1400 block of Kentucky Street for an assault until officers cleared the scene for them to go in.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "foot pursuit",
+  "time": "20:47",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Brookside Drive",
+  "notability": 2,
+  "disposition": "subject detained",
+  "summary": "Officers searched the area west of Brookside Drive for a man who walked away from them and tossed an item, and he was detained a short time later.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "alarm",
+  "time": "20:50",
+  "agency": "KCFD",
+  "area": "Lupine Avenue",
+  "notability": 2,
+  "disposition": "cancelled by the alarm company",
+  "summary": "An alarm at a business on Lupine Avenue was cancelled by the alarm company and nobody was found on scene.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "20:54",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 2,
+  "disposition": "family staged outside; deputies sent",
+  "summary": "Deputies and firefighters were sent to a domestic incident where family members were still inside and a woman was reported to be throwing things at the residents; crews staged in the street until deputies arrived."
+ },
+ {
+  "type": "traffic hazard",
+  "time": "21:32",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 2,
+  "disposition": "drivers advised",
+  "summary": "Drivers reported a white pickup pulling a black utility trailer that was swerving and not letting other vehicles pass, eastbound on Highway 46."
+ },
+ {
+  "type": "medical aid",
+  "time": "21:55",
+  "agency": "KCFD",
+  "area": "Glade Street",
+  "notability": 2,
+  "disposition": "upgraded; ambulance sent",
+  "summary": "Crews were sent to a medical aid on Glade Street that was upgraded, and an ambulance was coming from the other side of town.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "overdose",
+  "time": "22:01",
+  "agency": "KCFD",
+  "area": "Wible Road",
+  "notability": 3,
+  "disposition": "two more patients found in a room",
+  "summary": "Crews were sent to a possible overdose in the parking lot of a motel on Wible Road, and two more people were found in an upstairs room."
+ },
+ {
+  "type": "commercial fire alarm",
+  "time": "22:18",
+  "agency": "KCFD",
+  "area": "Hosking Avenue",
+  "notability": 2,
+  "disposition": "alarm only",
+  "summary": "A commercial fire alarm came in from the 800 block of Hosking Avenue."
+ },
+ {
+  "type": "disturbance",
+  "time": "22:24",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "E Roberts Lane",
+  "notability": 2,
+  "disposition": "caller wanted a report",
+  "summary": "Officers were sent to a mobile home park in the 400 block of East Roberts Lane for a disturbance involving the caller's ex-boyfriend, and the caller wanted a report taken.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "weapons call",
+  "time": "22:29",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 3,
+  "disposition": "subject at large; deputies sent",
+  "summary": "Deputies were sent to the Love's truck stop on Boron Frontage Road North for a man reported to be walking through the parking lot with a sword."
+ },
+ {
+  "type": "medical aid",
+  "time": "22:37",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 2,
+  "disposition": "two patients; ambulance sent",
+  "summary": "An ambulance was called for two people hurt in a fall at a home."
+ },
+ {
+  "type": "medical aid",
+  "time": "22:48",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Stockdale Highway",
+  "notability": 2,
+  "disposition": "welfare check became a medical aid",
+  "summary": "Deputies were sent to a welfare check at an apartment on Stockdale Highway, and the call became a medical aid for a traumatic injury about an hour later."
+ },
+ {
+  "type": "reckless driving",
+  "time": "22:50",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 2,
+  "disposition": "drivers advised",
+  "summary": "A tractor trailer with a silver enclosed trailer was reported running at speed on Highway 46 and unable to hold its lane."
+ },
+ {
+  "type": "vegetation fire",
+  "time": "23:03",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 2,
+  "disposition": "crews en route",
+  "summary": "Crews were sent out on a vegetation fire."
+ },
+ {
+  "type": "structure fire",
+  "time": "23:38",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 2,
+  "disposition": "crews en route",
+  "summary": "Crews were sent out on a structure fire."
+ },
+ {
+  "type": "domestic violence",
+  "time": "00:01",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Baker Street",
+  "notability": 3,
+  "disposition": "woman refusing to leave; officers sent",
+  "summary": "Officers were sent to an apartment in the 1000 block of Baker Street for a domestic violence call in progress, where the caller's son's girlfriend was refusing to leave the residence.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "robbery",
+  "time": "00:12",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Niles Street",
+  "notability": 3,
+  "disposition": "suspect left; no stops on the vehicle",
+  "summary": "Officers were sent to a cell phone store at Niles Street and Glenwood Avenue, where a man was chased by other customers after reportedly leaving without paying for phones."
+ },
+ {
+  "type": "disturbance",
+  "time": "00:21",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Hageman Road",
+  "notability": 2,
+  "disposition": "subject at large",
+  "summary": "Officers were sent to the Walgreens on Hageman Road for a disturbance, and the woman involved was described to dispatchers."
+ },
+ {
+  "type": "verbal disturbance",
+  "time": "00:48",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Peerless Avenue",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a verbal disturbance on Peerless Avenue.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "01:11",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Drake Street",
+  "notability": 2,
+  "disposition": "family member checked",
+  "summary": "Officers were sent to a welfare check on Drake Street for the caller's son, who was reported to be under the influence.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "foot pursuit",
+  "time": "01:22",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "two people proned out",
+  "summary": "Officers stopped a car, several people ran, and a perimeter was set before two of them were proned out."
+ },
+ {
+  "type": "domestic violence",
+  "time": "01:34",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Beardsley Avenue",
+  "notability": 3,
+  "disposition": "caller waiting for officers; prior calls at the address",
+  "summary": "Officers were sent to a domestic violence call at a residence on Beardsley Avenue where the caller was waiting for them, and dispatch showed prior calls at that address.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "01:42",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "del Monte Drive",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a domestic disturbance at a residence on Del Monte Drive involving the caller's brother.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "vehicle pursuit",
+  "time": "01:56",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Chamberlain Avenue",
+  "notability": 3,
+  "disposition": "ended in a cul-de-sac; one in custody",
+  "summary": "A pursuit ran eastbound past Washington and then north at 18 mph with no traffic ahead, dead ended into a cul-de-sac, and officers took one person into custody and cleared the car by the 1300 block of Chamberlain Avenue.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "residential alarm",
+  "time": "02:33",
+  "agency": "KCFD",
+  "area": "Renfro Road",
+  "notability": 2,
+  "disposition": "cancelled by the keyholder",
+  "summary": "The keyholder at a house on Renfro Road called back to cancel the alarm on a rear bedroom door or window and said he would check the cameras.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "trespassing",
+  "time": "02:38",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 2,
+  "disposition": "property team watching; deputies sent",
+  "summary": "Deputies were sent to a trespassing report on orchard property near Main Drain Road, where a property team was watching someone with a thermal drone."
+ },
+ {
+  "type": "domestic violence",
+  "time": "02:48",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Anderson Street",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a domestic violence call in progress at a residence in the 3400 block of Anderson Street, where the caller's husband was named as the suspect.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "suspicious person",
+  "time": "03:00",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Quincy Street",
+  "notability": 2,
+  "disposition": "subject at large",
+  "summary": "Officers were sent to 1728 Quincy Street for someone reported to be trying apartment doors, with no description available.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "03:28",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 2,
+  "disposition": "unit on scene; medics cleared to enter",
+  "summary": "Crews were sent to an unknown medical aid on Interstate 5 just west of Main Drain Road."
+ },
+ {
+  "type": "traffic hazard",
+  "time": "03:35",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 2,
+  "disposition": "tow requested to move it to the shoulder",
+  "summary": "A vehicle was reported in the center divide on southbound Interstate 5 south of Fort Tejon Road, and a tow was asked to pull it over to the shoulder."
+ },
+ {
+  "type": "vandalism",
+  "time": "03:37",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 4,
+  "disposition": "crew asked for units to clear the area; train stopped",
+  "summary": "Deputies were sent to a Union Pacific train at Comanche and Edison after the crew reported the train's air flow regulator had been cut, forcing an emergency stop. The crew asked that units clear the area."
+ },
+ {
+  "type": "domestic violence",
+  "time": "04:11",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "call upgraded; subject was the restrained party on a served protective order",
+  "summary": "Officers were sent to a domestic violence call that started as an open 911 line with a woman telling a man not to put his hands on her, and dispatch found the man had prior domestic violence cases and was the restrained party on a served protective order."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "04:16",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Chester Lane",
+  "notability": 3,
+  "disposition": "woman refusing to leave; officers sent",
+  "summary": "Officers were sent to an apartment in the 2300 block of Chester Lane where a woman was refusing to leave a residence and there was an unserved domestic violence restraining order in the case."
+ },
+ {
+  "type": "medical aid",
+  "time": "04:34",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 2,
+  "disposition": "code 2 medical aid",
+  "summary": "An ambulance was sent to the northbound Highway 99 on ramp for a man down."
+ },
+ {
+  "type": "bush fire",
+  "time": "05:14",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 2,
+  "disposition": "engine sent",
+  "summary": "A bush was reported on fire on the other side of the road, with a gray car and a red pickup nearby."
+ },
+ {
+  "type": "attempted entry",
+  "time": "05:51",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Lake Street",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a house on Lake Street for a man in a black shirt and gray sweatpants reported to be hitting and pulling on the front door, trying to get in.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "Incident",
+  "time": "21:10",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Belle Terrace",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person with traumatic injury at Bakersfield apartment.",
+  "source": "crimeradar"
+ }
+]

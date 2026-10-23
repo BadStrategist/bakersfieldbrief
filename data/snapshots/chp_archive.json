@@ -1340,6 +1340,36 @@
   "details": ""
  },
  {
+  "log_id": "261022BF0375",
+  "time": "Oct 22 2026  8:20PM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 N / West Escape Ramp",
+  "area": "Fort Tejon",
+  "lat": 34.918056,
+  "lon": -118.923889,
+  "details": ""
+ },
+ {
+  "log_id": "261022BF0397",
+  "time": "Oct 22 2026  9:09PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr184 / Edison Hwy",
+  "area": "Bakersfield",
+  "lat": 35.358207,
+  "lon": -118.914123,
+  "details": ""
+ },
+ {
+  "log_id": "261022BF0403",
+  "time": "Oct 22 2026  9:31PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Kr005672-nb I5 Jso East Side Canal",
+  "area": "Buttonwillow",
+  "lat": 35.555278,
+  "lon": -119.594722,
+  "details": ""
+ },
+ {
   "log_id": "261022BF0195",
   "time": "Oct 22 2026 12:37PM",
   "type": "1125-Traffic Hazard",

@@ -444,13 +444,13 @@
   "region": "east Bakersfield"
  },
  {
-  "type": "Incident",
+  "type": "medical aid",
   "time": "21:10",
   "agency": "Bakersfield Police, Fire and EMS",
-  "area": "Belle Terrace",
-  "notability": 3,
-  "disposition": "",
-  "summary": "Person with traumatic injury at Bakersfield apartment.",
+  "area": "",
+  "notability": 2,
+  "disposition": "code 2 medical aid",
+  "summary": "Crews were sent to a code 2 medical aid at an apartment for a traumatic injury.",
   "source": "crimeradar"
  }
 ]

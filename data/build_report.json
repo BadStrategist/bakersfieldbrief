@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-23T04:31:39-07:00",
+ "built_at": "2026-10-23T07:48:56-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 4795, column 3"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -68,60 +68,58 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 70,
+  "brief_words": 1229,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 3,
    "top_story": "Family questions local high school's security after man allegedly sneaks on campus, steals teen's belongings",
    "overnight_band": {
-    "date": "2026-10-22",
-    "count": 49,
+    "date": "2026-10-23",
+    "count": 48,
     "chips": [
      [
       "Weapons and assaults",
-      7
-     ],
-     [
-      "Fires",
-      2
-     ],
-     [
-      "Crashes and traffic",
-      13
-     ],
-     [
-      "Medical and overdose",
-      7
-     ],
-     [
-      "Disturbances and welfare",
-      2
-     ],
-     [
-      "Burglary and theft",
-      3
-     ],
-     [
-      "Suspicious activity",
-      1
-     ],
-     [
-      "Alarms",
       4
      ],
      [
-      "Incident",
-      5
+      "Fires",
+      3
+     ],
+     [
+      "Crashes and traffic",
+      4
+     ],
+     [
+      "Medical and overdose",
+      9
+     ],
+     [
+      "Disturbances and welfare",
+      13
+     ],
+     [
+      "Burglary and theft",
+      2
+     ],
+     [
+      "Suspicious activity",
+      4
+     ],
+     [
+      "Alarms",
+      3
      ],
      [
       "Other calls",
-      5
+      6
      ]
     ],
-    "other": "2 hazardous condition, 1 gas odor, 1 flooding, 1 vehicle",
-    "unmapped": []
+    "other": "2 vandalism, 2 foot pursuit, 1 bush fire, 1 incident",
+    "unmapped": [
+     "bush fire"
+    ]
    },
    "archive": "2026-10-23"
   },
@@ -158,20 +156,20 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 10,
+   "wind_mph": 9,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
    "temp": 46,
-   "wind_mph": 10,
+   "wind_mph": 9,
    "alerts": 0
   },
   "roads": {
    "routes": [
     "i5:RESTRICTIONS",
     "sr58:OPEN",
-    "sr99:CLOSED"
+    "sr99:RESTRICTIONS"
    ],
    "log_entries": 60
   },
@@ -201,17 +199,17 @@
    "isabella_af": 139797,
    "alpr_total": 459,
    "kern_fires": 0,
-   "aqi": 33,
-   "chp_week": 62
+   "aqi": 39,
+   "chp_week": 65
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 72
+   "published": 73
   },
   "map": {
-   "dots": 17
+   "dots": 23
   },
   "sunday_read": {
    "topic": "Public safety",

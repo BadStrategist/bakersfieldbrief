@@ -1290,6 +1290,16 @@
   "details": ""
  },
  {
+  "log_id": "261023BF0092",
+  "time": "Oct 23 2026 10:38AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr178 E / Beale Ave Ofr",
+  "area": "Bakersfield",
+  "lat": 35.385591,
+  "lon": -118.98767,
+  "details": ""
+ },
+ {
   "log_id": "261023BF0002",
   "time": "Oct 23 2026 12:09AM",
   "type": "TADV-Traffic Advisory",

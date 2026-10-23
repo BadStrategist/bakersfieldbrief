@@ -1300,6 +1300,26 @@
   "details": ""
  },
  {
+  "log_id": "261023BF0096",
+  "time": "Oct 23 2026 10:52AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "0 Sr178",
+  "area": "Bakersfield",
+  "lat": 35.451486,
+  "lon": -118.782069,
+  "details": ""
+ },
+ {
+  "log_id": "261023BF0098",
+  "time": "Oct 23 2026 10:52AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "7th Standard Rd / Coffee Rd",
+  "area": "Bakersfield",
+  "lat": 35.441404,
+  "lon": -119.092171,
+  "details": ""
+ },
+ {
   "log_id": "261023BF0002",
   "time": "Oct 23 2026 12:09AM",
   "type": "TADV-Traffic Advisory",

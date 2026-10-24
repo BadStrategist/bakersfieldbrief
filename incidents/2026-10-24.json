@@ -1,0 +1,566 @@
+[
+ {
+  "type": "vehicle fire",
+  "time": "19:04",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 2,
+  "disposition": "fire out; tow requested",
+  "summary": "Crews were sent to a vehicle fire near a fire station. The burned truck was left on the roadway, and casino security held traffic back until a tow could reach it. CHP asked whether the owner, a casino employee, was on scene."
+ },
+ {
+  "type": "person down",
+  "time": "19:30",
+  "agency": "KCFD",
+  "area": "Lerdo Highway",
+  "notability": 2,
+  "disposition": "medical aid; crews en route",
+  "summary": "Crews were sent to a medical aid on Lerdo Highway for a pedestrian reported down just west of Quality Road."
+ },
+ {
+  "type": "collision",
+  "time": "19:30",
+  "agency": "CHP",
+  "area": "",
+  "notability": 2,
+  "disposition": "parties exchanged information",
+  "summary": "CHP worked a two-vehicle collision with a complaint of pain; the drivers exchanged information."
+ },
+ {
+  "type": "armed subject",
+  "time": "19:31",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 3,
+  "disposition": "caller advised by her mother to call law enforcement",
+  "summary": "A woman asked deputies to a parking lot where she said her boyfriend had battered her, and that he was armed in the lot."
+ },
+ {
+  "type": "collision",
+  "time": "19:43",
+  "agency": "CHP",
+  "area": "Calloway Drive",
+  "notability": 3,
+  "disposition": "rescue response; witness on scene; no injuries reported",
+  "summary": "Multiple cars ended up off the roadway at Calloway Drive, drawing a rescue response. A witness on scene reported no injuries.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "missing juvenile",
+  "time": "19:46",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "be on the lookout issued",
+  "summary": "Officers issued a be-on-the-lookout for a juvenile reported missing after being dropped off at a junior high school earlier in the evening."
+ },
+ {
+  "type": "welfare check",
+  "time": "19:47",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Kern Canyon Road",
+  "notability": 2,
+  "disposition": "deputies sent",
+  "summary": "A caller asked deputies to check on an elderly couple at a home on Kern Canyon Road.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "flooding",
+  "time": "19:51",
+  "agency": "CHP",
+  "area": "White Lane",
+  "notability": 3,
+  "disposition": "lane closed; crash east of the intersection",
+  "summary": "Water flooded the lanes near White Lane and Gosford Road, closing one lane, and a crash was reported east of the intersection."
+ },
+ {
+  "type": "fight",
+  "time": "20:01",
+  "agency": "Bakersfield Police Department",
+  "area": "Feliz Drive",
+  "notability": 2,
+  "disposition": "caller injured; fight still going",
+  "summary": "Officers were sent to a fight on Feliz Drive reported between a man, his grandfather and a neighbor. The caller said he was injured, and a second caller reported the fight still going in the street.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "impaired driver",
+  "time": "20:04",
+  "agency": "CHP",
+  "area": "",
+  "notability": 2,
+  "disposition": "officers asked to look for the truck",
+  "summary": "CHP was asked to watch for a semi with a reefer trailer swerving eastbound on Highway 46 from Brown Material Road."
+ },
+ {
+  "type": "medical aid",
+  "time": "20:05",
+  "agency": "KCFD",
+  "area": "Marie Avenue",
+  "notability": 3,
+  "disposition": "traumatic injuries",
+  "summary": "A squad was sent to a medical aid on Marie Avenue for traumatic injuries.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "20:06",
+  "agency": "Bakersfield Police Department",
+  "area": "E California Avenue",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to an alley behind a market on East California Avenue.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "20:17",
+  "agency": "KCFD",
+  "area": "Buck Owens Boulevard",
+  "notability": 2,
+  "disposition": "unknown medical aid",
+  "summary": "Crews were sent to the front of a business on Buck Owens Boulevard for an unknown medical aid.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "armed subject",
+  "time": "20:20",
+  "agency": "Bakersfield Police Department",
+  "area": "Highway 58",
+  "notability": 3,
+  "disposition": "caller reported a gun; officers sent",
+  "summary": "Officers were sent to a Family Dollar on Highway 58 after a caller reported a man on a scooter with a black backpack and a handgun, who then left toward the highway."
+ },
+ {
+  "type": "shots heard",
+  "time": "20:28",
+  "agency": "Bakersfield Police Department",
+  "area": "Lincoln Street",
+  "notability": 2,
+  "disposition": "area check",
+  "summary": "A caller reported hearing about six gunshots over five minutes near 10th Street and Lincoln Street. Officers were sent to check the area.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "commercial fire alarm",
+  "time": "20:52",
+  "agency": "KCFD",
+  "area": "Willis Avenue",
+  "notability": 3,
+  "disposition": "crew dispatched",
+  "summary": "A commercial fire alarm brought a crew to a business on Willis Avenue.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "20:55",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 2,
+  "disposition": "deputies sent",
+  "summary": "Deputies were sent to a report of a bonfire and underage drinking off Tehachapi-Willow Springs Road."
+ },
+ {
+  "type": "trespassing",
+  "time": "20:55",
+  "agency": "Bakersfield Police Department",
+  "area": "Troy Street",
+  "notability": 2,
+  "disposition": "caller hung up; no answer on callbacks",
+  "summary": "A caller reported an intruder at a home on Troy Street near Eucalyptus Drive, then hung up and did not answer return calls.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "wrong-way driver",
+  "time": "21:23",
+  "agency": "Bakersfield Police Department",
+  "area": "Lincoln Street",
+  "notability": 3,
+  "disposition": "stopped in a parking lot",
+  "summary": "Officers stopped a wrong-way driver near 23rd Street and Lincoln Street, in the parking lot of an audio shop.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "armed subject",
+  "time": "21:31",
+  "agency": "Bakersfield Police Department",
+  "area": "Airport Drive",
+  "notability": 3,
+  "disposition": "four juveniles with guns reported on foot",
+  "summary": "Officers were sent to Airport Drive and Washington Avenue after a caller reported four juveniles with firearms walking northbound toward Woodrow Avenue.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "electrical fire",
+  "time": "21:33",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 3,
+  "disposition": "fire extinguished; utility asked to respond",
+  "summary": "Crews put out an electrical fire inside a sub-panel and asked the utility to help secure the building, because on-site security could not shut the power down."
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "22:13",
+  "agency": "Bakersfield Police Department",
+  "area": "Rosedale Highway",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to Rosedale Highway after a woman reported being chased by a man in a red sedan."
+ },
+ {
+  "type": "fight",
+  "time": "22:18",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "party dispersed; gunshot reported",
+  "summary": "Officers were sent to a large party where a physical fight was reported. A caller then reported hearing a single gunshot, and a man at the scene was reported to have a silver long gun."
+ },
+ {
+  "type": "domestic violence",
+  "time": "22:22",
+  "agency": "Bakersfield Police Department",
+  "area": "Gosford Road",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a home on Gosford Road for a domestic fight.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "22:23",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 3,
+  "disposition": "police dog requested; children inside",
+  "summary": "Deputies asked for a police dog as they went to a disturbance at a home where a man was in a room with a 4-year-old and a 5-year-old, and the family was inside the residence."
+ },
+ {
+  "type": "collision",
+  "time": "22:44",
+  "agency": "Bakersfield Police Department",
+  "area": "E California Avenue",
+  "notability": 3,
+  "disposition": "ambulance sent; crowd gathered",
+  "summary": "Two SUVs collided at a Taco Bell on East California Avenue at Oak Street. An ambulance was sent, and a large group gathered in the drive-thru.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "person down",
+  "time": "23:11",
+  "agency": "KCFD",
+  "area": "Edison Road",
+  "notability": 3,
+  "disposition": "unresponsive; crew sent",
+  "summary": "A crew was sent to a person found unresponsive at an RV park on South Edison Road."
+ },
+ {
+  "type": "disturbance",
+  "time": "23:30",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "A man was reported sitting on a doorstep refusing to leave and possibly intoxicated, and officers were sent."
+ },
+ {
+  "type": "traffic collision",
+  "time": "23:38",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 4,
+  "disposition": "two vehicles off the roadway; one yellow tag; response upgraded",
+  "summary": "A two-vehicle head-on crash north of Sycamore Road left both vehicles off the roadway with major front-end damage. One person was a yellow tag and Engine 46, Engine 48 and Battalion 4 responded, with the call upgraded to a heavier response."
+ },
+ {
+  "type": "assault",
+  "time": "23:48",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 3,
+  "disposition": "in progress; child on the floor",
+  "summary": "Deputies were sent to a motel in Maricopa where a family was reported to be looking for someone to beat up their daughter; the girl was reported down on the floor and deputies were still trying to work out whether she was conscious."
+ },
+ {
+  "type": "armed subject",
+  "time": "00:16",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Southland Court",
+  "notability": 3,
+  "disposition": "air unit overhead; victim brought out",
+  "summary": "Deputies were sent to a home on Southland Court where several people in dark clothing were reported hiding near a trailer park entrance and a man inside was reported to have a large kitchen knife. The air unit flew over the search and a victim was brought out of the house.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "00:34",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a large party at a new construction site, where a loud argument was also reported at the back of the property."
+ },
+ {
+  "type": "shots fired",
+  "time": "00:41",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "area checked",
+  "summary": "Officers were sent to a report of multiple gunshots fired in the 7500 block of a residential street. A unit that had been in the area reported hearing no gunfire."
+ },
+ {
+  "type": "armed subject",
+  "time": "00:41",
+  "agency": "Bakersfield Police Department",
+  "area": "Gosford Road",
+  "notability": 3,
+  "disposition": "subject ran on foot; scene cleared",
+  "summary": "Officers followed a lifted SUV in the Gosford Road area after a report of a possibly armed man, and a subject ran on foot across the street from the vehicle. The search ended with the scene clear.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "vehicle rollover",
+  "time": "00:59",
+  "agency": "KCFD",
+  "area": "Coffee Road",
+  "notability": 3,
+  "disposition": "crew sent",
+  "summary": "Crews were sent to a vehicle rollover on the eastbound side of the highway just west of Coffee Road."
+ },
+ {
+  "type": "shooting",
+  "time": "01:05",
+  "agency": "Bakersfield Police Department",
+  "area": "Martin Avenue",
+  "notability": 3,
+  "disposition": "one person hit; crews staged",
+  "summary": "Officers and fire crews were sent to a report of a shooting on Martin Avenue. One person was reported hit, crews were held back while officers worked the scene, and an air ambulance was asked to stand by."
+ },
+ {
+  "type": "fight",
+  "time": "01:33",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "security reported the fight",
+  "summary": "Security at a business reported a large fight involving about 10 people and weapons."
+ },
+ {
+  "type": "traffic collision",
+  "time": "01:44",
+  "agency": "KCFD",
+  "area": "Lerdo Highway",
+  "notability": 3,
+  "disposition": "possible ejection; ambulance requested",
+  "summary": "A single vehicle went off Lerdo Highway west of Wasco and one person was reported possibly ejected. Crews from Station 32 responded and an ambulance was asked to stand by."
+ },
+ {
+  "type": "traffic collision",
+  "time": "01:50",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 5,
+  "disposition": "three patients; one trapped; air ambulance stood down",
+  "summary": "A head-on crash on Highway 46 east of Curt Road hurt three people. One was trapped in a vehicle and tagged red, a second was tagged yellow, and a third was also worked on; Mercy Air was launched and Highway 46 was shut down for a landing zone, but fog turned the helicopter back to base. Both lanes were left blocked with debris and a car."
+ },
+ {
+  "type": "smoke investigation",
+  "time": "02:08",
+  "agency": "KCFD",
+  "area": "Linda Vista Drive",
+  "notability": 2,
+  "disposition": "crew checked the home",
+  "summary": "A crew checked a report of smoke at a home on Linda Vista Drive.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "domestic violence",
+  "time": "02:31",
+  "agency": "Bakersfield Police Department",
+  "area": "Harless Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a domestic call on Harless Street where a woman said her boyfriend rammed her vehicle with his car.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "collision",
+  "time": "02:41",
+  "agency": "CHP",
+  "area": "Reno Avenue",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a traffic collision on Reno Avenue.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "domestic violence",
+  "time": "03:10",
+  "agency": "Bakersfield Police Department",
+  "area": "Augusta Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a domestic call on Augusta Street where a man was reported to be trying to force the caller into a vehicle.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "vehicle versus pedestrian",
+  "time": "03:38",
+  "agency": "Bakersfield Police Department",
+  "area": "E 7th Street",
+  "notability": 3,
+  "disposition": "traffic officers requested; two people arguing on scene",
+  "summary": "A white hatchback hit a pedestrian on East 7th Street. Two people were reported arguing at the scene and traffic officers were requested.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "fire alarm",
+  "time": "03:48",
+  "agency": "KCFD",
+  "area": "Parkgate Street",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to a residential fire alarm on Parkgate Street.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "shooting",
+  "time": "03:55",
+  "agency": "Bakersfield Police Department",
+  "area": "E Belle Terrace",
+  "notability": 5,
+  "disposition": "drive-by; one person with major injuries; suspect vehicle fled",
+  "summary": "A drive-by shooting in the 500 block of East Belle Terrace left one person with major injuries. The suspect vehicle, a black four-door, was last seen northbound on South Real Road toward Stockdale Highway.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "robbery",
+  "time": "04:25",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "one person held at gunpoint; fire crews also sent",
+  "summary": "Officers and fire crews were sent to a report of one person held at gunpoint."
+ },
+ {
+  "type": "large fight",
+  "time": "04:30",
+  "agency": "Bakersfield Police Department",
+  "area": "Flower Street",
+  "notability": 4,
+  "disposition": "caller reported firearms and bats; officers sent",
+  "summary": "A fight at Flower Street and Alta Vista Drive escalated until a caller reported about 30 people there with firearms and bats. Officers were sent.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "criminal threats",
+  "time": "04:31",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "caller threatened to shoot",
+  "summary": "A caller told dispatchers that juveniles were trying to start something at his home and that he would shoot them if no one was sent."
+ },
+ {
+  "type": "burglary in progress",
+  "time": "04:34",
+  "agency": "Bakersfield Police Department",
+  "area": "American Avenue",
+  "notability": 2,
+  "disposition": "caller reported intruders; contact made",
+  "summary": "A caller on American Avenue told dispatchers there were intruders at his address, and officers made contact with him.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "audible alarm",
+  "time": "05:00",
+  "agency": "Bakersfield Police Department",
+  "area": "Brooklyn Avenue",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to an audible alarm on Brooklyn Avenue.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "Cardiac arrest",
+  "time": "21:58",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person suffers cardiac arrest near Lakeland Street.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "02:09",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person injured in accident near Guildford Street, Bakersfield.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Vehicle",
+  "time": "06:34",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Person having difficulty walking after vehicle incident on CA-46.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:38",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Verbal dispute involving person in black Honda.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Vehicle",
+  "time": "06:41",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Martin Avenue",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Vehicle off roadway on Martin Avenue, no injuries.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Assault",
+  "time": "06:46",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "R Street",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Man assaulted with rock on R Street in Bakersfield.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Rollover",
+  "time": "06:28",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Vehicle rollover on Highway 119 near Highway 43.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Vehicle",
+  "time": "06:41",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Martin Avenue",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Single vehicle off roadway on Martin Avenue.",
+  "source": "crimeradar"
+ }
+]

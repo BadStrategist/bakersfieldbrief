@@ -1200,6 +1200,26 @@
   "details": ""
  },
  {
+  "log_id": "261024BF0236",
+  "time": "Oct 24 2026  2:02PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sb I5 At Copus Rd",
+  "area": "Buttonwillow",
+  "lat": 35.094722,
+  "lon": -119.0375,
+  "details": ""
+ },
+ {
+  "log_id": "261024BF0250",
+  "time": "Oct 24 2026  2:34PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Airport Dr / Roberts Ln",
+  "area": "Bakersfield",
+  "lat": 35.408549,
+  "lon": -119.03875,
+  "details": ""
+ },
+ {
   "log_id": "261024BF0132",
   "time": "Oct 24 2026  9:57AM",
   "type": "1125-Traffic Hazard",

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-24T09:33:24-07:00",
+ "built_at": "2026-10-24T09:56:12-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -163,7 +163,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 48,
+   "temp": 46,
    "wind_mph": 0,
    "alerts": 0
   },

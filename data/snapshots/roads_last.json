@@ -6,7 +6,7 @@
    "slug": "i5",
    "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
    "pass": true,
-   "status": "CLOSED",
+   "status": "RESTRICTIONS",
    "pass_status": "RESTRICTIONS",
    "sections": [
     {
@@ -21,8 +21,8 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "Is closed to northbound traffic from 0.5 mi north to 5.5 mi north of the Sacramento/Yolo Co Line /at County Rd 102/ from 2100 hrs each night to 0400 hrs each morning Monday thru Saturday thru 10/24/26 - Due to construction - Motorists are advised to use an alternate route Northbound traffic is reduced to 1 lane at Airport Blvd /in Sacramento/ (Sacramento Co) - Due to a traffic collision",
-     "status": "CLOSED"
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
     }
    ],
    "scope": {
@@ -46,27 +46,10 @@
       "region": "CENTRAL CALIFORNIA"
      }
     ],
-    "elsewhere": [
-     {
-      "status": "CLOSED",
-      "place": "",
-      "county": "",
-      "where": "the Northern California area",
-      "text": "Is closed to northbound traffic from 0.5 mi north to 5.5 mi north of the Sacramento/Yolo Co Line /at County Rd 102/ from 2100 hrs each night to 0400 hrs each morning Monday thru Saturday thru 10/24/26 - Due to...",
-      "region": "NORTHERN CALIFORNIA"
-     },
-     {
-      "status": "RESTRICTIONS",
-      "place": "Sacramento",
-      "county": "Sacramento Co",
-      "where": "Sacramento (Sacramento Co)",
-      "text": "Northbound traffic is reduced to 1 lane at Airport Blvd /in Sacramento/ (Sacramento Co) - Due to a traffic collision",
-      "region": "NORTHERN CALIFORNIA"
-     }
-    ]
+    "elsewhere": []
    },
-   "reported_as_of": "Saturday, October 24th, 2026 at 03:50 AM",
-   "hash": "d5cdc75acd"
+   "reported_as_of": "Saturday, October 24th, 2026 at 08:00 AM",
+   "hash": "283c2f65e1"
   },
   {
    "number": "58",
@@ -88,7 +71,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Saturday, October 24th, 2026 at 03:50 AM",
+   "reported_as_of": "Saturday, October 24th, 2026 at 08:00 AM",
    "hash": "5374f203ec"
   },
   {
@@ -125,7 +108,7 @@
      }
     ]
    },
-   "reported_as_of": "Saturday, October 24th, 2026 at 03:50 AM",
+   "reported_as_of": "Saturday, October 24th, 2026 at 08:00 AM",
    "hash": "f97882795e"
   }
  ],

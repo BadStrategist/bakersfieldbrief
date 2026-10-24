@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-24T03:50:29-07:00",
+ "built_at": "2026-10-24T08:01:52-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 3049, column 3"
   },
   "isabella": {
    "ok": true,
@@ -68,20 +68,20 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 63,
+  "brief_words": 1312,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
-   "top_story": "Bakersfield Police seek public\u2019s help to identify suspect in College Avenue break-in",
+   "chp_new": 0,
+   "top_story": "Pond residents brace for heavy rainfall and possible flooding, say no government help has come",
    "overnight_band": {
-    "date": "2026-10-23",
-    "count": 48,
+    "date": "2026-10-24",
+    "count": 59,
     "chips": [
      [
       "Weapons and assaults",
-      4
+      15
      ],
      [
       "Fires",
@@ -89,15 +89,19 @@
      ],
      [
       "Crashes and traffic",
-      4
+      12
      ],
      [
       "Medical and overdose",
-      10
+      5
+     ],
+     [
+      "Missing persons",
+      1
      ],
      [
       "Disturbances and welfare",
-      13
+      10
      ],
      [
       "Burglary and theft",
@@ -105,7 +109,7 @@
      ],
      [
       "Suspicious activity",
-      4
+      2
      ],
      [
       "Alarms",
@@ -113,13 +117,11 @@
      ],
      [
       "Other calls",
-      5
+      6
      ]
     ],
-    "other": "2 vandalism, 2 foot pursuit, 1 bush fire",
-    "unmapped": [
-     "bush fire"
-    ]
+    "other": "3 vehicle, 2 incident, 1 flooding",
+    "unmapped": []
    },
    "archive": "2026-10-24"
   },
@@ -150,20 +152,20 @@
    "draft": "drafts/weekend-guide-2026-10-24"
   },
   "grapevine": {
-   "i5": "CLOSED",
+   "i5": "RESTRICTIONS",
    "i5_pass": "RESTRICTIONS",
    "log_entries": 60
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 7,
-   "alerts": 0,
+   "wind_mph": 5,
+   "alerts": 1,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 45,
-   "wind_mph": 7,
-   "alerts": 0
+   "temp": 43,
+   "wind_mph": 5,
+   "alerts": 1
   },
   "roads": {
    "routes": [
@@ -199,17 +201,17 @@
    "isabella_af": 139797,
    "alpr_total": 459,
    "kern_fires": 0,
-   "aqi": 57,
+   "aqi": 56,
    "chp_week": 83
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 73
+   "published": 74
   },
   "map": {
-   "dots": 23
+   "dots": 26
   },
   "sunday_read": {
    "topic": "Public safety",

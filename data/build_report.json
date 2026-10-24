@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-23T21:27:37-07:00",
+ "built_at": "2026-10-24T00:43:37-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 3049, column 3"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -46,20 +46,24 @@
    "error": ""
   },
   "roads": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "",
+   "stale": true,
+   "asof": "2026-10-23"
   },
   "tehachapi_weather": {
    "ok": true,
    "error": ""
   },
   "alertline": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ConnectTimeout: HTTPSConnectionPool(host='alertline.kern.org', port=443): Max retries exceeded with url: /api/1.0/posted/alerts/today/*** (Caused by ConnectTimeoutError(<HTTPSConnection(host='alertline.kern.org', port=443) at 0x7f7c17a34920>, 'Connection to alertline.kern.org timed out. (connect timeout=20)'))"
   },
   "cameras": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "both Caltrans camera feeds unreachable",
+   "stale": true,
+   "asof": "2026-10-23"
   },
   "blocked": {
    "ok": false,
@@ -68,13 +72,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1229,
+  "brief_words": 63,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "Family questions local high school's security after man allegedly sneaks on campus, steals teen's belongings",
+   "chp_new": 2,
+   "top_story": "Bakersfield Police seek public\u2019s help to identify suspect in College Avenue break-in",
    "overnight_band": {
     "date": "2026-10-23",
     "count": 48,
@@ -121,7 +125,7 @@
      "bush fire"
     ]
    },
-   "archive": "2026-10-23"
+   "archive": "2026-10-24"
   },
   "cityhall": {
    "upcoming_meetings": 0,
@@ -136,7 +140,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -147,7 +151,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-10-23"
+   "draft": "drafts/weekend-guide-2026-10-24"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -156,13 +160,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 7,
+   "wind_mph": 6,
    "alerts": 0,
-   "stale": false
+   "stale": true
   },
   "tehachapi_weather": {
    "temp": 46,
-   "wind_mph": 7,
+   "wind_mph": 6,
    "alerts": 0
   },
   "roads": {
@@ -174,21 +178,21 @@
    "log_entries": 60
   },
   "fog_delays": {
-   "ok": true,
+   "ok": false,
    "alerts": 0,
    "logged_days": 1
   },
   "traffic_cameras": {
-   "ok": true,
+   "ok": false,
    "cameras": 44,
    "in_service": 43,
-   "stale": false
+   "stale": true
   },
   "events": {
    "groups": {
-    "In the next 7 days": 17,
-    "In 1 to 2 weeks": 15,
-    "Later": 88
+    "In the next 7 days": 20,
+    "In 1 to 2 weeks": 21,
+    "Later": 78
    },
    "meetings": 0
   },
@@ -200,7 +204,7 @@
    "alpr_total": 459,
    "kern_fires": 0,
    "aqi": 57,
-   "chp_week": 78
+   "chp_week": 80
   },
   "letters": {
    "published": 1
@@ -239,7 +243,7 @@
   },
   "trackers": {
    "alpr_total": 459,
-   "alpr_new_week": 3,
+   "alpr_new_week": 2,
    "pages": [
     "surveillance",
     "fires",

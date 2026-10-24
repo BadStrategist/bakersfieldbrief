@@ -1230,6 +1230,16 @@
   "details": ""
  },
  {
+  "log_id": "261024BF0192",
+  "time": "Oct 24 2026 12:12PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "400 Mckelvey Ave",
+  "area": "Bakersfield",
+  "lat": 35.441815,
+  "lon": -119.025286,
+  "details": ""
+ },
+ {
   "log_id": "261024BF0002",
   "time": "Oct 24 2026 12:17AM",
   "type": "1125-Traffic Hazard",
@@ -1237,6 +1247,16 @@
   "area": "Fort Tejon",
   "lat": 34.9375,
   "lon": -118.928611,
+  "details": ""
+ },
+ {
+  "log_id": "261024BF0209",
+  "time": "Oct 24 2026 12:56PM",
+  "type": "TADV-Traffic Advisory",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
   "details": ""
  }
 ]

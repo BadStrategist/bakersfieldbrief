@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-24T00:43:37-07:00",
+ "built_at": "2026-10-24T03:50:29-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -46,24 +46,20 @@
    "error": ""
   },
   "roads": {
-   "ok": false,
-   "error": "",
-   "stale": true,
-   "asof": "2026-10-23"
+   "ok": true,
+   "error": ""
   },
   "tehachapi_weather": {
    "ok": true,
    "error": ""
   },
   "alertline": {
-   "ok": false,
-   "error": "ConnectTimeout: HTTPSConnectionPool(host='alertline.kern.org', port=443): Max retries exceeded with url: /api/1.0/posted/alerts/today/*** (Caused by ConnectTimeoutError(<HTTPSConnection(host='alertline.kern.org', port=443) at 0x7f7c17a34920>, 'Connection to alertline.kern.org timed out. (connect timeout=20)'))"
+   "ok": true,
+   "error": ""
   },
   "cameras": {
-   "ok": false,
-   "error": "both Caltrans camera feeds unreachable",
-   "stale": true,
-   "asof": "2026-10-23"
+   "ok": true,
+   "error": ""
   },
   "blocked": {
    "ok": false,
@@ -77,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 3,
    "top_story": "Bakersfield Police seek public\u2019s help to identify suspect in College Avenue break-in",
    "overnight_band": {
     "date": "2026-10-23",
@@ -160,13 +156,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 6,
+   "wind_mph": 7,
    "alerts": 0,
-   "stale": true
+   "stale": false
   },
   "tehachapi_weather": {
-   "temp": 46,
-   "wind_mph": 6,
+   "temp": 45,
+   "wind_mph": 7,
    "alerts": 0
   },
   "roads": {
@@ -178,15 +174,15 @@
    "log_entries": 60
   },
   "fog_delays": {
-   "ok": false,
+   "ok": true,
    "alerts": 0,
    "logged_days": 1
   },
   "traffic_cameras": {
-   "ok": false,
+   "ok": true,
    "cameras": 44,
    "in_service": 43,
-   "stale": true
+   "stale": false
   },
   "events": {
    "groups": {
@@ -204,7 +200,7 @@
    "alpr_total": 459,
    "kern_fires": 0,
    "aqi": 57,
-   "chp_week": 80
+   "chp_week": 83
   },
   "letters": {
    "published": 1

@@ -1170,6 +1170,36 @@
   "details": ""
  },
  {
+  "log_id": "261024BF0024",
+  "time": "Oct 24 2026  1:10AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "22034-22053 Sr46",
+  "area": "Buttonwillow",
+  "lat": 35.61627,
+  "lon": -119.646032,
+  "details": ""
+ },
+ {
+  "log_id": "261024BF0033",
+  "time": "Oct 24 2026  1:45AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "23438 - 23749 Sr46",
+  "area": "Buttonwillow",
+  "lat": 35.601133,
+  "lon": -119.554534,
+  "details": ""
+ },
+ {
+  "log_id": "261024BF0037",
+  "time": "Oct 24 2026  2:00AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
   "log_id": "261024BF0002",
   "time": "Oct 24 2026 12:17AM",
   "type": "1125-Traffic Hazard",

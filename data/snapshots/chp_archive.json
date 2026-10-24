@@ -1200,6 +1200,36 @@
   "details": ""
  },
  {
+  "log_id": "261024BF0132",
+  "time": "Oct 24 2026  9:57AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 At Fort Tejon Rd",
+  "area": "Fort Tejon",
+  "lat": 34.876667,
+  "lon": -118.894722,
+  "details": ""
+ },
+ {
+  "log_id": "261024BF0143",
+  "time": "Oct 24 2026 10:11AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "South Union Ave / E Casa Loma Dr",
+  "area": "Bakersfield",
+  "lat": 35.339465,
+  "lon": -119.002925,
+  "details": ""
+ },
+ {
+  "log_id": "261024BF0147",
+  "time": "Oct 24 2026 10:19AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Snow Rd / Jenica St",
+  "area": "Bakersfield",
+  "lat": 35.426967,
+  "lon": -119.138795,
+  "details": ""
+ },
+ {
   "log_id": "261024BF0002",
   "time": "Oct 24 2026 12:17AM",
   "type": "1125-Traffic Hazard",

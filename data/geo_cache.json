@@ -477,5 +477,41 @@
   35.3860379,
   -119.0239007
  ],
- "edison highway & fairfax road, Bakersfield, CA": null
+ "edison highway & fairfax road, Bakersfield, CA": null,
+ "1300 block of california avenue, Bakersfield, Kern County, CA": null,
+ "800 block of beardsley avenue, Bakersfield, Kern County, CA": null,
+ "beardsley avenue, Bakersfield, CA": null,
+ "5500 block of college avenue, Bakersfield, Kern County, CA": null,
+ "college avenue, Bakersfield, CA": [
+  35.3834466,
+  -118.9164508
+ ],
+ "900 block of lake street, Bakersfield, Kern County, CA": null,
+ "lake street, Bakersfield, CA": [
+  35.3777769,
+  -118.9832509
+ ],
+ "3700 block of rosedale highway, Bakersfield, Kern County, CA": null,
+ "600 block of airport drive, Bakersfield, Kern County, CA": null,
+ "airport drive, Bakersfield, CA": [
+  35.3958478,
+  -119.0449542
+ ],
+ "500 block of woodrow avenue, Bakersfield, Kern County, CA": null,
+ "woodrow avenue, Bakersfield, CA": null,
+ "600 block of washington avenue, Bakersfield, Kern County, CA": null,
+ "washington avenue, Bakersfield, CA": [
+  35.3984718,
+  -118.9807668
+ ],
+ "600 block of monterey street, Bakersfield, Kern County, CA": null,
+ "monterey street, Bakersfield, CA": [
+  35.3806116,
+  -118.9899146
+ ],
+ "1800 block of hendricks lane, Bakersfield, Kern County, CA": null,
+ "hendricks lane, Bakersfield, CA": [
+  35.328799,
+  -119.0234302
+ ]
 }

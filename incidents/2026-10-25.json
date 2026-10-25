@@ -1,0 +1,446 @@
+[
+ {
+  "type": "armed subject",
+  "time": "19:00",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 4,
+  "disposition": "deputies reached her by phone; she refused to come out",
+  "summary": "A caller told deputies his mother was armed with a firearm and that he believed she was preparing to use it, while a 2-year-old and a 4-year-old were with her. Deputies reached her by phone but she refused to come down, and children could be heard crying in the background."
+ },
+ {
+  "type": "vehicle rollover",
+  "time": "19:01",
+  "agency": "CHP",
+  "area": "Chester Avenue",
+  "notability": 2,
+  "disposition": "traffic unit requested",
+  "summary": "A traffic unit was requested for a rollover at 23rd Street and Chester Avenue."
+ },
+ {
+  "type": "structure fire",
+  "time": "19:02",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 3,
+  "disposition": "light smoke showing; command passed to a second battalion",
+  "summary": "Crews found light smoke showing at a building fire and passed command to a second battalion while they worked it."
+ },
+ {
+  "type": "collision",
+  "time": "19:03",
+  "agency": "CHP",
+  "area": "",
+  "notability": 3,
+  "disposition": "two patients reported; air and sheriff's units canceled",
+  "summary": "A white Toyota and a pickup truck pulling a large trailer crashed. Dispatchers worked out how many people were hurt before an air ambulance and sheriff's units were canceled, and CHP kept the scene."
+ },
+ {
+  "type": "medical aid",
+  "time": "19:18",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 3,
+  "disposition": "child taken for care",
+  "summary": "A crew was sent for a toddler with heavy bleeding from the head. The caller said a chair had fallen on the child but could not say how it happened."
+ },
+ {
+  "type": "pursuit",
+  "time": "19:48",
+  "agency": "CHP",
+  "area": "Wible Road",
+  "notability": 2,
+  "disposition": "no stop",
+  "summary": "CHP followed a GMC utility that failed to stop near Wible Road and Brundage Lane."
+ },
+ {
+  "type": "welfare check",
+  "time": "19:50",
+  "agency": "Bakersfield Police Department",
+  "area": "the 1300 block of California Avenue",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to check on a man in an older model car in the 1300 block of California Avenue."
+ },
+ {
+  "type": "missing person",
+  "time": "20:14",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 3,
+  "disposition": "be on the lookout issued",
+  "summary": "Deputies issued a be-on-the-lookout for an adult reported missing in the valley, described as having the capacity of an 11-year-old."
+ },
+ {
+  "type": "barricade",
+  "time": "20:16",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "man refused to come out; two juveniles in the room with him",
+  "summary": "Officers were sent to a home where a man was reported to be in a back room with two juveniles barricaded with him. He had said his 12-year-old daughter let someone into the house, and he refused to come out until officers were there."
+ },
+ {
+  "type": "domestic violence",
+  "time": "20:21",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "open line; officers sent",
+  "summary": "An open line came in from a home where a woman could be heard saying she had been hit."
+ },
+ {
+  "type": "armed subject",
+  "time": "20:25",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent after a caller reported a man doing donuts in a Mustang with a firearm tucked into his waistband."
+ },
+ {
+  "type": "missing juvenile",
+  "time": "20:32",
+  "agency": "Bakersfield Police Department",
+  "area": "the 800 block of Beardsley Avenue",
+  "notability": 3,
+  "disposition": "search under way",
+  "summary": "Officers searched for a young girl who was playing outside an apartment complex in the 800 block of Beardsley Avenue and could not be found.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "traffic collision",
+  "time": "20:41",
+  "agency": "KCFD",
+  "area": "",
+  "notability": 5,
+  "disposition": "four patients; three ambulances and air support called",
+  "summary": "A crash at a park left at least four people hurt, two of them tagged black, and a child's legs were pinned under the front of a vehicle. Three ambulances were called and crews asked for air support."
+ },
+ {
+  "type": "fight",
+  "time": "21:12",
+  "agency": "Bakersfield Police Department",
+  "area": "the 5500 block of College Avenue",
+  "notability": 3,
+  "disposition": "juvenile party; man with a knife reported",
+  "summary": "Officers were sent to a fight in the 5500 block of College Avenue where juveniles had been drinking and adults were reported to have supplied the alcohol. One man was reported to have a knife.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "armed subject",
+  "time": "21:30",
+  "agency": "Bakersfield Police Department",
+  "area": "Chester Avenue",
+  "notability": 3,
+  "disposition": "woman with a knife jumped a fence onto church property",
+  "summary": "Officers were sent to a weapons call on North Chester Avenue where a woman with a knife was reported to have jumped a fence onto church property."
+ },
+ {
+  "type": "robbery",
+  "time": "21:31",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "caller reported he was the victim",
+  "summary": "Officers were sent to a report of an attempted robbery where the caller described a man with a knife."
+ },
+ {
+  "type": "domestic violence",
+  "time": "21:40",
+  "agency": "Bakersfield Police Department",
+  "area": "the 900 block of Lake Street",
+  "notability": 2,
+  "disposition": "man refused to leave",
+  "summary": "Officers were sent to a domestic call in the 900 block of Lake Street where a man was refusing to leave.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "audible alarm",
+  "time": "21:49",
+  "agency": "Bakersfield Police Department",
+  "area": "the 2600 block of Mount Vernon Avenue",
+  "notability": 2,
+  "disposition": "panic alarm at a restaurant",
+  "summary": "Officers and a fire crew responded to a panic alarm at a restaurant in the 2600 block of Mount Vernon Avenue."
+ },
+ {
+  "type": "armed subject",
+  "time": "21:53",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "woman in custody; crews staged for a reported stabbing",
+  "summary": "Officers took a woman into custody who was reported to still be carrying knives, and fire crews staged nearby for a reported stabbing."
+ },
+ {
+  "type": "street takeover",
+  "time": "22:05",
+  "agency": "Bakersfield Police Department",
+  "area": "Niles Street",
+  "notability": 2,
+  "disposition": "about 150 vehicles in a parking lot",
+  "summary": "About 150 vehicles were reported doing donuts in a parking lot on Niles Street."
+ },
+ {
+  "type": "robbery",
+  "time": "22:38",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a store after a caller reported a robbery and made threats."
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "22:44",
+  "agency": "Bakersfield Police Department",
+  "area": "the 3700 block of Rosedale Highway",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "A caller reported a woman hanging out of the window of a dark car while a man hit her and the car swerved in the 3700 block of Rosedale Highway.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "armed subject",
+  "time": "22:56",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "man fled eastbound on foot",
+  "summary": "A man with a handgun threatened to shoot a caller and then ran east on foot."
+ },
+ {
+  "type": "traffic collision",
+  "time": "22:57",
+  "agency": "CHP",
+  "area": "",
+  "notability": 3,
+  "disposition": "vehicle off an embankment",
+  "summary": "A vehicle went off an embankment near the southbound highway at the Golden State Avenue ramp."
+ },
+ {
+  "type": "fight",
+  "time": "23:30",
+  "agency": "Bakersfield Police Department",
+  "area": "the 600 block of Airport Drive",
+  "notability": 3,
+  "disposition": "four people involved",
+  "summary": "Officers were sent to a physical fight involving four people in the 600 block of Airport Drive.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "23:45",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a party that had grown to about 400 people."
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "23:52",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 3,
+  "disposition": "deputies sent",
+  "summary": "Deputies were sent to check on a woman reported to be lying on the ground and bleeding."
+ },
+ {
+  "type": "pursuit",
+  "time": "00:00",
+  "agency": "CHP",
+  "area": "",
+  "notability": 2,
+  "disposition": "no stop",
+  "summary": "CHP followed a Lexus that failed to stop, northbound on Highway 99 north of Panama Lane."
+ },
+ {
+  "type": "barricade",
+  "time": "00:27",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "subject locked in a restroom; mental health call",
+  "summary": "Officers were sent to a hospital emergency room lobby where a person had locked themselves in a restroom and appeared to be in a mental health crisis."
+ },
+ {
+  "type": "fight",
+  "time": "00:37",
+  "agency": "Kern County Sheriff's Office",
+  "area": "the 500 block of Woodrow Avenue",
+  "notability": 3,
+  "disposition": "two more people joined in",
+  "summary": "Deputies were sent to a fight between a man and a woman in front of a home in the 500 block of Woodrow Avenue, and two more people were reported to have joined in.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "domestic violence",
+  "time": "00:45",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 3,
+  "disposition": "caller said someone hit a woman",
+  "summary": "A caller reported a loud argument and a woman crying, and said someone had hit a woman."
+ },
+ {
+  "type": "theft",
+  "time": "01:18",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Edison Highway",
+  "notability": 3,
+  "disposition": "deputies sent",
+  "summary": "Deputies were sent to a report of people taking fuel from underground storage on Edison Highway, with a van parked over the manhole cover."
+ },
+ {
+  "type": "fight",
+  "time": "01:35",
+  "agency": "Bakersfield Police Department",
+  "area": "McArthur Drive",
+  "notability": 3,
+  "disposition": "seven people and more than 15 vehicles",
+  "summary": "Officers were sent to a large fight involving seven people and more than 15 vehicles at McArthur Drive."
+ },
+ {
+  "type": "fight",
+  "time": "02:09",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Eucalyptus Drive",
+  "notability": 2,
+  "disposition": "deputies sent",
+  "summary": "Deputies were sent to a possible altercation on Eucalyptus Drive just east of Fairfax Road.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "assault",
+  "time": "02:10",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "head injury reported; medical aid requested",
+  "summary": "A caller reported he had been hit and asked for medical aid for a head injury."
+ },
+ {
+  "type": "traffic collision",
+  "time": "02:48",
+  "agency": "Bakersfield Police Department",
+  "area": "the 600 block of Washington Avenue",
+  "notability": 2,
+  "disposition": "several parked cars hit; argument reported",
+  "summary": "A vehicle hit several parked cars in the 600 block of Washington Avenue, and an argument was reported afterward.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "overdose",
+  "time": "02:55",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "crews and officers responded",
+  "summary": "Crews and officers responded to an overdose at a park."
+ },
+ {
+  "type": "domestic violence",
+  "time": "03:00",
+  "agency": "Bakersfield Police Department",
+  "area": "the 600 block of Monterey Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a domestic call at an apartment in the 600 block of Monterey Street.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "shots fired",
+  "time": "03:01",
+  "agency": "Bakersfield Police Department",
+  "area": "the 1800 block of Hendricks Lane",
+  "notability": 4,
+  "disposition": "five shots heard; a car left after the gunfire",
+  "summary": "Callers reported about five gunshots in the 1800 block of Hendricks Lane. A four-door car was seen driving away, and a witness saw four or five people get out of it and go into a home at the end of a cul-de-sac.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "vehicle rollover",
+  "time": "03:03",
+  "agency": "CHP",
+  "area": "",
+  "notability": 3,
+  "disposition": "occupants out of the vehicle",
+  "summary": "A truck rolled over on Sierra Highway south of a county road, and crews reported the occupants were out of the vehicle."
+ },
+ {
+  "type": "traffic collision",
+  "time": "03:27",
+  "agency": "CHP",
+  "area": "",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "CHP worked a collision at Browning Road and Elmo Highway in Tehachapi."
+ },
+ {
+  "type": "shots fired",
+  "time": "03:37",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 5,
+  "disposition": "large party; caller said his father was shot; nobody found in the yard",
+  "summary": "Officers were sent to a large party after a caller said his father had been shot, with a report of a victim down in the backyard. Multiple callers reported gunshots, and officers found no one in the yard."
+ },
+ {
+  "type": "domestic violence",
+  "time": "04:24",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a fight between two people at an apartment."
+ },
+ {
+  "type": "traffic collision",
+  "time": "04:42",
+  "agency": "CHP",
+  "area": "",
+  "notability": 2,
+  "disposition": "vehicle pushed off the roadway",
+  "summary": "A driver was rear-ended and pushed off the roadway on Highway 119 west of Tupman."
+ },
+ {
+  "type": "domestic violence",
+  "time": "04:55",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "woman asking for help",
+  "summary": "A caller reported a loud argument and a woman asking for help while a man followed her."
+ },
+ {
+  "type": "traffic collision",
+  "time": "05:03",
+  "agency": "CHP",
+  "area": "",
+  "notability": 2,
+  "disposition": "officers on scene",
+  "summary": "CHP responded to a white vehicle off the shoulder of the highway."
+ },
+ {
+  "type": "Traffic collision",
+  "time": "20:08",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "No collision found at Sloan and Guiness.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire alarm",
+  "time": "05:51",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Commercial fire alarm at Union Villa kitchen.",
+  "source": "crimeradar"
+ }
+]

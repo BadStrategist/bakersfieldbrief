@@ -1230,6 +1230,26 @@
   "details": ""
  },
  {
+  "log_id": "261025BF0117",
+  "time": "Oct 25 2026 11:17AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Eb Sr58 At Sr184",
+  "area": "Bakersfield",
+  "lat": 35.351944,
+  "lon": -118.913889,
+  "details": ""
+ },
+ {
+  "log_id": "261025BF0123",
+  "time": "Oct 25 2026 11:29AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "514 E Belle Ter",
+  "area": "Bakersfield",
+  "lat": 35.345589,
+  "lon": -118.995617,
+  "details": ""
+ },
+ {
   "log_id": "261025BF0002",
   "time": "Oct 25 2026 12:03AM",
   "type": "TADV-Traffic Advisory",

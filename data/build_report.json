@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-25T15:48:18-07:00",
+ "built_at": "2026-10-25T16:33:32-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 109, column 60"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 4,
    "top_story": "Latination art exhibit returns to downtown Bakersfield, celebrating Kern County's Latino community",
    "overnight_band": {
     "date": "2026-10-25",
@@ -154,13 +154,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 0,
+   "wind_mph": 13,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 48,
-   "wind_mph": 0,
+   "temp": 66,
+   "wind_mph": 13,
    "alerts": 0
   },
   "roads": {
@@ -197,8 +197,8 @@
    "isabella_af": 139691,
    "alpr_total": 459,
    "kern_fires": 0,
-   "aqi": 55,
-   "chp_week": 104
+   "aqi": 53,
+   "chp_week": 108
   },
   "letters": {
    "published": 1

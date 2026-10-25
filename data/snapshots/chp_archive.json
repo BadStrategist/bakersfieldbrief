@@ -1160,6 +1160,16 @@
   "details": ""
  },
  {
+  "log_id": "261025BF0162",
+  "time": "Oct 25 2026  2:43PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "21460-21499 Caliente Creek Rd",
+  "area": "Bakersfield",
+  "lat": 35.314436,
+  "lon": -118.507208,
+  "details": ""
+ },
+ {
   "log_id": "261025BF0037",
   "time": "Oct 25 2026  2:58AM",
   "type": "1182-Trfc Collision-No Inj",
@@ -1177,6 +1187,36 @@
   "area": "Bakersfield",
   "lat": 35.292289,
   "lon": -118.985349,
+  "details": ""
+ },
+ {
+  "log_id": "261025BF0191",
+  "time": "Oct 25 2026  3:47PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "712 S 10th St",
+  "area": "Buttonwillow",
+  "lat": 35.134284,
+  "lon": -119.464883,
+  "details": ""
+ },
+ {
+  "log_id": "261025BF0196",
+  "time": "Oct 25 2026  4:02PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "0 I5 N",
+  "area": "Fort Tejon",
+  "lat": 34.844194,
+  "lon": -118.866175,
+  "details": ""
+ },
+ {
+  "log_id": "261025BF0198",
+  "time": "Oct 25 2026  4:06PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Nb I5 Jno Lebec Curve",
+  "area": "Fort Tejon",
+  "lat": 34.841944,
+  "lon": -118.864444,
   "details": ""
  },
  {

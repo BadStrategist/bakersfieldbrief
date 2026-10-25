@@ -1170,6 +1170,46 @@
   "details": ""
  },
  {
+  "log_id": "261025BF0079",
+  "time": "Oct 25 2026  9:20AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 Slow Ln",
+  "area": "Buttonwillow",
+  "lat": 35.489446,
+  "lon": -119.546633,
+  "details": ""
+ },
+ {
+  "log_id": "261025BF0082",
+  "time": "Oct 25 2026  9:27AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Rowlee Rd / Kimberlina Rd",
+  "area": "Buttonwillow",
+  "lat": 35.557684,
+  "lon": -119.474328,
+  "details": ""
+ },
+ {
+  "log_id": "261025BF0080",
+  "time": "Oct 25 2026  9:27AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "3150-3998 Keyesville Rd",
+  "area": "Bakersfield",
+  "lat": 35.626214,
+  "lon": -118.511006,
+  "details": ""
+ },
+ {
+  "log_id": "261025BF0086",
+  "time": "Oct 25 2026  9:44AM",
+  "type": "1184-Provide Traffic Control",
+  "location": "Sb I5 At Lower Water Hole",
+  "area": "Fort Tejon",
+  "lat": 34.908889,
+  "lon": -118.924167,
+  "details": ""
+ },
+ {
   "log_id": "261025BF0002",
   "time": "Oct 25 2026 12:03AM",
   "type": "TADV-Traffic Advisory",

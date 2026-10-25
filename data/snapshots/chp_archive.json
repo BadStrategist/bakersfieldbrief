@@ -1210,6 +1210,16 @@
   "details": ""
  },
  {
+  "log_id": "261025BF0090",
+  "time": "Oct 25 2026 10:10AM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sb Sr99 Jno Panama Ln",
+  "area": "Bakersfield",
+  "lat": 35.299456,
+  "lon": -119.031269,
+  "details": ""
+ },
+ {
   "log_id": "261025BF0002",
   "time": "Oct 25 2026 12:03AM",
   "type": "TADV-Traffic Advisory",

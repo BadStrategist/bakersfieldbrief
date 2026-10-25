@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-24T21:33:00-07:00",
+ "built_at": "2026-10-25T00:52:13-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -35,7 +35,7 @@
   },
   "isabella": {
    "ok": false,
-   "error": "ConnectTimeout: HTTPSConnectionPool(host='cdec.water.ca.gov', port=443): Max retries exceeded with url: /dynamicapp/req/JSONDataServlet?Stations=ISB&SensorNums=15&dur_code=D&Start=2026-09-17&End=2026-10-24 (Caused by ConnectTimeoutError(<HTTPSConnection(host='cdec.water.ca.gov', port=443) at 0x7bbf06c0a8a0>, 'Connection to cdec.water.ca.gov timed out. (connect timeout=40)'))"
+   "error": "ConnectTimeout: HTTPSConnectionPool(host='cdec.water.ca.gov', port=443): Max retries exceeded with url: /dynamicapp/req/JSONDataServlet?Stations=ISB&SensorNums=23&dur_code=D&Start=2026-09-18&End=2026-10-25 (Caused by ConnectTimeoutError(<HTTPSConnection(host='cdec.water.ca.gov', port=443) at 0x781165997da0>, 'Connection to cdec.water.ca.gov timed out. (connect timeout=40)'))"
   },
   "alpr": {
    "ok": true,
@@ -68,13 +68,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1312,
+  "brief_words": 65,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Pond residents brace for heavy rainfall and possible flooding, say no government help has come",
+   "top_story": "Latination art exhibit returns to downtown Bakersfield, celebrating Kern County's Latino community",
    "overnight_band": {
     "date": "2026-10-24",
     "count": 59,
@@ -123,7 +123,7 @@
     "other": "3 vehicle, 2 incident, 1 flooding",
     "unmapped": []
    },
-   "archive": "2026-10-24"
+   "archive": "2026-10-25"
   },
   "cityhall": {
    "upcoming_meetings": 0,
@@ -138,7 +138,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -149,7 +149,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-10-24"
+   "draft": "drafts/weekend-guide-2026-10-25"
   },
   "grapevine": {
    "i5": "RESTRICTIONS",
@@ -157,20 +157,20 @@
    "log_entries": 60
   },
   "tehachapi": {
-   "sr58": "OPEN",
+   "sr58": "CLOSED",
    "wind_mph": 5,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 46,
+   "temp": 41,
    "wind_mph": 5,
    "alerts": 0
   },
   "roads": {
    "routes": [
     "i5:RESTRICTIONS",
-    "sr58:OPEN",
+    "sr58:CLOSED",
     "sr99:RESTRICTIONS"
    ],
    "log_entries": 60
@@ -189,8 +189,8 @@
   "events": {
    "groups": {
     "In the next 7 days": 18,
-    "In 1 to 2 weeks": 21,
-    "Later": 79
+    "In 1 to 2 weeks": 25,
+    "Later": 72
    },
    "meetings": 0
   },
@@ -201,7 +201,7 @@
    "isabella_af": null,
    "alpr_total": 459,
    "kern_fires": 0,
-   "aqi": 73,
+   "aqi": 79,
    "chp_week": 90
   },
   "letters": {
@@ -241,7 +241,7 @@
   },
   "trackers": {
    "alpr_total": 459,
-   "alpr_new_week": 2,
+   "alpr_new_week": 1,
    "pages": [
     "surveillance",
     "fires",

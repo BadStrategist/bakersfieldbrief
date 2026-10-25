@@ -48,7 +48,7 @@
     ],
     "elsewhere": []
    },
-   "reported_as_of": "Saturday, October 24th, 2026 at 09:32 PM",
+   "reported_as_of": "Sunday, October 25th, 2026 at 12:52 AM",
    "hash": "283c2f65e1"
   },
   {
@@ -56,23 +56,32 @@
    "slug": "sr58",
    "name": "State Route 58 \u2014 Tehachapi",
    "pass": false,
-   "status": "OPEN",
-   "pass_status": "OPEN",
+   "status": "CLOSED",
+   "pass_status": "CLOSED",
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "No traffic restrictions reported.",
-     "status": "OPEN"
+     "text": "Is closed to eastbound traffic from 5 mi west to 3 mi west of Boron (Kern Co) - Due to a traffic collision - Motorists are advised to use an alternate route",
+     "status": "CLOSED"
     }
    ],
    "scope": {
     "on_pass": "OPEN",
     "on_pass_reported": false,
     "on_pass_items": [],
-    "elsewhere": []
+    "elsewhere": [
+     {
+      "status": "CLOSED",
+      "place": "",
+      "county": "Kern Co",
+      "where": "Kern Co",
+      "text": "Is closed to eastbound traffic from 5 mi west to 3 mi west of Boron (Kern Co) - Due to a traffic collision - Motorists are advised to use an alternate route",
+      "region": "CENTRAL CALIFORNIA"
+     }
+    ]
    },
-   "reported_as_of": "Saturday, October 24th, 2026 at 09:32 PM",
-   "hash": "5374f203ec"
+   "reported_as_of": "Sunday, October 25th, 2026 at 12:52 AM",
+   "hash": "bfb93253be"
   },
   {
    "number": "99",
@@ -108,9 +117,9 @@
      }
     ]
    },
-   "reported_as_of": "Saturday, October 24th, 2026 at 09:32 PM",
+   "reported_as_of": "Sunday, October 25th, 2026 at 12:52 AM",
    "hash": "f97882795e"
   }
  ],
- "asof": "2026-10-24"
+ "asof": "2026-10-25"
 }

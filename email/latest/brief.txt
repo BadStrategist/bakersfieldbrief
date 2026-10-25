@@ -17,11 +17,11 @@ What happened overnight: Traffic Collision — 59 incidents tracked overnight �
   other calls: 3 vehicle, 2 incident, 1 flooding
 
 CONDITIONS
-Weather: 61° now, high 78°
+Weather: 59° now, high 78°
 Alerts: No active alerts
 Isabella: n/a
-CHP: Unavailable
-Air: AQI 79 · Moderate
+CHP: 4 overnight
+Air: AQI 81 · Moderate
 Fires: 0 active in Kern
 
 THE NEWS

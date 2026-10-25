@@ -1,155 +1,5 @@
 [
  {
-  "log_id": "261017BF0191",
-  "time": "Oct 17 2026  1:03PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "22752-22759 Sr33",
-  "area": "Fort Tejon",
-  "lat": 34.646326,
-  "lon": -119.37665,
-  "details": ""
- },
- {
-  "log_id": "261017BF0239",
-  "time": "Oct 17 2026  2:52PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Sr178 W / Fairfax Rd Ofr",
-  "area": "Bakersfield",
-  "lat": 35.396749,
-  "lon": -118.92588,
-  "details": ""
- },
- {
-  "log_id": "261017BF0244",
-  "time": "Oct 17 2026  3:02PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "42810 Frazier Mountain Park Rd",
-  "area": "Fort Tejon",
-  "lat": 34.817708,
-  "lon": -118.884761,
-  "details": ""
- },
- {
-  "log_id": "261017BF0252",
-  "time": "Oct 17 2026  3:22PM",
-  "type": "1125-Traffic Hazard",
-  "location": "1121 Mcnew Ct",
-  "area": "Bakersfield",
-  "lat": 35.34939,
-  "lon": -118.988415,
-  "details": ""
- },
- {
-  "log_id": "261017BF0255",
-  "time": "Oct 17 2026  3:26PM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "1338 South Union Ave",
-  "area": "Bakersfield",
-  "lat": 35.340143,
-  "lon": -119.00292,
-  "details": ""
- },
- {
-  "log_id": "261017BF0261",
-  "time": "Oct 17 2026  3:53PM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "E Panama Ln / S Comanche Dr",
-  "area": "Bakersfield",
-  "lat": 35.296409,
-  "lon": -118.842895,
-  "details": ""
- },
- {
-  "log_id": "261017BF0061",
-  "time": "Oct 17 2026  7:56AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "27532-27637 Sr119",
-  "area": "Buttonwillow",
-  "lat": 35.208274,
-  "lon": -119.407236,
-  "details": ""
- },
- {
-  "log_id": "261017BF0070",
-  "time": "Oct 17 2026  8:22AM",
-  "type": "1125-Traffic Hazard",
-  "location": "I5 S / Gorman Ofr",
-  "area": "Fort Tejon",
-  "lat": 34.795674,
-  "lon": -118.858202,
-  "details": ""
- },
- {
-  "log_id": "261017BF0375",
-  "time": "Oct 17 2026  9:12PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Camino Primavera / College Ave",
-  "area": "Bakersfield",
-  "lat": 35.383083,
-  "lon": -118.955029,
-  "details": ""
- },
- {
-  "log_id": "261017BF0371",
-  "time": "Oct 17 2026  9:12PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Heath Rd / Johnson Rd",
-  "area": "Bakersfield",
-  "lat": 35.361662,
-  "lon": -119.180984,
-  "details": ""
- },
- {
-  "log_id": "261017BF0091",
-  "time": "Oct 17 2026  9:33AM",
-  "type": "20001-Hit and Run w/Injuries",
-  "location": "2112 Kentucky St",
-  "area": "Bakersfield",
-  "lat": 35.373549,
-  "lon": -118.970142,
-  "details": ""
- },
- {
-  "log_id": "261017BF0098",
-  "time": "Oct 17 2026  9:57AM",
-  "type": "SLIDE-Mud/Dirt/Rock",
-  "location": "1600 Mm178 E Ker 16.00",
-  "area": "Bakersfield",
-  "lat": 35.460897,
-  "lon": -118.769091,
-  "details": ""
- },
- {
-  "log_id": "261017BF0133",
-  "time": "Oct 17 2026 11:12AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Sterling Rd / Hillburn Rd",
-  "area": "Bakersfield",
-  "lat": 35.379605,
-  "lon": -118.940756,
-  "details": ""
- },
- {
-  "log_id": "261017BF0002",
-  "time": "Oct 17 2026 12:01AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "261017BF0004",
-  "time": "Oct 17 2026 12:06AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Sb Sr99 At Sr119",
-  "area": "BF",
-  "lat": 35.266667,
-  "lon": -119.022778,
-  "details": ""
- },
- {
   "log_id": "261018BF0154",
   "time": "Oct 18 2026  1:03PM",
   "type": "1182-Trfc Collision-No Inj",
@@ -1220,6 +1070,16 @@
   "details": ""
  },
  {
+  "log_id": "261024BF0324",
+  "time": "Oct 24 2026  5:41PM",
+  "type": "1180-Trfc Collision-Major Inj",
+  "location": "SR184 / Kimber Ave",
+  "area": "Bakersfield",
+  "lat": 35.35072,
+  "lon": -118.914058,
+  "details": ""
+ },
+ {
   "log_id": "261024BF0132",
   "time": "Oct 24 2026  9:57AM",
   "type": "1125-Traffic Hazard",
@@ -1274,6 +1134,46 @@
   "time": "Oct 24 2026 12:56PM",
   "type": "TADV-Traffic Advisory",
   "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261025BF0026",
+  "time": "Oct 25 2026  2:27AM",
+  "type": "WIND Advisory",
+  "location": "Fort Tejon Summit",
+  "area": "Fort Tejon",
+  "lat": 34.802831,
+  "lon": -118.87652,
+  "details": ""
+ },
+ {
+  "log_id": "261025BF0037",
+  "time": "Oct 25 2026  2:58AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Elmo Hwy / Browning Rd",
+  "area": "Bakersfield",
+  "lat": 35.6889,
+  "lon": -119.223049,
+  "details": ""
+ },
+ {
+  "log_id": "261025BF0040",
+  "time": "Oct 25 2026  3:09AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "0 Unnamed Street",
+  "area": "Bakersfield",
+  "lat": 35.292289,
+  "lon": -118.985349,
+  "details": ""
+ },
+ {
+  "log_id": "261025BF0002",
+  "time": "Oct 25 2026 12:03AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,

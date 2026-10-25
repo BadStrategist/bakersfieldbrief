@@ -6,8 +6,8 @@
   "corridor_hash": "e9f7220854"
  },
  "sr58": {
-  "status": "CLOSED",
-  "hash": "bfb93253be",
+  "status": "OPEN",
+  "hash": "5374f203ec",
   "corridor": "OPEN",
   "corridor_hash": "d41d8cd98f"
  },

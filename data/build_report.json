@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-25T07:48:11-07:00",
+ "built_at": "2026-10-25T09:07:49-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -34,8 +34,8 @@
    "error": "ParseError: no element found: line 109, column 60"
   },
   "isabella": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ConnectTimeout: HTTPSConnectionPool(host='cdec.water.ca.gov', port=443): Max retries exceeded with url: /dynamicapp/req/JSONDataServlet?Stations=ISB&SensorNums=6&dur_code=D&Start=2026-09-18&End=2026-10-25 (Caused by ConnectTimeoutError(<HTTPSConnection(host='cdec.water.ca.gov', port=443) at 0x70b1699efb90>, 'Connection to cdec.water.ca.gov timed out. (connect timeout=40)'))"
   },
   "alpr": {
    "ok": true,
@@ -137,7 +137,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 12,
+    "bakersfield-nw": 10,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -159,7 +159,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 48,
+   "temp": 45,
    "wind_mph": 0,
    "alerts": 0
   },
@@ -194,7 +194,7 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 139691,
+   "isabella_af": null,
    "alpr_total": 459,
    "kern_fires": 0,
    "aqi": 80,

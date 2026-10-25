@@ -1140,6 +1140,16 @@
   "details": ""
  },
  {
+  "log_id": "261025BF0145",
+  "time": "Oct 25 2026  1:36PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr119 / Compagnoni St",
+  "area": "BF",
+  "lat": 35.266846,
+  "lon": -119.025094,
+  "details": ""
+ },
+ {
   "log_id": "261025BF0026",
   "time": "Oct 25 2026  2:27AM",
   "type": "WIND Advisory",

@@ -1,0 +1,471 @@
+[
+ {
+  "type": "collision",
+  "time": "19:08",
+  "agency": "CHP",
+  "area": "",
+  "notability": 3,
+  "disposition": "rider over the center divide; air ambulance stood by, then canceled",
+  "summary": "A motorcycle went down on northbound Interstate 5 north of Lebec, with the rider hunched over the center divide and other vehicles behind. A second crash north of Tejon was reported as non-injury, and the air ambulance that had been placed on standby was canceled."
+ },
+ {
+  "type": "attempted burglary",
+  "time": "19:17",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 3,
+  "disposition": "both left in a white Dodge Charger westbound on 7th Standard Road",
+  "summary": "A caller reported two people had entered a yard, seen on a camera toward the back of the property, and had been there when the call came in almost 30 minutes earlier. Both left in a white Dodge Charger westbound on 7th Standard Road."
+ },
+ {
+  "type": "medical aid",
+  "time": "19:25",
+  "agency": "Kern County Fire Department",
+  "area": "Merle Haggard Drive",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent for a fall detected by a smart watch near Merle Haggard Drive and Spectrum Parkway.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "suspicious persons",
+  "time": "19:36",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "not attempting entry",
+  "summary": "Officers were sent after a caller reported two people in masks had been walking around a residence for about two hours. The caller said they were not trying to get in."
+ },
+ {
+  "type": "welfare check",
+  "time": "20:29",
+  "agency": "Bakersfield Police Department",
+  "area": "Calloway Drive",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to check on a woman and a 5-year-old at the Walmart neighborhood market in the 5600 block of Calloway Drive.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "20:39",
+  "agency": "Bakersfield Police Department",
+  "area": "Mount Vernon Avenue",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers checked on an 8-year-old boy reported walking westbound near Mount Vernon Avenue and Bernard Street."
+ },
+ {
+  "type": "medical aid",
+  "time": "20:46",
+  "agency": "Kern County Fire Department",
+  "area": "Fremont Street",
+  "notability": 3,
+  "disposition": "crews sent; ambulance requested",
+  "summary": "Crews were sent for a cardiac arrest in the 2600 block of Fremont Street.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "20:56",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "a woman was reported to be in a mental health crisis",
+  "summary": "Officers were sent to a welfare check after a caller reported the sounds of an argument, screaming and banging. A woman at the home was reported to be in a mental health crisis."
+ },
+ {
+  "type": "structure fire",
+  "time": "20:57",
+  "agency": "Kern County Fire Department",
+  "area": "Lake Street",
+  "notability": 4,
+  "disposition": "heavy smoke from a building; reinforced, then scaled back to one engine",
+  "summary": "Crews were sent to a structure fire in the 2000 block of Lake Street and found heavy smoke coming from a building of about 1,500 square feet. The fire was reinforced and worked as a high-priority search, then scaled back to one engine with smoke still in the attic.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "21:05",
+  "agency": "Bakersfield Police Department",
+  "area": "Auburn Street",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a priority domestic call at a service station at Fairfax Road and Auburn Street. A man was reported to be walking east on Auburn.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "21:12",
+  "agency": "Bakersfield Police Department",
+  "area": "Columbus Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to check on a man reported to be on the grass near a business sign in the 2100 block of Columbus Street."
+ },
+ {
+  "type": "medical aid",
+  "time": "21:13",
+  "agency": "Bakersfield Fire Department",
+  "area": "Rosedale Highway",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent for a patient having seizures in the parking lot of a restaurant in the 3500 block of Rosedale Highway."
+ },
+ {
+  "type": "theft",
+  "time": "21:19",
+  "agency": "Shafter Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "suspects ran northeast across the railroad tracks",
+  "summary": "A market in Shafter reported another theft of cash, and the suspects ran northeast across the railroad tracks."
+ },
+ {
+  "type": "medical aid",
+  "time": "21:36",
+  "agency": "Kern County Fire Department",
+  "area": "Auburn Street",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent for chest pain at a residence in the 7000 block of Auburn Street.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "outside fire",
+  "time": "21:38",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "one company handled it",
+  "summary": "One company handled a transient warming fire in the middle of a plowed field, and the rest of the assignment was canceled."
+ },
+ {
+  "type": "armed subject",
+  "time": "22:00",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent after a caller reported a man who claimed to have a firearm in his pocket and had arrived in a gray SUV."
+ },
+ {
+  "type": "domestic violence",
+  "time": "22:22",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "subject left on foot westbound",
+  "summary": "A woman told officers her boyfriend had taken her keys and her wallet and left on foot westbound."
+ },
+ {
+  "type": "welfare check",
+  "time": "22:39",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 2,
+  "disposition": "deputies sent",
+  "summary": "A caller reported a woman in a red dress and sweater who came to the door saying she was lost and needed help, and said a car horn had been sounding nearby for about 30 minutes."
+ },
+ {
+  "type": "missing juvenile",
+  "time": "22:44",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 3,
+  "disposition": "units asked to check on them",
+  "summary": "Units were asked to check on juveniles who had run away from a group home on Pecan Grove, and to stand by for them near White Lane."
+ },
+ {
+  "type": "theft",
+  "time": "22:44",
+  "agency": "Bakersfield Police Department",
+  "area": "El Rancho Drive",
+  "notability": 2,
+  "disposition": "trailer found",
+  "summary": "A caller told officers he had found his stolen trailer parked in the backyard of a residence in the 1100 block of El Rancho Drive.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "open-line call",
+  "time": "23:06",
+  "agency": "Bakersfield Police Department",
+  "area": "River Boulevard",
+  "notability": 2,
+  "disposition": "woman said a man took her keys",
+  "summary": "An open 911 line carried a loud argument, and a woman told officers a man had taken her keys and left in a black and gray Subaru.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "shots fired",
+  "time": "23:30",
+  "agency": "Bakersfield Police Department",
+  "area": "South Union Avenue",
+  "notability": 5,
+  "disposition": "perimeter set; offense confirmed; officers searched for shell casings",
+  "summary": "A caller reported hearing a gunshot and seeing three people fighting across the street, one of them in a red shirt and possibly armed. Officers set a perimeter around South Union Avenue and Serrano Drive, confirmed an offense and searched the alley behind the fire station for shell casings."
+ },
+ {
+  "type": "prowler",
+  "time": "23:43",
+  "agency": "Bakersfield Police Department",
+  "area": "Francis Street",
+  "notability": 3,
+  "disposition": "he fled and left the ladder behind",
+  "summary": "A resident reported a man in a neon green reflective vest using a ladder toward the rear alley of a property in the 300 block of Francis Street. He fled and left the ladder behind.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "mental health hold",
+  "time": "00:10",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 3,
+  "disposition": "caller said she would be held for an evaluation",
+  "summary": "Deputies were sent to help a property owner remove a woman from a property. The caller said she was on a shed and would be held for a mental health evaluation."
+ },
+ {
+  "type": "medical aid",
+  "time": "00:21",
+  "agency": "Kern County Fire Department",
+  "area": "Chester Place",
+  "notability": 2,
+  "disposition": "crew sent; translator needed",
+  "summary": "A crew was sent for an unknown medical aid at a home in the 900 block of Chester Place, where a translator was needed.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "assault",
+  "time": "00:23",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "hospital asked to check",
+  "summary": "Officers asked a local hospital to check whether any victims of an assault with a deadly weapon had come in."
+ },
+ {
+  "type": "alarm",
+  "time": "00:24",
+  "agency": "Kern County Fire Department",
+  "area": "Basel Drive",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "Crews were sent to a carbon dioxide alarm in the 18300 block of Basel Drive."
+ },
+ {
+  "type": "vehicle off the roadway",
+  "time": "00:33",
+  "agency": "CHP",
+  "area": "",
+  "notability": 3,
+  "disposition": "patient count and condition pending",
+  "summary": "A single vehicle went off the roadway on northbound Highway 99 near an overcrossing. The call was run as a highway incident while crews worked out the number of people hurt."
+ },
+ {
+  "type": "battery",
+  "time": "00:44",
+  "agency": "Bakersfield Police Department",
+  "area": "Radcliffe Avenue",
+  "notability": 3,
+  "disposition": "one person declined medical aid",
+  "summary": "Officers were sent to a battery report in the 7100 block of Radcliffe Avenue, where one person declined medical aid.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "traffic hazard",
+  "time": "00:57",
+  "agency": "CHP",
+  "area": "Olive Drive",
+  "notability": 2,
+  "disposition": "unit asked for a break",
+  "summary": "A pickup was reported in the center divide on northbound Highway 99 just north of Olive Drive, and a unit asked for another unit to make a break so the truck could be pushed to the right shoulder."
+ },
+ {
+  "type": "alarm",
+  "time": "01:05",
+  "agency": "Kern County Fire Department",
+  "area": "Taft Highway",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "Crews were sent to a motion alarm at the southwest door of a service station in the 3200 block of Taft Highway."
+ },
+ {
+  "type": "person with a gun",
+  "time": "01:07",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Kimber Avenue",
+  "notability": 3,
+  "disposition": "blue SUV left; no firearm recovered",
+  "summary": "Deputies were sent to a report of people with a small black handgun in the 8200 block of Kimber Avenue. A blue newer-model Subaru SUV left, and no firearm was recovered.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "domestic violence",
+  "time": "01:09",
+  "agency": "Bakersfield Police Department",
+  "area": "Whitley Court",
+  "notability": 3,
+  "disposition": "medical aid staged; channel cleared for emergency traffic",
+  "summary": "Officers were sent to a domestic disturbance on Whitley Court reported as a battery between a mother and a daughter, with medical aid staged in the area. The channel was cleared for emergency traffic while officers worked the call.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "suspicious person",
+  "time": "01:12",
+  "agency": "Bakersfield Police Department",
+  "area": "Mount Vernon Avenue",
+  "notability": 2,
+  "disposition": "refusing to leave",
+  "summary": "Officers were sent to a business in the 2600 block of Mount Vernon Avenue where a man was refusing to leave."
+ },
+ {
+  "type": "suspicious persons",
+  "time": "01:15",
+  "agency": "Bakersfield Police Department",
+  "area": "Pico Street",
+  "notability": 2,
+  "disposition": "no visual at the time",
+  "summary": "Officers were sent to the 300 block of Pico Street after a caller reported people in the backyard, with no one seen at the time."
+ },
+ {
+  "type": "assault with a deadly weapon",
+  "time": "01:24",
+  "agency": "Bakersfield Police Department",
+  "area": "Chester Lane",
+  "notability": 4,
+  "disposition": "possible victim, a 40-year-old man",
+  "summary": "Officers were sent to a report of an assault with a baseball bat on Chester Lane, where a 40-year-old man was reported as a possible victim."
+ },
+ {
+  "type": "welfare check",
+  "time": "01:26",
+  "agency": "Bakersfield Police Department",
+  "area": "California Avenue",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to check on a little girl heard screaming in the parking lot of a movie theater in the 1000 block of California Avenue, just south of the railroad tracks."
+ },
+ {
+  "type": "domestic violence",
+  "time": "02:02",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 3,
+  "disposition": "deputies sent",
+  "summary": "Deputies were sent to a domestic disturbance south of Rosedale Highway in Fairhaven, where a woman was heard yelling at another person and the caller said a man had battered her friend."
+ },
+ {
+  "type": "911 hang-up",
+  "time": "02:03",
+  "agency": "Bakersfield Police Department",
+  "area": "Monterey Street",
+  "notability": 2,
+  "disposition": "no answer on call back",
+  "summary": "A caller asked for a translator and hung up, and there was no answer on the call back to a home in the 1800 block of Monterey Street.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "domestic violence",
+  "time": "02:07",
+  "agency": "Bakersfield Police Department",
+  "area": "Carlton Street",
+  "notability": 3,
+  "disposition": "same address drew three calls; the man left in a gray Infiniti coupe",
+  "summary": "Officers were sent to a home in the 2000 block of Carlton Street where a man was reported to be fighting family members. The same address drew a second call just before 4 a.m. and a third before dawn, and the man was reported to have got into a gray Infiniti coupe.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "02:19",
+  "agency": "Kern County Fire Department",
+  "area": "Brookside Drive",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent for chest pain at an assisted living building in the 3200 block of Brookside Drive.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "03:14",
+  "agency": "Kern County Fire Department",
+  "area": "Riverside Street",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent for difficulty breathing at the front office of a facility on Riverside Street."
+ },
+ {
+  "type": "commercial fire alarm",
+  "time": "03:37",
+  "agency": "Kern County Fire Department",
+  "area": "Scenic River Lane",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A commercial fire alarm brought a crew to a building in the 4000 block of Scenic River Lane.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "alarm",
+  "time": "04:17",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "footage showed a man hitting the door",
+  "summary": "A glass-break alarm brought a unit to a gas station, where footage showed a man in a black hooded sweatshirt and a shopping cart hitting the door with a stick."
+ },
+ {
+  "type": "medical aid",
+  "time": "04:22",
+  "agency": "Kern County Fire Department",
+  "area": "Shawnee Drive",
+  "notability": 3,
+  "disposition": "crew sent",
+  "summary": "A crew was sent for a patient who was hemorrhaging on Shawnee Drive."
+ },
+ {
+  "type": "residential alarm",
+  "time": "05:18",
+  "agency": "Kern County Fire Department",
+  "area": "Payne Drive",
+  "notability": 2,
+  "disposition": "unit sent",
+  "summary": "An on-site alarm brought a unit to a home in the 2700 block of Payne Drive."
+ },
+ {
+  "type": "kidnapping",
+  "time": "05:25",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 4,
+  "disposition": "no vehicle description available",
+  "summary": "A caller reported a man trying to force a woman into the back seat of a car in the alley behind a residence. There was no vehicle description, and officers were sent back to the block."
+ },
+ {
+  "type": "person down",
+  "time": "05:32",
+  "agency": "CHP",
+  "area": "Olive Drive",
+  "notability": 3,
+  "disposition": "officer sent",
+  "summary": "CHP was sent to the southbound Highway 99 on-ramp at Olive Drive for a woman reported to be lying in the roadway."
+ },
+ {
+  "type": "Traffic collision",
+  "time": "21:36",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Crash alert on State Route 58 near I-5.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "22:34",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person with traumatic injury at Cambridge Village Apts.",
+  "source": "crimeradar"
+ }
+]

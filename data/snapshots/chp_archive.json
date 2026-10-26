@@ -1120,6 +1120,16 @@
   "details": ""
  },
  {
+  "log_id": "261026BF0030",
+  "time": "Oct 26 2026  5:09AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "27448-28053 Sr178",
+  "area": "Bakersfield",
+  "lat": 35.717761,
+  "lon": -118.171765,
+  "details": ""
+ },
+ {
   "log_id": "261026BF0001",
   "time": "Oct 26 2026 12:00AM",
   "type": "20002-Hit and Run No Injuries",

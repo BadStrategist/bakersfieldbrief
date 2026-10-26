@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-26T05:54:44-07:00",
+ "built_at": "2026-10-26T08:09:52-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -14,7 +14,7 @@
    "error": ""
   },
   "gnews": {
-   "ok": false,
+   "ok": true,
    "error": ""
   },
   "weather": {
@@ -30,12 +30,12 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 1, column 0"
   },
   "isabella": {
-   "ok": false,
-   "error": "ConnectTimeout: HTTPSConnectionPool(host='cdec.water.ca.gov', port=443): Max retries exceeded with url: /dynamicapp/req/JSONDataServlet?Stations=ISB&SensorNums=15&dur_code=D&Start=2026-09-19&End=2026-10-26 (Caused by ConnectTimeoutError(<HTTPSConnection(host='cdec.water.ca.gov', port=443) at 0x7e187156b5c0>, 'Connection to cdec.water.ca.gov timed out. (connect timeout=40)'))"
+   "ok": true,
+   "error": ""
   },
   "alpr": {
    "ok": true,
@@ -68,40 +68,40 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 66,
+  "brief_words": 1175,
   "daily": {
-   "news_headlines": 50,
+   "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
-   "top_story": "Mira Monte High School sophomore makes history as first-place winner in Spanish FFA Creed event",
+   "chp_new": 0,
+   "top_story": "Bakersfield musician builds handcrafted guitars to give left-handed players more options",
    "overnight_band": {
-    "date": "2026-10-25",
-    "count": 48,
+    "date": "2026-10-26",
+    "count": 50,
     "chips": [
      [
       "Weapons and assaults",
-      15
+      7
      ],
      [
       "Fires",
-      1
+      2
      ],
      [
       "Crashes and traffic",
-      13
+      4
      ],
      [
       "Medical and overdose",
-      2
+      9
      ],
      [
       "Missing persons",
-      2
+      1
      ],
      [
       "Disturbances and welfare",
-      8
+      12
      ],
      [
       "Burglary and theft",
@@ -109,14 +109,18 @@
      ],
      [
       "Suspicious activity",
-      2
+      4
      ],
      [
       "Alarms",
-      2
+      5
+     ],
+     [
+      "Other calls",
+      3
      ]
     ],
-    "other": "",
+    "other": "1 open-line call, 1 911 hang-up, 1 incident",
     "unmapped": []
    },
    "archive": "2026-10-26"
@@ -136,11 +140,11 @@
    ],
    "tehachapi_forecast": true,
    "gnews_per_place": {
-    "tehachapi": 0,
-    "bakersfield-nw": 0,
-    "bakersfield-sw": 0,
-    "bakersfield-east": 0,
-    "bakersfield-central": 0
+    "tehachapi": 12,
+    "bakersfield-nw": 4,
+    "bakersfield-sw": 12,
+    "bakersfield-east": 12,
+    "bakersfield-central": 12
    }
   },
   "guide": {
@@ -154,13 +158,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 5,
+   "wind_mph": 0,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 37,
-   "wind_mph": 5,
+   "temp": 36,
+   "wind_mph": 0,
    "alerts": 0
   },
   "roads": {
@@ -194,20 +198,20 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": null,
+   "isabella_af": 139586,
    "alpr_total": 459,
    "kern_fires": 0,
-   "aqi": 71,
+   "aqi": 69,
    "chp_week": 4
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 75
+   "published": 76
   },
   "map": {
-   "dots": 32
+   "dots": 39
   },
   "sunday_read": {
    "topic": "Public safety",

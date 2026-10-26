@@ -8,14 +8,19 @@ on:
       - "**.md"
       - "docs/**"
   schedule:
-    # Every 3h UTC: cheap LLM-free refreshes so conditions (weather, AQI,
-    # active fires, reservoir, CHP) stay current. The 13:00/14:00 UTC pair
+    # LLM-free refreshes so conditions (weather, AQI, active fires, reservoir,
+    # CHP) stay current. Was every 3h UTC; 03, 15 and 21 UTC were dropped on
+    # 2026-10-26 for Actions minutes: grapevine.yml runs the same full build at
+    # 02:37 and 20:37, and 15:07 sits between the 14:07 and 16:07 slots. The
+    # overnight slots stay: data/snapshots/chp_archive.json only holds the CHP logs a
+    # build saw live, and the brief's overnight CHP list (9 PM to 7 AM) is read
+    # from it. The 13:00/14:00 UTC pair
     # guarantees a 6:00-PT LLM build year-round (DST-proof). 16:00 UTC is 8:00 PST: in winter
     # no other slot lands on the 8 AM send (15:00 UTC is 7:00 PST, 18:00 UTC is 10:00).
     # Minute 7, not 0: GitHub queues scheduled runs, and the top of the hour is the busiest
     # slot (the 13:00 run was starting one to four hours late). Still inside the same Pacific
     # hour, so the 6 AM gate below reads exactly as before.
-    - cron: "7 */3 * * *"
+    - cron: "7 0,6,9,12,18 * * *"
     - cron: "7 13 * * *"
     - cron: "7 14 * * *"
     - cron: "7 16 * * *"
@@ -71,11 +76,23 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -q -r requirements.txt
-          # brief_reel/render_reel.py needs ffmpeg (raw-frame pipe + audio
-          # mix); the runner image does NOT ship it — without this the reel
-          # build crashes and the daily post silently falls back to a photo.
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
-          ffmpeg -version | head -1
+          # ffmpeg is for the test suite only: the @needs_ffmpeg tests in
+          # tests/test_reel_audio.py. The build never calls it, and the reel is
+          # rendered on the box, not here. The runner image does not ship it.
+          # Capped at 180 s: the Ubuntu mirror held this step 14 to 36 minutes on
+          # 8 runs in October 2026 (about 150 billed minutes; the 10-23 and 10-26
+          # morning push builds finished after the 08:10 email watchdog). Normal is
+          # under 40 s. Past the cap the run goes on without ffmpeg, those tests
+          # skip, and the run carries a warning.
+          if sudo timeout -k 10 180 bash -c 'apt-get update -qq && apt-get install -y -qq ffmpeg' && ffmpeg -version >/dev/null 2>&1; then
+            ffmpeg -version | head -1
+          else
+            echo "::warning title=ffmpeg not installed::apt did not finish within 180 s; the ffmpeg tests in tests/test_reel_audio.py skip on this run"
+            # a half-finished install must not leave a broken binary on PATH
+            if command -v ffmpeg >/dev/null 2>&1 && ! ffmpeg -version >/dev/null 2>&1; then
+              sudo rm -f "$(command -v ffmpeg)"
+            fi
+          fi
 
       - name: Build site (fetch sources → bake static HTML)
         id: build

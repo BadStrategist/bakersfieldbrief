@@ -35,8 +35,16 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -q -r requirements.txt
-          # same as daily.yml: the test suite below runs against the same tools it has there
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          # same as daily.yml: the test suite below runs against the same tools it has there,
+          # with the same 180 s cap on the apt mirror (see the note in daily.yml)
+          if sudo timeout -k 10 180 bash -c 'apt-get update -qq && apt-get install -y -qq ffmpeg' && ffmpeg -version >/dev/null 2>&1; then
+            ffmpeg -version | head -1
+          else
+            echo "::warning title=ffmpeg not installed::apt did not finish within 180 s; the ffmpeg tests in tests/test_reel_audio.py skip on this run"
+            if command -v ffmpeg >/dev/null 2>&1 && ! ffmpeg -version >/dev/null 2>&1; then
+              sudo rm -f "$(command -v ffmpeg)"
+            fi
+          fi
 
       - name: Build site (no AI writer)
         id: build

@@ -1220,6 +1220,36 @@
   "details": ""
  },
  {
+  "log_id": "261025BF0236",
+  "time": "Oct 25 2026  5:42PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Habecker Rd / Paradise Rd",
+  "area": "Bakersfield",
+  "lat": 35.265355,
+  "lon": -118.905208,
+  "details": ""
+ },
+ {
+  "log_id": "261025BF0287",
+  "time": "Oct 25 2026  7:45PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Sb Sr99 Jso South Union Ave",
+  "area": "Bakersfield",
+  "lat": 35.165,
+  "lon": -119.001944,
+  "details": ""
+ },
+ {
+  "log_id": "261025BF0290",
+  "time": "Oct 25 2026  7:46PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Garber Way / Bryant St",
+  "area": "Bakersfield",
+  "lat": 35.30676,
+  "lon": -118.99862,
+  "details": ""
+ },
+ {
   "log_id": "261025BF0079",
   "time": "Oct 25 2026  9:20AM",
   "type": "1183-Trfc Collision-Unkn Inj",
@@ -1227,6 +1257,16 @@
   "area": "Buttonwillow",
   "lat": 35.489446,
   "lon": -119.546633,
+  "details": ""
+ },
+ {
+  "log_id": "261025BF0328",
+  "time": "Oct 25 2026  9:21PM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "SR178 / M St",
+  "area": "Bakersfield",
+  "lat": 35.381189,
+  "lon": -119.01537,
   "details": ""
  },
  {

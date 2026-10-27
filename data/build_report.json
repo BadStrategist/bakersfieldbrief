@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-26T17:50:54-07:00",
+ "built_at": "2026-10-27T01:22:31-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,13 +68,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1175,
+  "brief_words": 64,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Bakersfield musician builds handcrafted guitars to give left-handed players more options",
+   "top_story": "Arvin weighs state bar complaint against former city attorney accused of overbilling taxpayers",
    "overnight_band": {
     "date": "2026-10-26",
     "count": 50,
@@ -123,7 +123,7 @@
     "other": "1 open-line call, 1 911 hang-up, 1 incident",
     "unmapped": []
    },
-   "archive": "2026-10-26"
+   "archive": "2026-10-27"
   },
   "cityhall": {
    "upcoming_meetings": 0,
@@ -141,7 +141,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 12,
+    "bakersfield-nw": 10,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -149,7 +149,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-10-26"
+   "draft": "drafts/weekend-guide-2026-10-27"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -158,20 +158,20 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 13,
+   "wind_mph": 11,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 57,
-   "wind_mph": 13,
+   "temp": 48,
+   "wind_mph": 11,
    "alerts": 0
   },
   "roads": {
    "routes": [
     "i5:RESTRICTIONS",
     "sr58:OPEN",
-    "sr99:RESTRICTIONS"
+    "sr99:CLOSED"
    ],
    "log_entries": 60
   },
@@ -189,8 +189,8 @@
   "events": {
    "groups": {
     "In the next 7 days": 17,
-    "In 1 to 2 weeks": 23,
-    "Later": 73
+    "In 1 to 2 weeks": 24,
+    "Later": 72
    },
    "meetings": 0
   },
@@ -198,10 +198,10 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 139586,
+   "isabella_af": 139376,
    "alpr_total": 459,
    "kern_fires": 0,
-   "aqi": 73,
+   "aqi": 91,
    "chp_week": 4
   },
   "letters": {

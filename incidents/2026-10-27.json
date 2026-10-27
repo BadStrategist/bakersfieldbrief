@@ -1,0 +1,425 @@
+[
+ {
+  "type": "collision",
+  "time": "19:06",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "one person reported hurt; tow arranged",
+  "summary": "A quad and a sedan collided, with juveniles riding the quad. One person was reported hurt, and officers arranged for the sedan to be towed."
+ },
+ {
+  "type": "medical aid",
+  "time": "19:09",
+  "agency": "Kern County Fire Department",
+  "area": "Airport Drive",
+  "notability": 2,
+  "disposition": "crew sent; deputy already on scene",
+  "summary": "A crew was sent to the 600 block of Airport Drive for a person in a psychiatric crisis. A sheriff's deputy was already there and the crew was cleared to enter.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "19:13",
+  "agency": "Bakersfield Police Department",
+  "area": "Olive Drive",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 1200 block of Olive Drive for a suspicious circumstance involving one man and three women around a pickup."
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "19:46",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "the woman walked out on her own",
+  "summary": "A caller reported finding a woman in all black inside a residence, with no sign of how she got in. She was walking out as officers arrived."
+ },
+ {
+  "type": "missing person",
+  "time": "19:52",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 4,
+  "disposition": "at-risk alert issued; search under way",
+  "summary": "A man in his late 20s, 5-foot-7 and about 130 pounds, left on foot at about 7:10 p.m. in a white shirt and black shorts, heading an unknown direction. He is listed as at risk because of a medical condition."
+ },
+ {
+  "type": "medical aid",
+  "time": "20:16",
+  "agency": "Kern County Fire Department",
+  "area": "Main Street",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to a minimart in the 10,600 block of Main Street for an unknown medical problem."
+ },
+ {
+  "type": "structure fire",
+  "time": "20:21",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 4,
+  "disposition": "fire knocked down; crews stayed on scene",
+  "summary": "A backyard fire was reported threatening a house. The first crew on scene found a single-family home with light smoke from the backyard and fire inside a wall, and a search of the home was completed. A second call a short distance away, a porch fire, was already out."
+ },
+ {
+  "type": "medical aid",
+  "time": "20:29",
+  "agency": "Kern County Fire Department",
+  "area": "Brundage Lane",
+  "notability": 2,
+  "disposition": "rescue crew sent",
+  "summary": "A rescue crew was sent for a medical call near a smoke shop in the 2,300 block of Brundage Lane."
+ },
+ {
+  "type": "medical aid",
+  "time": "20:31",
+  "agency": "Kern County Fire Department",
+  "area": "Main Street",
+  "notability": 2,
+  "disposition": "crew sent with a translator",
+  "summary": "A Spanish-speaking man at Palm and Main Street kept hanging up while asking for medical help. A crew was sent with a translator."
+ },
+ {
+  "type": "vehicle theft",
+  "time": "20:45",
+  "agency": "Bakersfield Police Department",
+  "area": "King Street",
+  "notability": 3,
+  "disposition": "entered as stolen and broadcast",
+  "summary": "A car was reported stolen from an apartment complex in the 500 block of King Street. It was entered as stolen and broadcast to patrol units with no direction of travel.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "high-risk stop",
+  "time": "20:49",
+  "agency": "Bakersfield Police Department",
+  "area": "Quincy Street",
+  "notability": 3,
+  "disposition": "occupants would not cooperate",
+  "summary": "Units went emergency traffic to Quincy and Owens streets for a felony suspect vehicle, a 2002 Chevrolet pickup. The people inside would not cooperate with officers.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "outside fire",
+  "time": "21:05",
+  "agency": "Kern County Fire Department",
+  "area": "Ming Avenue",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent behind a business in the 1400 block of Ming Avenue for a small fire, reported as a homeless person's warming fire."
+ },
+ {
+  "type": "foot pursuit",
+  "time": "21:09",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "perimeter set; suspect seen on a roof",
+  "summary": "Officers chased someone seen on the roof of a house, who came down the left side and out through a backyard. Units moved in from the west and set a perimeter. No drone was available to help."
+ },
+ {
+  "type": "child welfare",
+  "time": "21:30",
+  "agency": "Bakersfield Police Department",
+  "area": "Oak Street",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "A caller reported a 1-year-old walking down the stairs of a rooming house without shoes and often left alone. The mother was described as known to use drugs.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "shots heard",
+  "time": "21:53",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "units checked",
+  "summary": "A unit asked dispatch to check whether there was a ShotSpotter activation, and an officer nearby reported hearing what sounded like 10 to 12 rounds or fireworks."
+ },
+ {
+  "type": "assault with a weapon",
+  "time": "21:55",
+  "agency": "Bakersfield Police Department",
+  "area": "Oak Street",
+  "notability": 4,
+  "disposition": "suspect outstanding, still holding the pipe",
+  "summary": "A caller reported a man had been attacked with a pipe in the 700 block of Oak Street. The suspect, a white man in his late 20s or early 30s in a black hooded sweatshirt and black pants, was still across the street at a bus stop with the pipe about 20 minutes later.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "threats",
+  "time": "22:09",
+  "agency": "Bakersfield Police Department",
+  "area": "Beardsley Avenue",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 200 block of Beardsley Avenue after a caller said a woman was threatening to burn down their home.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "animal call",
+  "time": "22:19",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "officer sent",
+  "summary": "An officer was sent to the playground at Westwood Park for a vicious dog."
+ },
+ {
+  "type": "medical aid",
+  "time": "22:39",
+  "agency": "Kern County Fire Department",
+  "area": "Moore Street",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to the 800 block of Moore Street for a person having trouble breathing.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "23:22",
+  "agency": "Kern County Fire Department",
+  "area": "Murdock Street",
+  "notability": 2,
+  "disposition": "rescue crew sent from Arvin",
+  "summary": "A rescue crew from Arvin was sent to the 1200 block of Murdock Street for a hemorrhage.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "haystack fire",
+  "time": "23:28",
+  "agency": "Kern County Fire Department",
+  "area": "Adobe Road",
+  "notability": 4,
+  "disposition": "exposure protected; water supply established",
+  "summary": "Crews worked a large haystack fire near Adobe Road and Brent Avenue. A pile of timber behind the stack was the remaining exposure, and the structure on the property was protected. A water tender was added, crews ran a supply line from a hydrant about 200 feet away, and access was made through a locked gate.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "suspicious person",
+  "time": "23:32",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "A caller reported a man in his 30s in all black, carrying bolt cutters, walking south from Monroe and Cedar streets."
+ },
+ {
+  "type": "disturbance",
+  "time": "23:45",
+  "agency": "Bakersfield Police Department",
+  "area": "Norris Road",
+  "notability": 3,
+  "disposition": "records check showed a restraining order",
+  "summary": "Officers went to the 500 block of north Norris Road for a man in a gray striped jacket throwing things around with a shovel. A records check showed he is named on a restraining order."
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "23:55",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "caller reported from another location",
+  "summary": "A caller watching ring cameras reported alarms going off and people they did not recognize at a vacant house that was still furnished inside."
+ },
+ {
+  "type": "911 hang-up",
+  "time": "00:09",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "call disconnected before transfer",
+  "summary": "A woman who called 911 and hung up said she was being followed near a convenience store. She gave no name or address, and the call dropped before it could be transferred."
+ },
+ {
+  "type": "attempted burglary",
+  "time": "00:10",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Castro Lane",
+  "notability": 3,
+  "disposition": "caller lost sight of the man",
+  "summary": "A caller watching a vacant house in the 700 block of Castro Lane saw a man in a black hooded sweatshirt and a hat who may have been trying to get in. The caller lost sight of him before deputies arrived.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "runaway juvenile",
+  "time": "00:43",
+  "agency": "Bakersfield Police Department",
+  "area": "McKee Road",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "A caller reported a 13-year-old girl had run away from home. She was last seen in a white hooded top and black pants near an elementary school in the 2900 block of McKee Road."
+ },
+ {
+  "type": "medical aid",
+  "time": "00:46",
+  "agency": "Kern County Fire Department",
+  "area": "Rhone Drive",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to the 7500 block of Rhone Drive for a person having trouble breathing.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "00:52",
+  "agency": "Bakersfield Police Department",
+  "area": "Panama Lane",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were asked to check on a man in his late 50s or early 60s sitting on the ground at the corner of Panama Lane and south Beale Avenue."
+ },
+ {
+  "type": "suspicious person",
+  "time": "01:02",
+  "agency": "Bakersfield Police Department",
+  "area": "Wible Road",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent for a man in a black and red striped shirt and black pants reported casing a construction site just southeast of Wible and Brundage."
+ },
+ {
+  "type": "medical aid",
+  "time": "01:11",
+  "agency": "Kern County Fire Department",
+  "area": "White Lane",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to a room in the 2700 block of White Lane for difficulty breathing."
+ },
+ {
+  "type": "welfare check",
+  "time": "01:14",
+  "agency": "Bakersfield Police Department",
+  "area": "Gosford Road",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "A caller from out of state asked officers to check on a man in the 2400 block of Gosford Road who had been giving away his belongings and fasting, and planned to send his son to live with his mother.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "01:19",
+  "agency": "Kern County Fire Department",
+  "area": "Chester Avenue",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to the 1400 block of South Chester Avenue for difficulty breathing."
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "01:20",
+  "agency": "Bakersfield Police Department",
+  "area": "Rustic Meadow Court",
+  "notability": 2,
+  "disposition": "no one seen",
+  "summary": "A caller in the 3400 block of Rustic Meadow Court said she heard footsteps outside her window but could not see anyone.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "01:20",
+  "agency": "Kern County Fire Department",
+  "area": "Madison Street",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to the 1700 block of Madison Street for a medical call.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "structure fire",
+  "time": "01:25",
+  "agency": "Kern County Fire Department",
+  "area": "Corrine Street",
+  "notability": 5,
+  "disposition": "crews committed; units held on the call",
+  "summary": "Two fire companies were sent to a structure fire in progress in the 4900 block of Corrine Street, and Metro units were asked to respond as well. Crews were still on the call more than 45 minutes later.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "01:32",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to an apartment complex for a possible stroke."
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "02:30",
+  "agency": "Bakersfield Police Department",
+  "area": "Truxtun Avenue",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to Truxtun Avenue for a report of juveniles going in and out of a bathroom."
+ },
+ {
+  "type": "disturbance",
+  "time": "02:36",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a disturbance involving a woman's ex-boyfriend, reported to possibly have a pocket knife in his waistband."
+ },
+ {
+  "type": "vegetation fire",
+  "time": "03:22",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "knocked down; one unit left to confirm",
+  "summary": "A small brush fire burned under the Oak Creek bridge on the west side of the tracks. Battalion 1 reported it out and left one unit to confirm it was fully extinguished."
+ },
+ {
+  "type": "welfare check",
+  "time": "03:42",
+  "agency": "Bakersfield Police Department",
+  "area": "Fuschia Court",
+  "notability": 4,
+  "disposition": "officers sent",
+  "summary": "Someone texted 911 from the 3700 block of Fuschia Court to report a woman screaming for help and crying. Officers were sent to check on her.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "04:10",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent for an unconscious patient."
+ },
+ {
+  "type": "medical aid",
+  "time": "04:18",
+  "agency": "Kern County Fire Department",
+  "area": "San Mateo Drive",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to the 5200 block of San Mateo Drive for a possible stroke.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "04:21",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent for a traumatic injury off Council Valley Road."
+ },
+ {
+  "type": "Traffic collision",
+  "time": "19:45",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Multi vehicle crash with major injury in east Bakersfield.",
+  "source": "crimeradar"
+ }
+]

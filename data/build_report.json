@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-27T01:22:31-07:00",
+ "built_at": "2026-10-27T01:55:00-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 1, column 0"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 4,
    "top_story": "Arvin weighs state bar complaint against former city attorney accused of overbilling taxpayers",
    "overnight_band": {
     "date": "2026-10-26",
@@ -158,13 +158,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 11,
+   "wind_mph": 9,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 48,
-   "wind_mph": 11,
+   "temp": 46,
+   "wind_mph": 9,
    "alerts": 0
   },
   "roads": {
@@ -201,8 +201,8 @@
    "isabella_af": 139376,
    "alpr_total": 459,
    "kern_fires": 0,
-   "aqi": 91,
-   "chp_week": 4
+   "aqi": 90,
+   "chp_week": 8
   },
   "letters": {
    "published": 1

@@ -960,6 +960,36 @@
   "details": ""
  },
  {
+  "log_id": "261027BF0210",
+  "time": "Oct 27 2026  3:56PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "E Brundage Ln / Fairfax Rd",
+  "area": "Bakersfield",
+  "lat": 35.354264,
+  "lon": -118.93204,
+  "details": ""
+ },
+ {
+  "log_id": "261027BF0214",
+  "time": "Oct 27 2026  4:05PM",
+  "type": "CFIRE-Car Fire",
+  "location": "Eb Sr58 Jwo Bena Rd",
+  "area": "Bakersfield",
+  "lat": 35.27,
+  "lon": -118.686667,
+  "details": ""
+ },
+ {
+  "log_id": "261027BF0231",
+  "time": "Oct 27 2026  4:52PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Olive Dr / Knudsen Dr",
+  "area": "Bakersfield",
+  "lat": 35.412244,
+  "lon": -119.058817,
+  "details": ""
+ },
+ {
   "log_id": "261027BF0034",
   "time": "Oct 27 2026  6:52AM",
   "type": "1182-Trfc Collision-No Inj",

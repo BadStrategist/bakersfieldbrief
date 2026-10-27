@@ -25,8 +25,8 @@ inputs:
     description: SHA256 of the .tar.xz
     default: 97ce978979194b5cf7e06a5e68020dbdaa7a4f3294c5452b6a1bc347100dbb79
   version:
-    description: What `ffmpeg -version` must print after "ffmpeg version "
-    default: n8.1.3-9-g29e619e767
+    description: What `ffmpeg -version` must print after "ffmpeg version " (BtbN appends the build date)
+    default: n8.1.3-9-g29e619e767-20260930
 
 runs:
   using: composite

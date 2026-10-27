@@ -9,7 +9,9 @@ re-transcribed to nothing, both were mixed anyway, and the reel was published at
 on its own was worth 5 points.
 
 No whisper and no network here. The tests that need real audio make it with
-ffmpeg and skip when ffmpeg is absent.
+ffmpeg. Without ffmpeg and ffprobe they skip on a dev machine and FAIL in CI:
+CI installs a pinned build (.github/actions/setup-ffmpeg), so a missing binary
+there is a broken run, never a quiet skip.
 """
 from __future__ import annotations
 
@@ -28,9 +30,20 @@ sys.path.insert(0, str(ROOT / "scripts" / "brief_reel"))
 import make_dispatch_audio as mda  # noqa: E402
 
 RAG = mda.RAG
-needs_ffmpeg = pytest.mark.skipif(shutil.which("ffmpeg") is None
-                                  or shutil.which("ffprobe") is None,
-                                  reason="ffmpeg not installed")
+_NO_FFMPEG = [t for t in ("ffmpeg", "ffprobe") if shutil.which(t) is None]
+
+
+@pytest.fixture
+def _ffmpeg():
+    if not _NO_FFMPEG:
+        return
+    missing = " and ".join(_NO_FFMPEG) + " not on PATH"
+    if os.environ.get("CI"):
+        pytest.fail(f"{missing}: CI installs a pinned build, so this run is broken", pytrace=False)
+    pytest.skip(missing)
+
+
+needs_ffmpeg = pytest.mark.usefixtures("_ffmpeg")
 
 ROBBERY = {"headline": "Incident reported on the 2600 block of Mount Vernon Avenue",
            "time": "8:19 PM",

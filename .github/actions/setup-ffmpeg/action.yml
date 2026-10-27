@@ -1,0 +1,91 @@
+name: Set up ffmpeg (pinned static build)
+description: >
+  Puts a pinned, checksum-verified static ffmpeg and ffprobe on PATH for the test suite
+  (the @needs_ffmpeg tests in tests/test_reel_audio.py; the build never calls ffmpeg).
+  Replaces `apt-get install ffmpeg`: the Ubuntu mirror held that step 14 to 36 minutes on
+  8 runs in October 2026, and 28 of the 31 minutes of the 2026-10-26 deploy run.
+  The archive is BtbN/FFmpeg-Builds, a dated autobuild tag. BtbN keeps month-end tags for
+  about two years (the oldest on 2026-10-26 was 2024-11-30) and prunes the daily ones, so
+  a pin is always a month-end tag. Its SHA256 is the digest GitHub publishes for the asset.
+  To move the pin: pick a newer month-end tag, take the asset's digest from
+  `gh api repos/BtbN/FFmpeg-Builds/releases/tags/<tag> --jq '.assets[] | .name + " " + .digest'`,
+  and change all four inputs together. The cache key carries the checksum, so a new pin
+  is a new cache entry, never a stale binary.
+  A failed install is one ::error annotation and a red step. There is no fallback to apt
+  and no skip.
+
+inputs:
+  tag:
+    description: BtbN release tag (a month-end autobuild)
+    default: autobuild-2026-09-30-13-08
+  asset:
+    description: Archive name, without .tar.xz
+    default: ffmpeg-n8.1.3-9-g29e619e767-linux64-gpl-8.1
+  sha256:
+    description: SHA256 of the .tar.xz
+    default: 97ce978979194b5cf7e06a5e68020dbdaa7a4f3294c5452b6a1bc347100dbb79
+  version:
+    description: What `ffmpeg -version` must print after "ffmpeg version "
+    default: n8.1.3-9-g29e619e767
+
+runs:
+  using: composite
+  steps:
+    - name: Restore the cached ffmpeg
+      id: restore
+      uses: actions/cache/restore@v4
+      with:
+        path: ~/.cache/bb-ffmpeg/${{ inputs.asset }}
+        key: ffmpeg-${{ inputs.asset }}-${{ inputs.sha256 }}
+
+    - name: Download and verify ffmpeg (cache miss)
+      if: steps.restore.outputs.cache-hit != 'true'
+      shell: bash
+      env:
+        URL: https://github.com/BtbN/FFmpeg-Builds/releases/download/${{ inputs.tag }}/${{ inputs.asset }}.tar.xz
+        ASSET: ${{ inputs.asset }}
+        SHA256: ${{ inputs.sha256 }}
+      run: |
+        set -uo pipefail
+        die() { echo "::error title=ffmpeg not installed::$1. The @needs_ffmpeg tests cannot run, so this run is red. Re-run the job; if it fails again, check $URL"; exit 1; }
+        dest="$HOME/.cache/bb-ffmpeg/$ASSET"
+        tmp="$RUNNER_TEMP/ffmpeg.tar.xz"
+        # GitHub's release CDN: 2 to 5 s for the 150 MB archive. Bounded so a stalled
+        # download can never hold a run the way the apt mirror did: at most 4 tries of 120 s.
+        curl -fsSL --retry 3 --retry-all-errors --retry-delay 5 --connect-timeout 20 --max-time 120 \
+          -o "$tmp" "$URL" || die "the download failed"
+        echo "$SHA256  $tmp" | sha256sum -c --status || die "the archive's SHA256 is $(sha256sum "$tmp" | cut -d' ' -f1), not the pinned $SHA256"
+        mkdir -p "$dest"
+        tar -xJf "$tmp" -C "$dest" --strip-components=2 "$ASSET/bin/ffmpeg" "$ASSET/bin/ffprobe" \
+          || die "the archive did not hold $ASSET/bin/ffmpeg and ffprobe"
+        rm -f "$tmp"
+
+    # Saved straight away, not in a post step: actions/cache only saves when the whole job
+    # succeeds, so one red test would have sent the next run back to the download.
+    - name: Cache ffmpeg
+      if: steps.restore.outputs.cache-hit != 'true'
+      uses: actions/cache/save@v4
+      with:
+        path: ~/.cache/bb-ffmpeg/${{ inputs.asset }}
+        key: ffmpeg-${{ inputs.asset }}-${{ inputs.sha256 }}
+
+    - name: Put ffmpeg on PATH and check it
+      shell: bash
+      env:
+        ASSET: ${{ inputs.asset }}
+        VERSION: ${{ inputs.version }}
+      run: |
+        set -uo pipefail
+        die() { echo "::error title=ffmpeg not installed::$1. The @needs_ffmpeg tests cannot run, so this run is red."; exit 1; }
+        bin="$HOME/.cache/bb-ffmpeg/$ASSET"
+        got=$("$bin/ffmpeg" -version 2>&1) || die "$bin/ffmpeg does not run: ${got:-no output}"
+        got=${got%%$'\n'*}
+        "$bin/ffprobe" -version >/dev/null 2>&1 || die "$bin/ffprobe does not run"
+        [ "$got" = "${got#ffmpeg version $VERSION }" ] && die "ffmpeg reports '$got', not the pinned $VERSION"
+        # what the reel scripts encode with: the soundtrack (libmp3lame, pcm_s16le) and the video (libx264, aac)
+        enc=$("$bin/ffmpeg" -hide_banner -encoders 2>/dev/null)
+        for e in libmp3lame pcm_s16le libx264 aac; do
+          grep -qE "^ [A-Z.]{6} $e( |$)" <<<"$enc" || die "this build has no $e encoder"
+        done
+        echo "$bin" >> "$GITHUB_PATH"
+        echo "$got"

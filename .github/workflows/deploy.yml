@@ -33,15 +33,18 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: |
-          pip install -q -r requirements.txt
-          # same as daily.yml: the test suite below runs against the same tools it has there
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+        run: pip install -q -r requirements.txt
 
       - name: Build site (no AI writer)
         id: build
         # --no-llm: today's brief is read from data/briefs/ as the 6 AM run committed it.
         run: python build/build_all.py --no-llm
+
+      # Same as daily.yml: the test suite below runs against the same pinned ffmpeg. A failed
+      # install fails here, so the tests and the deploy do not run.
+      - name: Set up ffmpeg (pinned static build)
+        id: ffmpeg
+        uses: ./.github/actions/setup-ffmpeg
 
       - name: Test suite (hard gate before the deploy)
         id: tests

@@ -69,13 +69,7 @@ jobs:
           echo "Pacific hour is $H (LLM build at 6, or 7-9 with no brief yet)"
 
       - name: Install dependencies
-        run: |
-          pip install -q -r requirements.txt
-          # brief_reel/render_reel.py needs ffmpeg (raw-frame pipe + audio
-          # mix); the runner image does NOT ship it — without this the reel
-          # build crashes and the daily post silently falls back to a photo.
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
-          ffmpeg -version | head -1
+        run: pip install -q -r requirements.txt
 
       - name: Build site (fetch sources → bake static HTML)
         id: build
@@ -97,6 +91,16 @@ jobs:
           else
             echo "no overnight report for $TODAY — ping skipped (alert is the correct signal)"
           fi
+
+      # ffmpeg is for the test suite only (the @needs_ffmpeg tests in tests/test_reel_audio.py):
+      # the build never calls it, and the reel is rendered on the box. A pinned static build
+      # from GitHub's own release CDN and cache, not apt: the Ubuntu mirror held the old apt
+      # step 14 to 36 minutes on 8 runs in October 2026. Here, after the build, so a failed
+      # install can never hold the build, the artifact push or the deploy. It fails the step
+      # with one annotation, the test suite does not run, and the run is red.
+      - name: Set up ffmpeg (pinned static build)
+        id: ffmpeg
+        uses: ./.github/actions/setup-ffmpeg
 
       # Test suite FIRST: it used to sit after the artifact push, so a broken build had
       # already pushed a commit to main before the "gate" ran. A failure stops the push.

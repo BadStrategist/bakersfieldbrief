@@ -21,7 +21,7 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "Is closed to southbound traffic from 5.5 mi south to 0.5 mi south of the Yolo/Sacramento Co line from 2100 hrs each night to 0400 hrs each morning Monday thru Thursday thru 10/29/26 - Due to maintenance - A detour is available There is a dense fog advisory in effect from the Yolo/Colusa Co line to the Colusa/Glenn Co line - Motorists are advised to drive with caution",
+     "text": "Is closed to southbound traffic from 5.5 mi south to 0.5 mi south of the Yolo/Sacramento Co line from 2100 hrs each night to 0400 hrs each morning Monday thru Thursday thru 10/29/26 - Due to maintenance - A detour is available",
      "status": "CLOSED"
     }
    ],
@@ -54,19 +54,11 @@
       "where": "the Northern California area",
       "text": "Is closed to southbound traffic from 5.5 mi south to 0.5 mi south of the Yolo/Sacramento Co line from 2100 hrs each night to 0400 hrs each morning Monday thru Thursday thru 10/29/26 - Due to maintenance - A detour is...",
       "region": "NORTHERN CALIFORNIA"
-     },
-     {
-      "status": "RESTRICTIONS",
-      "place": "",
-      "county": "",
-      "where": "the Northern California area",
-      "text": "There is a dense fog advisory in effect from the Yolo/Colusa Co line to the Colusa/Glenn Co line - Motorists are advised to drive with caution",
-      "region": "NORTHERN CALIFORNIA"
      }
     ]
    },
-   "reported_as_of": "Tuesday, October 27th, 2026 at 08:45 AM",
-   "hash": "f08c91e494"
+   "reported_as_of": "Tuesday, October 27th, 2026 at 11:58 AM",
+   "hash": "ae4ed26569"
   },
   {
    "number": "58",
@@ -88,7 +80,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Tuesday, October 27th, 2026 at 08:45 AM",
+   "reported_as_of": "Tuesday, October 27th, 2026 at 11:58 AM",
    "hash": "5374f203ec"
   },
   {
@@ -133,7 +125,7 @@
      }
     ]
    },
-   "reported_as_of": "Tuesday, October 27th, 2026 at 08:45 AM",
+   "reported_as_of": "Tuesday, October 27th, 2026 at 11:58 AM",
    "hash": "5cd2d4c4c4"
   }
  ],

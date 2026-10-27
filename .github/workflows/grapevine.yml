@@ -10,7 +10,10 @@ on:
     # workflow's 6 AM brief build waiting behind it.
     # Minute 37 for the same reason the daily workflow moved to minute 7: :00 and :30 are
     # the slots GitHub starts latest.
-    - cron: "37 13,20,2 * * *"
+    # 13 UTC dropped 2026-10-26 for Actions minutes: this job is the same build_all --no-llm
+    # as daily.yml, which already builds at 13:07 and 14:07 UTC, so the Caltrans reading at
+    # 6 AM Pacific comes from those. 20 and 2 UTC stay: daily.yml has no slot near them.
+    - cron: "37 20,2 * * *"
     # SEASONAL — hourly, November through March (snow season on Tejon Pass).
     # To enable, uncomment the line below (and optionally comment the 3x-daily
     # line above; the two overlap harmlessly if both are active, at the cost

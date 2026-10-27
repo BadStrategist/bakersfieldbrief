@@ -63,10 +63,19 @@ jobs:
           # brief is cached, later runs reuse it and build LLM-free.
           D=$(python -c "from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('America/Los_Angeles')).strftime('%Y-%m-%d'))")
           if [ "$H" = "6" ] || [ "${{ github.event_name }}" != "schedule" ] || { [ "$H" -ge 7 ] && [ "$H" -le 9 ] && [ ! -f "data/briefs/$D.json" ]; }; then
-            echo "llm=1" >> "$GITHUB_OUTPUT"
+            LLM=1
           else
-            echo "llm=0" >> "$GITHUB_OUTPUT"
+            LLM=0
           fi
+          echo "llm=$LLM" >> "$GITHUB_OUTPUT"
+          # The test suite (and ffmpeg, which only the suite uses) runs on the same runs as
+          # the AI writer: the 6 AM brief, every push and dispatch, the 7-9 AM catch-up. The
+          # other scheduled slots are condition refreshes. Tests never withheld their push,
+          # deploy or send (all three carry !cancelled()), so on a refresh they were only an
+          # early warning, at about 2 billed minutes a slot. Cut 2026-10-26 to fit a private
+          # repo in the 2,000 free minutes. A clock-dependent failure now shows on the next
+          # 6 AM run, not the slot where it first happened.
+          echo "tests=$LLM" >> "$GITHUB_OUTPUT"
           # The 7:00 PT run used to also carry a 25-minute FB-post retry: it
           # waited for the overnight report to land before posting. Social posting
           # moved to the local KO job (see the note at the end of this file), so
@@ -83,8 +92,11 @@ jobs:
           # 8 runs in October 2026 (about 150 billed minutes; the 10-23 and 10-26
           # morning push builds finished after the 08:10 email watchdog). Normal is
           # under 40 s. Past the cap the run goes on without ffmpeg, those tests
-          # skip, and the run carries a warning.
-          if sudo timeout -k 10 180 bash -c 'apt-get update -qq && apt-get install -y -qq ffmpeg' && ffmpeg -version >/dev/null 2>&1; then
+          # skip, and the run carries a warning. Not installed at all on a run
+          # that skips the suite (tests=0 in the gate above).
+          if [ "${{ steps.gate.outputs.tests }}" != "1" ]; then
+            echo "condition refresh: no test suite on this run, ffmpeg not installed"
+          elif sudo timeout -k 10 180 bash -c 'apt-get update -qq && apt-get install -y -qq ffmpeg' && ffmpeg -version >/dev/null 2>&1; then
             ffmpeg -version | head -1
           else
             echo "::warning title=ffmpeg not installed::apt did not finish within 180 s; the ffmpeg tests in tests/test_reel_audio.py skip on this run"
@@ -123,8 +135,11 @@ jobs:
       # social gate refused both slots, and the day posted nothing with every alarm
       # green. The push now runs whenever the build succeeded, and the run still goes
       # red, which is the signal that was missing.
+      # Only on tests=1 runs (see the gate). Skipped, its outcome is 'skipped', never
+      # 'success': the ALPR_ONLY test in the Discord step reads "!= 'failure'" for that reason.
       - name: Test suite (hard gate before the artifact push)
         id: tests
+        if: steps.gate.outputs.tests == '1'
         run: python -m pytest -q -o addopts="" --tb=short
 
       # Automatic pusher: commit the generated artifacts (email/, drafts/, data/)
@@ -269,7 +284,7 @@ jobs:
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           ALPR_OUTCOME: ${{ steps.alpr_fresh.outcome }}
           SEND_OUTCOME: ${{ steps.send.outcome }}
-          ALPR_ONLY: ${{ steps.alpr_fresh.outcome == 'failure' && steps.tests.outcome == 'success' && steps.push.outcome == 'success' && steps.pages_secrets.outcome == 'success' && steps.deploy.outcome == 'success' && steps.send.outcome != 'failure' }}
+          ALPR_ONLY: ${{ steps.alpr_fresh.outcome == 'failure' && steps.tests.outcome != 'failure' && steps.push.outcome == 'success' && steps.pages_secrets.outcome == 'success' && steps.deploy.outcome == 'success' && steps.send.outcome != 'failure' }}
         run: |
           if [ -z "$DISCORD_WEBHOOK_URL" ]; then
             echo "!! DISCORD_WEBHOOK_URL secret not set - the run failed (alpr=$ALPR_OUTCOME send=$SEND_OUTCOME) and NO Discord alert could be sent. See $RUN_URL"

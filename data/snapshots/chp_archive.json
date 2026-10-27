@@ -958,5 +958,35 @@
   "lat": 35.265234,
   "lon": -119.024794,
   "details": ""
+ },
+ {
+  "log_id": "261027BF0034",
+  "time": "Oct 27 2026  6:52AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr155 / Sawmill Rd",
+  "area": "Bakersfield",
+  "lat": 35.680046,
+  "lon": -118.470078,
+  "details": ""
+ },
+ {
+  "log_id": "261027BF0051",
+  "time": "Oct 27 2026  7:43AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Coffee Rd / Snow Rd",
+  "area": "Bakersfield",
+  "lat": 35.426968,
+  "lon": -119.092297,
+  "details": ""
+ },
+ {
+  "log_id": "261027BF0055",
+  "time": "Oct 27 2026  8:02AM",
+  "type": "CZP-Assist with Construction",
+  "location": "Nb I5 At Fort Tejon Rd",
+  "area": "Fort Tejon",
+  "lat": 34.876944,
+  "lon": -118.894722,
+  "details": ""
  }
 ]

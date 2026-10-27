@@ -1,0 +1,98 @@
+name: ffmpeg verify (temporary, ffmpeg-static branch only)
+
+# Measures the ffmpeg install candidates on a real runner. Attempt 1 is cold, a re-run is
+# warm. Removed from the branch once measured; it never runs on main.
+on:
+  push:
+    branches: [ffmpeg-static]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pinned:
+    name: pinned static build (the fix)
+    runs-on: ubuntu-latest
+    env:
+      AIRNOW_API_KEY: ${{ secrets.AIRNOW_API_KEY }}
+      ALERTLINE_API_KEY: ${{ secrets.ALERTLINE_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q -r requirements.txt
+      - name: Set up ffmpeg (pinned static build)
+        id: ffmpeg
+        uses: ./.github/actions/setup-ffmpeg
+      - run: ffmpeg -version | head -1; ffprobe -version | head -1; command -v ffmpeg ffprobe
+      - name: Reel tests, network off
+        run: |
+          sudo unshare -n -- sudo -u "$USER" env "PATH=$PATH" CI=true \
+            python -m pytest tests/test_reel_audio.py -q -o addopts="" --tb=short --junitxml=junit-reel.xml
+      - name: Build (no AI writer), as deploy.yml
+        run: python build/build_all.py --no-llm
+      - name: Full test suite, as deploy.yml
+        run: python -m pytest -q -o addopts="" --tb=short --junitxml=junit-full.xml
+      - name: JUnit counts for tests/test_reel_audio.py
+        if: ${{ !cancelled() }}
+        run: python -I .github/verify_junit.py junit-reel.xml junit-full.xml
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: junit-pinned
+          path: junit-*.xml
+
+  imageio:
+    name: imageio-ffmpeg (candidate 2)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q -r requirements.txt
+      - name: Install imageio-ffmpeg 0.6.0
+        run: |
+          pip install -q imageio-ffmpeg==0.6.0
+          exe=$(python -c "import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())")
+          mkdir -p "$RUNNER_TEMP/iio" && ln -sf "$exe" "$RUNNER_TEMP/iio/ffmpeg" && echo "$RUNNER_TEMP/iio" >> "$GITHUB_PATH"
+          ls -la "$(dirname "$exe")"
+      - run: |
+          ffmpeg -version | head -1
+          command -v ffprobe || echo "NO ffprobe in imageio-ffmpeg"
+          for e in libmp3lame pcm_s16le libx264 aac; do ffmpeg -hide_banner -encoders 2>/dev/null | grep -qE "^ [A-Z.]{6} $e( |$)" && echo "has $e" || echo "MISSING $e"; done
+      - name: Reel tests
+        run: CI=true python -m pytest tests/test_reel_audio.py -q -o addopts="" --tb=line --junitxml=junit-reel.xml
+      - if: ${{ !cancelled() }}
+        run: python -I .github/verify_junit.py junit-reel.xml
+
+  apt_cache:
+    name: cache-apt-pkgs-action (candidate 3)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -q -r requirements.txt
+      - uses: awalsh128/cache-apt-pkgs-action@553a35bb8ebd9fcabcb1c9451aa4c98e1b4ca8a9 # v1.6.3
+        with:
+          packages: ffmpeg
+          version: bb-verify-1
+      - run: ffmpeg -version | head -1
+      - name: Reel tests
+        run: CI=true python -m pytest tests/test_reel_audio.py -q -o addopts="" --tb=line --junitxml=junit-reel.xml
+      - if: ${{ !cancelled() }}
+        run: python -I .github/verify_junit.py junit-reel.xml
+
+  apt_plain:
+    name: plain apt (the old step, baseline)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    timeout-minutes: 20
+    steps:
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg && ffmpeg -version | head -1

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-28T11:49:01-07:00",
+ "built_at": "2026-10-28T12:05:44-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "Arvin City Council votes to file formal complaint against former city attorney",
    "overnight_band": {
     "date": "2026-10-28",

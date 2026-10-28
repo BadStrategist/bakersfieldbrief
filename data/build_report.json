@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-28T12:33:03-07:00",
+ "built_at": "2026-10-28T13:14:38-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 4656, column 153"
   },
   "isabella": {
    "ok": true,
@@ -162,7 +162,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 59,
+   "temp": 61,
    "wind_mph": 6,
    "alerts": 0
   },

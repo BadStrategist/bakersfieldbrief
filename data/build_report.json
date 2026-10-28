@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-28T05:44:18-07:00",
+ "built_at": "2026-10-28T07:46:13-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 2829, column 14"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -68,16 +68,16 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 63,
+  "brief_words": 1261,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 5,
    "top_story": "Arvin City Council votes to file formal complaint against former city attorney",
    "overnight_band": {
-    "date": "2026-10-27",
-    "count": 45,
+    "date": "2026-10-28",
+    "count": 61,
     "chips": [
      [
       "Weapons and assaults",
@@ -85,42 +85,41 @@
      ],
      [
       "Fires",
-      4
+      6
      ],
      [
       "Crashes and traffic",
-      2
+      7
      ],
      [
       "Medical and overdose",
-      14
+      23
      ],
      [
       "Missing persons",
-      2
+      1
      ],
      [
       "Disturbances and welfare",
-      7
-     ],
-     [
-      "Burglary and theft",
-      2
+      12
      ],
      [
       "Suspicious activity",
-      7
+      3
+     ],
+     [
+      "Alarms",
+      3
      ],
      [
       "Other calls",
-      5
+      4
      ]
     ],
-    "other": "1 high-risk stop, 1 foot pursuit, 1 animal call, 1 haystack fire, 1 911 hang-up",
+    "other": "1 911 hang-up, 1 narcotics, 1 fuel leak, 1 incident",
     "unmapped": [
-     "high-risk stop",
-     "animal call",
-     "haystack fire"
+     "narcotics",
+     "fuel leak"
     ]
    },
    "archive": "2026-10-28"
@@ -158,13 +157,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 5,
+   "wind_mph": 1,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 41,
-   "wind_mph": 5,
+   "temp": 47,
+   "wind_mph": 1,
    "alerts": 0
   },
   "roads": {
@@ -201,17 +200,17 @@
    "isabella_af": 139218,
    "alpr_total": 459,
    "kern_fires": 0,
-   "aqi": 68,
-   "chp_week": 17
+   "aqi": 67,
+   "chp_week": 22
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 77
+   "published": 78
   },
   "map": {
-   "dots": 42
+   "dots": 44
   },
   "sunday_read": {
    "topic": "Public safety",

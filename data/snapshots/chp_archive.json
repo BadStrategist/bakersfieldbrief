@@ -1,115 +1,5 @@
 [
  {
-  "log_id": "261020BF0267",
-  "time": "Oct 20 2026  4:35PM",
-  "type": "1013-Road/Weather Conditions",
-  "location": "I5 N / Grapevine Rd E",
-  "area": "Fort Tejon",
-  "lat": 34.939285,
-  "lon": -118.929655,
-  "details": ""
- },
- {
-  "log_id": "261020BF0026",
-  "time": "Oct 20 2026  5:00AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr99 S / Panama Ln Ofr",
-  "area": "Bakersfield",
-  "lat": 35.299222,
-  "lon": -119.031487,
-  "details": ""
- },
- {
-  "log_id": "261020BF0042",
-  "time": "Oct 20 2026  7:01AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Pond Rd / Sr43",
-  "area": "Bakersfield",
-  "lat": 35.71767,
-  "lon": -119.33044,
-  "details": ""
- },
- {
-  "log_id": "261020BF0044",
-  "time": "Oct 20 2026  7:08AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sb Sr99 Jno Whisler Rd",
-  "area": "Bakersfield",
-  "lat": 35.646431,
-  "lon": -119.221801,
-  "details": ""
- },
- {
-  "log_id": "261020BF0329",
-  "time": "Oct 20 2026  7:13PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Sb Sr99 At South Union Ave",
-  "area": "Bakersfield",
-  "lat": 35.1725,
-  "lon": -119.004167,
-  "details": ""
- },
- {
-  "log_id": "261020BF0052",
-  "time": "Oct 20 2026  7:51AM",
-  "type": "CZP-Assist with Construction",
-  "location": "NB I5 at Fort Tejon Rd",
-  "area": "Fort Tejon",
-  "lat": 34.876944,
-  "lon": -118.894722,
-  "details": ""
- },
- {
-  "log_id": "261020BF0363",
-  "time": "Oct 20 2026  8:22PM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Nb I5 At Fort Tejon Rd",
-  "area": "Fort Tejon",
-  "lat": 34.876944,
-  "lon": -118.894722,
-  "details": ""
- },
- {
-  "log_id": "261020BF0382",
-  "time": "Oct 20 2026  9:09PM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "Sr178 / M St",
-  "area": "Bakersfield",
-  "lat": 35.380034,
-  "lon": -119.015309,
-  "details": ""
- },
- {
-  "log_id": "261020BF0387",
-  "time": "Oct 20 2026  9:26PM",
-  "type": "FIRE-Report of Fire",
-  "location": "Alfred Harrell Hwy / Sr178",
-  "area": "Bakersfield",
-  "lat": 35.407579,
-  "lon": -118.859633,
-  "details": ""
- },
- {
-  "log_id": "261020BF0002",
-  "time": "Oct 20 2026 12:00AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "261020BF0004",
-  "time": "Oct 20 2026 12:45AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "3821 Eucalyptus Dr",
-  "area": "Bakersfield",
-  "lat": 35.365166,
-  "lon": -118.932993,
-  "details": ""
- },
- {
   "log_id": "261021BF0134",
   "time": "Oct 21 2026  1:29PM",
   "type": "20002-Hit and Run No Injuries",
@@ -1047,6 +937,56 @@
   "area": "Bakersfield",
   "lat": 35.396881,
   "lon": -118.913281,
+  "details": ""
+ },
+ {
+  "log_id": "261028BF0012",
+  "time": "Oct 28 2026  2:08AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261028BF0030",
+  "time": "Oct 28 2026  6:13AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261028BF0037",
+  "time": "Oct 28 2026  6:38AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "Sr33 / Sr166",
+  "area": "BF",
+  "lat": 35.058432,
+  "lon": -119.401058,
+  "details": ""
+ },
+ {
+  "log_id": "261028BF0040",
+  "time": "Oct 28 2026  7:05AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sr46 / Kecks Rd",
+  "area": "Buttonwillow",
+  "lat": 35.670986,
+  "lon": -120.082271,
+  "details": ""
+ },
+ {
+  "log_id": "261028BF0052",
+  "time": "Oct 28 2026  7:35AM",
+  "type": "CZP-Assist with Construction",
+  "location": "Lebec",
+  "area": "Fort Tejon",
+  "lat": 34.821746,
+  "lon": -118.8838,
   "details": ""
  }
 ]

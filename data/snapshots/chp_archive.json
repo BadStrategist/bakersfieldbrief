@@ -982,11 +982,11 @@
  {
   "log_id": "261028BF0052",
   "time": "Oct 28 2026  7:35AM",
-  "type": "CZP-Assist with Construction",
-  "location": "Lebec",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "NB I5 JNO Lebec Rd",
   "area": "Fort Tejon",
-  "lat": 34.821746,
-  "lon": -118.8838,
+  "lat": 34.836389,
+  "lon": -118.862778,
   "details": ""
  },
  {
@@ -997,6 +997,26 @@
   "area": "Bakersfield",
   "lat": 35.378659,
   "lon": -119.044311,
+  "details": ""
+ },
+ {
+  "log_id": "261028BF0136",
+  "time": "Oct 28 2026 11:13AM",
+  "type": "1125-Traffic Hazard",
+  "location": "608 Philippine St",
+  "area": "Buttonwillow",
+  "lat": 35.135089,
+  "lon": -119.473134,
+  "details": ""
+ },
+ {
+  "log_id": "261028BF0143",
+  "time": "Oct 28 2026 11:20AM",
+  "type": "1180-Trfc Collision-Major Inj",
+  "location": "5801 Olive Dr",
+  "area": "Bakersfield",
+  "lat": 35.412266,
+  "lon": -119.068275,
   "details": ""
  }
 ]

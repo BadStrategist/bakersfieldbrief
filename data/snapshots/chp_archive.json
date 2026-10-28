@@ -988,5 +988,15 @@
   "lat": 34.821746,
   "lon": -118.8838,
   "details": ""
+ },
+ {
+  "log_id": "261028BF0056",
+  "time": "Oct 28 2026  7:48AM",
+  "type": "FIRE-Report of Fire",
+  "location": "Sr99 N / 24th St Ofr",
+  "area": "Bakersfield",
+  "lat": 35.378659,
+  "lon": -119.044311,
+  "details": ""
  }
 ]

@@ -1,0 +1,564 @@
+[
+ {
+  "type": "suspicious person",
+  "time": "19:00",
+  "agency": "Bakersfield Police Department",
+  "area": "Taft Highway",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 2500 block of Taft Highway for a man in a black shirt and pants reported to be lying on the sidewalk in front of a business and exposing himself."
+ },
+ {
+  "type": "disturbance",
+  "time": "19:09",
+  "agency": "Bakersfield Police Department",
+  "area": "Main Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a phone store in the 10300 block of Main Street for a verbal disturbance with a customer, and a second caller reported the same thing."
+ },
+ {
+  "type": "person with a gun",
+  "time": "19:17",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 4,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a mobile home park at 7:17 p.m. for a 15-year-old in a white shirt and black pants reported to be holding a gray handgun."
+ },
+ {
+  "type": "welfare check",
+  "time": "19:22",
+  "agency": "Bakersfield Police Department",
+  "area": "Hermosa Drive",
+  "notability": 3,
+  "disposition": "subject had left and was hiding",
+  "summary": "Officers checked on a man in the 200 block of Hermosa Drive who said his roommates were forcing him to take medicine the hospital prescribed or leave the residence. He ran from the location and was hiding.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "vehicle fire",
+  "time": "19:32",
+  "agency": "Kern County Fire Department",
+  "area": "Inyo Street",
+  "notability": 4,
+  "disposition": "companies sent; lane blocked",
+  "summary": "A semi was reported on fire at Inyo Street and East 19th Street. Engines, a truck and a battalion chief were sent, and the number 2 lane was blocked.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "19:41",
+  "agency": "Kern County Fire Department",
+  "area": "R Street",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to the 500 block of R Street for a medical call, with units asked to approach from a distance.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "19:48",
+  "agency": "Bakersfield Police Department",
+  "area": "Bernard Street",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 300 block of Bernard Street for two juveniles reported to be with a woman in her 40s who buys them alcohol.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "attempted entry",
+  "time": "20:40",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "A woman on a bicycle in a black hoodie and reddish leggings was reported to have got into an apartment through a window."
+ },
+ {
+  "type": "robbery",
+  "time": "21:08",
+  "agency": "CHP",
+  "area": "",
+  "notability": 4,
+  "disposition": "officer flagged down",
+  "summary": "A driver flagged down an officer on northbound Interstate 5 north of Fort Tejon and said a man had tried to force him out of his vehicle and take his keys and wallet."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "21:12",
+  "agency": "Kern County Fire Department",
+  "area": "Hageman Road",
+  "notability": 4,
+  "disposition": "companies sent; lane blocked",
+  "summary": "A vehicle was reported fully engulfed south of Hageman Road and Brundage Lane, blocking the northbound number 1 lane, with a crash reported at the same spot."
+ },
+ {
+  "type": "fire alarm",
+  "time": "21:25",
+  "agency": "Kern County Fire Department",
+  "area": "Sierra Summit Avenue",
+  "notability": 2,
+  "disposition": "companies sent",
+  "summary": "A fire alarm came in for a residence in the 1300 block of Sierra Summit Avenue.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "21:32",
+  "agency": "Kern County Fire Department",
+  "area": "Stockdale Highway",
+  "notability": 3,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to the 11400 block of Stockdale Highway for traumatic injuries."
+ },
+ {
+  "type": "suspicious person",
+  "time": "21:42",
+  "agency": "Bakersfield Police Department",
+  "area": "Garnet Court",
+  "notability": 3,
+  "disposition": "callers stayed on scene",
+  "summary": "A man in a white shirt and black pants who a caller said had grabbed at his waistband was reported in the 4500 block of Garnet Court, and the callers stayed on scene.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "collision",
+  "time": "21:56",
+  "agency": "CHP",
+  "area": "",
+  "notability": 3,
+  "disposition": "one driver asked for an ambulance; the other declined",
+  "summary": "Two vehicles crashed just before 10 p.m. The driver who was rear-ended asked for an ambulance for pain, and the driver whose brakes failed and ran into him declined medical treatment."
+ },
+ {
+  "type": "collision",
+  "time": "21:58",
+  "agency": "CHP",
+  "area": "",
+  "notability": 5,
+  "disposition": "driver extricated; hard closure of the lanes",
+  "summary": "A semi rear-ended another semi on northbound Interstate 5 half a mile south of the Grapevine. One driver was pinned and firefighters freed him from the tractor-trailer, and crews asked for a hard closure of the lanes."
+ },
+ {
+  "type": "medical aid",
+  "time": "22:00",
+  "agency": "Kern County Fire Department",
+  "area": "East Brundage Lane",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to the Navigation Center in the 1900 block of East Brundage Lane."
+ },
+ {
+  "type": "outside fire",
+  "time": "22:06",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "company sent",
+  "summary": "A company was sent to an outside fire just west of Road 28 and south of the county line."
+ },
+ {
+  "type": "street racing",
+  "time": "22:31",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "callers reported",
+  "summary": "A caller at a home improvement store reported vehicles doing donuts in the parking lot and blocking an employee's vehicle, and said one of them nearly hit an employee."
+ },
+ {
+  "type": "welfare check",
+  "time": "22:39",
+  "agency": "Bakersfield Police Department",
+  "area": "Country Club Drive",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 1500 block of Country Club Drive for a man diagnosed as schizophrenic and bipolar who had stopped taking his medication.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "22:41",
+  "agency": "Kern County Fire Department",
+  "area": "South Chester Avenue",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to an apartment in the 3600 block of South Chester Avenue for an ill patient.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "man down",
+  "time": "22:58",
+  "agency": "Kern County Fire Department",
+  "area": "Mount Vernon Avenue",
+  "notability": 3,
+  "disposition": "medical staged",
+  "summary": "A man down near a shopping cart was reported at Mount Vernon Avenue and Height Street, and medical units staged nearby."
+ },
+ {
+  "type": "medical aid",
+  "time": "23:05",
+  "agency": "Kern County Fire Department",
+  "area": "Decatur Street",
+  "notability": 2,
+  "disposition": "crew sent; sheriff's unit pending",
+  "summary": "A crew was sent to the 400 block of Decatur Street for an unknown medical aid with a sheriff's unit pending.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "23:06",
+  "agency": "Bakersfield Police Department",
+  "area": "Dr Martin Luther King Jr Boulevard",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 3300 block of Dr. Martin Luther King Jr. Boulevard after a woman in a black puffer jacket threw a baby bottle at a man."
+ },
+ {
+  "type": "man down",
+  "time": "23:26",
+  "agency": "Bakersfield Police Department",
+  "area": "Norris Road",
+  "notability": 3,
+  "disposition": "medical cleared to respond",
+  "summary": "A man in his 30s was reported lying in the roadway on Norris Road, not moving, with his breathing unknown, and medical units were cleared to respond."
+ },
+ {
+  "type": "assault",
+  "time": "23:38",
+  "agency": "CHP",
+  "area": "",
+  "notability": 4,
+  "disposition": "officers sent",
+  "summary": "A man got out of a white Ford F-150 stopped in the center divide on Interstate 5 and was reported to be punching the male driver. He may have crossed to the southbound side on foot, and a woman about 20 to 30 years old was with the truck."
+ },
+ {
+  "type": "search for a suspect",
+  "time": "23:41",
+  "agency": "Bakersfield Police Department",
+  "area": "Quinn Road",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 19400 block of Quinn Road to locate a subject.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "reckless driver",
+  "time": "23:53",
+  "agency": "CHP",
+  "area": "",
+  "notability": 2,
+  "disposition": "units advised",
+  "summary": "A white box truck was reported at high speed on southbound Interstate 5, brake checking and flashing its high beams near Old River."
+ },
+ {
+  "type": "disturbance",
+  "time": "23:54",
+  "agency": "Bakersfield Police Department",
+  "area": "Altus Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 1000 block of Altus Street for a disturbance.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "23:56",
+  "agency": "Kern County Fire Department",
+  "area": "Claire Street",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to the 2400 block of Claire Street for difficulty breathing.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "cardiac arrest",
+  "time": "00:28",
+  "agency": "Kern County Fire Department",
+  "area": "E Street",
+  "notability": 4,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to a unit on E Street for a cardiac arrest.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "00:31",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to a home for a patient who had fainted."
+ },
+ {
+  "type": "outside fire",
+  "time": "00:49",
+  "agency": "Kern County Fire Department",
+  "area": "North Chester Avenue",
+  "notability": 3,
+  "disposition": "company sent",
+  "summary": "An outside fire was reported on North Chester Avenue near a fast food restaurant that had burned before.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "commercial fire alarm",
+  "time": "00:56",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "nothing showing; light haze only",
+  "summary": "A full response went to a truck stop for a fire alarm with smoke reported from the restaurant area of the business. Crews found no fire, only a light haze, and confirmed that all occupants were out."
+ },
+ {
+  "type": "medical aid",
+  "time": "00:57",
+  "agency": "Kern County Fire Department",
+  "area": "Big Al Avenue",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to the 3500 block of Big Al Avenue for difficulty breathing.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "fire alarm",
+  "time": "01:16",
+  "agency": "Kern County Fire Department",
+  "area": "Sullivan Road",
+  "notability": 2,
+  "disposition": "engine canceled",
+  "summary": "A residential fire alarm came in for the 24700 block of Sullivan Road, and the engine was canceled once the alarm was confirmed.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "mental health",
+  "time": "01:48",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "crew sent; staged",
+  "summary": "A crew was sent to an apartment complex for a psych problem and asked to stage until officers arrived."
+ },
+ {
+  "type": "medical aid",
+  "time": "01:50",
+  "agency": "Kern County Fire Department",
+  "area": "Trailhead Street",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to the 5400 block of Trailhead Street for difficulty breathing.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "barricade",
+  "time": "01:55",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 5,
+  "disposition": "residents evacuated; entry team went in from the rear",
+  "summary": "Officers worked an apartment complex through the early morning. Residents of several units were brought out through a garage door at the rear of the building, an armored vehicle was moved into position in front, and the entry team came in from the back. Officers found bullet holes in the doorway of an upstairs unit."
+ },
+ {
+  "type": "outside fire",
+  "time": "02:02",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "one company handled it",
+  "summary": "A small outside fire was reported, and one company was able to handle it."
+ },
+ {
+  "type": "medical aid",
+  "time": "02:30",
+  "agency": "Kern County Fire Department",
+  "area": "East Roberts Lane",
+  "notability": 3,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to a mobile home park in the 400 block of East Roberts Lane for a stroke patient.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "03:33",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent for a patient with difficulty breathing."
+ },
+ {
+  "type": "medical aid",
+  "time": "03:56",
+  "agency": "Kern County Fire Department",
+  "area": "White Lane",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to an apartment in the 4300 block of White Lane for difficulty breathing."
+ },
+ {
+  "type": "medical aid",
+  "time": "03:58",
+  "agency": "Kern County Fire Department",
+  "area": "Mable Avenue",
+  "notability": 2,
+  "disposition": "crew sent with a translator",
+  "summary": "A crew was sent to an apartment in the 600 block of Mable Avenue for an unknown medical aid and asked for a translator.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "shots heard",
+  "time": "04:33",
+  "agency": "Bakersfield Police Department",
+  "area": "Laurel Park Avenue",
+  "notability": 4,
+  "disposition": "reports taken; no further information",
+  "summary": "Two reports of shots heard came in at 4:33 a.m., six to eight rounds in the 10800 block of Royal Ascot Avenue and about 12 rounds in the 10000 block of Laurel Park Avenue.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "outside fire",
+  "time": "04:43",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "company sent",
+  "summary": "A company was sent to an outside fire just north of the 14800 block of Woodward Avenue."
+ },
+ {
+  "type": "medical aid",
+  "time": "05:16",
+  "agency": "Kern County Fire Department",
+  "area": "Westwold Drive",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to an apartment at a senior living community in the 8200 block of Westwold Drive.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "outside fire",
+  "time": "05:30",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "crews split up to search the tracks",
+  "summary": "Crews were sent to look for a fire reported near the railroad tracks off Caliente-Bodfish Road and split up to search along the tracks."
+ },
+ {
+  "type": "welfare check",
+  "time": "05:31",
+  "agency": "CHP",
+  "area": "Sandrini Road",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to check on someone on foot near Sandrini Road and Highway 99 on the east side, wearing a red jacket and black pants."
+ },
+ {
+  "type": "commercial fire alarm",
+  "time": "05:32",
+  "agency": "Kern County Fire Department",
+  "area": "Rosedale Highway",
+  "notability": 2,
+  "disposition": "truck sent",
+  "summary": "A truck was sent to a commercial fire alarm in the 9100 block of Rosedale Highway."
+ },
+ {
+  "type": "medical aid",
+  "time": "05:42",
+  "agency": "Kern County Fire Department",
+  "area": "Palm Avenue",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to an apartment in the 1900 block of Palm Avenue.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "21:16",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Workman Street",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Minor traffic collision near Workman Street in Bakersfield.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "21:37",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Traffic collision at Hageman Road and Verdugo Lane.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "03:07",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Vehicle and semi collision on Highway 99.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "03:33",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Possible crash involving white sedan near intersection.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:38",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "California Avenue",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Disorderly conduct reported on California Avenue.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:43",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Verde Street",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Officer contact with resident at Verde Street unit.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire",
+  "time": "06:44",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Wildland fire reported near railroad by Horseshoe Bend.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Cardiac arrest",
+  "time": "06:46",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "45th Street",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person in cardiac arrest near 45th Street West.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "06:24",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Hit-and-run crash with injury at 23rd and Chester.",
+  "source": "crimeradar"
+ }
+]

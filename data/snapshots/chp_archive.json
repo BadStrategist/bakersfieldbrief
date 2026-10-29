@@ -900,6 +900,16 @@
   "details": ""
  },
  {
+  "log_id": "261027BF0295",
+  "time": "Oct 27 2026  7:47PM",
+  "type": "20001-Hit and Run w/Injuries",
+  "location": "Sb Sr99 At Merced Ave",
+  "area": "Bakersfield",
+  "lat": 35.529821,
+  "lon": -119.1898,
+  "details": ""
+ },
+ {
   "log_id": "261027BF0298",
   "time": "Oct 27 2026  7:53PM",
   "type": "CZP-Assist with Construction",
@@ -947,6 +957,46 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261028BF0277",
+  "time": "Oct 28 2026  4:10PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "SR99 N / SR46",
+  "area": "Bakersfield",
+  "lat": 35.601829,
+  "lon": -119.211039,
+  "details": ""
+ },
+ {
+  "log_id": "261028BF0288",
+  "time": "Oct 28 2026  4:46PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Sr43 / Brimhall Rd",
+  "area": "Buttonwillow",
+  "lat": 35.368171,
+  "lon": -119.252123,
+  "details": ""
+ },
+ {
+  "log_id": "261028BF0293",
+  "time": "Oct 28 2026  5:08PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sr58 E / Chester Ave Onr",
+  "area": "Bakersfield",
+  "lat": 35.352416,
+  "lon": -119.016169,
+  "details": ""
+ },
+ {
+  "log_id": "261028BF0295",
+  "time": "Oct 28 2026  5:10PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Mt Vernon Ave Ofr / S Mount Vernon Ave",
+  "area": "Bakersfield",
+  "lat": 35.353524,
+  "lon": -118.967433,
   "details": ""
  },
  {

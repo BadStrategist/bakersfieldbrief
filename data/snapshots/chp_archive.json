@@ -1010,6 +1010,46 @@
   "details": ""
  },
  {
+  "log_id": "261029BF0034",
+  "time": "Oct 29 2026  5:12AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "1033 Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.825534,
+  "lon": -118.87775,
+  "details": ""
+ },
+ {
+  "log_id": "261029BF0037",
+  "time": "Oct 29 2026  5:40AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261029BF0039",
+  "time": "Oct 29 2026  6:14AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "Sr166 / Short Rd",
+  "area": "Fort Tejon",
+  "lat": 35.058284,
+  "lon": -119.367023,
+  "details": ""
+ },
+ {
+  "log_id": "261029BF0061",
+  "time": "Oct 29 2026  7:34AM",
+  "type": "CZP-Assist with Construction",
+  "location": "I5 N / Lebec Rd Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.831001,
+  "lon": -118.867853,
+  "details": ""
+ },
+ {
   "log_id": "261029BF0003",
   "time": "Oct 29 2026 12:22AM",
   "type": "1125-Traffic Hazard",

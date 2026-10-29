@@ -1050,6 +1050,26 @@
   "details": ""
  },
  {
+  "log_id": "261029BF0189",
+  "time": "Oct 29 2026 11:58AM",
+  "type": "CFIRE-Car Fire",
+  "location": "Grapevine Rd E / Edmonston Pumping Plant Rd",
+  "area": "Fort Tejon",
+  "lat": 34.941143,
+  "lon": -118.929083,
+  "details": ""
+ },
+ {
+  "log_id": "261029BF0195",
+  "time": "Oct 29 2026 12:06PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sr58 E / Bealeville Rd",
+  "area": "Bakersfield",
+  "lat": 35.263645,
+  "lon": -118.633188,
+  "details": ""
+ },
+ {
   "log_id": "261029BF0003",
   "time": "Oct 29 2026 12:22AM",
   "type": "1125-Traffic Hazard",

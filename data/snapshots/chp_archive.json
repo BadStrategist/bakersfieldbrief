@@ -1010,6 +1010,36 @@
   "details": ""
  },
  {
+  "log_id": "261029BF0211",
+  "time": "Oct 29 2026  1:05PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sb Sr99 Jso California Ave",
+  "area": "Bakersfield",
+  "lat": 35.367991,
+  "lon": -119.043411,
+  "details": ""
+ },
+ {
+  "log_id": "261029BF0226",
+  "time": "Oct 29 2026  1:42PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr99 N / California Ave",
+  "area": "Bakersfield",
+  "lat": 35.367222,
+  "lon": -119.041111,
+  "details": ""
+ },
+ {
+  "log_id": "261029BF0227",
+  "time": "Oct 29 2026  1:52PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Olive Dr / Knudsen Dr",
+  "area": "Bakersfield",
+  "lat": 35.412244,
+  "lon": -119.058817,
+  "details": ""
+ },
+ {
   "log_id": "261029BF0034",
   "time": "Oct 29 2026  5:12AM",
   "type": "MZP-Assist CT with Maintenance",

@@ -104,3 +104,67 @@ def test_faq_jsonld_live_q1(tmp_path, monkeypatch):
     q = faqs[0]["mainEntity"]
     assert len(q) > 0
     assert "Right now" in q[0]["acceptedAnswer"]["text"]
+
+# ---- 7-day, hourly, Bakersfield comparison, evergreen lead (2026-10-29) ----------
+
+def _full(bfl=None):
+    w = _weather(63)
+    w["forecast"] = [
+        {"name": "This Afternoon", "is_daytime": True, "temp_f": 65, "wind_speed": "5 mph",
+         "wind_dir": "NW", "short": "Mostly Sunny", "pop": 2},
+        {"name": "Tonight", "is_daytime": False, "temp_f": 44, "wind_speed": "0 mph",
+         "wind_dir": "W", "short": "Cloudy", "pop": None},
+        {"name": "Saturday", "is_daytime": True, "temp_f": 57, "wind_speed": "5 mph",
+         "wind_dir": "SSW", "short": "Light Rain", "pop": 84},
+    ]
+    w["hourly"] = [{"time": "4 PM", "temp_f": 63, "wind_speed": "5 mph", "wind_dir": "NW",
+                    "short": "Mostly Sunny", "pop": 1}]
+    src = {"tehachapi_weather": w}
+    if bfl is not None:
+        src["weather"] = {"forecast": bfl}
+    return src
+
+
+def test_lead_is_evergreen_not_a_reading(tmp_path, monkeypatch):
+    # Google quotes the first text after the H1 for days; it must not be a temperature.
+    raw = _render(_full(), tmp_path, monkeypatch)
+    lead = re.search(r'<p class="answer">(.*?)</p>', raw, re.S).group(1)
+    assert "Tehachapi weather today" in lead
+    assert not re.search(r"\d+\s*°", lead)
+
+
+def test_days_group_high_and_low():
+    days = tehachapi_weather._days(_full()["tehachapi_weather"]["forecast"])
+    assert days[0]["high"] == 65 and days[0]["low"] == 44
+    assert days[1]["name"] == "Saturday" and days[1]["low"] is None
+
+
+def test_days_starting_at_night():
+    days = tehachapi_weather._days([
+        {"name": "Tonight", "is_daytime": False, "temp_f": 40},
+        {"name": "Friday", "is_daytime": True, "temp_f": 60},
+        {"name": "Friday Night", "is_daytime": False, "temp_f": 42}])
+    assert days[0] == {**days[0], "name": "Tonight", "high": None, "low": 40}
+    assert days[1]["high"] == 60 and days[1]["low"] == 42
+
+
+def test_seven_day_and_hourly_render(tmp_path, monkeypatch):
+    body = _visible(_render(_full(), tmp_path, monkeypatch))
+    assert "Tehachapi 7-day forecast" in body
+    assert "Next 12 hours in Tehachapi" in body
+    assert "84% chance of rain" in body
+    assert "1% chance of rain" not in body and "2% chance of rain" not in body
+
+
+def test_compare_with_bakersfield(tmp_path, monkeypatch):
+    body = _visible(_render(_full({"current": 72, "high": 72, "observed": "3:45 PM"}),
+                            tmp_path, monkeypatch))
+    assert "63°F in Tehachapi" in body and "72°F in Bakersfield" in body
+    assert "9° cooler" in body
+    assert "Is Tehachapi cooler than Bakersfield?" in body
+
+
+def test_compare_never_invents_bakersfield(tmp_path, monkeypatch):
+    body = _visible(_render(_full(), tmp_path, monkeypatch))   # no Bakersfield data at all
+    assert "side-by-side reading is unavailable" in body
+    assert "in Bakersfield (KBFL" not in body

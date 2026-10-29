@@ -4,7 +4,8 @@
 Tehachapi Pass (SR-58, summit ~4,067 ft) current conditions + forecast + zone
 alerts. Uses:
   - KTSP (Tehachapi Municipal Airport) /observations/latest  → current temp/wind/gust
-  - NWS gridpoint 35.1322,-118.4490 (HNX/87,20) forecast    → today/tonight + wind
+  - NWS gridpoint 35.1322,-118.4490 (HNX/87,20) forecast    → 7-day periods + wind
+  - the same gridpoint's hourly forecast                     → next 12 hours
   - NWS zone forecast CAZ334 alerts                          → Kern/pass advisories
 
 Every fetch degrades independently (partial dict, never raises) so the page can
@@ -29,7 +30,9 @@ def run(ctx):
     out = {"ok": True, "current": {}, "forecast": [], "alerts": [],
            "asof": common.iso_today(), "sources": {"point": PASS_POINT, "zone": ZONE}}
     out["current"] = _current()
-    out["forecast"] = _forecast()
+    fc_url, hourly_url = _point_urls()
+    out["forecast"] = _forecast(fc_url)
+    out["hourly"] = _hourly(hourly_url)
     out["alerts"] = _alerts()
     return out
 
@@ -81,18 +84,32 @@ def _current() -> dict:
 
 
 # ----------------------------------------------------------------- forecast
-def _forecast() -> list:
-    """Today's + next few NWS forecast periods with temp and wind."""
-    periods = []
+def _point_urls() -> tuple[str, str]:
+    """The gridpoint's 7-day and hourly forecast URLs ('' when NWS is unreachable)."""
     try:
-        pt = common.fetch(f"https://api.weather.gov/points/{PASS_POINT}",
-                          headers={"Accept": "application/geo+json"})
-        fc_url = pt.json()["properties"]["forecast"]
-        raw = common.fetch(fc_url, headers={"Accept": "application/geo+json"}).json()
-        props = raw["properties"]
+        props = common.fetch(f"https://api.weather.gov/points/{PASS_POINT}",
+                             headers={"Accept": "application/geo+json"}).json()["properties"]
+        return props.get("forecast") or "", props.get("forecastHourly") or ""
+    except Exception:  # noqa: BLE001
+        return "", ""
+
+
+def _pop(p: dict):
+    """Chance of precipitation in %, or None when NWS gave none."""
+    return (p.get("probabilityOfPrecipitation") or {}).get("value")
+
+
+def _forecast(fc_url: str) -> list:
+    """All NWS 7-day forecast periods (day + night, ~14) with temp and wind.
+    The pass page shows only the first five; the weather page groups them by day."""
+    periods = []
+    if not fc_url:
+        return periods
+    try:
+        props = common.fetch(fc_url, headers={"Accept": "application/geo+json"}).json()["properties"]
     except Exception:  # noqa: BLE001
         return periods
-    for p in props.get("periods", [])[:6]:
+    for p in props.get("periods", []):
         periods.append({
             "name": p.get("name", ""),
             "is_daytime": p.get("isDaytime", True),
@@ -100,9 +117,41 @@ def _forecast() -> list:
             "wind_speed": (p.get("windSpeed") or "").strip(),
             "wind_dir": (p.get("windDirection") or "").strip(),
             "short": (p.get("shortForecast") or ""),
+            "pop": _pop(p),
             "starts": (p.get("startTime") or "")[:10],
         })
     return periods
+
+
+def _hourly(hourly_url: str) -> list:
+    """The next 12 hours from the NWS hourly forecast, in Pacific time."""
+    hours = []
+    if not hourly_url:
+        return hours
+    try:
+        props = common.fetch(hourly_url, headers={"Accept": "application/geo+json"}).json()["properties"]
+    except Exception:  # noqa: BLE001
+        return hours
+    now = dt.datetime.now(dt.timezone.utc)
+    for p in props.get("periods", []):
+        try:
+            start = dt.datetime.fromisoformat(p["startTime"])
+            end = dt.datetime.fromisoformat(p["endTime"])
+        except Exception:  # noqa: BLE001
+            continue
+        if end <= now:
+            continue   # an hour that has already passed
+        hours.append({
+            "time": start.astimezone(common.PACIFIC).strftime("%I %p").lstrip("0"),
+            "temp_f": p.get("temperature"),
+            "wind_speed": (p.get("windSpeed") or "").strip(),
+            "wind_dir": (p.get("windDirection") or "").strip(),
+            "short": (p.get("shortForecast") or ""),
+            "pop": _pop(p),
+        })
+        if len(hours) == 12:
+            break
+    return hours
 
 
 # ----------------------------------------------------------------- alerts

@@ -5507,14 +5507,26 @@
    "edited": "2026-10-22",
    "start_date": "",
    "camera_type": "public"
+  },
+  {
+   "id": 14332249701,
+   "lat": 35.3521065,
+   "lon": -119.0536905,
+   "manufacturer": "Flock Safety",
+   "operator": "",
+   "direction": "347",
+   "mapped": "2026-10-29",
+   "edited": "2026-10-29",
+   "start_date": "",
+   "camera_type": "public"
   }
  ],
  "stats": {
-  "total": 459,
-  "flock": 420,
-  "new_this_week": 1,
-  "new_this_week_snapshot_diff": 1,
-  "newest_mapped": "2026-10-22"
+  "total": 460,
+  "flock": 421,
+  "new_this_week": 2,
+  "new_this_week_snapshot_diff": 2,
+  "newest_mapped": "2026-10-29"
  },
  "asof": "2026-10-29"
 }

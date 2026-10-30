@@ -8,16 +8,14 @@ on:
       - "**.md"
       - "docs/**"
   schedule:
-    # Every 3h UTC: cheap LLM-free refreshes so conditions (weather, AQI,
-    # active fires, reservoir, CHP) stay current. The 13:00/14:00 UTC pair
-    # guarantees a 6:00-PT LLM build year-round (DST-proof). 16:00 UTC is 8:00 PST: in winter
-    # no other slot lands on the 8 AM send (15:00 UTC is 7:00 PST, 18:00 UTC is 10:00).
-    # Minute 7, not 0: GitHub queues scheduled runs, and the top of the hour is the busiest
-    # slot (the 13:00 run was starting one to four hours late). Still inside the same Pacific
-    # hour, so the 6 AM gate below reads exactly as before.
-    - cron: "7 */3 * * *"
-    - cron: "7 13 * * *"
-    - cron: "7 14 * * *"
+    # Built on push, not by clock (2026-10-29). The morning build is the push of the
+    # runner's "ko: publish <date>" commit (~07:38 PT); the PC sends the newsletter at
+    # 08:10 with retries (bb-pipeline/runner.py). The every-3h, 13:07 and 14:07 slots
+    # cost ~1,550 of ~2,600 Actions minutes a month and started up to 8 hours late, so
+    # they did not hold a 6 AM build anyway; grapevine.yml still rebuilds the site
+    # (LLM-free) 3x a day. This one slot is the fallback for a morning the PC never
+    # pushes: 09:07 PDT / 08:07 PST, after the 08:00 deadline, an LLM build when today's
+    # brief is missing (the gate below) and the idempotent send (hour >= 8).
     - cron: "7 16 * * *"
   workflow_dispatch:
 
@@ -52,12 +50,13 @@ jobs:
         run: |
           H=$(python -c "from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('America/Los_Angeles')).hour)")
           echo "hour=$H" >> "$GITHUB_OUTPUT"
-          # LLM at the 6:00 PT build, any push/dispatch run, and any 7-9 AM run
-          # when today's brief was never written: GitHub starts scheduled runs
-          # late or drops them, and the only 6 AM slot can land at 7. Once the
+          # LLM at any push/dispatch run, and at a scheduled run from 7 AM on
+          # when today's brief was never written (the fallback slot for a morning
+          # the PC did not push). No upper bound: GitHub starts scheduled runs up
+          # to 8 hours late (2026-10-29), and a late brief beats none. Once the
           # brief is cached, later runs reuse it and build LLM-free.
           D=$(python -c "from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('America/Los_Angeles')).strftime('%Y-%m-%d'))")
-          if [ "$H" = "6" ] || [ "${{ github.event_name }}" != "schedule" ] || { [ "$H" -ge 7 ] && [ "$H" -le 9 ] && [ ! -f "data/briefs/$D.json" ]; }; then
+          if [ "$H" = "6" ] || [ "${{ github.event_name }}" != "schedule" ] || { [ "$H" -ge 7 ] && [ ! -f "data/briefs/$D.json" ]; }; then
             echo "llm=1" >> "$GITHUB_OUTPUT"
           else
             echo "llm=0" >> "$GITHUB_OUTPUT"
@@ -66,7 +65,7 @@ jobs:
           # waited for the overnight report to land before posting. Social posting
           # moved to the local KO job (see the note at the end of this file), so
           # that retry fed a step that no longer runs. Removed 2026-10-06.
-          echo "Pacific hour is $H (LLM build at 6, or 7-9 with no brief yet)"
+          echo "Pacific hour is $H (LLM build on push, or from 7 with no brief yet)"
 
       - name: Install dependencies
         run: |

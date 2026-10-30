@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-30T07:53:54-07:00",
+ "built_at": "2026-10-30T11:49:54-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -152,13 +152,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 0,
+   "wind_mph": 7,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 41,
-   "wind_mph": 0,
+   "temp": 59,
+   "wind_mph": 7,
    "alerts": 0
   },
   "roads": {
@@ -195,8 +195,8 @@
    "isabella_af": 139008,
    "alpr_total": 460,
    "kern_fires": 0,
-   "aqi": 91,
-   "chp_week": 57
+   "aqi": 98,
+   "chp_week": 63
   },
   "letters": {
    "published": 1

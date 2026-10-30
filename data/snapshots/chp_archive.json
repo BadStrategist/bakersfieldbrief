@@ -1070,6 +1070,66 @@
   "details": ""
  },
  {
+  "log_id": "261030BF0128",
+  "time": "Oct 30 2026 10:17AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "28416 Sr58",
+  "area": "Buttonwillow",
+  "lat": 35.354753,
+  "lon": -119.318748,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0162",
+  "time": "Oct 30 2026 11:07AM",
+  "type": "1125-Traffic Hazard",
+  "location": "17324-18461 Sr119",
+  "area": "Bakersfield",
+  "lat": 35.267074,
+  "lon": -119.201424,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0169",
+  "time": "Oct 30 2026 11:20AM",
+  "type": "CFIRE-Car Fire",
+  "location": "I5 N / 7th Standard Rd",
+  "area": "Buttonwillow",
+  "lat": 35.442268,
+  "lon": -119.456484,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0172",
+  "time": "Oct 30 2026 11:24AM",
+  "type": "ANIMAL-Live or Dead Animal",
+  "location": "Sr178 E / Morning Dr",
+  "area": "Bakersfield",
+  "lat": 35.396626,
+  "lon": -118.913262,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0175",
+  "time": "Oct 30 2026 11:29AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr178 W / Oswell St Ofr",
+  "area": "Bakersfield",
+  "lat": 35.396537,
+  "lon": -118.946103,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0181",
+  "time": "Oct 30 2026 11:44AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Nb I5 Jno Buttonwillow Rest Area",
+  "area": "Buttonwillow",
+  "lat": 35.420556,
+  "lon": -119.426667,
+  "details": ""
+ },
+ {
   "log_id": "261030BF0006",
   "time": "Oct 30 2026 12:47AM",
   "type": "TADV-Traffic Advisory",

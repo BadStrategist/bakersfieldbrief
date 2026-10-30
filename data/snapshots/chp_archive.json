@@ -1,175 +1,5 @@
 [
  {
-  "log_id": "261022BF0027",
-  "time": "Oct 22 2026  1:56AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "261022BF0222",
-  "time": "Oct 22 2026  2:17PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Eb Sr58 Jwo Vineland Rd",
-  "area": "Bakersfield",
-  "lat": 35.350556,
-  "lon": -118.8975,
-  "details": ""
- },
- {
-  "log_id": "261022BF0069",
-  "time": "Oct 22 2026  4:12AM",
-  "type": "FLOOD-Roadway Flooding",
-  "location": "9855 Compagnoni St",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "261022BF0097",
-  "time": "Oct 22 2026  6:42AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "SR99 N / SR204 ONR",
-  "area": "Bakersfield",
-  "lat": 35.405921,
-  "lon": -119.047616,
-  "details": ""
- },
- {
-  "log_id": "261022BF0103",
-  "time": "Oct 22 2026  6:54AM",
-  "type": "1125-Traffic Hazard",
-  "location": "2500 MM178 E KER 25.00",
-  "area": "Bakersfield",
-  "lat": 35.518298,
-  "lon": -118.680077,
-  "details": ""
- },
- {
-  "log_id": "261022BF0104",
-  "time": "Oct 22 2026  6:58AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "232 Oswell St",
-  "area": "BF",
-  "lat": 35.35837,
-  "lon": -118.949823,
-  "details": ""
- },
- {
-  "log_id": "261022BF0107",
-  "time": "Oct 22 2026  7:01AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "1601 Petrol Rd",
-  "area": "Bakersfield",
-  "lat": 35.448538,
-  "lon": -119.054116,
-  "details": ""
- },
- {
-  "log_id": "261022BF0111",
-  "time": "Oct 22 2026  7:19AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr99 N / County Line Rd (jso)",
-  "area": "Bakersfield",
-  "lat": 35.790348,
-  "lon": -119.250658,
-  "details": ""
- },
- {
-  "log_id": "261022BF0114",
-  "time": "Oct 22 2026  7:29AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "49713 Gorman Post Rd",
-  "area": "Fort Tejon",
-  "lat": 34.796512,
-  "lon": -118.853263,
-  "details": ""
- },
- {
-  "log_id": "261022BF0115",
-  "time": "Oct 22 2026  7:38AM",
-  "type": "1125A-Animal Hazard",
-  "location": "Sr178 / Elizabeth Norris Rd Ofr",
-  "area": "Bakersfield",
-  "lat": 35.616695,
-  "lon": -118.486539,
-  "details": ""
- },
- {
-  "log_id": "261022BF0127",
-  "time": "Oct 22 2026  8:16AM",
-  "type": "CZP-Assist with Construction",
-  "location": "Nb I5 At Fort Tejon Rd",
-  "area": "Fort Tejon",
-  "lat": 34.876944,
-  "lon": -118.894722,
-  "details": ""
- },
- {
-  "log_id": "261022BF0375",
-  "time": "Oct 22 2026  8:20PM",
-  "type": "1125-Traffic Hazard",
-  "location": "I5 N / West Escape Ramp",
-  "area": "Fort Tejon",
-  "lat": 34.918056,
-  "lon": -118.923889,
-  "details": ""
- },
- {
-  "log_id": "261022BF0397",
-  "time": "Oct 22 2026  9:09PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr184 / Edison Hwy",
-  "area": "Bakersfield",
-  "lat": 35.358207,
-  "lon": -118.914123,
-  "details": ""
- },
- {
-  "log_id": "261022BF0403",
-  "time": "Oct 22 2026  9:31PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Kr005672-nb I5 Jso East Side Canal",
-  "area": "Buttonwillow",
-  "lat": 35.555278,
-  "lon": -119.594722,
-  "details": ""
- },
- {
-  "log_id": "261022BF0417",
-  "time": "Oct 22 2026 10:58PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "10902 Myrtle Ave",
-  "area": "Bakersfield",
-  "lat": 35.256073,
-  "lon": -118.90979,
-  "details": ""
- },
- {
-  "log_id": "261022BF0195",
-  "time": "Oct 22 2026 12:37PM",
-  "type": "1125-Traffic Hazard",
-  "location": "SR99 N / SR58 W",
-  "area": "Bakersfield",
-  "lat": 35.352805,
-  "lon": -119.0394,
-  "details": ""
- },
- {
-  "log_id": "261022BF0197",
-  "time": "Oct 22 2026 12:43PM",
-  "type": "1125A-Animal Hazard",
-  "location": "Nb I5 Jso Millux Rd",
-  "area": "Buttonwillow",
-  "lat": 35.179167,
-  "lon": -119.130278,
-  "details": ""
- },
- {
   "log_id": "261023BF0231",
   "time": "Oct 23 2026  3:59PM",
   "type": "1125-Traffic Hazard",
@@ -1100,6 +930,36 @@
   "details": ""
  },
  {
+  "log_id": "261029BF0358",
+  "time": "Oct 29 2026  7:34PM",
+  "type": "CZP-Assist with Construction",
+  "location": "SR99 S / SR46",
+  "area": "Bakersfield",
+  "lat": 35.601816,
+  "lon": -119.211348,
+  "details": ""
+ },
+ {
+  "log_id": "261029BF0371",
+  "time": "Oct 29 2026  7:52PM",
+  "type": "CZP-Assist with Construction",
+  "location": "Sr58 E / Sr99 N Sr58 E Con",
+  "area": "Bakersfield",
+  "lat": 35.35234,
+  "lon": -119.032756,
+  "details": ""
+ },
+ {
+  "log_id": "261029BF0391",
+  "time": "Oct 29 2026  8:41PM",
+  "type": "CZP-Assist with Construction",
+  "location": "I5 N / Ft Tejon Rd Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.874845,
+  "lon": -118.892162,
+  "details": ""
+ },
+ {
   "log_id": "261029BF0189",
   "time": "Oct 29 2026 11:58AM",
   "type": "CFIRE-Car Fire",
@@ -1147,6 +1007,16 @@
   "area": "Fort Tejon",
   "lat": 34.914444,
   "lon": -118.923333,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0006",
+  "time": "Oct 30 2026 12:47AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
   "details": ""
  }
 ]

@@ -11,7 +11,7 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "The northbound connector to northbound SR-133 /in Irvine/ (Orange Co) is closed from 2100 hrs each night to 0500 hrs each morning Wednesday thru Friday thru 10/30/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "The southbound connector to westbound SR-76 /in Oceanside/ (Orange Co) is closed from 2100 hrs on 10/29/26 to 0500 hrs on 10/30/26 - Due to permit work - Motorists are advised to use an alternate route The northbound connector to northbound SR-133 /in Irvine/ (Orange Co) is closed from 2100 hrs each night to 0500 hrs each morning Wednesday thru Friday thru 10/30/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "CLOSED"
     },
     {
@@ -49,6 +49,14 @@
     "elsewhere": [
      {
       "status": "CLOSED",
+      "place": "Oceanside",
+      "county": "Orange Co",
+      "where": "Oceanside (Orange Co)",
+      "text": "The southbound connector to westbound SR-76 /in Oceanside/ (Orange Co) is closed from 2100 hrs on 10/29/26 to 0500 hrs on 10/30/26 - Due to permit work - Motorists are advised to use an alternate route",
+      "region": "SOUTHERN CALIFORNIA"
+     },
+     {
+      "status": "CLOSED",
       "place": "Irvine",
       "county": "Orange Co",
       "where": "Irvine (Orange Co)",
@@ -57,8 +65,8 @@
      }
     ]
    },
-   "reported_as_of": "Thursday, October 29th, 2026 at 05:51 PM",
-   "hash": "90c27d971c"
+   "reported_as_of": "Friday, October 30th, 2026 at 02:09 AM",
+   "hash": "a2b479605b"
   },
   {
    "number": "58",
@@ -80,7 +88,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Thursday, October 29th, 2026 at 05:51 PM",
+   "reported_as_of": "Friday, October 30th, 2026 at 02:09 AM",
    "hash": "5374f203ec"
   },
   {
@@ -125,9 +133,9 @@
      }
     ]
    },
-   "reported_as_of": "Thursday, October 29th, 2026 at 05:51 PM",
+   "reported_as_of": "Friday, October 30th, 2026 at 02:09 AM",
    "hash": "5cd2d4c4c4"
   }
  ],
- "asof": "2026-10-29"
+ "asof": "2026-10-30"
 }

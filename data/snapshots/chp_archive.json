@@ -1070,6 +1070,16 @@
   "details": ""
  },
  {
+  "log_id": "261029BF0320",
+  "time": "Oct 29 2026  5:44PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 Sr178",
+  "area": "Bakersfield",
+  "lat": 35.493169,
+  "lon": -118.699099,
+  "details": ""
+ },
+ {
   "log_id": "261029BF0039",
   "time": "Oct 29 2026  6:14AM",
   "type": "MZP-Assist CT with Maintenance",

@@ -1010,6 +1010,66 @@
   "details": ""
  },
  {
+  "log_id": "261030BF0211",
+  "time": "Oct 30 2026  1:06PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "0 I5 S",
+  "area": "Buttonwillow",
+  "lat": 35.427035,
+  "lon": -119.436066,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0213",
+  "time": "Oct 30 2026  1:11PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "1724 E California Ave",
+  "area": "Bakersfield",
+  "lat": 35.368573,
+  "lon": -118.976124,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0215",
+  "time": "Oct 30 2026  1:14PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr99 N / Panama Ln Onr",
+  "area": "Bakersfield",
+  "lat": 35.299456,
+  "lon": -119.031269,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0217",
+  "time": "Oct 30 2026  1:16PM",
+  "type": "1125-Traffic Hazard",
+  "location": "I5 N / Lost Hills Rd",
+  "area": "Buttonwillow",
+  "lat": 35.666398,
+  "lon": -119.690311,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0226",
+  "time": "Oct 30 2026  1:39PM",
+  "type": "1125-Traffic Hazard",
+  "location": "7th Standard Rd / Tracy Ave",
+  "area": "Buttonwillow",
+  "lat": 35.44215,
+  "lon": -119.411497,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0227",
+  "time": "Oct 30 2026  1:40PM",
+  "type": "1125A-Animal Hazard",
+  "location": "Alfred Harrell Hwy / Mount Vernon Ave",
+  "area": "Bakersfield",
+  "lat": 35.415921,
+  "lon": -118.959795,
+  "details": ""
+ },
+ {
   "log_id": "261030BF0031",
   "time": "Oct 30 2026  5:30AM",
   "type": "MZP-Assist CT with Maintenance",
@@ -1127,6 +1187,16 @@
   "area": "Buttonwillow",
   "lat": 35.420556,
   "lon": -119.426667,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0194",
+  "time": "Oct 30 2026 12:16PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Calloway Dr / Rosedale Hwy",
+  "area": "Bakersfield",
+  "lat": 35.383381,
+  "lon": -119.109905,
   "details": ""
  },
  {

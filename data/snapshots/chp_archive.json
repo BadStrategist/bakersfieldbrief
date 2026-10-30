@@ -1010,6 +1010,66 @@
   "details": ""
  },
  {
+  "log_id": "261030BF0031",
+  "time": "Oct 30 2026  5:30AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "I5 N / Ft Tejon Rd Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.874845,
+  "lon": -118.892162,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0040",
+  "time": "Oct 30 2026  6:03AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr119 / Harrison St",
+  "area": "Buttonwillow",
+  "lat": 35.187864,
+  "lon": -119.43923,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0045",
+  "time": "Oct 30 2026  6:39AM",
+  "type": "CLOSURE of a Road",
+  "location": "Frazier Mountain Park Rd Onr / I5 S",
+  "area": "Fort Tejon",
+  "lat": 34.813144,
+  "lon": -118.884656,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0048",
+  "time": "Oct 30 2026  6:52AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb Sr99 At Merced Ave",
+  "area": "Bakersfield",
+  "lat": 35.52612,
+  "lon": -119.18826,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0065",
+  "time": "Oct 30 2026  7:10AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sr99 S / Pond Rd",
+  "area": "Bakersfield",
+  "lat": 35.718054,
+  "lon": -119.237348,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0078",
+  "time": "Oct 30 2026  7:47AM",
+  "type": "CZP-Assist with Construction",
+  "location": "I5 N / Ft Tejon Rd Ofr",
+  "area": "Fort Tejon",
+  "lat": 34.874845,
+  "lon": -118.892162,
+  "details": ""
+ },
+ {
   "log_id": "261030BF0006",
   "time": "Oct 30 2026 12:47AM",
   "type": "TADV-Traffic Advisory",

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-30T02:09:17-07:00",
+ "built_at": "2026-10-30T07:53:54-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -39,9 +39,7 @@
   },
   "alpr": {
    "ok": true,
-   "error": "RuntimeError: overpass-api.de: ConnectionError: HTTPSConnectionPool(host='overpass-api.de', port=443): Max retries exceeded with url: /api/interpreter (Caused by NewConnectionError(\"HTTPSConnection(host='overpass-api.de', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\")); lambert.openstreetmap.de: ConnectionError: HTTPSConnectionPool(host='lambert.openstreetmap.de', port=443): Max retries exceeded with url: /api/interpreter (Caused by NewConnectionError(\"HTTPSConnection(host='lambert.openstreetmap.de', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\")); gall.openstreetmap.de: ConnectionError: HTTPSConnectionPool(host='gall.openstreetmap.de', port=443): Max retries exceeded with url: /api/interpreter (Caused by NewConnectionError(\"HTTPSConnection(host='gall.openstreetmap.de', port=443): Failed to establish a new connection: [Errno 101] Network is unreachable\"))",
-   "stale": true,
-   "asof": "2026-10-29"
+   "error": ""
   },
   "venues": {
    "ok": true,
@@ -70,32 +68,28 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 69,
+  "brief_words": 1322,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
-   "top_story": "A more personal side of Dolores Huerta, captured through a Bakersfield photojournalist's lens over the years",
+   "chp_new": 6,
+   "top_story": "Bakersfield police searching for man accused of stealing items from unlocked vehicle",
    "overnight_band": {
-    "date": "2026-10-29",
-    "count": 59,
+    "date": "2026-10-30",
+    "count": 45,
     "chips": [
      [
       "Weapons and assaults",
-      4
-     ],
-     [
-      "Fires",
-      8
+      5
      ],
      [
       "Crashes and traffic",
-      9
+      7
      ],
      [
       "Medical and overdose",
-      19
+      11
      ],
      [
       "Disturbances and welfare",
@@ -107,19 +101,21 @@
      ],
      [
       "Suspicious activity",
-      2
+      5
      ],
      [
       "Alarms",
-      4
+      3
      ],
      [
       "Other calls",
-      3
+      4
      ]
     ],
-    "other": "2 incident, 1 search for a suspect",
-    "unmapped": []
+    "other": "2 person in crisis, 1 search for a suspect, 1 incident",
+    "unmapped": [
+     "person in crisis"
+    ]
    },
    "archive": "2026-10-30"
   },
@@ -150,26 +146,26 @@
    "draft": "drafts/weekend-guide-2026-10-30"
   },
   "grapevine": {
-   "i5": "CLOSED",
+   "i5": "RESTRICTIONS",
    "i5_pass": "RESTRICTIONS",
    "log_entries": 60
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 5,
+   "wind_mph": 0,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 46,
-   "wind_mph": 5,
+   "temp": 41,
+   "wind_mph": 0,
    "alerts": 0
   },
   "roads": {
    "routes": [
     "i5:RESTRICTIONS",
     "sr58:OPEN",
-    "sr99:CLOSED"
+    "sr99:RESTRICTIONS"
    ],
    "log_entries": 60
   },
@@ -199,17 +195,17 @@
    "isabella_af": 139008,
    "alpr_total": 460,
    "kern_fires": 0,
-   "aqi": 93,
-   "chp_week": 51
+   "aqi": 91,
+   "chp_week": 57
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 79
+   "published": 80
   },
   "map": {
-   "dots": 40
+   "dots": 34
   },
   "sunday_read": {
    "topic": "Public safety",
@@ -239,7 +235,7 @@
   },
   "trackers": {
    "alpr_total": 460,
-   "alpr_new_week": 2,
+   "alpr_new_week": 1,
    "pages": [
     "surveillance",
     "fires",

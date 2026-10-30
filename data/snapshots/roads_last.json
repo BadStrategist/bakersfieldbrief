@@ -6,13 +6,13 @@
    "slug": "i5",
    "name": "Interstate 5 \u2014 Grapevine (Tejon Pass)",
    "pass": true,
-   "status": "CLOSED",
+   "status": "RESTRICTIONS",
    "pass_status": "RESTRICTIONS",
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "The southbound connector to westbound SR-76 /in Oceanside/ (Orange Co) is closed from 2100 hrs on 10/29/26 to 0500 hrs on 10/30/26 - Due to permit work - Motorists are advised to use an alternate route The northbound connector to northbound SR-133 /in Irvine/ (Orange Co) is closed from 2100 hrs each night to 0500 hrs each morning Wednesday thru Friday thru 10/30/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
-     "status": "CLOSED"
+     "text": "A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "status": "RESTRICTIONS"
     },
     {
      "region": "CENTRAL CALIFORNIA",
@@ -46,27 +46,10 @@
       "region": "CENTRAL CALIFORNIA"
      }
     ],
-    "elsewhere": [
-     {
-      "status": "CLOSED",
-      "place": "Oceanside",
-      "county": "Orange Co",
-      "where": "Oceanside (Orange Co)",
-      "text": "The southbound connector to westbound SR-76 /in Oceanside/ (Orange Co) is closed from 2100 hrs on 10/29/26 to 0500 hrs on 10/30/26 - Due to permit work - Motorists are advised to use an alternate route",
-      "region": "SOUTHERN CALIFORNIA"
-     },
-     {
-      "status": "CLOSED",
-      "place": "Irvine",
-      "county": "Orange Co",
-      "where": "Irvine (Orange Co)",
-      "text": "The northbound connector to northbound SR-133 /in Irvine/ (Orange Co) is closed from 2100 hrs each night to 0500 hrs each morning Wednesday thru Friday thru 10/30/26 - Due to construction - Motorists are advised to use...",
-      "region": "SOUTHERN CALIFORNIA"
-     }
-    ]
+    "elsewhere": []
    },
-   "reported_as_of": "Friday, October 30th, 2026 at 02:09 AM",
-   "hash": "a2b479605b"
+   "reported_as_of": "Friday, October 30th, 2026 at 07:53 AM",
+   "hash": "283c2f65e1"
   },
   {
    "number": "58",
@@ -88,7 +71,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Friday, October 30th, 2026 at 02:09 AM",
+   "reported_as_of": "Friday, October 30th, 2026 at 07:53 AM",
    "hash": "5374f203ec"
   },
   {
@@ -96,8 +79,8 @@
    "slug": "sr99",
    "name": "State Route 99 \u2014 Central Valley",
    "pass": false,
-   "status": "CLOSED",
-   "pass_status": "CLOSED",
+   "status": "RESTRICTIONS",
+   "pass_status": "RESTRICTIONS",
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
@@ -106,8 +89,8 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "The northbound connector to westbound US-50 (Sacramento Co) is closed from 2300 hrs each night to 0400 hrs each morning Monday thru Friday thru 10/27/26 - Due to emergency work - Motorists are advised to use an alternate route 1-way controlled traffic at various locations from the Butte/Tehama Co Line to 6 mi north of the Butte/Tehama Co line from 1800 hrs each night to 0600 hrs each morning Monday thru Friday thru 10/30/26 - Due to construction",
-     "status": "CLOSED"
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
     }
    ],
    "scope": {
@@ -122,19 +105,11 @@
       "where": "the Central California area",
       "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
       "region": "CENTRAL CALIFORNIA"
-     },
-     {
-      "status": "CLOSED",
-      "place": "",
-      "county": "Sacramento Co",
-      "where": "Sacramento Co",
-      "text": "The northbound connector to westbound US-50 (Sacramento Co) is closed from 2300 hrs each night to 0400 hrs each morning Monday thru Friday thru 10/27/26 - Due to emergency work - Motorists are advised to use an...",
-      "region": "NORTHERN CALIFORNIA"
      }
     ]
    },
-   "reported_as_of": "Friday, October 30th, 2026 at 02:09 AM",
-   "hash": "5cd2d4c4c4"
+   "reported_as_of": "Friday, October 30th, 2026 at 07:53 AM",
+   "hash": "f97882795e"
   }
  ],
  "asof": "2026-10-30"

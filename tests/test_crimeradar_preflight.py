@@ -50,7 +50,12 @@ echo "$*" >>"$FAKE_STATE/calls"
 [ "${1:-}" = "-s" ] && shift 2
 case "$*" in
   devices)
-    if [ -f "$FAKE_STATE/offline_once" ]; then
+    # FAKE_KILL_STAYS_DOWN=1: a killed device stays unlisted until the emulator
+    # stub has been started again (a real recycle, not a one-listing blip).
+    if [ "${FAKE_KILL_STAYS_DOWN:-0}" = 1 ] && [ -f "$FAKE_STATE/killed" ] \
+       && [ ! -f "$FAKE_STATE/emulator" ]; then
+      printf 'List of devices attached\n'
+    elif [ -f "$FAKE_STATE/offline_once" ]; then
       rm -f "$FAKE_STATE/offline_once"; printf 'List of devices attached\n'
     else
       printf 'List of devices attached\nemulator-5554\tdevice\n'
@@ -58,7 +63,7 @@ case "$*" in
   "shell getprop sys.boot_completed") echo 1 ;;
   # The stop script falls back to Stop-Process on the REAL qemu by name when the
   # device stays listed, so a kill must make the fake go away for one listing.
-  "emu kill") : >"$FAKE_STATE/offline_once" ;;
+  "emu kill") : >"$FAKE_STATE/offline_once"; : >"$FAKE_STATE/killed" ;;
   "shell uiautomator dump "*)
     n=$(cat "$FAKE_STATE/n" 2>/dev/null || echo 0)
     echo $((n + 1)) >"$FAKE_STATE/n"
@@ -122,7 +127,7 @@ echo "[cr] FAILED: the location picker did not open"; exit 11
 
 
 def run_preflight(tmp_path: Path, dumps: str, offline_once: bool = False,
-                  setreg_text: str | None = None,
+                  setreg_text: str | None = None, expect_boot: bool = False,
                   **overrides: str) -> subprocess.CompletedProcess:
     script, bash = _preflight(), _bash()
     assert script.is_file(), f"{script} is missing from the repo"
@@ -159,14 +164,47 @@ def run_preflight(tmp_path: Path, dumps: str, offline_once: bool = False,
                CR_REPO=tmp_path.as_posix(),
                CR_SETREG=setreg.as_posix(),
                CR_LEG_APPS="0",
+               # The bloat cap must never read (or recycle on) the real qemu.
+               CR_EMU_PRIVATE_MB="0",
                FAKE_STATE=state.as_posix(), FAKE_DUMPS=dumps)
     env.pop("CR_SCRIPTS", None)
     env.update(overrides)
     r = subprocess.run([bash, script.as_posix()], env=env, stdin=subprocess.DEVNULL,
                        capture_output=True, text=True, timeout=120)
-    assert offline_once or not (state / "emulator").exists(), \
+    assert offline_once or expect_boot or not (state / "emulator").exists(), \
         "the preflight tried to start the emulator"
     return r
+
+
+def _bloat_run(tmp_path, private_mb: str):
+    # CR_GOLDEN=0 and ANDROID_AVD_HOME: the boot after the recycle must not read
+    # the real AVD's snapshots. CR_DIAG=0 for the reason _region_run gives.
+    avd = tmp_path / "avd"
+    avd.mkdir()
+    r = run_preflight(tmp_path, "ok", expect_boot=True, CR_EMU_PRIVATE_MB=private_mb,
+                      CR_GOLDEN="0", CR_DIAG="0", ANDROID_AVD_HOME=avd.as_posix(),
+                      FAKE_KILL_STAYS_DOWN="1")
+    calls = (tmp_path / "state" / "calls").read_text(encoding="utf-8")
+    return r, calls
+
+
+def test_an_emulator_over_the_host_ram_cap_is_recycled_before_the_screen_is_read(tmp_path):
+    """2026-10-20 22:33/22:47: qemu at 9.9 GB, exits 8 and 5 on 'could not get idle state'."""
+    r, calls = _bloat_run(tmp_path, "9902")
+    assert r.returncode == 0, r.stdout + r.stderr
+    assert "holds 9902 MB of host RAM (cap 7000 MB); recycling it" in r.stdout
+    assert calls.count("emu kill") == 1
+    # the kill comes before any screen read, and a fresh AVD is started after it
+    assert calls.index("emu kill") < calls.index("uiautomator dump")
+    assert (tmp_path / "state" / "emulator").exists()
+    assert "screen readable" in r.stdout
+
+
+def test_an_emulator_under_the_cap_is_left_alone(tmp_path):
+    r, calls = _bloat_run(tmp_path, "4386")
+    assert r.returncode == 0, r.stdout + r.stderr
+    assert "recycling" not in r.stdout and "emu kill" not in calls
+    assert not (tmp_path / "state" / "emulator").exists()
 
 
 def test_one_good_dump_is_readable_even_when_the_next_would_fail(tmp_path):

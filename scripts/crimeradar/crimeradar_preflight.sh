@@ -104,6 +104,39 @@ if [ -n "$LOCKSH" ] && [ "${CR_LOCK_HELD:-0}" != "1" ]; then
   trap 'bash "$LOCKSH" release --pid $$ >/dev/null 2>&1 || true' EXIT
 fi
 
+# A long-lived emulator bloats the HOST, not the guest (2026-10-21). The AVD has
+# hw.ramSize=2G and a fresh qemu holds 3.8-5.6 GB private; after ~100 minutes of
+# polls it held 9.9 GB (2026-10-20 22:33) and 16.3 GB (2026-10-19 23:05) on a
+# 16 GB host. The memguard cannot close it, so the host pages, the guest's
+# frames stall (systemui gfxinfo: 65 frames in the 4950 ms GPU bucket, about 10
+# on a fresh boot), uiautomator never sees an idle UI, and the leg exits 5 or 8
+# with "could not get idle state". An instance over the cap is recycled here,
+# under the lock, and the boot below brings a fresh one up from golden. No
+# reading (no qemu, powershell silent) recycles nothing.
+# CR_EMU_MAX_MB sets the cap; CR_EMU_PRIVATE_MB injects the reading for tests.
+EMU_MAX_MB="${CR_EMU_MAX_MB:-7000}"
+qemu_private_mb() {
+  if [ -n "${CR_EMU_PRIVATE_MB:-}" ]; then echo "$CR_EMU_PRIVATE_MB"; return; fi
+  powershell -NoProfile -Command \
+    "\$p = Get-Process qemu-system-x86_64-headless -ErrorAction SilentlyContinue; if (\$p) { [int]((\$p | Measure-Object PrivateMemorySize64 -Sum).Sum/1MB) }" \
+    2>/dev/null | tr -d '\r'
+}
+if [ "${CR_WEDGE_RETRY:-0}" != "1" ] && online; then
+  QMB="$(qemu_private_mb)"
+  case "$QMB" in
+    ''|*[!0-9]*) : ;;
+    *)
+      if [ "$QMB" -gt "$EMU_MAX_MB" ]; then
+        echo "[cr] the emulator holds ${QMB} MB of host RAM (cap ${EMU_MAX_MB} MB); recycling it before the screen is read"
+        diag "preflight: emulator at ${QMB} MB private, before the bloat recycle"
+        # CR_WEDGE_RETRY=1: a mid-leg stop (no app reopen, no second diag).
+        CR_WEDGE_RETRY=1 bash "$SCRIPTS/crimeradar_emu_stop.sh" >/dev/null 2>&1 \
+          || echo "[cr] WARN: the bloat recycle did not stop the emulator; continuing on it"
+        sleep 5
+      fi ;;
+  esac
+fi
+
 SNAP="golden"
 BOOT_MODE=cold
 GOLDEN_SH="$SCRIPTS/crimeradar_golden.sh"

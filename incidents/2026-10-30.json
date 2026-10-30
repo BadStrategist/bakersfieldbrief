@@ -1,0 +1,432 @@
+[
+ {
+  "type": "search for a suspect",
+  "time": "19:01",
+  "agency": "Kern County Sheriff's Office",
+  "area": "S Union Avenue",
+  "notability": 4,
+  "disposition": "one person taken into custody",
+  "summary": "An air unit and a police dog helped search a business yard in the 5800 block of South Union Avenue after a call about a possible unreported stolen vehicle with a firearm on the seat. A man was found hiding under a fifth-wheel trailer and one person was taken into custody."
+ },
+ {
+  "type": "medical aid",
+  "time": "19:17",
+  "agency": "Kern County Fire Department",
+  "area": "East Brundage Lane",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to the 800 block of East Brundage Lane for difficulty breathing."
+ },
+ {
+  "type": "reckless driver",
+  "time": "19:29",
+  "agency": "CHP",
+  "area": "",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "A white box truck was reported driving in and out of lanes at high speed on southbound Interstate 5 north of Highway 156."
+ },
+ {
+  "type": "medical aid",
+  "time": "19:44",
+  "agency": "Kern County Fire Department",
+  "area": "East Brundage Lane",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to the Navigation Center on East Brundage Lane for a maternity call."
+ },
+ {
+  "type": "commercial fire alarm",
+  "time": "19:52",
+  "agency": "Kern County Fire Department",
+  "area": "Lerdo Highway",
+  "notability": 2,
+  "disposition": "second engine canceled",
+  "summary": "Crews were sent to a commercial fire alarm at a plant on Lerdo Highway and canceled a second engine."
+ },
+ {
+  "type": "suspicious person",
+  "time": "20:02",
+  "agency": "Bakersfield Police Department",
+  "area": "Bernard Street",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 3300 block of Bernard Street for seven people reported to be wearing ski masks; no weapons were seen.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "domestic violence",
+  "time": "20:05",
+  "agency": "Bakersfield Police Department",
+  "area": "Caminos Street",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 9300 block of Caminos Street for an open phone line where a child was heard telling someone to stop hitting his mother.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "20:08",
+  "agency": "Kern County Fire Department",
+  "area": "Panorama Drive",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to the 6100 block of Panorama Drive for difficulty breathing.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "20:19",
+  "agency": "Bakersfield Police Department",
+  "area": "3rd Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers checked on a man reported to be yelling in an alley off the 1100 block of 3rd Street."
+ },
+ {
+  "type": "traffic collision",
+  "time": "20:21",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "no patients",
+  "summary": "A trailer came off a dolly and ran off the road into a parked car at a charging station. No one was hurt and crews worked to secure the charging equipment."
+ },
+ {
+  "type": "hit and run",
+  "time": "20:34",
+  "agency": "Bakersfield Police Department",
+  "area": "8th Street",
+  "notability": 4,
+  "disposition": "suspect vehicle fled",
+  "summary": "A hit-and-run crash with moderate to major injuries was reported at 8:34 p.m. The car that fled was described as a black Toyota sedan heading east."
+ },
+ {
+  "type": "person with knife",
+  "time": "20:37",
+  "agency": "Bakersfield Police Department",
+  "area": "Beardsley Avenue",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 800 block of Beardsley Avenue for a juvenile reported to be suicidal and holding a knife.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "suspicious person",
+  "time": "20:42",
+  "agency": "Bakersfield Police Department",
+  "area": "Sidding Road",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 22500 block of Sidding Road for a man knocking on doors asking for food and water after he was asked to leave a gas station.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "burglary in progress",
+  "time": "20:53",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 4,
+  "disposition": "perimeter search",
+  "summary": "Two people cut through a razor-wire fence and got into a business yard. Units set a perimeter and a police dog and an air unit joined the search. One of the two was reported hurt getting over the wire."
+ },
+ {
+  "type": "armed subject",
+  "time": "21:13",
+  "agency": "Bakersfield Police Department",
+  "area": "Haven Avenue",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 2300 block of Haven Avenue on a burglary call that turned out to be a fight between roommates. One of them, a woman, was armed with a sword. Officers noted a January case at the address involving a firearm.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "suspicious person",
+  "time": "21:21",
+  "agency": "Bakersfield Police Department",
+  "area": "Dawn Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers checked a vacant lot in the 8500 block of Dawn Street, where two men were reported on the property and vehicles and utility trailers were stored.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "person with a gun",
+  "time": "21:26",
+  "agency": "Bakersfield Police Department",
+  "area": "Kentucky Street",
+  "notability": 4,
+  "disposition": "firearm reported",
+  "summary": "Officers were sent to Kentucky Street and Bale at 9:26 p.m. for seven juveniles reported in the area. One of them was said to have a firearm and was last seen walking south toward the railroad tracks.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "21:40",
+  "agency": "Bakersfield Police Department",
+  "area": "Brian Way",
+  "notability": 3,
+  "disposition": "medics staged",
+  "summary": "Units used a heat signature to find someone under a trailer in the 3500 block of Brian Way and staged medics while they worked to reach them.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "21:44",
+  "agency": "Bakersfield Police Department",
+  "area": "Brundage Lane",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 700 block of Brundage Lane for a man reported to be jumping on a vehicle he shared with the caller."
+ },
+ {
+  "type": "person in crisis",
+  "time": "22:14",
+  "agency": "Bakersfield Police Department",
+  "area": "Mettler Frontage Road W",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "A man flagged down a crew at a gas station on Mettler Frontage Road West. He appeared to be in a mental health crisis and said he was on his way to family he believed were being hurt."
+ },
+ {
+  "type": "commercial fire alarm",
+  "time": "22:57",
+  "agency": "Kern County Fire Department",
+  "area": "East Brundage Lane",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to a commercial fire alarm in the 3900 block of East Brundage Lane."
+ },
+ {
+  "type": "welfare check",
+  "time": "23:04",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "no answer at the door",
+  "summary": "Officers checked on a woman who made suicidal statements and said she had taken pills. There was no answer at the door."
+ },
+ {
+  "type": "medical aid",
+  "time": "23:08",
+  "agency": "Kern County Fire Department",
+  "area": "Jaspar Avenue",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to the 4200 block of Jaspar Avenue for a seizure.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "pursuit",
+  "time": "23:40",
+  "agency": "Dispatch",
+  "area": "Edison Highway",
+  "notability": 4,
+  "disposition": "pursuit",
+  "summary": "A pursuit ran eastbound on Edison Highway at 11:40 p.m., past Sterling and then Fairfax, at speeds from 85 to 120 mph. An air unit was launching."
+ },
+ {
+  "type": "weapons call",
+  "time": "23:45",
+  "agency": "Bakersfield Police Department",
+  "area": "Cedar Street",
+  "notability": 4,
+  "disposition": "on foot northbound on Fillmore Street",
+  "summary": "Officers were sent at 11:45 p.m. for a man with a machete riding a black bicycle westbound on Cedar Street toward Lincoln. He was later reported on foot northbound on Fillmore Street from Cedar.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "00:11",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 3,
+  "disposition": "deputies sent",
+  "summary": "Deputies were sent at 12:11 a.m. to check on someone reported to be having suicidal thoughts at a home on Sierra Highway."
+ },
+ {
+  "type": "welfare check",
+  "time": "00:49",
+  "agency": "Bakersfield Police Department",
+  "area": "Hart Street",
+  "notability": 3,
+  "disposition": "area checked",
+  "summary": "Officers checked the area of the 100 block of Hart Street for a man heard screaming for help near the canal.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "fire alarm",
+  "time": "01:12",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "no fire",
+  "summary": "A crew found a smoldering charcoal grill left unattended in a garage after a fire alarm. The house was evacuated and there was no fire."
+ },
+ {
+  "type": "person in crisis",
+  "time": "03:12",
+  "agency": "Bakersfield Police Department",
+  "area": "33rd Street",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to an apartment on 33rd Street where a woman who first asked for medical help was talking about wanting to die and scissors were mentioned. It was not known whether she was armed.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "cardiac arrest",
+  "time": "03:26",
+  "agency": "Kern County Fire Department",
+  "area": "Hudson Drive",
+  "notability": 3,
+  "disposition": "cardiac arrest",
+  "summary": "A crew was sent to the 200 block of Hudson Drive for a cardiac arrest after a seizure. The patient was reported to not be breathing.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "03:29",
+  "agency": "Kern County Fire Department",
+  "area": "Monterey Street",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to the 3100 block of Monterey Street for difficulty breathing.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "03:42",
+  "agency": "Kern County Fire Department",
+  "area": "Clarisse Street",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to the 16300 block of Clarisse Street for a medical alarm.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "armed subject",
+  "time": "03:53",
+  "agency": "Bakersfield Police Department",
+  "area": "Country View Lane",
+  "notability": 3,
+  "disposition": "brick put down",
+  "summary": "Officers were sent to the 5900 block of Country View Lane, where a woman was reported to be armed with a brick and threatening the caller. She had put the brick down by the time officers reached her.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "theft",
+  "time": "04:04",
+  "agency": "Bakersfield Police Department",
+  "area": "Kathleen Avenue",
+  "notability": 3,
+  "disposition": "reported",
+  "summary": "A resident's camera recorded someone taking packages from his porch and from the area on Kathleen Avenue. He put his loss at $500 to $1,000 and described a gray extended-cab pickup.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "overdose",
+  "time": "04:09",
+  "agency": "Bakersfield Police Department",
+  "area": "Lake Street",
+  "notability": 3,
+  "disposition": "overdose call",
+  "summary": "Officers and a crew were sent to the 900 block of Lake Street for a man reported to have relapsed on fentanyl and stopped answering. The call was updated to an overdose.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "04:52",
+  "agency": "Kern County Fire Department",
+  "area": "Mettler Frontage Road W",
+  "notability": 3,
+  "disposition": "upgraded",
+  "summary": "A crew was sent to a gas station on Mettler Frontage Road West for a fall, then upgraded the call: the patient had a head wound and was confused."
+ },
+ {
+  "type": "cardiac arrest",
+  "time": "05:26",
+  "agency": "Kern County Fire Department",
+  "area": "Victor Street",
+  "notability": 3,
+  "disposition": "cardiac arrest",
+  "summary": "Two engines and medics were sent to the 6300 block of Victor Street for an unconscious patient, and the call was upgraded to a cardiac arrest.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "suspicious vehicle",
+  "time": "05:33",
+  "agency": "Bakersfield Police Department",
+  "area": "Edison Highway",
+  "notability": 2,
+  "disposition": "not located",
+  "summary": "Officers checked the 8100 block of Edison Highway for a van reported to be parked at a gas station. No one was seen."
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "05:46",
+  "agency": "CHP",
+  "area": "",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "A truck driver hauling hay westbound on Highway 46 west of Highway 33 told his employer that vehicles were passing and tailgating him."
+ },
+ {
+  "type": "child welfare",
+  "time": "05:47",
+  "agency": "Bakersfield Police Department",
+  "area": "Columbus Street",
+  "notability": 4,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 4800 block of Columbus Street, where a mother was reported to have locked her two-year-old in a bedroom, started using cocaine and fallen asleep. The child was still in the room."
+ },
+ {
+  "type": "Traffic collision",
+  "time": "19:55",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Vehicle crash near Tesla station off I-5 and 46.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "20:02",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Traffic collision involving smaller vehicle and pickup.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "20:28",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Pedestrian hit by fleeing pickup in Taft.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "20:50",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Gosford Road",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Truck crash reported on Gosford Road.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Cardiac arrest",
+  "time": "22:31",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Cardiac arrest with CPR in progress at Buena Vista.",
+  "source": "crimeradar"
+ }
+]

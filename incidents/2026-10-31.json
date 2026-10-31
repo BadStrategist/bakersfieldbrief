@@ -1,0 +1,474 @@
+[
+ {
+  "type": "suspicious person",
+  "time": "19:25",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a Walmart parking lot at 7:25 p.m. for a man reported to be loitering in the lot."
+ },
+ {
+  "type": "large fight",
+  "time": "19:35",
+  "agency": "Bakersfield Police Department",
+  "area": "Union Avenue",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a grocery store on Union Avenue at 7:35 p.m. where six people were reported to be fighting with security, one of them in a ski mask."
+ },
+ {
+  "type": "foot pursuit",
+  "time": "19:58",
+  "agency": "Bakersfield Police Department",
+  "area": "Fremont Street",
+  "notability": 4,
+  "disposition": "code 33, two people ran",
+  "summary": "A traffic stop at Fremont Street and 9th Avenue at 7:58 p.m. turned into a foot chase. Two people ran from the car and a third was reported to possibly have a rifle; officers broadcast a code 33 and searched the area.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "field fire",
+  "time": "20:43",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to a field reported on fire in a store parking lot off Tucker Road at 8:43 p.m."
+ },
+ {
+  "type": "structure fire",
+  "time": "20:53",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 4,
+  "disposition": "heavy smoke, no injuries reported",
+  "summary": "Crews were sent to a house on South Silver Ridge Street at 8:53 p.m. for smoke and flames from an attached garage. Heavy smoke was showing from one side when they arrived, and no injuries were reported."
+ },
+ {
+  "type": "suicidal subject",
+  "time": "21:19",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 9:19 p.m. to a home where a woman was reported to be suicidal with a knife to her neck and her husband was telling her not to call 911."
+ },
+ {
+  "type": "suspicious person",
+  "time": "21:26",
+  "agency": "Bakersfield Police Department",
+  "area": "Gilmore Avenue",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 3500 block of Gilmore Avenue at 9:26 p.m. for a man reported to have walked into a yard.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "vehicle fire",
+  "time": "21:36",
+  "agency": "Kern County Fire Department",
+  "area": "Main Street",
+  "notability": 2,
+  "disposition": "one engine handled",
+  "summary": "A crew found a small utility truck on fire in the 10100 block of Main Street at 9:36 p.m. and handled it; the other engines were canceled."
+ },
+ {
+  "type": "domestic violence",
+  "time": "22:07",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 4300 block of Staples Court at 10:07 p.m. after a caller said a couple had become physical on the porch and were threatening the caller's mother."
+ },
+ {
+  "type": "weapons call",
+  "time": "22:25",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "reported",
+  "summary": "Officers were sent to the Camilla Village apartments at 10:25 p.m. after a caller reported people pointing a firearm out of a vehicle window. The caller disconnected and did not answer a callback."
+ },
+ {
+  "type": "person with a gun",
+  "time": "22:36",
+  "agency": "Bakersfield Police Department",
+  "area": "Castro Lane",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to Valley Plaza and Castro Lane at 10:36 p.m. for a group of juveniles reported to have firearms and knives and to be surrounding the caller.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "outside fire",
+  "time": "22:45",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "no threat reported",
+  "summary": "Crews were sent at 10:45 p.m. to a bonfire in a field. The caller put it at under five feet across and no threat was reported."
+ },
+ {
+  "type": "welfare check",
+  "time": "22:49",
+  "agency": "Bakersfield Police Department",
+  "area": "Chester Avenue",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 3400 block of Chester Avenue at 10:49 p.m. for a man reported to be asking people to call 911 without saying why."
+ },
+ {
+  "type": "vehicle versus pedestrian",
+  "time": "23:33",
+  "agency": "Bakersfield Police Department",
+  "area": "30th Street",
+  "notability": 4,
+  "disposition": "minor to moderate injuries reported",
+  "summary": "A vehicle hit a pedestrian at 30th Street and Union Avenue at 11:33 p.m. Officers and medics responded, and the injuries were described as minor to moderate.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "person with a gun",
+  "time": "23:33",
+  "agency": "Bakersfield Police Department",
+  "area": "Terrace Way",
+  "notability": 3,
+  "disposition": "complex swept, no one found",
+  "summary": "Officers were sent to an apartment complex on Terrace Way at 11:33 p.m. after callers reported 8 to 10 people in ski masks, some of them with firearms, banging on doors. Officers swept the complex and found no one."
+ },
+ {
+  "type": "juvenile disturbance",
+  "time": "23:35",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a party on Alder Glen Street at 11:35 p.m. for underage drinking, and a second caller then reported people with firearms at the party."
+ },
+ {
+  "type": "shots fired",
+  "time": "23:49",
+  "agency": "Bakersfield Police Department",
+  "area": "Mohawk Street",
+  "notability": 4,
+  "disposition": "two detained, search continued",
+  "summary": "Officers were sent to Mohawk Street at 11:49 p.m. for shots fired and a chase. Two more people were detained, and officers said no one else was outstanding; a search of the field and a house south of it continued."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "23:58",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a home just before midnight after a woman was heard yelling and then told a neighbor a man was trying to kill her."
+ },
+ {
+  "type": "vegetation fire",
+  "time": "00:01",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "out",
+  "summary": "A crew was sent to a vegetation fire off Copas Road at 12:01 a.m. The fire was reported out a few minutes later."
+ },
+ {
+  "type": "search for a suspect",
+  "time": "00:05",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Hageman Road",
+  "notability": 4,
+  "disposition": "search cleared at 1:07 a.m.",
+  "summary": "Deputies searched a backyard, a shed and an overhang at a home on Hageman Road at Ledgeview Lane from 12:05 to 1:07 a.m. for a man wanted on a served criminal protective order and reported to be hiding there. An air unit watched the yard, and the search was cleared at 1:07 a.m."
+ },
+ {
+  "type": "possible dui",
+  "time": "00:24",
+  "agency": "Kern County Sheriff's Office",
+  "area": "East Brundage Lane",
+  "notability": 2,
+  "disposition": "deputies sent",
+  "summary": "Deputies were sent to the 1800 block of East Brundage Lane at 12:24 a.m. for a possible drunk driver asleep at the wheel."
+ },
+ {
+  "type": "foot pursuit",
+  "time": "00:41",
+  "agency": "Kern County Sheriff's Office",
+  "area": "S Fairfax Road",
+  "notability": 3,
+  "disposition": "perimeter set",
+  "summary": "A traffic stop at South Fairfax Road and Oasis turned into a foot chase at 12:41 a.m. when the driver ran into a covered patio at a house on Garden Street. Deputies set a perimeter and reported two juveniles with him.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "stabbing investigation",
+  "time": "00:53",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Weedpatch Highway",
+  "notability": 3,
+  "disposition": "not confirmed",
+  "summary": "Deputies were sent to a gas station on Weedpatch Highway at 12:53 a.m. for a possible stabbing. A woman told a clerk her boyfriend had pulled a knife on her and she had blood on her hands, which she said could have come from a red bottle she was carrying."
+ },
+ {
+  "type": "medical aid",
+  "time": "01:26",
+  "agency": "Kern County Fire Department",
+  "area": "Richmond Street",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "An engine was sent to the Fairground RV Park on South Richmond Street at 1:26 a.m. for difficulty breathing.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "rollover",
+  "time": "01:32",
+  "agency": "Bakersfield Police Department",
+  "area": "Bucknell Street",
+  "notability": 3,
+  "disposition": "single vehicle on its roof",
+  "summary": "Crews were sent to the 3200 block of Bucknell Street at 1:32 a.m. for a crash reported as two vehicles and found a single vehicle on its roof.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "01:37",
+  "agency": "Bakersfield Police Department",
+  "area": "Chester Avenue",
+  "notability": 3,
+  "disposition": "person still in the turn lane",
+  "summary": "Officers were sent to Chester Avenue and California at 1:37 a.m. for a man lying in the turn lane who appeared to want to be hit by a vehicle. He was still there at 2:19 a.m., with bystanders trying to wake him and one offering CPR."
+ },
+ {
+  "type": "rollover",
+  "time": "01:58",
+  "agency": "Kern County Fire Department",
+  "area": "Berkshire Road",
+  "notability": 3,
+  "disposition": "driver pinned in",
+  "summary": "A car rolled at Stine Road and Berkshire Road at 1:58 a.m. and the driver was pinned in. The airbags had gone off, and the first report of a vehicle on fire was wrong."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "02:13",
+  "agency": "Bakersfield Police Department",
+  "area": "Oregon Street",
+  "notability": 3,
+  "disposition": "open line",
+  "summary": "Officers were sent to the 1000 block of Oregon Street at 2:13 a.m. for a domestic call. A physical struggle was heard on an open line before a man took the phone, said everything was fine and hung up.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "traffic collision",
+  "time": "02:45",
+  "agency": "Bakersfield Police Department",
+  "area": "White Lane",
+  "notability": 4,
+  "disposition": "road shut down",
+  "summary": "A two-vehicle crash at White Lane and Cernan Court at 2:45 a.m. shut White Lane down in both directions, and one person was reported to be getting CPR at the scene. Crews blocked White Lane at Lily while they worked."
+ },
+ {
+  "type": "vehicle into power pole",
+  "time": "03:02",
+  "agency": "CHP",
+  "area": "",
+  "notability": 2,
+  "disposition": "pole replaced",
+  "summary": "A vehicle struck a wooden light pole at 3:02 a.m. PG&E sent a crew to replace it, and CHP was not requested."
+ },
+ {
+  "type": "domestic violence",
+  "time": "03:13",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Planz Road",
+  "notability": 3,
+  "disposition": "deputies sent",
+  "summary": "Deputies were sent at 3:13 a.m. to a home on Planz Road for a domestic violence call."
+ },
+ {
+  "type": "homicide",
+  "time": "03:37",
+  "agency": "Kern County Sheriff's Office",
+  "area": "S Half Moon Drive",
+  "notability": 5,
+  "disposition": "homicide investigation",
+  "summary": "Deputies were called at 3:37 a.m. after a caller reported five shots and screaming. They found a victim, and subjects were reported fleeing in vehicles; one who ran on foot crossed to an apartment complex across the street. A caller reported blood in an alleyway. By 4:53 a.m. dispatch was working it as a homicide on South Half Moon Drive, with a briefing staged at Savory Lane and South Half Moon.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "fire",
+  "time": "04:09",
+  "agency": "Kern County Fire Department",
+  "area": "University Avenue",
+  "notability": 4,
+  "disposition": "fire out, smoke inside",
+  "summary": "A crew sent to the 1200 block of University Avenue at 4:09 a.m. found a fire in a living room that was already out. Smoke was still inside the home.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "disturbance with firearm",
+  "time": "04:12",
+  "agency": "Bakersfield Police Department",
+  "area": "Quincy Street",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 1600 block of Quincy Street at 4:12 a.m., where a neighbor was reported to have a firearm and to have pointed a laser at the caller. A disturbance was still going on when officers arrived.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "04:23",
+  "agency": "Kern County Fire Department",
+  "area": "San Luis Street",
+  "notability": 3,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to the 2100 block of San Luis Street at 4:23 a.m. for a traumatic injury.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "juvenile disturbance",
+  "time": "04:37",
+  "agency": "Bakersfield Police Department",
+  "area": "Jasmine Avenue",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 12600 block of Jasmine Avenue at 4:37 a.m. for a party where juveniles were reported to be drinking and driving recklessly.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "grass fire",
+  "time": "04:46",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "not close to structures",
+  "summary": "Crews were sent at 4:46 a.m. to a grass fire in a field behind a new housing development. It was not close to the structures."
+ },
+ {
+  "type": "vegetation fire",
+  "time": "05:11",
+  "agency": "Kern County Fire Department",
+  "area": "Rosedale Highway",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "A crew was sent to a vegetation fire on Rosedale Highway at 5:11 a.m."
+ },
+ {
+  "type": "welfare check",
+  "time": "05:23",
+  "agency": "Bakersfield Police Department",
+  "area": "Mesa Drive",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 4500 block of Mesa Drive at 5:23 a.m. on a report that a woman there was talking about suicide and wanting to cut herself, with two juveniles also at the home.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "possible dui",
+  "time": "05:40",
+  "agency": "CHP",
+  "area": "Stockdale Highway",
+  "notability": 2,
+  "disposition": "officer moved to stop",
+  "summary": "An officer moved to stop a white Acura reported to be swerving and holding up traffic on Stockdale Highway at 5:40 a.m."
+ },
+ {
+  "type": "stabbing",
+  "time": "05:43",
+  "agency": "Bakersfield Police Department",
+  "area": "Country Club Drive",
+  "notability": 5,
+  "disposition": "man still reported armed with nails",
+  "summary": "Officers were sent to the 3500 block of Country Club Drive at 5:43 a.m. where a man was reported to have stabbed his brother in the face with a nail and to still be trying to stab people. He had several nails with him.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "suspicious person",
+  "time": "05:43",
+  "agency": "Bakersfield Police Department",
+  "area": "Wilson Road",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the alley of the 6700 block of Wilson Road at 5:43 a.m. for a woman reported to be hitting a garage with a flashlight."
+ },
+ {
+  "type": "smoke investigation",
+  "time": "05:56",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "units staged",
+  "summary": "Crews were sent at 5:56 a.m. to a vacant commercial warehouse where light and smoke were showing. They staged on arrival to investigate."
+ },
+ {
+  "type": "Traffic collision",
+  "time": "22:31",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Road-rage collision and hit-and-run on Kirkcaldy Drive.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire alarm",
+  "time": "01:02",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Commercial fire alarm at Panda Express.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Medical emergency",
+  "time": "01:45",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Teen found unresponsive after pill and alcohol use.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire",
+  "time": "06:42",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Fire response at Southern Public Service Station.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:43",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Welfare check on person at Castle Lane apartment.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:46",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Suspicious person reported on Elsinore Street.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Shooting",
+  "time": "00:29",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Eureka Street",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Possible shooting reported on Eureka Street.",
+  "source": "crimeradar"
+ }
+]

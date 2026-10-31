@@ -11,7 +11,7 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "Southbound traffic is reduced to 1 lane at Moore St /in San Diego/ (San Diego Co) - Due to a traffic collision A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "RESTRICTIONS"
     },
     {
@@ -46,10 +46,19 @@
       "region": "CENTRAL CALIFORNIA"
      }
     ],
-    "elsewhere": []
+    "elsewhere": [
+     {
+      "status": "RESTRICTIONS",
+      "place": "San Diego",
+      "county": "San Diego Co",
+      "where": "San Diego (San Diego Co)",
+      "text": "Southbound traffic is reduced to 1 lane at Moore St /in San Diego/ (San Diego Co) - Due to a traffic collision",
+      "region": "SOUTHERN CALIFORNIA"
+     }
+    ]
    },
-   "reported_as_of": "Saturday, October 31st, 2026 at 01:50 AM",
-   "hash": "283c2f65e1"
+   "reported_as_of": "Saturday, October 31st, 2026 at 07:39 AM",
+   "hash": "f009028729"
   },
   {
    "number": "58",
@@ -71,7 +80,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Saturday, October 31st, 2026 at 01:50 AM",
+   "reported_as_of": "Saturday, October 31st, 2026 at 07:39 AM",
    "hash": "5374f203ec"
   },
   {
@@ -108,7 +117,7 @@
      }
     ]
    },
-   "reported_as_of": "Saturday, October 31st, 2026 at 01:50 AM",
+   "reported_as_of": "Saturday, October 31st, 2026 at 07:39 AM",
    "hash": "f97882795e"
   }
  ],

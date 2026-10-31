@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-31T01:50:50-07:00",
+ "built_at": "2026-10-31T07:40:15-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,54 +68,52 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 62,
+  "brief_words": 1196,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "GET to offer free rides to veterans, active-duty military during November",
+   "top_story": "Bakersfield police searching for suspect in Smoke Bros burglary on Rosedale Highway",
    "overnight_band": {
-    "date": "2026-10-30",
-    "count": 45,
+    "date": "2026-10-31",
+    "count": 50,
     "chips": [
      [
       "Weapons and assaults",
-      5
+      10
+     ],
+     [
+      "Fires",
+      10
      ],
      [
       "Crashes and traffic",
-      7
-     ],
-     [
-      "Medical and overdose",
-      11
-     ],
-     [
-      "Disturbances and welfare",
       8
      ],
      [
-      "Burglary and theft",
-      2
-     ],
-     [
-      "Suspicious activity",
-      5
-     ],
-     [
-      "Alarms",
+      "Medical and overdose",
       3
      ],
      [
+      "Disturbances and welfare",
+      10
+     ],
+     [
+      "Suspicious activity",
+      3
+     ],
+     [
+      "Alarms",
+      1
+     ],
+     [
       "Other calls",
-      4
+      5
      ]
     ],
-    "other": "2 person in crisis, 1 search for a suspect, 1 incident",
-    "unmapped": [
-     "person in crisis"
-    ]
+    "other": "2 foot pursuit, 2 incident, 1 search for a suspect",
+    "unmapped": []
    },
    "archive": "2026-10-31"
   },
@@ -152,13 +150,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 0,
+   "wind_mph": 5,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 48,
-   "wind_mph": 0,
+   "temp": 43,
+   "wind_mph": 5,
    "alerts": 0
   },
   "roads": {
@@ -182,9 +180,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 25,
-    "In 1 to 2 weeks": 21,
-    "Later": 75
+    "In the next 7 days": 23,
+    "In 1 to 2 weeks": 19,
+    "Later": 66
    },
    "meetings": 4
   },
@@ -195,14 +193,14 @@
    "isabella_af": 138955,
    "alpr_total": 460,
    "kern_fires": 0,
-   "aqi": 32,
+   "aqi": 36,
    "chp_week": 74
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 80
+   "published": 81
   },
   "map": {
    "dots": 34

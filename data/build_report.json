@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-30T13:44:53-07:00",
+ "built_at": "2026-10-30T17:02:09-07:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 7,
+   "chp_new": 4,
    "top_story": "Bakersfield police searching for man accused of stealing items from unlocked vehicle",
    "overnight_band": {
     "date": "2026-10-30",
@@ -120,7 +120,7 @@
    "archive": "2026-10-30"
   },
   "cityhall": {
-   "upcoming_meetings": 3,
+   "upcoming_meetings": 4,
    "county_items": 109,
    "drafts_generated": 0
   },
@@ -152,13 +152,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 16,
+   "wind_mph": 9,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 61,
-   "wind_mph": 16,
+   "temp": 57,
+   "wind_mph": 9,
    "alerts": 0
   },
   "roads": {
@@ -182,11 +182,11 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 17,
+    "In the next 7 days": 16,
     "In 1 to 2 weeks": 24,
     "Later": 69
    },
-   "meetings": 3
+   "meetings": 4
   },
   "feed": {
    "entries": 30
@@ -195,8 +195,8 @@
    "isabella_af": 139008,
    "alpr_total": 460,
    "kern_fires": 0,
-   "aqi": 95,
-   "chp_week": 70
+   "aqi": 62,
+   "chp_week": 74
   },
   "letters": {
    "published": 1

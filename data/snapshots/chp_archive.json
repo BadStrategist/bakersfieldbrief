@@ -1070,6 +1070,46 @@
   "details": ""
  },
  {
+  "log_id": "261030BF0282",
+  "time": "Oct 30 2026  4:23PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "S Fairfax Rd / Redbank Rd",
+  "area": "Bakersfield",
+  "lat": 35.339704,
+  "lon": -118.931948,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0286",
+  "time": "Oct 30 2026  4:40PM",
+  "type": "1166-Defective Traffic Signals",
+  "location": "Hageman Rd / Cannon St",
+  "area": "Buttonwillow",
+  "lat": 35.398479,
+  "lon": -119.323098,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0289",
+  "time": "Oct 30 2026  4:49PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 Sr58 W Sr99 Con",
+  "area": "Bakersfield",
+  "lat": 35.352874,
+  "lon": -119.034989,
+  "details": ""
+ },
+ {
+  "log_id": "261030BF0294",
+  "time": "Oct 30 2026  4:57PM",
+  "type": "CFIRE-Car Fire",
+  "location": "Sr58 W Sr99 S Con / Sr99 S",
+  "area": "Bakersfield",
+  "lat": 35.345748,
+  "lon": -119.039651,
+  "details": ""
+ },
+ {
   "log_id": "261030BF0031",
   "time": "Oct 30 2026  5:30AM",
   "type": "MZP-Assist CT with Maintenance",

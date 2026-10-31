@@ -16,7 +16,7 @@
     },
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Los Angeles/Kern Co Line to 5 mi south of the Jct of SR-99 /at Grapevine Rd/ (Kern Co) /the Grapevine/ - Travel is not recommended for campers, trailers, or permit loads Northbound traffic is reduced to 1 lane 2 mi north of the Jct of SR-58 /at Buttonwillow Rest Are/ (Kern Co) - Due to a traffic collision",
+     "text": "A high wind advisory is in effect from the Los Angeles/Kern Co Line to 5 mi south of the Jct of SR-99 /at Grapevine Rd/ (Kern Co) /the Grapevine/ - Travel is not recommended for campers, trailers, or permit loads",
      "status": "RESTRICTIONS"
     },
     {
@@ -46,19 +46,10 @@
       "region": "CENTRAL CALIFORNIA"
      }
     ],
-    "elsewhere": [
-     {
-      "status": "RESTRICTIONS",
-      "place": "",
-      "county": "Kern Co",
-      "where": "Kern Co",
-      "text": "Northbound traffic is reduced to 1 lane 2 mi north of the Jct of SR-58 /at Buttonwillow Rest Are/ (Kern Co) - Due to a traffic collision",
-      "region": "CENTRAL CALIFORNIA"
-     }
-    ]
+    "elsewhere": []
    },
-   "reported_as_of": "Friday, October 30th, 2026 at 01:44 PM",
-   "hash": "02ce079b90"
+   "reported_as_of": "Friday, October 30th, 2026 at 05:01 PM",
+   "hash": "283c2f65e1"
   },
   {
    "number": "58",
@@ -80,7 +71,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Friday, October 30th, 2026 at 01:44 PM",
+   "reported_as_of": "Friday, October 30th, 2026 at 05:02 PM",
    "hash": "5374f203ec"
   },
   {
@@ -117,7 +108,7 @@
      }
     ]
    },
-   "reported_as_of": "Friday, October 30th, 2026 at 01:44 PM",
+   "reported_as_of": "Friday, October 30th, 2026 at 05:02 PM",
    "hash": "f97882795e"
   }
  ],

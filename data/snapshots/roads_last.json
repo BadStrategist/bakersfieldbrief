@@ -16,7 +16,7 @@
     },
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Los Angeles/Kern Co Line to 5 mi south of the Jct of SR-99 /at Grapevine Rd/ (Kern Co) /the Grapevine/ - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "There is a dense fog advisory in effect from from the Los Angeles/Kern Co Line to 5 mi south of the Jct of SR-99 /at Grapevine Rd/ (Kern Co) /the Grapevine/ - Motorists are advised to drive with caution",
      "status": "RESTRICTIONS"
     },
     {
@@ -42,14 +42,14 @@
       "place": "",
       "county": "Kern Co",
       "where": "Kern Co",
-      "text": "A high wind advisory is in effect from the Los Angeles/Kern Co Line to 5 mi south of the Jct of SR-99 /at Grapevine Rd/ (Kern Co) /the Grapevine/ - Travel is not recommended for campers, trailers, or permit loads",
+      "text": "There is a dense fog advisory in effect from from the Los Angeles/Kern Co Line to 5 mi south of the Jct of SR-99 /at Grapevine Rd/ (Kern Co) /the Grapevine/ - Motorists are advised to drive with caution",
       "region": "CENTRAL CALIFORNIA"
      }
     ],
     "elsewhere": []
    },
-   "reported_as_of": "Sunday, November 1st, 2026 at 01:41 AM",
-   "hash": "283c2f65e1"
+   "reported_as_of": "Sunday, November 1st, 2026 at 07:38 AM",
+   "hash": "903767e008"
   },
   {
    "number": "58",
@@ -71,7 +71,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Sunday, November 1st, 2026 at 01:41 AM",
+   "reported_as_of": "Sunday, November 1st, 2026 at 07:38 AM",
    "hash": "5374f203ec"
   },
   {
@@ -108,7 +108,7 @@
      }
     ]
    },
-   "reported_as_of": "Sunday, November 1st, 2026 at 01:41 AM",
+   "reported_as_of": "Sunday, November 1st, 2026 at 07:38 AM",
    "hash": "f97882795e"
   }
  ],

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-01T01:41:07-08:00",
+ "built_at": "2026-11-01T07:38:42-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 5562, column 3"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -68,40 +68,48 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 61,
+  "brief_words": 1232,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
+   "chp_new": 3,
    "top_story": "Large police presence reported near Challenger Park in southwest Bakersfield",
    "overnight_band": {
-    "date": "2026-10-31",
-    "count": 50,
+    "date": "2026-11-01",
+    "count": 58,
     "chips": [
      [
       "Weapons and assaults",
-      10
+      12
      ],
      [
       "Fires",
-      10
+      2
      ],
      [
       "Crashes and traffic",
-      8
+      9
      ],
      [
       "Medical and overdose",
-      3
+      6
+     ],
+     [
+      "Missing persons",
+      1
      ],
      [
       "Disturbances and welfare",
-      10
+      12
+     ],
+     [
+      "Burglary and theft",
+      5
      ],
      [
       "Suspicious activity",
-      3
+      1
      ],
      [
       "Alarms",
@@ -109,11 +117,14 @@
      ],
      [
       "Other calls",
-      5
+      9
      ]
     ],
-    "other": "2 foot pursuit, 2 incident, 1 search for a suspect",
-    "unmapped": []
+    "other": "4 person with a firearm, 3 incident, 1 animal cruelty, 1 vandalism",
+    "unmapped": [
+     "person with a firearm",
+     "animal cruelty"
+    ]
    },
    "archive": "2026-11-01"
   },
@@ -150,13 +161,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 7,
+   "wind_mph": null,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 48,
-   "wind_mph": 7,
+   "temp": 46,
+   "wind_mph": null,
    "alerts": 0
   },
   "roads": {
@@ -193,17 +204,17 @@
    "isabella_af": 139008,
    "alpr_total": 460,
    "kern_fires": 0,
-   "aqi": 58,
-   "chp_week": 74
+   "aqi": 26,
+   "chp_week": 77
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 81
+   "published": 82
   },
   "map": {
-   "dots": 34
+   "dots": 32
   },
   "sunday_read": {
    "topic": "Public safety",

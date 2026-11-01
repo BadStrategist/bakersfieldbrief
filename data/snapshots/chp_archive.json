@@ -1,5 +1,55 @@
 [
  {
+  "log_id": "261101BF0179",
+  "time": "Nov  1 2026  2:02PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "Sb Sr99 Jno Pond Rd",
+  "area": "Bakersfield",
+  "lat": 35.71806,
+  "lon": -119.237134,
+  "details": ""
+ },
+ {
+  "log_id": "261101BF0193",
+  "time": "Nov  1 2026  2:43PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "0 Sr99 N",
+  "area": "Bakersfield",
+  "lat": 35.591008,
+  "lon": -119.204639,
+  "details": ""
+ },
+ {
+  "log_id": "261101BF0208",
+  "time": "Nov  1 2026  3:21PM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 Sr178",
+  "area": "Bakersfield",
+  "lat": 35.494908,
+  "lon": -118.697521,
+  "details": ""
+ },
+ {
+  "log_id": "261101BF0214",
+  "time": "Nov  1 2026  3:31PM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sr58 E / Mt Vernon Ave Ofr",
+  "area": "Bakersfield",
+  "lat": 35.352393,
+  "lon": -118.973431,
+  "details": ""
+ },
+ {
+  "log_id": "261101BF0219",
+  "time": "Nov  1 2026  3:48PM",
+  "type": "FIRE-Report of Fire",
+  "location": "Rosedale Hwy Onr / Sr99 S",
+  "area": "Bakersfield",
+  "lat": 35.382522,
+  "lon": -119.044567,
+  "details": ""
+ },
+ {
   "log_id": "261101BF0102",
   "time": "Nov  1 2026  5:10AM",
   "type": "1013-Road/Weather Conditions",

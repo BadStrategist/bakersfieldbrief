@@ -20,6 +20,26 @@
   "details": ""
  },
  {
+  "log_id": "261101BF0158",
+  "time": "Nov  1 2026 11:35AM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "9800 San Emidio St",
+  "area": "Bakersfield",
+  "lat": 35.265282,
+  "lon": -118.921968,
+  "details": ""
+ },
+ {
+  "log_id": "261101BF0160",
+  "time": "Nov  1 2026 11:57AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Royal Way / Pioneer Dr",
+  "area": "Bakersfield",
+  "lat": 35.368965,
+  "lon": -118.909717,
+  "details": ""
+ },
+ {
   "log_id": "261101BF0021",
   "time": "Nov  1 2026 12:55AM",
   "type": "TADV-Traffic Advisory",

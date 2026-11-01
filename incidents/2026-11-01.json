@@ -1,0 +1,542 @@
+[
+ {
+  "type": "welfare check",
+  "time": "19:20",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 7:20 p.m. to check on a 16-year-old girl reported to have jumped from a moving vehicle and run off on foot."
+ },
+ {
+  "type": "person with a firearm",
+  "time": "19:23",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "vehicle left the area",
+  "summary": "Officers were sent at 7:23 p.m. for a man reported to be armed in a red pickup that left the area before they arrived."
+ },
+ {
+  "type": "domestic dispute",
+  "time": "19:25",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 7:25 p.m. on a priority domestic call in the 500 block of I Street."
+ },
+ {
+  "type": "vehicle versus pedestrian",
+  "time": "19:42",
+  "agency": "Delano Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "one patient reported",
+  "summary": "Delano police and medics were called at 7:42 p.m. to a person down in the roadway with a vehicle; one patient was reported."
+ },
+ {
+  "type": "missing person",
+  "time": "19:49",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 2,
+  "disposition": "deputies asked to check",
+  "summary": "Deputies were asked at 7:49 p.m. to check a home for a missing man who had left earlier that morning."
+ },
+ {
+  "type": "shots fired",
+  "time": "19:53",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Margalo Avenue",
+  "notability": 4,
+  "disposition": "shots reported",
+  "summary": "Deputies were sent to the 12200 block of Margalo Avenue at 7:53 p.m. after 3 to 4 loud explosions and 3 gunshots were reported.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "19:57",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 7:57 p.m. to a disturbance where the two people in a parked car were reported to be chasing each other."
+ },
+ {
+  "type": "large fight",
+  "time": "20:00",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a park at 8:00 p.m. for a fight among 10 to 20 people; one person was reported to have a knife, but no knife was seen."
+ },
+ {
+  "type": "animal cruelty",
+  "time": "20:08",
+  "agency": "Bakersfield Police Department",
+  "area": "Wible Road",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the bus terminal at 1912 Wible Road at 8:08 p.m. where five juveniles between 12 and 15 were reported to be kicking three dogs, and later reports said some of them had knives."
+ },
+ {
+  "type": "medical aid",
+  "time": "20:12",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "crew sent",
+  "summary": "An engine was sent to the 5900 block of Corbeck Avenue at 8:12 p.m. for a burn patient."
+ },
+ {
+  "type": "assault",
+  "time": "20:15",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 12000 block of Valparaiso Avenue at 8:15 p.m. for an assault."
+ },
+ {
+  "type": "shots fired",
+  "time": "20:19",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 8:19 p.m. after four shots were heard and a vehicle was reported driving east from the area."
+ },
+ {
+  "type": "disturbance",
+  "time": "20:26",
+  "agency": "Bakersfield Police Department",
+  "area": "Abbott Drive",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 4100 block of Abbott Drive at 8:26 p.m. where about 10 juveniles were reported to be fighting and one was seen down and unresponsive.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "shots fired",
+  "time": "20:27",
+  "agency": "Bakersfield Police Department",
+  "area": "Belle Terrace",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 8:27 p.m. after 3 to 4 shots were heard near Del Pino and Belle Terrace."
+ },
+ {
+  "type": "robbery",
+  "time": "20:29",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 8:29 p.m. for a robbery in which a gray van was reported to be the vehicle involved."
+ },
+ {
+  "type": "disturbance",
+  "time": "20:33",
+  "agency": "Bakersfield Police Department",
+  "area": "Kentucky Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 2600 block of Kentucky Street at 8:33 p.m. for a dispute between neighbors.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "vandalism",
+  "time": "20:42",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 400 block of Rio Vista at 8:42 p.m. after a window was broken and one shot was heard just before it."
+ },
+ {
+  "type": "armed robbery",
+  "time": "20:47",
+  "agency": "Bakersfield Police Department",
+  "area": "Ming Avenue",
+  "notability": 4,
+  "disposition": "suspect fled",
+  "summary": "Officers were sent to the 3700 block of Ming Avenue at 8:47 p.m. for an armed robbery; the suspect, reported to have a knife, fled east in a gray van."
+ },
+ {
+  "type": "welfare check",
+  "time": "20:48",
+  "agency": "Bakersfield Police Department",
+  "area": "Beardsley Avenue",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 300 block of Beardsley Avenue at 8:48 p.m. after a 911 hang-up where a man was heard yelling and someone said to leave them alone and that they did not want to hurt anyone.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "domestic violence",
+  "time": "20:50",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 3,
+  "disposition": "deputies sent",
+  "summary": "Deputies were sent at 8:50 p.m. to Rawhide and Hondo for a domestic violence call that had just happened."
+ },
+ {
+  "type": "fire alarm",
+  "time": "21:41",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "faulty alarm",
+  "summary": "Crews were sent to South Valley Farms on Highway 46 at 9:41 p.m. for a commercial fire alarm; the alarm was reported faulty, set off by rain."
+ },
+ {
+  "type": "medical aid",
+  "time": "21:59",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "standby requested",
+  "summary": "Crews were put on standby at the California City processing center at 9:59 p.m. for a hemorrhage."
+ },
+ {
+  "type": "person with a firearm",
+  "time": "22:01",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 400 block of Geraldine Street at South Union Avenue at 10:01 p.m. where a man in a gray sedan was reported to have a firearm during a dispute, with two juveniles in the car."
+ },
+ {
+  "type": "juvenile disturbance",
+  "time": "22:11",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 10:11 p.m. to Mount Vernon for a 17-year-old reported to be walking into traffic and refusing to get into a family vehicle."
+ },
+ {
+  "type": "hit and run",
+  "time": "22:25",
+  "agency": "Bakersfield Police Department",
+  "area": "Country Club Drive",
+  "notability": 3,
+  "disposition": "vehicle fled",
+  "summary": "Officers were sent to the 4200 block of Country Club Drive at 10:25 p.m. where a vehicle hit a fire hydrant in front of the country club and drove off.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "shots fired",
+  "time": "22:38",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "unconfirmed",
+  "summary": "Officers were sent at 10:38 p.m. after a caller reported possible shooting toward a person; the caller could not confirm what had happened."
+ },
+ {
+  "type": "welfare check",
+  "time": "23:10",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 3100 block of La Costa Street at 11:10 p.m. after a caller said a relative had tried to assault his father during what appeared to be a mental health crisis."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "23:31",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 1100 block of Arnold Avenue at 11:31 p.m. where a woman had locked herself in a bathroom and her husband was reported to be getting aggressive."
+ },
+ {
+  "type": "traffic collision",
+  "time": "23:35",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "one patient out of the vehicle",
+  "summary": "Crews were sent to Beaton Road a mile east of DeMarco at 11:35 p.m. for a vehicle that went off the road; one patient was out of the vehicle, conscious and breathing."
+ },
+ {
+  "type": "shooting",
+  "time": "23:45",
+  "agency": "Bakersfield Police Department",
+  "area": "Rosedale Highway",
+  "notability": 5,
+  "disposition": "two victims, investigation under way",
+  "summary": "Officers and an ambulance were sent to the 4000 block of Rosedale Highway at 11:45 p.m. after a shooting with two victims was reported. A suspect vehicle was described as a black four-door Mercedes."
+ },
+ {
+  "type": "suspicious circumstances",
+  "time": "00:03",
+  "agency": "Bakersfield Police Department",
+  "area": "Alpine Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 400 block of Alpine Street at 12:03 a.m. for a report that someone was looking through a window.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "00:43",
+  "agency": "Bakersfield Police Department",
+  "area": "Suncrest Drive",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 3200 block of Suncrest Drive at 12:43 a.m. where a 15-year-old was reported to have a knife in a family disturbance; a caller had locked herself in a bedroom.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "vehicle theft",
+  "time": "01:04",
+  "agency": "Bakersfield Police Department",
+  "area": "Ming Avenue",
+  "notability": 2,
+  "disposition": "reported",
+  "summary": "A vehicle was reported stolen at 1:04 a.m. from the 6600 block of Ming Avenue."
+ },
+ {
+  "type": "hit and run",
+  "time": "01:37",
+  "agency": "Bakersfield Police Department",
+  "area": "Rosedale Highway",
+  "notability": 3,
+  "disposition": "vehicle fled",
+  "summary": "Officers were sent at 1:37 a.m. after a car struck the center median on Rosedale Highway and fled east; a pedestrian in a dark hoodie was seen nearby."
+ },
+ {
+  "type": "person with a firearm",
+  "time": "01:39",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 4,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 1:39 a.m. to a home in the city where a caller said his wife was being threatened by a woman with a firearm."
+ },
+ {
+  "type": "structure fire",
+  "time": "02:05",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 4,
+  "disposition": "crews sent",
+  "summary": "Kern County Fire crews and an ambulance were sent out at 2:05 a.m. for a structure fire."
+ },
+ {
+  "type": "person with a firearm",
+  "time": "02:17",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 2:17 a.m. to a home where a resident was reported to be telling another woman to shoot her and to put the gun at the window."
+ },
+ {
+  "type": "wrong-way driver",
+  "time": "02:24",
+  "agency": "CHP",
+  "area": "",
+  "notability": 3,
+  "disposition": "units following",
+  "summary": "Officers followed a car reported to be driven the wrong way, southbound in the northbound lanes, at 2:24 a.m."
+ },
+ {
+  "type": "weapons call",
+  "time": "02:49",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to an apartment at Rio Morada at 2:49 a.m. for a disturbance among four or five people, one of whom said someone was pointing a firearm at them."
+ },
+ {
+  "type": "traffic collision",
+  "time": "03:03",
+  "agency": "CHP",
+  "area": "Rosedale Highway",
+  "notability": 3,
+  "disposition": "single vehicle",
+  "summary": "A single-vehicle crash was reported at 3:03 a.m. on the northbound Highway 99 off-ramp at Rosedale Highway."
+ },
+ {
+  "type": "large fight",
+  "time": "03:42",
+  "agency": "Bakersfield Police Department",
+  "area": "la France Drive",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 3:42 a.m. to an alley just east of the 1700 block of la France Drive, where a fight among about 12 people was reported.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "reckless driving",
+  "time": "03:46",
+  "agency": "CHP",
+  "area": "",
+  "notability": 3,
+  "disposition": "vehicle kept going",
+  "summary": "A driver told CHP at 3:46 a.m. that a vehicle had tried to run her off the road and kept going south."
+ },
+ {
+  "type": "wrong-way driver",
+  "time": "03:59",
+  "agency": "CHP",
+  "area": "Fairfax Road",
+  "notability": 4,
+  "disposition": "multiple callers",
+  "summary": "Dispatch took multiple 911 calls at 3:59 a.m. about a car going the wrong way, westbound in the eastbound lanes of Highway 58 at Fairfax Road."
+ },
+ {
+  "type": "assault",
+  "time": "04:08",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a store at 4:08 a.m. after a man was reported to be trying to assault customers and the cashier."
+ },
+ {
+  "type": "stabbing investigation",
+  "time": "04:16",
+  "agency": "Bakersfield Police Department",
+  "area": "Dr Martin Luther King Jr Boulevard",
+  "notability": 4,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to a store in the 300 block of South Martin Luther King Boulevard at 4:16 a.m. where a man walked in covered in blood and asking for help, a possible assault victim."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "04:26",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent to the 500 block of Buckley Avenue at Wagner Street at 4:26 a.m. where a caller said her husband was refusing to let her leave."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "04:34",
+  "agency": "Kern County Fire Department",
+  "area": "Madison Street",
+  "notability": 3,
+  "disposition": "crew sent",
+  "summary": "A crew was sent at 4:34 a.m. to a vehicle fire on Madison Street by the train tracks, just west of East Belle Terrace.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "04:43",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "crew sent",
+  "summary": "An engine was sent to the 2300 block of Algaro Drive at 4:43 a.m. for a hemorrhage."
+ },
+ {
+  "type": "attempted burglary",
+  "time": "04:49",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 4:49 a.m. to an apartment where someone was reported to be peeking in a door, the second call to the same address that night."
+ },
+ {
+  "type": "medical aid",
+  "time": "05:49",
+  "agency": "Kern County Fire Department",
+  "area": "Lamberton Street",
+  "notability": 4,
+  "disposition": "woman reported dead",
+  "summary": "Crews were called to the 12000 block of Lamberton Street at 5:49 a.m. where a woman was reported dead and an ambulance was requested at the highest priority.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "Incident",
+  "time": "23:23",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Mount Vernon Avenue",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person with traumatic injury on Mount Vernon Avenue bridge.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Shooting",
+  "time": "00:12",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Two men shooting fireworks at each other in street.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "01:40",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Teen with knife acting aggressive in home.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Medical emergency",
+  "time": "02:57",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Wainwright Drive",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Female found unresponsive on porch near Wainwright Drive.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "01:36",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Two-vehicle crash at Buckhorn Boulevard and 4th Ave.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Cardiac arrest",
+  "time": "01:37",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Cardiac arrest with CPR near Bakersfield.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Burglary",
+  "time": "05:54",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Radiance Drive",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Possible burglary reported on Radiance Drive.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:02",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Gas leak at The Springs Apartments unit.",
+  "source": "crimeradar"
+ }
+]

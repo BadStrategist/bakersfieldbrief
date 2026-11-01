@@ -1,5 +1,5 @@
 {
- "built_at": "2026-10-31T16:41:21-07:00",
+ "built_at": "2026-11-01T01:41:07-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -31,7 +31,7 @@
   },
   "chp": {
    "ok": false,
-   "error": "ParseError: no element found: line 3371, column 27"
+   "error": "ParseError: unclosed token: line 5562, column 3"
   },
   "isabella": {
    "ok": true,
@@ -68,13 +68,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1196,
+  "brief_words": 61,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
    "chp_new": 0,
-   "top_story": "Bakersfield police searching for suspect in Smoke Bros burglary on Rosedale Highway",
+   "top_story": "Large police presence reported near Challenger Park in southwest Bakersfield",
    "overnight_band": {
     "date": "2026-10-31",
     "count": 50,
@@ -115,7 +115,7 @@
     "other": "2 foot pursuit, 2 incident, 1 search for a suspect",
     "unmapped": []
    },
-   "archive": "2026-10-31"
+   "archive": "2026-11-01"
   },
   "cityhall": {
    "upcoming_meetings": 4,
@@ -141,7 +141,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-10-31"
+   "draft": "drafts/weekend-guide-2026-11-01"
   },
   "grapevine": {
    "i5": "RESTRICTIONS",
@@ -150,13 +150,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 9,
+   "wind_mph": 7,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 55,
-   "wind_mph": 9,
+   "temp": 48,
+   "wind_mph": 7,
    "alerts": 0
   },
   "roads": {
@@ -180,9 +180,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 22,
-    "In 1 to 2 weeks": 19,
-    "Later": 66
+    "In the next 7 days": 26,
+    "In 1 to 2 weeks": 15,
+    "Later": 64
    },
    "meetings": 4
   },
@@ -190,10 +190,10 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 138955,
+   "isabella_af": 139008,
    "alpr_total": 460,
    "kern_fires": 0,
-   "aqi": 49,
+   "aqi": 58,
    "chp_week": 74
   },
   "letters": {

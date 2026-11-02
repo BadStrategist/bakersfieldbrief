@@ -1,0 +1,422 @@
+[
+ {
+  "type": "welfare check",
+  "time": "19:19",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 3,
+  "disposition": "deputies sent",
+  "summary": "Deputies were sent at 7:19 p.m. to check on three young children, three to six years old, reported to be outside in the company of three adults."
+ },
+ {
+  "type": "welfare check",
+  "time": "19:31",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 7:31 p.m. to a motel on the frontage road for a welfare check on a man who called 911 saying he was scared, with someone arguing in the background."
+ },
+ {
+  "type": "hit and run",
+  "time": "19:40",
+  "agency": "California Highway Patrol",
+  "area": "N Chester Avenue",
+  "notability": 4,
+  "disposition": "vehicle fled east",
+  "summary": "A vehicle hit a cyclist at North Chester Avenue and Roberts Lane at 7:40 p.m. and left. The vehicle, described as a maroon or red Toyota with front-end damage and its bumper missing, was last seen eastbound on East Roberts Lane, and a white Honda CR-V was later reported trying to pick up the missing bumper.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "vehicle fire",
+  "time": "19:42",
+  "agency": "Kern County Fire Department",
+  "area": "Sewell Street",
+  "notability": 4,
+  "disposition": "crews sent",
+  "summary": "Crews were sent at 7:42 p.m. to a vehicle fire in the 3600 block of Sewell Street.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "outside fire",
+  "time": "19:55",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "crews sent",
+  "summary": "Crews were sent at 7:55 p.m. for an outside fire east of the airport, just north of State Road."
+ },
+ {
+  "type": "disturbance",
+  "time": "20:09",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 8:09 p.m. after two people were reported to be throwing bottles at passing vehicles."
+ },
+ {
+  "type": "medical aid",
+  "time": "20:11",
+  "agency": "Hall Ambulance",
+  "area": "Valhalla Drive",
+  "notability": 2,
+  "disposition": "medics sent",
+  "summary": "Medics were sent at 8:11 p.m. to a home on Valhalla Drive for a traumatic injury.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "20:23",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 8:23 p.m. for a welfare check on a woman reported to be the victim of a battery; the suspect was known to the caller."
+ },
+ {
+  "type": "fire call",
+  "time": "20:34",
+  "agency": "Kern County Fire Department",
+  "area": "L Street",
+  "notability": 2,
+  "disposition": "crews sent",
+  "summary": "Crews were sent at 8:34 p.m. to the 15800 block of L Street for a warm wall above a light socket.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "barricade",
+  "time": "20:49",
+  "agency": "Wasco Police Department",
+  "area": "",
+  "notability": 4,
+  "disposition": "K9 requested",
+  "summary": "Wasco police asked for a K9 unit at 8:49 p.m. for a subject barricaded in a home in the 2200 block of 3rd Street, wanted on a protective order violation."
+ },
+ {
+  "type": "disturbance",
+  "time": "21:16",
+  "agency": "Bakersfield Police Department",
+  "area": "Pioneer Drive",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 9:16 p.m. to the 3100 block of Pioneer Drive for a disturbance between a man and his mother.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "21:36",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Diane Drive",
+  "notability": 3,
+  "disposition": "deputies dispatched",
+  "summary": "Deputies were sent at 9:36 p.m. to a home on Diane Drive after a woman yelled get away, gave her address, screamed and the line went dead. A subject was reported to have tried to open a door, and three children between 6 and 12 were in the house.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "fight",
+  "time": "22:01",
+  "agency": "Bakersfield Police Department",
+  "area": "Monterey Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 10:01 p.m. to the 3100 block of Monterey Street where two people were reported to be throwing appliances at each other.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "attempt to locate",
+  "time": "22:10",
+  "agency": "Bakersfield Police Department",
+  "area": "Beardsley Avenue",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 10:10 p.m. to the 300 block of Beardsley Avenue to find someone wanted by the courts.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "crash",
+  "time": "22:47",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "one patient",
+  "summary": "Crews and Delano police were sent at 10:47 p.m. to a rollover where a vehicle was on its roof in the roadway; one patient was reported."
+ },
+ {
+  "type": "assault with a weapon",
+  "time": "23:33",
+  "agency": "Bakersfield Police Department",
+  "area": "Pierce Road",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 11:33 p.m. to the 5000 block of Pierce Road after a juvenile reported his mother had hit him with a meat cleaver; two juveniles were to be checked on.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "assault with a weapon",
+  "time": "23:49",
+  "agency": "Bakersfield Police Department",
+  "area": "E 9th Street",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 11:49 p.m. to the 1400 block of East 9th Street where a victim of an assault with an iron object was reported.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "domestic dispute",
+  "time": "00:11",
+  "agency": "Bakersfield Police Department",
+  "area": "E Brundage Lane",
+  "notability": 3,
+  "disposition": "one detained",
+  "summary": "Officers were sent at 12:11 a.m. to a room on East Brundage Lane for a welfare check on a woman reported to be fighting with a man; one person was detained."
+ },
+ {
+  "type": "medical aid",
+  "time": "00:15",
+  "agency": "Hall Ambulance",
+  "area": "",
+  "notability": 2,
+  "disposition": "medics sent",
+  "summary": "Medics were sent at 12:15 a.m. for a 14-year-old with alcohol poisoning."
+ },
+ {
+  "type": "welfare check",
+  "time": "00:24",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 12:24 a.m. after a report of a possible suicide attempt."
+ },
+ {
+  "type": "suspicious person",
+  "time": "00:27",
+  "agency": "Bakersfield Police Department",
+  "area": "Dana Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 12:27 a.m. to an apartment on Dana Street for a suspicious person.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "structure fire",
+  "time": "00:38",
+  "agency": "Kern County Fire Department",
+  "area": "Niles Street",
+  "notability": 3,
+  "disposition": "knocked down",
+  "summary": "Crews were sent at 12:38 a.m. to the 1800 block of Niles Street for fire against a building; the first engine put it out and the rest of the response was cancelled."
+ },
+ {
+  "type": "fight",
+  "time": "00:41",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 12:41 a.m. to the 3000 block of Glenwood for a fight between a man and a woman that was reported to be out of control."
+ },
+ {
+  "type": "welfare check",
+  "time": "01:12",
+  "agency": "Bakersfield Police Department",
+  "area": "Calloway Drive",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 1:12 a.m. for a teenager reported to be running in and out of traffic on Calloway Drive.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "01:36",
+  "agency": "Bakersfield Police Department",
+  "area": "Titan Lane",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 1:36 a.m. to the 3600 block of Titan Lane after several 911 calls from different numbers, the last one a woman who sounded panicked, said hello and hung up.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "person with a firearm",
+  "time": "01:41",
+  "agency": "Bakersfield Police Department",
+  "area": "Union Avenue",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 1:41 a.m. to a convenience store on Union Avenue where employees reported a woman had a firearm, with a possible print of one showing inside her jacket."
+ },
+ {
+  "type": "crash",
+  "time": "02:17",
+  "agency": "California Highway Patrol",
+  "area": "",
+  "notability": 2,
+  "disposition": "caller stopped responding",
+  "summary": "The CHP was called at 2:17 a.m. after a black Honda hit something north of the Highway 99 split; the caller stopped responding."
+ },
+ {
+  "type": "domestic violence",
+  "time": "02:36",
+  "agency": "Bakersfield Police Department",
+  "area": "Seminole Court",
+  "notability": 4,
+  "disposition": "priority one call",
+  "summary": "Officers were sent at 2:36 a.m. to a priority domestic in the 8100 block of Seminole Court; one person reported being cut with a box cutter and the other was reported to be sitting on a bed with the box cutter.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "domestic violence",
+  "time": "02:50",
+  "agency": "Bakersfield Police Department",
+  "area": "Dr Martin Luther King Jr Boulevard",
+  "notability": 3,
+  "disposition": "priority one call",
+  "summary": "Officers were sent at 2:50 a.m. to the 300 block of Dr Martin Luther King Jr Boulevard for a domestic in progress in the street."
+ },
+ {
+  "type": "disturbance",
+  "time": "02:59",
+  "agency": "Bakersfield Police Department",
+  "area": "Stockdale Highway",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 2:59 a.m. to the 5200 block of Stockdale Highway where an employee was reported to be loitering."
+ },
+ {
+  "type": "domestic violence",
+  "time": "03:08",
+  "agency": "Bakersfield Police Department",
+  "area": "Descanso Street",
+  "notability": 3,
+  "disposition": "priority one call",
+  "summary": "Officers were sent at 3:08 a.m. to the 2900 block of Descanso Street for a domestic that had just happened.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "suspicious person",
+  "time": "03:28",
+  "agency": "Bakersfield Police Department",
+  "area": "Lake Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 3:28 a.m. to the 2400 block of Lake Street for a man in his 30s reported to be loitering.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "assault",
+  "time": "03:58",
+  "agency": "Bakersfield Police Department",
+  "area": "White Lane",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 3:58 a.m. to the 7900 block of White Lane for a battery at a grocery store."
+ },
+ {
+  "type": "building fire",
+  "time": "04:19",
+  "agency": "Kern County Fire Department",
+  "area": "S Union Avenue",
+  "notability": 4,
+  "disposition": "crews sent",
+  "summary": "Crews were sent at 4:19 a.m. to a market in the 9500 block of South Union Avenue where a woman was reported to have set a fire at the back of the building and was being argumentative."
+ },
+ {
+  "type": "crash",
+  "time": "05:34",
+  "agency": "California Highway Patrol",
+  "area": "",
+  "notability": 3,
+  "disposition": "CHP en route",
+  "summary": "Crews and the CHP were sent at 5:34 a.m. to a two-vehicle crash at the Highway 33 and Highway 58 split."
+ },
+ {
+  "type": "crash",
+  "time": "05:51",
+  "agency": "California Highway Patrol",
+  "area": "",
+  "notability": 3,
+  "disposition": "lanes blocked",
+  "summary": "A crash at 5:51 a.m. a mile south of Highway 65 on Highway 99 left a pickup in the center divide and a sedan blocking the fast lane."
+ },
+ {
+  "type": "Fire",
+  "time": "22:10",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "E California Avenue",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Building fire reported on East California Avenue.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "23:22",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Man with gun threatening people near auto shop.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire",
+  "time": "06:24",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "H Street",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Small towel fire at 50th Street and H Street.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:56",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Juvenile reportedly threatens mother at residence.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic",
+  "time": "06:57",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Traffic stop on silver Buick with expired plates.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire",
+  "time": "06:59",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Fire pit in backyard determined safe.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:18",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Smoke reported near trash can by highway business.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:23",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Request for public service assistance at Keller Drive.",
+  "source": "crimeradar"
+ }
+]

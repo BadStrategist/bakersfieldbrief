@@ -100,6 +100,36 @@
   "details": ""
  },
  {
+  "log_id": "261102BF0236",
+  "time": "Nov  2 2026  2:40PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Allen Rd / Meacham Rd",
+  "area": "Bakersfield",
+  "lat": 35.390736,
+  "lon": -119.145508,
+  "details": ""
+ },
+ {
+  "log_id": "261102BF0253",
+  "time": "Nov  2 2026  3:11PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb Sr99 Jso Olive Dr",
+  "area": "Bakersfield",
+  "lat": 35.411944,
+  "lon": -119.054444,
+  "details": ""
+ },
+ {
+  "log_id": "261102BF0256",
+  "time": "Nov  2 2026  3:15PM",
+  "type": "1125-Traffic Hazard",
+  "location": "0 I5 N",
+  "area": "Fort Tejon",
+  "lat": 34.784935,
+  "lon": -118.82421,
+  "details": ""
+ },
+ {
   "log_id": "261102BF0036",
   "time": "Nov  2 2026  5:25AM",
   "type": "1181-Trfc Collision-Minor Inj",

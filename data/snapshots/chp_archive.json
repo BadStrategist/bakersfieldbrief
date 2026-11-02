@@ -100,6 +100,56 @@
   "details": ""
  },
  {
+  "log_id": "261102BF0036",
+  "time": "Nov  2 2026  5:25AM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "0 Sr33",
+  "area": "Buttonwillow",
+  "lat": 35.308318,
+  "lon": -119.622231,
+  "details": ""
+ },
+ {
+  "log_id": "261102BF0042",
+  "time": "Nov  2 2026  5:50AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261102BF0047",
+  "time": "Nov  2 2026  6:21AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "29449 Stockdale Hwy",
+  "area": "Buttonwillow",
+  "lat": 35.354792,
+  "lon": -119.33073,
+  "details": ""
+ },
+ {
+  "log_id": "261102BF0053",
+  "time": "Nov  2 2026  7:00AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr46 / Sr33",
+  "area": "Buttonwillow",
+  "lat": 35.614949,
+  "lon": -119.867656,
+  "details": ""
+ },
+ {
+  "log_id": "261102BF0067",
+  "time": "Nov  2 2026  7:35AM",
+  "type": "CZP-Assist with Construction",
+  "location": "Nb I5 At Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.939167,
+  "lon": -118.929444,
+  "details": ""
+ },
+ {
   "log_id": "261102BF0007",
   "time": "Nov  2 2026 12:40AM",
   "type": "TADV-Traffic Advisory",

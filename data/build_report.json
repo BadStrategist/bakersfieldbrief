@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-02T01:56:03-08:00",
+ "built_at": "2026-11-02T07:39:50-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,62 +68,50 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 61,
+  "brief_words": 1290,
   "daily": {
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
-   "top_story": "Woman killed, two injured in shooting at large gathering Sunday",
+   "chp_new": 5,
+   "top_story": "Woman dead after shooting at Halloween gathering in Bakersfield",
    "overnight_band": {
-    "date": "2026-11-01",
-    "count": 58,
+    "date": "2026-11-02",
+    "count": 44,
     "chips": [
      [
       "Weapons and assaults",
-      12
-     ],
-     [
-      "Fires",
-      2
-     ],
-     [
-      "Crashes and traffic",
-      9
-     ],
-     [
-      "Medical and overdose",
       6
      ],
      [
-      "Missing persons",
-      1
+      "Fires",
+      8
+     ],
+     [
+      "Crashes and traffic",
+      6
+     ],
+     [
+      "Medical and overdose",
+      2
      ],
      [
       "Disturbances and welfare",
-      12
-     ],
-     [
-      "Burglary and theft",
-      5
+      14
      ],
      [
       "Suspicious activity",
-      1
-     ],
-     [
-      "Alarms",
-      1
+      2
      ],
      [
       "Other calls",
-      9
+      6
      ]
     ],
-    "other": "4 person with a firearm, 3 incident, 1 animal cruelty, 1 vandalism",
+    "other": "4 incident, 1 attempt to locate, 1 person with a firearm",
     "unmapped": [
-     "person with a firearm",
-     "animal cruelty"
+     "attempt to locate",
+     "person with a firearm"
     ]
    },
    "archive": "2026-11-02"
@@ -144,7 +132,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 8,
+    "bakersfield-nw": 7,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -161,13 +149,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 7,
+   "wind_mph": 11,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 39,
-   "wind_mph": 7,
+   "temp": 37,
+   "wind_mph": 11,
    "alerts": 0
   },
   "roads": {
@@ -201,20 +189,20 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 139008,
+   "isabella_af": 139165,
    "alpr_total": 460,
    "kern_fires": 0,
-   "aqi": 58,
-   "chp_week": 2
+   "aqi": 61,
+   "chp_week": 7
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 82
+   "published": 83
   },
   "map": {
-   "dots": 32
+   "dots": 37
   },
   "sunday_read": {
    "topic": "Public safety",

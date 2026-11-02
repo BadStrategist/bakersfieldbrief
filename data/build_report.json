@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-02T07:39:50-08:00",
+ "built_at": "2026-11-02T07:46:11-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 74,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 5,
+   "chp_new": 0,
    "top_story": "Woman dead after shooting at Halloween gathering in Bakersfield",
    "overnight_band": {
     "date": "2026-11-02",
@@ -149,13 +149,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 11,
+   "wind_mph": 10,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 37,
-   "wind_mph": 11,
+   "temp": 41,
+   "wind_mph": 10,
    "alerts": 0
   },
   "roads": {

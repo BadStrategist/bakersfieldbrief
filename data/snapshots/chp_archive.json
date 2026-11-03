@@ -300,6 +300,26 @@
   "details": ""
  },
  {
+  "log_id": "261103BF0140",
+  "time": "Nov  3 2026 11:33AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "14764-15515 Copus Rd",
+  "area": "Buttonwillow",
+  "lat": 35.094368,
+  "lon": -119.128811,
+  "details": ""
+ },
+ {
+  "log_id": "261103BF0155",
+  "time": "Nov  3 2026 12:03PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr184 / Shalane Ave",
+  "area": "Bakersfield",
+  "lat": 35.376885,
+  "lon": -118.909478,
+  "details": ""
+ },
+ {
   "log_id": "261027BF0008",
   "time": "Oct 27 2026  1:34AM",
   "type": "CFIRE-Car Fire",

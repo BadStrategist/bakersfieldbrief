@@ -210,6 +210,16 @@
   "details": ""
  },
  {
+  "log_id": "261103BF0171",
+  "time": "Nov  3 2026  1:08PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb Sr99 Jso Sandrini Rd",
+  "area": "Bakersfield",
+  "lat": 35.119444,
+  "lon": -118.987222,
+  "details": ""
+ },
+ {
   "log_id": "261103BF0005",
   "time": "Nov  3 2026  1:09AM",
   "type": "TADV-Traffic Advisory",
@@ -317,6 +327,16 @@
   "area": "Bakersfield",
   "lat": 35.376885,
   "lon": -118.909478,
+  "details": ""
+ },
+ {
+  "log_id": "261103BF0162",
+  "time": "Nov  3 2026 12:37PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Sb I5 At Old River Rd",
+  "area": "Buttonwillow",
+  "lat": 35.161111,
+  "lon": -119.110556,
   "details": ""
  },
  {

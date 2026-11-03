@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-03T02:01:40-08:00",
+ "built_at": "2026-11-03T08:03:06-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 3954, column 30"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -68,51 +68,36 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 64,
+  "brief_words": 1233,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "BPD: Search for missing 10-year-old boy last seen in southwest Bakersfield on Halloween",
+   "chp_new": 10,
+   "top_story": "KCSO seeking identity of Faith Temple Church burglary suspect",
    "overnight_band": {
-    "date": "2026-11-02",
-    "count": 44,
+    "date": "2026-11-03",
+    "count": 25,
     "chips": [
      [
-      "Weapons and assaults",
-      6
-     ],
-     [
       "Fires",
-      8
-     ],
-     [
-      "Crashes and traffic",
-      6
+      9
      ],
      [
       "Medical and overdose",
-      2
+      8
      ],
      [
       "Disturbances and welfare",
-      14
+      6
      ],
      [
       "Suspicious activity",
       2
-     ],
-     [
-      "Other calls",
-      6
      ]
     ],
-    "other": "4 incident, 1 attempt to locate, 1 person with a firearm",
-    "unmapped": [
-     "attempt to locate",
-     "person with a firearm"
-    ]
+    "other": "",
+    "unmapped": []
    },
    "archive": "2026-11-03"
   },
@@ -132,7 +117,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 8,
+    "bakersfield-nw": 11,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -149,13 +134,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 11,
+   "wind_mph": 5,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 37,
-   "wind_mph": 11,
+   "temp": 45,
+   "wind_mph": 5,
    "alerts": 0
   },
   "roads": {
@@ -189,17 +174,17 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 139165,
+   "isabella_af": 139270,
    "alpr_total": 460,
    "kern_fires": 0,
-   "aqi": 56,
-   "chp_week": 10
+   "aqi": 72,
+   "chp_week": 20
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 83
+   "published": 84
   },
   "map": {
    "dots": 37

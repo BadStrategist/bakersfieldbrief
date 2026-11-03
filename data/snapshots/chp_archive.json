@@ -180,6 +180,16 @@
   "details": ""
  },
  {
+  "log_id": "261102BF0363",
+  "time": "Nov  2 2026  8:44PM",
+  "type": "CZP-Assist with Construction",
+  "location": "I5 N / FT TEJON RD OFR",
+  "area": "Fort Tejon",
+  "lat": 34.874845,
+  "lon": -118.892162,
+  "details": ""
+ },
+ {
   "log_id": "261102BF0007",
   "time": "Nov  2 2026 12:40AM",
   "type": "TADV-Traffic Advisory",
@@ -200,63 +210,93 @@
   "details": ""
  },
  {
-  "log_id": "261026BF0030",
-  "time": "Oct 26 2026  5:09AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "27448-28053 Sr178",
-  "area": "Bakersfield",
-  "lat": 35.717761,
-  "lon": -118.171765,
+  "log_id": "261103BF0005",
+  "time": "Nov  3 2026  1:09AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
   "details": ""
  },
  {
-  "log_id": "261026BF0270",
-  "time": "Oct 26 2026  7:38PM",
-  "type": "CZP-Assist with Construction",
-  "location": "Sr99 N / Union Ave Ofr",
-  "area": "Bakersfield",
-  "lat": 35.167503,
-  "lon": -119.00248,
-  "details": ""
- },
- {
-  "log_id": "261026BF0322",
-  "time": "Oct 26 2026  9:22PM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "Sr178 E / Oswell St Ofr",
-  "area": "Bakersfield",
-  "lat": 35.396207,
-  "lon": -118.954424,
-  "details": ""
- },
- {
-  "log_id": "261026BF0001",
-  "time": "Oct 26 2026 12:00AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "Sr99 S / Woollomes Ave Ofr",
-  "area": "Bakersfield",
-  "lat": 35.750392,
-  "lon": -119.245367,
-  "details": ""
- },
- {
-  "log_id": "261026BF0002",
-  "time": "Oct 26 2026 12:03AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Nb I5 Jso Grapevine Rd",
-  "area": "Fort Tejon",
-  "lat": 34.9375,
-  "lon": -118.928611,
-  "details": ""
- },
- {
-  "log_id": "261026BF0006",
-  "time": "Oct 26 2026 12:21AM",
+  "log_id": "261103BF0028",
+  "time": "Nov  3 2026  5:26AM",
   "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "Nb Sr99 Jno Olive Dr",
+  "location": "0 Sr43 Ofr",
+  "area": "Buttonwillow",
+  "lat": 35.290992,
+  "lon": -119.252524,
+  "details": ""
+ },
+ {
+  "log_id": "261103BF0032",
+  "time": "Nov  3 2026  5:52AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "Sr99 N / Sr119 Ofr",
   "area": "Bakersfield",
-  "lat": 35.4125,
-  "lon": -119.054722,
+  "lat": 35.262857,
+  "lon": -119.021702,
+  "details": ""
+ },
+ {
+  "log_id": "261103BF0034",
+  "time": "Nov  3 2026  6:21AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "Sr166 / Basic School Rd",
+  "area": "Buttonwillow",
+  "lat": 35.05812,
+  "lon": -119.313732,
+  "details": ""
+ },
+ {
+  "log_id": "261103BF0040",
+  "time": "Nov  3 2026  7:08AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sb I5 Jso Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.937778,
+  "lon": -118.930556,
+  "details": ""
+ },
+ {
+  "log_id": "261103BF0048",
+  "time": "Nov  3 2026  7:23AM",
+  "type": "CZP-Assist with Construction",
+  "location": "Nb I5 At Fort Tejon Rd",
+  "area": "Fort Tejon",
+  "lat": 34.876944,
+  "lon": -118.894722,
+  "details": ""
+ },
+ {
+  "log_id": "261103BF0047",
+  "time": "Nov  3 2026  7:25AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "2500-2699 Monterey St",
+  "area": "Bakersfield",
+  "lat": 35.374931,
+  "lon": -118.960689,
+  "details": ""
+ },
+ {
+  "log_id": "261103BF0051",
+  "time": "Nov  3 2026  7:26AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "Niles St / Webster St",
+  "area": "Bakersfield",
+  "lat": 35.375731,
+  "lon": -118.963041,
+  "details": ""
+ },
+ {
+  "log_id": "261103BF0062",
+  "time": "Nov  3 2026  7:51AM",
+  "type": "1125-Traffic Hazard",
+  "location": "E Fairview Rd / Garber Way",
+  "area": "Bakersfield",
+  "lat": 35.303122,
+  "lon": -118.998657,
   "details": ""
  },
  {

@@ -1,5 +1,14 @@
 [
  {
+  "ts": "2026-11-03",
+  "time": "2:01 AM",
+  "route": "i5",
+  "route_name": "I-5 Grapevine (Tejon Pass)",
+  "scope": "corridor",
+  "to": "CLOSED",
+  "from": "RESTRICTIONS"
+ },
+ {
   "ts": "2026-11-01",
   "time": "7:38 AM",
   "route": "i5",
@@ -507,15 +516,6 @@
   "route_name": "I-5, anywhere in California",
   "from": "updated",
   "to": "CLOSED",
-  "note": "condition text changed",
-  "scope": "statewide"
- },
- {
-  "ts": "2026-09-20",
-  "route": "sr99",
-  "route_name": "SR-99, whole route",
-  "from": "updated",
-  "to": "RESTRICTIONS",
   "note": "condition text changed",
   "scope": "statewide"
  },

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-02T15:28:46-08:00",
+ "built_at": "2026-11-03T02:01:40-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 3954, column 30"
   },
   "isabella": {
    "ok": true,
@@ -68,13 +68,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1290,
+  "brief_words": 64,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 3,
-   "top_story": "Woman dead after shooting at Halloween gathering in Bakersfield",
+   "chp_new": 0,
+   "top_story": "BPD: Search for missing 10-year-old boy last seen in southwest Bakersfield on Halloween",
    "overnight_band": {
     "date": "2026-11-02",
     "count": 44,
@@ -114,7 +114,7 @@
      "person with a firearm"
     ]
    },
-   "archive": "2026-11-02"
+   "archive": "2026-11-03"
   },
   "cityhall": {
    "upcoming_meetings": 4,
@@ -140,11 +140,11 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-11-02"
+   "draft": "drafts/weekend-guide-2026-11-03"
   },
   "grapevine": {
    "i5": "CLOSED",
-   "i5_pass": "RESTRICTIONS",
+   "i5_pass": "CLOSED",
    "log_entries": 60
   },
   "tehachapi": {
@@ -154,13 +154,13 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 61,
+   "temp": 37,
    "wind_mph": 11,
    "alerts": 0
   },
   "roads": {
    "routes": [
-    "i5:RESTRICTIONS",
+    "i5:CLOSED",
     "sr58:OPEN",
     "sr99:RESTRICTIONS"
    ],
@@ -179,9 +179,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 29,
+    "In the next 7 days": 30,
     "In 1 to 2 weeks": 15,
-    "Later": 66
+    "Later": 65
    },
    "meetings": 4
   },
@@ -192,7 +192,7 @@
    "isabella_af": 139165,
    "alpr_total": 460,
    "kern_fires": 0,
-   "aqi": 42,
+   "aqi": 56,
    "chp_week": 10
   },
   "letters": {

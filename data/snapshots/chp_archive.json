@@ -340,6 +340,16 @@
   "details": ""
  },
  {
+  "log_id": "261104BF0175",
+  "time": "Nov  4 2026  2:08PM",
+  "type": "1125A-Animal Hazard",
+  "location": "Sr58 E / Fairfax Rd Ofr",
+  "area": "Bakersfield",
+  "lat": 35.352147,
+  "lon": -118.936308,
+  "details": ""
+ },
+ {
   "log_id": "261104BF0025",
   "time": "Nov  4 2026  4:27AM",
   "type": "1182-Trfc Collision-No Inj",
@@ -417,6 +427,16 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261104BF0156",
+  "time": "Nov  4 2026 12:56PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "0 M-504",
+  "area": "Bakersfield",
+  "lat": 35.952278,
+  "lon": -118.622015,
   "details": ""
  },
  {

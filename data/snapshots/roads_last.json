@@ -73,7 +73,7 @@
      }
     ]
    },
-   "reported_as_of": "Wednesday, November 4th, 2026 at 07:55 AM",
+   "reported_as_of": "Wednesday, November 4th, 2026 at 12:32 PM",
    "hash": "1301db5046"
   },
   {
@@ -105,7 +105,7 @@
     ],
     "elsewhere": []
    },
-   "reported_as_of": "Wednesday, November 4th, 2026 at 07:55 AM",
+   "reported_as_of": "Wednesday, November 4th, 2026 at 12:32 PM",
    "hash": "79b31e105f"
   },
   {
@@ -113,13 +113,13 @@
    "slug": "sr99",
    "name": "State Route 99 \u2014 Central Valley",
    "pass": false,
-   "status": "CLOSED",
-   "pass_status": "CLOSED",
+   "status": "RESTRICTIONS",
+   "pass_status": "RESTRICTIONS",
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "Is closed to northbound traffic at Ming Ave /in Bakersfield/ (Kern Co) - Due to a jackknifed big rig - Motorists are advised to use an alternate route There is a dense fog advisory in effect from Fresno/Merced Co Line to the Merced/Stanislaus Co Line - Motorists are advised to drive with caution A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
-     "status": "CLOSED"
+     "text": "Is reopened to northbound traffic & reduced to 2 lanes at Ming Ave /in Bakersfield/ (Kern Co) at 0900 hrs on 11/4/26 - Due to a jackknifed big rig A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "status": "RESTRICTIONS"
     },
     {
      "region": "NORTHERN CALIFORNIA",
@@ -128,27 +128,19 @@
     }
    ],
    "scope": {
-    "on_pass": "CLOSED",
+    "on_pass": "RESTRICTIONS",
     "on_pass_reported": true,
     "on_pass_items": [
      {
-      "status": "CLOSED",
+      "status": "RESTRICTIONS",
       "place": "Bakersfield",
       "county": "Kern Co",
       "where": "Bakersfield (Kern Co)",
-      "text": "Is closed to northbound traffic at Ming Ave /in Bakersfield/ (Kern Co) - Due to a jackknifed big rig - Motorists are advised to use an alternate route",
+      "text": "Is reopened to northbound traffic & reduced to 2 lanes at Ming Ave /in Bakersfield/ (Kern Co) at 0900 hrs on 11/4/26 - Due to a jackknifed big rig",
       "region": "CENTRAL CALIFORNIA"
      }
     ],
     "elsewhere": [
-     {
-      "status": "RESTRICTIONS",
-      "place": "",
-      "county": "",
-      "where": "the Central California area",
-      "text": "There is a dense fog advisory in effect from Fresno/Merced Co Line to the Merced/Stanislaus Co Line - Motorists are advised to drive with caution",
-      "region": "CENTRAL CALIFORNIA"
-     },
      {
       "status": "RESTRICTIONS",
       "place": "",
@@ -159,8 +151,8 @@
      }
     ]
    },
-   "reported_as_of": "Wednesday, November 4th, 2026 at 07:55 AM",
-   "hash": "03e2094a9d"
+   "reported_as_of": "Wednesday, November 4th, 2026 at 12:32 PM",
+   "hash": "699b9ab3b6"
   }
  ],
  "asof": "2026-11-04"

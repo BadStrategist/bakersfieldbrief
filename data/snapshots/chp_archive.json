@@ -340,6 +340,66 @@
   "details": ""
  },
  {
+  "log_id": "261104BF0025",
+  "time": "Nov  4 2026  4:27AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sr99 N / Ming Ave Ofr",
+  "area": "Bakersfield",
+  "lat": 35.338502,
+  "lon": -119.03946,
+  "details": ""
+ },
+ {
+  "log_id": "261104BF0030",
+  "time": "Nov  4 2026  5:17AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261104BF0035",
+  "time": "Nov  4 2026  6:04AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "0 Sr99 S",
+  "area": "Bakersfield",
+  "lat": 35.116377,
+  "lon": -118.986556,
+  "details": ""
+ },
+ {
+  "log_id": "261104BF0049",
+  "time": "Nov  4 2026  7:11AM",
+  "type": "ANIMAL-Live or Dead Animal",
+  "location": "0 I5 S",
+  "area": "Buttonwillow",
+  "lat": 35.300967,
+  "lon": -119.261706,
+  "details": ""
+ },
+ {
+  "log_id": "261104BF0056",
+  "time": "Nov  4 2026  7:34AM",
+  "type": "1125-Traffic Hazard",
+  "location": "2433 Michael St",
+  "area": "Bakersfield",
+  "lat": 35.332942,
+  "lon": -119.006887,
+  "details": ""
+ },
+ {
+  "log_id": "261104BF0058",
+  "time": "Nov  4 2026  7:43AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "15200 Westdale Dr",
+  "area": "Bakersfield",
+  "lat": 35.371701,
+  "lon": -119.160121,
+  "details": ""
+ },
+ {
   "log_id": "261104BF0009",
   "time": "Nov  4 2026 12:47AM",
   "type": "TADV-Traffic Advisory",

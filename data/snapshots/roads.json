@@ -7,14 +7,14 @@
  },
  "sr58": {
   "status": "RESTRICTIONS",
-  "hash": "826d4f80ec",
+  "hash": "79b31e105f",
   "corridor": "RESTRICTIONS",
-  "corridor_hash": "4f6e97ca49"
+  "corridor_hash": "e6f9e9874e"
  },
  "sr99": {
-  "status": "RESTRICTIONS",
-  "hash": "30ed31b2b8",
-  "corridor": "OPEN",
-  "corridor_hash": "d41d8cd98f"
+  "status": "CLOSED",
+  "hash": "03e2094a9d",
+  "corridor": "CLOSED",
+  "corridor_hash": "7663c05733"
  }
 }

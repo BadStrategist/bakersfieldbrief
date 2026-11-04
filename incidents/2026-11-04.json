@@ -1,0 +1,373 @@
+[
+ {
+  "type": "battery",
+  "time": "19:29",
+  "agency": "Bakersfield Police Department",
+  "area": "Baker Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 7:29 p.m. to a market in the 400 block of Baker Street for a report of a battery.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "missing child",
+  "time": "19:45",
+  "agency": "Bakersfield Police Department",
+  "area": "El Toro Drive",
+  "notability": 4,
+  "disposition": "search started",
+  "summary": "A 3-year-old boy was reported missing at 7:45 p.m. from a home on El Toro Drive. He was last seen in a black Lightning McQueen shirt, green cargo pants and orange and red shoes.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "20:41",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "caller could not be reached",
+  "summary": "Officers were sent at 8:41 p.m. to check on a man whose call mentioned a firearm and who then stopped answering his phone."
+ },
+ {
+  "type": "medical aid",
+  "time": "20:44",
+  "agency": "Hall Ambulance",
+  "area": "Wilson Road",
+  "notability": 4,
+  "disposition": "ambulance sent",
+  "summary": "A one-year-old was reported to be in and out of consciousness at 8:44 p.m., and medics were sent to the 5900 block of Wilson Road."
+ },
+ {
+  "type": "suspicious person",
+  "time": "21:11",
+  "agency": "Bakersfield Police Department",
+  "area": "Stockdale Highway",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 9:11 p.m. to a man standing in front of a bus on Stockdale Highway and refusing to move."
+ },
+ {
+  "type": "medical aid",
+  "time": "21:14",
+  "agency": "Hall Ambulance",
+  "area": "Richmond Street",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 9:14 p.m. to the 900 block of Richmond Street for difficulty breathing.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "child welfare",
+  "time": "21:16",
+  "agency": "Bakersfield Police Department",
+  "area": "Oleander Avenue",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 9:16 p.m. to a park in the 500 block of Oleander Avenue for two children, seven and eight years old, reported to have said they wanted to hurt themselves."
+ },
+ {
+  "type": "medical aid",
+  "time": "21:50",
+  "agency": "Hall Ambulance",
+  "area": "Jerry Street",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 9:50 p.m. to the 8800 block of Jerry Street for difficulty breathing.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "weapons call",
+  "time": "22:44",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 4,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 10:44 p.m. to a weapons call after a man was reported to be holding a firearm, with people heard screaming in the background and the caller's line down."
+ },
+ {
+  "type": "vehicle pursuit",
+  "time": "22:47",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 4,
+  "disposition": "two ran off on foot",
+  "summary": "A traffic stop over an obstructed plate turned into a pursuit at 10:47 p.m.; the car ran west and then south before two men ran off on foot, one in a tan hoodie and one in a black hoodie."
+ },
+ {
+  "type": "cardiac arrest",
+  "time": "23:02",
+  "agency": "Hall Ambulance",
+  "area": "",
+  "notability": 4,
+  "disposition": "transported",
+  "summary": "Crews were sent at 11:02 p.m. to Highway 58 and California City Boulevard for CPR in progress, and an ambulance took the patient to meet a fire crew at a station."
+ },
+ {
+  "type": "hit and run",
+  "time": "23:13",
+  "agency": "California Highway Patrol",
+  "area": "W Lerdo Highway",
+  "notability": 3,
+  "disposition": "under investigation",
+  "summary": "The CHP was called at 11:13 p.m. to a hit and run in a gas station lot off Lerdo Highway, where a white Peterbilt with a trailer hit a gold semi."
+ },
+ {
+  "type": "battery",
+  "time": "23:39",
+  "agency": "Bakersfield Police Department",
+  "area": "Casa Loma Drive",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 11:39 p.m. to the 600 block of Casa Loma Drive, where a man in his 30s in a red shirt and black shorts was reported to have pushed his mother and then walked toward Brundage Lane.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "smoke investigation",
+  "time": "23:41",
+  "agency": "Kern County Fire Department",
+  "area": "Washington Avenue",
+  "notability": 3,
+  "disposition": "nothing showing",
+  "summary": "Fire crews were called at 11:41 p.m. to the 100 block of Washington Avenue for smoke from a laundromat and found a two-story apartment building with nothing showing and several people outside.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "23:54",
+  "agency": "Bakersfield Police Department",
+  "area": "Dorrance Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 11:54 p.m. to a park in the 600 block of Dorrance Street for a welfare check on a man reported to be under the influence.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "23:59",
+  "agency": "Bakersfield Police Department",
+  "area": "Pierce Road",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 11:59 p.m. to the 5000 block of Pierce Road, where a caller could hear doors slamming and voices.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "00:45",
+  "agency": "Hall Ambulance",
+  "area": "Old River Road",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 12:45 a.m. to the 10000 block of Old River Road for difficulty breathing.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "commercial burglary",
+  "time": "01:11",
+  "agency": "Bakersfield Police Department",
+  "area": "Niles Street",
+  "notability": 4,
+  "disposition": "one taken into custody",
+  "summary": "A clerk at a store on Niles Street yelled for a man to come back at 1:11 a.m. as he ran to a waiting car carrying a box. Officers followed the car west on Niles Street, found it on Pacific Street and took one person into custody in the 900 block."
+ },
+ {
+  "type": "overdose",
+  "time": "01:57",
+  "agency": "Hall Ambulance",
+  "area": "Ming Avenue",
+  "notability": 3,
+  "disposition": "medics sent",
+  "summary": "Medics were sent at 1:57 a.m. to Ming Avenue for a possible overdose; a man in his mid-40s was reported to be convulsing."
+ },
+ {
+  "type": "reckless driving",
+  "time": "02:38",
+  "agency": "California Highway Patrol",
+  "area": "",
+  "notability": 2,
+  "disposition": "circulated",
+  "summary": "The CHP was told at 2:38 a.m. about a semi with a livestock trailer speeding on northbound Interstate 5 north of Laval Road."
+ },
+ {
+  "type": "burglary alarm",
+  "time": "03:05",
+  "agency": "Bakersfield Police Department",
+  "area": "Lincoln Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 3:05 a.m. to a market in the 800 block of Lincoln Street for an audible alarm with motion showing in the back of the building.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "commercial fire alarm",
+  "time": "03:07",
+  "agency": "Kern County Fire Department",
+  "area": "Mount Vernon Avenue",
+  "notability": 3,
+  "disposition": "crews sent",
+  "summary": "Fire crews were sent at 3:07 a.m. to a boarding care home in the 2600 block of Mount Vernon Avenue for a commercial fire alarm."
+ },
+ {
+  "type": "medical aid",
+  "time": "03:10",
+  "agency": "Kern County Fire Department",
+  "area": "Autumn Crest Drive",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Crews were sent at 3:10 a.m. to the 6000 block of Autumn Crest Drive for a seizure.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "mental health crisis",
+  "time": "03:12",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 3,
+  "disposition": "deputies sent",
+  "summary": "Deputies were sent at 3:12 a.m. to a trailer park space for a man diagnosed with schizophrenia and off his medication who was reported to be in a bedroom hurting himself."
+ },
+ {
+  "type": "collision",
+  "time": "03:36",
+  "agency": "California Highway Patrol",
+  "area": "",
+  "notability": 5,
+  "disposition": "one taken by ambulance",
+  "summary": "A car crossed from the southbound side of Interstate 5 into oncoming traffic near the Kern-Kings county line at 3:36 a.m. and hit a white Ford pickup head-on. The two vehicles came to rest about 200 yards apart; of four people in them, three were unhurt and one had a serious head injury. An air ambulance was asked for and then cancelled, and an ambulance took the patient."
+ },
+ {
+  "type": "suspicious person",
+  "time": "04:04",
+  "agency": "Bakersfield Police Department",
+  "area": "Goldenrod Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 4:04 a.m. to the 2400 block of Goldenrod Street after a resident heard someone at the front door pulling at the handle.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "04:04",
+  "agency": "Hall Ambulance",
+  "area": "Clarendon Street",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 4:04 a.m. to the 1900 block of Clarendon Street for difficulty breathing.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "04:12",
+  "agency": "Kern County Fire Department",
+  "area": "Verde Street",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Crews were sent at 4:12 a.m. to an apartment building on Verde Street for a possible stroke."
+ },
+ {
+  "type": "medical aid",
+  "time": "04:22",
+  "agency": "Hall Ambulance",
+  "area": "Cimarron Street",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 4:22 a.m. to the 5100 block of Cimarron Street for difficulty breathing.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "04:26",
+  "agency": "Kern County Fire Department",
+  "area": "Pinewood Lake Drive",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Crews were sent at 4:26 a.m. to the 4100 block of Pinewood Lake Drive for a fall.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "verbal disturbance",
+  "time": "04:48",
+  "agency": "Bakersfield Police Department",
+  "area": "Lincoln Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 4:48 a.m. to the 1400 block of Lincoln Street for an open line between a man and a woman and a man in his 30s who may have been under the influence.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "criminal threats",
+  "time": "04:50",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 4:50 a.m. to a construction site where a security guard reported that two men walked onto the property and threatened to kill him."
+ },
+ {
+  "type": "collision",
+  "time": "04:52",
+  "agency": "Kern County Fire Department",
+  "area": "Norris Road",
+  "notability": 5,
+  "disposition": "traffic stopped",
+  "summary": "Fire crews were sent at 4:52 a.m. to the Norris Road on-ramp to northbound Highway 99 for a semi crash with a possible gas leak, and found the rig across at least three lanes just north of the east off-ramp to Highway 58. The CHP stopped traffic while crews worked, and fire units stuck in the backup reached the scene along the shoulder."
+ },
+ {
+  "type": "medical aid",
+  "time": "05:12",
+  "agency": "Hall Ambulance",
+  "area": "Calloway Drive",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Crews were sent at 5:12 a.m. to a building on Calloway Drive for a fall.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "05:27",
+  "agency": "Hall Ambulance",
+  "area": "Pacheco Road",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 5:27 a.m. to the 2300 block of Pacheco Road for difficulty breathing."
+ },
+ {
+  "type": "fight",
+  "time": "05:49",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 5:49 a.m. to a home for a fight inside with several people. The caller said a 16-year-old had thrown things at her sister and would not say how many people were in the house."
+ },
+ {
+  "type": "Traffic collision",
+  "time": "03:09",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Semi and car crash on Highway 99 near Gerard off-ramp.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:08",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Semi truck hits guardrail on Highway 99.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "03:26",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Two vehicles crash on northbound I-5 divider.",
+  "source": "crimeradar"
+ }
+]

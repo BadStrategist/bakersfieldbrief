@@ -11,7 +11,7 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "The northbound connector to northbound SR-133 /in Irvine/ (Orange Co) is closed from 2100 hrs each night to 0500 hrs each morning Monday thru Saturday thru 11/7/26 - Due to construction - Motorists are advised to use an alternate route The northbound connector to eastbound & westbound SR-126 (Los Angeles Co) is closed from 2100 hrs each night to 0500 hrs each morning Monday thru Friday thru 11/6/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "The northbound connector to northbound SR-133 /in Irvine/ (Orange Co) is closed from 2100 hrs each night to 0500 hrs each morning Monday thru Saturday thru 11/7/26 - Due to construction - Motorists are advised to use an alternate route The northbound connector to eastbound & westbound SR-126 (Los Angeles Co) is closed from 2100 hrs each night to 0500 hrs each morning Monday thru Friday thru 11/6/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 (Los Angeles Co) to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "CLOSED"
     },
     {
@@ -21,7 +21,7 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "Is closed to northbound traffic from Old River Rd to County Rd 102 /in Sacramento/ (Yolo Co) from 2100 hrs each night to 0400 hrs each morning Sunday thru Friday thru 11/6/26 - Due to construction - Motorists are advised to use an alternate route",
+     "text": "Is closed to northbound traffic from 0.4 mi north of the Sacramento/Yolo Co Line /at Old River Rd/ to 5 mi north of the Sacramento/Yolo Co Line /at County Rd 102/ from 2100 hrs each night to 0400 hrs each morning Sunday thru Friday thru 11/6/26 - Due to construction - Motorists are advised to use an alternate route",
      "status": "CLOSED"
     }
    ],
@@ -40,9 +40,9 @@
      {
       "status": "RESTRICTIONS",
       "place": "",
-      "county": "",
-      "where": "the Southern California area",
-      "text": "A high wind advisory is in effect from the Jct of SR-126 to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+      "county": "Los Angeles Co",
+      "where": "Los Angeles Co",
+      "text": "A high wind advisory is in effect from the Jct of SR-126 (Los Angeles Co) to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
       "region": "SOUTHERN CALIFORNIA"
      },
      {
@@ -65,39 +65,48 @@
      },
      {
       "status": "CLOSED",
-      "place": "Sacramento",
-      "county": "Yolo Co",
-      "where": "Sacramento (Yolo Co)",
-      "text": "Is closed to northbound traffic from Old River Rd to County Rd 102 /in Sacramento/ (Yolo Co) from 2100 hrs each night to 0400 hrs each morning Sunday thru Friday thru 11/6/26 - Due to construction - Motorists are...",
+      "place": "",
+      "county": "",
+      "where": "the Northern California area",
+      "text": "Is closed to northbound traffic from 0.4 mi north of the Sacramento/Yolo Co Line /at Old River Rd/ to 5 mi north of the Sacramento/Yolo Co Line /at County Rd 102/ from 2100 hrs each night to 0400 hrs each morning Sunday...",
       "region": "NORTHERN CALIFORNIA"
      }
     ]
    },
-   "reported_as_of": "Tuesday, November 3rd, 2026 at 04:52 PM",
-   "hash": "5bd338c8e5"
+   "reported_as_of": "Wednesday, November 4th, 2026 at 01:48 AM",
+   "hash": "1301db5046"
   },
   {
    "number": "58",
    "slug": "sr58",
    "name": "State Route 58 \u2014 Tehachapi",
    "pass": false,
-   "status": "OPEN",
-   "pass_status": "OPEN",
+   "status": "RESTRICTIONS",
+   "pass_status": "RESTRICTIONS",
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "No traffic restrictions reported.",
-     "status": "OPEN"
+     "text": "Westbound traffic ia reduced to 1 lane from 10 mi west to 11 mi west of Tehachapi (Kern Co) - Due to an overturned big rig",
+     "status": "RESTRICTIONS"
     }
    ],
    "scope": {
-    "on_pass": "OPEN",
-    "on_pass_reported": false,
-    "on_pass_items": [],
+    "on_pass": "RESTRICTIONS",
+    "on_pass_reported": true,
+    "on_pass_items": [
+     {
+      "status": "RESTRICTIONS",
+      "place": "",
+      "county": "Kern Co",
+      "where": "Kern Co",
+      "text": "Westbound traffic ia reduced to 1 lane from 10 mi west to 11 mi west of Tehachapi (Kern Co) - Due to an overturned big rig",
+      "region": "CENTRAL CALIFORNIA"
+     }
+    ],
     "elsewhere": []
    },
-   "reported_as_of": "Tuesday, November 3rd, 2026 at 04:52 PM",
-   "hash": "5374f203ec"
+   "reported_as_of": "Wednesday, November 4th, 2026 at 01:48 AM",
+   "hash": "826d4f80ec"
   },
   {
    "number": "99",
@@ -109,7 +118,7 @@
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "There is a dense fog advisory in effect from Fresno/Merced Co Line to the Merced/Stanislaus Co Line - Motorists are advised to drive with caution A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "RESTRICTIONS"
     },
     {
@@ -128,14 +137,22 @@
       "place": "",
       "county": "",
       "where": "the Central California area",
+      "text": "There is a dense fog advisory in effect from Fresno/Merced Co Line to the Merced/Stanislaus Co Line - Motorists are advised to drive with caution",
+      "region": "CENTRAL CALIFORNIA"
+     },
+     {
+      "status": "RESTRICTIONS",
+      "place": "",
+      "county": "",
+      "where": "the Central California area",
       "text": "A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
       "region": "CENTRAL CALIFORNIA"
      }
     ]
    },
-   "reported_as_of": "Tuesday, November 3rd, 2026 at 04:52 PM",
-   "hash": "8c1838607f"
+   "reported_as_of": "Wednesday, November 4th, 2026 at 01:48 AM",
+   "hash": "30ed31b2b8"
   }
  ],
- "asof": "2026-11-03"
+ "asof": "2026-11-04"
 }

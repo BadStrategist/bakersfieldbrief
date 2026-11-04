@@ -1,19 +1,19 @@
 {
  "i5": {
   "status": "CLOSED",
-  "hash": "5bd338c8e5",
+  "hash": "1301db5046",
   "corridor": "CLOSED",
-  "corridor_hash": "fa766ee5d6"
+  "corridor_hash": "96a3e5465c"
  },
  "sr58": {
-  "status": "OPEN",
-  "hash": "5374f203ec",
-  "corridor": "OPEN",
-  "corridor_hash": "d41d8cd98f"
+  "status": "RESTRICTIONS",
+  "hash": "826d4f80ec",
+  "corridor": "RESTRICTIONS",
+  "corridor_hash": "4f6e97ca49"
  },
  "sr99": {
   "status": "RESTRICTIONS",
-  "hash": "8c1838607f",
+  "hash": "30ed31b2b8",
   "corridor": "OPEN",
   "corridor_hash": "d41d8cd98f"
  }

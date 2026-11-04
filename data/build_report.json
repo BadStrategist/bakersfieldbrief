@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-03T16:52:47-08:00",
+ "built_at": "2026-11-04T01:49:03-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,13 +68,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1233,
+  "brief_words": 60,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "KCSO seeking identity of Faith Temple Church burglary suspect",
+   "chp_new": 1,
+   "top_story": "Bakersfield City Council candidates gather at local watch parties",
    "overnight_band": {
     "date": "2026-11-03",
     "count": 25,
@@ -99,7 +99,7 @@
     "other": "",
     "unmapped": []
    },
-   "archive": "2026-11-03"
+   "archive": "2026-11-04"
   },
   "cityhall": {
    "upcoming_meetings": 4,
@@ -117,7 +117,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 11,
+    "bakersfield-nw": 12,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -125,7 +125,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-11-03"
+   "draft": "drafts/weekend-guide-2026-11-04"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -133,20 +133,20 @@
    "log_entries": 60
   },
   "tehachapi": {
-   "sr58": "OPEN",
+   "sr58": "RESTRICTIONS",
    "wind_mph": 16,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 55,
+   "temp": 48,
    "wind_mph": 16,
    "alerts": 0
   },
   "roads": {
    "routes": [
     "i5:CLOSED",
-    "sr58:OPEN",
+    "sr58:RESTRICTIONS",
     "sr99:RESTRICTIONS"
    ],
    "log_entries": 60
@@ -164,9 +164,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 26,
-    "In 1 to 2 weeks": 15,
-    "Later": 67
+    "In the next 7 days": 27,
+    "In 1 to 2 weeks": 12,
+    "Later": 66
    },
    "meetings": 4
   },
@@ -177,8 +177,8 @@
    "isabella_af": 139270,
    "alpr_total": 460,
    "kern_fires": 0,
-   "aqi": 47,
-   "chp_week": 24
+   "aqi": 44,
+   "chp_week": 25
   },
   "letters": {
    "published": 1

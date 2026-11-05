@@ -1,0 +1,355 @@
+[
+ {
+  "type": "traffic hazard",
+  "time": "19:56",
+  "agency": "California Highway Patrol",
+  "area": "",
+  "notability": 2,
+  "disposition": "CHP notified",
+  "summary": "The CHP was told at 9:56 p.m. about a pedestrian in the northbound lanes of Highway 99 just north of the airport exit, wearing all white."
+ },
+ {
+  "type": "medical aid",
+  "time": "19:56",
+  "agency": "Hall Ambulance",
+  "area": "Roberts Lane",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 9:56 p.m. to the 500 block of Roberts Lane for a seizure.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "20:07",
+  "agency": "Bakersfield Police Department",
+  "area": "Hopkins Avenue",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 8:07 p.m. to a home in the 100 block of Hopkins Avenue for a verbal disturbance that included a report about a child, with two men and a woman reported to be involved and a 4-year-old present.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "vehicle pursuit",
+  "time": "21:44",
+  "agency": "Bakersfield Police Department",
+  "area": "Pioneer Drive",
+  "notability": 3,
+  "disposition": "car lost",
+  "summary": "A car fled from an officer east on Pioneer Drive at 9:44 p.m. and was lost a short distance later.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "commercial fire",
+  "time": "21:55",
+  "agency": "Kern County Fire Department",
+  "area": "S Union Avenue",
+  "notability": 4,
+  "disposition": "crews sent",
+  "summary": "Fire crews were sent at 9:55 p.m. to a mechanic's yard on South Union Avenue between White Lane and Pacheco Road for a fire of unknown origin."
+ },
+ {
+  "type": "assault",
+  "time": "22:10",
+  "agency": "Bakersfield Police Department",
+  "area": "California Avenue",
+  "notability": 3,
+  "disposition": "medical en route",
+  "summary": "Officers and medics were sent at 10:10 p.m. to the 8300 block of California Avenue for an assault; a man was reported to have hit his head on a wall during an argument with his father and was not moving."
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "22:27",
+  "agency": "Bakersfield Police Department",
+  "area": "Gila River Drive",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 10:27 p.m. to the 8500 block of Gila River Drive, where a woman in her early 20s was reported to have thrown her shoes at the caller during an argument.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "22:31",
+  "agency": "Bakersfield Police Department",
+  "area": "Poinsetta Street",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 10:31 p.m. to the 500 block of Poinsetta Street for a man reported to be under the influence of marijuana and hallucinating."
+ },
+ {
+  "type": "welfare check",
+  "time": "22:49",
+  "agency": "Bakersfield Police Department",
+  "area": "Apache Avenue",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 10:49 p.m. to the 3700 block of Apache Avenue after a woman texted a friend that she was in danger and asked for police, saying she had met an unknown man there.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "armed robbery",
+  "time": "00:11",
+  "agency": "Kern County Sheriff's Office",
+  "area": "",
+  "notability": 5,
+  "disposition": "suspects at large",
+  "summary": "Deputies were sent at 12:11 a.m. to an armed robbery that had just happened at a gas station on the 21,900 block of Highway 46. Two juvenile suspects in masks, at least one armed, took cash from the register and from a customer, then ran east on foot toward a nearby restaurant."
+ },
+ {
+  "type": "collision",
+  "time": "00:22",
+  "agency": "California Highway Patrol",
+  "area": "S H Street",
+  "notability": 4,
+  "disposition": "CHP en route",
+  "summary": "Fire crews and the CHP were sent at 12:22 a.m. to a vehicle rollover on westbound Highway 58 just west of South H Street that was blocking the fast lane."
+ },
+ {
+  "type": "vehicle pursuit",
+  "time": "00:25",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 4,
+  "disposition": "pursuit",
+  "summary": "A traffic stop on Castro Lane turned into a pursuit at 12:25 a.m. that moved onto Highway 99, where all lanes were cleared for it and the car left south from Highway 58."
+ },
+ {
+  "type": "welfare check",
+  "time": "01:02",
+  "agency": "Bakersfield Police Department",
+  "area": "Brian Way",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 1:02 a.m. to the 20,400 block of Brian Way for a woman reported to be slumped over the steering wheel of a white Jeep parked at a business.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "01:25",
+  "agency": "Kern County Fire Department",
+  "area": "Chester Avenue",
+  "notability": 2,
+  "disposition": "crews sent",
+  "summary": "Fire crews were sent at 1:25 a.m. to the middle field at San Juan Ballpark, 4009 Chester Avenue, for a medical aid."
+ },
+ {
+  "type": "welfare check",
+  "time": "01:54",
+  "agency": "Bakersfield Police Department",
+  "area": "Washington Avenue",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 1:54 a.m. to the 100 block of Washington Avenue for a possible overdose after clothing was found on the ground outside a home.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "weapons call",
+  "time": "01:55",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 4,
+  "disposition": "caller could not be reached",
+  "summary": "A driver told officers at 1:55 a.m. that a man in a white Honda had brandished a firearm; the caller then stopped answering dispatch."
+ },
+ {
+  "type": "vehicle pursuit",
+  "time": "02:06",
+  "agency": "California Highway Patrol",
+  "area": "",
+  "notability": 4,
+  "disposition": "PIT used, still moving",
+  "summary": "A wrong-way driver on Highway 99 was spun with a PIT maneuver at 2:06 a.m. but kept going, creeping southbound at only a few miles an hour near Houghton Road."
+ },
+ {
+  "type": "suspicious circumstance",
+  "time": "02:39",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were told at 2:39 a.m. about two people with flashlights and backpacks walking on a school campus."
+ },
+ {
+  "type": "fire",
+  "time": "03:08",
+  "agency": "Kern County Fire Department",
+  "area": "Tulare Street",
+  "notability": 4,
+  "disposition": "crews sent",
+  "summary": "Fire crews were sent at 3:08 a.m. to an outside fire in the alley behind 1515 Tulare Street.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "cardiac arrest",
+  "time": "03:13",
+  "agency": "Hall Ambulance",
+  "area": "",
+  "notability": 4,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 3:13 a.m. to a unit on Joseph Lane for a cardiac arrest."
+ },
+ {
+  "type": "assault",
+  "time": "03:47",
+  "agency": "Bakersfield Police Department",
+  "area": "Gilmore Avenue",
+  "notability": 3,
+  "disposition": "medical en route",
+  "summary": "Officers and medics were sent at 3:47 a.m. to Gilmore Avenue and Buck Owens Boulevard, where a man was reported to have pepper-sprayed the caller during a dispute over payment.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "vehicle fire",
+  "time": "04:02",
+  "agency": "Kern County Fire Department",
+  "area": "",
+  "notability": 4,
+  "disposition": "crews sent",
+  "summary": "Fire crews were sent at 4:02 a.m. to a vehicle fire fully involved with no exposures."
+ },
+ {
+  "type": "collision",
+  "time": "04:52",
+  "agency": "California Highway Patrol",
+  "area": "Old River Road",
+  "notability": 4,
+  "disposition": "patients refused transport",
+  "summary": "Fire crews and the CHP were sent at 4:52 a.m. to the 8,100 block of Old River Road for a single vehicle that rolled onto its roof. The driver was out of the car and the patients refused to be taken to a hospital.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "traffic hazard",
+  "time": "05:06",
+  "agency": "California Highway Patrol",
+  "area": "",
+  "notability": 2,
+  "disposition": "CHP notified",
+  "summary": "The CHP was told at 5:06 a.m. about a person in dark clothing standing on the shoulder of northbound Highway 99 near the overpass."
+ },
+ {
+  "type": "burglary alarm",
+  "time": "05:17",
+  "agency": "Bakersfield Police Department",
+  "area": "Brundage Lane",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 5:17 a.m. to a business on Brundage Lane for an alarm that showed at the front door."
+ },
+ {
+  "type": "medical aid",
+  "time": "05:27",
+  "agency": "Hall Ambulance",
+  "area": "Union Avenue",
+  "notability": 3,
+  "disposition": "medics sent",
+  "summary": "Medics were sent at 5:27 a.m. to the President's Hotel, 1622 Union Avenue, for several patients reporting a burning sensation."
+ },
+ {
+  "type": "hit and run",
+  "time": "05:42",
+  "agency": "California Highway Patrol",
+  "area": "Mohawk Street",
+  "notability": 3,
+  "disposition": "driver left the scene",
+  "summary": "The CHP was called at 5:42 a.m. to a two-vehicle crash on the westside parkway at Mohawk Street, where the other driver, in a brown Toyota, was last seen north through Rosedale."
+ },
+ {
+  "type": "medical aid",
+  "time": "05:49",
+  "agency": "Hall Ambulance",
+  "area": "Green Road",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 5:49 a.m. to the 10,800 block of Green Road for difficulty breathing.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "Medical emergency",
+  "time": "19:15",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person fell and unconscious near Au Chocolat Drive.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Weapons",
+  "time": "21:51",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Officer search for suspected drugs and weapons.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "21:52",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Non-injury rollover crash on Woodford/Tehachapi Road.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Pursuit",
+  "time": "23:04",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Center Street",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Pursuit near Center Street ends in field; 1 detained.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Cardiac arrest",
+  "time": "23:44",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Leland Avenue",
+  "notability": 3,
+  "disposition": "",
+  "summary": "CPR in progress on elderly woman near Leland Avenue in Bakersfield.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Alarm",
+  "time": "06:35",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Alarm activation at business office.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Domestic dispute",
+  "time": "06:40",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Betty Street",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Domestic dispute with death threats at Betty Street home.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Assault",
+  "time": "06:50",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Elmwood Avenue",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Woman reports assault at Elmwood Avenue home.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:50",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Welfare check after women seen looking into car.",
+  "source": "crimeradar"
+ }
+]

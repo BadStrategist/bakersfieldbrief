@@ -11,7 +11,7 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "Is reopened to southbound traffic at the Jct of I-805 /in San Diego/ (San Diego Co) at 0520 hrs on 11/5/26 The northbound connector to northbound SR-133 /in Irvine/ (Orange Co) is closed from 2100 hrs each night to 0500 hrs each morning Monday thru Saturday thru 11/7/26 - Due to construction - Motorists are advised to use an alternate route The northbound connector to eastbound & westbound SR-126 (Los Angeles Co) is closed from 2100 hrs each night to 0500 hrs each morning Monday thru Friday thru 11/6/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 (Los Angeles Co) to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "The northbound connector to northbound SR-133 /in Irvine/ (Orange Co) is closed from 2100 hrs each night to 0500 hrs each morning Monday thru Saturday thru 11/7/26 - Due to construction - Motorists are advised to use an alternate route The northbound connector to eastbound & westbound SR-126 (Los Angeles Co) is closed from 2100 hrs each night to 0500 hrs each morning Monday thru Friday thru 11/6/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 (Los Angeles Co) to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "CLOSED"
     },
     {
@@ -73,40 +73,31 @@
      }
     ]
    },
-   "reported_as_of": "Thursday, November 5th, 2026 at 07:49 AM",
-   "hash": "045b091b76"
+   "reported_as_of": "Thursday, November 5th, 2026 at 12:49 PM",
+   "hash": "1301db5046"
   },
   {
    "number": "58",
    "slug": "sr58",
    "name": "State Route 58 \u2014 Tehachapi",
    "pass": false,
-   "status": "RESTRICTIONS",
-   "pass_status": "RESTRICTIONS",
+   "status": "OPEN",
+   "pass_status": "OPEN",
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "Westbound traffic ia no longer reduced to 1 lane from 10 mi west to 11 mi west of Tehachapi (Kern Co) at 0350 hrs on 11/4/26",
-     "status": "RESTRICTIONS"
+     "text": "No traffic restrictions reported.",
+     "status": "OPEN"
     }
    ],
    "scope": {
-    "on_pass": "RESTRICTIONS",
-    "on_pass_reported": true,
-    "on_pass_items": [
-     {
-      "status": "RESTRICTIONS",
-      "place": "",
-      "county": "Kern Co",
-      "where": "Kern Co",
-      "text": "Westbound traffic ia no longer reduced to 1 lane from 10 mi west to 11 mi west of Tehachapi (Kern Co) at 0350 hrs on 11/4/26",
-      "region": "CENTRAL CALIFORNIA"
-     }
-    ],
+    "on_pass": "OPEN",
+    "on_pass_reported": false,
+    "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Thursday, November 5th, 2026 at 07:49 AM",
-   "hash": "79b31e105f"
+   "reported_as_of": "Thursday, November 5th, 2026 at 12:49 PM",
+   "hash": "5374f203ec"
   },
   {
    "number": "99",
@@ -150,7 +141,7 @@
      }
     ]
    },
-   "reported_as_of": "Thursday, November 5th, 2026 at 07:49 AM",
+   "reported_as_of": "Thursday, November 5th, 2026 at 12:49 PM",
    "hash": "30ed31b2b8"
   }
  ],

@@ -440,6 +440,96 @@
   "details": ""
  },
  {
+  "log_id": "261105BF0018",
+  "time": "Nov  5 2026  2:00AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261105BF0038",
+  "time": "Nov  5 2026  6:00AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "Sr33 / Sr166",
+  "area": "BF",
+  "lat": 35.058432,
+  "lon": -119.401058,
+  "details": ""
+ },
+ {
+  "log_id": "261105BF0053",
+  "time": "Nov  5 2026  7:28AM",
+  "type": "CZP-Assist with Construction",
+  "location": "Nb I5 At Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.939167,
+  "lon": -118.929444,
+  "details": ""
+ },
+ {
+  "log_id": "261105BF0116",
+  "time": "Nov  5 2026 10:38AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr99 S / Sr46",
+  "area": "Bakersfield",
+  "lat": 35.601816,
+  "lon": -119.211348,
+  "details": ""
+ },
+ {
+  "log_id": "261105BF0126",
+  "time": "Nov  5 2026 10:52AM",
+  "type": "ANIMAL-Live or Dead Animal",
+  "location": "Sr58 / Sr43",
+  "area": "Bakersfield",
+  "lat": 35.35415,
+  "lon": -119.252019,
+  "details": ""
+ },
+ {
+  "log_id": "261105BF0135",
+  "time": "Nov  5 2026 11:04AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "631 Jefferson St",
+  "area": "BF",
+  "lat": 35.764405,
+  "lon": -119.243173,
+  "details": ""
+ },
+ {
+  "log_id": "261105BF0150",
+  "time": "Nov  5 2026 12:10PM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "210 N Chester Ave",
+  "area": "Bakersfield",
+  "lat": 35.406971,
+  "lon": -119.020917,
+  "details": ""
+ },
+ {
+  "log_id": "261105BF0153",
+  "time": "Nov  5 2026 12:16PM",
+  "type": "CFIRE-Car Fire",
+  "location": "115 E Pacheco Rd",
+  "area": "Bakersfield",
+  "lat": 35.310409,
+  "lon": -118.998285,
+  "details": ""
+ },
+ {
+  "log_id": "261105BF0152",
+  "time": "Nov  5 2026 12:17PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 I5 N",
+  "area": "Fort Tejon",
+  "lat": 34.903819,
+  "lon": -118.923111,
+  "details": ""
+ },
+ {
   "log_id": "261029BF0211",
   "time": "Oct 29 2026  1:05PM",
   "type": "1183-Trfc Collision-Unkn Inj",

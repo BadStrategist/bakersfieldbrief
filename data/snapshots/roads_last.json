@@ -11,7 +11,7 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "Is closed to southbound traffic at the Jct of I-805 /in San Diego/ (San Diego Co) - Due to police activity - Motorists are advised to use an alternate route The northbound connector to northbound SR-133 /in Irvine/ (Orange Co) is closed from 2100 hrs each night to 0500 hrs each morning Monday thru Saturday thru 11/7/26 - Due to construction - Motorists are advised to use an alternate route The northbound connector to eastbound & westbound SR-126 (Los Angeles Co) is closed from 2100 hrs each night to 0500 hrs each morning Monday thru Friday thru 11/6/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 (Los Angeles Co) to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "Is reopened to southbound traffic at the Jct of I-805 /in San Diego/ (San Diego Co) at 0520 hrs on 11/5/26 The northbound connector to northbound SR-133 /in Irvine/ (Orange Co) is closed from 2100 hrs each night to 0500 hrs each morning Monday thru Saturday thru 11/7/26 - Due to construction - Motorists are advised to use an alternate route The northbound connector to eastbound & westbound SR-126 (Los Angeles Co) is closed from 2100 hrs each night to 0500 hrs each morning Monday thru Friday thru 11/6/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 (Los Angeles Co) to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "CLOSED"
     },
     {
@@ -57,14 +57,6 @@
     "elsewhere": [
      {
       "status": "CLOSED",
-      "place": "San Diego",
-      "county": "San Diego Co",
-      "where": "San Diego (San Diego Co)",
-      "text": "Is closed to southbound traffic at the Jct of I-805 /in San Diego/ (San Diego Co) - Due to police activity - Motorists are advised to use an alternate route",
-      "region": "SOUTHERN CALIFORNIA"
-     },
-     {
-      "status": "CLOSED",
       "place": "Irvine",
       "county": "Orange Co",
       "where": "Irvine (Orange Co)",
@@ -81,8 +73,8 @@
      }
     ]
    },
-   "reported_as_of": "Thursday, November 5th, 2026 at 01:50 AM",
-   "hash": "ad8f95f3ea"
+   "reported_as_of": "Thursday, November 5th, 2026 at 07:49 AM",
+   "hash": "045b091b76"
   },
   {
    "number": "58",
@@ -113,7 +105,7 @@
     ],
     "elsewhere": []
    },
-   "reported_as_of": "Thursday, November 5th, 2026 at 01:50 AM",
+   "reported_as_of": "Thursday, November 5th, 2026 at 07:49 AM",
    "hash": "79b31e105f"
   },
   {
@@ -158,7 +150,7 @@
      }
     ]
    },
-   "reported_as_of": "Thursday, November 5th, 2026 at 01:50 AM",
+   "reported_as_of": "Thursday, November 5th, 2026 at 07:49 AM",
    "hash": "30ed31b2b8"
   }
  ],

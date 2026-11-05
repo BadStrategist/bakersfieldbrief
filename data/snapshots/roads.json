@@ -1,7 +1,7 @@
 {
  "i5": {
   "status": "CLOSED",
-  "hash": "1301db5046",
+  "hash": "ad8f95f3ea",
   "corridor": "CLOSED",
   "corridor_hash": "96a3e5465c"
  },
@@ -13,8 +13,8 @@
  },
  "sr99": {
   "status": "RESTRICTIONS",
-  "hash": "2c1d5c0d5c",
-  "corridor": "RESTRICTIONS",
-  "corridor_hash": "4b9d37ffca"
+  "hash": "30ed31b2b8",
+  "corridor": "OPEN",
+  "corridor_hash": "d41d8cd98f"
  }
 }

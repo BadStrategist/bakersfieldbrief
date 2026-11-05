@@ -11,7 +11,7 @@
    "sections": [
     {
      "region": "SOUTHERN CALIFORNIA",
-     "text": "The northbound connector to northbound SR-133 /in Irvine/ (Orange Co) is closed from 2100 hrs each night to 0500 hrs each morning Monday thru Saturday thru 11/7/26 - Due to construction - Motorists are advised to use an alternate route The northbound connector to eastbound & westbound SR-126 (Los Angeles Co) is closed from 2100 hrs each night to 0500 hrs each morning Monday thru Friday thru 11/6/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 (Los Angeles Co) to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "Is closed to southbound traffic at the Jct of I-805 /in San Diego/ (San Diego Co) - Due to police activity - Motorists are advised to use an alternate route The northbound connector to northbound SR-133 /in Irvine/ (Orange Co) is closed from 2100 hrs each night to 0500 hrs each morning Monday thru Saturday thru 11/7/26 - Due to construction - Motorists are advised to use an alternate route The northbound connector to eastbound & westbound SR-126 (Los Angeles Co) is closed from 2100 hrs each night to 0500 hrs each morning Monday thru Friday thru 11/6/26 - Due to construction - Motorists are advised to use an alternate route A high wind advisory is in effect from the Jct of SR-126 (Los Angeles Co) to the Los Angeles/Kern Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "CLOSED"
     },
     {
@@ -57,6 +57,14 @@
     "elsewhere": [
      {
       "status": "CLOSED",
+      "place": "San Diego",
+      "county": "San Diego Co",
+      "where": "San Diego (San Diego Co)",
+      "text": "Is closed to southbound traffic at the Jct of I-805 /in San Diego/ (San Diego Co) - Due to police activity - Motorists are advised to use an alternate route",
+      "region": "SOUTHERN CALIFORNIA"
+     },
+     {
+      "status": "CLOSED",
       "place": "Irvine",
       "county": "Orange Co",
       "where": "Irvine (Orange Co)",
@@ -73,8 +81,8 @@
      }
     ]
    },
-   "reported_as_of": "Wednesday, November 4th, 2026 at 05:03 PM",
-   "hash": "1301db5046"
+   "reported_as_of": "Thursday, November 5th, 2026 at 01:50 AM",
+   "hash": "ad8f95f3ea"
   },
   {
    "number": "58",
@@ -105,7 +113,7 @@
     ],
     "elsewhere": []
    },
-   "reported_as_of": "Wednesday, November 4th, 2026 at 05:03 PM",
+   "reported_as_of": "Thursday, November 5th, 2026 at 01:50 AM",
    "hash": "79b31e105f"
   },
   {
@@ -118,7 +126,7 @@
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "Northbound traffic is no longer reduced to 2 lanes at Ming Ave /in Bakersfield/ (Kern Co) at 1400 hrs on 11/4/26 A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "There is a dense fog advisory in effect from Fresno/Merced Co Line to the Merced/Stanislaus Co Line - Motorists are advised to drive with caution A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "RESTRICTIONS"
     },
     {
@@ -128,19 +136,18 @@
     }
    ],
    "scope": {
-    "on_pass": "RESTRICTIONS",
-    "on_pass_reported": true,
-    "on_pass_items": [
+    "on_pass": "OPEN",
+    "on_pass_reported": false,
+    "on_pass_items": [],
+    "elsewhere": [
      {
       "status": "RESTRICTIONS",
-      "place": "Bakersfield",
-      "county": "Kern Co",
-      "where": "Bakersfield (Kern Co)",
-      "text": "Northbound traffic is no longer reduced to 2 lanes at Ming Ave /in Bakersfield/ (Kern Co) at 1400 hrs on 11/4/26",
+      "place": "",
+      "county": "",
+      "where": "the Central California area",
+      "text": "There is a dense fog advisory in effect from Fresno/Merced Co Line to the Merced/Stanislaus Co Line - Motorists are advised to drive with caution",
       "region": "CENTRAL CALIFORNIA"
-     }
-    ],
-    "elsewhere": [
+     },
      {
       "status": "RESTRICTIONS",
       "place": "",
@@ -151,9 +158,9 @@
      }
     ]
    },
-   "reported_as_of": "Wednesday, November 4th, 2026 at 05:03 PM",
-   "hash": "2c1d5c0d5c"
+   "reported_as_of": "Thursday, November 5th, 2026 at 01:50 AM",
+   "hash": "30ed31b2b8"
   }
  ],
- "asof": "2026-11-04"
+ "asof": "2026-11-05"
 }

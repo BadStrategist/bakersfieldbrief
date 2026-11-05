@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-05T12:49:13-08:00",
+ "built_at": "2026-11-05T13:14:05-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 2947, column 50"
   },
   "isabella": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 9,
+   "chp_new": 0,
    "top_story": "Bakersfield City Council unanimously approves zoning change for Riverview Marketplace shopping center",
    "overnight_band": {
     "date": "2026-11-05",
@@ -154,13 +154,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 16,
+   "wind_mph": 1,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 50,
-   "wind_mph": 16,
+   "temp": 49,
+   "wind_mph": 1,
    "alerts": 0
   },
   "roads": {

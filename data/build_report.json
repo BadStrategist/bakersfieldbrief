@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-05T13:14:05-08:00",
+ "built_at": "2026-11-05T13:58:18-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -123,7 +123,7 @@
   },
   "cityhall": {
    "upcoming_meetings": 2,
-   "county_items": 109,
+   "county_items": 78,
    "drafts_generated": 0
   },
   "places": {
@@ -154,20 +154,20 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 1,
+   "wind_mph": 10,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 49,
-   "wind_mph": 1,
+   "temp": 50,
+   "wind_mph": 10,
    "alerts": 0
   },
   "roads": {
    "routes": [
     "i5:CLOSED",
     "sr58:OPEN",
-    "sr99:RESTRICTIONS"
+    "sr99:CLOSED"
    ],
    "log_entries": 60
   },
@@ -197,7 +197,7 @@
    "isabella_af": 139165,
    "alpr_total": 460,
    "kern_fires": 0,
-   "aqi": 61,
+   "aqi": 58,
    "chp_week": 43
   },
   "letters": {

@@ -73,7 +73,7 @@
      }
     ]
    },
-   "reported_as_of": "Wednesday, November 4th, 2026 at 02:12 PM",
+   "reported_as_of": "Wednesday, November 4th, 2026 at 05:03 PM",
    "hash": "1301db5046"
   },
   {
@@ -105,7 +105,7 @@
     ],
     "elsewhere": []
    },
-   "reported_as_of": "Wednesday, November 4th, 2026 at 02:12 PM",
+   "reported_as_of": "Wednesday, November 4th, 2026 at 05:03 PM",
    "hash": "79b31e105f"
   },
   {
@@ -118,7 +118,7 @@
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "Is reopened to northbound traffic & reduced to 2 lanes at Ming Ave /in Bakersfield/ (Kern Co) at 0900 hrs on 11/4/26 - Due to a jackknifed big rig A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "text": "Northbound traffic is no longer reduced to 2 lanes at Ming Ave /in Bakersfield/ (Kern Co) at 1400 hrs on 11/4/26 A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
      "status": "RESTRICTIONS"
     },
     {
@@ -136,7 +136,7 @@
       "place": "Bakersfield",
       "county": "Kern Co",
       "where": "Bakersfield (Kern Co)",
-      "text": "Is reopened to northbound traffic & reduced to 2 lanes at Ming Ave /in Bakersfield/ (Kern Co) at 0900 hrs on 11/4/26 - Due to a jackknifed big rig",
+      "text": "Northbound traffic is no longer reduced to 2 lanes at Ming Ave /in Bakersfield/ (Kern Co) at 1400 hrs on 11/4/26",
       "region": "CENTRAL CALIFORNIA"
      }
     ],
@@ -151,8 +151,8 @@
      }
     ]
    },
-   "reported_as_of": "Wednesday, November 4th, 2026 at 02:12 PM",
-   "hash": "699b9ab3b6"
+   "reported_as_of": "Wednesday, November 4th, 2026 at 05:03 PM",
+   "hash": "2c1d5c0d5c"
   }
  ],
  "asof": "2026-11-04"

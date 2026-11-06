@@ -1,0 +1,373 @@
+[
+ {
+  "type": "medical aid",
+  "time": "19:04",
+  "agency": "Hall Ambulance",
+  "area": "Nimrod Court",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 7:04 p.m. to a unit on Nimrod Court for a diabetic problem.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "suspicious person",
+  "time": "19:09",
+  "agency": "Bakersfield Police Department",
+  "area": "the 3900 block of Niles Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 7:09 p.m. to a store on the 3,900 block of Niles Street for a man who refused to leave, an ongoing problem there.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "19:35",
+  "agency": "Hall Ambulance",
+  "area": "the 11900 block of Kimelford Drive",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 7:35 p.m. to the 11,900 block of Kimelford Drive for a patient who was ill and not alert.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "restraining order service",
+  "time": "20:02",
+  "agency": "Bakersfield Police Department",
+  "area": "the 2100 block of Edison Highway",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 8:02 p.m. to the Mercado Latino on the 2,100 block of Edison Highway to serve a workplace violence restraining order on a man reported to be there in an orange Dodge Challenger.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "DUI arrest",
+  "time": "21:14",
+  "agency": "California Highway Patrol",
+  "area": "Highway 46",
+  "notability": 2,
+  "disposition": "arrest",
+  "summary": "The CHP arrested a driver on suspicion of driving under the influence at a stop on Highway 46 east of Highway 33 at 9:14 p.m."
+ },
+ {
+  "type": "possible fire",
+  "time": "21:21",
+  "agency": "Bakersfield Police Department",
+  "area": "17th Street",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 9:21 p.m. to the north side of a building on 17th Street, where someone was reported to be lighting a fire next to a back door.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "verbal disturbance",
+  "time": "22:09",
+  "agency": "Bakersfield Police Department",
+  "area": "the 100 block of Brighton Way",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 10:09 p.m. to the 100 block of Brighton Way for a verbal disturbance involving five or six people.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "burglary alarm",
+  "time": "22:23",
+  "agency": "Bakersfield Police Department",
+  "area": "the 600 block of East Brundage Lane",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 10:23 p.m. to a business on the 600 block of East Brundage Lane for an audible alarm that showed at the front of the building.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "fight",
+  "time": "22:25",
+  "agency": "Bakersfield Police Department",
+  "area": "North Chester Avenue and Ray Street",
+  "notability": 3,
+  "disposition": "caller could not be reached",
+  "summary": "Officers were sent at 10:25 p.m. to North Chester Avenue and Ray Street for a reported physical fight between two women; the caller hung up and did not answer a callback.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "grass fire",
+  "time": "22:28",
+  "agency": "Kern County Fire Department",
+  "area": "Highway 58",
+  "notability": 2,
+  "disposition": "extinguished",
+  "summary": "Crews put out a fire on about a 150-foot strip of grass on eastbound Highway 58 roughly two miles east of General Beale Road at 10:28 p.m."
+ },
+ {
+  "type": "medical aid",
+  "time": "22:30",
+  "agency": "Hall Ambulance",
+  "area": "the 11100 block of Queensbury Drive",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 10:30 p.m. to the 11,100 block of Queensbury Drive for a medical aid.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "22:31",
+  "agency": "Bakersfield Police Department",
+  "area": "the 1000 block of Sandra Drive",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 10:31 p.m. to the 1,000 block of Sandra Drive for a domestic call; the caller's 13-year-old daughter had walked away from the home and was being followed by the caller's sister.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "reckless driver",
+  "time": "23:37",
+  "agency": "Bakersfield Police Department",
+  "area": "Union Avenue",
+  "notability": 3,
+  "disposition": "officers notified",
+  "summary": "Officers were told at 11:37 p.m. that a white Ford Raptor was being driven recklessly in the Union Avenue area with a firearm possibly hidden under a floor mat."
+ },
+ {
+  "type": "medical aid",
+  "time": "23:41",
+  "agency": "Hall Ambulance",
+  "area": "the 6800 block of Redwing Court",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 11:41 p.m. to the 6,800 block of Redwing Court for difficulty breathing.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "23:44",
+  "agency": "Hall Ambulance",
+  "area": "the 2100 block of Chester Avenue",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 11:44 p.m. to the Get Bus downtown terminal at 2129 Chester Avenue for a possible stroke or seizure."
+ },
+ {
+  "type": "suspicious person",
+  "time": "23:49",
+  "agency": "Bakersfield Police Department",
+  "area": "the 100 block of Hopkins Avenue",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 11:49 p.m. to the 100 block of Hopkins Avenue for a man who had been on the caller's property and was then sitting across the street.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "burglary in progress",
+  "time": "00:21",
+  "agency": "Bakersfield Police Department",
+  "area": "the 800 block of China Grade Loop",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 12:21 a.m. to the 800 block of China Grade Loop for a report of a man who jumped into a property from the roof of a building.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "suspicious persons",
+  "time": "00:22",
+  "agency": "Bakersfield Police Department",
+  "area": "the 4000 block of Niles Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 12:22 a.m. to the 4,000 block of Niles Street at Normandy Drive for two men going door to door.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "vehicle pursuit",
+  "time": "01:08",
+  "agency": "Bakersfield Police Department",
+  "area": "Castro Lane and Rose Marie Drive",
+  "notability": 3,
+  "disposition": "two ran off on foot",
+  "summary": "A pursuit that started on Castro Lane about 1:08 a.m. reached only about 40 miles an hour before the car stopped near Castro Lane and Rose Marie Drive and the occupants ran; officers caught up with them.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "possible fire",
+  "time": "01:21",
+  "agency": "Kern County Fire Department",
+  "area": "Baker Street and Monterey Street",
+  "notability": 3,
+  "disposition": "crews sent",
+  "summary": "Fire crews were sent at 1:21 a.m. for a possible fire on the side of a bank in the area of Baker Street and Monterey Street.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "01:23",
+  "agency": "Hall Ambulance",
+  "area": "the 2400 block of Bernice Court",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 1:23 a.m. to the 2,400 block of Bernice Court for a diabetic problem.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "assault with a deadly weapon",
+  "time": "01:27",
+  "agency": "Bakersfield Police Department",
+  "area": "Actis Street",
+  "notability": 4,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 1:27 a.m. to the 4,200 block of Actis Street for a physical fight between a man and his girlfriend; the woman was reported to be trying to stab him.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "outside fire",
+  "time": "01:43",
+  "agency": "Kern County Fire Department",
+  "area": "the 3300 block of State Road",
+  "notability": 2,
+  "disposition": "crews sent",
+  "summary": "Crews were sent at 1:43 a.m. to an outside fire in front of 3331 State Road for a cart on fire.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "burglary in progress",
+  "time": "01:47",
+  "agency": "Bakersfield Police Department",
+  "area": "the 2100 block of Bedford Way",
+  "notability": 4,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 1:47 a.m. to the 2,100 block of Bedford Way, where a woman watching her camera saw men go into her garage and believed one of them had a pistol.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "fire alarm",
+  "time": "02:00",
+  "agency": "Kern County Fire Department",
+  "area": "the 1100 block of South Union Avenue",
+  "notability": 2,
+  "disposition": "crews sent",
+  "summary": "Crews were sent at 2:00 a.m. to a fire alarm at Union Villa, 1102 South Union Avenue."
+ },
+ {
+  "type": "domestic violence",
+  "time": "02:02",
+  "agency": "Bakersfield Police Department",
+  "area": "the 3300 block of McCray Street",
+  "notability": 4,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 2:02 a.m. to the 3,300 block of McCray Street at North Meadows Park, where a woman was reported to have a facial injury after an argument with her ex-boyfriend."
+ },
+ {
+  "type": "burglary in progress",
+  "time": "02:04",
+  "agency": "Bakersfield Police Department",
+  "area": "the 400 block of East 19th Street",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 2:04 a.m. to a burglary in progress at a business on the 400 block of East 19th Street.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "weapons call",
+  "time": "02:51",
+  "agency": "Bakersfield Police Department",
+  "area": "the 500 block of Oleander Avenue",
+  "notability": 4,
+  "disposition": "priority one call",
+  "summary": "Officers were sent at 2:51 a.m. to a priority welfare check at Beale Park on Oleander Avenue, where a woman was reported to be with two men who had bats and knives near the restrooms and a sexual assault was feared."
+ },
+ {
+  "type": "theft",
+  "time": "03:50",
+  "agency": "Bakersfield Police Department",
+  "area": "the 2000 block of Greenwood Drive",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 3:50 a.m. to the 2,000 block of Greenwood Drive, where a woman reported a man had been underneath her vehicle and possibly taking parts from it.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "outside fire",
+  "time": "04:01",
+  "agency": "Kern County Fire Department",
+  "area": "the 400 block of Wisteria Street",
+  "notability": 2,
+  "disposition": "crews sent",
+  "summary": "Crews were sent at 4:01 a.m. to an outside fire on the 400 block of Wisteria Street."
+ },
+ {
+  "type": "missing person",
+  "time": "04:44",
+  "agency": "Bakersfield Police Department",
+  "area": "the 3100 block of Niles Street",
+  "notability": 3,
+  "disposition": "child located",
+  "summary": "Officers were sent at 4:44 a.m. to the Chevron on the 3,100 block of Niles Street, where a caller was standing by with a boy about 10 or 11 years old who was possibly autistic and had been reported missing.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "field fire",
+  "time": "05:37",
+  "agency": "Kern County Fire Department",
+  "area": "Weedpatch Highway",
+  "notability": 2,
+  "disposition": "crews sent",
+  "summary": "Crews were sent at 5:37 a.m. to a report of a fire in a field on Weedpatch Highway near White Lane."
+ },
+ {
+  "type": "Pursuit",
+  "time": "20:45",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Pike Street",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Reckless blue pickup chase on Pike Street.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:38",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Car driving in reverse on westbound Columbus Street.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Fire",
+  "time": "06:44",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Fire crews investigate odor in Boron duplex.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:48",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Welfare check requested for children near Amber St.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Disabled vehicle",
+  "time": "06:54",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Disabled vehicle blocking lane on Highway 178.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:44",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "John Street",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Odor reported inside home on John Street.",
+  "source": "crimeradar"
+ }
+]

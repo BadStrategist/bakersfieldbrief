@@ -12,8 +12,8 @@
   "corridor_hash": "d41d8cd98f"
  },
  "sr99": {
-  "status": "CLOSED",
-  "hash": "81dfd13eaa",
+  "status": "RESTRICTIONS",
+  "hash": "30ed31b2b8",
   "corridor": "OPEN",
   "corridor_hash": "d41d8cd98f"
  }

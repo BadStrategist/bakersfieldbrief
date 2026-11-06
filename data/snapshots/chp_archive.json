@@ -540,6 +540,16 @@
   "details": ""
  },
  {
+  "log_id": "261106BF0178",
+  "time": "Nov  6 2026  1:06PM",
+  "type": "FOG-Foggy Conditions",
+  "location": "Bakersfield Fog Log",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
   "log_id": "261106BF0014",
   "time": "Nov  6 2026  1:47AM",
   "type": "TADV-Traffic Advisory",
@@ -547,6 +557,36 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261106BF0034",
+  "time": "Nov  6 2026  5:26AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "Inyo Kern",
+  "area": "",
+  "lat": null,
+  "lon": null,
+  "details": ""
+ },
+ {
+  "log_id": "261106BF0035",
+  "time": "Nov  6 2026  6:28AM",
+  "type": "CZP-Assist with Construction",
+  "location": "Sr166 / Pentland Rd",
+  "area": "Buttonwillow",
+  "lat": 35.058169,
+  "lon": -119.349254,
+  "details": ""
+ },
+ {
+  "log_id": "261106BF0055",
+  "time": "Nov  6 2026  7:39AM",
+  "type": "CZP-Assist with Construction",
+  "location": "Nb I5 At Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.939167,
+  "lon": -118.929444,
   "details": ""
  },
  {

@@ -65,7 +65,7 @@
      }
     ]
    },
-   "reported_as_of": "Friday, November 6th, 2026 at 12:05 PM",
+   "reported_as_of": "Friday, November 6th, 2026 at 01:28 PM",
    "hash": "bcaa3a4826"
   },
   {
@@ -88,7 +88,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Friday, November 6th, 2026 at 12:05 PM",
+   "reported_as_of": "Friday, November 6th, 2026 at 01:28 PM",
    "hash": "5374f203ec"
   },
   {
@@ -96,13 +96,13 @@
    "slug": "sr99",
    "name": "State Route 99 \u2014 Central Valley",
    "pass": false,
-   "status": "CLOSED",
-   "pass_status": "CLOSED",
+   "status": "RESTRICTIONS",
+   "pass_status": "RESTRICTIONS",
    "sections": [
     {
      "region": "CENTRAL CALIFORNIA",
-     "text": "Is closed at 24 1/2 Ave in Chowchilla (Maderea Co) - Due to a traffic collision - Motorists are advised to use an alternate route There is a dense fog advisory in effect from Fresno/Merced Co Line to the Merced/Stanislaus Co Line - Motorists are advised to drive with caution A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
-     "status": "CLOSED"
+     "text": "There is a dense fog advisory in effect from Fresno/Merced Co Line to the Merced/Stanislaus Co Line - Motorists are advised to drive with caution A high wind advisory is in effect from the Stanislaus/San Joaquin Co Line to the San Joaquin/Sacramento Co Line - Travel is not recommended for campers, trailers, or permit loads",
+     "status": "RESTRICTIONS"
     },
     {
      "region": "NORTHERN CALIFORNIA",
@@ -115,14 +115,6 @@
     "on_pass_reported": false,
     "on_pass_items": [],
     "elsewhere": [
-     {
-      "status": "CLOSED",
-      "place": "",
-      "county": "Maderea Co",
-      "where": "Maderea Co",
-      "text": "Is closed at 24 1/2 Ave in Chowchilla (Maderea Co) - Due to a traffic collision - Motorists are advised to use an alternate route",
-      "region": "CENTRAL CALIFORNIA"
-     },
      {
       "status": "RESTRICTIONS",
       "place": "",
@@ -141,8 +133,8 @@
      }
     ]
    },
-   "reported_as_of": "Friday, November 6th, 2026 at 12:05 PM",
-   "hash": "8317a2f6b6"
+   "reported_as_of": "Friday, November 6th, 2026 at 01:28 PM",
+   "hash": "3c69d7e270"
   }
  ],
  "asof": "2026-11-06"

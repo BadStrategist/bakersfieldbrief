@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-06T01:49:08-08:00",
+ "built_at": "2026-11-06T07:55:59-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 3362, column 19"
   },
   "isabella": {
    "ok": true,
@@ -68,44 +68,48 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 68,
+  "brief_words": 1323,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
-   "top_story": "Bakersfield students take the stage at TEDx Youth event to share teen struggles and hopes with adults",
+   "chp_new": 0,
+   "top_story": "CHP widow's 'Tips for Chips' fundraiser has raised more than $590,000",
    "overnight_band": {
-    "date": "2026-11-05",
-    "count": 37,
+    "date": "2026-11-06",
+    "count": 38,
     "chips": [
      [
       "Weapons and assaults",
-      5
-     ],
-     [
-      "Fires",
       3
      ],
      [
+      "Fires",
+      7
+     ],
+     [
       "Crashes and traffic",
-      10
+      5
      ],
      [
       "Medical and overdose",
-      7
+      6
+     ],
+     [
+      "Missing persons",
+      1
      ],
      [
       "Disturbances and welfare",
-      7
+      3
      ],
      [
       "Burglary and theft",
-      1
+      4
      ],
      [
       "Suspicious activity",
-      1
+      3
      ],
      [
       "Alarms",
@@ -113,10 +117,10 @@
      ],
      [
       "Other calls",
-      1
+      4
      ]
     ],
-    "other": "1 incident",
+    "other": "3 incident, 1 restraining order service",
     "unmapped": []
    },
    "archive": "2026-11-06"
@@ -124,7 +128,7 @@
   "cityhall": {
    "upcoming_meetings": 1,
    "county_items": 78,
-   "drafts_generated": 1
+   "drafts_generated": 0
   },
   "places": {
    "places": [
@@ -149,23 +153,23 @@
   },
   "grapevine": {
    "i5": "CLOSED",
-   "i5_pass": "CLOSED",
+   "i5_pass": "RESTRICTIONS",
    "log_entries": 60
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 3,
+   "wind_mph": 1,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 36,
-   "wind_mph": 3,
+   "temp": 39,
+   "wind_mph": 1,
    "alerts": 0
   },
   "roads": {
    "routes": [
-    "i5:CLOSED",
+    "i5:RESTRICTIONS",
     "sr58:OPEN",
     "sr99:RESTRICTIONS"
    ],
@@ -194,20 +198,20 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 139165,
+   "isabella_af": 139113,
    "alpr_total": 460,
    "kern_fires": 0,
-   "aqi": 67,
+   "aqi": 74,
    "chp_week": 45
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 86
+   "published": 87
   },
   "map": {
-   "dots": 24
+   "dots": 34
   },
   "sunday_read": {
    "topic": "Public safety",

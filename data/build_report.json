@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-06T13:28:57-08:00",
+ "built_at": "2026-11-06T16:18:43-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 3362, column 19"
   },
   "isabella": {
    "ok": true,
@@ -70,10 +70,10 @@
   "_digest_meta": "deterministic",
   "brief_words": 1323,
   "daily": {
-   "news_headlines": 74,
+   "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
+   "chp_new": 0,
    "top_story": "CHP widow's 'Tips for Chips' fundraiser has raised more than $590,000",
    "overnight_band": {
     "date": "2026-11-06",
@@ -141,7 +141,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 9,
+    "bakersfield-nw": 10,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -158,13 +158,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 10,
+   "wind_mph": 5,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 68,
-   "wind_mph": 10,
+   "temp": 64,
+   "wind_mph": 5,
    "alerts": 0
   },
   "roads": {
@@ -188,9 +188,9 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 28,
+    "In the next 7 days": 25,
     "In 1 to 2 weeks": 17,
-    "Later": 63
+    "Later": 64
    },
    "meetings": 2
   },
@@ -201,7 +201,7 @@
    "isabella_af": 139113,
    "alpr_total": 460,
    "kern_fires": 0,
-   "aqi": 58,
+   "aqi": 62,
    "chp_week": 49
   },
   "letters": {

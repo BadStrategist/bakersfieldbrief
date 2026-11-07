@@ -600,6 +600,36 @@
   "details": ""
  },
  {
+  "log_id": "261107BF0270",
+  "time": "Nov  7 2026  3:37PM",
+  "type": "1125-Traffic Hazard",
+  "location": "724 Quantico Ave",
+  "area": "Bakersfield",
+  "lat": 35.36429,
+  "lon": -118.958605,
+  "details": ""
+ },
+ {
+  "log_id": "261107BF0271",
+  "time": "Nov  7 2026  3:37PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Gregory Ave / Myrtle Ave",
+  "area": "Bakersfield",
+  "lat": 35.253851,
+  "lon": -118.909792,
+  "details": ""
+ },
+ {
+  "log_id": "261107BF0267",
+  "time": "Nov  7 2026  3:38PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Panama Ln Onr / Sr99 N",
+  "area": "Bakersfield",
+  "lat": 35.296731,
+  "lon": -119.030554,
+  "details": ""
+ },
+ {
   "log_id": "261107BF0059",
   "time": "Nov  7 2026  6:27AM",
   "type": "1183-Trfc Collision-Unkn Inj",

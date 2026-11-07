@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-07T07:56:10-08:00",
+ "built_at": "2026-11-07T10:17:04-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 387, column 23"
   },
   "isabella": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 2,
+   "chp_new": 0,
    "top_story": "Community gathers for vigil honoring 16-year-old Bakersfield teen shot and killed at Halloween party",
    "overnight_band": {
     "date": "2026-11-07",
@@ -159,7 +159,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 61,
+   "temp": 64,
    "wind_mph": 16,
    "alerts": 0
   },
@@ -197,7 +197,7 @@
    "isabella_af": 139113,
    "alpr_total": 460,
    "kern_fires": 0,
-   "aqi": 80,
+   "aqi": 79,
    "chp_week": 55
   },
   "letters": {

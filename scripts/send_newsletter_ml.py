@@ -99,9 +99,39 @@ def _today_campaigns(token: str) -> list[dict]:
             break
         for c in rows:
             if c.get("name") == name:
-                found.append({"id": c.get("id"), "status": str(c.get("status") or "").lower()})
+                found.append({"id": c.get("id"), "status": str(c.get("status") or "").lower(),
+                              "created_at": c.get("created_at") or ""})
         page += 1
     return found
+
+
+# Two senders work the same day: the CI build (any run at 8 AM PT or later) and the PC's
+# bb_email_watchdog (08:10-08:40). Both check, then create, then schedule. A draft younger
+# than this belongs to a sender that is mid-send, so it is neither "sent" nor "left over":
+# deleting it (the old rule) could pull the other sender's campaign out from under it.
+DRAFT_IN_FLIGHT_MIN = 15
+
+
+class SendInFlight(Exception):
+    """Another sender created today's campaign minutes ago and is still sending it."""
+
+
+def _age_min(created_at: str) -> float | None:
+    """Minutes since a MailerLite created_at ("YYYY-MM-DD HH:MM:SS", UTC), or None."""
+    from datetime import datetime, timezone
+    try:
+        t = datetime.strptime(created_at.strip()[:19], "%Y-%m-%d %H:%M:%S").replace(tzinfo=timezone.utc)
+    except (AttributeError, ValueError):
+        return None
+    return (datetime.now(timezone.utc) - t).total_seconds() / 60
+
+
+def _first_claim(found: list[dict]) -> dict | None:
+    """The campaign that owns the day: the oldest by created_at, then by id. Every sender
+    applies the same order, so when two create at once exactly one of them goes ahead."""
+    def key(c):
+        return (c.get("created_at") or "9999", str(c.get("id") or ""))
+    return min(found, key=key) if found else None
 
 
 def _today_campaign_exists(token: str) -> str | None:
@@ -116,6 +146,10 @@ def _today_campaign_exists(token: str) -> str | None:
     for c in found:
         if c["status"] and c["status"] != "draft":
             return c["id"]
+    for c in found:
+        age = _age_min(c.get("created_at") or "")
+        if age is not None and age < DRAFT_IN_FLIGHT_MIN:
+            raise SendInFlight(c["id"])
     for c in found:
         _req("DELETE", f"/campaigns/{c['id']}", token=token)
         print(f"removed unsent draft campaign {c['id']} left by an earlier failed send")
@@ -143,7 +177,12 @@ def main() -> int:
     # Already sent today? Check that FIRST. The content gate below judges the email we would send
     # now; after the morning send, an evening rebuild with one failed source used to fail this
     # step (and alert) over an email nobody was going to send.
-    existing = _today_campaign_exists(token)
+    try:
+        existing = _today_campaign_exists(token)
+    except SendInFlight as e:
+        print(f"in flight: campaign {e} was created minutes ago by the other sender "
+              "(CI or the PC watchdog) — not touching it; the next check confirms it")
+        return 0
     if existing:
         print(f"already sent: campaign {existing} for today — skipping")
         return 0
@@ -203,6 +242,16 @@ def main() -> int:
         # do not leave an unsendable draft behind to block the next attempt
         _req("DELETE", f"/campaigns/{camp_id}", token=token)
         raise SystemExit(f"campaign {camp_id} has missing_data: {missing} (draft removed)")
+
+    # Did the other sender create one too? Only the first claim goes ahead; the other
+    # deletes its own draft. (2026-11-07 audit: CI's 08:00-release build and the 08:10
+    # watchdog could both pass the check above, both create, and both send.)
+    winner = _first_claim(_today_campaigns(token))
+    if winner and winner.get("id") != camp_id:
+        _req("DELETE", f"/campaigns/{camp_id}", token=token)
+        print(f"in flight: campaign {winner['id']} ({winner.get('status') or '?'}) was created "
+              f"first by the other sender — removed this run's draft {camp_id}, not sending")
+        return 0
 
     # Send immediately
     _req("POST", f"/campaigns/{camp_id}/schedule", {"delivery": "instant"}, token)

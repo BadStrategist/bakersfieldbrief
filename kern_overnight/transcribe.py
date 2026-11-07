@@ -374,6 +374,21 @@ def _transcript_lock(path: Path, wait: float = 900.0):
 def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
                vocab_text: str, date: dt.date | None = None,
                workers: int | None = None, append: bool = False) -> int:
+    """Hold the transcript lock for the WHOLE run, then transcribe.
+
+    The list of blocks already in the transcript must be read under the lock. It
+    used to be read first and the lock taken after, so a phase 2 that waited out a
+    still-running phase 1 then redid every block phase 1 finished while it waited:
+    19 duplicated rows on 2026-10-08 and again on 10-09.
+    """
+    with _transcript_lock(out_jsonl):
+        return _transcribe_locked(audio_dir, out_jsonl, tz, vocab_text, date=date,
+                                  workers=workers, append=append)
+
+
+def _transcribe_locked(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
+                       vocab_text: str, date: dt.date | None = None,
+                       workers: int | None = None, append: bool = False) -> int:
     """Transcribe the overnight-window MP3s in audio_dir → out_jsonl.
 
     When `date` is given, only blocks whose epoch falls in that night's
@@ -409,7 +424,7 @@ def transcribe(audio_dir: Path, out_jsonl: Path, tz: dt.tzinfo,
     n_workers = (workers or WORKERS)
     parallel = n_workers > 1 and len(mp3s) > 1
     mode = "a" if append else "w"
-    with _transcript_lock(out_jsonl), tempfile.TemporaryDirectory(prefix="ko-") as td:
+    with tempfile.TemporaryDirectory(prefix="ko-") as td:  # caller holds the lock
         if parallel:
             from concurrent.futures import ProcessPoolExecutor
             print(f"    [ko-stt] {n_workers} parallel workers "

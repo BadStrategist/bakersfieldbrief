@@ -600,6 +600,26 @@
   "details": ""
  },
  {
+  "log_id": "261107BF0059",
+  "time": "Nov  7 2026  6:27AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "SR178 at Walker Pass",
+  "area": "Bakersfield",
+  "lat": 35.662834,
+  "lon": -118.026719,
+  "details": ""
+ },
+ {
+  "log_id": "261107BF0074",
+  "time": "Nov  7 2026  7:36AM",
+  "type": "1182-Trfc Collision-No Inj",
+  "location": "14170-14377 Sierra Way",
+  "area": "Bakersfield",
+  "lat": 35.765929,
+  "lon": -118.424031,
+  "details": ""
+ },
+ {
   "log_id": "261107BF0003",
   "time": "Nov  7 2026 12:09AM",
   "type": "TADV-Traffic Advisory",

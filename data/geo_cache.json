@@ -561,5 +561,31 @@
  "greenwood drive, Bakersfield, CA": null,
  "400 block of wisteria street, Bakersfield, Kern County, CA": null,
  "wisteria street, Bakersfield, CA": null,
- "3100 block of niles street, Bakersfield, Kern County, CA": null
+ "3100 block of niles street, Bakersfield, Kern County, CA": null,
+ "800 block of olive drive, Bakersfield, Kern County, CA": null,
+ "700 block of planz road, Bakersfield, Kern County, CA": null,
+ "planz road, Bakersfield, CA": [
+  35.3249252,
+  -119.0164832
+ ],
+ "200 block of california avenue, Bakersfield, Kern County, CA": null,
+ "200 block of howard avenue, Bakersfield, Kern County, CA": null,
+ "howard avenue, Bakersfield, CA": null,
+ "1900 block of filson street, Bakersfield, Kern County, CA": null,
+ "filson street, Bakersfield, CA": [
+  35.3239735,
+  -118.983501
+ ],
+ "3200 block of ming avenue, Bakersfield, Kern County, CA": null,
+ "5500 block of woodmere drive, Bakersfield, Kern County, CA": null,
+ "woodmere drive, Bakersfield, CA": [
+  35.3077132,
+  -119.0604113
+ ],
+ "2200 block of nelson street, Bakersfield, Kern County, CA": null,
+ "nelson street, Bakersfield, CA": [
+  35.4008305,
+  -118.980801
+ ],
+ "300 block of fairfax road, Bakersfield, Kern County, CA": null
 }

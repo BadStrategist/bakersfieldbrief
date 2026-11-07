@@ -1,0 +1,381 @@
+[
+ {
+  "type": "verbal disturbance",
+  "time": "19:07",
+  "agency": "Bakersfield Police Department",
+  "area": "the 800 block of Olive Drive",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 7:07 p.m. to the 800 block of Olive Drive for a verbal disturbance.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "19:14",
+  "agency": "Bakersfield Police Department",
+  "area": "the 700 block of Planz Road",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 7:14 p.m. to the 700 block of Planz Road for a domestic disturbance; a woman on the phone with her daughter heard what sounded like a struggle."
+ },
+ {
+  "type": "suspicious person",
+  "time": "19:24",
+  "agency": "Bakersfield Police Department",
+  "area": "the 900 block of 19th Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 7:24 p.m. to the 900 block of 19th Street for a report of a suspicious person in an alley."
+ },
+ {
+  "type": "vehicle versus pedestrian",
+  "time": "19:25",
+  "agency": "Kern County Fire Department",
+  "area": "Edison Highway",
+  "notability": 4,
+  "disposition": "crews sent",
+  "summary": "Fire crews and medics were sent at 7:25 p.m. to Edison Highway westbound at Fairfax Road north, where a vehicle hit a juvenile and one patient was down in the roadway."
+ },
+ {
+  "type": "medical aid",
+  "time": "20:09",
+  "agency": "Hall Ambulance",
+  "area": "California Avenue",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 8:09 p.m. to the Cracker Barrel on California Avenue for chest pain."
+ },
+ {
+  "type": "welfare check",
+  "time": "20:24",
+  "agency": "Bakersfield Police Department",
+  "area": "Wilson Road",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 8:24 p.m. to Wilson and Wible roads for a welfare check on a man about 45 years old."
+ },
+ {
+  "type": "medical aid",
+  "time": "20:31",
+  "agency": "Hall Ambulance",
+  "area": "Oak Street",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 8:31 p.m. to a room at the Red Roof Inn on Oak Street for an ill patient.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "burglary in progress",
+  "time": "20:32",
+  "agency": "Bakersfield Police Department",
+  "area": "the 2500 block of South 8th Street",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 8:32 p.m. to the Dollar Tree on the 2,500 block of South 8th Street for a burglary in progress; the man reported to be there was seen on camera in a black hooded sweatshirt."
+ },
+ {
+  "type": "medical aid",
+  "time": "21:18",
+  "agency": "Hall Ambulance",
+  "area": "the 200 block of California Avenue",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 9:18 p.m. to the 200 block of California Avenue for difficulty breathing."
+ },
+ {
+  "type": "overdose",
+  "time": "21:42",
+  "agency": "Hall Ambulance",
+  "area": "the 200 block of Howard Avenue",
+  "notability": 3,
+  "disposition": "medics sent",
+  "summary": "Medics were sent at 9:42 p.m. to the 200 block of Howard Avenue for an overdose; a crew that checked a second address found no one there."
+ },
+ {
+  "type": "medical aid",
+  "time": "21:53",
+  "agency": "Hall Ambulance",
+  "area": "the 8100 block of East Brundage Lane",
+  "notability": 3,
+  "disposition": "medics sent",
+  "summary": "Medics and officers were sent at 9:53 p.m. to the Burger King on the 8,100 block of East Brundage Lane, where a man was reported to be lying on the ground and not moving.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "22:05",
+  "agency": "Bakersfield Police Department",
+  "area": "the 1900 block of Filson Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 10:05 p.m. to the 1,900 block of Filson Street for a welfare check on a 12-year-old girl reported to be in the company of her stepfather.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "street racing",
+  "time": "22:24",
+  "agency": "Bakersfield Police Department",
+  "area": "the 3200 block of Ming Avenue",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were told at 10:24 p.m. that about 30 vehicles were doing donuts in a parking lot on the 3,200 block of Ming Avenue.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "domestic disturbance",
+  "time": "22:28",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 10:28 p.m. to a home for a domestic disturbance; a man was reported to have threatened the caller and to have left on foot."
+ },
+ {
+  "type": "shots fired",
+  "time": "22:43",
+  "agency": "Kern County Sheriff's Office",
+  "area": "7th Standard Road",
+  "notability": 5,
+  "disposition": "under investigation",
+  "summary": "Deputies were sent at 10:43 p.m. to 7th Standard Road and Mayer Avenue for shots fired. A caller said two people were shooting and trying to shoot his brother. Deputies reported no injuries so far, said suspects might still be in the area with a victim hiding in a field nearby, asked for a drone, and at 11:01 p.m. began looking for shell casings."
+ },
+ {
+  "type": "assault",
+  "time": "23:32",
+  "agency": "Kern County Sheriff's Office",
+  "area": "Edison Highway",
+  "notability": 4,
+  "disposition": "deputies sent",
+  "summary": "Deputies were sent at 11:32 p.m. to the Edison Trailer Park on Edison Highway, where a 17-year-old was reported to have been hit with glass and had facial injuries; the man suspected of the assault left on foot."
+ },
+ {
+  "type": "medical aid",
+  "time": "00:02",
+  "agency": "Hall Ambulance",
+  "area": "",
+  "notability": 3,
+  "disposition": "medics sent",
+  "summary": "Medics were sent at 12:02 a.m. to the back area of Buena Vista Lake, reached from Golf Course Road, for an allergic reaction with ineffective breathing."
+ },
+ {
+  "type": "structure fire",
+  "time": "00:48",
+  "agency": "Kern County Fire Department",
+  "area": "the 5500 block of Woodmere Drive",
+  "notability": 4,
+  "disposition": "crews sent",
+  "summary": "Fire crews were sent at 12:48 a.m. to a working fire behind a home on the 5,500 block of Woodmere Drive, visible from the street.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "01:10",
+  "agency": "Hall Ambulance",
+  "area": "Parkwood Court",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 1:10 a.m. to a unit on Parkwood Court for difficulty breathing.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "outside fire",
+  "time": "01:27",
+  "agency": "Kern County Fire Department",
+  "area": "Olive Drive",
+  "notability": 2,
+  "disposition": "crews sent",
+  "summary": "Crews were sent at 1:27 a.m. to an outside fire at Olive Drive and Newson Drive; a later report from a passing truck placed it possibly behind a Chevron store near a known transient camp."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "01:52",
+  "agency": "Kern County Fire Department",
+  "area": "Panama Road",
+  "notability": 3,
+  "disposition": "crews sent",
+  "summary": "Crews were sent at 1:52 a.m. to a vehicle fire on Panama Road, where a Kia Soul was burning on the shoulder with no one around it; security at the property later reported someone awake and trying to pull the car out of a ditch."
+ },
+ {
+  "type": "fire alarm",
+  "time": "02:03",
+  "agency": "Kern County Fire Department",
+  "area": "McKee Road",
+  "notability": 2,
+  "disposition": "crews sent",
+  "summary": "Crews were sent at 2:03 a.m. to a commercial fire alarm at McKee Middle School on McKee Road."
+ },
+ {
+  "type": "medical aid",
+  "time": "02:12",
+  "agency": "Hall Ambulance",
+  "area": "the 4800 block of Jackson Ridge Avenue",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 2:12 a.m. to the 4,800 block of Jackson Ridge Avenue for an ill patient.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "vehicle fire",
+  "time": "02:44",
+  "agency": "Kern County Fire Department",
+  "area": "Muller Road",
+  "notability": 3,
+  "disposition": "crews sent",
+  "summary": "Crews were sent at 2:44 a.m. to a vehicle fire on Muller Road just west of Tejon Highway.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "collision",
+  "time": "03:02",
+  "agency": "California Highway Patrol / Kern County Fire Department",
+  "area": "Highway 58",
+  "notability": 3,
+  "disposition": "crews sent",
+  "summary": "Fire crews were sent at 3:02 a.m. to a crash on the connector from westbound Highway 58 to southbound Highway 99; all occupants were out of the vehicle when the first crew arrived and the rest of the response was cancelled."
+ },
+ {
+  "type": "suspicious person",
+  "time": "03:12",
+  "agency": "Bakersfield Police Department",
+  "area": "the 2200 block of Nelson Street",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 3:12 a.m. to the 2,200 block of Nelson Street for a suspicious person, described as a man in a black jacket and dark pants pushing a shopping cart alongside two other men with carts.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "battery",
+  "time": "03:57",
+  "agency": "Bakersfield Police Department",
+  "area": "the 300 block of Fairfax Road",
+  "notability": 2,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 3:57 a.m. to the 300 block of Fairfax Road, where a caller said someone slapped her in the face and walked out of the residence."
+ },
+ {
+  "type": "structure fire",
+  "time": "03:58",
+  "agency": "Kern County Fire Department",
+  "area": "the 1600 block of East 11th Street",
+  "notability": 4,
+  "disposition": "crews sent",
+  "summary": "Fire crews were sent at 3:58 a.m. to an apartment building on the 1,600 block of East 11th Street for smoke reported inside the structure; arriving crews found nothing showing from the one-story complex and went in to investigate.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "04:00",
+  "agency": "Bakersfield Police Department",
+  "area": "Olive Drive",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers and fire crews were sent at 4:00 a.m. to the overpass at Olive Drive and Highway 99 for a report of someone who might jump from the rail; officers checked the bridges at Olive and Norris roads and reported no one on the overpass."
+ },
+ {
+  "type": "collision",
+  "time": "04:16",
+  "agency": "Bakersfield Police Department",
+  "area": "Union Avenue",
+  "notability": 3,
+  "disposition": "minor injuries",
+  "summary": "A white Dodge Ram and a gray Ford Fusion collided on Union Avenue about 4:16 a.m.; officers reported a woman bleeding at the scene and said the injuries were minor."
+ },
+ {
+  "type": "medical aid",
+  "time": "04:56",
+  "agency": "Hall Ambulance",
+  "area": "the 4000 block of 34th Street",
+  "notability": 2,
+  "disposition": "ambulance sent",
+  "summary": "Medics were sent at 4:56 a.m. to the 4,000 block of 34th Street for a patient."
+ },
+ {
+  "type": "burglary in progress",
+  "time": "04:59",
+  "agency": "Bakersfield Police Department",
+  "area": "",
+  "notability": 3,
+  "disposition": "officers sent",
+  "summary": "Officers were sent at 4:59 a.m. to a burglary in progress at a Toyota dealership, where camera video showed a man in a black hooded sweater on a bicycle on the left side of the property."
+ },
+ {
+  "type": "Traffic collision",
+  "time": "19:58",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Traffic collision on Coulter Road injures one person.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "20:40",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Truck crash leaves vehicle in canal near Westchester.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Overdose",
+  "time": "01:06",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Man found unresponsive after possible overdose.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:51",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Officers respond to keep the peace at Phoenix home.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:55",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Ongoing loud music complaint on Second Street.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "06:58",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Vehicle crash into fence on East California.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Domestic dispute",
+  "time": "06:45",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Fiesta Avenue",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Domestic dispute reported on Fiesta Avenue.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:46",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Welfare check finds abandoned residence at Kern Seven and Rapid.",
+  "source": "crimeradar"
+ }
+]

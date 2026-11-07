@@ -222,7 +222,7 @@ if ! online; then
       bash "$GOLDEN_SH" check </dev/null >/dev/null 2>&1
       GC=$?
       case "$GC" in
-        3|4) bash "$GOLDEN_SH" request "preflight: golden check exit $GC" </dev/null >/dev/null 2>&1 || true ;;
+        2|3|4) bash "$GOLDEN_SH" request "preflight: golden check exit $GC" </dev/null >/dev/null 2>&1 || true ;;
       esac
     fi
     boot_emu cold || true

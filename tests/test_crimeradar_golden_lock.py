@@ -188,6 +188,18 @@ def test_a_request_does_not_block_the_snapshot_it_marks(box):
     assert p.returncode == 0 and "rebuild is due" in p.stdout
 
 
+def test_a_request_with_no_golden_json_creates_one_that_is_still_unusable(box):
+    # 2026-11-04: golden.json vanished, `request` refused ("no golden.json to mark"),
+    # and the leg cold-booted for days with nothing asking for a rebuild.
+    repo, env = box
+    gj = repo / "work" / "crimeradar" / "emu" / "golden.json"
+    assert not gj.exists()
+    assert run(GOLDEN, "request", "preflight: golden check exit 2", env=env).returncode == 0
+    d = json.loads(gj.read_text())
+    assert "exit 2" in d["rebuild_requested"] and "built" not in d
+    assert run(GOLDEN, "check", env=env).returncode == 2
+
+
 def test_refresh_without_a_request_does_nothing(box):
     repo, env = box
     write_golden(repo, built=time.strftime("%Y-%m-%d"), app_version="26.39.0")

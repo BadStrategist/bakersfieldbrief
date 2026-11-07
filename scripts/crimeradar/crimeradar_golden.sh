@@ -242,7 +242,10 @@ cycles() {
 
 request() {   # $1 = why. Marks the snapshot as due for a rebuild in a window with room.
   local why="${1:-manual}"
-  [ -f "$GOLDEN_JSON" ] || { echo "[cr] golden: no golden.json to mark"; return 2; }
+  # No golden.json is the case that most needs a rebuild (2026-11-04 it vanished and
+  # the leg cold-booted for days with nothing asking for one), so a request creates
+  # the file. A file with no "built" still checks as exit 2: the request alone never
+  # makes a snapshot look usable.
   "$PY" - "$GOLDEN_JSON" "$why" "$(date -Iseconds)" <<'EOF'
 import json, sys
 path, why, ts = sys.argv[1:4]
@@ -256,23 +259,37 @@ EOF
   echo "[cr] golden: rebuild requested ($why)"
 }
 
-refresh() {   # $1 = cycles to verify (default 3). Only runs when one was requested.
-  local n="${1:-3}" why snap prev
+refresh() {   # $1 = cycles to verify (default 3). Runs when requested or when unusable.
+  local n="${1:-3}" why snap prev gc
   why="$(json_get rebuild_requested)"
-  if [ -z "$why" ]; then
+  # check, with the guest down, so the version gate cannot pass by accident: a golden
+  # boot rolls the app back to the snapshot's build.
+  check >/dev/null 2>&1; gc=$?
+  if [ -z "$why" ] && [ "$gc" -eq 0 ]; then
     echo "[cr] golden: no rebuild requested; nothing to do"
     return 0
   fi
-  echo "[cr] golden: rebuild requested at $why"
+  echo "[cr] golden: rebuild due (${why:-golden check exit $gc})"
   if ! bash "$SCRIPTS/crimeradar_lock.sh" acquire --pid $$ --label "golden refresh" --wait 300 </dev/null; then
     echo "[cr] golden: another run owns the emulator; the request stays for the next window"
     return 75
   fi
   export CR_LOCK_HELD=1
   stop_emu; sleep 5
-  if ! boot_golden; then
-    echo "[cr] golden: FAILED: the old snapshot does not boot; the request stays"
-    return 3
+  if [ "$gc" -eq 0 ]; then
+    # Usable, but something asked (a Claude region fix): rebuild from the snapshot.
+    if ! boot_golden; then
+      echo "[cr] golden: FAILED: the old snapshot does not boot; the request stays"
+      return 3
+    fi
+  else
+    # Missing, expired or built on another app version: loading it would bring back
+    # the old app, so build from a cold boot of the app the guest has now. The
+    # preflight boots, brings the app forward and sets the region.
+    if ! CR_GOLDEN=0 bash "$SCRIPTS/crimeradar_preflight.sh" </dev/null; then
+      echo "[cr] golden: FAILED: the cold boot's preflight did not pass; the request stays"
+      return 11
+    fi
   fi
   if ! bash "$SETREG" --print >/dev/null 2>&1; then
     echo "[cr] golden: FAILED: the region is not Bakersfield; not saving this as golden"
@@ -280,8 +297,11 @@ refresh() {   # $1 = cycles to verify (default 3). Only runs when one was reques
   fi
   snap="$(snapshot_dir)"; prev="$EMU_DIR/golden_prev"
   # Keep the previous golden until the new one passes its cycles (add-on, A).
-  rm -rf "$prev"
+  rm -rf "$prev" "$prev.json"
   [ -d "$snap" ] && cp -a "$snap" "$prev"
+  # build rewrites golden.json; a failed rebuild must put the old record back with
+  # its request, or the old snapshot would carry the new build's date and version.
+  [ -f "$GOLDEN_JSON" ] && cp "$GOLDEN_JSON" "$prev.json"
   if ! build; then
     echo "[cr] golden: FAILED to save; the old snapshot is still in place"
     return 1
@@ -304,6 +324,8 @@ EOF
   else
     echo "[cr] golden: FAILED: there was no previous snapshot to restore"
   fi
+  if [ -f "$prev.json" ]; then cp "$prev.json" "$GOLDEN_JSON"; else rm -f "$GOLDEN_JSON"; fi
+  request "refresh: the new snapshot failed its cycles" >/dev/null
   return 1
 }
 

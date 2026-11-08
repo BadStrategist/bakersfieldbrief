@@ -105,7 +105,9 @@ jobs:
       # social gate refused both slots, and the day posted nothing with every alarm
       # green. The push now runs whenever the build succeeded, and the run still goes
       # red, which is the signal that was missing.
-      - name: Test suite (hard gate before the artifact push)
+      # The name used to say "hard gate"; it is not one, on purpose (above). A red test is
+      # the run's red signal, and the PC's 09:50 report names every red run.
+      - name: Test suite (turns the run red; does not stop the deploy)
         id: tests
         run: python -m pytest -q -o addopts="" --tb=short
 
@@ -254,6 +256,7 @@ jobs:
           ALPR_ONLY: ${{ steps.alpr_fresh.outcome == 'failure' && steps.tests.outcome == 'success' && steps.push.outcome == 'success' && steps.pages_secrets.outcome == 'success' && steps.deploy.outcome == 'success' && steps.send.outcome != 'failure' }}
         run: |
           if [ -z "$DISCORD_WEBHOOK_URL" ]; then
+            echo "::warning title=No Discord alert::DISCORD_WEBHOOK_URL is not set, so this failed run (alpr=$ALPR_OUTCOME send=$SEND_OUTCOME) reached Discord only through the PC's 09:50 report. Set it with: gh secret set DISCORD_WEBHOOK_URL"
             echo "!! DISCORD_WEBHOOK_URL secret not set - the run failed (alpr=$ALPR_OUTCOME send=$SEND_OUTCOME) and NO Discord alert could be sent. See $RUN_URL"
             exit 1
           fi

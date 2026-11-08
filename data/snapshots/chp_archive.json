@@ -700,6 +700,16 @@
   "details": ""
  },
  {
+  "log_id": "261108BF0091",
+  "time": "Nov  8 2026 10:17AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Wb Sr178 Jeo Fairfax Rd",
+  "area": "Bakersfield",
+  "lat": 35.396667,
+  "lon": -118.927778,
+  "details": ""
+ },
+ {
   "log_id": "261108BF0003",
   "time": "Nov  8 2026 12:08AM",
   "type": "FOG-Foggy Conditions",

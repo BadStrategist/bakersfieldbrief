@@ -21,8 +21,8 @@
     },
     {
      "region": "NORTHERN CALIFORNIA",
-     "text": "No traffic restrictions reported.",
-     "status": "OPEN"
+     "text": "Is reopened to 1-way traffic 4.2 mi north of Corning Rd (Tehama Co) - Due to a traffic collision",
+     "status": "RESTRICTIONS"
     }
    ],
    "scope": {
@@ -54,11 +54,19 @@
       "where": "Yolo Co",
       "text": "Is closed to southbound traffic from 1 mi north of Woodlands /at County Rd 102/ to 0.5 mi souith of the Yolo/Sacramento Co line /at Old River Rd/ (Yolo Co) from 2200 hrs each night to 0600 hrs each morning thru 11/10/26...",
       "region": "SOUTHERN CALIFORNIA"
+     },
+     {
+      "status": "RESTRICTIONS",
+      "place": "",
+      "county": "Tehama Co",
+      "where": "Tehama Co",
+      "text": "Is reopened to 1-way traffic 4.2 mi north of Corning Rd (Tehama Co) - Due to a traffic collision",
+      "region": "NORTHERN CALIFORNIA"
      }
     ]
    },
-   "reported_as_of": "Sunday, November 8th, 2026 at 01:27 AM",
-   "hash": "f4be9cf349"
+   "reported_as_of": "Sunday, November 8th, 2026 at 10:29 AM",
+   "hash": "362d942e88"
   },
   {
    "number": "58",
@@ -80,7 +88,7 @@
     "on_pass_items": [],
     "elsewhere": []
    },
-   "reported_as_of": "Sunday, November 8th, 2026 at 01:27 AM",
+   "reported_as_of": "Sunday, November 8th, 2026 at 10:29 AM",
    "hash": "5374f203ec"
   },
   {
@@ -125,7 +133,7 @@
      }
     ]
    },
-   "reported_as_of": "Sunday, November 8th, 2026 at 01:27 AM",
+   "reported_as_of": "Sunday, November 8th, 2026 at 10:29 AM",
    "hash": "3c69d7e270"
   }
  ],

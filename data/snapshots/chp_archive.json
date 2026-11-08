@@ -710,6 +710,26 @@
   "details": ""
  },
  {
+  "log_id": "261108BF0095",
+  "time": "Nov  8 2026 11:01AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Sb Sr99 At Hosking Rd",
+  "area": "BF",
+  "lat": 35.281389,
+  "lon": -119.026667,
+  "details": ""
+ },
+ {
+  "log_id": "261108BF0096",
+  "time": "Nov  8 2026 11:02AM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sb Sr99 At Hosking Rd",
+  "area": "BF",
+  "lat": 35.281389,
+  "lon": -119.026667,
+  "details": ""
+ },
+ {
   "log_id": "261108BF0003",
   "time": "Nov  8 2026 12:08AM",
   "type": "FOG-Foggy Conditions",

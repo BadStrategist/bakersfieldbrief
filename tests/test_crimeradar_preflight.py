@@ -55,6 +55,11 @@ case "$*" in
     if [ "${FAKE_KILL_STAYS_DOWN:-0}" = 1 ] && [ -f "$FAKE_STATE/killed" ] \
        && [ ! -f "$FAKE_STATE/emulator" ]; then
       printf 'List of devices attached\n'
+    elif [ -f "$FAKE_STATE/offline_until_boot" ] && [ ! -f "$FAKE_STATE/emulator" ]; then
+      # A guest that is down stays down until the emulator stub is started. The
+      # preflight asks `adb devices` more than once before it boots (the host-RAM
+      # check came first from 2026-10-29), and a one-listing blip read as "back up".
+      printf 'List of devices attached\n'
     elif [ -f "$FAKE_STATE/offline_once" ]; then
       rm -f "$FAKE_STATE/offline_once"; printf 'List of devices attached\n'
     else
@@ -155,8 +160,8 @@ def run_preflight(tmp_path: Path, dumps: str, offline_once: bool = False,
     emu = _stub(bindir / "emulator",
                 '#!/usr/bin/env bash\necho "$*" >"$FAKE_STATE/emulator"\n'
                 'echo "emulator: fake boot line"\nexit 0\n')
-    if offline_once:        # the first `adb devices` lists nothing, so the script boots the AVD
-        (state / "offline_once").write_text("")
+    if offline_once:        # the guest is down until the script boots the AVD
+        (state / "offline_until_boot").write_text("")
     env = dict(os.environ,
                PATH=str(bindir) + os.pathsep + os.environ["PATH"],
                ADB_BIN=adb.as_posix(),

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-08T12:26:20-08:00",
+ "built_at": "2026-11-08T12:30:13-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -73,39 +73,27 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 4,
+   "chp_new": 0,
    "top_story": "Bakersfield College celebrates 50th anniversary of 1976 Junior Rose Bowl title with a win",
    "overnight_band": {
-    "date": "2026-11-07",
-    "count": 40,
+    "date": "2026-11-08",
+    "count": 45,
     "chips": [
      [
-      "Weapons and assaults",
-      3
-     ],
-     [
       "Fires",
-      5
+      20
      ],
      [
       "Crashes and traffic",
-      7
+      2
      ],
      [
       "Medical and overdose",
-      10
+      14
      ],
      [
       "Disturbances and welfare",
-      7
-     ],
-     [
-      "Burglary and theft",
-      2
-     ],
-     [
-      "Suspicious activity",
-      2
+      4
      ],
      [
       "Alarms",
@@ -113,10 +101,10 @@
      ],
      [
       "Other calls",
-      3
+      4
      ]
     ],
-    "other": "3 incident",
+    "other": "2 officer assist, 1 warrant service, 1 probation check",
     "unmapped": []
    },
    "archive": "2026-11-08"
@@ -204,7 +192,7 @@
    "published": 1
   },
   "overnight": {
-   "published": 88
+   "published": 89
   },
   "map": {
    "dots": 42

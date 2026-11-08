@@ -730,6 +730,36 @@
   "details": ""
  },
  {
+  "log_id": "261108BF0105",
+  "time": "Nov  8 2026 11:29AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "408 N Lincoln St",
+  "area": "Buttonwillow",
+  "lat": 35.156315,
+  "lon": -119.465215,
+  "details": ""
+ },
+ {
+  "log_id": "261108BF0117",
+  "time": "Nov  8 2026 12:00PM",
+  "type": "1125-Traffic Hazard",
+  "location": "8900 Opal St",
+  "area": "Bakersfield",
+  "lat": 35.273458,
+  "lon": -119.00804,
+  "details": ""
+ },
+ {
+  "log_id": "261108BF0116",
+  "time": "Nov  8 2026 12:01PM",
+  "type": "20002-Hit and Run No Injuries",
+  "location": "Greely Rd / Rosedale Hwy",
+  "area": "Bakersfield",
+  "lat": 35.383432,
+  "lon": -119.216544,
+  "details": ""
+ },
+ {
   "log_id": "261108BF0003",
   "time": "Nov  8 2026 12:08AM",
   "type": "FOG-Foggy Conditions",
@@ -747,6 +777,16 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261108BF0121",
+  "time": "Nov  8 2026 12:18PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "0 Sr99 S",
+  "area": "Bakersfield",
+  "lat": 35.311407,
+  "lon": -119.034672,
   "details": ""
  }
 ]

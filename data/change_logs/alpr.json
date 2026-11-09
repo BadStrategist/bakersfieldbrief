@@ -342,5 +342,13 @@
   "gone_ids": [],
   "new_count": 2,
   "scope": "kern-county"
+ },
+ {
+  "date": "2026-11-09",
+  "total": 460,
+  "new_ids": [],
+  "gone_ids": [],
+  "new_count": 0,
+  "scope": "kern-county"
  }
 ]

@@ -1,105 +1,5 @@
 [
  {
-  "log_id": "261101BF0179",
-  "time": "Nov  1 2026  2:02PM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "Sb Sr99 Jno Pond Rd",
-  "area": "Bakersfield",
-  "lat": 35.71806,
-  "lon": -119.237134,
-  "details": ""
- },
- {
-  "log_id": "261101BF0193",
-  "time": "Nov  1 2026  2:43PM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "0 Sr99 N",
-  "area": "Bakersfield",
-  "lat": 35.591008,
-  "lon": -119.204639,
-  "details": ""
- },
- {
-  "log_id": "261101BF0208",
-  "time": "Nov  1 2026  3:21PM",
-  "type": "1125-Traffic Hazard",
-  "location": "0 Sr178",
-  "area": "Bakersfield",
-  "lat": 35.494908,
-  "lon": -118.697521,
-  "details": ""
- },
- {
-  "log_id": "261101BF0214",
-  "time": "Nov  1 2026  3:31PM",
-  "type": "1125A-Animal Hazard",
-  "location": "Sr58 E / Mt Vernon Ave Ofr",
-  "area": "Bakersfield",
-  "lat": 35.352393,
-  "lon": -118.973431,
-  "details": ""
- },
- {
-  "log_id": "261101BF0219",
-  "time": "Nov  1 2026  3:48PM",
-  "type": "FIRE-Report of Fire",
-  "location": "Rosedale Hwy Onr / Sr99 S",
-  "area": "Bakersfield",
-  "lat": 35.382522,
-  "lon": -119.044567,
-  "details": ""
- },
- {
-  "log_id": "261101BF0102",
-  "time": "Nov  1 2026  5:10AM",
-  "type": "1013-Road/Weather Conditions",
-  "location": "1033 Lebec Rd",
-  "area": "Fort Tejon",
-  "lat": 34.825534,
-  "lon": -118.87775,
-  "details": ""
- },
- {
-  "log_id": "261101BF0109",
-  "time": "Nov  1 2026  7:13AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "0 Sr58 W",
-  "area": "Bakersfield",
-  "lat": 35.259936,
-  "lon": -118.617305,
-  "details": ""
- },
- {
-  "log_id": "261101BF0158",
-  "time": "Nov  1 2026 11:35AM",
-  "type": "20002-Hit and Run No Injuries",
-  "location": "9800 San Emidio St",
-  "area": "Bakersfield",
-  "lat": 35.265282,
-  "lon": -118.921968,
-  "details": ""
- },
- {
-  "log_id": "261101BF0160",
-  "time": "Nov  1 2026 11:57AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Royal Way / Pioneer Dr",
-  "area": "Bakersfield",
-  "lat": 35.368965,
-  "lon": -118.909717,
-  "details": ""
- },
- {
-  "log_id": "261101BF0021",
-  "time": "Nov  1 2026 12:55AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
   "log_id": "261102BF0236",
   "time": "Nov  2 2026  2:40PM",
   "type": "1182-Trfc Collision-No Inj",
@@ -817,6 +717,86 @@
   "area": "Bakersfield",
   "lat": 35.311407,
   "lon": -119.034672,
+  "details": ""
+ },
+ {
+  "log_id": "261109BF0014",
+  "time": "Nov  9 2026  2:34AM",
+  "type": "FOG-Foggy Conditions",
+  "location": "Bakersfield Fog Log",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261109BF0013",
+  "time": "Nov  9 2026  2:34AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261109BF0032",
+  "time": "Nov  9 2026  5:22AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "7900 MM178 E KER 79.00",
+  "area": "Bakersfield",
+  "lat": 35.668641,
+  "lon": -118.035303,
+  "details": ""
+ },
+ {
+  "log_id": "261109BF0051",
+  "time": "Nov  9 2026  6:52AM",
+  "type": "CZP-Assist with Construction",
+  "location": "SB I5 JSO Grapevine Rd",
+  "area": "Fort Tejon",
+  "lat": 34.937778,
+  "lon": -118.930556,
+  "details": ""
+ },
+ {
+  "log_id": "261109BF0080",
+  "time": "Nov  9 2026  7:59AM",
+  "type": "CZP-Assist with Construction",
+  "location": "1033 Lebec Rd",
+  "area": "Fort Tejon",
+  "lat": 34.825534,
+  "lon": -118.87775,
+  "details": ""
+ },
+ {
+  "log_id": "261109BF0174",
+  "time": "Nov  9 2026 10:57AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Wb Sr58 Jeo General Beale Rd",
+  "area": "Bakersfield",
+  "lat": 35.290556,
+  "lon": -118.747778,
+  "details": ""
+ },
+ {
+  "log_id": "261109BF0185",
+  "time": "Nov  9 2026 11:30AM",
+  "type": "1125-Traffic Hazard",
+  "location": "Sr178 Jeo Mouth Of The Canyon",
+  "area": "Bakersfield",
+  "lat": 35.442778,
+  "lon": -118.791667,
+  "details": ""
+ },
+ {
+  "log_id": "261109BF0207",
+  "time": "Nov  9 2026 12:19PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb Sr99 Jno Rosedale Hwy",
+  "area": "Bakersfield",
+  "lat": 35.389463,
+  "lon": -119.044425,
   "details": ""
  }
 ]

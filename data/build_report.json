@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-09T02:16:58-08:00",
+ "built_at": "2026-11-09T12:33:39-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: no element found: line 3172, column 29"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -68,35 +68,39 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 62,
+  "brief_words": 1208,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 0,
-   "top_story": "A historic first hangs on Mississippi's razor-close Senate count",
+   "chp_new": 8,
+   "top_story": "2 drivers with previous convictions arrested for DUI during checkpoint on Union Ave: Bakersfield PD",
    "overnight_band": {
-    "date": "2026-11-08",
-    "count": 45,
+    "date": "2026-11-09",
+    "count": 30,
     "chips": [
      [
-      "Fires",
-      20
-     ],
-     [
-      "Crashes and traffic",
+      "Weapons and assaults",
       2
      ],
      [
+      "Fires",
+      11
+     ],
+     [
+      "Crashes and traffic",
+      3
+     ],
+     [
       "Medical and overdose",
-      14
+      6
      ],
      [
       "Disturbances and welfare",
-      4
+      3
      ],
      [
-      "Alarms",
+      "Suspicious activity",
       1
      ],
      [
@@ -125,7 +129,7 @@
    "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
-    "bakersfield-nw": 6,
+    "bakersfield-nw": 12,
     "bakersfield-sw": 12,
     "bakersfield-east": 12,
     "bakersfield-central": 12
@@ -142,13 +146,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 0,
+   "wind_mph": 6,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 48,
-   "wind_mph": 0,
+   "temp": 70,
+   "wind_mph": 6,
    "alerts": 0
   },
   "roads": {
@@ -185,14 +189,14 @@
    "isabella_af": 138955,
    "alpr_total": 460,
    "kern_fires": 0,
-   "aqi": 93,
-   "chp_week": 0
+   "aqi": 85,
+   "chp_week": 8
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 89
+   "published": 90
   },
   "map": {
    "dots": 42

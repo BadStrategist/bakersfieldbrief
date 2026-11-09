@@ -720,6 +720,16 @@
   "details": ""
  },
  {
+  "log_id": "261109BF0246",
+  "time": "Nov  9 2026  2:11PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Haley St / Haley St Ofr",
+  "area": "Bakersfield",
+  "lat": 35.391741,
+  "lon": -118.976309,
+  "details": ""
+ },
+ {
   "log_id": "261109BF0014",
   "time": "Nov  9 2026  2:34AM",
   "type": "FOG-Foggy Conditions",
@@ -737,6 +747,16 @@
   "area": "BF",
   "lat": 35.265234,
   "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261109BF0264",
+  "time": "Nov  9 2026  3:01PM",
+  "type": "1125-Traffic Hazard",
+  "location": "801 Iris St",
+  "area": "Bakersfield",
+  "lat": 35.414009,
+  "lon": -119.016595,
   "details": ""
  },
  {

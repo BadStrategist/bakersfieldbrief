@@ -171,10 +171,11 @@
   "type": "medical aid",
   "time": "03:23",
   "agency": "Dispatch",
-  "area": "",
+  "area": "Bedrock Drive",
   "notability": 2,
   "disposition": "active",
-  "summary": "Medics were sent to a home on Red Rock Drive for a boy having a seizure."
+  "summary": "Medics were sent to a home on Bedrock Drive for a boy having a seizure.",
+  "region": "southwest Bakersfield"
  },
  {
   "type": "grass fire",
@@ -258,7 +259,8 @@
   "notability": 3,
   "disposition": "",
   "summary": "Unconscious 30-year-old male found at Sunnyside Ct.",
-  "source": "crimeradar"
+  "source": "crimeradar",
+  "region": "north Bakersfield"
  },
  {
   "type": "Traffic collision",

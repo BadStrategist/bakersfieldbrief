@@ -1,115 +1,5 @@
 [
  {
-  "log_id": "261102BF0236",
-  "time": "Nov  2 2026  2:40PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Allen Rd / Meacham Rd",
-  "area": "Bakersfield",
-  "lat": 35.390736,
-  "lon": -119.145508,
-  "details": ""
- },
- {
-  "log_id": "261102BF0253",
-  "time": "Nov  2 2026  3:11PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Nb Sr99 Jso Olive Dr",
-  "area": "Bakersfield",
-  "lat": 35.411944,
-  "lon": -119.054444,
-  "details": ""
- },
- {
-  "log_id": "261102BF0256",
-  "time": "Nov  2 2026  3:15PM",
-  "type": "1125-Traffic Hazard",
-  "location": "0 I5 N",
-  "area": "Fort Tejon",
-  "lat": 34.784935,
-  "lon": -118.82421,
-  "details": ""
- },
- {
-  "log_id": "261102BF0036",
-  "time": "Nov  2 2026  5:25AM",
-  "type": "1181-Trfc Collision-Minor Inj",
-  "location": "0 Sr33",
-  "area": "Buttonwillow",
-  "lat": 35.308318,
-  "lon": -119.622231,
-  "details": ""
- },
- {
-  "log_id": "261102BF0042",
-  "time": "Nov  2 2026  5:50AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "9855 Compagnoni St",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "261102BF0047",
-  "time": "Nov  2 2026  6:21AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "29449 Stockdale Hwy",
-  "area": "Buttonwillow",
-  "lat": 35.354792,
-  "lon": -119.33073,
-  "details": ""
- },
- {
-  "log_id": "261102BF0053",
-  "time": "Nov  2 2026  7:00AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr46 / Sr33",
-  "area": "Buttonwillow",
-  "lat": 35.614949,
-  "lon": -119.867656,
-  "details": ""
- },
- {
-  "log_id": "261102BF0067",
-  "time": "Nov  2 2026  7:35AM",
-  "type": "CZP-Assist with Construction",
-  "location": "Nb I5 At Grapevine Rd",
-  "area": "Fort Tejon",
-  "lat": 34.939167,
-  "lon": -118.929444,
-  "details": ""
- },
- {
-  "log_id": "261102BF0363",
-  "time": "Nov  2 2026  8:44PM",
-  "type": "CZP-Assist with Construction",
-  "location": "I5 N / FT TEJON RD OFR",
-  "area": "Fort Tejon",
-  "lat": 34.874845,
-  "lon": -118.892162,
-  "details": ""
- },
- {
-  "log_id": "261102BF0007",
-  "time": "Nov  2 2026 12:40AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "261102BF0008",
-  "time": "Nov  2 2026 12:47AM",
-  "type": "1183-Trfc Collision-Unkn Inj",
-  "location": "Niles St / Park Dr",
-  "area": "Bakersfield",
-  "lat": 35.376206,
-  "lon": -118.918632,
-  "details": ""
- },
- {
   "log_id": "261103BF0171",
   "time": "Nov  3 2026  1:08PM",
   "type": "1125-Traffic Hazard",
@@ -817,6 +707,66 @@
   "area": "Bakersfield",
   "lat": 35.389463,
   "lon": -119.044425,
+  "details": ""
+ },
+ {
+  "log_id": "261110BF0050",
+  "time": "Nov 10 2026  5:03AM",
+  "type": "MZP-Assist CT with Maintenance",
+  "location": "9855 Compagnoni St",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261110BF0166",
+  "time": "Nov 10 2026 11:36AM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Nb I5 Jso #4 Turn Thru",
+  "area": "Fort Tejon",
+  "lat": 34.914069,
+  "lon": -118.92362,
+  "details": ""
+ },
+ {
+  "log_id": "261110BF0008",
+  "time": "Nov 10 2026 12:22AM",
+  "type": "FOG-Foggy Conditions",
+  "location": "Bakersfield Fog Log",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261110BF0007",
+  "time": "Nov 10 2026 12:22AM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261110BF0181",
+  "time": "Nov 10 2026 12:24PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Oswell St / Country Club Dr",
+  "area": "Bakersfield",
+  "lat": 35.384875,
+  "lon": -118.949613,
+  "details": ""
+ },
+ {
+  "log_id": "261110BF0184",
+  "time": "Nov 10 2026 12:30PM",
+  "type": "1125-Traffic Hazard",
+  "location": "Nb Sr99 At Sr155",
+  "area": "Bakersfield",
+  "lat": 35.761389,
+  "lon": -119.248889,
   "details": ""
  }
 ]

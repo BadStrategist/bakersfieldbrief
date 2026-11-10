@@ -1,0 +1,313 @@
+[
+ {
+  "type": "domestic violence",
+  "time": "19:41",
+  "agency": "Dispatch",
+  "area": "Kentucky Street",
+  "notability": 3,
+  "disposition": "arrest",
+  "summary": "Officers were sent to the 2,100 block of Kentucky Street for a domestic disturbance; a man fled inside the home and was arrested on suspicion of domestic battery and resisting, with a domestic violence restraining order already on file.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "brush fire",
+  "time": "20:00",
+  "agency": "Dispatch",
+  "area": "Chester Avenue",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "Crews were sent to a small brush fire about 12 feet wide on the west side of the Chester Avenue bridge, on the south side of the Kern River."
+ },
+ {
+  "type": "traffic hazard",
+  "time": "20:02",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Officers were sent to Interstate 5 just north of Fort Tejon for debris reported across two lanes."
+ },
+ {
+  "type": "medical aid",
+  "time": "20:20",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Medics were sent to an Amazon distribution center for a worker who fell down stairs."
+ },
+ {
+  "type": "structure fire",
+  "time": "20:29",
+  "agency": "Dispatch",
+  "area": "L Street",
+  "notability": 5,
+  "disposition": "cleared",
+  "summary": "Fire crews were sent to an apartment fire on the 700 block of L Street; the apartment was on fire on arrival, the building was evacuated, crews checked the attic for extension and the assignment was downgraded about 20 minutes later.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "fireworks complaint",
+  "time": "20:35",
+  "agency": "Dispatch",
+  "area": "Splendor Way",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "Officers were sent to the 7,800 block of Splendor Way for illegal fireworks.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "fire",
+  "time": "21:41",
+  "agency": "Dispatch",
+  "area": "19th Street",
+  "notability": 3,
+  "disposition": "cleared",
+  "summary": "Crews were sent to a report of a fire threatening a building at C Street and 19th Street."
+ },
+ {
+  "type": "overdose",
+  "time": "21:53",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Medics and officers were sent to an overdose where the patient was reported unconscious but breathing."
+ },
+ {
+  "type": "domestic violence",
+  "time": "22:12",
+  "agency": "Dispatch",
+  "area": "Oregon Street",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Officers were sent to an apartment on the 1,300 block of Oregon Street for a domestic disturbance; the person reported was described as under the influence.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "man down",
+  "time": "22:17",
+  "agency": "Dispatch",
+  "area": "Niles Street",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "Officers and medics were sent to the Dollar Tree at Niles Street and Shalimar Drive for a man down; crews checked the area and found no one."
+ },
+ {
+  "type": "pursuit",
+  "time": "22:39",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "A pursuit ran eastbound on Highway 58, the car reported in the number 2 and 3 lanes at speeds near 90 mph and then above 100."
+ },
+ {
+  "type": "domestic violence",
+  "time": "22:58",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Deputies were sent to a domestic disturbance on Big Blue Road, where a man was reported to have threatened to kill a woman."
+ },
+ {
+  "type": "outside fire",
+  "time": "23:54",
+  "agency": "Dispatch",
+  "area": "Calloway Drive",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "Crews were sent to an outside fire behind the Little Caesars on the 2,600 block of Calloway Drive.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "domestic violence",
+  "time": "23:56",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Officers were sent to a domestic battery call where a woman said her boyfriend battered her; the man was reported to be in a car parked in the garage."
+ },
+ {
+  "type": "domestic violence",
+  "time": "00:01",
+  "agency": "Dispatch",
+  "area": "18th Street",
+  "notability": 2,
+  "disposition": "arrest",
+  "summary": "Officers were sent to the 500 block of 18th Street for a domestic disturbance; one person was reported to be under the influence."
+ },
+ {
+  "type": "trespassing",
+  "time": "00:19",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "Officers were sent to a vacant commercial property where a caller reported the front door was unlocked."
+ },
+ {
+  "type": "pedestrian check",
+  "time": "00:21",
+  "agency": "Dispatch",
+  "area": "Mount Vernon Avenue",
+  "notability": 1,
+  "disposition": "cleared",
+  "summary": "Officers stopped a bicyclist on Mount Vernon Avenue just north of Niles Street."
+ },
+ {
+  "type": "structure fire",
+  "time": "01:45",
+  "agency": "Dispatch",
+  "area": "L Street",
+  "notability": 3,
+  "disposition": "cleared",
+  "summary": "Fire crews were sent to an apartment on the 700 block of L Street shortly before 2 a.m.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "03:23",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Medics were sent to a home on Red Rock Drive for a boy having a seizure."
+ },
+ {
+  "type": "grass fire",
+  "time": "03:29",
+  "agency": "Dispatch",
+  "area": "Panorama Drive",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "Crews were sent to a grass fire on the south side of the Kern River near the bike path, just north of Panorama Drive.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "03:37",
+  "agency": "Dispatch",
+  "area": "Wells Avenue",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "Officers were sent to the 1,500 block of Wells Avenue, across from Linda Vista, after a hang-up call from a woman who was crying; no one answered the door.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "animal complaint",
+  "time": "03:43",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 1,
+  "disposition": "active",
+  "summary": "Officers were sent to a dairy in Rosedale where about 10 cows were out of a fence and close to the traffic lanes."
+ },
+ {
+  "type": "fire alarm",
+  "time": "04:36",
+  "agency": "Dispatch",
+  "area": "Hosking Avenue",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "Fire crews and medics were sent to a residential fire alarm at an apartment on the 600 block of Hosking Avenue, where medics were also asked for a hemorrhage."
+ },
+ {
+  "type": "traffic collision",
+  "time": "04:48",
+  "agency": "Dispatch",
+  "area": "Taft Highway",
+  "notability": 4,
+  "disposition": "active",
+  "summary": "A small pickup and a semi-trailer collided in the parking lot of the Love's Travel Stop on Taft Highway; one patient was reported to have a traumatic injury."
+ },
+ {
+  "type": "theft",
+  "time": "04:50",
+  "agency": "Dispatch",
+  "area": "Chester Avenue",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Officers were told a man fled north on Chester Avenue with a caller's gray mountain bike, reportedly with a second person."
+ },
+ {
+  "type": "medical aid",
+  "time": "05:11",
+  "agency": "Dispatch",
+  "area": "E Brundage Lane",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Medics were sent to the waiting room of the East Brundage Lane Navigation Center on East Brundage Lane for an outpatient."
+ },
+ {
+  "type": "vehicle fire",
+  "time": "05:31",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "cleared",
+  "summary": "Crews were sent to a vehicle fire near the office of a mobile home and storage park on West Ward Avenue in Ridgecrest."
+ },
+ {
+  "type": "Medical emergency",
+  "time": "19:23",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Sunnyside Court",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Unconscious 30-year-old male found at Sunnyside Ct.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "19:27",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Pacheco Road",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Rear-end crash on Pacheco Road near the mall.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "22:30",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Wible Road",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Traffic collision with minor injuries on Wible Road.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "22:54",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Crash blocks road; driver suspected of intoxication.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Weapons",
+  "time": "04:25",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Traffic stop on vehicle linked to prior weapon case.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "19:13",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Multi-vehicle collision in Target parking lot.",
+  "source": "crimeradar"
+ }
+]

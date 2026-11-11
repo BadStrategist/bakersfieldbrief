@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-11T10:04:22-08:00",
+ "built_at": "2026-11-11T14:40:11-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -155,7 +155,7 @@
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 68,
+   "temp": 72,
    "wind_mph": 14,
    "alerts": 0
   },
@@ -193,7 +193,7 @@
    "isabella_af": 138798,
    "alpr_total": 460,
    "kern_fires": 0,
-   "aqi": 81,
+   "aqi": 78,
    "chp_week": 22
   },
   "letters": {

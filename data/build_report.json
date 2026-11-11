@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-10T13:48:26-08:00",
+ "built_at": "2026-11-10T16:54:52-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -73,7 +73,7 @@
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 0,
-   "chp_new": 1,
+   "chp_new": 2,
    "top_story": "Judge orders Kern County to redo environmental review of CRC's Carbon TerraVault 1 project",
    "overnight_band": {
     "date": "2026-11-10",
@@ -122,7 +122,7 @@
    "archive": "2026-11-10"
   },
   "cityhall": {
-   "upcoming_meetings": 2,
+   "upcoming_meetings": 3,
    "county_items": 78,
    "drafts_generated": 0
   },
@@ -154,13 +154,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 10,
+   "wind_mph": 6,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 72,
-   "wind_mph": 10,
+   "temp": 66,
+   "wind_mph": 6,
    "alerts": 0
   },
   "roads": {
@@ -184,11 +184,11 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 16,
+    "In the next 7 days": 15,
     "In 1 to 2 weeks": 15,
-    "Later": 63
+    "Later": 64
    },
-   "meetings": 2
+   "meetings": 3
   },
   "feed": {
    "entries": 30
@@ -197,8 +197,8 @@
    "isabella_af": 138850,
    "alpr_total": 460,
    "kern_fires": 0,
-   "aqi": 80,
-   "chp_week": 17
+   "aqi": 87,
+   "chp_week": 19
   },
   "letters": {
    "published": 1

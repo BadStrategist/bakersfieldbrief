@@ -720,6 +720,26 @@
   "details": ""
  },
  {
+  "log_id": "261110BF0253",
+  "time": "Nov 10 2026  3:58PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "Dawn St / Belle Ter",
+  "area": "Bakersfield",
+  "lat": 35.346701,
+  "lon": -119.006901,
+  "details": ""
+ },
+ {
+  "log_id": "261110BF0257",
+  "time": "Nov 10 2026  4:01PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "South Union Ave / Toro Ct",
+  "area": "Bakersfield",
+  "lat": 35.195024,
+  "lon": -119.003421,
+  "details": ""
+ },
+ {
   "log_id": "261110BF0050",
   "time": "Nov 10 2026  5:03AM",
   "type": "MZP-Assist CT with Maintenance",

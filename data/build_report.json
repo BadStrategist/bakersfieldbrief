@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-11T01:50:12-08:00",
+ "built_at": "2026-11-11T10:04:22-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 488, column 2"
   },
   "isabella": {
    "ok": true,
@@ -68,36 +68,32 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 59,
+  "brief_words": 1185,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
-   "alerts": 0,
-   "chp_new": 3,
-   "top_story": "Bakersfield prepares for Veteran's Day parade",
+   "alerts": 1,
+   "chp_new": 0,
+   "top_story": "2026 Bakersfield Veterans Day Parade",
    "overnight_band": {
-    "date": "2026-11-10",
-    "count": 33,
+    "date": "2026-11-11",
+    "count": 27,
     "chips": [
      [
-      "Weapons and assaults",
-      1
-     ],
-     [
       "Fires",
-      7
+      12
      ],
      [
       "Crashes and traffic",
-      7
+      1
      ],
      [
       "Medical and overdose",
-      6
+      5
      ],
      [
       "Disturbances and welfare",
-      8
+      2
      ],
      [
       "Burglary and theft",
@@ -105,7 +101,7 @@
      ],
      [
       "Suspicious activity",
-      1
+      3
      ],
      [
       "Alarms",
@@ -113,10 +109,10 @@
      ],
      [
       "Other calls",
-      1
+      2
      ]
     ],
-    "other": "1 animal complaint",
+    "other": "1 officer assist, 1 probation check",
     "unmapped": []
    },
    "archive": "2026-11-11"
@@ -154,13 +150,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 7,
+   "wind_mph": 14,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 43,
-   "wind_mph": 7,
+   "temp": 68,
+   "wind_mph": 14,
    "alerts": 0
   },
   "roads": {
@@ -194,17 +190,17 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 138850,
+   "isabella_af": 138798,
    "alpr_total": 460,
    "kern_fires": 0,
-   "aqi": 98,
+   "aqi": 81,
    "chp_week": 22
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 91
+   "published": 92
   },
   "map": {
    "dots": 27

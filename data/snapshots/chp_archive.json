@@ -1,135 +1,5 @@
 [
  {
-  "log_id": "261103BF0171",
-  "time": "Nov  3 2026  1:08PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Nb Sr99 Jso Sandrini Rd",
-  "area": "Bakersfield",
-  "lat": 35.119444,
-  "lon": -118.987222,
-  "details": ""
- },
- {
-  "log_id": "261103BF0005",
-  "time": "Nov  3 2026  1:09AM",
-  "type": "TADV-Traffic Advisory",
-  "location": "Bakersfield Traffic Advisories",
-  "area": "BF",
-  "lat": 35.265234,
-  "lon": -119.024794,
-  "details": ""
- },
- {
-  "log_id": "261103BF0028",
-  "time": "Nov  3 2026  5:26AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "0 Sr43 Ofr",
-  "area": "Buttonwillow",
-  "lat": 35.290992,
-  "lon": -119.252524,
-  "details": ""
- },
- {
-  "log_id": "261103BF0032",
-  "time": "Nov  3 2026  5:52AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "Sr99 N / Sr119 Ofr",
-  "area": "Bakersfield",
-  "lat": 35.262857,
-  "lon": -119.021702,
-  "details": ""
- },
- {
-  "log_id": "261103BF0034",
-  "time": "Nov  3 2026  6:21AM",
-  "type": "MZP-Assist CT with Maintenance",
-  "location": "Sr166 / Basic School Rd",
-  "area": "Buttonwillow",
-  "lat": 35.05812,
-  "lon": -119.313732,
-  "details": ""
- },
- {
-  "log_id": "261103BF0040",
-  "time": "Nov  3 2026  7:08AM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sb I5 Jso Grapevine Rd",
-  "area": "Fort Tejon",
-  "lat": 34.937778,
-  "lon": -118.930556,
-  "details": ""
- },
- {
-  "log_id": "261103BF0048",
-  "time": "Nov  3 2026  7:23AM",
-  "type": "CZP-Assist with Construction",
-  "location": "Nb I5 At Fort Tejon Rd",
-  "area": "Fort Tejon",
-  "lat": 34.876944,
-  "lon": -118.894722,
-  "details": ""
- },
- {
-  "log_id": "261103BF0047",
-  "time": "Nov  3 2026  7:25AM",
-  "type": "1179-Trfc Collision-1141 Enrt",
-  "location": "2500-2699 Monterey St",
-  "area": "Bakersfield",
-  "lat": 35.374931,
-  "lon": -118.960689,
-  "details": ""
- },
- {
-  "log_id": "261103BF0051",
-  "time": "Nov  3 2026  7:26AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Niles St / Webster St",
-  "area": "Bakersfield",
-  "lat": 35.375731,
-  "lon": -118.963041,
-  "details": ""
- },
- {
-  "log_id": "261103BF0062",
-  "time": "Nov  3 2026  7:51AM",
-  "type": "1125-Traffic Hazard",
-  "location": "E Fairview Rd / Garber Way",
-  "area": "Bakersfield",
-  "lat": 35.303122,
-  "lon": -118.998657,
-  "details": ""
- },
- {
-  "log_id": "261103BF0140",
-  "time": "Nov  3 2026 11:33AM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "14764-15515 Copus Rd",
-  "area": "Buttonwillow",
-  "lat": 35.094368,
-  "lon": -119.128811,
-  "details": ""
- },
- {
-  "log_id": "261103BF0155",
-  "time": "Nov  3 2026 12:03PM",
-  "type": "1125-Traffic Hazard",
-  "location": "Sr184 / Shalane Ave",
-  "area": "Bakersfield",
-  "lat": 35.376885,
-  "lon": -118.909478,
-  "details": ""
- },
- {
-  "log_id": "261103BF0162",
-  "time": "Nov  3 2026 12:37PM",
-  "type": "1182-Trfc Collision-No Inj",
-  "location": "Sb I5 At Old River Rd",
-  "area": "Buttonwillow",
-  "lat": 35.161111,
-  "lon": -119.110556,
-  "details": ""
- },
- {
   "log_id": "261104BF0175",
   "time": "Nov  4 2026  2:08PM",
   "type": "1125A-Animal Hazard",
@@ -760,6 +630,26 @@
   "details": ""
  },
  {
+  "log_id": "261111BF0003",
+  "time": "Nov 10 2026 11:39PM",
+  "type": "TADV-Traffic Advisory",
+  "location": "Bakersfield Traffic Advisories",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
+  "log_id": "261111BF0001",
+  "time": "Nov 10 2026 11:39PM",
+  "type": "FOG-Foggy Conditions",
+  "location": "Bakersfield Fog Log",
+  "area": "BF",
+  "lat": 35.265234,
+  "lon": -119.024794,
+  "details": ""
+ },
+ {
   "log_id": "261110BF0008",
   "time": "Nov 10 2026 12:22AM",
   "type": "FOG-Foggy Conditions",
@@ -797,6 +687,16 @@
   "area": "Bakersfield",
   "lat": 35.761389,
   "lon": -119.248889,
+  "details": ""
+ },
+ {
+  "log_id": "261111BF0008",
+  "time": "Nov 11 2026  1:03AM",
+  "type": "1180-Trfc Collision-Major Inj",
+  "location": "Merle Haggard Dr / Wings Way",
+  "area": "Bakersfield",
+  "lat": 35.441227,
+  "lon": -119.052419,
   "details": ""
  }
 ]

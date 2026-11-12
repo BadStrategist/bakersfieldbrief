@@ -698,5 +698,45 @@
   "lat": 35.441227,
   "lon": -119.052419,
   "details": ""
+ },
+ {
+  "log_id": "261111BF0298",
+  "time": "Nov 11 2026  4:57PM",
+  "type": "1125-Traffic Hazard",
+  "location": "East Escape Ramp",
+  "area": "Fort Tejon",
+  "lat": 34.914444,
+  "lon": -118.923333,
+  "details": ""
+ },
+ {
+  "log_id": "261111BF0303",
+  "time": "Nov 11 2026  5:10PM",
+  "type": "1181-Trfc Collision-Minor Inj",
+  "location": "11640 Comanche Dr",
+  "area": "Bakersfield",
+  "lat": 35.249599,
+  "lon": -118.84262,
+  "details": ""
+ },
+ {
+  "log_id": "261111BF0318",
+  "time": "Nov 11 2026  5:50PM",
+  "type": "1183-Trfc Collision-Unkn Inj",
+  "location": "Sr184 / Redbank Rd",
+  "area": "Bakersfield",
+  "lat": 35.339802,
+  "lon": -118.91428,
+  "details": ""
+ },
+ {
+  "log_id": "261111BF0322",
+  "time": "Nov 11 2026  5:55PM",
+  "type": "1179-Trfc Collision-1141 Enrt",
+  "location": "6250 - 6499 E PANAMA LN",
+  "area": "Bakersfield",
+  "lat": 35.295967,
+  "lon": -118.934792,
+  "details": ""
  }
 ]

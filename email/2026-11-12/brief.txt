@@ -18,11 +18,12 @@ CONDITIONS
 Weather: 86° now, high 84°
 Alerts: Lake Wind Advisory active
 Isabella: 138,746 acre-feet (24.4% full)
-CHP: 5 overnight
+CHP: Unavailable
 Air: AQI 80 · Moderate
 Fires: 0 active in Kern
 
 THE NEWS
+• Over 3,000 PG&E customers without power in northwest Bakersfield (KGET 17) — https://www.kget.com/news/local-news/over-3000-pge-customers-without-power-in-northwest-bakersfield/
 • Gunman dead after killing 1, injuring 4 in mass shooting at gym in DC's Logan Circle (Bakersfield Now) — https://news.google.com/rss/articles/CBMizwFBVV95cUxQZU1NMFJkTUREemZPOXZ1TlVJSFd5SnpyQWkxN0R4TDNSRUp6QVBtV0p4d2VCZmxoSTU5ZEwzOTdlal9vNFBxRWhTQWZNaU1SM3VnWjdJWm1nbm9tZGRmZWlYQWY5RjhUQW9jY2lNLXZaalB1bDNaQUtGWDRsREFUckZaWm9TWUZTd01FYU5faERWUi1Kd2ZwSEtMY2kwRnB1eVdUd3R0dWZaamFZQ05UMC1aSi1UNndsODlVZnRqeG9uUXo2YkJtTnE3emE4QkE?oc=5
 • Is Microsoft Outlook down? Company confirms 'issues' with email accounts, Teams (KGET 17) — https://www.kget.com/national-news/is-microsoft-outlook-down-company-confirms-issues-with-email-accounts/
 • Ex-codefendant testifies in trial of man charged with murder in deaths of sisters delivering newspapers (KGET 17) — https://www.kget.com/news/crime-watch/ex-codefendant-testifies-in-trial-of-man-charged-with-murder-in-deaths-of-sisters-delivering-newspapers/
@@ -30,7 +31,6 @@ THE NEWS
 • Man sentenced for murdering wife in front of her children at Monterey St home (KGET 17) — https://www.kget.com/news/crime-watch/sentencing-hearing-begins-for-man-who-murdered-wife-in-front-of-their-children-at-monterey-st-home/
 • Ready, set, go: New medal designs for 2027 Bakersfield Marathon (KGET 17) — https://www.kget.com/guest-interviews/ready-set-go-new-medal-designs-for-2027-bakersfield-marathon/
 • Back on the saddle: Bakersfield College Rodeo returns to the fairgrounds (KGET 17) — https://www.kget.com/guest-interviews/back-on-the-saddle-bakersfield-college-rodeo-returns-to-the-fairgrounds/
-• Community colleges rush to expand semiconductor training as labor shortage looms US chip industry (23ABC) — https://www.turnto23.com/news/local-news/community-colleges-rush-to-expand-semiconductor-training-as-labor-shortage-looms-us-chip-industry
 
 Headlines link to the original reporting at the outlets named.
 

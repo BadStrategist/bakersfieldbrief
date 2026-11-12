@@ -1,0 +1,355 @@
+[
+ {
+  "type": "pursuit",
+  "time": "19:16",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Officers pursued an ATV southbound through an east alley off Martin Luther King Jr. Boulevard toward Brown Street; a search of the neighborhood and the tracks afterward did not turn up the rider."
+ },
+ {
+  "type": "assault",
+  "time": "19:17",
+  "agency": "Dispatch",
+  "area": "2nd Street",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Officers were sent to the 1,400 block of 2nd Street for a disturbance where a teenager was reported to have thrown a chair at the person who called."
+ },
+ {
+  "type": "brush fire",
+  "time": "19:22",
+  "agency": "Dispatch",
+  "area": "Washington Street",
+  "notability": 4,
+  "disposition": "active",
+  "summary": "Fire crews worked a vegetation fire of about three and a half acres off Washington Street, a couple of streets south of East California Avenue, reporting good progress and expecting to tie in a patrol line within about ten minutes; crews also staffed a second fire nearby."
+ },
+ {
+  "type": "weapons",
+  "time": "19:26",
+  "agency": "Dispatch",
+  "area": "Rench Road",
+  "notability": 4,
+  "disposition": "active",
+  "summary": "Officers were sent to the 1,600 block of Rench Road for a teenager reported to be holding a knife in the living room of a home, in the company of his parents; it was not known whether he had brandished it or made threats.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "hit and run",
+  "time": "19:34",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Officers were sent north of Derby Acres for a silver pickup with front-end collision damage that had hit an unknown vehicle and left; a passing motorist reported it."
+ },
+ {
+  "type": "traffic collision",
+  "time": "19:36",
+  "agency": "Dispatch",
+  "area": "Hartlepool Avenue",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "A gray SUV struck multiple vehicles on the 4,900 block of Hartlepool Avenue.",
+  "region": "southeast Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "19:49",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Medics were requested for a one-year-old who fell at an apartment and was reported unresponsive."
+ },
+ {
+  "type": "hit and run",
+  "time": "19:52",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 4,
+  "disposition": "active",
+  "summary": "Officers were working a possible hit and run involving a vehicle and a pedestrian, and the person struck was taken to a hospital."
+ },
+ {
+  "type": "disturbance",
+  "time": "20:16",
+  "agency": "Dispatch",
+  "area": "East Brundage Lane",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Deputies were sent to the 8,200 block of East Brundage Lane after a call with no voice contact and a juvenile heard crying in the background; the caller later said the noise was coming from an apartment at the front."
+ },
+ {
+  "type": "overdose",
+  "time": "20:52",
+  "agency": "Dispatch",
+  "area": "Buddy Drive",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Officers were asked to find a man who had taken a large amount of unknown medication, last associated with the 2,800 block of Buddy Drive.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "fire",
+  "time": "21:06",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 4,
+  "disposition": "active",
+  "summary": "Fire crews were sent to a fire along westbound Highway 58 just west of the Mount Vernon Avenue exit, where a second ambulance was requested and a traffic break was set up."
+ },
+ {
+  "type": "assault",
+  "time": "21:30",
+  "agency": "Dispatch",
+  "area": "Glenwood Drive",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Officers were sent to the 1,700 block of Glenwood Drive after a woman reported that her caregiver had assaulted her.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "pursuit",
+  "time": "22:19",
+  "agency": "Dispatch",
+  "area": "Chester Avenue",
+  "notability": 4,
+  "disposition": "arrest",
+  "summary": "Officers chased a man who ran from a suspicious person call at a storage yard on the 4,000 block of Chester Avenue, reaching for his waistband as he ran; he climbed onto a roof on the 3,300 block of Anderson Street and, with Air 1 overhead and a K-9 in place, came down and was arrested, with charges for resisting added."
+ },
+ {
+  "type": "medical aid",
+  "time": "23:10",
+  "agency": "Dispatch",
+  "area": "Pioneer Drive",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Fire crews and medics were sent to the 3,000 block of Pioneer Drive for a traumatic injury.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "pursuit",
+  "time": "23:40",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "arrest",
+  "summary": "Officers chased a man who ran eastbound on Sky Ranch; a driver and a passenger were taken into custody at a residence on Suncrest Drive, with one person still outstanding."
+ },
+ {
+  "type": "burglary",
+  "time": "23:46",
+  "agency": "Dispatch",
+  "area": "Pioneer Drive",
+  "notability": 4,
+  "disposition": "active",
+  "summary": "Officers were sent to a market on the 3,400 block of Pioneer Drive near Sterling after a caller reported two to three people removing boxes of merchandise through an open gate, one holding an object the caller believed was a firearm.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "weapons",
+  "time": "00:02",
+  "agency": "Dispatch",
+  "area": "Old River Road",
+  "notability": 4,
+  "disposition": "active",
+  "summary": "Deputies were sent to the 11,500 block of Old River Road for a person reported to be brandishing a knife; a group was in a gold pickup, one of them holding the knife, and one person reported an assault.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "00:14",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Firefighters and sheriff's deputies searched a remote area north of Kramer along Highway 395 after a caller reported a diabetic emergency; crews found the patient and started an ambulance."
+ },
+ {
+  "type": "overdose",
+  "time": "01:03",
+  "agency": "Dispatch",
+  "area": "Sosa Drive",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Fire crews and police were sent to the 2,200 block of Sosa Drive for an intentional overdose.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "fire",
+  "time": "01:10",
+  "agency": "Dispatch",
+  "area": "Panama Road",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Fire crews were sent to an outside fire near the 8,000 block of Panama Road."
+ },
+ {
+  "type": "burglary",
+  "time": "02:29",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Officers were told of a break-in to a garage and to a vehicle at a home; there was no suspect information."
+ },
+ {
+  "type": "medical aid",
+  "time": "03:16",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Officers made contact with a homeowner reported to be possibly disoriented, who agreed to be checked by medics."
+ },
+ {
+  "type": "medical aid",
+  "time": "03:32",
+  "agency": "Dispatch",
+  "area": "Poulsen Way",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Medics were sent to the 1,100 block of Poulsen Way for a person having difficulty breathing.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "fire alarm",
+  "time": "04:05",
+  "agency": "Dispatch",
+  "area": "Royal Way",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "Fire crews were sent to a residential fire alarm at the 1,400 block of Royal Way; there were no exposures or threats in the area.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "medical aid",
+  "time": "04:55",
+  "agency": "Dispatch",
+  "area": "North Chester Avenue",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Medics were sent to a bus stop at East Roberts Lane and North Chester Avenue for an unknown medical aid after a 911 hang-up.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "domestic violence",
+  "time": "04:56",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Officers were sent to a domestic call where a woman told dispatchers she was being abused by her child's father and then disconnected, with an infant heard crying in the background."
+ },
+ {
+  "type": "traffic collision",
+  "time": "05:24",
+  "agency": "Dispatch",
+  "area": "Airport Drive",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "A traffic collision was reported near Airport Drive.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "disturbance",
+  "time": "05:32",
+  "agency": "Dispatch",
+  "area": "Quantico Avenue",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Officers were sent to the 400 block of Quantico Avenue where a person went to a residence over a stolen cell phone, broke a window and was in a shouting match with two men who would not let her leave.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "domestic violence",
+  "time": "05:53",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Deputies were sent to a disturbance where a man was reported to have pinned his mother against a wall during an argument with a juvenile; a court order was already in place."
+ },
+ {
+  "type": "medical aid",
+  "time": "06:03",
+  "agency": "Dispatch",
+  "area": "Meacham Road",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Medics were sent to the 10,500 block of Meacham Road for a first-time seizure.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "traffic hazard",
+  "time": "06:12",
+  "agency": "Dispatch",
+  "area": "Stockdale Highway",
+  "notability": 2,
+  "disposition": "cleared",
+  "summary": "Officers cleared a traffic hazard on Stockdale Highway just west of River Run."
+ },
+ {
+  "type": "Cardiac arrest",
+  "time": "20:16",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Belmont Avenue",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person suffers cardiac arrest near Belmont Avenue.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "21:06",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Traumatic injury reported on Meyer Road with two facilities present.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Shots fired",
+  "time": "01:09",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "el Encanto Court",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Multiple gunshots heard near El Encanto Court.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Vehicle",
+  "time": "20:33",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Two subjects found unconscious in vehicle at Fast Trip.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "21:24",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Two-vehicle crash on westbound 58 near Cottonwood.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:39",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Officers attempt contact with reporting party.",
+  "source": "crimeradar"
+ }
+]

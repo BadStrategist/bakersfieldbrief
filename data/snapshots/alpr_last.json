@@ -5519,14 +5519,62 @@
    "edited": "2026-10-29",
    "start_date": "",
    "camera_type": "public"
+  },
+  {
+   "id": 14369088501,
+   "lat": 35.3545973,
+   "lon": -119.0947359,
+   "manufacturer": "Flock Safety",
+   "operator": "",
+   "direction": "337",
+   "mapped": "2026-11-12",
+   "edited": "2026-11-12",
+   "start_date": "",
+   "camera_type": "public"
+  },
+  {
+   "id": 14369089101,
+   "lat": 35.3545773,
+   "lon": -119.0938771,
+   "manufacturer": "Flock Safety",
+   "operator": "",
+   "direction": "339",
+   "mapped": "2026-11-12",
+   "edited": "2026-11-12",
+   "start_date": "",
+   "camera_type": "public"
+  },
+  {
+   "id": 14369089201,
+   "lat": 35.3555657,
+   "lon": -119.0924527,
+   "manufacturer": "Flock Safety",
+   "operator": "",
+   "direction": "234",
+   "mapped": "2026-11-12",
+   "edited": "2026-11-12",
+   "start_date": "",
+   "camera_type": "public"
+  },
+  {
+   "id": 14369089202,
+   "lat": 35.3564249,
+   "lon": -119.0925897,
+   "manufacturer": "Flock Safety",
+   "operator": "",
+   "direction": "236",
+   "mapped": "2026-11-12",
+   "edited": "2026-11-12",
+   "start_date": "",
+   "camera_type": "public"
   }
  ],
  "stats": {
-  "total": 460,
-  "flock": 421,
-  "new_this_week": 0,
-  "new_this_week_snapshot_diff": 0,
-  "newest_mapped": "2026-10-29"
+  "total": 464,
+  "flock": 425,
+  "new_this_week": 4,
+  "new_this_week_snapshot_diff": 4,
+  "newest_mapped": "2026-11-12"
  },
- "asof": "2026-11-11"
+ "asof": "2026-11-12"
 }

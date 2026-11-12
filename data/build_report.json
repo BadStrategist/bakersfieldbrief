@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-11T18:02:28-08:00",
+ "built_at": "2026-11-12T02:14:44-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: unclosed token: line 3599, column 3"
   },
   "isabella": {
    "ok": true,
@@ -68,13 +68,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1185,
+  "brief_words": 78,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 4,
-   "top_story": "2026 Bakersfield Veterans Day Parade",
+   "chp_new": 0,
+   "top_story": "Kern County soldier Angel De Jesus Lucio Ramirez remembered by his mother 20 years after his death in Iraq war",
    "overnight_band": {
     "date": "2026-11-11",
     "count": 27,
@@ -115,10 +115,10 @@
     "other": "1 officer assist, 1 probation check",
     "unmapped": []
    },
-   "archive": "2026-11-11"
+   "archive": "2026-11-12"
   },
   "cityhall": {
-   "upcoming_meetings": 5,
+   "upcoming_meetings": 6,
    "county_items": 78,
    "drafts_generated": 0
   },
@@ -130,7 +130,7 @@
     "bakersfield-east",
     "bakersfield-central"
    ],
-   "tehachapi_forecast": false,
+   "tehachapi_forecast": true,
    "gnews_per_place": {
     "tehachapi": 12,
     "bakersfield-nw": 12,
@@ -141,7 +141,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-11-11"
+   "draft": "drafts/weekend-guide-2026-11-12"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -150,13 +150,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 6,
+   "wind_mph": 15,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 64,
-   "wind_mph": 6,
+   "temp": 60,
+   "wind_mph": 15,
    "alerts": 0
   },
   "roads": {
@@ -180,20 +180,20 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 14,
-    "In 1 to 2 weeks": 15,
-    "Later": 64
+    "In the next 7 days": 18,
+    "In 1 to 2 weeks": 12,
+    "Later": 63
    },
-   "meetings": 5
+   "meetings": 6
   },
   "feed": {
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 138798,
-   "alpr_total": 460,
+   "isabella_af": 138746,
+   "alpr_total": 464,
    "kern_fires": 0,
-   "aqi": 74,
+   "aqi": 93,
    "chp_week": 26
   },
   "letters": {
@@ -232,8 +232,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 460,
-   "alpr_new_week": 0,
+   "alpr_total": 464,
+   "alpr_new_week": 4,
    "pages": [
     "surveillance",
     "fires",

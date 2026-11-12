@@ -18,8 +18,8 @@ CONDITIONS
 Weather: 86° now, high 84°
 Alerts: Lake Wind Advisory active
 Isabella: 138,746 acre-feet (24.4% full)
-CHP: Unavailable
-Air: AQI 59 · Moderate
+CHP: 5 overnight
+Air: AQI 80 · Moderate
 Fires: 0 active in Kern
 
 THE NEWS

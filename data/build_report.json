@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-12T02:14:44-08:00",
+ "built_at": "2026-11-12T07:59:59-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,40 +68,40 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 78,
+  "brief_words": 1284,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
    "chp_new": 0,
-   "top_story": "Kern County soldier Angel De Jesus Lucio Ramirez remembered by his mother 20 years after his death in Iraq war",
+   "top_story": "Nvidia CEO Jensen Huang resigns amid affair scandals",
    "overnight_band": {
-    "date": "2026-11-11",
-    "count": 27,
+    "date": "2026-11-12",
+    "count": 37,
     "chips": [
      [
-      "Fires",
-      12
-     ],
-     [
-      "Crashes and traffic",
-      1
-     ],
-     [
-      "Medical and overdose",
+      "Weapons and assaults",
       5
      ],
      [
+      "Fires",
+      3
+     ],
+     [
+      "Crashes and traffic",
+      9
+     ],
+     [
+      "Medical and overdose",
+      10
+     ],
+     [
       "Disturbances and welfare",
-      2
+      4
      ],
      [
       "Burglary and theft",
-      1
-     ],
-     [
-      "Suspicious activity",
-      3
+      2
      ],
      [
       "Alarms",
@@ -109,10 +109,10 @@
      ],
      [
       "Other calls",
-      2
+      3
      ]
     ],
-    "other": "1 officer assist, 1 probation check",
+    "other": "2 incident, 1 vehicle",
     "unmapped": []
    },
    "archive": "2026-11-12"
@@ -150,13 +150,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 15,
+   "wind_mph": 16,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 60,
-   "wind_mph": 15,
+   "temp": 59,
+   "wind_mph": 16,
    "alerts": 0
   },
   "roads": {
@@ -193,17 +193,17 @@
    "isabella_af": 138746,
    "alpr_total": 464,
    "kern_fires": 0,
-   "aqi": 93,
+   "aqi": 111,
    "chp_week": 26
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 92
+   "published": 93
   },
   "map": {
-   "dots": 27
+   "dots": 18
   },
   "sunday_read": {
    "topic": "Public safety",

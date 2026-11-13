@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-12T14:14:14-08:00",
+ "built_at": "2026-11-13T01:58:09-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": false,
-   "error": "ParseError: unclosed token: line 3599, column 3"
+   "ok": true,
+   "error": ""
   },
   "isabella": {
    "ok": true,
@@ -68,13 +68,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1284,
+  "brief_words": 72,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 0,
-   "top_story": "Nvidia CEO Jensen Huang resigns amid affair scandals",
+   "chp_new": 3,
+   "top_story": "Rising credit card debt puts pressure on Kern County residents as everyday expenses climb",
    "overnight_band": {
     "date": "2026-11-12",
     "count": 37,
@@ -115,10 +115,10 @@
     "other": "2 incident, 1 vehicle",
     "unmapped": []
    },
-   "archive": "2026-11-12"
+   "archive": "2026-11-13"
   },
   "cityhall": {
-   "upcoming_meetings": 6,
+   "upcoming_meetings": 7,
    "county_items": 78,
    "drafts_generated": 0
   },
@@ -141,7 +141,7 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-11-12"
+   "draft": "drafts/weekend-guide-2026-11-13"
   },
   "grapevine": {
    "i5": "CLOSED",
@@ -150,13 +150,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 14,
+   "wind_mph": 10,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 66,
-   "wind_mph": 14,
+   "temp": 54,
+   "wind_mph": 10,
    "alerts": 0
   },
   "roads": {
@@ -181,20 +181,20 @@
   "events": {
    "groups": {
     "In the next 7 days": 18,
-    "In 1 to 2 weeks": 12,
-    "Later": 64
+    "In 1 to 2 weeks": 10,
+    "Later": 65
    },
-   "meetings": 6
+   "meetings": 7
   },
   "feed": {
    "entries": 30
   },
   "numbers": {
    "isabella_af": 138746,
-   "alpr_total": 464,
+   "alpr_total": 466,
    "kern_fires": 0,
-   "aqi": 80,
-   "chp_week": 36
+   "aqi": 51,
+   "chp_week": 39
   },
   "letters": {
    "published": 1
@@ -232,8 +232,8 @@
    ]
   },
   "trackers": {
-   "alpr_total": 464,
-   "alpr_new_week": 4,
+   "alpr_total": 466,
+   "alpr_new_week": 6,
    "pages": [
     "surveillance",
     "fires",

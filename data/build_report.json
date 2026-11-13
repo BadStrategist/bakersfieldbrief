@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-13T01:58:09-08:00",
+ "built_at": "2026-11-13T08:01:39-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -30,8 +30,8 @@
    "error": ""
   },
   "chp": {
-   "ok": true,
-   "error": ""
+   "ok": false,
+   "error": "ParseError: no element found: line 1, column 0"
   },
   "isabella": {
    "ok": true,
@@ -68,40 +68,40 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 72,
+  "brief_words": 1379,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
-   "chp_new": 3,
-   "top_story": "Rising credit card debt puts pressure on Kern County residents as everyday expenses climb",
+   "chp_new": 0,
+   "top_story": "The City of Bakersfield explains why Stockdale Highway off-ramp is closing permanently",
    "overnight_band": {
-    "date": "2026-11-12",
-    "count": 37,
+    "date": "2026-11-13",
+    "count": 47,
     "chips": [
      [
       "Weapons and assaults",
-      5
-     ],
-     [
-      "Fires",
-      3
-     ],
-     [
-      "Crashes and traffic",
-      9
-     ],
-     [
-      "Medical and overdose",
-      10
-     ],
-     [
-      "Disturbances and welfare",
       4
      ],
      [
-      "Burglary and theft",
+      "Fires",
+      8
+     ],
+     [
+      "Crashes and traffic",
+      12
+     ],
+     [
+      "Medical and overdose",
       2
+     ],
+     [
+      "Disturbances and welfare",
+      8
+     ],
+     [
+      "Burglary and theft",
+      5
      ],
      [
       "Alarms",
@@ -109,11 +109,13 @@
      ],
      [
       "Other calls",
-      3
+      7
      ]
     ],
-    "other": "2 incident, 1 vehicle",
-    "unmapped": []
+    "other": "5 incident, 1 rescue, 1 vehicle",
+    "unmapped": [
+     "rescue"
+    ]
    },
    "archive": "2026-11-13"
   },
@@ -150,13 +152,13 @@
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 10,
+   "wind_mph": 3,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 54,
-   "wind_mph": 10,
+   "temp": 50,
+   "wind_mph": 3,
    "alerts": 0
   },
   "roads": {
@@ -190,20 +192,20 @@
    "entries": 30
   },
   "numbers": {
-   "isabella_af": 138746,
+   "isabella_af": 138588,
    "alpr_total": 466,
    "kern_fires": 0,
-   "aqi": 51,
+   "aqi": 35,
    "chp_week": 39
   },
   "letters": {
    "published": 1
   },
   "overnight": {
-   "published": 93
+   "published": 94
   },
   "map": {
-   "dots": 18
+   "dots": 27
   },
   "sunday_read": {
    "topic": "Public safety",

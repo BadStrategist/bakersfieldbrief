@@ -1,0 +1,444 @@
+[
+ {
+  "type": "robbery",
+  "time": "19:04",
+  "agency": "Dispatch",
+  "area": "Ming Avenue",
+  "notability": 4,
+  "disposition": "active",
+  "summary": "Officers were sent to the 2,700 block of Ming Avenue for a robbery that had just happened at a clothing store, where a man in a ski mask took merchandise and left eastbound in a white sedan."
+ },
+ {
+  "type": "weapons",
+  "time": "19:14",
+  "agency": "Dispatch",
+  "area": "Panama Road",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Deputies were sent to the 8,400 block of Panama Road for a report of a man with a kitchen knife; he was reported to be inside the residence and no longer holding the knife."
+ },
+ {
+  "type": "structure fire",
+  "time": "19:31",
+  "agency": "Dispatch",
+  "area": "Ledgeview Lane",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Fire crews were sent to a structure fire on Ledgeview Lane.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "incident",
+  "time": "19:43",
+  "agency": "Dispatch",
+  "area": "Calloway Drive",
+  "notability": 4,
+  "disposition": "active",
+  "summary": "Officers were sent to the 2,400 block of Calloway Drive after a caller reported his wife was in crisis and had talked about harming their 7-month-old child; she was reported to have no firearm in the home.",
+  "region": "northwest Bakersfield"
+ },
+ {
+  "type": "hit and run",
+  "time": "19:46",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Officers were sent to South Chester Avenue and Ming Avenue after a passerby reported a hit and run involving a dark minivan; the person struck was last seen at the bus stop."
+ },
+ {
+  "type": "assault",
+  "time": "19:55",
+  "agency": "Dispatch",
+  "area": "Hayslett Avenue",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Deputies and medics were sent to the 400 block of Hayslett Avenue, where crews found a man who had been assaulted and asked for police and a second ambulance.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "domestic violence",
+  "time": "20:14",
+  "agency": "Dispatch",
+  "area": "10th Street",
+  "notability": 4,
+  "disposition": "active",
+  "summary": "Officers were sent into the 10th Street area for a domestic argument where the other person in the home was reported to have a firearm, and a roommate was reported to have threatened to shoot the caller."
+ },
+ {
+  "type": "structure fire",
+  "time": "20:29",
+  "agency": "Dispatch",
+  "area": "Alberta Street",
+  "notability": 4,
+  "disposition": "active",
+  "summary": "Fire crews were sent to a structure fire on North Alberta Street, with three engines and a battalion chief assigned.",
+  "region": "south Bakersfield"
+ },
+ {
+  "type": "DUI",
+  "time": "20:39",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Deputies were told of a possible drunken driver north of Lost Hills, a Nissan sedan reported to be running at speeds near 100 mph."
+ },
+ {
+  "type": "structure fire",
+  "time": "20:45",
+  "agency": "Dispatch",
+  "area": "Campus Park Court",
+  "notability": 4,
+  "disposition": "active",
+  "summary": "Fire crews were sent to a structure fire on Campus Park Court, with two engines and a truck assigned.",
+  "region": "southwest Bakersfield"
+ },
+ {
+  "type": "welfare check",
+  "time": "20:46",
+  "agency": "Dispatch",
+  "area": "Niles Street",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Deputies were sent to the 6,500 block of Niles Street for a welfare check on a 7-year-old reported to be outside alone."
+ },
+ {
+  "type": "domestic violence",
+  "time": "20:48",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Deputies were sent to the 500 block of Shady Meadow for a domestic disturbance that had just happened; the man left westbound in a blue semi truck and the person who called declined medical aid."
+ },
+ {
+  "type": "welfare check",
+  "time": "20:52",
+  "agency": "Dispatch",
+  "area": "B Street",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Officers were sent to a school on the 600 block of B Street for a welfare check on a student who was reported to be in distress.",
+  "region": "central Bakersfield"
+ },
+ {
+  "type": "traffic collision",
+  "time": "20:56",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 4,
+  "disposition": "active",
+  "summary": "Fire crews and medics were sent to Sterling Road and Monterey Street for a vehicle against a pedestrian, with CPR under way."
+ },
+ {
+  "type": "burglary",
+  "time": "21:00",
+  "agency": "Dispatch",
+  "area": "Warren Avenue",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Officers were sent to the 200 block of Warren Avenue after a caller reported a break-in and disconnected.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "vehicle fire",
+  "time": "21:12",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Fire crews were sent to a car fire on a Honda whose owner told dispatchers he believed it was arson and wanted to file a report; the fire was about 20 feet by 20 feet and one patrol unit handled it."
+ },
+ {
+  "type": "disturbance",
+  "time": "21:25",
+  "agency": "Dispatch",
+  "area": "F Street",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Officers were sent to the 3,200 block of F Street for a verbal argument between neighbors."
+ },
+ {
+  "type": "DUI",
+  "time": "21:26",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Deputies were told of a possible drunken driver heading north on Asher Avenue from Pico Street in the South Taft area, with the driver reported to have been drinking at a food stand."
+ },
+ {
+  "type": "medical aid",
+  "time": "21:30",
+  "agency": "Dispatch",
+  "area": "Schofield Drive",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Medics and the highway patrol were sent to Schofield Drive and Wilson Avenue for a person down, with a request for discretion."
+ },
+ {
+  "type": "structure fire",
+  "time": "22:31",
+  "agency": "Dispatch",
+  "area": "Nelson Street",
+  "notability": 4,
+  "disposition": "active",
+  "summary": "Fire crews were sent to a structure fire at an apartment on the 2,200 block of Nelson Street.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "shooting",
+  "time": "22:49",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 5,
+  "disposition": "active",
+  "summary": "A large response was sent to the railroad northeast of Woodford, near Tehachapi, after agents investigating a burglary of a train container reported that people inside the container shot at them. Two agents were reported not to be hurt, the agents took cover behind their vehicles, and one suspect was later believed to have run south and then southwest, with no description. Access was worked out from the Highway 58 side and off Woodford and Keene, and the railroad was cleared to resume traffic about 4 a.m."
+ },
+ {
+  "type": "disturbance",
+  "time": "00:00",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Deputies were sent to the 400 block of Buchanan for a disturbance where someone was reported to be yelling."
+ },
+ {
+  "type": "pursuit",
+  "time": "02:20",
+  "agency": "Dispatch",
+  "area": "Airport Drive",
+  "notability": 3,
+  "disposition": "cleared",
+  "summary": "Deputies chased a vehicle northbound on Airport Drive from Lincoln Street, at speeds reported from 35 to 67 mph past Woodrow and Ann Arbor; the pursuit was called off in the area northwest of the airport.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "traffic collision",
+  "time": "02:33",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 4,
+  "disposition": "active",
+  "summary": "Fire crews and medics were sent to a single vehicle that rolled over into a house, with two people hurt; the ambulance request was increased to two units."
+ },
+ {
+  "type": "theft",
+  "time": "02:36",
+  "agency": "Dispatch",
+  "area": "Wilson Avenue",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Deputies were told a stolen blue Yamaha motorcycle was last tracked to the 300 block of Wilson Avenue, where the person was reported to be circulating.",
+  "region": "north Bakersfield"
+ },
+ {
+  "type": "theft",
+  "time": "02:44",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Deputies were sent to a motel for an occupied stolen vehicle, with a black Cadillac Escalade involved."
+ },
+ {
+  "type": "burglary",
+  "time": "02:48",
+  "agency": "Dispatch",
+  "area": "White Lane",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Deputies were sent to a business on the 6,300 block of White Lane after the back door was found open, with someone in a black long sleeve shirt and dark blue pants pushing a shopping cart."
+ },
+ {
+  "type": "incident",
+  "time": "03:01",
+  "agency": "Dispatch",
+  "area": "South Union Avenue",
+  "notability": 2,
+  "disposition": "active",
+  "summary": "Officers were sent to the 4,900 block of South Union Avenue on a call transferred from the county on an incomplete 911."
+ },
+ {
+  "type": "alarm",
+  "time": "03:09",
+  "agency": "Dispatch",
+  "area": "Chester Avenue",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Officers were sent to the 4,200 block of Chester Avenue for a hold-up alarm at a residence, third point of activation."
+ },
+ {
+  "type": "rescue",
+  "time": "03:18",
+  "agency": "Dispatch",
+  "area": "Mount Vernon Avenue",
+  "notability": 4,
+  "disposition": "active",
+  "summary": "Deputies and fire crews were sent to South Mount Vernon Avenue and East Belle Terrace for a possible drowning after a caller said someone had fallen at a water pipe, then said his brother had been thrown into a cement water tank and could be heard inside. Crews searched south along Mount Vernon and the caller then reported he was climbing the water tower himself."
+ },
+ {
+  "type": "fire",
+  "time": "03:37",
+  "agency": "Dispatch",
+  "area": "4th Avenue",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Fire crews were sent to an outside fire on the 400 block of 4th Avenue."
+ },
+ {
+  "type": "fire",
+  "time": "03:41",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Fire crews were sent to a fire reported about two feet from a building."
+ },
+ {
+  "type": "fire",
+  "time": "04:05",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "cleared",
+  "summary": "An engine was sent to a dumpster fire at an RV park."
+ },
+ {
+  "type": "medical aid",
+  "time": "04:12",
+  "agency": "Dispatch",
+  "area": "Olive Drive",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Officers and medics were sent to the 900 block of Olive Drive for a welfare check and a 2-year-old reported not to be breathing; crews found the child breathing and attached to breathing equipment."
+ },
+ {
+  "type": "traffic collision",
+  "time": "04:44",
+  "agency": "Dispatch",
+  "area": "Panama Lane",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Fire crews were sent to a vehicle in a ditch just east of East Panama Lane and South Fairfax Road, with the vehicle reported to be smoking, and the highway patrol was en route."
+ },
+ {
+  "type": "domestic violence",
+  "time": "05:17",
+  "agency": "Dispatch",
+  "area": "Derby Drive",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Deputies were sent to the 6,200 block of Derby Drive for a domestic disturbance that had just happened.",
+  "region": "east Bakersfield"
+ },
+ {
+  "type": "traffic hazard",
+  "time": "05:37",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "The highway patrol was told of a wrong-way driver on the transition from southbound Interstate 5 to eastbound Highway 138, a sedan reported northbound in the southbound lane."
+ },
+ {
+  "type": "hit and run",
+  "time": "05:52",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "The highway patrol was told of a hit and run on northbound Highway 99, a red Toyota sedan with front end damage; the person who was hit was standing by on the right shoulder."
+ },
+ {
+  "type": "shots fired",
+  "time": "06:05",
+  "agency": "Dispatch",
+  "area": "",
+  "notability": 3,
+  "disposition": "active",
+  "summary": "Officers took about four calls reporting shots heard in the area of Morrill Avenue and Airport Drive."
+ },
+ {
+  "type": "Traffic collision",
+  "time": "19:59",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "White Lane",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Crash at White Lane and South Union with injuries.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "22:12",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "Calloway Drive",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Two vehicles in collision on Calloway Drive.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Vehicle",
+  "time": "06:47",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Suspicious vehicle found off I-5 roadway.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Disturbance",
+  "time": "06:50",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Multiple disturbance calls near North Chester.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:58",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Loitering complaint near bus stop and market.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Traffic collision",
+  "time": "05:45",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Hit-and-run crash on Highway 99 near Bullion.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:17",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "",
+  "notability": 2,
+  "disposition": "",
+  "summary": "Officers attempt stop of white GMC Terrain.",
+  "source": "crimeradar"
+ },
+ {
+  "type": "Incident",
+  "time": "06:18",
+  "agency": "Bakersfield Police, Fire and EMS",
+  "area": "White Lane",
+  "notability": 3,
+  "disposition": "",
+  "summary": "Person threatened to shoot self near White Lane.",
+  "source": "crimeradar"
+ }
+]

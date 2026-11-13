@@ -1,1 +1,1 @@
-{"ok": true, "incidents": [{"name": "Whitesbridge Fire", "county": "Fresno", "acres": 97.0, "contained": 96.0, "lat": 36.733322, "lon": -120.341222, "started": "2026-11-13", "location": "San Joaquin Valley Railroad and Highway 180, Mendota", "type": "Wildfire", "url": "https://www.fire.ca.gov/incidents/2026/11/12/whitesbridge-fire/"}], "kern": [], "asof": "2026-11-13"}
+{"ok": true, "incidents": [], "kern": [], "asof": "2026-11-13"}

@@ -1,5 +1,5 @@
 {
- "built_at": "2026-11-13T13:58:00-08:00",
+ "built_at": "2026-11-14T01:23:41-08:00",
  "sources": {
   "escribe": {
    "ok": true,
@@ -68,13 +68,13 @@
  },
  "section": {
   "_digest_meta": "deterministic",
-  "brief_words": 1379,
+  "brief_words": 72,
   "daily": {
    "news_headlines": 75,
    "news_digest": "deterministic",
    "alerts": 1,
    "chp_new": 0,
-   "top_story": "The City of Bakersfield explains why Stockdale Highway off-ramp is closing permanently",
+   "top_story": "Hard Rock Tejon celebrates one year: New president previews what's to come",
    "overnight_band": {
     "date": "2026-11-13",
     "count": 47,
@@ -117,12 +117,12 @@
      "rescue"
     ]
    },
-   "archive": "2026-11-13"
+   "archive": "2026-11-14"
   },
   "cityhall": {
-   "upcoming_meetings": 8,
+   "upcoming_meetings": 7,
    "county_items": 76,
-   "drafts_generated": 0
+   "drafts_generated": 1
   },
   "places": {
    "places": [
@@ -143,22 +143,22 @@
   },
   "guide": {
    "picked": 5,
-   "draft": "drafts/weekend-guide-2026-11-13"
+   "draft": "drafts/weekend-guide-2026-11-14"
   },
   "grapevine": {
-   "i5": "CLOSED",
+   "i5": "RESTRICTIONS",
    "i5_pass": "RESTRICTIONS",
    "log_entries": 60
   },
   "tehachapi": {
    "sr58": "OPEN",
-   "wind_mph": 0,
+   "wind_mph": 15,
    "alerts": 0,
    "stale": false
   },
   "tehachapi_weather": {
-   "temp": 57,
-   "wind_mph": 0,
+   "temp": 43,
+   "wind_mph": 15,
    "alerts": 0
   },
   "roads": {
@@ -182,11 +182,11 @@
   },
   "events": {
    "groups": {
-    "In the next 7 days": 18,
-    "In 1 to 2 weeks": 10,
-    "Later": 66
+    "In the next 7 days": 16,
+    "In 1 to 2 weeks": 12,
+    "Later": 64
    },
-   "meetings": 8
+   "meetings": 7
   },
   "feed": {
    "entries": 30
@@ -195,7 +195,7 @@
    "isabella_af": 138588,
    "alpr_total": 466,
    "kern_fires": 0,
-   "aqi": 45,
+   "aqi": 38,
    "chp_week": 39
   },
   "letters": {
